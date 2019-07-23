@@ -9,28 +9,29 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Word_KeyMap extends KeyMapImpl {
   public Word_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new Word_KeyMap.Word_KeyMap_Action0();
+    action = new Word_KeyMap_Action0();
     this.putAction("ctrl", "VK_B", action);
-    action = new Word_KeyMap.Word_KeyMap_Action1();
+    action = new Word_KeyMap_Action1();
     this.putAction("ctrl", "VK_I", action);
-    action = new Word_KeyMap.Word_KeyMap_Action2();
+    action = new Word_KeyMap_Action2();
     this.putAction("ctrl", "VK_U", action);
-    action = new Word_KeyMap.Word_KeyMap_Action3();
+    action = new Word_KeyMap_Action3();
     this.putAction("any", " ", action);
-    action = new Word_KeyMap.Word_KeyMap_Action4();
+    action = new Word_KeyMap_Action4();
     this.putAction("any", " ", action);
-    action = new Word_KeyMap.Word_KeyMap_Action5();
+    action = new Word_KeyMap_Action5();
     this.putAction("any", " ", action);
-    action = new Word_KeyMap.Word_KeyMap_Action6();
+    action = new Word_KeyMap_Action6();
     this.putAction("any", " ", action);
   }
   public static class Word_KeyMap_Action0 extends KeyMapActionImpl {
@@ -49,7 +50,7 @@ public class Word_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_9vl609.Word_f8e99bb0))) {
         return false;
       }
       return true;
@@ -81,7 +82,7 @@ public class Word_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_9vl609.Word_f8e99bb0))) {
         return false;
       }
       return true;
@@ -113,7 +114,7 @@ public class Word_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_9vl609.Word_f8e99bb0))) {
         return false;
       }
       return true;
@@ -146,7 +147,7 @@ public class Word_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_9vl609.Word_f8e99bb0))) {
         return false;
       }
       return true;
@@ -178,7 +179,7 @@ public class Word_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_9vl609.Word_f8e99bb0))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -214,7 +215,7 @@ public class Word_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_9vl609.Word_f8e99bb0))) {
         return false;
       }
       return true;
@@ -247,7 +248,7 @@ public class Word_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_9vl609.Word_f8e99bb0))) {
         return false;
       }
       return true;
@@ -262,5 +263,9 @@ public class Word_KeyMap extends KeyMapImpl {
     public String getKeyStroke() {
       return "  ";
     }
+  }
+
+  private static final class AUX_9vl609 {
+    /*package*/ static final SConcept Word_f8e99bb0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 }

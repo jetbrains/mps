@@ -21,7 +21,7 @@ public class BasicFieldWithInitializerDefinition_Test extends BaseTransformation
 
   @Test
   public void test_BasicFieldWithInitializerDefinition() throws Throwable {
-    new BasicFieldWithInitializerDefinition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

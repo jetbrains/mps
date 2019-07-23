@@ -18,6 +18,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRule() {
@@ -36,12 +37,16 @@ public class check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
+    return AUX_vwn9xi.CellActionMapDeclaration_ddcf7ab1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_vwn9xi {
+    /*package*/ static final SConcept CellActionMapDeclaration_ddcf7ab1 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
   }
 }

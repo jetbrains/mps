@@ -42,6 +42,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDefsAreDefinedHintStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Rule_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -103,7 +104,7 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
       deleteRuleWithBlockAllTogether.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_vsykp2.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -131,7 +132,7 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Rule_EditorBuilder_a.exprSingleRoleHandler_z0m96w_c0(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"), getEditorContext());
+    SingleRoleCellProvider provider = new exprSingleRoleHandler_z0m96w_c0(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, 0x126f1320a26da4b8L, "expr"), getEditorContext());
     return provider.createCell();
   }
   private static class exprSingleRoleHandler_z0m96w_c0 extends SingleRoleCellProvider {
@@ -246,5 +247,9 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_vsykp2 {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

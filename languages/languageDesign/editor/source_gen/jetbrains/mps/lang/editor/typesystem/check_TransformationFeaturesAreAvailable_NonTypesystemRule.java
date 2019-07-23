@@ -8,10 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collection;
 import jetbrains.mps.lang.editor.behavior.TransformationLocation__BehaviorDescriptor;
@@ -22,12 +22,13 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_TransformationFeaturesAreAvailable_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_TransformationFeaturesAreAvailable_NonTypesystemRule() {
   }
   public void applyRule(final SNode part, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode section = SNodeOperations.getNodeAncestor(part, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection"), true, false);
+    SNode section = SNodeOperations.getNodeAncestor(part, AUX_nfgbbm.TransformationMenuSection_68a16062, true, false);
     if (section != null) {
       final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations"))).translate(new ITranslator2<SNode, SConcept>() {
         public Iterable<SConcept> translate(SNode it) {
@@ -49,12 +50,17 @@ public class check_TransformationFeaturesAreAvailable_NonTypesystemRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
+    return AUX_nfgbbm.IExtensibleTransformationMenuPart_c440c883;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_nfgbbm {
+    /*package*/ static final SConcept TransformationMenuSection_68a16062 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection");
+    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart_c440c883 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
   }
 }

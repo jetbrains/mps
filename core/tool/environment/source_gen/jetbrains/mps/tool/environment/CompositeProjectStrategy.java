@@ -20,7 +20,7 @@ public class CompositeProjectStrategy implements ProjectStrategy {
     if (firstApplicable != null) {
       return firstApplicable.create(env);
     }
-    throw new CompositeProjectStrategy.NoStrategyFoundException("Could not create project with given strategies, nothing is applicable");
+    throw new NoStrategyFoundException("Could not create project with given strategies, nothing is applicable");
   }
 
   @Override

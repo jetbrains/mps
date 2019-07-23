@@ -21,7 +21,7 @@ public class AddMultiParensToCast9_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddMultiParensToCast9() throws Throwable {
-    new AddMultiParensToCast9_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

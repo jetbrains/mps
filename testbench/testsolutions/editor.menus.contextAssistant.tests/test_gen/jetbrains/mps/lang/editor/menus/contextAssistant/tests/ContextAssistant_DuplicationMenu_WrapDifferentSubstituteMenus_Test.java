@@ -25,7 +25,7 @@ public class ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test 
 
   @Test
   public void test_ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus() throws Throwable {
-    new ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

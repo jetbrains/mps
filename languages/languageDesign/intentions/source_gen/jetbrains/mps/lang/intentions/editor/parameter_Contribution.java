@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
@@ -20,6 +19,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class parameter_Contribution extends SubstituteMenuBase {
   public parameter_Contribution() {
@@ -29,7 +30,7 @@ public class parameter_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new parameter_Contribution.SMP_Concepts_bxx1tv_a(), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_bxx1tv_a(), AUX_bxx1tv.IntentionParameter_bb949e73));
     return result;
   }
 
@@ -49,11 +50,11 @@ public class parameter_Contribution extends SubstituteMenuBase {
   public class SMP_Concepts_bxx1tv_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(SubstituteMenuContext _context) {
       List<SConcept> parameters = ListSequence.fromList(new ArrayList<SConcept>());
-      boolean inParInt = SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, "jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration"), false, false) != null;
-      boolean notInApplicable = SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82b10f5L, "jetbrains.mps.lang.intentions.structure.IsApplicableBlock"), false, false) == null;
-      boolean notInChildFilterBlock = SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getInterfaceConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c198L, "jetbrains.mps.lang.intentions.structure.ChildFilterBlock"), false, false) == null;
+      boolean inParInt = SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_bxx1tv.ParameterizedIntentionDeclaration_2ac6f11a, false, false) != null;
+      boolean notInApplicable = SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_bxx1tv.IsApplicableBlock_4dd2853e, false, false) == null;
+      boolean notInChildFilterBlock = SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_bxx1tv.ChildFilterBlock_1c9be52d, false, false) == null;
       if (inParInt && notInApplicable && notInChildFilterBlock) {
-        ListSequence.fromList(parameters).addElement(MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter"));
+        ListSequence.fromList(parameters).addElement(AUX_bxx1tv.IntentionParameter_bb949e73);
       }
       return parameters;
     }
@@ -85,5 +86,12 @@ public class parameter_Contribution extends SubstituteMenuBase {
         }
       }.createItems(_context);
     }
+  }
+
+  private static final class AUX_bxx1tv {
+    /*package*/ static final SConcept IntentionParameter_bb949e73 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter");
+    /*package*/ static final SConcept ParameterizedIntentionDeclaration_2ac6f11a = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, "jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration");
+    /*package*/ static final SConcept IsApplicableBlock_4dd2853e = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82b10f5L, "jetbrains.mps.lang.intentions.structure.IsApplicableBlock");
+    /*package*/ static final SInterfaceConcept ChildFilterBlock_1c9be52d = MetaAdapterFactory.getInterfaceConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c198L, "jetbrains.mps.lang.intentions.structure.ChildFilterBlock");
   }
 }

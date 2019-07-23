@@ -33,8 +33,8 @@ import com.intellij.openapi.editor.markup.HighlighterLayer;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 
 public class InTextPositionComponent implements ProjectComponent {
-  private final SessionChangeListener myChangeListener = new InTextPositionComponent.MySessionChangeListener();
-  private final DebugSessionManagerComponent.DebugSessionListener myCurrentDebugSessionListener = new InTextPositionComponent.MyCurrentDebugSessionListener();
+  private final SessionChangeListener myChangeListener = new MySessionChangeListener();
+  private final DebugSessionManagerComponent.DebugSessionListener myCurrentDebugSessionListener = new MyCurrentDebugSessionListener();
   private final Project myProject;
   private volatile RangeHighlighter myHighlighter;
   private final FileEditorManager myEditorManager;

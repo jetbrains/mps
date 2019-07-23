@@ -7,17 +7,18 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class VarType_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     SNode type = null;
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"))) {
-      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), AUX_ui5uwi.VariableDeclaration_3c610994)) {
+      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), AUX_ui5uwi.VariableDeclaration_3c610994);
       type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(parent, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
     }
     if ((type == null)) {
@@ -25,5 +26,9 @@ public class VarType_TextGen extends TextGenDescriptorBase {
     } else {
       tgs.appendNode(type);
     }
+  }
+
+  private static final class AUX_ui5uwi {
+    /*package*/ static final SConcept VariableDeclaration_3c610994 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
   }
 }

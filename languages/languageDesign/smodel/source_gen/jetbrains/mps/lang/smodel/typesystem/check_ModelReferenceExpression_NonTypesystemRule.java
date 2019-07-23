@@ -13,6 +13,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ModelReferenceExpression_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ModelReferenceExpression_NonTypesystemRule() {
@@ -26,12 +27,16 @@ public class check_ModelReferenceExpression_NonTypesystemRule extends AbstractNo
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, "jetbrains.mps.lang.smodel.structure.ModelReferenceExpression");
+    return AUX_e3p49e.ModelReferenceExpression_d8cceb6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_e3p49e {
+    /*package*/ static final SConcept ModelReferenceExpression_d8cceb6 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, "jetbrains.mps.lang.smodel.structure.ModelReferenceExpression");
   }
 }

@@ -15,7 +15,7 @@ import java.util.HashSet;
 public interface MigrationSession {
   Project getProject();
 
-  Set<MigrationSession.MigrationStepKind> getRequiredSteps();
+  Set<MigrationStepKind> getRequiredSteps();
 
   MigrationRegistry getMigrationRegistry();
 
@@ -37,7 +37,7 @@ public interface MigrationSession {
   abstract class MigrationSessionBase implements MigrationSession {
     private Object myStage = null;
     private MigrationError myErrors = null;
-    private Set<MigrationSession.MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<MigrationSession.MigrationStepKind>());
+    private Set<MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<MigrationStepKind>());
 
     public MigrationSessionBase() {
     }
@@ -56,7 +56,7 @@ public interface MigrationSession {
       myStage = stage;
     }
     @Override
-    public Set<MigrationSession.MigrationStepKind> getRequiredSteps() {
+    public Set<MigrationStepKind> getRequiredSteps() {
       return myRequiredSteps;
     }
   }

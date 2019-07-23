@@ -37,7 +37,7 @@ public class SimpleFindForExtractWithReturn_Test extends BaseTransformationTest 
 
   @Test
   public void test_SimpleFindForExtractWithReturnTest() throws Throwable {
-    new SimpleFindForExtractWithReturn_Test.TestBody(this).test_SimpleFindForExtractWithReturnTest();
+    new TestBody(this).test_SimpleFindForExtractWithReturnTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

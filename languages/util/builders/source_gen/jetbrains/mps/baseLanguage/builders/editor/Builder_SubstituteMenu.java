@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.WrapperSubstituteMenuPart;
@@ -24,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
 import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
@@ -41,14 +41,15 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Builder_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new Builder_SubstituteMenu.SMP_Group_85pfem_a());
-    result.add(new Builder_SubstituteMenu.SMP_Subconcepts_85pfem_b());
+    result.add(new SMP_Group_85pfem_a());
+    result.add(new SMP_Subconcepts_85pfem_b());
     return result;
   }
 
@@ -68,7 +69,7 @@ public class Builder_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_85pfem_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a08195e1cL, "jetbrains.mps.baseLanguage.builders.structure.AsBuilderStatement"));
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_85pfem.AsBuilderStatement_da7b54d7);
     }
     @NotNull
     @Override
@@ -84,7 +85,7 @@ public class Builder_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new Builder_SubstituteMenu.SMP_Group_85pfem_a.SMP_Wrap_85pfem_a0(), MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, "jetbrains.mps.baseLanguage.builders.structure.AsTypeBuilder")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_85pfem_a.SMP_Wrap_85pfem_a0(), AUX_85pfem.AsTypeBuilder_10d2fa36));
     }
     private class SMP_Wrap_85pfem_a0 extends WrapperSubstituteMenuPart {
       @NotNull
@@ -109,13 +110,13 @@ public class Builder_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, "jetbrains.mps.baseLanguage.builders.structure.AsTypeBuilder");
+            return AUX_85pfem.AsTypeBuilder_10d2fa36;
           }
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
-            SNode res = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, "jetbrains.mps.baseLanguage.builders.structure.AsTypeBuilder"), null);
+            SNode res = SNodeFactoryOperations.createNewNode(AUX_85pfem.AsTypeBuilder_10d2fa36, null);
             SLinkOperations.setTarget(res, MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, 0x4acc05c8d721d315L, "type"), nodeToWrap);
             return res;
           }
@@ -143,13 +144,13 @@ public class Builder_SubstituteMenu extends SubstituteMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+        return AUX_85pfem.Type_4199e276;
       }
     }
   }
   public class SMP_Subconcepts_85pfem_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0bL, "jetbrains.mps.baseLanguage.builders.structure.Builder"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_85pfem.Builder_8e7c44fe);
     }
     @NotNull
     @Override
@@ -167,5 +168,12 @@ public class Builder_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_85pfem {
+    /*package*/ static final SConcept AsBuilderStatement_da7b54d7 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a08195e1cL, "jetbrains.mps.baseLanguage.builders.structure.AsBuilderStatement");
+    /*package*/ static final SConcept AsTypeBuilder_10d2fa36 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, "jetbrains.mps.baseLanguage.builders.structure.AsTypeBuilder");
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept Builder_8e7c44fe = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0bL, "jetbrains.mps.baseLanguage.builders.structure.Builder");
   }
 }

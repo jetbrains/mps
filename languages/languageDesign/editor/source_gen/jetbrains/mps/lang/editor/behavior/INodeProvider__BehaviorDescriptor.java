@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,9 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class INodeProvider__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f3L, "jetbrains.mps.lang.editor.structure.INodeProvider");
+  private static final SAbstractConcept CONCEPT = AUX_v95y5q.INodeProvider_8fb4b9d8;
 
   public static final SMethod<SNode> getApplicableConcept_id7_cYeEu4lWA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7_cYeEu4lWA").build();
 
@@ -71,5 +72,9 @@ public final class INodeProvider__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_v95y5q {
+    /*package*/ static final SInterfaceConcept INodeProvider_8fb4b9d8 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f3L, "jetbrains.mps.lang.editor.structure.INodeProvider");
   }
 }

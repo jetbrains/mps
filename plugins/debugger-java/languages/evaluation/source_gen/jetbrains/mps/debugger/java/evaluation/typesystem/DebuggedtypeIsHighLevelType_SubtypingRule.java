@@ -10,6 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DebuggedtypeIsHighLevelType_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public DebuggedtypeIsHighLevelType_SubtypingRule() {
@@ -18,12 +19,16 @@ public class DebuggedtypeIsHighLevelType_SubtypingRule extends SubtypingRule_Run
     return SLinkOperations.getTarget(debuggedType, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25edaL, "highType"));
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType");
+    return AUX_mycrd8.DebuggedType_9357587d;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean isWeak() {
     return false;
+  }
+
+  private static final class AUX_mycrd8 {
+    /*package*/ static final SConcept DebuggedType_9357587d = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType");
   }
 }

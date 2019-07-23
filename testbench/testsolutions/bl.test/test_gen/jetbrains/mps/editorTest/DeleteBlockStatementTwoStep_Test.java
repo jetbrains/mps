@@ -24,7 +24,7 @@ public class DeleteBlockStatementTwoStep_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteBlockStatementTwoStep() throws Throwable {
-    new DeleteBlockStatementTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

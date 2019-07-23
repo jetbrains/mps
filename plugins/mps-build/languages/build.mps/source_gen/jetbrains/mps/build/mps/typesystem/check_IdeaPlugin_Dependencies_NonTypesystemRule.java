@@ -18,6 +18,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_IdeaPlugin_Dependencies_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IdeaPlugin_Dependencies_NonTypesystemRule() {
@@ -28,7 +29,7 @@ public class check_IdeaPlugin_Dependencies_NonTypesystemRule extends AbstractNon
     }
 
     IdeaPluginDependenciesHelper helper = new IdeaPluginDependenciesHelper(plugin);
-    for (SNode module : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule")))) {
+    for (SNode module : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content")), AUX_w3oh0t.BuildMps_IdeaPluginModule_d1bbcefc))) {
       StringBuilder sb = new StringBuilder();
       helper.printUnsatisfiedDependencies(sb, SLinkOperations.getTarget(module, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target")), false);
       if (sb.length() > 0) {
@@ -39,27 +40,33 @@ public class check_IdeaPlugin_Dependencies_NonTypesystemRule extends AbstractNon
         }
       }
     }
-    for (SNode group : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup")))) {
+    for (SNode group : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content")), AUX_w3oh0t.BuildMps_IdeaPluginGroup_d3614963))) {
       StringBuilder sb = new StringBuilder();
-      for (SNode module : SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(group, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules"))) {
+      for (SNode module : SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(group, AUX_w3oh0t.BuildMps_IdeaPluginGroup_d3614963), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules"))) {
         helper.printUnsatisfiedDependencies(sb, module, true);
       }
       if (sb.length() > 0) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
           errorTarget = new ReferenceMessageTarget("group");
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SNodeOperations.cast(group, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup")), sb.toString(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "1392391688313365157", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SNodeOperations.cast(group, AUX_w3oh0t.BuildMps_IdeaPluginGroup_d3614963), sb.toString(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "1392391688313365157", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
+    return AUX_w3oh0t.BuildMps_IdeaPlugin_d1bb7c62;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_w3oh0t {
+    /*package*/ static final SConcept BuildMps_IdeaPluginModule_d1bbcefc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule");
+    /*package*/ static final SConcept BuildMps_IdeaPluginGroup_d3614963 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
+    /*package*/ static final SConcept BuildMps_IdeaPlugin_d1bb7c62 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
   }
 }

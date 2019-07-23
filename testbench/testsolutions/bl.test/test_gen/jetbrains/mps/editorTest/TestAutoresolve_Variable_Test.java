@@ -21,7 +21,7 @@ public class TestAutoresolve_Variable_Test extends BaseTransformationTest {
 
   @Test
   public void test_TestAutoresolve_Variable() throws Throwable {
-    new TestAutoresolve_Variable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

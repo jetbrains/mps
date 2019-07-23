@@ -21,7 +21,7 @@ public class CopyStatementToPartiallySelectedStatement_Test extends BaseTransfor
 
   @Test
   public void test_CopyStatementToPartiallySelectedStatement() throws Throwable {
-    new CopyStatementToPartiallySelectedStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

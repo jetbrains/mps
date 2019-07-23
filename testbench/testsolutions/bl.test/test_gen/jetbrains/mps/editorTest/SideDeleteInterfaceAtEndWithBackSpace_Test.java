@@ -22,7 +22,7 @@ public class SideDeleteInterfaceAtEndWithBackSpace_Test extends BaseTransformati
 
   @Test
   public void test_SideDeleteInterfaceAtEndWithBackSpace() throws Throwable {
-    new SideDeleteInterfaceAtEndWithBackSpace_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

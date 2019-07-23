@@ -36,6 +36,7 @@ import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.baseLanguage.math.behavior.MathSymbol__BehaviorDescriptor;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class MathSymbol_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -96,7 +97,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
     return editorCell;
   }
   private boolean nodeCondition_b0ego6_a0b0() {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var")), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fea765cf0L, "jetbrains.mps.baseLanguage.math.structure.MathSymbolFromToIndex"));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var")), AUX_41vb54.MathSymbolFromToIndex_e3bfb9b3);
   }
   private boolean nodeCondition_b0ego6_a3b0() {
     return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cd41a5L, "precondition"))).isNotEmpty();
@@ -108,7 +109,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MathSymbol_EditorBuilder_a.upperBoundSingleRoleHandler_b0ego6_a0b0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11feacc8f16L, "upperBound"), getEditorContext());
+    SingleRoleCellProvider provider = new upperBoundSingleRoleHandler_b0ego6_a0b0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11feacc8f16L, "upperBound"), getEditorContext());
     return provider.createCell();
   }
   private static class upperBoundSingleRoleHandler_b0ego6_a0b0 extends SingleRoleCellProvider {
@@ -194,7 +195,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new MathSymbol_EditorBuilder_a.varSingleRoleHandler_b0ego6_a2b0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var"), getEditorContext());
+    SingleRoleCellProvider provider = new varSingleRoleHandler_b0ego6_a2b0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var"), getEditorContext());
     return provider.createCell();
   }
   private static class varSingleRoleHandler_b0ego6_a2b0 extends SingleRoleCellProvider {
@@ -258,7 +259,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new MathSymbol_EditorBuilder_a.preconditionSingleRoleHandler_b0ego6_a3b0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cd41a5L, "precondition"), getEditorContext());
+    SingleRoleCellProvider provider = new preconditionSingleRoleHandler_b0ego6_a3b0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cd41a5L, "precondition"), getEditorContext());
     return provider.createCell();
   }
   private static class preconditionSingleRoleHandler_b0ego6_a3b0 extends SingleRoleCellProvider {
@@ -316,7 +317,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
     }
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new MathSymbol_EditorBuilder_a.expressionSingleRoleHandler_b0ego6_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae874L, "expression"), getEditorContext());
+    SingleRoleCellProvider provider = new expressionSingleRoleHandler_b0ego6_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae874L, "expression"), getEditorContext());
     return provider.createCell();
   }
   private static class expressionSingleRoleHandler_b0ego6_c0 extends SingleRoleCellProvider {
@@ -383,5 +384,9 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
     style.set(StyleAttributes.BASE_LINE_CELL, true);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+
+  private static final class AUX_41vb54 {
+    /*package*/ static final SConcept MathSymbolFromToIndex_e3bfb9b3 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fea765cf0L, "jetbrains.mps.baseLanguage.math.structure.MathSymbolFromToIndex");
   }
 }

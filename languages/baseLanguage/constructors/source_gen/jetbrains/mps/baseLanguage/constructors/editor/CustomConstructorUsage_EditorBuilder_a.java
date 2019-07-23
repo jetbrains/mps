@@ -32,6 +32,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CustomConstructorUsage_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -98,7 +99,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
               }
               @Override
               public SAbstractConcept getChildSConcept() {
-                return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+                return AUX_t7gw38.Expression_4199e28d;
               }
               @Override
               public SContainmentLink getSLink() {
@@ -106,7 +107,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
               }
               @Override
               public SNode createNodeToInsert(EditorContext p0) {
-                return SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), null);
+                return SNodeFactoryOperations.createNewNode(AUX_t7gw38.Expression_4199e28d, null);
               }
 
               @Override
@@ -185,5 +186,9 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_t7gw38 {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

@@ -14,13 +14,15 @@ import java.util.HashSet;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class InlineVariableAssignmentRefactoring extends InlineVariableRefactoring {
   private Program myProgram;
@@ -46,7 +48,7 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
   public SNode doRefactoring() {
     SNode newSelection = null;
     for (SNode sourceNode : this.getNodesToRefactor()) {
-      for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(sourceNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), true, new SAbstractConcept[]{}))) {
+      for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(sourceNode, AUX_v7x5rz.VariableReference_24d60dac, true, new SAbstractConcept[]{}))) {
         if (SLinkOperations.getTarget(reference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")) == myVariable) {
           SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(myVariable, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
           SNodeOperations.replaceWithAnother(reference, expr);
@@ -61,20 +63,28 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
     List<SNode> result = new ArrayList<SNode>();
     for (ReadInstruction read : SetSequence.fromSet(this.myReadInstructions)) {
       SNode node = (SNode) read.getSource();
-      if (!((SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression")) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus"))))) && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression")))) {
+      if (!((SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression")) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_v7x5rz.UnaryMinus_b7e0120a)))) && !(SNodeOperations.isInstanceOf(node, AUX_v7x5rz.OperationAssignmentExpression_f95e9b54))) {
         ListSequence.fromList(result).addElement((node));
       }
     }
     return result;
   }
   public static SNode findStatementList(SNode node) {
-    SNode body = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
-    if (SNodeOperations.getNodeAncestor(body, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false) == null) {
+    SNode body = SNodeOperations.getNodeAncestor(node, AUX_v7x5rz.StatementList_9dbf9acf, false, false);
+    if (SNodeOperations.getNodeAncestor(body, AUX_v7x5rz.StatementList_9dbf9acf, false, false) == null) {
       return body;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(body), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer")) && !(((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(SNodeOperations.getParent(body), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer")), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer"), SMethodTrimmedId.create("isExecuteSynchronous", null, "hTIpcC8"))))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(body), AUX_v7x5rz.IStatementListContainer_5e186851) && !(((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(SNodeOperations.getParent(body), AUX_v7x5rz.IStatementListContainer_5e186851), AUX_v7x5rz.IStatementListContainer_5e186851, SMethodTrimmedId.create("isExecuteSynchronous", null, "hTIpcC8"))))) {
       return body;
     }
     return findStatementList(body);
+  }
+
+  private static final class AUX_v7x5rz {
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept OperationAssignmentExpression_f95e9b54 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression");
+    /*package*/ static final SConcept UnaryMinus_b7e0120a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
+    /*package*/ static final SConcept StatementList_9dbf9acf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SInterfaceConcept IStatementListContainer_5e186851 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
   }
 }

@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_PrintTextExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_PrintTextExpression_InferenceRule() {
@@ -26,7 +27,7 @@ public class typeof_PrintTextExpression_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7417cca3eb1feca9L, "jetbrains.mps.console.base.structure.PrintTextExpression");
+    return AUX_tqzol9.PrintTextExpression_5fe302a5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,5 +41,9 @@ public class typeof_PrintTextExpression_InferenceRule extends AbstractInferenceR
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
     return quotedNode_1;
+  }
+
+  private static final class AUX_tqzol9 {
+    /*package*/ static final SConcept PrintTextExpression_5fe302a5 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7417cca3eb1feca9L, "jetbrains.mps.console.base.structure.PrintTextExpression");
   }
 }

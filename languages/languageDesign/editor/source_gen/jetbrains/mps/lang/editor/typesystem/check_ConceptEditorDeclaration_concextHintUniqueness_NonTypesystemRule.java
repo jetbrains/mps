@@ -36,6 +36,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemRule() {
@@ -78,7 +79,7 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
       }
       SModel editorModel = SModuleOperations.getAspect(nextLanguage, "editor");
       if (editorModel != null) {
-        CollectionSequence.fromCollection(duplicatingEditorDeclarations).addSequence(ListSequence.fromList(SModelOperations.roots(editorModel, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"))).where(new IWhereFilter<SNode>() {
+        CollectionSequence.fromCollection(duplicatingEditorDeclarations).addSequence(ListSequence.fromList(SModelOperations.roots(editorModel, AUX_e0tm27.ConceptEditorDeclaration_9422d3dc)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration")) == SLinkOperations.getTarget(editorDeclaration, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration")) && it != editorDeclaration;
           }
@@ -113,7 +114,7 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    return AUX_e0tm27.ConceptEditorDeclaration_9422d3dc;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -123,5 +124,9 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
   }
   private static <T> T as_e0tm27_a0a0a1(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_e0tm27 {
+    /*package*/ static final SConcept ConceptEditorDeclaration_9422d3dc = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
   }
 }

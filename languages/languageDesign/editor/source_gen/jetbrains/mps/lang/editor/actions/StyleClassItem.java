@@ -6,38 +6,46 @@ import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class StyleClassItem {
   public static class NodeFactory_1222177342204 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, "jetbrains.mps.lang.editor.structure.ColorStyleClassItem"))) {
-        SPropertyOperations.assignEnum(newNode, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color"), SPropertyOperations.getEnum(SNodeOperations.cast(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, "jetbrains.mps.lang.editor.structure.ColorStyleClassItem")), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color")));
-        SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query"), SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, "jetbrains.mps.lang.editor.structure.ColorStyleClassItem")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query")));
+      if (SNodeOperations.isInstanceOf(sampleNode, AUX_lavsp9.ColorStyleClassItem_baf80a60)) {
+        SPropertyOperations.assignEnum(newNode, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color"), SPropertyOperations.getEnum(SNodeOperations.cast(sampleNode, AUX_lavsp9.ColorStyleClassItem_baf80a60), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color")));
+        SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query"), SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, AUX_lavsp9.ColorStyleClassItem_baf80a60), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query")));
       }
     }
   }
   public static class NodeFactory_1222178769288 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, "jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem"))) {
-        SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag"), SPropertyOperations.getBoolean(SNodeOperations.cast(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, "jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem")), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag")));
+      if (SNodeOperations.isInstanceOf(sampleNode, AUX_lavsp9.BooleanStyleSheetItem_55b6f556)) {
+        SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag"), SPropertyOperations.getBoolean(SNodeOperations.cast(sampleNode, AUX_lavsp9.BooleanStyleSheetItem_55b6f556), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag")));
       }
     }
   }
   public static class NodeFactory_1222178992987 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, "jetbrains.mps.lang.editor.structure.FloatStyleClassItem"))) {
-        SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), SPropertyOperations.getString(SNodeOperations.cast(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, "jetbrains.mps.lang.editor.structure.FloatStyleClassItem")), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value")));
+      if (SNodeOperations.isInstanceOf(sampleNode, AUX_lavsp9.FloatStyleClassItem_40302979)) {
+        SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), SPropertyOperations.getString(SNodeOperations.cast(sampleNode, AUX_lavsp9.FloatStyleClassItem_40302979), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value")));
       }
     }
   }
   public static class NodeFactory_4088952938557965240 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, "jetbrains.mps.lang.editor.structure.AttributeStyleClassItem"))) {
-        SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0a403L, "query"), SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, "jetbrains.mps.lang.editor.structure.AttributeStyleClassItem")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0a403L, "query")));
+      if (SNodeOperations.isInstanceOf(sampleNode, AUX_lavsp9.AttributeStyleClassItem_5587c35d)) {
+        SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0a403L, "query"), SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, AUX_lavsp9.AttributeStyleClassItem_5587c35d), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0a403L, "query")));
       }
     }
+  }
+
+  private static final class AUX_lavsp9 {
+    /*package*/ static final SConcept ColorStyleClassItem_baf80a60 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, "jetbrains.mps.lang.editor.structure.ColorStyleClassItem");
+    /*package*/ static final SConcept BooleanStyleSheetItem_55b6f556 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, "jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem");
+    /*package*/ static final SConcept FloatStyleClassItem_40302979 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, "jetbrains.mps.lang.editor.structure.FloatStyleClassItem");
+    /*package*/ static final SConcept AttributeStyleClassItem_5587c35d = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, "jetbrains.mps.lang.editor.structure.AttributeStyleClassItem");
   }
 }

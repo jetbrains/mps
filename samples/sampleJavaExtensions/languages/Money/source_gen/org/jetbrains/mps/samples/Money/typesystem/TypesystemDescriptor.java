@@ -5,13 +5,14 @@ package org.jetbrains.mps.samples.Money.typesystem;
 import jetbrains.mps.lang.typesystem.runtime.BaseHelginsDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.typesystem.runtime.OverloadedOperationsTypesProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
@@ -43,12 +44,12 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       SubtypingRule_Runtime subtypingRule = new Money_extends_java_lang_Object_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_b(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression")));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_b(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d0fac2cL, "jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression")));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_b(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced3b82aL, "jetbrains.mps.baseLanguage.structure.LessThanExpression")));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_b(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression")));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_a(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression")));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_a(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(AUX_3ist9o.GreaterThanExpression_2257f88b));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(AUX_3ist9o.GreaterThanOrEqualsExpression_5e0d40b9));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(AUX_3ist9o.LessThanExpression_22666a82));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(AUX_3ist9o.LessThanOrEqualsExpression_b4accc56));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_a(AUX_3ist9o.MinusExpression_d47683f9));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_a(AUX_3ist9o.PlusExpression_d4768414));
   }
   public static class CustomOverloadedOperationsTypesProvider_b extends OverloadedOperationsTypesProvider {
     public CustomOverloadedOperationsTypesProvider_b(SAbstractConcept concept) {
@@ -125,5 +126,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x662a9f2b58024d16L, 0x955872c65c7a681eL, "org.jetbrains.mps.samples.Money"), 0x4b9a2fe55913516aL, "MoneyType"), null, null, false);
       return quotedNode_1;
     }
+  }
+
+  private static final class AUX_3ist9o {
+    /*package*/ static final SConcept GreaterThanExpression_2257f88b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression");
+    /*package*/ static final SConcept GreaterThanOrEqualsExpression_5e0d40b9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d0fac2cL, "jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression");
+    /*package*/ static final SConcept LessThanExpression_22666a82 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced3b82aL, "jetbrains.mps.baseLanguage.structure.LessThanExpression");
+    /*package*/ static final SConcept LessThanOrEqualsExpression_b4accc56 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression");
+    /*package*/ static final SConcept MinusExpression_d47683f9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression");
+    /*package*/ static final SConcept PlusExpression_d4768414 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
   }
 }

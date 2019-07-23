@@ -21,5 +21,5 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
     return Collections.<DataFlowConstructor>emptyList();
   }
 
-  private static String[] stringSwitchCases_vhxjlb_a0a0a = new String[]{"jetbrains.mps.baseLanguage.dataFlow.Nullable"};
+  private static final String[] stringSwitchCases_vhxjlb_a0a0a = new String[]{"jetbrains.mps.baseLanguage.dataFlow.Nullable"};
 }

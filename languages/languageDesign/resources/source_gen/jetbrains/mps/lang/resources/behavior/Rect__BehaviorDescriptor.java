@@ -4,7 +4,6 @@ package jetbrains.mps.lang.resources.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,14 +17,16 @@ import jetbrains.mps.util.IconCreationUtil;
 import org.jetbrains.mps.openapi.util.Consumer;
 import java.awt.Color;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.resources.enumMigration.Size_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, "jetbrains.mps.lang.resources.structure.Rect");
+  private static final SAbstractConcept CONCEPT = AUX_206v8y.Rect_d7606672;
 
   public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2p1v3tObywX").build();
 
@@ -102,5 +103,9 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_206v8y {
+    /*package*/ static final SConcept Rect_d7606672 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, "jetbrains.mps.lang.resources.structure.Rect");
   }
 }

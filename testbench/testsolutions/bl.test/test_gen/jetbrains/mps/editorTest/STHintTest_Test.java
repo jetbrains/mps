@@ -21,7 +21,7 @@ public class STHintTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_STHintTest() throws Throwable {
-    new STHintTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

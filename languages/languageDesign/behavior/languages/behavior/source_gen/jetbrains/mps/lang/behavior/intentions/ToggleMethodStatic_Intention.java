@@ -21,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ToggleMethodStatic_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -47,7 +48,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ToggleMethodStatic_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -62,13 +63,13 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final boolean oldStatic = SPropertyOperations.getBoolean(node, MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic"));
-      List<SNode> thisNodes = (oldStatic ? SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression"), false, new SAbstractConcept[]{}) : SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression"), false, new SAbstractConcept[]{}));
+      List<SNode> thisNodes = (oldStatic ? SNodeOperations.getNodeDescendants(node, AUX_jhhduw.ThisConceptExpression_8a7f749d, false, new SAbstractConcept[]{}) : SNodeOperations.getNodeDescendants(node, AUX_jhhduw.ThisNodeExpression_70062b2e, false, new SAbstractConcept[]{}));
       ListSequence.fromList(thisNodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, (oldStatic ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression"))));
         }
       });
-      List<SNode> superNodes = (oldStatic ? SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression"), false, new SAbstractConcept[]{}) : SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression"), false, new SAbstractConcept[]{}));
+      List<SNode> superNodes = (oldStatic ? SNodeOperations.getNodeDescendants(node, AUX_jhhduw.SuperConceptExpression_a6afd4b, false, new SAbstractConcept[]{}) : SNodeOperations.getNodeDescendants(node, AUX_jhhduw.ThisNodeExpression_70062b2e, false, new SAbstractConcept[]{}));
       ListSequence.fromList(superNodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, (oldStatic ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression"))));
@@ -80,5 +81,11 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     public IntentionDescriptor getDescriptor() {
       return ToggleMethodStatic_Intention.this;
     }
+  }
+
+  private static final class AUX_jhhduw {
+    /*package*/ static final SConcept ThisConceptExpression_8a7f749d = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
+    /*package*/ static final SConcept ThisNodeExpression_70062b2e = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
+    /*package*/ static final SConcept SuperConceptExpression_a6afd4b = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
   }
 }

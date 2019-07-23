@@ -22,7 +22,7 @@ public class IndexedTupleViewer_WrapperFactory extends ValueWrapperFactory {
   public IndexedTupleViewer_WrapperFactory() {
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new IndexedTupleViewer_WrapperFactory.IndexedTupleViewerWrapper(value, threadReference);
+    return new IndexedTupleViewerWrapper(value, threadReference);
   }
   @Override
   public boolean canWrapValue(@NotNull final IValueProxy proxy) {

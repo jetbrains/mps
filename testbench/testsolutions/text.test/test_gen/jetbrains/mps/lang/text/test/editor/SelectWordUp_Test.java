@@ -21,7 +21,7 @@ public class SelectWordUp_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelectWordUp() throws Throwable {
-    new SelectWordUp_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

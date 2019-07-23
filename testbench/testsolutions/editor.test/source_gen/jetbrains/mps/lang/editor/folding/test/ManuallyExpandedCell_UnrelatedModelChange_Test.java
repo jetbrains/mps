@@ -21,7 +21,7 @@ public class ManuallyExpandedCell_UnrelatedModelChange_Test extends BaseTransfor
 
   @Test
   public void test_ManuallyExpandedCell_UnrelatedModelChange() throws Throwable {
-    new ManuallyExpandedCell_UnrelatedModelChange_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

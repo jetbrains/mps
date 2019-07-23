@@ -4,7 +4,6 @@ package jetbrains.mps.lang.constraints.rules.kinds.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -19,12 +18,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind");
+  private static final SAbstractConcept CONCEPT = AUX_koqsrc.RuleKind_5b9bbff4;
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
@@ -34,7 +36,7 @@ public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef"))) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), AUX_koqsrc.TypedDef_953dd8f0)) {
       return new NamedElementsScope(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x28efa98d18cc670aL, "context")), MetaAdapterFactory.getContainmentLink(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, 0x653030359355429eL, "defs")));
     }
     return null;
@@ -84,5 +86,10 @@ public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_koqsrc {
+    /*package*/ static final SConcept RuleKind_5b9bbff4 = MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind");
+    /*package*/ static final SInterfaceConcept TypedDef_953dd8f0 = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef");
   }
 }

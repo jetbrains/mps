@@ -10,6 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class comparable_IndexedTupleType_Object_ComparisonRule extends ComparisonRule_Runtime {
   public comparable_IndexedTupleType_Object_ComparisonRule() {
@@ -28,9 +29,14 @@ public class comparable_IndexedTupleType_Object_ComparisonRule extends Compariso
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
+    return AUX_rflzby.IndexedTupleType_dd9476bd;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    return AUX_rflzby.ClassifierType_42700403;
+  }
+
+  private static final class AUX_rflzby {
+    /*package*/ static final SConcept IndexedTupleType_dd9476bd = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

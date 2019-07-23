@@ -25,6 +25,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class OrPattern_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -65,7 +66,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new OrPattern_EditorBuilder_a.clauseListHandler_oeflkv_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new clauseListHandler_oeflkv_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_clause");
     editorCell.setSRole(handler.getElementSRole());
@@ -88,7 +89,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, 0x27f758f8bc6acaceL, "clause");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x4363a36537b0b250L, "jetbrains.mps.lang.pattern.structure.OrPatternClause");
+      return AUX_4in8vz.OrPatternClause_8ebaf41e;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -143,5 +144,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_4in8vz {
+    /*package*/ static final SConcept OrPatternClause_8ebaf41e = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x4363a36537b0b250L, "jetbrains.mps.lang.pattern.structure.OrPatternClause");
   }
 }

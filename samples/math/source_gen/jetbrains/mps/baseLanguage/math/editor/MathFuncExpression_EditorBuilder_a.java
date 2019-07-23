@@ -19,7 +19,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -27,6 +26,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -34,6 +34,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class MathFuncExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -71,14 +72,14 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new MathFuncExpression_EditorBuilder_a.ReplaceWith_MathFuncExpression_cellMenu_957ayc_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_MathFuncExpression_cellMenu_957ayc_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_MathFuncExpression_cellMenu_957ayc_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_MathFuncExpression_cellMenu_957ayc_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205307b067L, "jetbrains.mps.baseLanguage.math.structure.MathFuncExpression");
+      return AUX_piej6i.MathFuncExpression_cc5065cc;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -96,7 +97,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MathFuncExpression_EditorBuilder_a.paramSingleRoleHandler_957ayc_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205307b067L, 0x120530c4ed0L, "param"), getEditorContext());
+    SingleRoleCellProvider provider = new paramSingleRoleHandler_957ayc_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205307b067L, 0x120530c4ed0L, "param"), getEditorContext());
     return provider.createCell();
   }
   private static class paramSingleRoleHandler_957ayc_c0 extends SingleRoleCellProvider {
@@ -159,5 +160,9 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_piej6i {
+    /*package*/ static final SConcept MathFuncExpression_cc5065cc = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205307b067L, "jetbrains.mps.baseLanguage.math.structure.MathFuncExpression");
   }
 }

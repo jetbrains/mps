@@ -22,7 +22,7 @@ public class buildStyles_StyleSheet {
   public static void apply_outputLayout(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.outputLayoutStyleClass(editorContext, node).apply(style, editorCell);
+    new outputLayoutStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -32,7 +32,7 @@ public class buildStyles_StyleSheet {
   public static void apply_artifactKeyword(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.artifactKeywordStyleClass(editorContext, node).apply(style, editorCell);
+    new artifactKeywordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -42,7 +42,7 @@ public class buildStyles_StyleSheet {
   public static void apply_projectPartKeyword(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.projectPartKeywordStyleClass(editorContext, node).apply(style, editorCell);
+    new projectPartKeywordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -52,7 +52,7 @@ public class buildStyles_StyleSheet {
   public static void apply_macro(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.macroStyleClass(editorContext, node).apply(style, editorCell);
+    new macroStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -62,7 +62,7 @@ public class buildStyles_StyleSheet {
   public static void apply_keyword(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.keywordStyleClass(editorContext, node).apply(style, editorCell);
+    new keywordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -72,7 +72,7 @@ public class buildStyles_StyleSheet {
   public static void apply_plugin(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.pluginStyleClass(editorContext, node).apply(style, editorCell);
+    new pluginStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -82,7 +82,7 @@ public class buildStyles_StyleSheet {
   public static void apply_keyword_4(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.keyword_4StyleClass(editorContext, node).apply(style, editorCell);
+    new keyword_4StyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -92,7 +92,7 @@ public class buildStyles_StyleSheet {
   public static void apply_string(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.stringStyleClass(editorContext, node).apply(style, editorCell);
+    new stringStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -102,7 +102,7 @@ public class buildStyles_StyleSheet {
   public static void apply_hint(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.hintStyleClass(editorContext, node).apply(style, editorCell);
+    new hintStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -112,7 +112,7 @@ public class buildStyles_StyleSheet {
   public static void apply_comment(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new buildStyles_StyleSheet.commentStyleClass(editorContext, node).apply(style, editorCell);
+    new commentStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class outputLayoutStyleClass extends AbstractStyleClass {

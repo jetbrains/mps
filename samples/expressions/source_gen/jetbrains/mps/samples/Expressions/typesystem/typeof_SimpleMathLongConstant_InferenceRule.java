@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class typeof_SimpleMathLongConstant_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SimpleMathLongConstant_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_SimpleMathLongConstant_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b83bf7eaL, "jetbrains.mps.samples.Expressions.structure.SimpleMathLongConstant");
+    return AUX_j74srz.SimpleMathLongConstant_c0fc5465;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,7 +35,12 @@ public class typeof_SimpleMathLongConstant_InferenceRule extends AbstractInferen
   }
   private static SNode createSimpleMathLongType_j74srz_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b837a88aL, "jetbrains.mps.samples.Expressions.structure.SimpleMathLongType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_j74srz.SimpleMathLongType_bbf8afaa, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_j74srz {
+    /*package*/ static final SConcept SimpleMathLongConstant_c0fc5465 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b83bf7eaL, "jetbrains.mps.samples.Expressions.structure.SimpleMathLongConstant");
+    /*package*/ static final SConcept SimpleMathLongType_bbf8afaa = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b837a88aL, "jetbrains.mps.samples.Expressions.structure.SimpleMathLongType");
   }
 }

@@ -18,11 +18,12 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class csharp_rTransform extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -48,7 +49,7 @@ public class csharp_rTransform extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new csharp_rTransform.TMP_Group_xbr0jd_a0());
+      result.add(new TMP_Group_xbr0jd_a0());
     }
     return result;
   }
@@ -56,7 +57,7 @@ public class csharp_rTransform extends TransformationMenuBase {
   public class TMP_Group_xbr0jd_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, "jetbrains.mps.baseLanguage.structure.AsExpression"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_xbr0jd.AsExpression_7044074e);
     }
 
     @NotNull
@@ -72,7 +73,7 @@ public class csharp_rTransform extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new csharp_rTransform.TMP_Group_xbr0jd_a0.TMP_Include_xbr0jd_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_xbr0jd_a0.TMP_Include_xbr0jd_a0a());
     }
     public class TMP_Include_xbr0jd_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull
@@ -94,5 +95,9 @@ public class csharp_rTransform extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_xbr0jd {
+    /*package*/ static final SConcept AsExpression_7044074e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, "jetbrains.mps.baseLanguage.structure.AsExpression");
   }
 }

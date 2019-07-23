@@ -31,6 +31,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class RuleWithMessage_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -77,11 +78,11 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefCell_0() {
-    CellProviderWithRole provider = new RefCellCellProvider(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"), "rule", getEditorContext()) {
+    CellProviderWithRole provider = new RefCellCellProvider(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"), AUX_1ftidc.Rule_5f090c4b, "rule", getEditorContext()) {
 
       @Override
       protected EditorCell createRefCell(EditorContext context, SNode effectiveNode, SNode node) {
-        EditorCell cell = new RuleWithMessage_InspectorBuilder_a.Inline_Builder0(getEditorContext(), myNode, effectiveNode).createCell();
+        EditorCell cell = new Inline_Builder0(getEditorContext(), myNode, effectiveNode).createCell();
         installDeleteActions_notnull(cell);
         return cell;
       }
@@ -132,7 +133,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
         editorCell.setCellId("property_name");
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_1ftidc.PropertyAttribute_d001db89);
         Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -165,11 +166,11 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefCell_1() {
-    CellProviderWithRole provider = new RefCellCellProvider(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"), "rule", getEditorContext()) {
+    CellProviderWithRole provider = new RefCellCellProvider(myNode, MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule"), AUX_1ftidc.Rule_5f090c4b, "rule", getEditorContext()) {
 
       @Override
       protected EditorCell createRefCell(EditorContext context, SNode effectiveNode, SNode node) {
-        EditorCell cell = new RuleWithMessage_InspectorBuilder_a.Inline_Builder1(getEditorContext(), myNode, effectiveNode).createCell();
+        EditorCell cell = new Inline_Builder1(getEditorContext(), myNode, effectiveNode).createCell();
         installDeleteActions_notnull(cell);
         return cell;
       }
@@ -223,7 +224,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
         editorCell.getStyle().putAll(style);
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_1ftidc.PropertyAttribute_d001db89);
         Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -238,5 +239,10 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
         getCellFactory().popCellContext();
       }
     }
+  }
+
+  private static final class AUX_1ftidc {
+    /*package*/ static final SConcept Rule_5f090c4b = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

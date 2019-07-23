@@ -10,7 +10,6 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +32,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.build.mps.util.ModuleLoader;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ImportAllModulesFromFolder_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Actions.ImportModulesFromFolder;
@@ -53,7 +54,7 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_mmt9i1.BuildProject_808bb057))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("node", node);
@@ -112,5 +113,9 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
         }
       }
     });
+  }
+
+  private static final class AUX_mmt9i1 {
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

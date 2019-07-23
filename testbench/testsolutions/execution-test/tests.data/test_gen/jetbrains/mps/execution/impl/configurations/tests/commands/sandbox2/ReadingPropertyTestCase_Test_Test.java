@@ -28,7 +28,7 @@ public class ReadingPropertyTestCase_Test_Test extends BaseTransformationTest {
 
   @Test
   public void test_test1() throws Throwable {
-    new ReadingPropertyTestCase_Test_Test.TestBody(this).test_test1();
+    new TestBody(this).test_test1();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

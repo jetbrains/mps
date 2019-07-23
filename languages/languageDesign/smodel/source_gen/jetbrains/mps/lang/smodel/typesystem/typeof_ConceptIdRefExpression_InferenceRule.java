@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ConceptIdRefExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ConceptIdRefExpression_InferenceRule() {
@@ -25,7 +26,7 @@ public class typeof_ConceptIdRefExpression_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, "jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression");
+    return AUX_8j47c6.ConceptIdRefExpression_e53d5f1e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,8 +36,13 @@ public class typeof_ConceptIdRefExpression_InferenceRule extends AbstractInferen
   }
   private static SNode createSConceptTypeLiteral_8j47c6_a1a0c0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, "jetbrains.mps.lang.smodel.structure.SConceptTypeLiteral"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_8j47c6.SConceptTypeLiteral_83a436c5, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, 0x4bf20760d53f89ebL, "conceptDeclaraton"), node0);
     return n1;
+  }
+
+  private static final class AUX_8j47c6 {
+    /*package*/ static final SConcept ConceptIdRefExpression_e53d5f1e = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, "jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression");
+    /*package*/ static final SConcept SConceptTypeLiteral_83a436c5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, "jetbrains.mps.lang.smodel.structure.SConceptTypeLiteral");
   }
 }

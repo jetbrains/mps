@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.javadoc.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.baseLanguage.javadoc.editor.NodeCaretPair;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -19,9 +18,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CommentLinePart__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart");
+  private static final SAbstractConcept CONCEPT = AUX_6weeb.CommentLinePart_b468bde3;
 
   public static final SMethod<NodeCaretPair> smartDelete_id7PYAiugbmRz = new SMethodBuilder<NodeCaretPair>(new SJavaCompoundTypeImpl(NodeCaretPair.class)).name("smartDelete").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7PYAiugbmRz").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<String> buildCommentText_id7Qt73fl2F3N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7Qt73fl2F3N").build();
@@ -80,5 +81,9 @@ public final class CommentLinePart__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_6weeb {
+    /*package*/ static final SConcept CommentLinePart_b468bde3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -18,12 +17,13 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class TransformationMenuPart_ReferenceMenu__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5ddc2e3f050ded4L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_ReferenceMenu");
+  private static final SAbstractConcept CONCEPT = AUX_hcyhxf.TransformationMenuPart_ReferenceMenu_34d7bf8b;
 
   public static final SMethod<List<SConcept>> getAdditionalFeatureParameters_id6kJcyCQ_bk0 = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalFeatureParameters").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6kJcyCQ_bk0").build();
   public static final SMethod<SNode> getReferenceDeclaration_id1o9RazL_axx = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferenceDeclaration").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1o9RazL_axx").build();
@@ -34,7 +34,7 @@ public final class TransformationMenuPart_ReferenceMenu__BehaviorDescriptor exte
   }
 
   /*package*/ static List<SConcept> getAdditionalFeatureParameters_id6kJcyCQ_bk0(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6001c76613c99a37L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_targetNode"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_hcyhxf.ConceptFunctionParameter_targetNode_c693e632);
   }
   /*package*/ static SNode getReferenceDeclaration_id1o9RazL_axx(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5ddc2e3f050ded4L, 0x5ddc2e3f050ded5L, "referenceLink"));
@@ -86,5 +86,10 @@ public final class TransformationMenuPart_ReferenceMenu__BehaviorDescriptor exte
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_hcyhxf {
+    /*package*/ static final SConcept TransformationMenuPart_ReferenceMenu_34d7bf8b = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5ddc2e3f050ded4L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_ReferenceMenu");
+    /*package*/ static final SConcept ConceptFunctionParameter_targetNode_c693e632 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6001c76613c99a37L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_targetNode");
   }
 }

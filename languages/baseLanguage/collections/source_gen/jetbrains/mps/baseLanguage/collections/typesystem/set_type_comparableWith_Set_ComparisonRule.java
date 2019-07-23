@@ -12,6 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class set_type_comparableWith_Set_ComparisonRule extends ComparisonRule_Runtime {
   /*package*/ GeneratedMatchingPattern myMatchingPattern2;
@@ -36,7 +37,7 @@ public class set_type_comparableWith_Set_ComparisonRule extends ComparisonRule_R
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    return AUX_3k2v7g.SetType_d8fa38cf;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -50,5 +51,9 @@ public class set_type_comparableWith_Set_ComparisonRule extends ComparisonRule_R
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506dL, "Type"), null, null, false);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_2);
     return quotedNode_1;
+  }
+
+  private static final class AUX_3k2v7g {
+    /*package*/ static final SConcept SetType_d8fa38cf = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
   }
 }

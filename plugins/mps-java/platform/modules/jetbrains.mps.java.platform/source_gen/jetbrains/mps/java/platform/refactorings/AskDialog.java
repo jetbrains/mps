@@ -13,14 +13,14 @@ import javax.swing.Action;
 import java.awt.event.ActionEvent;
 
 public class AskDialog extends DialogWrapper {
-  private AskDialog.DialogResults myResult = AskDialog.DialogResults.Cancel;
+  private DialogResults myResult = DialogResults.Cancel;
   public AskDialog(Project project, String text) {
     super(project, true);
     setTitle(text);
     setResizable(false);
     init();
   }
-  public AskDialog.DialogResults getResult() {
+  public DialogResults getResult() {
     return this.myResult;
   }
   @Nullable
@@ -33,20 +33,20 @@ public class AskDialog extends DialogWrapper {
   @Override
   @NotNull
   protected Action[] createActions() {
-    return new Action[]{new AskDialog.AskDialogAction(AskDialog.DialogResults.Replace, true), new AskDialog.AskDialogAction(AskDialog.DialogResults.Skip), new AskDialog.AskDialogAction(AskDialog.DialogResults.All), getCancelAction()};
+    return new Action[]{new AskDialogAction(DialogResults.Replace, true), new AskDialogAction(DialogResults.Skip), new AskDialogAction(DialogResults.All), getCancelAction()};
   }
   @Override
   public void doCancelAction() {
-    myResult = AskDialog.DialogResults.Cancel;
+    myResult = DialogResults.Cancel;
     super.doCancelAction();
   }
   public class AskDialogAction extends DialogWrapper.DialogWrapperAction {
-    private AskDialog.DialogResults myValue;
-    public AskDialogAction(AskDialog.DialogResults value, boolean isDefault) {
+    private DialogResults myValue;
+    public AskDialogAction(DialogResults value, boolean isDefault) {
       this(value);
       putValue(DialogWrapper.DEFAULT_ACTION, Boolean.TRUE);
     }
-    public AskDialogAction(AskDialog.DialogResults value) {
+    public AskDialogAction(DialogResults value) {
       super(value.name());
       myValue = value;
     }

@@ -4,19 +4,20 @@ package jetbrains.mps.lang.editor.diagram.testLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class NodeWithPorts__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f71d1L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.NodeWithPorts");
+  private static final SAbstractConcept CONCEPT = AUX_wwczvp.NodeWithPorts_82a8e47e;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -68,5 +69,9 @@ public final class NodeWithPorts__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_wwczvp {
+    /*package*/ static final SConcept NodeWithPorts_82a8e47e = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f71d1L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.NodeWithPorts");
   }
 }

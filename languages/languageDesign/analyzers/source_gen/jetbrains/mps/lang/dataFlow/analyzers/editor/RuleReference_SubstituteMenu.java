@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RuleReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new RuleReference_SubstituteMenu.SMP_ReferenceScope_px8ruc_a(), MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0xa72ff3b2ca7c5b0L, "jetbrains.mps.lang.dataFlow.analyzers.structure.RuleReference")));
-    result.add(new RuleReference_SubstituteMenu.SMP_Subconcepts_px8ruc_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_px8ruc_a(), AUX_px8ruc.RuleReference_17c678b9));
+    result.add(new SMP_Subconcepts_px8ruc_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class RuleReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_px8ruc_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0xa72ff3b2ca7c5b0L, "jetbrains.mps.lang.dataFlow.analyzers.structure.RuleReference"), MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0xa72ff3b2ca7c5b0L, 0xa72ff3b2ca7c5b1L, "rule"));
+      super((SAbstractConcept) AUX_px8ruc.RuleReference_17c678b9, MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0xa72ff3b2ca7c5b0L, 0xa72ff3b2ca7c5b1L, "rule"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class RuleReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_px8ruc_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0xa72ff3b2ca7c5b0L, "jetbrains.mps.lang.dataFlow.analyzers.structure.RuleReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_px8ruc.RuleReference_17c678b9);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class RuleReference_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_px8ruc {
+    /*package*/ static final SConcept RuleReference_17c678b9 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0xa72ff3b2ca7c5b0L, "jetbrains.mps.lang.dataFlow.analyzers.structure.RuleReference");
   }
 }

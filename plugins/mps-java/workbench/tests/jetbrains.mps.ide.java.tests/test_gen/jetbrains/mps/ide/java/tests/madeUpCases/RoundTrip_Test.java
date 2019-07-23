@@ -28,27 +28,27 @@ public class RoundTrip_Test extends BaseTransformationTest {
 
   @Test
   public void test_Simple() throws Throwable {
-    new RoundTrip_Test.TestBody(this).test_Simple();
+    new TestBody(this).test_Simple();
   }
   @Test
   public void test_Methods() throws Throwable {
-    new RoundTrip_Test.TestBody(this).test_Methods();
+    new TestBody(this).test_Methods();
   }
   @Test
   public void test_Fields() throws Throwable {
-    new RoundTrip_Test.TestBody(this).test_Fields();
+    new TestBody(this).test_Fields();
   }
   @Test
   public void test_TypeVars() throws Throwable {
-    new RoundTrip_Test.TestBody(this).test_TypeVars();
+    new TestBody(this).test_TypeVars();
   }
   @Test
   public void test_OuterClassThis() throws Throwable {
-    new RoundTrip_Test.TestBody(this).test_OuterClassThis();
+    new TestBody(this).test_OuterClassThis();
   }
   @Test
   public void test_VarargMethods() throws Throwable {
-    new RoundTrip_Test.TestBody(this).test_VarargMethods();
+    new TestBody(this).test_VarargMethods();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

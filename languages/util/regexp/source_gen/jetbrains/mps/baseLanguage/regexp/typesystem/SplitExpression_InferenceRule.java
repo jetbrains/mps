@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SplitExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public SplitExpression_InferenceRule() {
@@ -31,7 +32,7 @@ public class SplitExpression_InferenceRule extends AbstractInferenceRule_Runtime
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression");
+    return AUX_l306ck.SplitExpression_1541c9af;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,5 +55,9 @@ public class SplitExpression_InferenceRule extends AbstractInferenceRule_Runtime
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_2);
     return quotedNode_1;
+  }
+
+  private static final class AUX_l306ck {
+    /*package*/ static final SConcept SplitExpression_1541c9af = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression");
   }
 }

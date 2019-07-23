@@ -51,6 +51,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class State_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -119,7 +120,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_t2qokx.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -156,7 +157,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_t2qokx.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -193,7 +194,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_t2qokx.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -209,7 +210,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     }
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new State_EditorBuilder_a.transitionsListHandler_sjqidp_g0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new transitionsListHandler_sjqidp_g0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_transitions");
     Style style = new StyleImpl();
@@ -236,7 +237,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       return MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x148d06483264e4afL, "transitions");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L, "jetbrains.mps.samples.StateChart.structure.Transition");
+      return AUX_t2qokx.Transition_404ac7b8;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -292,7 +293,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new State_EditorBuilder_a.onEntrySingleRoleHandler_sjqidp_b7a(myNode, MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x5e8f0d038ab691b5L, "onEntry"), getEditorContext());
+    SingleRoleCellProvider provider = new onEntrySingleRoleHandler_sjqidp_b7a(myNode, MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x5e8f0d038ab691b5L, "onEntry"), getEditorContext());
     return provider.createCell();
   }
   private static class onEntrySingleRoleHandler_sjqidp_b7a extends SingleRoleCellProvider {
@@ -380,7 +381,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new State_EditorBuilder_a.onExitSingleRoleHandler_sjqidp_b8a(myNode, MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x5e8f0d038ab691caL, "onExit"), getEditorContext());
+    SingleRoleCellProvider provider = new onExitSingleRoleHandler_sjqidp_b8a(myNode, MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x5e8f0d038ab691caL, "onExit"), getEditorContext());
     return provider.createCell();
   }
   private static class onExitSingleRoleHandler_sjqidp_b8a extends SingleRoleCellProvider {
@@ -615,5 +616,10 @@ import jetbrains.mps.nodeEditor.MPSColors;
     editorCell.setCellId("Constant_sjqidp_l0");
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_t2qokx {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept Transition_404ac7b8 = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L, "jetbrains.mps.samples.StateChart.structure.Transition");
   }
 }

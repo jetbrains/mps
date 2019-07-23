@@ -16,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public DisptachParamIsClass_NonTypesystemRule() {
@@ -23,7 +24,7 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
   public void applyRule(final SNode method, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L, "jetbrains.mps.baseLanguage.doubleDispatch.structure.DispatchModifier"));
+        return SNodeOperations.isInstanceOf(it, AUX_lk2er8.DispatchModifier_bd84a7bb);
       }
     }).isEmpty()) {
       return;
@@ -44,7 +45,7 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
 
     // turned it off, because unentered yet type is shown as error which is bad 
 
-    if (!(SNodeOperations.isInstanceOf(paramType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(paramType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))) {
+    if (!(SNodeOperations.isInstanceOf(paramType, AUX_lk2er8.ClassifierType_42700403)) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(paramType, AUX_lk2er8.ClassifierType_42700403), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), AUX_lk2er8.ClassConcept_e2711824))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(paramType, "Dispatch parameter must have class type", "r:7a94bb66-9653-4830-af67-903eb2cfbd29(jetbrains.mps.baseLanguage.doubleDispatch.typesystem)", "2323553266855237975", null, errorTarget);
@@ -53,12 +54,19 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    return AUX_lk2er8.MethodDeclaration_637cfcff;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_lk2er8 {
+    /*package*/ static final SConcept DispatchModifier_bd84a7bb = MetaAdapterFactory.getConcept(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L, "jetbrains.mps.baseLanguage.doubleDispatch.structure.DispatchModifier");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept MethodDeclaration_637cfcff = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 }

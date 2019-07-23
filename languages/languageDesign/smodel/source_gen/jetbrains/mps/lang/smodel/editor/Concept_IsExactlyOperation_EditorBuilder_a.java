@@ -68,7 +68,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Concept_IsExactlyOperation_EditorBuilder_a.conceptArgumentSingleRoleHandler_xyy14o_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f41acfb7L, 0x118f6ee3856L, "conceptArgument"), getEditorContext());
+    SingleRoleCellProvider provider = new conceptArgumentSingleRoleHandler_xyy14o_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f41acfb7L, 0x118f6ee3856L, "conceptArgument"), getEditorContext());
     return provider.createCell();
   }
   private static class conceptArgumentSingleRoleHandler_xyy14o_c0 extends SingleRoleCellProvider {

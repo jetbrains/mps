@@ -21,7 +21,7 @@ public class ReAddParensToUnaryOperation_Test extends BaseTransformationTest {
 
   @Test
   public void test_ReAddParensToUnaryOperation() throws Throwable {
-    new ReAddParensToUnaryOperation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ZipOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ZipOperation_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_ZipOperation_InferenceRule extends AbstractInferenceRule_Run
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b8b81dL, "jetbrains.mps.samples.languagePatterns.Basic.structure.ZipOperation");
+    return AUX_ohj01h.ZipOperation_b177f554;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_ZipOperation_InferenceRule extends AbstractInferenceRule_Run
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_ohj01h {
+    /*package*/ static final SConcept ZipOperation_b177f554 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b8b81dL, "jetbrains.mps.samples.languagePatterns.Basic.structure.ZipOperation");
   }
 }

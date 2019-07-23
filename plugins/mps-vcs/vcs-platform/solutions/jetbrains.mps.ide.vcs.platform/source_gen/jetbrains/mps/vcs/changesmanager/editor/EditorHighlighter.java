@@ -39,7 +39,7 @@ public class EditorHighlighter implements EditorMessageOwner {
   private final Map<ModelChange, List<ChangeEditorMessage>> myChangesMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
   private CurrentDifference myCurrentDifference;
   private ChangeStripsPainter myStripsPainter;
-  private EditorHighlighter.MyCurrentDifferenceListener myListener;
+  private MyCurrentDifferenceListener myListener;
   private final Object myDisposedLock = new Object();
   private boolean myDisposed = false;
   public EditorHighlighter(@NotNull final Project project, @NotNull final EditorComponent editorComponent) {
@@ -61,7 +61,7 @@ public class EditorHighlighter implements EditorMessageOwner {
               final SModel model = editedNode.getModel();
               if (model instanceof EditableSModel && !(model.isReadOnly())) {
                 myCurrentDifference = CurrentDifferenceRegistry.getInstance(project).getCurrentDifference((EditableSModel) model);
-                myListener = new EditorHighlighter.MyCurrentDifferenceListener();
+                myListener = new MyCurrentDifferenceListener();
               }
               if (myListener != null) {
                 myCurrentDifference.setEnabled(true);

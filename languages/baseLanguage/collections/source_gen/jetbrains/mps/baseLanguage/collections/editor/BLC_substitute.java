@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -24,13 +23,15 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BLC_substitute extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new BLC_substitute.SMP_Group_4r5ods_a());
+    result.add(new SMP_Group_4r5ods_a());
     return result;
   }
 
@@ -50,7 +51,7 @@ public class BLC_substitute extends SubstituteMenuBase {
   public class SMP_Group_4r5ods_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118b81cc8f6L, "jetbrains.mps.baseLanguage.collections.structure.SortOperation")) || SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, "jetbrains.mps.baseLanguage.collections.structure.ComparatorSortOperation"));
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_4r5ods.SortOperation_65b2b289) || SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_4r5ods.ComparatorSortOperation_5bf154fb);
     }
     @NotNull
     @Override
@@ -66,14 +67,14 @@ public class BLC_substitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new BLC_substitute.SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0(), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection")), new ConstraintsFilteringSubstituteMenuPartDecorator(new BLC_substitute.SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0(), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0(), AUX_4r5ods.SortDirection_be583aee), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0(), AUX_4r5ods.SortDirection_be583aee));
     }
     private class SMP_Action_4r5ods_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        BLC_substitute.SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0.Item item = new BLC_substitute.SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0.Item(_context);
+        SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0.Item item = new SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -96,7 +97,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection"), context);
+          super(AUX_4r5ods.SortDirection_be583aee, context);
           _context = context;
         }
 
@@ -107,7 +108,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection"), null);
+          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_4r5ods.SortDirection_be583aee, null);
           SPropertyOperations.set(direction, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), true);
           return direction;
         }
@@ -133,7 +134,7 @@ public class BLC_substitute extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        BLC_substitute.SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0.Item item = new BLC_substitute.SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0.Item(_context);
+        SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0.Item item = new SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -156,7 +157,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection"), context);
+          super(AUX_4r5ods.SortDirection_be583aee, context);
           _context = context;
         }
 
@@ -167,7 +168,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection"), null);
+          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_4r5ods.SortDirection_be583aee, null);
           SPropertyOperations.set(direction, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), false);
           return direction;
         }
@@ -188,5 +189,11 @@ public class BLC_substitute extends SubstituteMenuBase {
         }
       }
     }
+  }
+
+  private static final class AUX_4r5ods {
+    /*package*/ static final SConcept ComparatorSortOperation_5bf154fb = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, "jetbrains.mps.baseLanguage.collections.structure.ComparatorSortOperation");
+    /*package*/ static final SConcept SortOperation_65b2b289 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118b81cc8f6L, "jetbrains.mps.baseLanguage.collections.structure.SortOperation");
+    /*package*/ static final SConcept SortDirection_be583aee = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection");
   }
 }

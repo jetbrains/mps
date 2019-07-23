@@ -11,6 +11,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SwitchStatement_TextGen extends TextGenDescriptorBase {
   @Override
@@ -36,7 +38,7 @@ public class SwitchStatement_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       tgs.indent();
       tgs.append("case ");
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(sc, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"))) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(sc, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression")), AUX_q6ajjz.EnumConstantReference_78d9f72e)) {
         SNode enumConstant = (SNode) SLinkOperations.getTarget(sc, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression"));
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(enumConstant, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       } else {
@@ -60,7 +62,12 @@ public class SwitchStatement_TextGen extends TextGenDescriptorBase {
     tgs.indent();
     tgs.append("}");
     if (tgs.needPositions()) {
-      tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept"))));
+      tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), AUX_q6ajjz.TraceableConcept_228d6872)));
     }
+  }
+
+  private static final class AUX_q6ajjz {
+    /*package*/ static final SConcept EnumConstantReference_78d9f72e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
+    /*package*/ static final SInterfaceConcept TraceableConcept_228d6872 = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept");
   }
 }

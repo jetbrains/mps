@@ -10,8 +10,8 @@ import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import com.intellij.ui.NonFocusableCheckBox;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.Map;
@@ -24,6 +24,8 @@ import java.util.Objects;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class OverrideConceptMethodsDialog extends GroupedNodesChooser {
   private JCheckBox myRemoveAttributes;
@@ -51,10 +53,10 @@ import jetbrains.mps.smodel.SNodePointer;
   }
   @Override
   protected String getText(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"))) {
-      SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior")), MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept"));
+    if (SNodeOperations.isInstanceOf(node, AUX_6zqknj.ConceptBehavior_68ebe6cd)) {
+      SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, AUX_6zqknj.ConceptBehavior_68ebe6cd), MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept"));
       if ((concept != null)) {
-        return ((String) BHReflection.invoke0(concept, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+        return ((String) BHReflection.invoke0(concept, AUX_6zqknj.INamedConcept_8cd7e247, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
       }
     }
     return super.getText(node);
@@ -81,7 +83,7 @@ import jetbrains.mps.smodel.SNodePointer;
   public static Iterable<SNode> sortMethods(SNode baseClass, Iterable<SNode> methods) {
     final Map<SNode, Integer> containerIndex = MapSequence.fromMap(new HashMap<SNode, Integer>());
     int i = 1;
-    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), SMethodTrimmedId.create("getAllSuperBehaviors", MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), "1$X$vL9L8i8")))) {
+    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, AUX_6zqknj.ConceptBehavior_68ebe6cd, SMethodTrimmedId.create("getAllSuperBehaviors", AUX_6zqknj.ConceptBehavior_68ebe6cd, "1$X$vL9L8i8")))) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
     return Sequence.fromIterable(methods).sort(new Comparator<SNode>() {
@@ -110,5 +112,10 @@ import jetbrains.mps.smodel.SNodePointer;
         return new SNodePointer(it);
       }
     }).toGenericArray(SNodePointer.class);
+  }
+
+  private static final class AUX_6zqknj {
+    /*package*/ static final SConcept ConceptBehavior_68ebe6cd = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

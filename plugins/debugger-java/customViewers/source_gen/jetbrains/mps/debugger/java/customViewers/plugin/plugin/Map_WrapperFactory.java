@@ -22,7 +22,7 @@ public class Map_WrapperFactory extends ValueWrapperFactory {
   public Map_WrapperFactory() {
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new Map_WrapperFactory.MapWrapper(value, threadReference);
+    return new MapWrapper(value, threadReference);
   }
   @Override
   public boolean canWrapValue(@NotNull final IValueProxy proxy) {

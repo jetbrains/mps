@@ -20,7 +20,7 @@ public class ExecutionSettings_StyleSheet {
   public static void apply_persistentConfigurationRef(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ExecutionSettings_StyleSheet.persistentConfigurationRefStyleClass(editorContext, node).apply(style, editorCell);
+    new persistentConfigurationRefStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -30,7 +30,7 @@ public class ExecutionSettings_StyleSheet {
   public static void apply_persistentConfigurationRefDeprecated(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ExecutionSettings_StyleSheet.persistentConfigurationRefDeprecatedStyleClass(editorContext, node).apply(style, editorCell);
+    new persistentConfigurationRefDeprecatedStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class persistentConfigurationRefStyleClass extends AbstractStyleClass {

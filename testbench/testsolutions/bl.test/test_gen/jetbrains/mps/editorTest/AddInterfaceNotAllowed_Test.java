@@ -21,7 +21,7 @@ public class AddInterfaceNotAllowed_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddInterfaceNotAllowed() throws Throwable {
-    new AddInterfaceNotAllowed_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

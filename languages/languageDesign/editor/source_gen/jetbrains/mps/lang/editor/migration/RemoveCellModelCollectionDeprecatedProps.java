@@ -10,10 +10,11 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBase {
   public String getCaption() {
@@ -36,7 +37,7 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
           return scope_rnfh72_a0d_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_rnfh72.CellModel_Collection_26007059, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SPropertyOperations.remove(it, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2519L, "vertical"));
           SPropertyOperations.remove(it, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff251aL, "gridLayout"));
@@ -48,4 +49,7 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 11);
   }
 
+  private static final class AUX_rnfh72 {
+    /*package*/ static final SConcept CellModel_Collection_26007059 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
+  }
 }

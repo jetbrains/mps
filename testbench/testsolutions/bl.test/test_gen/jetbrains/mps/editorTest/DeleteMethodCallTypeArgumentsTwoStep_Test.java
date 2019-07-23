@@ -23,7 +23,7 @@ public class DeleteMethodCallTypeArgumentsTwoStep_Test extends BaseTransformatio
 
   @Test
   public void test_DeleteMethodCallTypeArgumentsTwoStep() throws Throwable {
-    new DeleteMethodCallTypeArgumentsTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

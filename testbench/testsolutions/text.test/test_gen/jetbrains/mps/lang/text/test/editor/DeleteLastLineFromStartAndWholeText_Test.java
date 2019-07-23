@@ -22,7 +22,7 @@ public class DeleteLastLineFromStartAndWholeText_Test extends BaseTransformation
 
   @Test
   public void test_DeleteLastLineFromStartAndWholeText() throws Throwable {
-    new DeleteLastLineFromStartAndWholeText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

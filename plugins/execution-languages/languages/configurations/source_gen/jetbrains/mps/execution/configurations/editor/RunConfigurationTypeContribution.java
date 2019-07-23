@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
@@ -29,11 +28,13 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RunConfigurationTypeContribution extends SubstituteMenuBase {
   public RunConfigurationTypeContribution() {
@@ -43,7 +44,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new RunConfigurationTypeContribution.SMP_Group_82l17u_a());
+    result.add(new SMP_Group_82l17u_a());
     return result;
   }
 
@@ -75,13 +76,13 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new RunConfigurationTypeContribution.SMP_Group_82l17u_a.SMP_Param_82l17u_a0(), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_82l17u_a.SMP_Param_82l17u_a0(), AUX_82l17u.RunConfigurationType_e446bd24));
     }
     private class SMP_Param_82l17u_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new RunConfigurationTypeContribution.SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a(parameter).createItems(context);
+        return new SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -97,9 +98,9 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SModelOperations.rootsIncludingImported(_context.getModel(), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration"))).where(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SModelOperations.rootsIncludingImported(_context.getModel(), AUX_82l17u.RunConfiguration_fcc7b945)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x7f8de21e263f5819L, "jetbrains.mps.execution.settings.structure.DeprecatedAnnotation"))) == null);
+            return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_82l17u.DeprecatedAnnotation_911ebf7b)) == null);
           }
         }).toListSequence();
       }
@@ -112,7 +113,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          RunConfigurationTypeContribution.SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a.Item item = new RunConfigurationTypeContribution.SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a.Item(_context);
+          SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a.Item item = new SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a.Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -136,7 +137,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType"), context);
+            super(AUX_82l17u.RunConfigurationType_e446bd24, context);
             _context = context;
           }
 
@@ -147,7 +148,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode node = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType"), null);
+            SNode node = SNodeFactoryOperations.createNewNode(AUX_82l17u.RunConfigurationType_e446bd24, null);
             SLinkOperations.setTarget(node, MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"), myParameterObject);
             return node;
           }
@@ -158,7 +159,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType"), getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, AUX_82l17u.RunConfigurationType_e446bd24, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -185,5 +186,11 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_82l17u {
+    /*package*/ static final SConcept RunConfigurationType_e446bd24 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType");
+    /*package*/ static final SConcept RunConfiguration_fcc7b945 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
+    /*package*/ static final SConcept DeprecatedAnnotation_911ebf7b = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x7f8de21e263f5819L, "jetbrains.mps.execution.settings.structure.DeprecatedAnnotation");
   }
 }

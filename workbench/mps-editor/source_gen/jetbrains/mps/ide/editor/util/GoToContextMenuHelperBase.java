@@ -61,12 +61,12 @@ public class GoToContextMenuHelperBase<T extends Navigatable> {
   }
 
   @NotNull
-  public GoToContextMenuHelperBase.ContextMenuComposite<T> buildPopup() {
+  public ContextMenuComposite<T> buildPopup() {
     return buildPopup(Collections.<T>emptyList());
   }
 
   @NotNull
-  public GoToContextMenuHelperBase.ContextMenuComposite<T> buildPopup(@NotNull List<T> foundUsages) {
+  public ContextMenuComposite<T> buildPopup(@NotNull List<T> foundUsages) {
     checkClassLoader();
     SortedListModel<T> listModel = new SortedListModel(myComparator);
     for (T usage : ListSequence.fromList(foundUsages)) {
@@ -86,11 +86,11 @@ public class GoToContextMenuHelperBase<T extends Navigatable> {
         }
       }
     }).setRequestFocus(true).setRenderer(myRenderer).setSelectionMode(ListSelectionModel.SINGLE_SELECTION).setNamerForFiltering(myNamerForFiltering).setAutoselectOnMouseMove(true).createPopup();
-    return new GoToContextMenuHelperBase.ContextMenuComposite(popup, list, listModel);
+    return new ContextMenuComposite(popup, list, listModel);
   }
 
   @NotNull
-  public GoToContextMenuHelperBase.ContextMenuComposite<T> showMenu(@NotNull List<T> nodes, @NotNull RelativePoint point) {
+  public ContextMenuComposite<T> showMenu(@NotNull List<T> nodes, @NotNull RelativePoint point) {
     final SortedListModel<T> model = new SortedListModel<T>(myComparator);
     nodes.stream().distinct().forEach(new Consumer<T>() {
       @Override
@@ -98,7 +98,7 @@ public class GoToContextMenuHelperBase<T extends Navigatable> {
         model.add(item);
       }
     });
-    GoToContextMenuHelperBase.ContextMenuComposite<T> menu = buildPopup();
+    ContextMenuComposite<T> menu = buildPopup();
     menu.myJBList.setModel(model);
     menu.myPopup.show(point);
     return menu;

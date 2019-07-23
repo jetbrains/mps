@@ -8,7 +8,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/1702123884811614561">
     <file name="RightTransformWithCustomItem_Simple_Test.java">
       <node id="1702123884811614561" at="18,53,19,25" concept="4" />
-      <node id="1702123884811614561" at="23,75,24,77" concept="1" />
+      <node id="1702123884811614561" at="23,75,24,36" concept="1" />
       <node id="1702123884811614561" at="29,52,30,19" concept="4" />
       <node id="1702123884811614561" at="34,51,35,72" concept="1" />
       <node id="4942308145798537829" at="35,72,36,28" concept="1" />
@@ -18,7 +18,7 @@
       <node id="1702123884811614561" at="22,0,26,0" concept="2" trace="test_RightTransformWithCustomItem_Simple#()V" />
       <node id="1702123884811614561" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1702123884811614561" at="18,53,19,25" />
-      <scope id="1702123884811614561" at="23,75,24,77" />
+      <scope id="1702123884811614561" at="23,75,24,36" />
       <scope id="1702123884811614561" at="29,52,30,19" />
       <scope id="1702123884811614561" at="34,51,36,28" />
       <scope id="1702123884811614561" at="18,0,21,0" />
@@ -34,7 +34,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905989925287">
     <file name="RightTransformWithCustomItem_Simple_checkCanBeAncestor_Test.java">
       <node id="3185679905989925287" at="21,72,22,25" concept="4" />
-      <node id="3185679905989925287" at="26,94,27,96" concept="1" />
+      <node id="3185679905989925287" at="26,94,27,36" concept="1" />
       <node id="3185679905989925287" at="32,52,33,19" concept="4" />
       <node id="3185679905989925287" at="37,51,38,72" concept="1" />
       <node id="3185679905989925888" at="38,72,39,22" concept="1" />
@@ -49,7 +49,7 @@
       <node id="3185679905989925287" at="25,0,29,0" concept="2" trace="test_RightTransformWithCustomItem_Simple_checkCanBeAncestor#()V" />
       <node id="3185679905989925287" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905989925287" at="21,72,22,25" />
-      <scope id="3185679905989925287" at="26,94,27,96" />
+      <scope id="3185679905989925287" at="26,94,27,36" />
       <scope id="3185679905989925287" at="32,52,33,19" />
       <scope id="3185679905989925287" at="21,0,24,0" />
       <scope id="3185679905989925287" at="32,0,35,0">
@@ -65,7 +65,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905989954102">
     <file name="LeftTransformWithCustomItem_Simple_Test.java">
       <node id="3185679905989954102" at="18,52,19,25" concept="4" />
-      <node id="3185679905989954102" at="23,74,24,76" concept="1" />
+      <node id="3185679905989954102" at="23,74,24,36" concept="1" />
       <node id="3185679905989954102" at="29,52,30,19" concept="4" />
       <node id="3185679905989954102" at="34,51,35,72" concept="1" />
       <node id="3185679905989954110" at="35,72,36,28" concept="1" />
@@ -75,7 +75,7 @@
       <node id="3185679905989954102" at="22,0,26,0" concept="2" trace="test_LeftTransformWithCustomItem_Simple#()V" />
       <node id="3185679905989954102" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905989954102" at="18,52,19,25" />
-      <scope id="3185679905989954102" at="23,74,24,76" />
+      <scope id="3185679905989954102" at="23,74,24,36" />
       <scope id="3185679905989954102" at="29,52,30,19" />
       <scope id="3185679905989954102" at="34,51,36,28" />
       <scope id="3185679905989954102" at="18,0,21,0" />
@@ -91,7 +91,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905990188312">
     <file name="LeftTransformWithCustomItem_Simple_checkCanBeParent_Test.java">
       <node id="3185679905990188312" at="21,69,22,25" concept="4" />
-      <node id="3185679905990188312" at="26,91,27,93" concept="1" />
+      <node id="3185679905990188312" at="26,91,27,36" concept="1" />
       <node id="3185679905990188312" at="32,52,33,19" concept="4" />
       <node id="3185679905990188312" at="37,51,38,72" concept="1" />
       <node id="3185679905990188319" at="38,72,39,22" concept="1" />
@@ -106,7 +106,7 @@
       <node id="3185679905990188312" at="25,0,29,0" concept="2" trace="test_LeftTransformWithCustomItem_Simple_checkCanBeParent#()V" />
       <node id="3185679905990188312" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905990188312" at="21,69,22,25" />
-      <scope id="3185679905990188312" at="26,91,27,93" />
+      <scope id="3185679905990188312" at="26,91,27,36" />
       <scope id="3185679905990188312" at="32,52,33,19" />
       <scope id="3185679905990188312" at="21,0,24,0" />
       <scope id="3185679905990188312" at="32,0,35,0">
@@ -122,7 +122,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905990189305">
     <file name="LeftTransformWithCustomItem_Simple_checkCanBeAncestor_Test.java">
       <node id="3185679905990189305" at="21,71,22,25" concept="4" />
-      <node id="3185679905990189305" at="26,93,27,95" concept="1" />
+      <node id="3185679905990189305" at="26,93,27,36" concept="1" />
       <node id="3185679905990189305" at="32,52,33,19" concept="4" />
       <node id="3185679905990189305" at="37,51,38,72" concept="1" />
       <node id="3185679905990189315" at="38,72,39,22" concept="1" />
@@ -137,7 +137,7 @@
       <node id="3185679905990189305" at="25,0,29,0" concept="2" trace="test_LeftTransformWithCustomItem_Simple_checkCanBeAncestor#()V" />
       <node id="3185679905990189305" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905990189305" at="21,71,22,25" />
-      <scope id="3185679905990189305" at="26,93,27,95" />
+      <scope id="3185679905990189305" at="26,93,27,36" />
       <scope id="3185679905990189305" at="32,52,33,19" />
       <scope id="3185679905990189305" at="21,0,24,0" />
       <scope id="3185679905990189305" at="32,0,35,0">
@@ -153,7 +153,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905990915389">
     <file name="RightTransformWithCustomItems_Parameterized_Test.java">
       <node id="3185679905990915389" at="18,61,19,25" concept="4" />
-      <node id="3185679905990915389" at="23,83,24,85" concept="1" />
+      <node id="3185679905990915389" at="23,83,24,36" concept="1" />
       <node id="3185679905990915389" at="29,52,30,19" concept="4" />
       <node id="3185679905990915389" at="34,51,35,72" concept="1" />
       <node id="3185679905990915397" at="35,72,36,35" concept="1" />
@@ -163,7 +163,7 @@
       <node id="3185679905990915389" at="22,0,26,0" concept="2" trace="test_RightTransformWithCustomItems_Parameterized#()V" />
       <node id="3185679905990915389" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905990915389" at="18,61,19,25" />
-      <scope id="3185679905990915389" at="23,83,24,85" />
+      <scope id="3185679905990915389" at="23,83,24,36" />
       <scope id="3185679905990915389" at="29,52,30,19" />
       <scope id="3185679905990915389" at="34,51,36,35" />
       <scope id="3185679905990915389" at="18,0,21,0" />
@@ -179,7 +179,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905991685372">
     <file name="RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test.java">
       <node id="3185679905991685372" at="21,78,22,25" concept="4" />
-      <node id="3185679905991685372" at="26,100,27,102" concept="1" />
+      <node id="3185679905991685372" at="26,100,27,36" concept="1" />
       <node id="3185679905991685372" at="32,52,33,19" concept="4" />
       <node id="3185679905991685372" at="37,51,38,72" concept="1" />
       <node id="3185679905991685379" at="38,72,39,22" concept="1" />
@@ -194,7 +194,7 @@
       <node id="3185679905991685372" at="25,0,29,0" concept="2" trace="test_RightTransformWithCustomItems_Parameterized_checkCanBeParent#()V" />
       <node id="3185679905991685372" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905991685372" at="21,78,22,25" />
-      <scope id="3185679905991685372" at="26,100,27,102" />
+      <scope id="3185679905991685372" at="26,100,27,36" />
       <scope id="3185679905991685372" at="32,52,33,19" />
       <scope id="3185679905991685372" at="21,0,24,0" />
       <scope id="3185679905991685372" at="32,0,35,0">
@@ -210,7 +210,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905992058594">
     <file name="RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test.java">
       <node id="3185679905992058594" at="21,80,22,25" concept="4" />
-      <node id="3185679905992058594" at="26,102,27,104" concept="1" />
+      <node id="3185679905992058594" at="26,102,27,36" concept="1" />
       <node id="3185679905992058594" at="32,52,33,19" concept="4" />
       <node id="3185679905992058594" at="37,51,38,72" concept="1" />
       <node id="3185679905992058604" at="38,72,39,22" concept="1" />
@@ -225,7 +225,7 @@
       <node id="3185679905992058594" at="25,0,29,0" concept="2" trace="test_RightTransformWithCustomItems_Parameterized_checkCanBeAncestor#()V" />
       <node id="3185679905992058594" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905992058594" at="21,80,22,25" />
-      <scope id="3185679905992058594" at="26,102,27,104" />
+      <scope id="3185679905992058594" at="26,102,27,36" />
       <scope id="3185679905992058594" at="32,52,33,19" />
       <scope id="3185679905992058594" at="21,0,24,0" />
       <scope id="3185679905992058594" at="32,0,35,0">
@@ -241,7 +241,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905992082137">
     <file name="LeftTransformWithCustomItems_Parameterized_Test.java">
       <node id="3185679905992082137" at="18,60,19,25" concept="4" />
-      <node id="3185679905992082137" at="23,82,24,84" concept="1" />
+      <node id="3185679905992082137" at="23,82,24,36" concept="1" />
       <node id="3185679905992082137" at="29,52,30,19" concept="4" />
       <node id="3185679905992082137" at="34,51,35,72" concept="1" />
       <node id="3185679905992082144" at="35,72,36,35" concept="1" />
@@ -251,7 +251,7 @@
       <node id="3185679905992082137" at="22,0,26,0" concept="2" trace="test_LeftTransformWithCustomItems_Parameterized#()V" />
       <node id="3185679905992082137" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905992082137" at="18,60,19,25" />
-      <scope id="3185679905992082137" at="23,82,24,84" />
+      <scope id="3185679905992082137" at="23,82,24,36" />
       <scope id="3185679905992082137" at="29,52,30,19" />
       <scope id="3185679905992082137" at="34,51,36,35" />
       <scope id="3185679905992082137" at="18,0,21,0" />
@@ -267,7 +267,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905992082145">
     <file name="LeftTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test.java">
       <node id="3185679905992082145" at="21,79,22,25" concept="4" />
-      <node id="3185679905992082145" at="26,101,27,103" concept="1" />
+      <node id="3185679905992082145" at="26,101,27,36" concept="1" />
       <node id="3185679905992082145" at="32,52,33,19" concept="4" />
       <node id="3185679905992082145" at="37,51,38,72" concept="1" />
       <node id="3185679905992082154" at="38,72,39,22" concept="1" />
@@ -282,7 +282,7 @@
       <node id="3185679905992082145" at="25,0,29,0" concept="2" trace="test_LeftTransformWithCustomItems_Parameterized_checkCanBeAncestor#()V" />
       <node id="3185679905992082145" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905992082145" at="21,79,22,25" />
-      <scope id="3185679905992082145" at="26,101,27,103" />
+      <scope id="3185679905992082145" at="26,101,27,36" />
       <scope id="3185679905992082145" at="32,52,33,19" />
       <scope id="3185679905992082145" at="21,0,24,0" />
       <scope id="3185679905992082145" at="32,0,35,0">
@@ -298,7 +298,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905992082178">
     <file name="LeftTransformWithCustomItems_Parameterized_checkCanBeParent_Test.java">
       <node id="3185679905992082178" at="21,77,22,25" concept="4" />
-      <node id="3185679905992082178" at="26,99,27,101" concept="1" />
+      <node id="3185679905992082178" at="26,99,27,36" concept="1" />
       <node id="3185679905992082178" at="32,52,33,19" concept="4" />
       <node id="3185679905992082178" at="37,51,38,72" concept="1" />
       <node id="3185679905992082185" at="38,72,39,22" concept="1" />
@@ -313,7 +313,7 @@
       <node id="3185679905992082178" at="25,0,29,0" concept="2" trace="test_LeftTransformWithCustomItems_Parameterized_checkCanBeParent#()V" />
       <node id="3185679905992082178" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3185679905992082178" at="21,77,22,25" />
-      <scope id="3185679905992082178" at="26,99,27,101" />
+      <scope id="3185679905992082178" at="26,99,27,36" />
       <scope id="3185679905992082178" at="32,52,33,19" />
       <scope id="3185679905992082178" at="21,0,24,0" />
       <scope id="3185679905992082178" at="32,0,35,0">
@@ -329,7 +329,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3959984916895237523">
     <file name="RightTransformWithAddConcept_checkCanBeAncestor_Test.java">
       <node id="3959984916895237523" at="21,65,22,25" concept="4" />
-      <node id="3959984916895237523" at="26,87,27,89" concept="1" />
+      <node id="3959984916895237523" at="26,87,27,36" concept="1" />
       <node id="3959984916895237523" at="32,52,33,19" concept="4" />
       <node id="3959984916895237523" at="37,51,38,72" concept="1" />
       <node id="3959984916895237532" at="38,72,39,22" concept="1" />
@@ -344,7 +344,7 @@
       <node id="3959984916895237523" at="25,0,29,0" concept="2" trace="test_RightTransformWithAddConcept_checkCanBeAncestor#()V" />
       <node id="3959984916895237523" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3959984916895237523" at="21,65,22,25" />
-      <scope id="3959984916895237523" at="26,87,27,89" />
+      <scope id="3959984916895237523" at="26,87,27,36" />
       <scope id="3959984916895237523" at="32,52,33,19" />
       <scope id="3959984916895237523" at="21,0,24,0" />
       <scope id="3959984916895237523" at="32,0,35,0">
@@ -360,7 +360,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/4886882084760491503">
     <file name="LeftTransformWithAddConcept_Test.java">
       <node id="4886882084760491503" at="18,45,19,25" concept="4" />
-      <node id="4886882084760491503" at="23,67,24,69" concept="1" />
+      <node id="4886882084760491503" at="23,67,24,36" concept="1" />
       <node id="4886882084760491503" at="29,52,30,19" concept="4" />
       <node id="4886882084760491503" at="34,51,35,72" concept="1" />
       <node id="4886882084760491511" at="35,72,36,37" concept="1" />
@@ -370,7 +370,7 @@
       <node id="4886882084760491503" at="22,0,26,0" concept="2" trace="test_LeftTransformWithAddConcept#()V" />
       <node id="4886882084760491503" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4886882084760491503" at="18,45,19,25" />
-      <scope id="4886882084760491503" at="23,67,24,69" />
+      <scope id="4886882084760491503" at="23,67,24,36" />
       <scope id="4886882084760491503" at="29,52,30,19" />
       <scope id="4886882084760491503" at="34,51,36,37" />
       <scope id="4886882084760491503" at="18,0,21,0" />
@@ -386,7 +386,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/4942308145798660281">
     <file name="RightTransformWithCustomItem_Simple_checkCanBeParent_Test.java">
       <node id="4942308145798660281" at="21,70,22,25" concept="4" />
-      <node id="4942308145798660281" at="26,92,27,94" concept="1" />
+      <node id="4942308145798660281" at="26,92,27,36" concept="1" />
       <node id="4942308145798660281" at="32,52,33,19" concept="4" />
       <node id="4942308145798660281" at="37,51,38,72" concept="1" />
       <node id="3185679905989355995" at="38,72,39,22" concept="1" />
@@ -401,7 +401,7 @@
       <node id="4942308145798660281" at="25,0,29,0" concept="2" trace="test_RightTransformWithCustomItem_Simple_checkCanBeParent#()V" />
       <node id="4942308145798660281" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4942308145798660281" at="21,70,22,25" />
-      <scope id="4942308145798660281" at="26,92,27,94" />
+      <scope id="4942308145798660281" at="26,92,27,36" />
       <scope id="4942308145798660281" at="32,52,33,19" />
       <scope id="4942308145798660281" at="21,0,24,0" />
       <scope id="4942308145798660281" at="32,0,35,0">
@@ -417,7 +417,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/6500338114639041001">
     <file name="RightTransformWithAddConcept_Test.java">
       <node id="6500338114639041001" at="18,46,19,25" concept="4" />
-      <node id="6500338114639041001" at="23,68,24,70" concept="1" />
+      <node id="6500338114639041001" at="23,68,24,36" concept="1" />
       <node id="6500338114639041001" at="29,52,30,19" concept="4" />
       <node id="6500338114639041001" at="34,51,35,72" concept="1" />
       <node id="6500338114639041009" at="35,72,36,37" concept="1" />
@@ -427,7 +427,7 @@
       <node id="6500338114639041001" at="22,0,26,0" concept="2" trace="test_RightTransformWithAddConcept#()V" />
       <node id="6500338114639041001" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6500338114639041001" at="18,46,19,25" />
-      <scope id="6500338114639041001" at="23,68,24,70" />
+      <scope id="6500338114639041001" at="23,68,24,36" />
       <scope id="6500338114639041001" at="29,52,30,19" />
       <scope id="6500338114639041001" at="34,51,36,37" />
       <scope id="6500338114639041001" at="18,0,21,0" />
@@ -443,7 +443,7 @@
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/6500338114639041774">
     <file name="LeftTransformWithAddConcept_checkCanBeAncestor_Test.java">
       <node id="6500338114639041774" at="21,64,22,25" concept="4" />
-      <node id="6500338114639041774" at="26,86,27,88" concept="1" />
+      <node id="6500338114639041774" at="26,86,27,36" concept="1" />
       <node id="6500338114639041774" at="32,52,33,19" concept="4" />
       <node id="6500338114639041774" at="37,51,38,72" concept="1" />
       <node id="6500338114639041783" at="38,72,39,22" concept="1" />
@@ -458,7 +458,7 @@
       <node id="6500338114639041774" at="25,0,29,0" concept="2" trace="test_LeftTransformWithAddConcept_checkCanBeAncestor#()V" />
       <node id="6500338114639041774" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6500338114639041774" at="21,64,22,25" />
-      <scope id="6500338114639041774" at="26,86,27,88" />
+      <scope id="6500338114639041774" at="26,86,27,36" />
       <scope id="6500338114639041774" at="32,52,33,19" />
       <scope id="6500338114639041774" at="21,0,24,0" />
       <scope id="6500338114639041774" at="32,0,35,0">

@@ -28,6 +28,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class OperationParm_ConceptList_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -69,7 +70,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new OperationParm_ConceptList_EditorBuilder_a.conceptListHandler_cly5ih_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new conceptListHandler_cly5ih_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_concept");
     editorCell.setSRole(handler.getElementSRole());
@@ -92,7 +93,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, "jetbrains.mps.lang.smodel.structure.ConceptReference");
+      return AUX_kwh4hx.ConceptReference_eb1727d2;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -148,5 +149,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_kwh4hx {
+    /*package*/ static final SConcept ConceptReference_eb1727d2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, "jetbrains.mps.lang.smodel.structure.ConceptReference");
   }
 }

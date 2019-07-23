@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_RunConfiguration_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_RunConfiguration_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_RunConfiguration_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
+    return AUX_cltvnr.RunConfiguration_fcc7b945;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,8 +35,13 @@ public class typeof_RunConfiguration_InferenceRule extends AbstractInferenceRule
   }
   private static SNode createRunConfigurationType_cltvnr_a1a0c0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_cltvnr.RunConfigurationType_e446bd24, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"), node0);
     return n1;
+  }
+
+  private static final class AUX_cltvnr {
+    /*package*/ static final SConcept RunConfiguration_fcc7b945 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
+    /*package*/ static final SConcept RunConfigurationType_e446bd24 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType");
   }
 }

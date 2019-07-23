@@ -21,6 +21,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestSubstituteSpecialParent_Single_EmptyCell_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -46,7 +47,7 @@ public class TestSubstituteSpecialParent_Single_EmptyCell_TransformationMenu ext
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TestSubstituteSpecialParent_Single_EmptyCell_TransformationMenu.TMP_IncludeSM_rig8ur_a0());
+      result.add(new TMP_IncludeSM_rig8ur_a0());
     }
     return result;
   }
@@ -80,7 +81,11 @@ public class TestSubstituteSpecialParent_Single_EmptyCell_TransformationMenu ext
     }
     @Override
     protected SAbstractConcept getTargetConcept(TransformationMenuContext context) {
-      return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a98L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChild");
+      return AUX_rig8ur.TestSubstituteSpecialChild_a29d691a;
     }
+  }
+
+  private static final class AUX_rig8ur {
+    /*package*/ static final SConcept TestSubstituteSpecialChild_a29d691a = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a98L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChild");
   }
 }

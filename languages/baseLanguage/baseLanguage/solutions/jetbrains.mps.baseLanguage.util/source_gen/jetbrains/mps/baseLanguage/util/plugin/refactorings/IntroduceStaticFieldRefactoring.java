@@ -16,6 +16,7 @@ import java.util.List;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefactoring {
   @Override
@@ -34,17 +35,17 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
     if (myIsFinal) {
       SPropertyOperations.assign(newDeclaration, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"), true);
     }
-    SNode classConcept = SNodeOperations.getNodeAncestor(this.getExpression(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(this.getExpression(), AUX_282g55.ClassConcept_e2711824, false, false);
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
     SNode assignExp = _quotation_createNode_282g55_a0k0a(expression, newDeclaration);
     SNode assignmentStatement = _quotation_createNode_282g55_a0l0a(assignExp);
 
     if (this.myFieldInitialization == FieldInitializationPlace.METHOD) {
-      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), false, false), SNodeOperations.copyNode(assignmentStatement));
+      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), AUX_282g55.Statement_9dbf9b0e, false, false), SNodeOperations.copyNode(assignmentStatement));
     }
     if (this.myFieldInitialization == FieldInitializationPlace.STATICINIT) {
-      SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
-      Iterable<SNode> staticInitializers = ((Iterable<SNode>) BHReflection.invoke0(declaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), SMethodTrimmedId.create("staticInitializers", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "2I6sE$IuBP7")));
+      SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), AUX_282g55.ClassConcept_e2711824, false, false);
+      Iterable<SNode> staticInitializers = ((Iterable<SNode>) BHReflection.invoke0(declaration, AUX_282g55.ClassConcept_e2711824, SMethodTrimmedId.create("staticInitializers", AUX_282g55.ClassConcept_e2711824, "2I6sE$IuBP7")));
       SNode initializer;
       if (Sequence.fromIterable(staticInitializers).isNotEmpty()) {
         initializer = Sequence.fromIterable(staticInitializers).first();
@@ -145,5 +146,10 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_282g55 {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

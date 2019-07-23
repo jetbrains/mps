@@ -4,7 +4,6 @@ package jetbrains.mps.lang.typesystem.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MessageStatement__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
+  private static final SAbstractConcept CONCEPT = AUX_fydzdg.MessageStatement_2fbb1f6d;
 
   public static final SMethod<Void> attachNewMessageAnnotation_id7nf9pEwlup1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("attachNewMessageAnnotation").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7nf9pEwlup1").build();
   public static final SMethod<String> getName_id1oFBbRehoLP = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1oFBbRehoLP").build();
@@ -72,5 +73,9 @@ public final class MessageStatement__BehaviorDescriptor extends BaseBHDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_fydzdg {
+    /*package*/ static final SInterfaceConcept MessageStatement_2fbb1f6d = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
   }
 }

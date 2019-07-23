@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -36,6 +36,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BootstrapAwareMetaObject_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -61,7 +62,7 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, "jetbrains.mps.lang.smodel.structure.BootstrapAwareMetaObject"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_t8aodl.BootstrapAwareMetaObject_26935d21)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -77,7 +78,7 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new BootstrapAwareMetaObject_TransformationMenu.TMP_Group_t8aodl_a1());
+      result.add(new TMP_Group_t8aodl_a1());
     }
     return result;
   }
@@ -101,12 +102,12 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new BootstrapAwareMetaObject_TransformationMenu.TMP_Group_t8aodl_a1.TMP_Action_t8aodl_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_t8aodl_a1.TMP_Action_t8aodl_a0b());
     }
     private class TMP_Action_t8aodl_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        BootstrapAwareMetaObject_TransformationMenu.TMP_Group_t8aodl_a1.TMP_Action_t8aodl_a0b.Item item = new BootstrapAwareMetaObject_TransformationMenu.TMP_Group_t8aodl_a1.TMP_Action_t8aodl_a0b.Item(context);
+        TMP_Group_t8aodl_a1.TMP_Action_t8aodl_a0b.Item item = new TMP_Group_t8aodl_a1.TMP_Action_t8aodl_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -163,5 +164,9 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
       }
 
     }
+  }
+
+  private static final class AUX_t8aodl {
+    /*package*/ static final SInterfaceConcept BootstrapAwareMetaObject_26935d21 = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, "jetbrains.mps.lang.smodel.structure.BootstrapAwareMetaObject");
   }
 }

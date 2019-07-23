@@ -13,6 +13,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_FigureParameterAttributeViewProperty_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
@@ -27,12 +28,16 @@ public class check_FigureParameterAttributeViewProperty_NonTypesystemRule extend
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x6595651980a1f8ecL, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeViewProperty");
+    return AUX_h26h7h.FigureParameterAttributeViewProperty_ed9b0d7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_h26h7h {
+    /*package*/ static final SConcept FigureParameterAttributeViewProperty_ed9b0d7 = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x6595651980a1f8ecL, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeViewProperty");
   }
 }

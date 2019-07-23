@@ -11,6 +11,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:fe63f202-319c-458b-a90e-3e34b73997ae(jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl)/121824560294465932">
@@ -94,7 +95,7 @@
       <node id="121824560294466123" at="23,0,24,0" concept="3" trace="myY" />
       <node id="7882925886018579784" at="24,0,25,0" concept="3" trace="myTrait" />
       <node id="6194248980632924000" at="25,0,26,0" concept="3" trace="myCallback" />
-      <node id="6194248980632589130" at="28,226,29,31" concept="12" />
+      <node id="6194248980632589130" at="28,226,29,31" concept="13" />
       <node id="121824560294466171" at="29,31,30,36" concept="2" />
       <node id="6194248980632928003" at="30,36,31,41" concept="2" />
       <node id="121824560294466153" at="37,79,38,57" concept="7" />
@@ -260,7 +261,7 @@
       <node id="4394877045818796834" at="23,0,24,0" concept="3" trace="mySetConnectorCallBack" />
       <node id="6194248980632417843" at="24,0,25,0" concept="3" trace="myTrait" />
       <node id="6194248980632431592" at="25,0,26,0" concept="3" trace="myEditorContext" />
-      <node id="6194248980632359349" at="26,388,27,31" concept="12" />
+      <node id="6194248980632359349" at="26,388,27,31" concept="13" />
       <node id="4394877045818804207" at="27,31,28,54" concept="2" />
       <node id="4394877045818809242" at="28,54,29,50" concept="2" />
       <node id="6194248980632438534" at="29,50,30,49" concept="2" />
@@ -298,7 +299,7 @@
       <node id="7882925886021958604" at="76,56,81,13" concept="2" />
       <node id="6780054776343175953" at="84,11,89,13" concept="2" />
       <node id="4394877045818107860" at="26,0,32,0" concept="1" trace="PaletteConnectorCreationAction#(Ljetbrains/mps/nodeEditor/cells/jetpad/DiagramCell;Ljetbrains/mps/openapi/editor/cells/SubstituteAction;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P4_E0;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P5_E0;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
-      <node id="526297864814708462" at="99,0,105,0" concept="11" trace="check_y3ke3n_a0a1a0a0a0b0a0a0a0a0h#(Ljava/lang/Boolean;)Z" />
+      <node id="526297864814708462" at="99,0,105,0" concept="12" trace="check_y3ke3n_a0a1a0a0a0b0a0a0a0a0h#(Ljava/lang/Boolean;)Z" />
       <node id="526297864815597100" at="58,57,65,11" concept="5" />
       <node id="7882925886021708976" at="35,0,43,0" concept="6" trace="substitute#(Ljetbrains/mps/openapi/editor/EditorContext;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7882925886021698957" at="44,0,52,0" concept="6" trace="canSubstitute#(Ljava/lang/String;)Z" />
@@ -376,69 +377,71 @@
   </root>
   <root nodeRef="r:fe63f202-319c-458b-a90e-3e34b73997ae(jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl)/6194248980632146498">
     <file name="AbstractPaletteCreationAction.java">
-      <node id="6194248980632153153" at="18,0,19,0" concept="3" trace="myDiagramCell" />
-      <node id="6194248980632185300" at="19,0,20,0" concept="3" trace="mySubstituteAction" />
-      <node id="6194248980632208184" at="20,0,21,0" concept="3" trace="myIcon" />
-      <node id="6194248980632229426" at="21,0,22,0" concept="3" trace="myText" />
-      <node id="6194248980632153830" at="22,90,23,32" concept="2" />
-      <node id="6194248980632187152" at="23,32,24,56" concept="2" />
-      <node id="6194248980632536043" at="24,56,25,11" concept="2" />
-      <node id="6194248980632818796" at="27,0,28,0" concept="6" trace="createSubstituteAction#(Ljetbrains/mps/openapi/editor/cells/SubstituteAction;)Ljetbrains/mps/openapi/editor/cells/SubstituteAction;" />
-      <node id="6194248980632167228" at="28,0,29,0" concept="6" trace="getTrait#()Ljetbrains/jetpad/projectional/view/ViewTrait;" />
-      <node id="6194248980632177476" at="29,29,30,53" concept="9" />
-      <node id="6194248980632177478" at="30,53,31,14" concept="7" />
-      <node id="6194248980632177481" at="31,14,32,56" concept="7" />
-      <node id="6327362524872575230" at="33,27,34,57" concept="9" />
-      <node id="1590052124026021115" at="34,57,35,106" concept="9" />
-      <node id="8335510736429048493" at="35,106,36,80" concept="7" />
-      <node id="8335510736429943057" at="36,80,37,375" concept="2" />
-      <node id="6194248980632177494" at="38,12,39,35" concept="2" />
-      <node id="6194248980632177518" at="40,5,41,16" concept="8" />
-      <node id="4394877045818107907" at="48,25,49,30" concept="2" />
-      <node id="4394877045818107911" at="49,30,50,56" concept="2" />
-      <node id="4394877045818108059" at="54,25,55,18" concept="8" />
-      <node id="4394877045818108111" at="57,27,58,18" concept="8" />
-      <node id="5142486769434461115" at="61,25,62,47" concept="2" />
-      <node id="6194248980632177492" at="38,10,40,5" concept="0" />
-      <node id="4394877045818108055" at="54,0,57,0" concept="6" trace="getIcon#()Ljavax/swing/Icon;" />
-      <node id="4394877045818108107" at="57,0,60,0" concept="6" trace="getText#()Ljava/lang/String;" />
-      <node id="5142486769434349590" at="61,0,64,0" concept="6" trace="onClick#()V" />
-      <node id="6831048720710621636" at="48,0,52,0" concept="6" trace="run#()V" />
-      <node id="6194248980632153182" at="22,0,27,0" concept="1" trace="AbstractPaletteCreationAction#(Ljetbrains/mps/nodeEditor/cells/jetpad/DiagramCell;Ljetbrains/mps/openapi/editor/cells/SubstituteAction;)V" />
-      <node id="6831048720710621634" at="46,25,52,7" concept="2" />
-      <node id="6194248980632177488" at="32,56,40,5" concept="5" />
-      <node id="6194248980632334697" at="46,0,54,0" concept="6" trace="init#()V" />
-      <node id="6194248980632177472" at="29,0,43,0" concept="6" trace="createIcon#()Ljavax/swing/Icon;" />
-      <scope id="6194248980632818796" at="27,0,28,0">
+      <node id="6194248980632153153" at="19,0,20,0" concept="3" trace="myDiagramCell" />
+      <node id="6194248980632185300" at="20,0,21,0" concept="3" trace="mySubstituteAction" />
+      <node id="6194248980632208184" at="21,0,22,0" concept="3" trace="myIcon" />
+      <node id="6194248980632229426" at="22,0,23,0" concept="3" trace="myText" />
+      <node id="6194248980632153830" at="23,90,24,32" concept="2" />
+      <node id="6194248980632187152" at="24,32,25,56" concept="2" />
+      <node id="6194248980632536043" at="25,56,26,11" concept="2" />
+      <node id="6194248980632818796" at="28,0,29,0" concept="6" trace="createSubstituteAction#(Ljetbrains/mps/openapi/editor/cells/SubstituteAction;)Ljetbrains/mps/openapi/editor/cells/SubstituteAction;" />
+      <node id="6194248980632167228" at="29,0,30,0" concept="6" trace="getTrait#()Ljetbrains/jetpad/projectional/view/ViewTrait;" />
+      <node id="6194248980632177476" at="30,29,31,53" concept="9" />
+      <node id="6194248980632177478" at="31,53,32,14" concept="7" />
+      <node id="6194248980632177481" at="32,14,33,56" concept="7" />
+      <node id="6327362524872575230" at="34,27,35,57" concept="9" />
+      <node id="1590052124026021115" at="35,57,36,106" concept="9" />
+      <node id="8335510736429048493" at="36,106,37,80" concept="7" />
+      <node id="8335510736429943057" at="37,80,38,264" concept="2" />
+      <node id="6194248980632177494" at="39,12,40,35" concept="2" />
+      <node id="6194248980632177518" at="41,5,42,16" concept="8" />
+      <node id="4394877045818107907" at="49,25,50,30" concept="2" />
+      <node id="4394877045818107911" at="50,30,51,56" concept="2" />
+      <node id="4394877045818108059" at="55,25,56,18" concept="8" />
+      <node id="4394877045818108111" at="58,27,59,18" concept="8" />
+      <node id="5142486769434461115" at="62,25,63,47" concept="2" />
+      <node id="6194248980632146498" at="67,0,68,0" concept="11" trace="AbstractConceptDeclaration_ec74828f" />
+      <node id="6194248980632177492" at="39,10,41,5" concept="0" />
+      <node id="4394877045818108055" at="55,0,58,0" concept="6" trace="getIcon#()Ljavax/swing/Icon;" />
+      <node id="4394877045818108107" at="58,0,61,0" concept="6" trace="getText#()Ljava/lang/String;" />
+      <node id="5142486769434349590" at="62,0,65,0" concept="6" trace="onClick#()V" />
+      <node id="6831048720710621636" at="49,0,53,0" concept="6" trace="run#()V" />
+      <node id="6194248980632153182" at="23,0,28,0" concept="1" trace="AbstractPaletteCreationAction#(Ljetbrains/mps/nodeEditor/cells/jetpad/DiagramCell;Ljetbrains/mps/openapi/editor/cells/SubstituteAction;)V" />
+      <node id="6831048720710621634" at="47,25,53,7" concept="2" />
+      <node id="6194248980632177488" at="33,56,41,5" concept="5" />
+      <node id="6194248980632334697" at="47,0,55,0" concept="6" trace="init#()V" />
+      <node id="6194248980632177472" at="30,0,44,0" concept="6" trace="createIcon#()Ljavax/swing/Icon;" />
+      <scope id="6194248980632818796" at="28,0,29,0">
         <var name="action" id="6194248980632855101" />
       </scope>
-      <scope id="6194248980632167228" at="28,0,29,0" />
-      <scope id="6194248980632177493" at="38,12,39,35" />
-      <scope id="4394877045818108058" at="54,25,55,18" />
-      <scope id="4394877045818108110" at="57,27,58,18" />
-      <scope id="5142486769434349595" at="61,25,62,47" />
-      <scope id="6831048720710621638" at="48,25,50,56" />
-      <scope id="6194248980632153186" at="22,90,25,11" />
-      <scope id="4394877045818108055" at="54,0,57,0" />
-      <scope id="4394877045818108107" at="57,0,60,0" />
-      <scope id="5142486769434349590" at="61,0,64,0" />
-      <scope id="6194248980632177498" at="33,27,37,375">
+      <scope id="6194248980632167228" at="29,0,30,0" />
+      <scope id="6194248980632177493" at="39,12,40,35" />
+      <scope id="4394877045818108058" at="55,25,56,18" />
+      <scope id="4394877045818108110" at="58,27,59,18" />
+      <scope id="5142486769434349595" at="62,25,63,47" />
+      <scope id="6831048720710621638" at="49,25,51,56" />
+      <scope id="6194248980632153186" at="23,90,26,11" />
+      <scope id="4394877045818108055" at="55,0,58,0" />
+      <scope id="4394877045818108107" at="58,0,61,0" />
+      <scope id="5142486769434349590" at="62,0,65,0" />
+      <scope id="6194248980632177498" at="34,27,38,264">
         <var name="concept" id="8335510736429048489" />
       </scope>
-      <scope id="6831048720710621636" at="48,0,52,0" />
-      <scope id="6194248980632153182" at="22,0,27,0">
+      <scope id="6831048720710621636" at="49,0,53,0" />
+      <scope id="6194248980632153182" at="23,0,28,0">
         <var name="action" id="6194248980632861460" />
         <var name="diagramCell" id="6194248980632153198" />
       </scope>
-      <scope id="6194248980632334700" at="46,25,52,7" />
-      <scope id="6194248980632334697" at="46,0,54,0" />
-      <scope id="6194248980632177475" at="29,29,41,16">
+      <scope id="6194248980632334700" at="47,25,53,7" />
+      <scope id="6194248980632334697" at="47,0,55,0" />
+      <scope id="6194248980632177475" at="30,29,42,16">
         <var name="icon" id="6194248980632177479" />
         <var name="iconNode" id="6194248980632177482" />
       </scope>
-      <scope id="6194248980632177472" at="29,0,43,0" />
-      <unit id="6831048720710621636" at="47,82,52,5" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl.AbstractPaletteCreationAction$1" />
-      <unit id="6194248980632146498" at="17,0,66,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl.AbstractPaletteCreationAction" />
+      <scope id="6194248980632177472" at="30,0,44,0" />
+      <unit id="6194248980632146498" at="66,0,69,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl.AbstractPaletteCreationAction$AUX_9evbr" />
+      <unit id="6831048720710621636" at="48,82,53,5" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl.AbstractPaletteCreationAction$1" />
+      <unit id="6194248980632146498" at="18,0,70,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl.AbstractPaletteCreationAction" />
     </file>
   </root>
   <root nodeRef="r:fe63f202-319c-458b-a90e-3e34b73997ae(jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.impl)/708810380380373892">

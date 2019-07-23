@@ -21,7 +21,7 @@ public class Test_CompleteActionDataParameterDeclaration_Test extends BaseTransf
 
   @Test
   public void test_Test_CompleteActionDataParameterDeclaration() throws Throwable {
-    new Test_CompleteActionDataParameterDeclaration_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

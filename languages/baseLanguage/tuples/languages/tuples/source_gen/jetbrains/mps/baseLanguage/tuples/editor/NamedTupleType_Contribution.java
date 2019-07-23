@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -31,7 +30,9 @@ import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NamedTupleType_Contribution extends SubstituteMenuBase {
   public NamedTupleType_Contribution() {
@@ -41,7 +42,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new NamedTupleType_Contribution.SMP_Param_rx1mqb_a(), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_rx1mqb_a(), AUX_rx1mqb.NamedTupleType_1dd98d37));
     return result;
   }
 
@@ -62,7 +63,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new NamedTupleType_Contribution.SMP_Param_rx1mqb_a.SMP_Action_rx1mqb_a0(parameter).createItems(context);
+      return new SMP_Param_rx1mqb_a.SMP_Action_rx1mqb_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -78,7 +79,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
-      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration"))).where(new IWhereFilter<SNode>() {
+      return ListSequence.fromList(SModelOperations.nodesIncludingImported(_context.getModel(), AUX_rx1mqb.NamedTupleDeclaration_f12ba641)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode ntd) {
           return VisibilityUtil.isVisible(_context.getParentNode(), ntd);
         }
@@ -93,7 +94,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        NamedTupleType_Contribution.SMP_Param_rx1mqb_a.SMP_Action_rx1mqb_a0.Item item = new NamedTupleType_Contribution.SMP_Param_rx1mqb_a.SMP_Action_rx1mqb_a0.Item(_context);
+        SMP_Param_rx1mqb_a.SMP_Action_rx1mqb_a0.Item item = new SMP_Param_rx1mqb_a.SMP_Action_rx1mqb_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -117,7 +118,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType"), context);
+          super(AUX_rx1mqb.NamedTupleType_1dd98d37, context);
           _context = context;
         }
 
@@ -137,7 +138,7 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_rx1mqb.NamedTupleType_1dd98d37, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -170,5 +171,10 @@ public class NamedTupleType_Contribution extends SubstituteMenuBase {
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xa247e09e243545baL, 0xb8d207e93feba96aL, "jetbrains.mps.baseLanguage.tuples"), 0x12099dc1365L, "NamedTupleType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_rx1mqb {
+    /*package*/ static final SConcept NamedTupleType_1dd98d37 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
+    /*package*/ static final SConcept NamedTupleDeclaration_f12ba641 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
   }
 }

@@ -31,15 +31,15 @@ public class FloatLiteral_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck290469496750263895() throws Throwable {
-    new FloatLiteral_Test.TestBody(this).test_ErrorMessagesCheck290469496750263895();
+    new TestBody(this).test_ErrorMessagesCheck290469496750263895();
   }
   @Test
   public void test_NodeErrorCheck290469496750368664() throws Throwable {
-    new FloatLiteral_Test.TestBody(this).test_NodeErrorCheck290469496750368664();
+    new TestBody(this).test_NodeErrorCheck290469496750368664();
   }
   @Test
   public void test_ErrorMessagesCheck290469496750333115() throws Throwable {
-    new FloatLiteral_Test.TestBody(this).test_ErrorMessagesCheck290469496750333115();
+    new TestBody(this).test_ErrorMessagesCheck290469496750333115();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -7,12 +7,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InlineMessageProvider_actions {
 
@@ -22,7 +23,7 @@ public class InlineMessageProvider_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (!(DeletionApproverUtil.approve(editorContext, SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"))))) {
+        if (!(DeletionApproverUtil.approve(editorContext, SNodeOperations.cast(SNodeOperations.getParent(node), AUX_qabpwu.RuleWithMessage_dc955b88)))) {
           SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         }
       }
@@ -35,7 +36,7 @@ public class InlineMessageProvider_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.insertNewNextSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage")), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"));
+        SNodeFactoryOperations.insertNewNextSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), AUX_qabpwu.RuleWithMessage_dc955b88), AUX_qabpwu.RuleWithMessage_dc955b88);
       }
 
     };
@@ -46,7 +47,7 @@ public class InlineMessageProvider_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.insertNewPrevSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage")), MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage"));
+        SNodeFactoryOperations.insertNewPrevSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), AUX_qabpwu.RuleWithMessage_dc955b88), AUX_qabpwu.RuleWithMessage_dc955b88);
       }
 
     };
@@ -93,5 +94,9 @@ public class InlineMessageProvider_actions {
     if (Objects.equals(actionType, CellActionType.INSERT_BEFORE)) {
       editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }
+  }
+
+  private static final class AUX_qabpwu {
+    /*package*/ static final SConcept RuleWithMessage_dc955b88 = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
   }
 }

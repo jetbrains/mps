@@ -9,23 +9,24 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro extends KeyMapImpl {
   public MacroMessageExpression_completeTextToLiteralAndPercentToMacro() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new MacroMessageExpression_completeTextToLiteralAndPercentToMacro.MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action0();
+    action = new MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action0();
     this.putAction("any", "letter or digit", action);
     this.putAction("none", " ", action);
     this.putAction("none", "'", action);
-    action = new MacroMessageExpression_completeTextToLiteralAndPercentToMacro.MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action1();
+    action = new MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action1();
     this.putAction("any", "%", action);
   }
   public static class MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action0 extends KeyMapActionImpl {
@@ -44,7 +45,7 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_4ojwcw.MacroMessageExpression_203c595))) {
         return false;
       }
       return true;
@@ -68,13 +69,13 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0c0a0() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"), null, null, false);
+      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_4ojwcw.LiteralMessageExpression_d1e3ef58, null, null, false);
       n1.setProperty(MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"), "");
       return n1;
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0a2a0a() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"), null, null, false);
+      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_4ojwcw.LiteralMessageExpression_d1e3ef58, null, null, false);
       n1.setProperty(MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message"), "");
       return n1;
     }
@@ -98,7 +99,7 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_4ojwcw.MacroMessageExpression_203c595))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -124,5 +125,10 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
     private static <T> T as_4ojwcw_a0a0a4c(Object o, Class<T> type) {
       return (type.isInstance(o) ? (T) o : null);
     }
+  }
+
+  private static final class AUX_4ojwcw {
+    /*package*/ static final SConcept MacroMessageExpression_203c595 = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression");
+    /*package*/ static final SConcept LiteralMessageExpression_d1e3ef58 = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression");
   }
 }

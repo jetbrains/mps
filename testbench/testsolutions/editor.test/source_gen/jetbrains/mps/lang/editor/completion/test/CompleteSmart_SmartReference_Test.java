@@ -21,7 +21,7 @@ public class CompleteSmart_SmartReference_Test extends BaseTransformationTest {
 
   @Test
   public void test_CompleteSmart_SmartReference() throws Throwable {
-    new CompleteSmart_SmartReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

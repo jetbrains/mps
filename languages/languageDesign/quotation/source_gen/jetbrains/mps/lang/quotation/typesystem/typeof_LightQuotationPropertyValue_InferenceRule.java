@@ -13,6 +13,7 @@ import jetbrains.mps.lang.quotation.behavior.NodeBuilderInitProperty__BehaviorDe
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_LightQuotationPropertyValue_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_LightQuotationPropertyValue_InferenceRule() {
@@ -28,12 +29,16 @@ public class typeof_LightQuotationPropertyValue_InferenceRule extends AbstractIn
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
+    return AUX_e02hrr.NodeBuilderInitProperty_2aae7807;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_e02hrr {
+    /*package*/ static final SConcept NodeBuilderInitProperty_2aae7807 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
   }
 }

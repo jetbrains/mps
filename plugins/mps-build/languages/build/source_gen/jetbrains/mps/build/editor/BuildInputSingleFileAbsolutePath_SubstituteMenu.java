@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -23,14 +22,16 @@ import jetbrains.mps.smodel.SModelStereotype;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new BuildInputSingleFileAbsolutePath_SubstituteMenu.SMP_Subconcepts_n2gsvi_a());
-    result.add(new BuildInputSingleFileAbsolutePath_SubstituteMenu.SMP_Group_n2gsvi_b());
+    result.add(new SMP_Subconcepts_n2gsvi_a());
+    result.add(new SMP_Group_n2gsvi_b());
     return result;
   }
 
@@ -49,7 +50,7 @@ public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteM
 
   public class SMP_Subconcepts_n2gsvi_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, "jetbrains.mps.build.structure.BuildInputSingleFileAbsolutePath"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_n2gsvi.BuildInputSingleFileAbsolutePath_5f952c60);
     }
     @NotNull
     @Override
@@ -87,7 +88,7 @@ public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteM
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, "jetbrains.mps.build.structure.BuildInputSingleFileAbsolutePath")) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_n2gsvi.BuildInputSingleFileAbsolutePath_5f952c60) {
 
         @NotNull
         @Override
@@ -100,7 +101,11 @@ public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteM
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, "jetbrains.mps.build.structure.BuildInputSingleFileAbsolutePath")));
+      }, AUX_n2gsvi.BuildInputSingleFileAbsolutePath_5f952c60));
     }
+  }
+
+  private static final class AUX_n2gsvi {
+    /*package*/ static final SConcept BuildInputSingleFileAbsolutePath_5f952c60 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, "jetbrains.mps.build.structure.BuildInputSingleFileAbsolutePath");
   }
 }

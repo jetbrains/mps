@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.classifiers.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -18,9 +17,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class SuperClassifierExpresson__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11b74b0357cL, "jetbrains.mps.baseLanguage.classifiers.structure.SuperClassifierExpresson");
+  private static final SAbstractConcept CONCEPT = AUX_b9ic0q.SuperClassifierExpresson_d8a7e6aa;
 
   public static final SMethod<SNode> getClassifier_idhHOIkvz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hHOIkvz").build();
 
@@ -30,7 +32,7 @@ public final class SuperClassifierExpresson__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getClassifier_idhHOIkvz(@NotNull SNode __thisNode__) {
-    return IClassifier__BehaviorDescriptor.getContextClassifier_idhEwJim4.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier")), __thisNode__);
+    return IClassifier__BehaviorDescriptor.getContextClassifier_idhEwJim4.invoke(SNodeOperations.asSConcept(AUX_b9ic0q.IClassifier_86b0ec37), __thisNode__);
   }
 
   /*package*/ SuperClassifierExpresson__BehaviorDescriptor() {
@@ -77,5 +79,10 @@ public final class SuperClassifierExpresson__BehaviorDescriptor extends BaseBHDe
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_b9ic0q {
+    /*package*/ static final SConcept SuperClassifierExpresson_d8a7e6aa = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11b74b0357cL, "jetbrains.mps.baseLanguage.classifiers.structure.SuperClassifierExpresson");
+    /*package*/ static final SInterfaceConcept IClassifier_86b0ec37 = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
   }
 }

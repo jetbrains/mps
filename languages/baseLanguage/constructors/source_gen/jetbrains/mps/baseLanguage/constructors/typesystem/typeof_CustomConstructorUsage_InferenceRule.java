@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_CustomConstructorUsage_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_CustomConstructorUsage_InferenceRule() {
@@ -24,25 +25,30 @@ public class typeof_CustomConstructorUsage_InferenceRule extends AbstractInferen
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "3041831561922455932", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(customConstructorUsage, MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor")), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e013L, "returnType")), _info_12389875345);
     }
     SNode args = SLinkOperations.getTarget(SLinkOperations.getTarget(customConstructorUsage, MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor")), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments"));
-    if (SNodeOperations.isInstanceOf(args, MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause"))) {
-      int min = Math.min(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause")), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter"))).count(), ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element"))).count());
+    if (SNodeOperations.isInstanceOf(args, AUX_fatrb2.CustomArgumentClause_6b8a6f02)) {
+      int min = Math.min(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, AUX_fatrb2.CustomArgumentClause_6b8a6f02), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter"))).count(), ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element"))).count());
       for (int i = 0; i < min; i++) {
         SNode actualParam = ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element"))).getElement(i);
         {
           SNode _nodeToCheck_1029348928467 = actualParam;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "2299894485109903431", 0, null);
-          typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause")), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter"))).getElement(i), "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "2299894485109903433", true), (SNode) typeCheckingContext.typeOf(actualParam, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "2299894485109903442", true), false, true, _info_12389875345);
+          typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, AUX_fatrb2.CustomArgumentClause_6b8a6f02), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter"))).getElement(i), "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "2299894485109903433", true), (SNode) typeCheckingContext.typeOf(actualParam, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "2299894485109903442", true), false, true, _info_12389875345);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
+    return AUX_fatrb2.CustomConstructorUsage_5403bf01;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return true;
+  }
+
+  private static final class AUX_fatrb2 {
+    /*package*/ static final SConcept CustomArgumentClause_6b8a6f02 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
+    /*package*/ static final SConcept CustomConstructorUsage_5403bf01 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
   }
 }

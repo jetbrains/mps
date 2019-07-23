@@ -32,19 +32,19 @@ public class DataFlowInClosure_Test extends BaseTransformationTest {
 
   @Test
   public void test_DataFlowInClosure() throws Throwable {
-    new DataFlowInClosure_Test.TestBody(this).test_DataFlowInClosure();
+    new TestBody(this).test_DataFlowInClosure();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624928941627() throws Throwable {
-    new DataFlowInClosure_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624928941627();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624928941627();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526511672370() throws Throwable {
-    new DataFlowInClosure_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526511672370();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526511672370();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199478() throws Throwable {
-    new DataFlowInClosure_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199478();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199478();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

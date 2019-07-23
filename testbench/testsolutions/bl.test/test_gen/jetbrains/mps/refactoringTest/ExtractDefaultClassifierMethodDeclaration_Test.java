@@ -36,11 +36,11 @@ public class ExtractDefaultClassifierMethodDeclaration_Test extends BaseTransfor
 
   @Test
   public void test_extractFromMethod() throws Throwable {
-    new ExtractDefaultClassifierMethodDeclaration_Test.TestBody(this).test_extractFromMethod();
+    new TestBody(this).test_extractFromMethod();
   }
   @Test
   public void test_extractFromExecute() throws Throwable {
-    new ExtractDefaultClassifierMethodDeclaration_Test.TestBody(this).test_extractFromExecute();
+    new TestBody(this).test_extractFromExecute();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

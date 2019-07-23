@@ -14,6 +14,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ReapplyPatternMigration extends BaseProjectMigration implements CleanupProjectMigration {
 
@@ -35,10 +36,10 @@ public class ReapplyPatternMigration extends BaseProjectMigration implements Cle
           return scope_idu4d8_a0e_0;
         }
       };
-      for (SNode pattern : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), false))) {
+      for (SNode pattern : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_idu4d8.PatternExpression_b5cd3dd6, false))) {
         Iterable<? extends SNode> deprecatedChildren = pattern.getChildren(MetaAdapterFactory.getContainmentLink(-3143127453834064983L, -5836335846783251545L, 1136720037777L, 1136720037778L, "patternNode"));
         if (Sequence.fromIterable(deprecatedChildren).count() == 1 && SLinkOperations.getTarget(pattern, MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern")) == null) {
-          SLinkOperations.setNewChild(pattern, MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern"), MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation"));
+          SLinkOperations.setNewChild(pattern, MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern"), AUX_idu4d8.Quotation_25f29ad1);
           SLinkOperations.setTarget(SLinkOperations.getTarget(pattern, MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern")), MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode"), Sequence.fromIterable(deprecatedChildren).first());
         }
       }
@@ -48,5 +49,10 @@ public class ReapplyPatternMigration extends BaseProjectMigration implements Cle
   @Override
   public void forceExecutionNextTime(Project project) {
     setExecuted(project, false);
+  }
+
+  private static final class AUX_idu4d8 {
+    /*package*/ static final SConcept Quotation_25f29ad1 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SConcept PatternExpression_b5cd3dd6 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
   }
 }

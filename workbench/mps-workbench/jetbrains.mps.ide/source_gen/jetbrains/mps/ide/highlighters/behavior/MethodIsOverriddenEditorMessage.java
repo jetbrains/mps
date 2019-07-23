@@ -19,6 +19,8 @@ import jetbrains.mps.ide.editor.popup.IconResourceBundle_OverrideImplements;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /**
  * a message for a method which is overridden by someone
@@ -58,7 +60,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   }
 
   private static String getTextFromOverride(SNode override) {
-    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(override, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), SMethodTrimmedId.create("getContainingConcept", MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), "i3POAMX"))), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(override, AUX_59df5p.ConceptMethodDeclaration_6c80ca4f, SMethodTrimmedId.create("getContainingConcept", AUX_59df5p.ConceptMethodDeclaration_6c80ca4f, "i3POAMX"))), AUX_59df5p.INamedConcept_8cd7e247, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
   }
 
   @Override
@@ -75,5 +77,10 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   public AnAction getClickAction() {
     // that is right: the method is overridden (implemented) and we can navigate to the implemeting methods (descendant) 
     return ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.ide.actions.GoToImplementationBehaviorMethod_Action"));
+  }
+
+  private static final class AUX_59df5p {
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

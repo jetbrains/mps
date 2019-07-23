@@ -14,6 +14,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_BuildMpsLayout_TestModules_Options_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BuildMpsLayout_TestModules_Options_NonTypesystemRule() {
@@ -36,12 +37,16 @@ public class check_BuildMpsLayout_TestModules_Options_NonTypesystemRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Options");
+    return AUX_ls7qyd.BuildMpsLayout_TestModules_Options_599c44a6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_ls7qyd {
+    /*package*/ static final SConcept BuildMpsLayout_TestModules_Options_599c44a6 = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Options");
   }
 }

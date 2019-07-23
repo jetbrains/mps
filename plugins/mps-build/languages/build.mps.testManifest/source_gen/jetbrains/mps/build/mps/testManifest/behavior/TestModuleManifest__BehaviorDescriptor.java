@@ -4,7 +4,6 @@ package jetbrains.mps.build.mps.testManifest.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -22,6 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -32,9 +32,10 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876882L, "jetbrains.mps.build.mps.testManifest.structure.TestModuleManifest");
+  private static final SAbstractConcept CONCEPT = AUX_42kcjb.TestModuleManifest_5074ebe3;
 
   public static final SMethod<List<Tuples._3<String, String, String>>> languagesToInclude_id2R6x4AnylYu = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("languagesToInclude").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2R6x4AnylYu").build(SMethodBuilder.createJavaParameter(Project.class, ""));
   public static final SMethod<List<Tuples._3<String, String, String>>> testModulesToInclude_id7vU6U5026IG = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("testModulesToInclude").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7vU6U5026IG").build(SMethodBuilder.createJavaParameter(Project.class, ""));
@@ -118,5 +119,9 @@ public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_42kcjb {
+    /*package*/ static final SConcept TestModuleManifest_5074ebe3 = MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876882L, "jetbrains.mps.build.mps.testManifest.structure.TestModuleManifest");
   }
 }

@@ -11,11 +11,12 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class RemoveMayBeUnreachable_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -34,7 +35,7 @@ public final class RemoveMayBeUnreachable_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, "jetbrains.mps.lang.dataFlow.structure.EmitMayBeUnreachable"));
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_w7vkf2.EmitMayBeUnreachable_152acf31);
   }
   @Override
   public boolean isSurroundWith() {
@@ -42,7 +43,7 @@ public final class RemoveMayBeUnreachable_Intention extends AbstractIntentionDes
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new RemoveMayBeUnreachable_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -62,5 +63,9 @@ public final class RemoveMayBeUnreachable_Intention extends AbstractIntentionDes
     public IntentionDescriptor getDescriptor() {
       return RemoveMayBeUnreachable_Intention.this;
     }
+  }
+
+  private static final class AUX_w7vkf2 {
+    /*package*/ static final SConcept EmitMayBeUnreachable_152acf31 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, "jetbrains.mps.lang.dataFlow.structure.EmitMayBeUnreachable");
   }
 }

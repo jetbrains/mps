@@ -24,7 +24,7 @@ public class TwoStepDeleteMultiple_Test extends BaseTransformationTest {
 
   @Test
   public void test_TwoStepDeleteMultiple() throws Throwable {
-    new TwoStepDeleteMultiple_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

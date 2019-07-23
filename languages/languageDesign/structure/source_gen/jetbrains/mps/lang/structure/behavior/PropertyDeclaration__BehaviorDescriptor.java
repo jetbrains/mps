@@ -4,7 +4,6 @@ package jetbrains.mps.lang.structure.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,6 +15,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
@@ -23,9 +23,10 @@ import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+  private static final SAbstractConcept CONCEPT = AUX_fhtc43.PropertyDeclaration_ce818bfd;
 
   public static final SMethod<Boolean> isPrimitiveString_idhT22swA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveString").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hT22swA").build();
   public static final SMethod<Boolean> isPrimitiveInteger_idhT23WS5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveInteger").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hT23WS5").build();
@@ -48,7 +49,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
     return SLinkOperations.hasPointer(__thisNode__, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType"), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657063"));
   }
   /*package*/ static SNode getConceptDeclaration_id2OF3rgRewqT(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, AUX_fhtc43.AbstractConceptDeclaration_ec74828f, false, false);
   }
   /*package*/ static boolean is_id4MKjpUYnih4(@NotNull SNode __thisNode__, SProperty property) {
     return Objects.equals(MetaAdapterByDeclaration.getProperty(__thisNode__), property);
@@ -106,5 +107,10 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_fhtc43 {
+    /*package*/ static final SConcept PropertyDeclaration_ce818bfd = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

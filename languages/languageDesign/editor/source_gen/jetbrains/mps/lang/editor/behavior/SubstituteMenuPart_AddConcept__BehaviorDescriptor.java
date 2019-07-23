@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -15,12 +14,14 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SubstituteMenuPart_AddConcept__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_AddConcept");
+  private static final SAbstractConcept CONCEPT = AUX_qx05yl.SubstituteMenuPart_AddConcept_c9c91b55;
 
   public static final SMethod<SNode> getOutputConcept_id3mnwiBI8ZE2 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOutputConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3mnwiBI8ZE2").build();
 
@@ -77,5 +78,9 @@ public final class SubstituteMenuPart_AddConcept__BehaviorDescriptor extends Bas
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_qx05yl {
+    /*package*/ static final SConcept SubstituteMenuPart_AddConcept_c9c91b55 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_AddConcept");
   }
 }

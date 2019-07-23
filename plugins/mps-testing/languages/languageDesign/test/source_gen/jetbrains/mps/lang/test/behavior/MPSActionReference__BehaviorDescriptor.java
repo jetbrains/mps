@@ -4,7 +4,6 @@ package jetbrains.mps.lang.test.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,12 +15,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.plugin.behavior.ActionDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MPSActionReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ad5e12a687a89d9L, "jetbrains.mps.lang.test.structure.MPSActionReference");
+  private static final SAbstractConcept CONCEPT = AUX_e44s6r.MPSActionReference_7a9fcf20;
 
   public static final SMethod<String> getActionId_idX8Ly3typOa = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getActionId").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("X8Ly3typOa").build();
 
@@ -78,5 +79,9 @@ public final class MPSActionReference__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_e44s6r {
+    /*package*/ static final SConcept MPSActionReference_7a9fcf20 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ad5e12a687a89d9L, "jetbrains.mps.lang.test.structure.MPSActionReference");
   }
 }

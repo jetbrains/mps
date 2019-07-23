@@ -26,6 +26,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ final class DescendantsMethodsLookup {
   private final Cancellable myCancellable;
@@ -46,7 +47,7 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
   /*package*/ List<EditorMessage> calcMessages() {
     List<EditorMessage> result = ListSequence.fromList(new ArrayList<EditorMessage>());
     for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method")))) {
-      if (((boolean) (Boolean) BHReflection.invoke0(method, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), SMethodTrimmedId.create("isVirtual", MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), "6WSEafdhbZX"))) || ((boolean) (Boolean) BHReflection.invoke0(method, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl")))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(method, AUX_d3b4u3.ConceptMethodDeclaration_6c80ca4f, SMethodTrimmedId.create("isVirtual", AUX_d3b4u3.ConceptMethodDeclaration_6c80ca4f, "6WSEafdhbZX"))) || ((boolean) (Boolean) BHReflection.invoke0(method, AUX_d3b4u3.BaseMethodDeclaration_9dbf9acb, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl")))) {
         EditorMessage msgForMethod = calcMessage(method);
         if (msgForMethod != null) {
           ListSequence.fromList(result).addElement(msgForMethod);
@@ -85,8 +86,8 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
         SNode nodeParam = (SNode) searchResult.getObject();
         new _FunctionTypes._void_P1_E0<SNode>() {
           public void invoke(SNode res) {
-            if (SNodeOperations.isInstanceOf(res, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"))) {
-              SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")));
+            if (SNodeOperations.isInstanceOf(res, AUX_d3b4u3.ConceptMethodDeclaration_6c80ca4f)) {
+              SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, AUX_d3b4u3.ConceptMethodDeclaration_6c80ca4f));
               if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
                 monitor.cancel();
               }
@@ -96,5 +97,10 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
       }
     }, new SearchQuery(method, myScope), FindUtils.getFinder("jetbrains.mps.lang.behavior.findUsages.OverridingMethods_Finder"));
     return result;
+  }
+
+  private static final class AUX_d3b4u3 {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

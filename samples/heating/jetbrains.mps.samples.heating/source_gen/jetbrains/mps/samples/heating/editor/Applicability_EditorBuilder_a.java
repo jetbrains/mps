@@ -20,11 +20,12 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class Applicability_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -68,18 +69,22 @@ import jetbrains.mps.smodel.SNodePointer;
     Style style = new StyleImpl();
     new FieldStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new Applicability_EditorBuilder_a.ReplaceWith_Applicability_cellMenu_j44m5v_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_Applicability_cellMenu_j44m5v_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_Applicability_cellMenu_j44m5v_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_Applicability_cellMenu_j44m5v_a0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e68643cL, "jetbrains.mps.samples.heating.structure.Applicability");
+      return AUX_de7uob.Applicability_4885d3f0;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
       return new EditorMenuDescriptorBase("replace node (custom node concept: " + "Applicability" + ")", new SNodePointer("r:4b82218b-d47e-4120-8b44-e2530c2efcf5(jetbrains.mps.samples.heating.editor)", "4664795093170775878"));
     }
+  }
+
+  private static final class AUX_de7uob {
+    /*package*/ static final SConcept Applicability_4885d3f0 = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e68643cL, "jetbrains.mps.samples.heating.structure.Applicability");
   }
 }

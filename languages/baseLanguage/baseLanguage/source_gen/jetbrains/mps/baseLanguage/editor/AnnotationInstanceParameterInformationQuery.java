@@ -13,6 +13,7 @@ import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AnnotationInstanceParameterInformationQuery implements ParametersInformation<SNode> {
   public AnnotationInstanceParameterInformationQuery() {
@@ -57,10 +58,14 @@ public class AnnotationInstanceParameterInformationQuery implements ParametersIn
   }
   private SNode getSelectedAnnotationMethod(EditorContext editorContext, SNode annotationInstance) {
     for (SNode argument = editorContext.getSelectedNode(); argument != null; argument = SNodeOperations.getParent(argument)) {
-      if (SNodeOperations.isInstanceOf(argument, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue")) && SNodeOperations.getParent(argument) == annotationInstance) {
-        return SLinkOperations.getTarget(SNodeOperations.cast(argument, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key"));
+      if (SNodeOperations.isInstanceOf(argument, AUX_j6hwcw.AnnotationInstanceValue_15ce85ed) && SNodeOperations.getParent(argument) == annotationInstance) {
+        return SLinkOperations.getTarget(SNodeOperations.cast(argument, AUX_j6hwcw.AnnotationInstanceValue_15ce85ed), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key"));
       }
     }
     return null;
+  }
+
+  private static final class AUX_j6hwcw {
+    /*package*/ static final SConcept AnnotationInstanceValue_15ce85ed = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue");
   }
 }

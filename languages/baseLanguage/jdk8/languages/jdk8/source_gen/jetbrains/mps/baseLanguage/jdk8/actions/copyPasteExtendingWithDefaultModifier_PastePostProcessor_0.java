@@ -4,30 +4,38 @@ package jetbrains.mps.baseLanguage.jdk8.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.PastePostProcessor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class copyPasteExtendingWithDefaultModifier_PastePostProcessor_0 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    return AUX_wpqcir.InstanceMethodDeclaration_9dbf9b2b;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
     // transforming the default modifier existence into the isAbstract flag 
     // copy never has modifiers 
     SNode methodParent = SNodeOperations.getParent(pastedNode);
-    if (SNodeOperations.isInstanceOf(methodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-      if (SNodeOperations.isInstanceOf(methodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+    if (SNodeOperations.isInstanceOf(methodParent, AUX_wpqcir.Classifier_4b7e553)) {
+      if (SNodeOperations.isInstanceOf(methodParent, AUX_wpqcir.Interface_bca2069)) {
         if (!(SPropertyOperations.getBoolean(pastedNode, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract")))) {
-          SNodeFactoryOperations.addNewChild(pastedNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"), MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier"));
+          SNodeFactoryOperations.addNewChild(pastedNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"), AUX_wpqcir.DefaultModifier_996633a0);
         }
         SPropertyOperations.assign(pastedNode, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), false);
         // i have always non-abstract methods in interfaces 
       }
     }
+  }
+
+  private static final class AUX_wpqcir {
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept DefaultModifier_996633a0 = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

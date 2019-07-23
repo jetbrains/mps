@@ -21,7 +21,7 @@ public class BackspaceFirstCommentedConditionBeforeCommented_Test extends BaseTr
 
   @Test
   public void test_BackspaceFirstCommentedConditionBeforeCommented() throws Throwable {
-    new BackspaceFirstCommentedConditionBeforeCommented_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -38,7 +38,7 @@ public class ExtractFromIntention_Test extends BaseTransformationTest {
 
   @Test
   public void test_extractExpression() throws Throwable {
-    new ExtractFromIntention_Test.TestBody(this).test_extractExpression();
+    new TestBody(this).test_extractExpression();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

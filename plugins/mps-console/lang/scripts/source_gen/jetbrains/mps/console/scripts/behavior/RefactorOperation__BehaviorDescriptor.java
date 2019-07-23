@@ -4,7 +4,6 @@ package jetbrains.mps.console.scripts.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class RefactorOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x20fd2063d7de993eL, "jetbrains.mps.console.scripts.structure.RefactorOperation");
+  private static final SAbstractConcept CONCEPT = AUX_cyywsj.RefactorOperation_c074cf25;
 
   public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("qgIopNa9Hb").build();
   public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHelpPage").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("64VftqEen2L").build();
@@ -82,5 +83,9 @@ public final class RefactorOperation__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_cyywsj {
+    /*package*/ static final SConcept RefactorOperation_c074cf25 = MetaAdapterFactory.getConcept(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x20fd2063d7de993eL, "jetbrains.mps.console.scripts.structure.RefactorOperation");
   }
 }

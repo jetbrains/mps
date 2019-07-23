@@ -21,7 +21,7 @@ public abstract class GoToNeighbourRootActions {
   public static final ShortcutSet NEXT_ROOT_SHORTCUT = CustomShortcutSet.fromString("control RIGHT");
   private BaseAction[] myActions;
   public GoToNeighbourRootActions() {
-    myActions = new BaseAction[]{new GoToNeighbourRootActions.TheAction(false), new GoToNeighbourRootActions.TheAction(true)};
+    myActions = new BaseAction[]{new TheAction(false), new TheAction(true)};
   }
   protected abstract boolean hasNeighbour(boolean next);
   protected abstract void goToNeighbour(boolean next);

@@ -4,16 +4,17 @@ package jetbrains.mps.baseLanguage.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.CopyPreProcessor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.VariableDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BL_CopyPasteHandlers_CopyPreProcessor_0 implements CopyPreProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    return AUX_y4d01.VariableReference_24d60dac;
   }
   @Override
   public void preProcessNode(SNode copy, SNode original) {
@@ -21,5 +22,9 @@ public final class BL_CopyPasteHandlers_CopyPreProcessor_0 implements CopyPrePro
     if ((qualifiedReference != null)) {
       SNodeOperations.replaceWithAnother(copy, qualifiedReference);
     }
+  }
+
+  private static final class AUX_y4d01 {
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

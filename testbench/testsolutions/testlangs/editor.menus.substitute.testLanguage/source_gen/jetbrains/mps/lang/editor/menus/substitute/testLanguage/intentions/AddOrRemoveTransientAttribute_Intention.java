@@ -14,9 +14,10 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddOrRemoveTransientAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -37,7 +38,7 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddOrRemoveTransientAttribute_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -46,7 +47,7 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor"))) == null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_hqpl6r.TestSubstituteAttribute_TransparentEditor_22bbee5a)) == null)) {
         return "Add Transient Attribute";
       } else {
         return "Remove Transient Attribute";
@@ -54,15 +55,19 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor"))) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor")), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor"));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_hqpl6r.TestSubstituteAttribute_TransparentEditor_22bbee5a)) == null)) {
+        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(AUX_hqpl6r.TestSubstituteAttribute_TransparentEditor_22bbee5a), AUX_hqpl6r.TestSubstituteAttribute_TransparentEditor_22bbee5a);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor"))));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_hqpl6r.TestSubstituteAttribute_TransparentEditor_22bbee5a)));
       }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddOrRemoveTransientAttribute_Intention.this;
     }
+  }
+
+  private static final class AUX_hqpl6r {
+    /*package*/ static final SConcept TestSubstituteAttribute_TransparentEditor_22bbee5a = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor");
   }
 }

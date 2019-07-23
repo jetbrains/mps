@@ -4,7 +4,6 @@ package jetbrains.mps.ide.httpsupport.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,9 +17,11 @@ import jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MPSInternalPortProvider__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d72d05b47f59025L, "jetbrains.mps.ide.httpsupport.structure.MPSInternalPortProvider");
+  private static final SAbstractConcept CONCEPT = AUX_n3a0ao.MPSInternalPortProvider_a7411a15;
 
   public static final SMethod<Integer> getPort_id6WBmrsjA4L4 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPort").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6WBmrsjA4L4").build();
 
@@ -77,5 +78,9 @@ public final class MPSInternalPortProvider__BehaviorDescriptor extends BaseBHDes
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_n3a0ao {
+    /*package*/ static final SConcept MPSInternalPortProvider_a7411a15 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d72d05b47f59025L, "jetbrains.mps.ide.httpsupport.structure.MPSInternalPortProvider");
   }
 }

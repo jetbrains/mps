@@ -11,14 +11,15 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SurroundWithIfClause_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -37,7 +38,7 @@ public final class SurroundWithIfClause_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return editorContext.getSelectedNodes().size() == 1 && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType"));
+    return editorContext.getSelectedNodes().size() == 1 && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_vxp2ry.ExpressionStatement_9dbf9b0c) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), AUX_vxp2ry.BooleanType_6530abf6);
   }
   @Override
   public boolean isSurroundWith() {
@@ -45,7 +46,7 @@ public final class SurroundWithIfClause_Intention extends AbstractIntentionDescr
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new SurroundWithIfClause_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -58,7 +59,7 @@ public final class SurroundWithIfClause_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode ifStatement = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+      SNode ifStatement = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), AUX_vxp2ry.IfStatement_9dbf9b10);
       SLinkOperations.setTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), node);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).clear();
       editorContext.select(SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue")));
@@ -67,5 +68,11 @@ public final class SurroundWithIfClause_Intention extends AbstractIntentionDescr
     public IntentionDescriptor getDescriptor() {
       return SurroundWithIfClause_Intention.this;
     }
+  }
+
+  private static final class AUX_vxp2ry {
+    /*package*/ static final SConcept BooleanType_6530abf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept IfStatement_9dbf9b10 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

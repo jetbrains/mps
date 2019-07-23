@@ -4,7 +4,6 @@ package jetbrains.mps.lang.generator.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,14 +14,16 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TemplateDeclarationReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
+  private static final SAbstractConcept CONCEPT = AUX_rphohy.TemplateDeclarationReference_4d5da335;
 
   public static final SMethod<SAbstractConcept> getTemplateType_id6SoPMa83EEL = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getTemplateType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6SoPMa83EEL").build();
   public static final SMethod<SNode> getTemplate_idQzR6ThtRo7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplate").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("QzR6ThtRo7").build();
@@ -35,7 +36,7 @@ public final class TemplateDeclarationReference__BehaviorDescriptor extends Base
   /*package*/ static SAbstractConcept getTemplateType_id6SoPMa83EEL(@NotNull SNode __thisNode__) {
     SNode contentNode = SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(__thisNode__), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode"));
     if ((contentNode != null)) {
-      List<SNode> fragments = SNodeOperations.getNodeDescendants(contentNode, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"), false, new SAbstractConcept[]{});
+      List<SNode> fragments = SNodeOperations.getNodeDescendants(contentNode, AUX_rphohy.TemplateFragment_1973fd34, false, new SAbstractConcept[]{});
       if ((ListSequence.fromList(fragments).first() != null) && (SNodeOperations.getParent(ListSequence.fromList(fragments).first()) != null)) {
         return SNodeOperations.getConcept(SNodeOperations.getParent(ListSequence.fromList(fragments).first()));
       }
@@ -43,7 +44,7 @@ public final class TemplateDeclarationReference__BehaviorDescriptor extends Base
     return null;
   }
   /*package*/ static SNode getTemplate_idQzR6ThtRo7(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration"));
+    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template")), AUX_rphohy.TemplateDeclaration_6074fd22);
   }
 
   /*package*/ TemplateDeclarationReference__BehaviorDescriptor() {
@@ -92,5 +93,11 @@ public final class TemplateDeclarationReference__BehaviorDescriptor extends Base
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_rphohy {
+    /*package*/ static final SConcept TemplateDeclarationReference_4d5da335 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
+    /*package*/ static final SConcept TemplateFragment_1973fd34 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    /*package*/ static final SConcept TemplateDeclaration_6074fd22 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
   }
 }

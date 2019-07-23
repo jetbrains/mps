@@ -23,7 +23,7 @@ public class GeneratedFileConflictResolving extends AbstractProjectComponent {
   private final FileStatusManager myFileStatusManager;
   private final VcsDirtyScopeManager myDirtyScopeManager;
   private final MPSProject myMpsProject;
-  private final GeneratedFileConflictResolving.MyFileListener myFileListener = new GeneratedFileConflictResolving.MyFileListener();
+  private final MyFileListener myFileListener = new MyFileListener();
 
   public GeneratedFileConflictResolving(Project project, MPSProject mpsProject, ProjectLevelVcsManager vcsManager, FileStatusManager fileStatusManager, VcsDirtyScopeManager dirtyScopeManager) {
     super(project);

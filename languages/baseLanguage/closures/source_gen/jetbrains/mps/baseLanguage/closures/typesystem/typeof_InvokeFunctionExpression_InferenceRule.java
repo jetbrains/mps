@@ -19,6 +19,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_InvokeFunctionExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_InvokeFunctionExpression_InferenceRule() {
@@ -82,12 +83,16 @@ public class typeof_InvokeFunctionExpression_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a964795L, "jetbrains.mps.baseLanguage.closures.structure.InvokeFunctionExpression");
+    return AUX_juleau.InvokeFunctionExpression_2cf4ef4e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_juleau {
+    /*package*/ static final SConcept InvokeFunctionExpression_2cf4ef4e = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a964795L, "jetbrains.mps.baseLanguage.closures.structure.InvokeFunctionExpression");
   }
 }

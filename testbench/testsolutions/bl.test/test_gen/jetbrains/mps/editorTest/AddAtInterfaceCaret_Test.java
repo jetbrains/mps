@@ -21,7 +21,7 @@ public class AddAtInterfaceCaret_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddAtInterfaceCaret() throws Throwable {
-    new AddAtInterfaceCaret_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

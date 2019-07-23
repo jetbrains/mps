@@ -22,7 +22,7 @@ public class BackspaceCommentedStatementAfterCommented_SemicolonSelected_Test ex
 
   @Test
   public void test_BackspaceCommentedStatementAfterCommented_SemicolonSelected() throws Throwable {
-    new BackspaceCommentedStatementAfterCommented_SemicolonSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

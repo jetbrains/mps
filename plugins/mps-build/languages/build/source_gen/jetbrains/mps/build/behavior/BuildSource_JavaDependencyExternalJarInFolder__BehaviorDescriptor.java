@@ -4,7 +4,6 @@ package jetbrains.mps.build.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,12 +16,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BuildSource_JavaDependencyExternalJarInFolder__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJarInFolder");
+  private static final SAbstractConcept CONCEPT = AUX_od95qo.BuildSource_JavaDependencyExternalJarInFolder_1f2b4cb7;
 
   public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("57YmpYyL8F1").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
 
@@ -83,5 +84,9 @@ public final class BuildSource_JavaDependencyExternalJarInFolder__BehaviorDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_od95qo {
+    /*package*/ static final SConcept BuildSource_JavaDependencyExternalJarInFolder_1f2b4cb7 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJarInFolder");
   }
 }

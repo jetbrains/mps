@@ -18,6 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CollapsedConditionally_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -68,7 +69,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private boolean nodeCondition_gbleq0_a1a() {
-    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(myNode), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, "jetbrains.mps.lang.editor.editorTest.structure.FoldingContainer")), MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab971f717L, "collapsed"));
+    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(myNode), AUX_12n0jq.FoldingContainer_a8ba4967), MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab971f717L, "collapsed"));
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
@@ -151,5 +152,9 @@ import jetbrains.mps.nodeEditor.MPSColors;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_12n0jq {
+    /*package*/ static final SConcept FoldingContainer_a8ba4967 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, "jetbrains.mps.lang.editor.editorTest.structure.FoldingContainer");
   }
 }

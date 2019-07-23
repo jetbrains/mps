@@ -8,21 +8,22 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.plugin.behavior.KeyMapKeystroke__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_KeyMapKeystrokeRemRepl_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_KeyMapKeystrokeRemRepl_NonTypesystemRule() {
   }
   public void applyRule(final SNode keyMapKeystroke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode simpleShortcutChange = SNodeOperations.getNodeAncestor(keyMapKeystroke, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange"), false, false);
+    SNode simpleShortcutChange = SNodeOperations.getNodeAncestor(keyMapKeystroke, AUX_u20oik.SimpleShortcutChange_b179307d, false, false);
     if ((simpleShortcutChange == null) || !((boolean) KeyMapKeystroke__BehaviorDescriptor.hasRemove_id4qYinf8$eal.invoke(keyMapKeystroke))) {
       return;
     }
@@ -38,12 +39,17 @@ public class check_KeyMapKeystrokeRemRepl_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
+    return AUX_u20oik.KeyMapKeystroke_e4ceb015;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_u20oik {
+    /*package*/ static final SConcept SimpleShortcutChange_b179307d = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange");
+    /*package*/ static final SConcept KeyMapKeystroke_e4ceb015 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
   }
 }

@@ -34,7 +34,7 @@ public class MoveStaticFieldWithUsageTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_UsageTest() throws Throwable {
-    new MoveStaticFieldWithUsageTest_Test.TestBody(this).test_UsageTest();
+    new TestBody(this).test_UsageTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

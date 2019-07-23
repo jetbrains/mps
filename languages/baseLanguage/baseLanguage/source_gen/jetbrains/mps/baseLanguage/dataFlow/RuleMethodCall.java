@@ -6,11 +6,13 @@ import jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RuleMethodCall implements DataFlowConstructor {
   public boolean isApplicable(SNode node) {
@@ -19,12 +21,12 @@ public class RuleMethodCall implements DataFlowConstructor {
     return concept.equals(applicableConcept) || concept.isSubConceptOf(applicableConcept);
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    return AUX_mq1k0d.IMethodCall_ee2c776b;
   }
   public void performActions(Program o, SNode node) {
     SNode m = node;
     SNode targetNode = node;
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")) == targetNode) {
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetNode), AUX_mq1k0d.DotExpression_97ed08d8) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetNode), AUX_mq1k0d.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")) == targetNode) {
       targetNode = SNodeOperations.getParent(targetNode);
     }
     if (SLinkOperations.getChildren(SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation")) != null) {
@@ -57,5 +59,10 @@ public class RuleMethodCall implements DataFlowConstructor {
         }
       }
     }
+  }
+
+  private static final class AUX_mq1k0d {
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 }

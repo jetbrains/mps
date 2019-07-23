@@ -26,6 +26,7 @@ import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class SmartCompletionParent_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -115,7 +116,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SmartCompletionParent_EditorBuilder_a.typeSingleRoleHandler_3zv3fy_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c95L, "type"), getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_3zv3fy_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c95L, "type"), getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_3zv3fy_c2a extends SingleRoleCellProvider {
@@ -199,7 +200,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new SmartCompletionParent_EditorBuilder_a.childrenToRefListHandler_3zv3fy_g2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new childrenToRefListHandler_3zv3fy_g2a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_childrenToRef");
     Style style = new StyleImpl();
@@ -227,7 +228,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
       return MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c89L, "childrenToRef");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionChildToRef");
+      return AUX_melz00.SmartCompletionChildToRef_a831aa6e;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -287,7 +288,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SmartCompletionParent_EditorBuilder_a.childToCompleteSingleRoleHandler_3zv3fy_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c99L, "childToComplete"), getEditorContext());
+    SingleRoleCellProvider provider = new childToCompleteSingleRoleHandler_3zv3fy_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c99L, "childToComplete"), getEditorContext());
     return provider.createCell();
   }
   private static class childToCompleteSingleRoleHandler_3zv3fy_k2a extends SingleRoleCellProvider {
@@ -364,7 +365,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new SmartCompletionParent_EditorBuilder_a.childSimpleRefSingleRoleHandler_3zv3fy_n2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x399c6e0ff7392f15L, "childSimpleRef"), getEditorContext());
+    SingleRoleCellProvider provider = new childSimpleRefSingleRoleHandler_3zv3fy_n2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x399c6e0ff7392f15L, "childSimpleRef"), getEditorContext());
     return provider.createCell();
   }
   private static class childSimpleRefSingleRoleHandler_3zv3fy_n2a extends SingleRoleCellProvider {
@@ -440,7 +441,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new SmartCompletionParent_EditorBuilder_a.childSmartRefSingleRoleHandler_3zv3fy_q2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876d1eL, "childSmartRef"), getEditorContext());
+    SingleRoleCellProvider provider = new childSmartRefSingleRoleHandler_3zv3fy_q2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876d1eL, "childSmartRef"), getEditorContext());
     return provider.createCell();
   }
   private static class childSmartRefSingleRoleHandler_3zv3fy_q2a extends SingleRoleCellProvider {
@@ -503,5 +504,9 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_melz00 {
+    /*package*/ static final SConcept SmartCompletionChildToRef_a831aa6e = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionChildToRef");
   }
 }

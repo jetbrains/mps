@@ -19,12 +19,13 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ForbidIncomingReferencesInSubconcepts_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -52,7 +53,7 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ForbidIncomingReferencesInSubconcepts_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -73,7 +74,7 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
       });
 
       for (SModel model : Sequence.fromIterable(seq)) {
-        for (SNode cd : ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")))) {
+        for (SNode cd : ListSequence.fromList(SModelOperations.roots(model, AUX_ch4rdk.ConceptDeclaration_cb225da8))) {
           List<SNode> allSupers = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(cd, ((boolean) true))).toListSequence();
           ListSequence.fromList(allSupers).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
 
@@ -87,5 +88,9 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
     public IntentionDescriptor getDescriptor() {
       return ForbidIncomingReferencesInSubconcepts_Intention.this;
     }
+  }
+
+  private static final class AUX_ch4rdk {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

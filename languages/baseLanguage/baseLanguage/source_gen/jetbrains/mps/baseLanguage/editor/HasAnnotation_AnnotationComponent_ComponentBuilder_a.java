@@ -28,6 +28,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FoldedCellStyleClass;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class HasAnnotation_AnnotationComponent_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -63,7 +64,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).isNotEmpty();
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new HasAnnotation_AnnotationComponent_ComponentBuilder_a.annotationListHandler_85xxz0_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new annotationListHandler_85xxz0_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("HAAC_refNodeList_annotation");
     Style style = new StyleImpl();
@@ -92,7 +93,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
+      return AUX_cqy56r.AnnotationInstance_51bc59df;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -142,5 +143,9 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+
+  private static final class AUX_cqy56r {
+    /*package*/ static final SConcept AnnotationInstance_51bc59df = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
   }
 }

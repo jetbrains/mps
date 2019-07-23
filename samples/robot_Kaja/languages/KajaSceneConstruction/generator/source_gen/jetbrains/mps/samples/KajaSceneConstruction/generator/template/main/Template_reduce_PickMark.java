@@ -386,10 +386,10 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase implements
     rv[8] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
     return rv;
   }
-  private static SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0b0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614490");
-  private static SNodePointer propertyMacro_mi0eld_c0a0c0a0b0d0b0b0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614499");
-  private static SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0b0b0b0b0c0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614510");
-  private static SNodePointer propertyMacro_mi0eld_c0a0c0a0b0d0b0b0b0b0b0c0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614521");
-  private static SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0b0b0c0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648469");
-  private static SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0c0b0c0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648478");
+  private static final SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0b0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614490");
+  private static final SNodePointer propertyMacro_mi0eld_c0a0c0a0b0d0b0b0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614499");
+  private static final SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0b0b0b0b0c0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614510");
+  private static final SNodePointer propertyMacro_mi0eld_c0a0c0a0b0d0b0b0b0b0b0c0b0b0b0b0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614521");
+  private static final SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0b0b0c0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648469");
+  private static final SNodePointer propertyMacro_mi0eld_c0a0c0a0b0c0b0c0b0c0b0b0b0b0c0g = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648478");
 }

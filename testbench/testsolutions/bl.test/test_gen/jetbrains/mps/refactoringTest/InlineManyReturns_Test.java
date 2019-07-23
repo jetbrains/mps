@@ -34,7 +34,7 @@ public class InlineManyReturns_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineManyReturns() throws Throwable {
-    new InlineManyReturns_Test.TestBody(this).test_InlineManyReturns();
+    new TestBody(this).test_InlineManyReturns();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

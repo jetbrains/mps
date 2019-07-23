@@ -9,18 +9,19 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AbstractClassifierReference_KeyMap extends KeyMapImpl {
   public AbstractClassifierReference_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new AbstractClassifierReference_KeyMap.AbstractClassifierReference_KeyMap_Action0();
+    action = new AbstractClassifierReference_KeyMap_Action0();
     this.putAction("none", "VK_SPACE", action);
   }
   public static class AbstractClassifierReference_KeyMap_Action0 extends KeyMapActionImpl {
@@ -40,7 +41,7 @@ public class AbstractClassifierReference_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_l22mu2.AbstractClassifierReference_334d03e3))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -50,7 +51,7 @@ public class AbstractClassifierReference_KeyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_l22mu2.ExpressionStatement_9dbf9b0c);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNodeOperations.replaceWithAnother(SNodeOperations.getParent(node), _quotation_createNode_l22mu2_a0a0a0a(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier"))));
@@ -71,5 +72,10 @@ public class AbstractClassifierReference_KeyMap extends KeyMapImpl {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), quotedNode_3);
       return quotedNode_2;
     }
+  }
+
+  private static final class AUX_l22mu2 {
+    /*package*/ static final SConcept AbstractClassifierReference_334d03e3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
   }
 }

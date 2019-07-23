@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.lightweightdsl.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -15,15 +14,18 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PlaceholderModifier");
+  private static final SAbstractConcept CONCEPT = AUX_lsfvmd.PlaceholderModifier_738d46ad;
 
   public static final SMethod<SNode> create_id7T23sO8tTvX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7T23sO8tTvX").build();
 
@@ -34,7 +36,7 @@ public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static SNode create_id7T23sO8tTvX(@NotNull SNode __thisNode__) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder"));
-    SLinkOperations.setTarget(result, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl"), SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLClassMember"), false, false));
+    SLinkOperations.setTarget(result, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl"), SNodeOperations.getNodeAncestor(__thisNode__, AUX_lsfvmd.DSLClassMember_736de11a, false, false));
     SPropertyOperations.assign(result, MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db3L, "caption"), SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, 0x72b255a044805055L, "caption")));
     return result;
   }
@@ -83,5 +85,10 @@ public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescrip
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_lsfvmd {
+    /*package*/ static final SConcept PlaceholderModifier_738d46ad = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PlaceholderModifier");
+    /*package*/ static final SInterfaceConcept DSLClassMember_736de11a = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLClassMember");
   }
 }

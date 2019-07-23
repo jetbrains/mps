@@ -4,7 +4,6 @@ package jetbrains.mps.execution.commands.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CommandPartLengthOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x166dfef127134569L, "jetbrains.mps.execution.commands.structure.CommandPartLengthOperation");
+  private static final SAbstractConcept CONCEPT = AUX_5l4b02.CommandPartLengthOperation_814a8e3d;
 
   public static final SMethod<Boolean> isDotExpressionLegalAsStatement_idi26OiY_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDotExpressionLegalAsStatement").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i26OiY_").build();
   public static final SMethod<Boolean> lvalue_id1653mnvAgvW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvW").build();
@@ -82,5 +83,9 @@ public final class CommandPartLengthOperation__BehaviorDescriptor extends BaseBH
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_5l4b02 {
+    /*package*/ static final SConcept CommandPartLengthOperation_814a8e3d = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x166dfef127134569L, "jetbrains.mps.execution.commands.structure.CommandPartLengthOperation");
   }
 }

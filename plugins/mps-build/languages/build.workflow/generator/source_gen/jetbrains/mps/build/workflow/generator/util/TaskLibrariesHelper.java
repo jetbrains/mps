@@ -21,6 +21,7 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TaskLibrariesHelper {
   private SNode project;
@@ -60,7 +61,7 @@ public class TaskLibrariesHelper {
           SNodeAccessUtil.setReferenceTarget(n, ref.getLink(), map.get(targetNode));
         } else {
           SNode containingRoot = targetNode.getContainingRoot();
-          if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(containingRoot, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, "jetbrains.mps.build.workflow.structure.BwfTaskLibrary"))) {
+          if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(containingRoot, AUX_s6kfxd.BwfTaskLibrary_91f5a8b5)) {
             genContext.showErrorMessage(n, "task library is not imported");
           }
         }
@@ -70,5 +71,9 @@ public class TaskLibrariesHelper {
     for (int i = parts.size() - 1; i >= 0; i--) {
       ListSequence.fromList(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x2670d5989d5ace60L, "parts"))).insertElement(0, parts.get(i));
     }
+  }
+
+  private static final class AUX_s6kfxd {
+    /*package*/ static final SConcept BwfTaskLibrary_91f5a8b5 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, "jetbrains.mps.build.workflow.structure.BwfTaskLibrary");
   }
 }

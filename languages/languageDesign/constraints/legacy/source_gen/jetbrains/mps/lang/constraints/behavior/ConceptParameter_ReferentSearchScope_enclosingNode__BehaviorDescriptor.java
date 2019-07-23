@@ -4,7 +4,6 @@ package jetbrains.mps.lang.constraints.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -19,9 +18,11 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConceptParameter_ReferentSearchScope_enclosingNode__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b81d7448bL, "jetbrains.mps.lang.constraints.structure.ConceptParameter_ReferentSearchScope_enclosingNode");
+  private static final SAbstractConcept CONCEPT = AUX_tl7j89.ConceptParameter_ReferentSearchScope_enclosingNode_a184666f;
 
   public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("27DJnJtIQ9C").build();
 
@@ -84,5 +85,9 @@ public final class ConceptParameter_ReferentSearchScope_enclosingNode__BehaviorD
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_tl7j89 {
+    /*package*/ static final SConcept ConceptParameter_ReferentSearchScope_enclosingNode_a184666f = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b81d7448bL, "jetbrains.mps.lang.constraints.structure.ConceptParameter_ReferentSearchScope_enclosingNode");
   }
 }

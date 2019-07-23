@@ -6,10 +6,10 @@ import jetbrains.mps.make.resources.IPropertiesPersistence;
 import jetbrains.mps.internal.make.runtime.util.FqName;
 
 public interface IFacet {
-  IFacet.Name getName();
-  Iterable<IFacet.Name> extended();
-  Iterable<IFacet.Name> required();
-  Iterable<IFacet.Name> optional();
+  Name getName();
+  Iterable<Name> extended();
+  Iterable<Name> required();
+  Iterable<Name> optional();
   Iterable<ITarget> targets();
   IPropertiesPersistence propertiesPersistence();
   class Name extends FqName {
@@ -25,19 +25,19 @@ public interface IFacet {
       return null;
     }
     @Override
-    public Iterable<IFacet.Name> optional() {
+    public Iterable<Name> optional() {
       return null;
     }
     @Override
-    public Iterable<IFacet.Name> required() {
+    public Iterable<Name> required() {
       return null;
     }
     @Override
-    public Iterable<IFacet.Name> extended() {
+    public Iterable<Name> extended() {
       return null;
     }
     @Override
-    public IFacet.Name getName() {
+    public Name getName() {
       return null;
     }
     @Override

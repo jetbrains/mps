@@ -19,9 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.ModelImportHelper;
 import jetbrains.mps.util.Callback;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
@@ -31,6 +31,7 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddModelImportByRoot_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -92,7 +93,7 @@ public class AddModelImportByRoot_Action extends BaseAction {
     SNode contextNode = null;
     if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) != null) {
       contextNode = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getCommandContext().getContextNode();
-      unresolvedReference.value = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, "jetbrains.mps.baseLanguage.structure.UnresolvedNameReference"));
+      unresolvedReference.value = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("node")), AUX_3mx29z.UnresolvedNameReference_9df4f562);
       errorLabel.value = AddModelImportByRoot_Action.this.getErrorCell(_params);
       NodeSubstituteChooser nodeSubstituteChooser = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getNodeSubstituteChooser();
       if (check_a68f4j_a4a5a0(nodeSubstituteChooser)) {
@@ -187,5 +188,9 @@ public class AddModelImportByRoot_Action extends BaseAction {
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_3mx29z {
+    /*package*/ static final SConcept UnresolvedNameReference_9df4f562 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, "jetbrains.mps.baseLanguage.structure.UnresolvedNameReference");
   }
 }

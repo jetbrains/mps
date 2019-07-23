@@ -9,17 +9,19 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MethodCallArguments_ListSeparator extends KeyMapImpl {
   public MethodCallArguments_ListSeparator() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new MethodCallArguments_ListSeparator.MethodCallArguments_ListSeparator_Action0();
+    action = new MethodCallArguments_ListSeparator_Action0();
     this.putAction("any", ",", action);
   }
   public static class MethodCallArguments_ListSeparator_Action0 extends KeyMapActionImpl {
@@ -39,7 +41,7 @@ public class MethodCallArguments_ListSeparator extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_cpqyq7.Expression_4199e28d))) {
         return false;
       }
       return true;
@@ -53,12 +55,17 @@ public class MethodCallArguments_ListSeparator extends KeyMapImpl {
       if (argument == null) {
         throw new IllegalStateException(node + "");
       }
-      SNode newArgument = SNodeFactoryOperations.insertNewNextSiblingChild(argument, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
-      MethodResolveUtil.replaceFromEditor(SNodeOperations.cast(SNodeOperations.getParent(argument), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall")));
+      SNode newArgument = SNodeFactoryOperations.insertNewNextSiblingChild(argument, AUX_cpqyq7.Expression_4199e28d);
+      MethodResolveUtil.replaceFromEditor(SNodeOperations.cast(SNodeOperations.getParent(argument), AUX_cpqyq7.IMethodCall_ee2c776b));
       SelectionUtil.selectNode(editorContext, newArgument);
     }
     public String getKeyStroke() {
       return " ,";
     }
+  }
+
+  private static final class AUX_cpqyq7 {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

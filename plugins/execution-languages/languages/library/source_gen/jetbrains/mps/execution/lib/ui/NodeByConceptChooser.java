@@ -8,7 +8,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.GlobalScope;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
@@ -18,6 +17,8 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeByConceptChooser extends NodeChooser {
   @NotNull
@@ -27,7 +28,7 @@ public class NodeByConceptChooser extends NodeChooser {
   private final SearchScope myScope;
 
   public NodeByConceptChooser() {
-    this(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), null);
+    this(AUX_a07biu.BaseConcept_bc2351f, null);
   }
 
   public NodeByConceptChooser(SAbstractConcept conceptFqName, @Nullable _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> acceptor) {
@@ -66,5 +67,9 @@ public class NodeByConceptChooser extends NodeChooser {
         }
       }).toListSequence();
     }
+  }
+
+  private static final class AUX_a07biu {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

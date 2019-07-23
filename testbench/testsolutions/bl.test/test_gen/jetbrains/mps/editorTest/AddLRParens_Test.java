@@ -21,7 +21,7 @@ public class AddLRParens_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddLRParens() throws Throwable {
-    new AddLRParens_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

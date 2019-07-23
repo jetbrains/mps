@@ -21,7 +21,7 @@ public class BackspaceSpaceBetweenWordAndWrapperFromWrapper_Test extends BaseTra
 
   @Test
   public void test_BackspaceSpaceBetweenWordAndWrapperFromWrapper() throws Throwable {
-    new BackspaceSpaceBetweenWordAndWrapperFromWrapper_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

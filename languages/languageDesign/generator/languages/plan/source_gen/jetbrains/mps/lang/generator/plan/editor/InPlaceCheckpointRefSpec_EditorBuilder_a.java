@@ -19,6 +19,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class InPlaceCheckpointRefSpec_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -42,8 +43,8 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
       public String getText() {
-        String cpName = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(myNode, MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint")), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec")), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
-        String planName = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(myNode, MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint"))), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        String cpName = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(myNode, MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint")), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec")), AUX_h76poq.InPlaceCheckpointSpec_e4cad03b), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        String planName = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(myNode, MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint"))), AUX_h76poq.Plan_4c7f418c), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
         return String.format("%s (of %s)", cpName, planName);
       }
       public void setText(String s) {
@@ -61,5 +62,10 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+
+  private static final class AUX_h76poq {
+    /*package*/ static final SConcept InPlaceCheckpointSpec_e4cad03b = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec");
+    /*package*/ static final SConcept Plan_4c7f418c = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan");
   }
 }

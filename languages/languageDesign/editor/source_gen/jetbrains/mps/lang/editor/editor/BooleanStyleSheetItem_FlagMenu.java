@@ -35,6 +35,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -60,8 +61,8 @@ public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new BooleanStyleSheetItem_FlagMenu.TMP_Property_k8kzk0_a0());
-      result.add(new BooleanStyleSheetItem_FlagMenu.TMP_Action_k8kzk0_b0());
+      result.add(new TMP_Property_k8kzk0_a0());
+      result.add(new TMP_Action_k8kzk0_b0());
     }
     return result;
   }
@@ -92,7 +93,7 @@ public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
   private class TMP_Action_k8kzk0_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      BooleanStyleSheetItem_FlagMenu.TMP_Action_k8kzk0_b0.Item item = new BooleanStyleSheetItem_FlagMenu.TMP_Action_k8kzk0_b0.Item(context);
+      TMP_Action_k8kzk0_b0.Item item = new TMP_Action_k8kzk0_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -127,7 +128,7 @@ public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x11cd79149a9L, "query"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd78e1636L, "jetbrains.mps.lang.editor.structure.QueryFunction_Boolean"), null));
+        SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x11cd79149a9L, "query"), SNodeFactoryOperations.createNewNode(AUX_k8kzk0.QueryFunction_Boolean_dde49592, null));
       }
 
 
@@ -148,5 +149,9 @@ public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_k8kzk0 {
+    /*package*/ static final SConcept QueryFunction_Boolean_dde49592 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd78e1636L, "jetbrains.mps.lang.editor.structure.QueryFunction_Boolean");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.collections.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,15 +15,17 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator");
+  private static final SAbstractConcept CONCEPT = AUX_n5nav2.CustomContainerCreator_b9a6a5b7;
 
   public static final SMethod<SNode> createType_idi0I0ppH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0I0ppH").build();
   public static final SMethod<String> getEntityName_id6LXz$urfgAS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getEntityName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6LXz$urfgAS").build();
@@ -39,7 +40,7 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
     //  workaround an SModel's dumbness 
     ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll(new IVisitor<SNode>() {
       public void visit(SNode chld) {
-        if (SNodeOperations.isInstanceOf(chld, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"))) {
+        if (SNodeOperations.isInstanceOf(chld, AUX_n5nav2.TypeVariableReference_3815fc3)) {
           SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType"))));
         }
       }
@@ -96,5 +97,10 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_n5nav2 {
+    /*package*/ static final SConcept CustomContainerCreator_b9a6a5b7 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator");
+    /*package*/ static final SConcept TypeVariableReference_3815fc3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
   }
 }

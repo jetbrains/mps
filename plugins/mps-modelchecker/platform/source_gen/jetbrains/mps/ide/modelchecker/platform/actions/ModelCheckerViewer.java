@@ -82,7 +82,7 @@ public class ModelCheckerViewer extends JPanel {
         ModelCheckerViewer.this.close();
       }
     }, ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB));
-    myUsagesView.setCustomNodeRepresentator(new ModelCheckerViewer.MyNodeRepresentator());
+    myUsagesView.setCustomNodeRepresentator(new MyNodeRepresentator());
     add(myUsagesView.getComponent(), BorderLayout.CENTER);
 
     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));

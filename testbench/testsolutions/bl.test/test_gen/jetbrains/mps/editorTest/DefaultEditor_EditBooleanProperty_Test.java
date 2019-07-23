@@ -21,7 +21,7 @@ public class DefaultEditor_EditBooleanProperty_Test extends BaseTransformationTe
 
   @Test
   public void test_DefaultEditor_EditBooleanProperty() throws Throwable {
-    new DefaultEditor_EditBooleanProperty_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

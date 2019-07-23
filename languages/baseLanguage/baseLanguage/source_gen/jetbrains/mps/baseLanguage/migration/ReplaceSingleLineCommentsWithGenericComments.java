@@ -10,10 +10,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
@@ -27,6 +27,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScriptBase {
   public String getCaption() {
@@ -46,9 +47,9 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
       public void visit(SModel model) {
 
         // Remove meaningless empty text comment parts 
-        ListSequence.fromList(SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"))).where(new IWhereFilter<SNode>() {
+        ListSequence.fromList(SModelOperations.nodes(model, AUX_o7ozeo.TextCommentPart_36a4c8f7)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment")) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0d(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text")))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();
+            return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), AUX_o7ozeo.SingleLineComment_36a4c8f4) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0d(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text")))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
@@ -57,13 +58,13 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
         });
 
         final Wrappers._boolean moduleModified = new Wrappers._boolean(false);
-        ListSequence.fromList(SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"))).where(new IWhereFilter<SNode>() {
+        ListSequence.fromList(SModelOperations.nodes(model, AUX_o7ozeo.SingleLineComment_36a4c8f4)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, "jetbrains.mps.baseLanguage.structure.StatementCommentPart"));
+            return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).first(), AUX_o7ozeo.StatementCommentPart_3707c3b2);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode oldComment) {
-            SNode stmt = SNodeOperations.replaceWithAnother(oldComment, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(oldComment, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, "jetbrains.mps.baseLanguage.structure.StatementCommentPart")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, 0x57d533a7af16ff68L, "commentedStatement")));
+            SNode stmt = SNodeOperations.replaceWithAnother(oldComment, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(oldComment, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).first(), AUX_o7ozeo.StatementCommentPart_3707c3b2), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, 0x57d533a7af16ff68L, "commentedStatement")));
             CommentUtil.commentOut(stmt);
             moduleModified.value = true;
           }
@@ -84,7 +85,7 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
           return scope_o7ozeo_a0e_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, "jetbrains.mps.baseLanguage.structure.StatementCommentPart"), false)).select(new ISelector<SNode, Problem>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_o7ozeo.StatementCommentPart_3707c3b2, false)).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
           return ((Problem) new DeprecatedConceptNotMigratedProblem(it));
         }
@@ -100,5 +101,11 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
   }
   public static String trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0d(String str) {
     return (str == null ? null : str.trim());
+  }
+
+  private static final class AUX_o7ozeo {
+    /*package*/ static final SConcept TextCommentPart_36a4c8f7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept SingleLineComment_36a4c8f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept StatementCommentPart_3707c3b2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, "jetbrains.mps.baseLanguage.structure.StatementCommentPart");
   }
 }

@@ -16,6 +16,8 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MappingLabelExtractor {
   /**
@@ -42,7 +44,7 @@ public class MappingLabelExtractor {
           SReference ref = SLinkOperations.getTarget(entry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode")).getReference(MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f6ffL, "nodePtr"));
           inputNodeId = ref.getTargetNodeId();
         } else {
-          inputNodeId = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(entry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node")), MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity"), SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
+          inputNodeId = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(entry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node")), AUX_9wmfan.NodeIdentity_b6a3fabb, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
         }
         // output node shall resolve as it's from the same node as debugNode, it's checkpoint model, after all. 
         if (ListSequence.fromList(SLinkOperations.getChildren(entry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806d5L, "outputNode"))).count() == 1) {
@@ -60,6 +62,11 @@ public class MappingLabelExtractor {
   }
 
   public static SNode findDebugNode(SModel cpModel) {
-    return ListSequence.fromList(SModelOperations.roots(cpModel, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings"))).first();
+    return ListSequence.fromList(SModelOperations.roots(cpModel, AUX_9wmfan.GeneratorDebug_Mappings_e410d2cc)).first();
+  }
+
+  private static final class AUX_9wmfan {
+    /*package*/ static final SInterfaceConcept NodeIdentity_b6a3fabb = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity");
+    /*package*/ static final SConcept GeneratorDebug_Mappings_e410d2cc = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings");
   }
 }

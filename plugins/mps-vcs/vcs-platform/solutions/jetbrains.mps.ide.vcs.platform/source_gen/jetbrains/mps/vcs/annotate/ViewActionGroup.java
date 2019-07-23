@@ -12,7 +12,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
     super("View");
     setPopup(true);
     for (AnnotationAspectSubcolumn subcolumn : Sequence.fromIterable(subcolumns)) {
-      add(new ViewActionGroup.ShowHideSubcolumnAction(subcolumn));
+      add(new ShowHideSubcolumnAction(subcolumn));
     }
     addSeparator();
     add(new ViewAction(annotationColumn, ViewAction.SHORTEN_NAMES));

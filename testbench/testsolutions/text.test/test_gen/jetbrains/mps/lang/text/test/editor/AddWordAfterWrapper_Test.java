@@ -21,7 +21,7 @@ public class AddWordAfterWrapper_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddWordAfterWrapper() throws Throwable {
-    new AddWordAfterWrapper_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

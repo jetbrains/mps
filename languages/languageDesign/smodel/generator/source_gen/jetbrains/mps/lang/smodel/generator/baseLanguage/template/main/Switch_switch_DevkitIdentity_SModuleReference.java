@@ -17,18 +17,19 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_DevkitIdentity_SModuleReference() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_DevkitIdentity_SModuleReference.ReductionRule0());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616983926");
@@ -50,7 +51,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616983927"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616983927"), AUX_yjqism.DevkitPointer_3ae74ac5, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -93,4 +94,8 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
     }
   }
   private static final SNodePointer propertyMacro_yjqism_c0a0c0a0b0c0b0c0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
+
+  private static final class AUX_yjqism {
+    /*package*/ static final SConcept DevkitPointer_3ae74ac5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");
+  }
 }

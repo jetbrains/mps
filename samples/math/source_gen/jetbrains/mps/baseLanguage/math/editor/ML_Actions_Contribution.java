@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -21,6 +20,8 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ML_Actions_Contribution extends SubstituteMenuBase {
   public ML_Actions_Contribution() {
@@ -30,7 +31,7 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ML_Actions_Contribution.SMP_Action_6cdm61_a(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6cdm61_a(), AUX_6cdm61.MatrixConstructor_c63cc751));
     return result;
   }
 
@@ -52,7 +53,7 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      ML_Actions_Contribution.SMP_Action_6cdm61_a.Item item = new ML_Actions_Contribution.SMP_Action_6cdm61_a.Item(_context);
+      SMP_Action_6cdm61_a.Item item = new SMP_Action_6cdm61_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -75,7 +76,7 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor"), context);
+        super(AUX_6cdm61.MatrixConstructor_c63cc751, context);
         _context = context;
       }
 
@@ -86,7 +87,7 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode n = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor"), null);
+        SNode n = SNodeFactoryOperations.createNewNode(AUX_6cdm61.MatrixConstructor_c63cc751, null);
         SPropertyOperations.assign(n, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column"), true);
         return n;
       }
@@ -106,5 +107,9 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
         return "Matrix column constructor";
       }
     }
+  }
+
+  private static final class AUX_6cdm61 {
+    /*package*/ static final SConcept MatrixConstructor_c63cc751 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor");
   }
 }

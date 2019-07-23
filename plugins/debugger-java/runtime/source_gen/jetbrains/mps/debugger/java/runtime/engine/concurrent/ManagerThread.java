@@ -16,7 +16,7 @@ import org.apache.log4j.Level;
 public class ManagerThread {
   private static final Logger LOG = LogManager.getLogger(ManagerThread.class);
   private final BlockingQueue<IManagerCommand> myCommandQueue = new LinkedBlockingQueue<IManagerCommand>();
-  private final ManagerThread.WorkerThread myThread = new ManagerThread.WorkerThread();
+  private final WorkerThread myThread = new WorkerThread();
   private volatile boolean myClosed = false;
   public ManagerThread() {
     myThread.start();
@@ -67,7 +67,7 @@ public class ManagerThread {
     myClosed = true;
   }
   public static boolean isManagerThread() {
-    return Thread.currentThread() instanceof ManagerThread.WorkerThread;
+    return Thread.currentThread() instanceof WorkerThread;
   }
   public static void assertIsMangerThread() {
     assert isManagerThread();

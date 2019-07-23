@@ -21,7 +21,7 @@ public class MakeFieldNonStaticAndHaveReferencesUpdated_Test extends BaseTransfo
 
   @Test
   public void test_MakeFieldNonStaticAndHaveReferencesUpdated() throws Throwable {
-    new MakeFieldNonStaticAndHaveReferencesUpdated_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

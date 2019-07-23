@@ -13,12 +13,13 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.openapi.PaletteE
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.scope.ModelPlusImportedScope;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import javax.swing.Icon;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MyMainActionGroup implements PaletteActionGroup {
   private Map<String, List<SNode>> tagToGroupMap = MapSequence.fromMap(new HashMap<String, List<SNode>>());
@@ -30,13 +31,13 @@ public class MyMainActionGroup implements PaletteActionGroup {
 
   public PaletteElement[] getElements() {
     List<PaletteElement> groups = ListSequence.fromList(new ArrayList<PaletteElement>());
-    ModelPlusImportedScope scope = new ModelPlusImportedScope(myDiagramCell.getSNode().getModel(), false, MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock"));
+    ModelPlusImportedScope scope = new ModelPlusImportedScope(myDiagramCell.getSNode().getModel(), false, AUX_d9m1du.MetaBlock_ac76321f);
     for (SNode node : Sequence.fromIterable(scope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock"));
+        return SNodeOperations.isInstanceOf(it, AUX_d9m1du.MetaBlock_ac76321f);
       }
     })) {
-      String key = SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock")), MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x206c20835c7e9707L, "path"));
+      String key = SPropertyOperations.getString(SNodeOperations.cast(node, AUX_d9m1du.MetaBlock_ac76321f), MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x206c20835c7e9707L, "path"));
       if (!(MapSequence.fromMap(tagToGroupMap).containsKey(key))) {
         MapSequence.fromMap(tagToGroupMap).put(key, ListSequence.fromList(new ArrayList<SNode>()));
       }
@@ -56,5 +57,9 @@ public class MyMainActionGroup implements PaletteActionGroup {
   }
   public String getText() {
     return "";
+  }
+
+  private static final class AUX_d9m1du {
+    /*package*/ static final SConcept MetaBlock_ac76321f = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock");
   }
 }

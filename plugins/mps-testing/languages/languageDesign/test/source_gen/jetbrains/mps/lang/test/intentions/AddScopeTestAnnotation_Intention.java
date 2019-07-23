@@ -12,11 +12,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.test.behavior.ScopesTest__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddScopeTestAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -43,7 +44,7 @@ public final class AddScopeTestAnnotation_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase")), node) && (boolean) ScopesTest__BehaviorDescriptor.isApplicable_id4IvydoGviup.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest")), node);
+    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(AUX_1sv180.NodesTestCase_fd5a0bf4), node) && (boolean) ScopesTest__BehaviorDescriptor.isApplicable_id4IvydoGviup.invoke(SNodeOperations.asSConcept(AUX_1sv180.ScopesTest_1ed83fd8), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -51,7 +52,7 @@ public final class AddScopeTestAnnotation_Intention extends AbstractIntentionDes
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddScopeTestAnnotation_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -65,9 +66,9 @@ public final class AddScopeTestAnnotation_Intention extends AbstractIntentionDes
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newAnnotation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest"));
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest")), newAnnotation);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_1sv180.ScopesTest_1ed83fd8), newAnnotation);
 
-      if ((boolean) ScopesTest__BehaviorDescriptor.isSimple_id4IvydoGvpbr.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest")), node)) {
+      if ((boolean) ScopesTest__BehaviorDescriptor.isSimple_id4IvydoGvpbr.invoke(SNodeOperations.asSConcept(AUX_1sv180.ScopesTest_1ed83fd8), node)) {
         SLinkOperations.setTarget(newAnnotation, MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference"), ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(newAnnotation).getTargetNode());
         Scope scope = ModelConstraints.getScope(ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(newAnnotation));
 
@@ -84,5 +85,10 @@ public final class AddScopeTestAnnotation_Intention extends AbstractIntentionDes
     public IntentionDescriptor getDescriptor() {
       return AddScopeTestAnnotation_Intention.this;
     }
+  }
+
+  private static final class AUX_1sv180 {
+    /*package*/ static final SConcept ScopesTest_1ed83fd8 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
+    /*package*/ static final SConcept NodesTestCase_fd5a0bf4 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

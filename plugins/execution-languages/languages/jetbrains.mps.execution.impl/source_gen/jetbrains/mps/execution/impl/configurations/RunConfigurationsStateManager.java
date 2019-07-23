@@ -46,7 +46,7 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
   private static final Logger LOG = LogManager.getLogger(RunConfigurationsStateManager.class);
   private final Project myProject;
   private final PluginLoaderRegistry myRegistry;
-  private final RunConfigurationsStateManager.RunConfigurationsState myState = new RunConfigurationsStateManager.RunConfigurationsState();
+  private final RunConfigurationsState myState = new RunConfigurationsState();
 
   public RunConfigurationsStateManager(Project project, PluginLoaderRegistry registry) {
     myProject = project;

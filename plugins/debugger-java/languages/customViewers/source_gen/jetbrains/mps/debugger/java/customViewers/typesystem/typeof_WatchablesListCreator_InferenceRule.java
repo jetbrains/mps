@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class typeof_WatchablesListCreator_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_WatchablesListCreator_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_WatchablesListCreator_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb2L, "jetbrains.mps.debugger.java.customViewers.structure.WatchablesListCreator");
+    return AUX_e5m9au.WatchablesListCreator_280c80ef;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,7 +35,12 @@ public class typeof_WatchablesListCreator_InferenceRule extends AbstractInferenc
   }
   private static SNode createWatchableListType_e5m9au_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb3L, "jetbrains.mps.debugger.java.customViewers.structure.WatchableListType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_e5m9au.WatchableListType_280c80f0, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_e5m9au {
+    /*package*/ static final SConcept WatchablesListCreator_280c80ef = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb2L, "jetbrains.mps.debugger.java.customViewers.structure.WatchablesListCreator");
+    /*package*/ static final SConcept WatchableListType_280c80f0 = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb3L, "jetbrains.mps.debugger.java.customViewers.structure.WatchableListType");
   }
 }

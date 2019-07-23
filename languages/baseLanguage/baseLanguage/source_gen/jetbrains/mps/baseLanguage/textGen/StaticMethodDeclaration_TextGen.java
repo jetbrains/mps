@@ -6,8 +6,8 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -15,6 +15,8 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.traceable.behavior.ScopeConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class StaticMethodDeclaration_TextGen extends TextGenDescriptorBase {
   @Override
@@ -22,7 +24,7 @@ public class StaticMethodDeclaration_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
     tgs.createScopeInfo();
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), AUX_su9i2f.Interface_bca2069))) {
       BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
       BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), ctx);
       if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized"))) {
@@ -87,8 +89,14 @@ public class StaticMethodDeclaration_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
     }
     if (tgs.needPositions()) {
-      tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept"))));
-      tgs.fillScopeInfo(ScopeConcept__BehaviorDescriptor.getScopeVariables_id4pl5GY7LKmA.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a2L, "jetbrains.mps.lang.traceable.structure.ScopeConcept"))));
+      tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), AUX_su9i2f.TraceableConcept_228d6872)));
+      tgs.fillScopeInfo(ScopeConcept__BehaviorDescriptor.getScopeVariables_id4pl5GY7LKmA.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), AUX_su9i2f.ScopeConcept_228d6871)));
     }
+  }
+
+  private static final class AUX_su9i2f {
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SInterfaceConcept TraceableConcept_228d6872 = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept");
+    /*package*/ static final SInterfaceConcept ScopeConcept_228d6871 = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a2L, "jetbrains.mps.lang.traceable.structure.ScopeConcept");
   }
 }

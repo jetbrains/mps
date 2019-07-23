@@ -24,7 +24,7 @@ public class CompleteNotCamelCaseFromMiddle_Test extends BaseTransformationTest 
 
   @Test
   public void test_CompleteNotCamelCaseFromMiddle() throws Throwable {
-    new CompleteNotCamelCaseFromMiddle_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

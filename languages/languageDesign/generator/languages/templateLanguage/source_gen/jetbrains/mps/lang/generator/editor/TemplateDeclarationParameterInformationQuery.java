@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TemplateDeclarationParameterInformationQuery implements ParametersInformation<SNode> {
   public TemplateDeclarationParameterInformationQuery() {
@@ -33,7 +34,7 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), true)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, AUX_r8vx8y.Expression_4199e28d, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getParent(it) == templateCall && Objects.equals(SNodeOperations.getContainingLink(it), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"));
       }
@@ -66,5 +67,9 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
       styledText.setBold(false);
     }
     styledText.append(")");
+  }
+
+  private static final class AUX_r8vx8y {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

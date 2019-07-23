@@ -71,7 +71,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AssertStatement_EditorBuilder_a.conditionSingleRoleHandler_avk0kx_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed44ceL, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_avk0kx_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed44ceL, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_avk0kx_b0 extends SingleRoleCellProvider {
@@ -139,7 +139,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new AssertStatement_EditorBuilder_a.messageSingleRoleHandler_avk0kx_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message"), getEditorContext());
+    SingleRoleCellProvider provider = new messageSingleRoleHandler_avk0kx_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message"), getEditorContext());
     return provider.createCell();
   }
   private static class messageSingleRoleHandler_avk0kx_b2a extends SingleRoleCellProvider {

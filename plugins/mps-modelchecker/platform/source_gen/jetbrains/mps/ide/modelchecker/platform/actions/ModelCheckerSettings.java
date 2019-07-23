@@ -22,7 +22,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 @State(name = "ModelCheckerSettings", storages = @Storage(value = "modelCheckerSettings.xml")
 )
 public class ModelCheckerSettings implements PersistentStateComponent<ModelCheckerSettings.MyState>, ApplicationComponent {
-  private ModelCheckerSettings.MyState myState = new ModelCheckerSettings.MyState();
+  private MyState myState = new MyState();
 
   public ModelCheckerSettings() {
   }
@@ -40,11 +40,11 @@ public class ModelCheckerSettings implements PersistentStateComponent<ModelCheck
   public void disposeComponent() {
   }
   @Override
-  public ModelCheckerSettings.MyState getState() {
+  public MyState getState() {
     return myState;
   }
   @Override
-  public void loadState(ModelCheckerSettings.MyState state) {
+  public void loadState(MyState state) {
     myState = state;
   }
   @Nullable
@@ -78,10 +78,10 @@ public class ModelCheckerSettings implements PersistentStateComponent<ModelCheck
     return result;
   }
 
-  public ModelCheckerSettings.CheckingLevel getCheckingLevel() {
+  public CheckingLevel getCheckingLevel() {
     return myState.myCheckingLevel;
   }
-  public void setCheckingLevel(ModelCheckerSettings.CheckingLevel checkingLevel) {
+  public void setCheckingLevel(CheckingLevel checkingLevel) {
     myState.myCheckingLevel = checkingLevel;
   }
   public boolean isIncludeAdditionalChecks() {
@@ -104,7 +104,7 @@ public class ModelCheckerSettings implements PersistentStateComponent<ModelCheck
   }
 
   public static class MyState {
-    public ModelCheckerSettings.CheckingLevel myCheckingLevel = ModelCheckerSettings.CheckingLevel.TYPESYSTEM;
+    public CheckingLevel myCheckingLevel = CheckingLevel.TYPESYSTEM;
     public boolean myIncludeAdditionalChecks = true;
     public boolean myCheckBeforeCommit = true;
     public boolean myCheckStubs = false;
@@ -135,7 +135,7 @@ public class ModelCheckerSettings implements PersistentStateComponent<ModelCheck
     public String getLongDescription() {
       StringBuilder sb = new StringBuilder("Checks that:\n");
       for (int i = 0; i <= this.ordinal(); i++) {
-        for (String s : ModelCheckerSettings.CheckingLevel.values()[i].myChecks) {
+        for (String s : CheckingLevel.values()[i].myChecks) {
           sb.append("-").append(s).append("\n");
         }
       }

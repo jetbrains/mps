@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -49,6 +49,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BreakStatement_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -74,7 +75,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_n2nn3v.BreakStatement_aab71ba2)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -90,7 +91,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new BreakStatement_TransformationMenu.TMP_Group_n2nn3v_a1());
+      result.add(new TMP_Group_n2nn3v_a1());
     }
     return result;
   }
@@ -99,7 +100,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       if ((SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference")) == null)) {
-        boolean loopsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"), false)).where(new IWhereFilter<SNode>() {
+        boolean loopsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), AUX_n2nn3v.AbstractLoopStatement_bb2741d5, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel")) != null);
           }
@@ -107,7 +108,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
         if (loopsWithLabels) {
           return true;
         }
-        boolean switchStatementsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"), false)).where(new IWhereFilter<SNode>() {
+        boolean switchStatementsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), AUX_n2nn3v.SwitchStatement_11e52181, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel")) != null);
           }
@@ -130,21 +131,21 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new BreakStatement_TransformationMenu.TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b(), AUX_n2nn3v.LoopLabel_d0e05d5e));
     }
     private class TMP_Param_n2nn3v_a0b extends ParameterizedMenuPart<SNode, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-        return new BreakStatement_TransformationMenu.TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b.TMP_Action_n2nn3v_a0a1(parameter).createItems(context);
+        return new TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b.TMP_Action_n2nn3v_a0a1(parameter).createItems(context);
       }
 
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
         List<SNode> labels = new ArrayList<SNode>();
-        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"), false)).translate(new ITranslator2<SNode, SNode>() {
+        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), AUX_n2nn3v.AbstractLoopStatement_bb2741d5, false)).translate(new ITranslator2<SNode, SNode>() {
           public Iterable<SNode> translate(final SNode it) {
             return new Iterable<SNode>() {
               public Iterator<SNode> iterator() {
@@ -186,7 +187,7 @@ __switch__:
             };
           }
         }));
-        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"), false)).translate(new ITranslator2<SNode, SNode>() {
+        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), AUX_n2nn3v.SwitchStatement_11e52181, false)).translate(new ITranslator2<SNode, SNode>() {
           public Iterable<SNode> translate(final SNode it) {
             return new Iterable<SNode>() {
               public Iterator<SNode> iterator() {
@@ -249,7 +250,7 @@ __switch__:
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          BreakStatement_TransformationMenu.TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b.TMP_Action_n2nn3v_a0a1.Item item = new BreakStatement_TransformationMenu.TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b.TMP_Action_n2nn3v_a0a1.Item(context);
+          TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b.TMP_Action_n2nn3v_a0a1.Item item = new TMP_Group_n2nn3v_a1.TMP_Param_n2nn3v_a0b.TMP_Action_n2nn3v_a0a1.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -293,7 +294,7 @@ __switch__:
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
+            return AUX_n2nn3v.LoopLabel_d0e05d5e;
           }
           @Override
           public String getShortDescriptionText(@NotNull String pattern) {
@@ -308,7 +309,7 @@ __switch__:
 
           public void customize(String pattern, EditorMenuItemStyle style) {
             EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-            SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
+            SAbstractConcept outputConcept = AUX_n2nn3v.LoopLabel_d0e05d5e;
             EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
             for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
               customizer.customize(style, compositeContext);
@@ -318,5 +319,12 @@ __switch__:
 
       }
     }
+  }
+
+  private static final class AUX_n2nn3v {
+    /*package*/ static final SConcept BreakStatement_aab71ba2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
+    /*package*/ static final SConcept AbstractLoopStatement_bb2741d5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
+    /*package*/ static final SConcept SwitchStatement_11e52181 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
+    /*package*/ static final SConcept LoopLabel_d0e05d5e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
   }
 }

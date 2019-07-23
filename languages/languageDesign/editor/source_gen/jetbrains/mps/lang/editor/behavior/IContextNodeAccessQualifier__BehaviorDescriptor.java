@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class IContextNodeAccessQualifier__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a829fc5694f1ebcL, "jetbrains.mps.lang.editor.structure.IContextNodeAccessQualifier");
+  private static final SAbstractConcept CONCEPT = AUX_k14t3j.IContextNodeAccessQualifier_a2733030;
 
   public static final SMethod<Boolean> useNodeGetter_id6E2BWlDjMQu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useNodeGetter").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6E2BWlDjMQu").build();
 
@@ -76,5 +77,9 @@ public final class IContextNodeAccessQualifier__BehaviorDescriptor extends BaseB
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_k14t3j {
+    /*package*/ static final SInterfaceConcept IContextNodeAccessQualifier_a2733030 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a829fc5694f1ebcL, "jetbrains.mps.lang.editor.structure.IContextNodeAccessQualifier");
   }
 }

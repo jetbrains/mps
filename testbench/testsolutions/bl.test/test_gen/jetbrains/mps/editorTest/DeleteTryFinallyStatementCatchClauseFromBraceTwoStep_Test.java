@@ -26,7 +26,7 @@ public class DeleteTryFinallyStatementCatchClauseFromBraceTwoStep_Test extends B
 
   @Test
   public void test_DeleteTryFinallyStatementCatchClauseFromBraceTwoStep() throws Throwable {
-    new DeleteTryFinallyStatementCatchClauseFromBraceTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

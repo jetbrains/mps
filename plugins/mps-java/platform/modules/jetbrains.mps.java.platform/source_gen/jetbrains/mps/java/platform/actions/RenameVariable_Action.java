@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.featureStatistics.FeatureUsageTracker;
@@ -25,9 +24,11 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.ide.platform.refactoring.RenameDialog;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RenameVariable_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -56,7 +57,7 @@ public class RenameVariable_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_aruvq5.VariableReference_24d60dac))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("node", node);
@@ -101,5 +102,9 @@ public class RenameVariable_Action extends BaseAction {
         SPropertyOperations.assign(result._0(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), newName);
       }
     });
+  }
+
+  private static final class AUX_aruvq5 {
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

@@ -7,11 +7,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.selection.SelectUpUtil;
 import java.util.function.BooleanSupplier;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomSelectAll {
 
@@ -23,7 +24,7 @@ public class CustomSelectAll {
       public void execute_internal(final EditorContext editorContext, SNode node) {
         SelectUpUtil.executeWhile(editorContext, new BooleanSupplier() {
           public boolean getAsBoolean() {
-            return !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x75a0f7b242cdb65bL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableCustomizedContainer")));
+            return !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(AUX_iogfu.SelectableCustomizedContainer_b5c67f89));
           }
         });
       }
@@ -71,5 +72,9 @@ public class CustomSelectAll {
     if (Objects.equals(actionType, CellActionType.SELECT_ALL)) {
       editorCell.setAction(actionType, createAction_SELECT_ALL(node));
     }
+  }
+
+  private static final class AUX_iogfu {
+    /*package*/ static final SConcept SelectableCustomizedContainer_b5c67f89 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x75a0f7b242cdb65bL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableCustomizedContainer");
   }
 }

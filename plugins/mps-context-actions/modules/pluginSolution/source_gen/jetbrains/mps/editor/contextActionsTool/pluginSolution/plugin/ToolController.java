@@ -39,7 +39,7 @@ public class ToolController implements ItemExecutor {
       checkActiveEditorChanged();
     }
   });
-  private final ToolController.ProjectSelectionListener mySelectionListener = new ToolController.ProjectSelectionListener();
+  private final ProjectSelectionListener mySelectionListener = new ProjectSelectionListener();
 
   public ToolController(IProject project, ToolComponent toolComponent, SelectionMenuProvider menuProvider) {
     myProject = project;

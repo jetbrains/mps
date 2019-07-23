@@ -26,13 +26,14 @@ import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPar
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new TransformationLocation_SubstituteMenu.SMP_Group_fvfxl9_a());
+    result.add(new SMP_Group_fvfxl9_a());
     return result;
   }
 
@@ -74,7 +75,7 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new TransformationLocation_SubstituteMenu.SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_a0(), new TransformationLocation_SubstituteMenu.SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_b0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_a0(), new SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_b0());
     }
     public class SMP_Group_fvfxl9_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -95,11 +96,11 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new TransformationLocation_SubstituteMenu.SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_a0.SMP_Concepts_fvfxl9_a0a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation")));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_a0.SMP_Concepts_fvfxl9_a0a(), AUX_fvfxl9.TransformationLocation_13eeb66));
       }
       public class SMP_Concepts_fvfxl9_a0a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(SubstituteMenuContext _context) {
-          return Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation"), _context.getParentNode(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations"), _context.getCurrentTargetNode())).toListSequence();
+          return Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(AUX_fvfxl9.TransformationLocation_13eeb66, _context.getParentNode(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations"), _context.getCurrentTargetNode())).toListSequence();
         }
 
         @NotNull
@@ -150,11 +151,11 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new TransformationLocation_SubstituteMenu.SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_b0.SMP_Subconcepts_fvfxl9_a1a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_fvfxl9_a.SMP_Group_fvfxl9_b0.SMP_Subconcepts_fvfxl9_a1a());
       }
       public class SMP_Subconcepts_fvfxl9_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation"));
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_fvfxl9.TransformationLocation_13eeb66);
         }
         @NotNull
         @Override
@@ -174,5 +175,9 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
         }
       }
     }
+  }
+
+  private static final class AUX_fvfxl9 {
+    /*package*/ static final SConcept TransformationLocation_13eeb66 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation");
   }
 }

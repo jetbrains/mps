@@ -12,18 +12,19 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Mapping_main extends MapConfigBase implements TemplateMappingConfiguration {
   private final Collection<TemplateReductionRule> rules;
   public Mapping_main(@NotNull TemplateModel model) {
     super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273563027"), "main", model, false);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new Mapping_main.ReductionRule0(), new Mapping_main.ReductionRule1(), new Mapping_main.ReductionRule2(), new Mapping_main.ReductionRule3());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3());
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -31,7 +32,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273563032"), MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a8341e10L, "jetbrains.mps.samples.KajaSceneConstruction.structure.BuildWall"), false);
+      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273563032"), AUX_ief6mt.BuildWall_2f0005fa, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -42,7 +43,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273607273"), MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fa55L, "jetbrains.mps.samples.KajaSceneConstruction.structure.DestroyWall"), false);
+      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273607273"), AUX_ief6mt.DestroyWall_30718107, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -53,7 +54,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273612344"), MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3eL, "jetbrains.mps.samples.KajaSceneConstruction.structure.DropMark"), false);
+      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273612344"), AUX_ief6mt.DropMark_3071f567, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -64,7 +65,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614441"), MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a835165fL, "jetbrains.mps.samples.KajaSceneConstruction.structure.PickMark"), false);
+      super(new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273614441"), AUX_ief6mt.PickMark_307e42ad, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -72,5 +73,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       Collection<SNode> tlist1 = new Template_reduce_PickMark().apply(environment, context);
       return tlist1;
     }
+  }
+
+  private static final class AUX_ief6mt {
+    /*package*/ static final SConcept BuildWall_2f0005fa = MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a8341e10L, "jetbrains.mps.samples.KajaSceneConstruction.structure.BuildWall");
+    /*package*/ static final SConcept DestroyWall_30718107 = MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fa55L, "jetbrains.mps.samples.KajaSceneConstruction.structure.DestroyWall");
+    /*package*/ static final SConcept DropMark_3071f567 = MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3eL, "jetbrains.mps.samples.KajaSceneConstruction.structure.DropMark");
+    /*package*/ static final SConcept PickMark_307e42ad = MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a835165fL, "jetbrains.mps.samples.KajaSceneConstruction.structure.PickMark");
   }
 }

@@ -6,8 +6,9 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RemoveUnusedAssignment_QuickFix extends QuickFix_Runtime {
   public RemoveUnusedAssignment_QuickFix() {
@@ -17,19 +18,25 @@ public class RemoveUnusedAssignment_QuickFix extends QuickFix_Runtime {
     return "Remove unused assignment";
   }
   public void execute(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"))) {
-      SNode assignmentExpression = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"));
+    if (SNodeOperations.isInstanceOf(node, AUX_lshh5s.AssignmentExpression_24d60daa)) {
+      SNode assignmentExpression = SNodeOperations.cast(node, AUX_lshh5s.AssignmentExpression_24d60daa);
       SNode lValue = SLinkOperations.getTarget(assignmentExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"));
       SNodeOperations.replaceWithAnother(assignmentExpression, lValue);
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(lValue), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(lValue), AUX_lshh5s.ExpressionStatement_9dbf9b0c)) {
         SNodeOperations.deleteNode(SNodeOperations.getParent(lValue));
       }
     }
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"))) {
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
+    if (SNodeOperations.isInstanceOf(node, AUX_lshh5s.LocalVariableDeclaration_d47683f3)) {
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(node, AUX_lshh5s.LocalVariableDeclaration_d47683f3), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
     }
     if (SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"))) {
       SNodeOperations.deleteNode(node);
     }
+  }
+
+  private static final class AUX_lshh5s {
+    /*package*/ static final SConcept AssignmentExpression_24d60daa = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 }

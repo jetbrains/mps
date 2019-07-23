@@ -23,7 +23,7 @@ public class TestSubstitute_SmartReferenceWithoutExplicitMenu_Test extends BaseT
 
   @Test
   public void test_TestSubstitute_SmartReferenceWithoutExplicitMenu() throws Throwable {
-    new TestSubstitute_SmartReferenceWithoutExplicitMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.typesystem.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,9 +17,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AbstractInequationStatement__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, "jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement");
+  private static final SAbstractConcept CONCEPT = AUX_li5mji.AbstractInequationStatement_29fd49bf;
 
   public static final SMethod<Boolean> isLessThanInequality_id4AS9NA730aB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLessThanInequality").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4AS9NA730aB").build();
 
@@ -30,7 +31,7 @@ public final class AbstractInequationStatement__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static boolean isLessThanInequality_id4AS9NA730aB(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(__thisNode__, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement")) || SNodeOperations.isInstanceOf(__thisNode__, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112b37f1b6eL, "jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement"));
+    return SNodeOperations.isInstanceOf(__thisNode__, AUX_li5mji.CreateLessThanInequationStatement_cc593dbc) || SNodeOperations.isInstanceOf(__thisNode__, AUX_li5mji.CreateStrongLessThanInequationStatement_5353331f);
   }
 
   /*package*/ AbstractInequationStatement__BehaviorDescriptor() {
@@ -77,5 +78,11 @@ public final class AbstractInequationStatement__BehaviorDescriptor extends BaseB
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_li5mji {
+    /*package*/ static final SConcept AbstractInequationStatement_29fd49bf = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, "jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement");
+    /*package*/ static final SConcept CreateStrongLessThanInequationStatement_5353331f = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112b37f1b6eL, "jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement");
+    /*package*/ static final SConcept CreateLessThanInequationStatement_cc593dbc = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
   }
 }

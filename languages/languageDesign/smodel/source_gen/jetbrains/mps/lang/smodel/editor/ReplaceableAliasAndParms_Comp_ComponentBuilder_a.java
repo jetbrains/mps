@@ -41,6 +41,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.editor.runtime.style.CaretPosition;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ReplaceableAliasAndParms_Comp_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -78,14 +79,14 @@ import jetbrains.mps.editor.runtime.style.CaretPosition;
     Style style = new StyleImpl();
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceableAliasAndParms_Comp_ComponentBuilder_a.ReplaceWith_SNodeOperation_cellMenu_n84rmm_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_SNodeOperation_cellMenu_n84rmm_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_SNodeOperation_cellMenu_n84rmm_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_SNodeOperation_cellMenu_n84rmm_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+      return AUX_eln5cx.SNodeOperation_bc9074dc;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -119,7 +120,7 @@ import jetbrains.mps.editor.runtime.style.CaretPosition;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ReplaceableAliasAndParms_Comp_ComponentBuilder_a.parameterListHandler_n84rmm_b1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new parameterListHandler_n84rmm_b1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("RAAPC_refNodeList_parameter");
     editorCell.setSRole(handler.getElementSRole());
@@ -142,7 +143,7 @@ import jetbrains.mps.editor.runtime.style.CaretPosition;
       return MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61b7ea2aL, "jetbrains.mps.lang.smodel.structure.AbstractOperationParameter");
+      return AUX_eln5cx.AbstractOperationParameter_24c04c53;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -212,5 +213,10 @@ import jetbrains.mps.editor.runtime.style.CaretPosition;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_eln5cx {
+    /*package*/ static final SConcept SNodeOperation_bc9074dc = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept AbstractOperationParameter_24c04c53 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61b7ea2aL, "jetbrains.mps.lang.smodel.structure.AbstractOperationParameter");
   }
 }

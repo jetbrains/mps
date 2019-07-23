@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,6 +16,7 @@ import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
@@ -34,9 +34,11 @@ import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property");
+  private static final SAbstractConcept CONCEPT = AUX_49ixrf.Property_f9d70e64;
 
   public static final SMethod<Boolean> isDefaultImplementation_idhEwIIZu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDefaultImplementation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIIZu").build();
   public static final SMethod<Boolean> isCustomImplementation_idhEwIIZC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCustomImplementation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIIZC").build();
@@ -58,27 +60,27 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDefaultImplementation_idhEwIIZu, isCustomImplementation_idhEwIIZC, isCustomSetterOnlyImplementation_id2hzApTi_Lsg, getCustomPropertyImplementation_idhEwIIZM, getCustomSetterStatements_id2hzApTjcJcI, getPropertyNameWithId_idhEwIIZU, getBackingVarName_id1tRxQXfvLw, getGetterMethodName_idhEwIJ02, getSetterMethodName_idhEwIJ0b, getReferenceMethodName_id4qcYKcpgzJ$, getSetterVisibility_idhEwIJ0k, isSetterVisible_id5WTl5xSBxvj, hasSetter_idhEwIJ0S, getSideIcon_id6TtJ6IUjtJX, populateMember_id6r77ob2UW9O, getFqName_idhEwIO9y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setNewChild(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"));
-    SLinkOperations.setTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation"), null));
+    SLinkOperations.setNewChild(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), AUX_49ixrf.PublicVisibility_63d95354);
+    SLinkOperations.setTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation"), SNodeFactoryOperations.createNewNode(AUX_49ixrf.DefaultPropertyImplementation_63948c4f, null));
   }
 
   /*package*/ static boolean isDefaultImplementation_idhEwIIZu(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation"));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.DefaultPropertyImplementation_63948c4f);
   }
   /*package*/ static boolean isCustomImplementation_idhEwIIZC(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation"));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.CustomPropertyImplementation_728b83b6);
   }
   /*package*/ static boolean isCustomSetterOnlyImplementation_id2hzApTi_Lsg(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation"));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.CustomSetterPropertyImplementation_343f1501);
   }
   /*package*/ static SNode getCustomPropertyImplementation_idhEwIIZM(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation"));
+    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.CustomPropertyImplementation_728b83b6);
   }
   /*package*/ static List<SNode> getCustomSetterStatements_id2hzApTjcJcI(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation"))) {
-      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.CustomPropertyImplementation_728b83b6)) {
+      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.CustomPropertyImplementation_728b83b6), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
     } else {
-      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
+      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.CustomSetterPropertyImplementation_343f1501), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
     }
   }
   /*package*/ static String getPropertyNameWithId_idhEwIIZU(@NotNull SNode __thisNode__) {
@@ -99,7 +101,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getSetterVisibility_idhEwIJ0k(@NotNull SNode __thisNode__) {
     SNode visibility = SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"));
     if (((boolean) Property__BehaviorDescriptor.isDefaultImplementation_idhEwIIZu.invoke(__thisNode__))) {
-      SNode setterVisibility = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117e16a7273L, 0x117e16abba2L, "visibility"));
+      SNode setterVisibility = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation")), AUX_49ixrf.DefaultPropertyImplementation_63948c4f), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117e16a7273L, 0x117e16abba2L, "visibility"));
       if ((setterVisibility != null)) {
         visibility = setterVisibility;
       }
@@ -109,12 +111,12 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isSetterVisible_id5WTl5xSBxvj(@NotNull SNode __thisNode__, final SNode contextClassifier, SNode contextNode) {
     SNode setterVisibility = Property__BehaviorDescriptor.getSetterVisibility_idhEwIJ0k.invoke(__thisNode__);
     // public 
-    if (SNodeOperations.isInstanceOf(setterVisibility, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"))) {
+    if (SNodeOperations.isInstanceOf(setterVisibility, AUX_49ixrf.PublicVisibility_63d95354)) {
       return true;
     }
     // private 
-    if (SNodeOperations.isInstanceOf(setterVisibility, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
-      return ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).last() == ListSequence.fromList(SNodeOperations.getNodeAncestors(contextClassifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).last();
+    if (SNodeOperations.isInstanceOf(setterVisibility, AUX_49ixrf.PrivateVisibility_63f5dbd4)) {
+      return ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, AUX_49ixrf.Classifier_4b7e553, true)).last() == ListSequence.fromList(SNodeOperations.getNodeAncestors(contextClassifier, AUX_49ixrf.Classifier_4b7e553, true)).last();
     }
     // default 
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
@@ -123,24 +125,24 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
     // protected 
-    if (SNodeOperations.isInstanceOf(setterVisibility, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility"))) {
-      String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), __thisNode__));
+    if (SNodeOperations.isInstanceOf(setterVisibility, AUX_49ixrf.ProtectedVisibility_64112d59)) {
+      String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(AUX_49ixrf.Classifier_4b7e553), __thisNode__));
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
         return true;
       }
 
       // two cases: 1) from class 2) from dot expression 
-      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)).where(new IWhereFilter<SNode>() {
+      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, AUX_49ixrf.Classifier_4b7e553, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(contextClassifier);
         }
       });
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_49ixrf.DotExpression_97ed08d8))) {
         // 1 
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
       } else {
         // 2 
-        SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")));
+        SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, AUX_49ixrf.DotExpression_97ed08d8));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
         return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -163,11 +165,11 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
     context.exposeMember(__thisNode__, null);
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, AUX_49ixrf.Classifier_4b7e553, false, false);
     if (containingClassifier != null) {
       return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     }
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"));
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, AUX_49ixrf.INamedConcept_8cd7e247);
   }
 
   /*package*/ Property__BehaviorDescriptor() {
@@ -248,8 +250,22 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   }
   private static boolean check_9xvv7i_a0a0h(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SNodeOperations.isInstanceOf(checkedDotOperand, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType"));
+      return SNodeOperations.isInstanceOf(checkedDotOperand, AUX_49ixrf.BooleanType_6530abf6);
     }
     return false;
+  }
+
+  private static final class AUX_49ixrf {
+    /*package*/ static final SConcept Property_f9d70e64 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property");
+    /*package*/ static final SConcept PublicVisibility_63d95354 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept DefaultPropertyImplementation_63948c4f = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation");
+    /*package*/ static final SConcept CustomPropertyImplementation_728b83b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation");
+    /*package*/ static final SConcept CustomSetterPropertyImplementation_343f1501 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept PrivateVisibility_63f5dbd4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ProtectedVisibility_64112d59 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept BooleanType_6530abf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
   }
 }

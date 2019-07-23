@@ -19,10 +19,11 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.analyzers.runtime.framework.GeneratedInstruction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisDirection;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, NullableState>> {
   private SNode myNode;
@@ -32,7 +33,7 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
   public NullableAnalyzerRunner(SNode node, ProgramFactory<NamedAnalyzerId> factory) {
     super(null, null);
     myNode = node;
-    myAnalyzer = new NullableAnalyzerRunner.NullableAnalyzer();
+    myAnalyzer = new NullableAnalyzer();
     myProgram = factory.createProgram(myNode);
     factory.prepareProgram(myProgram, myNode, new NamedAnalyzerId("jetbrains.mps.baseLanguage.dataFlow.Nullable"));
   }
@@ -74,8 +75,8 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
         if (instruction instanceof nullInstruction) {
           nullableState = NullableState.NULL;
         }
-        if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"))) {
-          node = SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
+        if (SNodeOperations.isInstanceOf(node, AUX_4e6y3.VariableReference_24d60dac)) {
+          node = SLinkOperations.getTarget(SNodeOperations.cast(node, AUX_4e6y3.VariableReference_24d60dac), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
         }
         if (node != null) {
           result.put(node, nullableState);
@@ -84,8 +85,8 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
       if (instruction instanceof WriteInstruction) {
         WriteInstruction write = (WriteInstruction) instruction;
         SNode value = (SNode) write.getValue();
-        if (SNodeOperations.isInstanceOf(value, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"))) {
-          value = SLinkOperations.getTarget(SNodeOperations.cast(value, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
+        if (SNodeOperations.isInstanceOf(value, AUX_4e6y3.VariableReference_24d60dac)) {
+          value = SLinkOperations.getTarget(SNodeOperations.cast(value, AUX_4e6y3.VariableReference_24d60dac), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
         }
         NullableState valueState = result.get(value);
         if (valueState == null) {
@@ -107,5 +108,9 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
     public static String getId() {
       return "jetbrains.mps.baseLanguage.dataFlow.Nullable";
     }
+  }
+
+  private static final class AUX_4e6y3 {
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

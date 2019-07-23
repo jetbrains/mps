@@ -17,6 +17,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_GenericLValueExpression_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_GenericLValueExpression_NonTypesystemRule() {
@@ -25,7 +26,7 @@ public class check_GenericLValueExpression_NonTypesystemRule extends AbstractNon
     if (SLinkOperations.getTarget(glv, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression")) == null) {
       return;
     }
-    List<SNode> valueRefs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(glv, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac33aL, "jetbrains.mps.baseLanguage.structure.ValueRef"), false, new SAbstractConcept[]{});
+    List<SNode> valueRefs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(glv, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression")), AUX_66cs6g.ValueRef_e564cec2, false, new SAbstractConcept[]{});
     if (ListSequence.fromList(valueRefs).count() == 0) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
@@ -42,12 +43,17 @@ public class check_GenericLValueExpression_NonTypesystemRule extends AbstractNon
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression");
+    return AUX_66cs6g.GenericLValueExpression_e5647799;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_66cs6g {
+    /*package*/ static final SConcept ValueRef_e564cec2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac33aL, "jetbrains.mps.baseLanguage.structure.ValueRef");
+    /*package*/ static final SConcept GenericLValueExpression_e5647799 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression");
   }
 }

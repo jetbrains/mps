@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_Enum_FromNameOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_Enum_FromNameOperation_InferenceRule() {
@@ -34,7 +35,7 @@ public class typeof_Enum_FromNameOperation_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d67L, "jetbrains.mps.lang.smodel.structure.Enum_FromNameOperation");
+    return AUX_1ijxnw.Enum_FromNameOperation_8ef84a96;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,5 +55,9 @@ public class typeof_Enum_FromNameOperation_InferenceRule extends AbstractInferen
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_1ijxnw {
+    /*package*/ static final SConcept Enum_FromNameOperation_8ef84a96 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d67L, "jetbrains.mps.lang.smodel.structure.Enum_FromNameOperation");
   }
 }

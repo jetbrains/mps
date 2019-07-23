@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -24,9 +24,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SuperMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9d78b55aaL, "jetbrains.mps.baseLanguage.structure.SuperMethodCall");
+  private static final SAbstractConcept CONCEPT = AUX_6qnk3h.SuperMethodCall_5571c318;
 
   public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6WzWPTX2vuB").build();
 
@@ -36,7 +37,7 @@ public final class SuperMethodCall__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    SNode concept = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), __thisNode__);
+    SNode concept = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(AUX_6qnk3h.ClassConcept_e2711824), __thisNode__);
     List<SNode> typeVarRefs = new ArrayList<SNode>();
     for (SNode tvd : SLinkOperations.getChildren(concept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))) {
       ListSequence.fromList(typeVarRefs).addElement(_quotation_createNode_ypylvf_a0a0a2a0(tvd));
@@ -109,5 +110,10 @@ public final class SuperMethodCall__BehaviorDescriptor extends BaseBHDescriptor 
       }
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_6qnk3h {
+    /*package*/ static final SConcept SuperMethodCall_5571c318 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9d78b55aaL, "jetbrains.mps.baseLanguage.structure.SuperMethodCall");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

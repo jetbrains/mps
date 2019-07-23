@@ -4,7 +4,6 @@ package jetbrains.mps.lang.dataFlow.analyzers.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,6 +16,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class AnalyzerMergeFunction__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x58ba0a6689e9c309L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerMergeFunction");
+  private static final SAbstractConcept CONCEPT = AUX_y3r5it.AnalyzerMergeFunction_9e20380e;
 
   public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
   public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
@@ -35,12 +35,12 @@ public final class AnalyzerMergeFunction__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer"), false, false), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType"));
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, AUX_y3r5it.Analyzer_a97ba59e, false, false), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType"));
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1d7ebcL, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerParameterProgram"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1d7ec5L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerMergeParameterInput"));
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, AUX_y3r5it.ConceptFunction_e08795a5);
+    ListSequence.fromList(result).addElement(AUX_y3r5it.AnalyzerParameterProgram_9c37c1f2);
+    ListSequence.fromList(result).addElement(AUX_y3r5it.AnalyzerMergeParameterInput_9c37c210);
     return result;
   }
 
@@ -90,5 +90,13 @@ public final class AnalyzerMergeFunction__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_y3r5it {
+    /*package*/ static final SConcept AnalyzerMergeFunction_9e20380e = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x58ba0a6689e9c309L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerMergeFunction");
+    /*package*/ static final SConcept Analyzer_a97ba59e = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept AnalyzerParameterProgram_9c37c1f2 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1d7ebcL, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerParameterProgram");
+    /*package*/ static final SConcept AnalyzerMergeParameterInput_9c37c210 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1d7ec5L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerMergeParameterInput");
   }
 }

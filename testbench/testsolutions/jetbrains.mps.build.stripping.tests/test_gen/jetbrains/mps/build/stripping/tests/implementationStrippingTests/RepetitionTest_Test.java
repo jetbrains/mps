@@ -31,15 +31,15 @@ public class RepetitionTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck5264300948581808886() throws Throwable {
-    new RepetitionTest_Test.TestBody(this).test_NodeErrorCheck5264300948581808886();
+    new TestBody(this).test_NodeErrorCheck5264300948581808886();
   }
   @Test
   public void test_NodeErrorCheck5264300948581808891() throws Throwable {
-    new RepetitionTest_Test.TestBody(this).test_NodeErrorCheck5264300948581808891();
+    new TestBody(this).test_NodeErrorCheck5264300948581808891();
   }
   @Test
   public void test_ErrorMessagesCheck5264300948581808827() throws Throwable {
-    new RepetitionTest_Test.TestBody(this).test_ErrorMessagesCheck5264300948581808827();
+    new TestBody(this).test_ErrorMessagesCheck5264300948581808827();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

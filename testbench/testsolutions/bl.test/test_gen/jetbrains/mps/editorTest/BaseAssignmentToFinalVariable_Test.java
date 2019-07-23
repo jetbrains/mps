@@ -32,31 +32,31 @@ public class BaseAssignmentToFinalVariable_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeCannotAssignValueToFinalCheck5706606249111788699() throws Throwable {
-    new BaseAssignmentToFinalVariable_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck5706606249111788699();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck5706606249111788699();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck5706606249111798505() throws Throwable {
-    new BaseAssignmentToFinalVariable_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck5706606249111798505();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck5706606249111798505();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck6982528192101427028() throws Throwable {
-    new BaseAssignmentToFinalVariable_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck6982528192101427028();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck6982528192101427028();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck6982528192101427038() throws Throwable {
-    new BaseAssignmentToFinalVariable_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck6982528192101427038();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck6982528192101427038();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck6549739314330314428() throws Throwable {
-    new BaseAssignmentToFinalVariable_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck6549739314330314428();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck6549739314330314428();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedErrorCheck6549739314330060411() throws Throwable {
-    new BaseAssignmentToFinalVariable_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6549739314330060411();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6549739314330060411();
   }
   @Test
   public void test_ErrorMessagesCheck5706606249111739463() throws Throwable {
-    new BaseAssignmentToFinalVariable_Test.TestBody(this).test_ErrorMessagesCheck5706606249111739463();
+    new TestBody(this).test_ErrorMessagesCheck5706606249111739463();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

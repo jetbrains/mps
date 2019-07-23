@@ -9,24 +9,25 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.baseLanguage.behavior.FieldDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class FieldDeclaration_keyMap extends KeyMapImpl {
   public FieldDeclaration_keyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new FieldDeclaration_keyMap.FieldDeclaration_keyMap_Action0();
+    action = new FieldDeclaration_keyMap_Action0();
     this.putAction("alt", "VK_INSERT", action);
     this.putAction("alt", "VK_HELP", action);
-    action = new FieldDeclaration_keyMap.FieldDeclaration_keyMap_Action1();
+    action = new FieldDeclaration_keyMap_Action1();
     this.putAction("alt", "VK_INSERT", action);
     this.putAction("alt", "VK_HELP", action);
   }
@@ -49,7 +50,7 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_bsktda.FieldDeclaration_e2711ac6))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -59,13 +60,13 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode classConcept = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
+      SNode classConcept = SNodeOperations.getNodeAncestor(node, AUX_bsktda.ClassConcept_e2711824, false, false);
       return (classConcept != null) && !((boolean) FieldDeclaration__BehaviorDescriptor.hasGetter_idhEwIcYw.invoke(node, classConcept));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode g;
       g = _quotation_createNode_bsktda_a0b0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"))), node, FieldDeclaration__BehaviorDescriptor.getGetterName_idhEwIcY6.invoke(node));
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(g);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, AUX_bsktda.ClassConcept_e2711824, false, false), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(g);
     }
     public String getKeyStroke() {
       return "alt INSERT";
@@ -121,7 +122,7 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_bsktda.FieldDeclaration_e2711ac6))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -131,13 +132,13 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode classConcept = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
+      SNode classConcept = SNodeOperations.getNodeAncestor(node, AUX_bsktda.ClassConcept_e2711824, false, false);
       return (classConcept != null) && !((boolean) FieldDeclaration__BehaviorDescriptor.hasSetter_idhEwIcZv.invoke(node, classConcept));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode s;
       s = _quotation_createNode_bsktda_a0b0a1(node, FieldDeclaration__BehaviorDescriptor.getSetterName_idhEwIcZl.invoke(node), SNodeOperations.copyNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"))), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(s);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, AUX_bsktda.ClassConcept_e2711824, false, false), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(s);
     }
     public String getKeyStroke() {
       return "alt INSERT";
@@ -187,5 +188,10 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       quotedNode_13.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), quotedNode_9);
       return quotedNode_5;
     }
+  }
+
+  private static final class AUX_bsktda {
+    /*package*/ static final SConcept FieldDeclaration_e2711ac6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

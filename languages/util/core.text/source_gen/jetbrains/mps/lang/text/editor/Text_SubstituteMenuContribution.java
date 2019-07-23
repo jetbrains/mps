@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -20,7 +19,9 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
   public Text_SubstituteMenuContribution() {
@@ -30,7 +31,7 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new Text_SubstituteMenuContribution.SMP_Action_dmpu6l_a(), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L, "jetbrains.mps.lang.core.structure.IPlaceholderContent")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_dmpu6l_a(), AUX_dmpu6l.IPlaceholderContent_2e80d875));
     return result;
   }
 
@@ -52,7 +53,7 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      Text_SubstituteMenuContribution.SMP_Action_dmpu6l_a.Item item = new Text_SubstituteMenuContribution.SMP_Action_dmpu6l_a.Item(_context);
+      SMP_Action_dmpu6l_a.Item item = new SMP_Action_dmpu6l_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -75,7 +76,7 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L, "jetbrains.mps.lang.core.structure.IPlaceholderContent"), context);
+        super(AUX_dmpu6l.IPlaceholderContent_2e80d875, context);
         _context = context;
       }
 
@@ -106,5 +107,9 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
         return "simple text";
       }
     }
+  }
+
+  private static final class AUX_dmpu6l {
+    /*package*/ static final SInterfaceConcept IPlaceholderContent_2e80d875 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L, "jetbrains.mps.lang.core.structure.IPlaceholderContent");
   }
 }

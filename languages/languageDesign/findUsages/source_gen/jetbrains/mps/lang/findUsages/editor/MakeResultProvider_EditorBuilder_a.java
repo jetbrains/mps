@@ -27,6 +27,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class MakeResultProvider_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -72,7 +73,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new MakeResultProvider_EditorBuilder_a.finderListHandler_7d63hk_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new finderListHandler_7d63hk_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_finder");
     editorCell.setSRole(handler.getElementSRole());
@@ -95,7 +96,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
       return MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x585a05e7f40a28d1L, 0x585a05e7f40a28d2L, "finder");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, "jetbrains.mps.lang.findUsages.structure.FinderReference");
+      return AUX_hvew4m.FinderReference_b6d63ac8;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -150,5 +151,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_hvew4m {
+    /*package*/ static final SConcept FinderReference_b6d63ac8 = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, "jetbrains.mps.lang.findUsages.structure.FinderReference");
   }
 }

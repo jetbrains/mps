@@ -36,7 +36,7 @@ public class OneReturnTransformation_Test extends BaseTransformationTest {
 
   @Test
   public void test_oneReturnTransformation() throws Throwable {
-    new OneReturnTransformation_Test.TestBody(this).test_oneReturnTransformation();
+    new TestBody(this).test_oneReturnTransformation();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -15,25 +15,25 @@ import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 
 public class HelpHelper {
-  public static HelpHelper.HelpType getDefaultHelpFor(SModule contextModule, SModel contextModel, SNode node) {
+  public static HelpType getDefaultHelpFor(SModule contextModule, SModel contextModel, SNode node) {
     if (helpForNodeIsAvailable(node)) {
-      return HelpHelper.HelpType.NODE;
+      return HelpType.NODE;
     }
     if (helpForRootIsAvailable(node)) {
-      return HelpHelper.HelpType.ROOT_NODE;
+      return HelpType.ROOT_NODE;
     }
     if (helpForAspectIsAvailable(contextModule, contextModel)) {
-      return HelpHelper.HelpType.ASPECT;
+      return HelpType.ASPECT;
     }
     return null;
   }
   public static void showHelpFor(SModule contextModule, SModel contextModel, SNode node) {
-    HelpHelper.HelpType defaultHelp = getDefaultHelpFor(contextModule, contextModel, node);
-    if (defaultHelp == HelpHelper.HelpType.NODE) {
+    HelpType defaultHelp = getDefaultHelpFor(contextModule, contextModel, node);
+    if (defaultHelp == HelpType.NODE) {
       HelpHelper.showHelpForNode(node);
-    } else if (defaultHelp == HelpHelper.HelpType.ROOT_NODE) {
+    } else if (defaultHelp == HelpType.ROOT_NODE) {
       HelpHelper.showHelpForRoot(node);
-    } else if (defaultHelp == HelpHelper.HelpType.ASPECT) {
+    } else if (defaultHelp == HelpType.ASPECT) {
       HelpHelper.showHelpForAspect(contextModule, contextModel);
     }
   }

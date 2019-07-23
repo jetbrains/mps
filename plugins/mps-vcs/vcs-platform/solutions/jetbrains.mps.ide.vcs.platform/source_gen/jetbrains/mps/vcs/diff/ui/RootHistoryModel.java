@@ -54,10 +54,10 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
   public void run() {
     myLoading = true;
     try {
-      RootHistoryModel.NodeSet ns = new RootHistoryModel.NodeSet(myRoot);
+      NodeSet ns = new NodeSet(myRoot);
       // revision with the last revision we've analyzed content for 
       VcsFileRevision prevRevision = null;
-      RootHistoryModel.ContentRange prevContentRange = null;
+      ContentRange prevContentRange = null;
       // I assume first revision to be CurrentRevision with actual model/file content and myRoot node present 
       for (VcsFileRevision rev : myInitialRevisions) {
         myProcessedRevisions++;
@@ -68,7 +68,7 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
             // FIXME report somehow 
             continue;
           }
-          RootHistoryModel.ContentRange contentRange = buildRanges(ns, lineToContentMap);
+          ContentRange contentRange = buildRanges(ns, lineToContentMap);
           if (prevRevision != null && contentRange.changedAgainst(prevContentRange)) {
             // prevRevision == null when we process the very first revision, aka CurrentRevision. All we need to do then is to record state for further steps. 
             // contentRange might be isEmpty, which indicates node addition/removal. Shall record the revision and go on, just in case the node is back in earlier revisions. 
@@ -95,9 +95,9 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
     myOnUpdate.run();
   }
 
-  private static RootHistoryModel.ContentRange buildRanges(RootHistoryModel.NodeSet ns, List<LineContent> lineToContentMap) {
+  private static ContentRange buildRanges(NodeSet ns, List<LineContent> lineToContentMap) {
     Map<SNodeId, Integer> firstLines = new HashMap<SNodeId, Integer>();
-    RootHistoryModel.ContentRange contentRange = new RootHistoryModel.ContentRange();
+    ContentRange contentRange = new ContentRange();
     int line = 0;
     for (LineContent lc : lineToContentMap) {
       if (lc instanceof NodeLineContent) {
@@ -164,7 +164,7 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
       return myNodes.isEmpty();
     }
 
-    public boolean changedAgainst(RootHistoryModel.ContentRange other) {
+    public boolean changedAgainst(ContentRange other) {
       if (!(myNodes.equals(other.myNodes))) {
         return true;
       }

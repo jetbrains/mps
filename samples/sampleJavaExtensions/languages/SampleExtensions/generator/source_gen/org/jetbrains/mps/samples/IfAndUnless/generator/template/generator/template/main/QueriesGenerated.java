@@ -40,11 +40,11 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("8965727632786101402", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("393299394024635960", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("954830572076057051", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("954830572076057040", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("954830572076057062", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("8965727632786101402", new SNQ(i++));
+    snqMethods.put("393299394024635960", new SNQ(i++));
+    snqMethods.put("954830572076057051", new SNQ(i++));
+    snqMethods.put("954830572076057040", new SNQ(i++));
+    snqMethods.put("954830572076057062", new SNQ(i++));
   }
   @NotNull
   @Override

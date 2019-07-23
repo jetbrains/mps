@@ -12,15 +12,17 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ExtensionPoint_name extends MigrationScriptBase {
   public String getCaption() {
@@ -45,7 +47,7 @@ public class ExtensionPoint_name extends MigrationScriptBase {
       };
       Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) || ExtensionPoint_name.isMovedConcept(SNodeOperations.getConcept(it));
+          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(AUX_3c5dbg.INamedConcept_8cd7e247)) || ExtensionPoint_name.isMovedConcept(SNodeOperations.getConcept(it));
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode node) {
@@ -68,7 +70,7 @@ public class ExtensionPoint_name extends MigrationScriptBase {
         public Iterable<Problem> iterable() {
           return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, "jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")));
+              return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(AUX_3c5dbg.ExtensionPointDeclaration_51fce9e9)) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(AUX_3c5dbg.INamedConcept_8cd7e247));
             }
           }).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
@@ -88,5 +90,10 @@ public class ExtensionPoint_name extends MigrationScriptBase {
   }
   public static boolean isMovedConcept(SAbstractConcept c) {
     return false;
+  }
+
+  private static final class AUX_3c5dbg {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ExtensionPointDeclaration_51fce9e9 = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, "jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration");
   }
 }

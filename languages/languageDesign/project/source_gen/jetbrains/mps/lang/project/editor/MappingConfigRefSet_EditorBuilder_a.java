@@ -25,6 +25,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class MappingConfigRefSet_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -76,7 +77,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new MappingConfigRefSet_EditorBuilder_a.refsListHandler_3pyl5y_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new refsListHandler_3pyl5y_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_refs");
     Style style = new StyleImpl();
@@ -104,7 +105,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, 0x25c3f2845957030cL, "refs");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70dL, "jetbrains.mps.lang.project.structure.MappingConfigRefBase");
+      return AUX_unw7w8.MappingConfigRefBase_53bbc35e;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -146,5 +147,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_unw7w8 {
+    /*package*/ static final SConcept MappingConfigRefBase_53bbc35e = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70dL, "jetbrains.mps.lang.project.structure.MappingConfigRefBase");
   }
 }

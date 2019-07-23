@@ -9,17 +9,18 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class InsertAnEmptyCommentLine extends KeyMapImpl {
   public InsertAnEmptyCommentLine() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new InsertAnEmptyCommentLine.InsertAnEmptyCommentLine_Action0();
+    action = new InsertAnEmptyCommentLine_Action0();
     this.putAction("any", "non-space char", action);
     this.putAction("any", "VK_SPACE", action);
   }
@@ -39,7 +40,7 @@ public class InsertAnEmptyCommentLine extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_id2zau.BaseDocComment_a28e0b95))) {
         return false;
       }
       return true;
@@ -49,12 +50,18 @@ public class InsertAnEmptyCommentLine extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode line = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"), null);
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment")), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body"))).addElement(line);
-      SNodeFactoryOperations.addNewChild(line, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"));
+      SNode line = SNodeFactoryOperations.createNewNode(AUX_id2zau.CommentLine_7c8f6780, null);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, AUX_id2zau.BaseDocComment_a28e0b95), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body"))).addElement(line);
+      SNodeFactoryOperations.addNewChild(line, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"), AUX_id2zau.TextCommentLinePart_b468bde4);
     }
     public String getKeyStroke() {
       return " non-space char";
     }
+  }
+
+  private static final class AUX_id2zau {
+    /*package*/ static final SConcept BaseDocComment_a28e0b95 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept CommentLine_7c8f6780 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+    /*package*/ static final SConcept TextCommentLinePart_b468bde4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 }

@@ -46,23 +46,23 @@ public interface IChecker<O, I extends IssueKindReportItem> {
     }
   }
 
-  abstract class AbstractModuleChecker<I extends IssueKindReportItem> extends IChecker.AbstractChecker<SModule, I> {
+  abstract class AbstractModuleChecker<I extends IssueKindReportItem> extends AbstractChecker<SModule, I> {
   }
 
-  abstract class AbstractModelChecker<I extends IssueKindReportItem> extends IChecker.AbstractChecker<SModel, I> {
+  abstract class AbstractModelChecker<I extends IssueKindReportItem> extends AbstractChecker<SModel, I> {
   }
 
   /**
    * returned errors are expected to belong to nodes under given root
    */
-  abstract class AbstractRootChecker<I extends NodeReportItem> extends IChecker.AbstractChecker<SNode, I> {
-    public IChecker.AbstractModelChecker<I> asModelChecker() {
+  abstract class AbstractRootChecker<I extends NodeReportItem> extends AbstractChecker<SNode, I> {
+    public AbstractModelChecker<I> asModelChecker() {
       final IAbstractChecker<SModel, I> result = new IteratingChecker<SModel, SNode, I>(this, new _FunctionTypes._return_P1_E0<IteratingChecker.CollectionIteratorWithProgress<SNode>, SModel>() {
         public IteratingChecker.CollectionIteratorWithProgress<SNode> invoke(SModel model) {
           return new IteratingChecker.CollectionIteratorWithProgress<SNode>(SModelOperations.roots(model, null));
         }
       });
-      return new IChecker.AbstractModelChecker<I>() {
+      return new AbstractModelChecker<I>() {
         public IssueKindReportItem.CheckerCategory getCategory() {
           return AbstractRootChecker.this.getCategory();
         }
@@ -85,8 +85,8 @@ public interface IChecker<O, I extends IssueKindReportItem> {
   /**
    * returned errors are expected to belong to given node
    */
-  abstract class AbstractNodeChecker<I extends NodeReportItem> extends IChecker.AbstractChecker<SNode, I> {
-    public IChecker.AbstractRootChecker<I> asRootChecker() {
+  abstract class AbstractNodeChecker<I extends NodeReportItem> extends AbstractChecker<SNode, I> {
+    public AbstractRootChecker<I> asRootChecker() {
       final IteratingChecker<SNode, SNode, I> skippingChecker = new IteratingChecker<SNode, SNode, I>(this, new _FunctionTypes._return_P1_E0<IteratingChecker.CollectionIteratorWithProgress<SNode>, SNode>() {
         public IteratingChecker.CollectionIteratorWithProgress<SNode> invoke(SNode root) {
           List<SNode> toCheck = ListSequence.fromList(new ArrayList<SNode>());
@@ -105,7 +105,7 @@ public interface IChecker<O, I extends IssueKindReportItem> {
           return new IteratingChecker.CollectionIteratorWithProgress<SNode>(toCheck);
         }
       });
-      return new IChecker.AbstractRootChecker<I>() {
+      return new AbstractRootChecker<I>() {
         public IssueKindReportItem.CheckerCategory getCategory() {
           return AbstractNodeChecker.this.getCategory();
         }
@@ -123,17 +123,17 @@ public interface IChecker<O, I extends IssueKindReportItem> {
         }
       };
     }
-    public IChecker.AbstractModelChecker<I> asModelChecker() {
+    public AbstractModelChecker<I> asModelChecker() {
       return this.asRootChecker().asModelChecker();
     }
-    public IChecker.AbstractNodeChecker.ErrorSkipCondition skipCondition() {
+    public AbstractNodeChecker.ErrorSkipCondition skipCondition() {
       return SKIP_NOTHING_CONDITION;
     }
     public interface ErrorSkipCondition {
       boolean skipSingleNode(SNode node);
       boolean skipSubtree(SNode root);
     }
-    public static final IChecker.AbstractNodeChecker.ErrorSkipCondition SKIP_NOTHING_CONDITION = new IChecker.AbstractNodeChecker.ErrorSkipCondition() {
+    public static final AbstractNodeChecker.ErrorSkipCondition SKIP_NOTHING_CONDITION = new AbstractNodeChecker.ErrorSkipCondition() {
       public boolean skipSingleNode(SNode node) {
         return false;
       }

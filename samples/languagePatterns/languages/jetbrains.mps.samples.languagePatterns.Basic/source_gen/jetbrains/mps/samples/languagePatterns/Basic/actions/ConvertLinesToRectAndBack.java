@@ -6,16 +6,17 @@ import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConvertLinesToRectAndBack {
   public static class NodeFactory_3548406301613038524 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode rect = sampleNode;
-        if (SNodeOperations.isInstanceOf(rect, MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawRect"))) {
+        if (SNodeOperations.isInstanceOf(rect, AUX_ljjcuh.DrawRect_64cf2e19)) {
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade1L, "x1"), SPropertyOperations.getInteger(rect, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647507L, "upperLeftX")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade3L, "y1"), SPropertyOperations.getInteger(rect, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647509L, "upperLeftY")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade6L, "x2"), SPropertyOperations.getInteger(rect, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb2664750cL, "lowerRightX")));
@@ -24,7 +25,7 @@ public class ConvertLinesToRectAndBack {
       }
       {
         final SNode line = sampleNode;
-        if (SNodeOperations.isInstanceOf(line, MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawLine"))) {
+        if (SNodeOperations.isInstanceOf(line, AUX_ljjcuh.DrawLine_5dc1989a)) {
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade1L, "x1"), SPropertyOperations.getInteger(line, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade1L, "x1")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade3L, "y1"), SPropertyOperations.getInteger(line, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade3L, "y1")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade6L, "x2"), SPropertyOperations.getInteger(line, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade6L, "x2")));
@@ -33,7 +34,7 @@ public class ConvertLinesToRectAndBack {
       }
       {
         final SNode command = sampleNode;
-        if (SNodeOperations.isInstanceOf(command, MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawCommand"))) {
+        if (SNodeOperations.isInstanceOf(command, AUX_ljjcuh.DrawCommand_5c613e39)) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle"), SLinkOperations.getTarget(command, MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle")));
         }
       }
@@ -43,7 +44,7 @@ public class ConvertLinesToRectAndBack {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode rect = sampleNode;
-        if (SNodeOperations.isInstanceOf(rect, MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawRect"))) {
+        if (SNodeOperations.isInstanceOf(rect, AUX_ljjcuh.DrawRect_64cf2e19)) {
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647507L, "upperLeftX"), SPropertyOperations.getInteger(rect, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647507L, "upperLeftX")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647509L, "upperLeftY"), SPropertyOperations.getInteger(rect, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647509L, "upperLeftY")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb2664750cL, "lowerRightX"), SPropertyOperations.getInteger(rect, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb2664750cL, "lowerRightX")));
@@ -52,7 +53,7 @@ public class ConvertLinesToRectAndBack {
       }
       {
         final SNode line = sampleNode;
-        if (SNodeOperations.isInstanceOf(line, MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawLine"))) {
+        if (SNodeOperations.isInstanceOf(line, AUX_ljjcuh.DrawLine_5dc1989a)) {
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647507L, "upperLeftX"), SPropertyOperations.getInteger(line, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade1L, "x1")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647509L, "upperLeftY"), SPropertyOperations.getInteger(line, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade3L, "y1")));
           SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb2664750cL, "lowerRightX"), SPropertyOperations.getInteger(line, MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade6L, "x2")));
@@ -61,10 +62,16 @@ public class ConvertLinesToRectAndBack {
       }
       {
         final SNode command = sampleNode;
-        if (SNodeOperations.isInstanceOf(command, MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawCommand"))) {
+        if (SNodeOperations.isInstanceOf(command, AUX_ljjcuh.DrawCommand_5c613e39)) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle"), SLinkOperations.getTarget(command, MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle")));
         }
       }
     }
+  }
+
+  private static final class AUX_ljjcuh {
+    /*package*/ static final SConcept DrawRect_64cf2e19 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawRect");
+    /*package*/ static final SConcept DrawLine_5dc1989a = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawLine");
+    /*package*/ static final SConcept DrawCommand_5c613e39 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawCommand");
   }
 }

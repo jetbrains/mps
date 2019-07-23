@@ -21,7 +21,7 @@ public class SelectNext_InChildListWithFilter_Test extends BaseTransformationTes
 
   @Test
   public void test_SelectNext_InChildListWithFilter() throws Throwable {
-    new SelectNext_InChildListWithFilter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

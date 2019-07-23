@@ -21,7 +21,7 @@ public class MakeFieldStaticAndHaveReferencesUpdatedPositionedOnVisibility_Test 
 
   @Test
   public void test_MakeFieldStaticAndHaveReferencesUpdatedPositionedOnVisibility() throws Throwable {
-    new MakeFieldStaticAndHaveReferencesUpdatedPositionedOnVisibility_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

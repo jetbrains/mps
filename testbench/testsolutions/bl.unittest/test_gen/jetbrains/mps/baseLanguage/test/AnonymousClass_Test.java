@@ -32,27 +32,27 @@ public class AnonymousClass_Test extends BaseTransformationTest {
 
   @Test
   public void test_AnonymousClass() throws Throwable {
-    new AnonymousClass_Test.TestBody(this).test_AnonymousClass();
+    new TestBody(this).test_AnonymousClass();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927142051() throws Throwable {
-    new AnonymousClass_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927142051();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927142051();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526511035151() throws Throwable {
-    new AnonymousClass_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526511035151();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526511035151();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929101294() throws Throwable {
-    new AnonymousClass_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929101294();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929101294();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526511035331() throws Throwable {
-    new AnonymousClass_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526511035331();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526511035331();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199514() throws Throwable {
-    new AnonymousClass_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199514();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199514();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -8,19 +8,20 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.test.behavior.TestInfo__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.junit.AssumptionViolatedException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * Check ITestNodeWrapper if it's suitable for in-process execution, replace original request with a failing one if not.
  */
 /*package*/ class InProcessExecutionFilter {
-  public void check(@NotNull ITestNodeWrapper testNodeWrapper, @Nullable SModel testNodeModel) throws InProcessExecutionFilter.InProcessCheckException {
+  public void check(@NotNull ITestNodeWrapper testNodeWrapper, @Nullable SModel testNodeModel) throws InProcessCheckException {
     if (!(testNodeWrapper.canRunInProcess())) {
-      throw new InProcessExecutionFilter.TestSetNotToBeExecutedInProcessException(testNodeWrapper);
+      throw new TestSetNotToBeExecutedInProcessException(testNodeWrapper);
     }
-    if ((boolean) TestInfo__BehaviorDescriptor.reOpenProject_idThWTaQhG7P.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo")), testNodeModel)) {
-      throw new InProcessExecutionFilter.ProjectSetToReopenInTestInfoException(testNodeWrapper);
+    if ((boolean) TestInfo__BehaviorDescriptor.reOpenProject_idThWTaQhG7P.invoke(SNodeOperations.asSConcept(AUX_gfnw1f.TestInfo_c0c4a9c7), testNodeModel)) {
+      throw new ProjectSetToReopenInTestInfoException(testNodeWrapper);
     }
   }
 
@@ -44,7 +45,7 @@ import org.junit.AssumptionViolatedException;
     public abstract String getFormattedMsg();
   }
 
-  public static final class TestSetNotToBeExecutedInProcessException extends InProcessExecutionFilter.InProcessCheckException {
+  public static final class TestSetNotToBeExecutedInProcessException extends InProcessCheckException {
     public TestSetNotToBeExecutedInProcessException(ITestNodeWrapper wrapper) {
       super(wrapper);
     }
@@ -56,7 +57,7 @@ import org.junit.AssumptionViolatedException;
     }
   }
 
-  public static final class ProjectSetToReopenInTestInfoException extends InProcessExecutionFilter.InProcessCheckException {
+  public static final class ProjectSetToReopenInTestInfoException extends InProcessCheckException {
     public ProjectSetToReopenInTestInfoException(ITestNodeWrapper wrapper) {
       super(wrapper);
     }
@@ -66,5 +67,9 @@ import org.junit.AssumptionViolatedException;
     public String getFormattedMsg() {
       return "The project is set to be reopened in the TestInfo file,\nhowever it is impossible to simulate such behavior in-process.\nIgnoring the test %s.";
     }
+  }
+
+  private static final class AUX_gfnw1f {
+    /*package*/ static final SConcept TestInfo_c0c4a9c7 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
   }
 }

@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NamedTuple_subtypeOf_implemented_interfaces_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public NamedTuple_subtypeOf_implemented_interfaces_SubtypingRule() {
@@ -28,12 +29,16 @@ public class NamedTuple_subtypeOf_implemented_interfaces_SubtypingRule extends S
     return ifs;
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
+    return AUX_vca84k.NamedTupleType_1dd98d37;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean isWeak() {
     return true;
+  }
+
+  private static final class AUX_vca84k {
+    /*package*/ static final SConcept NamedTupleType_1dd98d37 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
   }
 }

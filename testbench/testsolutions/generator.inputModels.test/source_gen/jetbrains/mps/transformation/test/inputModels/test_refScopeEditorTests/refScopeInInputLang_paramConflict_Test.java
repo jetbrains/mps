@@ -21,7 +21,7 @@ public class refScopeInInputLang_paramConflict_Test extends BaseTransformationTe
 
   @Test
   public void test_refScopeInInputLang_paramConflict() throws Throwable {
-    new refScopeInInputLang_paramConflict_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

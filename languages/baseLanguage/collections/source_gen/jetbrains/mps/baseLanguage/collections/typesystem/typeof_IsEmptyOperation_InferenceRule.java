@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -16,6 +15,8 @@ import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_IsEmptyOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_IsEmptyOperation_InferenceRule() {
@@ -29,7 +30,7 @@ public class typeof_IsEmptyOperation_InferenceRule extends AbstractInferenceRule
         {
           SNode matchingNode_sezqyh_a1a = parent;
           if (matchingNode_sezqyh_a1a != null) {
-            matches_sezqyh_a1a = matchingNode_sezqyh_a1a.getConcept().isSubConceptOf(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+            matches_sezqyh_a1a = matchingNode_sezqyh_a1a.getConcept().isSubConceptOf(AUX_23wedg.DotExpression_97ed08d8);
           }
         }
         if (matches_sezqyh_a1a) {
@@ -48,7 +49,7 @@ public class typeof_IsEmptyOperation_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10f5f053dc7L, "jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation");
+    return AUX_23wedg.IsEmptyOperation_c48c070c;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,5 +62,10 @@ public class typeof_IsEmptyOperation_InferenceRule extends AbstractInferenceRule
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_23wedg {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept IsEmptyOperation_c48c070c = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10f5f053dc7L, "jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation");
   }
 }

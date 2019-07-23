@@ -74,7 +74,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ExtensionStaticFieldDeclaration_EditorBuilder_a.typeSingleRoleHandler_ipnr5b_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_ipnr5b_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_ipnr5b_c0 extends SingleRoleCellProvider {
@@ -145,7 +145,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ExtensionStaticFieldDeclaration_EditorBuilder_a.initializerSingleRoleHandler_ipnr5b_f0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), getEditorContext());
+    SingleRoleCellProvider provider = new initializerSingleRoleHandler_ipnr5b_f0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), getEditorContext());
     return provider.createCell();
   }
   private static class initializerSingleRoleHandler_ipnr5b_f0 extends SingleRoleCellProvider {

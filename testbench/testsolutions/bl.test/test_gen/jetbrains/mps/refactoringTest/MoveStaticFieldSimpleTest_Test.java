@@ -34,7 +34,7 @@ public class MoveStaticFieldSimpleTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_SimpleTest() throws Throwable {
-    new MoveStaticFieldSimpleTest_Test.TestBody(this).test_SimpleTest();
+    new TestBody(this).test_SimpleTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

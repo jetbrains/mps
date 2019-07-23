@@ -35,6 +35,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ArithmeticSimpleMathExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -66,7 +67,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ArithmeticSimpleMathExpression_EditorBuilder_a.leftSingleRoleHandler_9sw97c_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5476L, "left"), getEditorContext());
+    SingleRoleCellProvider provider = new leftSingleRoleHandler_9sw97c_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5476L, "left"), getEditorContext());
     return provider.createCell();
   }
   private static class leftSingleRoleHandler_9sw97c_a0 extends SingleRoleCellProvider {
@@ -133,7 +134,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_a78jp2.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -149,7 +150,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ArithmeticSimpleMathExpression_EditorBuilder_a.rightSingleRoleHandler_9sw97c_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5478L, "right"), getEditorContext());
+    SingleRoleCellProvider provider = new rightSingleRoleHandler_9sw97c_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5478L, "right"), getEditorContext());
     return provider.createCell();
   }
   private static class rightSingleRoleHandler_9sw97c_c0 extends SingleRoleCellProvider {
@@ -202,5 +203,9 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     protected String getNoTargetText() {
       return "<no right>";
     }
+  }
+
+  private static final class AUX_a78jp2 {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

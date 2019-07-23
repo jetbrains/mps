@@ -9,11 +9,12 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.util.order.behavior.Order__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_Order_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_Order_NonTypesystemRule() {
@@ -22,7 +23,7 @@ public class check_Order_NonTypesystemRule extends AbstractNonTypesystemRule_Run
     if ((SNodeOperations.getParent(order) == null)) {
       return;
     }
-    if ((boolean) Order__BehaviorDescriptor.presents_id1jgMklchcXk.invoke(order, SNodeOperations.getNodeAncestor(order, MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL, "jetbrains.mps.lang.util.order.structure.OrderParticipant"), false, false))) {
+    if ((boolean) Order__BehaviorDescriptor.presents_id1jgMklchcXk.invoke(order, SNodeOperations.getNodeAncestor(order, AUX_msp139.OrderParticipant_c14fd45, false, false))) {
       return;
     }
     {
@@ -31,12 +32,17 @@ public class check_Order_NonTypesystemRule extends AbstractNonTypesystemRule_Run
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78145L, "jetbrains.mps.lang.util.order.structure.Order");
+    return AUX_msp139.Order_8528aa40;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_msp139 {
+    /*package*/ static final SInterfaceConcept OrderParticipant_c14fd45 = MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL, "jetbrains.mps.lang.util.order.structure.OrderParticipant");
+    /*package*/ static final SInterfaceConcept Order_8528aa40 = MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78145L, "jetbrains.mps.lang.util.order.structure.Order");
   }
 }

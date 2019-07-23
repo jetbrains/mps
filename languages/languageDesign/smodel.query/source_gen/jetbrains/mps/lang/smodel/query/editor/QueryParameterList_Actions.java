@@ -6,12 +6,13 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class QueryParameterList_Actions {
 
@@ -21,7 +22,7 @@ public class QueryParameterList_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode queryExpression = SNodeOperations.as(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression"));
+        SNode queryExpression = SNodeOperations.as(SNodeOperations.getParent(node), AUX_4vzuxq.QueryExpression_58f52cd1);
         SNodeOperations.deleteNode(node);
         if (queryExpression != null) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, queryExpression, "ALIAS_EDITOR_COMPONENT", -1);
@@ -64,5 +65,9 @@ public class QueryParameterList_Actions {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_4vzuxq {
+    /*package*/ static final SConcept QueryExpression_58f52cd1 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
   }
 }

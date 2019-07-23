@@ -25,7 +25,7 @@ public class TestSideTransformExceptionWrapSubstituteMenu_Test extends BaseTrans
 
   @Test
   public void test_TestSideTransformExceptionWrapSubstituteMenu() throws Throwable {
-    new TestSideTransformExceptionWrapSubstituteMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

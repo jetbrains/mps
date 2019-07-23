@@ -34,6 +34,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CreateTabBlock_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -87,7 +88,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       editorCell.setCellId("property_commandOnCreate");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_eu7n82.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -103,7 +104,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CreateTabBlock_EditorBuilder_a.conceptsBlockSingleRoleHandler_kdmyd8_b0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x16c373ab7fdbb667L, 0x6785022a196e8ee3L, "conceptsBlock"), getEditorContext());
+    SingleRoleCellProvider provider = new conceptsBlockSingleRoleHandler_kdmyd8_b0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x16c373ab7fdbb667L, 0x6785022a196e8ee3L, "conceptsBlock"), getEditorContext());
     return provider.createCell();
   }
   private static class conceptsBlockSingleRoleHandler_kdmyd8_b0 extends SingleRoleCellProvider {
@@ -158,7 +159,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CreateTabBlock_EditorBuilder_a.createBlockSingleRoleHandler_kdmyd8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x16c373ab7fdbb667L, 0x6785022a196e8f03L, "createBlock"), getEditorContext());
+    SingleRoleCellProvider provider = new createBlockSingleRoleHandler_kdmyd8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x16c373ab7fdbb667L, 0x6785022a196e8f03L, "createBlock"), getEditorContext());
     return provider.createCell();
   }
   private static class createBlockSingleRoleHandler_kdmyd8_c0 extends SingleRoleCellProvider {
@@ -211,5 +212,9 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     protected String getNoTargetText() {
       return "<create block>";
     }
+  }
+
+  private static final class AUX_eu7n82 {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

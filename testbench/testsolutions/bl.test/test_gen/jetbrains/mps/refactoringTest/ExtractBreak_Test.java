@@ -37,7 +37,7 @@ public class ExtractBreak_Test extends BaseTransformationTest {
 
   @Test
   public void test_ExtractBreak() throws Throwable {
-    new ExtractBreak_Test.TestBody(this).test_ExtractBreak();
+    new TestBody(this).test_ExtractBreak();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

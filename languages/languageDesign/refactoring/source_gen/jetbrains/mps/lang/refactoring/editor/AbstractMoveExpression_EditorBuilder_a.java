@@ -61,7 +61,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AbstractMoveExpression_EditorBuilder_a.whatToMoveSingleRoleHandler_vcboy8_b0(myNode, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac2L, "whatToMove"), getEditorContext());
+    SingleRoleCellProvider provider = new whatToMoveSingleRoleHandler_vcboy8_b0(myNode, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac2L, "whatToMove"), getEditorContext());
     return provider.createCell();
   }
   private static class whatToMoveSingleRoleHandler_vcboy8_b0 extends SingleRoleCellProvider {
@@ -125,7 +125,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new AbstractMoveExpression_EditorBuilder_a.destinationSingleRoleHandler_vcboy8_d0(myNode, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac3L, "destination"), getEditorContext());
+    SingleRoleCellProvider provider = new destinationSingleRoleHandler_vcboy8_d0(myNode, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac3L, "destination"), getEditorContext());
     return provider.createCell();
   }
   private static class destinationSingleRoleHandler_vcboy8_d0 extends SingleRoleCellProvider {

@@ -23,7 +23,7 @@ public class TestSubstitute_ReferenceInAttribute_Test extends BaseTransformation
 
   @Test
   public void test_TestSubstitute_ReferenceInAttribute() throws Throwable {
-    new TestSubstitute_ReferenceInAttribute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -5,7 +5,9 @@ package jetbrains.mps.lang.test.behavior;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.typesystem.RulesUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class NodeRuleReference {
   private SNode ruleNode;
@@ -31,15 +33,19 @@ public class NodeRuleReference {
   }
 
   private boolean isConstraints() {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(ruleNode), MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints"));
+    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(ruleNode), AUX_xvabme.ConceptConstraints_2e5b5de5);
   }
 
   public boolean isReportStatement() {
-    return SNodeOperations.isInstanceOf(ruleNode, MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement"));
+    return SNodeOperations.isInstanceOf(ruleNode, AUX_xvabme.MessageStatement_2fbb1f6d);
   }
 
   private boolean isMessageStatement() {
     return RulesUtil.withinCheckingItem(ruleNode) && !(RulesUtil.withinInferenceItem(ruleNode));
   }
 
+  private static final class AUX_xvabme {
+    /*package*/ static final SConcept ConceptConstraints_2e5b5de5 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SInterfaceConcept MessageStatement_2fbb1f6d = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
+  }
 }

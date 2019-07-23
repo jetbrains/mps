@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ConsoleCreator_InferenceRule() {
@@ -36,7 +37,7 @@ public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_R
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, "jetbrains.mps.execution.configurations.structure.ConsoleCreator");
+    return AUX_c6o0kc.ConsoleCreator_c554cbb6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,7 +47,7 @@ public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_R
   }
   private static SNode createConsoleType_c6o0kc_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd1ac93L, "jetbrains.mps.execution.configurations.structure.ConsoleType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_c6o0kc.ConsoleType_c51c0f5e, null, null, false);
     return n1;
   }
   private static SNode _quotation_createNode_c6o0kc_a1a0c0b0b() {
@@ -61,5 +62,10 @@ public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_R
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_c6o0kc {
+    /*package*/ static final SConcept ConsoleCreator_c554cbb6 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, "jetbrains.mps.execution.configurations.structure.ConsoleCreator");
+    /*package*/ static final SConcept ConsoleType_c51c0f5e = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd1ac93L, "jetbrains.mps.execution.configurations.structure.ConsoleType");
   }
 }

@@ -27,6 +27,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -61,7 +62,7 @@ public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDesc
     return ListSequence.fromList(branches).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode branch) {
         SNode clonedStatements = branch;
-        SNode next = SNodeFactoryOperations.addNewChild(clonedStatements, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"));
+        SNode next = SNodeFactoryOperations.addNewChild(clonedStatements, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), AUX_otnfek.LocalVariableDeclarationStatement_d47683f4);
 
         Program program = DataFlow.buildProgram(clonedStatements);
         Set<SNode> unreachable = DataFlow.getUnreachableNodes(program);
@@ -75,7 +76,7 @@ public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDesc
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new UnwrapUnnecessaryElse_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -89,8 +90,8 @@ public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDesc
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode elseBranch = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"));
-      if (SNodeOperations.isInstanceOf(elseBranch, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement"))) {
-        List<SNode> reversed = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(elseBranch, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).reversedList();
+      if (SNodeOperations.isInstanceOf(elseBranch, AUX_otnfek.BlockStatement_8943d110)) {
+        List<SNode> reversed = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(elseBranch, AUX_otnfek.BlockStatement_8943d110), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).reversedList();
         ListSequence.fromList(reversed).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             SNodeOperations.insertNextSiblingChild(node, it);
@@ -105,5 +106,10 @@ public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDesc
     public IntentionDescriptor getDescriptor() {
       return UnwrapUnnecessaryElse_Intention.this;
     }
+  }
+
+  private static final class AUX_otnfek {
+    /*package*/ static final SConcept LocalVariableDeclarationStatement_d47683f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept BlockStatement_8943d110 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
   }
 }

@@ -9,7 +9,6 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -24,6 +23,9 @@ import com.intellij.ide.structureView.StructureView;
 import javax.swing.JComponent;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.util.FileStructurePopup;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ShowMembers_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -39,7 +41,7 @@ public class ShowMembers_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return (SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer"), true, false) != null);
+    return (SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), AUX_j902n0.IMemberContainer_166f7222, true, false) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -88,8 +90,8 @@ public class ShowMembers_Action extends BaseAction {
 
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        SNode container = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer"), true, false);
-        title.value = (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")) ? ((String) BHReflection.invoke0(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) : container.getPresentation());
+        SNode container = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), AUX_j902n0.IMemberContainer_166f7222, true, false);
+        title.value = (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), AUX_j902n0.INamedConcept_8cd7e247) ? ((String) BHReflection.invoke0(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), AUX_j902n0.BaseConcept_bc2351f, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) : container.getPresentation());
         model[0] = new MemberContainerStructureModel(((MPSProject) MapSequence.fromMap(_params).get("project")), container);
       }
     });
@@ -122,5 +124,11 @@ public class ShowMembers_Action extends BaseAction {
     FileStructurePopup popup = new FileStructurePopup(((Project) MapSequence.fromMap(_params).get("ideaProject")), ((FileEditor) MapSequence.fromMap(_params).get("fileEditor")), structureView, true);
     popup.setTitle(title.value);
     popup.show();
+  }
+
+  private static final class AUX_j902n0 {
+    /*package*/ static final SInterfaceConcept IMemberContainer_166f7222 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

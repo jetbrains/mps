@@ -21,7 +21,7 @@ public class BackspaceUsualStatementAfterUsual_Test extends BaseTransformationTe
 
   @Test
   public void test_BackspaceUsualStatementAfterUsual() throws Throwable {
-    new BackspaceUsualStatementAfterUsual_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

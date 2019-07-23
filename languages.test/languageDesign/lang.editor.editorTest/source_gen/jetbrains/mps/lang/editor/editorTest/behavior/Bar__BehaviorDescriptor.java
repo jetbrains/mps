@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.editorTest.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class Bar__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x254c0c6ea80b7097L, "jetbrains.mps.lang.editor.editorTest.structure.Bar");
+  private static final SAbstractConcept CONCEPT = AUX_1im02y.Bar_782093ae;
 
   public static final SMethod<Void> bar_id2lc36UC2R3m = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("bar").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2lc36UC2R3m").build();
 
@@ -76,5 +77,9 @@ public final class Bar__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_1im02y {
+    /*package*/ static final SConcept Bar_782093ae = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x254c0c6ea80b7097L, "jetbrains.mps.lang.editor.editorTest.structure.Bar");
   }
 }

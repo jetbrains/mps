@@ -32,7 +32,7 @@
     </file>
     <file name="Test_CreatePropertyPatternIntention_Test.java">
       <node id="7233072556140472566" at="19,53,20,25" concept="5" />
-      <node id="7233072556140472566" at="24,75,25,77" concept="1" />
+      <node id="7233072556140472566" at="24,75,25,36" concept="1" />
       <node id="7233072556140472566" at="30,52,31,19" concept="5" />
       <node id="7233072556140472566" at="35,51,36,72" concept="1" />
       <node id="7233072556140472692" at="36,72,37,147" concept="1" />
@@ -43,7 +43,7 @@
       <node id="7233072556140472566" at="23,0,27,0" concept="2" trace="test_Test_CreatePropertyPatternIntention#()V" />
       <node id="7233072556140472566" at="34,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7233072556140472566" at="19,53,20,25" />
-      <scope id="7233072556140472566" at="24,75,25,77" />
+      <scope id="7233072556140472566" at="24,75,25,36" />
       <scope id="7233072556140472566" at="30,52,31,19" />
       <scope id="7233072556140472566" at="19,0,22,0" />
       <scope id="7233072556140472566" at="30,0,33,0">

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.typesystem.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
@@ -13,9 +12,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TypeVarReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL, "jetbrains.mps.lang.typesystem.structure.TypeVarReference");
+  private static final SAbstractConcept CONCEPT = AUX_f1q4in.TypeVarReference_6d039004;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -66,5 +67,9 @@ public final class TypeVarReference__BehaviorDescriptor extends BaseBHDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_f1q4in {
+    /*package*/ static final SConcept TypeVarReference_6d039004 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL, "jetbrains.mps.lang.typesystem.structure.TypeVarReference");
   }
 }

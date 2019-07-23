@@ -21,7 +21,7 @@ public class NodeAfterSubstitutionHasNoErrorCell_Test extends BaseTransformation
 
   @Test
   public void test_NodeAfterSubstitutionHasNoErrorCell() throws Throwable {
-    new NodeAfterSubstitutionHasNoErrorCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

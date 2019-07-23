@@ -22,7 +22,7 @@ public class SidedeleteAtEndWithOneStatementVariableDeclaration_Test extends Bas
 
   @Test
   public void test_SidedeleteAtEndWithOneStatementVariableDeclaration() throws Throwable {
-    new SidedeleteAtEndWithOneStatementVariableDeclaration_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

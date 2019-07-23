@@ -21,7 +21,7 @@ public class ChangingTypeToArrayTypeInLocalVar1_Test extends BaseTransformationT
 
   @Test
   public void test_ChangingTypeToArrayTypeInLocalVar1() throws Throwable {
-    new ChangingTypeToArrayTypeInLocalVar1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

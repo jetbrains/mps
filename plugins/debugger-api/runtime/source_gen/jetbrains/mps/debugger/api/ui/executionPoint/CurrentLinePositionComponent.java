@@ -20,8 +20,8 @@ import jetbrains.mps.debug.api.source.NodeSourcePosition;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 
 public class CurrentLinePositionComponent extends CurrentLinePositionComponentEx<AbstractDebugSession> implements ProjectComponent {
-  private final SessionChangeListener myChangeListener = new CurrentLinePositionComponent.MySessionChangeListener();
-  private final DebugSessionManagerComponent.DebugSessionListener myCurrentDebugSessionListener = new CurrentLinePositionComponent.MyCurrentDebugSessionListener();
+  private final SessionChangeListener myChangeListener = new MySessionChangeListener();
+  private final DebugSessionManagerComponent.DebugSessionListener myCurrentDebugSessionListener = new MyCurrentDebugSessionListener();
   public CurrentLinePositionComponent(Project project, FileEditorManager fileEditorManager) {
     super(project, fileEditorManager);
   }

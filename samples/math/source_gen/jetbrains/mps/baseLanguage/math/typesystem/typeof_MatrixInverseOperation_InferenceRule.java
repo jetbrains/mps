@@ -16,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_MatrixInverseOperation_InferenceRule() {
@@ -25,7 +26,7 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
       final SNode t = typeCheckingContext.typeOf(SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr")), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7388416617632229396", true);
       typeCheckingContext.whenConcrete(t, new Runnable() {
         public void run() {
-          if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType"))) {
+          if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), AUX_mtviz2.MatrixType_c2d2403c)) {
             {
               SNode _nodeToCheck_1029348928467 = op;
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749153", 0, null);
@@ -36,7 +37,7 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749160", 0, null);
               typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749167", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr")), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749162", true), _info_12389875345);
             }
-            SNode mt = SNodeOperations.cast(typeCheckingContext.getExpandedNode(t), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType"));
+            SNode mt = SNodeOperations.cast(typeCheckingContext.getExpandedNode(t), AUX_mtviz2.MatrixType_c2d2403c);
             if (SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows")) != 0 && SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns")) != 0 && SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows")) != SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns"))) {
               {
                 MessageTarget errorTarget = new NodeMessageTarget();
@@ -54,12 +55,17 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abcL, "jetbrains.mps.baseLanguage.math.structure.MatrixInverseOperation");
+    return AUX_mtviz2.MatrixInverseOperation_9a430b99;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_mtviz2 {
+    /*package*/ static final SConcept MatrixType_c2d2403c = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
+    /*package*/ static final SConcept MatrixInverseOperation_9a430b99 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abcL, "jetbrains.mps.baseLanguage.math.structure.MatrixInverseOperation");
   }
 }

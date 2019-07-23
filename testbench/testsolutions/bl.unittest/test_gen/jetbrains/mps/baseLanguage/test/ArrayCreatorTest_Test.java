@@ -31,23 +31,23 @@ public class ArrayCreatorTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck1100850602766327583() throws Throwable {
-    new ArrayCreatorTest_Test.TestBody(this).test_NodeErrorCheck1100850602766327583();
+    new TestBody(this).test_NodeErrorCheck1100850602766327583();
   }
   @Test
   public void test_NodeErrorCheck1100850602766335141() throws Throwable {
-    new ArrayCreatorTest_Test.TestBody(this).test_NodeErrorCheck1100850602766335141();
+    new TestBody(this).test_NodeErrorCheck1100850602766335141();
   }
   @Test
   public void test_NodeErrorCheck1100850602766345812() throws Throwable {
-    new ArrayCreatorTest_Test.TestBody(this).test_NodeErrorCheck1100850602766345812();
+    new TestBody(this).test_NodeErrorCheck1100850602766345812();
   }
   @Test
   public void test_NodeErrorCheck1100850602766347329() throws Throwable {
-    new ArrayCreatorTest_Test.TestBody(this).test_NodeErrorCheck1100850602766347329();
+    new TestBody(this).test_NodeErrorCheck1100850602766347329();
   }
   @Test
   public void test_ErrorMessagesCheck1100850602766276669() throws Throwable {
-    new ArrayCreatorTest_Test.TestBody(this).test_ErrorMessagesCheck1100850602766276669();
+    new TestBody(this).test_ErrorMessagesCheck1100850602766276669();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

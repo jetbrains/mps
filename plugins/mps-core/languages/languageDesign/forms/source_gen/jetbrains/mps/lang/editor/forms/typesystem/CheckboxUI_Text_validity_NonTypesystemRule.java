@@ -15,6 +15,7 @@ import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CheckboxUI_Text_validity_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public CheckboxUI_Text_validity_NonTypesystemRule() {
@@ -42,12 +43,16 @@ public class CheckboxUI_Text_validity_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, "jetbrains.mps.lang.editor.forms.structure.CheckboxUI_Text");
+    return AUX_6xi8tz.CheckboxUI_Text_9f5ef45a;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_6xi8tz {
+    /*package*/ static final SConcept CheckboxUI_Text_9f5ef45a = MetaAdapterFactory.getConcept(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, "jetbrains.mps.lang.editor.forms.structure.CheckboxUI_Text");
   }
 }

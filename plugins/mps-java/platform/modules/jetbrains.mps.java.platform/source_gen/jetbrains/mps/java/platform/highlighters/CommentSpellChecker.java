@@ -4,7 +4,6 @@ package jetbrains.mps.java.platform.highlighters;
 
 import jetbrains.mps.nodeEditor.checking.BaseEditorChecker;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import com.intellij.openapi.project.Project;
 import java.util.regex.Pattern;
 import com.intellij.spellchecker.SpellCheckerManager;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import com.intellij.ui.JBColor;
@@ -33,10 +33,10 @@ import java.awt.FontMetrics;
 import jetbrains.mps.ide.editor.checkers.ModelProblemMessage;
 
 public class CommentSpellChecker extends BaseEditorChecker {
-  private final SConcept mySingleLineCmment = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
-  private final SConcept myJavadocComment = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
-  private final SConcept word = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-  private final SConcept myStringLiteral = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+  private final SConcept mySingleLineCmment = AUX_ylyy7a.TextCommentPart_36a4c8f7;
+  private final SConcept myJavadocComment = AUX_ylyy7a.TextCommentLinePart_b468bde4;
+  private final SConcept word = AUX_ylyy7a.Word_f8e99bb0;
+  private final SConcept myStringLiteral = AUX_ylyy7a.StringLiteral_aa5a8cf6;
 
   private boolean myUpdateNeeded;
   private Boolean myEnabled;
@@ -187,7 +187,7 @@ public class CommentSpellChecker extends BaseEditorChecker {
     if (mistakes == null) {
       return;
     }
-    messages.add(new CommentSpellChecker.M(mistakes, n, this));
+    messages.add(new M(mistakes, n, this));
   }
 
   private boolean isRegularWord(String w) {
@@ -254,5 +254,12 @@ public class CommentSpellChecker extends BaseEditorChecker {
         ModelProblemMessage.drawWaveUnderCell(g, getColor(), cell);
       }
     }
+  }
+
+  private static final class AUX_ylyy7a {
+    /*package*/ static final SConcept TextCommentPart_36a4c8f7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept TextCommentLinePart_b468bde4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept Word_f8e99bb0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept StringLiteral_aa5a8cf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
   }
 }

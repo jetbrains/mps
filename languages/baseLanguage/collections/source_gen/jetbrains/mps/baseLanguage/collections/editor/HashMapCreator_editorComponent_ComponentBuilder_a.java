@@ -49,6 +49,7 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class HashMapCreator_editorComponent_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -101,21 +102,21 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new HashMapCreator_editorComponent_ComponentBuilder_a.ReplaceWith_HashMapCreator_cellMenu_s4nv53_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_HashMapCreator_cellMenu_s4nv53_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     editorCell.setCellId("ReadOnlyModelAccessor_s4nv53_a0");
     Style style = new StyleImpl();
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, "jetbrains.mps.baseLanguage.collections.structure.HashMapCreator"), "jetbrains.mps.baseLanguage.collections.editor.HashMapCreator_add_keyType_valueType"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_xmbai0.HashMapCreator_4dacd859, "jetbrains.mps.baseLanguage.collections.editor.HashMapCreator_add_keyType_valueType"));
     return editorCell;
   }
   public static class ReplaceWith_HashMapCreator_cellMenu_s4nv53_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_HashMapCreator_cellMenu_s4nv53_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, "jetbrains.mps.baseLanguage.collections.structure.HashMapCreator");
+      return AUX_xmbai0.HashMapCreator_4dacd859;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -145,7 +146,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new HashMapCreator_editorComponent_ComponentBuilder_a.keyTypeSingleRoleHandler_s4nv53_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType"), getEditorContext());
+    SingleRoleCellProvider provider = new keyTypeSingleRoleHandler_s4nv53_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType"), getEditorContext());
     return provider.createCell();
   }
   private static class keyTypeSingleRoleHandler_s4nv53_b1a extends SingleRoleCellProvider {
@@ -209,7 +210,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new HashMapCreator_editorComponent_ComponentBuilder_a.valueTypeSingleRoleHandler_s4nv53_d1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType"), getEditorContext());
+    SingleRoleCellProvider provider = new valueTypeSingleRoleHandler_s4nv53_d1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType"), getEditorContext());
     return provider.createCell();
   }
   private static class valueTypeSingleRoleHandler_s4nv53_d1a extends SingleRoleCellProvider {
@@ -270,13 +271,13 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     new RightAngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, "jetbrains.mps.baseLanguage.collections.structure.HashMapCreator")));
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_xmbai0.HashMapCreator_4dacd859));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new HashMapCreator_editorComponent_ComponentBuilder_a.initializerSingleRoleHandler_s4nv53_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer"), getEditorContext());
+    SingleRoleCellProvider provider = new initializerSingleRoleHandler_s4nv53_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer"), getEditorContext());
     return provider.createCell();
   }
   private static class initializerSingleRoleHandler_s4nv53_c0 extends SingleRoleCellProvider {
@@ -355,7 +356,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new HashMapCreator_editorComponent_ComponentBuilder_a.initSizeSingleRoleHandler_s4nv53_b3a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x15ae66cec0613b7fL, "initSize"), getEditorContext());
+    SingleRoleCellProvider provider = new initSizeSingleRoleHandler_s4nv53_b3a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x15ae66cec0613b7fL, "initSize"), getEditorContext());
     return provider.createCell();
   }
   private static class initSizeSingleRoleHandler_s4nv53_b3a extends SingleRoleCellProvider {
@@ -417,5 +418,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_xmbai0 {
+    /*package*/ static final SConcept HashMapCreator_4dacd859 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, "jetbrains.mps.baseLanguage.collections.structure.HashMapCreator");
   }
 }

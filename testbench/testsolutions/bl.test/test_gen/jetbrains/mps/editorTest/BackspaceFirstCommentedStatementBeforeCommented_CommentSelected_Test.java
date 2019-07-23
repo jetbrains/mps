@@ -21,7 +21,7 @@ public class BackspaceFirstCommentedStatementBeforeCommented_CommentSelected_Tes
 
   @Test
   public void test_BackspaceFirstCommentedStatementBeforeCommented_CommentSelected() throws Throwable {
-    new BackspaceFirstCommentedStatementBeforeCommented_CommentSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

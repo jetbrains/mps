@@ -31,15 +31,15 @@ public class InitializerRequiredForFieldsInInterface_Test extends BaseTransforma
 
   @Test
   public void test_NodeErrorCheck1187415722613141596() throws Throwable {
-    new InitializerRequiredForFieldsInInterface_Test.TestBody(this).test_NodeErrorCheck1187415722613141596();
+    new TestBody(this).test_NodeErrorCheck1187415722613141596();
   }
   @Test
   public void test_NodeErrorCheck1187415722613794413() throws Throwable {
-    new InitializerRequiredForFieldsInInterface_Test.TestBody(this).test_NodeErrorCheck1187415722613794413();
+    new TestBody(this).test_NodeErrorCheck1187415722613794413();
   }
   @Test
   public void test_ErrorMessagesCheck1187415722601361320() throws Throwable {
-    new InitializerRequiredForFieldsInInterface_Test.TestBody(this).test_ErrorMessagesCheck1187415722601361320();
+    new TestBody(this).test_ErrorMessagesCheck1187415722601361320();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

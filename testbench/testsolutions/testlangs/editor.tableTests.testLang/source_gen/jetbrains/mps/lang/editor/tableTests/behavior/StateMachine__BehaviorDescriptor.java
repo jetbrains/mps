@@ -4,22 +4,23 @@ package jetbrains.mps.lang.editor.tableTests.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class StateMachine__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0xa99ffe1c8456ba1L, "jetbrains.mps.lang.editor.tableTests.structure.StateMachine");
+  private static final SAbstractConcept CONCEPT = AUX_kx0j23.StateMachine_23cbcaa2;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -96,5 +97,9 @@ public final class StateMachine__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_kx0j23 {
+    /*package*/ static final SConcept StateMachine_23cbcaa2 = MetaAdapterFactory.getConcept(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0xa99ffe1c8456ba1L, "jetbrains.mps.lang.editor.tableTests.structure.StateMachine");
   }
 }

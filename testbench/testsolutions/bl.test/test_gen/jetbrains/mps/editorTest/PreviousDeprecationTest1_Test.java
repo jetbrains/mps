@@ -22,7 +22,7 @@ public class PreviousDeprecationTest1_Test extends BaseTransformationTest {
 
   @Test
   public void test_PreviousDeprecationTest1() throws Throwable {
-    new PreviousDeprecationTest1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

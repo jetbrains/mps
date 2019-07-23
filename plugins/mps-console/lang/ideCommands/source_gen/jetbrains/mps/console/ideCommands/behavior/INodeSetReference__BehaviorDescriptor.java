@@ -4,7 +4,6 @@ package jetbrains.mps.console.ideCommands.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -18,9 +17,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class INodeSetReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4843e803da101441L, "jetbrains.mps.console.ideCommands.structure.INodeSetReference");
+  private static final SAbstractConcept CONCEPT = AUX_5lb5kq.INodeSetReference_3727be25;
 
   public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4x3U0fq41hN").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
 
@@ -77,5 +78,9 @@ public final class INodeSetReference__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_5lb5kq {
+    /*package*/ static final SInterfaceConcept INodeSetReference_3727be25 = MetaAdapterFactory.getInterfaceConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4843e803da101441L, "jetbrains.mps.console.ideCommands.structure.INodeSetReference");
   }
 }

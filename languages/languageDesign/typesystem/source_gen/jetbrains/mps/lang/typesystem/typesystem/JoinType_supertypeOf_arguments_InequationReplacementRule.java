@@ -16,6 +16,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class JoinType_supertypeOf_arguments_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public JoinType_supertypeOf_arguments_InequationReplacementRule() {
@@ -128,9 +129,14 @@ public class JoinType_supertypeOf_arguments_InequationReplacementRule extends Ab
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    return AUX_6boqzn.BaseConcept_bc2351f;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType");
+    return AUX_6boqzn.JoinType_1396864a;
+  }
+
+  private static final class AUX_6boqzn {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept JoinType_1396864a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType");
   }
 }

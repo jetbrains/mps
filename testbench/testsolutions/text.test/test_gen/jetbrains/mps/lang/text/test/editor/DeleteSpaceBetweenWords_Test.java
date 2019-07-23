@@ -21,7 +21,7 @@ public class DeleteSpaceBetweenWords_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteSpaceBetweenWords() throws Throwable {
-    new DeleteSpaceBetweenWords_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

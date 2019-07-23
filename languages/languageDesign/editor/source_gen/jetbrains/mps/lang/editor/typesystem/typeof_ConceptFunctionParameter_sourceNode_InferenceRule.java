@@ -9,15 +9,16 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunctionParameter__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.behavior.CellMenuPart_Abstract__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ConceptFunctionParameter_sourceNode_InferenceRule() {
@@ -26,12 +27,12 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
     SNode function = ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(parameter);
     SNode functionParent = SNodeOperations.getParent(function);
     SNode link;
-    if (SNodeOperations.isInstanceOf(functionParent, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract"))) {
+    if (SNodeOperations.isInstanceOf(functionParent, AUX_muejbh.CellMenuPart_Abstract_1876678)) {
       // we are in inline cell menu 
-      link = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke((SNodeOperations.as(functionParent, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract"))));
+      link = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke((SNodeOperations.as(functionParent, AUX_muejbh.CellMenuPart_Abstract_1876678)));
     } else {
       // we are in 'ref. presentation' cell 
-      link = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(functionParent, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell"), false, false), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
+      link = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(functionParent, AUX_muejbh.CellModel_RefCell_a9be5399, false, false), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
     }
     {
       SNode _nodeToCheck_1029348928467 = parameter;
@@ -40,7 +41,7 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6001c76613c99a36L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_sourceNode");
+    return AUX_muejbh.ConceptFunctionParameter_sourceNode_c693e631;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,5 +55,11 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_muejbh {
+    /*package*/ static final SConcept CellMenuPart_Abstract_1876678 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract");
+    /*package*/ static final SConcept CellModel_RefCell_a9be5399 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
+    /*package*/ static final SConcept ConceptFunctionParameter_sourceNode_c693e631 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6001c76613c99a36L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_sourceNode");
   }
 }

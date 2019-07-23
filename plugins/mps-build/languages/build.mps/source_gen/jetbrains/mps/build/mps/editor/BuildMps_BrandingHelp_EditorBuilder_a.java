@@ -85,7 +85,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingHelp_EditorBuilder_a.fileSingleRoleHandler_r7vwah_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d08L, 0x611c17467fa8198L, "file"), getEditorContext());
+    SingleRoleCellProvider provider = new fileSingleRoleHandler_r7vwah_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d08L, 0x611c17467fa8198L, "file"), getEditorContext());
     return provider.createCell();
   }
   private static class fileSingleRoleHandler_r7vwah_b1a extends SingleRoleCellProvider {
@@ -152,7 +152,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingHelp_EditorBuilder_a.rootSingleRoleHandler_r7vwah_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d08L, 0x611c17467fa8197L, "root"), getEditorContext());
+    SingleRoleCellProvider provider = new rootSingleRoleHandler_r7vwah_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d08L, 0x611c17467fa8197L, "root"), getEditorContext());
     return provider.createCell();
   }
   private static class rootSingleRoleHandler_r7vwah_d1a extends SingleRoleCellProvider {
@@ -219,7 +219,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingHelp_EditorBuilder_a.urlSingleRoleHandler_r7vwah_f1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d08L, 0x611c17467fa8196L, "url"), getEditorContext());
+    SingleRoleCellProvider provider = new urlSingleRoleHandler_r7vwah_f1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d08L, 0x611c17467fa8196L, "url"), getEditorContext());
     return provider.createCell();
   }
   private static class urlSingleRoleHandler_r7vwah_f1a extends SingleRoleCellProvider {

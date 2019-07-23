@@ -54,7 +54,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ResourceSpecificPropertiesExpression_EditorBuilder_a.propertiesSingleRoleHandler_yckn5s_a0(myNode, MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1e69fdb2a034c3f6L, 0x1e69fdb2a034c3f7L, "properties"), getEditorContext());
+    SingleRoleCellProvider provider = new propertiesSingleRoleHandler_yckn5s_a0(myNode, MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1e69fdb2a034c3f6L, 0x1e69fdb2a034c3f7L, "properties"), getEditorContext());
     return provider.createCell();
   }
   private static class propertiesSingleRoleHandler_yckn5s_a0 extends SingleRoleCellProvider {
@@ -120,7 +120,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ResourceSpecificPropertiesExpression_EditorBuilder_a.resourceSingleRoleHandler_yckn5s_c0(myNode, MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1e69fdb2a034c3f6L, 0x1e69fdb2a034c408L, "resource"), getEditorContext());
+    SingleRoleCellProvider provider = new resourceSingleRoleHandler_yckn5s_c0(myNode, MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1e69fdb2a034c3f6L, 0x1e69fdb2a034c408L, "resource"), getEditorContext());
     return provider.createCell();
   }
   private static class resourceSingleRoleHandler_yckn5s_c0 extends SingleRoleCellProvider {

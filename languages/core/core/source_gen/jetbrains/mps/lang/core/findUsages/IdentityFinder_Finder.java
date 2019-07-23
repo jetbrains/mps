@@ -7,12 +7,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IdentityFinder_Finder extends GeneratedFinder {
   public IdentityFinder_Finder() {
@@ -34,7 +35,7 @@ public class IdentityFinder_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    return AUX_v0mv4w.BaseConcept_bc2351f;
   }
 
   @Override
@@ -52,5 +53,9 @@ public class IdentityFinder_Finder extends GeneratedFinder {
   @Override
   public SNodeReference getDeclarationNode() {
     return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "6148399791136592186");
+  }
+
+  private static final class AUX_v0mv4w {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

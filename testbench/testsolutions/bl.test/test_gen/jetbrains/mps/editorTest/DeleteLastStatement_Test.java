@@ -21,7 +21,7 @@ public class DeleteLastStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteLastStatement() throws Throwable {
-    new DeleteLastStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

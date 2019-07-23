@@ -22,6 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ProjectDependency {
   private final TemplateQueryContext myGenContext;
@@ -88,7 +89,7 @@ public class ProjectDependency {
     }
   }
   private Iterable<SNode> getLocalDependencies(SNode project) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), AUX_517wya.BuildProjectDependency_6a704312)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x395055ca96617d32L, "artifacts")) == null) && isProjectLocal(it);
       }
@@ -126,5 +127,9 @@ public class ProjectDependency {
     }
     // FIXME add an option Module.isPackaged (to access it like node.model.module.isPackaged) 
     return !(targetScriptModule.isPackaged());
+  }
+
+  private static final class AUX_517wya {
+    /*package*/ static final SConcept BuildProjectDependency_6a704312 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
   }
 }

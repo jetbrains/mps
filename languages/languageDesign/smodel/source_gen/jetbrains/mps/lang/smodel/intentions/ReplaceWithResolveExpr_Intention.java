@@ -21,6 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.behavior.ModuleIdentity__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -41,7 +42,7 @@ public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDes
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ReplaceWithResolveExpr_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -57,11 +58,11 @@ public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDes
       PersistenceFacade pf = PersistenceFacade.getInstance();
       SModuleId mid = pf.createModuleId(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId")));
       SModuleReference moduleRef = pf.createModuleReference(mid, SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name")));
-      SNode de = SNodeOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
-      SNode expr = SLinkOperations.setNewChild(de, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, "jetbrains.mps.lang.smodel.structure.ModuleRefExpression"));
-      SNode mp = SLinkOperations.setNewChild(expr, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer"));
+      SNode de = SNodeOperations.replaceWithNewChild(node, AUX_dbjcuy.DotExpression_97ed08d8);
+      SNode expr = SLinkOperations.setNewChild(de, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), AUX_dbjcuy.ModuleRefExpression_700cc42);
+      SNode mp = SLinkOperations.setNewChild(expr, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId"), AUX_dbjcuy.ModulePointer_5af9ea20);
       ModuleIdentity__BehaviorDescriptor.setModuleReference_idnJmxU5cSTj.invoke(mp, moduleRef);
-      SNode imco = SLinkOperations.setNewChild(de, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
+      SNode imco = SLinkOperations.setNewChild(de, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), AUX_dbjcuy.InstanceMethodCallOperation_cd28f5b6);
       // FIXME need an operation to set link target using nodePointer 
       SLinkOperations.setPointer(imco, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)", "~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
       // blank arg for SRepo 
@@ -71,5 +72,12 @@ public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDes
     public IntentionDescriptor getDescriptor() {
       return ReplaceWithResolveExpr_Intention.this;
     }
+  }
+
+  private static final class AUX_dbjcuy {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ModuleRefExpression_700cc42 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, "jetbrains.mps.lang.smodel.structure.ModuleRefExpression");
+    /*package*/ static final SConcept ModulePointer_5af9ea20 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 }

@@ -17,7 +17,6 @@ import jetbrains.mps.lang.editor.menus.MenuPart;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
@@ -26,6 +25,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.transformation.ConstraintsVerifiableActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -35,6 +35,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestSubstituteChildWithConstraints2_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -60,9 +61,9 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_a0(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b3L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints2")));
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_b0(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints1")));
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_c0(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ceddc8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints3")));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_pma3ru_a0(), AUX_pma3ru.TestSubstituteChildWithConstraints2_5a6e81b3));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_pma3ru_b0(), AUX_pma3ru.TestSubstituteChildWithConstraints1_5a6e81b4));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_pma3ru_c0(), AUX_pma3ru.TestSubstituteChildWithConstraints3_5c410892));
     }
     return result;
   }
@@ -70,7 +71,7 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
   private class TMP_Action_pma3ru_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_a0.Item item = new TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_a0.Item(context);
+      TMP_Action_pma3ru_a0.Item item = new TMP_Action_pma3ru_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -112,7 +113,7 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b3L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints2");
+        return AUX_pma3ru.TestSubstituteChildWithConstraints2_5a6e81b3;
       }
 
 
@@ -123,7 +124,7 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b3L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints2");
+        SAbstractConcept outputConcept = AUX_pma3ru.TestSubstituteChildWithConstraints2_5a6e81b3;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -135,7 +136,7 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
   private class TMP_Action_pma3ru_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_b0.Item item = new TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_b0.Item(context);
+      TMP_Action_pma3ru_b0.Item item = new TMP_Action_pma3ru_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -170,14 +171,14 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints1"));
+        SNodeOperations.replaceWithNewChild(_context.getNode(), AUX_pma3ru.TestSubstituteChildWithConstraints1_5a6e81b4);
       }
 
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints1");
+        return AUX_pma3ru.TestSubstituteChildWithConstraints1_5a6e81b4;
       }
 
 
@@ -188,7 +189,7 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints1");
+        SAbstractConcept outputConcept = AUX_pma3ru.TestSubstituteChildWithConstraints1_5a6e81b4;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -200,7 +201,7 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
   private class TMP_Action_pma3ru_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_c0.Item item = new TestSubstituteChildWithConstraints2_TransformationMenu.TMP_Action_pma3ru_c0.Item(context);
+      TMP_Action_pma3ru_c0.Item item = new TMP_Action_pma3ru_c0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -235,14 +236,14 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ceddc8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints3"));
+        SNodeOperations.replaceWithNewChild(_context.getNode(), AUX_pma3ru.TestSubstituteChildWithConstraints3_5c410892);
       }
 
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ceddc8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints3");
+        return AUX_pma3ru.TestSubstituteChildWithConstraints3_5c410892;
       }
 
 
@@ -253,7 +254,7 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ceddc8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints3");
+        SAbstractConcept outputConcept = AUX_pma3ru.TestSubstituteChildWithConstraints3_5c410892;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -261,5 +262,11 @@ public class TestSubstituteChildWithConstraints2_TransformationMenu extends Tran
       }
     }
 
+  }
+
+  private static final class AUX_pma3ru {
+    /*package*/ static final SConcept TestSubstituteChildWithConstraints2_5a6e81b3 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b3L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints2");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraints1_5a6e81b4 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints1");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraints3_5c410892 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ceddc8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints3");
   }
 }

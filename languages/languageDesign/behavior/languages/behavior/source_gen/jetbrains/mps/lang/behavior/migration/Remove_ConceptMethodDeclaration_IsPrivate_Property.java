@@ -10,9 +10,10 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends MigrationScriptBase {
   public String getCaption() {
@@ -35,7 +36,7 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
           return scope_65f75z_a0d_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_65f75z.ConceptMethodDeclaration_6c80ca4f, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           it.setProperty(MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480581L, "isPrivate"), null);
         }
@@ -46,4 +47,7 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, "jetbrains.mps.lang.behavior"), 1);
   }
 
+  private static final class AUX_65f75z {
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+  }
 }

@@ -9,18 +9,20 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.behavior.IIncludeSubstituteMenuPart__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_IncludingDefaultSubstituteMenu_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IncludingDefaultSubstituteMenu_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default")) && (SLinkOperations.getTarget(SNodeOperations.cast(IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept")) == null)) {
+    if (SNodeOperations.isInstanceOf(IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(node), AUX_x12827.SubstituteMenuReference_Default_2755df74) && (SLinkOperations.getTarget(SNodeOperations.cast(IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(node), AUX_x12827.SubstituteMenuReference_Default_2755df74), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept")) == null)) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(node), "Concept should be specified", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149", null, errorTarget);
@@ -28,12 +30,17 @@ public class check_IncludingDefaultSubstituteMenu_NonTypesystemRule extends Abst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x36f88ebb7cd0d956L, "jetbrains.mps.lang.editor.structure.IIncludeSubstituteMenuPart");
+    return AUX_x12827.IIncludeSubstituteMenuPart_2417557e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_x12827 {
+    /*package*/ static final SConcept SubstituteMenuReference_Default_2755df74 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
+    /*package*/ static final SInterfaceConcept IIncludeSubstituteMenuPart_2417557e = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x36f88ebb7cd0d956L, "jetbrains.mps.lang.editor.structure.IIncludeSubstituteMenuPart");
   }
 }

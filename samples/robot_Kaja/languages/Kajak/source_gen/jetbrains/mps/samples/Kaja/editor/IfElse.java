@@ -40,6 +40,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IfElse extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -65,7 +66,7 @@ public class IfElse extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new IfElse.TMP_Group_i2tw5n_a0());
+      result.add(new TMP_Group_i2tw5n_a0());
     }
     return result;
   }
@@ -89,12 +90,12 @@ public class IfElse extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new IfElse.TMP_Group_i2tw5n_a0.TMP_Action_i2tw5n_a0a(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_i2tw5n_a0.TMP_Action_i2tw5n_a0a(), AUX_i2tw5n.While_65179009));
     }
     private class TMP_Action_i2tw5n_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        IfElse.TMP_Group_i2tw5n_a0.TMP_Action_i2tw5n_a0a.Item item = new IfElse.TMP_Group_i2tw5n_a0.TMP_Action_i2tw5n_a0a.Item(context);
+        TMP_Group_i2tw5n_a0.TMP_Action_i2tw5n_a0a.Item item = new TMP_Group_i2tw5n_a0.TMP_Action_i2tw5n_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -129,7 +130,7 @@ public class IfElse extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode whileNode = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While"));
+          SNode whileNode = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_i2tw5n.While_65179009);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(whileNode, MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece2L, "condition")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -137,7 +138,7 @@ public class IfElse extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While");
+          return AUX_i2tw5n.While_65179009;
         }
 
 
@@ -148,7 +149,7 @@ public class IfElse extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While");
+          SAbstractConcept outputConcept = AUX_i2tw5n.While_65179009;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -157,5 +158,9 @@ public class IfElse extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_i2tw5n {
+    /*package*/ static final SConcept While_65179009 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While");
   }
 }

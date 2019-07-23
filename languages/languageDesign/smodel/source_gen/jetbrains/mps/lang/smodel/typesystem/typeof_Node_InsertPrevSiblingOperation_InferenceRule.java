@@ -13,6 +13,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_Node_InsertPrevSiblingOperation_InferenceRule() {
@@ -34,7 +35,7 @@ public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2d77d0e1L, "jetbrains.mps.lang.smodel.structure.Node_InsertPrevSiblingOperation");
+    return AUX_vszmfv.Node_InsertPrevSiblingOperation_5dbf1f99;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,5 +48,9 @@ public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends Abstra
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_vszmfv {
+    /*package*/ static final SConcept Node_InsertPrevSiblingOperation_5dbf1f99 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2d77d0e1L, "jetbrains.mps.lang.smodel.structure.Node_InsertPrevSiblingOperation");
   }
 }

@@ -21,7 +21,7 @@ public class AutoResolve_AutoResolveReference_Test extends BaseTransformationTes
 
   @Test
   public void test_AutoResolve_AutoResolveReference() throws Throwable {
-    new AutoResolve_AutoResolveReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

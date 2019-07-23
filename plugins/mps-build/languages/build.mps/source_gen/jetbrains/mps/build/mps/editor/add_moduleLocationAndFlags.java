@@ -65,7 +65,7 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new add_moduleLocationAndFlags.TMP_Group_vydzh3_a0());
+      result.add(new TMP_Group_vydzh3_a0());
     }
     return result;
   }
@@ -90,14 +90,14 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new add_moduleLocationAndFlags.TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a());
     }
     private class TMP_Param_vydzh3_a0a extends ParameterizedMenuPart<SEnumerationLiteral, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SEnumerationLiteral parameter, TransformationMenuContext context) {
-        return new add_moduleLocationAndFlags.TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0(parameter).createItems(context);
+        return new TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0(parameter).createItems(context);
       }
 
       @Nullable
@@ -124,7 +124,7 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          add_moduleLocationAndFlags.TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0.Item item = new add_moduleLocationAndFlags.TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0.Item(context);
+          TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0.Item item = new TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");

@@ -34,18 +34,18 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
   private static final Logger LOG = LogManager.getLogger(ModelReader8Handler.class);
-  private ModelReader8Handler.ModelElementHandler modelHandler = new ModelReader8Handler.ModelElementHandler();
-  private ModelReader8Handler.PersistenceElementHandler persistenceHandler = new ModelReader8Handler.PersistenceElementHandler();
-  private ModelReader8Handler.Module_referenceElementHandler module_referenceHandler = new ModelReader8Handler.Module_referenceElementHandler();
-  private ModelReader8Handler.ImportElementHandler importHandler = new ModelReader8Handler.ImportElementHandler();
-  private ModelReader8Handler.NodeElementHandler nodeHandler = new ModelReader8Handler.NodeElementHandler();
-  private ModelReader8Handler.IgnoredNodeElementHandler ignoredNodeHandler = new ModelReader8Handler.IgnoredNodeElementHandler();
-  private ModelReader8Handler.PropertyElementHandler propertyHandler = new ModelReader8Handler.PropertyElementHandler();
-  private ModelReader8Handler.IgnoredPropertyElementHandler ignoredPropertyHandler = new ModelReader8Handler.IgnoredPropertyElementHandler();
-  private ModelReader8Handler.LinkElementHandler linkHandler = new ModelReader8Handler.LinkElementHandler();
-  private ModelReader8Handler.IgnoredLinkElementHandler ignoredLinkHandler = new ModelReader8Handler.IgnoredLinkElementHandler();
-  private Stack<ModelReader8Handler.ElementHandler> myHandlersStack = new Stack<ModelReader8Handler.ElementHandler>();
-  private Stack<ModelReader8Handler.ChildHandler> myChildHandlersStack = new Stack<ModelReader8Handler.ChildHandler>();
+  private ModelElementHandler modelHandler = new ModelElementHandler();
+  private PersistenceElementHandler persistenceHandler = new PersistenceElementHandler();
+  private Module_referenceElementHandler module_referenceHandler = new Module_referenceElementHandler();
+  private ImportElementHandler importHandler = new ImportElementHandler();
+  private NodeElementHandler nodeHandler = new NodeElementHandler();
+  private IgnoredNodeElementHandler ignoredNodeHandler = new IgnoredNodeElementHandler();
+  private PropertyElementHandler propertyHandler = new PropertyElementHandler();
+  private IgnoredPropertyElementHandler ignoredPropertyHandler = new IgnoredPropertyElementHandler();
+  private LinkElementHandler linkHandler = new LinkElementHandler();
+  private IgnoredLinkElementHandler ignoredLinkHandler = new IgnoredLinkElementHandler();
+  private Stack<ElementHandler> myHandlersStack = new Stack<ElementHandler>();
+  private Stack<ChildHandler> myChildHandlersStack = new Stack<ChildHandler>();
   private Stack<Object> myValues = new Stack<Object>();
   private Locator myLocator;
   private ModelLoadResult myResult;
@@ -69,20 +69,20 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
   }
   @Override
   public void characters(char[] array, int start, int len) throws SAXException {
-    ModelReader8Handler.ElementHandler current = (myHandlersStack.empty() ? (ModelReader8Handler.ElementHandler) null : myHandlersStack.peek());
+    ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current != null) {
       current.handleText(myValues.peek(), new String(array, start, len));
     }
   }
   @Override
   public void endElement(String uri, String localName, String qName) throws SAXException {
-    ModelReader8Handler.ElementHandler current = myHandlersStack.pop();
+    ElementHandler current = myHandlersStack.pop();
     Object childValue = myValues.pop();
     current.validate(childValue);
     if (myChildHandlersStack.empty()) {
       myResult = (ModelLoadResult) childValue;
     } else {
-      ModelReader8Handler.ChildHandler ch = myChildHandlersStack.pop();
+      ChildHandler ch = myChildHandlersStack.pop();
       if (ch != null) {
         ch.apply(myValues.peek(), childValue);
       }
@@ -90,7 +90,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
   }
   @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-    ModelReader8Handler.ElementHandler current = (myHandlersStack.empty() ? (ModelReader8Handler.ElementHandler) null : myHandlersStack.peek());
+    ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
       // root 
       current = modelHandler;
@@ -132,7 +132,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     protected void handleAttribute(Object resultObject, String name, String value) throws SAXException {
     }
-    protected ModelReader8Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       throw new SAXParseException("unknown tag: " + tagName, null);
     }
     protected void handleText(Object resultObject, String value) throws SAXException {
@@ -150,7 +150,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
     protected void validate(Object resultObject) throws SAXException {
     }
   }
-  public class ModelElementHandler extends ModelReader8Handler.ElementHandler {
+  public class ModelElementHandler extends ElementHandler {
     public ModelElementHandler() {
       setRequiredAttributes("modelUID");
     }
@@ -185,13 +185,13 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       super.handleAttribute(resultObject, name, value);
     }
     @Override
-    protected ModelReader8Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("persistence".equals(tagName)) {
         myChildHandlersStack.push(null);
         return persistenceHandler;
       }
       if ("language".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_286176397450364079(resultObject, value);
@@ -200,7 +200,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return module_referenceHandler;
       }
       if ("language-engaged-on-generation".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_286176397450364090(resultObject, value);
@@ -209,7 +209,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return module_referenceHandler;
       }
       if ("devkit".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_286176397450364101(resultObject, value);
@@ -218,7 +218,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return module_referenceHandler;
       }
       if ("import".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_286176397450364112(resultObject, value);
@@ -227,7 +227,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return importHandler;
       }
       if ("root".equals(tagName) && checkroot_1768088633166530069(resultObject, attrs)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_1361478912184551722(resultObject, value);
@@ -236,7 +236,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return nodeHandler;
       }
       if ("root".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_1768088633166523070(resultObject, value);
@@ -292,7 +292,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       return true;
     }
   }
-  public class PersistenceElementHandler extends ModelReader8Handler.ElementHandler {
+  public class PersistenceElementHandler extends ElementHandler {
     public PersistenceElementHandler() {
       setRequiredAttributes("version");
     }
@@ -301,7 +301,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       return Integer.parseInt(attrs.getValue("version"));
     }
   }
-  public class Module_referenceElementHandler extends ModelReader8Handler.ElementHandler {
+  public class Module_referenceElementHandler extends ElementHandler {
     public Module_referenceElementHandler() {
       setRequiredAttributes("namespace");
     }
@@ -310,7 +310,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       return PersistenceFacade.getInstance().createModuleReference(attrs.getValue("namespace"));
     }
   }
-  public class ImportElementHandler extends ModelReader8Handler.ElementHandler {
+  public class ImportElementHandler extends ElementHandler {
     public ImportElementHandler() {
       setRequiredAttributes("index", "modelUID");
     }
@@ -328,7 +328,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       super.handleAttribute(resultObject, name, value);
     }
   }
-  public class NodeElementHandler extends ModelReader8Handler.ElementHandler {
+  public class NodeElementHandler extends ElementHandler {
     public NodeElementHandler() {
       setRequiredAttributes("type", "nodeInfo");
     }
@@ -364,9 +364,9 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       super.handleAttribute(resultObject, name, value);
     }
     @Override
-    protected ModelReader8Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("property".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_286176397450364265(resultObject, value);
@@ -375,7 +375,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return propertyHandler;
       }
       if ("link".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_286176397450364288(resultObject, value);
@@ -384,7 +384,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return linkHandler;
       }
       if ("node".equals(tagName) && checknode_1910945748547288250(resultObject, attrs)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_286176397450364333(resultObject, value);
@@ -393,7 +393,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return nodeHandler;
       }
       if ("node".equals(tagName)) {
-        myChildHandlersStack.push(new ModelReader8Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_1910945748545948896(resultObject, value);
@@ -458,7 +458,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       }
     }
   }
-  public class IgnoredNodeElementHandler extends ModelReader8Handler.ElementHandler {
+  public class IgnoredNodeElementHandler extends ElementHandler {
     public IgnoredNodeElementHandler() {
     }
     @Override
@@ -466,7 +466,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       return MultiTuple.<String,String,String>from(attrs.getValue("role"), attrs.getValue("nodeInfo"), attrs.getValue("type"));
     }
     @Override
-    protected ModelReader8Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("property".equals(tagName)) {
         myChildHandlersStack.push(null);
         return ignoredPropertyHandler;
@@ -482,7 +482,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       return super.createChild(resultObject, tagName, attrs);
     }
   }
-  public class PropertyElementHandler extends ModelReader8Handler.ElementHandler {
+  public class PropertyElementHandler extends ElementHandler {
     public PropertyElementHandler() {
       setRequiredAttributes("name");
     }
@@ -504,11 +504,11 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       super.handleAttribute(resultObject, name, value);
     }
   }
-  public class IgnoredPropertyElementHandler extends ModelReader8Handler.ElementHandler {
+  public class IgnoredPropertyElementHandler extends ElementHandler {
     public IgnoredPropertyElementHandler() {
     }
   }
-  public class LinkElementHandler extends ModelReader8Handler.ElementHandler {
+  public class LinkElementHandler extends ElementHandler {
     public LinkElementHandler() {
       setRequiredAttributes("role", "targetNodeId");
     }
@@ -530,7 +530,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
       super.handleAttribute(resultObject, name, value);
     }
   }
-  public class IgnoredLinkElementHandler extends ModelReader8Handler.ElementHandler {
+  public class IgnoredLinkElementHandler extends ElementHandler {
     public IgnoredLinkElementHandler() {
     }
   }

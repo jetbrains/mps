@@ -23,7 +23,7 @@ public class ReplaceAssignmentWithBinary_Test extends BaseTransformationTest {
 
   @Test
   public void test_ReplaceAssignmentWithBinary() throws Throwable {
-    new ReplaceAssignmentWithBinary_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

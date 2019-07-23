@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
@@ -27,6 +26,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -37,6 +37,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EmitStatement_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -62,7 +63,7 @@ public class EmitStatement_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, "jetbrains.mps.lang.dataFlow.structure.EmitStatement"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_dyx4xx.EmitStatement_b9454e2b)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -78,7 +79,7 @@ public class EmitStatement_TransformationMenu extends TransformationMenuBase {
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new EmitStatement_TransformationMenu.TMP_Action_dyx4xx_a1());
+      result.add(new TMP_Action_dyx4xx_a1());
     }
     return result;
   }
@@ -86,7 +87,7 @@ public class EmitStatement_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_dyx4xx_a1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      EmitStatement_TransformationMenu.TMP_Action_dyx4xx_a1.Item item = new EmitStatement_TransformationMenu.TMP_Action_dyx4xx_a1.Item(context);
+      TMP_Action_dyx4xx_a1.Item item = new TMP_Action_dyx4xx_a1.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -121,7 +122,7 @@ public class EmitStatement_TransformationMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition"), null)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position"), SNodeFactoryOperations.createNewNode(AUX_dyx4xx.InsertPosition_6469a9c5, null)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
@@ -142,5 +143,10 @@ public class EmitStatement_TransformationMenu extends TransformationMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_dyx4xx {
+    /*package*/ static final SConcept EmitStatement_b9454e2b = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, "jetbrains.mps.lang.dataFlow.structure.EmitStatement");
+    /*package*/ static final SConcept InsertPosition_6469a9c5 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition");
   }
 }

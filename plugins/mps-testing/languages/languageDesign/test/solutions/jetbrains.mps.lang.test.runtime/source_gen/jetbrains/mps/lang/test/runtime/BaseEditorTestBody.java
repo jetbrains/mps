@@ -15,7 +15,6 @@ import java.lang.reflect.InvocationTargetException;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -49,6 +48,8 @@ import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import com.intellij.openapi.fileEditor.impl.CurrentEditorProvider;
 import com.intellij.openapi.fileEditor.FileEditor;
 import org.apache.log4j.Level;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * Common ancestor for all generated EditorTestCase instances
@@ -136,7 +137,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private CellReference findCellReference(SNode node) {
-    List<SNode> annotations = SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation"), false, new SAbstractConcept[]{});
+    List<SNode> annotations = SNodeOperations.getNodeDescendants(node, AUX_drymxl.AnonymousCellAnnotation_4623621a, false, new SAbstractConcept[]{});
     if (ListSequence.fromList(annotations).isEmpty()) {
       return null;
     }
@@ -415,5 +416,9 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   private void uninstallAppender(CachingAppender appender) {
     Logger.getRootLogger().removeAppender(appender);
+  }
+
+  private static final class AUX_drymxl {
+    /*package*/ static final SConcept AnonymousCellAnnotation_4623621a = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
   }
 }

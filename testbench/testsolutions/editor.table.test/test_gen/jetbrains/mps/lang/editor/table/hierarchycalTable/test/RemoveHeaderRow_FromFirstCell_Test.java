@@ -23,7 +23,7 @@ public class RemoveHeaderRow_FromFirstCell_Test extends BaseTransformationTest {
 
   @Test
   public void test_RemoveHeaderRow_FromFirstCell() throws Throwable {
-    new RemoveHeaderRow_FromFirstCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

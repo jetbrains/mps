@@ -36,8 +36,8 @@ public class Sample_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("sampleFacet.Sample");
   public Sample_Facet() {
-    ListSequence.fromList(targets).addElement(new Sample_Facet.Target_readParams());
-    ListSequence.fromList(targets).addElement(new Sample_Facet.Target_reportFiles());
+    ListSequence.fromList(targets).addElement(new Target_readParams());
+    ListSequence.fromList(targets).addElement(new Target_reportFiles());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -55,7 +55,7 @@ public class Sample_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Sample_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_readParams implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("sampleFacet.Sample.readParams");
@@ -142,8 +142,8 @@ public class Sample_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 1;
     }
-    public static Sample_Facet.Target_readParams.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Sample_Facet.Target_readParams.Parameters.class);
+    public static Target_readParams.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_readParams.Parameters.class);
     }
     public static class Parameters extends MultiTuple._3<String, Integer, String> {
       public Parameters() {
@@ -255,7 +255,7 @@ public class Sample_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("sampleFacet.Sample.readParams");
         if (properties.hasProperties(name)) {
-          Sample_Facet.Target_readParams.Parameters props = properties.properties(name, Sample_Facet.Target_readParams.Parameters.class);
+          Target_readParams.Parameters props = properties.properties(name, Target_readParams.Parameters.class);
           MapSequence.fromMap(store).put("sampleFacet.Sample.readParams.SomeParam", String.valueOf(props.SomeParam()));
           MapSequence.fromMap(store).put("sampleFacet.Sample.readParams.Count", String.valueOf(props.Count()));
           MapSequence.fromMap(store).put("sampleFacet.Sample.readParams.arch", String.valueOf(props.arch()));
@@ -266,7 +266,7 @@ public class Sample_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("sampleFacet.Sample.readParams");
-          Sample_Facet.Target_readParams.Parameters props = properties.properties(name, Sample_Facet.Target_readParams.Parameters.class);
+          Target_readParams.Parameters props = properties.properties(name, Target_readParams.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("sampleFacet.Sample.readParams.SomeParam")) {
             props.SomeParam(String.valueOf(MapSequence.fromMap(store).get("sampleFacet.Sample.readParams.SomeParam")));
           }

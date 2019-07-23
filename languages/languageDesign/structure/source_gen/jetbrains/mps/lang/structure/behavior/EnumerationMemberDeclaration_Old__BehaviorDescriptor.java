@@ -4,7 +4,6 @@ package jetbrains.mps.lang.structure.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,6 +14,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -24,9 +24,10 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old");
+  private static final SAbstractConcept CONCEPT = AUX_pqy1y9.EnumerationMemberDeclaration_Old_8a4754eb;
 
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
   public static final SMethod<String> getConstantName_idi2Z$rBf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getConstantName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2Z$rBf").build();
@@ -48,7 +49,7 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
     return NameUtil.toValidIdentifier(EnumerationMemberDeclaration_Old__BehaviorDescriptor.getName_idi2ZRO7Q.invoke(__thisNode__));
   }
   /*package*/ static String getName_idi2ZRO7Q(@NotNull SNode __thisNode__) {
-    SNode enumType = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old"));
+    SNode enumType = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AUX_pqy1y9.EnumerationDataTypeDeclaration_Old_9e6b98ad);
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(enumType, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy")), 0x116d5fd31b6L)) {
       return SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue"));
     }
@@ -59,7 +60,7 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   }
   /*package*/ static SNode findReplacement_id54m$yuDZW0l(@NotNull final SNode __thisNode__) {
     // old-enum-member | old-enum | enum-migration-info | new-enum 
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion")), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members"))).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), AUX_pqy1y9.EnumerationDeclartaion_dd035f36), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members"))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember")) == __thisNode__;
       }
@@ -116,5 +117,11 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_pqy1y9 {
+    /*package*/ static final SConcept EnumerationMemberDeclaration_Old_8a4754eb = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old");
+    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old_9e6b98ad = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
+    /*package*/ static final SConcept EnumerationDeclartaion_dd035f36 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
   }
 }

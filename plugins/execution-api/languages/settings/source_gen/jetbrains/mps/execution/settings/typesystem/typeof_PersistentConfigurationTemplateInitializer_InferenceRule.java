@@ -18,6 +18,7 @@ import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_PersistentConfigurationTemplateInitializer_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_PersistentConfigurationTemplateInitializer_InferenceRule() {
@@ -45,7 +46,7 @@ public class typeof_PersistentConfigurationTemplateInitializer_InferenceRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, "jetbrains.mps.execution.settings.structure.PersistentConfigurationTemplateInitializer");
+    return AUX_xmb8fa.PersistentConfigurationTemplateInitializer_9ba04ffd;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -55,8 +56,13 @@ public class typeof_PersistentConfigurationTemplateInitializer_InferenceRule ext
   }
   private static SNode createTemplatePersistentConfigurationType_xmb8fa_a1a0c0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_xmb8fa.TemplatePersistentConfigurationType_9ba04fa5, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"), node0);
     return n1;
+  }
+
+  private static final class AUX_xmb8fa {
+    /*package*/ static final SConcept PersistentConfigurationTemplateInitializer_9ba04ffd = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, "jetbrains.mps.execution.settings.structure.PersistentConfigurationTemplateInitializer");
+    /*package*/ static final SConcept TemplatePersistentConfigurationType_9ba04fa5 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
   }
 }

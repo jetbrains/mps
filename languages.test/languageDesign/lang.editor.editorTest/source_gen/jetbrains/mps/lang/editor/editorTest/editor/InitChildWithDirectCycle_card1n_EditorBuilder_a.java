@@ -24,6 +24,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class InitChildWithDirectCycle_card1n_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -99,7 +100,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new InitChildWithDirectCycle_card1n_EditorBuilder_a.subChildListHandler_ursnvp_c2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new subChildListHandler_ursnvp_c2a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_subChild");
     Style style = new StyleImpl();
@@ -127,7 +128,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x78d10d0e00c2593aL, 0x78d10d0e00c2593bL, "subChild");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x78d10d0e00c2593aL, "jetbrains.mps.lang.editor.editorTest.structure.InitChildWithDirectCycle_card1n");
+      return AUX_a820m1.InitChildWithDirectCycle_card1n_d8e4c278;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -169,5 +170,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_a820m1 {
+    /*package*/ static final SConcept InitChildWithDirectCycle_card1n_d8e4c278 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x78d10d0e00c2593aL, "jetbrains.mps.lang.editor.editorTest.structure.InitChildWithDirectCycle_card1n");
   }
 }

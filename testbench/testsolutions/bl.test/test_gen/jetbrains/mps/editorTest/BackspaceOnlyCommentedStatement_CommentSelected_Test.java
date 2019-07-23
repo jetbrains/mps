@@ -21,7 +21,7 @@ public class BackspaceOnlyCommentedStatement_CommentSelected_Test extends BaseTr
 
   @Test
   public void test_BackspaceOnlyCommentedStatement_CommentSelected() throws Throwable {
-    new BackspaceOnlyCommentedStatement_CommentSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

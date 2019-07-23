@@ -4,7 +4,6 @@ package jetbrains.mps.console.ideCommands.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -19,9 +18,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class Make__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afcebfef23L, "jetbrains.mps.console.ideCommands.structure.Make");
+  private static final SAbstractConcept CONCEPT = AUX_fnowfr.Make_16e03e2b;
 
   public static final SMethod<Iterable<SConcept>> getSupportedParameters_id3J6h25QXCDW = new SMethodBuilder<Iterable<SConcept>>(new SJavaCompoundTypeImpl((Class<Iterable<SConcept>>) ((Class) Object.class))).name("getSupportedParameters").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3J6h25QXCDW").build();
   public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHelpPage").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("64VftqEen2L").build();
@@ -32,7 +32,7 @@ public final class Make__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SConcept> getSupportedParameters_id3J6h25QXCDW(@NotNull SAbstractConcept __thisConcept__) {
-    return Sequence.<SConcept>singleton(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x826e97ca237a1b1L, "jetbrains.mps.console.ideCommands.structure.WithDependencies"));
+    return Sequence.<SConcept>singleton(AUX_fnowfr.WithDependencies_c859f62a);
   }
   /*package*/ static String getHelpPage_id64VftqEen2L(@NotNull SAbstractConcept __thisConcept__) {
     return "Makes the models specified as the argument.\nAccepts argument of types: model, SModule, sequence<model>, sequence<SModule>.\nIf no arguments is provided, make is invoked on the whole project.\nAffects only the models that need generation (marked by MPS as `generation required`).\nWith the option <withDependencies> set, the models specified in the argument are generated as well as their dependencies.";
@@ -84,5 +84,10 @@ public final class Make__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_fnowfr {
+    /*package*/ static final SConcept Make_16e03e2b = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afcebfef23L, "jetbrains.mps.console.ideCommands.structure.Make");
+    /*package*/ static final SConcept WithDependencies_c859f62a = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x826e97ca237a1b1L, "jetbrains.mps.console.ideCommands.structure.WithDependencies");
   }
 }

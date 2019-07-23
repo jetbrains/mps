@@ -5,8 +5,9 @@ package jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.refactorin
 import jetbrains.mps.refactoring.framework.IRefactoringTarget;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AppendOneToName_Target implements IRefactoringTarget {
   public AppendOneToName_Target() {
@@ -18,7 +19,7 @@ public class AppendOneToName_Target implements IRefactoringTarget {
     return false;
   }
   public boolean isApplicableToEntityType(final Object entity) {
-    return SNodeOperations.isInstanceOf(((SNode) entity), MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x4d6a8b533e60aa32L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.Child"));
+    return SNodeOperations.isInstanceOf(((SNode) entity), AUX_ardmrj.Child_2a5630ea);
   }
   public boolean isApplicable(final Object entity) {
     if (!(this.isApplicableToEntityType(entity))) {
@@ -28,5 +29,9 @@ public class AppendOneToName_Target implements IRefactoringTarget {
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_ardmrj {
+    /*package*/ static final SConcept Child_2a5630ea = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x4d6a8b533e60aa32L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.Child");
   }
 }

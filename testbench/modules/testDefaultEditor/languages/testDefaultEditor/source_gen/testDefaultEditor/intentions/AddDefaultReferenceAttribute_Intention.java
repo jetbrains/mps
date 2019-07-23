@@ -19,6 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddDefaultReferenceAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -39,7 +40,7 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddDefaultReferenceAttribute_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -48,7 +49,7 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute"), MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))) != null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(AUX_sspz1b.DefaultReferenceAttribute_a60c9d2e, MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))) != null)) {
         return "remove default reference attribute";
       } else {
         return "add default reference attribute";
@@ -56,11 +57,11 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute"), MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute"), MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(AUX_sspz1b.DefaultReferenceAttribute_a60c9d2e, MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))) != null)) {
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(AUX_sspz1b.DefaultReferenceAttribute_a60c9d2e, MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))));
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute"), MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute")));
-        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute"), MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))), "const");
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(AUX_sspz1b.DefaultReferenceAttribute_a60c9d2e, MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute")));
+        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(AUX_sspz1b.DefaultReferenceAttribute_a60c9d2e, MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend"))), "const");
       }
 
     }
@@ -68,5 +69,9 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
     public IntentionDescriptor getDescriptor() {
       return AddDefaultReferenceAttribute_Intention.this;
     }
+  }
+
+  private static final class AUX_sspz1b {
+    /*package*/ static final SConcept DefaultReferenceAttribute_a60c9d2e = MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute");
   }
 }

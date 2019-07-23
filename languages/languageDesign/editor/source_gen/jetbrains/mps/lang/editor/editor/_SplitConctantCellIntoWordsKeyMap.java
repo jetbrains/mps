@@ -9,18 +9,19 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class _SplitConctantCellIntoWordsKeyMap extends KeyMapImpl {
   public _SplitConctantCellIntoWordsKeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new _SplitConctantCellIntoWordsKeyMap._SplitConctantCellIntoWordsKeyMap_Action0();
+    action = new _SplitConctantCellIntoWordsKeyMap_Action0();
     this.putAction("ctrl+alt+shift", "VK_W", action);
   }
   public static class _SplitConctantCellIntoWordsKeyMap_Action0 extends KeyMapActionImpl {
@@ -42,7 +43,7 @@ public class _SplitConctantCellIntoWordsKeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_fmqs96.CellModel_Constant_27dff49b))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -55,8 +56,8 @@ public class _SplitConctantCellIntoWordsKeyMap extends KeyMapImpl {
       return (SNodeOperations.getParent(node) != null);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode collection = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), null);
-      SNodeFactoryOperations.setNewChild(collection, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192de4f16L, "jetbrains.mps.lang.editor.structure.CellLayout_Flow"));
+      SNode collection = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), AUX_fmqs96.CellModel_Collection_26007059, null);
+      SNodeFactoryOperations.setNewChild(collection, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), AUX_fmqs96.CellLayout_Flow_236bf206);
       SNodeOperations.replaceWithAnother(node, collection);
       String text = SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text"));
       String[] strings = text.split(" ");
@@ -69,5 +70,11 @@ public class _SplitConctantCellIntoWordsKeyMap extends KeyMapImpl {
     public String getKeyStroke() {
       return "ctrl alt shift W";
     }
+  }
+
+  private static final class AUX_fmqs96 {
+    /*package*/ static final SConcept CellModel_Constant_27dff49b = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant");
+    /*package*/ static final SConcept CellModel_Collection_26007059 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
+    /*package*/ static final SConcept CellLayout_Flow_236bf206 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192de4f16L, "jetbrains.mps.lang.editor.structure.CellLayout_Flow");
   }
 }

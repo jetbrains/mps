@@ -12,11 +12,12 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import java.util.Arrays;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MakeFieldFinal_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -45,7 +46,7 @@ public class MakeFieldFinal_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_rtp5yt.FieldDeclaration_e2711ac6))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("target", node);
@@ -74,5 +75,9 @@ public class MakeFieldFinal_Action extends BaseAction {
       }
     });
 
+  }
+
+  private static final class AUX_rtp5yt {
+    /*package*/ static final SConcept FieldDeclaration_e2711ac6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
   }
 }

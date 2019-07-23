@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -20,9 +19,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CreatePropertyAntiquotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -45,7 +46,7 @@ public final class CreatePropertyAntiquotation_Intention extends AbstractIntenti
     if (check_vcwk4z_a0b0e(check_vcwk4z_a0a1a4(check_vcwk4z_a0a0b0e(selectedCell))) == null) {
       return false;
     }
-    SNode contextNode = SNodeOperations.cast(selectedCell.getSNode(), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
+    SNode contextNode = SNodeOperations.cast(selectedCell.getSNode(), AUX_vcwk4z.BaseConcept_bc2351f);
     if (contextNode == null) {
       return false;
     }
@@ -57,7 +58,7 @@ public final class CreatePropertyAntiquotation_Intention extends AbstractIntenti
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new CreatePropertyAntiquotation_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -74,21 +75,21 @@ public final class CreatePropertyAntiquotation_Intention extends AbstractIntenti
         return;
       }
       EditorCell selectedCell = editorContext.getSelectedCell();
-      SNode contextNode = SNodeOperations.cast(selectedCell.getSNode(), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
+      SNode contextNode = SNodeOperations.cast(selectedCell.getSNode(), AUX_vcwk4z.BaseConcept_bc2351f);
       if (contextNode == null) {
         return;
       }
       SProperty p = selectedCell.getCellContext().getPropertyInfo().getProperty();
-      if (SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation"))) {
-        SNode attributedNode = SNodeOperations.cast(SNodeOperations.getParent(contextNode), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
+      if (SNodeOperations.isInstanceOf(contextNode, AUX_vcwk4z.PropertyAntiquotation_a7bfd3a3)) {
+        SNode attributedNode = SNodeOperations.cast(SNodeOperations.getParent(contextNode), AUX_vcwk4z.BaseConcept_bc2351f);
         assert attributedNode != null;
-        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.PropertyAttribute(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation"), p), null);
+        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.PropertyAttribute(AUX_vcwk4z.PropertyAntiquotation_a7bfd3a3, p), null);
         return;
       }
-      if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation"), p)) != null) {
-        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation"), p), null);
+      if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(AUX_vcwk4z.PropertyAntiquotation_a7bfd3a3, p)) != null) {
+        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(AUX_vcwk4z.PropertyAntiquotation_a7bfd3a3, p), null);
       } else {
-        SNode propertyAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation"), p), MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation"));
+        SNode propertyAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(AUX_vcwk4z.PropertyAntiquotation_a7bfd3a3, p), AUX_vcwk4z.PropertyAntiquotation_a7bfd3a3);
         if (selectedCell.isSingleNodeCell()) {
           SPropertyOperations.set(propertyAntiquotation, MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x5a0ec74a8bd5aeb2L, "label"), SNodeOperations.getConcept(contextNode).getName());
         }
@@ -117,5 +118,10 @@ public final class CreatePropertyAntiquotation_Intention extends AbstractIntenti
       return checkedDotOperand.getCellContext();
     }
     return null;
+  }
+
+  private static final class AUX_vcwk4z {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept PropertyAntiquotation_a7bfd3a3 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation");
   }
 }

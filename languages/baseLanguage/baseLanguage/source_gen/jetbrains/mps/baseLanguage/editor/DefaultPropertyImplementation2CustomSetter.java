@@ -13,6 +13,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DefaultPropertyImplementation2CustomSetter {
 
@@ -22,7 +23,7 @@ public class DefaultPropertyImplementation2CustomSetter {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode replaceWithNewInitialized = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation"));
+        SNode replaceWithNewInitialized = SNodeFactoryOperations.replaceWithNewChild(node, AUX_5k2u1p.CustomSetterPropertyImplementation_343f1501);
         SNodeFactoryOperations.setNewChild(replaceWithNewInitialized, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor"), null);
       }
 
@@ -37,7 +38,7 @@ public class DefaultPropertyImplementation2CustomSetter {
         if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor")))) {
           return;
         }
-        SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation"));
+        SNodeFactoryOperations.replaceWithNewChild(node, AUX_5k2u1p.CustomSetterPropertyImplementation_343f1501);
       }
 
     };
@@ -80,5 +81,9 @@ public class DefaultPropertyImplementation2CustomSetter {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_5k2u1p {
+    /*package*/ static final SConcept CustomSetterPropertyImplementation_343f1501 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
   }
 }

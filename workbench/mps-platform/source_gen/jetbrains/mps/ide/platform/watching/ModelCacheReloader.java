@@ -24,7 +24,7 @@ import jetbrains.mps.ide.vfs.VirtualFileUtils;
 public class ModelCacheReloader implements ApplicationComponent {
   private static final Logger LOG = LogManager.getLogger(ModelCacheReloader.class);
   private VirtualFileManager myVirtualFileManager;
-  private ModelCacheReloader.CacheFileListener myFileListener;
+  private CacheFileListener myFileListener;
   private final MPSCoreComponents myMPS;
 
   public ModelCacheReloader(VirtualFileManager virtualFileManager, MPSCoreComponents coreComponents) {
@@ -37,7 +37,7 @@ public class ModelCacheReloader implements ApplicationComponent {
   public void initComponent() {
     ModelGenerationStatusManager mgsm = myMPS.getPlatform().findComponent(ModelGenerationStatusManager.class);
     if (mgsm != null) {
-      myFileListener = new ModelCacheReloader.CacheFileListener(mgsm);
+      myFileListener = new CacheFileListener(mgsm);
       myVirtualFileManager.addVirtualFileListener(myFileListener);
     } else {
       if (LOG.isEnabledFor(Level.WARN)) {

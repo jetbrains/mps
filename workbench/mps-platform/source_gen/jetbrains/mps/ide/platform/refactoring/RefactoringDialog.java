@@ -34,7 +34,7 @@ public abstract class RefactoringDialog extends DialogWrapper {
   @Override
   protected void createDefaultActions() {
     super.createDefaultActions();
-    myRefactorAction = new RefactoringDialog.RefactorAction();
+    myRefactorAction = new RefactorAction();
   }
   /**
    * This method will be called on pressing "Refactor" button in dialog.

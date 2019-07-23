@@ -21,7 +21,7 @@ public class CrossParens9_Test extends BaseTransformationTest {
 
   @Test
   public void test_CrossParens9() throws Throwable {
-    new CrossParens9_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

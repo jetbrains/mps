@@ -18,15 +18,16 @@ import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Switch_switch_ConceptIdentity_SConcept extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_ConceptIdentity_SConcept() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_ConceptIdentity_SConcept.ReductionRule0(), new Switch_switch_ConceptIdentity_SConcept.ReductionRule1());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349543308");
@@ -48,7 +49,7 @@ public class Switch_switch_ConceptIdentity_SConcept extends TemplateSwitchBase i
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935068567"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935068567"), AUX_c1q8x3.ConceptId_51d9f118, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -63,7 +64,7 @@ public class Switch_switch_ConceptIdentity_SConcept extends TemplateSwitchBase i
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349544013"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349544013"), AUX_c1q8x3.ConceptId_51d9f118, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -71,5 +72,9 @@ public class Switch_switch_ConceptIdentity_SConcept extends TemplateSwitchBase i
       Collection<SNode> tlist1 = new Template_reduce_ConceptId_SConcept().apply(environment, context);
       return tlist1;
     }
+  }
+
+  private static final class AUX_c1q8x3 {
+    /*package*/ static final SConcept ConceptId_51d9f118 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
   }
 }

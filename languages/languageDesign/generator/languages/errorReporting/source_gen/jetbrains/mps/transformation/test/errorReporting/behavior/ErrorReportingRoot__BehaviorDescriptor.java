@@ -4,7 +4,6 @@ package jetbrains.mps.transformation.test.errorReporting.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
@@ -13,9 +12,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ErrorReportingRoot__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x99a58581851840c8L, 0x81f1e364306f5ffcL, 0x6521db51e82a7653L, "jetbrains.mps.transformation.test.errorReporting.structure.ErrorReportingRoot");
+  private static final SAbstractConcept CONCEPT = AUX_azarlw.ErrorReportingRoot_8c2529f7;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -66,5 +67,9 @@ public final class ErrorReportingRoot__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_azarlw {
+    /*package*/ static final SConcept ErrorReportingRoot_8c2529f7 = MetaAdapterFactory.getConcept(0x99a58581851840c8L, 0x81f1e364306f5ffcL, 0x6521db51e82a7653L, "jetbrains.mps.transformation.test.errorReporting.structure.ErrorReportingRoot");
   }
 }

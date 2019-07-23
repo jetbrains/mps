@@ -7,7 +7,6 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -41,6 +41,7 @@ import jetbrains.mps.ide.actions.MappingDialog;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class Generator_TabDescriptor extends RelationDescriptor {
   private static final Icon ICON = MPSIcons.Nodes.Reduction;
@@ -62,7 +63,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    return SNodeOperations.isInstanceOf(node, AUX_61fnz0.AbstractConceptDeclaration_ec74828f);
   }
   @Nullable
   public Icon getIcon() {
@@ -70,7 +71,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
   }
   public List<SNode> getNodes(SNode node) {
     Set<SNode> nodes = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(nodes).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("findGeneratorFragments", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "5zMz2aJEI4B")))));
+    SetSequence.fromSet(nodes).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(node, AUX_61fnz0.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("findGeneratorFragments", AUX_61fnz0.AbstractConceptDeclaration_ec74828f, "5zMz2aJEI4B")))));
     return SetSequence.fromSet(nodes).toListSequence();
   }
   public boolean isSingle() {
@@ -78,14 +79,14 @@ public class Generator_TabDescriptor extends RelationDescriptor {
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
     List<SConcept> result = ConceptEditorHelper.getAvailableConceptAspects(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), node);
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence"));
-    boolean rootable = SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")) && SPropertyOperations.getBoolean((SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable"));
-    boolean isInterface = SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"));
+    ListSequence.fromList(result).addElement(AUX_61fnz0.InlineTemplate_RuleConsequence_6e1e9f65);
+    ListSequence.fromList(result).addElement(AUX_61fnz0.InlineTemplateWithContext_RuleConsequence_cd06d77c);
+    boolean rootable = SNodeOperations.isInstanceOf(node, AUX_61fnz0.ConceptDeclaration_cb225da8) && SPropertyOperations.getBoolean((SNodeOperations.cast(node, AUX_61fnz0.ConceptDeclaration_cb225da8)), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable"));
+    boolean isInterface = SNodeOperations.isInstanceOf(node, AUX_61fnz0.InterfaceConceptDeclaration_efdf2bc9);
     if (rootable || isInterface) {
       boolean isNeedRootTemplate = true;
-      for (SNode genFragment : ((List<SNode>) BHReflection.invoke0(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("findGeneratorFragments", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "5zMz2aJEI4B")))) {
-        if ((AttributeOperations.getAttribute(genFragment, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) != null)) {
+      for (SNode genFragment : ((List<SNode>) BHReflection.invoke0(node, AUX_61fnz0.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("findGeneratorFragments", AUX_61fnz0.AbstractConceptDeclaration_ec74828f, "5zMz2aJEI4B")))) {
+        if ((AttributeOperations.getAttribute(genFragment, new IAttributeDescriptor.NodeAttribute(AUX_61fnz0.RootTemplateAnnotation_423b5b1a)) != null)) {
           isNeedRootTemplate = false;
           break;
         }
@@ -155,7 +156,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
       public void run() {
         for (Generator generator : genList.value) {
           for (SModel gm : generator.getOwnTemplateModels()) {
-            ListSequence.fromList(mappings).addSequence(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(gm, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"))));
+            ListSequence.fromList(mappings).addSequence(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(gm, AUX_61fnz0.MappingConfiguration_587b13db)));
           }
         }
       }
@@ -194,26 +195,39 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     mpsProject.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
         SModel model = SNodeOperations.getModel(mapping.value);
-        if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect"))) {
+        if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), AUX_61fnz0.IConceptAspect_bb65b752)) {
           result.value = ConceptAspectsHelper.attachNewConceptAspect(node, SNodeFactoryOperations.createNewNode(((SAbstractConcept) concept), null), model);
-          BHReflection.invoke0(mapping.value, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), SMethodTrimmedId.create("addMember", MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), "2JKPiG_HmQX"), result.value);
-        } else if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence")) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence"))) {
+          BHReflection.invoke0(mapping.value, AUX_61fnz0.MappingConfiguration_587b13db, SMethodTrimmedId.create("addMember", AUX_61fnz0.MappingConfiguration_587b13db, "2JKPiG_HmQX"), result.value);
+        } else if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), AUX_61fnz0.InlineTemplate_RuleConsequence_6e1e9f65) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), AUX_61fnz0.InlineTemplateWithContext_RuleConsequence_cd06d77c)) {
           SNode rc = SNodeFactoryOperations.createNewNode(concept, null);
-          SNode mappingRule = SLinkOperations.addNewChild(mapping.value, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule"), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule"));
+          SNode mappingRule = SLinkOperations.addNewChild(mapping.value, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule"), AUX_61fnz0.Reduction_MappingRule_97b385f1);
           SLinkOperations.setTarget(mappingRule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept"), node);
           SLinkOperations.setTarget(mappingRule, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, 0x11055ee07edL, "ruleConsequence"), rc);
           result.value = rc;
         } else {
           result.value = SNodeFactoryOperations.createNewNode(concept, null);
-          SNode rootTemplateNode = jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"));
+          SNode rootTemplateNode = jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.createNewNode(model, null, AUX_61fnz0.RootTemplateAnnotation_423b5b1a);
           SLinkOperations.setTarget(rootTemplateNode, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept"), node);
-          AttributeOperations.setAttribute(result.value, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), rootTemplateNode);
-          SPropertyOperations.set(SNodeOperations.as(result.value, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+          AttributeOperations.setAttribute(result.value, new IAttributeDescriptor.NodeAttribute(AUX_61fnz0.RootTemplateAnnotation_423b5b1a), rootTemplateNode);
+          SPropertyOperations.set(SNodeOperations.as(result.value, AUX_61fnz0.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
           jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, result.value);
-          BHReflection.invoke0(mapping.value, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), SMethodTrimmedId.create("addMember", MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), "2JKPiG_HmQX"), result.value);
+          BHReflection.invoke0(mapping.value, AUX_61fnz0.MappingConfiguration_587b13db, SMethodTrimmedId.create("addMember", AUX_61fnz0.MappingConfiguration_587b13db, "2JKPiG_HmQX"), result.value);
         }
       }
     });
     return result.value;
+  }
+
+  private static final class AUX_61fnz0 {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept InlineTemplate_RuleConsequence_6e1e9f65 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
+    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence_cd06d77c = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration_efdf2bc9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept RootTemplateAnnotation_423b5b1a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SInterfaceConcept IConceptAspect_bb65b752 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
+    /*package*/ static final SConcept Reduction_MappingRule_97b385f1 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

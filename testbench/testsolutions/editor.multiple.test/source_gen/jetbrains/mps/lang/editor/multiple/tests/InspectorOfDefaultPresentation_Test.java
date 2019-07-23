@@ -25,7 +25,7 @@ public class InspectorOfDefaultPresentation_Test extends BaseTransformationTest 
 
   @Test
   public void test_InspectorOfDefaultPresentation() throws Throwable {
-    new InspectorOfDefaultPresentation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

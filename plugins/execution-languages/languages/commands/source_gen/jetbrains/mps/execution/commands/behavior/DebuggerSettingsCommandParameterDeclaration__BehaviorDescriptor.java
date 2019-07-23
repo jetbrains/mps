@@ -4,21 +4,22 @@ package jetbrains.mps.execution.commands.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class DebuggerSettingsCommandParameterDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x75aadb0d4e61a576L, "jetbrains.mps.execution.commands.structure.DebuggerSettingsCommandParameterDeclaration");
+  private static final SAbstractConcept CONCEPT = AUX_sqoc64.DebuggerSettingsCommandParameterDeclaration_b1b956ff;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -76,5 +77,9 @@ public final class DebuggerSettingsCommandParameterDeclaration__BehaviorDescript
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_sqoc64 {
+    /*package*/ static final SConcept DebuggerSettingsCommandParameterDeclaration_b1b956ff = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x75aadb0d4e61a576L, "jetbrains.mps.execution.commands.structure.DebuggerSettingsCommandParameterDeclaration");
   }
 }

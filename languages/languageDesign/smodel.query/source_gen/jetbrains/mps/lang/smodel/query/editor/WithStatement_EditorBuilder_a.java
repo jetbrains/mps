@@ -16,9 +16,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
@@ -30,6 +30,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.BraceStyleClass;
 import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class WithStatement_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -93,7 +94,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     } else {
       editorCell = createConstant_2();
     }
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, "jetbrains.mps.lang.smodel.query.structure.WithStatement"), "jetbrains.mps.lang.smodel.query.editor.WithStatement_EditableMenu"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_clck7h.WithStatement_23284330, "jetbrains.mps.lang.smodel.query.editor.WithStatement_EditableMenu"));
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
@@ -129,7 +130,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new WithStatement_EditorBuilder_a.scopeSingleRoleHandler_4f6do1_c0(myNode, MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, 0x3ac2ae2c0bcf36b7L, "scope"), getEditorContext());
+    SingleRoleCellProvider provider = new scopeSingleRoleHandler_4f6do1_c0(myNode, MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, 0x3ac2ae2c0bcf36b7L, "scope"), getEditorContext());
     return provider.createCell();
   }
   private static class scopeSingleRoleHandler_4f6do1_c0 extends SingleRoleCellProvider {
@@ -212,7 +213,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new WithStatement_EditorBuilder_a.stmtsSingleRoleHandler_4f6do1_g0(myNode, MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, 0x3ac2ae2c0bcf368cL, "stmts"), getEditorContext());
+    SingleRoleCellProvider provider = new stmtsSingleRoleHandler_4f6do1_g0(myNode, MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, 0x3ac2ae2c0bcf368cL, "stmts"), getEditorContext());
     return provider.createCell();
   }
   private static class stmtsSingleRoleHandler_4f6do1_g0 extends SingleRoleCellProvider {
@@ -278,5 +279,9 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_clck7h {
+    /*package*/ static final SConcept WithStatement_23284330 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, "jetbrains.mps.lang.smodel.query.structure.WithStatement");
   }
 }

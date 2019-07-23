@@ -34,7 +34,7 @@ import com.intellij.execution.BeforeRunTask;
 public class Remote_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(Remote_Configuration.class);
   @NotNull
-  private Remote_Configuration.MyState myState = new Remote_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -58,7 +58,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (Remote_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -80,7 +80,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      Remote_Configuration.MyState state = new Remote_Configuration.MyState();
+      MyState state = new MyState();
       if (mySettings != null) {
         state.mySettings = mySettings.clone();
       }

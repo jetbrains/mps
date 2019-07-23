@@ -18,7 +18,6 @@ import jetbrains.mps.util.FileUtil;
 import java.io.IOException;
 import junit.framework.Assert;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodeId;
@@ -47,6 +46,8 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.ArrayList;
 import java.util.Collections;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class TestPersistence_Test extends BaseTransformationTest {
@@ -61,15 +62,15 @@ public class TestPersistence_Test extends BaseTransformationTest {
 
   @Test
   public void test_testLastVersionIndexing() throws Throwable {
-    new TestPersistence_Test.TestBody(this).test_testLastVersionIndexing();
+    new TestBody(this).test_testLastVersionIndexing();
   }
   @Test
   public void test_testPersistenceReadWrite() throws Throwable {
-    new TestPersistence_Test.TestBody(this).test_testPersistenceReadWrite();
+    new TestBody(this).test_testPersistenceReadWrite();
   }
   @Test
   public void test_testPersistenceUpgrade() throws Throwable {
-    new TestPersistence_Test.TestBody(this).test_testPersistenceUpgrade();
+    new TestBody(this).test_testPersistenceUpgrade();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -89,7 +90,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
         Assert.fail(e.getMessage());
       }
 
-      Assert.assertTrue(c.myConcepts.contains(((SConceptAdapterById) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")).getId()));
+      Assert.assertTrue(c.myConcepts.contains(((SConceptAdapterById) AUX_oa0p76.ClassConcept_e2711824).getId()));
       Assert.assertTrue(c.myImports.contains(new JavaPackageNameStub("java.io").asModelReference(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"))));
       Assert.assertTrue(c.myExtRefs.contains(new SNodeId.Foreign("~System")));
       Assert.assertTrue(c.myLocalRefs.contains(new SNodePointer("r:b44bed60-e0f0-4d48-bb29-e0fdb2041a66(tests.testPersistence.testModel)", "3895553186365322355").getNodeId()));
@@ -308,5 +309,9 @@ public class TestPersistence_Test extends BaseTransformationTest {
       }
       return Collections.unmodifiableList(references);
     }
+  }
+
+  private static final class AUX_oa0p76 {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
@@ -22,6 +21,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
@@ -29,15 +29,16 @@ import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ConstantStringAppendPart_SubstituteMenu.SMP_Action_q0hc0b_a(), MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart")));
-    result.add(new ConstantStringAppendPart_SubstituteMenu.SMP_Subconcepts_q0hc0b_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart")) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_q0hc0b_a(), AUX_q0hc0b.ConstantStringAppendPart_a217ccb8));
+    result.add(new SMP_Subconcepts_q0hc0b_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_q0hc0b.ConstantStringAppendPart_a217ccb8) {
 
       @NotNull
       @Override
@@ -50,7 +51,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart")));
+    }, AUX_q0hc0b.ConstantStringAppendPart_a217ccb8));
     return result;
   }
 
@@ -72,7 +73,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      ConstantStringAppendPart_SubstituteMenu.SMP_Action_q0hc0b_a.Item item = new ConstantStringAppendPart_SubstituteMenu.SMP_Action_q0hc0b_a.Item(_context);
+      SMP_Action_q0hc0b_a.Item item = new SMP_Action_q0hc0b_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -95,7 +96,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart"), context);
+        super(AUX_q0hc0b.ConstantStringAppendPart_a217ccb8, context);
         _context = context;
       }
 
@@ -106,7 +107,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart"), _context.getCurrentTargetNode());
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_q0hc0b.ConstantStringAppendPart_a217ccb8, _context.getCurrentTargetNode());
         SPropertyOperations.set(result, MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201528caacL, "value"), NameUtil.stripQuotes(pattern, "\"", "\""));
         return result;
       }
@@ -135,7 +136,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
   }
   public class SMP_Subconcepts_q0hc0b_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_q0hc0b.ConstantStringAppendPart_a217ccb8);
     }
     @NotNull
     @Override
@@ -153,5 +154,9 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_q0hc0b {
+    /*package*/ static final SConcept ConstantStringAppendPart_a217ccb8 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart");
   }
 }

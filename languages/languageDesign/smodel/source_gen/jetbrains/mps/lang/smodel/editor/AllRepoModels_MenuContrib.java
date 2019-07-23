@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.IncludeSubstituteMenuSubstituteMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -22,6 +21,8 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
   public AllRepoModels_MenuContrib() {
@@ -31,7 +32,7 @@ public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new AllRepoModels_MenuContrib.SMP_Group_ngt524_a());
+    result.add(new SMP_Group_ngt524_a());
     return result;
   }
 
@@ -51,7 +52,7 @@ public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
   public class SMP_Group_ngt524_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, "jetbrains.mps.lang.smodel.structure.ModelPointerExpression")) || SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression")) || (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, "jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation"), true, false) != null) || SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32d13e7d44145b36L, "jetbrains.mps.lang.smodel.structure.Node_IsOperation"));
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_ngt524.ModelPointerExpression_3024659d) || SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_ngt524.NodePointerExpression_bcefaa2a) || (SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_ngt524.Link_SetTargetPointerOperation_aec1d539, true, false) != null) || SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_ngt524.Node_IsOperation_433dedd1);
     }
     @NotNull
     @Override
@@ -67,7 +68,7 @@ public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new AllRepoModels_MenuContrib.SMP_Group_ngt524_a.SMP_Include_ngt524_a0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ngt524_a.SMP_Include_ngt524_a0());
     }
     public class SMP_Include_ngt524_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 
@@ -90,8 +91,16 @@ public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
         return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.modelapi.editor.AllRepositoryModels_SM");
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
+        return AUX_ngt524.ModelPointer_a7ab22d2;
       }
     }
+  }
+
+  private static final class AUX_ngt524 {
+    /*package*/ static final SConcept ModelPointerExpression_3024659d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, "jetbrains.mps.lang.smodel.structure.ModelPointerExpression");
+    /*package*/ static final SConcept NodePointerExpression_bcefaa2a = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
+    /*package*/ static final SConcept Link_SetTargetPointerOperation_aec1d539 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, "jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation");
+    /*package*/ static final SConcept Node_IsOperation_433dedd1 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32d13e7d44145b36L, "jetbrains.mps.lang.smodel.structure.Node_IsOperation");
+    /*package*/ static final SConcept ModelPointer_a7ab22d2 = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
   }
 }

@@ -23,7 +23,7 @@ public class ProblemKindStyle_StyleSheet {
   public static void apply_ProblemKind(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ProblemKindStyle_StyleSheet.ProblemKindStyleClass(editorContext, node).apply(style, editorCell);
+    new ProblemKindStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class ProblemKindStyleClass extends AbstractStyleClass {

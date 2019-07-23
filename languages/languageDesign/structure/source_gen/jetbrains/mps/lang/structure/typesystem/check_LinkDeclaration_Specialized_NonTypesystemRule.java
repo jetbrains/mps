@@ -20,6 +20,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_LinkDeclaration_Specialized_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_LinkDeclaration_Specialized_NonTypesystemRule() {
@@ -66,12 +67,16 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    return AUX_617vlv.LinkDeclaration_ce818bfc;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_617vlv {
+    /*package*/ static final SConcept LinkDeclaration_ce818bfc = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
   }
 }

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.Language;
@@ -21,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditorGeneratorRefactoring extends BaseProjectMigration {
   private SNode myCellFactoryCompatibilityTemplate;
@@ -38,7 +39,7 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
 
   @Override
   public boolean doExecute(Project project) {
-    myCellFactoryCompatibilityTemplate = SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "2554559902524921108").resolve(project.getRepository()), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration"));
+    myCellFactoryCompatibilityTemplate = SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "2554559902524921108").resolve(project.getRepository()), AUX_647dgd.TemplateDeclaration_6074fd22);
     assert myCellFactoryCompatibilityTemplate != null;
     final SNode cellFactoryMappingLabel = getCellFactoryMappingLabel(project.getRepository());
     assert cellFactoryMappingLabel != null;
@@ -55,13 +56,13 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
       }
       for (Generator generator : CollectionSequence.fromCollection(language.getGenerators())) {
         for (SModel generatorModel : ListSequence.fromList(generator.getModels())) {
-          ListSequence.fromList(SModelOperations.nodes(((SModel) generatorModel), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))).where(new IWhereFilter<SNode>() {
+          ListSequence.fromList(SModelOperations.nodes(((SModel) generatorModel), AUX_647dgd.TemplateFragment_1973fd34)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration")) == cellFactoryMappingLabel && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
+              return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration")) == cellFactoryMappingLabel && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), AUX_647dgd.InstanceMethodDeclaration_9dbf9b2b);
             }
           }).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
-              migrate(SNodeOperations.cast(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")));
+              migrate(SNodeOperations.cast(SNodeOperations.getParent(it), AUX_647dgd.InstanceMethodDeclaration_9dbf9b2b));
             }
           });
         }
@@ -76,9 +77,9 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
     }
     if (ListSequence.fromList(SNodeOperations.getAllSiblings(method, false)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode templateMethod) {
-        return SNodeOperations.isInstanceOf(templateMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) && AttributeOperations.getAttribute(templateMethod, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null && ListSequence.fromList(AttributeOperations.getAttributeList(templateMethod, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro")))).any(new IWhereFilter<SNode>() {
+        return SNodeOperations.isInstanceOf(templateMethod, AUX_647dgd.InstanceMethodDeclaration_9dbf9b2b) && AttributeOperations.getAttribute(templateMethod, new IAttributeDescriptor.NodeAttribute(AUX_647dgd.TemplateFragment_1973fd34)) != null && ListSequence.fromList(AttributeOperations.getAttributeList(templateMethod, new IAttributeDescriptor.NodeAttribute(AUX_647dgd.NodeMacro_2cb20614))).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode nodeMacro) {
-            return SLinkOperations.getTarget(SNodeOperations.as(nodeMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14f7f8a311b8f14fL, "jetbrains.mps.lang.generator.structure.TemplateCallMacro")), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template")) == myCellFactoryCompatibilityTemplate;
+            return SLinkOperations.getTarget(SNodeOperations.as(nodeMacro, AUX_647dgd.TemplateCallMacro_2b79ec44), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template")) == myCellFactoryCompatibilityTemplate;
           }
         });
       }
@@ -90,7 +91,7 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
   }
 
   private SNode getCellFactoryMappingLabel(SRepository repo) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203").resolve(repo), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel"))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203").resolve(repo), AUX_647dgd.MappingConfiguration_587b13db), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return "cellFactoryMethod".equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       }
@@ -135,5 +136,14 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
     quotedNode_6 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9586f0cL, "PrivateVisibility"), null, null, false);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_6);
     return quotedNode_1;
+  }
+
+  private static final class AUX_647dgd {
+    /*package*/ static final SConcept TemplateDeclaration_6074fd22 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept TemplateFragment_1973fd34 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept NodeMacro_2cb20614 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept TemplateCallMacro_2b79ec44 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14f7f8a311b8f14fL, "jetbrains.mps.lang.generator.structure.TemplateCallMacro");
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 }

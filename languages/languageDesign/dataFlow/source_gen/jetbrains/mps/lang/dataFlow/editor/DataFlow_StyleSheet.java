@@ -20,7 +20,7 @@ public class DataFlow_StyleSheet {
   public static void apply_Instruction(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DataFlow_StyleSheet.InstructionStyleClass(editorContext, node).apply(style, editorCell);
+    new InstructionStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -30,7 +30,7 @@ public class DataFlow_StyleSheet {
   public static void apply_Position(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DataFlow_StyleSheet.PositionStyleClass(editorContext, node).apply(style, editorCell);
+    new PositionStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -40,7 +40,7 @@ public class DataFlow_StyleSheet {
   public static void apply_MayBeUnreachable(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DataFlow_StyleSheet.MayBeUnreachableStyleClass(editorContext, node).apply(style, editorCell);
+    new MayBeUnreachableStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -50,7 +50,7 @@ public class DataFlow_StyleSheet {
   public static void apply_Label(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DataFlow_StyleSheet.LabelStyleClass(editorContext, node).apply(style, editorCell);
+    new LabelStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -60,7 +60,7 @@ public class DataFlow_StyleSheet {
   public static void apply_InsertPosition(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DataFlow_StyleSheet.InsertPositionStyleClass(editorContext, node).apply(style, editorCell);
+    new InsertPositionStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class InstructionStyleClass extends AbstractStyleClass {

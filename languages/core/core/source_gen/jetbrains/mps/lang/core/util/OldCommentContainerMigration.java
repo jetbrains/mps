@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.IOldCommentContainer__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -21,6 +20,8 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OldCommentContainerMigration {
   private SAbstractConcept concept;
@@ -41,7 +42,7 @@ public class OldCommentContainerMigration {
       }
     });
     for (SNode comment : Sequence.fromIterable(oldComments)) {
-      Iterable<SNode> commentedNodes = IOldCommentContainer__BehaviorDescriptor.getCommentedNodes_id3$Sh7m_tmZE.invoke(SNodeOperations.cast(comment, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer")));
+      Iterable<SNode> commentedNodes = IOldCommentContainer__BehaviorDescriptor.getCommentedNodes_id3$Sh7m_tmZE.invoke(SNodeOperations.cast(comment, AUX_7l65wi.IOldCommentContainer_43d44ed8));
       if (Sequence.fromIterable(commentedNodes).isNotEmpty()) {
         SNode next = comment;
         for (SNode commentedNode : Sequence.fromIterable(commentedNodes)) {
@@ -72,4 +73,7 @@ public class OldCommentContainerMigration {
     }
   }
 
+  private static final class AUX_7l65wi {
+    /*package*/ static final SInterfaceConcept IOldCommentContainer_43d44ed8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer");
+  }
 }

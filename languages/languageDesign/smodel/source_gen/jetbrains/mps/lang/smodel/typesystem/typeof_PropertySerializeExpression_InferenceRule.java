@@ -14,6 +14,7 @@ import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescri
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_PropertySerializeExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_PropertySerializeExpression_InferenceRule() {
@@ -31,7 +32,7 @@ public class typeof_PropertySerializeExpression_InferenceRule extends AbstractIn
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083baaeddeaL, "jetbrains.mps.lang.smodel.structure.PropertySerializeExpression");
+    return AUX_uthnwl.PropertySerializeExpression_bb0b32b8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,5 +45,9 @@ public class typeof_PropertySerializeExpression_InferenceRule extends AbstractIn
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_uthnwl {
+    /*package*/ static final SConcept PropertySerializeExpression_bb0b32b8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083baaeddeaL, "jetbrains.mps.lang.smodel.structure.PropertySerializeExpression");
   }
 }

@@ -22,7 +22,7 @@ public class ForStatementAdditionalVariableAdditionAndRemoval_Test extends BaseT
 
   @Test
   public void test_ForStatementAdditionalVariableAdditionAndRemoval() throws Throwable {
-    new ForStatementAdditionalVariableAdditionAndRemoval_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

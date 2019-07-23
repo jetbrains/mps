@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ConceptFunctionParameter_parameterObject__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x950e7629b27d763L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_parameterObject");
+  private static final SAbstractConcept CONCEPT = AUX_8600rd.ConceptFunctionParameter_parameterObject_5c17ed34;
 
   public static final SMethod<Boolean> dontUseParameterObject_id1653mnvAgv$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("dontUseParameterObject").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgv$").build();
 
@@ -76,5 +77,9 @@ public final class ConceptFunctionParameter_parameterObject__BehaviorDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_8600rd {
+    /*package*/ static final SConcept ConceptFunctionParameter_parameterObject_5c17ed34 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x950e7629b27d763L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_parameterObject");
   }
 }

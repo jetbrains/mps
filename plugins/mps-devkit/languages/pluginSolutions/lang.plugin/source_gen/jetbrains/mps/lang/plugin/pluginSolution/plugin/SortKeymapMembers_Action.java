@@ -12,12 +12,13 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import java.util.Arrays;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SortKeymapMembers_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -46,7 +47,7 @@ public class SortKeymapMembers_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_z9uvez.KeymapChangesDeclaration_b179307c))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("target", node);
@@ -77,5 +78,9 @@ public class SortKeymapMembers_Action extends BaseAction {
       }
     });
 
+  }
+
+  private static final class AUX_z9uvez {
+    /*package*/ static final SConcept KeymapChangesDeclaration_b179307c = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration");
   }
 }

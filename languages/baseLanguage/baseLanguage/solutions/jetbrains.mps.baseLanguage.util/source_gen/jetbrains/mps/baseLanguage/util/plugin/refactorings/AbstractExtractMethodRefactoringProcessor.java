@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AbstractExtractMethodRefactoringProcessor implements IExtractMethodRefactoringProcessor {
   protected SNode myNode;
@@ -37,10 +38,10 @@ public class AbstractExtractMethodRefactoringProcessor implements IExtractMethod
   public SNode getContainerMethod() {
     SNode node = ListSequence.fromList(this.myNodesToRefactor).first();
     while (node != null) {
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
+      if (SNodeOperations.isInstanceOf(node, AUX_8jxmcp.BaseMethodDeclaration_9dbf9acb)) {
         return node;
       }
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"))) {
+      if (SNodeOperations.isInstanceOf(node, AUX_8jxmcp.ConceptFunction_e08795a5)) {
         return node;
       }
       node = SNodeOperations.getParent(node);
@@ -50,11 +51,11 @@ public class AbstractExtractMethodRefactoringProcessor implements IExtractMethod
   @Override
   public SNode getContainerReturnType() {
     SNode containerMethod = this.getContainerMethod();
-    if (SNodeOperations.isInstanceOf(containerMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
-      return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(containerMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")));
+    if (SNodeOperations.isInstanceOf(containerMethod, AUX_8jxmcp.BaseMethodDeclaration_9dbf9acb)) {
+      return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(containerMethod, AUX_8jxmcp.BaseMethodDeclaration_9dbf9acb), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")));
     }
-    if (SNodeOperations.isInstanceOf(containerMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"))) {
-      return TypecheckingFacade.getFromContext().coerceType(((SNode) BHReflection.invoke0(SNodeOperations.cast(containerMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"), SMethodTrimmedId.create("getExpectedReturnType", null, "hEwIGRD"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"));
+    if (SNodeOperations.isInstanceOf(containerMethod, AUX_8jxmcp.ConceptFunction_e08795a5)) {
+      return TypecheckingFacade.getFromContext().coerceType(((SNode) BHReflection.invoke0(SNodeOperations.cast(containerMethod, AUX_8jxmcp.ConceptFunction_e08795a5), AUX_8jxmcp.ConceptFunction_e08795a5, SMethodTrimmedId.create("getExpectedReturnType", null, "hEwIGRD"))), AUX_8jxmcp.Type_4199e276);
     }
     return null;
   }
@@ -63,5 +64,11 @@ public class AbstractExtractMethodRefactoringProcessor implements IExtractMethod
   }
   public static void universalAddMethod(SNode container, SNode method) {
     MoveRefactoringUtils.addNodeAtLink(container, method);
+  }
+
+  private static final class AUX_8jxmcp {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

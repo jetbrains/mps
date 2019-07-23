@@ -26,7 +26,7 @@ public class TestCompletionCustomization_ContextMatcher_CustomActionEnumNoStylin
 
   @Test
   public void test_TestCompletionCustomization_ContextMatcher_CustomActionEnumNoStyling() throws Throwable {
-    new TestCompletionCustomization_ContextMatcher_CustomActionEnumNoStyling_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

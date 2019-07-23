@@ -27,6 +27,7 @@ import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.InlineSwitchCaseCondition;
 import jetbrains.mps.generator.template.InlineSwitchCaseContext;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class QueriesGenerated extends QueryProviderBase {
@@ -36,7 +37,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
     SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
     SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")));
-    return (SNodeOperations.isInstanceOf(lt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType")) || SNodeOperations.isInstanceOf(rt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType"))) && !((SNodeOperations.isInstanceOf(lt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType")) || SNodeOperations.isInstanceOf(rt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType"))));
+    return (SNodeOperations.isInstanceOf(lt, AUX_x583g4.PrimitiveType_53355efd) || SNodeOperations.isInstanceOf(rt, AUX_x583g4.PrimitiveType_53355efd)) && !((SNodeOperations.isInstanceOf(lt, AUX_x583g4.NullType_6bb6754a) || SNodeOperations.isInstanceOf(rt, AUX_x583g4.NullType_6bb6754a)));
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
@@ -44,7 +45,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
     SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
     SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")));
-    return (SNodeOperations.isInstanceOf(lt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType")) || SNodeOperations.isInstanceOf(rt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType"))) && !((SNodeOperations.isInstanceOf(lt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType")) || SNodeOperations.isInstanceOf(rt, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType"))));
+    return (SNodeOperations.isInstanceOf(lt, AUX_x583g4.PrimitiveType_53355efd) || SNodeOperations.isInstanceOf(rt, AUX_x583g4.PrimitiveType_53355efd)) && !((SNodeOperations.isInstanceOf(lt, AUX_x583g4.NullType_6bb6754a) || SNodeOperations.isInstanceOf(rt, AUX_x583g4.NullType_6bb6754a)));
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")));
@@ -68,7 +69,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"));
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
-    for (SNode node : SModelOperations.nodes(_context.getInputModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression"))) {
+    for (SNode node : SModelOperations.nodes(_context.getInputModel(), AUX_x583g4.EqualsExpression_9dbf9b09)) {
       SNode le = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"));
       SNode re = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"));
       if (Helper.isCollectionElementAccess(le) || Helper.isCollectionElementAccess(re)) {
@@ -80,8 +81,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("5233164016162060879", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("5233164016162060998", new QueriesGenerated.RRC(i++));
+    rrcMethods.put("5233164016162060879", new RRC(i++));
+    rrcMethods.put("5233164016162060998", new RRC(i++));
   }
   @Override
   @NotNull
@@ -112,7 +113,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, MapConfigurationCondition> mccMethods = new HashMap<String, MapConfigurationCondition>();
   {
     int i = 0;
-    mccMethods.put("5233164016162060878", new QueriesGenerated.MCC(i++));
+    mccMethods.put("5233164016162060878", new MCC(i++));
   }
   @Override
   @NotNull
@@ -141,12 +142,12 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("5233164016162060926", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5233164016162060935", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5233164016162060943", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5233164016162061046", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5233164016162061054", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5233164016162061064", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("5233164016162060926", new SNQ(i++));
+    snqMethods.put("5233164016162060935", new SNQ(i++));
+    snqMethods.put("5233164016162060943", new SNQ(i++));
+    snqMethods.put("5233164016162061046", new SNQ(i++));
+    snqMethods.put("5233164016162061054", new SNQ(i++));
+    snqMethods.put("5233164016162061064", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -185,8 +186,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, InlineSwitchCaseCondition> isccMethods = new HashMap<String, InlineSwitchCaseCondition>();
   {
     int i = 0;
-    isccMethods.put("5233164016162060881", new QueriesGenerated.ISCC(i++));
-    isccMethods.put("5233164016162061000", new QueriesGenerated.ISCC(i++));
+    isccMethods.put("5233164016162060881", new ISCC(i++));
+    isccMethods.put("5233164016162061000", new ISCC(i++));
   }
   @NotNull
   @Override
@@ -213,5 +214,11 @@ public class QueriesGenerated extends QueryProviderBase {
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for inline switch's case %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SConcept NullType_6bb6754a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
+    /*package*/ static final SConcept PrimitiveType_53355efd = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept EqualsExpression_9dbf9b09 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
   }
 }

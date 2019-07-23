@@ -21,7 +21,7 @@ public class MoveElementsUpFromColumnSelection_Test extends BaseTransformationTe
 
   @Test
   public void test_MoveElementsUpFromColumnSelection() throws Throwable {
-    new MoveElementsUpFromColumnSelection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

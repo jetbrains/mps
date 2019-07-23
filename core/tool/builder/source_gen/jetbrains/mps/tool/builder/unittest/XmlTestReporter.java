@@ -180,6 +180,6 @@ public class XmlTestReporter implements ITestReporter {
     }
     return this.hostname;
   }
-  private static Pattern REGEXP_rw4j9x_a0a0a74 = Pattern.compile(".+\\.([^\\.]+)$", 0);
-  private static Pattern REGEXP_rw4j9x_a0a0a84 = Pattern.compile("(.*)\\.[^\\.]+$", 0);
+  private static final Pattern REGEXP_rw4j9x_a0a0a74 = Pattern.compile(".+\\.([^\\.]+)$", 0);
+  private static final Pattern REGEXP_rw4j9x_a0a0a84 = Pattern.compile("(.*)\\.[^\\.]+$", 0);
 }

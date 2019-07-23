@@ -31,6 +31,7 @@ import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuL
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class SequenceCreator_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -85,7 +86,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SequenceCreator_EditorBuilder_a.elementTypeSingleRoleHandler_u7mc2o_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14c9ea5eL, "elementType"), getEditorContext());
+    SingleRoleCellProvider provider = new elementTypeSingleRoleHandler_u7mc2o_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14c9ea5eL, "elementType"), getEditorContext());
     return provider.createCell();
   }
   private static class elementTypeSingleRoleHandler_u7mc2o_c0 extends SingleRoleCellProvider {
@@ -145,7 +146,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     Style style = new StyleImpl();
     new RightAngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, "jetbrains.mps.baseLanguage.collections.structure.SequenceCreator")));
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_n2qh4u.SequenceCreator_f5b71339));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -160,7 +161,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SequenceCreator_EditorBuilder_a.initializerSingleRoleHandler_u7mc2o_f0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer"), getEditorContext());
+    SingleRoleCellProvider provider = new initializerSingleRoleHandler_u7mc2o_f0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer"), getEditorContext());
     return provider.createCell();
   }
   private static class initializerSingleRoleHandler_u7mc2o_f0 extends SingleRoleCellProvider {
@@ -223,5 +224,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_n2qh4u {
+    /*package*/ static final SConcept SequenceCreator_f5b71339 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, "jetbrains.mps.baseLanguage.collections.structure.SequenceCreator");
   }
 }

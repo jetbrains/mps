@@ -64,7 +64,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SubconceptCase_EditorBuilder_a.conceptSingleRoleHandler_ikghsa_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, 0x10ef02d67cfL, "concept"), getEditorContext());
+    SingleRoleCellProvider provider = new conceptSingleRoleHandler_ikghsa_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, 0x10ef02d67cfL, "concept"), getEditorContext());
     return provider.createCell();
   }
   private static class conceptSingleRoleHandler_ikghsa_b0 extends SingleRoleCellProvider {
@@ -128,7 +128,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SubconceptCase_EditorBuilder_a.bodySingleRoleHandler_ikghsa_d0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, 0x10ef02d8048L, "body"), getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_ikghsa_d0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, 0x10ef02d8048L, "body"), getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_ikghsa_d0 extends SingleRoleCellProvider {

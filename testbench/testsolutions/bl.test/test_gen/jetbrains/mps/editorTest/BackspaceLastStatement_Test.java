@@ -21,7 +21,7 @@ public class BackspaceLastStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_BackspaceLastStatement() throws Throwable {
-    new BackspaceLastStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

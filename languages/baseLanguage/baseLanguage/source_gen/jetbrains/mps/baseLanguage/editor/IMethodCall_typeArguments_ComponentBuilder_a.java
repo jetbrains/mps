@@ -30,6 +30,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightAngleBracketStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class IMethodCall_typeArguments_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -86,7 +87,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightAngle
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new IMethodCall_typeArguments_ComponentBuilder_a.typeArgumentListHandler_q1hswy_b0a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new typeArgumentListHandler_q1hswy_b0a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("IMCA_refNodeList_typeArgument");
     editorCell.setSRole(handler.getElementSRole());
@@ -109,7 +110,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightAngle
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+      return AUX_bckszx.Type_4199e276;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -177,5 +178,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightAngle
     IMethodCall_DeleteTypeArguments.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_bckszx {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

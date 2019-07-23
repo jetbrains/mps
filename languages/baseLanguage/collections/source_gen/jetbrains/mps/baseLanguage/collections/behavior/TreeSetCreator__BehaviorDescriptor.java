@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.collections.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -15,6 +14,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -22,9 +22,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, "jetbrains.mps.baseLanguage.collections.structure.TreeSetCreator");
+  private static final SAbstractConcept CONCEPT = AUX_2dpuhg.TreeSetCreator_fdea8a9d;
 
   public static final SMethod<SNode> createType_idi0I0ppH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0I0ppH").build();
   public static final SMethod<Boolean> canHaveParameter_id1XyaNs207wP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canHaveParameter").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1XyaNs207wP").build();
@@ -40,13 +41,13 @@ public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
     return _quotation_createNode_529210_a0a0(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType")));
   }
   /*package*/ static boolean canHaveParameter_id1XyaNs207wP(@NotNull SNode __thisNode__) {
-    return ((boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, "jetbrains.mps.baseLanguage.collections.structure.TreeSetCreator"))) && (SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator")) == null);
+    return ((boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invokeSuper(__thisNode__, AUX_2dpuhg.TreeSetCreator_fdea8a9d)) && (SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator")) == null);
   }
   /*package*/ static boolean hasInitSize_id1653mnvAgtY(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
   /*package*/ static List<SNode> getAvailableFor_id2D1PBM_bxHF(@NotNull SAbstractConcept __thisConcept__) {
-    List<SNode> result = AbstractContainerCreator__BehaviorDescriptor.getAvailableFor_id2D1PBM_bxHF.invoke0(__thisConcept__, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9210de65L, "jetbrains.mps.baseLanguage.collections.structure.HashSetCreator"));
+    List<SNode> result = AbstractContainerCreator__BehaviorDescriptor.getAvailableFor_id2D1PBM_bxHF.invoke0(__thisConcept__, AUX_2dpuhg.HashSetCreator_d91bd19a);
     ListSequence.fromList(result).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)", "1226511727824"));
     ListSequence.fromList(result).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)", "7125221305512719026"));
     ListSequence.fromList(result).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)", "1240247491866"));
@@ -115,5 +116,10 @@ public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_2dpuhg {
+    /*package*/ static final SConcept TreeSetCreator_fdea8a9d = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, "jetbrains.mps.baseLanguage.collections.structure.TreeSetCreator");
+    /*package*/ static final SConcept HashSetCreator_d91bd19a = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9210de65L, "jetbrains.mps.baseLanguage.collections.structure.HashSetCreator");
   }
 }

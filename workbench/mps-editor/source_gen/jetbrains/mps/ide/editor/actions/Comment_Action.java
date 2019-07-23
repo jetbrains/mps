@@ -12,13 +12,14 @@ import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Comment_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -41,9 +42,9 @@ public class Comment_Action extends BaseAction {
     if (Objects.equals(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode(), event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getSelectedNode())) {
       return false;
     }
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeAncestors(((SNode) event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getSelectedNode()), null, true), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer"))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeAncestors(((SNode) event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getSelectedNode()), null, true), AUX_fuv223.IOldCommentContainer_43d44ed8)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(it, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer"), SMethodTrimmedId.create("getCommentedNodes", null, "3$Sh7m_tmZE")))).isNotEmpty();
+        return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(it, AUX_fuv223.IOldCommentContainer_43d44ed8, SMethodTrimmedId.create("getCommentedNodes", null, "3$Sh7m_tmZE")))).isNotEmpty();
       }
     }).isEmpty();
   }
@@ -70,5 +71,9 @@ public class Comment_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getSelectionManager().getSelection().executeAction(CellActionType.COMMENT);
+  }
+
+  private static final class AUX_fuv223 {
+    /*package*/ static final SInterfaceConcept IOldCommentContainer_43d44ed8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer");
   }
 }

@@ -34,6 +34,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class DailyPlan_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -76,7 +77,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new DailyPlan_EditorBuilder_a.applicabilitySingleRoleHandler_dgzt1x_b0(myNode, MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x40bcae6c0e686ffeL, "applicability"), getEditorContext());
+    SingleRoleCellProvider provider = new applicabilitySingleRoleHandler_dgzt1x_b0(myNode, MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x40bcae6c0e686ffeL, "applicability"), getEditorContext());
     return provider.createCell();
   }
   private static class applicabilitySingleRoleHandler_dgzt1x_b0 extends SingleRoleCellProvider {
@@ -165,7 +166,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new DailyPlan_EditorBuilder_a.customizesSingleRoleHandler_dgzt1x_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes"), getEditorContext());
+    SingleRoleCellProvider provider = new customizesSingleRoleHandler_dgzt1x_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes"), getEditorContext());
     return provider.createCell();
   }
   private static class customizesSingleRoleHandler_dgzt1x_b2a extends SingleRoleCellProvider {
@@ -233,7 +234,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     DeleteCustomizes.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, "jetbrains.mps.samples.heating.structure.DailyPlan"), "jetbrains.mps.samples.heating.editor.DailyPlan_ApplySideTransforms"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_yugwex.DailyPlan_82e65b88, "jetbrains.mps.samples.heating.editor.DailyPlan_ApplySideTransforms"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -260,7 +261,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new DailyPlan_EditorBuilder_a.itemsListHandler_dgzt1x_a3a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new itemsListHandler_dgzt1x_a3a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_items");
     editorCell.setSRole(handler.getElementSRole());
@@ -283,14 +284,14 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
       return MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x4644aa4ce08aec57L, "items");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, "jetbrains.mps.samples.heating.structure.Slot");
+      return AUX_yugwex.Slot_ae41f8e3;
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
       return nodeFactory();
     }
 
     public SNode nodeFactory() {
-      SNode item = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, "jetbrains.mps.samples.heating.structure.Slot"), null);
+      SNode item = SNodeFactoryOperations.createNewNode(AUX_yugwex.Slot_ae41f8e3, null);
       SPropertyOperations.assign(item, MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start"), -1);
       SPropertyOperations.assign(SLinkOperations.getTarget(item, MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe289dd1L, "event")), MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature"), 20);
       return item;
@@ -334,5 +335,10 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_yugwex {
+    /*package*/ static final SConcept DailyPlan_82e65b88 = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, "jetbrains.mps.samples.heating.structure.DailyPlan");
+    /*package*/ static final SConcept Slot_ae41f8e3 = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, "jetbrains.mps.samples.heating.structure.Slot");
   }
 }

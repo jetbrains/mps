@@ -76,7 +76,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AddDependencyStatement_EditorBuilder_a.dependencySingleRoleHandler_xs2qhg_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11c22f6c964L, 0x11c22f76417L, "dependency"), getEditorContext());
+    SingleRoleCellProvider provider = new dependencySingleRoleHandler_xs2qhg_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11c22f6c964L, 0x11c22f76417L, "dependency"), getEditorContext());
     return provider.createCell();
   }
   private static class dependencySingleRoleHandler_xs2qhg_c0 extends SingleRoleCellProvider {

@@ -21,7 +21,7 @@ public class SimpleMath_StyleSheet {
   public static void apply_KeyWord(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new SimpleMath_StyleSheet.KeyWordStyleClass(editorContext, node).apply(style, editorCell);
+    new KeyWordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -31,7 +31,7 @@ public class SimpleMath_StyleSheet {
   public static void apply_type(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new SimpleMath_StyleSheet.typeStyleClass(editorContext, node).apply(style, editorCell);
+    new typeStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class KeyWordStyleClass extends AbstractStyleClass {

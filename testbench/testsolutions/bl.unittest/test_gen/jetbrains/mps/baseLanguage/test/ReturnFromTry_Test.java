@@ -30,11 +30,11 @@ public class ReturnFromTry_Test extends BaseTransformationTest {
 
   @Test
   public void test_ReturnFromTry() throws Throwable {
-    new ReturnFromTry_Test.TestBody(this).test_ReturnFromTry();
+    new TestBody(this).test_ReturnFromTry();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199550() throws Throwable {
-    new ReturnFromTry_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199550();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199550();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

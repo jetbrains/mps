@@ -72,7 +72,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CurrentStockPrice_EditorBuilder_a.symbolSingleRoleHandler_w8qb9s_c0(myNode, MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f4808999c3L, 0x3786e3f480b0926aL, "symbol"), getEditorContext());
+    SingleRoleCellProvider provider = new symbolSingleRoleHandler_w8qb9s_c0(myNode, MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f4808999c3L, 0x3786e3f480b0926aL, "symbol"), getEditorContext());
     return provider.createCell();
   }
   private static class symbolSingleRoleHandler_w8qb9s_c0 extends SingleRoleCellProvider {

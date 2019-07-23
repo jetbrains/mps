@@ -15,9 +15,10 @@ import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IEnumerator;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TupleIntefaceUtils {
-  private final List<TupleIntefaceUtils.Property> myProperties;
+  private final List<Property> myProperties;
   private final SNode myIntefaceNode;
 
   public TupleIntefaceUtils(SNode ifc) {
@@ -29,37 +30,37 @@ public class TupleIntefaceUtils {
     return ListSequence.fromList(myProperties).isNotEmpty();
   }
 
-  private List<TupleIntefaceUtils.Property> analyzeTupleInterface() {
-    List<TupleIntefaceUtils.Property> accessors = ListSequence.fromList(new ArrayList<TupleIntefaceUtils.Property>());
-    List<TupleIntefaceUtils.Property> mutators = ListSequence.fromList(new ArrayList<TupleIntefaceUtils.Property>());
+  private List<Property> analyzeTupleInterface() {
+    List<Property> accessors = ListSequence.fromList(new ArrayList<Property>());
+    List<Property> mutators = ListSequence.fromList(new ArrayList<Property>());
     int ignored = 0;
     for (SNode method : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(myIntefaceNode))) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")))) {
-        ListSequence.fromList(accessors).addElement(new TupleIntefaceUtils.Property(method));
+      if (ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), AUX_t7jyez.VoidType_d96d05c9))) {
+        ListSequence.fromList(accessors).addElement(new Property(method));
       } else if (ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == 1 && MatchingUtil.matchNodes(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).toListSequence().first())) {
         // matchNodes(RETURNTYPE, FIRST PARAMETER) (sic!) we use tuples in a way that we want set(X) to return X for immediate use 
-        ListSequence.fromList(mutators).addElement(new TupleIntefaceUtils.Property(method));
-      } else if ("equals".equals(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) && ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType"))) {
+        ListSequence.fromList(mutators).addElement(new Property(method));
+      } else if ("equals".equals(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) && ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), AUX_t7jyez.BooleanType_6530abf6)) {
         ignored++;
-      } else if ("hashCode".equals(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) && ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType"))) {
+      } else if ("hashCode".equals(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) && ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), AUX_t7jyez.IntegerType_603aa60a)) {
         ignored++;
       }
     }
-    List<TupleIntefaceUtils.Property> result = null;
-    IEnumerator<TupleIntefaceUtils.Property> ait = ListSequence.fromList(accessors).sort(new ISelector<TupleIntefaceUtils.Property, String>() {
-      public String select(TupleIntefaceUtils.Property p) {
+    List<Property> result = null;
+    IEnumerator<Property> ait = ListSequence.fromList(accessors).sort(new ISelector<Property, String>() {
+      public String select(Property p) {
         return p.name;
       }
     }, true).enumerator();
-    IEnumerator<TupleIntefaceUtils.Property> mit = ListSequence.fromList(mutators).sort(new ISelector<TupleIntefaceUtils.Property, String>() {
-      public String select(TupleIntefaceUtils.Property p) {
+    IEnumerator<Property> mit = ListSequence.fromList(mutators).sort(new ISelector<Property, String>() {
+      public String select(Property p) {
         return p.name;
       }
     }, true).enumerator();
     boolean hasMutators = mit.moveNext();
     while (ait.moveNext()) {
       if (result == null) {
-        result = ListSequence.fromList(new ArrayList<TupleIntefaceUtils.Property>());
+        result = ListSequence.fromList(new ArrayList<Property>());
       }
       while (hasMutators && ait.current().name.compareTo(mit.current().name) < 0) {
         hasMutators = mit.moveNext();
@@ -87,5 +88,11 @@ public class TupleIntefaceUtils {
       name = SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       type = SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"));
     }
+  }
+
+  private static final class AUX_t7jyez {
+    /*package*/ static final SConcept VoidType_d96d05c9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept BooleanType_6530abf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept IntegerType_603aa60a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
   }
 }

@@ -37,6 +37,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Option_makeDefault extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -62,7 +63,7 @@ public class Option_makeDefault extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new Option_makeDefault.TMP_Group_xteztw_a0());
+      result.add(new TMP_Group_xteztw_a0());
     }
     return result;
   }
@@ -70,7 +71,7 @@ public class Option_makeDefault extends TransformationMenuBase {
   public class TMP_Group_xteztw_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.getIndexInParent(_context.getNode()) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, "jetbrains.mps.make.script.structure.ExpectedOption")), MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption"));
+      return SNodeOperations.getIndexInParent(_context.getNode()) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), AUX_xteztw.ExpectedOption_bdc41f58), MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption"));
     }
 
     @NotNull
@@ -86,12 +87,12 @@ public class Option_makeDefault extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Option_makeDefault.TMP_Group_xteztw_a0.TMP_Action_xteztw_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_xteztw_a0.TMP_Action_xteztw_a0a());
     }
     private class TMP_Action_xteztw_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Option_makeDefault.TMP_Group_xteztw_a0.TMP_Action_xteztw_a0a.Item item = new Option_makeDefault.TMP_Group_xteztw_a0.TMP_Action_xteztw_a0a.Item(context);
+        TMP_Group_xteztw_a0.TMP_Action_xteztw_a0a.Item item = new TMP_Group_xteztw_a0.TMP_Action_xteztw_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -126,7 +127,7 @@ public class Option_makeDefault extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, "jetbrains.mps.make.script.structure.ExpectedOption")), MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption"), SNodeOperations.getIndexInParent(_context.getNode()));
+          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), AUX_xteztw.ExpectedOption_bdc41f58), MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption"), SNodeOperations.getIndexInParent(_context.getNode()));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -153,5 +154,9 @@ public class Option_makeDefault extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_xteztw {
+    /*package*/ static final SConcept ExpectedOption_bdc41f58 = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, "jetbrains.mps.make.script.structure.ExpectedOption");
   }
 }

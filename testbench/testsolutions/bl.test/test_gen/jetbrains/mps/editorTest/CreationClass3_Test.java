@@ -21,7 +21,7 @@ public class CreationClass3_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreationClass3() throws Throwable {
-    new CreationClass3_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

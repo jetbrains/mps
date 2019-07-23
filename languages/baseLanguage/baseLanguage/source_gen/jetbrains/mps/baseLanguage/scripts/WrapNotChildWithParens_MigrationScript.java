@@ -5,14 +5,15 @@ package jetbrains.mps.baseLanguage.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class WrapNotChildWithParens_MigrationScript extends BaseMigrationScript {
   public WrapNotChildWithParens_MigrationScript() {
@@ -28,7 +29,7 @@ public final class WrapNotChildWithParens_MigrationScript extends BaseMigrationS
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+        return AUX_g6sovi.NotExpression_8a1c1248;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -37,7 +38,7 @@ public final class WrapNotChildWithParens_MigrationScript extends BaseMigrationS
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode childExpr = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"));
-        SNode parens = SNodeFactoryOperations.replaceWithNewChild(childExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
+        SNode parens = SNodeFactoryOperations.replaceWithNewChild(childExpr, AUX_g6sovi.ParenthesizedExpression_a4b89678);
         SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), childExpr);
       }
       @Override
@@ -51,5 +52,10 @@ public final class WrapNotChildWithParens_MigrationScript extends BaseMigrationS
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c895902c9(jetbrains.mps.baseLanguage.scripts)/4536253685767003451");
+  }
+
+  private static final class AUX_g6sovi {
+    /*package*/ static final SConcept NotExpression_8a1c1248 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SConcept ParenthesizedExpression_a4b89678 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 }

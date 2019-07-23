@@ -144,5 +144,5 @@ public class Template_process42 extends TemplateDeclarationBase implements Templ
     rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
     return rv;
   }
-  private static SNodePointer propertyMacro_ye8a90_c0a0c0a0b0b0b0b0b0c0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "5857536350883039218");
+  private static final SNodePointer propertyMacro_ye8a90_c0a0c0a0b0b0b0b0b0c0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "5857536350883039218");
 }

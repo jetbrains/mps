@@ -5,7 +5,6 @@ package jetbrains.mps.lang.generator.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.scripts.NodePointerMigrations;
@@ -13,6 +12,9 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class NodePointersInReferenceMacorQueries_MigrationScript extends BaseMigrationScript {
   public NodePointersInReferenceMacorQueries_MigrationScript() {
@@ -28,11 +30,11 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x319fd776da5d8e3cL, "jetbrains.mps.lang.smodel.structure.AbstractNodeRefExpression");
+        return AUX_79cozi.AbstractNodeRefExpression_d54b271f;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike"), false, false), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent")) && NodePointerMigrations.isReturnExpression(node);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, AUX_79cozi.IMethodLike_583347ed, false, false), AUX_79cozi.ReferenceMacro_GetReferent_71c07fee) && NodePointerMigrations.isReturnExpression(node);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -54,16 +56,16 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+        return AUX_79cozi.Quotation_25f29ad1;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
-        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike"), false, false), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent")) && NodePointerMigrations.isQuotationSuitForNodePointer(parent) && NodePointerMigrations.isReturnExpression(parent);
+        SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), AUX_79cozi.Expression_4199e28d);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, AUX_79cozi.IMethodLike_583347ed, false, false), AUX_79cozi.ReferenceMacro_GetReferent_71c07fee) && NodePointerMigrations.isQuotationSuitForNodePointer(parent) && NodePointerMigrations.isReturnExpression(parent);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
+        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), AUX_79cozi.Expression_4199e28d);
         SNodeOperations.replaceWithAnother(parent, createNodePointerExpression_vfdyfl_a0a1a0b(NodePointerMigrations.quotationToNodeIdentity(parent)));
       }
       @Override
@@ -81,18 +83,28 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a0a0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_79cozi.NodePointerExpression_bcefaa2a, null, null, false);
     if (node0 != null) {
-      n1.addChild(MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity"))));
+      n1.addChild(MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_79cozi.NodeIdentity_a93801ce)));
     }
     return n1;
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a1a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_79cozi.NodePointerExpression_bcefaa2a, null, null, false);
     if (node0 != null) {
-      n1.addChild(MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity"))));
+      n1.addChild(MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_79cozi.NodeIdentity_a93801ce)));
     }
     return n1;
+  }
+
+  private static final class AUX_79cozi {
+    /*package*/ static final SConcept AbstractNodeRefExpression_d54b271f = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x319fd776da5d8e3cL, "jetbrains.mps.lang.smodel.structure.AbstractNodeRefExpression");
+    /*package*/ static final SInterfaceConcept IMethodLike_583347ed = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
+    /*package*/ static final SConcept ReferenceMacro_GetReferent_71c07fee = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent");
+    /*package*/ static final SConcept Quotation_25f29ad1 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept NodePointerExpression_bcefaa2a = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
+    /*package*/ static final SInterfaceConcept NodeIdentity_a93801ce = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
   }
 }

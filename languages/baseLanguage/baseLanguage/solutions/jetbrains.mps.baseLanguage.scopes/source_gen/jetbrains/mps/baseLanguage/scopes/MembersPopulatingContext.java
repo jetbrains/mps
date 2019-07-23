@@ -21,6 +21,7 @@ import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MembersPopulatingContext {
   private final Stack<SNode> classifiers = new Stack<SNode>();
@@ -118,7 +119,7 @@ public class MembersPopulatingContext {
   }
 
   public boolean isElementVisible(SNode element) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), AUX_b2blmv.PrivateVisibility_63f5dbd4)) {
       return isPrivateVisible();
     }
     if ((SLinkOperations.getTarget(element, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) == null)) {
@@ -129,5 +130,9 @@ public class MembersPopulatingContext {
 
   public Map<SNode, SNode> getTypeByTypeVariableMapping() {
     return Collections.unmodifiableMap(typeByTypeVariable);
+  }
+
+  private static final class AUX_b2blmv {
+    /*package*/ static final SConcept PrivateVisibility_63f5dbd4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 }

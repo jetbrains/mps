@@ -38,7 +38,7 @@ public class ASMClass {
       signReader.accept(new SignatureVisitorAdapter() {
         @Override
         public SignatureVisitor visitSuperclass() {
-          return new ASMClass.ClassifierSignatureVisitor() {
+          return new ClassifierSignatureVisitor() {
             @Override
             public void visitEnd() {
               ASMClassType cls = new ASMClassType(myName);
@@ -48,7 +48,7 @@ public class ASMClass {
         }
         @Override
         public SignatureVisitor visitInterface() {
-          return new ASMClass.ClassifierSignatureVisitor() {
+          return new ClassifierSignatureVisitor() {
             @Override
             public void visitEnd() {
               ASMClassType cls = new ASMClassType(myName);
@@ -150,15 +150,15 @@ public class ASMClass {
   private class ClassifierSignatureVisitor extends SignatureVisitorAdapter {
     /*package*/ String myName;
     /*package*/ List<ASMType> myParameters;
-    /*package*/ ASMClass.ClassifierSignatureVisitor myParentVisitor = null;
+    /*package*/ ClassifierSignatureVisitor myParentVisitor = null;
     public ClassifierSignatureVisitor() {
     }
-    public ClassifierSignatureVisitor(ASMClass.ClassifierSignatureVisitor parentVisitor) {
+    public ClassifierSignatureVisitor(ClassifierSignatureVisitor parentVisitor) {
       myParentVisitor = parentVisitor;
     }
     @Override
     public SignatureVisitor visitTypeArgument(char wildcard) {
-      return new ASMClass.ClassifierSignatureVisitor(this) {
+      return new ClassifierSignatureVisitor(this) {
         @Override
         public void visitTypeVariable(String name) {
           if (myParentVisitor != null) {

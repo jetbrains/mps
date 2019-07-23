@@ -21,7 +21,7 @@ public class Subst_SingleChildDefaultConcrete_AddNewChildByEnter_Test extends Ba
 
   @Test
   public void test_Subst_SingleChildDefaultConcrete_AddNewChildByEnter() throws Throwable {
-    new Subst_SingleChildDefaultConcrete_AddNewChildByEnter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

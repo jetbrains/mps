@@ -28,35 +28,35 @@ public class TestWeaving_Test extends BaseTransformationTest {
 
   @Test
   public void test_weave() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weave();
+    new TestBody(this).test_weave();
   }
   @Test
   public void test_weaveEach() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weaveEach();
+    new TestBody(this).test_weaveEach();
   }
   @Test
   public void test_weaveMany() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weaveMany();
+    new TestBody(this).test_weaveMany();
   }
   @Test
   public void test_weaveEachMany() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weaveEachMany();
+    new TestBody(this).test_weaveEachMany();
   }
   @Test
   public void test_weaveInterpreted() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weaveInterpreted();
+    new TestBody(this).test_weaveInterpreted();
   }
   @Test
   public void test_weaveEachInterpreted() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weaveEachInterpreted();
+    new TestBody(this).test_weaveEachInterpreted();
   }
   @Test
   public void test_weaveManyInterpreted() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weaveManyInterpreted();
+    new TestBody(this).test_weaveManyInterpreted();
   }
   @Test
   public void test_weaveEachManyInterpreted() throws Throwable {
-    new TestWeaving_Test.TestBody(this).test_weaveEachManyInterpreted();
+    new TestBody(this).test_weaveEachManyInterpreted();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -32,35 +32,35 @@ public class ImplicitEnumMethodImplementation_Test extends BaseTransformationTes
 
   @Test
   public void test_ErrorMessagesCheck8841676161362742012() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_ErrorMessagesCheck8841676161362742012();
+    new TestBody(this).test_ErrorMessagesCheck8841676161362742012();
   }
   @Test
   public void test_ErrorMessagesCheck8841676161362742874() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_ErrorMessagesCheck8841676161362742874();
+    new TestBody(this).test_ErrorMessagesCheck8841676161362742874();
   }
   @Test
   public void test_ErrorMessagesCheck8841676161362737481() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_ErrorMessagesCheck8841676161362737481();
+    new TestBody(this).test_ErrorMessagesCheck8841676161362737481();
   }
   @Test
   public void test_NodeUnnamedErrorCheck6091751241367772282() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeUnnamedErrorCheck6091751241367772282();
+    new TestBody(this).test_NodeUnnamedErrorCheck6091751241367772282();
   }
   @Test
   public void test_NodeUnnamedErrorCheck824450455580355889() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeUnnamedErrorCheck824450455580355889();
+    new TestBody(this).test_NodeUnnamedErrorCheck824450455580355889();
   }
   @Test
   public void test_NodeUnnamedErrorCheck824450455580357478() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_NodeUnnamedErrorCheck824450455580357478();
+    new TestBody(this).test_NodeUnnamedErrorCheck824450455580357478();
   }
   @Test
   public void test_ErrorMessagesCheck8841676161362737639() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_ErrorMessagesCheck8841676161362737639();
+    new TestBody(this).test_ErrorMessagesCheck8841676161362737639();
   }
   @Test
   public void test_ErrorMessagesCheck8841676161362738093() throws Throwable {
-    new ImplicitEnumMethodImplementation_Test.TestBody(this).test_ErrorMessagesCheck8841676161362738093();
+    new TestBody(this).test_ErrorMessagesCheck8841676161362738093();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

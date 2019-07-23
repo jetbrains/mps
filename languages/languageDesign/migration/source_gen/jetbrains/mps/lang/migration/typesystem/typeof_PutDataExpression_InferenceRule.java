@@ -19,6 +19,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_PutDataExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_PutDataExpression_InferenceRule() {
@@ -32,20 +33,20 @@ public class typeof_PutDataExpression_InferenceRule extends AbstractInferenceRul
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(putDataExpression, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL, 0x5e7aa366c28dcff3L, "dataNode"));
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471385956", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471385961", true), (SNode) _quotation_createNode_6hxs6k_a1a0c0b0b(IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SNodeOperations.getNodeAncestor(putDataExpression, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript"), false, false))), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471385961", true), (SNode) _quotation_createNode_6hxs6k_a1a0c0b0b(IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SNodeOperations.getNodeAncestor(putDataExpression, AUX_6hxs6k.MigrationScript_43a85fbf, false, false))), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = putDataExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471600726", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471600728", true), (SNode) _quotation_createNode_6hxs6k_a1a0c0c0b(), false, true, _info_12389875345);
     }
-    if (!((IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SNodeOperations.getNodeAncestor(putDataExpression, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript"), false, false)) != null))) {
+    if (!((IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SNodeOperations.getNodeAncestor(putDataExpression, AUX_6hxs6k.MigrationScript_43a85fbf, false, false)) != null))) {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(putDataExpression, "Produced data should be declared", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448472915817", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL, "jetbrains.mps.lang.migration.structure.PutDataExpression");
+    return AUX_6hxs6k.PutDataExpression_eef082bb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -71,5 +72,10 @@ public class typeof_PutDataExpression_InferenceRule extends AbstractInferenceRul
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_6hxs6k {
+    /*package*/ static final SConcept MigrationScript_43a85fbf = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
+    /*package*/ static final SConcept PutDataExpression_eef082bb = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL, "jetbrains.mps.lang.migration.structure.PutDataExpression");
   }
 }

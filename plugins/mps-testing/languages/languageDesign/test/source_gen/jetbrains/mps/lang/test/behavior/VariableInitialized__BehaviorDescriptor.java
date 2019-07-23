@@ -4,7 +4,6 @@ package jetbrains.mps.lang.test.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -21,9 +20,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class VariableInitialized__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, "jetbrains.mps.lang.test.structure.VariableInitialized");
+  private static final SAbstractConcept CONCEPT = AUX_cviews.VariableInitialized_7c511e80;
 
   public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
@@ -35,7 +36,7 @@ public final class VariableInitialized__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node) {
-    NodeDataFlowCheckerUtil.checkDataFlow(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false));
+    NodeDataFlowCheckerUtil.checkDataFlow(SNodeOperations.getNodeAncestor(node, AUX_cviews.StatementList_9dbf9acf, false, false));
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeVariableInitializedCheck";
@@ -93,5 +94,10 @@ public final class VariableInitialized__BehaviorDescriptor extends BaseBHDescrip
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_cviews {
+    /*package*/ static final SConcept VariableInitialized_7c511e80 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, "jetbrains.mps.lang.test.structure.VariableInitialized");
+    /*package*/ static final SConcept StatementList_9dbf9acf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 }

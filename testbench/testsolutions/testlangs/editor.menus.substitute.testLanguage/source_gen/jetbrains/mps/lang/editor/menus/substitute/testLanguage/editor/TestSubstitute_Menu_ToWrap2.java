@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -20,13 +19,15 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestSubstitute_Menu_ToWrap2 extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TestSubstitute_Menu_ToWrap2.SMP_Action_re1x1c_a(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb2810192dL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_WrapDifferentMenus")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_re1x1c_a(), AUX_re1x1c.TestSubstitute_WrapDifferentMenus_fc25fcab));
     return result;
   }
 
@@ -48,7 +49,7 @@ public class TestSubstitute_Menu_ToWrap2 extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      TestSubstitute_Menu_ToWrap2.SMP_Action_re1x1c_a.Item item = new TestSubstitute_Menu_ToWrap2.SMP_Action_re1x1c_a.Item(_context);
+      SMP_Action_re1x1c_a.Item item = new SMP_Action_re1x1c_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -71,7 +72,7 @@ public class TestSubstitute_Menu_ToWrap2 extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb2810192dL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_WrapDifferentMenus"), context);
+        super(AUX_re1x1c.TestSubstitute_WrapDifferentMenus_fc25fcab, context);
         _context = context;
       }
 
@@ -90,5 +91,9 @@ public class TestSubstitute_Menu_ToWrap2 extends SubstituteMenuBase {
         return myTraceInfo;
       }
     }
+  }
+
+  private static final class AUX_re1x1c {
+    /*package*/ static final SConcept TestSubstitute_WrapDifferentMenus_fc25fcab = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb2810192dL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_WrapDifferentMenus");
   }
 }

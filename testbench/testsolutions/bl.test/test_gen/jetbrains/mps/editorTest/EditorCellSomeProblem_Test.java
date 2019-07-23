@@ -21,7 +21,7 @@ public class EditorCellSomeProblem_Test extends BaseTransformationTest {
 
   @Test
   public void test_EditorCellSomeProblem() throws Throwable {
-    new EditorCellSomeProblem_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

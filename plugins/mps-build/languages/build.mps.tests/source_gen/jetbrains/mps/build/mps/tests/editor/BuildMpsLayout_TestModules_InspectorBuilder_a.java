@@ -73,7 +73,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMpsLayout_TestModules_InspectorBuilder_a.haltonfailureSingleRoleHandler_aky039_b0a(myNode, MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x6402cbb11c1307aeL, "haltonfailure"), getEditorContext());
+    SingleRoleCellProvider provider = new haltonfailureSingleRoleHandler_aky039_b0a(myNode, MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x6402cbb11c1307aeL, "haltonfailure"), getEditorContext());
     return provider.createCell();
   }
   private static class haltonfailureSingleRoleHandler_aky039_b0a extends SingleRoleCellProvider {

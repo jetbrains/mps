@@ -19,12 +19,13 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_NodeReferentConstraint_noDuplications_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_NodeReferentConstraint_noDuplications_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeReferentConstraint, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> siblings = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(nodeReferentConstraint), MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints")), MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent"))).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(nodeReferentConstraint)));
+    Iterable<SNode> siblings = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(nodeReferentConstraint), AUX_h3xtvf.ConceptConstraints_2e5b5de5), MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent"))).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(nodeReferentConstraint)));
 
     for (SNode siblingConstraint : Sequence.fromIterable(siblings)) {
       if (Objects.equals(SLinkOperations.getTarget(siblingConstraint, MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink")), SLinkOperations.getTarget(nodeReferentConstraint, MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink")))) {
@@ -37,12 +38,17 @@ public class check_NodeReferentConstraint_noDuplications_NonTypesystemRule exten
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
+    return AUX_h3xtvf.NodeReferentConstraint_827fc615;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_h3xtvf {
+    /*package*/ static final SConcept ConceptConstraints_2e5b5de5 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SConcept NodeReferentConstraint_827fc615 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
   }
 }

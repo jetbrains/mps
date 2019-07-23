@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new LoopLabelReference_SubstituteMenu.SMP_ReferenceScope_6lvr1q_a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, "jetbrains.mps.baseLanguage.structure.LoopLabelReference")));
-    result.add(new LoopLabelReference_SubstituteMenu.SMP_Subconcepts_6lvr1q_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_6lvr1q_a(), AUX_6lvr1q.LoopLabelReference_d0eda322));
+    result.add(new SMP_Subconcepts_6lvr1q_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_6lvr1q_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, "jetbrains.mps.baseLanguage.structure.LoopLabelReference"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel"));
+      super((SAbstractConcept) AUX_6lvr1q.LoopLabelReference_d0eda322, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_6lvr1q_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, "jetbrains.mps.baseLanguage.structure.LoopLabelReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_6lvr1q.LoopLabelReference_d0eda322);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_6lvr1q {
+    /*package*/ static final SConcept LoopLabelReference_d0eda322 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, "jetbrains.mps.baseLanguage.structure.LoopLabelReference");
   }
 }

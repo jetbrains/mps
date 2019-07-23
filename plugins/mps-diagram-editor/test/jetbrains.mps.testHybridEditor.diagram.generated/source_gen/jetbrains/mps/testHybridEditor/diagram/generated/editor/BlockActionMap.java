@@ -13,6 +13,7 @@ import java.util.Objects;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BlockActionMap {
 
@@ -22,7 +23,7 @@ public class BlockActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, "jetbrains.mps.testHybridEditor.structure.Diagram")), MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors")))) {
+        for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), AUX_dpv54c.Diagram_a04819fe), MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors")))) {
           if (Objects.equals(check_dpv54c_a0a0a0a1a0a0a1(SLinkOperations.getTarget(connector, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source"))), node) || Objects.equals(check_dpv54c_a0a0a0a1a0a0a1_0(SLinkOperations.getTarget(connector, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target"))), node)) {
             SNodeOperations.deleteNode(connector);
           }
@@ -78,5 +79,9 @@ public class BlockActionMap {
       return SLinkOperations.getTarget(checkedDotOperand, MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block"));
     }
     return null;
+  }
+
+  private static final class AUX_dpv54c {
+    /*package*/ static final SConcept Diagram_a04819fe = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, "jetbrains.mps.testHybridEditor.structure.Diagram");
   }
 }

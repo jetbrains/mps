@@ -4,7 +4,6 @@ package org.jetbrains.mps.samples.Money.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.samples.money.runtime.Money;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,15 +15,17 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.math.BigDecimal;
 import org.jetbrains.mps.samples.money.runtime.StockPriceDownloader;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CurrentStockPrice__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f4808999c3L, "org.jetbrains.mps.samples.Money.structure.CurrentStockPrice");
+  private static final SAbstractConcept CONCEPT = AUX_i83h6e.CurrentStockPrice_5a5c898;
 
   public static final SMethod<Money> getCurrentPrice_id3u6SZi0yq4L = new SMethodBuilder<Money>(new SJavaCompoundTypeImpl(Money.class)).name("getCurrentPrice").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3u6SZi0yq4L").build();
 
@@ -88,5 +89,9 @@ public final class CurrentStockPrice__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_i83h6e {
+    /*package*/ static final SConcept CurrentStockPrice_5a5c898 = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f4808999c3L, "org.jetbrains.mps.samples.Money.structure.CurrentStockPrice");
   }
 }

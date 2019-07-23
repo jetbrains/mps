@@ -35,6 +35,7 @@ import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ClosureLiteral_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -78,7 +79,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ClosureLiteral_EditorBuilder_a.parameterListHandler_9o2gp8_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new parameterListHandler_9o2gp8_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_parameter");
     editorCell.setSRole(handler.getElementSRole());
@@ -101,7 +102,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
       return MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+      return AUX_8v8fr6.ParameterDeclaration_24d60da8;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -173,7 +174,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return !((boolean) StatementList__BehaviorDescriptor.isCompact_idi0zxBt8.invoke(SLinkOperations.getTarget(getNode(), MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body"))));
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ClosureLiteral_EditorBuilder_a.bodySingleRoleHandler_9o2gp8_d0(myNode, MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body"), getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_9o2gp8_d0(myNode, MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body"), getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_9o2gp8_d0 extends SingleRoleCellProvider {
@@ -241,5 +242,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_8v8fr6 {
+    /*package*/ static final SConcept ParameterDeclaration_24d60da8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
   }
 }

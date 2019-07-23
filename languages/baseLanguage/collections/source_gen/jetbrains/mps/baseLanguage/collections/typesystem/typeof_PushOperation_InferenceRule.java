@@ -13,6 +13,7 @@ import jetbrains.mps.baseLanguage.collections.behavior.IApplicableToNothing__Beh
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_PushOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_PushOperation_InferenceRule() {
@@ -38,12 +39,16 @@ public class typeof_PushOperation_InferenceRule extends AbstractInferenceRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e9a0b9a88f4311cL, "jetbrains.mps.baseLanguage.collections.structure.PushOperation");
+    return AUX_9ntnay.PushOperation_912661e7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_9ntnay {
+    /*package*/ static final SConcept PushOperation_912661e7 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e9a0b9a88f4311cL, "jetbrains.mps.baseLanguage.collections.structure.PushOperation");
   }
 }

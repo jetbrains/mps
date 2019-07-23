@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -20,9 +19,10 @@ import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class Concept_GetDirectSuperConcepts__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11296bd8374L, "jetbrains.mps.lang.smodel.structure.Concept_GetDirectSuperConcepts");
+  private static final SAbstractConcept CONCEPT = AUX_ena9wv.Concept_GetDirectSuperConcepts_ccd978ae;
 
   public static final SMethod<Boolean> applicableToLink_id1653mnvAgvK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToLink").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvK").build();
   public static final SMethod<Boolean> applicableToConcept_id1653mnvAgvQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvQ").build();
@@ -44,7 +44,7 @@ public final class Concept_GetDirectSuperConcepts__BehaviorDescriptor extends Ba
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id6ALWH9fQysn(@NotNull SAbstractConcept __thisConcept__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_ena9wv.OperationParm_Inclusion_281b6df5);
   }
 
   /*package*/ Concept_GetDirectSuperConcepts__BehaviorDescriptor() {
@@ -97,5 +97,10 @@ public final class Concept_GetDirectSuperConcepts__BehaviorDescriptor extends Ba
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_ena9wv {
+    /*package*/ static final SConcept Concept_GetDirectSuperConcepts_ccd978ae = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11296bd8374L, "jetbrains.mps.lang.smodel.structure.Concept_GetDirectSuperConcepts");
+    /*package*/ static final SConcept OperationParm_Inclusion_281b6df5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
   }
 }

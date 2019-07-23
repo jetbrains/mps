@@ -21,7 +21,7 @@ public class AddConstructorInEnumCaret1_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddConstructorInEnumCaret1() throws Throwable {
-    new AddConstructorInEnumCaret1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

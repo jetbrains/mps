@@ -13,11 +13,12 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertToMethodFQNameSpecification_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -38,7 +39,7 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ConvertToMethodFQNameSpecification_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -51,7 +52,7 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode methodSpecification = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, "jetbrains.mps.lang.script.structure.FQNameMethodSpecification"));
+      SNode methodSpecification = SNodeFactoryOperations.replaceWithNewChild(node, AUX_juv4wl.FQNameMethodSpecification_54588911);
       SPropertyOperations.assign(methodSpecification, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, 0x1fcdfeb518d2fe29L, "snodeId"), SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration")).getNodeId().toString());
       SNodeOperations.deleteNode(node);
     }
@@ -59,5 +60,9 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
     public IntentionDescriptor getDescriptor() {
       return ConvertToMethodFQNameSpecification_Intention.this;
     }
+  }
+
+  private static final class AUX_juv4wl {
+    /*package*/ static final SConcept FQNameMethodSpecification_54588911 = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, "jetbrains.mps.lang.script.structure.FQNameMethodSpecification");
   }
 }

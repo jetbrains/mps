@@ -68,18 +68,18 @@ public class Escaping_Test extends TestCase {
     Assert.assertTrue(p.matcher("bwbb").matches());
     Assert.assertFalse(p.matcher("bb").matches());
   }
-  private static Pattern REGEXP_s9n2xl_a0a0a0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0b0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0c0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0d0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0b = Pattern.compile("\\s\\\\\\W[\\w\\D]\\b", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0c = Pattern.compile("[ac-f\\d\\-]", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0d = Pattern.compile("[1-9\\w&&[^d-f]]", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0e = Pattern.compile("[\\w&&[^d-f]]", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0f = Pattern.compile("'\\'\"\\\"", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0g = Pattern.compile("^(\\w+)\\1$", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0h = Pattern.compile("^(?:\\w\\w)+$", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0i = Pattern.compile("^(?:\\w\\w){2,4}$", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0j = Pattern.compile("^(?:\\w\\w){2,}$", 0);
-  private static Pattern REGEXP_s9n2xl_a0a0k = Pattern.compile("^(?:\\w\\w){2}$", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0a0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0b0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0c0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0d0a = Pattern.compile("(?:(\\[\\w+\\]|\\(\\w+\\)|\\{\\w+\\})+)", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0b = Pattern.compile("\\s\\\\\\W[\\w\\D]\\b", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0c = Pattern.compile("[ac-f\\d\\-]", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0d = Pattern.compile("[1-9\\w&&[^d-f]]", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0e = Pattern.compile("[\\w&&[^d-f]]", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0f = Pattern.compile("'\\'\"\\\"", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0g = Pattern.compile("^(\\w+)\\1$", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0h = Pattern.compile("^(?:\\w\\w)+$", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0i = Pattern.compile("^(?:\\w\\w){2,4}$", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0j = Pattern.compile("^(?:\\w\\w){2,}$", 0);
+  private static final Pattern REGEXP_s9n2xl_a0a0k = Pattern.compile("^(?:\\w\\w){2}$", 0);
 }

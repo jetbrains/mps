@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
 import jetbrains.mps.smodel.structure.Extension;
@@ -29,6 +28,7 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -42,6 +42,8 @@ import jetbrains.mps.lang.migration.behavior.AbstractNodeReference__BehaviorDesc
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class WriteSubconceptMigrationParticipant extends RefactoringParticipantBase<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void, SNode, SNode> implements MoveNodeRefactoringParticipant<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void>, RefactoringParticipant.PersistentRefactoringParticipant<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void, SNode, SNode> {
 
@@ -61,7 +63,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
     public SNode resolve(SRepository repository) {
       Language resolve = ((Language) languageRef.resolve(repository));
       SModel migrationModel = LanguageAspect.MIGRATION.get(resolve);
-      return ListSequence.fromList(SModelOperations.roots(migrationModel, MetaAdapterFactory.getInterfaceConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L, "jetbrains.mps.lang.migration.structure.IMigrationUnit"))).where(new IWhereFilter<SNode>() {
+      return ListSequence.fromList(SModelOperations.roots(migrationModel, AUX_8k3jue.IMigrationUnit_128da2b8)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it) == version;
         }
@@ -85,7 +87,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
   }
 
   @Override
-  public List<RefactoringParticipant.Option> getAvailableOptions(Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef> initialState, SRepository repository) {
+  public List<RefactoringParticipant.Option> getAvailableOptions(Tuples._2<NamedNodeReference, MigrationScriptRef> initialState, SRepository repository) {
     if (initialState == null) {
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
     }
@@ -94,9 +96,9 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
 
 
   @Override
-  public List<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void>> getChanges(final Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef> initialState, SRepository repository, List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope) {
+  public List<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>> getChanges(final Tuples._2<NamedNodeReference, MigrationScriptRef> initialState, SRepository repository, List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope) {
     if (initialState == null || !(ListSequence.fromList(selectedOptions).contains(LanguageStructureMigrationParticipant.OPTION)) || !(ListSequence.fromList(selectedOptions).contains(UpdateReferencesParticipantBase.OPTION)) || !(ListSequence.fromList(selectedOptions).contains(OPTION)) || searchScope.resolve(initialState._1().getLanguage()) != null) {
-      return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void>>());
+      return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>>());
     }
 
     {
@@ -108,12 +110,12 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
         }
       };
       List<SNode> subConcepts = ListSequence.fromList(new ArrayList<SNode>());
-      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_8k3jue.ConceptDeclaration_cb225da8, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(SLinkOperations.getPointer(it, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends")), initialState._0().reference());
         }
       }).toListSequence());
-      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_8k3jue.InterfaceConceptDeclaration_efdf2bc9, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends"))).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
@@ -122,7 +124,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
           });
         }
       }).toListSequence());
-      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_8k3jue.ConceptDeclaration_cb225da8, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements"))).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
@@ -136,9 +138,9 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
           return SNodeOperations.getModel(it).getModule();
         }
       }).distinct().ofType(Language.class).toListSequence();
-      List<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void>> changes = ListSequence.fromList(subModules).select(new ISelector<Language, RefactoringParticipant.Change<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void>>() {
-        public RefactoringParticipant.Change<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void> select(final Language subModule) {
-          RefactoringParticipant.Change<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void>() {
+      List<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>> changes = ListSequence.fromList(subModules).select(new ISelector<Language, RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>>() {
+        public RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> select(final Language subModule) {
+          RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>() {
             public SearchResults getSearchResults() {
               SearchResults searchResults = new SearchResults();
               searchResults.add(new SearchResult<SModule>(subModule, "induced migration script"));
@@ -146,7 +148,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
             }
             public void confirm(Void finalState, SRepository repository, RefactoringSession refactoringSession) {
               LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder = LanguageStructureMigrationParticipant.MigrationBuilder.getBuilder(refactoringSession, subModule);
-              migrationBuilder.addPart(createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNodeOperations.cast(initialState._1().resolve(repository), MetaAdapterFactory.getInterfaceConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L, "jetbrains.mps.lang.migration.structure.IMigrationUnit"))));
+              migrationBuilder.addPart(createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNodeOperations.cast(initialState._1().resolve(repository), AUX_8k3jue.IMigrationUnit_128da2b8)));
             }
           };
           return change;
@@ -157,11 +159,11 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
   }
 
 
-  public SNode serializeInitialState(Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef> initialState) {
+  public SNode serializeInitialState(Tuples._2<NamedNodeReference, MigrationScriptRef> initialState) {
     return createConceptMigrationReference_8k3jue_a0a51(NodeReferenceUtil.makeReflection(initialState._0().reference(), initialState._0().name()), initialState._1().getVersion(), PersistenceFacade.getInstance().asString(initialState._1().getLanguage()));
   }
-  public Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef> deserializeInitialState(SNode serialized) {
-    return MultiTuple.<NamedNodeReference,WriteSubconceptMigrationParticipant.MigrationScriptRef>from(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept"))), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept")))), new WriteSubconceptMigrationParticipant.MigrationScriptRef(PersistenceFacade.getInstance().createModuleReference(SPropertyOperations.getString(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript")), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module"))), SPropertyOperations.getInteger(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript")), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion"))));
+  public Tuples._2<NamedNodeReference, MigrationScriptRef> deserializeInitialState(SNode serialized) {
+    return MultiTuple.<NamedNodeReference,MigrationScriptRef>from(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept"))), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept")))), new MigrationScriptRef(PersistenceFacade.getInstance().createModuleReference(SPropertyOperations.getString(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript")), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module"))), SPropertyOperations.getInteger(SLinkOperations.getTarget(serialized, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript")), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion"))));
   }
   public SNode serializeFinalState(Void finalState) {
     return null;
@@ -169,39 +171,50 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
   public Void deserializeFinalState(SNode serialized) {
     return null;
   }
-  private MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void> myDataCollector = new MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void>() {
-    public Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef> beforeMove(SNode nodeToMove) {
-      if (!(SNodeOperations.isInstanceOf(nodeToMove, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) || !(SNodeOperations.getModel(nodeToMove).getModule() instanceof Language)) {
+  private MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> myDataCollector = new MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>() {
+    public Tuples._2<NamedNodeReference, MigrationScriptRef> beforeMove(SNode nodeToMove) {
+      if (!(SNodeOperations.isInstanceOf(nodeToMove, AUX_8k3jue.AbstractConceptDeclaration_ec74828f)) || !(SNodeOperations.getModel(nodeToMove).getModule() instanceof Language)) {
         return null;
       }
       Language language = ((Language) SNodeOperations.getModel(nodeToMove).getModule());
-      return MultiTuple.<NamedNodeReference,WriteSubconceptMigrationParticipant.MigrationScriptRef>from(new NamedNodeReference(SNodeOperations.getPointer(nodeToMove), NodeReferenceUtil.getNodePresentation(nodeToMove)), new WriteSubconceptMigrationParticipant.MigrationScriptRef(language.getModuleReference(), language.getLanguageVersion()));
+      return MultiTuple.<NamedNodeReference,MigrationScriptRef>from(new NamedNodeReference(SNodeOperations.getPointer(nodeToMove), NodeReferenceUtil.getNodePresentation(nodeToMove)), new MigrationScriptRef(language.getModuleReference(), language.getLanguageVersion()));
     }
     public Void afterMove(SNode movedNode) {
       return null;
     }
   };
-  public MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<NamedNodeReference, WriteSubconceptMigrationParticipant.MigrationScriptRef>, Void> getDataCollector() {
+  public MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> getDataCollector() {
     return myDataCollector;
   }
   private static SNode createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, "jetbrains.mps.lang.migration.structure.IncludeMigrationPart"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_8k3jue.IncludeMigrationPart_d54b925f, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target"), node0);
     return n1;
   }
   private static SNode createConceptMigrationReference_8k3jue_a0a51(SNode node0, Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, "jetbrains.mps.lang.migration.structure.ConceptMigrationReference"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_8k3jue.ConceptMigrationReference_333cfaa2, null, null, false);
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, "jetbrains.mps.lang.migration.structure.MigrationScriptReference"), null, null, false);
+      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(AUX_8k3jue.MigrationScriptReference_7965c055, null, null, false);
       n2.setProperty(MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion"), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion").getType().toString(p0));
       n2.setProperty(MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module"), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module").getType().toString(p1));
       n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript"), n2);
       if (node0 != null) {
-        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1648ccL, "jetbrains.mps.lang.migration.structure.AbstractNodeReference"))));
+        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_8k3jue.AbstractNodeReference_c12f549c)));
       }
     }
     return n1;
+  }
+
+  private static final class AUX_8k3jue {
+    /*package*/ static final SInterfaceConcept IMigrationUnit_128da2b8 = MetaAdapterFactory.getInterfaceConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L, "jetbrains.mps.lang.migration.structure.IMigrationUnit");
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration_efdf2bc9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept IncludeMigrationPart_d54b925f = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, "jetbrains.mps.lang.migration.structure.IncludeMigrationPart");
+    /*package*/ static final SConcept ConceptMigrationReference_333cfaa2 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, "jetbrains.mps.lang.migration.structure.ConceptMigrationReference");
+    /*package*/ static final SConcept MigrationScriptReference_7965c055 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, "jetbrains.mps.lang.migration.structure.MigrationScriptReference");
+    /*package*/ static final SConcept AbstractNodeReference_c12f549c = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1648ccL, "jetbrains.mps.lang.migration.structure.AbstractNodeReference");
   }
 }

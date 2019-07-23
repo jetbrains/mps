@@ -99,7 +99,7 @@ public class TestClass extends BaseTestClass {
   }
 
   public void changeValueUsingNestedClass(int newValue) {
-    new TestClass.PropertyChanger(newValue);
+    new PropertyChanger(newValue);
   }
 
   private class PropertyChanger {

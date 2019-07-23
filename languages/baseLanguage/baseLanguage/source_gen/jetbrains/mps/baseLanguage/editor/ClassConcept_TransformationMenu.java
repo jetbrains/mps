@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
@@ -30,6 +29,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassConcept_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -64,7 +65,7 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_bz24q3.ClassConcept_e2711824)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -80,9 +81,9 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ClassConcept_TransformationMenu.TMP_Group_bz24q3_a1());
-      result.add(new ClassConcept_TransformationMenu.TMP_Group_bz24q3_b1());
-      result.add(new ClassConcept_TransformationMenu.TMP_Group_bz24q3_c1());
+      result.add(new TMP_Group_bz24q3_a1());
+      result.add(new TMP_Group_bz24q3_b1());
+      result.add(new TMP_Group_bz24q3_c1());
     }
     return result;
   }
@@ -106,12 +107,12 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ClassConcept_TransformationMenu.TMP_Group_bz24q3_a1.TMP_Action_bz24q3_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bz24q3_a1.TMP_Action_bz24q3_a0b());
     }
     private class TMP_Action_bz24q3_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ClassConcept_TransformationMenu.TMP_Group_bz24q3_a1.TMP_Action_bz24q3_a0b.Item item = new ClassConcept_TransformationMenu.TMP_Group_bz24q3_a1.TMP_Action_bz24q3_a0b.Item(context);
+        TMP_Group_bz24q3_a1.TMP_Action_bz24q3_a0b.Item item = new TMP_Group_bz24q3_a1.TMP_Action_bz24q3_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -189,12 +190,12 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ClassConcept_TransformationMenu.TMP_Group_bz24q3_b1.TMP_Action_bz24q3_a1b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bz24q3_b1.TMP_Action_bz24q3_a1b());
     }
     private class TMP_Action_bz24q3_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ClassConcept_TransformationMenu.TMP_Group_bz24q3_b1.TMP_Action_bz24q3_a1b.Item item = new ClassConcept_TransformationMenu.TMP_Group_bz24q3_b1.TMP_Action_bz24q3_a1b.Item(context);
+        TMP_Group_bz24q3_b1.TMP_Action_bz24q3_a1b.Item item = new TMP_Group_bz24q3_b1.TMP_Action_bz24q3_a1b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -272,12 +273,12 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ClassConcept_TransformationMenu.TMP_Group_bz24q3_c1.TMP_Action_bz24q3_a2b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bz24q3_c1.TMP_Action_bz24q3_a2b());
     }
     private class TMP_Action_bz24q3_a2b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ClassConcept_TransformationMenu.TMP_Group_bz24q3_c1.TMP_Action_bz24q3_a2b.Item item = new ClassConcept_TransformationMenu.TMP_Group_bz24q3_c1.TMP_Action_bz24q3_a2b.Item(context);
+        TMP_Group_bz24q3_c1.TMP_Action_bz24q3_a2b.Item item = new TMP_Group_bz24q3_c1.TMP_Action_bz24q3_a2b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -335,5 +336,9 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_bz24q3 {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

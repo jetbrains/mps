@@ -21,7 +21,7 @@ public class RestoreRefCellAfterUndo_Test extends BaseTransformationTest {
 
   @Test
   public void test_RestoreRefCellAfterUndo() throws Throwable {
-    new RestoreRefCellAfterUndo_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -9,11 +9,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
   public String getCaption() {
@@ -29,7 +30,7 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     for (SModel model : Sequence.fromIterable(m.getModels())) {
-      for (SNode cps : ListSequence.fromList(SModelOperations.nodes(((SModel) model), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint"))).where(new IWhereFilter<SNode>() {
+      for (SNode cps : ListSequence.fromList(SModelOperations.nodes(((SModel) model), AUX_mv3esh.Checkpoint_4c7f4192)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec")) == null);
         }
@@ -37,7 +38,7 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
         // since there's property constraint for INamedConcept.name in Checkpoint, can't use cps.name directly 
         String cpName = cps.getProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
         cps.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), null);
-        SPropertyOperations.assign(SLinkOperations.setNewChild(cps, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec"), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), cpName);
+        SPropertyOperations.assign(SLinkOperations.setNewChild(cps, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec"), AUX_mv3esh.InPlaceCheckpointSpec_e4cad03b), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), cpName);
       }
     }
   }
@@ -45,4 +46,8 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, "jetbrains.mps.lang.generator.plan"), 0);
   }
 
+  private static final class AUX_mv3esh {
+    /*package*/ static final SConcept InPlaceCheckpointSpec_e4cad03b = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec");
+    /*package*/ static final SConcept Checkpoint_4c7f4192 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint");
+  }
 }

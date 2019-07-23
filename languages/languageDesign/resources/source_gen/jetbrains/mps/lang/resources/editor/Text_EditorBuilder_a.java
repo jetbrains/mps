@@ -36,6 +36,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Text_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -85,7 +86,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Text_EditorBuilder_a.colorSingleRoleHandler_wlph7j_c0(myNode, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color"), getEditorContext());
+    SingleRoleCellProvider provider = new colorSingleRoleHandler_wlph7j_c0(myNode, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color"), getEditorContext());
     return provider.createCell();
   }
   private static class colorSingleRoleHandler_wlph7j_c0 extends SingleRoleCellProvider {
@@ -164,7 +165,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       editorCell.setCellId("property_text");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_s457xb.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -178,5 +179,9 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     } finally {
       getCellFactory().popCellContext();
     }
+  }
+
+  private static final class AUX_s457xb {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

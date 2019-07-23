@@ -4,19 +4,20 @@ package jetbrains.mps.lang.quotation.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class StringToTypedValueMigrationInfo__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, "jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo");
+  private static final SAbstractConcept CONCEPT = AUX_4nlqnp.StringToTypedValueMigrationInfo_ee0e9f0;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -68,5 +69,9 @@ public final class StringToTypedValueMigrationInfo__BehaviorDescriptor extends B
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_4nlqnp {
+    /*package*/ static final SInterfaceConcept StringToTypedValueMigrationInfo_ee0e9f0 = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, "jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo");
   }
 }

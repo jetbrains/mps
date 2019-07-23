@@ -14,17 +14,18 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProblemPointsToKindRoot_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ProblemPointsToKindRoot_SubstituteMenu.SMP_Subconcepts_46r982_a());
+    result.add(new SMP_Subconcepts_46r982_a());
     return result;
   }
 
@@ -43,7 +44,7 @@ public class ProblemPointsToKindRoot_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_46r982_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, "jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_46r982.ProblemPointsToKindRoot_59478e26);
     }
     @NotNull
     @Override
@@ -61,5 +62,9 @@ public class ProblemPointsToKindRoot_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_46r982 {
+    /*package*/ static final SConcept ProblemPointsToKindRoot_59478e26 = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, "jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot");
   }
 }

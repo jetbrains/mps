@@ -110,7 +110,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SetAccessor_EditorBuilder_a.statementListSingleRoleHandler_h8axo1_f0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList"), getEditorContext());
+    SingleRoleCellProvider provider = new statementListSingleRoleHandler_h8axo1_f0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList"), getEditorContext());
     return provider.createCell();
   }
   private static class statementListSingleRoleHandler_h8axo1_f0 extends SingleRoleCellProvider {

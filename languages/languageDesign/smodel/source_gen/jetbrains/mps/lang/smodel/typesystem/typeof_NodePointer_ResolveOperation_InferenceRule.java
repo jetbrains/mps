@@ -16,12 +16,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_NodePointer_ResolveOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_NodePointer_ResolveOperation_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode operand = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(op), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
+    final SNode operand = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(op), AUX_vlsxk1.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
     if ((operand == null)) {
       {
         SNode _nodeToCheck_1029348928467 = op;
@@ -36,7 +37,7 @@ public class typeof_NodePointer_ResolveOperation_InferenceRule extends AbstractI
       typeCheckingContext.whenConcrete(operandType, new Runnable() {
         public void run() {
           {
-            SNode coercedNode_t2kws6_a0d0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType"));
+            SNode coercedNode_t2kws6_a0d0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), AUX_vlsxk1.SNodePointerType_1589fb65);
             if (coercedNode_t2kws6_a0d0 != null) {
               {
                 SNode _nodeToCheck_1029348928467 = op;
@@ -56,7 +57,7 @@ public class typeof_NodePointer_ResolveOperation_InferenceRule extends AbstractI
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32a2de94092b18f4L, "jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation");
+    return AUX_vlsxk1.NodePointer_ResolveOperation_b3301032;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -82,5 +83,11 @@ public class typeof_NodePointer_ResolveOperation_InferenceRule extends AbstractI
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_vlsxk1 {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SNodePointerType_1589fb65 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    /*package*/ static final SConcept NodePointer_ResolveOperation_b3301032 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32a2de94092b18f4L, "jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation");
   }
 }

@@ -30,7 +30,7 @@ public class UnaryNumberOperationUsesVariable_Test extends BaseTransformationTes
 
   @Test
   public void test_ErrorMessagesCheck5706606249115952859() throws Throwable {
-    new UnaryNumberOperationUsesVariable_Test.TestBody(this).test_ErrorMessagesCheck5706606249115952859();
+    new TestBody(this).test_ErrorMessagesCheck5706606249115952859();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

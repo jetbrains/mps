@@ -132,6 +132,6 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase impleme
     rv[0] = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x11645a94e4aL, "outputChild");
     return rv;
   }
-  private static SNodePointer loopMacroRef_vff4zh_b0a0a2a6 = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414161782");
-  private static SNodePointer templateSwitchNodeNoInput_vff4zh_a0a0c0c0j = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "1892993302480310366");
+  private static final SNodePointer loopMacroRef_vff4zh_b0a0a2a6 = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414161782");
+  private static final SNodePointer templateSwitchNodeNoInput_vff4zh_a0a0c0c0j = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "1892993302480310366");
 }

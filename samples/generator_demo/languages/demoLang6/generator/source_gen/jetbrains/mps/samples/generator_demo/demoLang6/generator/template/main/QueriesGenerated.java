@@ -30,8 +30,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("3978102045101880175", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value"), "text"));
-    pvqMethods.put("3978102045101880670", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value"), "text"));
+    pvqMethods.put("3978102045101880175", new PVQ(i++, MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value"), "text"));
+    pvqMethods.put("3978102045101880670", new PVQ(i++, MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value"), "text"));
   }
   @NotNull
   @Override

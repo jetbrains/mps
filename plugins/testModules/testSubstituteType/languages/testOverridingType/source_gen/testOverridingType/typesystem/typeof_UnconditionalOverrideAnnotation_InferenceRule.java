@@ -15,6 +15,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_UnconditionalOverrideAnnotation_InferenceRule() {
@@ -39,7 +40,7 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x19f3ac4f6f2a050aL, "testOverridingType.structure.UnconditionalOverrideAnnotation");
+    return AUX_ldhnbc.UnconditionalOverrideAnnotation_8b7129e8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -52,5 +53,9 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x394e385732564e8bL, 0x96015abe7ad354d9L, "testOverridingType"), 0x19f3ac4f6f2a7f40L, "ErrorType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_ldhnbc {
+    /*package*/ static final SConcept UnconditionalOverrideAnnotation_8b7129e8 = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x19f3ac4f6f2a050aL, "testOverridingType.structure.UnconditionalOverrideAnnotation");
   }
 }

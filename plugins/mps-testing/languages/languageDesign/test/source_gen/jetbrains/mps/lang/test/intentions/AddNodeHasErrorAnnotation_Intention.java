@@ -12,18 +12,19 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddNodeHasErrorAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -42,7 +43,7 @@ public final class AddNodeHasErrorAnnotation_Intention extends AbstractIntention
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase")), node);
+    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(AUX_yuo5g6.NodesTestCase_fd5a0bf4), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -50,7 +51,7 @@ public final class AddNodeHasErrorAnnotation_Intention extends AbstractIntention
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddNodeHasErrorAnnotation_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -63,8 +64,8 @@ public final class AddNodeHasErrorAnnotation_Intention extends AbstractIntention
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode newAnnotation = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer"), null);
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer")), newAnnotation);
+      SNode newAnnotation = SNodeFactoryOperations.createNewNode(AUX_yuo5g6.NodeOperationsContainer_e9631e6e, null);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_yuo5g6.NodeOperationsContainer_e9631e6e), newAnnotation);
       SNode errorCheck = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b01e7283dL, "jetbrains.mps.lang.test.structure.NodeErrorCheckOperation"));
       ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations"))).addElement(errorCheck);
       SelectionUtil.selectCell(editorContext, errorCheck, SelectionManager.LAST_EDITABLE_CELL);
@@ -73,5 +74,10 @@ public final class AddNodeHasErrorAnnotation_Intention extends AbstractIntention
     public IntentionDescriptor getDescriptor() {
       return AddNodeHasErrorAnnotation_Intention.this;
     }
+  }
+
+  private static final class AUX_yuo5g6 {
+    /*package*/ static final SConcept NodesTestCase_fd5a0bf4 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
+    /*package*/ static final SConcept NodeOperationsContainer_e9631e6e = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
   }
 }

@@ -36,7 +36,7 @@ public class MigrationStep extends BaseStep {
   public MigrationStep(MigrationSession session) {
     super("Migration in Progress", ID);
     mySession = session;
-    myProgress = new MigrationStep.MyInlineProgressIndicator();
+    myProgress = new MyInlineProgressIndicator();
     myTask = new MigrationTask(session, new ProgressMonitorAdapter(myProgress));
   }
 

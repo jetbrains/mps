@@ -13,8 +13,9 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ComplexParameters_Contribution extends SubstituteMenuBase {
   public ComplexParameters_Contribution() {
@@ -24,7 +25,7 @@ public class ComplexParameters_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ComplexParameters_Contribution.SMP_Group_axe0gq_a());
+    result.add(new SMP_Group_axe0gq_a());
     return result;
   }
 
@@ -44,7 +45,7 @@ public class ComplexParameters_Contribution extends SubstituteMenuBase {
   public class SMP_Group_axe0gq_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b812427fL, "jetbrains.mps.lang.plugin.structure.ActionParameterDeclaration"), true, false) != null;
+      return SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_axe0gq.ActionParameterDeclaration_59cee56e, true, false) != null;
     }
     @NotNull
     @Override
@@ -62,5 +63,9 @@ public class ComplexParameters_Contribution extends SubstituteMenuBase {
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList();
     }
+  }
+
+  private static final class AUX_axe0gq {
+    /*package*/ static final SConcept ActionParameterDeclaration_59cee56e = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b812427fL, "jetbrains.mps.lang.plugin.structure.ActionParameterDeclaration");
   }
 }

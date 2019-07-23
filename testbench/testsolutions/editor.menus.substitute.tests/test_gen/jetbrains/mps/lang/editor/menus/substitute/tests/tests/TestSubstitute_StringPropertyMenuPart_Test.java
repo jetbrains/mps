@@ -22,7 +22,7 @@ public class TestSubstitute_StringPropertyMenuPart_Test extends BaseTransformati
 
   @Test
   public void test_TestSubstitute_StringPropertyMenuPart() throws Throwable {
-    new TestSubstitute_StringPropertyMenuPart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

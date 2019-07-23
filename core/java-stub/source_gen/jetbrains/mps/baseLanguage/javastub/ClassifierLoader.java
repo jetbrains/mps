@@ -12,9 +12,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.smodel.LazySNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
@@ -27,6 +27,7 @@ import jetbrains.mps.util.ReadUtil;
 import java.io.IOException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassifierLoader {
   private static final Logger LOG = LogManager.getLogger(ClassifierLoader.class);
@@ -75,25 +76,25 @@ public class ClassifierLoader {
     SNode lazyRoot;
     switch (kind) {
       case CLASS:
-        lazyRoot = new LazySNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), nodeId);
+        lazyRoot = new LazySNode(AUX_eoyrbu.ClassConcept_e2711824, nodeId);
 
-        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"), (myClassReader.getAccess() & Opcodes.ACC_ABSTRACT) != 0);
-        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal"), (myClassReader.getAccess() & Opcodes.ACC_FINAL) != 0);
+        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, AUX_eoyrbu.ClassConcept_e2711824), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"), (myClassReader.getAccess() & Opcodes.ACC_ABSTRACT) != 0);
+        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, AUX_eoyrbu.ClassConcept_e2711824), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal"), (myClassReader.getAccess() & Opcodes.ACC_FINAL) != 0);
         break;
       case INTERFACE:
-        lazyRoot = new LazySNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"), nodeId);
+        lazyRoot = new LazySNode(AUX_eoyrbu.Interface_bca2069, nodeId);
         break;
       case ENUM:
-        lazyRoot = new LazySNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"), nodeId);
+        lazyRoot = new LazySNode(AUX_eoyrbu.EnumClass_acf68fc0, nodeId);
         break;
       case ANNOTATIONS:
-        lazyRoot = new LazySNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation"), nodeId);
+        lazyRoot = new LazySNode(AUX_eoyrbu.Annotation_14405306, nodeId);
         break;
       default:
         return null;
 
     }
-    SNode rv = SNodeOperations.as(lazyRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    SNode rv = SNodeOperations.as(lazyRoot, AUX_eoyrbu.Classifier_4b7e553);
     SPropertyOperations.assign(rv, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), shortName);
 
     if (myInnerClassDescriptor != null) {
@@ -193,12 +194,22 @@ public class ClassifierLoader {
   }
   private static SNode createProtectedVisibility_eoyrbu_a0a0h0l0o() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_eoyrbu.ProtectedVisibility_64112d59, null, null, false);
     return n1;
   }
   private static SNode createPrivateVisibility_eoyrbu_a0a0a7a11a41() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_eoyrbu.PrivateVisibility_63f5dbd4, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_eoyrbu {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept EnumClass_acf68fc0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept Annotation_14405306 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ProtectedVisibility_64112d59 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
+    /*package*/ static final SConcept PrivateVisibility_63f5dbd4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 }

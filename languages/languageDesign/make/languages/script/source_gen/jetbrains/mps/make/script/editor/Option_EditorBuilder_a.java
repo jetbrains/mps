@@ -39,6 +39,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Option_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -73,7 +74,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private boolean nodeCondition_nr3cqj_a0a() {
-    return SNodeOperations.getIndexInParent(myNode) == SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(myNode), MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, "jetbrains.mps.make.script.structure.ExpectedOption")), MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption"));
+    return SNodeOperations.getIndexInParent(myNode) == SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(myNode), AUX_6gve2r.ExpectedOption_bdc41f58), MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption"));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "default");
@@ -93,10 +94,10 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
       editorCell.setCellId("property_name");
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc49ec9L, "jetbrains.mps.make.script.structure.Option"), "jetbrains.mps.make.script.editor.Option_makeDefault"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_6gve2r.Option_bdaa458a, "jetbrains.mps.make.script.editor.Option_makeDefault"));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_6gve2r.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -118,7 +119,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Option_EditorBuilder_a.presentationSingleRoleHandler_nr3cqj_d0(myNode, MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc49ec9L, 0x70276038dc49ecbL, "presentation"), getEditorContext());
+    SingleRoleCellProvider provider = new presentationSingleRoleHandler_nr3cqj_d0(myNode, MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc49ec9L, 0x70276038dc49ecbL, "presentation"), getEditorContext());
     return provider.createCell();
   }
   private static class presentationSingleRoleHandler_nr3cqj_d0 extends SingleRoleCellProvider {
@@ -171,5 +172,11 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     protected String getNoTargetText() {
       return "<no presentation>";
     }
+  }
+
+  private static final class AUX_6gve2r {
+    /*package*/ static final SConcept ExpectedOption_bdc41f58 = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, "jetbrains.mps.make.script.structure.ExpectedOption");
+    /*package*/ static final SConcept Option_bdaa458a = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc49ec9L, "jetbrains.mps.make.script.structure.Option");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

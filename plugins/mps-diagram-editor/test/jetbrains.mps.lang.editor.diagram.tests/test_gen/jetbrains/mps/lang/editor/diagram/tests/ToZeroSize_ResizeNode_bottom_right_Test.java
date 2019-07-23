@@ -23,7 +23,7 @@ public class ToZeroSize_ResizeNode_bottom_right_Test extends BaseTransformationT
 
   @Test
   public void test_ToZeroSize_ResizeNode_bottom_right() throws Throwable {
-    new ToZeroSize_ResizeNode_bottom_right_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

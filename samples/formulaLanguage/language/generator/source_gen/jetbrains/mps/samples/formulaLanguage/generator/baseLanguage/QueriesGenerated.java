@@ -59,14 +59,14 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("1200430494834", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1200430529811", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1200430591959", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1200430618421", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1200430632007", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1200430664124", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1200430674101", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1200430685109", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("1200430494834", new SNQ(i++));
+    snqMethods.put("1200430529811", new SNQ(i++));
+    snqMethods.put("1200430591959", new SNQ(i++));
+    snqMethods.put("1200430618421", new SNQ(i++));
+    snqMethods.put("1200430632007", new SNQ(i++));
+    snqMethods.put("1200430664124", new SNQ(i++));
+    snqMethods.put("1200430674101", new SNQ(i++));
+    snqMethods.put("1200430685109", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -109,8 +109,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("1113259187703", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value"), "0.0"));
-    pvqMethods.put("1113259187704", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value"), "0.0"));
+    pvqMethods.put("1113259187703", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value"), "0.0"));
+    pvqMethods.put("1113259187704", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value"), "0.0"));
   }
   @NotNull
   @Override

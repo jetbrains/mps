@@ -21,7 +21,7 @@ public class NonStaticField1_Test extends BaseTransformationTest {
 
   @Test
   public void test_NonStaticField1() throws Throwable {
-    new NonStaticField1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -22,7 +22,7 @@ public class MigrateToIndent_NoLayout_Test extends BaseTransformationTest {
 
   @Test
   public void test_MigrateToIndent_NoLayout() throws Throwable {
-    new MigrateToIndent_NoLayout_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

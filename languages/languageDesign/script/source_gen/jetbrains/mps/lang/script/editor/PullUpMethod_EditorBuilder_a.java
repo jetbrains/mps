@@ -40,6 +40,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.EditorCell_RefPresentation;
 import jetbrains.mps.smodel.action.IReferentPresentationProvider;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class PullUpMethod_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -79,7 +80,7 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new PullUpMethod_EditorBuilder_a.oldMethodSpecificationSingleRoleHandler_errt5h_b0(myNode, MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x4243146ba1b41281L, "oldMethodSpecification"), getEditorContext());
+    SingleRoleCellProvider provider = new oldMethodSpecificationSingleRoleHandler_errt5h_b0(myNode, MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x4243146ba1b41281L, "oldMethodSpecification"), getEditorContext());
     return provider.createCell();
   }
   private static class oldMethodSpecificationSingleRoleHandler_errt5h_b0 extends SingleRoleCellProvider {
@@ -148,7 +149,7 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
       protected EditorCell createReferenceCell(final SNode targetNode) {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
           public EditorCell compute() {
-            return new PullUpMethod_EditorBuilder_a.Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
+            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
           }
         }, targetNode, MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x3ae1f3a73b9e55daL, "newMethodDeclaration"));
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
@@ -166,7 +167,7 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
       editorCell.setSRole(MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x3ae1f3a73b9e55daL, "newMethodDeclaration"));
     }
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"));
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_r8ofmx.LinkAttribute_d001db6f);
     Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
@@ -204,5 +205,9 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
       editorCell.setCellId("ReferencePresentation_errt5h_a0d0");
       return editorCell;
     }
+  }
+
+  private static final class AUX_r8ofmx {
+    /*package*/ static final SConcept LinkAttribute_d001db6f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
   }
 }

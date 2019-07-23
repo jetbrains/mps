@@ -21,7 +21,7 @@ public class SelectUpThroughNonSelectable_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelectUpThroughNonSelectable() throws Throwable {
-    new SelectUpThroughNonSelectable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

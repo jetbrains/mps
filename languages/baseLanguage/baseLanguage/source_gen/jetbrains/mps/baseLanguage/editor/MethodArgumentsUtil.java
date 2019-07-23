@@ -8,19 +8,26 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MethodArgumentsUtil {
   public static SNode getMethodArgumentAncestor(SNode innerExpression) {
     List<SNode> ancestors = SNodeOperations.getNodeAncestors(innerExpression, null, true);
-    SNode methodCall = Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(ancestors).skip(1), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"))).first();
+    SNode methodCall = Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(ancestors).skip(1), AUX_yk3fy3.IMethodCall_ee2c776b)).first();
     if (methodCall == null) {
       return null;
     }
     SNode lastAncestor = ListSequence.fromList(ancestors).getElement(ListSequence.fromList(ancestors).indexOf(methodCall) - 1);
     if (SNodeOperations.hasRole(lastAncestor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))) {
-      return SNodeOperations.cast(lastAncestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
+      return SNodeOperations.cast(lastAncestor, AUX_yk3fy3.Expression_4199e28d);
     } else {
       return null;
     }
+  }
+
+  private static final class AUX_yk3fy3 {
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

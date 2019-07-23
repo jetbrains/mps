@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class typeof_MatrixUnit_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
@@ -22,12 +23,16 @@ public class typeof_MatrixUnit_InferenceRule extends AbstractInferenceRule_Runti
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af3c3bdfL, "jetbrains.mps.baseLanguage.math.structure.MatrixUnit");
+    return AUX_tk3h44.MatrixUnit_60229a9d;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_tk3h44 {
+    /*package*/ static final SConcept MatrixUnit_60229a9d = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af3c3bdfL, "jetbrains.mps.baseLanguage.math.structure.MatrixUnit");
   }
 }

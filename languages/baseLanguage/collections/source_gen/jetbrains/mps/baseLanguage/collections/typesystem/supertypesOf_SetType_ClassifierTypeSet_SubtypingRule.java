@@ -15,19 +15,20 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class supertypesOf_SetType_ClassifierTypeSet_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public supertypesOf_SetType_ClassifierTypeSet_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode setType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode et = SLinkOperations.getTarget(setType, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType"));
-    if (SNodeOperations.isInstanceOf(et, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType"))) {
+    if (SNodeOperations.isInstanceOf(et, AUX_m5bzh3.PrimitiveType_53355efd)) {
       et = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(et);
     }
     return _quotation_createNode_m5bzh3_a2a1(et);
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    return AUX_m5bzh3.SetType_d8fa38cf;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,5 +47,10 @@ public class supertypesOf_SetType_ClassifierTypeSet_SubtypingRule extends Subtyp
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_m5bzh3 {
+    /*package*/ static final SConcept PrimitiveType_53355efd = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept SetType_d8fa38cf = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
   }
 }

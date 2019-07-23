@@ -35,6 +35,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.EditorCell_RefPresentation;
 import jetbrains.mps.lang.editor.generator.internal.PrimaryReferentMenuCellMenuPart;
 import jetbrains.mps.smodel.action.IReferentPresentationProvider;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BuildLayout_FilesOf_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -79,7 +80,7 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
       protected EditorCell createReferenceCell(final SNode targetNode) {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
           public EditorCell compute() {
-            return new BuildLayout_FilesOf_EditorBuilder_a.Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
+            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
           }
         }, targetNode, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9404L, 0x6b9a2011083f9406L, "element"));
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
@@ -96,8 +97,8 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9404L, 0x6b9a2011083f9406L, "element"));
     }
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new BuildLayout_FilesOf_EditorBuilder_a.BuildLayout_FilesOf_element_cellMenu_1i5f76_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new BuildLayout_FilesOf_element_cellMenu_1i5f76_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_rt48vg.LinkAttribute_d001db6f);
     Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
@@ -149,5 +150,9 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
     protected IReferentPresentationProvider getVisibleMatchingTextProvider() {
       return PresentationProviders.PRESENTATION_1i5f76_a0a1a;
     }
+  }
+
+  private static final class AUX_rt48vg {
+    /*package*/ static final SConcept LinkAttribute_d001db6f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
   }
 }

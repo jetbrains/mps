@@ -86,7 +86,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CoerceStatement_EditorBuilder_a.nodeToCoerceSingleRoleHandler_olrwx8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f0605ed0L, "nodeToCoerce"), getEditorContext());
+    SingleRoleCellProvider provider = new nodeToCoerceSingleRoleHandler_olrwx8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f0605ed0L, "nodeToCoerce"), getEditorContext());
     return provider.createCell();
   }
   private static class nodeToCoerceSingleRoleHandler_olrwx8_c0 extends SingleRoleCellProvider {
@@ -147,7 +147,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CoerceStatement_EditorBuilder_a.patternSingleRoleHandler_olrwx8_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f05fb92aL, "pattern"), getEditorContext());
+    SingleRoleCellProvider provider = new patternSingleRoleHandler_olrwx8_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f05fb92aL, "pattern"), getEditorContext());
     return provider.createCell();
   }
   private static class patternSingleRoleHandler_olrwx8_e0 extends SingleRoleCellProvider {
@@ -221,7 +221,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new CoerceStatement_EditorBuilder_a.bodySingleRoleHandler_olrwx8_h0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f05f96ebL, "body"), getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_olrwx8_h0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f05f96ebL, "body"), getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_olrwx8_h0 extends SingleRoleCellProvider {
@@ -308,7 +308,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new CoerceStatement_EditorBuilder_a.elseClauseSingleRoleHandler_olrwx8_l0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x11c284fe10bL, "elseClause"), getEditorContext());
+    SingleRoleCellProvider provider = new elseClauseSingleRoleHandler_olrwx8_l0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x11c284fe10bL, "elseClause"), getEditorContext());
     return provider.createCell();
   }
   private static class elseClauseSingleRoleHandler_olrwx8_l0 extends SingleRoleCellProvider {

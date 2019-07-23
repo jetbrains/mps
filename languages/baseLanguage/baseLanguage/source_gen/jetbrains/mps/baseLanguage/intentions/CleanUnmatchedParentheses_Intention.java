@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -21,6 +20,8 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CleanUnmatchedParentheses_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -39,9 +40,9 @@ public final class CleanUnmatchedParentheses_Intention extends AbstractIntention
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SNodeOperations.getParent(node) == null || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")))) && ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
+    return (SNodeOperations.getParent(node) == null || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_xubfia.Expression_4199e28d))) && ListSequence.fromList(SNodeOperations.getNodeDescendants(node, AUX_xubfia.Expression_4199e28d, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))) != null) || (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))) != null);
+        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_xubfia.IncompleteLeftParen_1befc46d)) != null) || (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_xubfia.IncompleteRightParen_e00c988)) != null);
       }
     });
   }
@@ -51,7 +52,7 @@ public final class CleanUnmatchedParentheses_Intention extends AbstractIntention
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new CleanUnmatchedParentheses_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -64,14 +65,14 @@ public final class CleanUnmatchedParentheses_Intention extends AbstractIntention
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(node, AUX_xubfia.Expression_4199e28d, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))) != null) || (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))) != null);
+          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_xubfia.IncompleteLeftParen_1befc46d)) != null) || (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_xubfia.IncompleteRightParen_e00c988)) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          AttributeOperations.setAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")), null);
-          AttributeOperations.setAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")), null);
+          AttributeOperations.setAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_xubfia.IncompleteLeftParen_1befc46d), null);
+          AttributeOperations.setAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_xubfia.IncompleteRightParen_e00c988), null);
         }
       });
     }
@@ -79,5 +80,11 @@ public final class CleanUnmatchedParentheses_Intention extends AbstractIntention
     public IntentionDescriptor getDescriptor() {
       return CleanUnmatchedParentheses_Intention.this;
     }
+  }
+
+  private static final class AUX_xubfia {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept IncompleteRightParen_e00c988 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen");
+    /*package*/ static final SConcept IncompleteLeftParen_1befc46d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen");
   }
 }

@@ -21,7 +21,7 @@ public class UndoChangesCursorPositionFirstWithIncorrectValue_Test extends BaseT
 
   @Test
   public void test_UndoChangesCursorPositionFirstWithIncorrectValue() throws Throwable {
-    new UndoChangesCursorPositionFirstWithIncorrectValue_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

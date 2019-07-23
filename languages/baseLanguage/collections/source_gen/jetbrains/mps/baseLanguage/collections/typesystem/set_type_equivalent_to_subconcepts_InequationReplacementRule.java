@@ -18,6 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class set_type_equivalent_to_subconcepts_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public set_type_equivalent_to_subconcepts_InequationReplacementRule() {
@@ -54,9 +55,13 @@ public class set_type_equivalent_to_subconcepts_InequationReplacementRule extend
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    return AUX_4jkguh.SetType_d8fa38cf;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    return AUX_4jkguh.SetType_d8fa38cf;
+  }
+
+  private static final class AUX_4jkguh {
+    /*package*/ static final SConcept SetType_d8fa38cf = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
   }
 }

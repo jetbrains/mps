@@ -11,7 +11,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/1892012100483078654">
     <file name="ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test.java">
       <node id="1892012100483078654" at="22,89,23,25" concept="7" />
-      <node id="1892012100483078654" at="27,111,28,113" concept="1" />
+      <node id="1892012100483078654" at="27,111,28,36" concept="1" />
       <node id="1892012100483078654" at="33,52,34,19" concept="7" />
       <node id="1892012100483078654" at="38,51,39,53" concept="1" />
       <node id="1892012100483078660" at="41,27,42,80" concept="4" />
@@ -28,7 +28,7 @@
       <node id="1892012100483078656" at="39,53,49,9" concept="1" />
       <node id="1892012100483078654" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="1892012100483078654" at="22,89,23,25" />
-      <scope id="1892012100483078654" at="27,111,28,113" />
+      <scope id="1892012100483078654" at="27,111,28,36" />
       <scope id="1892012100483078654" at="33,52,34,19" />
       <scope id="1892012100483078654" at="22,0,25,0" />
       <scope id="1892012100483078654" at="33,0,36,0">
@@ -50,7 +50,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/1892012100483308900">
     <file name="ContextAssistant_DuplicationMenu_IncludeDifferentSubstituteMenus_Test.java">
       <node id="1892012100483308900" at="22,82,23,25" concept="7" />
-      <node id="1892012100483308900" at="27,104,28,106" concept="1" />
+      <node id="1892012100483308900" at="27,104,28,36" concept="1" />
       <node id="1892012100483308900" at="33,52,34,19" concept="7" />
       <node id="1892012100483308900" at="38,51,39,53" concept="1" />
       <node id="1892012100483308906" at="41,27,42,80" concept="4" />
@@ -67,7 +67,7 @@
       <node id="1892012100483308902" at="39,53,49,9" concept="1" />
       <node id="1892012100483308900" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="1892012100483308900" at="22,82,23,25" />
-      <scope id="1892012100483308900" at="27,104,28,106" />
+      <scope id="1892012100483308900" at="27,104,28,36" />
       <scope id="1892012100483308900" at="33,52,34,19" />
       <scope id="1892012100483308900" at="22,0,25,0" />
       <scope id="1892012100483308900" at="33,0,36,0">
@@ -89,7 +89,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/1892012100483348862">
     <file name="ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test.java">
       <node id="1892012100483348862" at="22,79,23,25" concept="7" />
-      <node id="1892012100483348862" at="27,101,28,103" concept="1" />
+      <node id="1892012100483348862" at="27,101,28,36" concept="1" />
       <node id="1892012100483348862" at="33,52,34,19" concept="7" />
       <node id="1892012100483348862" at="38,51,39,53" concept="1" />
       <node id="1892012100483348868" at="41,27,42,80" concept="4" />
@@ -106,7 +106,7 @@
       <node id="1892012100483348864" at="39,53,49,9" concept="1" />
       <node id="1892012100483348862" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="1892012100483348862" at="22,79,23,25" />
-      <scope id="1892012100483348862" at="27,101,28,103" />
+      <scope id="1892012100483348862" at="27,101,28,36" />
       <scope id="1892012100483348862" at="33,52,34,19" />
       <scope id="1892012100483348862" at="22,0,25,0" />
       <scope id="1892012100483348862" at="33,0,36,0">
@@ -128,7 +128,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/1966322953445256580">
     <file name="ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test.java">
       <node id="1966322953445256580" at="25,83,26,25" concept="7" />
-      <node id="1966322953445256580" at="30,105,31,107" concept="1" />
+      <node id="1966322953445256580" at="30,105,31,36" concept="1" />
       <node id="1966322953445256580" at="36,52,37,19" concept="7" />
       <node id="1966322953445256580" at="41,51,42,53" concept="1" />
       <node id="1966322953445256587" at="42,53,43,82" concept="4" />
@@ -153,7 +153,7 @@
       <node id="1453235961835728910" at="43,82,62,9" concept="1" />
       <node id="1966322953445256580" at="40,0,64,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="1966322953445256580" at="25,83,26,25" />
-      <scope id="1966322953445256580" at="30,105,31,107" />
+      <scope id="1966322953445256580" at="30,105,31,36" />
       <scope id="1966322953445256580" at="36,52,37,19" />
       <scope id="1966322953445256580" at="25,0,28,0" />
       <scope id="1966322953445256580" at="36,0,39,0">
@@ -179,7 +179,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/3354869018660467848">
     <file name="ContextAssistant_Collapse_Test.java">
       <node id="3354869018660467848" at="24,43,25,25" concept="7" />
-      <node id="3354869018660467848" at="29,65,30,67" concept="1" />
+      <node id="3354869018660467848" at="29,65,30,36" concept="1" />
       <node id="3354869018660467848" at="35,52,36,19" concept="7" />
       <node id="3354869018660467848" at="40,51,41,70" concept="1" />
       <node id="4212255956136889010" at="41,70,42,71" concept="1" />
@@ -198,7 +198,7 @@
       <node id="4212255956137011940" at="42,71,54,9" concept="1" />
       <node id="3354869018660467848" at="39,0,56,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3354869018660467848" at="24,43,25,25" />
-      <scope id="3354869018660467848" at="29,65,30,67" />
+      <scope id="3354869018660467848" at="29,65,30,36" />
       <scope id="3354869018660467848" at="35,52,36,19" />
       <scope id="1658153848510799120" at="50,85,51,64" />
       <scope id="3354869018660467848" at="24,0,27,0" />
@@ -224,7 +224,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/379023083996833808">
     <file name="ContextAssistant_CollapseAndShowSecondAssistant_Test.java">
       <node id="379023083996833808" at="25,65,26,25" concept="7" />
-      <node id="379023083996833808" at="30,87,31,89" concept="1" />
+      <node id="379023083996833808" at="30,87,31,36" concept="1" />
       <node id="379023083996833808" at="36,52,37,19" concept="7" />
       <node id="379023083996833808" at="41,51,42,70" concept="1" />
       <node id="379023083996833810" at="42,70,43,71" concept="1" />
@@ -244,7 +244,7 @@
       <node id="379023083996833812" at="43,71,55,9" concept="1" />
       <node id="379023083996833808" at="40,0,57,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="379023083996833808" at="25,65,26,25" />
-      <scope id="379023083996833808" at="30,87,31,89" />
+      <scope id="379023083996833808" at="30,87,31,36" />
       <scope id="379023083996833808" at="36,52,37,19" />
       <scope id="379023083996833808" at="25,0,28,0" />
       <scope id="379023083996833808" at="36,0,39,0">
@@ -267,7 +267,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/379023083997059170">
     <file name="ContextAssistant_ExpandAndShowSecondAssistant_Test.java">
       <node id="379023083997059170" at="25,63,26,25" concept="7" />
-      <node id="379023083997059170" at="30,85,31,87" concept="1" />
+      <node id="379023083997059170" at="30,85,31,36" concept="1" />
       <node id="379023083997059170" at="36,52,37,19" concept="7" />
       <node id="379023083997059170" at="41,51,42,70" concept="1" />
       <node id="379023083997059172" at="42,70,43,72" concept="1" />
@@ -292,7 +292,7 @@
       <node id="379023083997059174" at="43,72,60,9" concept="1" />
       <node id="379023083997059170" at="40,0,62,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="379023083997059170" at="25,63,26,25" />
-      <scope id="379023083997059170" at="30,85,31,87" />
+      <scope id="379023083997059170" at="30,85,31,36" />
       <scope id="379023083997059170" at="36,52,37,19" />
       <scope id="379023083997059170" at="25,0,28,0" />
       <scope id="379023083997059170" at="36,0,39,0">
@@ -316,7 +316,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4212255956136944358">
     <file name="ContextAssistant_Expand_Test.java">
       <node id="4212255956136944358" at="26,41,27,25" concept="7" />
-      <node id="4212255956136944358" at="31,63,32,65" concept="1" />
+      <node id="4212255956136944358" at="31,63,32,36" concept="1" />
       <node id="4212255956136944358" at="37,52,38,19" concept="7" />
       <node id="4212255956136944358" at="42,51,43,70" concept="1" />
       <node id="4212255956136944376" at="43,70,44,72" concept="1" />
@@ -339,7 +339,7 @@
       <node id="4212255956137016814" at="44,72,59,9" concept="1" />
       <node id="4212255956136944358" at="41,0,62,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4212255956136944358" at="26,41,27,25" />
-      <scope id="4212255956136944358" at="31,63,32,65" />
+      <scope id="4212255956136944358" at="31,63,32,36" />
       <scope id="4212255956136944358" at="37,52,38,19" />
       <scope id="4212255956137016834" at="55,85,56,63" />
       <scope id="4212255956136944358" at="26,0,29,0" />
@@ -366,7 +366,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4212255956137260013">
     <file name="ContextAssistant_InitiallyCollapsedVisibility_Test.java">
       <node id="4212255956137260013" at="24,63,25,25" concept="7" />
-      <node id="4212255956137260013" at="29,85,30,87" concept="1" />
+      <node id="4212255956137260013" at="29,85,30,36" concept="1" />
       <node id="4212255956137260013" at="35,52,36,19" concept="7" />
       <node id="4212255956137260013" at="40,51,41,52" concept="1" />
       <node id="4212255956137260031" at="43,27,44,129" concept="4" />
@@ -383,7 +383,7 @@
       <node id="4212255956137260043" at="41,52,52,9" concept="1" />
       <node id="4212255956137260013" at="39,0,54,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4212255956137260013" at="24,63,25,25" />
-      <scope id="4212255956137260013" at="29,85,30,87" />
+      <scope id="4212255956137260013" at="29,85,30,36" />
       <scope id="4212255956137260013" at="35,52,36,19" />
       <scope id="4212255956137260063" at="48,85,49,64" />
       <scope id="4212255956137260013" at="24,0,27,0" />
@@ -409,7 +409,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119287878872">
     <file name="ContextAssistant_DuplicationMenu_MenuForSuperconcepts_Test.java">
       <node id="4572725119287878872" at="22,71,23,25" concept="7" />
-      <node id="4572725119287878872" at="27,93,28,95" concept="1" />
+      <node id="4572725119287878872" at="27,93,28,36" concept="1" />
       <node id="4572725119287878872" at="33,52,34,19" concept="7" />
       <node id="4572725119287878872" at="38,51,39,53" concept="1" />
       <node id="4572725119287878882" at="41,27,42,80" concept="4" />
@@ -426,7 +426,7 @@
       <node id="4572725119287878878" at="39,53,49,9" concept="1" />
       <node id="4572725119287878872" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119287878872" at="22,71,23,25" />
-      <scope id="4572725119287878872" at="27,93,28,95" />
+      <scope id="4572725119287878872" at="27,93,28,36" />
       <scope id="4572725119287878872" at="33,52,34,19" />
       <scope id="4572725119287878872" at="22,0,25,0" />
       <scope id="4572725119287878872" at="33,0,36,0">
@@ -448,7 +448,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119287927838">
     <file name="ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode_Test.java">
       <node id="4572725119287927838" at="22,82,23,25" concept="7" />
-      <node id="4572725119287927838" at="27,104,28,106" concept="1" />
+      <node id="4572725119287927838" at="27,104,28,36" concept="1" />
       <node id="4572725119287927838" at="33,52,34,19" concept="7" />
       <node id="4572725119287927838" at="38,51,39,53" concept="1" />
       <node id="4572725119287927845" at="41,27,42,80" concept="4" />
@@ -465,7 +465,7 @@
       <node id="4572725119287927841" at="39,53,49,9" concept="1" />
       <node id="4572725119287927838" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119287927838" at="22,82,23,25" />
-      <scope id="4572725119287927838" at="27,104,28,106" />
+      <scope id="4572725119287927838" at="27,104,28,36" />
       <scope id="4572725119287927838" at="33,52,34,19" />
       <scope id="4572725119287927838" at="22,0,25,0" />
       <scope id="4572725119287927838" at="33,0,36,0">
@@ -487,7 +487,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119287962937">
     <file name="ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_Test.java">
       <node id="4572725119287962937" at="22,83,23,25" concept="7" />
-      <node id="4572725119287962937" at="27,105,28,107" concept="1" />
+      <node id="4572725119287962937" at="27,105,28,36" concept="1" />
       <node id="4572725119287962937" at="33,52,34,19" concept="7" />
       <node id="4572725119287962937" at="38,51,39,53" concept="1" />
       <node id="4572725119287962944" at="41,27,42,80" concept="4" />
@@ -504,7 +504,7 @@
       <node id="4572725119287962940" at="39,53,49,9" concept="1" />
       <node id="4572725119287962937" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119287962937" at="22,83,23,25" />
-      <scope id="4572725119287962937" at="27,105,28,107" />
+      <scope id="4572725119287962937" at="27,105,28,36" />
       <scope id="4572725119287962937" at="33,52,34,19" />
       <scope id="4572725119287962937" at="22,0,25,0" />
       <scope id="4572725119287962937" at="33,0,36,0">
@@ -526,7 +526,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119288004845">
     <file name="ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test.java">
       <node id="4572725119288004845" at="22,74,23,25" concept="7" />
-      <node id="4572725119288004845" at="27,96,28,98" concept="1" />
+      <node id="4572725119288004845" at="27,96,28,36" concept="1" />
       <node id="4572725119288004845" at="33,52,34,19" concept="7" />
       <node id="4572725119288004845" at="38,51,39,53" concept="1" />
       <node id="4572725119288004852" at="41,27,42,80" concept="4" />
@@ -543,7 +543,7 @@
       <node id="4572725119288004848" at="39,53,49,9" concept="1" />
       <node id="4572725119288004845" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119288004845" at="22,74,23,25" />
-      <scope id="4572725119288004845" at="27,96,28,98" />
+      <scope id="4572725119288004845" at="27,96,28,36" />
       <scope id="4572725119288004845" at="33,52,34,19" />
       <scope id="4572725119288004845" at="22,0,25,0" />
       <scope id="4572725119288004845" at="33,0,36,0">
@@ -565,7 +565,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119288031967">
     <file name="ContextAssistant_DuplicationMenu_IncludeSameSubstituteMenuTwice_Test.java">
       <node id="4572725119288031967" at="22,81,23,25" concept="7" />
-      <node id="4572725119288031967" at="27,103,28,105" concept="1" />
+      <node id="4572725119288031967" at="27,103,28,36" concept="1" />
       <node id="4572725119288031967" at="33,52,34,19" concept="7" />
       <node id="4572725119288031967" at="38,51,39,53" concept="1" />
       <node id="4572725119288031974" at="41,27,42,80" concept="4" />
@@ -582,7 +582,7 @@
       <node id="4572725119288031970" at="39,53,49,9" concept="1" />
       <node id="4572725119288031967" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119288031967" at="22,81,23,25" />
-      <scope id="4572725119288031967" at="27,103,28,105" />
+      <scope id="4572725119288031967" at="27,103,28,36" />
       <scope id="4572725119288031967" at="33,52,34,19" />
       <scope id="4572725119288031967" at="22,0,25,0" />
       <scope id="4572725119288031967" at="33,0,36,0">
@@ -604,7 +604,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4695456347261444274">
     <file name="ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode_Test.java">
       <node id="4695456347261444274" at="22,83,23,25" concept="7" />
-      <node id="4695456347261444274" at="27,105,28,107" concept="1" />
+      <node id="4695456347261444274" at="27,105,28,36" concept="1" />
       <node id="4695456347261444274" at="33,52,34,19" concept="7" />
       <node id="4695456347261444274" at="38,51,39,53" concept="1" />
       <node id="4695456347261444280" at="41,27,42,80" concept="4" />
@@ -621,7 +621,7 @@
       <node id="4695456347261444276" at="39,53,49,9" concept="1" />
       <node id="4695456347261444274" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4695456347261444274" at="22,83,23,25" />
-      <scope id="4695456347261444274" at="27,105,28,107" />
+      <scope id="4695456347261444274" at="27,105,28,36" />
       <scope id="4695456347261444274" at="33,52,34,19" />
       <scope id="4695456347261444274" at="22,0,25,0" />
       <scope id="4695456347261444274" at="33,0,36,0">
@@ -643,7 +643,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4695456347261862911">
     <file name="ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test.java">
       <node id="4695456347261862911" at="22,87,23,25" concept="7" />
-      <node id="4695456347261862911" at="27,109,28,111" concept="1" />
+      <node id="4695456347261862911" at="27,109,28,36" concept="1" />
       <node id="4695456347261862911" at="33,52,34,19" concept="7" />
       <node id="4695456347261862911" at="38,51,39,53" concept="1" />
       <node id="4695456347261862917" at="41,27,42,80" concept="4" />
@@ -660,7 +660,7 @@
       <node id="4695456347261862913" at="39,53,49,9" concept="1" />
       <node id="4695456347261862911" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4695456347261862911" at="22,87,23,25" />
-      <scope id="4695456347261862911" at="27,109,28,111" />
+      <scope id="4695456347261862911" at="27,109,28,36" />
       <scope id="4695456347261862911" at="33,52,34,19" />
       <scope id="4695456347261862911" at="22,0,25,0" />
       <scope id="4695456347261862911" at="33,0,36,0">
@@ -682,7 +682,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4695456347262173362">
     <file name="ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test.java">
       <node id="4695456347262173362" at="22,96,23,25" concept="7" />
-      <node id="4695456347262173362" at="27,118,28,120" concept="1" />
+      <node id="4695456347262173362" at="27,118,28,36" concept="1" />
       <node id="4695456347262173362" at="33,52,34,19" concept="7" />
       <node id="4695456347262173362" at="38,51,39,53" concept="1" />
       <node id="4695456347262173368" at="41,27,42,80" concept="4" />
@@ -699,7 +699,7 @@
       <node id="4695456347262173364" at="39,53,49,9" concept="1" />
       <node id="4695456347262173362" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4695456347262173362" at="22,96,23,25" />
-      <scope id="4695456347262173362" at="27,118,28,120" />
+      <scope id="4695456347262173362" at="27,118,28,36" />
       <scope id="4695456347262173362" at="33,52,34,19" />
       <scope id="4695456347262173362" at="22,0,25,0" />
       <scope id="4695456347262173362" at="33,0,36,0">
@@ -721,7 +721,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/6183626235528683201">
     <file name="ContextAssistant_HiddenWhenNoMenu_Test.java">
       <node id="6183626235528683201" at="24,51,25,25" concept="7" />
-      <node id="6183626235528683201" at="29,73,30,75" concept="1" />
+      <node id="6183626235528683201" at="29,73,30,36" concept="1" />
       <node id="6183626235528683201" at="35,52,36,19" concept="7" />
       <node id="6183626235528683201" at="40,51,41,53" concept="1" />
       <node id="6183626235528943264" at="41,53,42,82" concept="4" />
@@ -746,7 +746,7 @@
       <node id="1453235961835808726" at="42,82,61,9" concept="1" />
       <node id="6183626235528683201" at="39,0,63,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6183626235528683201" at="24,51,25,25" />
-      <scope id="6183626235528683201" at="29,73,30,75" />
+      <scope id="6183626235528683201" at="29,73,30,36" />
       <scope id="6183626235528683201" at="35,52,36,19" />
       <scope id="6183626235528683201" at="24,0,27,0" />
       <scope id="6183626235528683201" at="35,0,38,0">
@@ -772,7 +772,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/7140355682307235744">
     <file name="ContextAssistant_HandlesExceptionsFromIsApplicable_Test.java">
       <node id="7140355682307235744" at="24,68,25,25" concept="7" />
-      <node id="7140355682307235744" at="29,90,30,92" concept="1" />
+      <node id="7140355682307235744" at="29,90,30,36" concept="1" />
       <node id="7140355682307235744" at="35,52,36,19" concept="7" />
       <node id="7140355682307235744" at="40,51,41,53" concept="1" />
       <node id="2035798305174378963" at="43,27,44,86" concept="4" />
@@ -792,7 +792,7 @@
       <node id="1453235961835797982" at="41,53,54,9" concept="1" />
       <node id="7140355682307235744" at="39,0,56,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="7140355682307235744" at="24,68,25,25" />
-      <scope id="7140355682307235744" at="29,90,30,92" />
+      <scope id="7140355682307235744" at="29,90,30,36" />
       <scope id="7140355682307235744" at="35,52,36,19" />
       <scope id="7140355682307235744" at="58,69,59,53" />
       <scope id="7140355682307235744" at="24,0,27,0" />
@@ -822,7 +822,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/8258544429340822272">
     <file name="ContextAssistant_InitiallyExpandedVisibility_Test.java">
       <node id="8258544429340822272" at="27,62,28,25" concept="7" />
-      <node id="8258544429340822272" at="32,84,33,86" concept="1" />
+      <node id="8258544429340822272" at="32,84,33,36" concept="1" />
       <node id="8258544429340822272" at="38,52,39,19" concept="7" />
       <node id="8258544429340822272" at="43,51,44,52" concept="1" />
       <node id="4212255956137046121" at="47,68,48,115" concept="4" />
@@ -849,7 +849,7 @@
       <node id="3354869018660445975" at="60,79,70,9" concept="1" />
       <node id="8258544429340822272" at="42,0,73,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8258544429340822272" at="27,62,28,25" />
-      <scope id="8258544429340822272" at="32,84,33,86" />
+      <scope id="8258544429340822272" at="32,84,33,36" />
       <scope id="8258544429340822272" at="38,52,39,19" />
       <scope id="4212255956137046137" at="50,85,51,64" />
       <scope id="6347741106874088513" at="56,27,57,99" />
@@ -888,7 +888,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/8865042036543828396">
     <file name="ContextAssistant_ShownWhenMenu_Test.java">
       <node id="8865042036543828396" at="24,48,25,25" concept="7" />
-      <node id="8865042036543828396" at="29,70,30,72" concept="1" />
+      <node id="8865042036543828396" at="29,70,30,36" concept="1" />
       <node id="8865042036543828396" at="35,52,36,19" concept="7" />
       <node id="8865042036543828396" at="40,51,41,53" concept="1" />
       <node id="2035798305174383860" at="41,53,42,76" concept="4" />
@@ -908,7 +908,7 @@
       <node id="1453235961835832989" at="42,76,54,9" concept="1" />
       <node id="8865042036543828396" at="39,0,56,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8865042036543828396" at="24,48,25,25" />
-      <scope id="8865042036543828396" at="29,70,30,72" />
+      <scope id="8865042036543828396" at="29,70,30,36" />
       <scope id="8865042036543828396" at="35,52,36,19" />
       <scope id="8865042036543828396" at="24,0,27,0" />
       <scope id="8865042036543828396" at="35,0,38,0">
@@ -932,7 +932,7 @@
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/9025427969322513567">
     <file name="ContextAssistant_ShowAssistantOnSubconcept_Test.java">
       <node id="9025427969322513567" at="24,60,25,25" concept="7" />
-      <node id="9025427969322513567" at="29,82,30,84" concept="1" />
+      <node id="9025427969322513567" at="29,82,30,36" concept="1" />
       <node id="9025427969322513567" at="35,52,36,19" concept="7" />
       <node id="9025427969322513567" at="40,51,41,53" concept="1" />
       <node id="9025427969322513575" at="41,53,42,82" concept="4" />
@@ -952,7 +952,7 @@
       <node id="1453235961835825229" at="42,82,56,9" concept="1" />
       <node id="9025427969322513567" at="39,0,58,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="9025427969322513567" at="24,60,25,25" />
-      <scope id="9025427969322513567" at="29,82,30,84" />
+      <scope id="9025427969322513567" at="29,82,30,36" />
       <scope id="9025427969322513567" at="35,52,36,19" />
       <scope id="9025427969322513567" at="24,0,27,0" />
       <scope id="9025427969322513567" at="35,0,38,0">

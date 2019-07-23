@@ -11,6 +11,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ChangeMethodSignatureRefactoring {
   private ChangeMethodSignatureParameters myParameters;
@@ -25,9 +27,9 @@ public class ChangeMethodSignatureRefactoring {
     if (this.myParameters.isReturnValueChanged()) {
       SLinkOperations.setTarget(this.myDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), SNodeOperations.copyNode(SLinkOperations.getTarget(this.myParameters.getDeclaration(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"))));
     }
-    if (SNodeOperations.isInstanceOf(this.myDeclaration, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible"))) {
+    if (SNodeOperations.isInstanceOf(this.myDeclaration, AUX_k2naws.IVisible_84badc76)) {
       if (this.myParameters.isVisibilityChanged()) {
-        SLinkOperations.setTarget(SNodeOperations.cast(this.myDeclaration, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(this.myParameters.getDeclaration(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"))));
+        SLinkOperations.setTarget(SNodeOperations.cast(this.myDeclaration, AUX_k2naws.IVisible_84badc76), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(this.myParameters.getDeclaration(), AUX_k2naws.IVisible_84badc76), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"))));
       }
     }
     this.changeParameters();
@@ -71,6 +73,13 @@ public class ChangeMethodSignatureRefactoring {
     this.myUssages = ussages;
   }
   public static boolean isApplicable(SNode node) {
-    return (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false) != null) && (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")));
+    return (SNodeOperations.getNodeAncestor(node, AUX_k2naws.Classifier_4b7e553, false, false) != null) && (SNodeOperations.isInstanceOf(node, AUX_k2naws.InstanceMethodDeclaration_9dbf9b2b) || SNodeOperations.isInstanceOf(node, AUX_k2naws.StaticMethodDeclaration_9cd8c445));
+  }
+
+  private static final class AUX_k2naws {
+    /*package*/ static final SInterfaceConcept IVisible_84badc76 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

@@ -26,7 +26,7 @@ public class InspectorOfCompactPresentation_pushHints_Test extends BaseTransform
 
   @Test
   public void test_InspectorOfCompactPresentation_pushHints() throws Throwable {
-    new InspectorOfCompactPresentation_pushHints_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

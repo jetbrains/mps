@@ -13,11 +13,12 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -38,7 +39,7 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ConvertToBeanBuilder_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -51,8 +52,8 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode creator = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0eL, "jetbrains.mps.baseLanguage.builders.structure.BuilderCreator"), null);
-      SNode builder = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x5c83892592e1ebbfL, "jetbrains.mps.baseLanguage.builders.structure.BeanBuilder"), null);
+      SNode creator = SNodeFactoryOperations.createNewNode(AUX_8netvp.BuilderCreator_8e7c4501, null);
+      SNode builder = SNodeFactoryOperations.createNewNode(AUX_8netvp.BeanBuilder_308944e5, null);
       SLinkOperations.setTarget(builder, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")));
       for (SNode arg : SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))) {
         ListSequence.fromList(SLinkOperations.getChildren(builder, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).addElement(arg);
@@ -66,5 +67,10 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
     public IntentionDescriptor getDescriptor() {
       return ConvertToBeanBuilder_Intention.this;
     }
+  }
+
+  private static final class AUX_8netvp {
+    /*package*/ static final SConcept BuilderCreator_8e7c4501 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0eL, "jetbrains.mps.baseLanguage.builders.structure.BuilderCreator");
+    /*package*/ static final SConcept BeanBuilder_308944e5 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x5c83892592e1ebbfL, "jetbrains.mps.baseLanguage.builders.structure.BeanBuilder");
   }
 }

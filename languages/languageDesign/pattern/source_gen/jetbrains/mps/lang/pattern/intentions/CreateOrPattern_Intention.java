@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -19,8 +18,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -40,7 +41,7 @@ public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     SNode currentNode = editorContext.getSelectedNode();
-    return SNodeOperations.getNodeAncestor(currentNode, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), false, false) != null;
+    return SNodeOperations.getNodeAncestor(currentNode, AUX_mmhtxb.PatternExpression_b5cd3dd6, false, false) != null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -48,7 +49,7 @@ public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new CreateOrPattern_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -62,7 +63,7 @@ public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode currentNode = editorContext.getSelectedNode();
-      SNode orPattern = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern"), null);
+      SNode orPattern = SNodeFactoryOperations.createNewNode(AUX_mmhtxb.OrPattern_60bda891, null);
       ListSequence.fromList(AttributeOperations.getAttributeList(currentNode, new IAttributeDescriptor.AllAttributes())).addElement(orPattern);
       SLinkOperations.setTarget(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(orPattern, MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, 0x27f758f8bc6acaceL, "clause"))).first(), MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern")), MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode"), SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(SNodeOperations.getConcept(currentNode))));
     }
@@ -70,5 +71,10 @@ public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor
     public IntentionDescriptor getDescriptor() {
       return CreateOrPattern_Intention.this;
     }
+  }
+
+  private static final class AUX_mmhtxb {
+    /*package*/ static final SConcept PatternExpression_b5cd3dd6 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
+    /*package*/ static final SConcept OrPattern_60bda891 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern");
   }
 }

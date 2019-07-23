@@ -8,11 +8,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_ReturnStatement_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ReturnStatement_NonTypesystemRule() {
@@ -20,7 +21,7 @@ public class check_ReturnStatement_NonTypesystemRule extends AbstractNonTypesyst
   public void applyRule(final SNode returnStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // returns must be allowed until we find a way to implement early returns 
     // http://www.javac.info 
-    if (false && (SNodeOperations.getNodeAncestor(returnStatement, MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"), false, false) != null)) {
+    if (false && (SNodeOperations.getNodeAncestor(returnStatement, AUX_bltgml.ClosureLiteral_6eeca0d3, false, false) != null)) {
       if (!(false)) {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(returnStatement, "return is not allowed within closure literal", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1200829870877", null, errorTarget);
@@ -28,12 +29,17 @@ public class check_ReturnStatement_NonTypesystemRule extends AbstractNonTypesyst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    return AUX_bltgml.ReturnStatement_d4768417;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_bltgml {
+    /*package*/ static final SConcept ClosureLiteral_6eeca0d3 = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept ReturnStatement_d4768417 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
   }
 }

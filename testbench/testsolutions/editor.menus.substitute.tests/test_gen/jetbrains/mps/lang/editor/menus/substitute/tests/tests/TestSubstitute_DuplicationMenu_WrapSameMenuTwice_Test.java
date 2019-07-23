@@ -25,7 +25,7 @@ public class TestSubstitute_DuplicationMenu_WrapSameMenuTwice_Test extends BaseT
 
   @Test
   public void test_TestSubstitute_DuplicationMenu_WrapSameMenuTwice() throws Throwable {
-    new TestSubstitute_DuplicationMenu_WrapSameMenuTwice_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

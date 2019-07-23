@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MethodMatch {
   private List<SNode> myNodes;
@@ -99,7 +100,7 @@ public class MethodMatch {
       if (ListSequence.fromList(MapSequence.fromMap(this.myParamsToNodes).get(parameter)).isEmpty()) {
         ListSequence.fromList(callActualParams).addElement(_quotation_createNode_5zfyci_a0a0a0a1a71());
       } else {
-        ListSequence.fromList(callActualParams).addElement(SNodeOperations.cast(SNodeOperations.copyNode(ListSequence.fromList(MapSequence.fromMap(this.myParamsToNodes).get(parameter)).getElement(0)), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+        ListSequence.fromList(callActualParams).addElement(SNodeOperations.cast(SNodeOperations.copyNode(ListSequence.fromList(MapSequence.fromMap(this.myParamsToNodes).get(parameter)).getElement(0)), AUX_5zfyci.Expression_4199e28d));
       }
     }
     return callActualParams;
@@ -109,5 +110,9 @@ public class MethodMatch {
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_5zfyci {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

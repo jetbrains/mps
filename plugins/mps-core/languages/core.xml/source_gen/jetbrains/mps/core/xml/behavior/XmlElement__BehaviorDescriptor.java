@@ -4,7 +4,6 @@ package jetbrains.mps.core.xml.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,14 +14,16 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class XmlElement__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+  private static final SAbstractConcept CONCEPT = AUX_7k8w6r.XmlElement_6047438c;
 
   public static final SMethod<Boolean> isMultiline_id7HilnpQ3Ckr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiline").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7HilnpQ3Ckr").build();
 
@@ -34,10 +35,10 @@ public final class XmlElement__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isMultiline_id7HilnpQ3Ckr(@NotNull SNode __thisNode__) {
     boolean multiline = false;
     for (SNode n : SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content"))) {
-      if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement"))) {
+      if (SNodeOperations.isInstanceOf(n, AUX_7k8w6r.XmlBaseElement_5d5001c5)) {
         multiline = true;
-      } else if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment"))) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment")), MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines"))).count() > 1) {
+      } else if (SNodeOperations.isInstanceOf(n, AUX_7k8w6r.XmlComment_5d5001e5)) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, AUX_7k8w6r.XmlComment_5d5001e5), MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines"))).count() > 1) {
           multiline = true;
         }
       } else if ((n != null) && (SNodeOperations.getPrevSibling(n) != null)) {
@@ -90,5 +91,11 @@ public final class XmlElement__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_7k8w6r {
+    /*package*/ static final SConcept XmlElement_6047438c = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+    /*package*/ static final SConcept XmlBaseElement_5d5001c5 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement");
+    /*package*/ static final SConcept XmlComment_5d5001e5 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment");
   }
 }

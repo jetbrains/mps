@@ -33,195 +33,195 @@ public class TypesTest_BL_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTypeCheck5113180367541522974() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541522974();
+    new TestBody(this).test_NodeTypeCheck5113180367541522974();
   }
   @Test
   public void test_NodeTypeCheck5113180367541522981() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541522981();
+    new TestBody(this).test_NodeTypeCheck5113180367541522981();
   }
   @Test
   public void test_NodeTypeCheck5113180367541522988() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541522988();
+    new TestBody(this).test_NodeTypeCheck5113180367541522988();
   }
   @Test
   public void test_NodeTypeCheck5113180367541522995() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541522995();
+    new TestBody(this).test_NodeTypeCheck5113180367541522995();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523002() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523002();
+    new TestBody(this).test_NodeTypeCheck5113180367541523002();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523009() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523009();
+    new TestBody(this).test_NodeTypeCheck5113180367541523009();
   }
   @Test
   public void test_NodeOperatorCannotBeAppliedCheck6923385624927302038() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeOperatorCannotBeAppliedCheck6923385624927302038();
+    new TestBody(this).test_NodeOperatorCannotBeAppliedCheck6923385624927302038();
   }
   @Test
   public void test_testBinaryOp5113180367541523025() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testBinaryOp5113180367541523025();
+    new TestBody(this).test_testBinaryOp5113180367541523025();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927522666() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927522666();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927522666();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624928561489() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck6923385624928561489();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624928561489();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624929323591() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck6923385624929323591();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624929323591();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523056() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523056();
+    new TestBody(this).test_NodeTypeCheck5113180367541523056();
   }
   @Test
   public void test_testTernaryOp5113180367541523059() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testTernaryOp5113180367541523059();
+    new TestBody(this).test_testTernaryOp5113180367541523059();
   }
   @Test
   public void test_NodeTypeCheck194528893653736963() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck194528893653736963();
+    new TestBody(this).test_NodeTypeCheck194528893653736963();
   }
   @Test
   public void test_testLeastCommonSuperType194528893653737059() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testLeastCommonSuperType194528893653737059();
+    new TestBody(this).test_testLeastCommonSuperType194528893653737059();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523146() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523146();
+    new TestBody(this).test_NodeTypeCheck5113180367541523146();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523153() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523153();
+    new TestBody(this).test_NodeTypeCheck5113180367541523153();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523160() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523160();
+    new TestBody(this).test_NodeTypeCheck5113180367541523160();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523168() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523168();
+    new TestBody(this).test_NodeTypeCheck5113180367541523168();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523175() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523175();
+    new TestBody(this).test_NodeTypeCheck5113180367541523175();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523182() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523182();
+    new TestBody(this).test_NodeTypeCheck5113180367541523182();
   }
   @Test
   public void test_testGenericFields5113180367541523186() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testGenericFields5113180367541523186();
+    new TestBody(this).test_testGenericFields5113180367541523186();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523204() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523204();
+    new TestBody(this).test_NodeTypeCheck5113180367541523204();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523212() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523212();
+    new TestBody(this).test_NodeTypeCheck5113180367541523212();
   }
   @Test
   public void test_testGenericInstanceMethods5113180367541523215() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testGenericInstanceMethods5113180367541523215();
+    new TestBody(this).test_testGenericInstanceMethods5113180367541523215();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523227() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523227();
+    new TestBody(this).test_NodeTypeCheck5113180367541523227();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523236() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523236();
+    new TestBody(this).test_NodeTypeCheck5113180367541523236();
   }
   @Test
   public void test_NodeTypeCheck5113180367541523246() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeCheck5113180367541523246();
+    new TestBody(this).test_NodeTypeCheck5113180367541523246();
   }
   @Test
   public void test_testGenericMethods5113180367541523249() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testGenericMethods5113180367541523249();
+    new TestBody(this).test_testGenericMethods5113180367541523249();
   }
   @Test
   public void test_testArrays5684597377559872289() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testArrays5684597377559872289();
+    new TestBody(this).test_testArrays5684597377559872289();
   }
   @Test
   public void test_testRules8239324132726812091() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testRules8239324132726812091();
+    new TestBody(this).test_testRules8239324132726812091();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927799206() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927799206();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927799206();
   }
   @Test
   public void test_testSuppress5486398570946081283() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_testSuppress5486398570946081283();
+    new TestBody(this).test_testSuppress5486398570946081283();
   }
   @Test
   public void test_NodeWarningCheck6863380007462398011() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeWarningCheck6863380007462398011();
+    new TestBody(this).test_NodeWarningCheck6863380007462398011();
   }
   @Test
   public void test_NodeTypeSystemCheck2501421320960671180() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck2501421320960671180();
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960671180();
   }
   @Test
   public void test_NodeUnusedAssignmentWarningCheck2501421320960671178() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960671178();
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960671178();
   }
   @Test
   public void test_NodeTypeSystemCheck2501421320960671227() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck2501421320960671227();
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960671227();
   }
   @Test
   public void test_NodeTypeSystemCheck2501421320960671478() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck2501421320960671478();
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960671478();
   }
   @Test
   public void test_NodeUnusedAssignmentWarningCheck2501421320960671479() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960671479();
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960671479();
   }
   @Test
   public void test_NodeTypeSystemCheck2501421320960671867() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeTypeSystemCheck2501421320960671867();
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960671867();
   }
   @Test
   public void test_NodeUnusedAssignmentWarningCheck2501421320960671892() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960671892();
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960671892();
   }
   @Test
   public void test_NodeUnusedAssignmentWarningCheck2501421320960672914() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960672914();
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960672914();
   }
   @Test
   public void test_NodeUnusedAssignmentWarningCheck2501421320960673831() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960673831();
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960673831();
   }
   @Test
   public void test_char_compatibleWith_byte6863380007462480841() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_char_compatibleWith_byte6863380007462480841();
+    new TestBody(this).test_char_compatibleWith_byte6863380007462480841();
   }
   @Test
   public void test_NodeErrorCheck7318572279303377280() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeErrorCheck7318572279303377280();
+    new TestBody(this).test_NodeErrorCheck7318572279303377280();
   }
   @Test
   public void test_NodeErrorCheck7318572279303352882() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_NodeErrorCheck7318572279303352882();
+    new TestBody(this).test_NodeErrorCheck7318572279303352882();
   }
   @Test
   public void test_ErrorMessagesCheck7318572279300529500() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_ErrorMessagesCheck7318572279300529500();
+    new TestBody(this).test_ErrorMessagesCheck7318572279300529500();
   }
   @Test
   public void test_ErrorMessagesCheck1344517983672000250() throws Throwable {
-    new TypesTest_BL_Test.TestBody(this).test_ErrorMessagesCheck1344517983672000250();
+    new TestBody(this).test_ErrorMessagesCheck1344517983672000250();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

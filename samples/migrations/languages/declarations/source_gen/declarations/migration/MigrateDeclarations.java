@@ -11,9 +11,9 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -21,6 +21,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.List;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateDeclarations extends MigrationScriptBase {
   public String getCaption() {
@@ -42,7 +43,7 @@ public class MigrateDeclarations extends MigrationScriptBase {
     });
     Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel m) {
-        return SModelOperations.nodes(m, MetaAdapterFactory.getConcept(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, 0x6aff2c1049316cdaL, "declarations.structure.OldComponent"));
+        return SModelOperations.nodes(m, AUX_9wc3oy.OldComponent_e96615ed);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode oldNode) {
@@ -69,5 +70,9 @@ public class MigrateDeclarations extends MigrationScriptBase {
       }
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_9wc3oy {
+    /*package*/ static final SConcept OldComponent_e96615ed = MetaAdapterFactory.getConcept(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, 0x6aff2c1049316cdaL, "declarations.structure.OldComponent");
   }
 }

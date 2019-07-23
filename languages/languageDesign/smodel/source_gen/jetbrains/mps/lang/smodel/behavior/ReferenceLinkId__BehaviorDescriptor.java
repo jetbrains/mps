@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,6 +15,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
@@ -24,9 +24,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId");
+  private static final SAbstractConcept CONCEPT = AUX_nzbkb4.ReferenceLinkId_66fae696;
 
   public static final SMethod<SReferenceLink> getReference_id7jb4LXp9a7o = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a7o").build();
   public static final SMethod<Void> setReference_id7jb4LXp9a6q = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a6q").build(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
@@ -48,7 +49,7 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static void setReference_id7jb4LXp9a6q(@NotNull SNode __thisNode__, @NotNull SReferenceLink ref) {
     SReferenceLinkId rid = MetaIdHelper.getAssociation(ref);
-    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"));
+    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, AUX_nzbkb4.ConceptId_51d9f118);
     ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(cid, ref.getOwner());
     SLinkOperations.setTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, 0x74cb131f5923b6edL, "conceptIdentity"), cid);
     SPropertyOperations.assign(__thisNode__, MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, 0x74cb131f5923b6efL, "referenceName"), ref.getName());
@@ -107,5 +108,10 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_nzbkb4 {
+    /*package*/ static final SConcept ReferenceLinkId_66fae696 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId");
+    /*package*/ static final SConcept ConceptId_51d9f118 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
   }
 }

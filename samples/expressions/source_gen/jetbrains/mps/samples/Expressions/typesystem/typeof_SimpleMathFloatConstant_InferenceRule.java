@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class typeof_SimpleMathFloatConstant_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SimpleMathFloatConstant_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_SimpleMathFloatConstant_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b40a4L, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatConstant");
+    return AUX_v572xj.SimpleMathFloatConstant_4cc5f798;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,7 +35,12 @@ public class typeof_SimpleMathFloatConstant_InferenceRule extends AbstractInfere
   }
   private static SNode createSimpleMathFloatType_v572xj_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b3e3eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_v572xj.SimpleMathFloatType_4cc5e0ef, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_v572xj {
+    /*package*/ static final SConcept SimpleMathFloatConstant_4cc5f798 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b40a4L, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatConstant");
+    /*package*/ static final SConcept SimpleMathFloatType_4cc5e0ef = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b3e3eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatType");
   }
 }

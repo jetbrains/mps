@@ -40,7 +40,7 @@ public final class AddLetterToName_Intention extends AbstractIntentionDescriptor
     List<Character> paramList = parameter(node, context);
     if (paramList != null) {
       for (char param : paramList) {
-        ListSequence.fromList(list).addElement(new AddLetterToName_Intention.IntentionImplementation(param));
+        ListSequence.fromList(list).addElement(new IntentionImplementation(param));
       }
     }
     return list;

@@ -14,9 +14,10 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddRemovePresenceAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -37,7 +38,7 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddRemovePresenceAnnotation_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -46,19 +47,23 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation"))) == null) ? "Add Presence Annotation" : "Remove Presence Annotation");
+      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_93hfvy.SubstituteAnnotation_23973f8e)) == null) ? "Add Presence Annotation" : "Remove Presence Annotation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation"))) == null)) {
-        SNode sa = AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation")), MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation"));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_93hfvy.SubstituteAnnotation_23973f8e)) == null)) {
+        SNode sa = AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(AUX_93hfvy.SubstituteAnnotation_23973f8e), AUX_93hfvy.SubstituteAnnotation_23973f8e);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation"))));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_93hfvy.SubstituteAnnotation_23973f8e)));
       }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddRemovePresenceAnnotation_Intention.this;
     }
+  }
+
+  private static final class AUX_93hfvy {
+    /*package*/ static final SConcept SubstituteAnnotation_23973f8e = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation");
   }
 }

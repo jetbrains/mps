@@ -39,8 +39,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("5126791860784889192", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5126791860784906538", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("5126791860784889192", new SNQ(i++));
+    snqMethods.put("5126791860784906538", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -71,8 +71,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("5126791860784856975", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("5126791860784906522", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("5126791860784856975", new IfMC(i++));
+    imcMethods.put("5126791860784906522", new IfMC(i++));
   }
   @NotNull
   @Override

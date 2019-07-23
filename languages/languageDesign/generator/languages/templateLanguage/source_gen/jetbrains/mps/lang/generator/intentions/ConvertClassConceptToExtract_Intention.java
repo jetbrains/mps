@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -23,6 +22,8 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ConvertClassConceptToExtract_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -41,7 +42,7 @@ public final class ConvertClassConceptToExtract_Intention extends AbstractIntent
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), AUX_eoyofc.ClassConcept_e2711824);
   }
   @Override
   public boolean isSurroundWith() {
@@ -49,7 +50,7 @@ public final class ConvertClassConceptToExtract_Intention extends AbstractIntent
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ConvertClassConceptToExtract_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -62,7 +63,7 @@ public final class ConvertClassConceptToExtract_Intention extends AbstractIntent
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode newNode = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xd01bb6e8b1cd97aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassConcept"), null);
+      SNode newNode = SNodeFactoryOperations.createNewNode(AUX_eoyofc.ExtractStaticInnerClassConcept_70c84def, null);
       for (SNode child : SNodeOperations.getChildren(newNode)) {
         SNodeOperations.deleteNode(child);
       }
@@ -85,5 +86,10 @@ public final class ConvertClassConceptToExtract_Intention extends AbstractIntent
     public IntentionDescriptor getDescriptor() {
       return ConvertClassConceptToExtract_Intention.this;
     }
+  }
+
+  private static final class AUX_eoyofc {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ExtractStaticInnerClassConcept_70c84def = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xd01bb6e8b1cd97aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassConcept");
   }
 }

@@ -41,12 +41,12 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
 
   @Override
   protected EditorQuickFix createResolveReferenceQuickfix(SReference reference, boolean executeImmediately) {
-    return new RefScopeCheckerInEditor.ResolveReferenceEditorBasedQuickFix(reference, executeImmediately);
+    return new ResolveReferenceEditorBasedQuickFix(reference, executeImmediately);
   }
 
   @Override
   protected EditorQuickFix createAddImportQuickfix(SReference reference) {
-    RefScopeCheckerInEditor.AddImportQuickfix result = new RefScopeCheckerInEditor.AddImportQuickfix(reference);
+    AddImportQuickfix result = new AddImportQuickfix(reference);
     return (result.isAlive(reference.getSourceNode().getModel().getRepository()) ? result : null);
   }
 

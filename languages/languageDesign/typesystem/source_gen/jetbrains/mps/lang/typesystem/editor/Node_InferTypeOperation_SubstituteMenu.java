@@ -16,6 +16,7 @@ import jetbrains.mps.lang.typesystem.typesystem.RulesUtil;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Node_InferTypeOperation_SubstituteMenu extends SubstituteMenuBase {
@@ -23,7 +24,7 @@ public class Node_InferTypeOperation_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new Node_InferTypeOperation_SubstituteMenu.SMP_Group_no6eem_a());
+    result.add(new SMP_Group_no6eem_a());
     return result;
   }
 
@@ -59,7 +60,7 @@ public class Node_InferTypeOperation_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L, "jetbrains.mps.lang.typesystem.structure.Node_InferTypeOperation")) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_no6eem.Node_InferTypeOperation_ade35697) {
 
         @NotNull
         @Override
@@ -72,7 +73,11 @@ public class Node_InferTypeOperation_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L, "jetbrains.mps.lang.typesystem.structure.Node_InferTypeOperation")));
+      }, AUX_no6eem.Node_InferTypeOperation_ade35697));
     }
+  }
+
+  private static final class AUX_no6eem {
+    /*package*/ static final SConcept Node_InferTypeOperation_ade35697 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L, "jetbrains.mps.lang.typesystem.structure.Node_InferTypeOperation");
   }
 }

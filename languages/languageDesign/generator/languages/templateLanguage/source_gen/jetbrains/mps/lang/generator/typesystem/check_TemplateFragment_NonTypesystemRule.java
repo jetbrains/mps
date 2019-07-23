@@ -11,24 +11,25 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_TemplateFragment_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_TemplateFragment_NonTypesystemRule() {
   }
   public void applyRule(final SNode tf, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode fragmentNode = SNodeOperations.getParent(tf);
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(fragmentNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))).count() > 1) {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(fragmentNode, new IAttributeDescriptor.AllAttributes()), AUX_bsbqmy.TemplateFragment_1973fd34)).count() > 1) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, "More than one template fragment for a node. Are there node attributes with template macros?", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3852116826972485480", null, errorTarget);
       }
     }
-    if (SNodeOperations.isAttribute(fragmentNode) && (AttributeOperations.getAttribute(SNodeOperations.getParent(fragmentNode), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null)) {
+    if (SNodeOperations.isAttribute(fragmentNode) && (AttributeOperations.getAttribute(SNodeOperations.getParent(fragmentNode), new IAttributeDescriptor.NodeAttribute(AUX_bsbqmy.TemplateFragment_1973fd34)) != null)) {
       // https://youtrack.jetbrains.com/issue/MPS-20691 
       {
         MessageTarget errorTarget = new NodeMessageTarget();
@@ -37,12 +38,16 @@ public class check_TemplateFragment_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    return AUX_bsbqmy.TemplateFragment_1973fd34;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_bsbqmy {
+    /*package*/ static final SConcept TemplateFragment_1973fd34 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
   }
 }

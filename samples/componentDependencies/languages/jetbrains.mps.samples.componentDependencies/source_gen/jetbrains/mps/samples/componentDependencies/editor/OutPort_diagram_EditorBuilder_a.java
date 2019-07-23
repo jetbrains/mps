@@ -44,7 +44,7 @@ import jetbrains.jetpad.model.property.ReadableProperty;
   }
 
   private EditorCell createDiagramPort_0() {
-    final EditorCell editorCell = new OutPort_diagram_EditorBuilder_a.PortCellImpl_dwqpkk_a(getEditorContext(), myNode);
+    final EditorCell editorCell = new PortCellImpl_dwqpkk_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramPort_dwqpkk_a");
     editorCell.setBig(true);
     setCellContext(editorCell);

@@ -21,7 +21,7 @@ public class SUBST_BooleanConstant_with_Expression_Test extends BaseTransformati
 
   @Test
   public void test_SUBST_BooleanConstant_with_Expression() throws Throwable {
-    new SUBST_BooleanConstant_with_Expression_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

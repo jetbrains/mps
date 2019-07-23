@@ -21,7 +21,7 @@ public class LeftTransformWithCustomItems_Parameterized_Test extends BaseTransfo
 
   @Test
   public void test_LeftTransformWithCustomItems_Parameterized() throws Throwable {
-    new LeftTransformWithCustomItems_Parameterized_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

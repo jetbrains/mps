@@ -96,7 +96,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CellModel_NextEditor_InspectorBuilder_a.addHintsSingleRoleHandler_80k6zu_b0c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7456aec153c7f5a2L, 0x7456aec153c7f5a3L, "addHints"), getEditorContext());
+    SingleRoleCellProvider provider = new addHintsSingleRoleHandler_80k6zu_b0c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7456aec153c7f5a2L, 0x7456aec153c7f5a3L, "addHints"), getEditorContext());
     return provider.createCell();
   }
   private static class addHintsSingleRoleHandler_80k6zu_b0c0 extends SingleRoleCellProvider {
@@ -172,7 +172,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CellModel_NextEditor_InspectorBuilder_a.removeHintsSingleRoleHandler_80k6zu_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7456aec153c7f5a2L, 0x7456aec153c7f5a4L, "removeHints"), getEditorContext());
+    SingleRoleCellProvider provider = new removeHintsSingleRoleHandler_80k6zu_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7456aec153c7f5a2L, 0x7456aec153c7f5a4L, "removeHints"), getEditorContext());
     return provider.createCell();
   }
   private static class removeHintsSingleRoleHandler_80k6zu_b1c0 extends SingleRoleCellProvider {

@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -25,9 +24,11 @@ import java.util.LinkedList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+  private static final SAbstractConcept CONCEPT = AUX_yq7ts4.IGenericType_d5d80471;
 
   public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zZky3wF74h").build(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
   public static final SMethod<SNode> expandGenerics_id3zZky3wFPhu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expandGenerics").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zZky3wFPhu").build(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
@@ -56,8 +57,8 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode expandGenericDescendants_id3zZky3wIhhm(@NotNull SNode __thisNode__, SNode expanded, final Map<SNode, SNode> substitutions, final List<SNode> expTrace) {
     IGenericType__BehaviorDescriptor.walkDescendants_id77p1ap9WcZw.invoke(__thisNode__, expanded, new _FunctionTypes._return_P2_E0<Boolean, SNode, Queue<SNode>>() {
       public Boolean invoke(SNode desc, Queue<SNode> queue) {
-        if (SNodeOperations.isInstanceOf(desc, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType"))) {
-          SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType")), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
+        if (SNodeOperations.isInstanceOf(desc, AUX_yq7ts4.IGenericType_d5d80471)) {
+          SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, AUX_yq7ts4.IGenericType_d5d80471), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
           if (next != desc) {
             SNodeOperations.replaceWithAnother(desc, SNodeOperations.copyNode(next));
             QueueSequence.fromQueue(queue).addSequence(ListSequence.fromList(SNodeOperations.getChildren(desc)));
@@ -135,5 +136,9 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_yq7ts4 {
+    /*package*/ static final SInterfaceConcept IGenericType_d5d80471 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
   }
 }

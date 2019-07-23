@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 public class SubTaskOrderHelper {
   private final List<SNode> list;
-  private final Map<SNode, SubTaskOrderHelper.SubTask> map = new HashMap<SNode, SubTaskOrderHelper.SubTask>();
+  private final Map<SNode, SubTask> map = new HashMap<SNode, SubTask>();
   private final TemplateQueryContext genContext;
   public SubTaskOrderHelper(List<SNode> list, TemplateQueryContext genContext) {
     this.list = list;
@@ -26,15 +26,15 @@ public class SubTaskOrderHelper {
   }
   public void sort() {
     int count = 0;
-    SubTaskOrderHelper.SubTask[] subtasks = new SubTaskOrderHelper.SubTask[ListSequence.fromList(list).count()];
+    SubTask[] subtasks = new SubTask[ListSequence.fromList(list).count()];
     for (SNode st : list) {
-      SubTaskOrderHelper.SubTask wrapper = new SubTaskOrderHelper.SubTask(st, count);
+      SubTask wrapper = new SubTask(st, count);
       map.put(st, wrapper);
       subtasks[count++] = wrapper;
     }
-    for (SubTaskOrderHelper.SubTask st : subtasks) {
+    for (SubTask st : subtasks) {
       for (SNode dep : SLinkOperations.getChildren(st.getTask(), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after"))) {
-        SubTaskOrderHelper.SubTask afterTask = map.get(SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, 0x2670d5989d5b49b9L, "target")));
+        SubTask afterTask = map.get(SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, 0x2670d5989d5b49b9L, "target")));
         if (afterTask == null) {
           genContext.showErrorMessage(dep, "dependency on non-existing subtask");
           continue;
@@ -42,7 +42,7 @@ public class SubTaskOrderHelper {
         st.targets.add(afterTask.getIndex());
       }
       for (SNode dep : SLinkOperations.getChildren(st.getTask(), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before"))) {
-        SubTaskOrderHelper.SubTask beforeTask = map.get(SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, 0x2670d5989d5b49b9L, "target")));
+        SubTask beforeTask = map.get(SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, 0x2670d5989d5b49b9L, "target")));
         if (beforeTask == null) {
           genContext.showErrorMessage(dep, "dependency on non-existing subtask");
           continue;
@@ -51,7 +51,7 @@ public class SubTaskOrderHelper {
       }
     }
     int[][] graph = new int[count][];
-    for (SubTaskOrderHelper.SubTask st : subtasks) {
+    for (SubTask st : subtasks) {
       graph[st.getIndex()] = st.getTargets();
     }
     int[][] partitions = GraphUtil.tarjan(graph);

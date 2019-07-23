@@ -77,7 +77,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new VectorInitializer_EditorBuilder_a.rowsCountSingleRoleHandler_8o7ns6_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb9L, "rowsCount"), getEditorContext());
+    SingleRoleCellProvider provider = new rowsCountSingleRoleHandler_8o7ns6_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb9L, "rowsCount"), getEditorContext());
     return provider.createCell();
   }
   private static class rowsCountSingleRoleHandler_8o7ns6_c0 extends SingleRoleCellProvider {
@@ -141,7 +141,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new VectorInitializer_EditorBuilder_a.rowIndexSingleRoleHandler_8o7ns6_e0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb7L, "rowIndex"), getEditorContext());
+    SingleRoleCellProvider provider = new rowIndexSingleRoleHandler_8o7ns6_e0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb7L, "rowIndex"), getEditorContext());
     return provider.createCell();
   }
   private static class rowIndexSingleRoleHandler_8o7ns6_e0 extends SingleRoleCellProvider {
@@ -202,7 +202,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new VectorInitializer_EditorBuilder_a.expressionSingleRoleHandler_8o7ns6_g0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb8L, "expression"), getEditorContext());
+    SingleRoleCellProvider provider = new expressionSingleRoleHandler_8o7ns6_g0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb8L, "expression"), getEditorContext());
     return provider.createCell();
   }
   private static class expressionSingleRoleHandler_8o7ns6_g0 extends SingleRoleCellProvider {

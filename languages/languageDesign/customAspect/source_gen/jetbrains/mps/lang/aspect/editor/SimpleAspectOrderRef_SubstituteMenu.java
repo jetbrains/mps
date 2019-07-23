@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleAspectOrderRef_SubstituteMenu.SMP_ReferenceScope_rard3o_a(), MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x26c6e1a7a20d8efL, "jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef")));
-    result.add(new SimpleAspectOrderRef_SubstituteMenu.SMP_Subconcepts_rard3o_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_rard3o_a(), AUX_rard3o.SimpleAspectOrderRef_765c1df5));
+    result.add(new SMP_Subconcepts_rard3o_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_rard3o_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x26c6e1a7a20d8efL, "jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef"), MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "target"));
+      super((SAbstractConcept) AUX_rard3o.SimpleAspectOrderRef_765c1df5, MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "target"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_rard3o_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x26c6e1a7a20d8efL, "jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_rard3o.SimpleAspectOrderRef_765c1df5);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_rard3o {
+    /*package*/ static final SConcept SimpleAspectOrderRef_765c1df5 = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x26c6e1a7a20d8efL, "jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef");
   }
 }

@@ -37,7 +37,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.traceable.CopyTraceInfo");
   public CopyTraceInfo_Facet() {
-    ListSequence.fromList(targets).addElement(new CopyTraceInfo_Facet.Target_copyTraceInfo());
+    ListSequence.fromList(targets).addElement(new Target_copyTraceInfo());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -55,7 +55,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new CopyTraceInfo_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_copyTraceInfo implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo");
@@ -182,8 +182,8 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 30;
     }
-    public static CopyTraceInfo_Facet.Target_copyTraceInfo.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, CopyTraceInfo_Facet.Target_copyTraceInfo.Parameters.class);
+    public static Target_copyTraceInfo.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_copyTraceInfo.Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<Boolean> {
       public Parameters() {
@@ -207,7 +207,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo");
         if (properties.hasProperties(name)) {
-          CopyTraceInfo_Facet.Target_copyTraceInfo.Parameters props = properties.properties(name, CopyTraceInfo_Facet.Target_copyTraceInfo.Parameters.class);
+          Target_copyTraceInfo.Parameters props = properties.properties(name, Target_copyTraceInfo.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo.skipCopying", String.valueOf(props.skipCopying()));
         }
       }
@@ -216,7 +216,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo");
-          CopyTraceInfo_Facet.Target_copyTraceInfo.Parameters props = properties.properties(name, CopyTraceInfo_Facet.Target_copyTraceInfo.Parameters.class);
+          Target_copyTraceInfo.Parameters props = properties.properties(name, Target_copyTraceInfo.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo.skipCopying")) {
             props.skipCopying(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo.skipCopying")));
           }

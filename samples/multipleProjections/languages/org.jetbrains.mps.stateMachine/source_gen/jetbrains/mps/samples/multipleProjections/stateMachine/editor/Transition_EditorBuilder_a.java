@@ -60,7 +60,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Transition_EditorBuilder_a.triggerSingleRoleHandler_jj4qz_b0(myNode, MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, 0xa99ffe1c845743fL, "trigger"), getEditorContext());
+    SingleRoleCellProvider provider = new triggerSingleRoleHandler_jj4qz_b0(myNode, MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, 0xa99ffe1c845743fL, "trigger"), getEditorContext());
     return provider.createCell();
   }
   private static class triggerSingleRoleHandler_jj4qz_b0 extends SingleRoleCellProvider {
@@ -131,7 +131,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new Transition_EditorBuilder_a.fromStateSingleRoleHandler_jj4qz_a2a(myNode, MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, 0xa99ffe1c845743eL, "fromState"), getEditorContext());
+    SingleRoleCellProvider provider = new fromStateSingleRoleHandler_jj4qz_a2a(myNode, MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, 0xa99ffe1c845743eL, "fromState"), getEditorContext());
     return provider.createCell();
   }
   private static class fromStateSingleRoleHandler_jj4qz_a2a extends SingleRoleCellProvider {
@@ -192,7 +192,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new Transition_EditorBuilder_a.toStateSingleRoleHandler_jj4qz_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, 0xa99ffe1c8457440L, "toState"), getEditorContext());
+    SingleRoleCellProvider provider = new toStateSingleRoleHandler_jj4qz_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, 0xa99ffe1c8457440L, "toState"), getEditorContext());
     return provider.createCell();
   }
   private static class toStateSingleRoleHandler_jj4qz_c2a extends SingleRoleCellProvider {

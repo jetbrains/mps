@@ -6,7 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.List;
@@ -17,6 +16,8 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CommentUtil {
   private CommentUtil() {
@@ -30,14 +31,14 @@ public class CommentUtil {
   public static SNode commentOut(@NotNull SNode node) {
     SNode parent = SNodeOperations.getParent(node);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + node.getNodeId());
+      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, AUX_v6pl68.BaseConcept_bc2351f, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + node.getNodeId());
     }
     SContainmentLink containmentLink = node.getContainmentLink();
     assert containmentLink != null;
     return new NodeCommenter(node).commentOut();
   }
   public static boolean isCommentedOut(@NotNull SNode node) {
-    return (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"), false, false) != null);
+    return (SNodeOperations.getNodeAncestor(node, AUX_v6pl68.BaseCommentAttribute_f7206635, false, false) != null);
   }
 
   /**
@@ -49,7 +50,7 @@ public class CommentUtil {
   public static SNode uncomment(@NotNull SNode attribute) {
     SNode parent = SNodeOperations.getParent(attribute);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + attribute.getNodeId());
+      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, AUX_v6pl68.BaseConcept_bc2351f, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + attribute.getNodeId());
     }
     return new NodeUncommenter(attribute).uncomment();
   }
@@ -58,9 +59,9 @@ public class CommentUtil {
     List<SNode> uncommented = ListSequence.fromList(new ArrayList<SNode>());
     ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getChildren(container)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
+        return SNodeOperations.isInstanceOf(it, AUX_v6pl68.BaseCommentAttribute_f7206635);
       }
-    }), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"))).select(new ISelector<SNode, SNode>() {
+    }), AUX_v6pl68.BaseCommentAttribute_f7206635)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return uncomment(it);
       }
@@ -77,9 +78,14 @@ public class CommentUtil {
   }
 
   public static boolean isComment(SNode node) {
-    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
+    return SNodeOperations.isInstanceOf(node, AUX_v6pl68.BaseCommentAttribute_f7206635);
   }
   public static SNode getCommentedNode(SNode comment) {
     return SLinkOperations.getTarget(comment, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode"));
+  }
+
+  private static final class AUX_v6pl68 {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 }

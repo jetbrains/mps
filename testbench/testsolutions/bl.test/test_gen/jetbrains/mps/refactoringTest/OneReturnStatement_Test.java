@@ -32,11 +32,11 @@ public class OneReturnStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_oneReturnStatement() throws Throwable {
-    new OneReturnStatement_Test.TestBody(this).test_oneReturnStatement();
+    new TestBody(this).test_oneReturnStatement();
   }
   @Test
   public void test_returnAndOutVariable() throws Throwable {
-    new OneReturnStatement_Test.TestBody(this).test_returnAndOutVariable();
+    new TestBody(this).test_returnAndOutVariable();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

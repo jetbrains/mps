@@ -25,6 +25,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CustomArgumentClause_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -54,7 +55,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new CustomArgumentClause_EditorBuilder_a.parameterListHandler_iqoiiv_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new parameterListHandler_iqoiiv_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_parameter");
     editorCell.setSRole(handler.getElementSRole());
@@ -77,7 +78,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
       return MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorParameter");
+      return AUX_pp2513.CustomConstructorParameter_6cda5c63;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -123,5 +124,9 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
       editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
       return editorCell;
     }
+  }
+
+  private static final class AUX_pp2513 {
+    /*package*/ static final SConcept CustomConstructorParameter_6cda5c63 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorParameter");
   }
 }

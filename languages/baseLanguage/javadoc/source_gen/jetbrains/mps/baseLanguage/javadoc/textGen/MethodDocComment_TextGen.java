@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MethodDocComment_TextGen extends TextGenDescriptorBase {
   @Override
@@ -20,7 +21,7 @@ public class MethodDocComment_TextGen extends TextGenDescriptorBase {
 
     for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag"));
+        return SNodeOperations.isInstanceOf(it, AUX_47t0ae.ParameterBlockDocTag_855e2781);
       }
     })) {
       tgs.appendNode(item);
@@ -30,7 +31,7 @@ public class MethodDocComment_TextGen extends TextGenDescriptorBase {
     }
     for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag"));
+        return SNodeOperations.isInstanceOf(it, AUX_47t0ae.ThrowsBlockDocTag_61442f31);
       }
     })) {
       tgs.appendNode(item);
@@ -40,12 +41,12 @@ public class MethodDocComment_TextGen extends TextGenDescriptorBase {
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags"))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag"));
+        return SNodeOperations.isInstanceOf(it, AUX_47t0ae.ReturnBlockDocTag_643ca086);
       }
     })) {
       tgs.appendNode(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags"))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag"));
+          return SNodeOperations.isInstanceOf(it, AUX_47t0ae.ReturnBlockDocTag_643ca086);
         }
       }).first());
     } else {
@@ -56,5 +57,11 @@ public class MethodDocComment_TextGen extends TextGenDescriptorBase {
 
     DocCommentTextGen.docCommentEnd(ctx.getPrimaryInput(), ctx);
     tgs.appendAttributedNode();
+  }
+
+  private static final class AUX_47t0ae {
+    /*package*/ static final SConcept ParameterBlockDocTag_855e2781 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag");
+    /*package*/ static final SConcept ThrowsBlockDocTag_61442f31 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag");
+    /*package*/ static final SConcept ReturnBlockDocTag_643ca086 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag");
   }
 }

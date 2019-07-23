@@ -7,8 +7,8 @@ import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -16,6 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.migration.behavior.MigrationScript__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrationScriptBuilder {
 
@@ -23,7 +24,7 @@ public class MigrationScriptBuilder {
 
   private MigrationScriptBuilder(Language language) {
     SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(language);
-    myScript = SNodeFactoryOperations.createNewRootNode(migrationModel, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript"), null);
+    myScript = SNodeFactoryOperations.createNewRootNode(migrationModel, AUX_5ml2g1.MigrationScript_43a85fbf, null);
   }
 
   public static MigrationScriptBuilder createMigrationScript(Language language) {
@@ -66,4 +67,7 @@ public class MigrationScriptBuilder {
     return myScript;
   }
 
+  private static final class AUX_5ml2g1 {
+    /*package*/ static final SConcept MigrationScript_43a85fbf = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
+  }
 }

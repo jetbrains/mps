@@ -12,7 +12,7 @@ public interface MoveNodeRefactoringParticipant<InitialDataObject, FinalDataObje
   interface MoveNodeChange<InitialDataObject, FinalDataObject> extends RefactoringParticipant.Change<InitialDataObject, FinalDataObject> {
     RefactoringParticipant.KeepOldNodes needsToPreserveOldNode();
   }
-  abstract class ChangeBase<InitialDataObject, FinalDataObject> implements MoveNodeRefactoringParticipant.MoveNodeChange<InitialDataObject, FinalDataObject> {
+  abstract class ChangeBase<InitialDataObject, FinalDataObject> implements MoveNodeChange<InitialDataObject, FinalDataObject> {
     public abstract SearchResults getSearchResults();
     public RefactoringParticipant.KeepOldNodes needsToPreserveOldNode() {
       return RefactoringParticipant.KeepOldNodes.REMOVE;

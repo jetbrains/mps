@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
@@ -25,14 +25,15 @@ import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NotEditableVaraileReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new NotEditableVaraileReference_SubstituteMenu.SMP_ReferenceScope_n4m6b3_a(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, "jetbrains.mps.lang.editor.editorTest.structure.NotEditableVaraileReference")));
-    result.add(new NotEditableVaraileReference_SubstituteMenu.SMP_Subconcepts_n4m6b3_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_n4m6b3_a(), AUX_n4m6b3.NotEditableVaraileReference_61cb62ba));
+    result.add(new SMP_Subconcepts_n4m6b3_b());
     return result;
   }
 
@@ -53,7 +54,7 @@ public class NotEditableVaraileReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_n4m6b3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, "jetbrains.mps.lang.editor.editorTest.structure.NotEditableVaraileReference"), MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, 0x44e7cb3605ec4005L, "variableDeclaration"));
+      super((SAbstractConcept) AUX_n4m6b3.NotEditableVaraileReference_61cb62ba, MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, 0x44e7cb3605ec4005L, "variableDeclaration"));
     }
     @NotNull
     @Override
@@ -70,7 +71,7 @@ public class NotEditableVaraileReference_SubstituteMenu extends SubstituteMenuBa
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new NotEditableVaraileReference_SubstituteMenu.SMP_ReferenceScope_n4m6b3_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new SMP_ReferenceScope_n4m6b3_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;
@@ -100,7 +101,7 @@ public class NotEditableVaraileReference_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_n4m6b3_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, "jetbrains.mps.lang.editor.editorTest.structure.NotEditableVaraileReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_n4m6b3.NotEditableVaraileReference_61cb62ba);
     }
     @NotNull
     @Override
@@ -118,5 +119,9 @@ public class NotEditableVaraileReference_SubstituteMenu extends SubstituteMenuBa
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_n4m6b3 {
+    /*package*/ static final SConcept NotEditableVaraileReference_61cb62ba = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, "jetbrains.mps.lang.editor.editorTest.structure.NotEditableVaraileReference");
   }
 }

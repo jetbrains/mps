@@ -29,11 +29,11 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
 
 /*package*/ abstract class AbstractBreakpointsTree extends BreakpointsView {
   protected final Project myProject;
-  protected final GroupedTree<AbstractBreakpointsTree.BreakpointNodeData> myTree;
-  protected final GroupedTree.GroupKind myModuleKind = new AbstractBreakpointsTree.ModuleGroupKind();
-  protected final GroupedTree.GroupKind myModelKind = new AbstractBreakpointsTree.ModelGroupKind();
-  protected final GroupedTree.GroupKind myRootKind = new AbstractBreakpointsTree.RootGroupKind();
-  protected Collection<AbstractBreakpointsTree.BreakpointNodeData> myData;
+  protected final GroupedTree<BreakpointNodeData> myTree;
+  protected final GroupedTree.GroupKind myModuleKind = new ModuleGroupKind();
+  protected final GroupedTree.GroupKind myModelKind = new ModelGroupKind();
+  protected final GroupedTree.GroupKind myRootKind = new RootGroupKind();
+  protected Collection<BreakpointNodeData> myData;
   protected final BreakpointManagerComponent.IBreakpointManagerListener myListener = new BreakpointManagerComponent.BreakpointManagerListener() {
     @Override
     public void breakpointsChanged() {
@@ -45,7 +45,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
     myProject = mpsProject;
     myBreakpointsManager.addChangeListener(myListener);
     updateBreakpointsData();
-    myTree = new GroupedTree<AbstractBreakpointsTree.BreakpointNodeData>() {
+    myTree = new GroupedTree<BreakpointNodeData>() {
 
       @Override
       public void runRebuildAction(Runnable rebuildAction, boolean saveExpansion) {
@@ -53,7 +53,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       }
 
       @Override
-      protected MPSTreeNode createDataNode(AbstractBreakpointsTree.BreakpointNodeData data) {
+      protected MPSTreeNode createDataNode(BreakpointNodeData data) {
         MPSTreeNode rv = new MPSTreeNode(data);
         String text = data.getText();
         rv.setNodeIdentifier(text);
@@ -63,11 +63,11 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       }
 
       @Override
-      protected GroupedTree.GroupKind<AbstractBreakpointsTree.BreakpointNodeData, Object> createRootGroupKind() {
-        return new AbstractBreakpointsTree.AllGroupKind();
+      protected GroupedTree.GroupKind<BreakpointNodeData, Object> createRootGroupKind() {
+        return new AllGroupKind();
       }
       @Override
-      protected Collection<AbstractBreakpointsTree.BreakpointNodeData> getData() {
+      protected Collection<BreakpointNodeData> getData() {
         return myData;
       }
     };
@@ -97,8 +97,8 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       Object lastPathComponent = path.getLastPathComponent();
       if (lastPathComponent instanceof MPSTreeNode) {
         MPSTreeNode node = (MPSTreeNode) lastPathComponent;
-        if (node.getUserObject() instanceof AbstractBreakpointsTree.BreakpointNodeData) {
-          return ((AbstractBreakpointsTree.BreakpointNodeData) node.getUserObject()).myBreakpoint;
+        if (node.getUserObject() instanceof BreakpointNodeData) {
+          return ((BreakpointNodeData) node.getUserObject()).myBreakpoint;
         }
       }
     }
@@ -109,7 +109,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
     if (breakpoint != null) {
       MPSTreeNode treeNode = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<MPSTreeNode>() {
         public MPSTreeNode compute() {
-          return myTree.findNodeForData(new AbstractBreakpointsTree.BreakpointNodeData(breakpoint));
+          return myTree.findNodeForData(new BreakpointNodeData(breakpoint));
         }
       });
       myTree.selectNode(treeNode);
@@ -123,9 +123,9 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
     myRootKind.setVisible(BreakpointViewSettingsComponent.getInstance(myProject).isGroupByRoot());
   }
   protected void updateBreakpointsData() {
-    Collection<AbstractBreakpointsTree.BreakpointNodeData> data = new ArrayList<AbstractBreakpointsTree.BreakpointNodeData>();
+    Collection<BreakpointNodeData> data = new ArrayList<BreakpointNodeData>();
     for (IBreakpoint bp : getBreakpointsList()) {
-      data.add(new AbstractBreakpointsTree.BreakpointNodeData(bp));
+      data.add(new BreakpointNodeData(bp));
     }
     myData = data;
   }
@@ -147,11 +147,11 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
     return null;
   }
 
-  protected class AllGroupKind extends GroupedTree.GroupKind<AbstractBreakpointsTree.BreakpointNodeData, Object> {
+  protected class AllGroupKind extends GroupedTree.GroupKind<BreakpointNodeData, Object> {
     protected AllGroupKind() {
     }
     @Override
-    public Object getGroup(AbstractBreakpointsTree.BreakpointNodeData breakpoint) {
+    public Object getGroup(BreakpointNodeData breakpoint) {
       return new Object();
     }
     @Override
@@ -159,11 +159,11 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       return myModuleKind;
     }
   }
-  private class ModuleGroupKind extends GroupedTree.GroupKind<AbstractBreakpointsTree.BreakpointNodeData, SModule> {
+  private class ModuleGroupKind extends GroupedTree.GroupKind<BreakpointNodeData, SModule> {
     private ModuleGroupKind() {
     }
     @Override
-    public SModule getGroup(AbstractBreakpointsTree.BreakpointNodeData breakpointData) {
+    public SModule getGroup(BreakpointNodeData breakpointData) {
       IBreakpoint breakpoint = breakpointData.getBreakpoint();
       if (breakpoint instanceof ILocationBreakpoint) {
         SModel model = ((ILocationBreakpoint) breakpoint).getLocation().getModelReference().resolve(myProject.getRepository());
@@ -182,11 +182,11 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       return GlobalIconManager.getInstance().getIconFor(m);
     }
   }
-  private class ModelGroupKind extends GroupedTree.GroupKind<AbstractBreakpointsTree.BreakpointNodeData, SModelReference> {
+  private class ModelGroupKind extends GroupedTree.GroupKind<BreakpointNodeData, SModelReference> {
     private ModelGroupKind() {
     }
     @Override
-    public SModelReference getGroup(AbstractBreakpointsTree.BreakpointNodeData breakpointNodeData) {
+    public SModelReference getGroup(BreakpointNodeData breakpointNodeData) {
       IBreakpoint breakpoint = breakpointNodeData.getBreakpoint();
       if (breakpoint instanceof ILocationBreakpoint) {
         return ((ILocationBreakpoint) breakpoint).getLocation().getModelReference();
@@ -207,11 +207,11 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       return GlobalIconManager.getInstance().getIconFor(model.resolve(myProject.getRepository()));
     }
   }
-  private class RootGroupKind extends GroupedTree.GroupKind<AbstractBreakpointsTree.BreakpointNodeData, SNode> {
+  private class RootGroupKind extends GroupedTree.GroupKind<BreakpointNodeData, SNode> {
     private RootGroupKind() {
     }
     @Override
-    public SNode getGroup(@NotNull AbstractBreakpointsTree.BreakpointNodeData breakpointNodeData) {
+    public SNode getGroup(@NotNull BreakpointNodeData breakpointNodeData) {
       IBreakpoint breakpoint = breakpointNodeData.getBreakpoint();
       if (breakpoint instanceof ILocationBreakpoint) {
         SNode node = ((ILocationBreakpoint) breakpoint).getLocation().getNodePointer().resolve(myProject.getRepository());
@@ -260,7 +260,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
       if (o == null || getClass() != o.getClass()) {
         return false;
       }
-      AbstractBreakpointsTree.BreakpointNodeData that = (AbstractBreakpointsTree.BreakpointNodeData) o;
+      BreakpointNodeData that = (BreakpointNodeData) o;
       if (!(myBreakpoint.equals(that.myBreakpoint))) {
         return false;
       }

@@ -54,27 +54,27 @@ public class ProcessRunnerForConfigurationTests {
       myProcess = process;
     }
 
-    public ProcessRunnerForConfigurationTests.Builder setTimeOut(long millis) {
+    public Builder setTimeOut(long millis) {
       myTimeOut = millis;
       return this;
     }
 
-    public ProcessRunnerForConfigurationTests.Builder addExpectedPaterns(@NotNull List<Pattern> expectedPatterns) {
+    public Builder addExpectedPaterns(@NotNull List<Pattern> expectedPatterns) {
       myExpectedPatterns.addAll(expectedPatterns);
       return this;
     }
 
-    public ProcessRunnerForConfigurationTests.Builder addAllowedErrorPaterns(@NotNull List<Pattern> allowedErrorPatterns) {
+    public Builder addAllowedErrorPaterns(@NotNull List<Pattern> allowedErrorPatterns) {
       myAllowedErrorPatterns.addAll(allowedErrorPatterns);
       return this;
     }
 
-    public ProcessRunnerForConfigurationTests.Builder addExitPaterns(@NotNull List<Pattern> exitPatterns) {
+    public Builder addExitPaterns(@NotNull List<Pattern> exitPatterns) {
       myExitPatterns.addAll(exitPatterns);
       return this;
     }
 
-    public ProcessRunnerForConfigurationTests.Builder exitCodeMustBeZero(boolean value) {
+    public Builder exitCodeMustBeZero(boolean value) {
       myExitCodeMustBeZero = value;
       return this;
     }
@@ -86,7 +86,7 @@ public class ProcessRunnerForConfigurationTests {
   }
 
   public void startAndCheckProcess() {
-    ProcessRunnerForConfigurationTests.ProcessListenerWhichParsesOutput listenerParsingOutput = new ProcessRunnerForConfigurationTests.ProcessListenerWhichParsesOutput();
+    ProcessListenerWhichParsesOutput listenerParsingOutput = new ProcessListenerWhichParsesOutput();
     myProcess.addProcessListener(listenerParsingOutput);
     int exitCode = ProcessHandlerBuilder.startAndWait(myProcess, myTimeOut);
 

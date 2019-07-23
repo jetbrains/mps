@@ -22,7 +22,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlTagName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlTagNameStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlTagNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -32,7 +32,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlExtensionName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlExtensionNameStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlExtensionNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -42,7 +42,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlTagPunctuation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlTagPunctuationStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlTagPunctuationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -52,7 +52,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlAttributeName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlAttributeNameStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlAttributeNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -62,7 +62,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlAttributeValue(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlAttributeValueStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlAttributeValueStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -72,7 +72,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlAttrEntityRefValue(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlAttrEntityRefValueStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlAttrEntityRefValueStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -82,7 +82,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlAttrCharRefValue(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlAttrCharRefValueStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlAttrCharRefValueStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -92,7 +92,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlNoNewLine(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlNoNewLineStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlNoNewLineStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -102,7 +102,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlEntityRef(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlEntityRefStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlEntityRefStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -112,7 +112,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlCharRef(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlCharRefStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlCharRefStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -122,7 +122,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlComment(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlCommentStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlCommentStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -132,7 +132,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlPI(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlPIStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlPIStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -142,7 +142,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlPITarget(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlPITargetStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlPITargetStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -152,7 +152,7 @@ public class XmlSS_StyleSheet {
   public static void apply_xmlPIData(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new XmlSS_StyleSheet.xmlPIDataStyleClass(editorContext, node).apply(style, editorCell);
+    new xmlPIDataStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class xmlTagNameStyleClass extends AbstractStyleClass {

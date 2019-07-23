@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.project.behavior.Module__BehaviorDescriptor;
@@ -21,9 +20,11 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.project.ModelImporter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MessageIntentionHelper {
   private final SNode myProblem;
@@ -36,7 +37,7 @@ public class MessageIntentionHelper {
 
   @Nullable
   public SNode addProblemCustomization(SNode nodeInConstraintsRoot, EditorContext context) {
-    SNode language = SNodeOperations.cast(SModelOperations.getModuleStub(SNodeOperations.getModel(nodeInConstraintsRoot)), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language"));
+    SNode language = SNodeOperations.cast(SModelOperations.getModuleStub(SNodeOperations.getModel(nodeInConstraintsRoot)), AUX_cd0fzd.Language_33f90ea1);
     SModuleReference ref = PersistenceFacade.getInstance().createModuleReference(Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(language));
     SModule lang = ref.resolve(context.getRepository());
     if (false == lang instanceof Language) {
@@ -49,7 +50,7 @@ public class MessageIntentionHelper {
       feedbackModel = feedbackAspect.getAspectModels(lang).stream().findAny().orElse(null);
     }
     assert feedbackModel != null;
-    List<SNode> roots = SModelOperations.roots(feedbackModel, MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot"));
+    List<SNode> roots = SModelOperations.roots(feedbackModel, AUX_cd0fzd.FeedbackPerConceptRoot_c8c13b93);
     SNode newFeedbackRoot = ListSequence.fromList(roots).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept")), myConcept);
@@ -60,9 +61,9 @@ public class MessageIntentionHelper {
       SLinkOperations.setTarget(newFeedbackRoot, MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept"), myConcept);
     }
     assert newFeedbackRoot != null;
-    SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks"), MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage"));
+    SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks"), AUX_cd0fzd.ShowMessage_c8c13c70);
     SLinkOperations.setTarget(newMessage, MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem"), myProblem);
-    SLinkOperations.setTarget(newMessage, MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression"), null));
+    SLinkOperations.setTarget(newMessage, MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message"), SNodeFactoryOperations.createNewNode(AUX_cd0fzd.CombinedMessageExpression_4c275d, null));
     EditorPanelManager editorPanelManager = context.getEditorPanelManager();
     if (editorPanelManager != null) {
       editorPanelManager.openEditor(newFeedbackRoot);
@@ -73,5 +74,12 @@ public class MessageIntentionHelper {
     importer.prepare(SModelOperations.getPointer(structureModel));
     importer.execute();
     return newMessage;
+  }
+
+  private static final class AUX_cd0fzd {
+    /*package*/ static final SConcept Language_33f90ea1 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
+    /*package*/ static final SConcept FeedbackPerConceptRoot_c8c13b93 = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
+    /*package*/ static final SConcept ShowMessage_c8c13c70 = MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage");
+    /*package*/ static final SConcept CombinedMessageExpression_4c275d = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
   }
 }

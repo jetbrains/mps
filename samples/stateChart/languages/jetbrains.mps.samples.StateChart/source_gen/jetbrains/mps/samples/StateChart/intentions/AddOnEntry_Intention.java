@@ -19,6 +19,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddOnEntry_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -43,7 +44,7 @@ public final class AddOnEntry_Intention extends AbstractIntentionDescriptor impl
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x5e8f0d038ab691b5L, "onEntry")), MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26ac1L, 0x5e8f0d038ab26ac2L, "operations"))).isEmpty();
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return Objects.equals(SNodeOperations.getNodeAncestor(childNode, MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State"), false, false), node);
+    return Objects.equals(SNodeOperations.getNodeAncestor(childNode, AUX_4vtywf.State_404ac7a0, false, false), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -51,7 +52,7 @@ public final class AddOnEntry_Intention extends AbstractIntentionDescriptor impl
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddOnEntry_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -70,5 +71,9 @@ public final class AddOnEntry_Intention extends AbstractIntentionDescriptor impl
     public IntentionDescriptor getDescriptor() {
       return AddOnEntry_Intention.this;
     }
+  }
+
+  private static final class AUX_4vtywf {
+    /*package*/ static final SConcept State_404ac7a0 = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State");
   }
 }

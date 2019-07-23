@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleBuilder_SubstituteMenu.SMP_ReferenceScope_sk38n_a(), MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder")));
-    result.add(new SimpleBuilder_SubstituteMenu.SMP_Subconcepts_sk38n_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_sk38n_a(), AUX_sk38n.SimpleBuilder_834b1477));
+    result.add(new SMP_Subconcepts_sk38n_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_sk38n_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder"), MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration"));
+      super((SAbstractConcept) AUX_sk38n.SimpleBuilder_834b1477, MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_sk38n_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_sk38n.SimpleBuilder_834b1477);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_sk38n {
+    /*package*/ static final SConcept SimpleBuilder_834b1477 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder");
   }
 }

@@ -12,7 +12,7 @@
   <root nodeRef="r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)/6820996345400829081">
     <file name="RefactoringMenuItemBase_InapplicableRefactoring_CannotExecute_Test.java">
       <node id="6820996345400829081" at="25,79,26,25" concept="8" />
-      <node id="6820996345400829081" at="30,101,31,103" concept="1" />
+      <node id="6820996345400829081" at="30,101,31,36" concept="1" />
       <node id="6820996345400829081" at="36,52,37,19" concept="8" />
       <node id="6820996345400829081" at="41,51,42,53" concept="1" />
       <node id="6820996345400948502" at="42,53,43,93" concept="3" />
@@ -31,7 +31,7 @@
       <node id="6820996345401222280" at="44,0,54,9" concept="1" />
       <node id="6820996345400829081" at="40,0,56,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6820996345400829081" at="25,79,26,25" />
-      <scope id="6820996345400829081" at="30,101,31,103" />
+      <scope id="6820996345400829081" at="30,101,31,36" />
       <scope id="6820996345400829081" at="36,52,37,19" />
       <scope id="6820996345400829081" at="25,0,28,0" />
       <scope id="6820996345400829081" at="36,0,39,0">
@@ -56,7 +56,7 @@
   <root nodeRef="r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)/6820996345401023607">
     <file name="RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test.java">
       <node id="6820996345401023607" at="25,74,26,25" concept="8" />
-      <node id="6820996345401023607" at="30,96,31,98" concept="1" />
+      <node id="6820996345401023607" at="30,96,31,36" concept="1" />
       <node id="6820996345401023607" at="36,52,37,19" concept="8" />
       <node id="6820996345401023607" at="41,51,42,53" concept="1" />
       <node id="6820996345401023615" at="42,53,43,93" concept="3" />
@@ -75,7 +75,7 @@
       <node id="6820996345401023624" at="44,0,54,9" concept="1" />
       <node id="6820996345401023607" at="40,0,56,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6820996345401023607" at="25,74,26,25" />
-      <scope id="6820996345401023607" at="30,96,31,98" />
+      <scope id="6820996345401023607" at="30,96,31,36" />
       <scope id="6820996345401023607" at="36,52,37,19" />
       <scope id="6820996345401023607" at="25,0,28,0" />
       <scope id="6820996345401023607" at="36,0,39,0">
@@ -125,7 +125,7 @@
   <root nodeRef="r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)/6820996345401622063">
     <file name="InapplicableIntention_NotIncludedInMenu_Test.java">
       <node id="6820996345401622063" at="31,57,32,25" concept="8" />
-      <node id="6820996345401622063" at="36,79,37,81" concept="1" />
+      <node id="6820996345401622063" at="36,79,37,36" concept="1" />
       <node id="6820996345401622063" at="42,52,43,19" concept="8" />
       <node id="6820996345401622063" at="47,51,48,53" concept="1" />
       <node id="8874023590560473074" at="48,53,49,195" concept="1" />
@@ -146,7 +146,7 @@
       <node id="6820996345401675447" at="51,93,66,9" concept="1" />
       <node id="6820996345401622063" at="46,0,68,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6820996345401622063" at="31,57,32,25" />
-      <scope id="6820996345401622063" at="36,79,37,81" />
+      <scope id="6820996345401622063" at="36,79,37,36" />
       <scope id="6820996345401622063" at="42,52,43,19" />
       <scope id="6820996345401628517" at="57,142,58,42" />
       <scope id="6820996345401622063" at="31,0,34,0" />
@@ -176,7 +176,7 @@
   <root nodeRef="r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)/8874023590560440629">
     <file name="ApplicableIntention_IncludedInMenu_Test.java">
       <node id="8874023590560440629" at="31,52,32,25" concept="8" />
-      <node id="8874023590560440629" at="36,74,37,76" concept="1" />
+      <node id="8874023590560440629" at="36,74,37,36" concept="1" />
       <node id="8874023590560440629" at="42,52,43,19" concept="8" />
       <node id="8874023590560440629" at="47,51,48,53" concept="1" />
       <node id="8874023590560469169" at="48,53,49,195" concept="1" />
@@ -197,7 +197,7 @@
       <node id="8874023590560440641" at="51,93,66,9" concept="1" />
       <node id="8874023590560440629" at="46,0,68,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8874023590560440629" at="31,52,32,25" />
-      <scope id="8874023590560440629" at="36,74,37,76" />
+      <scope id="8874023590560440629" at="36,74,37,36" />
       <scope id="8874023590560440629" at="42,52,43,19" />
       <scope id="8874023590560440661" at="57,142,58,42" />
       <scope id="8874023590560440629" at="31,0,34,0" />
@@ -227,7 +227,7 @@
   <root nodeRef="r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)/8874023590561015429">
     <file name="PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test.java">
       <node id="8874023590561015429" at="25,75,26,25" concept="8" />
-      <node id="8874023590561015429" at="30,97,31,99" concept="1" />
+      <node id="8874023590561015429" at="30,97,31,36" concept="1" />
       <node id="8874023590561015429" at="36,52,37,19" concept="8" />
       <node id="8874023590561015429" at="41,51,42,53" concept="1" />
       <node id="8874023590561015433" at="42,53,43,87" concept="3" />
@@ -251,7 +251,7 @@
       <node id="8874023590561015429" at="40,0,64,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8874023590561190797" at="53,59,53,59" />
       <scope id="8874023590561015429" at="25,75,26,25" />
-      <scope id="8874023590561015429" at="30,97,31,99" />
+      <scope id="8874023590561015429" at="30,97,31,36" />
       <scope id="8874023590561015429" at="36,52,37,19" />
       <scope id="8874023590561192140" at="49,49,51,52" />
       <scope id="8874023590561190791" at="53,0,55,0">

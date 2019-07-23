@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_EnumerationIdRefExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_EnumerationIdRefExpression_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_EnumerationIdRefExpression_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, "jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression");
+    return AUX_ciq50m.EnumerationIdRefExpression_a6f8f501;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_EnumerationIdRefExpression_InferenceRule extends AbstractInf
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81c423L, "SEnumerationType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_ciq50m {
+    /*package*/ static final SConcept EnumerationIdRefExpression_a6f8f501 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, "jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression");
   }
 }

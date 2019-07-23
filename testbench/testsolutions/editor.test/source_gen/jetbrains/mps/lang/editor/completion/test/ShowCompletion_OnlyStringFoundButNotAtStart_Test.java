@@ -24,7 +24,7 @@ public class ShowCompletion_OnlyStringFoundButNotAtStart_Test extends BaseTransf
 
   @Test
   public void test_ShowCompletion_OnlyStringFoundButNotAtStart() throws Throwable {
-    new ShowCompletion_OnlyStringFoundButNotAtStart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,7 +4,6 @@ package BHL6.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,9 +17,11 @@ import UtilSolution.util.TestResults;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class D__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x559729dec04623e8L, "BHL6.structure.D");
+  private static final SAbstractConcept CONCEPT = AUX_o4z7iq.D_820475c0;
 
   public static final SMethod<Integer> foo_id5mnatV0hyg4 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5mnatV0hyg4").build();
   public static final SMethod<Integer> foo1_id5jWiLvujSmw = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo1").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5jWiLvujSmw").build();
@@ -40,10 +41,10 @@ public final class D__BehaviorDescriptor extends BaseBHDescriptor {
     return ((int) B__BehaviorDescriptor.foo_id5mnatV0hwZQ.invokeSpecial(__thisNode__));
   }
   /*package*/ static int foo1_id5jWiLvujSmw(@NotNull SNode __thisNode__) {
-    return ((int) B__BehaviorDescriptor.foo1_id5jWiLvujSmw.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x559729dec04623e8L, "BHL6.structure.D")));
+    return ((int) B__BehaviorDescriptor.foo1_id5jWiLvujSmw.invokeSuper(__thisNode__, AUX_o4z7iq.D_820475c0));
   }
   /*package*/ static int foo2_id5jWiLvujSzJ(@NotNull SNode __thisNode__) {
-    return ((int) B__BehaviorDescriptor.foo2_id5jWiLvujSzJ.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x559729dec04623e8L, "BHL6.structure.D")));
+    return ((int) B__BehaviorDescriptor.foo2_id5jWiLvujSzJ.invokeSuper(__thisNode__, AUX_o4z7iq.D_820475c0));
   }
   /*package*/ static int bar1_id5jWiLvujSC6(@NotNull SNode __thisNode__) {
     return TestResults.DEFAULT_RETURN_VALUE;
@@ -52,7 +53,7 @@ public final class D__BehaviorDescriptor extends BaseBHDescriptor {
     B__BehaviorDescriptor.foo3_id4RMBeRWcio1.invokeSpecial(__thisNode__).byteValue();
   }
   /*package*/ static int foo5_id1olXtyGAKsY(@NotNull SNode __thisNode__) {
-    return ((int) B__BehaviorDescriptor.foo5_id1olXtyGAKsY.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x559729dec04623e8L, "BHL6.structure.D")));
+    return ((int) B__BehaviorDescriptor.foo5_id1olXtyGAKsY.invokeSuper(__thisNode__, AUX_o4z7iq.D_820475c0));
   }
   /*package*/ static Object foo6_id186XXh$CxOf(@NotNull SNode __thisNode__) {
     return TestResults.POLYMORPHIC_CHILD;
@@ -120,5 +121,9 @@ public final class D__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_o4z7iq {
+    /*package*/ static final SConcept D_820475c0 = MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x559729dec04623e8L, "BHL6.structure.D");
   }
 }

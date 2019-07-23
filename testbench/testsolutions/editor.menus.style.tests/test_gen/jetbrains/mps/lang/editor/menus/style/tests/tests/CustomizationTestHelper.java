@@ -88,7 +88,7 @@ import org.jetbrains.annotations.Nullable;
     return new AbstractNodeSubstituteInfo(editorComponent.getEditorContext()) {
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
-        for (final SConcept concept : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink"), SNodeOperations.getModel(parentNode))).subtract(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink"))))) {
+        for (final SConcept concept : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_afigzd.TestCompletionCustomization_ContextMatcherChildInMatchingLink_159d0e88, SNodeOperations.getModel(parentNode))).subtract(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_afigzd.TestCompletionCustomization_ContextMatcherChildInMatchingLink_159d0e88)))) {
           SubstituteAction action = new NodeSubstituteActionWrapper(createAction(editorComponent, SConceptOperations.conceptAlias(concept), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
               SNode newInstance = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(concept));
@@ -160,12 +160,16 @@ import org.jetbrains.annotations.Nullable;
       }
       public SNode substitute(@Nullable EditorContext editorContext, String pattern) {
         SNode parent = getSourceNode();
-        while (!(SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher")))) {
+        while (!(SNodeOperations.isInstanceOf(parent, AUX_afigzd.TestCompletionCustomization_ParentTestContextMatcher_5aa6e2a6))) {
           parent = SNodeOperations.getParent(parent);
         }
-        return substitute.invoke(editorContext, pattern, text, SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher")));
+        return substitute.invoke(editorContext, pattern, text, SNodeOperations.cast(parent, AUX_afigzd.TestCompletionCustomization_ParentTestContextMatcher_5aa6e2a6));
       }
     };
   }
 
+  private static final class AUX_afigzd {
+    /*package*/ static final SConcept TestCompletionCustomization_ContextMatcherChildInMatchingLink_159d0e88 = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink");
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher_5aa6e2a6 = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
+  }
 }

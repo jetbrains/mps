@@ -50,23 +50,23 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
 
   @Test
   public void test_startSimpleTestCase() throws Throwable {
-    new JUnitOutOfProcess_Test.TestBody(this).test_startSimpleTestCase();
+    new TestBody(this).test_startSimpleTestCase();
   }
   @Test
   public void test_startFailedTestCase() throws Throwable {
-    new JUnitOutOfProcess_Test.TestBody(this).test_startFailedTestCase();
+    new TestBody(this).test_startFailedTestCase();
   }
   @Test
   public void test_programParametersArePassedToTheTest() throws Throwable {
-    new JUnitOutOfProcess_Test.TestBody(this).test_programParametersArePassedToTheTest();
+    new TestBody(this).test_programParametersArePassedToTheTest();
   }
   @Test
   public void test_programParametersWithSpacesArePassedToTheTest() throws Throwable {
-    new JUnitOutOfProcess_Test.TestBody(this).test_programParametersWithSpacesArePassedToTheTest();
+    new TestBody(this).test_programParametersWithSpacesArePassedToTheTest();
   }
   @Test
   public void test_startUsingLangTestCase() throws Throwable {
-    new JUnitOutOfProcess_Test.TestBody(this).test_startUsingLangTestCase();
+    new TestBody(this).test_startUsingLangTestCase();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

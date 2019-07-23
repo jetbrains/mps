@@ -21,7 +21,7 @@ public class LT_MapElement_with_Assignment_Test extends BaseTransformationTest {
 
   @Test
   public void test_LT_MapElement_with_Assignment() throws Throwable {
-    new LT_MapElement_with_Assignment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

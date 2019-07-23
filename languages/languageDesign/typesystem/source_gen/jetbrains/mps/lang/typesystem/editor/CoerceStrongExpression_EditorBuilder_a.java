@@ -16,7 +16,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -25,6 +24,7 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -33,6 +33,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CoerceStrongExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -70,14 +71,14 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "coerceStrong");
     editorCell.setCellId("Constant_rc408h_a0");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new CoerceStrongExpression_EditorBuilder_a.ReplaceWith_CoerceExpression_cellMenu_rc408h_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_CoerceExpression_cellMenu_rc408h_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_CoerceExpression_cellMenu_rc408h_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_CoerceExpression_cellMenu_rc408h_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, "jetbrains.mps.lang.typesystem.structure.CoerceExpression");
+      return AUX_25xuf1.CoerceExpression_97be0c43;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -94,7 +95,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CoerceStrongExpression_EditorBuilder_a.nodeToCoerceSingleRoleHandler_rc408h_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5035L, "nodeToCoerce"), getEditorContext());
+    SingleRoleCellProvider provider = new nodeToCoerceSingleRoleHandler_rc408h_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5035L, "nodeToCoerce"), getEditorContext());
     return provider.createCell();
   }
   private static class nodeToCoerceSingleRoleHandler_rc408h_c0 extends SingleRoleCellProvider {
@@ -155,7 +156,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CoerceStrongExpression_EditorBuilder_a.patternSingleRoleHandler_rc408h_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5034L, "pattern"), getEditorContext());
+    SingleRoleCellProvider provider = new patternSingleRoleHandler_rc408h_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5034L, "pattern"), getEditorContext());
     return provider.createCell();
   }
   private static class patternSingleRoleHandler_rc408h_e0 extends SingleRoleCellProvider {
@@ -217,5 +218,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_25xuf1 {
+    /*package*/ static final SConcept CoerceExpression_97be0c43 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, "jetbrains.mps.lang.typesystem.structure.CoerceExpression");
   }
 }

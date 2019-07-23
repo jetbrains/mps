@@ -23,7 +23,7 @@ public class ContributionScopes_Test extends BaseTransformationTest {
 
   @Test
   public void test_ContributionScopes() throws Throwable {
-    new ContributionScopes_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

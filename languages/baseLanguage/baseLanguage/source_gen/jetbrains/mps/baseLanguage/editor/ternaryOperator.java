@@ -17,7 +17,6 @@ import jetbrains.mps.lang.editor.menus.MenuPart;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
@@ -29,6 +28,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Objects;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -40,6 +40,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ternaryOperator extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -65,7 +66,7 @@ public class ternaryOperator extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new ternaryOperator.TMP_Action_imvmmn_a0(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_imvmmn_a0(), AUX_imvmmn.TernaryOperatorExpression_580beb3a));
     }
     return result;
   }
@@ -73,7 +74,7 @@ public class ternaryOperator extends TransformationMenuBase {
   private class TMP_Action_imvmmn_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      ternaryOperator.TMP_Action_imvmmn_a0.Item item = new ternaryOperator.TMP_Action_imvmmn_a0.Item(context);
+      TMP_Action_imvmmn_a0.Item item = new TMP_Action_imvmmn_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -108,13 +109,13 @@ public class ternaryOperator extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode to = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression"), null);
+        SNode to = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_imvmmn.TernaryOperatorExpression_580beb3a, null);
         SNode current = _context.getNode();
-        while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")) == current) {
-          current = SNodeOperations.cast(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
+        while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), AUX_imvmmn.BinaryOperation_7c4c55f3) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), AUX_imvmmn.BinaryOperation_7c4c55f3), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")) == current) {
+          current = SNodeOperations.cast(SNodeOperations.getParent(current), AUX_imvmmn.BinaryOperation_7c4c55f3);
         }
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition")), current))) {
-          SNode parens = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"), null);
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), AUX_imvmmn.BinaryOperation_7c4c55f3) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), AUX_imvmmn.TernaryOperatorExpression_580beb3a) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), AUX_imvmmn.TernaryOperatorExpression_580beb3a), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition")), current))) {
+          SNode parens = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_imvmmn.ParenthesizedExpression_a4b89678, null);
           SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), to);
           SNodeOperations.replaceWithAnother(current, parens);
         } else {
@@ -128,7 +129,7 @@ public class ternaryOperator extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+        return AUX_imvmmn.TernaryOperatorExpression_580beb3a;
       }
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
@@ -143,7 +144,7 @@ public class ternaryOperator extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+        SAbstractConcept outputConcept = AUX_imvmmn.TernaryOperatorExpression_580beb3a;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -151,5 +152,11 @@ public class ternaryOperator extends TransformationMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_imvmmn {
+    /*package*/ static final SConcept TernaryOperatorExpression_580beb3a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+    /*package*/ static final SConcept BinaryOperation_7c4c55f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept ParenthesizedExpression_a4b89678 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 }

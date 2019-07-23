@@ -25,6 +25,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BreakpointCreator_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -70,7 +71,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new BreakpointCreator_EditorBuilder_a.breakpointableConceptsListHandler_q67mwo_b1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new breakpointableConceptsListHandler_q67mwo_b1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_breakpointableConcepts");
     Style style = new StyleImpl();
@@ -96,7 +97,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, 0x11a2c8c0148e6233L, "breakpointableConcepts");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, "jetbrains.mps.debugger.api.lang.structure.BreakpointableNodeItem");
+      return AUX_69yjvq.BreakpointableNodeItem_7f0383f4;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -129,5 +130,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_69yjvq {
+    /*package*/ static final SConcept BreakpointableNodeItem_7f0383f4 = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, "jetbrains.mps.debugger.api.lang.structure.BreakpointableNodeItem");
   }
 }

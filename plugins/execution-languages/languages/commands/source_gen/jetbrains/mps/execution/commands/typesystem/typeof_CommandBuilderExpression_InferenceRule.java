@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_CommandBuilderExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_CommandBuilderExpression_InferenceRule() {
@@ -26,7 +27,7 @@ public class typeof_CommandBuilderExpression_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, "jetbrains.mps.execution.commands.structure.CommandBuilderExpression");
+    return AUX_mdceom.CommandBuilderExpression_30caf073;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,8 +37,13 @@ public class typeof_CommandBuilderExpression_InferenceRule extends AbstractInfer
   }
   private static SNode createCommandProcessType_mdceom_a1a0c0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, "jetbrains.mps.execution.commands.structure.CommandProcessType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_mdceom.CommandProcessType_b1238c37, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, 0x87f99370d7e1ea4L, "commandDeclaration"), node0);
     return n1;
+  }
+
+  private static final class AUX_mdceom {
+    /*package*/ static final SConcept CommandBuilderExpression_30caf073 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, "jetbrains.mps.execution.commands.structure.CommandBuilderExpression");
+    /*package*/ static final SConcept CommandProcessType_b1238c37 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, "jetbrains.mps.execution.commands.structure.CommandProcessType");
   }
 }

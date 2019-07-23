@@ -13,11 +13,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassifiersScope extends FilteringScope {
   private final boolean myIncludeAncestors;
@@ -60,7 +61,7 @@ public class ClassifiersScope extends FilteringScope {
       // However, with MPS, you never know. 
       return null;
     }
-    SNode contextClassifier = SNodeOperations.getNodeAncestor(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false);
+    SNode contextClassifier = SNodeOperations.getNodeAncestor(contextNode, AUX_npo0wh.Classifier_4b7e553, true, false);
 
     // scopes were never advertised as capable of/demanding to multi-thread, hence regular map. 
     // Though we may cache resolved references at ReferenceScopeHelper level, it doesn't know proper 'caching scope', like use of ancestor Classifier here. 
@@ -109,7 +110,7 @@ public class ClassifiersScope extends FilteringScope {
 
   @Override
   public boolean contains(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+    if (!(SNodeOperations.isInstanceOf(node, AUX_npo0wh.Classifier_4b7e553))) {
       return false;
     }
     if (super.contains(node)) {
@@ -117,10 +118,15 @@ public class ClassifiersScope extends FilteringScope {
     }
 
     SNode root = Sequence.fromIterable(ClassifierResolveUtils.getPathToRoot(myClassifier)).last();
-    if ((root != null) && (AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports"))) != null)) {
-      return ClassifierResolveUtils.isImportedBy(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports"))));
+    if ((root != null) && (AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(AUX_npo0wh.JavaImports_af71158f)) != null)) {
+      return ClassifierResolveUtils.isImportedBy(SNodeOperations.cast(node, AUX_npo0wh.Classifier_4b7e553), AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(AUX_npo0wh.JavaImports_af71158f)));
     }
 
     return false;
+  }
+
+  private static final class AUX_npo0wh {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept JavaImports_af71158f = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports");
   }
 }

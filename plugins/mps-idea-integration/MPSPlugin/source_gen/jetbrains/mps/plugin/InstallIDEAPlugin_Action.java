@@ -119,6 +119,6 @@ public class InstallIDEAPlugin_Action extends BaseAction {
     assert files.length <= 1;
     return (files.length == 0 ? null : VirtualFileUtils.toFile(files[0]));
   }
-  private static Pattern REGEXP_gyxeh4_a0a4a7 = Pattern.compile("(?:\\.IntelliJIdea.*)|(?:\\.IdeaIC.*)", 0);
-  private static Pattern REGEXP_gyxeh4_a0a4a7_0 = Pattern.compile("(?:IntelliJIdea.*)|(?:IdeaIC.*)", 0);
+  private static final Pattern REGEXP_gyxeh4_a0a4a7 = Pattern.compile("(?:\\.IntelliJIdea.*)|(?:\\.IdeaIC.*)", 0);
+  private static final Pattern REGEXP_gyxeh4_a0a4a7_0 = Pattern.compile("(?:IntelliJIdea.*)|(?:IdeaIC.*)", 0);
 }

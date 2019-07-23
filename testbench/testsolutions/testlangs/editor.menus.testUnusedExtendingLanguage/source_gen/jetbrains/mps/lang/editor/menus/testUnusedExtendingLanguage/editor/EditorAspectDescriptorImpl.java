@@ -47,6 +47,6 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0xed49174618e8812L), MetaIdFactory.conceptId(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x208970783ba43296L)).seal();
-  private static String[] stringSwitchCases_xbvbvu_a0a0a0a1a2 = new String[]{"jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage"};
-  private static String[] stringSwitchCases_xbvbvu_a0a0a0b1a2 = new String[]{"jetbrains.mps.lang.editor.menus.testLanguage.editor.ContributedToFromUnusedLanguage"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a2 = new String[]{"jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor.MenuForBaseInUnusedExtendingLanguage"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a2 = new String[]{"jetbrains.mps.lang.editor.menus.testLanguage.editor.ContributedToFromUnusedLanguage"};
 }

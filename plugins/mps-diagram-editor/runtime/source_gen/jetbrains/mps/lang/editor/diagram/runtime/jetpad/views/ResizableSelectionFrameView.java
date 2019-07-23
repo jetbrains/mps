@@ -80,13 +80,13 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
             int index = myCornerResizeHandlePositions.indexOf(position);
             switch (index) {
               case 0:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(true, true), new ResizableSelectionFrameView.RectangleUpdater(true, false));
+                return new ResizeHandleMapper(position, new RectangleUpdater(true, true), new RectangleUpdater(true, false));
               case 1:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(false, true), new ResizableSelectionFrameView.RectangleUpdater(true, false));
+                return new ResizeHandleMapper(position, new RectangleUpdater(false, true), new RectangleUpdater(true, false));
               case 2:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(false, true), new ResizableSelectionFrameView.RectangleUpdater(false, false));
+                return new ResizeHandleMapper(position, new RectangleUpdater(false, true), new RectangleUpdater(false, false));
               case 3:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(true, true), new ResizableSelectionFrameView.RectangleUpdater(false, false));
+                return new ResizeHandleMapper(position, new RectangleUpdater(true, true), new RectangleUpdater(false, false));
               default:
                 assert false : "unexpected index: " + index;
             }
@@ -99,13 +99,13 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
             int index = mySideResizeHandlePositions.indexOf(position);
             switch (index) {
               case 0:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(true, false));
+                return new ResizeHandleMapper(position, new RectangleUpdater(true, false));
               case 1:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(false, true));
+                return new ResizeHandleMapper(position, new RectangleUpdater(false, true));
               case 2:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(false, false));
+                return new ResizeHandleMapper(position, new RectangleUpdater(false, false));
               case 3:
-                return new ResizableSelectionFrameView.ResizeHandleMapper(position, new ResizableSelectionFrameView.RectangleUpdater(true, true));
+                return new ResizeHandleMapper(position, new RectangleUpdater(true, true));
               default:
                 assert false : "unexpected index: " + index;
             }
@@ -159,9 +159,9 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
   }
   private class ResizeHandleMapper extends Mapper<Vector, ResizeHandleView> {
     private Property<DragHandler> myDragHandler = new ValueProperty<DragHandler>();
-    private ResizeHandleMapper(Vector position, ResizableSelectionFrameView.RectangleUpdater... updater) {
+    private ResizeHandleMapper(Vector position, RectangleUpdater... updater) {
       super(position, new ResizeHandleView(position));
-      myDragHandler.set(new ResizableSelectionFrameView.ResizeHandleMapper.DragHandlerImpl(updater));
+      myDragHandler.set(new ResizeHandleMapper.DragHandlerImpl(updater));
     }
     @Override
     protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
@@ -173,9 +173,9 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
     private class DragHandlerImpl implements DragHandler {
       private Rectangle myOriginalBounds;
       private Vector myDragStartposition;
-      private ResizableSelectionFrameView.RectangleUpdater[] myUpdaters;
+      private RectangleUpdater[] myUpdaters;
 
-      private DragHandlerImpl(ResizableSelectionFrameView.RectangleUpdater... updaters) {
+      private DragHandlerImpl(RectangleUpdater... updaters) {
         myUpdaters = updaters;
       }
       public void dragStarted(Vector position) {
@@ -186,7 +186,7 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
       public void updatePosition(Vector position) {
         Rectangle bounds = myOriginalBounds;
         Vector dragDelta = position.sub(myDragStartposition);
-        for (ResizableSelectionFrameView.RectangleUpdater updater : myUpdaters) {
+        for (RectangleUpdater updater : myUpdaters) {
           bounds = updater.updateRect(bounds, dragDelta);
         }
         internalsBounds.set(bounds);

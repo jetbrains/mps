@@ -27,7 +27,7 @@ public class ContextAssistant_HiddenWhenNoMenu_Test extends BaseTransformationTe
 
   @Test
   public void test_ContextAssistant_HiddenWhenNoMenu() throws Throwable {
-    new ContextAssistant_HiddenWhenNoMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -19,9 +18,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class StyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
+  private static final SAbstractConcept CONCEPT = AUX_vf66nx.StyleClassItem_828c57b7;
 
   public static final SMethod<Boolean> isApplicableToCell_idhEUcU7K = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCell").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEUcU7K").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isApplicableToCellConcept_id2u3gVK1lsco = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCellConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2u3gVK1lsco").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
@@ -55,7 +56,7 @@ public final class StyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static SNode getStyleContainer_id6VCLXpKS8DC(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, "jetbrains.mps.lang.editor.structure.IStyleContainer"));
+    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), AUX_vf66nx.IStyleContainer_fd43354f);
   }
 
   /*package*/ StyleClassItem__BehaviorDescriptor() {
@@ -110,5 +111,10 @@ public final class StyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_vf66nx {
+    /*package*/ static final SConcept StyleClassItem_828c57b7 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
+    /*package*/ static final SInterfaceConcept IStyleContainer_fd43354f = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, "jetbrains.mps.lang.editor.structure.IStyleContainer");
   }
 }

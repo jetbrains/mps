@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -20,9 +19,11 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
+  private static final SAbstractConcept CONCEPT = AUX_vaw6i.StaticInitializer_425a0e95;
 
   public static final SMethod<List<IconResource>> getIconMarks_id6TtJ6IUkhQJ = new SMethodBuilder<List<IconResource>>(new SJavaCompoundTypeImpl((Class<List<IconResource>>) ((Class) Object.class))).name("getIconMarks").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6TtJ6IUkhQJ").build();
   public static final SMethod<Boolean> isVisible_id5laDzmpBPv8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisible").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5laDzmpBPv8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -35,7 +36,7 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
-    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer")));
+    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, AUX_vaw6i.StaticInitializer_425a0e95));
     markIcons.add(BLIconMarks.STATIC);
     return markIcons;
   }
@@ -99,5 +100,9 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_vaw6i {
+    /*package*/ static final SConcept StaticInitializer_425a0e95 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
   }
 }

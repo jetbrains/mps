@@ -21,7 +21,7 @@ public class BackspaceToUnwrapArrayTypeInLocalVariable2_Test extends BaseTransfo
 
   @Test
   public void test_BackspaceToUnwrapArrayTypeInLocalVariable2() throws Throwable {
-    new BackspaceToUnwrapArrayTypeInLocalVariable2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

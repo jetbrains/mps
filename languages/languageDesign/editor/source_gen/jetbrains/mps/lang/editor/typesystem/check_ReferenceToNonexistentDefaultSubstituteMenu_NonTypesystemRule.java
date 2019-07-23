@@ -16,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ReferenceToNonexistentDefaultSubstituteMenu_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ReferenceToNonexistentDefaultSubstituteMenu_NonTypesystemRule() {
@@ -35,12 +36,16 @@ public class check_ReferenceToNonexistentDefaultSubstituteMenu_NonTypesystemRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
+    return AUX_j5pfsd.SubstituteMenuReference_Default_2755df74;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_j5pfsd {
+    /*package*/ static final SConcept SubstituteMenuReference_Default_2755df74 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
   }
 }

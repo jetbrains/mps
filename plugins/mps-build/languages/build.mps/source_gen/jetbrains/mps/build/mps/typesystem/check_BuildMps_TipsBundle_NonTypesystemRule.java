@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BuildMps_TipsBundle_NonTypesystemRule() {
@@ -31,7 +32,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
     }
     if (ListSequence.fromList(SNodeOperations.getNodeAncestors(buildMps_TipsBundle, null, false)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar"));
+        return SNodeOperations.isInstanceOf(it, AUX_92ar89.BuildLayout_Jar_b7d4ec38);
       }
     })) {
       {
@@ -42,7 +43,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, "jetbrains.mps.build.mps.structure.BuildMps_TipsPackage");
+    return AUX_92ar89.BuildMps_TipsPackage_fc8c03a7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -52,5 +53,10 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
+  }
+
+  private static final class AUX_92ar89 {
+    /*package*/ static final SConcept BuildLayout_Jar_b7d4ec38 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
+    /*package*/ static final SConcept BuildMps_TipsPackage_fc8c03a7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, "jetbrains.mps.build.mps.structure.BuildMps_TipsPackage");
   }
 }

@@ -38,7 +38,7 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 public class NodeFileStatusMapping extends AbstractProjectComponent {
   private final CurrentDifferenceRegistry myRegistry;
   private final Map<SNodeReference, FileStatus> myFileStatusMap = MapSequence.fromMap(new HashMap<SNodeReference, FileStatus>());
-  private final CurrentDifferenceListener myGlobalListener = new NodeFileStatusMapping.MyGlobalListener();
+  private final CurrentDifferenceListener myGlobalListener = new MyGlobalListener();
   protected final MPSProject myMPSProject;
   protected final NodeVirtualFileSystem myNodeFileSystem = (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
 

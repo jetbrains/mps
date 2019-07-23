@@ -5,13 +5,14 @@ package jetbrains.mps.baseLanguage.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MigrateFloatConstants_MigrationScript extends BaseMigrationScript {
   public MigrateFloatConstants_MigrationScript() {
@@ -27,7 +28,7 @@ public final class MigrateFloatConstants_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
+        return AUX_rpadl8.FloatingPointConstant_aa454d3c;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -35,7 +36,7 @@ public final class MigrateFloatConstants_MigrationScript extends BaseMigrationSc
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode f = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant"));
+        SNode f = SNodeFactoryOperations.replaceWithNewChild(node, AUX_rpadl8.FloatingPointFloatConstant_f651563);
         SPropertyOperations.assign(f, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value")));
       }
       @Override
@@ -49,5 +50,10 @@ public final class MigrateFloatConstants_MigrationScript extends BaseMigrationSc
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c895902c9(jetbrains.mps.baseLanguage.scripts)/2214637407304092437");
+  }
+
+  private static final class AUX_rpadl8 {
+    /*package*/ static final SConcept FloatingPointConstant_aa454d3c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
+    /*package*/ static final SConcept FloatingPointFloatConstant_f651563 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant");
   }
 }

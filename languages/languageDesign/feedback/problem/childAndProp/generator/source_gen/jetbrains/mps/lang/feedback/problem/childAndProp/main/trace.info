@@ -12,7 +12,7 @@
   <root nodeRef="r:c3cbc142-6d23-4cc4-a131-1c46debb2840(jetbrains.mps.lang.feedback.problem.childAndProp.main@generator)/24399255755803839">
     <file name="QueriesGenerated.java">
       <node id="7614984822540695505" at="25,92,26,186" concept="1" />
-      <node id="7614984822540695371" at="30,14,31,73" concept="0" />
+      <node id="7614984822540695371" at="30,14,31,56" concept="0" />
       <node id="7614984822540695371" at="50,15,51,59" concept="1" />
       <node id="7614984822540695371" at="25,0,28,0" concept="2" trace="sourceNodeQuery_1_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="7614984822540695372" at="25,92,26,186" />

@@ -21,7 +21,7 @@ public class MoveInManyStatementsContainerDown_Test extends BaseTransformationTe
 
   @Test
   public void test_MoveInManyStatementsContainerDown() throws Throwable {
-    new MoveInManyStatementsContainerDown_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

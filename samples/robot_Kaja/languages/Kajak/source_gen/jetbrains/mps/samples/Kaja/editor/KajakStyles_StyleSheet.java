@@ -22,7 +22,7 @@ public class KajakStyles_StyleSheet {
   public static void apply_Command(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new KajakStyles_StyleSheet.CommandStyleClass(editorContext, node).apply(style, editorCell);
+    new CommandStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class CommandStyleClass extends AbstractStyleClass {

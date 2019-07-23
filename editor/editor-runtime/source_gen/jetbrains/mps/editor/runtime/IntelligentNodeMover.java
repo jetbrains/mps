@@ -32,6 +32,7 @@ import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import org.jetbrains.mps.openapi.language.SAbstractLink;
 import java.util.Objects;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IntelligentNodeMover {
   @NotNull
@@ -72,7 +73,7 @@ public class IntelligentNodeMover {
     }
     ComputeRunnable<Boolean> mover = new ModelComputeRunnable<Boolean>(new Computable<Boolean>() {
       public Boolean compute() {
-        IntelligentNodeMover.PlaceToMove placeToMove = findPlaceToMove();
+        PlaceToMove placeToMove = findPlaceToMove();
         if (placeToMove == null) {
           return false;
         }
@@ -177,13 +178,13 @@ public class IntelligentNodeMover {
     return myCommonNodesParent;
   }
 
-  private void doMove(IntelligentNodeMover.PlaceToMove place) {
+  private void doMove(PlaceToMove place) {
     SNode nextAnchor = place.myAnchor;
     for (SNode node : myNodesToMove) {
       getNodesCommonParent().removeChild(node);
-      SContainmentLink link = (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")) ? MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute") : place.myLink);
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"))) {
-        BHReflection.invoke0(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("setLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzM"), place.myLink);
+      SContainmentLink link = (SNodeOperations.isInstanceOf(node, AUX_9l6nqc.ChildAttribute_96496d6c) ? MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute") : place.myLink);
+      if (SNodeOperations.isInstanceOf(node, AUX_9l6nqc.ChildAttribute_96496d6c)) {
+        BHReflection.invoke0(SNodeOperations.cast(node, AUX_9l6nqc.ChildAttribute_96496d6c), AUX_9l6nqc.ChildAttribute_96496d6c, SMethodTrimmedId.create("setLink", AUX_9l6nqc.ChildAttribute_96496d6c, "BpxLfMirzM"), place.myLink);
       }
       if (place.myIsAfter) {
         place.myParent.insertChildAfter(link, node, nextAnchor);
@@ -200,19 +201,19 @@ public class IntelligentNodeMover {
     return (myIsForward ? CollectionSequence.fromCollection(myNodesToMove).last() : CollectionSequence.fromCollection(myNodesToMove).first());
   }
 
-  private IntelligentNodeMover.PlaceToMove findPlaceToMove() {
+  private PlaceToMove findPlaceToMove() {
     SNode sibling = getSibling();
     if (sibling != null) {
       EditorCell siblingCell = myEditorContext.getEditorComponent().findNodeCell(sibling);
-      IntelligentNodeMover.PlaceToMove placeToMoveInsideSibling = findPlaceToMoveInsideCell(siblingCell);
-      return (placeToMoveInsideSibling != null ? placeToMoveInsideSibling : new IntelligentNodeMover.PlaceToMove(getNodesCommonParent(), getNodesCommonContainmentLink(), sibling, myIsForward));
+      PlaceToMove placeToMoveInsideSibling = findPlaceToMoveInsideCell(siblingCell);
+      return (placeToMoveInsideSibling != null ? placeToMoveInsideSibling : new PlaceToMove(getNodesCommonParent(), getNodesCommonContainmentLink(), sibling, myIsForward));
     } else {
       EditorCell anchorCell = myEditorContext.getEditorComponent().findNodeCell(getBoundaryNode());
       EditorCell_Collection parentCell = anchorCell.getParent();
       while (parentCell != null) {
         Iterator<EditorCell> cellIterator = parentCell.iterator(anchorCell, myIsForward);
         while (cellIterator.hasNext()) {
-          IntelligentNodeMover.PlaceToMove place = findPlaceToMoveInsideCell(cellIterator.next());
+          PlaceToMove place = findPlaceToMoveInsideCell(cellIterator.next());
           if (place != null) {
             return place;
           }
@@ -224,7 +225,7 @@ public class IntelligentNodeMover {
             SContainmentLink anchorLink = getNodesContainmentLink(anchor);
             assert anchorLink != null;
             if (anchorLink.isMultiple() && isSimilarLink(anchorLink)) {
-              return new IntelligentNodeMover.PlaceToMove(parent, anchorLink, anchor, myIsForward);
+              return new PlaceToMove(parent, anchorLink, anchor, myIsForward);
             }
           }
         }
@@ -256,7 +257,7 @@ public class IntelligentNodeMover {
     return null;
   }
 
-  private IntelligentNodeMover.PlaceToMove findPlaceToMoveInsideCell(EditorCell cell) {
+  private PlaceToMove findPlaceToMoveInsideCell(EditorCell cell) {
     if (cell == null) {
       return null;
     }
@@ -264,7 +265,7 @@ public class IntelligentNodeMover {
     if (cellToMove != null) {
       SContainmentLink cellContainmentLink = (SContainmentLink) cellToMove.getSRole();
       assert cellContainmentLink != null;
-      return new IntelligentNodeMover.PlaceToMove(cellToMove.getSNode(), cellContainmentLink, null, myIsForward);
+      return new PlaceToMove(cellToMove.getSNode(), cellContainmentLink, null, myIsForward);
     }
     return null;
   }
@@ -329,9 +330,13 @@ public class IntelligentNodeMover {
     return findNode.runRead(editorContext.getRepository().getModelAccess());
   }
   private static SContainmentLink getNodesContainmentLink(@NotNull SNode node) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"))) {
-      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf")));
+    if (SNodeOperations.isInstanceOf(node, AUX_9l6nqc.ChildAttribute_96496d6c)) {
+      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, AUX_9l6nqc.ChildAttribute_96496d6c), AUX_9l6nqc.ChildAttribute_96496d6c, SMethodTrimmedId.create("getLink", AUX_9l6nqc.ChildAttribute_96496d6c, "BpxLfMirzf")));
     }
     return node.getContainmentLink();
+  }
+
+  private static final class AUX_9l6nqc {
+    /*package*/ static final SConcept ChildAttribute_96496d6c = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

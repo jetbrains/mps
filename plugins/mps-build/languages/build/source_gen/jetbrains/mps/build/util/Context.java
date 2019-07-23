@@ -9,12 +9,13 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.TransientModelsModule;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Context {
   private Map<String, Object> myProperties = MapSequence.fromMap(new HashMap<String, Object>());
@@ -35,14 +36,14 @@ public class Context {
     return ((T) MapSequence.fromMap(myProperties).get(key));
   }
   protected SNode getBuildProject(SNode node) {
-    return SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
+    return SNodeOperations.getNodeAncestor(node, AUX_lmsybr.BuildProject_808bb057, true, false);
   }
   public MacroHelper getMacros(SNode context) {
     SNode buildProject = getBuildProject(context);
     if (buildProject == null) {
       return null;
     }
-    buildProject = SNodeOperations.as(DependenciesHelper.getOriginalNode(buildProject, myGenerationContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+    buildProject = SNodeOperations.as(DependenciesHelper.getOriginalNode(buildProject, myGenerationContext), AUX_lmsybr.BuildProject_808bb057);
     if (buildProject == null) {
       return null;
     }
@@ -90,5 +91,9 @@ public class Context {
     }
 
     return new Context(gencontext);
+  }
+
+  private static final class AUX_lmsybr {
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

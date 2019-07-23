@@ -9,16 +9,17 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class create_IdeaPluginDescription extends KeyMapImpl {
   public create_IdeaPluginDescription() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new create_IdeaPluginDescription.create_IdeaPluginDescription_Action0();
+    action = new create_IdeaPluginDescription_Action0();
     this.putAction("any", "letter or digit", action);
   }
   public static class create_IdeaPluginDescription_Action0 extends KeyMapActionImpl {
@@ -37,7 +38,7 @@ public class create_IdeaPluginDescription extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_yts9mf.BuildMps_IdeaPlugin_d1bb7c62))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -55,5 +56,9 @@ public class create_IdeaPluginDescription extends KeyMapImpl {
     public String getKeyStroke() {
       return " letter or digit";
     }
+  }
+
+  private static final class AUX_yts9mf {
+    /*package*/ static final SConcept BuildMps_IdeaPlugin_d1bb7c62 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
   }
 }

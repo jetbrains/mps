@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class listSubtypeOfNodeList_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public listSubtypeOfNodeList_InequationReplacementRule() {
@@ -43,10 +44,10 @@ public class listSubtypeOfNodeList_InequationReplacementRule extends AbstractIne
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    return AUX_ty2fp4.ListType_a33b8e3e;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, "jetbrains.mps.lang.smodel.structure.SNodeListType");
+    return AUX_ty2fp4.SNodeListType_1387e8b4;
   }
   private static SNode _quotation_createNode_ty2fp4_a1a0d0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -61,5 +62,10 @@ public class listSubtypeOfNodeList_InequationReplacementRule extends AbstractIne
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_ty2fp4 {
+    /*package*/ static final SConcept ListType_a33b8e3e = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept SNodeListType_1387e8b4 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, "jetbrains.mps.lang.smodel.structure.SNodeListType");
   }
 }

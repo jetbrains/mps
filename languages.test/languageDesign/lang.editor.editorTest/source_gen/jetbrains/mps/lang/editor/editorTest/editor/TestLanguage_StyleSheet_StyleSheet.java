@@ -19,7 +19,7 @@ public class TestLanguage_StyleSheet_StyleSheet {
   public static void apply_baseStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TestLanguage_StyleSheet_StyleSheet.baseStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new baseStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class baseStyleStyleClass extends AbstractStyleClass {

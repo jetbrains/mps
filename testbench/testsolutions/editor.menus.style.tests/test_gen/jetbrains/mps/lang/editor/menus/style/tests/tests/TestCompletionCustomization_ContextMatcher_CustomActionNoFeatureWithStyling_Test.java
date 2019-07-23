@@ -26,7 +26,7 @@ public class TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureWit
 
   @Test
   public void test_TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureWithStyling() throws Throwable {
-    new TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureWithStyling_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class sorted_map_comparableTo_SortedMap_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public sorted_map_comparableTo_SortedMap_SubtypingRule() {
@@ -22,7 +23,7 @@ public class sorted_map_comparableTo_SortedMap_SubtypingRule extends SubtypingRu
     return _quotation_createNode_j8vd07_a0a1(SLinkOperations.getTarget(sortedMapType, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType")), SLinkOperations.getTarget(sortedMapType, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType")));
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4067207L, "jetbrains.mps.baseLanguage.collections.structure.SortedMapType");
+    return AUX_j8vd07.SortedMapType_fc6c97f6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,5 +47,9 @@ public class sorted_map_comparableTo_SortedMap_SubtypingRule extends SubtypingRu
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(quotedNode_5));
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_j8vd07 {
+    /*package*/ static final SConcept SortedMapType_fc6c97f6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4067207L, "jetbrains.mps.baseLanguage.collections.structure.SortedMapType");
   }
 }

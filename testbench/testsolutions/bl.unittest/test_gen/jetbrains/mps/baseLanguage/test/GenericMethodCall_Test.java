@@ -31,15 +31,15 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck7254243749546905063() throws Throwable {
-    new GenericMethodCall_Test.TestBody(this).test_ErrorMessagesCheck7254243749546905063();
+    new TestBody(this).test_ErrorMessagesCheck7254243749546905063();
   }
   @Test
   public void test_NodeErrorCheck7254243749547462195() throws Throwable {
-    new GenericMethodCall_Test.TestBody(this).test_NodeErrorCheck7254243749547462195();
+    new TestBody(this).test_NodeErrorCheck7254243749547462195();
   }
   @Test
   public void test_ErrorMessagesCheck7254243749546905207() throws Throwable {
-    new GenericMethodCall_Test.TestBody(this).test_ErrorMessagesCheck7254243749546905207();
+    new TestBody(this).test_ErrorMessagesCheck7254243749546905207();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

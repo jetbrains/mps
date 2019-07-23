@@ -26,6 +26,7 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * [Mihail Muhin] I'm not sure what these are about, these tests were just copied from old ChangesManagerTest
@@ -145,14 +146,14 @@ public class ChangesRollbackTest extends ChangesTestBase {
     ListSequence.fromList(SLinkOperations.getChildren(root, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(createInstanceMethodDeclaration_p3cuek_a0a5a31());
   }
   private void addNodeAttribute() {
-    AttributeOperations.createAndSetAttrbiute(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
+    AttributeOperations.createAndSetAttrbiute(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), new IAttributeDescriptor.NodeAttribute(AUX_p3cuek.ReviewMigration_54683616), AUX_p3cuek.ReviewMigration_54683616);
   }
   private void addChildAttribute() {
     ChangesTestUtil.addCommentedMethod(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).first());
   }
 
   private void deleteChildAttribute() {
-    SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5297043982019668093")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute")));
+    SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5297043982019668093")), AUX_p3cuek.BaseCommentAttribute_f7206635));
   }
   private static List<ModelChange> check_p3cuek_a0a0c0k(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
@@ -169,14 +170,22 @@ public class ChangesRollbackTest extends ChangesTestBase {
   }
   private static SNode createInstanceMethodDeclaration_p3cuek_a0a5a31() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_p3cuek.InstanceMethodDeclaration_9dbf9b2b, null, null, false);
     {
       n1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "m1");
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
+      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(AUX_p3cuek.StatementList_9dbf9acf, null, null, false);
       n1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"), null, null, false);
+      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(AUX_p3cuek.VoidType_d96d05c9, null, null, false);
       n1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), n3);
     }
     return n1;
+  }
+
+  private static final class AUX_p3cuek {
+    /*package*/ static final SConcept ReviewMigration_54683616 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration");
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept StatementList_9dbf9acf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept VoidType_d96d05c9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
   }
 }

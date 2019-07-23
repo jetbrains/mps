@@ -21,7 +21,7 @@ public class WrappingCellShouldntBeSelectable_Test extends BaseTransformationTes
 
   @Test
   public void test_WrappingCellShouldntBeSelectable() throws Throwable {
-    new WrappingCellShouldntBeSelectable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

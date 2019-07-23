@@ -5,14 +5,16 @@ package jetbrains.mps.lang.quotation.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MigrateEnumPropertyAttributes_Antiquotation_MigrationScript extends BaseMigrationScript {
   public MigrateEnumPropertyAttributes_Antiquotation_MigrationScript() {
@@ -28,18 +30,18 @@ public final class MigrateEnumPropertyAttributes_Antiquotation_MigrationScript e
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, "jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo");
+        return AUX_d58rlq.StringToTypedValueMigrationInfo_ee0e9f0;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return !(SPropertyOperations.getBoolean(node, MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated"))) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute")))), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"));
+        return !(SPropertyOperations.getBoolean(node, MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated"))) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(SNodeOperations.as(node, AUX_d58rlq.PropertyAttribute_d001db89))), AUX_d58rlq.EnumPropertyMigrationInfo_a791f212);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated"), true);
 
-        SNode propAttribute = SNodeOperations.as(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propAttribute)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"))) {
+        SNode propAttribute = SNodeOperations.as(node, AUX_d58rlq.PropertyAttribute_d001db89);
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propAttribute)), AUX_d58rlq.EnumPropertyMigrationInfo_a791f212)) {
           SPropertyOperations.assign(propAttribute, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated"), true);
         }
       }
@@ -54,5 +56,11 @@ public final class MigrateEnumPropertyAttributes_Antiquotation_MigrationScript e
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:d6a9a174-4d02-4a9a-af5a-24f4aae65f24(jetbrains.mps.lang.quotation.scripts)/979583239732347490");
+  }
+
+  private static final class AUX_d58rlq {
+    /*package*/ static final SInterfaceConcept StringToTypedValueMigrationInfo_ee0e9f0 = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, "jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo_a791f212 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

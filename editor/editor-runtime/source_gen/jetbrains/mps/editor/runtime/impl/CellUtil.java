@@ -6,13 +6,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class CellUtil {
   public CellUtil() {
@@ -27,10 +28,10 @@ public class CellUtil {
     if (isConceptDeprecated(node)) {
       return true;
     }
-    if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable")))) {
+    if (!(SNodeOperations.isInstanceOf(node, AUX_sgnqz6.IDeprecatable_90d7bbb8))) {
       return false;
     }
-    return ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable")), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable"), SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR")));
+    return ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(node, AUX_sgnqz6.IDeprecatable_90d7bbb8), AUX_sgnqz6.IDeprecatable_90d7bbb8, SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR")));
   }
   private static boolean isConceptDeprecated(SNode node) {
     ConceptPresentation cp = ConceptAspectsHelper.getPresentationAspect(node);
@@ -40,7 +41,7 @@ public class CellUtil {
     return cp.isDeprecated();
   }
   public static SNode getNodeToDelete(SNode node) {
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11c6fd75034L, "jetbrains.mps.lang.core.structure.IWrapper"))) {
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_sgnqz6.IWrapper_114742e9)) {
       node = SNodeOperations.getParent(node);
     }
     return node;
@@ -53,5 +54,10 @@ public class CellUtil {
   }
   public static String getLinkDeclarationRole(SNode linkDeclaration) {
     return SPropertyOperations.getString(linkDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"));
+  }
+
+  private static final class AUX_sgnqz6 {
+    /*package*/ static final SInterfaceConcept IDeprecatable_90d7bbb8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable");
+    /*package*/ static final SInterfaceConcept IWrapper_114742e9 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11c6fd75034L, "jetbrains.mps.lang.core.structure.IWrapper");
   }
 }

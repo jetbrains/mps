@@ -21,7 +21,7 @@ public class AddStaticBeforeInterface_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddStaticBeforeInterface() throws Throwable {
-    new AddStaticBeforeInterface_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

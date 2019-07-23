@@ -26,7 +26,7 @@ public class DeleteAsExpressionClassifierTwoStep_Test extends BaseTransformation
 
   @Test
   public void test_DeleteAsExpressionClassifierTwoStep() throws Throwable {
-    new DeleteAsExpressionClassifierTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

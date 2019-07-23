@@ -22,7 +22,7 @@ public class Set_WrapperFactory extends ValueWrapperFactory {
   public Set_WrapperFactory() {
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new Set_WrapperFactory.SetWrapper(value, threadReference);
+    return new SetWrapper(value, threadReference);
   }
   @Override
   public boolean canWrapValue(@NotNull final IValueProxy proxy) {

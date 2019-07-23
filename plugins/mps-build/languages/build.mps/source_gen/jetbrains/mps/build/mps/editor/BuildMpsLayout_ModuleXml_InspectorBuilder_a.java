@@ -30,6 +30,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BuildMpsLayout_ModuleXml_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -105,7 +106,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMpsLayout_ModuleXml_InspectorBuilder_a.sourcesJarLocationSingleRoleHandler_o7xb22_c0a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x707952bffb692f6L, "sourcesJarLocation"), getEditorContext());
+    SingleRoleCellProvider provider = new sourcesJarLocationSingleRoleHandler_o7xb22_c0a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x707952bffb692f6L, "sourcesJarLocation"), getEditorContext());
     return provider.createCell();
   }
   private static class sourcesJarLocationSingleRoleHandler_o7xb22_c0a extends SingleRoleCellProvider {
@@ -184,7 +185,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BuildMpsLayout_ModuleXml_InspectorBuilder_a.sourceDescriptorFileSingleRoleHandler_o7xb22_g0a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x67c5a3b7c82af3d6L, "sourceDescriptorFile"), getEditorContext());
+    SingleRoleCellProvider provider = new sourceDescriptorFileSingleRoleHandler_o7xb22_g0a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x67c5a3b7c82af3d6L, "sourceDescriptorFile"), getEditorContext());
     return provider.createCell();
   }
   private static class sourceDescriptorFileSingleRoleHandler_o7xb22_g0a extends SingleRoleCellProvider {
@@ -267,7 +268,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new BuildMpsLayout_ModuleXml_InspectorBuilder_a.jarLocationsListHandler_o7xb22_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new jarLocationsListHandler_o7xb22_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_jarLocations");
     Style style = new StyleImpl();
@@ -294,7 +295,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
       return MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x3c765492deb1ce79L, "jarLocations");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3c765492deb1a384L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml_CustomJarLocation");
+      return AUX_9mzwg6.BuildMpsLayout_ModuleXml_CustomJarLocation_17df3b33;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -367,7 +368,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
     return editorCell;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new BuildMpsLayout_ModuleXml_InspectorBuilder_a.libraryEntriesListHandler_o7xb22_e0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new libraryEntriesListHandler_o7xb22_e0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_libraryEntries");
     Style style = new StyleImpl();
@@ -394,7 +395,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
       return MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x5c5802301a502977L, "libraryEntries");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, "jetbrains.mps.build.mps.structure.GeneratorInternal_String");
+      return AUX_9mzwg6.GeneratorInternal_String_73162e92;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -466,7 +467,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
     return editorCell;
   }
   private EditorCell createRefNodeList_2() {
-    AbstractCellListHandler handler = new BuildMpsLayout_ModuleXml_InspectorBuilder_a.classpathEntriesListHandler_o7xb22_g0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new classpathEntriesListHandler_o7xb22_g0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_classpathEntries");
     Style style = new StyleImpl();
@@ -493,7 +494,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
       return MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, "jetbrains.mps.build.mps.structure.GeneratorInternal_String");
+      return AUX_9mzwg6.GeneratorInternal_String_73162e92;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -535,5 +536,10 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.commentStyleClass;
       editorCell.setDefaultText("<< none >>");
       return editorCell;
     }
+  }
+
+  private static final class AUX_9mzwg6 {
+    /*package*/ static final SConcept BuildMpsLayout_ModuleXml_CustomJarLocation_17df3b33 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3c765492deb1a384L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml_CustomJarLocation");
+    /*package*/ static final SConcept GeneratorInternal_String_73162e92 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, "jetbrains.mps.build.mps.structure.GeneratorInternal_String");
   }
 }

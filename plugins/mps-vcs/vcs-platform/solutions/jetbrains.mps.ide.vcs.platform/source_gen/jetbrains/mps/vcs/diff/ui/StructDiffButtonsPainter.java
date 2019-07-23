@@ -40,17 +40,17 @@ public class StructDiffButtonsPainter extends ButtonsPainter {
     List<FoldingAreaButton> result = ListSequence.fromList(new ArrayList<FoldingAreaButton>());
     if (isHighlightLeft()) {
       if (!(allInsert)) {
-        ListSequence.fromList(result).addElement(new StructDiffButtonsPainter.MyButtonRevert(changeGroup, getX(0), y, "Replace", IdeIcons.APPLY_RIGHT));
+        ListSequence.fromList(result).addElement(new MyButtonRevert(changeGroup, getX(0), y, "Replace", IdeIcons.APPLY_RIGHT));
       }
       if (allDelete) {
-        ListSequence.fromList(result).addElement(new StructDiffButtonsPainter.MyButtonApply(changeGroup, getX(1), y, "Remove", IdeIcons.EXCLUDE));
+        ListSequence.fromList(result).addElement(new MyButtonApply(changeGroup, getX(1), y, "Remove", IdeIcons.EXCLUDE));
       }
     } else {
       if (allInsert) {
-        ListSequence.fromList(result).addElement(new StructDiffButtonsPainter.MyButtonRevert(changeGroup, getX(0), y, "Remove", IdeIcons.EXCLUDE));
+        ListSequence.fromList(result).addElement(new MyButtonRevert(changeGroup, getX(0), y, "Remove", IdeIcons.EXCLUDE));
       }
       if (!(allDelete)) {
-        ListSequence.fromList(result).addElement(new StructDiffButtonsPainter.MyButtonApply(changeGroup, getX(1), y, "Replace", IdeIcons.APPLY));
+        ListSequence.fromList(result).addElement(new MyButtonApply(changeGroup, getX(1), y, "Replace", IdeIcons.APPLY));
       }
     }
     return result;

@@ -21,7 +21,7 @@ public class Comment_ForCondition_Test extends BaseTransformationTest {
 
   @Test
   public void test_Comment_ForCondition() throws Throwable {
-    new Comment_ForCondition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.figures.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,9 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class FigureParameterAttribute__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a0c593e1L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttribute");
+  private static final SAbstractConcept CONCEPT = AUX_ghzgqk.FigureParameterAttribute_91b4a7a8;
 
   public static final SMethod<SNode> getParameterMember_id4H19mAwT7Py = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterMember").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4H19mAwT7Py").build();
 
@@ -71,5 +72,9 @@ public final class FigureParameterAttribute__BehaviorDescriptor extends BaseBHDe
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_ghzgqk {
+    /*package*/ static final SConcept FigureParameterAttribute_91b4a7a8 = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a0c593e1L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttribute");
   }
 }

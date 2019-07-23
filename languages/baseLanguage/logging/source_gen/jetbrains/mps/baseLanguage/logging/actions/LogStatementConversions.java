@@ -6,16 +6,17 @@ import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LogStatementConversions {
   public static class NodeFactory_6057591418743042050 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, "jetbrains.mps.baseLanguage.logging.structure.MsgStatement"))) {
+        if (SNodeOperations.isInstanceOf(msg, AUX_7stlq1.MsgStatement_2c00a533)) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message")));
           SPropertyOperations.assignEnum(newNode, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), SPropertyOperations.getEnum(msg, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")));
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable")));
@@ -23,7 +24,7 @@ public class LogStatementConversions {
       }
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement"))) {
+        if (SNodeOperations.isInstanceOf(msg, AUX_7stlq1.LogLowLevelStatement_66a96b81)) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message")));
           SPropertyOperations.assignEnum(newNode, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity"), SPropertyOperations.getEnum(msg, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")));
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable")));
@@ -35,7 +36,7 @@ public class LogStatementConversions {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, "jetbrains.mps.baseLanguage.logging.structure.MsgStatement"))) {
+        if (SNodeOperations.isInstanceOf(msg, AUX_7stlq1.MsgStatement_2c00a533)) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message")));
           SPropertyOperations.assignEnum(newNode, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), SPropertyOperations.getEnum(msg, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity")));
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable")));
@@ -43,12 +44,17 @@ public class LogStatementConversions {
       }
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement"))) {
+        if (SNodeOperations.isInstanceOf(msg, AUX_7stlq1.LogLowLevelStatement_66a96b81)) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message")));
           SPropertyOperations.assignEnum(newNode, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity"), SPropertyOperations.getEnum(msg, MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity")));
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable"), SLinkOperations.getTarget(msg, MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable")));
         }
       }
     }
+  }
+
+  private static final class AUX_7stlq1 {
+    /*package*/ static final SConcept MsgStatement_2c00a533 = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, "jetbrains.mps.baseLanguage.logging.structure.MsgStatement");
+    /*package*/ static final SConcept LogLowLevelStatement_66a96b81 = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
   }
 }

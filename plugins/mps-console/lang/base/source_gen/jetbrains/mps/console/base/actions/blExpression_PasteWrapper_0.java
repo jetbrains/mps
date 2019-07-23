@@ -4,20 +4,21 @@ package jetbrains.mps.console.base.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.PasteWrapper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class blExpression_PasteWrapper_0 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    return AUX_u188nr.Expression_4199e28d;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command");
+    return AUX_u188nr.Command_d03ba149;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
@@ -25,10 +26,16 @@ public final class blExpression_PasteWrapper_0 implements PasteWrapper {
   }
   private static SNode createBLExpression_sma98h_a0a0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_u188nr.BLExpression_1b85bb03, null, null, false);
     if (node0 != null) {
-      n1.addChild(MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))));
+      n1.addChild(MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_u188nr.Expression_4199e28d)));
     }
     return n1;
+  }
+
+  private static final class AUX_u188nr {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Command_d03ba149 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command");
+    /*package*/ static final SConcept BLExpression_1b85bb03 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
   }
 }

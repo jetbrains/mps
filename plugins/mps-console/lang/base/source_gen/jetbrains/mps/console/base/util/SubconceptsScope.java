@@ -18,12 +18,13 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public abstract class SubconceptsScope extends Scope {
 
@@ -50,7 +51,7 @@ public abstract class SubconceptsScope extends Scope {
       }
     }).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+        return SModelOperations.roots(it, AUX_dosfzo.AbstractConceptDeclaration_ec74828f);
       }
     });
     Iterable<SNode> subConcepts = Sequence.fromIterable(allConcepts).where(new IWhereFilter<SNode>() {
@@ -85,10 +86,10 @@ public abstract class SubconceptsScope extends Scope {
   }
   @Nullable
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), concept))) {
+    if (!(SNodeOperations.isInstanceOf(node, AUX_dosfzo.AbstractConceptDeclaration_ec74828f)) || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, AUX_dosfzo.AbstractConceptDeclaration_ec74828f), concept))) {
       return null;
     }
-    String result = getName(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")));
+    String result = getName(SNodeOperations.cast(node, AUX_dosfzo.AbstractConceptDeclaration_ec74828f));
     for (SNode n : Sequence.fromIterable(getAvailableElements(null))) {
       if (n == node) {
         continue;
@@ -100,5 +101,9 @@ public abstract class SubconceptsScope extends Scope {
       }
     }
     return result;
+  }
+
+  private static final class AUX_dosfzo {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

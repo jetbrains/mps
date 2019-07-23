@@ -51,7 +51,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MoneyMethodCall_EditorBuilder_a.instanceSingleRoleHandler_o0ayvq_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance"), getEditorContext());
+    SingleRoleCellProvider provider = new instanceSingleRoleHandler_o0ayvq_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance"), getEditorContext());
     return provider.createCell();
   }
   private static class instanceSingleRoleHandler_o0ayvq_a0 extends SingleRoleCellProvider {

@@ -22,7 +22,7 @@ public class MigrateToIndent_VerticalGrtidLayout_Test extends BaseTransformation
 
   @Test
   public void test_MigrateToIndent_VerticalGrtidLayout() throws Throwable {
-    new MigrateToIndent_VerticalGrtidLayout_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -43,19 +43,19 @@ public class JUnitBTestCaseTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_startSimpleBTestCase() throws Throwable {
-    new JUnitBTestCaseTest_Test.TestBody(this).test_startSimpleBTestCase();
+    new TestBody(this).test_startSimpleBTestCase();
   }
   @Test
   public void test_startFailedBTestCase() throws Throwable {
-    new JUnitBTestCaseTest_Test.TestBody(this).test_startFailedBTestCase();
+    new TestBody(this).test_startFailedBTestCase();
   }
   @Test
   public void test_programParametersArePassedToTheTest() throws Throwable {
-    new JUnitBTestCaseTest_Test.TestBody(this).test_programParametersArePassedToTheTest();
+    new TestBody(this).test_programParametersArePassedToTheTest();
   }
   @Test
   public void test_programParametersWithSpacesArePassedToTheTest() throws Throwable {
-    new JUnitBTestCaseTest_Test.TestBody(this).test_programParametersWithSpacesArePassedToTheTest();
+    new TestBody(this).test_programParametersWithSpacesArePassedToTheTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -8,14 +8,15 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IconHelper {
   public static String createId(SModel m) {
-    Set<String> used = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(SModelOperations.nodes(m, MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon"))).select(new ISelector<SNode, String>() {
+    Set<String> used = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(SModelOperations.nodes(m, AUX_9nk3pv.TextIcon_d7600c94)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId"));
       }
@@ -25,5 +26,9 @@ public class IconHelper {
       id++;
     }
     return id + "";
+  }
+
+  private static final class AUX_9nk3pv {
+    /*package*/ static final SConcept TextIcon_d7600c94 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
   }
 }

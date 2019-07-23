@@ -25,8 +25,8 @@ import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -39,6 +39,7 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends TransformationMenuBase {
   public AndOrTransforms_LogicalExpression_ext_2_Contribution() {
@@ -67,10 +68,10 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a0());
+      result.add(new TMP_Param_m0wxkr_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a1());
+      result.add(new TMP_Param_m0wxkr_a1());
     }
     return result;
   }
@@ -80,7 +81,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a(parameter).createItems(context);
+      return new TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -107,7 +108,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a.Item item = new AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a.Item(context);
+        TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a.Item item = new TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -144,9 +145,9 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
         public void execute(@NotNull String pattern) {
           SNode conjuction;
           if (myParameterObject.equals("and")) {
-            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a460aL, "jetbrains.mps.samples.KajaAndOr.structure.And"));
+            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_m0wxkr.And_689b965b);
           } else if (myParameterObject.equals("or")) {
-            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46bbL, "jetbrains.mps.samples.KajaAndOr.structure.Or"));
+            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_m0wxkr.Or_689b9d9c);
           } else {
             throw new IllegalArgumentException("Cannot find a match for " + myParameterObject);
           }
@@ -179,7 +180,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b(parameter).createItems(context);
+      return new TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b(parameter).createItems(context);
     }
 
     @Nullable
@@ -206,7 +207,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b.Item item = new AndOrTransforms_LogicalExpression_ext_2_Contribution.TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b.Item(context);
+        TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b.Item item = new TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -274,5 +275,10 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
       }
 
     }
+  }
+
+  private static final class AUX_m0wxkr {
+    /*package*/ static final SConcept And_689b965b = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a460aL, "jetbrains.mps.samples.KajaAndOr.structure.And");
+    /*package*/ static final SConcept Or_689b9d9c = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46bbL, "jetbrains.mps.samples.KajaAndOr.structure.Or");
   }
 }

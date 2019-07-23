@@ -4,7 +4,6 @@ package jetbrains.mps.lang.migration.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,13 +14,15 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, "jetbrains.mps.lang.migration.structure.QuotationConsequence");
+  private static final SAbstractConcept CONCEPT = AUX_hzbmz0.QuotationConsequence_ca755f82;
 
   public static final SMethod<Boolean> isMyAntiquotationExpression_id4SwrQttKYC0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMyAntiquotationExpression").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4SwrQttKYC0").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
@@ -32,13 +33,13 @@ public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static boolean isMyAntiquotationExpression_id4SwrQttKYC0(@NotNull SNode __thisNode__, SNode expression) {
     // when quotation is embedded into transform statement via QuotationConsequoence, antiquotations detach nodes passed to them 
-    if (!(SNodeOperations.hasRole(expression, MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression"))) || SNodeOperations.getNodeAncestor(expression, MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation"), false, false) != SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, 0x550f7de0eda6517eL, "quotation"))) {
+    if (!(SNodeOperations.hasRole(expression, MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression"))) || SNodeOperations.getNodeAncestor(expression, AUX_hzbmz0.Quotation_25f29ad1, false, false) != SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, 0x550f7de0eda6517eL, "quotation"))) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L, "jetbrains.mps.lang.quotation.structure.Antiquotation"))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), AUX_hzbmz0.Antiquotation_25f29ad0)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation"))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), AUX_hzbmz0.ListAntiquotation_25f29ad6)) {
       return true;
     }
     return false;
@@ -88,5 +89,12 @@ public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_hzbmz0 {
+    /*package*/ static final SConcept QuotationConsequence_ca755f82 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, "jetbrains.mps.lang.migration.structure.QuotationConsequence");
+    /*package*/ static final SConcept Quotation_25f29ad1 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SConcept Antiquotation_25f29ad0 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L, "jetbrains.mps.lang.quotation.structure.Antiquotation");
+    /*package*/ static final SConcept ListAntiquotation_25f29ad6 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
   }
 }

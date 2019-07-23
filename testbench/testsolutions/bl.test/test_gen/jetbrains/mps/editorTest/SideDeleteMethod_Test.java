@@ -22,7 +22,7 @@ public class SideDeleteMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_SideDeleteMethod() throws Throwable {
-    new SideDeleteMethod_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

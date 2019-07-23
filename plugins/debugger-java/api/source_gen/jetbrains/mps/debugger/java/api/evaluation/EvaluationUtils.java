@@ -84,12 +84,12 @@ public abstract class EvaluationUtils {
    * @throws EvaluationException wrapper of the original exception
    * @return result
    */
-  public static <T> T handleInvocationExceptions(EvaluationUtils.Invocatable<T> invocatable) throws EvaluationException {
+  public static <T> T handleInvocationExceptions(Invocatable<T> invocatable) throws EvaluationException {
     try {
       return invocatable.invoke();
     } catch (InvocationException e) {
-      if (invocatable instanceof EvaluationUtils.ThreadInvocatable) {
-        throw new TargetVMEvaluationException(e, ((EvaluationUtils.ThreadInvocatable) invocatable).getCurrentThreadReference());
+      if (invocatable instanceof ThreadInvocatable) {
+        throw new TargetVMEvaluationException(e, ((ThreadInvocatable) invocatable).getCurrentThreadReference());
       } else {
         throw new TargetVMEvaluationException(e);
       }
@@ -103,8 +103,8 @@ public abstract class EvaluationUtils {
       }
       throw new EvaluationRuntimeException(e);
     } catch (IncompatibleThreadStateException e) {
-      if (invocatable instanceof EvaluationUtils.ThreadInvocatable) {
-        throw new EvaluationException("Incompatible thread " + ((EvaluationUtils.ThreadInvocatable) invocatable).getCurrentThreadReference().name(), e);
+      if (invocatable instanceof ThreadInvocatable) {
+        throw new EvaluationException("Incompatible thread " + ((ThreadInvocatable) invocatable).getCurrentThreadReference().name(), e);
       } else {
         throw new EvaluationException(e);
       }
@@ -121,7 +121,7 @@ public abstract class EvaluationUtils {
    * @param <T> result
    * @return result
    */
-  public static <T> T consumeEvaluationException(EvaluationUtils.EvaluationInvocatable<T> invocatable, T failure) {
+  public static <T> T consumeEvaluationException(EvaluationInvocatable<T> invocatable, T failure) {
     try {
       return invocatable.invoke();
     } catch (InvalidEvaluatedExpressionException e) {
@@ -168,7 +168,7 @@ public abstract class EvaluationUtils {
    * 
    * @param <T> result
    */
-  public static abstract class ThreadInvocatable<T> implements EvaluationUtils.Invocatable<T> {
+  public static abstract class ThreadInvocatable<T> implements Invocatable<T> {
     private final ThreadReference myThreadReference;
     public ThreadInvocatable(ThreadReference threadReference) {
       myThreadReference = threadReference;

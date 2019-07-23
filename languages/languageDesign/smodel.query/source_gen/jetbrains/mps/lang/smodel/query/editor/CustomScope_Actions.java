@@ -6,11 +6,12 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomScope_Actions {
 
@@ -20,7 +21,7 @@ public class CustomScope_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a2L, "jetbrains.mps.lang.smodel.query.structure.ScopeParameter"));
+        SNodeOperations.replaceWithNewChild(node, AUX_560dm8.ScopeParameter_e23e4567);
       }
 
     };
@@ -59,5 +60,9 @@ public class CustomScope_Actions {
     if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
       editorCell.setAction(actionType, createAction_BACKSPACE(node));
     }
+  }
+
+  private static final class AUX_560dm8 {
+    /*package*/ static final SConcept ScopeParameter_e23e4567 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a2L, "jetbrains.mps.lang.smodel.query.structure.ScopeParameter");
   }
 }

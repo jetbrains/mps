@@ -21,7 +21,7 @@ public class SmartComplete_Assignment_Test extends BaseTransformationTest {
 
   @Test
   public void test_SmartComplete_Assignment() throws Throwable {
-    new SmartComplete_Assignment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

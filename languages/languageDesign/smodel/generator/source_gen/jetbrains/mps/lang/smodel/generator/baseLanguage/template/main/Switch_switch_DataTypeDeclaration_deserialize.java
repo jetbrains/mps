@@ -17,10 +17,10 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -28,12 +28,13 @@ import jetbrains.mps.generator.template.PropertyMacroContext;
 import java.util.Collections;
 import java.util.Map;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_DataTypeDeclaration_deserialize() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_DataTypeDeclaration_deserialize.ReductionRule0(), new Switch_switch_DataTypeDeclaration_deserialize.ReductionRule1(), new Switch_switch_DataTypeDeclaration_deserialize.ReductionRule2(), new Switch_switch_DataTypeDeclaration_deserialize.ReductionRule3(), new Switch_switch_DataTypeDeclaration_deserialize.ReductionRule4(), new Switch_switch_DataTypeDeclaration_deserialize.ReductionRule5());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
@@ -54,7 +55,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864766"), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864766"), AUX_s05n17.PrimitiveDataTypeDeclaration_44a77975, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -71,7 +72,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864781"), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864781"), AUX_s05n17.PrimitiveDataTypeDeclaration_44a77975, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -101,7 +102,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344876796"), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344876796"), AUX_s05n17.PrimitiveDataTypeDeclaration_44a77975, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -131,7 +132,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864804"), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, "jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864804"), AUX_s05n17.ConstrainedDataTypeDeclaration_a3b6ab44, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -144,7 +145,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864812"), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864812"), AUX_s05n17.EnumerationDeclartaion_dd035f36, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -206,7 +207,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864820"), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864820"), AUX_s05n17.EnumerationDataTypeDeclaration_Old_9e6b98ad, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -251,4 +252,11 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   private static final SNodePointer copySrcMacro_s05n17_b0a0c0h0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134040");
   private static final SNodePointer switchMacroRef_s05n17_b0a0a0a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864823");
   private static final SNodePointer templateSwitchNode_s05n17_a0a0c0a1a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
+
+  private static final class AUX_s05n17 {
+    /*package*/ static final SConcept PrimitiveDataTypeDeclaration_44a77975 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");
+    /*package*/ static final SConcept ConstrainedDataTypeDeclaration_a3b6ab44 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, "jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration");
+    /*package*/ static final SConcept EnumerationDeclartaion_dd035f36 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old_9e6b98ad = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
+  }
 }

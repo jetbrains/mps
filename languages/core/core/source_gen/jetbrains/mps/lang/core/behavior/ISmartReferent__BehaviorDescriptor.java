@@ -4,7 +4,6 @@ package jetbrains.mps.lang.core.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,12 +15,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class ISmartReferent__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x62763dc803b97bd8L, "jetbrains.mps.lang.core.structure.ISmartReferent");
+  private static final SAbstractConcept CONCEPT = AUX_4tx0hi.ISmartReferent_524b1dcd;
 
   public static final SMethod<String> getPresentation_id69Qfsw3IoJg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("69Qfsw3IoJg").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getMatchingText_id69Qfsw3InJX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("69Qfsw3InJX").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -38,8 +39,8 @@ public final class ISmartReferent__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getMatchingText_id69Qfsw3InJX(@NotNull SNode __thisNode__, SNode reference) {
     // IResolveInfo now uses to distinct matchingText and visibleMatchingText 
-    if (SNodeOperations.isInstanceOf(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo"))) {
-      return SPropertyOperations.getString((SNodeOperations.cast(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo"));
+    if (SNodeOperations.isInstanceOf(__thisNode__, AUX_4tx0hi.IResolveInfo_1483d860)) {
+      return SPropertyOperations.getString((SNodeOperations.cast(__thisNode__, AUX_4tx0hi.IResolveInfo_1483d860)), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo"));
     }
     return ((String) ISmartReferent__BehaviorDescriptor.getPresentation_id69Qfsw3IoJg.invoke(__thisNode__, reference));
   }
@@ -100,5 +101,10 @@ public final class ISmartReferent__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_4tx0hi {
+    /*package*/ static final SInterfaceConcept ISmartReferent_524b1dcd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x62763dc803b97bd8L, "jetbrains.mps.lang.core.structure.ISmartReferent");
+    /*package*/ static final SInterfaceConcept IResolveInfo_1483d860 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
   }
 }

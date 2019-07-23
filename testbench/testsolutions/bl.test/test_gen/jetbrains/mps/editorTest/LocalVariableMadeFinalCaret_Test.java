@@ -21,7 +21,7 @@ public class LocalVariableMadeFinalCaret_Test extends BaseTransformationTest {
 
   @Test
   public void test_LocalVariableMadeFinalCaret() throws Throwable {
-    new LocalVariableMadeFinalCaret_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

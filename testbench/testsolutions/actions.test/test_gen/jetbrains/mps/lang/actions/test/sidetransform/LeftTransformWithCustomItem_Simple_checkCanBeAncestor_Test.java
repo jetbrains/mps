@@ -24,7 +24,7 @@ public class LeftTransformWithCustomItem_Simple_checkCanBeAncestor_Test extends 
 
   @Test
   public void test_LeftTransformWithCustomItem_Simple_checkCanBeAncestor() throws Throwable {
-    new LeftTransformWithCustomItem_Simple_checkCanBeAncestor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

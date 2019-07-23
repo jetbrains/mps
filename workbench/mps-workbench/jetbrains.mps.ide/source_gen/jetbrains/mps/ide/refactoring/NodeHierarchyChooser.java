@@ -6,7 +6,6 @@ import com.intellij.ui.components.JBScrollPane;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.ThreadUtils;
 import javax.swing.tree.TreePath;
 import jetbrains.mps.ide.hierarchy.AbstractHierarchyTree;
@@ -16,16 +15,18 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeHierarchyChooser extends JBScrollPane {
-  private NodeHierarchyChooser.MyHierarchyTree myTree;
+  private MyHierarchyTree myTree;
 
   public NodeHierarchyChooser(MPSProject mpsProject, final SNode node) {
     // XXX no need to extend ScrollPane, shall aggregate instead 
-    this.myTree = new NodeHierarchyChooser.MyHierarchyTree(mpsProject.getRepository());
+    this.myTree = new MyHierarchyTree(mpsProject.getRepository());
     mpsProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        NodeHierarchyChooser.this.myTree.setHierarchyNode(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), false, false));
+        NodeHierarchyChooser.this.myTree.setHierarchyNode(SNodeOperations.getNodeAncestor(node, AUX_k3lo04.AbstractConceptDeclaration_ec74828f, false, false));
       }
     });
     this.setViewportView(this.myTree);
@@ -71,5 +72,9 @@ public class NodeHierarchyChooser extends JBScrollPane {
     protected String noNodeString() {
       return "no node";
     }
+  }
+
+  private static final class AUX_k3lo04 {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

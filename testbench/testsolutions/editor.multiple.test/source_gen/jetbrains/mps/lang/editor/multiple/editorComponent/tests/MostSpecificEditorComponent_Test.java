@@ -21,7 +21,7 @@ public class MostSpecificEditorComponent_Test extends BaseTransformationTest {
 
   @Test
   public void test_MostSpecificEditorComponent() throws Throwable {
-    new MostSpecificEditorComponent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

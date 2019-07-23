@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_GenerationContextOp_GetOriginalInputModel_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_GenerationContextOp_GetOriginalInputModel_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_GenerationContextOp_GetOriginalInputModel_InferenceRule exte
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5c7432dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalInputModel");
+    return AUX_7osfj7.GenerationContextOp_GetOriginalInputModel_c5548693;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_GenerationContextOp_GetOriginalInputModel_InferenceRule exte
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10a2d94c0cdL, "SModelType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_7osfj7 {
+    /*package*/ static final SConcept GenerationContextOp_GetOriginalInputModel_c5548693 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5c7432dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalInputModel");
   }
 }

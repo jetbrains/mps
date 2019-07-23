@@ -33,5 +33,5 @@ public class StaticScope_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_cg0j7y_a0a0a = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L, 0x4b014033eedc8be8L, 0x4b014033eedc8be9L, 0x4b014033eedc8becL);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_cg0j7y_a0a0a = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L, 0x4b014033eedc8be8L, 0x4b014033eedc8be9L, 0x4b014033eedc8becL);
 }

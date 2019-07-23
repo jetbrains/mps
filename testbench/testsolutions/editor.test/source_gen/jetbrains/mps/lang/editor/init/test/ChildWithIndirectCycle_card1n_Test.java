@@ -23,7 +23,7 @@ public class ChildWithIndirectCycle_card1n_Test extends BaseTransformationTest {
 
   @Test
   public void test_ChildWithIndirectCycle_card1n() throws Throwable {
-    new ChildWithIndirectCycle_card1n_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

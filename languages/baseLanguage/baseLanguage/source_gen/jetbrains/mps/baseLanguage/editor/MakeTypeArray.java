@@ -9,7 +9,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -19,6 +18,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -28,9 +28,9 @@ public class MakeTypeArray extends KeyMapImpl {
   public MakeTypeArray() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new MakeTypeArray.MakeTypeArray_Action0();
+    action = new MakeTypeArray_Action0();
     this.putAction("any", "[", action);
-    action = new MakeTypeArray.MakeTypeArray_Action1();
+    action = new MakeTypeArray_Action1();
     this.putAction("any", "<", action);
   }
   public static class MakeTypeArray_Action0 extends KeyMapActionImpl {
@@ -53,7 +53,7 @@ public class MakeTypeArray extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_u3xwmg.Statement_9dbf9b0e))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -64,7 +64,7 @@ public class MakeTypeArray extends KeyMapImpl {
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       final String text = ((EditorCell_Label) editorContext.getSelectedCell()).getText();
-      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), SNodeOperations.getModel(node))).any(new IWhereFilter<SConcept>() {
+      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_u3xwmg.Type_4199e276, SNodeOperations.getModel(node))).any(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return Objects.equals(it.getConceptAlias(), text);
         }
@@ -72,7 +72,7 @@ public class MakeTypeArray extends KeyMapImpl {
       if (hasType) {
         return true;
       }
-      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))).any(new IWhereFilter<SNode>() {
+      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), AUX_u3xwmg.Classifier_4b7e553)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), text);
         }
@@ -82,28 +82,28 @@ public class MakeTypeArray extends KeyMapImpl {
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       final String text = ((EditorCell_Label) editorContext.getSelectedCell()).getText();
 
-      SNode varStms = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"));
-      SNode var = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), null);
+      SNode varStms = SNodeFactoryOperations.replaceWithNewChild(node, AUX_u3xwmg.LocalVariableDeclarationStatement_d47683f4);
+      SNode var = SNodeFactoryOperations.createNewNode(AUX_u3xwmg.LocalVariableDeclaration_d47683f3, null);
       SLinkOperations.setTarget(varStms, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), var);
-      SLinkOperations.setTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"), null));
+      SLinkOperations.setTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeFactoryOperations.createNewNode(AUX_u3xwmg.ArrayType_67000423, null));
 
-      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
+      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_u3xwmg.Type_4199e276, SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return Objects.equals(it.getConceptAlias(), text);
         }
       }).first();
       if (t != null) {
-        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"), SNodeFactoryOperations.createNewNode(t, null));
+        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), AUX_u3xwmg.ArrayType_67000423), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"), SNodeFactoryOperations.createNewNode(t, null));
       } else {
-        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))).where(new IWhereFilter<SNode>() {
+        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), AUX_u3xwmg.Classifier_4b7e553)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), text);
           }
         }).first();
         if (clazz != null) {
-          SNode cT = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), null);
+          SNode cT = SNodeFactoryOperations.createNewNode(AUX_u3xwmg.ClassifierType_42700403, null);
           SLinkOperations.setTarget(cT, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), clazz);
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"), cT);
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), AUX_u3xwmg.ArrayType_67000423), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"), cT);
         }
       }
 
@@ -133,7 +133,7 @@ public class MakeTypeArray extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_u3xwmg.Statement_9dbf9b0e))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -144,7 +144,7 @@ public class MakeTypeArray extends KeyMapImpl {
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       final String text = ((EditorCell_Label) editorContext.getSelectedCell()).getText();
-      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), SNodeOperations.getModel(node))).any(new IWhereFilter<SConcept>() {
+      boolean hasType = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_u3xwmg.Type_4199e276, SNodeOperations.getModel(node))).any(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return Objects.equals(it.getConceptAlias(), text);
         }
@@ -152,7 +152,7 @@ public class MakeTypeArray extends KeyMapImpl {
       if (hasType) {
         return true;
       }
-      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))).any(new IWhereFilter<SNode>() {
+      boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), AUX_u3xwmg.Classifier_4b7e553)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), text);
         }
@@ -162,11 +162,11 @@ public class MakeTypeArray extends KeyMapImpl {
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       final String text = ((EditorCell_Label) editorContext.getSelectedCell()).getText();
 
-      SNode varStms = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"));
-      SNode var = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), null);
+      SNode varStms = SNodeFactoryOperations.replaceWithNewChild(node, AUX_u3xwmg.LocalVariableDeclarationStatement_d47683f4);
+      SNode var = SNodeFactoryOperations.createNewNode(AUX_u3xwmg.LocalVariableDeclaration_d47683f3, null);
       SLinkOperations.setTarget(varStms, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), var);
 
-      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
+      SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_u3xwmg.Type_4199e276, SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return Objects.equals(it.getConceptAlias(), text);
         }
@@ -174,13 +174,13 @@ public class MakeTypeArray extends KeyMapImpl {
       if (t != null) {
         SLinkOperations.setTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeFactoryOperations.createNewNode(t, null));
       } else {
-        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))).where(new IWhereFilter<SNode>() {
+        SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), AUX_u3xwmg.Classifier_4b7e553)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), text);
           }
         }).first();
         if (clazz != null) {
-          SNode cT = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), null);
+          SNode cT = SNodeFactoryOperations.createNewNode(AUX_u3xwmg.ClassifierType_42700403, null);
           SLinkOperations.setTarget(cT, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), clazz);
           SLinkOperations.setTarget(var, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), cT);
           SNodeFactoryOperations.addNewChild(cT, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), null);
@@ -193,5 +193,15 @@ public class MakeTypeArray extends KeyMapImpl {
     public String getKeyStroke() {
       return " <";
     }
+  }
+
+  private static final class AUX_u3xwmg {
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement_d47683f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept ArrayType_67000423 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

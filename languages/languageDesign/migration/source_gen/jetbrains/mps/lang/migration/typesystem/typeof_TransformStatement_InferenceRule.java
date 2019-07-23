@@ -16,6 +16,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_TransformStatement_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_TransformStatement_InferenceRule() {
@@ -29,7 +30,7 @@ public class typeof_TransformStatement_InferenceRule extends AbstractInferenceRu
       }
     }
     final SNode consequenceConcept_typevar_4391914101925833474 = typeCheckingContext.createNewRuntimeTypesVariable();
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ts, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef0L, "consequence")), MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532eb7L, "jetbrains.mps.lang.migration.structure.ConsequenceFunction"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ts, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef0L, "consequence")), AUX_h6azqb.ConsequenceFunction_ca756e42)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
           SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ts, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef0L, "consequence"));
@@ -53,7 +54,7 @@ public class typeof_TransformStatement_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement");
+    return AUX_h6azqb.TransformStatement_c9168426;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -104,5 +105,10 @@ public class typeof_TransformStatement_InferenceRule extends AbstractInferenceRu
     SNodeAccessUtil.setReferenceTarget(quotedNode_6, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_2);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType"), quotedNode_6);
     return quotedNode_3;
+  }
+
+  private static final class AUX_h6azqb {
+    /*package*/ static final SConcept ConsequenceFunction_ca756e42 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532eb7L, "jetbrains.mps.lang.migration.structure.ConsequenceFunction");
+    /*package*/ static final SConcept TransformStatement_c9168426 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement");
   }
 }

@@ -74,7 +74,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BaseExecuteCommandStatement_EditorBuilder_a.repoSingleRoleHandler_lfwa2a_c0(myNode, MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo"), getEditorContext());
+    SingleRoleCellProvider provider = new repoSingleRoleHandler_lfwa2a_c0(myNode, MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo"), getEditorContext());
     return provider.createCell();
   }
   private static class repoSingleRoleHandler_lfwa2a_c0 extends SingleRoleCellProvider {
@@ -139,7 +139,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BaseExecuteCommandStatement_EditorBuilder_a.commandClosureLiteralSingleRoleHandler_lfwa2a_e0(myNode, MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral"), getEditorContext());
+    SingleRoleCellProvider provider = new commandClosureLiteralSingleRoleHandler_lfwa2a_e0(myNode, MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral"), getEditorContext());
     return provider.createCell();
   }
   private static class commandClosureLiteralSingleRoleHandler_lfwa2a_e0 extends SingleRoleCellProvider {

@@ -14,8 +14,8 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Objects;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -46,13 +46,14 @@ import jetbrains.mps.lang.editor.menus.substitute.IncludeSubstituteMenuSubstitut
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a());
+    result.add(new SMP_Group_6wdawe_a());
     return result;
   }
 
@@ -78,17 +79,17 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass"));
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_6wdawe.ClassConcept_e2711824) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass"));
         }
       }.compute();
       condition_1 = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface"));
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_6wdawe.ClassConcept_e2711824) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface"));
         }
       }.compute();
       condition_2 = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface"));
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_6wdawe.Interface_bca2069) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface"));
         }
       }.compute();
     }
@@ -106,7 +107,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0(), new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0(), new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0(), new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0());
     }
     public class SMP_Group_6wdawe_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -127,13 +128,13 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a(), AUX_6wdawe.ClassifierType_42700403));
       }
       private class SMP_Param_6wdawe_a0a extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-          return new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0(parameter).createItems(context);
+          return new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -151,7 +152,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
         protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
           return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleClassesScope(_context.getParentNode()).getAvailableElements(null)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return !(SPropertyOperations.getBoolean(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal"))) && !(Objects.equals(it, _context.getParentNode()));
+              return !(SPropertyOperations.getBoolean(SNodeOperations.cast(it, AUX_6wdawe.ClassConcept_e2711824), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal"))) && !(Objects.equals(it, _context.getParentNode()));
             }
           }).toListSequence();
         }
@@ -164,7 +165,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0.Item item = new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0.Item(_context);
+            SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0.Item item = new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0.Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -188,7 +189,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             private final SubstituteMenuContext _context;
             private EditorMenuTraceInfo myTraceInfo;
             public Item(SubstituteMenuContext context) {
-              super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), context);
+              super(AUX_6wdawe.ClassifierType_42700403, context);
               _context = context;
             }
 
@@ -199,7 +200,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             @Nullable
             @Override
             public SNode createNode(@NotNull String pattern) {
-              SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), null);
+              SNode result = SNodeFactoryOperations.createNewNode(AUX_6wdawe.ClassifierType_42700403, null);
               SLinkOperations.setTarget(result, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), myParameterObject);
               return result;
             }
@@ -210,7 +211,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             }
             @NotNull
             protected CompletionItemInformation createInformation(String pattern) {
-              return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), getMatchingText(pattern), getDescriptionText(pattern));
+              return new CompletionItemInformation(myParameterObject, AUX_6wdawe.ClassifierType_42700403, getMatchingText(pattern), getDescriptionText(pattern));
             }
             @Nullable
             @Override
@@ -257,13 +258,13 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a(), AUX_6wdawe.ClassifierType_42700403));
       }
       private class SMP_Param_6wdawe_a1a extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-          return new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0(parameter).createItems(context);
+          return new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -290,7 +291,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0.Item item = new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0.Item(_context);
+            SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0.Item item = new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0.Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -314,7 +315,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             private final SubstituteMenuContext _context;
             private EditorMenuTraceInfo myTraceInfo;
             public Item(SubstituteMenuContext context) {
-              super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), context);
+              super(AUX_6wdawe.ClassifierType_42700403, context);
               _context = context;
             }
 
@@ -325,7 +326,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             @Nullable
             @Override
             public SNode createNode(@NotNull String pattern) {
-              SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), null);
+              SNode result = SNodeFactoryOperations.createNewNode(AUX_6wdawe.ClassifierType_42700403, null);
               SLinkOperations.setTarget(result, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), myParameterObject);
               return result;
             }
@@ -336,7 +337,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             }
             @NotNull
             protected CompletionItemInformation createInformation(String pattern) {
-              return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), getMatchingText(pattern), getDescriptionText(pattern));
+              return new CompletionItemInformation(myParameterObject, AUX_6wdawe.ClassifierType_42700403, getMatchingText(pattern), getDescriptionText(pattern));
             }
             @Nullable
             @Override
@@ -383,13 +384,13 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a(), AUX_6wdawe.ClassifierType_42700403));
       }
       private class SMP_Param_6wdawe_a2a extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-          return new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0(parameter).createItems(context);
+          return new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -420,7 +421,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0.Item item = new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0.Item(_context);
+            SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0.Item item = new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0.Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -444,7 +445,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             private final SubstituteMenuContext _context;
             private EditorMenuTraceInfo myTraceInfo;
             public Item(SubstituteMenuContext context) {
-              super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), context);
+              super(AUX_6wdawe.ClassifierType_42700403, context);
               _context = context;
             }
 
@@ -455,7 +456,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             @Nullable
             @Override
             public SNode createNode(@NotNull String pattern) {
-              SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), null);
+              SNode result = SNodeFactoryOperations.createNewNode(AUX_6wdawe.ClassifierType_42700403, null);
               SLinkOperations.setTarget(result, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), myParameterObject);
               return result;
             }
@@ -466,7 +467,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
             }
             @NotNull
             protected CompletionItemInformation createInformation(String pattern) {
-              return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), getMatchingText(pattern), getDescriptionText(pattern));
+              return new CompletionItemInformation(myParameterObject, AUX_6wdawe.ClassifierType_42700403, getMatchingText(pattern), getDescriptionText(pattern));
             }
             @Nullable
             @Override
@@ -497,7 +498,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_6wdawe_d0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return !((condition || condition_1 || condition_2)) && (_context.getLink() != null || !(SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"))));
+        return !((condition || condition_1 || condition_2)) && (_context.getLink() != null || !(SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_6wdawe.StatementList_9dbf9acf)));
       }
       @NotNull
       @Override
@@ -513,11 +514,11 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0.SMP_Subconcepts_6wdawe_a3a(), new ClassifierType_SubstituteMenu.SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0.SMP_Include_6wdawe_b3a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0.SMP_Subconcepts_6wdawe_a3a(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0.SMP_Include_6wdawe_b3a());
       }
       public class SMP_Subconcepts_6wdawe_a3a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_6wdawe.ClassifierType_42700403);
         }
         @NotNull
         @Override
@@ -557,9 +558,16 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
           return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ClassifierType_SmartReference");
         }
         private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-          return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+          return AUX_6wdawe.ClassifierType_42700403;
         }
       }
     }
+  }
+
+  private static final class AUX_6wdawe {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept StatementList_9dbf9acf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 }

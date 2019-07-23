@@ -8,19 +8,25 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class XmlLiteral_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    List<SNode> items = SNodeOperations.getNodeDescendantsWhereConceptInList(_context.getNode(), new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, "jetbrains.mps.samples.xmlLiterals.structure.ElementMacro"), MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, "jetbrains.mps.samples.xmlLiterals.structure.TextMacro")}, false, new SAbstractConcept[]{});
+    List<SNode> items = SNodeOperations.getNodeDescendantsWhereConceptInList(_context.getNode(), new SAbstractConcept[]{AUX_1l571b.ElementMacro_ac00561d, AUX_1l571b.TextMacro_aa9279e8}, false, new SAbstractConcept[]{});
     for (SNode item : items) {
-      if (SNodeOperations.isInstanceOf(item, MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, "jetbrains.mps.samples.xmlLiterals.structure.ElementMacro"))) {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, "jetbrains.mps.samples.xmlLiterals.structure.ElementMacro")), MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, 0x7f05a5bbee380870L, "expression")));
+      if (SNodeOperations.isInstanceOf(item, AUX_1l571b.ElementMacro_ac00561d)) {
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, AUX_1l571b.ElementMacro_ac00561d), MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, 0x7f05a5bbee380870L, "expression")));
       }
-      if (SNodeOperations.isInstanceOf(item, MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, "jetbrains.mps.samples.xmlLiterals.structure.TextMacro"))) {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, "jetbrains.mps.samples.xmlLiterals.structure.TextMacro")), MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, 0x7f05a5bbee374ae2L, "expression")));
+      if (SNodeOperations.isInstanceOf(item, AUX_1l571b.TextMacro_aa9279e8)) {
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, AUX_1l571b.TextMacro_aa9279e8), MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, 0x7f05a5bbee374ae2L, "expression")));
       }
     }
+  }
+
+  private static final class AUX_1l571b {
+    /*package*/ static final SConcept ElementMacro_ac00561d = MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, "jetbrains.mps.samples.xmlLiterals.structure.ElementMacro");
+    /*package*/ static final SConcept TextMacro_aa9279e8 = MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, "jetbrains.mps.samples.xmlLiterals.structure.TextMacro");
   }
 }

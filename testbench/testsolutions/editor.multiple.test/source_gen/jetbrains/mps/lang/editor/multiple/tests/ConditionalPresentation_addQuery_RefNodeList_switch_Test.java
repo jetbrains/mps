@@ -21,7 +21,7 @@ public class ConditionalPresentation_addQuery_RefNodeList_switch_Test extends Ba
 
   @Test
   public void test_ConditionalPresentation_addQuery_RefNodeList_switch() throws Throwable {
-    new ConditionalPresentation_addQuery_RefNodeList_switch_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

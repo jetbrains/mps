@@ -23,7 +23,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
@@ -38,6 +37,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReplaceNodeMacro extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -63,7 +64,7 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new ReplaceNodeMacro.TMP_WrapSM_kvphsr_a0());
+      result.add(new TMP_WrapSM_kvphsr_a0());
     }
     return result;
   }
@@ -89,7 +90,7 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+      return AUX_kvphsr.NodeMacro_2cb20614;
     }
 
     @Override
@@ -107,7 +108,7 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
           SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
           // this condition is to prevent inspector from opening for VarMacro2 nodes, with nothing valueable in 
           // inspector (I believe original motivation behind selection code was to get cursor in a macro's query) 
-          if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(createdNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"))).isNotEmpty()) {
+          if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(createdNode), AUX_kvphsr.ConceptFunction_e08795a5)).isNotEmpty()) {
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_CELL, 1);
             _context.getEditorContext().openInspector();
           }
@@ -128,5 +129,10 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
         }
       };
     }
+  }
+
+  private static final class AUX_kvphsr {
+    /*package*/ static final SConcept NodeMacro_2cb20614 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
   }
 }

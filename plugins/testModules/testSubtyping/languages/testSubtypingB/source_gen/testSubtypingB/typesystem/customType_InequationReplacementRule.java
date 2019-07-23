@@ -11,6 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class customType_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public customType_InequationReplacementRule() {
@@ -37,9 +38,13 @@ public class customType_InequationReplacementRule extends AbstractInequationRepl
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0x6561193424fb470cL, 0x813ea9df6058b93aL, 0x1cd6df1ae5a9b2a3L, "testSubtypingB.structure.CustomType");
+    return AUX_e49m0k.CustomType_6ea296ce;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0x6561193424fb470cL, 0x813ea9df6058b93aL, 0x1cd6df1ae5a9b2a3L, "testSubtypingB.structure.CustomType");
+    return AUX_e49m0k.CustomType_6ea296ce;
+  }
+
+  private static final class AUX_e49m0k {
+    /*package*/ static final SConcept CustomType_6ea296ce = MetaAdapterFactory.getConcept(0x6561193424fb470cL, 0x813ea9df6058b93aL, 0x1cd6df1ae5a9b2a3L, "testSubtypingB.structure.CustomType");
   }
 }

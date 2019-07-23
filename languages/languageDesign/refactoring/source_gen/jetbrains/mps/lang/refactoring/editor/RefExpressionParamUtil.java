@@ -11,6 +11,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RefExpressionParamUtil {
   public RefExpressionParamUtil() {
@@ -19,11 +20,11 @@ public class RefExpressionParamUtil {
     styledText.append(SConceptOperations.conceptAlias(SNodeOperations.getConcept(node))).append("<").append(SPropertyOperations.getString(ref, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))).append(">(");
     String target = "no_target";
     boolean isList = SPropertyOperations.getBoolean(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), MetaAdapterFactory.getProperty(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a0569L, 0x5fb04b74a77a0657L, "allowMultiple"));
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget"))) {
-      target = ((isList ? "nlist" : "node")) + "<" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget")), MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ">";
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056aL, "jetbrains.mps.lang.refactoring.structure.ModelTarget"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), AUX_bmhvuq.NodeTarget_66d7bd58)) {
+      target = ((isList ? "nlist" : "node")) + "<" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), AUX_bmhvuq.NodeTarget_66d7bd58), MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ">";
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), AUX_bmhvuq.ModelTarget_66d7bd56)) {
       target = (isList ? "list<model>" : "model");
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056bL, "jetbrains.mps.lang.refactoring.structure.ModuleTarget"))) {
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ref, MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target")), AUX_bmhvuq.ModuleTarget_66d7bd57)) {
       target = (isList ? "list<SModule>" : "SModule");
     }
     styledText.append(target).append(" target");
@@ -34,5 +35,11 @@ public class RefExpressionParamUtil {
       }
     }
     styledText.append(")");
+  }
+
+  private static final class AUX_bmhvuq {
+    /*package*/ static final SConcept NodeTarget_66d7bd58 = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget");
+    /*package*/ static final SConcept ModelTarget_66d7bd56 = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056aL, "jetbrains.mps.lang.refactoring.structure.ModelTarget");
+    /*package*/ static final SConcept ModuleTarget_66d7bd57 = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056bL, "jetbrains.mps.lang.refactoring.structure.ModuleTarget");
   }
 }

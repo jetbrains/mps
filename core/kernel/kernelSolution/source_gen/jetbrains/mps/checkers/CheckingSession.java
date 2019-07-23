@@ -18,7 +18,7 @@ public interface CheckingSession<I extends IssueKindReportItem> {
     }
     public abstract void suppress();
   }
-  Map<IssueKindReportItem.PathObject, ? extends Collection<? extends CheckingSession.SuppressableError<? extends IssueKindReportItem>>> getAllFoundErrors();
+  Map<IssueKindReportItem.PathObject, ? extends Collection<? extends SuppressableError<? extends IssueKindReportItem>>> getAllFoundErrors();
 
   Consumer<? super I> postprocessingConsumer();
 }

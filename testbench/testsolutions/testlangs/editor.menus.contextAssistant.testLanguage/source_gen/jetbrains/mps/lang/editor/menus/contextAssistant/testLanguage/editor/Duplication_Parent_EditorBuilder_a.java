@@ -25,6 +25,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Duplication_Parent_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -141,7 +142,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childSubconceptSingleRoleHandler_kqu7x4_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a0705eL, "childSubconcept"), getEditorContext());
+    SingleRoleCellProvider provider = new childSubconceptSingleRoleHandler_kqu7x4_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a0705eL, "childSubconcept"), getEditorContext());
     return provider.createCell();
   }
   private static class childSubconceptSingleRoleHandler_kqu7x4_c2a extends SingleRoleCellProvider {
@@ -225,7 +226,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeSameMenuTwiceForSameNodeSingleRoleHandler_kqu7x4_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a0729dL, "childIncludeSameMenuTwiceForSameNode"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeSameMenuTwiceForSameNodeSingleRoleHandler_kqu7x4_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a0729dL, "childIncludeSameMenuTwiceForSameNode"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeSameMenuTwiceForSameNodeSingleRoleHandler_kqu7x4_g2a extends SingleRoleCellProvider {
@@ -309,7 +310,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeDefaultAndNullMenuForSameNodeSingleRoleHandler_kqu7x4_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x41299cab94e5c877L, "childIncludeDefaultAndNullMenuForSameNode"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeDefaultAndNullMenuForSameNodeSingleRoleHandler_kqu7x4_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x41299cab94e5c877L, "childIncludeDefaultAndNullMenuForSameNode"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeDefaultAndNullMenuForSameNodeSingleRoleHandler_kqu7x4_k2a extends SingleRoleCellProvider {
@@ -393,7 +394,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeSameMenuForDifferentLocationsSingleRoleHandler_kqu7x4_o2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x41299cab94ea9316L, "childIncludeSameMenuForDifferentLocations"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeSameMenuForDifferentLocationsSingleRoleHandler_kqu7x4_o2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x41299cab94ea9316L, "childIncludeSameMenuForDifferentLocations"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeSameMenuForDifferentLocationsSingleRoleHandler_kqu7x4_o2a extends SingleRoleCellProvider {
@@ -477,7 +478,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeDifferentMenusForSameNodeSingleRoleHandler_kqu7x4_s2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x41299cab94d89a24L, "childIncludeDifferentMenusForSameNode"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeDifferentMenusForSameNodeSingleRoleHandler_kqu7x4_s2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x41299cab94d89a24L, "childIncludeDifferentMenusForSameNode"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeDifferentMenusForSameNodeSingleRoleHandler_kqu7x4_s2a extends SingleRoleCellProvider {
@@ -561,7 +562,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_5() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeDifferentMenusForDifferentNodesSingleRoleHandler_kqu7x4_w2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb2809203aL, "childIncludeDifferentMenusForDifferentNodes"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeDifferentMenusForDifferentNodesSingleRoleHandler_kqu7x4_w2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb2809203aL, "childIncludeDifferentMenusForDifferentNodes"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeDifferentMenusForDifferentNodesSingleRoleHandler_kqu7x4_w2a extends SingleRoleCellProvider {
@@ -645,7 +646,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_6() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeSameMenuForDifferentNodesSingleRoleHandler_kqu7x4_ab2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a7e86fL, "childIncludeSameMenuForDifferentNodes"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeSameMenuForDifferentNodesSingleRoleHandler_kqu7x4_ab2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a7e86fL, "childIncludeSameMenuForDifferentNodes"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeSameMenuForDifferentNodesSingleRoleHandler_kqu7x4_ab2a extends SingleRoleCellProvider {
@@ -729,7 +730,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_7() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childWrapSameSubstituteMenuTwiceSingleRoleHandler_kqu7x4_eb2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a0729aL, "childWrapSameSubstituteMenuTwice"), getEditorContext());
+    SingleRoleCellProvider provider = new childWrapSameSubstituteMenuTwiceSingleRoleHandler_kqu7x4_eb2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a0729aL, "childWrapSameSubstituteMenuTwice"), getEditorContext());
     return provider.createCell();
   }
   private static class childWrapSameSubstituteMenuTwiceSingleRoleHandler_kqu7x4_eb2a extends SingleRoleCellProvider {
@@ -813,7 +814,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_8() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childWrapDifferentSubstituteMenusSingleRoleHandler_kqu7x4_ib2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb280d1941L, "childWrapDifferentSubstituteMenus"), getEditorContext());
+    SingleRoleCellProvider provider = new childWrapDifferentSubstituteMenusSingleRoleHandler_kqu7x4_ib2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb280d1941L, "childWrapDifferentSubstituteMenus"), getEditorContext());
     return provider.createCell();
   }
   private static class childWrapDifferentSubstituteMenusSingleRoleHandler_kqu7x4_ib2a extends SingleRoleCellProvider {
@@ -883,7 +884,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
   private EditorCell createConstant_29() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "child include same substitute menu twice");
     editorCell.setCellId("Constant_kqu7x4_kb2a");
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.Duplication_Parent"), "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.IncludeSameSubstituteMenuTwice"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_ksaurq.Duplication_Parent_6b78c3da, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.IncludeSameSubstituteMenuTwice"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -899,7 +900,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_9() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeSameSubstituteMenuTwiceSingleRoleHandler_kqu7x4_mb2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a82caeL, "childIncludeSameSubstituteMenuTwice"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeSameSubstituteMenuTwiceSingleRoleHandler_kqu7x4_mb2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a82caeL, "childIncludeSameSubstituteMenuTwice"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeSameSubstituteMenuTwiceSingleRoleHandler_kqu7x4_mb2a extends SingleRoleCellProvider {
@@ -969,7 +970,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
   private EditorCell createConstant_32() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "child include different substitute menus");
     editorCell.setCellId("Constant_kqu7x4_ob2a");
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.Duplication_Parent"), "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.IncludeDifferentSubstituteMenus"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_ksaurq.Duplication_Parent_6b78c3da, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.IncludeDifferentSubstituteMenus"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -985,7 +986,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     return editorCell;
   }
   private EditorCell createRefNode_10() {
-    SingleRoleCellProvider provider = new Duplication_Parent_EditorBuilder_a.childIncludeDifferentSubstituteMenusSingleRoleHandler_kqu7x4_qb2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb280bf85eL, "childIncludeDifferentSubstituteMenus"), getEditorContext());
+    SingleRoleCellProvider provider = new childIncludeDifferentSubstituteMenusSingleRoleHandler_kqu7x4_qb2a(myNode, MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb280bf85eL, "childIncludeDifferentSubstituteMenus"), getEditorContext());
     return provider.createCell();
   }
   private static class childIncludeDifferentSubstituteMenusSingleRoleHandler_kqu7x4_qb2a extends SingleRoleCellProvider {
@@ -1061,5 +1062,9 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_ContextAssistantComponent;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_ksaurq {
+    /*package*/ static final SConcept Duplication_Parent_6b78c3da = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.Duplication_Parent");
   }
 }

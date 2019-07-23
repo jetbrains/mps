@@ -26,7 +26,7 @@ public class CreatePort_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreatePort() throws Throwable {
-    new CreatePort_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

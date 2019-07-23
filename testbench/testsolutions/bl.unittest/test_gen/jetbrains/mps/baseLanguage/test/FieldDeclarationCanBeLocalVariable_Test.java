@@ -32,47 +32,47 @@ public class FieldDeclarationCanBeLocalVariable_Test extends BaseTransformationT
 
   @Test
   public void test_ErrorMessagesCheck4914675704512537909() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_ErrorMessagesCheck4914675704512537909();
+    new TestBody(this).test_ErrorMessagesCheck4914675704512537909();
   }
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck6923385624929133464() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624929133464();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624929133464();
   }
   @Test
   public void test_ErrorMessagesCheck4914675704512538465() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_ErrorMessagesCheck4914675704512538465();
+    new TestBody(this).test_ErrorMessagesCheck4914675704512538465();
   }
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck6923385624927428315() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624927428315();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624927428315();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305590976() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305590976();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305590976();
   }
   @Test
   public void test_ErrorMessagesCheck4914675704512541562() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_ErrorMessagesCheck4914675704512541562();
+    new TestBody(this).test_ErrorMessagesCheck4914675704512541562();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305591095() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305591095();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305591095();
   }
   @Test
   public void test_ErrorMessagesCheck4914675704512555962() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_ErrorMessagesCheck4914675704512555962();
+    new TestBody(this).test_ErrorMessagesCheck4914675704512555962();
   }
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck6923385624929216447() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624929216447();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624929216447();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305591300() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305591300();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305591300();
   }
   @Test
   public void test_ErrorMessagesCheck4914675704512587973() throws Throwable {
-    new FieldDeclarationCanBeLocalVariable_Test.TestBody(this).test_ErrorMessagesCheck4914675704512587973();
+    new TestBody(this).test_ErrorMessagesCheck4914675704512587973();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -40,6 +40,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class SubConceptToTransform_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -92,7 +93,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_kheyzx.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -119,7 +120,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new SubConceptToTransform_EditorBuilder_a.nestedListHandler_vnevkh_a1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new nestedListHandler_vnevkh_a1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_nested");
     Style style = new StyleImpl();
@@ -147,7 +148,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x702703eb1401f557L, 0x702703eb14027bc7L, "nested");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x702703eb14027bc6L, "jetbrains.mps.samples.attribute.structure.SubConceptToTransformNested");
+      return AUX_kheyzx.SubConceptToTransformNested_c69d421f;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -180,5 +181,10 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_kheyzx {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept SubConceptToTransformNested_c69d421f = MetaAdapterFactory.getConcept(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x702703eb14027bc6L, "jetbrains.mps.samples.attribute.structure.SubConceptToTransformNested");
   }
 }

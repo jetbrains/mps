@@ -21,7 +21,7 @@ public class EditorSpecifiedBy_add_remove_context_hints_Test extends BaseTransfo
 
   @Test
   public void test_EditorSpecifiedBy_add_remove_context_hints() throws Throwable {
-    new EditorSpecifiedBy_add_remove_context_hints_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

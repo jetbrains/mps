@@ -15,6 +15,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_MultiForEachStatement_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_MultiForEachStatement_NonTypesystemRule() {
@@ -32,12 +33,16 @@ public class check_MultiForEachStatement_NonTypesystemRule extends AbstractNonTy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachStatement");
+    return AUX_3c6oyl.MultiForEachStatement_66bcbb43;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_3c6oyl {
+    /*package*/ static final SConcept MultiForEachStatement_66bcbb43 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachStatement");
   }
 }

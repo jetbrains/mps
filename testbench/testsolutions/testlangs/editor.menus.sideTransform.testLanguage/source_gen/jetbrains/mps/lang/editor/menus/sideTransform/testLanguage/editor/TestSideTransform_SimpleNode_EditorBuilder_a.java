@@ -12,9 +12,9 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
@@ -28,6 +28,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TestSideTransform_SimpleNode_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -69,7 +70,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "custom cell");
     editorCell.setCellId("Constant_2dajvi_b0");
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb27L, "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.TestSideTransform_SimpleNode"), "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.TestSideTransform_SimpleNode_CustomActions"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_owo0s0.TestSideTransform_SimpleNode_15783b91, "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.TestSideTransform_SimpleNode_CustomActions"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -90,7 +91,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_owo0s0.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -110,5 +111,10 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     editorCell.setCellId("Constant_2dajvi_e0");
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_owo0s0 {
+    /*package*/ static final SConcept TestSideTransform_SimpleNode_15783b91 = MetaAdapterFactory.getConcept(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb27L, "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.TestSideTransform_SimpleNode");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

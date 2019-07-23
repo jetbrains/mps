@@ -24,7 +24,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import jetbrains.mps.smodel.IOperationContext;
@@ -43,6 +42,8 @@ import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -90,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a.ReadOnlyModelAccessor_generic_cellMenu_55ttgk_a0a0(), new ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a.ReadOnlyModelAccessor_generic_cellMenu_55ttgk_b0a0(), new ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a.ReadOnlyModelAccessor_customReplace_cellMenu_55ttgk_c0a0(), new ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a.ReadOnlyModelAccessor_customReplace_cellMenu_55ttgk_d0a0(), new ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a.ReadOnlyModelAccessor_component_cellMenu_55ttgk_e0a0(), new ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a.ReadOnlyModelAccessor_generic_cellMenu_55ttgk_f0a0(), new ReadOnlyModelAccessor_EditorCellModel_ComponentBuilder_a.ReplaceWith_Error_cellMenu_55ttgk_g0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReadOnlyModelAccessor_generic_cellMenu_55ttgk_a0a0(), new ReadOnlyModelAccessor_generic_cellMenu_55ttgk_b0a0(), new ReadOnlyModelAccessor_customReplace_cellMenu_55ttgk_c0a0(), new ReadOnlyModelAccessor_customReplace_cellMenu_55ttgk_d0a0(), new ReadOnlyModelAccessor_component_cellMenu_55ttgk_e0a0(), new ReadOnlyModelAccessor_generic_cellMenu_55ttgk_f0a0(), new ReplaceWith_Error_cellMenu_55ttgk_g0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     editorCell.setCellId("theId");
     Style style = new StyleImpl();
     style.set(StyleAttributes.EDITABLE, false);
@@ -100,7 +101,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
     }
     TestTargetActionMap.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new TestTargetKeymap());
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest"), "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_d0f5qj.AbstractCellTest_7af30824, "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
     return editorCell;
   }
   private boolean nodeCondition_55ttgk_a0a_0() {
@@ -265,11 +266,16 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
     public ReplaceWith_Error_cellMenu_55ttgk_g0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a5a543L, "jetbrains.mps.lang.editor.test.generation.structure.Error");
+      return AUX_d0f5qj.Error_7aa03d73;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
       return new EditorMenuDescriptorBase("replace node (custom node concept: " + "Error" + ")", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079334513"));
     }
+  }
+
+  private static final class AUX_d0f5qj {
+    /*package*/ static final SConcept AbstractCellTest_7af30824 = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest");
+    /*package*/ static final SConcept Error_7aa03d73 = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a5a543L, "jetbrains.mps.lang.editor.test.generation.structure.Error");
   }
 }

@@ -22,7 +22,7 @@ public class DeleteForVariable_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteForVariable() throws Throwable {
-    new DeleteForVariable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

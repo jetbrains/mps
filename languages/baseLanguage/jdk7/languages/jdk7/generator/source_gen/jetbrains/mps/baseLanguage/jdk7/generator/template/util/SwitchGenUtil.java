@@ -13,6 +13,7 @@ import java.util.Map;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SwitchGenUtil {
   public SwitchGenUtil() {
@@ -20,7 +21,7 @@ public class SwitchGenUtil {
   public static Iterable<SNode> getNodes(SNode node) {
     return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression"))).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"));
+        return SPropertyOperations.getString(SNodeOperations.cast(it, AUX_kgnf7j.StringLiteral_aa5a8cf6), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"));
       }
     }, true);
   }
@@ -34,9 +35,13 @@ public class SwitchGenUtil {
     m = MapSequence.fromMap(new HashMap<String, Integer>());
     int index = 0;
     for (SNode e : nodes) {
-      MapSequence.fromMap(m).put(SPropertyOperations.getString(SNodeOperations.cast(e, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value")), index++);
+      MapSequence.fromMap(m).put(SPropertyOperations.getString(SNodeOperations.cast(e, AUX_kgnf7j.StringLiteral_aa5a8cf6), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value")), index++);
     }
     genContext.putTransientObject("switch" + node.getNodeId().toString(), m);
     return m;
+  }
+
+  private static final class AUX_kgnf7j {
+    /*package*/ static final SConcept StringLiteral_aa5a8cf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
   }
 }

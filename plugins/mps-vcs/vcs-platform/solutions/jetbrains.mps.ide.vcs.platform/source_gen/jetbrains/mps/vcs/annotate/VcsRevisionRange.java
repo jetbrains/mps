@@ -17,13 +17,13 @@ import java.util.Date;
 
 public class VcsRevisionRange extends BaseGroup {
   private AnnotationColumn myColumn;
-  private VcsRevisionRange.HiglightAction myBeforeAction;
-  private VcsRevisionRange.HiglightAction myAfterAction;
+  private HiglightAction myBeforeAction;
+  private HiglightAction myAfterAction;
   public VcsRevisionRange(AnnotationColumn column) {
     super("Revision Range");
     myColumn = column;
-    myBeforeAction = new VcsRevisionRange.HiglightAction(true);
-    myAfterAction = new VcsRevisionRange.HiglightAction(false);
+    myBeforeAction = new HiglightAction(true);
+    myAfterAction = new HiglightAction(false);
     setPopup(false);
     add(myBeforeAction);
     add(myAfterAction);

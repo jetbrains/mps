@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -20,9 +19,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CellKeyMap_AbstractFunction__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b58b0fabL, "jetbrains.mps.lang.editor.structure.CellKeyMap_AbstractFunction");
+  private static final SAbstractConcept CONCEPT = AUX_qevxgd.CellKeyMap_AbstractFunction_ea90ac63;
 
   public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
 
@@ -32,10 +32,10 @@ public final class CellKeyMap_AbstractFunction__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee0bL, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee25L, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNodes"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext"));
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, AUX_qevxgd.ConceptFunction_e08795a5);
+    ListSequence.fromList(result).addElement(AUX_qevxgd.CellKeyMap_FunctionParm_selectedNode_587435bc);
+    ListSequence.fromList(result).addElement(AUX_qevxgd.CellKeyMap_FunctionParm_selectedNodes_5874388b);
+    ListSequence.fromList(result).addElement(AUX_qevxgd.ConceptFunctionParameter_editorContext_94336d9a);
     return result;
   }
 
@@ -83,5 +83,13 @@ public final class CellKeyMap_AbstractFunction__BehaviorDescriptor extends BaseB
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_qevxgd {
+    /*package*/ static final SConcept CellKeyMap_AbstractFunction_ea90ac63 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b58b0fabL, "jetbrains.mps.lang.editor.structure.CellKeyMap_AbstractFunction");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept CellKeyMap_FunctionParm_selectedNode_587435bc = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee0bL, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode");
+    /*package*/ static final SConcept CellKeyMap_FunctionParm_selectedNodes_5874388b = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee25L, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNodes");
+    /*package*/ static final SConcept ConceptFunctionParameter_editorContext_94336d9a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
   }
 }

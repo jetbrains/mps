@@ -25,7 +25,7 @@ public class FontFamilyDefaultIfUnknownTest_Test extends BaseTransformationTest 
 
   @Test
   public void test_FontFamilyDefaultIfUnknownTest() throws Throwable {
-    new FontFamilyDefaultIfUnknownTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

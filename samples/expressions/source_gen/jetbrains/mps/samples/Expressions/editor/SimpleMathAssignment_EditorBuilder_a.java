@@ -50,7 +50,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SimpleMathAssignment_EditorBuilder_a.variableSingleRoleHandler_lnecs2_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a30L, "variable"), getEditorContext());
+    SingleRoleCellProvider provider = new variableSingleRoleHandler_lnecs2_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a30L, "variable"), getEditorContext());
     return provider.createCell();
   }
   private static class variableSingleRoleHandler_lnecs2_a0 extends SingleRoleCellProvider {
@@ -111,7 +111,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SimpleMathAssignment_EditorBuilder_a.expressionSingleRoleHandler_lnecs2_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a32L, "expression"), getEditorContext());
+    SingleRoleCellProvider provider = new expressionSingleRoleHandler_lnecs2_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a32L, "expression"), getEditorContext());
     return provider.createCell();
   }
   private static class expressionSingleRoleHandler_lnecs2_c0 extends SingleRoleCellProvider {

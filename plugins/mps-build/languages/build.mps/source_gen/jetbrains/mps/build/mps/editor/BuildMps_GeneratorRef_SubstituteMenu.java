@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BuildMps_GeneratorRef_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new BuildMps_GeneratorRef_SubstituteMenu.SMP_ReferenceScope_1y4yql_a(), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorRef")));
-    result.add(new BuildMps_GeneratorRef_SubstituteMenu.SMP_Subconcepts_1y4yql_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_1y4yql_a(), AUX_1y4yql.BuildMps_GeneratorRef_4b0491f0));
+    result.add(new SMP_Subconcepts_1y4yql_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class BuildMps_GeneratorRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_1y4yql_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorRef"), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, 0x6d1df6c2700aeb82L, "generator"));
+      super((SAbstractConcept) AUX_1y4yql.BuildMps_GeneratorRef_4b0491f0, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, 0x6d1df6c2700aeb82L, "generator"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class BuildMps_GeneratorRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_1y4yql_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorRef"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_1y4yql.BuildMps_GeneratorRef_4b0491f0);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class BuildMps_GeneratorRef_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_1y4yql {
+    /*package*/ static final SConcept BuildMps_GeneratorRef_4b0491f0 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorRef");
   }
 }

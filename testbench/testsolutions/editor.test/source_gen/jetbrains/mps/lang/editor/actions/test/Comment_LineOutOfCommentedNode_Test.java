@@ -21,7 +21,7 @@ public class Comment_LineOutOfCommentedNode_Test extends BaseTransformationTest 
 
   @Test
   public void test_Comment_LineOutOfCommentedNode() throws Throwable {
-    new Comment_LineOutOfCommentedNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

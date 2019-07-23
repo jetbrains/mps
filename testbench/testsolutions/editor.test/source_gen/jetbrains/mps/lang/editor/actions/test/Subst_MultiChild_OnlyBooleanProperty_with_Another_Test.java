@@ -21,7 +21,7 @@ public class Subst_MultiChild_OnlyBooleanProperty_with_Another_Test extends Base
 
   @Test
   public void test_Subst_MultiChild_OnlyBooleanProperty_with_Another() throws Throwable {
-    new Subst_MultiChild_OnlyBooleanProperty_with_Another_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

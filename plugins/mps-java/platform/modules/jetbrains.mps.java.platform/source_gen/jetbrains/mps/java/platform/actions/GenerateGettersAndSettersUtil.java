@@ -11,6 +11,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class GenerateGettersAndSettersUtil {
   public GenerateGettersAndSettersUtil() {
@@ -31,7 +32,7 @@ public class GenerateGettersAndSettersUtil {
   }
   public static String getFieldGetterName(SNode fieldDeclaration, Project project) {
     String get = "get";
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(fieldDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(fieldDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), AUX_1wbi0p.BooleanType_6530abf6)) {
       get = "is";
     }
     return get + NameUtil.capitalize(getPreparedFieldName(fieldDeclaration, project));
@@ -65,5 +66,9 @@ public class GenerateGettersAndSettersUtil {
       return rawName;
     }
     return getPreparedName(rawName, codeStyleSettings.getFieldPrefix(), codeStyleSettings.getFieldSuffix());
+  }
+
+  private static final class AUX_1wbi0p {
+    /*package*/ static final SConcept BooleanType_6530abf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
   }
 }

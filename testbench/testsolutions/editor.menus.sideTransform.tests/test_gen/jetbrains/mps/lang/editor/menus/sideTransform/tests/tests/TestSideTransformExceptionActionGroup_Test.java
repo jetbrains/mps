@@ -25,7 +25,7 @@ public class TestSideTransformExceptionActionGroup_Test extends BaseTransformati
 
   @Test
   public void test_TestSideTransformExceptionActionGroup() throws Throwable {
-    new TestSideTransformExceptionActionGroup_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

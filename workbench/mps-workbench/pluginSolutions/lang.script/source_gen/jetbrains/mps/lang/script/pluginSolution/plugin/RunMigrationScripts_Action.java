@@ -28,6 +28,7 @@ import jetbrains.mps.ide.script.plugin.RunMigrationScriptsDialog;
 import java.awt.Component;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RunMigrationScripts_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -116,7 +117,7 @@ public class RunMigrationScripts_Action extends BaseAction {
           List<SNodeReference> checked = dialog.getCheckedScripts();
           AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select(new ISelector<SNodeReference, SNode>() {
             public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript"));
+              return SNodeOperations.cast(it.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), AUX_9mkpo8.MigrationScript_eaf59bfd);
             }
           }).toListSequence(), scope.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
         } else if (dialog.isOpenSelected()) {
@@ -134,5 +135,9 @@ public class RunMigrationScripts_Action extends BaseAction {
     res.append(((Object) this.global).toString());
     res.append("!");
     return res.toString();
+  }
+
+  private static final class AUX_9mkpo8 {
+    /*package*/ static final SConcept MigrationScript_eaf59bfd = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
   }
 }

@@ -37,6 +37,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -62,7 +63,7 @@ public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new add_dependencies_BwfTaskPart.TMP_Group_5stah4_a0());
+      result.add(new TMP_Group_5stah4_a0());
     }
     return result;
   }
@@ -86,12 +87,12 @@ public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new add_dependencies_BwfTaskPart.TMP_Group_5stah4_a0.TMP_Action_5stah4_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_5stah4_a0.TMP_Action_5stah4_a0a());
     }
     private class TMP_Action_5stah4_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        add_dependencies_BwfTaskPart.TMP_Group_5stah4_a0.TMP_Action_5stah4_a0a.Item item = new add_dependencies_BwfTaskPart.TMP_Group_5stah4_a0.TMP_Action_5stah4_a0a.Item(context);
+        TMP_Group_5stah4_a0.TMP_Action_5stah4_a0a.Item item = new TMP_Group_5stah4_a0.TMP_Action_5stah4_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -126,7 +127,7 @@ public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd37a1c2L, "additionalDependencies"))).addElement(SModelOperations.createNewNode(_context.getModel(), null, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, "jetbrains.mps.build.workflow.structure.BwfTaskDependency")));
+          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd37a1c2L, "additionalDependencies"))).addElement(SModelOperations.createNewNode(_context.getModel(), null, AUX_5stah4.BwfTaskDependency_e8eeaba9));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -149,5 +150,9 @@ public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_5stah4 {
+    /*package*/ static final SConcept BwfTaskDependency_e8eeaba9 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, "jetbrains.mps.build.workflow.structure.BwfTaskDependency");
   }
 }

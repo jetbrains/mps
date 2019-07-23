@@ -59,10 +59,10 @@ public class TestSideTransform_SimpleNode_TransformationMenu extends Transformat
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TestSideTransform_SimpleNode_TransformationMenu.TMP_Action_9pizaj_a0());
+      result.add(new TMP_Action_9pizaj_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TestSideTransform_SimpleNode_TransformationMenu.TMP_Action_9pizaj_a1());
+      result.add(new TMP_Action_9pizaj_a1());
     }
     return result;
   }
@@ -70,7 +70,7 @@ public class TestSideTransform_SimpleNode_TransformationMenu extends Transformat
   private class TMP_Action_9pizaj_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestSideTransform_SimpleNode_TransformationMenu.TMP_Action_9pizaj_a0.Item item = new TestSideTransform_SimpleNode_TransformationMenu.TMP_Action_9pizaj_a0.Item(context);
+      TMP_Action_9pizaj_a0.Item item = new TMP_Action_9pizaj_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -131,7 +131,7 @@ public class TestSideTransform_SimpleNode_TransformationMenu extends Transformat
   private class TMP_Action_9pizaj_a1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestSideTransform_SimpleNode_TransformationMenu.TMP_Action_9pizaj_a1.Item item = new TestSideTransform_SimpleNode_TransformationMenu.TMP_Action_9pizaj_a1.Item(context);
+      TMP_Action_9pizaj_a1.Item item = new TMP_Action_9pizaj_a1.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

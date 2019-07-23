@@ -15,6 +15,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConceptSwitch_NonTypesystemRule() {
@@ -26,7 +27,7 @@ public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystem
     }
     SNode argType = TypecheckingFacade.getFromContext().getTypeOf(arg);
 
-    if (!((SNodeOperations.isInstanceOf(argType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType"))))) {
+    if (!((SNodeOperations.isInstanceOf(argType, AUX_dwt77g.SConceptType_7fe2a457)))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Argument of concept switch should be of type concept<>", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5944356402132966789", null, errorTarget);
@@ -34,12 +35,17 @@ public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystem
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
+    return AUX_dwt77g.ConceptSwitchStatement_81b215c7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_dwt77g {
+    /*package*/ static final SConcept SConceptType_7fe2a457 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
+    /*package*/ static final SConcept ConceptSwitchStatement_81b215c7 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
   }
 }

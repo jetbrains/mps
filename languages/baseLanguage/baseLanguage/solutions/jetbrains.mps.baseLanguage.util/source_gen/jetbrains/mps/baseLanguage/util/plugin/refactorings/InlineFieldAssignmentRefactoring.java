@@ -6,6 +6,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class InlineFieldAssignmentRefactoring extends InlineFieldRefactoring {
   private SNode myVariable;
@@ -23,10 +24,14 @@ public class InlineFieldAssignmentRefactoring extends InlineFieldRefactoring {
     }
     for (SNode reference : this.findAllReferenceOperations(this.myVariable)) {
       SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(this.myVariable, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
-      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(reference, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), false, false), expr);
+      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(reference, AUX_vcmd1l.DotExpression_97ed08d8, false, false), expr);
       InlinePrecedenceUtil.parenthesiseIfNecessary(expr);
     }
     this.optimizeDeclaration(this.myVariable);
     return null;
+  }
+
+  private static final class AUX_vcmd1l {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 }

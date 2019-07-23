@@ -84,7 +84,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new RunConfigurationProducerPart_EditorBuilder_a.sourceSingleRoleHandler_cuaozy_c0a(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x6552f0adf298f24fL, "source"), getEditorContext());
+    SingleRoleCellProvider provider = new sourceSingleRoleHandler_cuaozy_c0a(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x6552f0adf298f24fL, "source"), getEditorContext());
     return provider.createCell();
   }
   private static class sourceSingleRoleHandler_cuaozy_c0a extends SingleRoleCellProvider {
@@ -150,7 +150,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new RunConfigurationProducerPart_EditorBuilder_a.createSingleRoleHandler_cuaozy_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x328e81d9f2097e86L, "create"), getEditorContext());
+    SingleRoleCellProvider provider = new createSingleRoleHandler_cuaozy_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x328e81d9f2097e86L, "create"), getEditorContext());
     return provider.createCell();
   }
   private static class createSingleRoleHandler_cuaozy_b1a extends SingleRoleCellProvider {
@@ -222,7 +222,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new RunConfigurationProducerPart_EditorBuilder_a.isConfigurationFromContextSingleRoleHandler_cuaozy_b3a(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x567cd4252ad2e9d7L, "isConfigurationFromContext"), getEditorContext());
+    SingleRoleCellProvider provider = new isConfigurationFromContextSingleRoleHandler_cuaozy_b3a(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x567cd4252ad2e9d7L, "isConfigurationFromContext"), getEditorContext());
     return provider.createCell();
   }
   private static class isConfigurationFromContextSingleRoleHandler_cuaozy_b3a extends SingleRoleCellProvider {

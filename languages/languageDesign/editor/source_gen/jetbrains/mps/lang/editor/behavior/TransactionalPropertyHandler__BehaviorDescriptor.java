@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,9 +21,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TransactionalPropertyHandler__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f5eefdL, "jetbrains.mps.lang.editor.structure.TransactionalPropertyHandler");
+  private static final SAbstractConcept CONCEPT = AUX_65jcja.TransactionalPropertyHandler_e6ebdb55;
 
   public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
   public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
@@ -35,11 +35,11 @@ public final class TransactionalPropertyHandler__BehaviorDescriptor extends Base
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10a195cc7c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f6e2acL, "jetbrains.mps.lang.editor.structure.TransactionPropertyHandler_oldValue"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f75b6dL, "jetbrains.mps.lang.editor.structure.TransactionPropertyHandler_newValue"));
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, AUX_65jcja.ConceptFunction_e08795a5);
+    ListSequence.fromList(result).addElement(AUX_65jcja.ConceptFunctionParameter_editorContext_94336d9a);
+    ListSequence.fromList(result).addElement(AUX_65jcja.ConceptFunctionParameter_node_c804e037);
+    ListSequence.fromList(result).addElement(AUX_65jcja.TransactionPropertyHandler_oldValue_e8699c61);
+    ListSequence.fromList(result).addElement(AUX_65jcja.TransactionPropertyHandler_newValue_e89453a4);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -98,5 +98,14 @@ public final class TransactionalPropertyHandler__BehaviorDescriptor extends Base
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_65jcja {
+    /*package*/ static final SConcept TransactionalPropertyHandler_e6ebdb55 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f5eefdL, "jetbrains.mps.lang.editor.structure.TransactionalPropertyHandler");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_editorContext_94336d9a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
+    /*package*/ static final SConcept ConceptFunctionParameter_node_c804e037 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10a195cc7c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node");
+    /*package*/ static final SConcept TransactionPropertyHandler_oldValue_e8699c61 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f6e2acL, "jetbrains.mps.lang.editor.structure.TransactionPropertyHandler_oldValue");
+    /*package*/ static final SConcept TransactionPropertyHandler_newValue_e89453a4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f75b6dL, "jetbrains.mps.lang.editor.structure.TransactionPropertyHandler_newValue");
   }
 }

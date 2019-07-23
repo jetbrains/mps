@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.findUsages;
 
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -14,11 +13,13 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ImplementedInterfaces_Finder extends GeneratedFinder {
   public ImplementedInterfaces_Finder() {
@@ -33,7 +34,7 @@ public class ImplementedInterfaces_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    return AUX_8ekbd0.ClassConcept_e2711824;
   }
 
   @Override
@@ -41,17 +42,17 @@ public class ImplementedInterfaces_Finder extends GeneratedFinder {
     try {
       monitor.start("", 2);
       List<SNode> result = new ArrayList<SNode>();
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"))) {
-        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier"));
-        if (SNodeOperations.isInstanceOf(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
-          ListSequence.fromList(result).addElement(SNodeOperations.cast(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")));
-          ListSequence.fromList(result).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", SNodeOperations.cast(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")), scope, new EmptyProgressMonitor())));
+      if (SNodeOperations.isInstanceOf(node, AUX_8ekbd0.AnonymousClass_e4a73f97)) {
+        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(node, AUX_8ekbd0.AnonymousClass_e4a73f97), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier"));
+        if (SNodeOperations.isInstanceOf(classifier, AUX_8ekbd0.Interface_bca2069)) {
+          ListSequence.fromList(result).addElement(SNodeOperations.cast(classifier, AUX_8ekbd0.Interface_bca2069));
+          ListSequence.fromList(result).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", SNodeOperations.cast(classifier, AUX_8ekbd0.Interface_bca2069), scope, new EmptyProgressMonitor())));
         }
       } else {
         List<SNode> classNodes = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.ClassAncestors_Finder", node, scope, monitor.subTask(1));
         ListSequence.fromList(classNodes).addElement(node);
         for (SNode classNode : ListSequence.fromList(classNodes)) {
-          for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface")))) {
+          for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classNode, AUX_8ekbd0.ClassConcept_e2711824), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface")))) {
             SNode interfaceNode = (SNode) SLinkOperations.getTarget(implementedInterface, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
             if ((interfaceNode != null)) {
               ListSequence.fromList(result).addElement(interfaceNode);
@@ -78,5 +79,11 @@ public class ImplementedInterfaces_Finder extends GeneratedFinder {
   @Override
   public SNodeReference getDeclarationNode() {
     return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1216392046439");
+  }
+
+  private static final class AUX_8ekbd0 {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass_e4a73f97 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

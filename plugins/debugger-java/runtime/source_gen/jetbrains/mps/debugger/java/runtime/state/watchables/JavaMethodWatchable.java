@@ -19,12 +19,12 @@ import java.util.Collections;
 /*package*/ class JavaMethodWatchable extends JavaWatchable {
   private final Method myMethod;
   private final boolean myIsEnter;
-  private final JavaMethodWatchable.JavaMethodValue myValue;
+  private final JavaMethodValue myValue;
   public JavaMethodWatchable(Method method, boolean enter, ThreadReference threadReference) {
     super(threadReference);
     myMethod = method;
     myIsEnter = enter;
-    myValue = new JavaMethodWatchable.JavaMethodValue();
+    myValue = new JavaMethodValue();
   }
   @Override
   public String getName() {

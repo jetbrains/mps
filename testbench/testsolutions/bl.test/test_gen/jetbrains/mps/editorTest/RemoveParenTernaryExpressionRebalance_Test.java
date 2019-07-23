@@ -21,7 +21,7 @@ public class RemoveParenTernaryExpressionRebalance_Test extends BaseTransformati
 
   @Test
   public void test_RemoveParenTernaryExpressionRebalance() throws Throwable {
-    new RemoveParenTernaryExpressionRebalance_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

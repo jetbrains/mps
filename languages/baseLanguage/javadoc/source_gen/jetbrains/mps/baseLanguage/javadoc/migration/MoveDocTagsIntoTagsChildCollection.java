@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -22,9 +21,11 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
   public String getCaption() {
@@ -42,7 +43,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     Iterable<SModel> models = m.getModels();
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment"));
+        return SModelOperations.nodes(model, AUX_i7tkk0.ClassifierDocComment_18e1a1e);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -51,7 +52,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     });
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment"));
+        return SModelOperations.nodes(model, AUX_i7tkk0.MethodDocComment_a2b8d4a1);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -60,7 +61,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     });
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment"));
+        return SModelOperations.nodes(model, AUX_i7tkk0.FieldDocComment_200d971a);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -69,7 +70,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     });
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"));
+        return SModelOperations.nodes(model, AUX_i7tkk0.BaseDocComment_a28e0b95);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -88,7 +89,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.ClassifierDocComment_18e1a1e, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param"))).isNotEmpty();
         }
@@ -97,7 +98,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.MethodDocComment_a2b8d4a1, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param"))).isNotEmpty();
         }
@@ -106,7 +107,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.MethodDocComment_a2b8d4a1, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag"))).isNotEmpty();
         }
@@ -115,7 +116,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.MethodDocComment_a2b8d4a1, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return")) != null);
         }
@@ -124,7 +125,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.BaseDocComment_a28e0b95, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated")) != null);
         }
@@ -133,7 +134,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.BaseDocComment_a28e0b95, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author"))).isNotEmpty();
         }
@@ -142,7 +143,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.BaseDocComment_a28e0b95, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since"))).isNotEmpty();
         }
@@ -151,7 +152,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.BaseDocComment_a28e0b95, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version"))).isNotEmpty();
         }
@@ -160,7 +161,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
           return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version"));
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_i7tkk0.BaseDocComment_a28e0b95, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see"))).isNotEmpty();
         }
@@ -176,4 +177,10 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"), 1);
   }
 
+  private static final class AUX_i7tkk0 {
+    /*package*/ static final SConcept ClassifierDocComment_18e1a1e = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
+    /*package*/ static final SConcept MethodDocComment_a2b8d4a1 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
+    /*package*/ static final SConcept FieldDocComment_200d971a = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
+    /*package*/ static final SConcept BaseDocComment_a28e0b95 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+  }
 }

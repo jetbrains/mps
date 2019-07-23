@@ -10,11 +10,12 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_BuildMps_TipsMps_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BuildMps_TipsMps_NonTypesystemRule() {
@@ -22,7 +23,7 @@ public class check_BuildMps_TipsMps_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode buildMps_TipsMps, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (ListSequence.fromList(SNodeOperations.getAllSiblings(buildMps_TipsMps, false)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a2289999L, "jetbrains.mps.build.mps.structure.BuildMps_TipsMps"));
+        return SNodeOperations.isInstanceOf(it, AUX_pjg8fm.BuildMps_TipsMps_c727c095);
       }
     })) {
       {
@@ -32,12 +33,16 @@ public class check_BuildMps_TipsMps_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a2289999L, "jetbrains.mps.build.mps.structure.BuildMps_TipsMps");
+    return AUX_pjg8fm.BuildMps_TipsMps_c727c095;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_pjg8fm {
+    /*package*/ static final SConcept BuildMps_TipsMps_c727c095 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a2289999L, "jetbrains.mps.build.mps.structure.BuildMps_TipsMps");
   }
 }

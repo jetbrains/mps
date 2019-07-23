@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -19,9 +18,11 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class StrikeOutStyleSheet__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd786e1a9L, "jetbrains.mps.lang.editor.structure.StrikeOutStyleSheet");
+  private static final SAbstractConcept CONCEPT = AUX_n0dcrp.StrikeOutStyleSheet_b1afe90a;
 
   public static final SMethod<Boolean> useQuery_idhNn$rq2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useQuery").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hNn$rq2").build();
   public static final SMethod<StyleAttribute<Boolean>> getStyleAttribute_id3a0zHG4tjdX = new SMethodBuilder<StyleAttribute<Boolean>>(new SJavaCompoundTypeImpl(StyleAttribute.class)).name("getStyleAttribute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3a0zHG4tjdX").build();
@@ -84,5 +85,9 @@ public final class StrikeOutStyleSheet__BehaviorDescriptor extends BaseBHDescrip
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_n0dcrp {
+    /*package*/ static final SConcept StrikeOutStyleSheet_b1afe90a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd786e1a9L, "jetbrains.mps.lang.editor.structure.StrikeOutStyleSheet");
   }
 }

@@ -21,7 +21,7 @@ public class Subst_SingleChildDefaultConcreteDefEditor_AddNewChildByEnter_Test e
 
   @Test
   public void test_Subst_SingleChildDefaultConcreteDefEditor_AddNewChildByEnter() throws Throwable {
-    new Subst_SingleChildDefaultConcreteDefEditor_AddNewChildByEnter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

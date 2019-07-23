@@ -21,7 +21,7 @@ public class MoveMethodToAnonymousClass_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveMethodToAnonymousClass() throws Throwable {
-    new MoveMethodToAnonymousClass_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -23,8 +23,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class InstanceMethodCallOperation_ApplySideTransforms extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -50,8 +52,8 @@ public class InstanceMethodCallOperation_ApplySideTransforms extends Transformat
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new InstanceMethodCallOperation_ApplySideTransforms.TMP_Include_tpjbc0_a0());
-      result.add(new InstanceMethodCallOperation_ApplySideTransforms.TMP_Include_tpjbc0_b0());
+      result.add(new TMP_Include_tpjbc0_a0());
+      result.add(new TMP_Include_tpjbc0_b0());
     }
     return result;
   }
@@ -75,7 +77,7 @@ public class InstanceMethodCallOperation_ApplySideTransforms extends Transformat
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_tpjbc0.InstanceMethodCallOperation_cd28f5b6);
     }
 
   }
@@ -98,8 +100,13 @@ public class InstanceMethodCallOperation_ApplySideTransforms extends Transformat
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"), "jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_tpjbc0.IMethodCall_ee2c776b, "jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument");
     }
 
+  }
+
+  private static final class AUX_tpjbc0 {
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

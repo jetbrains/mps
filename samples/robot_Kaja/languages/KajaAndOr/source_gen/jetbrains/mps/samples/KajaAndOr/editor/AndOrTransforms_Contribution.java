@@ -17,7 +17,6 @@ import jetbrains.mps.lang.editor.menus.MenuPart;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.annotations.Nullable;
@@ -32,6 +31,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -71,7 +71,7 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new AndOrTransforms_Contribution.TMP_Param_ry9dqf_a0(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression")));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_ry9dqf_a0(), AUX_ry9dqf.LogicalExpression_64fb6940));
     }
     return result;
   }
@@ -81,13 +81,13 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-      return new AndOrTransforms_Contribution.TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a(parameter).createItems(context);
+      return new TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a(parameter).createItems(context);
     }
 
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator"), _context.getModel())).where(new IWhereFilter<SConcept>() {
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_ry9dqf.LogicalOperator_689b9df9, _context.getModel())).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return !(it.isAbstract());
         }
@@ -112,7 +112,7 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        AndOrTransforms_Contribution.TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a.Item item = new AndOrTransforms_Contribution.TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a.Item(context);
+        TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a.Item item = new TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -157,7 +157,7 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
+          return AUX_ry9dqf.LogicalExpression_64fb6940;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -172,7 +172,7 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
+          SAbstractConcept outputConcept = AUX_ry9dqf.LogicalExpression_64fb6940;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -181,5 +181,10 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_ry9dqf {
+    /*package*/ static final SConcept LogicalExpression_64fb6940 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
+    /*package*/ static final SConcept LogicalOperator_689b9df9 = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator");
   }
 }

@@ -10,17 +10,18 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_NotesConfiguration_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_NotesConfiguration_NonTypesystemRule() {
   }
   public void applyRule(final SNode notesConfiguration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(notesConfiguration), MetaAdapterFactory.getConcept(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1745L, "jetbrains.mps.samples.notesOrganizer.structure.NotesConfiguration"))).count() > 1) {
+    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(notesConfiguration), AUX_1fvqnz.NotesConfiguration_8c48f8b4)).count() > 1) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(notesConfiguration, "Only one notes configuration is allowed in a model", "r:06486389-aaa0-4ecf-844a-5856289c120b(jetbrains.mps.samples.notesOrganizer.typesystem)", "8908453262579960025", null, errorTarget);
@@ -28,12 +29,16 @@ public class check_NotesConfiguration_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1745L, "jetbrains.mps.samples.notesOrganizer.structure.NotesConfiguration");
+    return AUX_1fvqnz.NotesConfiguration_8c48f8b4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_1fvqnz {
+    /*package*/ static final SConcept NotesConfiguration_8c48f8b4 = MetaAdapterFactory.getConcept(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1745L, "jetbrains.mps.samples.notesOrganizer.structure.NotesConfiguration");
   }
 }

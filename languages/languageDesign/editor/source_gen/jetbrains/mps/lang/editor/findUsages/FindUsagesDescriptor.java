@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.smodel.runtime.FinderRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
@@ -27,6 +28,10 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
 
   @Override
   public void init(FinderRegistry reg) {
-    reg.add(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default"), 0, "DefaultMenuReferences");
+    reg.add(AUX_o9tm2l.TransformationMenu_Default_bfde92b, 0, "DefaultMenuReferences");
+  }
+
+  private static final class AUX_o9tm2l {
+    /*package*/ static final SConcept TransformationMenu_Default_bfde92b = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
   }
 }

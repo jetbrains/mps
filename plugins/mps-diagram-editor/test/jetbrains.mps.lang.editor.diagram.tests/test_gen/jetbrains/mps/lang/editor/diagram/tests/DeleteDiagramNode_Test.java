@@ -23,7 +23,7 @@ public class DeleteDiagramNode_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteDiagramNode() throws Throwable {
-    new DeleteDiagramNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class LT_PlusExpressionWithCaretOnPlus_Test extends BaseTransformationTes
 
   @Test
   public void test_LT_PlusExpressionWithCaretOnPlus() throws Throwable {
-    new LT_PlusExpressionWithCaretOnPlus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -25,7 +25,7 @@ public class TestSubstituteExceptionActionMatchingText_Test extends BaseTransfor
 
   @Test
   public void test_TestSubstituteExceptionActionMatchingText() throws Throwable {
-    new TestSubstituteExceptionActionMatchingText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

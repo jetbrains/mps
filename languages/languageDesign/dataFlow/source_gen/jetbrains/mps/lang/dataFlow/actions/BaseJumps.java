@@ -6,19 +6,24 @@ import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BaseJumps {
   public static class NodeFactory_2557916264116455381 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode jump = sampleNode;
-        if (SNodeOperations.isInstanceOf(jump, MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement"))) {
+        if (SNodeOperations.isInstanceOf(jump, AUX_1e2f2i.BaseEmitJumpStatement_1c3d8c94)) {
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, 0x118e5bcba84L, "jumpTo"), SLinkOperations.getTarget(jump, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, 0x118e5bcba84L, "jumpTo")));
           SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position"), SLinkOperations.getTarget(jump, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position")));
         }
       }
     }
+  }
+
+  private static final class AUX_1e2f2i {
+    /*package*/ static final SConcept BaseEmitJumpStatement_1c3d8c94 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
   }
 }

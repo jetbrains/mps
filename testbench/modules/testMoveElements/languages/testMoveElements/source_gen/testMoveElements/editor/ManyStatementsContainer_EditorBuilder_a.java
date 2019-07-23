@@ -101,7 +101,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ManyStatementsContainer_EditorBuilder_a.firstSingleRoleHandler_grwik7_c2a(myNode, MetaAdapterFactory.getContainmentLink(0xe228eea107ef499cL, 0x88269c47a7e369dbL, 0x2f0103435011b1f2L, 0x2f0103435011b1f3L, "first"), getEditorContext());
+    SingleRoleCellProvider provider = new firstSingleRoleHandler_grwik7_c2a(myNode, MetaAdapterFactory.getContainmentLink(0xe228eea107ef499cL, 0x88269c47a7e369dbL, 0x2f0103435011b1f2L, 0x2f0103435011b1f3L, "first"), getEditorContext());
     return provider.createCell();
   }
   private static class firstSingleRoleHandler_grwik7_c2a extends SingleRoleCellProvider {
@@ -185,7 +185,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ManyStatementsContainer_EditorBuilder_a.secondSingleRoleHandler_grwik7_g2a(myNode, MetaAdapterFactory.getContainmentLink(0xe228eea107ef499cL, 0x88269c47a7e369dbL, 0x2f0103435011b1f2L, 0x2f0103435011b1f9L, "second"), getEditorContext());
+    SingleRoleCellProvider provider = new secondSingleRoleHandler_grwik7_g2a(myNode, MetaAdapterFactory.getContainmentLink(0xe228eea107ef499cL, 0x88269c47a7e369dbL, 0x2f0103435011b1f2L, 0x2f0103435011b1f9L, "second"), getEditorContext());
     return provider.createCell();
   }
   private static class secondSingleRoleHandler_grwik7_g2a extends SingleRoleCellProvider {

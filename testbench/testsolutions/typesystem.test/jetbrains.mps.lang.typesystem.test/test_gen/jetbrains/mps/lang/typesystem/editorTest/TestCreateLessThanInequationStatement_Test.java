@@ -21,7 +21,7 @@ public class TestCreateLessThanInequationStatement_Test extends BaseTransformati
 
   @Test
   public void test_TestCreateLessThanInequationStatement() throws Throwable {
-    new TestCreateLessThanInequationStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

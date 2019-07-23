@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_DefaultGeneratorParameter_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_DefaultGeneratorParameter_InferenceRule() {
@@ -27,7 +28,7 @@ public class typeof_DefaultGeneratorParameter_InferenceRule extends AbstractInfe
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab4L, "jetbrains.mps.lang.generator.generationParameters.structure.DefaultGeneratorParameter");
+    return AUX_b7w76n.DefaultGeneratorParameter_e8186bc3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,5 +50,9 @@ public class typeof_DefaultGeneratorParameter_InferenceRule extends AbstractInfe
     quotedNode_4 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"), null, null, false);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"), quotedNode_4);
     return quotedNode_1;
+  }
+
+  private static final class AUX_b7w76n {
+    /*package*/ static final SConcept DefaultGeneratorParameter_e8186bc3 = MetaAdapterFactory.getConcept(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab4L, "jetbrains.mps.lang.generator.generationParameters.structure.DefaultGeneratorParameter");
   }
 }

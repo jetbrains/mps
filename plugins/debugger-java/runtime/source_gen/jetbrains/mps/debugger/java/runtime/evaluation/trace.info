@@ -600,12 +600,12 @@
       <node id="671562190169411611" at="192,50,193,83" concept="11" />
       <node id="671562190169411621" at="194,30,195,36" concept="5" />
       <node id="671562190169411626" at="196,5,197,23" concept="12" />
-      <node id="671562190169411633" at="200,66,201,107" concept="11" />
+      <node id="671562190169411633" at="200,47,201,69" concept="11" />
       <node id="671562190169411643" at="202,37,203,41" concept="5" />
       <node id="671562190169411648" at="204,5,205,21" concept="12" />
-      <node id="671562190169411661" at="209,71,210,33" concept="5" />
-      <node id="671562190169411677" at="215,71,216,35" concept="5" />
-      <node id="671562190169411693" at="221,71,222,35" concept="5" />
+      <node id="671562190169411661" at="209,52,210,33" concept="5" />
+      <node id="671562190169411677" at="215,52,216,35" concept="5" />
+      <node id="671562190169411693" at="221,52,222,35" concept="5" />
       <node id="671562190169411708" at="227,37,228,37" concept="5" />
       <node id="671562190169411723" at="233,37,234,40" concept="5" />
       <node id="671562190169411203" at="238,0,239,0" concept="10" trace="watchAdded#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
@@ -622,12 +622,12 @@
       <node id="6401692984888993550" at="177,158,180,5" concept="9" />
       <node id="6401692984888995978" at="185,194,188,5" concept="9" />
       <node id="671562190169411618" at="193,83,196,5" concept="16" />
-      <node id="671562190169411640" at="201,107,204,5" concept="16" />
+      <node id="671562190169411640" at="201,69,204,5" concept="16" />
       <node id="671562190169411656" at="208,59,211,5" concept="8" />
       <node id="671562190169411672" at="214,61,217,5" concept="8" />
       <node id="671562190169411688" at="220,61,223,5" concept="8" />
-      <node id="671562190169411705" at="226,85,229,5" concept="16" />
-      <node id="671562190169411720" at="232,88,235,5" concept="16" />
+      <node id="671562190169411705" at="226,66,229,5" concept="16" />
+      <node id="671562190169411720" at="232,69,235,5" concept="16" />
       <node id="671562190169411228" at="245,0,248,0" concept="10" trace="watchAdded#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="671562190169411235" at="248,0,251,0" concept="10" trace="watchUpdated#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="671562190169411242" at="251,0,254,0" concept="10" trace="watchRemoved#(Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
@@ -693,9 +693,9 @@
       <scope id="6401692984888995979" at="186,39,187,18" />
       <scope id="671562190169411620" at="194,30,195,36" />
       <scope id="671562190169411642" at="202,37,203,41" />
-      <scope id="671562190169411660" at="209,71,210,33" />
-      <scope id="671562190169411676" at="215,71,216,35" />
-      <scope id="671562190169411692" at="221,71,222,35" />
+      <scope id="671562190169411660" at="209,52,210,33" />
+      <scope id="671562190169411676" at="215,52,216,35" />
+      <scope id="671562190169411692" at="221,52,222,35" />
       <scope id="671562190169411707" at="227,37,228,37" />
       <scope id="671562190169411722" at="233,37,234,40" />
       <scope id="671562190169411203" at="238,0,239,0">
@@ -730,8 +730,8 @@
       <scope id="671562190169411688" at="220,61,223,5">
         <var name="listener" id="671562190169411690" />
       </scope>
-      <scope id="671562190169411704" at="226,85,229,5" />
-      <scope id="671562190169411719" at="232,88,235,5" />
+      <scope id="671562190169411704" at="226,66,229,5" />
+      <scope id="671562190169411719" at="232,69,235,5" />
       <scope id="671562190169411228" at="245,0,248,0">
         <var name="model" id="671562190169411231" />
       </scope>
@@ -764,7 +764,7 @@
       <scope id="671562190169411610" at="192,50,197,23">
         <var name="watchesCopy" id="671562190169411612" />
       </scope>
-      <scope id="671562190169411632" at="200,66,205,21">
+      <scope id="671562190169411632" at="200,47,205,21">
         <var name="listeners" id="671562190169411634" />
       </scope>
       <scope id="671562190169411650" at="208,0,213,0">

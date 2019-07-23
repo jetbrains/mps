@@ -35,6 +35,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class IncompleteCommand_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -65,7 +66,7 @@ import jetbrains.mps.smodel.SNodePointer;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IncompleteCommand_EditorBuilder_a.lineStyleSingleRoleHandler_ehgky7_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle"), getEditorContext());
+    SingleRoleCellProvider provider = new lineStyleSingleRoleHandler_ehgky7_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle"), getEditorContext());
     return provider.createCell();
   }
   private static class lineStyleSingleRoleHandler_ehgky7_a0 extends SingleRoleCellProvider {
@@ -130,14 +131,14 @@ import jetbrains.mps.smodel.SNodePointer;
       editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);
     }
     editorCell.setDefaultText("<draw command>");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IncompleteCommand_EditorBuilder_a.ReplaceWith_DrawLine_cellMenu_ehgky7_a0b0(), new IncompleteCommand_EditorBuilder_a.ReplaceWith_DrawRect_cellMenu_ehgky7_b0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_DrawLine_cellMenu_ehgky7_a0b0(), new ReplaceWith_DrawRect_cellMenu_ehgky7_b0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_DrawLine_cellMenu_ehgky7_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_DrawLine_cellMenu_ehgky7_a0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawLine");
+      return AUX_jic1wv.DrawLine_5dc1989a;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -148,11 +149,16 @@ import jetbrains.mps.smodel.SNodePointer;
     public ReplaceWith_DrawRect_cellMenu_ehgky7_b0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawRect");
+      return AUX_jic1wv.DrawRect_64cf2e19;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
       return new EditorMenuDescriptorBase("replace node (custom node concept: " + "DrawRect" + ")", new SNodePointer("r:22f33598-07c7-4dfb-8f90-72f788e27c1b(jetbrains.mps.samples.languagePatterns.Basic.editor)", "9010003464977160626"));
     }
+  }
+
+  private static final class AUX_jic1wv {
+    /*package*/ static final SConcept DrawLine_5dc1989a = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawLine");
+    /*package*/ static final SConcept DrawRect_64cf2e19 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DrawRect");
   }
 }

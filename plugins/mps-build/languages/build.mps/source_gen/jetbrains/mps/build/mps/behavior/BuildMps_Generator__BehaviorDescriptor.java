@@ -4,7 +4,6 @@ package jetbrains.mps.build.mps.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,12 +15,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
+  private static final SAbstractConcept CONCEPT = AUX_5s2aob.BuildMps_Generator_bcabe904;
 
   public static final SMethod<SNode> getSourceLanguage_id7YI57w6ZMdZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSourceLanguage").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7YI57w6ZMdZ").build();
 
@@ -31,7 +32,7 @@ public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getSourceLanguage_id7YI57w6ZMdZ(@NotNull SNode __thisNode__) {
-    return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language")) ? SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language")) : SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage")));
+    return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), AUX_5s2aob.BuildMps_Language_41959b14) ? SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AUX_5s2aob.BuildMps_Language_41959b14) : SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage")));
   }
 
   /*package*/ BuildMps_Generator__BehaviorDescriptor() {
@@ -78,5 +79,10 @@ public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_5s2aob {
+    /*package*/ static final SConcept BuildMps_Generator_bcabe904 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
+    /*package*/ static final SConcept BuildMps_Language_41959b14 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
   }
 }

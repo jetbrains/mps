@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.collections.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class LinkedHashMapCreator__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c2ad6432L, "jetbrains.mps.baseLanguage.collections.structure.LinkedHashMapCreator");
+  private static final SAbstractConcept CONCEPT = AUX_hfqw18.LinkedHashMapCreator_94bb6a94;
 
   public static final SMethod<Boolean> hasInitSize_id1653mnvAgqc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgqc").build();
 
@@ -76,5 +77,9 @@ public final class LinkedHashMapCreator__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_hfqw18 {
+    /*package*/ static final SConcept LinkedHashMapCreator_94bb6a94 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c2ad6432L, "jetbrains.mps.baseLanguage.collections.structure.LinkedHashMapCreator");
   }
 }

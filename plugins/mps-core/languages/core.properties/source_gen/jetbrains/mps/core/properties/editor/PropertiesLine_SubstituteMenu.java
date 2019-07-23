@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
@@ -22,21 +21,23 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new PropertiesLine_SubstituteMenu.SMP_Action_amdhzc_a(), MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, "jetbrains.mps.core.properties.structure.PropertiesDeclaration")));
-    result.add(new PropertiesLine_SubstituteMenu.SMP_Subconcepts_amdhzc_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac2L, "jetbrains.mps.core.properties.structure.PropertiesLine")) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_amdhzc_a(), AUX_amdhzc.PropertiesDeclaration_ead02743));
+    result.add(new SMP_Subconcepts_amdhzc_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_amdhzc.PropertiesLine_ead02744) {
 
       @NotNull
       @Override
@@ -49,7 +50,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac2L, "jetbrains.mps.core.properties.structure.PropertiesLine")));
+    }, AUX_amdhzc.PropertiesLine_ead02744));
     return result;
   }
 
@@ -71,7 +72,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      PropertiesLine_SubstituteMenu.SMP_Action_amdhzc_a.Item item = new PropertiesLine_SubstituteMenu.SMP_Action_amdhzc_a.Item(_context);
+      SMP_Action_amdhzc_a.Item item = new SMP_Action_amdhzc_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -94,7 +95,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, "jetbrains.mps.core.properties.structure.PropertiesDeclaration"), context);
+        super(AUX_amdhzc.PropertiesDeclaration_ead02743, context);
         _context = context;
       }
 
@@ -105,7 +106,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode pd = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, "jetbrains.mps.core.properties.structure.PropertiesDeclaration"), null);
+        SNode pd = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_amdhzc.PropertiesDeclaration_ead02743, null);
         if (!((pattern == null || pattern.length() == 0))) {
           String name = pattern;
           if (pattern.endsWith("=")) {
@@ -136,7 +137,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_amdhzc_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac2L, "jetbrains.mps.core.properties.structure.PropertiesLine"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_amdhzc.PropertiesLine_ead02744);
     }
     @NotNull
     @Override
@@ -154,5 +155,10 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_amdhzc {
+    /*package*/ static final SConcept PropertiesDeclaration_ead02743 = MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, "jetbrains.mps.core.properties.structure.PropertiesDeclaration");
+    /*package*/ static final SConcept PropertiesLine_ead02744 = MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac2L, "jetbrains.mps.core.properties.structure.PropertiesLine");
   }
 }

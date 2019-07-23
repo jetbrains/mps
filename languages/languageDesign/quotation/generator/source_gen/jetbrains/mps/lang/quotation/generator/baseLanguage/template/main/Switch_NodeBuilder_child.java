@@ -16,18 +16,19 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class Switch_NodeBuilder_child extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_NodeBuilder_child() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_NodeBuilder_child.ReductionRule0(), new Switch_NodeBuilder_child.ReductionRule1());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101501092");
@@ -48,7 +49,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101501093"), MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101501093"), AUX_zay0px.NodeBuilderExpression_bfb5f7b7, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -208,7 +209,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101627334"), MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101627334"), AUX_zay0px.NodeBuilderNode_29411b4f, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -285,7 +286,12 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
       return tlist9;
     }
   }
-  private static SNodePointer callMacro_zay0px_b0a0a1a2a1a2a1a1a1a1a1a1a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144954");
-  private static SNodePointer copySrcMacro_zay0px_b0a0d0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2760023158758795616");
-  private static SNodePointer callMacro_zay0px_b0a0a1a2a1a2a1a1a5a1i = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144955");
+  private static final SNodePointer callMacro_zay0px_b0a0a1a2a1a2a1a1a1a1a1a1a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144954");
+  private static final SNodePointer copySrcMacro_zay0px_b0a0d0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2760023158758795616");
+  private static final SNodePointer callMacro_zay0px_b0a0a1a2a1a2a1a1a5a1i = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144955");
+
+  private static final class AUX_zay0px {
+    /*package*/ static final SConcept NodeBuilderExpression_bfb5f7b7 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
+    /*package*/ static final SConcept NodeBuilderNode_29411b4f = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
+  }
 }

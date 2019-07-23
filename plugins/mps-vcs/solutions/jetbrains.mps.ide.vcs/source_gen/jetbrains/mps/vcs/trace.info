@@ -36,8 +36,8 @@
       <node id="3613324658897711596" at="73,68,74,88" concept="3" />
       <node id="3613324658897711604" at="74,88,75,60" concept="8" />
       <node id="3613324658897711615" at="76,33,77,19" concept="9" />
-      <node id="3613324658897711617" at="78,5,79,99" concept="8" />
-      <node id="3613324658897711634" at="80,9,81,125" concept="3" />
+      <node id="3613324658897711617" at="78,5,79,71" concept="8" />
+      <node id="3613324658897711634" at="80,9,81,111" concept="3" />
       <node id="3613324658897711626" at="82,30,83,25" concept="3" />
       <node id="3613324658897711644" at="84,5,85,34" concept="9" />
       <node id="7860944453394967816" at="89,88,90,13" concept="9" />
@@ -115,7 +115,7 @@
       <node id="3613324658897711462" at="205,0,209,0" concept="7" trace="processChangeInList#(Lcom/intellij/openapi/vcs/changes/Change;Ljava/lang/String;Lcom/intellij/openapi/vcs/VcsKey;)V" />
       <node id="8222824327012887843" at="227,0,231,0" concept="7" trace="fileStatusesChanged#()V" />
       <node id="3613324658897711529" at="63,0,68,0" concept="2" trace="MPSVcsManager#(Lcom/intellij/openapi/project/Project;Lcom/intellij/openapi/vcs/ProjectLevelVcsManager;Lcom/intellij/openapi/vcs/changes/ChangeListManager;)V" />
-      <node id="3613324658897711623" at="79,99,84,5" concept="15" />
+      <node id="3613324658897711623" at="79,71,84,5" concept="15" />
       <node id="7794712048471487315" at="94,65,99,6" concept="8" />
       <node id="3613324658897711652" at="106,0,111,0" concept="7" trace="projectClosed#()V" />
       <node id="3613324658897711387" at="164,0,169,0" concept="7" trace="findChangeList#(Ljava/lang/String;)Lcom/intellij/openapi/vcs/changes/LocalChangeList;" />
@@ -140,7 +140,7 @@
       <scope id="3613324658897711843" at="57,40,58,44" />
       <scope id="3613324658897711586" at="70,22,71,19" />
       <scope id="3613324658897711614" at="76,33,77,19" />
-      <scope id="3613324658897711633" at="80,9,81,125" />
+      <scope id="3613324658897711633" at="80,9,81,111" />
       <scope id="3613324658897711624" at="82,0,83,25">
         <var name="e" id="3613324658897711631" />
       </scope>
@@ -293,8 +293,8 @@
     <file name="MPSVcsProjectConfiguration.java">
       <node id="3613324658897713233" at="20,0,21,0" concept="4" trace="myState" />
       <node id="3613324658897713244" at="21,57,22,19" concept="14" />
-      <node id="3613324658897713250" at="25,56,26,19" concept="9" />
-      <node id="3613324658897713259" at="29,67,30,20" concept="3" />
+      <node id="3613324658897713250" at="25,29,26,19" concept="9" />
+      <node id="3613324658897713259" at="29,40,30,20" concept="3" />
       <node id="3613324658897713268" at="32,43,33,42" concept="9" />
       <node id="3613324658897713285" at="36,65,37,60" concept="3" />
       <node id="3613324658897713291" at="37,60,38,115" concept="8" />
@@ -317,8 +317,8 @@
       <node id="3613324658897713272" at="35,0,50,0" concept="7" trace="setIgnoreGeneratedFiles#(Z)V" />
       <scope id="3613324658897713330" at="52,22,52,22" />
       <scope id="3613324658897713243" at="21,57,22,19" />
-      <scope id="3613324658897713249" at="25,56,26,19" />
-      <scope id="3613324658897713258" at="29,67,30,20" />
+      <scope id="3613324658897713249" at="25,29,26,19" />
+      <scope id="3613324658897713258" at="29,40,30,20" />
       <scope id="3613324658897713267" at="32,43,33,42" />
       <scope id="3613324658897713345" at="43,42,44,78" />
       <scope id="3613324658897713331" at="54,45,55,36" />

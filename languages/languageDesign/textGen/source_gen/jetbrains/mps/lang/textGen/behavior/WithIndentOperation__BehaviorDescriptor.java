@@ -4,7 +4,6 @@ package jetbrains.mps.lang.textGen.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,9 +17,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11fd28e1146L, "jetbrains.mps.lang.textGen.structure.WithIndentOperation");
+  private static final SAbstractConcept CONCEPT = AUX_g4mk63.WithIndentOperation_5c12f531;
 
   public static final SMethod<Boolean> inLangConcept_idhZi_Zwx = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("inLangConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hZi_Zwx").build();
 
@@ -30,7 +31,7 @@ public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean inLangConcept_idhZi_Zwx(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf((SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f60f06a49L, "jetbrains.mps.lang.textGen.structure.AbstractTextGenDeclaration"), false, false)), MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration"));
+    return SNodeOperations.isInstanceOf((SNodeOperations.getNodeAncestor(__thisNode__, AUX_g4mk63.AbstractTextGenDeclaration_a362e3b0, false, false)), AUX_g4mk63.LanguageTextGenDeclaration_4366b437);
   }
 
   /*package*/ WithIndentOperation__BehaviorDescriptor() {
@@ -77,5 +78,11 @@ public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescrip
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_g4mk63 {
+    /*package*/ static final SConcept WithIndentOperation_5c12f531 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11fd28e1146L, "jetbrains.mps.lang.textGen.structure.WithIndentOperation");
+    /*package*/ static final SConcept AbstractTextGenDeclaration_a362e3b0 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f60f06a49L, "jetbrains.mps.lang.textGen.structure.AbstractTextGenDeclaration");
+    /*package*/ static final SConcept LanguageTextGenDeclaration_4366b437 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
   }
 }

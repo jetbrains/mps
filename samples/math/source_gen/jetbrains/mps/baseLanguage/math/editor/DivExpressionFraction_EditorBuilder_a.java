@@ -81,7 +81,7 @@ import jetbrains.mps.baseLanguage.math.pluginSolution.plugin.HLineCellProvider;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new DivExpressionFraction_EditorBuilder_a.numeratorSingleRoleHandler_ksgn1c_a1a(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x1200914977fL, "numerator"), getEditorContext());
+    SingleRoleCellProvider provider = new numeratorSingleRoleHandler_ksgn1c_a1a(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x1200914977fL, "numerator"), getEditorContext());
     return provider.createCell();
   }
   private static class numeratorSingleRoleHandler_ksgn1c_a1a extends SingleRoleCellProvider {
@@ -150,7 +150,7 @@ import jetbrains.mps.baseLanguage.math.pluginSolution.plugin.HLineCellProvider;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new DivExpressionFraction_EditorBuilder_a.denominatorSingleRoleHandler_ksgn1c_c1a(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x12009149b1aL, "denominator"), getEditorContext());
+    SingleRoleCellProvider provider = new denominatorSingleRoleHandler_ksgn1c_c1a(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x12009149b1aL, "denominator"), getEditorContext());
     return provider.createCell();
   }
   private static class denominatorSingleRoleHandler_ksgn1c_c1a extends SingleRoleCellProvider {

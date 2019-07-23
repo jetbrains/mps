@@ -55,7 +55,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ListElementAccessExpression_EditorBuilder_a.listSingleRoleHandler_hagvd_a0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621460b5L, "list"), getEditorContext());
+    SingleRoleCellProvider provider = new listSingleRoleHandler_hagvd_a0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621460b5L, "list"), getEditorContext());
     return provider.createCell();
   }
   private static class listSingleRoleHandler_hagvd_a0 extends SingleRoleCellProvider {
@@ -128,7 +128,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ListElementAccessExpression_EditorBuilder_a.indexSingleRoleHandler_hagvd_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621484e5L, "index"), getEditorContext());
+    SingleRoleCellProvider provider = new indexSingleRoleHandler_hagvd_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621484e5L, "index"), getEditorContext());
     return provider.createCell();
   }
   private static class indexSingleRoleHandler_hagvd_b1a extends SingleRoleCellProvider {

@@ -15,6 +15,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_RequestHandler_inPluginModel_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_RequestHandler_inPluginModel_NonTypesystemRule() {
@@ -31,12 +32,16 @@ public class check_RequestHandler_inPluginModel_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
+    return AUX_s9o0h7.RequestHandler_d49288c4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_s9o0h7 {
+    /*package*/ static final SConcept RequestHandler_d49288c4 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
   }
 }

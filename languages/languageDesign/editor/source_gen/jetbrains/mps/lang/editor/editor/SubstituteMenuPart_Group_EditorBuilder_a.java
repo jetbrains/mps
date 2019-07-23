@@ -34,6 +34,7 @@ import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FoldedCellStyleClass;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class SubstituteMenuPart_Group_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -100,7 +101,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new SubstituteMenuPart_Group_EditorBuilder_a.variablesListHandler_6tc1kw_a1b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new variablesListHandler_6tc1kw_a1b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_variables");
     Style style = new StyleImpl();
@@ -128,7 +129,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
       return MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x780e672842433a1L, "variables");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987bL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableDeclaration");
+      return AUX_poc09a.SubstituteMenuVariableDeclaration_162ecfc2;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -174,7 +175,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SubstituteMenuPart_Group_EditorBuilder_a.conditionSingleRoleHandler_6tc1kw_d1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x5c03050cab46daeL, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_6tc1kw_d1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x5c03050cab46daeL, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_6tc1kw_d1a extends SingleRoleCellProvider {
@@ -253,7 +254,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
     return editorCell;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new SubstituteMenuPart_Group_EditorBuilder_a.partsListHandler_6tc1kw_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new partsListHandler_6tc1kw_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_parts");
     Style style = new StyleImpl();
@@ -281,7 +282,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
       return MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x5c03050cab46dafL, "parts");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
+      return AUX_poc09a.SubstituteMenuPart_c9bcc2e6;
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
       return nodeFactory();
@@ -332,5 +333,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
       editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
       return editorCell;
     }
+  }
+
+  private static final class AUX_poc09a {
+    /*package*/ static final SConcept SubstituteMenuVariableDeclaration_162ecfc2 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987bL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableDeclaration");
+    /*package*/ static final SConcept SubstituteMenuPart_c9bcc2e6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
   }
 }

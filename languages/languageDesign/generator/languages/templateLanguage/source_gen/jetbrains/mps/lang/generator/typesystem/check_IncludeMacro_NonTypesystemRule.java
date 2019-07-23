@@ -8,8 +8,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -22,12 +22,13 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.generator.behavior.NodeMacro__BehaviorDescriptor;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_IncludeMacro_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IncludeMacro_NonTypesystemRule() {
   }
   public void applyRule(final SNode macro, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode containingTemplate = SNodeOperations.getNodeAncestor(macro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration"), false, false);
+    SNode containingTemplate = SNodeOperations.getNodeAncestor(macro, AUX_vf7fzb.TemplateDeclaration_6074fd22, false, false);
     SNode includedTemplate = SLinkOperations.getTarget(macro, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11621ab7715L, 0x11621b434a7L, "includeTemplate"));
 
     if ((includedTemplate == null)) {
@@ -75,12 +76,17 @@ public class check_IncludeMacro_NonTypesystemRule extends AbstractNonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11621ab7715L, "jetbrains.mps.lang.generator.structure.IncludeMacro");
+    return AUX_vf7fzb.IncludeMacro_d6562a00;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_vf7fzb {
+    /*package*/ static final SConcept TemplateDeclaration_6074fd22 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept IncludeMacro_d6562a00 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11621ab7715L, "jetbrains.mps.lang.generator.structure.IncludeMacro");
   }
 }

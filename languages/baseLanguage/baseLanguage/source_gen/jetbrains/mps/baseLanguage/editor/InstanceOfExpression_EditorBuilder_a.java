@@ -54,7 +54,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new InstanceOfExpression_EditorBuilder_a.leftExpressionSingleRoleHandler_pg66x0_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new leftExpressionSingleRoleHandler_pg66x0_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class leftExpressionSingleRoleHandler_pg66x0_a0 extends SingleRoleCellProvider {
@@ -121,7 +121,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new InstanceOfExpression_EditorBuilder_a.classTypeSingleRoleHandler_pg66x0_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType"), getEditorContext());
+    SingleRoleCellProvider provider = new classTypeSingleRoleHandler_pg66x0_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType"), getEditorContext());
     return provider.createCell();
   }
   private static class classTypeSingleRoleHandler_pg66x0_c0 extends SingleRoleCellProvider {

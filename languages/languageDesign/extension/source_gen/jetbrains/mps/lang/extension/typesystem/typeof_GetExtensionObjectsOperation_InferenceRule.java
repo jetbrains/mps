@@ -10,13 +10,14 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_GetExtensionObjectsOperation_InferenceRule() {
@@ -37,7 +38,7 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
         public void run() {
           SNode objectType = null;
           {
-            SNode coercedNode_gzb1x_b0d0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, "jetbrains.mps.lang.extension.structure.ExtensionPointType"));
+            SNode coercedNode_gzb1x_b0d0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), AUX_4o3874.ExtensionPointType_10968c5b);
             if (coercedNode_gzb1x_b0d0 != null) {
               objectType = SLinkOperations.getTarget(SLinkOperations.getTarget(coercedNode_gzb1x_b0d0, MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint")), MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType"));
             } else {
@@ -53,7 +54,7 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142ef747L, "jetbrains.mps.lang.extension.structure.GetExtensionObjectsOperation");
+    return AUX_4o3874.GetExtensionObjectsOperation_10b10bca;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -78,5 +79,10 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_4o3874 {
+    /*package*/ static final SConcept ExtensionPointType_10968c5b = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, "jetbrains.mps.lang.extension.structure.ExtensionPointType");
+    /*package*/ static final SConcept GetExtensionObjectsOperation_10b10bca = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142ef747L, "jetbrains.mps.lang.extension.structure.GetExtensionObjectsOperation");
   }
 }

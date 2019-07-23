@@ -21,7 +21,7 @@ public class SwapTernaryBranches5_Test extends BaseTransformationTest {
 
   @Test
   public void test_SwapTernaryBranches5() throws Throwable {
-    new SwapTernaryBranches5_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

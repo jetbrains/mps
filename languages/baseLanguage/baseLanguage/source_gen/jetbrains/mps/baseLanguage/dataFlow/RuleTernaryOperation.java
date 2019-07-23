@@ -6,10 +6,11 @@ import jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RuleTernaryOperation implements DataFlowConstructor {
   public boolean isApplicable(SNode node) {
@@ -18,12 +19,12 @@ public class RuleTernaryOperation implements DataFlowConstructor {
     return concept.equals(applicableConcept) || concept.isSubConceptOf(applicableConcept);
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+    return AUX_fvx1g.TernaryOperatorExpression_580beb3a;
   }
   public void performActions(Program o, SNode node) {
     SNode condition = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition"));
-    if (SNodeOperations.isInstanceOf(condition, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression")) || SNodeOperations.isInstanceOf(condition, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression"))) {
-      SNode other = NullableUtil.getOtherThanNull(SNodeOperations.cast(condition, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")));
+    if (SNodeOperations.isInstanceOf(condition, AUX_fvx1g.EqualsExpression_9dbf9b09) || SNodeOperations.isInstanceOf(condition, AUX_fvx1g.NotEqualsExpression_8a487ab7)) {
+      SNode other = NullableUtil.getOtherThanNull(SNodeOperations.cast(condition, AUX_fvx1g.BinaryOperation_7c4c55f3));
       if (other == null) {
         return;
       }
@@ -38,7 +39,7 @@ public class RuleTernaryOperation implements DataFlowConstructor {
           ((Program) (o)).insert(instruction, position, true, before);
         }
       }
-      if (SNodeOperations.isInstanceOf(condition, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression"))) {
+      if (SNodeOperations.isInstanceOf(condition, AUX_fvx1g.EqualsExpression_9dbf9b09)) {
         {
           Object object = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue"));
           if (((Program) o).contains(object)) {
@@ -87,5 +88,12 @@ public class RuleTernaryOperation implements DataFlowConstructor {
       }
     }
 
+  }
+
+  private static final class AUX_fvx1g {
+    /*package*/ static final SConcept TernaryOperatorExpression_580beb3a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+    /*package*/ static final SConcept EqualsExpression_9dbf9b09 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept NotEqualsExpression_8a487ab7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
+    /*package*/ static final SConcept BinaryOperation_7c4c55f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 }

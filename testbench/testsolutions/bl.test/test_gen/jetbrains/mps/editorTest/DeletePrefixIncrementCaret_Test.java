@@ -21,7 +21,7 @@ public class DeletePrefixIncrementCaret_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeletePrefixIncrementCaret() throws Throwable {
-    new DeletePrefixIncrementCaret_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

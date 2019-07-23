@@ -21,7 +21,7 @@ public class Post_StaticFieldToLocalStaticFieldReference_Test extends BaseTransf
 
   @Test
   public void test_Post_StaticFieldToLocalStaticFieldReference() throws Throwable {
-    new Post_StaticFieldToLocalStaticFieldReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

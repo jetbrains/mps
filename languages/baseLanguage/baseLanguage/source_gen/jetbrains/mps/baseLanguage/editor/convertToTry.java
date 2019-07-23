@@ -19,8 +19,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -41,6 +41,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class convertToTry extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -66,7 +67,7 @@ public class convertToTry extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new convertToTry.TMP_Group_698dk6_a0());
+      result.add(new TMP_Group_698dk6_a0());
     }
     return result;
   }
@@ -75,7 +76,7 @@ public class convertToTry extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode parent = SNodeOperations.getParent(_context.getNode());
-      return SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause"))).last() == _context.getNode();
+      return SNodeOperations.isInstanceOf(parent, AUX_698dk6.TryCatchStatement_fb61ebd) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parent, AUX_698dk6.TryCatchStatement_fb61ebd), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause"))).last() == _context.getNode();
     }
 
     @NotNull
@@ -91,12 +92,12 @@ public class convertToTry extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new convertToTry.TMP_Group_698dk6_a0.TMP_Action_698dk6_a0a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_698dk6_a0.TMP_Action_698dk6_a0a(), AUX_698dk6.TryCatchStatement_fb61ebd));
     }
     private class TMP_Action_698dk6_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        convertToTry.TMP_Group_698dk6_a0.TMP_Action_698dk6_a0a.Item item = new convertToTry.TMP_Group_698dk6_a0.TMP_Action_698dk6_a0a.Item(context);
+        TMP_Group_698dk6_a0.TMP_Action_698dk6_a0a.Item item = new TMP_Group_698dk6_a0.TMP_Action_698dk6_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -131,8 +132,8 @@ public class convertToTry extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement"));
-          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement"), null);
+          SNode node = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_698dk6.TryCatchStatement_fb61ebd);
+          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_698dk6.TryStatement_d214e8c2, null);
           SNode body = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body"));
           SLinkOperations.setTarget(tryStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body"), body);
           for (SNode catchClause : SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause"))) {
@@ -147,7 +148,7 @@ public class convertToTry extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+          return AUX_698dk6.TryCatchStatement_fb61ebd;
         }
 
 
@@ -158,7 +159,7 @@ public class convertToTry extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+          SAbstractConcept outputConcept = AUX_698dk6.TryCatchStatement_fb61ebd;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -167,5 +168,10 @@ public class convertToTry extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_698dk6 {
+    /*package*/ static final SConcept TryCatchStatement_fb61ebd = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept TryStatement_d214e8c2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
   }
 }

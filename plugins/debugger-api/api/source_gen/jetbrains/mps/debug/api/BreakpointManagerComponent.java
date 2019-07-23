@@ -33,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 public class BreakpointManagerComponent implements ProjectComponent, PersistentStateComponent<Element> {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(BreakpointManagerComponent.class));
   private static final String BREAKPOINTS_LIST_ELEMENT = "breakpointsList";
-  private static final BreakpointManagerComponent.DummyIO DUMMY_IO = new BreakpointManagerComponent.DummyIO();
+  private static final DummyIO DUMMY_IO = new DummyIO();
   /**
    * Map implementation shall tolerate null keys (HashMap does).
    */
@@ -41,8 +41,8 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
   private boolean myBreakpointsForRootInitialized = false;
   private final Set<IBreakpoint> myBreakpoints = new HashSet<IBreakpoint>();
   private final List<Element> myUnreadBreakpoints = new ArrayList<Element>();
-  private BreakpointManagerComponent.IBreakpointsIO myBreakpointsIO = DUMMY_IO;
-  private final List<BreakpointManagerComponent.IBreakpointManagerListener> myListeners = new ArrayList<BreakpointManagerComponent.IBreakpointManagerListener>();
+  private IBreakpointsIO myBreakpointsIO = DUMMY_IO;
+  private final List<IBreakpointManagerListener> myListeners = new ArrayList<IBreakpointManagerListener>();
   public BreakpointManagerComponent() {
   }
   @NotNull
@@ -64,7 +64,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     myBreakpointsIO = null;
     //  dispose 
   }
-  public void setBreakpointsIO(BreakpointManagerComponent.IBreakpointsIO io) {
+  public void setBreakpointsIO(IBreakpointsIO io) {
     myBreakpointsIO = io;
     reReadState();
   }
@@ -202,30 +202,30 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
       return new HashSet<IBreakpoint>(myBreakpoints);
     }
   }
-  public void addChangeListener(BreakpointManagerComponent.IBreakpointManagerListener listener) {
+  public void addChangeListener(IBreakpointManagerListener listener) {
     synchronized (myListeners) {
       myListeners.add(listener);
     }
   }
-  public void removeChangeListener(BreakpointManagerComponent.IBreakpointManagerListener listener) {
+  public void removeChangeListener(IBreakpointManagerListener listener) {
     synchronized (myListeners) {
       myListeners.remove(listener);
     }
   }
-  private List<BreakpointManagerComponent.IBreakpointManagerListener> getListeners() {
+  private List<IBreakpointManagerListener> getListeners() {
     synchronized (myListeners) {
-      return new ArrayList<BreakpointManagerComponent.IBreakpointManagerListener>(myListeners);
+      return new ArrayList<IBreakpointManagerListener>(myListeners);
     }
   }
   private void fireBreakpointRemoved(IBreakpoint breakpoint) {
-    List<BreakpointManagerComponent.IBreakpointManagerListener> listeners = getListeners();
-    for (BreakpointManagerComponent.IBreakpointManagerListener listener : listeners) {
+    List<IBreakpointManagerListener> listeners = getListeners();
+    for (IBreakpointManagerListener listener : listeners) {
       listener.breakpointRemoved(breakpoint);
     }
   }
   private void fireBreakpointAdded(IBreakpoint breakpoint) {
-    List<BreakpointManagerComponent.IBreakpointManagerListener> listeners = getListeners();
-    for (BreakpointManagerComponent.IBreakpointManagerListener listener : listeners) {
+    List<IBreakpointManagerListener> listeners = getListeners();
+    for (IBreakpointManagerListener listener : listeners) {
       listener.breakpointAdded(breakpoint);
     }
   }
@@ -261,7 +261,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     void breakpointAdded(@NotNull IBreakpoint breakpoint);
     void breakpointRemoved(@NotNull IBreakpoint breakpoint);
   }
-  public static abstract class BreakpointManagerListener implements BreakpointManagerComponent.IBreakpointManagerListener {
+  public static abstract class BreakpointManagerListener implements IBreakpointManagerListener {
     public BreakpointManagerListener() {
     }
     @Override
@@ -280,7 +280,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     @Nullable
     Element writeBreakpoint(@NotNull IBreakpoint breakpoint);
   }
-  public static class DummyIO implements BreakpointManagerComponent.IBreakpointsIO {
+  public static class DummyIO implements IBreakpointsIO {
     public DummyIO() {
     }
     @Override

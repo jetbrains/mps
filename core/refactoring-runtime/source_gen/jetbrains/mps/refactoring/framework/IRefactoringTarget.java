@@ -4,7 +4,7 @@ package jetbrains.mps.refactoring.framework;
 
 
 public interface IRefactoringTarget {
-  IRefactoringTarget.TargetType getTarget();
+  TargetType getTarget();
   boolean allowMultipleTargets();
   boolean isApplicable(Object entity);
   enum TargetType {

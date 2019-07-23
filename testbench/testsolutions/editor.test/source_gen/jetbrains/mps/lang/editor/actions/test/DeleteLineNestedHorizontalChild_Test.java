@@ -22,7 +22,7 @@ public class DeleteLineNestedHorizontalChild_Test extends BaseTransformationTest
 
   @Test
   public void test_DeleteLineNestedHorizontalChild() throws Throwable {
-    new DeleteLineNestedHorizontalChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

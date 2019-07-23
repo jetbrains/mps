@@ -4,7 +4,6 @@ package jetbrains.mps.lang.behavior.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,12 +16,14 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
+  private static final SAbstractConcept CONCEPT = AUX_samnxn.SuperNodeExpression_6fa6b15d;
 
   /*package*/ static final SMethod<SNode> getEnclosingMethod_id4MNYYw$1vF5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnclosingMethod").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("4MNYYw$1vF5").build();
   public static final SMethod<SNode> getSpecifiedSuperConcept_id2k7p7sTvKkb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSpecifiedSuperConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2k7p7sTvKkb").build();
@@ -34,7 +35,7 @@ public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getEnclosingMethod_id4MNYYw$1vF5(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, AUX_samnxn.ConceptMethodDeclaration_6c80ca4f, false, false);
   }
   @Nullable
   /*package*/ static SNode getSpecifiedSuperConcept_id2k7p7sTvKkb(@NotNull SNode __thisNode__) {
@@ -93,5 +94,10 @@ public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescrip
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_samnxn {
+    /*package*/ static final SConcept SuperNodeExpression_6fa6b15d = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

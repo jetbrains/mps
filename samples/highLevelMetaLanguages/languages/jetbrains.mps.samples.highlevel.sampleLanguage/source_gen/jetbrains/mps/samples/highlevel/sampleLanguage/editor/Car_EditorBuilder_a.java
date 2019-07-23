@@ -28,6 +28,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Car_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -105,7 +106,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       editorCell.setCellId("property_year");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes())), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes())), AUX_6g74pe.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -155,7 +156,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       editorCell.setCellId("property_model");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes())), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes())), AUX_6g74pe.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -169,5 +170,9 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     } finally {
       getCellFactory().popCellContext();
     }
+  }
+
+  private static final class AUX_6g74pe {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

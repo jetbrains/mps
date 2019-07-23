@@ -21,7 +21,7 @@ public class AutoResolve_DontAutoResolveErrorCellWithNoRealText_Test extends Bas
 
   @Test
   public void test_AutoResolve_DontAutoResolveErrorCellWithNoRealText() throws Throwable {
-    new AutoResolve_DontAutoResolveErrorCellWithNoRealText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

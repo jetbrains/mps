@@ -24,6 +24,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Diagram1_DiagramTestTextual_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -99,7 +100,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new Diagram1_DiagramTestTextual_EditorBuilder_a.rectanglesListHandler_35xpgu_c2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new rectanglesListHandler_35xpgu_c2a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_rectangles");
     Style style = new StyleImpl();
@@ -127,7 +128,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c017aL, 0x71771b7f74c01b6L, "rectangles");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c01b3L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.RectangleNode");
+      return AUX_mqyws0.RectangleNode_a534da14;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -169,5 +170,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_mqyws0 {
+    /*package*/ static final SConcept RectangleNode_a534da14 = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c01b3L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.RectangleNode");
   }
 }

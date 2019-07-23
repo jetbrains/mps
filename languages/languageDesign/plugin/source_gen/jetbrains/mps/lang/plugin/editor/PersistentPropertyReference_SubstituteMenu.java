@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PersistentPropertyReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new PersistentPropertyReference_SubstituteMenu.SMP_ReferenceScope_pityd8_a(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c466b22aL, "jetbrains.mps.lang.plugin.structure.PersistentPropertyReference")));
-    result.add(new PersistentPropertyReference_SubstituteMenu.SMP_Subconcepts_pityd8_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pityd8_a(), AUX_pityd8.PersistentPropertyReference_dd871047));
+    result.add(new SMP_Subconcepts_pityd8_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class PersistentPropertyReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_pityd8_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c466b22aL, "jetbrains.mps.lang.plugin.structure.PersistentPropertyReference"), MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member"));
+      super((SAbstractConcept) AUX_pityd8.PersistentPropertyReference_dd871047, MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class PersistentPropertyReference_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_pityd8_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c466b22aL, "jetbrains.mps.lang.plugin.structure.PersistentPropertyReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_pityd8.PersistentPropertyReference_dd871047);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class PersistentPropertyReference_SubstituteMenu extends SubstituteMenuBa
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_pityd8 {
+    /*package*/ static final SConcept PersistentPropertyReference_dd871047 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c466b22aL, "jetbrains.mps.lang.plugin.structure.PersistentPropertyReference");
   }
 }

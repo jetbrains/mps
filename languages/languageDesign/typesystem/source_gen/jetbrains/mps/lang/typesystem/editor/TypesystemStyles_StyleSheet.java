@@ -20,7 +20,7 @@ public class TypesystemStyles_StyleSheet {
   public static void apply_InequationLabel(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TypesystemStyles_StyleSheet.InequationLabelStyleClass(editorContext, node).apply(style, editorCell);
+    new InequationLabelStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -30,7 +30,7 @@ public class TypesystemStyles_StyleSheet {
   public static void apply_InequationsGroupsLabel(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TypesystemStyles_StyleSheet.InequationsGroupsLabelStyleClass(editorContext, node).apply(style, editorCell);
+    new InequationsGroupsLabelStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class InequationLabelStyleClass extends AbstractStyleClass {

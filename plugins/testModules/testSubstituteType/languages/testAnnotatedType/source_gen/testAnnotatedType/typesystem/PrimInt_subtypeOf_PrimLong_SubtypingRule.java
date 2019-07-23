@@ -8,9 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PrimInt_subtypeOf_PrimLong_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public PrimInt_subtypeOf_PrimLong_SubtypingRule() {
@@ -19,7 +20,7 @@ public class PrimInt_subtypeOf_PrimLong_SubtypingRule extends SubtypingRule_Runt
     return createPrimLongType_scx771_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be609eL, "testAnnotatedType.structure.PrimIntType");
+    return AUX_scx771.PrimIntType_2397314a;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -32,7 +33,12 @@ public class PrimInt_subtypeOf_PrimLong_SubtypingRule extends SubtypingRule_Runt
   }
   private static SNode createPrimLongType_scx771_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x786549534310b4f5L, "testAnnotatedType.structure.PrimLongType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_scx771.PrimLongType_d4708acb, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_scx771 {
+    /*package*/ static final SConcept PrimIntType_2397314a = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be609eL, "testAnnotatedType.structure.PrimIntType");
+    /*package*/ static final SConcept PrimLongType_d4708acb = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x786549534310b4f5L, "testAnnotatedType.structure.PrimLongType");
   }
 }

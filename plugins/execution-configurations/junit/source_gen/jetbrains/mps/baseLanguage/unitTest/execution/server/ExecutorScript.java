@@ -18,7 +18,7 @@ import org.jdom.Element;
 public final class ExecutorScript {
   @Nullable
   private ScriptData myEnvironmentStartupData;
-  private final List<ExecutorScript.TestRecord> myTests = new ArrayList<ExecutorScript.TestRecord>();
+  private final List<TestRecord> myTests = new ArrayList<TestRecord>();
 
   /**
    * Invoked by code that knows which tests it needs to execute. Information about this tests is persisted and utilized by out-of-process
@@ -29,22 +29,22 @@ public final class ExecutorScript {
     PersistenceFacade pf = PersistenceFacade.getInstance();
 
     final String testModule = pf.asString(testWrap.getTestNodeModule());
-    ExecutorScript.TestRecord testModuleRecord = null;
-    for (ExecutorScript.TestRecord tr : ListSequence.fromList(myTests)) {
+    TestRecord testModuleRecord = null;
+    for (TestRecord tr : ListSequence.fromList(myTests)) {
       if (testModule.equals(tr.myTestModule)) {
         testModuleRecord = tr;
         break;
       }
     }
     if (testModuleRecord == null) {
-      testModuleRecord = new ExecutorScript.TestRecord(testModule);
+      testModuleRecord = new TestRecord(testModule);
       myTests.add(testModuleRecord);
     }
 
     testModuleRecord.add(testWrap.getFqName(), pf.asString(testWrap.getNodePointer()), String.valueOf(testWrap.isTestCase()));
   }
 
-  public Collection<ExecutorScript.TestRecord> getTests() {
+  public Collection<TestRecord> getTests() {
     return myTests;
   }
 
@@ -59,7 +59,7 @@ public final class ExecutorScript {
   }
 
   public void write(Element root) {
-    for (ExecutorScript.TestRecord r : ListSequence.fromList(myTests)) {
+    for (TestRecord r : ListSequence.fromList(myTests)) {
       Element module = new Element("module");
       module.setAttribute("ptr", r.myTestModule);
       for (int i = 0; i < r.myTestQualifiedName.size(); i++) {
@@ -78,7 +78,7 @@ public final class ExecutorScript {
 
   public void read(Element root) {
     for (Element me : ListSequence.fromList(root.getChildren("module"))) {
-      ExecutorScript.TestRecord tr = new ExecutorScript.TestRecord(me.getAttributeValue("ptr"));
+      TestRecord tr = new TestRecord(me.getAttributeValue("ptr"));
       myTests.add(tr);
       for (Element te : ListSequence.fromList(me.getChildren("test"))) {
         tr.add(te.getAttributeValue("fqn"), te.getAttributeValue("node"), te.getAttributeValue("isTestCase"));

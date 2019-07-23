@@ -23,7 +23,7 @@ public class EmptyEnumConstantCreationWithConstructorTest_Test extends BaseTrans
 
   @Test
   public void test_EmptyEnumConstantCreationWithConstructorTest() throws Throwable {
-    new EmptyEnumConstantCreationWithConstructorTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

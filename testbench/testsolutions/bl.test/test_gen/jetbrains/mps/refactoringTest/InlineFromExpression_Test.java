@@ -34,7 +34,7 @@ public class InlineFromExpression_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineFromExpression() throws Throwable {
-    new InlineFromExpression_Test.TestBody(this).test_InlineFromExpression();
+    new TestBody(this).test_InlineFromExpression();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

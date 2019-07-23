@@ -32,19 +32,19 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
 
   @Test
   public void test_mps18720() throws Throwable {
-    new TypeCheckingErrors_Test.TestBody(this).test_mps18720();
+    new TestBody(this).test_mps18720();
   }
   @Test
   public void test_varar_raw() throws Throwable {
-    new TypeCheckingErrors_Test.TestBody(this).test_varar_raw();
+    new TestBody(this).test_varar_raw();
   }
   @Test
   public void test_lbt_subtypeof_param() throws Throwable {
-    new TypeCheckingErrors_Test.TestBody(this).test_lbt_subtypeof_param();
+    new TestBody(this).test_lbt_subtypeof_param();
   }
   @Test
   public void test_meet_with_variable_excluded_from_lcs() throws Throwable {
-    new TypeCheckingErrors_Test.TestBody(this).test_meet_with_variable_excluded_from_lcs();
+    new TestBody(this).test_meet_with_variable_excluded_from_lcs();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

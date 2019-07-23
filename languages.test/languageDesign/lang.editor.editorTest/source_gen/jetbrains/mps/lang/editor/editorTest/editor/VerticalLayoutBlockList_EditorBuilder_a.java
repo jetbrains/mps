@@ -22,6 +22,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class VerticalLayoutBlockList_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -65,7 +66,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new VerticalLayoutBlockList_EditorBuilder_a.statementListHandler_s783cw_a1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new statementListHandler_s783cw_a1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_statement");
     editorCell.setSRole(handler.getElementSRole());
@@ -88,7 +89,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3361ce1b17d62dbbL, 0x3361ce1b17d62dc2L, "statement");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getInterfaceConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3361ce1b17d7eaa9L, "jetbrains.mps.lang.editor.editorTest.structure.IBaseTestBlock");
+      return AUX_iosvku.IBaseTestBlock_6e570aa9;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -121,5 +122,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_iosvku {
+    /*package*/ static final SInterfaceConcept IBaseTestBlock_6e570aa9 = MetaAdapterFactory.getInterfaceConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3361ce1b17d7eaa9L, "jetbrains.mps.lang.editor.editorTest.structure.IBaseTestBlock");
   }
 }

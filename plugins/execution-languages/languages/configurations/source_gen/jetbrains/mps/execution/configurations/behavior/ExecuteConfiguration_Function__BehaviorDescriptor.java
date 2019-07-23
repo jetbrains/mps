@@ -4,7 +4,6 @@ package jetbrains.mps.execution.configurations.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -17,6 +16,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.behavior.ILocalVariableElementList__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
 
 public final class ExecuteConfiguration_Function__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5532ce3cbd91002cL, "jetbrains.mps.execution.configurations.structure.ExecuteConfiguration_Function");
+  private static final SAbstractConcept CONCEPT = AUX_1m85uj.ExecuteConfiguration_Function_48c60734;
 
   public static final SMethod<List<SNode>> getLocalVariableElements_idi1I$XiP = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLocalVariableElements").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1I$XiP").build();
   public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
@@ -44,10 +44,10 @@ public final class ExecuteConfiguration_Function__BehaviorDescriptor extends Bas
     return (List<SNode>) ILocalVariableElementList__BehaviorDescriptor.getLocalVariableElements_idi1I$XiP.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")));
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(__thisNode__), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor")) && (SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor")), MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration")) != null)) {
-      return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6aa58a34eb0efa2dL, "jetbrains.mps.execution.configurations.structure.Project_Parameter"), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42d74d4aa8cbc400L, "jetbrains.mps.execution.configurations.structure.DebuggerSettings_Parameter"), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x28470a6f6e7e49eL, "jetbrains.mps.execution.configurations.structure.Executor_Parameter"));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(__thisNode__), AUX_1m85uj.RunConfigurationExecutor_4368a6ef) && (SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), AUX_1m85uj.RunConfigurationExecutor_4368a6ef), MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration")) != null)) {
+      return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_1m85uj.Project_Parameter_5544fa99, AUX_1m85uj.DebuggerSettings_Parameter_435484e0, AUX_1m85uj.Executor_Parameter_d7f06531);
     }
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6aa58a34eb0efa2dL, "jetbrains.mps.execution.configurations.structure.Project_Parameter"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_1m85uj.Project_Parameter_5544fa99);
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     return _quotation_createNode_cw5ucd_a0a2();
@@ -119,5 +119,13 @@ public final class ExecuteConfiguration_Function__BehaviorDescriptor extends Bas
     quotedNode_3.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_3, facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)"), facade.createNodeId("~ProcessHandler")));
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"), quotedNode_3);
     return quotedNode_1;
+  }
+
+  private static final class AUX_1m85uj {
+    /*package*/ static final SConcept ExecuteConfiguration_Function_48c60734 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5532ce3cbd91002cL, "jetbrains.mps.execution.configurations.structure.ExecuteConfiguration_Function");
+    /*package*/ static final SConcept RunConfigurationExecutor_4368a6ef = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor");
+    /*package*/ static final SConcept Project_Parameter_5544fa99 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6aa58a34eb0efa2dL, "jetbrains.mps.execution.configurations.structure.Project_Parameter");
+    /*package*/ static final SConcept DebuggerSettings_Parameter_435484e0 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42d74d4aa8cbc400L, "jetbrains.mps.execution.configurations.structure.DebuggerSettings_Parameter");
+    /*package*/ static final SConcept Executor_Parameter_d7f06531 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x28470a6f6e7e49eL, "jetbrains.mps.execution.configurations.structure.Executor_Parameter");
   }
 }

@@ -36,7 +36,7 @@ public class ExtractFromStatementsEndsWithReturn_Test extends BaseTransformation
 
   @Test
   public void test_extractFromStatementsEndsWithReturn() throws Throwable {
-    new ExtractFromStatementsEndsWithReturn_Test.TestBody(this).test_extractFromStatementsEndsWithReturn();
+    new TestBody(this).test_extractFromStatementsEndsWithReturn();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

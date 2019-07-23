@@ -4,17 +4,24 @@ package jetbrains.mps.baseLanguage.lightweightdsl.util;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.AutoInitDSLClass__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DSLDescriptorUtil {
   public static SNode getDescriptor(SNode n) {
-    if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass"))) {
-      return AutoInitDSLClass__BehaviorDescriptor.getDescriptor_idUBgfI9eMAt.invoke(SNodeOperations.cast(n, MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass")));
+    if (SNodeOperations.isInstanceOf(n, AUX_5933wn.AutoInitDSLClass_f4d98b17)) {
+      return AutoInitDSLClass__BehaviorDescriptor.getDescriptor_idUBgfI9eMAt.invoke(SNodeOperations.cast(n, AUX_5933wn.AutoInitDSLClass_f4d98b17));
     }
-    return SLinkOperations.getTarget(AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"))), MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor"));
+    return SLinkOperations.getTarget(AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(AUX_5933wn.DSLAnnotation_eee1a74)), MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor"));
+  }
+
+  private static final class AUX_5933wn {
+    /*package*/ static final SInterfaceConcept AutoInitDSLClass_f4d98b17 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
+    /*package*/ static final SConcept DSLAnnotation_eee1a74 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
   }
 }

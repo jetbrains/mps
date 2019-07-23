@@ -28,7 +28,7 @@ public class RefactoringMenuItemBase_InapplicableRefactoring_CannotExecute_Test 
 
   @Test
   public void test_RefactoringMenuItemBase_InapplicableRefactoring_CannotExecute() throws Throwable {
-    new RefactoringMenuItemBase_InapplicableRefactoring_CannotExecute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,13 +4,13 @@ package jetbrains.mps.baseLanguage.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.PastePostProcessor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,30 +19,32 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    return AUX_nqjmzz.ThisExpression_a046bcfc;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
 
-    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(pastedNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), false)).where(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(pastedNode, AUX_nqjmzz.ClassifierMember_849b47d7, false)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(it));
       }
     }).isEmpty()) {
       return;
     }
-    SNode containingClass = SNodeOperations.getNodeAncestor(pastedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
+    SNode containingClass = SNodeOperations.getNodeAncestor(pastedNode, AUX_nqjmzz.ClassConcept_e2711824, false, false);
     if (containingClass == null) {
       return;
     }
 
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(pastedNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(pastedNode), AUX_nqjmzz.DotExpression_97ed08d8)) {
       SNode parentDotExpression = (SNode) SNodeOperations.getParent(pastedNode);
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parentDotExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"))) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parentDotExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_nqjmzz.FieldReferenceOperation_fc8d5dda)) {
         SNode fieldReferenceOperation = (SNode) SLinkOperations.getTarget(parentDotExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"));
         SReference fieldDeclarationReference = SNodeOperations.getReference(fieldReferenceOperation, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration"));
 
@@ -51,7 +53,7 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
 
         // Collecting possible classConcepts (this. targets) 
         List<SNode> possibleClassConcepts = new ArrayList<SNode>();
-        for (SNode clazz = containingClass; clazz != null; clazz = ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(clazz) ? null : SNodeOperations.getNodeAncestor(clazz, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false))) {
+        for (SNode clazz = containingClass; clazz != null; clazz = ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(clazz) ? null : SNodeOperations.getNodeAncestor(clazz, AUX_nqjmzz.ClassConcept_e2711824, false, false))) {
           ListSequence.fromList(possibleClassConcepts).addElement(clazz);
         }
 
@@ -71,5 +73,13 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
         }
       }
     }
+  }
+
+  private static final class AUX_nqjmzz {
+    /*package*/ static final SConcept ThisExpression_a046bcfc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SInterfaceConcept ClassifierMember_849b47d7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept FieldReferenceOperation_fc8d5dda = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 }

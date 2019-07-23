@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractContainerCreator_ext_1_RTransform_Menu extends TransformationMenuBase {
@@ -49,9 +50,9 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new AbstractContainerCreator_ext_1_RTransform_Menu.TMP_Include_xot6qr_a0());
-      result.add(new AbstractContainerCreator_ext_1_RTransform_Menu.TMP_Include_xot6qr_b0());
-      result.add(new AbstractContainerCreator_ext_1_RTransform_Menu.TMP_Include_xot6qr_c0());
+      result.add(new TMP_Include_xot6qr_a0());
+      result.add(new TMP_Include_xot6qr_b0());
+      result.add(new TMP_Include_xot6qr_c0());
     }
     return result;
   }
@@ -75,7 +76,7 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator"), "jetbrains.mps.baseLanguage.collections.editor.add_initSize_to_container_creator");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_xot6qr.AbstractContainerCreator_ec204212, "jetbrains.mps.baseLanguage.collections.editor.add_initSize_to_container_creator");
     }
 
   }
@@ -98,7 +99,7 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator"), "jetbrains.mps.baseLanguage.collections.editor.add_parameters_to_container_creator");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_xot6qr.AbstractContainerCreator_ec204212, "jetbrains.mps.baseLanguage.collections.editor.add_parameters_to_container_creator");
     }
 
   }
@@ -121,8 +122,12 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator"), "jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_add_elementType");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_xot6qr.AbstractContainerCreator_ec204212, "jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_add_elementType");
     }
 
+  }
+
+  private static final class AUX_xot6qr {
+    /*package*/ static final SConcept AbstractContainerCreator_ec204212 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator");
   }
 }

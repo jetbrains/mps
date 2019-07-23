@@ -22,7 +22,7 @@ public class Del_InEmptyName_Test extends BaseTransformationTest {
 
   @Test
   public void test_Del_InEmptyName() throws Throwable {
-    new Del_InEmptyName_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

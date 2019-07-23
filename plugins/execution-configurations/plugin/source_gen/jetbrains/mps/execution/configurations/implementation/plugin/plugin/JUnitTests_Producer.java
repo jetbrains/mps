@@ -25,7 +25,6 @@ import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestNodeWrapperFactory;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -34,7 +33,10 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class JUnitTests_Producer {
 
@@ -54,13 +56,13 @@ public final class JUnitTests_Producer {
       configurationFactory = configurationType.getConfigurationFactories()[0];
     }
     List<RuntimeConfigurationProducer> creators = ListSequence.fromList(new ArrayList<RuntimeConfigurationProducer>());
-    ListSequence.fromList(creators).addElement(new JUnitTests_Producer.ProducerPart_MPSProject_f2w1m9_a(configurationFactory));
-    ListSequence.fromList(creators).addElement(new JUnitTests_Producer.ProducerPart_SModule_f2w1m9_b(configurationFactory));
-    ListSequence.fromList(creators).addElement(new JUnitTests_Producer.ProducerPart_SModel_f2w1m9_c(configurationFactory));
-    ListSequence.fromList(creators).addElement(new JUnitTests_Producer.ProducerPart_Node_f2w1m9_d(configurationFactory));
-    ListSequence.fromList(creators).addElement(new JUnitTests_Producer.ProducerPart_Node_f2w1m9_e(configurationFactory));
-    ListSequence.fromList(creators).addElement(new JUnitTests_Producer.ProducerPart_NlistITestCase_f2w1m9_f(configurationFactory));
-    ListSequence.fromList(creators).addElement(new JUnitTests_Producer.ProducerPart_NlistITestMethod_f2w1m9_g(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_MPSProject_f2w1m9_a(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_SModule_f2w1m9_b(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_SModel_f2w1m9_c(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_Node_f2w1m9_d(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_Node_f2w1m9_e(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_NlistITestCase_f2w1m9_f(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_NlistITestMethod_f2w1m9_g(configurationFactory));
     return creators;
   }
 
@@ -94,8 +96,8 @@ public final class JUnitTests_Producer {
     }
 
     @Override
-    public JUnitTests_Producer.ProducerPart_MPSProject_f2w1m9_a clone() {
-      return (JUnitTests_Producer.ProducerPart_MPSProject_f2w1m9_a) super.clone();
+    public ProducerPart_MPSProject_f2w1m9_a clone() {
+      return (ProducerPart_MPSProject_f2w1m9_a) super.clone();
     }
   }
   public static final class ProducerPart_SModule_f2w1m9_b extends BaseMpsProducer<SModule> {
@@ -138,8 +140,8 @@ public final class JUnitTests_Producer {
     }
 
     @Override
-    public JUnitTests_Producer.ProducerPart_SModule_f2w1m9_b clone() {
-      return (JUnitTests_Producer.ProducerPart_SModule_f2w1m9_b) super.clone();
+    public ProducerPart_SModule_f2w1m9_b clone() {
+      return (ProducerPart_SModule_f2w1m9_b) super.clone();
     }
   }
   public static final class ProducerPart_SModel_f2w1m9_c extends BaseMpsProducer<SModel> {
@@ -183,8 +185,8 @@ public final class JUnitTests_Producer {
     }
 
     @Override
-    public JUnitTests_Producer.ProducerPart_SModel_f2w1m9_c clone() {
-      return (JUnitTests_Producer.ProducerPart_SModel_f2w1m9_c) super.clone();
+    public ProducerPart_SModel_f2w1m9_c clone() {
+      return (ProducerPart_SModel_f2w1m9_c) super.clone();
     }
   }
   public static final class ProducerPart_Node_f2w1m9_d extends BaseMpsProducer<SNode> {
@@ -194,7 +196,7 @@ public final class JUnitTests_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), AUX_aarvwv.BaseConcept_bc2351f);
     }
 
     @Override
@@ -270,8 +272,8 @@ public final class JUnitTests_Producer {
     }
 
     @Override
-    public JUnitTests_Producer.ProducerPart_Node_f2w1m9_d clone() {
-      return (JUnitTests_Producer.ProducerPart_Node_f2w1m9_d) super.clone();
+    public ProducerPart_Node_f2w1m9_d clone() {
+      return (ProducerPart_Node_f2w1m9_d) super.clone();
     }
   }
   public static final class ProducerPart_Node_f2w1m9_e extends BaseMpsProducer<SNode> {
@@ -281,7 +283,7 @@ public final class JUnitTests_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), AUX_aarvwv.BaseConcept_bc2351f);
     }
 
     @Override
@@ -341,8 +343,8 @@ public final class JUnitTests_Producer {
     }
 
     @Override
-    public JUnitTests_Producer.ProducerPart_Node_f2w1m9_e clone() {
-      return (JUnitTests_Producer.ProducerPart_Node_f2w1m9_e) super.clone();
+    public ProducerPart_Node_f2w1m9_e clone() {
+      return (ProducerPart_Node_f2w1m9_e) super.clone();
     }
   }
   public static final class ProducerPart_NlistITestCase_f2w1m9_f extends BaseMpsProducer<List<SNode>> {
@@ -356,7 +358,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase"))))) {
+        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), AUX_aarvwv.ITestCase_8c8c490a)))) {
           return false;
         }
       }
@@ -380,7 +382,7 @@ public final class JUnitTests_Producer {
         return null;
       }
 
-      JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(source).first(), MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ",...", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
+      JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(source).first(), AUX_aarvwv.ITestCase_8c8c490a), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ",...", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.NODE);
       configuration.getJUnitSettings().setTestCases(PointerUtils.nodesToCloneableList(source));
       configuration.getJUnitSettings().setInProcess(canRunInProcess);
@@ -389,8 +391,8 @@ public final class JUnitTests_Producer {
 
 
     @Override
-    public JUnitTests_Producer.ProducerPart_NlistITestCase_f2w1m9_f clone() {
-      return (JUnitTests_Producer.ProducerPart_NlistITestCase_f2w1m9_f) super.clone();
+    public ProducerPart_NlistITestCase_f2w1m9_f clone() {
+      return (ProducerPart_NlistITestCase_f2w1m9_f) super.clone();
     }
   }
   public static final class ProducerPart_NlistITestMethod_f2w1m9_g extends BaseMpsProducer<List<SNode>> {
@@ -404,7 +406,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL, "jetbrains.mps.baseLanguage.unitTest.structure.ITestMethod"))))) {
+        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), AUX_aarvwv.ITestMethod_5cac84ad)))) {
           return false;
         }
       }
@@ -430,8 +432,14 @@ public final class JUnitTests_Producer {
 
 
     @Override
-    public JUnitTests_Producer.ProducerPart_NlistITestMethod_f2w1m9_g clone() {
-      return (JUnitTests_Producer.ProducerPart_NlistITestMethod_f2w1m9_g) super.clone();
+    public ProducerPart_NlistITestMethod_f2w1m9_g clone() {
+      return (ProducerPart_NlistITestMethod_f2w1m9_g) super.clone();
     }
+  }
+
+  private static final class AUX_aarvwv {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SInterfaceConcept ITestCase_8c8c490a = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
+    /*package*/ static final SInterfaceConcept ITestMethod_5cac84ad = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL, "jetbrains.mps.baseLanguage.unitTest.structure.ITestMethod");
   }
 }

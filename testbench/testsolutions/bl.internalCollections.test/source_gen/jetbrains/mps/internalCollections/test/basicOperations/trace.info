@@ -2903,12 +2903,12 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903ed(jetbrains.mps.internalCollections.test.basicOperations)/4228991169967152379">
     <file name="MPS_17338.java">
-      <node id="4228991169967825031" at="11,49,12,73" concept="12" />
-      <node id="4228991169967861975" at="20,45,21,41" concept="12" />
+      <node id="4228991169967825031" at="11,39,12,53" concept="12" />
+      <node id="4228991169967861975" at="20,35,21,31" concept="12" />
       <node id="4228991169967152409" at="11,0,14,0" concept="10" trace="getAllPoints#()Ljava/util/List;" />
       <node id="4228991169967152923" at="20,0,23,0" concept="10" trace="getBlock#()Ljetbrains/mps/internalCollections/test/basicOperations/MPS_17338/Point/Block;" />
-      <scope id="4228991169967152413" at="11,49,12,73" />
-      <scope id="4228991169967152927" at="20,45,21,41" />
+      <scope id="4228991169967152413" at="11,39,12,53" />
+      <scope id="4228991169967152927" at="20,35,21,31" />
       <scope id="4228991169967152409" at="11,0,14,0" />
       <scope id="4228991169967152923" at="20,0,23,0" />
       <unit id="4228991169967152828" at="17,0,19,0" name="jetbrains.mps.internalCollections.test.basicOperations.MPS_17338$Point$Block" />

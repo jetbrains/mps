@@ -25,7 +25,7 @@ public class TestSubstitute_DuplicationMenu_IncludeSameMenuTwice_Test extends Ba
 
   @Test
   public void test_TestSubstitute_DuplicationMenu_IncludeSameMenuTwice() throws Throwable {
-    new TestSubstitute_DuplicationMenu_IncludeSameMenuTwice_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

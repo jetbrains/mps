@@ -31,19 +31,19 @@ public class Subtyping_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck2078093584693310057() throws Throwable {
-    new Subtyping_Test.TestBody(this).test_NodeErrorCheck2078093584693310057();
+    new TestBody(this).test_NodeErrorCheck2078093584693310057();
   }
   @Test
   public void test_NodeErrorCheck2078093584693358841() throws Throwable {
-    new Subtyping_Test.TestBody(this).test_NodeErrorCheck2078093584693358841();
+    new TestBody(this).test_NodeErrorCheck2078093584693358841();
   }
   @Test
   public void test_NodeErrorCheck204609444630139535() throws Throwable {
-    new Subtyping_Test.TestBody(this).test_NodeErrorCheck204609444630139535();
+    new TestBody(this).test_NodeErrorCheck204609444630139535();
   }
   @Test
   public void test_ErrorMessagesCheck204609444630139319() throws Throwable {
-    new Subtyping_Test.TestBody(this).test_ErrorMessagesCheck204609444630139319();
+    new TestBody(this).test_ErrorMessagesCheck204609444630139319();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

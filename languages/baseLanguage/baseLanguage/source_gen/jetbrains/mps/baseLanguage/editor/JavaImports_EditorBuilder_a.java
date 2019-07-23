@@ -27,6 +27,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class JavaImports_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -60,7 +61,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new JavaImports_EditorBuilder_a.entriesListHandler_1bs0fk_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new entriesListHandler_1bs0fk_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_entries");
     editorCell.setSRole(handler.getElementSRole());
@@ -83,7 +84,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, "jetbrains.mps.baseLanguage.structure.JavaImport");
+      return AUX_wc1dem.JavaImport_ecd8cb21;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -121,5 +122,9 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
     EditorCell editorCell = getUpdateSession().getAttributedCell(AttributeKind.NODE, myNode);
     return editorCell;
+  }
+
+  private static final class AUX_wc1dem {
+    /*package*/ static final SConcept JavaImport_ecd8cb21 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, "jetbrains.mps.baseLanguage.structure.JavaImport");
   }
 }

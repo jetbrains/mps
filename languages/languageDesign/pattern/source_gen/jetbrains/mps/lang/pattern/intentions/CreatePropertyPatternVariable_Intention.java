@@ -18,11 +18,12 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CreatePropertyPatternVariable_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -51,7 +52,7 @@ public final class CreatePropertyPatternVariable_Intention extends AbstractInten
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new CreatePropertyPatternVariable_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -67,7 +68,7 @@ public final class CreatePropertyPatternVariable_Intention extends AbstractInten
       EditorCell cell = editorContext.getSelectedCell();
       SNode cellNode = cell.getSNode();
       SProperty property = cell.getCellContext().getPropertyInfo().getProperty();
-      SNode variableDeclaration = SNodeFactoryOperations.setNewAttribute(cellNode, new IAttributeDescriptor.PropertyAttribute(MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration"), property), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration"));
+      SNode variableDeclaration = SNodeFactoryOperations.setNewAttribute(cellNode, new IAttributeDescriptor.PropertyAttribute(AUX_22jfzo.PropertyPatternVariableDeclaration_b5cd3def, property), AUX_22jfzo.PropertyPatternVariableDeclaration_b5cd3def);
       SelectionUtil.selectCell(editorContext, variableDeclaration, "*" + CellIdManager.createPropertyId("varName"));
     }
     @Override
@@ -92,5 +93,9 @@ public final class CreatePropertyPatternVariable_Intention extends AbstractInten
       return checkedDotOperand.getProperty();
     }
     return null;
+  }
+
+  private static final class AUX_22jfzo {
+    /*package*/ static final SConcept PropertyPatternVariableDeclaration_b5cd3def = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
   }
 }

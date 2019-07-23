@@ -37,7 +37,7 @@ public class TwoParametersWithSameType_Test extends BaseTransformationTest {
 
   @Test
   public void test_TwoParametersWithSameType() throws Throwable {
-    new TwoParametersWithSameType_Test.TestBody(this).test_TwoParametersWithSameType();
+    new TestBody(this).test_TwoParametersWithSameType();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

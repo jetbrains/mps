@@ -9,14 +9,15 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeWrapperElement_RightBrace_KeyMap extends KeyMapImpl {
   public NodeWrapperElement_RightBrace_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new NodeWrapperElement_RightBrace_KeyMap.NodeWrapperElement_RightBrace_KeyMap_Action0();
+    action = new NodeWrapperElement_RightBrace_KeyMap_Action0();
     this.putAction("any", " ", action);
   }
   public static class NodeWrapperElement_RightBrace_KeyMap_Action0 extends KeyMapActionImpl {
@@ -35,7 +36,7 @@ public class NodeWrapperElement_RightBrace_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_1wur14.NodeWrapperElement_9f69a8df))) {
         return false;
       }
       return true;
@@ -50,5 +51,9 @@ public class NodeWrapperElement_RightBrace_KeyMap extends KeyMapImpl {
     public String getKeyStroke() {
       return "  ";
     }
+  }
+
+  private static final class AUX_1wur14 {
+    /*package*/ static final SConcept NodeWrapperElement_9f69a8df = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement");
   }
 }

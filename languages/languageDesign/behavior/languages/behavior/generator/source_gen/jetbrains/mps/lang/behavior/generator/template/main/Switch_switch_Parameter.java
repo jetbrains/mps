@@ -15,20 +15,21 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import java.util.Collections;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class Switch_switch_Parameter extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_Parameter() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_Parameter.ReductionRule0(), new Switch_switch_Parameter.ReductionRule1());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515185335");
@@ -46,7 +47,7 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515185370"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"), true);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515185370"), AUX_vnjhlw.ParameterDeclaration_24d60da8, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -102,7 +103,7 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515238862"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"), true);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515238862"), AUX_vnjhlw.ParameterDeclaration_24d60da8, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -152,8 +153,12 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static SNodePointer switchMacroRef_vnjhlw_b0a0a0a1a3a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515193570");
-  private static SNodePointer templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
-  private static SNodePointer switchMacroRef_vnjhlw_b0a0a0a1a3a2a1i = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7830995205626232435");
-  private static SNodePointer templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a1i = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
+  private static final SNodePointer switchMacroRef_vnjhlw_b0a0a0a1a3a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515193570");
+  private static final SNodePointer templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
+  private static final SNodePointer switchMacroRef_vnjhlw_b0a0a0a1a3a2a1i = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7830995205626232435");
+  private static final SNodePointer templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a1i = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
+
+  private static final class AUX_vnjhlw {
+    /*package*/ static final SConcept ParameterDeclaration_24d60da8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+  }
 }

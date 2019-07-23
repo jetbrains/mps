@@ -4,7 +4,6 @@ package jetbrains.mps.samples.lambdaCalculus.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -17,9 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class VariableOwner__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496a4fL, "jetbrains.mps.samples.lambdaCalculus.structure.VariableOwner");
+  private static final SAbstractConcept CONCEPT = AUX_1r627g.VariableOwner_cdb70f22;
 
   public static final SMethod<List<SNode>> getVariables_id7M_MU5__$7C = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getVariables").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7M_MU5__$7C").build();
 
@@ -71,5 +72,9 @@ public final class VariableOwner__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_1r627g {
+    /*package*/ static final SInterfaceConcept VariableOwner_cdb70f22 = MetaAdapterFactory.getInterfaceConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496a4fL, "jetbrains.mps.samples.lambdaCalculus.structure.VariableOwner");
   }
 }

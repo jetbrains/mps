@@ -19,6 +19,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class TestEditorMenuTraceSubstituteMenuReferenceActions_Test extends BaseTransformationTest {
@@ -31,7 +32,7 @@ public class TestEditorMenuTraceSubstituteMenuReferenceActions_Test extends Base
 
   @Test
   public void test_TestEditorMenuTraceSubstituteMenuReferenceActions() throws Throwable {
-    new TestEditorMenuTraceSubstituteMenuReferenceActions_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {
@@ -52,11 +53,15 @@ public class TestEditorMenuTraceSubstituteMenuReferenceActions_Test extends Base
           Assert.assertTrue(action != null);
 
           EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          SNodeReference referenceScopePart = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope"))).first());
+          SNodeReference referenceScopePart = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts")), AUX_i7wsz3.SubstituteMenuPart_ReferenceScope_b872824a)).first());
 
           EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, null, referenceScopePart, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
         }
       });
     }
+  }
+
+  private static final class AUX_i7wsz3 {
+    /*package*/ static final SConcept SubstituteMenuPart_ReferenceScope_b872824a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope");
   }
 }

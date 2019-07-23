@@ -41,6 +41,7 @@ import jetbrains.mps.ide.messages.DefaultMessageHandler;
 import jetbrains.mps.build.mps.util.ModuleChecker;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RefreshTestProject_Action extends BaseAction {
   private static final Logger LOG = LogManager.getLogger(RefreshTestProject_Action.class);
@@ -82,7 +83,7 @@ public class RefreshTestProject_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876885L, "jetbrains.mps.build.mps.testManifest.structure.TestProjectConfiguration")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_tlmhfo.TestProjectConfiguration_5074ebfb))) {
         node = null;
       }
       if (node == null) {
@@ -145,7 +146,7 @@ public class RefreshTestProject_Action extends BaseAction {
             final SNode bproj = template.createBuildProject(event.getData(MPSCommonDataKeys.NODE), manifests);
             SPropertyOperations.set(bproj, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage"), "generated");
 
-            SNode existing = ListSequence.fromList(SModelOperations.roots(target, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"))).findFirst(new IWhereFilter<SNode>() {
+            SNode existing = ListSequence.fromList(SModelOperations.roots(target, AUX_tlmhfo.BuildProject_808bb057)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(bproj, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
               }
@@ -169,5 +170,10 @@ public class RefreshTestProject_Action extends BaseAction {
     if (frame != null) {
       frame.getStatusBar().setInfo(info);
     }
+  }
+
+  private static final class AUX_tlmhfo {
+    /*package*/ static final SConcept TestProjectConfiguration_5074ebfb = MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876885L, "jetbrains.mps.build.mps.testManifest.structure.TestProjectConfiguration");
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

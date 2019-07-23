@@ -22,7 +22,7 @@ import java.io.InputStream;
 import com.intellij.util.ArrayUtil;
 
 public class TextPreviewFile extends VirtualFile {
-  private static TextPreviewFile.TextPreviewVirtualFileSystem FS = new TextPreviewFile.TextPreviewVirtualFileSystem();
+  private static TextPreviewVirtualFileSystem FS = new TextPreviewVirtualFileSystem();
   private static final String BINARY_CONTENT = "<binary content>";
   private final String myName;
   private final String myModelName;
@@ -85,7 +85,7 @@ public class TextPreviewFile extends VirtualFile {
   @NotNull
   @Override
   public String getUrl() {
-    return TextPreviewFile.TextPreviewVirtualFileSystem.PROTOCOL + getPath();
+    return TextPreviewVirtualFileSystem.PROTOCOL + getPath();
   }
   @NotNull
   @Override

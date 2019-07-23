@@ -8,23 +8,23 @@ public class mps8150 {
   public mps8150() {
   }
   public static class Bar<U> {
-    public Bar(_FunctionTypes._return_P0_E0<? extends mps8150.Qux<U>> t) {
+    public Bar(_FunctionTypes._return_P0_E0<? extends Qux<U>> t) {
     }
-    public static mps8150.Qux<Integer> foo() {
-      new mps8150.Bar<Integer>(new _FunctionTypes._return_P0_E0<mps8150.Qux<Integer>>() {
-        public mps8150.Qux<Integer> invoke() {
+    public static Qux<Integer> foo() {
+      new Bar<Integer>(new _FunctionTypes._return_P0_E0<Qux<Integer>>() {
+        public Qux<Integer> invoke() {
           return foo();
         }
       });
       return null;
     }
-    public static mps8150.Qux<Integer> baz() {
-      _FunctionTypes._return_P0_E0<? extends mps8150.Qux<Integer>> k = new _FunctionTypes._return_P0_E0<mps8150.Qux<Integer>>() {
-        public mps8150.Qux<Integer> invoke() {
+    public static Qux<Integer> baz() {
+      _FunctionTypes._return_P0_E0<? extends Qux<Integer>> k = new _FunctionTypes._return_P0_E0<Qux<Integer>>() {
+        public Qux<Integer> invoke() {
           return baz();
         }
       };
-      new mps8150.Bar<Integer>(k);
+      new Bar<Integer>(k);
       return null;
     }
   }

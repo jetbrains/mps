@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,6 +16,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.util.NameUtil;
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+  private static final SAbstractConcept CONCEPT = AUX_yg259l.SNodeOperation_bc9074dc;
 
   public static final SMethod<SNode> getLeftExpression_idhEwJdGu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLeftExpression").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJdGu").build();
   public static final SMethod<SNode> getLeftExpressionLeftExpression_idhEwJdGS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLeftExpressionLeftExpression").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJdGS").build();
@@ -59,21 +59,21 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SNode getLeftExpression_idhEwJdGu(@NotNull SNode __thisNode__) {
     SNode parent = SNodeOperations.getParent(__thisNode__);
-    return SLinkOperations.getTarget(SNodeOperations.as(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
+    return SLinkOperations.getTarget(SNodeOperations.as(parent, AUX_yg259l.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
   }
   /*package*/ static SNode getLeftExpressionLeftExpression_idhEwJdGS(@NotNull SNode __thisNode__) {
     SNode leftExpression = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(__thisNode__);
-    if (!(SNodeOperations.isInstanceOf(leftExpression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")))) {
+    if (!(SNodeOperations.isInstanceOf(leftExpression, AUX_yg259l.DotExpression_97ed08d8))) {
       return null;
     }
-    return SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
+    return SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, AUX_yg259l.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
   }
   /*package*/ static SNode getLeftExpressionOperation_idhEwJdHi(@NotNull SNode __thisNode__) {
     SNode leftExpression = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(__thisNode__);
-    if (!(SNodeOperations.isInstanceOf(leftExpression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")))) {
+    if (!(SNodeOperations.isInstanceOf(leftExpression, AUX_yg259l.DotExpression_97ed08d8))) {
       return null;
     }
-    return SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"));
+    return SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, AUX_yg259l.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"));
   }
   /*package*/ static SNode getParameter_idhEwJdHG(@NotNull SNode __thisNode__, final SAbstractConcept parameterConcept) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter"))).where(new IWhereFilter<SNode>() {
@@ -145,7 +145,7 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
       return result;
     }
     SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(operand);
-    SNode nodeType = TypecheckingFacade.getFromContext().coerceType(operandType, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));
+    SNode nodeType = TypecheckingFacade.getFromContext().coerceType(operandType, AUX_yg259l.SNodeType_dcb080ab);
     return ((SLinkOperations.getTarget(nodeType, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept")) != null) ? SLinkOperations.getTarget(nodeType, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept")) : SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
   }
 
@@ -229,5 +229,11 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_yg259l {
+    /*package*/ static final SConcept SNodeOperation_bc9074dc = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SNodeType_dcb080ab = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 }

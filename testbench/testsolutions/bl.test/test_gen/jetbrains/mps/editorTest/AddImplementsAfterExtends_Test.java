@@ -21,7 +21,7 @@ public class AddImplementsAfterExtends_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddImplementsAfterExtends() throws Throwable {
-    new AddImplementsAfterExtends_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

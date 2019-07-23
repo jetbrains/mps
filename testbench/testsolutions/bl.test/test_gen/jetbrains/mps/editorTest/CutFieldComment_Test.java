@@ -21,7 +21,7 @@ public class CutFieldComment_Test extends BaseTransformationTest {
 
   @Test
   public void test_CutFieldComment() throws Throwable {
-    new CutFieldComment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

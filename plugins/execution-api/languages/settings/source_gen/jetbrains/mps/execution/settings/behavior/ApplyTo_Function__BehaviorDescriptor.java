@@ -4,7 +4,6 @@ package jetbrains.mps.execution.settings.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -20,9 +19,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ApplyTo_Function__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910129L, "jetbrains.mps.execution.settings.structure.ApplyTo_Function");
+  private static final SAbstractConcept CONCEPT = AUX_u866k7.ApplyTo_Function_9ba052c5;
 
   public static final SMethod<SNode> getJavaMethod_idO$iR4J$gaJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getJavaMethod").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$gaJ").build();
   public static final SMethod<SNode> getPublicJavaMethod_idbkrofm9Fgz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPublicJavaMethod").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("bkrofm9Fgz").build();
@@ -44,8 +44,8 @@ public final class ApplyTo_Function__BehaviorDescriptor extends BaseBHDescriptor
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012dL, "jetbrains.mps.execution.settings.structure.EditorOperationDeclaration"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910390L, "jetbrains.mps.execution.settings.structure.Configuration_Parameter"));
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, AUX_u866k7.EditorOperationDeclaration_9ba052c9);
+    ListSequence.fromList(result).addElement(AUX_u866k7.Configuration_Parameter_9ba0b844);
     return result;
   }
 
@@ -99,5 +99,11 @@ public final class ApplyTo_Function__BehaviorDescriptor extends BaseBHDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_u866k7 {
+    /*package*/ static final SConcept ApplyTo_Function_9ba052c5 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910129L, "jetbrains.mps.execution.settings.structure.ApplyTo_Function");
+    /*package*/ static final SConcept EditorOperationDeclaration_9ba052c9 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012dL, "jetbrains.mps.execution.settings.structure.EditorOperationDeclaration");
+    /*package*/ static final SConcept Configuration_Parameter_9ba0b844 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910390L, "jetbrains.mps.execution.settings.structure.Configuration_Parameter");
   }
 }

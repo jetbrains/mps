@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -18,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
@@ -27,9 +27,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConstructorInvocationStatement__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
+  private static final SAbstractConcept CONCEPT = AUX_t540c3.ConstructorInvocationStatement_436b0096;
 
   public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6WzWPTX2vuB").build();
   public static final SMethod<Map<SNode, SNode>> getTypesByTypeVars_idJfLh5LDMrj = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl(Map.class)).name("getTypesByTypeVars").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("JfLh5LDMrj").build();
@@ -40,7 +41,7 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    SNode concept = SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
+    SNode concept = SNodeOperations.getNodeAncestor(__thisNode__, AUX_t540c3.ClassConcept_e2711824, false, false);
     List<SNode> typeVarRefs = new ArrayList<SNode>();
     for (SNode tvd : SLinkOperations.getChildren(concept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))) {
       ListSequence.fromList(typeVarRefs).addElement(_quotation_createNode_teq92u_a0a0a2a0(tvd));
@@ -122,5 +123,10 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
       }
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_t540c3 {
+    /*package*/ static final SConcept ConstructorInvocationStatement_436b0096 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

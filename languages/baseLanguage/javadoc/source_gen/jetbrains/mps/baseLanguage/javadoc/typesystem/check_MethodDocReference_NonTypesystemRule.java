@@ -16,13 +16,15 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_MethodDocReference_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_MethodDocReference_NonTypesystemRule() {
   }
   public void applyRule(final SNode methodDocReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode methodDeclaration = SLinkOperations.getTarget(methodDocReference, MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, 0x1ec532ec2531d2d4L, "methodDeclaration"));
-    if (!(VisibilityUtil.isVisible(methodDocReference, SNodeOperations.as(methodDeclaration, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible"))))) {
+    if (!(VisibilityUtil.isVisible(methodDocReference, SNodeOperations.as(methodDeclaration, AUX_btzlmn.IVisible_84badc76)))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(methodDocReference, "Symbol " + SPropertyOperations.getString(methodDeclaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538823120", null, errorTarget);
@@ -30,12 +32,17 @@ public class check_MethodDocReference_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference");
+    return AUX_btzlmn.MethodDocReference_7faec6f1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_btzlmn {
+    /*package*/ static final SInterfaceConcept IVisible_84badc76 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SConcept MethodDocReference_7faec6f1 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference");
   }
 }

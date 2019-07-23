@@ -8,7 +8,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/3152271290514981435">
     <file name="TabNavigationToEmptyCell_Test.java">
       <node id="3152271290514981435" at="20,42,21,25" concept="4" />
-      <node id="3152271290514981435" at="25,64,26,66" concept="1" />
+      <node id="3152271290514981435" at="25,64,26,36" concept="1" />
       <node id="3152271290514981435" at="31,52,32,19" concept="4" />
       <node id="3152271290514981435" at="36,51,37,72" concept="1" />
       <node id="3152271290514998967" at="37,72,38,80" concept="1" />
@@ -18,7 +18,7 @@
       <node id="3152271290514981435" at="24,0,28,0" concept="2" trace="test_TabNavigationToEmptyCell#()V" />
       <node id="3152271290514981435" at="35,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3152271290514981435" at="20,42,21,25" />
-      <scope id="3152271290514981435" at="25,64,26,66" />
+      <scope id="3152271290514981435" at="25,64,26,36" />
       <scope id="3152271290514981435" at="31,52,32,19" />
       <scope id="3152271290514981435" at="36,51,38,80" />
       <scope id="3152271290514981435" at="20,0,23,0" />
@@ -34,7 +34,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/3676708844864220430">
     <file name="CompleteEmptyCell_Test.java">
       <node id="3676708844864220430" at="20,35,21,25" concept="4" />
-      <node id="3676708844864220430" at="25,57,26,59" concept="1" />
+      <node id="3676708844864220430" at="25,57,26,36" concept="1" />
       <node id="3676708844864220430" at="31,52,32,19" concept="4" />
       <node id="3676708844864220430" at="36,51,37,72" concept="1" />
       <node id="3694071247855998073" at="37,72,38,71" concept="1" />
@@ -45,7 +45,7 @@
       <node id="3676708844864220430" at="24,0,28,0" concept="2" trace="test_CompleteEmptyCell#()V" />
       <node id="3676708844864220430" at="35,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3676708844864220430" at="20,35,21,25" />
-      <scope id="3676708844864220430" at="25,57,26,59" />
+      <scope id="3676708844864220430" at="25,57,26,36" />
       <scope id="3676708844864220430" at="31,52,32,19" />
       <scope id="3676708844864220430" at="20,0,23,0" />
       <scope id="3676708844864220430" at="31,0,34,0">
@@ -61,7 +61,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/5877647854348551015">
     <file name="CreateEvent_Test.java">
       <node id="5877647854348551015" at="18,29,19,25" concept="4" />
-      <node id="5877647854348551015" at="23,51,24,53" concept="1" />
+      <node id="5877647854348551015" at="23,51,24,36" concept="1" />
       <node id="5877647854348551015" at="29,52,30,19" concept="4" />
       <node id="5877647854348551015" at="34,51,35,72" concept="1" />
       <node id="4880455824535162733" at="35,72,36,69" concept="1" />
@@ -71,7 +71,7 @@
       <node id="5877647854348551015" at="22,0,26,0" concept="2" trace="test_CreateEvent#()V" />
       <node id="5877647854348551015" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5877647854348551015" at="18,29,19,25" />
-      <scope id="5877647854348551015" at="23,51,24,53" />
+      <scope id="5877647854348551015" at="23,51,24,36" />
       <scope id="5877647854348551015" at="29,52,30,19" />
       <scope id="5877647854348551015" at="34,51,36,69" />
       <scope id="5877647854348551015" at="18,0,21,0" />
@@ -87,7 +87,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/5877647854348551074">
     <file name="RemoveState_Test.java">
       <node id="5877647854348551074" at="18,29,19,25" concept="4" />
-      <node id="5877647854348551074" at="23,51,24,53" concept="1" />
+      <node id="5877647854348551074" at="23,51,24,36" concept="1" />
       <node id="5877647854348551074" at="29,52,30,19" concept="4" />
       <node id="5877647854348551074" at="34,51,35,72" concept="1" />
       <node id="1315230867830196359" at="35,72,36,69" concept="1" />
@@ -97,7 +97,7 @@
       <node id="5877647854348551074" at="22,0,26,0" concept="2" trace="test_RemoveState#()V" />
       <node id="5877647854348551074" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5877647854348551074" at="18,29,19,25" />
-      <scope id="5877647854348551074" at="23,51,24,53" />
+      <scope id="5877647854348551074" at="23,51,24,36" />
       <scope id="5877647854348551074" at="29,52,30,19" />
       <scope id="5877647854348551074" at="34,51,36,69" />
       <scope id="5877647854348551074" at="18,0,21,0" />
@@ -113,7 +113,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/5877647854348551126">
     <file name="RemoveEvent_Test.java">
       <node id="5877647854348551126" at="18,29,19,25" concept="4" />
-      <node id="5877647854348551126" at="23,51,24,53" concept="1" />
+      <node id="5877647854348551126" at="23,51,24,36" concept="1" />
       <node id="5877647854348551126" at="29,52,30,19" concept="4" />
       <node id="5877647854348551126" at="34,51,35,72" concept="1" />
       <node id="1315230867830196356" at="35,72,36,72" concept="1" />
@@ -123,7 +123,7 @@
       <node id="5877647854348551126" at="22,0,26,0" concept="2" trace="test_RemoveEvent#()V" />
       <node id="5877647854348551126" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5877647854348551126" at="18,29,19,25" />
-      <scope id="5877647854348551126" at="23,51,24,53" />
+      <scope id="5877647854348551126" at="23,51,24,36" />
       <scope id="5877647854348551126" at="29,52,30,19" />
       <scope id="5877647854348551126" at="34,51,36,72" />
       <scope id="5877647854348551126" at="18,0,21,0" />
@@ -139,7 +139,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/5877647854348554901">
     <file name="RemoveTransition_Test.java">
       <node id="5877647854348554901" at="18,34,19,25" concept="4" />
-      <node id="5877647854348554901" at="23,56,24,58" concept="1" />
+      <node id="5877647854348554901" at="23,56,24,36" concept="1" />
       <node id="5877647854348554901" at="29,52,30,19" concept="4" />
       <node id="5877647854348554901" at="34,51,35,72" concept="1" />
       <node id="1315230867830196362" at="35,72,36,69" concept="1" />
@@ -149,7 +149,7 @@
       <node id="5877647854348554901" at="22,0,26,0" concept="2" trace="test_RemoveTransition#()V" />
       <node id="5877647854348554901" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5877647854348554901" at="18,34,19,25" />
-      <scope id="5877647854348554901" at="23,56,24,58" />
+      <scope id="5877647854348554901" at="23,56,24,36" />
       <scope id="5877647854348554901" at="29,52,30,19" />
       <scope id="5877647854348554901" at="34,51,36,69" />
       <scope id="5877647854348554901" at="18,0,21,0" />
@@ -165,7 +165,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/6170050146384276051">
     <file name="Create_Test.java">
       <node id="6170050146384276051" at="18,24,19,25" concept="4" />
-      <node id="6170050146384276051" at="23,46,24,48" concept="1" />
+      <node id="6170050146384276051" at="23,46,24,36" concept="1" />
       <node id="6170050146384276051" at="29,52,30,19" concept="4" />
       <node id="6170050146384276051" at="34,51,35,72" concept="1" />
       <node id="4880455824535162731" at="35,72,36,69" concept="1" />
@@ -175,7 +175,7 @@
       <node id="6170050146384276051" at="22,0,26,0" concept="2" trace="test_Create#()V" />
       <node id="6170050146384276051" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6170050146384276051" at="18,24,19,25" />
-      <scope id="6170050146384276051" at="23,46,24,48" />
+      <scope id="6170050146384276051" at="23,46,24,36" />
       <scope id="6170050146384276051" at="29,52,30,19" />
       <scope id="6170050146384276051" at="34,51,36,69" />
       <scope id="6170050146384276051" at="18,0,21,0" />
@@ -191,7 +191,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/6170050146384285880">
     <file name="MoveTransitionToAnotherColumn_Test.java">
       <node id="6170050146384285880" at="20,47,21,25" concept="4" />
-      <node id="6170050146384285880" at="25,69,26,71" concept="1" />
+      <node id="6170050146384285880" at="25,69,26,36" concept="1" />
       <node id="6170050146384285880" at="31,52,32,19" concept="4" />
       <node id="6170050146384285880" at="36,51,37,72" concept="1" />
       <node id="3694071247855998053" at="37,72,38,71" concept="1" />
@@ -203,7 +203,7 @@
       <node id="6170050146384285880" at="24,0,28,0" concept="2" trace="test_MoveTransitionToAnotherColumn#()V" />
       <node id="6170050146384285880" at="35,0,42,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6170050146384285880" at="20,47,21,25" />
-      <scope id="6170050146384285880" at="25,69,26,71" />
+      <scope id="6170050146384285880" at="25,69,26,36" />
       <scope id="6170050146384285880" at="31,52,32,19" />
       <scope id="6170050146384285880" at="20,0,23,0" />
       <scope id="6170050146384285880" at="31,0,34,0">
@@ -219,7 +219,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/6170050146384285882">
     <file name="MoveTransitionToAnotherRow_Test.java">
       <node id="6170050146384285882" at="20,44,21,25" concept="4" />
-      <node id="6170050146384285882" at="25,66,26,68" concept="1" />
+      <node id="6170050146384285882" at="25,66,26,36" concept="1" />
       <node id="6170050146384285882" at="31,52,32,19" concept="4" />
       <node id="6170050146384285882" at="36,51,37,72" concept="1" />
       <node id="3694071247855998003" at="37,72,38,71" concept="1" />
@@ -231,7 +231,7 @@
       <node id="6170050146384285882" at="24,0,28,0" concept="2" trace="test_MoveTransitionToAnotherRow#()V" />
       <node id="6170050146384285882" at="35,0,42,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6170050146384285882" at="20,44,21,25" />
-      <scope id="6170050146384285882" at="25,66,26,68" />
+      <scope id="6170050146384285882" at="25,66,26,36" />
       <scope id="6170050146384285882" at="31,52,32,19" />
       <scope id="6170050146384285882" at="20,0,23,0" />
       <scope id="6170050146384285882" at="31,0,34,0">
@@ -247,7 +247,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/8017670888383389085">
     <file name="CreateTransition_Test.java">
       <node id="8017670888383389085" at="18,34,19,25" concept="4" />
-      <node id="8017670888383389085" at="23,56,24,58" concept="1" />
+      <node id="8017670888383389085" at="23,56,24,36" concept="1" />
       <node id="8017670888383389085" at="29,52,30,19" concept="4" />
       <node id="8017670888383389085" at="34,51,35,72" concept="1" />
       <node id="4880455824535162741" at="35,72,36,69" concept="1" />
@@ -257,7 +257,7 @@
       <node id="8017670888383389085" at="22,0,26,0" concept="2" trace="test_CreateTransition#()V" />
       <node id="8017670888383389085" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8017670888383389085" at="18,34,19,25" />
-      <scope id="8017670888383389085" at="23,56,24,58" />
+      <scope id="8017670888383389085" at="23,56,24,36" />
       <scope id="8017670888383389085" at="29,52,30,19" />
       <scope id="8017670888383389085" at="34,51,36,69" />
       <scope id="8017670888383389085" at="18,0,21,0" />
@@ -273,7 +273,7 @@
   <root nodeRef="r:dc1400b5-0aa4-448e-8f15-11fb0ccb5c23(jetbrains.mps.lang.editor.table.stateMachine.test@tests)/9025751233592279040">
     <file name="CreateState_Test.java">
       <node id="9025751233592279040" at="18,29,19,25" concept="4" />
-      <node id="9025751233592279040" at="23,51,24,53" concept="1" />
+      <node id="9025751233592279040" at="23,51,24,36" concept="1" />
       <node id="9025751233592279040" at="29,52,30,19" concept="4" />
       <node id="9025751233592279040" at="34,51,35,72" concept="1" />
       <node id="4880455824535162739" at="35,72,36,69" concept="1" />
@@ -284,7 +284,7 @@
       <node id="9025751233592279040" at="22,0,26,0" concept="2" trace="test_CreateState#()V" />
       <node id="9025751233592279040" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="9025751233592279040" at="18,29,19,25" />
-      <scope id="9025751233592279040" at="23,51,24,53" />
+      <scope id="9025751233592279040" at="23,51,24,36" />
       <scope id="9025751233592279040" at="29,52,30,19" />
       <scope id="9025751233592279040" at="18,0,21,0" />
       <scope id="9025751233592279040" at="29,0,32,0">

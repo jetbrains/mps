@@ -18,13 +18,13 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -32,6 +32,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ApplyStyleClassCondition_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -69,14 +70,14 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     Style style = new StyleImpl();
     new itemStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ApplyStyleClassCondition_EditorBuilder_a.ReplaceWith_StyleClassItem_cellMenu_w35i2r_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_StyleClassItem_cellMenu_w35i2r_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_StyleClassItem_cellMenu_w35i2r_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_StyleClassItem_cellMenu_w35i2r_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
+      return AUX_5944q3.StyleClassItem_828c57b7;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -90,7 +91,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ApplyStyleClassCondition_EditorBuilder_a.targetSingleRoleHandler_w35i2r_c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, 0x1b1161f6e66c1a3cL, "target"), getEditorContext());
+    SingleRoleCellProvider provider = new targetSingleRoleHandler_w35i2r_c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, 0x1b1161f6e66c1a3cL, "target"), getEditorContext());
     return provider.createCell();
   }
   private static class targetSingleRoleHandler_w35i2r_c0 extends SingleRoleCellProvider {
@@ -151,7 +152,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ApplyStyleClassCondition_EditorBuilder_a.querySingleRoleHandler_w35i2r_e0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab20495600L, 0x7e9b10ab20495602L, "query"), getEditorContext());
+    SingleRoleCellProvider provider = new querySingleRoleHandler_w35i2r_e0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab20495600L, 0x7e9b10ab20495602L, "query"), getEditorContext());
     return provider.createCell();
   }
   private static class querySingleRoleHandler_w35i2r_e0 extends SingleRoleCellProvider {
@@ -204,5 +205,9 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     protected String getNoTargetText() {
       return "";
     }
+  }
+
+  private static final class AUX_5944q3 {
+    /*package*/ static final SConcept StyleClassItem_828c57b7 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
   }
 }

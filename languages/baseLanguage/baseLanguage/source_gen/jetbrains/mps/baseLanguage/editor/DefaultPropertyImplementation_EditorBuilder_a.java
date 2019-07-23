@@ -48,7 +48,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new DefaultPropertyImplementation_EditorBuilder_a.defaultGetAccessorSingleRoleHandler_fanyxu_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e0adb525L, "defaultGetAccessor"), getEditorContext());
+    SingleRoleCellProvider provider = new defaultGetAccessorSingleRoleHandler_fanyxu_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e0adb525L, "defaultGetAccessor"), getEditorContext());
     return provider.createCell();
   }
   private static class defaultGetAccessorSingleRoleHandler_fanyxu_a0 extends SingleRoleCellProvider {
@@ -104,7 +104,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new DefaultPropertyImplementation_EditorBuilder_a.defaultSetAccessorSingleRoleHandler_fanyxu_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor"), getEditorContext());
+    SingleRoleCellProvider provider = new defaultSetAccessorSingleRoleHandler_fanyxu_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor"), getEditorContext());
     return provider.createCell();
   }
   private static class defaultSetAccessorSingleRoleHandler_fanyxu_b0 extends SingleRoleCellProvider {

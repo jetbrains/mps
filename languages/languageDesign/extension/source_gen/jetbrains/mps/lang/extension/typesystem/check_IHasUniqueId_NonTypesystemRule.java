@@ -10,20 +10,21 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Objects;
 import jetbrains.mps.lang.extension.behavior.IRootWithUniqueName__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_IHasUniqueId_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IHasUniqueId_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode root : ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName")))) {
+    for (SNode root : ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), AUX_er4b3n.IRootWithUniqueName_f02ff145))) {
       if (root != node) {
         if (!(!(Objects.equals(IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(root), IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(node))))) {
           MessageTarget errorTarget = new NodeMessageTarget();
@@ -33,12 +34,16 @@ public class check_IHasUniqueId_NonTypesystemRule extends AbstractNonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName");
+    return AUX_er4b3n.IRootWithUniqueName_f02ff145;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_er4b3n {
+    /*package*/ static final SInterfaceConcept IRootWithUniqueName_f02ff145 = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName");
   }
 }

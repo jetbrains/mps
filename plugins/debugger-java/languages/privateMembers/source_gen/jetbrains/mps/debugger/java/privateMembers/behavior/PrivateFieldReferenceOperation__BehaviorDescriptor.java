@@ -4,7 +4,6 @@ package jetbrains.mps.debugger.java.privateMembers.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,14 +14,16 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class PrivateFieldReferenceOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb5379L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateFieldReferenceOperation");
+  private static final SAbstractConcept CONCEPT = AUX_r9igoq.PrivateFieldReferenceOperation_8a939f4;
 
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
   public static final SMethod<Boolean> lvalue_id1653mnvAgvW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvW").build();
@@ -34,7 +35,7 @@ public final class PrivateFieldReferenceOperation__BehaviorDescriptor extends Ba
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     if ((SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration")) == null)) {
-      return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb5379L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateFieldReferenceOperation"));
+      return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invokeSuper(__thisNode__, AUX_r9igoq.PrivateFieldReferenceOperation_8a939f4);
     }
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
@@ -88,5 +89,9 @@ public final class PrivateFieldReferenceOperation__BehaviorDescriptor extends Ba
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_r9igoq {
+    /*package*/ static final SConcept PrivateFieldReferenceOperation_8a939f4 = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb5379L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateFieldReferenceOperation");
   }
 }

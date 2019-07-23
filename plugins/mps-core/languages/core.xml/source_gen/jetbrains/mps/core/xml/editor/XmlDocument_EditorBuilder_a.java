@@ -51,7 +51,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new XmlDocument_EditorBuilder_a.prologSingleRoleHandler_aohue5_a0(myNode, MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c5494874L, "prolog"), getEditorContext());
+    SingleRoleCellProvider provider = new prologSingleRoleHandler_aohue5_a0(myNode, MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c5494874L, "prolog"), getEditorContext());
     return provider.createCell();
   }
   private static class prologSingleRoleHandler_aohue5_a0 extends SingleRoleCellProvider {
@@ -109,7 +109,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new XmlDocument_EditorBuilder_a.rootElementSingleRoleHandler_aohue5_b0(myNode, MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c549486fL, "rootElement"), getEditorContext());
+    SingleRoleCellProvider provider = new rootElementSingleRoleHandler_aohue5_b0(myNode, MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c549486fL, "rootElement"), getEditorContext());
     return provider.createCell();
   }
   private static class rootElementSingleRoleHandler_aohue5_b0 extends SingleRoleCellProvider {

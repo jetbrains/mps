@@ -69,7 +69,7 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 @ToRemove(version = 2019.1)
 public class ProjectStructureModule extends AbstractModule implements CoreComponent {
   private static final String MODULE_REF = "642f71f8-327a-425b-84f9-44ad58786d27(jetbrains.mps.lang.project.modules)";
-  private Map<SModelId, ProjectStructureModule.ProjectStructureSModelDescriptor> myModels = new ConcurrentHashMap<SModelId, ProjectStructureModule.ProjectStructureSModelDescriptor>();
+  private Map<SModelId, ProjectStructureSModelDescriptor> myModels = new ConcurrentHashMap<SModelId, ProjectStructureSModelDescriptor>();
   private static ProjectStructureModule INSTANCE;
   private final MPSModuleOwner myOwner = new BaseMPSModuleOwner();
   private final SRepositoryExt myRepository;
@@ -144,13 +144,13 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
     }
     SModelReference ref = getSModelReference(module);
     if (isDeleted) {
-      ProjectStructureModule.ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
+      ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
       if (descriptor != null) {
         removeModel(descriptor);
       }
     } else
     if (myModels.containsKey(ref.getModelId())) {
-      ProjectStructureModule.ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
+      ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
       descriptor.originalModuleChanged();
     } else {
       createModel(module);
@@ -164,7 +164,7 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
       return null;
     }
     SModelReference ref = getSModelReference(module);
-    ProjectStructureModule.ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
+    ProjectStructureSModelDescriptor descriptor = myModels.get(ref.getModelId());
     return descriptor;
   }
 
@@ -230,8 +230,8 @@ public class ProjectStructureModule extends AbstractModule implements CoreCompon
     }
   }
 
-  public ProjectStructureModule.ProjectStructureSModelDescriptor createModel(SModule module) {
-    ProjectStructureModule.ProjectStructureSModelDescriptor result = new ProjectStructureModule.ProjectStructureSModelDescriptor(getSModelReference(module), module);
+  public ProjectStructureSModelDescriptor createModel(SModule module) {
+    ProjectStructureSModelDescriptor result = new ProjectStructureSModelDescriptor(getSModelReference(module), module);
     myModels.put(getSModelReference(module).getModelId(), result);
     registerModel(result);
     return result;

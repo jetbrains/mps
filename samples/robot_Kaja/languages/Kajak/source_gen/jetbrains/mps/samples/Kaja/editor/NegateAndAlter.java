@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -32,6 +31,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -43,6 +43,7 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NegateAndAlter extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -68,8 +69,8 @@ public class NegateAndAlter extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new NegateAndAlter.TMP_Group_egefa8_a0());
-      result.add(new NegateAndAlter.TMP_Param_egefa8_b0());
+      result.add(new TMP_Group_egefa8_a0());
+      result.add(new TMP_Param_egefa8_b0());
     }
     return result;
   }
@@ -77,7 +78,7 @@ public class NegateAndAlter extends TransformationMenuBase {
   public class TMP_Group_egefa8_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getNode(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, "jetbrains.mps.samples.Kaja.structure.Not")));
+      return !(SNodeOperations.isInstanceOf(_context.getNode(), AUX_egefa8.Not_65080ce3));
     }
 
     @NotNull
@@ -93,12 +94,12 @@ public class NegateAndAlter extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new NegateAndAlter.TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, "jetbrains.mps.samples.Kaja.structure.Not")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a(), AUX_egefa8.Not_65080ce3));
     }
     private class TMP_Action_egefa8_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        NegateAndAlter.TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a.Item item = new NegateAndAlter.TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a.Item(context);
+        TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a.Item item = new TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -133,7 +134,7 @@ public class NegateAndAlter extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode notNode = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, "jetbrains.mps.samples.Kaja.structure.Not"));
+          SNode notNode = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_egefa8.Not_65080ce3);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.setTarget(notNode, MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, 0x2de971c785ecb8b3L, "original"), _context.getNode()), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -141,7 +142,7 @@ public class NegateAndAlter extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, "jetbrains.mps.samples.Kaja.structure.Not");
+          return AUX_egefa8.Not_65080ce3;
         }
 
 
@@ -152,7 +153,7 @@ public class NegateAndAlter extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, "jetbrains.mps.samples.Kaja.structure.Not");
+          SAbstractConcept outputConcept = AUX_egefa8.Not_65080ce3;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -167,7 +168,7 @@ public class NegateAndAlter extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new NegateAndAlter.TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a(parameter).createItems(context);
+      return new TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a(parameter).createItems(context);
     }
 
     @Nullable
@@ -194,7 +195,7 @@ public class NegateAndAlter extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        NegateAndAlter.TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a.Item item = new NegateAndAlter.TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a.Item(context);
+        TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a.Item item = new TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -266,5 +267,9 @@ public class NegateAndAlter extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_egefa8 {
+    /*package*/ static final SConcept Not_65080ce3 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, "jetbrains.mps.samples.Kaja.structure.Not");
   }
 }

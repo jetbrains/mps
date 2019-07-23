@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassLikeMemberPlaceholderMenu extends AbstractCellMenuPart_Generic_Group {
   public ClassLikeMemberPlaceholderMenu() {
@@ -26,9 +27,13 @@ public class ClassLikeMemberPlaceholderMenu extends AbstractCellMenuPart_Generic
     return (String) DSLClassMember__BehaviorDescriptor.getMatchingText_id2nUiI4k7qhh.invoke(((SNode) object));
   }
   protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-    EditorUtil.substitutePlaceholder(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder")), model);
+    EditorUtil.substitutePlaceholder(SNodeOperations.cast(node, AUX_jxx2ok.MemberPlaceholder_6692a737), model);
   }
   public boolean isReferentPresentation() {
     return false;
+  }
+
+  private static final class AUX_jxx2ok {
+    /*package*/ static final SConcept MemberPlaceholder_6692a737 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder");
   }
 }

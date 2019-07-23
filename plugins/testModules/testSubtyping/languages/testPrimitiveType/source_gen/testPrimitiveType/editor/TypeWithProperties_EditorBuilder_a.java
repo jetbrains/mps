@@ -43,6 +43,7 @@ import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TypeWithProperties_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -121,7 +122,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
       editorCell.setCellId("property_str");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_uem5fm.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -140,7 +141,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "null");
     editorCell.setCellId("Constant_8yz4v0_a3a");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new TypeWithProperties_EditorBuilder_a.TypeWithProperties_generic_cellMenu_8yz4v0_a0a3a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new TypeWithProperties_generic_cellMenu_8yz4v0_a0a3a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class TypeWithProperties_generic_cellMenu_8yz4v0_a0a3a extends AbstractCellMenuPart_Generic_Item {
@@ -207,7 +208,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
       editorCell.setCellId("property_num");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_uem5fm.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -226,7 +227,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "null");
     editorCell.setCellId("Constant_8yz4v0_a6a");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new TypeWithProperties_EditorBuilder_a.TypeWithProperties_generic_cellMenu_8yz4v0_a0a6a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new TypeWithProperties_generic_cellMenu_8yz4v0_a0a6a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class TypeWithProperties_generic_cellMenu_8yz4v0_a0a6a extends AbstractCellMenuPart_Generic_Item {
@@ -293,7 +294,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
       editorCell.setCellId("property_bool");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_uem5fm.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -312,7 +313,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "null");
     editorCell.setCellId("Constant_8yz4v0_a9a");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new TypeWithProperties_EditorBuilder_a.TypeWithProperties_generic_cellMenu_8yz4v0_a0a9a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new TypeWithProperties_generic_cellMenu_8yz4v0_a0a9a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class TypeWithProperties_generic_cellMenu_8yz4v0_a0a9a extends AbstractCellMenuPart_Generic_Item {
@@ -348,5 +349,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     editorCell.setCellId("Constant_8yz4v0_k0");
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_uem5fm {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

@@ -87,7 +87,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingCompany_EditorBuilder_a.nameSingleRoleHandler_jz46yb_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name"), getEditorContext());
+    SingleRoleCellProvider provider = new nameSingleRoleHandler_jz46yb_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name"), getEditorContext());
     return provider.createCell();
   }
   private static class nameSingleRoleHandler_jz46yb_b1a extends SingleRoleCellProvider {
@@ -154,7 +154,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingCompany_EditorBuilder_a.urlSingleRoleHandler_jz46yb_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e2L, "url"), getEditorContext());
+    SingleRoleCellProvider provider = new urlSingleRoleHandler_jz46yb_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e2L, "url"), getEditorContext());
     return provider.createCell();
   }
   private static class urlSingleRoleHandler_jz46yb_d1a extends SingleRoleCellProvider {
@@ -218,7 +218,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingCompany_EditorBuilder_a.copyrightStarSingleRoleHandler_jz46yb_f1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0x20b13992ef6a5dd2L, "copyrightStar"), getEditorContext());
+    SingleRoleCellProvider provider = new copyrightStarSingleRoleHandler_jz46yb_f1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0x20b13992ef6a5dd2L, "copyrightStar"), getEditorContext());
     return provider.createCell();
   }
   private static class copyrightStarSingleRoleHandler_jz46yb_f1a extends SingleRoleCellProvider {
@@ -295,7 +295,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingCompany_EditorBuilder_a.nameSingleRoleHandler_jz46yb_b0a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name"), getEditorContext());
+    SingleRoleCellProvider provider = new nameSingleRoleHandler_jz46yb_b0a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name"), getEditorContext());
     return provider.createCell();
   }
   private static class nameSingleRoleHandler_jz46yb_b0a extends SingleRoleCellProvider {

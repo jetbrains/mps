@@ -10,7 +10,6 @@ import jetbrains.mps.refactoring.participant.RecursiveParticipant;
 import jetbrains.mps.smodel.structure.Extension;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.Language;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
@@ -39,6 +38,8 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import jetbrains.mps.refactoring.participant.NodeCopyTracker;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeReference, SNodeReference, SNode, SNode> implements MoveNodeRefactoringParticipant<SNodeReference, SNodeReference>, RecursiveParticipant<SNodeReference, SNodeReference, SNode, SNode> {
 
@@ -65,7 +66,7 @@ public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeRefe
   }
 
   public boolean isApplicable(SNodeReference initialState, SRepository repository) {
-    return (SNodeOperations.as(initialState.resolve(repository), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")) != null) && SNodeOperations.getModel(SNodeOperations.cast(initialState.resolve(repository), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))).getModule() instanceof Language;
+    return (SNodeOperations.as(initialState.resolve(repository), AUX_k053lg.AbstractConceptDeclaration_ec74828f) != null) && SNodeOperations.getModel(SNodeOperations.cast(initialState.resolve(repository), AUX_k053lg.AbstractConceptDeclaration_ec74828f)).getModule() instanceof Language;
   }
   public List<RefactoringParticipant.Option> getAvailableOptions(SNodeReference initialState, SRepository repository) {
     if (isApplicable(initialState, repository)) {
@@ -94,7 +95,7 @@ public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeRefe
     if (!((isApplicable(initialState, repository))) || !(ListSequence.fromList(selectedOptions).contains(OPTION))) {
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>());
     } else {
-      final SNode sourceConcept = SNodeOperations.cast(initialState.resolve(repository), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+      final SNode sourceConcept = SNodeOperations.cast(initialState.resolve(repository), AUX_k053lg.AbstractConceptDeclaration_ec74828f);
       Language sourceLanguage = ((Language) SNodeOperations.getModel(sourceConcept).getModule());
 
       Map<LanguageAspect, List<SNode>> aspectsMap = MoveConceptUtil.getAspectNodes(sourceLanguage, Sequence.<SNode>singleton(sourceConcept));
@@ -173,7 +174,7 @@ public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeRefe
                   }));
                 }
                 public void confirm(SNodeReference finalState, final SRepository repository, final RefactoringSession refactoringSession) {
-                  SNode targetConcept = SNodeOperations.cast(finalState.resolve(repository), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+                  SNode targetConcept = SNodeOperations.cast(finalState.resolve(repository), AUX_k053lg.AbstractConceptDeclaration_ec74828f);
                   Language targetLanguage = ((Language) SNodeOperations.getModel(targetConcept).getModule());
                   NodeLocation.NodeLocationRootWithAspectModelCreation newLocation = new NodeLocation.NodeLocationRootWithAspectModelCreation(targetLanguage, mapping.key());
 
@@ -203,4 +204,8 @@ public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeRefe
     }
   }
   public static final RefactoringParticipant.Option OPTION = new RefactoringParticipant.Option("moveNode.options.moveConceptAspects", "Move concept aspects");
+
+  private static final class AUX_k053lg {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+  }
 }

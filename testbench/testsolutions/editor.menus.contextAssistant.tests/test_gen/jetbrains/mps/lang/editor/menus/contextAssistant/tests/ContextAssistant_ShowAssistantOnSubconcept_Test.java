@@ -27,7 +27,7 @@ public class ContextAssistant_ShowAssistantOnSubconcept_Test extends BaseTransfo
 
   @Test
   public void test_ContextAssistant_ShowAssistantOnSubconcept() throws Throwable {
-    new ContextAssistant_ShowAssistantOnSubconcept_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

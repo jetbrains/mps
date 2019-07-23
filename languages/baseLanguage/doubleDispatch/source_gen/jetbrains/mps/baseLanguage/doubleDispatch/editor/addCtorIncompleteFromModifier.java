@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
@@ -22,9 +21,11 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
   public addCtorIncompleteFromModifier() {
@@ -34,7 +35,7 @@ public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new addCtorIncompleteFromModifier.SMP_Group_oxmga2_a());
+    result.add(new SMP_Group_oxmga2_a());
     return result;
   }
 
@@ -66,14 +67,14 @@ public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new addCtorIncompleteFromModifier.SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0(), AUX_oxmga2.IncompleteMemberDeclaration_71f5ae66));
     }
     private class SMP_Action_oxmga2_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        addCtorIncompleteFromModifier.SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0.Item item = new addCtorIncompleteFromModifier.SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0.Item(_context);
+        SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0.Item item = new SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -96,7 +97,7 @@ public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"), context);
+          super(AUX_oxmga2.IncompleteMemberDeclaration_71f5ae66, context);
           _context = context;
         }
 
@@ -108,7 +109,7 @@ public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode decl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
-          ListSequence.fromList(SLinkOperations.getChildren(decl, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).addElement(SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L, "jetbrains.mps.baseLanguage.doubleDispatch.structure.DispatchModifier"), null));
+          ListSequence.fromList(SLinkOperations.getChildren(decl, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).addElement(SNodeFactoryOperations.createNewNode(AUX_oxmga2.DispatchModifier_bd84a7bb, null));
           return decl;
         }
 
@@ -123,9 +124,14 @@ public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SConceptOperations.conceptAlias(MetaAdapterFactory.getConcept(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L, "jetbrains.mps.baseLanguage.doubleDispatch.structure.DispatchModifier"));
+          return SConceptOperations.conceptAlias(AUX_oxmga2.DispatchModifier_bd84a7bb);
         }
       }
     }
+  }
+
+  private static final class AUX_oxmga2 {
+    /*package*/ static final SConcept IncompleteMemberDeclaration_71f5ae66 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
+    /*package*/ static final SConcept DispatchModifier_bd84a7bb = MetaAdapterFactory.getConcept(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L, "jetbrains.mps.baseLanguage.doubleDispatch.structure.DispatchModifier");
   }
 }

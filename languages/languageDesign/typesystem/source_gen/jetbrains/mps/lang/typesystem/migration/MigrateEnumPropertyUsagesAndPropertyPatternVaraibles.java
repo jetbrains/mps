@@ -23,6 +23,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends MigrationScriptBase {
   public String getCaption() {
@@ -46,13 +47,13 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
         }
       };
       EnumUsagesMigration migration = new EnumUsagesMigration();
-      for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, "jetbrains.mps.lang.typesystem.structure.PropertyMessageTarget"), false))) {
+      for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_qggrhk.PropertyMessageTarget_2aba8385, false))) {
         migration.migratePropertyReference(propMessageTarget, MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"));
       }
       new PropertyPatternVariableMigration<SNode>() {
         @Override
         protected Iterable<SNode> getUsagesToMigrate() {
-          return CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, "jetbrains.mps.lang.typesystem.structure.PropertyPatternVariableReference"), false);
+          return CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_qggrhk.PropertyPatternVariableReference_a0fc7d41, false);
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
@@ -80,9 +81,9 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
         }
       };
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, "jetbrains.mps.lang.typesystem.structure.PropertyMessageTarget"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_qggrhk.PropertyMessageTarget_2aba8385, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"))), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"));
+          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration"))), AUX_qggrhk.EnumPropertyMigrationInfo_a791f212);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
@@ -99,4 +100,9 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 1);
   }
 
+  private static final class AUX_qggrhk {
+    /*package*/ static final SConcept PropertyMessageTarget_2aba8385 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, "jetbrains.mps.lang.typesystem.structure.PropertyMessageTarget");
+    /*package*/ static final SConcept PropertyPatternVariableReference_a0fc7d41 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, "jetbrains.mps.lang.typesystem.structure.PropertyPatternVariableReference");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo_a791f212 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+  }
 }

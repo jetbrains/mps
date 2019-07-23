@@ -32,10 +32,10 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.internal.make.runtime.java.FileProcessor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -46,12 +46,13 @@ import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.make.script.IPropertiesPool;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class GenerateImages_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages");
   public GenerateImages_Facet() {
-    ListSequence.fromList(targets).addElement(new GenerateImages_Facet.Target_generateImages());
+    ListSequence.fromList(targets).addElement(new Target_generateImages());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -69,7 +70,7 @@ public class GenerateImages_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new GenerateImages_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_generateImages implements ITargetEx {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages.generateImages");
@@ -119,7 +120,7 @@ public class GenerateImages_Facet extends IFacet.Stub {
                         MapSequence.fromMap(folder2PrintRunnables).put(outputDir, ListSequence.fromList(new ArrayList<PrintNodeRunnable>()));
                       }
                       final DeltaKey dk = new DeltaKey(modelsPair._0().getModule(), modelsPair._0());
-                      for (SNode imageGenerator : ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(modelsPair._1(), MetaAdapterFactory.getConcept(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, "jetbrains.mps.lang.editor.imageGen.structure.ImageGenerator")))) {
+                      for (SNode imageGenerator : ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(modelsPair._1(), AUX_sza3ky.ImageGenerator_b8ab83d7))) {
                         SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(imageGenerator, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x2d0ad2528389ad26L, "id")));
                         SNode node = modelsPair._0().getNode(nodeId);
 
@@ -240,5 +241,9 @@ public class GenerateImages_Facet extends IFacet.Stub {
       } catch (RuntimeException re) {
       }
     }
+  }
+
+  private static final class AUX_sza3ky {
+    /*package*/ static final SConcept ImageGenerator_b8ab83d7 = MetaAdapterFactory.getConcept(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, "jetbrains.mps.lang.editor.imageGen.structure.ImageGenerator");
   }
 }

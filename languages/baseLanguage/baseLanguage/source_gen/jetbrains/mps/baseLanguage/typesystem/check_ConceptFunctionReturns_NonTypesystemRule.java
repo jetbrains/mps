@@ -24,6 +24,7 @@ import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ConceptFunctionReturns_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConceptFunctionReturns_NonTypesystemRule() {
@@ -44,7 +45,7 @@ public class check_ConceptFunctionReturns_NonTypesystemRule extends AbstractNonT
     } else {
       boolean somethingReturned = Sequence.fromIterable(returnStatements).isNotEmpty();
       SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(func);
-      if (SNodeOperations.isInstanceOf(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))) {
+      if (SNodeOperations.isInstanceOf(lastStatement, AUX_rs2pxi.ExpressionStatement_9dbf9b0c)) {
         somethingReturned = true;
       }
       if (!(somethingReturned)) {
@@ -61,7 +62,7 @@ public class check_ConceptFunctionReturns_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    return AUX_rs2pxi.ConceptFunction_e08795a5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -74,5 +75,10 @@ public class check_ConceptFunctionReturns_NonTypesystemRule extends AbstractNonT
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_rs2pxi {
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
   }
 }

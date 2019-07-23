@@ -34,6 +34,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class RefPresentationMigrated_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -232,7 +233,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new RefPresentationMigrated_EditorBuilder_a.problemsListHandler_6blbyb_b5b1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new problemsListHandler_6blbyb_b5b1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_problems");
     editorCell.setSRole(handler.getElementSRole());
@@ -255,7 +256,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       return MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, 0x4fd9d41024c6d474L, "problems");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aac3L, "jetbrains.mps.lang.constraints.structure.RefPresentationMigratedProblem");
+      return AUX_82hf57.RefPresentationMigratedProblem_f6080284;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -299,5 +300,9 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
     EditorCell editorCell = getUpdateSession().getAttributedCell(AttributeKind.NODE, myNode);
     return editorCell;
+  }
+
+  private static final class AUX_82hf57 {
+    /*package*/ static final SConcept RefPresentationMigratedProblem_f6080284 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aac3L, "jetbrains.mps.lang.constraints.structure.RefPresentationMigratedProblem");
   }
 }

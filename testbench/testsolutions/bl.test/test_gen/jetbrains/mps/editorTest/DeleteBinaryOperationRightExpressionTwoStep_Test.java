@@ -24,7 +24,7 @@ public class DeleteBinaryOperationRightExpressionTwoStep_Test extends BaseTransf
 
   @Test
   public void test_DeleteBinaryOperationRightExpressionTwoStep() throws Throwable {
-    new DeleteBinaryOperationRightExpressionTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

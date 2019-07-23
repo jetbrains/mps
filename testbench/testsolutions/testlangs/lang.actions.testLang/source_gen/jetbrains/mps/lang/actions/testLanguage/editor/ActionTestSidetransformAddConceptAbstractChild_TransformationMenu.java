@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
@@ -39,6 +38,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -64,7 +65,7 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d415e8d80L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptAbstractChild"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_eewfkw.ActionTestSidetransformAddConceptAbstractChild_5418a794)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -80,10 +81,10 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ActionTestSidetransformAddConceptAbstractChild_TransformationMenu.TMP_WrapSM_eewfkw_a1());
+      result.add(new TMP_WrapSM_eewfkw_a1());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ActionTestSidetransformAddConceptAbstractChild_TransformationMenu.TMP_WrapSM_eewfkw_a2());
+      result.add(new TMP_WrapSM_eewfkw_a2());
     }
     return result;
   }
@@ -109,7 +110,7 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
+      return AUX_eewfkw.ActionTestSidetransformAddConceptChild_83b20222;
     }
 
 
@@ -161,7 +162,7 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
+      return AUX_eewfkw.ActionTestSidetransformAddConceptChild_83b20222;
     }
 
 
@@ -191,5 +192,10 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
         }
       };
     }
+  }
+
+  private static final class AUX_eewfkw {
+    /*package*/ static final SConcept ActionTestSidetransformAddConceptAbstractChild_5418a794 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d415e8d80L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptAbstractChild");
+    /*package*/ static final SConcept ActionTestSidetransformAddConceptChild_83b20222 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
   }
 }

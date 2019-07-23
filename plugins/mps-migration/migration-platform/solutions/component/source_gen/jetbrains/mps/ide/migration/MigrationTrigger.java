@@ -106,7 +106,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   private boolean myMigrationForbidden = false;
   private String myMigrationForbiddenMessage = null;
-  private MigrationTrigger.PostponedState myPostponedState = null;
+  private PostponedState myPostponedState = null;
   private int myBlocked = 0;
   private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
 
@@ -115,10 +115,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   private ProjectMigrationProperties myProperties;
 
-  private MigrationTrigger.MyRepoListener myRepoListener = new MigrationTrigger.MyRepoListener();
-  private MigrationTrigger.MyReloadListener myReloadListener = new MigrationTrigger.MyReloadListener();
-  private MigrationTrigger.MyPropertiesListener myPropertiesListener = new MigrationTrigger.MyPropertiesListener();
-  private final LanguageRegistryListener myLanguageDeployListener = new MigrationTrigger.MyLangDeployListener();
+  private MyRepoListener myRepoListener = new MyRepoListener();
+  private MyReloadListener myReloadListener = new MyReloadListener();
+  private MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
+  private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
   private boolean myListenersAdded = false;
 
   public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, ProjectMigrationProperties props, MPSCoreComponents mpsCore, ReloadManagerComponent reloadManager) {
@@ -276,7 +276,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private boolean isMigrationRequired(Iterable<SModule> modules2Check) {
-    MigrationTrigger.PostponedState current = MigrationTrigger.PostponedState.current(myMigrationRegistry, modules2Check);
+    PostponedState current = PostponedState.current(myMigrationRegistry, modules2Check);
     if (myPostponedState != null) {
       current = current.substract(myPostponedState);
     }
@@ -331,11 +331,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                 syncRefresh();
               }
             });
-            final Wrappers._T<MigrationTrigger.PostponedState> newState = new Wrappers._T<MigrationTrigger.PostponedState>();
+            final Wrappers._T<PostponedState> newState = new Wrappers._T<PostponedState>();
             myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
               public void run() {
                 Iterable<SModule> modules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
-                newState.value = MigrationTrigger.PostponedState.current(myMigrationRegistry, modules);
+                newState.value = PostponedState.current(myMigrationRegistry, modules);
               }
             });
 
@@ -381,7 +381,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private boolean runMigration(boolean update, boolean migrate) {
-    MigrationTrigger.MyMigrationSession session = new MigrationTrigger.MyMigrationSession(update, migrate);
+    MyMigrationSession session = new MyMigrationSession(update, migrate);
     final MigrationWizard wizard = new MigrationWizard(myProject, session);
     boolean finished = wizard.showAndGet();
     final MigrationError errors = session.getError();
@@ -478,7 +478,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         checkMigrationNeededOnModuleChange(toUpdate);
       }
     }
-    private MigrationTrigger.MyRepoListener.ModuleBatchUpdater myTask = null;
+    private MyRepoListener.ModuleBatchUpdater myTask = null;
 
     private void updateSingleModuleDescriptorSilently(SModule module) {
       if (!(isProjectMigrateableModule(module))) {
@@ -488,7 +488,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     }
     private void triggerOnModuleChanged(SModule module) {
       if (myTask == null) {
-        myTask = new MigrationTrigger.MyRepoListener.ModuleBatchUpdater();
+        myTask = new MyRepoListener.ModuleBatchUpdater();
         myMpsProject.getModelAccess().executeCommandInEDT(myTask);
       }
       SetSequence.fromSet(myTask.modulesTouched).addElement(module);
@@ -737,24 +737,24 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       return versionUpdate || CollectionSequence.fromCollection(scripts).isNotEmpty() || CollectionSequence.fromCollection(projectMigrations).isNotEmpty();
     }
 
-    public MigrationTrigger.PostponedState substract(MigrationTrigger.PostponedState state) {
-      MigrationTrigger.PostponedState res = new MigrationTrigger.PostponedState();
+    public PostponedState substract(PostponedState state) {
+      PostponedState res = new PostponedState();
       res.versionUpdate = !(state.versionUpdate) && versionUpdate;
       res.scripts = CollectionSequence.fromCollection(scripts).subtract(CollectionSequence.fromCollection(state.scripts)).toListSequence();
       res.projectMigrations = CollectionSequence.fromCollection(projectMigrations).subtract(CollectionSequence.fromCollection(state.projectMigrations)).toListSequence();
       return res;
     }
 
-    public MigrationTrigger.PostponedState add(MigrationTrigger.PostponedState state) {
-      MigrationTrigger.PostponedState res = new MigrationTrigger.PostponedState();
+    public PostponedState add(PostponedState state) {
+      PostponedState res = new PostponedState();
       res.versionUpdate = state.versionUpdate || versionUpdate;
       res.scripts = CollectionSequence.fromCollection(scripts).union(CollectionSequence.fromCollection(state.scripts)).toListSequence();
       res.projectMigrations = CollectionSequence.fromCollection(projectMigrations).union(CollectionSequence.fromCollection(state.projectMigrations)).toListSequence();
       return res;
     }
 
-    public static MigrationTrigger.PostponedState current(MigrationRegistry mr, Iterable<SModule> modules) {
-      MigrationTrigger.PostponedState current = new MigrationTrigger.PostponedState();
+    public static PostponedState current(MigrationRegistry mr, Iterable<SModule> modules) {
+      PostponedState current = new PostponedState();
       current.versionUpdate = mr.importVersionsUpdateRequired(modules);
       current.scripts = mr.getModuleMigrations(modules);
       current.projectMigrations = mr.getProjectMigrations();

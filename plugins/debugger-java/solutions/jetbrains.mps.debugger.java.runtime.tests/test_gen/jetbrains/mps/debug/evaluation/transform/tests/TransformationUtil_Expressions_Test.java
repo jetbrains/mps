@@ -24,6 +24,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class TransformationUtil_Expressions_Test extends BaseTransformationTest {
@@ -38,123 +39,123 @@ public class TransformationUtil_Expressions_Test extends BaseTransformationTest 
 
   @Test
   public void test_lowLevelVariable() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_lowLevelVariable();
+    new TestBody(this).test_lowLevelVariable();
   }
   @Test
   public void test_variableInternal() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_variableInternal();
+    new TestBody(this).test_variableInternal();
   }
   @Test
   public void test_evaluatorsThisExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_evaluatorsThisExpression();
+    new TestBody(this).test_evaluatorsThisExpression();
   }
   @Test
   public void test_thisInternalExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_thisInternalExpression();
+    new TestBody(this).test_thisInternalExpression();
   }
   @Test
   public void test_field() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_field();
+    new TestBody(this).test_field();
   }
   @Test
   public void test_fieldInternal() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_fieldInternal();
+    new TestBody(this).test_fieldInternal();
   }
   @Test
   public void test_localField() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_localField();
+    new TestBody(this).test_localField();
   }
   @Test
   public void test_staticField() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_staticField();
+    new TestBody(this).test_staticField();
   }
   @Test
   public void test_staticFieldInternal() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_staticFieldInternal();
+    new TestBody(this).test_staticFieldInternal();
   }
   @Test
   public void test_localStaticField() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_localStaticField();
+    new TestBody(this).test_localStaticField();
   }
   @Test
   public void test_method() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_method();
+    new TestBody(this).test_method();
   }
   @Test
   public void test_methodInternal() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_methodInternal();
+    new TestBody(this).test_methodInternal();
   }
   @Test
   public void test_localMethod() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_localMethod();
+    new TestBody(this).test_localMethod();
   }
   @Test
   public void test_staticMethod() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_staticMethod();
+    new TestBody(this).test_staticMethod();
   }
   @Test
   public void test_staticMethodInternal() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_staticMethodInternal();
+    new TestBody(this).test_staticMethodInternal();
   }
   @Test
   public void test_staticLocalMethod() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_staticLocalMethod();
+    new TestBody(this).test_staticLocalMethod();
   }
   @Test
   public void test_arrayAccessOperation() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_arrayAccessOperation();
+    new TestBody(this).test_arrayAccessOperation();
   }
   @Test
   public void test_arrayLengthOperation() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_arrayLengthOperation();
+    new TestBody(this).test_arrayLengthOperation();
   }
   @Test
   public void test_instanceoff() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_instanceoff();
+    new TestBody(this).test_instanceoff();
   }
   @Test
   public void test_superr() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_superr();
+    new TestBody(this).test_superr();
   }
   @Test
   public void test_constructor() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_constructor();
+    new TestBody(this).test_constructor();
   }
   @Test
   public void test_constructorInternal() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_constructorInternal();
+    new TestBody(this).test_constructorInternal();
   }
   @Test
   public void test_plusExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_plusExpression();
+    new TestBody(this).test_plusExpression();
   }
   @Test
   public void test_plusStringExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_plusStringExpression();
+    new TestBody(this).test_plusStringExpression();
   }
   @Test
   public void test_equalsExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_equalsExpression();
+    new TestBody(this).test_equalsExpression();
   }
   @Test
   public void test_notEqualsExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_notEqualsExpression();
+    new TestBody(this).test_notEqualsExpression();
   }
   @Test
   public void test_notExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_notExpression();
+    new TestBody(this).test_notExpression();
   }
   @Test
   public void test_classExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_classExpression();
+    new TestBody(this).test_classExpression();
   }
   @Test
   public void test_classInternalExpression() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_classInternalExpression();
+    new TestBody(this).test_classInternalExpression();
   }
   @Test
   public void test_throwNew() throws Throwable {
-    new TransformationUtil_Expressions_Test.TestBody(this).test_throwNew();
+    new TestBody(this).test_throwNew();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -603,7 +604,7 @@ public class TransformationUtil_Expressions_Test extends BaseTransformationTest 
       addNodeById("3619281710184383929");
       addNodeById("3619281710184383915");
       this.init();
-      SNode fieldDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.cast(getNodeById("5543996881668550238"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration"));
+      SNode fieldDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.cast(getNodeById("5543996881668550238"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), AUX_n7zrdh.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_n7zrdh.FieldReferenceOperation_fc8d5dda), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration"));
       SNode instanceFieldReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
       SLinkOperations.setTarget(instanceFieldReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), fieldDeclaration);
       SNodeOperations.replaceWithAnother(SNodeOperations.cast(getNodeById("5543996881668550238"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), instanceFieldReference);
@@ -996,8 +997,8 @@ public class TransformationUtil_Expressions_Test extends BaseTransformationTest 
       addNodeById("3619281710184383929");
       addNodeById("3619281710184383915");
       this.init();
-      SNode instanceMethodDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("5543996881668550288"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
-      List<SNode> arguments = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("5543996881668550288"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"));
+      SNode instanceMethodDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("5543996881668550288"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_n7zrdh.InstanceMethodCallOperation_cd28f5b6), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
+      List<SNode> arguments = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("5543996881668550288"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_n7zrdh.InstanceMethodCallOperation_cd28f5b6), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"));
       SNode localInstanceMethodCall = _quotation_createNode_n7zrdh_a0fc0p63(arguments);
       SLinkOperations.setTarget(localInstanceMethodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), instanceMethodDeclaration);
       SNodeOperations.replaceWithAnother(SNodeOperations.cast(getNodeById("5543996881668550288"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"))), localInstanceMethodCall);
@@ -2138,5 +2139,11 @@ public class TransformationUtil_Expressions_Test extends BaseTransformationTest 
       }
       return quotedNode_2;
     }
+  }
+
+  private static final class AUX_n7zrdh {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept FieldReferenceOperation_fc8d5dda = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 }

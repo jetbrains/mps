@@ -29,12 +29,12 @@ public class SimpleParallelForSample {
         final Runnable runnable = new Runnable() {
           public void run() {
             try {
-              SimpleParallelForSample.Logger.log("Current value: " + localA);
+              Logger.log("Current value: " + localA);
 
               // Notice there's no need to declare the InterruptedException on the main method 
               Thread.sleep(1000);
               value.length();
-              SimpleParallelForSample.Logger.log("Done with " + localA);
+              Logger.log("Done with " + localA);
             } catch (RuntimeException e) {
               ListSequence.fromList(exceptions_e0b).addElement(e);
             } catch (InterruptedException e) {

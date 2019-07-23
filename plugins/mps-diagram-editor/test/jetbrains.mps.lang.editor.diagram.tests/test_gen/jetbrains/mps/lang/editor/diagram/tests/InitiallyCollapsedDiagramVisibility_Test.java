@@ -26,7 +26,7 @@ public class InitiallyCollapsedDiagramVisibility_Test extends BaseTransformation
 
   @Test
   public void test_InitiallyCollapsedDiagramVisibility() throws Throwable {
-    new InitiallyCollapsedDiagramVisibility_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

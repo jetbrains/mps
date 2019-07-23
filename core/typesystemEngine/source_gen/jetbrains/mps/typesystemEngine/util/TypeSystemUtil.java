@@ -4,10 +4,15 @@ package jetbrains.mps.typesystemEngine.util;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypeSystemUtil {
   public static boolean shouldApplyTypeSystemRules(SNode node) {
-    return !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x1ec383e5b4bdca56L, "jetbrains.mps.lang.core.structure.IDontApplyTypesystemRules")));
+    return !(SNodeOperations.isInstanceOf(node, AUX_k857tx.IDontApplyTypesystemRules_7e759e29));
+  }
+
+  private static final class AUX_k857tx {
+    /*package*/ static final SInterfaceConcept IDontApplyTypesystemRules_7e759e29 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x1ec383e5b4bdca56L, "jetbrains.mps.lang.core.structure.IDontApplyTypesystemRules");
   }
 }

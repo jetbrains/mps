@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -25,19 +24,21 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CreateEnumConstantReferences extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new CreateEnumConstantReferences.SMP_Param_wqfk8k_a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_wqfk8k_a(), AUX_wqfk8k.EnumConstantReference_78d9f72e));
     return result;
   }
 
@@ -58,7 +59,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new CreateEnumConstantReferences.SMP_Param_wqfk8k_a.SMP_Action_wqfk8k_a0(parameter).createItems(context);
+      return new SMP_Param_wqfk8k_a.SMP_Action_wqfk8k_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -74,7 +75,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      Iterable<SNode> enums = ListSequence.fromList(SModelOperations.roots(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"))).translate(new ITranslator2<SNode, SNode>() {
+      Iterable<SNode> enums = ListSequence.fromList(SModelOperations.roots(_context.getModel(), AUX_wqfk8k.EnumClass_acf68fc0)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode it) {
           return Members.visibleEnumConstants(it);
         }
@@ -90,7 +91,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        CreateEnumConstantReferences.SMP_Param_wqfk8k_a.SMP_Action_wqfk8k_a0.Item item = new CreateEnumConstantReferences.SMP_Param_wqfk8k_a.SMP_Action_wqfk8k_a0.Item(_context);
+        SMP_Param_wqfk8k_a.SMP_Action_wqfk8k_a0.Item item = new SMP_Param_wqfk8k_a.SMP_Action_wqfk8k_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -114,7 +115,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"), context);
+          super(AUX_wqfk8k.EnumConstantReference_78d9f72e, context);
           _context = context;
         }
 
@@ -126,7 +127,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-          SLinkOperations.setTarget(ref, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass"), SNodeOperations.cast(SNodeOperations.getParent(myParameterObject), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")));
+          SLinkOperations.setTarget(ref, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass"), SNodeOperations.cast(SNodeOperations.getParent(myParameterObject), AUX_wqfk8k.EnumClass_acf68fc0));
           SLinkOperations.setTarget(ref, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration"), myParameterObject);
           return ref;
         }
@@ -137,7 +138,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_wqfk8k.EnumConstantReference_78d9f72e, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -166,5 +167,10 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_wqfk8k {
+    /*package*/ static final SConcept EnumConstantReference_78d9f72e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
+    /*package*/ static final SConcept EnumClass_acf68fc0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
   }
 }

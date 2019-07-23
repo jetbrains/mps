@@ -4,7 +4,6 @@ package jetbrains.mps.lang.extension.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,12 +15,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ExtensionObjectGetter__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x6f6f7f3b7a178565L, "jetbrains.mps.lang.extension.structure.ExtensionObjectGetter");
+  private static final SAbstractConcept CONCEPT = AUX_tw212d.ExtensionObjectGetter_2eee94ba;
 
   public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
   public static final SMethod<SNode> getReturnClassifierType_id6j5CbT7vrku = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnClassifierType").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6j5CbT7vrku").build();
@@ -32,10 +33,10 @@ public final class ExtensionObjectGetter__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, "jetbrains.mps.lang.extension.structure.ExtensionDeclaration"), false, false), MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint")), MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType"));
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, AUX_tw212d.ExtensionDeclaration_51fce9e7, false, false), MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint")), MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType"));
   }
   /*package*/ static SNode getReturnClassifierType_id6j5CbT7vrku(@NotNull SNode __thisNode__) {
-    return (SNode) ExtensionPointDeclaration__BehaviorDescriptor.getObjectClassifierType_id5Sg$D5FMgdu.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, "jetbrains.mps.lang.extension.structure.ExtensionDeclaration"), false, false), MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint")));
+    return (SNode) ExtensionPointDeclaration__BehaviorDescriptor.getObjectClassifierType_id5Sg$D5FMgdu.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, AUX_tw212d.ExtensionDeclaration_51fce9e7, false, false), MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint")));
   }
 
   /*package*/ ExtensionObjectGetter__BehaviorDescriptor() {
@@ -84,5 +85,10 @@ public final class ExtensionObjectGetter__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_tw212d {
+    /*package*/ static final SConcept ExtensionObjectGetter_2eee94ba = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x6f6f7f3b7a178565L, "jetbrains.mps.lang.extension.structure.ExtensionObjectGetter");
+    /*package*/ static final SConcept ExtensionDeclaration_51fce9e7 = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, "jetbrains.mps.lang.extension.structure.ExtensionDeclaration");
   }
 }

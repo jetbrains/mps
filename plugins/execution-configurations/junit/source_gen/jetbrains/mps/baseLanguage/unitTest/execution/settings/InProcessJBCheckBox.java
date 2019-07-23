@@ -14,7 +14,7 @@ import java.awt.Component;
 import java.awt.Container;
 
 public final class InProcessJBCheckBox extends JBCheckBox {
-  private final List<InProcessJBCheckBox.Updater> myUpdaters = ListSequence.fromList(new LinkedList<InProcessJBCheckBox.Updater>());
+  private final List<Updater> myUpdaters = ListSequence.fromList(new LinkedList<Updater>());
 
   public InProcessJBCheckBox(String text) {
     super(text, true);
@@ -26,14 +26,14 @@ public final class InProcessJBCheckBox extends JBCheckBox {
   }
 
   public void forceUpdate() {
-    ListSequence.fromList(myUpdaters).visitAll(new IVisitor<InProcessJBCheckBox.Updater>() {
-      public void visit(InProcessJBCheckBox.Updater it) {
+    ListSequence.fromList(myUpdaters).visitAll(new IVisitor<Updater>() {
+      public void visit(Updater it) {
         it.updateMe();
       }
     });
   }
 
-  public void registerUpdater(@NotNull InProcessJBCheckBox.Updater updater) {
+  public void registerUpdater(@NotNull Updater updater) {
     ListSequence.fromList(myUpdaters).addElement(updater);
   }
 
@@ -45,15 +45,15 @@ public final class InProcessJBCheckBox extends JBCheckBox {
   }
 
   @NotNull
-  public InProcessJBCheckBox.Updater genDisableIfSelectedUpdater(Component me) {
-    return new InProcessJBCheckBox.DisableIffSelected(me);
+  public Updater genDisableIfSelectedUpdater(Component me) {
+    return new DisableIffSelected(me);
   }
 
   public interface Updater {
     void updateMe();
   }
 
-  /*package*/ final class DisableIffSelected implements InProcessJBCheckBox.Updater {
+  /*package*/ final class DisableIffSelected implements Updater {
     private final Component myComp;
     private DisableIffSelected(@NotNull Component me) {
       myComp = me;

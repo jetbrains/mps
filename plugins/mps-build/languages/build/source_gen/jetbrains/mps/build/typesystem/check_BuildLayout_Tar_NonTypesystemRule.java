@@ -17,6 +17,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_BuildLayout_Tar_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BuildLayout_Tar_NonTypesystemRule() {
@@ -42,12 +43,16 @@ public class check_BuildLayout_Tar_NonTypesystemRule extends AbstractNonTypesyst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7709f0532a526203L, "jetbrains.mps.build.structure.BuildLayout_Tar");
+    return AUX_ypkv3x.BuildLayout_Tar_10e87c46;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_ypkv3x {
+    /*package*/ static final SConcept BuildLayout_Tar_10e87c46 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7709f0532a526203L, "jetbrains.mps.build.structure.BuildLayout_Tar");
   }
 }

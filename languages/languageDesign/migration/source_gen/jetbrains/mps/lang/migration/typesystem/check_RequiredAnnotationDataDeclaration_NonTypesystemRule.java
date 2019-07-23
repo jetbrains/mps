@@ -16,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_RequiredAnnotationDataDeclaration_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_RequiredAnnotationDataDeclaration_NonTypesystemRule() {
@@ -32,12 +33,16 @@ public class check_RequiredAnnotationDataDeclaration_NonTypesystemRule extends A
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ad9bc0L, "jetbrains.mps.lang.migration.structure.RequiredAnnotationDataDeclaration");
+    return AUX_myak5r.RequiredAnnotationDataDeclaration_d5106f2c;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_myak5r {
+    /*package*/ static final SConcept RequiredAnnotationDataDeclaration_d5106f2c = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ad9bc0L, "jetbrains.mps.lang.migration.structure.RequiredAnnotationDataDeclaration");
   }
 }

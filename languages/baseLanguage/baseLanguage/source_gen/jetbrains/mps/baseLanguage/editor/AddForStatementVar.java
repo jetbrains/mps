@@ -9,17 +9,18 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddForStatementVar extends KeyMapImpl {
   public AddForStatementVar() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new AddForStatementVar.AddForStatementVar_Action0();
+    action = new AddForStatementVar_Action0();
     this.putAction("any", ",", action);
   }
   public static class AddForStatementVar_Action0 extends KeyMapActionImpl {
@@ -39,7 +40,7 @@ public class AddForStatementVar extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_5qwkj4.BaseConcept_bc2351f))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -49,9 +50,9 @@ public class AddForStatementVar extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, false);
-      if ((variableDeclaration != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableDeclaration), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement"))) {
-        SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement"));
+      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, AUX_5qwkj4.LocalVariableDeclaration_d47683f3, false, false);
+      if ((variableDeclaration != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableDeclaration), AUX_5qwkj4.ForStatement_1eab9ef9)) {
+        SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), AUX_5qwkj4.ForStatement_1eab9ef9);
         if (SLinkOperations.getTarget(forStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable")) == variableDeclaration) {
           return true;
         }
@@ -59,12 +60,19 @@ public class AddForStatementVar extends KeyMapImpl {
       return false;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, false);
-      SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement"));
-      ListSequence.fromList(SLinkOperations.getChildren(forStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar"))).insertElement(0, SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable"), null));
+      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, AUX_5qwkj4.LocalVariableDeclaration_d47683f3, false, false);
+      SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), AUX_5qwkj4.ForStatement_1eab9ef9);
+      ListSequence.fromList(SLinkOperations.getChildren(forStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar"))).insertElement(0, SNodeFactoryOperations.createNewNode(AUX_5qwkj4.AdditionalForLoopVariable_59723fe6, null));
     }
     public String getKeyStroke() {
       return " ,";
     }
+  }
+
+  private static final class AUX_5qwkj4 {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept ForStatement_1eab9ef9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept AdditionalForLoopVariable_59723fe6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
   }
 }

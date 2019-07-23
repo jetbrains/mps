@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -21,6 +20,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
@@ -28,14 +28,15 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.regex.Pattern;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SymbolClassPart_SubstituteMenu.SMP_Action_kfi2w2_a(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart")));
-    result.add(new SymbolClassPart_SubstituteMenu.SMP_Subconcepts_kfi2w2_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kfi2w2_a(), AUX_kfi2w2.CharacterSymbolClassPart_b012f59d));
+    result.add(new SMP_Subconcepts_kfi2w2_b());
     return result;
   }
 
@@ -57,7 +58,7 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SymbolClassPart_SubstituteMenu.SMP_Action_kfi2w2_a.Item item = new SymbolClassPart_SubstituteMenu.SMP_Action_kfi2w2_a.Item(_context);
+      SMP_Action_kfi2w2_a.Item item = new SMP_Action_kfi2w2_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -80,7 +81,7 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart"), context);
+        super(AUX_kfi2w2.CharacterSymbolClassPart_b012f59d, context);
         _context = context;
       }
 
@@ -91,7 +92,7 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode literal = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart"), null);
+        SNode literal = SNodeFactoryOperations.createNewNode(AUX_kfi2w2.CharacterSymbolClassPart_b012f59d, null);
         SPropertyOperations.assign(literal, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character"), (pattern.startsWith("\\") ? pattern.substring(1) : pattern));
         return literal;
       }
@@ -120,7 +121,7 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_kfi2w2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791aa602L, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassPart"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_kfi2w2.SymbolClassPart_b001b03c);
     }
     @NotNull
     @Override
@@ -139,5 +140,10 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
   }
-  private static Pattern REGEXP_kfi2w2_a0a0a21c5 = Pattern.compile("(?:[^\\s\\\\\\[&'\\]\\-]|\\\\[\\-\\[&'\\]])", 0);
+  private static final Pattern REGEXP_kfi2w2_a0a0a21c5 = Pattern.compile("(?:[^\\s\\\\\\[&'\\]\\-]|\\\\[\\-\\[&'\\]])", 0);
+
+  private static final class AUX_kfi2w2 {
+    /*package*/ static final SConcept CharacterSymbolClassPart_b012f59d = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart");
+    /*package*/ static final SConcept SymbolClassPart_b001b03c = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791aa602L, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassPart");
+  }
 }

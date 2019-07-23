@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -21,13 +20,15 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ifStatement_ extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ifStatement_.SMP_Action_vrmndy_a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vrmndy_a(), AUX_vrmndy.IfStatement_9dbf9b10));
     return result;
   }
 
@@ -49,7 +50,7 @@ public class ifStatement_ extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      ifStatement_.SMP_Action_vrmndy_a.Item item = new ifStatement_.SMP_Action_vrmndy_a.Item(_context);
+      SMP_Action_vrmndy_a.Item item = new SMP_Action_vrmndy_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -72,7 +73,7 @@ public class ifStatement_ extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"), context);
+        super(AUX_vrmndy.IfStatement_9dbf9b10, context);
         _context = context;
       }
 
@@ -83,7 +84,7 @@ public class ifStatement_ extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"), SNodeOperations.copyNode(_context.getCurrentTargetNode()));
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_vrmndy.IfStatement_9dbf9b10, SNodeOperations.copyNode(_context.getCurrentTargetNode()));
       }
 
       @Override
@@ -96,5 +97,9 @@ public class ifStatement_ extends SubstituteMenuBase {
         return (pattern.equals("if(") ? pattern : "if");
       }
     }
+  }
+
+  private static final class AUX_vrmndy {
+    /*package*/ static final SConcept IfStatement_9dbf9b10 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

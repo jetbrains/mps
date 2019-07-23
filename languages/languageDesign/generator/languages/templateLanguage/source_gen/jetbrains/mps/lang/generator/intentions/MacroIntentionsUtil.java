@@ -5,7 +5,6 @@ package jetbrains.mps.lang.generator.intentions;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.generator.helper.QueriesUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -16,11 +15,13 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MacroIntentionsUtil {
   public static SNode getContextNodeConcept(SNode contextNode) {
@@ -28,8 +29,8 @@ public final class MacroIntentionsUtil {
     if ((enclosingMacro == null)) {
       return QueriesUtil.getApplicableConcept_fromEnvironment(contextNode);
     }
-    if (SNodeOperations.isInstanceOf(enclosingMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef52f5efL, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro"))) {
-      return getConceptFrom(SNodeOperations.cast(enclosingMacro, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef52f5efL, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro")));
+    if (SNodeOperations.isInstanceOf(enclosingMacro, AUX_iiuth6.SourceSubstituteMacro_2e84d8f)) {
+      return getConceptFrom(SNodeOperations.cast(enclosingMacro, AUX_iiuth6.SourceSubstituteMacro_2e84d8f));
     }
     return null;
   }
@@ -37,7 +38,7 @@ public final class MacroIntentionsUtil {
     SNode query = QueriesUtil.getQueryFunction_fromSourceSubstituteMacro(macro);
     SNode returnType = TypecheckingFacade.getFromContext().getTypeOf(query);
     // ====== 
-    if (SNodeOperations.isInstanceOf(query, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10ff3acfa74L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery"))) {
+    if (SNodeOperations.isInstanceOf(query, AUX_iiuth6.SourceSubstituteMacro_SourceNodeQuery_27e68b2b)) {
       {
         GeneratedMatchingPattern pattern_iiuth6_a0d0b = new Pattern_iiuth6_a0a0a0d0b(_quotation_createNode_iiuth6_a0a0a0a0d0b());
         SNode coercedNode_iiuth6_a0d0b = TypecheckingFacade.getFromContext().coerceType(returnType, pattern_iiuth6_a0d0b);
@@ -47,7 +48,7 @@ public final class MacroIntentionsUtil {
           return null;
         }
       }
-    } else if (SNodeOperations.isInstanceOf(query, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef5bd603L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery"))) {
+    } else if (SNodeOperations.isInstanceOf(query, AUX_iiuth6.SourceSubstituteMacro_SourceNodesQuery_d139af4)) {
       {
         GeneratedMatchingPattern pattern_iiuth6_a0a3a1 = new Pattern_iiuth6_a0a0a0a3a1(_quotation_createNode_iiuth6_a0a0a0a0a3a1());
         SNode coercedNode_iiuth6_a0a3a1 = TypecheckingFacade.getFromContext().coerceType(returnType, pattern_iiuth6_a0a3a1);
@@ -66,8 +67,8 @@ public final class MacroIntentionsUtil {
     if (contextNode == null) {
       return null;
     }
-    if (ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro")))).isNotEmpty()) {
-      return ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro")))).last();
+    if (ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(AUX_iiuth6.NodeMacro_2cb20614))).isNotEmpty()) {
+      return ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(AUX_iiuth6.NodeMacro_2cb20614))).last();
     }
     return findOuterMacro(SNodeOperations.getParent(contextNode));
   }
@@ -119,5 +120,12 @@ public final class MacroIntentionsUtil {
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), quotedNode_2);
     return quotedNode_1;
+  }
+
+  private static final class AUX_iiuth6 {
+    /*package*/ static final SConcept SourceSubstituteMacro_2e84d8f = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef52f5efL, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro");
+    /*package*/ static final SConcept SourceSubstituteMacro_SourceNodeQuery_27e68b2b = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10ff3acfa74L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery");
+    /*package*/ static final SConcept SourceSubstituteMacro_SourceNodesQuery_d139af4 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef5bd603L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery");
+    /*package*/ static final SConcept NodeMacro_2cb20614 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
   }
 }

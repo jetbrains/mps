@@ -5,7 +5,6 @@ package jetbrains.mps.ide.vcs.test.merge;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import java.util.regex.Pattern;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.tool.environment.Environment;
 import java.io.File;
 import jetbrains.mps.util.FileUtil;
@@ -36,6 +35,7 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -49,6 +49,7 @@ import com.intellij.openapi.vfs.newvfs.RefreshSession;
 import com.intellij.openapi.vfs.newvfs.RefreshQueue;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import java.io.IOException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * 
@@ -56,7 +57,7 @@ import java.io.IOException;
  * @since 3/23/11
  */
 public class DiskMemoryConflictsTest implements EnvironmentAware {
-  private static Pattern FIELD_DECLARATION_CONCEPT_ENTRY_MATCHING_PATTERN = Pattern.compile("\\s*<concept id=\"" + ((SConceptAdapterById) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")).getId().getIdValue() + "\"([^\\/]+)/>");
+  private static Pattern FIELD_DECLARATION_CONCEPT_ENTRY_MATCHING_PATTERN = Pattern.compile("\\s*<concept id=\"" + ((SConceptAdapterById) AUX_67xc96.FieldDeclaration_e2711ac6).getId().getIdValue() + "\"([^\\/]+)/>");
   private static Pattern CONCEPT_INDEX_MATCHING_PATTERN = Pattern.compile(".*index=\"([^/]+)\".*");
   private static Pattern PROPERTY_VALUE_MATCHING_PATTERN = Pattern.compile(".*<property.*value=\"([^\"]+)\".*");
 
@@ -75,7 +76,7 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
 
   private DefaultSModel myModelBackup;
   private StreamDataSource myOriginalModelDataSource;
-  private DiskMemoryConflictsTest.TestDialogImpl myMockDialog = null;
+  private TestDialogImpl myMockDialog = null;
   private TestDialog myOriginalDialog;
 
   public DiskMemoryConflictsTest() {
@@ -111,7 +112,7 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
     });
     Assert.assertNotNull(myModelBackup);
     Assert.assertNotNull(myOriginalModelDataSource);
-    myOriginalDialog = ModelStorageProblemsListener.setTestDialog(myMockDialog = new DiskMemoryConflictsTest.TestDialogImpl());
+    myOriginalDialog = ModelStorageProblemsListener.setTestDialog(myMockDialog = new TestDialogImpl());
   }
 
   @After
@@ -180,8 +181,8 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
   }
 
   private SNode getField() {
-    SNode node = SNodeOperations.cast(new SNodePointer("r:21cf9f47-5464-40f2-9509-d94ba20bfe82(simpleModel)", "6010389230754495463").resolve(myRepository), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
-    SNode theField = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), SMethodTrimmedId.create("fields", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4_LVZ3pC27C")))).first();
+    SNode node = SNodeOperations.cast(new SNodePointer("r:21cf9f47-5464-40f2-9509-d94ba20bfe82(simpleModel)", "6010389230754495463").resolve(myRepository), AUX_67xc96.ClassConcept_e2711824);
+    SNode theField = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, AUX_67xc96.ClassConcept_e2711824, SMethodTrimmedId.create("fields", AUX_67xc96.ClassConcept_e2711824, "4_LVZ3pC27C")))).first();
     return theField;
   }
 
@@ -400,5 +401,10 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
       myReturnValue = nextShowValue;
       myExecuted = false;
     }
+  }
+
+  private static final class AUX_67xc96 {
+    /*package*/ static final SConcept FieldDeclaration_e2711ac6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

@@ -15,12 +15,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule() {
   }
   public void applyRule(final SNode cellKeyMap_FunctionParm_selectedNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellKeyMap_FunctionParm_selectedNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration"), false, false), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept"));
+    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellKeyMap_FunctionParm_selectedNode, AUX_xp27pa.CellKeyMapDeclaration_61c54839, false, false), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept"));
     {
       SNode _nodeToCheck_1029348928467 = cellKeyMap_FunctionParm_selectedNode;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086188", 0, null);
@@ -28,7 +29,7 @@ public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends A
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee0bL, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode");
+    return AUX_xp27pa.CellKeyMap_FunctionParm_selectedNode_587435bc;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,5 +43,10 @@ public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends A
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_xp27pa {
+    /*package*/ static final SConcept CellKeyMapDeclaration_61c54839 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
+    /*package*/ static final SConcept CellKeyMap_FunctionParm_selectedNode_587435bc = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee0bL, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode");
   }
 }

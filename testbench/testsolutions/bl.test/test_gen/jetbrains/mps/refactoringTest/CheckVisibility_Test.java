@@ -29,7 +29,7 @@ public class CheckVisibility_Test extends BaseTransformationTest {
 
   @Test
   public void test_CheckVisibility() throws Throwable {
-    new CheckVisibility_Test.TestBody(this).test_CheckVisibility();
+    new TestBody(this).test_CheckVisibility();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

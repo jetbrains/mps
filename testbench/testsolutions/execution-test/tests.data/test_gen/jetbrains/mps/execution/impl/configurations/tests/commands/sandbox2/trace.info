@@ -10,7 +10,7 @@
   <root nodeRef="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)/3879137142820985113">
     <file name="UsingLangTestCase_Test.java">
       <node id="3879137142820985113" at="24,35,25,25" concept="5" />
-      <node id="3879137142820985162" at="29,44,30,58" concept="1" />
+      <node id="3879137142820985162" at="29,44,30,35" concept="1" />
       <node id="3879137142820985113" at="35,52,36,19" concept="5" />
       <node id="3879137142820985751" at="39,46,40,40" concept="1" />
       <node id="3879137142820985208" at="40,40,41,32" concept="1" />
@@ -21,7 +21,7 @@
       <node id="3879137142820985162" at="28,0,32,0" concept="3" trace="test_asdf#()V" />
       <node id="3879137142820985162" at="39,0,43,0" concept="3" trace="test_asdf#()V" />
       <scope id="3879137142820985113" at="24,35,25,25" />
-      <scope id="3879137142820985162" at="29,44,30,58" />
+      <scope id="3879137142820985162" at="29,44,30,35" />
       <scope id="3879137142820985113" at="35,52,36,19" />
       <scope id="3879137142820985162" at="39,46,41,32" />
       <scope id="3879137142820985113" at="24,0,27,0" />
@@ -37,7 +37,7 @@
   <root nodeRef="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)/4414733712821357918">
     <file name="ReadingPropertyTestCase_Test_Test.java">
       <node id="4414733712821357918" at="25,46,26,25" concept="5" />
-      <node id="4414733712821357919" at="30,45,31,70" concept="1" />
+      <node id="4414733712821357919" at="30,45,31,36" concept="1" />
       <node id="4414733712821357918" at="36,52,37,19" concept="5" />
       <node id="5101378672992592588" at="40,47,41,163" concept="1" />
       <node id="4414733712821357922" at="41,163,42,32" concept="1" />
@@ -48,7 +48,7 @@
       <node id="4414733712821357919" at="29,0,33,0" concept="3" trace="test_test1#()V" />
       <node id="4414733712821357919" at="40,0,44,0" concept="3" trace="test_test1#()V" />
       <scope id="4414733712821357918" at="25,46,26,25" />
-      <scope id="4414733712821357919" at="30,45,31,70" />
+      <scope id="4414733712821357919" at="30,45,31,36" />
       <scope id="4414733712821357918" at="36,52,37,19" />
       <scope id="4414733712821357919" at="40,47,42,32" />
       <scope id="4414733712821357918" at="25,0,28,0" />
@@ -64,7 +64,7 @@
   <root nodeRef="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)/5101378672993280081">
     <file name="PropertyIsAvailaibleInMPSTestCase_Test.java">
       <node id="5101378672993280081" at="23,51,24,25" concept="5" />
-      <node id="5101378672993280082" at="28,45,29,75" concept="1" />
+      <node id="5101378672993280082" at="28,45,29,36" concept="1" />
       <node id="5101378672993280081" at="34,52,35,19" concept="5" />
       <node id="5101378672993280256" at="38,47,39,64" concept="1" />
       <node id="5101378672993280081" at="18,0,20,0" concept="4" trace="ourParamCache" />
@@ -74,7 +74,7 @@
       <node id="5101378672993280082" at="38,0,41,0" concept="3" trace="test_test1#()V" />
       <node id="5101378672993280082" at="27,0,31,0" concept="3" trace="test_test1#()V" />
       <scope id="5101378672993280081" at="23,51,24,25" />
-      <scope id="5101378672993280082" at="28,45,29,75" />
+      <scope id="5101378672993280082" at="28,45,29,36" />
       <scope id="5101378672993280081" at="34,52,35,19" />
       <scope id="5101378672993280082" at="38,47,39,64" />
       <scope id="5101378672993280081" at="23,0,26,0" />
@@ -90,7 +90,7 @@
   <root nodeRef="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)/6339244025082034140">
     <file name="FailedTestCase_Test_Test.java">
       <node id="6339244025082034140" at="23,37,24,25" concept="5" />
-      <node id="6339244025082055679" at="28,45,29,61" concept="1" />
+      <node id="6339244025082055679" at="28,45,29,36" concept="1" />
       <node id="6339244025082034140" at="34,52,35,19" concept="5" />
       <node id="6339244025082055707" at="38,47,39,31" concept="1" />
       <node id="6339244025082034140" at="18,0,20,0" concept="4" trace="ourParamCache" />
@@ -100,7 +100,7 @@
       <node id="6339244025082055679" at="38,0,41,0" concept="3" trace="test_test1#()V" />
       <node id="6339244025082055679" at="27,0,31,0" concept="3" trace="test_test1#()V" />
       <scope id="6339244025082034140" at="23,37,24,25" />
-      <scope id="6339244025082055679" at="28,45,29,61" />
+      <scope id="6339244025082055679" at="28,45,29,36" />
       <scope id="6339244025082034140" at="34,52,35,19" />
       <scope id="6339244025082055679" at="38,47,39,31" />
       <scope id="6339244025082034140" at="23,0,26,0" />
@@ -116,7 +116,7 @@
   <root nodeRef="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)/6339244025082972090">
     <file name="WaitingTestCase_Test_Test.java">
       <node id="6339244025082972090" at="19,38,20,25" concept="5" />
-      <node id="6339244025082972091" at="24,45,25,62" concept="1" />
+      <node id="6339244025082972091" at="24,45,25,36" concept="1" />
       <node id="6339244025082972090" at="30,52,31,19" concept="5" />
       <node id="6339244025083038086" at="35,11,36,27" concept="1" />
       <node id="6339244025082972148" at="38,7,39,32" concept="1" />
@@ -131,7 +131,7 @@
       </scope>
       <scope id="6339244025083038558" at="37,40,37,40" />
       <scope id="6339244025082972090" at="19,38,20,25" />
-      <scope id="6339244025082972091" at="24,45,25,62" />
+      <scope id="6339244025082972091" at="24,45,25,36" />
       <scope id="6339244025082972090" at="30,52,31,19" />
       <scope id="6339244025083038562" at="35,11,36,27" />
       <scope id="6339244025082972090" at="19,0,22,0" />
@@ -148,7 +148,7 @@
   <root nodeRef="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)/6937584626643047380">
     <file name="SimpleTestCase_Test_Test.java">
       <node id="6937584626643047380" at="23,37,24,25" concept="5" />
-      <node id="6937584626643053783" at="28,45,29,61" concept="1" />
+      <node id="6937584626643053783" at="28,45,29,36" concept="1" />
       <node id="6937584626643047380" at="34,52,35,19" concept="5" />
       <node id="6937584626643053816" at="38,47,39,32" concept="1" />
       <node id="6937584626643047380" at="18,0,20,0" concept="4" trace="ourParamCache" />
@@ -158,7 +158,7 @@
       <node id="6937584626643053783" at="38,0,41,0" concept="3" trace="test_test1#()V" />
       <node id="6937584626643053783" at="27,0,31,0" concept="3" trace="test_test1#()V" />
       <scope id="6937584626643047380" at="23,37,24,25" />
-      <scope id="6937584626643053783" at="28,45,29,61" />
+      <scope id="6937584626643053783" at="28,45,29,36" />
       <scope id="6937584626643047380" at="34,52,35,19" />
       <scope id="6937584626643053783" at="38,47,39,32" />
       <scope id="6937584626643047380" at="23,0,26,0" />

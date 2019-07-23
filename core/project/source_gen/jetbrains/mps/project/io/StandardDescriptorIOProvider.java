@@ -38,15 +38,15 @@ import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
 
   @Override
   public DescriptorIO<SolutionDescriptor> solutionDescriptorIO() {
-    return new StandardDescriptorIOProvider.SolutionDescriptorIO();
+    return new SolutionDescriptorIO();
   }
   @Override
   public DescriptorIO<LanguageDescriptor> languageDescriptorIO() {
-    return new StandardDescriptorIOProvider.LanguageDescriptorIO();
+    return new LanguageDescriptorIO();
   }
   @Override
   public DescriptorIO<DevkitDescriptor> devkitDescriptorIO() {
-    return new StandardDescriptorIOProvider.DevkitDescriptorIO();
+    return new DevkitDescriptorIO();
   }
 
   /*package*/ MacroHelper forModuleFile(IFile file) {

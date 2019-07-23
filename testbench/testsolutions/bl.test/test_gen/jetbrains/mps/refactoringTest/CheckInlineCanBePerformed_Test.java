@@ -29,7 +29,7 @@ public class CheckInlineCanBePerformed_Test extends BaseTransformationTest {
 
   @Test
   public void test_CheckInlineCanBePerformed() throws Throwable {
-    new CheckInlineCanBePerformed_Test.TestBody(this).test_CheckInlineCanBePerformed();
+    new TestBody(this).test_CheckInlineCanBePerformed();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

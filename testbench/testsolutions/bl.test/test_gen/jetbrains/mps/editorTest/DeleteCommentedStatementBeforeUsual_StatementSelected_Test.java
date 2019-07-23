@@ -22,7 +22,7 @@ public class DeleteCommentedStatementBeforeUsual_StatementSelected_Test extends 
 
   @Test
   public void test_DeleteCommentedStatementBeforeUsual_StatementSelected() throws Throwable {
-    new DeleteCommentedStatementBeforeUsual_StatementSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

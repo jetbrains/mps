@@ -9,7 +9,7 @@
   <root nodeRef="r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)/4981802504972003464">
     <file name="TestCreateComparableEquationStatement_Test.java">
       <node id="4981802504972003464" at="18,55,19,25" concept="5" />
-      <node id="4981802504972003464" at="23,77,24,79" concept="1" />
+      <node id="4981802504972003464" at="23,77,24,36" concept="1" />
       <node id="4981802504972003464" at="29,52,30,19" concept="5" />
       <node id="4981802504972003464" at="34,51,35,72" concept="1" />
       <node id="4981802504972013253" at="35,72,36,25" concept="1" />
@@ -19,7 +19,7 @@
       <node id="4981802504972003464" at="22,0,26,0" concept="2" trace="test_TestCreateComparableEquationStatement#()V" />
       <node id="4981802504972003464" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4981802504972003464" at="18,55,19,25" />
-      <scope id="4981802504972003464" at="23,77,24,79" />
+      <scope id="4981802504972003464" at="23,77,24,36" />
       <scope id="4981802504972003464" at="29,52,30,19" />
       <scope id="4981802504972003464" at="34,51,36,25" />
       <scope id="4981802504972003464" at="18,0,21,0" />
@@ -35,7 +35,7 @@
   <root nodeRef="r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)/4981802504972074172">
     <file name="TestCreateEquationStatement_Test.java">
       <node id="4981802504972074172" at="18,45,19,25" concept="5" />
-      <node id="4981802504972074172" at="23,67,24,69" concept="1" />
+      <node id="4981802504972074172" at="23,67,24,36" concept="1" />
       <node id="4981802504972074172" at="29,52,30,19" concept="5" />
       <node id="4981802504972074172" at="34,51,35,72" concept="1" />
       <node id="4981802504972074227" at="35,72,36,26" concept="1" />
@@ -46,7 +46,7 @@
       <node id="4981802504972074172" at="22,0,26,0" concept="2" trace="test_TestCreateEquationStatement#()V" />
       <node id="4981802504972074172" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4981802504972074172" at="18,45,19,25" />
-      <scope id="4981802504972074172" at="23,67,24,69" />
+      <scope id="4981802504972074172" at="23,67,24,36" />
       <scope id="4981802504972074172" at="29,52,30,19" />
       <scope id="4981802504972074172" at="18,0,21,0" />
       <scope id="4981802504972074172" at="29,0,32,0">
@@ -62,7 +62,7 @@
   <root nodeRef="r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)/4981802504972074646">
     <file name="TestCreateGreaterThanInequationStatement_Test.java">
       <node id="4981802504972074646" at="18,58,19,25" concept="5" />
-      <node id="4981802504972074646" at="23,80,24,82" concept="1" />
+      <node id="4981802504972074646" at="23,80,24,36" concept="1" />
       <node id="4981802504972074646" at="29,52,30,19" concept="5" />
       <node id="4981802504972074646" at="34,51,35,72" concept="1" />
       <node id="4981802504972074692" at="35,72,36,26" concept="1" />
@@ -73,7 +73,7 @@
       <node id="4981802504972074646" at="22,0,26,0" concept="2" trace="test_TestCreateGreaterThanInequationStatement#()V" />
       <node id="4981802504972074646" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4981802504972074646" at="18,58,19,25" />
-      <scope id="4981802504972074646" at="23,80,24,82" />
+      <scope id="4981802504972074646" at="23,80,24,36" />
       <scope id="4981802504972074646" at="29,52,30,19" />
       <scope id="4981802504972074646" at="18,0,21,0" />
       <scope id="4981802504972074646" at="29,0,32,0">
@@ -89,7 +89,7 @@
   <root nodeRef="r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)/4981802504972074751">
     <file name="TestCreateLessThanInequationStatement_Test.java">
       <node id="4981802504972074751" at="18,55,19,25" concept="5" />
-      <node id="4981802504972074751" at="23,77,24,79" concept="1" />
+      <node id="4981802504972074751" at="23,77,24,36" concept="1" />
       <node id="4981802504972074751" at="29,52,30,19" concept="5" />
       <node id="4981802504972074751" at="34,51,35,72" concept="1" />
       <node id="4981802504972074801" at="35,72,36,26" concept="1" />
@@ -100,7 +100,7 @@
       <node id="4981802504972074751" at="22,0,26,0" concept="2" trace="test_TestCreateLessThanInequationStatement#()V" />
       <node id="4981802504972074751" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4981802504972074751" at="18,55,19,25" />
-      <scope id="4981802504972074751" at="23,77,24,79" />
+      <scope id="4981802504972074751" at="23,77,24,36" />
       <scope id="4981802504972074751" at="29,52,30,19" />
       <scope id="4981802504972074751" at="18,0,21,0" />
       <scope id="4981802504972074751" at="29,0,32,0">
@@ -116,7 +116,7 @@
   <root nodeRef="r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)/4981802504972075013">
     <file name="TestCreateStrongLessThanInequationStatement_Test.java">
       <node id="4981802504972075013" at="18,61,19,25" concept="5" />
-      <node id="4981802504972075013" at="23,83,24,85" concept="1" />
+      <node id="4981802504972075013" at="23,83,24,36" concept="1" />
       <node id="4981802504972075013" at="29,52,30,19" concept="5" />
       <node id="4981802504972075013" at="34,51,35,72" concept="1" />
       <node id="4981802504972075062" at="35,72,36,27" concept="1" />
@@ -127,7 +127,7 @@
       <node id="4981802504972075013" at="22,0,26,0" concept="2" trace="test_TestCreateStrongLessThanInequationStatement#()V" />
       <node id="4981802504972075013" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4981802504972075013" at="18,61,19,25" />
-      <scope id="4981802504972075013" at="23,83,24,85" />
+      <scope id="4981802504972075013" at="23,83,24,36" />
       <scope id="4981802504972075013" at="29,52,30,19" />
       <scope id="4981802504972075013" at="18,0,21,0" />
       <scope id="4981802504972075013" at="29,0,32,0">
@@ -143,7 +143,7 @@
   <root nodeRef="r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)/4981802504972075118">
     <file name="TestCreateComparableEquationStatementStrong_Test.java">
       <node id="4981802504972075118" at="18,61,19,25" concept="5" />
-      <node id="4981802504972075118" at="23,83,24,85" concept="1" />
+      <node id="4981802504972075118" at="23,83,24,36" concept="1" />
       <node id="4981802504972075118" at="29,52,30,19" concept="5" />
       <node id="4981802504972075118" at="34,51,35,72" concept="1" />
       <node id="4981802504972075163" at="35,72,36,26" concept="1" />
@@ -154,7 +154,7 @@
       <node id="4981802504972075118" at="22,0,26,0" concept="2" trace="test_TestCreateComparableEquationStatementStrong#()V" />
       <node id="4981802504972075118" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4981802504972075118" at="18,61,19,25" />
-      <scope id="4981802504972075118" at="23,83,24,85" />
+      <scope id="4981802504972075118" at="23,83,24,36" />
       <scope id="4981802504972075118" at="29,52,30,19" />
       <scope id="4981802504972075118" at="18,0,21,0" />
       <scope id="4981802504972075118" at="29,0,32,0">
@@ -170,7 +170,7 @@
   <root nodeRef="r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)/4981802504972075223">
     <file name="TestCreateStrongGreaterThanInequationStatement_Test.java">
       <node id="4981802504972075223" at="18,64,19,25" concept="5" />
-      <node id="4981802504972075223" at="23,86,24,88" concept="1" />
+      <node id="4981802504972075223" at="23,86,24,36" concept="1" />
       <node id="4981802504972075223" at="29,52,30,19" concept="5" />
       <node id="4981802504972075223" at="34,51,35,72" concept="1" />
       <node id="4981802504972075271" at="35,72,36,27" concept="1" />
@@ -181,7 +181,7 @@
       <node id="4981802504972075223" at="22,0,26,0" concept="2" trace="test_TestCreateStrongGreaterThanInequationStatement#()V" />
       <node id="4981802504972075223" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4981802504972075223" at="18,64,19,25" />
-      <scope id="4981802504972075223" at="23,86,24,88" />
+      <scope id="4981802504972075223" at="23,86,24,36" />
       <scope id="4981802504972075223" at="29,52,30,19" />
       <scope id="4981802504972075223" at="18,0,21,0" />
       <scope id="4981802504972075223" at="29,0,32,0">

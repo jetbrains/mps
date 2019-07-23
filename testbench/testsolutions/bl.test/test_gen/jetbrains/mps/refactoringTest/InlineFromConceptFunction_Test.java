@@ -36,11 +36,11 @@ public class InlineFromConceptFunction_Test extends BaseTransformationTest {
 
   @Test
   public void test_deinition() throws Throwable {
-    new InlineFromConceptFunction_Test.TestBody(this).test_deinition();
+    new TestBody(this).test_deinition();
   }
   @Test
   public void test_reference() throws Throwable {
-    new InlineFromConceptFunction_Test.TestBody(this).test_reference();
+    new TestBody(this).test_reference();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

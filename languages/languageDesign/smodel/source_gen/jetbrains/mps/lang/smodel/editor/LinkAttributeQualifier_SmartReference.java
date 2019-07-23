@@ -10,23 +10,24 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.structure.behavior.AttributeDesignTimeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LinkAttributeQualifier_SmartReference extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new LinkAttributeQualifier_SmartReference.SMP_ReferenceScope_2w1sjw_a(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, "jetbrains.mps.lang.smodel.structure.LinkAttributeQualifier")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2w1sjw_a(), AUX_2w1sjw.LinkAttributeQualifier_9dfc6353));
     return result;
   }
 
@@ -47,7 +48,7 @@ public class LinkAttributeQualifier_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_2w1sjw_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, "jetbrains.mps.lang.smodel.structure.LinkAttributeQualifier"), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, 0x58ea5217b045b9b8L, "attributeConcept"));
+      super((SAbstractConcept) AUX_2w1sjw.LinkAttributeQualifier_9dfc6353, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, 0x58ea5217b045b9b8L, "attributeConcept"));
     }
     @NotNull
     @Override
@@ -64,7 +65,7 @@ public class LinkAttributeQualifier_SmartReference extends SubstituteMenuBase {
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new LinkAttributeQualifier_SmartReference.SMP_ReferenceScope_2w1sjw_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new SMP_ReferenceScope_2w1sjw_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;
@@ -91,5 +92,9 @@ public class LinkAttributeQualifier_SmartReference extends SubstituteMenuBase {
         return myTraceInfo;
       }
     }
+  }
+
+  private static final class AUX_2w1sjw {
+    /*package*/ static final SConcept LinkAttributeQualifier_9dfc6353 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, "jetbrains.mps.lang.smodel.structure.LinkAttributeQualifier");
   }
 }

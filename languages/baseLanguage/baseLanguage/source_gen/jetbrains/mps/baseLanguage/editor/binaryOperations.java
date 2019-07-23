@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -40,6 +39,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class binaryOperations extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -65,7 +66,7 @@ public class binaryOperations extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new binaryOperations.TMP_Group_vwyr1i_a0());
+      result.add(new TMP_Group_vwyr1i_a0());
     }
     return result;
   }
@@ -73,7 +74,7 @@ public class binaryOperations extends TransformationMenuBase {
   public class TMP_Group_vwyr1i_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_vwyr1i.InstanceOfExpression_70765a36);
     }
 
     @NotNull
@@ -89,7 +90,7 @@ public class binaryOperations extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new binaryOperations.TMP_Group_vwyr1i_a0.TMP_WrapSM_vwyr1i_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_vwyr1i_a0.TMP_WrapSM_vwyr1i_a0a());
     }
     public class TMP_WrapSM_vwyr1i_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -112,7 +113,7 @@ public class binaryOperations extends TransformationMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+        return AUX_vwyr1i.BinaryOperation_7c4c55f3;
       }
 
       @Override
@@ -146,5 +147,10 @@ public class binaryOperations extends TransformationMenuBase {
         };
       }
     }
+  }
+
+  private static final class AUX_vwyr1i {
+    /*package*/ static final SConcept InstanceOfExpression_70765a36 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    /*package*/ static final SConcept BinaryOperation_7c4c55f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 }

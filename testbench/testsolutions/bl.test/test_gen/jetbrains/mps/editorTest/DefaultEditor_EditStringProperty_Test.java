@@ -21,7 +21,7 @@ public class DefaultEditor_EditStringProperty_Test extends BaseTransformationTes
 
   @Test
   public void test_DefaultEditor_EditStringProperty() throws Throwable {
-    new DefaultEditor_EditStringProperty_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

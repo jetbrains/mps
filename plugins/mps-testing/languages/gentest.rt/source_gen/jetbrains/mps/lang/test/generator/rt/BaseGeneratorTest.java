@@ -27,11 +27,12 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.junit.Assume;
 import org.junit.After;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BaseGeneratorTest implements EnvironmentAware {
   private Environment myEnv;
@@ -102,7 +103,7 @@ public class BaseGeneratorTest implements EnvironmentAware {
       public InterpretedPlanProvider compute() {
         LanguageRegistry lreg = myEnv.getPlatform().findComponent(LanguageRegistry.class);
         LogHandler mh = new LogHandler(Logger.getLogger(getClass()));
-        SNodeReference planNode = SNodeOperations.getPointer(ListSequence.fromList(SModelOperations.roots(gpm, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan"))).first());
+        SNodeReference planNode = SNodeOperations.getPointer(ListSequence.fromList(SModelOperations.roots(gpm, AUX_ee8dai.Plan_4c7f418c)).first());
         return new InterpretedPlanProvider(lreg, mh, planNode, myRepository);
       }
     });
@@ -127,5 +128,9 @@ public class BaseGeneratorTest implements EnvironmentAware {
       th.dispose();
     }
     myTransformHelpers.clear();
+  }
+
+  private static final class AUX_ee8dai {
+    /*package*/ static final SConcept Plan_4c7f418c = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan");
   }
 }

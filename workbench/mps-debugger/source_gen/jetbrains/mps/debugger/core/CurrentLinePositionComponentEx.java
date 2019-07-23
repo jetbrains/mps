@@ -32,9 +32,9 @@ public abstract class CurrentLinePositionComponentEx<S> {
   private FileEditorManager myFileEditorManager;
   private final Map<S, CurrentLinePainter> mySessionToContextPainterMap = MapSequence.fromMap(new HashMap<S, CurrentLinePainter>());
   protected final Project myProject;
-  private final EditorComponentCreateListener myEditorComponentCreationHandler = new CurrentLinePositionComponentEx.MyEditorComponentCreateListener();
+  private final EditorComponentCreateListener myEditorComponentCreationHandler = new MyEditorComponentCreateListener();
   private MessageBusConnection myMessageBusConnection;
-  private final CommandListenerAdapter myCommandListener = new CurrentLinePositionComponentEx.MyRepositoryListener();
+  private final CommandListenerAdapter myCommandListener = new MyRepositoryListener();
   public CurrentLinePositionComponentEx(Project project, FileEditorManager fileEditorManager) {
     myProject = project;
     myFileEditorManager = fileEditorManager;

@@ -21,7 +21,7 @@ public class LeftTransformForAttributedProperty_Test extends BaseTransformationT
 
   @Test
   public void test_LeftTransformForAttributedProperty() throws Throwable {
-    new LeftTransformForAttributedProperty_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

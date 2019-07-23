@@ -12,12 +12,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.test.scripts.SpecifyUtil;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class SpecifyRuleReferences_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -36,7 +37,7 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase")), node) && Sequence.fromIterable(SpecifyUtil.getErrorReporters(node)).isNotEmpty();
+    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(AUX_ef6asp.NodesTestCase_fd5a0bf4), node) && Sequence.fromIterable(SpecifyUtil.getErrorReporters(node)).isNotEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -44,7 +45,7 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new SpecifyRuleReferences_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -64,5 +65,9 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
     public IntentionDescriptor getDescriptor() {
       return SpecifyRuleReferences_Intention.this;
     }
+  }
+
+  private static final class AUX_ef6asp {
+    /*package*/ static final SConcept NodesTestCase_fd5a0bf4 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

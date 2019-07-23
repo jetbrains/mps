@@ -16,6 +16,7 @@ import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class namedTupleDeclaration_ClassifierType_supertypeOf_namedTupleType_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public namedTupleDeclaration_ClassifierType_supertypeOf_namedTupleType_SubtypingRule() {
@@ -24,7 +25,7 @@ public class namedTupleDeclaration_ClassifierType_supertypeOf_namedTupleType_Sub
     return _quotation_createNode_uyx4ls_a0a1(ListSequence.fromList(SLinkOperations.getChildren(ntt, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))).toListSequence(), SLinkOperations.getTarget(ntt, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")));
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
+    return AUX_uyx4ls.NamedTupleType_1dd98d37;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,5 +46,9 @@ public class namedTupleDeclaration_ClassifierType_supertypeOf_namedTupleType_Sub
       }
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_uyx4ls {
+    /*package*/ static final SConcept NamedTupleType_1dd98d37 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
   }
 }

@@ -21,7 +21,7 @@ public class DeleteParameter_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteParameter() throws Throwable {
-    new DeleteParameter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

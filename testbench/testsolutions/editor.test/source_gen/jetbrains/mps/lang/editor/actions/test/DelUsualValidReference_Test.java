@@ -22,7 +22,7 @@ public class DelUsualValidReference_Test extends BaseTransformationTest {
 
   @Test
   public void test_DelUsualValidReference() throws Throwable {
-    new DelUsualValidReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

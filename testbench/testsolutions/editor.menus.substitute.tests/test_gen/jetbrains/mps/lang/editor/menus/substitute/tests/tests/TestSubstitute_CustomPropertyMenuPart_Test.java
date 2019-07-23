@@ -24,7 +24,7 @@ public class TestSubstitute_CustomPropertyMenuPart_Test extends BaseTransformati
 
   @Test
   public void test_TestSubstitute_CustomPropertyMenuPart() throws Throwable {
-    new TestSubstitute_CustomPropertyMenuPart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -23,7 +23,7 @@ public class TestSubstitute_Contribute_Test extends BaseTransformationTest {
 
   @Test
   public void test_TestSubstitute_Contribute() throws Throwable {
-    new TestSubstitute_Contribute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

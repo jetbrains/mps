@@ -28,7 +28,7 @@ public class RollBacksNewTypeSystem_Test extends BaseTransformationTest {
 
   @Test
   public void test_GenerationMode() throws Throwable {
-    new RollBacksNewTypeSystem_Test.TestBody(this).test_GenerationMode();
+    new TestBody(this).test_GenerationMode();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

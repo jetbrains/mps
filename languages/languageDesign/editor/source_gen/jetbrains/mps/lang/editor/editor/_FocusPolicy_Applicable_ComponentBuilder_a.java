@@ -85,7 +85,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new _FocusPolicy_Applicable_ComponentBuilder_a.focusPolicyApplicableSingleRoleHandler_pmdlax_a1a0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x1170ce1df2aL, "focusPolicyApplicable"), getEditorContext());
+    SingleRoleCellProvider provider = new focusPolicyApplicableSingleRoleHandler_pmdlax_a1a0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x1170ce1df2aL, "focusPolicyApplicable"), getEditorContext());
     return provider.createCell();
   }
   private static class focusPolicyApplicableSingleRoleHandler_pmdlax_a1a0 extends SingleRoleCellProvider {

@@ -21,7 +21,7 @@ public class AddVariableDeclarationCaret_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddVariableDeclarationCaret() throws Throwable {
-    new AddVariableDeclarationCaret_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

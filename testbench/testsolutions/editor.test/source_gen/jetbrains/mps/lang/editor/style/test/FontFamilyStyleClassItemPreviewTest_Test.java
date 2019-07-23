@@ -27,7 +27,7 @@ public class FontFamilyStyleClassItemPreviewTest_Test extends BaseTransformation
 
   @Test
   public void test_FontFamilyStyleClassItemPreviewTest() throws Throwable {
-    new FontFamilyStyleClassItemPreviewTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -15,14 +14,16 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConceptEditorHintDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclaration");
+  private static final SAbstractConcept CONCEPT = AUX_cyjd3z.ConceptEditorHintDeclaration_6ecf73a7;
 
   public static final SMethod<SNode> getHintsContainer_id59ZEGVRaGvE = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHintsContainer").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("59ZEGVRaGvE").build();
   public static final SMethod<String> getQualifiedName_id59ZEGVRaGvv = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getQualifiedName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("59ZEGVRaGvv").build();
@@ -34,7 +35,7 @@ public final class ConceptEditorHintDeclaration__BehaviorDescriptor extends Base
   }
 
   /*package*/ static SNode getHintsContainer_id59ZEGVRaGvE(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints"));
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AUX_cyjd3z.ConceptEditorContextHints_d3de4124);
   }
   /*package*/ static String getQualifiedName_id59ZEGVRaGvv(@NotNull SNode __thisNode__) {
     return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ConceptEditorHintDeclaration__BehaviorDescriptor.getHintsContainer_id59ZEGVRaGvE.invoke(__thisNode__)) + "." + SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
@@ -86,5 +87,10 @@ public final class ConceptEditorHintDeclaration__BehaviorDescriptor extends Base
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_cyjd3z {
+    /*package*/ static final SConcept ConceptEditorHintDeclaration_6ecf73a7 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclaration");
+    /*package*/ static final SConcept ConceptEditorContextHints_d3de4124 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
   }
 }

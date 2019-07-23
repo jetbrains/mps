@@ -26,13 +26,13 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
   private static final int CRITICAL_DELAY = 16000;
   private static final double DELAY_MUL = 2.0;
   private final Project myProject;
-  private final PluginStateWidget.MyTimer myTimer;
-  private AtomicReference<PluginStateWidget.State> myState = new AtomicReference<PluginStateWidget.State>(PluginStateWidget.State.TRYING_TO_CONNECT);
+  private final MyTimer myTimer;
+  private AtomicReference<State> myState = new AtomicReference<State>(State.TRYING_TO_CONNECT);
   private volatile boolean myConnecting = false;
   private StatusBar myStatusBar;
   public PluginStateWidget(Project project) {
     myProject = project;
-    myTimer = new PluginStateWidget.MyTimer(new ActionListener() {
+    myTimer = new MyTimer(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         if (myConnecting) {
@@ -74,8 +74,8 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
     return new Consumer<MouseEvent>() {
       @Override
       public void consume(MouseEvent event) {
-        if (myState.get() == PluginStateWidget.State.DISCONNECTED) {
-          if (setNewState(PluginStateWidget.State.DISCONNECTED, PluginStateWidget.State.TRYING_TO_CONNECT)) {
+        if (myState.get() == State.DISCONNECTED) {
+          if (setNewState(State.DISCONNECTED, State.TRYING_TO_CONNECT)) {
             myTimer.setNewDelay(PluginStateWidget.INITIAL_DELAY);
           }
         }
@@ -113,56 +113,56 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
     tickImpl();
   }
   private void tickImpl() {
-    PluginStateWidget.State state = myState.get();
-    if (state == PluginStateWidget.State.CONNECTED) {
+    State state = myState.get();
+    if (state == State.CONNECTED) {
       if (isConnected()) {
         if (canOperate()) {
           return;
         } else {
-          setNewState(state, PluginStateWidget.State.CONNECTED_BAD_PROJECT);
+          setNewState(state, State.CONNECTED_BAD_PROJECT);
         }
       } else {
-        setNewState(state, PluginStateWidget.State.TRYING_TO_CONNECT);
+        setNewState(state, State.TRYING_TO_CONNECT);
       }
     } else
-    if (state == PluginStateWidget.State.CONNECTED_BAD_PROJECT) {
+    if (state == State.CONNECTED_BAD_PROJECT) {
       if (isConnected()) {
         if (canOperate()) {
-          setNewState(state, PluginStateWidget.State.CONNECTED);
+          setNewState(state, State.CONNECTED);
         }
       } else {
-        setNewState(state, PluginStateWidget.State.TRYING_TO_CONNECT);
+        setNewState(state, State.TRYING_TO_CONNECT);
       }
     } else
-    if (state == PluginStateWidget.State.DISCONNECTED) {
+    if (state == State.DISCONNECTED) {
       if (MPSPlugin.getInstance().openConnectionPresent()) {
         if (isConnected()) {
           if (canOperate()) {
-            setNewState(state, PluginStateWidget.State.CONNECTED);
+            setNewState(state, State.CONNECTED);
           } else {
-            setNewState(state, PluginStateWidget.State.CONNECTED_BAD_PROJECT);
+            setNewState(state, State.CONNECTED_BAD_PROJECT);
           }
         }
       }
     } else
-    if (state == PluginStateWidget.State.TRYING_TO_CONNECT) {
+    if (state == State.TRYING_TO_CONNECT) {
       if (isConnected()) {
         if (canOperate()) {
-          setNewState(state, PluginStateWidget.State.CONNECTED);
+          setNewState(state, State.CONNECTED);
         } else {
-          setNewState(state, PluginStateWidget.State.CONNECTED_BAD_PROJECT);
+          setNewState(state, State.CONNECTED_BAD_PROJECT);
         }
       } else {
         int newDelay = (int) (myTimer.getDelay() * DELAY_MUL);
         if (newDelay <= CRITICAL_DELAY) {
           myTimer.setNewDelay(newDelay);
         } else {
-          setNewState(state, PluginStateWidget.State.DISCONNECTED);
+          setNewState(state, State.DISCONNECTED);
         }
       }
     }
   }
-  private boolean setNewState(PluginStateWidget.State oldState, PluginStateWidget.State newState) {
+  private boolean setNewState(State oldState, State newState) {
     if (myState.compareAndSet(oldState, newState)) {
       myTimer.setNewDelay(myState.get().getDefaultDelay());
       ApplicationManager.getApplication().invokeLater(new Runnable() {

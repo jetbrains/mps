@@ -36,11 +36,11 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
 
   @Test
   public void test_baz() throws Throwable {
-    new ClosureLiteraltargetIface_Test.TestBody(this).test_baz();
+    new TestBody(this).test_baz();
   }
   @Test
   public void test_baz2() throws Throwable {
-    new ClosureLiteraltargetIface_Test.TestBody(this).test_baz2();
+    new TestBody(this).test_baz2();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -21,7 +21,7 @@ public class ChangingTypeToArrayTypeInParam2_Test extends BaseTransformationTest
 
   @Test
   public void test_ChangingTypeToArrayTypeInParam2() throws Throwable {
-    new ChangingTypeToArrayTypeInParam2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

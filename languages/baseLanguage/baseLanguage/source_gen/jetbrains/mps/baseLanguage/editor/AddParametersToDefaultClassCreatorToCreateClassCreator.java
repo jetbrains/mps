@@ -46,6 +46,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddParametersToDefaultClassCreatorToCreateClassCreator extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -71,7 +72,7 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new AddParametersToDefaultClassCreatorToCreateClassCreator.TMP_Group_tsvgb1_a0());
+      result.add(new TMP_Group_tsvgb1_a0());
     }
     return result;
   }
@@ -83,7 +84,7 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
       super.initialize(_context);
       constructorsWithParams = new Computable<Iterable<SNode>>() {
         public Iterable<SNode> compute() {
-          return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))).where(new IWhereFilter<SNode>() {
+          return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier")), AUX_tsvgb1.ClassConcept_e2711824))).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isNotEmpty();
             }
@@ -109,7 +110,7 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new AddParametersToDefaultClassCreatorToCreateClassCreator.TMP_Group_tsvgb1_a0.TMP_WrapSM_tsvgb1_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_tsvgb1_a0.TMP_WrapSM_tsvgb1_a0a());
     }
     public class TMP_WrapSM_tsvgb1_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -132,7 +133,7 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+        return AUX_tsvgb1.Expression_4199e28d;
       }
 
 
@@ -143,7 +144,7 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
           @Override
           public void execute(@NotNull String pattern) {
             SNode createdNode = item.createNode(pattern);
-            SNode cc = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator"));
+            SNode cc = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_tsvgb1.ClassCreator_aea83ba8);
             SLinkOperations.setTarget(cc, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), Sequence.fromIterable(constructorsWithParams).first());
             ListSequence.fromList(SLinkOperations.getChildren(cc, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).addElement(createdNode);
             MethodResolveUtil.replaceFromEditor(cc);
@@ -166,5 +167,11 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
         };
       }
     }
+  }
+
+  private static final class AUX_tsvgb1 {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ClassCreator_aea83ba8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
   }
 }

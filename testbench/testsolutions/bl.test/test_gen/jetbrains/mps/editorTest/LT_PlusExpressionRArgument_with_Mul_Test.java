@@ -21,7 +21,7 @@ public class LT_PlusExpressionRArgument_with_Mul_Test extends BaseTransformation
 
   @Test
   public void test_LT_PlusExpressionRArgument_with_Mul() throws Throwable {
-    new LT_PlusExpressionRArgument_with_Mul_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

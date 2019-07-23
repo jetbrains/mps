@@ -277,7 +277,7 @@ public class Template_processStatement extends TemplateDeclarationBase implement
     rv[9] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer propertyMacro_iblz6q_c0a0c0a0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695039");
-  private static SNodePointer copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695055");
-  private static SNodePointer templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363100026");
+  private static final SNodePointer propertyMacro_iblz6q_c0a0c0a0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695039");
+  private static final SNodePointer copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695055");
+  private static final SNodePointer templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363100026");
 }

@@ -25,7 +25,7 @@ public class TestSubstituteExceptionActionType_Test extends BaseTransformationTe
 
   @Test
   public void test_TestSubstituteExceptionActionType() throws Throwable {
-    new TestSubstituteExceptionActionType_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

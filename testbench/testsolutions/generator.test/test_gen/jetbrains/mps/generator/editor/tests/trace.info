@@ -9,7 +9,7 @@
   <root nodeRef="r:cbdcb51c-64a3-4f95-8704-5b9a754c9773(jetbrains.mps.generator.editor.tests@tests)/2617465934949051584">
     <file name="Test_ReferenceMacroApplicable_Test.java">
       <node id="2617465934949051584" at="20,47,21,25" concept="5" />
-      <node id="2617465934949051584" at="25,69,26,71" concept="1" />
+      <node id="2617465934949051584" at="25,69,26,36" concept="1" />
       <node id="2617465934949051584" at="31,52,32,19" concept="5" />
       <node id="2617465934949051584" at="36,51,37,53" concept="1" />
       <node id="2617465934949084902" at="39,27,40,148" concept="1" />
@@ -22,7 +22,7 @@
       <node id="2617465934949228430" at="37,53,43,9" concept="1" />
       <node id="2617465934949051584" at="35,0,45,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2617465934949051584" at="20,47,21,25" />
-      <scope id="2617465934949051584" at="25,69,26,71" />
+      <scope id="2617465934949051584" at="25,69,26,36" />
       <scope id="2617465934949051584" at="31,52,32,19" />
       <scope id="2617465934949228441" at="39,27,41,148" />
       <scope id="2617465934949051584" at="20,0,23,0" />
@@ -41,7 +41,7 @@
   <root nodeRef="r:cbdcb51c-64a3-4f95-8704-5b9a754c9773(jetbrains.mps.generator.editor.tests@tests)/2617465934949158111">
     <file name="Test_PropertyMacroApplicable_Test.java">
       <node id="2617465934949158111" at="20,46,21,25" concept="5" />
-      <node id="2617465934949158111" at="25,68,26,70" concept="1" />
+      <node id="2617465934949158111" at="25,68,26,36" concept="1" />
       <node id="2617465934949158111" at="31,52,32,19" concept="5" />
       <node id="2617465934949158111" at="36,51,37,53" concept="1" />
       <node id="2617465934949158121" at="39,27,40,147" concept="1" />
@@ -55,7 +55,7 @@
       <node id="2617465934949212695" at="37,53,43,9" concept="1" />
       <node id="2617465934949158111" at="35,0,46,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2617465934949158111" at="20,46,21,25" />
-      <scope id="2617465934949158111" at="25,68,26,70" />
+      <scope id="2617465934949158111" at="25,68,26,36" />
       <scope id="2617465934949158111" at="31,52,32,19" />
       <scope id="2617465934949227743" at="39,27,41,149" />
       <scope id="2617465934949158111" at="20,0,23,0" />

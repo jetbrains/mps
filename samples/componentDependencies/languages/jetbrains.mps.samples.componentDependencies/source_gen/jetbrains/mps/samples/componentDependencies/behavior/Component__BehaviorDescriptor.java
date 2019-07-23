@@ -4,19 +4,20 @@ package jetbrains.mps.samples.componentDependencies.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component");
+  private static final SAbstractConcept CONCEPT = AUX_5m19en.Component_5ebb22db;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -69,5 +70,9 @@ public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_5m19en {
+    /*package*/ static final SConcept Component_5ebb22db = MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component");
   }
 }

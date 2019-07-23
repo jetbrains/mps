@@ -37,7 +37,7 @@ import java.util.Arrays;
 /*package*/ class FileProcessor extends ReloadParticipant {
   private static final Logger LOG = LogManager.getLogger(FileProcessor.class);
   private final FileSystemListenersContainer myListenersContainer;
-  private final Map<FileSystemListener, FileProcessor.ListenerData> myListener2Data = new HashMap<FileSystemListener, FileProcessor.ListenerData>();
+  private final Map<FileSystemListener, ListenerData> myListener2Data = new HashMap<FileSystemListener, ListenerData>();
   private final Queue<FileSystemListener> myPostNotify = QueueSequence.fromQueue(new LinkedList<FileSystemListener>());
   private final IdeaFileSystem FS;
 
@@ -57,7 +57,7 @@ import java.util.Arrays;
       // sorted according to #getListenerDependencies 
       Iterable<FileSystemListener> sortedListeners = sortedListeners();
       for (FileSystemListener listener : Sequence.fromIterable(sortedListeners)) {
-        FileProcessor.ListenerData data = MapSequence.fromMap(myListener2Data).get(listener);
+        ListenerData data = MapSequence.fromMap(myListener2Data).get(listener);
         if (!(myListenersContainer.contains(listener))) {
           monitor.advance(1);
           continue;
@@ -71,7 +71,7 @@ import java.util.Arrays;
       long postNotifyBeginTime = System.currentTimeMillis();
       FileSystemListener listener;
       while ((listener = QueueSequence.fromQueue(myPostNotify).removeFirstElement()) != null) {
-        FileProcessor.ListenerData data = myListener2Data.get(listener);
+        ListenerData data = myListener2Data.get(listener);
         if (data.isNotified) {
           continue;
         }
@@ -85,8 +85,8 @@ import java.util.Arrays;
     }
   }
 
-  private void notify(FileSystemListener listener, FileProcessor.ListenerData source) {
-    FileProcessor.ListenerData data = createNewDataIfAbsent(listener);
+  private void notify(FileSystemListener listener, ListenerData source) {
+    ListenerData data = createNewDataIfAbsent(listener);
     if (!(data.isNotified)) {
       data.added.addAll(source.added);
       data.changed.addAll(source.changed);
@@ -132,8 +132,8 @@ import java.util.Arrays;
 
   /*package*/ void processDelete(String path) {
     final IFile file = FS.getFile(path);
-    ListSequence.fromList(getData(file.getPath(), FileProcessor.EventKind.REMOVED)).visitAll(new IVisitor<FileProcessor.ListenerData>() {
-      public void visit(FileProcessor.ListenerData it) {
+    ListSequence.fromList(getData(file.getPath(), EventKind.REMOVED)).visitAll(new IVisitor<ListenerData>() {
+      public void visit(ListenerData it) {
         it.removed.add(file);
       }
     });
@@ -141,8 +141,8 @@ import java.util.Arrays;
 
   /*package*/ void processCreate(String path) {
     final IFile file = FS.getFile(path);
-    ListSequence.fromList(getData(path, FileProcessor.EventKind.CREATED)).visitAll(new IVisitor<FileProcessor.ListenerData>() {
-      public void visit(FileProcessor.ListenerData it) {
+    ListSequence.fromList(getData(path, EventKind.CREATED)).visitAll(new IVisitor<ListenerData>() {
+      public void visit(ListenerData it) {
         it.added.add(file);
       }
     });
@@ -150,8 +150,8 @@ import java.util.Arrays;
 
   /*package*/ void processContentChanged(String path) {
     final IFile file = FS.getFile(path);
-    ListSequence.fromList(getData(path, FileProcessor.EventKind.CONTENT_CHANGED)).visitAll(new IVisitor<FileProcessor.ListenerData>() {
-      public void visit(FileProcessor.ListenerData it) {
+    ListSequence.fromList(getData(path, EventKind.CONTENT_CHANGED)).visitAll(new IVisitor<ListenerData>() {
+      public void visit(ListenerData it) {
         it.changed.add(file);
       }
     });
@@ -162,7 +162,7 @@ import java.util.Arrays;
     return myListener2Data.isEmpty();
   }
 
-  public List<FileProcessor.ListenerData> getData(final String eventPath, final FileProcessor.EventKind kind) {
+  public List<ListenerData> getData(final String eventPath, final EventKind kind) {
     FileSystemListenersContainer.ListenersForPath listeners = myListenersContainer.getListenersForPath(eventPath);
     Iterable<FileSystemListener> ancestors = ListSequence.fromList(listeners.ancestorListeners).where(new IWhereFilter<FileSystemListener>() {
       public boolean accept(FileSystemListener l) {
@@ -179,17 +179,17 @@ import java.util.Arrays;
     ListSequence.fromList(allListeners).addSequence(Sequence.fromIterable(ancestors));
     ListSequence.fromList(allListeners).addSequence(Sequence.fromIterable(concretePathListeners));
     ListSequence.fromList(allListeners).addSequence(Sequence.fromIterable(descendants));
-    return ListSequence.fromList(allListeners).select(new ISelector<FileSystemListener, FileProcessor.ListenerData>() {
-      public FileProcessor.ListenerData select(FileSystemListener listener) {
+    return ListSequence.fromList(allListeners).select(new ISelector<FileSystemListener, ListenerData>() {
+      public ListenerData select(FileSystemListener listener) {
         return createNewDataIfAbsent(listener);
       }
     }).toListSequence();
   }
 
-  private FileProcessor.ListenerData createNewDataIfAbsent(FileSystemListener listener) {
-    return myListener2Data.computeIfAbsent(listener, new Function<FileSystemListener, FileProcessor.ListenerData>() {
-      public FileProcessor.ListenerData apply(FileSystemListener it1) {
-        return new FileProcessor.ListenerData();
+  private ListenerData createNewDataIfAbsent(FileSystemListener listener) {
+    return myListener2Data.computeIfAbsent(listener, new Function<FileSystemListener, ListenerData>() {
+      public ListenerData apply(FileSystemListener it1) {
+        return new ListenerData();
       }
     });
   }
@@ -201,29 +201,29 @@ import java.util.Arrays;
   }
 
 
-  private static boolean acceptDescendant(String eventPath, FileSystemListener listenerToChildFile, FileProcessor.EventKind kind) {
+  private static boolean acceptDescendant(String eventPath, FileSystemListener listenerToChildFile, EventKind kind) {
     IFile childFile = listenerToChildFile.getFileToListen();
     // contract to comment out later 
     assert FileUtil.startsWith(childFile.getPath(), eventPath) : "Contract is broken: " + childFile.getPath() + " does not start with " + eventPath;
-    if (kind == FileProcessor.EventKind.CREATED && listenerToChildFile.listeningPreferences().notifyOnParentCreation) {
+    if (kind == EventKind.CREATED && listenerToChildFile.listeningPreferences().notifyOnParentCreation) {
       return true;
-    } else if (kind == FileProcessor.EventKind.CONTENT_CHANGED && listenerToChildFile.listeningPreferences().notifyOnParentChange) {
+    } else if (kind == EventKind.CONTENT_CHANGED && listenerToChildFile.listeningPreferences().notifyOnParentChange) {
       return true;
-    } else if (kind == FileProcessor.EventKind.REMOVED && listenerToChildFile.listeningPreferences().notifyOnParentRemoval) {
+    } else if (kind == EventKind.REMOVED && listenerToChildFile.listeningPreferences().notifyOnParentRemoval) {
       return true;
     }
     return false;
   }
 
-  private static boolean acceptAncestor(String eventPath, FileSystemListener listenerToParentFile, FileProcessor.EventKind kind) {
+  private static boolean acceptAncestor(String eventPath, FileSystemListener listenerToParentFile, EventKind kind) {
     IFile parentFile = listenerToParentFile.getFileToListen();
     // contract to comment out later 
     assert FileUtil.startsWith(eventPath, parentFile.getPath()) : "Contract is broken: " + eventPath + " does not start with " + parentFile.getPath();
-    if (kind == FileProcessor.EventKind.CREATED && listenerToParentFile.listeningPreferences().notifyOnChildCreation) {
+    if (kind == EventKind.CREATED && listenerToParentFile.listeningPreferences().notifyOnChildCreation) {
       return true;
-    } else if (kind == FileProcessor.EventKind.CONTENT_CHANGED && listenerToParentFile.listeningPreferences().notifyOnChildChange) {
+    } else if (kind == EventKind.CONTENT_CHANGED && listenerToParentFile.listeningPreferences().notifyOnChildChange) {
       return true;
-    } else if (kind == FileProcessor.EventKind.REMOVED && listenerToParentFile.listeningPreferences().notifyOnChildRemoval) {
+    } else if (kind == EventKind.REMOVED && listenerToParentFile.listeningPreferences().notifyOnChildRemoval) {
       return true;
     }
     return false;

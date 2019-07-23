@@ -24,7 +24,7 @@ public class SelectAllNonSelectableRootThroughNonSelectable_Test extends BaseTra
 
   @Test
   public void test_SelectAllNonSelectableRootThroughNonSelectable() throws Throwable {
-    new SelectAllNonSelectableRootThroughNonSelectable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

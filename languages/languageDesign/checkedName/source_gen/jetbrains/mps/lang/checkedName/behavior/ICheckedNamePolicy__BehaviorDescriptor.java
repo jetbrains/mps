@@ -4,7 +4,6 @@ package jetbrains.mps.lang.checkedName.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,9 +19,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
+  private static final SAbstractConcept CONCEPT = AUX_s1uf1a.ICheckedNamePolicy_899d000c;
 
   public static final SMethod<List<SNode>> getDescendantsToCheck_id4cWf37B8oXl = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDescendantsToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXl").build();
   public static final SMethod<SNode> getDescendantToCheck_id4cWf37B8oXJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescendantToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXJ").build();
@@ -107,5 +108,9 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_s1uf1a {
+    /*package*/ static final SInterfaceConcept ICheckedNamePolicy_899d000c = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
   }
 }

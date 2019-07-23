@@ -16,8 +16,9 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.behavior.IStyleContainer__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class RemoveIndent_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -44,7 +45,7 @@ public final class RemoveIndent_Intention extends AbstractIntentionDescriptor im
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new RemoveIndent_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -57,11 +58,15 @@ public final class RemoveIndent_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120154c4089L, "jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem"))).first());
+      SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, AUX_jygtpa.IndentLayoutIndentStyleClassItem_126deb2a)).first());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return RemoveIndent_Intention.this;
     }
+  }
+
+  private static final class AUX_jygtpa {
+    /*package*/ static final SConcept IndentLayoutIndentStyleClassItem_126deb2a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120154c4089L, "jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem");
   }
 }

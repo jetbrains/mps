@@ -35,7 +35,7 @@ public class IntroduceConstantFromAnonimousClass_Test extends BaseTransformation
 
   @Test
   public void test_IntroduceConstantFromAnonimousClassTest() throws Throwable {
-    new IntroduceConstantFromAnonimousClass_Test.TestBody(this).test_IntroduceConstantFromAnonimousClassTest();
+    new TestBody(this).test_IntroduceConstantFromAnonimousClassTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

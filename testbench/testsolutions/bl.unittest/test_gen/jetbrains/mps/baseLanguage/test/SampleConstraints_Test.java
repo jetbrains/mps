@@ -32,15 +32,15 @@ public class SampleConstraints_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeVariableHasNotBeenInitializedErrorCheck2675718132411786724() throws Throwable {
-    new SampleConstraints_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck2675718132411786724();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck2675718132411786724();
   }
   @Test
   public void test_NodeUnknownRuleCheck2675718132411786726() throws Throwable {
-    new SampleConstraints_Test.TestBody(this).test_NodeUnknownRuleCheck2675718132411786726();
+    new TestBody(this).test_NodeUnknownRuleCheck2675718132411786726();
   }
   @Test
   public void test_ErrorMessagesCheck7638302724810894630() throws Throwable {
-    new SampleConstraints_Test.TestBody(this).test_ErrorMessagesCheck7638302724810894630();
+    new TestBody(this).test_ErrorMessagesCheck7638302724810894630();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

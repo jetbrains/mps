@@ -87,6 +87,7 @@ import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FoldedCellStyleClass;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class NonTypesystemRule_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -155,9 +156,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
       Style style = new StyleImpl();
       style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
       editorCell.getStyle().putAll(style);
-      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new NonTypesystemRule_EditorBuilder_a.NonTypesystemRule_name_cellMenu_tg6zfx_a0c0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new NonTypesystemRule_name_cellMenu_tg6zfx_a0c0a(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_k0o1kx.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -195,8 +196,8 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
 
     public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       List<String> result = ListSequence.fromList(new ArrayList<String>());
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference"))) {
-        SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference")), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept"));
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), AUX_k0o1kx.ConceptReference_d2505614)) {
+        SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode")), AUX_k0o1kx.ConceptReference_d2505614), MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept"));
         if ((concept != null) && SPropertyOperations.getString(concept, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) != null) {
           ListSequence.fromList(result).addElement("typeof_" + SPropertyOperations.getString(concept, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
           ListSequence.fromList(result).addElement("check_" + SPropertyOperations.getString(concept, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
@@ -272,7 +273,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new NonTypesystemRule_EditorBuilder_a.applicableNodeSingleRoleHandler_tg6zfx_c0b1a(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode"), getEditorContext());
+    SingleRoleCellProvider provider = new applicableNodeSingleRoleHandler_tg6zfx_c0b1a(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode"), getEditorContext());
     return provider.createCell();
   }
   private static class applicableNodeSingleRoleHandler_tg6zfx_c0b1a extends SingleRoleCellProvider {
@@ -383,7 +384,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new NonTypesystemRule_EditorBuilder_a.NonTypesystemRule_generic_cellMenu_tg6zfx_a0a0b1b1a(), new NonTypesystemRule_EditorBuilder_a.NonTypesystemRule_generic_cellMenu_tg6zfx_b0a0b1b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new NonTypesystemRule_generic_cellMenu_tg6zfx_a0a0b1b1a(), new NonTypesystemRule_generic_cellMenu_tg6zfx_b0a0b1b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class NonTypesystemRule_generic_cellMenu_tg6zfx_a0a0b1b1a extends AbstractCellMenuPart_Generic_Item {
@@ -448,13 +449,13 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     }
     private static SNode createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference"), null, null, false);
+      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_k0o1kx.CheckingRuleReference_b0da7032, null, null, false);
       n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, 0x2054bec22d01782fL, "declaration"), node0);
       return n1;
     }
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new NonTypesystemRule_EditorBuilder_a.overridenRulesListHandler_tg6zfx_a0b1b1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new overridenRulesListHandler_tg6zfx_a0b1b1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_overridenRules");
     editorCell.setSRole(handler.getElementSRole());
@@ -477,7 +478,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
       return MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, 0x2054bec22d32e328L, "overridenRules");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
+      return AUX_k0o1kx.CheckingRuleReference_b0da7032;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -517,7 +518,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
       style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
       editorCell.getStyle().putAll(style);
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule"), "jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_backToAll"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_k0o1kx.NonTypesystemRule_ca890c82, "jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_backToAll"));
       editorCell.setDefaultText("<none>");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
@@ -632,7 +633,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new NonTypesystemRule_EditorBuilder_a.bodySingleRoleHandler_tg6zfx_b4b1a(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body"), getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_tg6zfx_b4b1a(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body"), getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_tg6zfx_b4b1a extends SingleRoleCellProvider {
@@ -705,5 +706,12 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_k0o1kx {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept ConceptReference_d2505614 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference");
+    /*package*/ static final SConcept CheckingRuleReference_b0da7032 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
+    /*package*/ static final SConcept NonTypesystemRule_ca890c82 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
   }
 }

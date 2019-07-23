@@ -34,7 +34,7 @@ public class InlineFieldOperationBinary_Test extends BaseTransformationTest {
 
   @Test
   public void test_simpleInlineVariable() throws Throwable {
-    new InlineFieldOperationBinary_Test.TestBody(this).test_simpleInlineVariable();
+    new TestBody(this).test_simpleInlineVariable();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -10,10 +10,11 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.behavior.SEnumOperation_Old__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_SEnum_MemberForNameOperation_Old_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SEnum_MemberForNameOperation_Old_InferenceRule() {
@@ -26,7 +27,7 @@ public class typeof_SEnum_MemberForNameOperation_Old_InferenceRule extends Abstr
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForNameOperation_Old");
+    return AUX_7fjr2q.SEnum_MemberForNameOperation_Old_2ff519ff;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,5 +41,9 @@ public class typeof_SEnum_MemberForNameOperation_Old_InferenceRule extends Abstr
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x120bfe51421L, "SEnumerationMemberType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_7fjr2q {
+    /*package*/ static final SConcept SEnum_MemberForNameOperation_Old_2ff519ff = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForNameOperation_Old");
   }
 }

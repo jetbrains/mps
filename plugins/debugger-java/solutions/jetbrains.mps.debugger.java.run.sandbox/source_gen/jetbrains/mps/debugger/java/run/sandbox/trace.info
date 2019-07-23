@@ -358,7 +358,7 @@
   </root>
   <root nodeRef="r:83f8a53e-bd50-491e-b469-7a456b367a2b(jetbrains.mps.debugger.java.run.sandbox)/7328148232284234498">
     <file name="InnerClassTest.java">
-      <node id="6632904793135337339" at="7,27,8,47" concept="1" />
+      <node id="6632904793135337339" at="7,27,8,32" concept="1" />
       <node id="6632904793135337344" at="10,42,11,25" concept="1" />
       <node id="7328148232284235452" at="14,0,15,0" concept="2" trace="myField" />
       <node id="7328148232284234516" at="17,26,18,45" concept="1" />
@@ -367,7 +367,7 @@
       <node id="7328148232284238029" at="10,0,13,0" concept="9" trace="main#([Ljava/lang/String;)V" />
       <node id="7328148232284234512" at="17,0,20,0" concept="4" trace="doSmth#()V" />
       <scope id="7328148232284234511" at="15,27,15,27" />
-      <scope id="7328148232284234503" at="7,27,8,47" />
+      <scope id="7328148232284234503" at="7,27,8,32" />
       <scope id="7328148232284238035" at="10,42,11,25" />
       <scope id="7328148232284234515" at="17,26,18,45" />
       <scope id="7328148232284234508" at="15,0,17,0" />

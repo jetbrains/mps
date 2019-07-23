@@ -6,8 +6,8 @@ import jetbrains.mps.plugins.relations.RelationDescriptor;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -33,17 +33,17 @@ public class Producer_TabDescriptor extends RelationDescriptor {
     throw new RuntimeException("NOT IMPLEMENTED");
   }
   public SNode getBaseNode(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer"))) {
-      return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer")), MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration")), MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"));
+    if (SNodeOperations.isInstanceOf(node, AUX_qg1hmj.RunConfigurationProducer_8949ae6d)) {
+      return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(node, AUX_qg1hmj.RunConfigurationProducer_8949ae6d), MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration")), MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"));
     }
     return null;
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration"));
+    return SNodeOperations.isInstanceOf(node, AUX_qg1hmj.RunConfiguration_fcc7b945);
   }
   public List<SNode> getNodes(SNode node) {
     final SNode nodeFinal = node;
-    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer"))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), AUX_qg1hmj.RunConfigurationProducer_8949ae6d)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration")), MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration")) == nodeFinal;
       }
@@ -53,7 +53,7 @@ public class Producer_TabDescriptor extends RelationDescriptor {
     return false;
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_qg1hmj.RunConfigurationProducer_8949ae6d);
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
     SNode producer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer"));
@@ -63,8 +63,14 @@ public class Producer_TabDescriptor extends RelationDescriptor {
   }
   private static SNode createPersistentConfigurationType_rqzr2x_a0b0a0(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_qg1hmj.PersistentConfigurationType_9ba047e0, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"), node0);
     return n1;
+  }
+
+  private static final class AUX_qg1hmj {
+    /*package*/ static final SConcept RunConfigurationProducer_8949ae6d = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer");
+    /*package*/ static final SConcept RunConfiguration_fcc7b945 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
+    /*package*/ static final SConcept PersistentConfigurationType_9ba047e0 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
   }
 }

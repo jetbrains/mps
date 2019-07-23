@@ -18,7 +18,7 @@ import java.util.HashSet;
 
 public class FilesDelta implements IDelta {
   private static Logger LOG = LogManager.getLogger(FilesDelta.class);
-  private Map<IFile, FilesDelta.Status> files = MapSequence.fromMap(new HashMap<IFile, FilesDelta.Status>());
+  private Map<IFile, Status> files = MapSequence.fromMap(new HashMap<IFile, Status>());
   private final DeltaKey key;
 
   /**
@@ -43,23 +43,23 @@ public class FilesDelta implements IDelta {
   }
 
   public void written(IFile file) {
-    MapSequence.fromMap(files).put(file, FilesDelta.Status.WRITTEN);
+    MapSequence.fromMap(files).put(file, Status.WRITTEN);
   }
   public void kept(IFile file) {
-    MapSequence.fromMap(files).put(file, FilesDelta.Status.KEPT);
+    MapSequence.fromMap(files).put(file, Status.KEPT);
   }
   public void deleted(IFile file) {
-    MapSequence.fromMap(files).put(file, FilesDelta.Status.DELETED);
+    MapSequence.fromMap(files).put(file, Status.DELETED);
   }
   public void stale(IFile file) {
     if (!(MapSequence.fromMap(files).containsKey(file))) {
-      MapSequence.fromMap(files).put(file, FilesDelta.Status.STALE);
+      MapSequence.fromMap(files).put(file, Status.STALE);
     }
   }
 
   @Override
   public boolean reconcile() {
-    return acceptVisitor(new FilesDelta.Visitor() {
+    return acceptVisitor(new Visitor() {
       @Override
       public boolean acceptDeleted(IFile file) {
         FilesDelta.LOG.debug("Reconciled: deleting " + file);
@@ -75,10 +75,10 @@ public class FilesDelta implements IDelta {
 
   @Override
   public boolean acceptVisitor(IDeltaVisitor visitor) {
-    if (!(visitor instanceof FilesDelta.Visitor)) {
+    if (!(visitor instanceof Visitor)) {
       return true;
     }
-    return acceptFilesVisitor(((FilesDelta.Visitor) visitor));
+    return acceptFilesVisitor(((Visitor) visitor));
   }
 
   @Override
@@ -100,14 +100,14 @@ public class FilesDelta implements IDelta {
     throw new IllegalArgumentException();
   }
 
-  private boolean acceptFilesVisitor(final FilesDelta.Visitor visitor) {
-    MapSequence.fromMap(files).visitAll(new IVisitor<IMapping<IFile, FilesDelta.Status>>() {
-      public void visit(IMapping<IFile, FilesDelta.Status> m) {
-        if (m.value() == FilesDelta.Status.KEPT && !(m.key().isDirectory())) {
+  private boolean acceptFilesVisitor(final Visitor visitor) {
+    MapSequence.fromMap(files).visitAll(new IVisitor<IMapping<IFile, Status>>() {
+      public void visit(IMapping<IFile, Status> m) {
+        if (m.value() == Status.KEPT && !(m.key().isDirectory())) {
           visitor.acceptKept(m.key());
-        } else if (m.value() == FilesDelta.Status.WRITTEN) {
+        } else if (m.value() == Status.WRITTEN) {
           visitor.acceptWritten(m.key());
-        } else if (m.value() == FilesDelta.Status.DELETED || m.value() == FilesDelta.Status.STALE) {
+        } else if (m.value() == Status.DELETED || m.value() == Status.STALE) {
           visitor.acceptDeleted(m.key());
         }
       }
@@ -125,8 +125,8 @@ public class FilesDelta implements IDelta {
     Set<IFile> newlyTouchedDirs = SetSequence.fromSet(new HashSet<IFile>());
     // copy all but stale values, stale entries shall not override explicitly set 
     for (IFile file : MapSequence.fromMap(that.files).keySet()) {
-      FilesDelta.Status newStatus = MapSequence.fromMap(that.files).get(file);
-      if (newStatus == FilesDelta.Status.STALE && MapSequence.fromMap(files).containsKey(file)) {
+      Status newStatus = MapSequence.fromMap(that.files).get(file);
+      if (newStatus == Status.STALE && MapSequence.fromMap(files).containsKey(file)) {
         continue;
       } else {
         MapSequence.fromMap(files).put(file, newStatus);
@@ -135,12 +135,12 @@ public class FilesDelta implements IDelta {
     }
     // in case we've got stale directory, check if any updates from that didn't touch it 
     for (IFile file : MapSequence.fromMap(files).keySet()) {
-      if (MapSequence.fromMap(files).get(file) == FilesDelta.Status.STALE && file.isDirectory()) {
+      if (MapSequence.fromMap(files).get(file) == Status.STALE && file.isDirectory()) {
         String staleDir = DirUtil.normalizeAsDir(file.getPath());
         for (IFile touchDir : newlyTouchedDirs) {
           // if staleDir is parent of any newly touched directories, it's not stale any more 
           if (DirUtil.startsWith(DirUtil.normalizeAsDir(touchDir.getPath()), staleDir)) {
-            MapSequence.fromMap(files).put(file, FilesDelta.Status.KEPT);
+            MapSequence.fromMap(files).put(file, Status.KEPT);
             break;
           }
         }

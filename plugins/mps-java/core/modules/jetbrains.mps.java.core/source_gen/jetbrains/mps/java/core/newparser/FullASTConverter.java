@@ -58,12 +58,13 @@ import org.eclipse.jdt.internal.compiler.ast.QualifiedTypeReference;
 import jetbrains.mps.references.Reference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class FullASTConverter extends ASTConverterWithExpressions {
   private Logger LOG = LogManager.getLogger(FullASTConverter.class);
 
   private CompilationUnitDeclaration myCud;
-  private List<FullASTConverter.CodeBlock> myBlocks = ListSequence.fromList(new ArrayList<FullASTConverter.CodeBlock>());
+  private List<CodeBlock> myBlocks = ListSequence.fromList(new ArrayList<CodeBlock>());
   private Map<SNode, Integer> myPositions = MapSequence.fromMap(new HashMap<SNode, Integer>());
 
   public FullASTConverter(CompilationUnitDeclaration cud) {
@@ -205,7 +206,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
       for (int i = 0, n = statements.length; i < n; ++i) {
         SNode statement = convertStatementWrap(statements[i]);
         if ((statement != null)) {
-          ListSequence.fromList(expressionStatements).addElement(SNodeOperations.cast(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")));
+          ListSequence.fromList(expressionStatements).addElement(SNodeOperations.cast(statement, AUX_f46ocm.ExpressionStatement_9dbf9b0c));
         }
       }
     }
@@ -346,7 +347,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SNode body = getStatementListFromStatement(action, x.action);
 
 
-    SNode elementVar = SLinkOperations.getTarget(SNodeOperations.cast(convertStatement(x.elementVariable), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"));
+    SNode elementVar = SLinkOperations.getTarget(SNodeOperations.cast(convertStatement(x.elementVariable), AUX_f46ocm.LocalVariableDeclarationStatement_d47683f4), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"));
 
 
     SNode iterable = convertExpressionWrap(x.collection);
@@ -361,7 +362,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SNode result = forStatement;
     if (ListSequence.fromList(init).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"));
+        return SNodeOperations.isInstanceOf(it, AUX_f46ocm.ExpressionStatement_9dbf9b0c);
       }
     })) {
       // we don't support for ( a=5, b=6; ...) {} in baseLanguage, workaround here 
@@ -369,8 +370,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     } else if (!(init.isEmpty())) {
       boolean first = true;
       for (SNode statement : init) {
-        if (SNodeOperations.isInstanceOf(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"))) {
-          SNode lvds = SNodeOperations.cast(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"));
+        if (SNodeOperations.isInstanceOf(statement, AUX_f46ocm.LocalVariableDeclarationStatement_d47683f4)) {
+          SNode lvds = SNodeOperations.cast(statement, AUX_f46ocm.LocalVariableDeclarationStatement_d47683f4);
           SNode variableDeclaration = SLinkOperations.getTarget(lvds, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"));
           if (first) {
             SLinkOperations.setTarget(forStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable"), variableDeclaration);
@@ -427,7 +428,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     if (x.statement instanceof ForStatement) {
       // we do a trick to get our resulting mps LoopStatement here 
       // because it could be converted into BlockStatement with the real loop inside 
-      SNode loopStatement = ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"), true, new SAbstractConcept[]{})).first();
+      SNode loopStatement = ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, AUX_f46ocm.AbstractLoopStatement_bb2741d5, true, new SAbstractConcept[]{})).first();
       if ((loopStatement == null)) {
         return null;
       }
@@ -436,8 +437,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
       SLinkOperations.setTarget(loopStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel"), label);
 
     } else
-    if (SNodeOperations.isInstanceOf(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"))) {
-      SNode switchStatement = SNodeOperations.cast(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"));
+    if (SNodeOperations.isInstanceOf(statement, AUX_f46ocm.SwitchStatement_11e52181)) {
+      SNode switchStatement = SNodeOperations.cast(statement, AUX_f46ocm.SwitchStatement_11e52181);
       SNode label = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel"));
       SPropertyOperations.assign(label, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), new String(x.label));
       SLinkOperations.setTarget(switchStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel"), label);
@@ -469,7 +470,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
 
 
 
-        SNode local = SLinkOperations.getTarget(SNodeOperations.cast(convertStatement(x.catchArguments[i]), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"));
+        SNode local = SLinkOperations.getTarget(SNodeOperations.cast(convertStatement(x.catchArguments[i]), AUX_f46ocm.LocalVariableDeclarationStatement_d47683f4), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"));
 
 
 
@@ -520,7 +521,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
   }
   private SNode findConstructor(SNode claz, Expression[] args) {
     SNode result;
-    Iterable<SNode> conss = ((Iterable<SNode>) BHReflection.invoke0(claz, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), SMethodTrimmedId.create("constructors", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4_LVZ3pCvsd")));
+    Iterable<SNode> conss = ((Iterable<SNode>) BHReflection.invoke0(claz, AUX_f46ocm.ClassConcept_e2711824, SMethodTrimmedId.create("constructors", AUX_f46ocm.ClassConcept_e2711824, "4_LVZ3pCvsd")));
     if (Sequence.fromIterable(conss).isEmpty()) {
       result = null;
     } else if (Sequence.fromIterable(conss).count() == 1) {
@@ -539,8 +540,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
 
   private SNode getStatementListFromStatement(SNode possibleBlock, Statement x) {
     SNode result;
-    if (SNodeOperations.isInstanceOf(possibleBlock, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement"))) {
-      result = SLinkOperations.getTarget(SNodeOperations.cast(possibleBlock, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"));
+    if (SNodeOperations.isInstanceOf(possibleBlock, AUX_f46ocm.BlockStatement_8943d110)) {
+      result = SLinkOperations.getTarget(SNodeOperations.cast(possibleBlock, AUX_f46ocm.BlockStatement_8943d110), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"));
       // FIXME should detach be called here? it depends on whether we're already in a model... 
     } else {
       result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
@@ -563,15 +564,15 @@ public class FullASTConverter extends ASTConverterWithExpressions {
   public Map<SNode, Integer> getPositions() {
     return myPositions;
   }
-  public Iterable<FullASTConverter.CodeBlock> getCodeBlocks() {
+  public Iterable<CodeBlock> getCodeBlocks() {
     return myBlocks;
   }
   private void addBlock(SNode node, int start, int end) {
-    ListSequence.fromList(myBlocks).addElement(new FullASTConverter.CodeBlock(node, myCud, Math.abs(start), Math.abs(end)));
+    ListSequence.fromList(myBlocks).addElement(new CodeBlock(node, myCud, Math.abs(start), Math.abs(end)));
   }
-  private FullASTConverter.CodeBlock getBlock(final SNode node) {
-    return ListSequence.fromList(myBlocks).findFirst(new IWhereFilter<FullASTConverter.CodeBlock>() {
-      public boolean accept(FullASTConverter.CodeBlock it) {
+  private CodeBlock getBlock(final SNode node) {
+    return ListSequence.fromList(myBlocks).findFirst(new IWhereFilter<CodeBlock>() {
+      public boolean accept(CodeBlock it) {
         return it.getStatementList() == node;
       }
     });
@@ -582,8 +583,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
 
     // we could maintain the stack of blocks 
     // then we would just take the topmost element from the stack 
-    for (FullASTConverter.CodeBlock block : ListSequence.fromList(myBlocks).where(new IWhereFilter<FullASTConverter.CodeBlock>() {
-      public boolean accept(FullASTConverter.CodeBlock it) {
+    for (CodeBlock block : ListSequence.fromList(myBlocks).where(new IWhereFilter<CodeBlock>() {
+      public boolean accept(CodeBlock it) {
         return it.getStartPos() <= sourcePos && sourcePos <= it.getEndPos();
       }
     })) {
@@ -670,7 +671,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
   }
   @Override
   protected FullASTConverter withNewState(ASTConverter.State state) {
-    return new FullASTConverter.FullASTConverterWithState(this, state);
+    return new FullASTConverterWithState(this, state);
   }
   private class FullASTConverterWithState extends FullASTConverter {
     private ASTConverter.State myState;
@@ -781,5 +782,14 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     }
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"), quotedNode_4);
     return quotedNode_3;
+  }
+
+  private static final class AUX_f46ocm {
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement_d47683f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept AbstractLoopStatement_bb2741d5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
+    /*package*/ static final SConcept SwitchStatement_11e52181 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept BlockStatement_8943d110 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
   }
 }

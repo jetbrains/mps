@@ -7,6 +7,7 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class StaticFieldReference_TextGen extends TextGenDescriptorBase {
   @Override
@@ -14,6 +15,10 @@ public class StaticFieldReference_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier")), ctx);
     tgs.append(".");
-    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(SNodeOperations.cast(ctx.getPrimaryInput(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), ctx);
+    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(SNodeOperations.cast(ctx.getPrimaryInput(), AUX_4oz9ch.VariableReference_24d60dac), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), ctx);
+  }
+
+  private static final class AUX_4oz9ch {
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

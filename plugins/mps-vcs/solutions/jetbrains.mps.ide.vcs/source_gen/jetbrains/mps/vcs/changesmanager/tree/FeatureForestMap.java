@@ -32,7 +32,7 @@ public class FeatureForestMap<V> {
   private final SRepository myRepo;
   private final Map<Feature, V> myFeatureToValue = MapSequence.fromMap(new HashMap<Feature, V>());
   private final Map<Feature, Feature[]> myFeatureToAncestors = MapSequence.fromMap(new HashMap<Feature, Feature[]>());
-  private final CounterMap<Feature> myFeaturesIsAncestorCounterMap = new CounterMap<Feature>(new FeatureForestMap.MyCounterMapHandler());
+  private final CounterMap<Feature> myFeaturesIsAncestorCounterMap = new CounterMap<Feature>(new MyCounterMapHandler());
   private final List<FeatureForestMapListener> myListeners = ListSequence.fromList(new ArrayList<FeatureForestMapListener>());
   public FeatureForestMap(SRepository repository) {
     myRepo = repository;

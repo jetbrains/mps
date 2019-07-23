@@ -32,35 +32,35 @@ public class Validation_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929443716() throws Throwable {
-    new Validation_Test.TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929443716();
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929443716();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929443718() throws Throwable {
-    new Validation_Test.TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929443718();
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929443718();
   }
   @Test
   public void test_ErrorMessagesCheck7868761255934329326() throws Throwable {
-    new Validation_Test.TestBody(this).test_ErrorMessagesCheck7868761255934329326();
+    new TestBody(this).test_ErrorMessagesCheck7868761255934329326();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929451248() throws Throwable {
-    new Validation_Test.TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929451248();
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929451248();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929451250() throws Throwable {
-    new Validation_Test.TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929451250();
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929451250();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929609456() throws Throwable {
-    new Validation_Test.TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929609456();
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929609456();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929609458() throws Throwable {
-    new Validation_Test.TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929609458();
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929609458();
   }
   @Test
   public void test_NodeIllegalCombinationOfModifiersCheck6923385624927426848() throws Throwable {
-    new Validation_Test.TestBody(this).test_NodeIllegalCombinationOfModifiersCheck6923385624927426848();
+    new TestBody(this).test_NodeIllegalCombinationOfModifiersCheck6923385624927426848();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

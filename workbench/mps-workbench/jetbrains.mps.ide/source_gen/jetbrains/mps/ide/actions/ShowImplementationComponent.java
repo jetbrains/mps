@@ -41,12 +41,13 @@ import java.awt.Dimension;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ShowImplementationComponent extends JPanel {
   private ComboBox myNodeChooser;
@@ -56,7 +57,7 @@ public class ShowImplementationComponent extends JPanel {
   private int mySelectedIndex = -1;
   private JBPopup myPopup;
   private Project myProject;
-  private List<ShowImplementationComponent.ImplementationNode> myImplNodes;
+  private List<ImplementationNode> myImplNodes;
 
   public ShowImplementationComponent(SNode singleNode, Project project) {
     this(Collections.singletonList(singleNode), project);
@@ -64,9 +65,9 @@ public class ShowImplementationComponent extends JPanel {
 
   public ShowImplementationComponent(List<SNode> nodes, Project project) {
     project.getModelAccess().checkReadAccess();
-    myImplNodes = new ArrayList<ShowImplementationComponent.ImplementationNode>(nodes.size());
+    myImplNodes = new ArrayList<ImplementationNode>(nodes.size());
     for (SNode node : nodes) {
-      myImplNodes.add(new ShowImplementationComponent.ImplementationNode(node));
+      myImplNodes.add(new ImplementationNode(node));
     }
     myProject = project;
     myNodeChooser = new ComboBox(new CollectionComboBoxModel(myImplNodes, null));
@@ -95,16 +96,16 @@ public class ShowImplementationComponent extends JPanel {
 
   private ActionToolbar createToolbar() {
     DefaultActionGroup group = new DefaultActionGroup();
-    ShowImplementationComponent.BackAction back = new ShowImplementationComponent.BackAction();
+    BackAction back = new BackAction();
     back.registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0)), this);
     group.add(back);
-    ShowImplementationComponent.ForwardAction forward = new ShowImplementationComponent.ForwardAction();
+    ForwardAction forward = new ForwardAction();
     forward.registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0)), this);
     group.add(forward);
-    ShowImplementationComponent.ShowSourceAction showSource = new ShowImplementationComponent.ShowSourceAction("Edit Source", AllIcons.Actions.EditSource, true);
+    ShowSourceAction showSource = new ShowSourceAction("Edit Source", AllIcons.Actions.EditSource, true);
     showSource.registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0)), this);
     group.add(showSource);
-    showSource = new ShowImplementationComponent.ShowSourceAction("Show Source", AllIcons.Actions.ShowViewer, false);
+    showSource = new ShowSourceAction("Show Source", AllIcons.Actions.ShowViewer, false);
     // TODO: choose better icon 
     showSource.registerCustomShortcutSet(new CompositeShortcutSet(CommonShortcuts.getViewSource(), CommonShortcuts.CTRL_ENTER), this);
     group.add(showSource);
@@ -121,7 +122,7 @@ public class ShowImplementationComponent extends JPanel {
     }
     myProject.getModelAccess().executeCommandInEDT(new Runnable() {
       public void run() {
-        ShowImplementationComponent.ImplementationNode node = myImplNodes.get(index);
+        ImplementationNode node = myImplNodes.get(index);
         myLocationLabel.setText(node.myModuleName);
         myLocationLabel.setIcon(node.myModuleIcon);
         myCountLabel.setText((index + 1) + " of " + myImplNodes.size());
@@ -145,10 +146,10 @@ public class ShowImplementationComponent extends JPanel {
     myNodeChooser.setRenderer(new ColoredListCellRenderer() {
       @Override
       protected void customizeCellRenderer(JList list, Object value, int index, boolean selected, boolean hasFocus) {
-        if (!((value instanceof ShowImplementationComponent.ImplementationNode))) {
+        if (!((value instanceof ImplementationNode))) {
           return;
         }
-        ShowImplementationComponent.ImplementationNode node = (ShowImplementationComponent.ImplementationNode) value;
+        ImplementationNode node = (ImplementationNode) value;
         setIcon(node.myNodeIcon);
         append(node.myNodePresentation);
       }
@@ -184,7 +185,7 @@ public class ShowImplementationComponent extends JPanel {
 
     public ImplementationNode(SNode node) {
       myNode = node;
-      myNodePresentation = (SNodeOperations.isInstanceOf(((SNode) node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) && node.getParent() != null ? node.getParent() + "." + node.getPresentation() : node.getPresentation());
+      myNodePresentation = (SNodeOperations.isInstanceOf(((SNode) node), AUX_8lgp8n.InstanceMethodDeclaration_9dbf9b2b) && node.getParent() != null ? node.getParent() + "." + node.getPresentation() : node.getPresentation());
       myNodeIcon = GlobalIconManager.getInstance().getIconFor(node);
       myModuleName = node.getModel().getModule().getModuleName();
       myModuleIcon = GlobalIconManager.getInstance().getIconFor(node.getModel().getModule());
@@ -251,5 +252,9 @@ public class ShowImplementationComponent extends JPanel {
         myPopup.cancel();
       }
     }
+  }
+
+  private static final class AUX_8lgp8n {
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 }

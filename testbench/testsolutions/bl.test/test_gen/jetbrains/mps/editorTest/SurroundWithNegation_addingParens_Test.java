@@ -21,7 +21,7 @@ public class SurroundWithNegation_addingParens_Test extends BaseTransformationTe
 
   @Test
   public void test_SurroundWithNegation_addingParens() throws Throwable {
-    new SurroundWithNegation_addingParens_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

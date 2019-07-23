@@ -25,6 +25,7 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class IterateOverIterable_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -51,7 +52,7 @@ public final class IterateOverIterable_Intention extends AbstractIntentionDescri
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IterateOverIterable_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -68,7 +69,7 @@ public final class IterateOverIterable_Intention extends AbstractIntentionDescri
         GeneratedMatchingPattern pattern_6isygg_a0a = new Pattern_6isygg_a0a0a0a(_quotation_createNode_6isygg_a0a0a0a0a());
         SNode coercedNode_6isygg_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"))), pattern_6isygg_a0a);
         if (coercedNode_6isygg_a0a != null) {
-          SNode foreachStatement = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement"), null);
+          SNode foreachStatement = SNodeFactoryOperations.createNewNode(AUX_w1n2qe.ForeachStatement_bf20b0bc, null);
           SNode variableDeclaration = SNodeFactoryOperations.setNewChild(foreachStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable"), null);
           SLinkOperations.setTarget(variableDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeOperations.copyNode(pattern_6isygg_a0a.getMatchedNode("elem")));
           SPropertyOperations.set(variableDeclaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), NameUtil.toValidIdentifier(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(pattern_6isygg_a0a.getMatchedNode("elem"))));
@@ -103,5 +104,9 @@ public final class IterateOverIterable_Intention extends AbstractIntentionDescri
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506dL, "Type"), null, null, false);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_2);
     return quotedNode_1;
+  }
+
+  private static final class AUX_w1n2qe {
+    /*package*/ static final SConcept ForeachStatement_bf20b0bc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
   }
 }

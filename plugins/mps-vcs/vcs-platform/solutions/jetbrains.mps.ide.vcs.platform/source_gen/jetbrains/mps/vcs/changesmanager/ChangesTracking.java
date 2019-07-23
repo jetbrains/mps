@@ -73,7 +73,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.smodel.event.SModelChildEvent;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.smodel.CopyUtil;
@@ -89,6 +88,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.event.SModelImportEvent;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChangesTracking {
   private static final Logger LOG = LogManager.getLogger(ChangesTracking.class);
@@ -98,7 +99,7 @@ public class ChangesTracking {
   private final SimpleCommandQueue myQueue;
   private final EditableSModel myModelDescriptor;
   private final CurrentDifferenceRegistry myRegistry;
-  private final SModelCommandListener myEventCollector = new ChangesTracking.MyEventsCollector();
+  private final SModelCommandListener myEventCollector = new MyEventsCollector();
   private boolean myDisposed = false;
   private BidirectionalMultiMap<SNodeId, ModelChange> myNodesToChanges = new BidirectionalMultiMap<SNodeId, ModelChange>();
   private Set<ModelChange> myMetadataChanges = SetSequence.fromSet(new HashSet<ModelChange>());
@@ -528,7 +529,7 @@ public class ChangesTracking {
         return;
       }
       SNode child = event.getChild();
-      final SContainmentLink childRole = (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(child, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf"))) : event.getAggregationLink());
+      final SContainmentLink childRole = (SNodeOperations.isInstanceOf(child, AUX_5iuzi5.ChildAttribute_96496d6c) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(child, AUX_5iuzi5.ChildAttribute_96496d6c), AUX_5iuzi5.ChildAttribute_96496d6c, SMethodTrimmedId.create("getLink", AUX_5iuzi5.ChildAttribute_96496d6c, "BpxLfMirzf"))) : event.getAggregationLink());
 
       // trying to avoid update task execution for the same child role twice 
       Set<SContainmentLink> changedChildRoles = MapSequence.fromMap(childChanged).get(parent);
@@ -694,5 +695,9 @@ public class ChangesTracking {
       return checkedDotOperand.getNodeId();
     }
     return null;
+  }
+
+  private static final class AUX_5iuzi5 {
+    /*package*/ static final SConcept ChildAttribute_96496d6c = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

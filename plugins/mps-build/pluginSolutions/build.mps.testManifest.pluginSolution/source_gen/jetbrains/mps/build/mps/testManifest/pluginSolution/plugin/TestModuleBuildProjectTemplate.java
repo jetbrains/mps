@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestModuleBuildProjectTemplate {
   private static final Logger LOG = LogManager.getLogger(TestModuleBuildProjectTemplate.class);
@@ -64,7 +65,7 @@ public class TestModuleBuildProjectTemplate {
       List<Tuples._3<String, String, String>> triples = TestModuleManifest__BehaviorDescriptor.languagesToInclude_id2R6x4AnylYu.invoke(testManifest, project);
 
       for (Tuples._3<String, String, String> t : triples) {
-        SNode la = SModelOperations.createNewNode(target, null, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
+        SNode la = SModelOperations.createNewNode(target, null, AUX_gglig1.BuildMps_Language_41959b14);
         SPropertyOperations.set(la, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), t._0());
         SPropertyOperations.set(la, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid"), t._2());
         try {
@@ -73,11 +74,11 @@ public class TestModuleBuildProjectTemplate {
           SNode path = pathBuilder.buildRelative(moduleFile);
           SLinkOperations.setTarget(la, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path"), path);
 
-          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(la, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources"), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleResources")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files"), null);
+          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(la, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources"), AUX_gglig1.BuildMps_ModuleResources_d624a874), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files"), null);
           // XXX this is not nice way to find module root location, but I can't come up with a better one now. 
           String moduleDir = moduleFile.substring(0, moduleFile.lastIndexOf('/'));
           SLinkOperations.setTarget(resourcesSelector, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"), pathBuilder.buildRelative(moduleDir));
-          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, "jetbrains.mps.build.structure.BuildFileIncludesSelector")), MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern"), "icons/**, resources/**");
+          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"), AUX_gglig1.BuildFileIncludesSelector_99968a3a), MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern"), "icons/**, resources/**");
 
           ListSequence.fromList(result).addElement(la);
         } catch (RelativePathHelper.PathException ex) {
@@ -107,7 +108,7 @@ public class TestModuleBuildProjectTemplate {
     for (SNode testManifest : tmms) {
       List<Tuples._3<String, String, String>> triples = TestModuleManifest__BehaviorDescriptor.testModulesToInclude_id7vU6U5026IG.invoke(testManifest, project);
       for (Tuples._3<String, String, String> t : triples) {
-        SNode sol = SModelOperations.createNewNode(target, null, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"));
+        SNode sol = SModelOperations.createNewNode(target, null, AUX_gglig1.BuildMps_Solution_41959b13);
         SPropertyOperations.set(sol, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), t._0());
         SPropertyOperations.set(sol, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid"), t._2());
 
@@ -117,11 +118,11 @@ public class TestModuleBuildProjectTemplate {
           String moduleFile = relativePathHelper.makeRelative(t._1());
           SNode path = pathBuilder.buildRelative(moduleFile);
           SLinkOperations.setTarget(sol, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path"), path);
-          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(sol, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources"), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleResources")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files"), null);
+          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(sol, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources"), AUX_gglig1.BuildMps_ModuleResources_d624a874), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files"), null);
           // XXX this is not nice way to find module root location, but I can't come up with a better one now. 
           String moduleDir = moduleFile.substring(0, moduleFile.lastIndexOf('/'));
           SLinkOperations.setTarget(resourcesSelector, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"), pathBuilder.buildRelative(moduleDir));
-          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, "jetbrains.mps.build.structure.BuildFileIncludesSelector")), MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern"), "icons/**, resources/**");
+          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"), AUX_gglig1.BuildFileIncludesSelector_99968a3a), MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern"), "icons/**, resources/**");
           ListSequence.fromList(result).addElement(sol);
         } catch (RelativePathHelper.PathException ex) {
           if (LOG.isEnabledFor(Level.ERROR)) {
@@ -139,7 +140,7 @@ public class TestModuleBuildProjectTemplate {
     List<SNode> result = new ArrayList<SNode>();
 
     for (SNode la : languageElements) {
-      SNode jars = SModelOperations.createNewNode(target, null, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars"));
+      SNode jars = SModelOperations.createNewNode(target, null, AUX_gglig1.BuildMpsLayout_ModuleJars_c448bd1b);
       SLinkOperations.setTarget(jars, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module"), la);
       ListSequence.fromList(result).addElement(jars);
     }
@@ -151,7 +152,7 @@ public class TestModuleBuildProjectTemplate {
     List<SNode> result = new ArrayList<SNode>();
 
     for (SNode sol : testElements) {
-      SNode jars = SModelOperations.createNewNode(target, null, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars"));
+      SNode jars = SModelOperations.createNewNode(target, null, AUX_gglig1.BuildMpsLayout_ModuleJars_c448bd1b);
       SLinkOperations.setTarget(jars, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module"), sol);
       ListSequence.fromList(result).addElement(jars);
     }
@@ -160,11 +161,11 @@ public class TestModuleBuildProjectTemplate {
   }
 
   private SNode createTestModuleGroup() {
-    return SModelOperations.createNewNode(target, null, MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup"));
+    return SModelOperations.createNewNode(target, null, AUX_gglig1.BuildMpsLayout_TestModuleGroup_bb9add5d);
   }
 
   private SNode updateReferences(SNode root, SNode testGroup) {
-    SNode group = ListSequence.fromList(SNodeOperations.getNodeDescendants(root, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+    SNode group = ListSequence.fromList(SNodeOperations.getNodeDescendants(root, AUX_gglig1.BuildMps_Group_9a78986e, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).endsWith("-tests");
       }
@@ -320,5 +321,15 @@ public class TestModuleBuildProjectTemplate {
     quotedNode_30.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro"), quotedNode_17);
     quotedNode_31.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro"), quotedNode_17);
     return quotedNode_11;
+  }
+
+  private static final class AUX_gglig1 {
+    /*package*/ static final SConcept BuildMps_Language_41959b14 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
+    /*package*/ static final SConcept BuildMps_ModuleResources_d624a874 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleResources");
+    /*package*/ static final SConcept BuildFileIncludesSelector_99968a3a = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, "jetbrains.mps.build.structure.BuildFileIncludesSelector");
+    /*package*/ static final SConcept BuildMps_Solution_41959b13 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
+    /*package*/ static final SConcept BuildMpsLayout_ModuleJars_c448bd1b = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars");
+    /*package*/ static final SConcept BuildMpsLayout_TestModuleGroup_bb9add5d = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup");
+    /*package*/ static final SConcept BuildMps_Group_9a78986e = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
   }
 }

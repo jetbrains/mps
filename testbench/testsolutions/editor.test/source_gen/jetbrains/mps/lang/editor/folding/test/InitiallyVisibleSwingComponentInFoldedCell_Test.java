@@ -25,7 +25,7 @@ public class InitiallyVisibleSwingComponentInFoldedCell_Test extends BaseTransfo
 
   @Test
   public void test_InitiallyVisibleSwingComponentInFoldedCell() throws Throwable {
-    new InitiallyVisibleSwingComponentInFoldedCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

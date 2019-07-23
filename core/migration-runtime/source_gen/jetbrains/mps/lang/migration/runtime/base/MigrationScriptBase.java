@@ -25,9 +25,11 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Map;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public abstract class MigrationScriptBase implements MigrationScript {
-  private DataCollector myDC = new MigrationScriptBase.EmptyDataCollector();
+  private DataCollector myDC = new EmptyDataCollector();
 
   public String getCaption() {
     return "";
@@ -81,7 +83,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
     boolean isNodeInPlace();
     void insertOrReplace(SNode newNode);
     void remove();
-    class ChildPointer implements MigrationScriptBase.SNodePlacePointer {
+    class ChildPointer implements SNodePlacePointer {
       private SNode node;
       private SNode parent;
       private SContainmentLink link;
@@ -108,7 +110,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
         }
       }
     }
-    class RootPointer implements MigrationScriptBase.SNodePlacePointer {
+    class RootPointer implements SNodePlacePointer {
       private SNode node;
       private SModel model;
       /*package*/ RootPointer(SNode node) {
@@ -132,11 +134,11 @@ public abstract class MigrationScriptBase implements MigrationScript {
       }
     }
   }
-  private static MigrationScriptBase.SNodePlacePointer createSNodePlacePointer(SNode node) {
+  private static SNodePlacePointer createSNodePlacePointer(SNode node) {
     if (node.getParent() != null) {
-      return new MigrationScriptBase.SNodePlacePointer.ChildPointer(node);
+      return new SNodePlacePointer.ChildPointer(node);
     } else {
-      return new MigrationScriptBase.SNodePlacePointer.RootPointer(node);
+      return new SNodePlacePointer.RootPointer(node);
     }
   }
 
@@ -154,14 +156,14 @@ public abstract class MigrationScriptBase implements MigrationScript {
     if (!(SModuleOperations.isAspect(SNodeOperations.getModel(node), "migration"))) {
       return false;
     }
-    SNode enclosingPattern = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), false, false);
+    SNode enclosingPattern = SNodeOperations.getNodeAncestor(node, AUX_6r1jyd.PatternExpression_b5cd3dd6, false, false);
     return (enclosingPattern != null) && SNodeOperations.hasRole(enclosingPattern, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529eeeL, "pattern"));
   }
 
   protected void markAnnotatedNodeForReview(SNode n, List<SNode> unknownAttrs) {
     unknownAttrs = ListSequence.fromList(unknownAttrs).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old")));
+        return !(SNodeOperations.isInstanceOf(it, AUX_6r1jyd.MigrationAnnotation_old_10823922));
       }
     }).toListSequence();
     if (ListSequence.fromList(unknownAttrs).isEmpty()) {
@@ -173,7 +175,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
     SPropertyOperations.assign(ann, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e07L, "reasonShort"), "unknown attributes");
     SPropertyOperations.assign(ann, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e08L, "todo"), "This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: " + SNodeOperations.getConcept(ListSequence.fromList(unknownAttrs).first()).getQualifiedName());
     SPropertyOperations.assign(ann, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e09L, "readableId"), getCaption());
-    AttributeOperations.setAttribute(n, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration")), ann);
+    AttributeOperations.setAttribute(n, new IAttributeDescriptor.NodeAttribute(AUX_6r1jyd.ReviewMigration_54683616), ann);
 
     // we want this annotation to be shown as outermost one 
     SNode firstAnnot = ListSequence.fromList(AttributeOperations.getAttributeList(n, new IAttributeDescriptor.AllAttributes())).first();
@@ -183,7 +185,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
   }
 
   protected void applyTransormMigration(SNode origin, Computable<SNode> migration, _FunctionTypes._void_P2_E0<? super SNode, ? super SNode> postprocess) {
-    MigrationScriptBase.SNodePlacePointer pointer = createSNodePlacePointer(origin);
+    SNodePlacePointer pointer = createSNodePlacePointer(origin);
     List<SNode> descendants = SNodeOperations.getNodeDescendants(origin, null, true, new SAbstractConcept[]{});
 
     SNode migrated = migration.compute();
@@ -213,5 +215,11 @@ public abstract class MigrationScriptBase implements MigrationScript {
     public Map<SModule, SNode> collectData(SModule myModule, MigrationScriptReference scriptReference) {
       return Collections.<SModule,SNode>emptyMap();
     }
+  }
+
+  private static final class AUX_6r1jyd {
+    /*package*/ static final SConcept PatternExpression_b5cd3dd6 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
+    /*package*/ static final SInterfaceConcept MigrationAnnotation_old_10823922 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old");
+    /*package*/ static final SConcept ReviewMigration_54683616 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration");
   }
 }

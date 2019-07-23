@@ -21,7 +21,7 @@ public class AddFieldNotAllowed_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddFieldNotAllowed() throws Throwable {
-    new AddFieldNotAllowed_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

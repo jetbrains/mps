@@ -44,21 +44,21 @@ import jetbrains.mps.util.FileUtil;
 
 public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvider<AssemblePluginsBeforeTask_BeforeTask.AssemblePluginsBeforeTask_BeforeTask_RunTask> {
   private static final Logger LOG = LogManager.getLogger(AssemblePluginsBeforeTask_BeforeTask.class);
-  public static final Key<AssemblePluginsBeforeTask_BeforeTask.AssemblePluginsBeforeTask_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask");
+  public static final Key<AssemblePluginsBeforeTask_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask");
 
   public AssemblePluginsBeforeTask_BeforeTask() {
     super("AssemblePluginsBeforeTask", "Assemble Plugins");
   }
 
-  protected AssemblePluginsBeforeTask_BeforeTask.AssemblePluginsBeforeTask_BeforeTask_RunTask createTaskImpl() {
-    return new AssemblePluginsBeforeTask_BeforeTask.AssemblePluginsBeforeTask_BeforeTask_RunTask();
+  protected AssemblePluginsBeforeTask_BeforeTask_RunTask createTaskImpl() {
+    return new AssemblePluginsBeforeTask_BeforeTask_RunTask();
   }
 
-  public Key<AssemblePluginsBeforeTask_BeforeTask.AssemblePluginsBeforeTask_BeforeTask_RunTask> getId() {
+  public Key<AssemblePluginsBeforeTask_BeforeTask_RunTask> getId() {
     return KEY;
   }
 
-  public static class AssemblePluginsBeforeTask_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<AssemblePluginsBeforeTask_BeforeTask.AssemblePluginsBeforeTask_BeforeTask_RunTask> {
+  public static class AssemblePluginsBeforeTask_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<AssemblePluginsBeforeTask_BeforeTask_RunTask> {
     private boolean myDummy;
     private List<SNodeReference> myPlugins;
     private File myAssembleLocation;

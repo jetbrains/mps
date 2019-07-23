@@ -22,7 +22,7 @@ public class DelWrapperChild_Test extends BaseTransformationTest {
 
   @Test
   public void test_DelWrapperChild() throws Throwable {
-    new DelWrapperChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -42,9 +42,9 @@ public class Make_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.make.facets.Make");
   public Make_Facet() {
-    ListSequence.fromList(targets).addElement(new Make_Facet.Target_reconcile());
-    ListSequence.fromList(targets).addElement(new Make_Facet.Target_cleanup());
-    ListSequence.fromList(targets).addElement(new Make_Facet.Target_make());
+    ListSequence.fromList(targets).addElement(new Target_reconcile());
+    ListSequence.fromList(targets).addElement(new Target_cleanup());
+    ListSequence.fromList(targets).addElement(new Target_make());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -62,7 +62,7 @@ public class Make_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Make_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_reconcile implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.Make.reconcile");
@@ -184,8 +184,8 @@ public class Make_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 200;
     }
-    public static Make_Facet.Target_reconcile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Make_Facet.Target_reconcile.Parameters.class);
+    public static Target_reconcile.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_reconcile.Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<Boolean> {
       public Parameters() {
@@ -350,8 +350,8 @@ public class Make_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 1;
     }
-    public static Make_Facet.Target_make.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Make_Facet.Target_make.Parameters.class);
+    public static Target_make.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_make.Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>> {
       public Parameters() {
@@ -375,14 +375,14 @@ public class Make_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.Make.reconcile");
         if (properties.hasProperties(name)) {
-          Make_Facet.Target_reconcile.Parameters props = properties.properties(name, Make_Facet.Target_reconcile.Parameters.class);
+          Target_reconcile.Parameters props = properties.properties(name, Target_reconcile.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.Make.reconcile.skipReconcile", String.valueOf(props.skipReconcile()));
         }
       }
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.Make.make");
         if (properties.hasProperties(name)) {
-          Make_Facet.Target_make.Parameters props = properties.properties(name, Make_Facet.Target_make.Parameters.class);
+          Target_make.Parameters props = properties.properties(name, Target_make.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.Make.make.pathToFile", null);
         }
       }
@@ -391,14 +391,14 @@ public class Make_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.Make.reconcile");
-          Make_Facet.Target_reconcile.Parameters props = properties.properties(name, Make_Facet.Target_reconcile.Parameters.class);
+          Target_reconcile.Parameters props = properties.properties(name, Target_reconcile.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.Make.reconcile.skipReconcile")) {
             props.skipReconcile(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.make.facets.Make.reconcile.skipReconcile")));
           }
         }
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.Make.make");
-          Make_Facet.Target_make.Parameters props = properties.properties(name, Make_Facet.Target_make.Parameters.class);
+          Target_make.Parameters props = properties.properties(name, Target_make.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.Make.make.pathToFile")) {
             props.pathToFile(null);
           }

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -16,6 +15,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RemoveDocComment {
 
@@ -25,7 +26,7 @@ public class RemoveDocComment {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode doc = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment"), true, new SAbstractConcept[]{})).first();
+        SNode doc = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, AUX_j43kkl.BaseDocComment_a28e0b95, true, new SAbstractConcept[]{})).first();
         if (DeletionApproverUtil.approve(editorContext, doc, "commentCollection")) {
           return;
         }
@@ -85,5 +86,9 @@ public class RemoveDocComment {
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
     }
+  }
+
+  private static final class AUX_j43kkl {
+    /*package*/ static final SConcept BaseDocComment_a28e0b95 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
   }
 }

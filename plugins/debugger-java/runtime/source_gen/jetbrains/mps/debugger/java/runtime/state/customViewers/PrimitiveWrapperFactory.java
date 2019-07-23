@@ -27,7 +27,7 @@ public class PrimitiveWrapperFactory extends ValueWrapperFactory {
     return "Primitive";
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new PrimitiveWrapperFactory.JavaPrimitiveValue((PrimitiveValueProxy) value, threadReference);
+    return new JavaPrimitiveValue((PrimitiveValueProxy) value, threadReference);
   }
   private static class JavaPrimitiveValue extends ValueWrapper<PrimitiveValueProxy> {
     public JavaPrimitiveValue(PrimitiveValueProxy value, ThreadReference threadReference) {

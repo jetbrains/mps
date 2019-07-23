@@ -33,7 +33,7 @@
       <node id="2565896126719631163" at="31,28,32,29" concept="7" />
       <node id="2565896126719631163" at="34,55,35,64" concept="7" />
       <node id="5090936610550543361" at="39,40,40,16" concept="7" />
-      <node id="2565896126719631171" at="42,43,43,204" concept="7" />
+      <node id="2565896126719631171" at="42,43,43,94" concept="7" />
       <node id="2565896126719631163" at="46,25,47,16" concept="7" />
       <node id="2565896126719631180" at="49,43,50,47" concept="6" />
       <node id="8147861864219967338" at="50,47,51,64" concept="6" />
@@ -47,7 +47,7 @@
       <node id="5090936610549002129" at="70,43,71,187" concept="7" />
       <node id="2565896126719631194" at="75,8,76,17" concept="7" />
       <node id="2565896126719631163" at="78,29,79,17" concept="7" />
-      <node id="5090936610549059112" at="81,65,82,213" concept="7" />
+      <node id="5090936610549059112" at="81,65,82,98" concept="7" />
       <node id="5090936610549071302" at="84,71,85,64" concept="6" />
       <node id="5090936610549204811" at="85,64,86,38" concept="0" />
       <node id="5090936610550993766" at="86,38,87,0" concept="9" />
@@ -68,6 +68,8 @@
       <node id="5090936610549550394" at="110,200,111,179" concept="3" />
       <node id="5090936610549512361" at="111,179,112,0" concept="9" />
       <node id="5090936610549609350" at="112,0,113,17" concept="7" />
+      <node id="2565896126719631163" at="117,0,118,0" concept="10" trace="AbstractConceptDeclaration_ec74828f" />
+      <node id="2565896126719631163" at="118,0,119,0" concept="10" trace="VCSHints_41489bc3" />
       <node id="2565896126719631163" at="29,0,31,0" concept="2" trace="Version_Control_TabDescriptor#()V" />
       <node id="2565896126719631163" at="37,0,39,0" concept="5" trace="startListening#()V" />
       <node id="5090936610549172009" at="101,12,103,7" concept="1" />
@@ -97,14 +99,14 @@
       <scope id="2565896126719631163" at="31,28,32,29" />
       <scope id="2565896126719631163" at="34,55,35,64" />
       <scope id="2565896126719631163" at="39,40,40,16" />
-      <scope id="2565896126719631163" at="42,43,43,204" />
+      <scope id="2565896126719631163" at="42,43,43,94" />
       <scope id="2565896126719631163" at="46,25,47,16" />
       <scope id="8147861864219967348" at="52,42,53,19" />
       <scope id="5090936610550773632" at="59,40,60,58" />
       <scope id="8147861864219967370" at="63,27,64,19" />
       <scope id="5090936610548995707" at="70,43,71,187" />
       <scope id="2565896126719631163" at="78,29,79,17" />
-      <scope id="7459370737648200873" at="81,65,82,213" />
+      <scope id="7459370737648200873" at="81,65,82,98" />
       <scope id="5090936610550975030" at="91,40,92,58" />
       <scope id="5090936610549172000" at="99,35,100,56" />
       <scope id="5090936610549172010" at="101,14,102,50" />
@@ -166,8 +168,9 @@
       <unit id="5090936610550773631" at="58,66,62,5" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor$1" />
       <unit id="5090936610548995706" at="69,213,73,9" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor$2$1" />
       <unit id="5090936610550975029" at="90,69,94,5" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor$3" />
-      <unit id="5090936610548948385" at="67,256,75,5" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor$2" />
-      <unit id="2565896126719631163" at="26,0,116,0" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor" />
+      <unit id="2565896126719631163" at="116,0,120,0" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor$AUX_m146f1" />
+      <unit id="5090936610548948385" at="67,141,75,5" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor$2" />
+      <unit id="2565896126719631163" at="26,0,121,0" name="jetbrains.mps.vcs.mergehints.plugin.plugin.Version_Control_TabDescriptor" />
     </file>
   </root>
   <root nodeRef="r:496da72a-6b1e-4ce7-a21a-624eeeb2f8ec(jetbrains.mps.vcs.mergehints.plugin.plugin)/5090936610551600361">

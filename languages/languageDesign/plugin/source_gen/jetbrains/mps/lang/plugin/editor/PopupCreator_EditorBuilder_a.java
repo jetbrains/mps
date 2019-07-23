@@ -74,7 +74,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightAngle
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new PopupCreator_EditorBuilder_a.groupSingleRoleHandler_bm3fpy_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1b97d211bb0207abL, 0x7d101a21038ba4afL, "group"), getEditorContext());
+    SingleRoleCellProvider provider = new groupSingleRoleHandler_bm3fpy_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1b97d211bb0207abL, 0x7d101a21038ba4afL, "group"), getEditorContext());
     return provider.createCell();
   }
   private static class groupSingleRoleHandler_bm3fpy_c0 extends SingleRoleCellProvider {

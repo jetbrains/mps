@@ -5,8 +5,8 @@ package jetbrains.mps.lang.structure.util;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
@@ -14,6 +14,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SmartRefAttributeUtil {
 
@@ -25,7 +26,7 @@ public final class SmartRefAttributeUtil {
     if (concept == null) {
       return null;
     }
-    SNode attr = AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute")));
+    SNode attr = AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(AUX_9k4hui.SmartReferenceAttribute_500a3d52));
     if (attr != null) {
       return attr;
     }
@@ -43,7 +44,7 @@ public final class SmartRefAttributeUtil {
   }
 
   public static boolean isAttributedImplicitly(SNode concept) {
-    return (AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"))) == null) && canBeAttributedImplicitly(concept);
+    return (AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(AUX_9k4hui.SmartReferenceAttribute_500a3d52)) == null) && canBeAttributedImplicitly(concept);
   }
 
   public static boolean canBeAttributedImplicitly(SNode concept) {
@@ -54,8 +55,8 @@ public final class SmartRefAttributeUtil {
     if (concept == null) {
       return null;
     }
-    if ((AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"))) != null)) {
-      return SLinkOperations.getTarget(AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"))), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference"));
+    if ((AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(AUX_9k4hui.SmartReferenceAttribute_500a3d52)) != null)) {
+      return SLinkOperations.getTarget(AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(AUX_9k4hui.SmartReferenceAttribute_500a3d52)), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference"));
     } else {
       return getImplicitCharacteristicLinkDeclaration(concept);
     }
@@ -75,11 +76,15 @@ public final class SmartRefAttributeUtil {
   }
   private static SNode createSmartReferenceAttribute_9k4hui_a0a5a4(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_9k4hui.SmartReferenceAttribute_500a3d52, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference"), node0);
     return n1;
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_9k4hui {
+    /*package*/ static final SConcept SmartReferenceAttribute_500a3d52 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute");
   }
 }

@@ -21,7 +21,7 @@ public class InsertPlaceholderIntoNonEmptyEmptyMultipleCollectionFromOpeningBrac
 
   @Test
   public void test_InsertPlaceholderIntoNonEmptyEmptyMultipleCollectionFromOpeningBrace() throws Throwable {
-    new InsertPlaceholderIntoNonEmptyEmptyMultipleCollectionFromOpeningBrace_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

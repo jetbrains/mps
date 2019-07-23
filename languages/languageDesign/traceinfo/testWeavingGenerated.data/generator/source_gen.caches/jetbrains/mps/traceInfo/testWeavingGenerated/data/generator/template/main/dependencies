@@ -29,6 +29,7 @@
     <classNode dependClassName="jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main.Template_weave_ChildConceptWeave" />
     <classNode dependClassName="jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main.Template_weave_ChildConceptWeaveMany" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.MapConfigBase" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateMappingConfiguration" />
@@ -45,6 +46,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main.TemplateModelImpl">

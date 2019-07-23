@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -20,10 +19,12 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x742ef6b4d0cca0d1L, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Parameter");
+  private static final SAbstractConcept CONCEPT = AUX_uau45t.QueryFunction_SubstituteMenu_Parameter_43533780;
 
   public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
 
@@ -33,7 +34,7 @@ public final class QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor ex
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_4hcplz_a0a0(check_4hcplz_a0a0a0(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Parameterized"), false, false)));
+    return _quotation_createNode_4hcplz_a0a0(check_4hcplz_a0a0a0(SNodeOperations.getNodeAncestor(__thisNode__, AUX_uau45t.SubstituteMenuPart_Parameterized_97d44bd8, false, false)));
   }
 
   /*package*/ QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor() {
@@ -97,5 +98,10 @@ public final class QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor ex
       return SLinkOperations.getTarget(checkedDotOperand, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType"));
     }
     return null;
+  }
+
+  private static final class AUX_uau45t {
+    /*package*/ static final SConcept QueryFunction_SubstituteMenu_Parameter_43533780 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x742ef6b4d0cca0d1L, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Parameter");
+    /*package*/ static final SConcept SubstituteMenuPart_Parameterized_97d44bd8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Parameterized");
   }
 }

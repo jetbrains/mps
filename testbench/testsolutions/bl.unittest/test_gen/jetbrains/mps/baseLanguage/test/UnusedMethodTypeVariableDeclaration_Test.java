@@ -32,19 +32,19 @@ public class UnusedMethodTypeVariableDeclaration_Test extends BaseTransformation
 
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929723209() throws Throwable {
-    new UnusedMethodTypeVariableDeclaration_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929723209();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929723209();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526513017511() throws Throwable {
-    new UnusedMethodTypeVariableDeclaration_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526513017511();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526513017511();
   }
   @Test
   public void test_NodeTypeVariableIsNotNeededCheck6923385624928495830() throws Throwable {
-    new UnusedMethodTypeVariableDeclaration_Test.TestBody(this).test_NodeTypeVariableIsNotNeededCheck6923385624928495830();
+    new TestBody(this).test_NodeTypeVariableIsNotNeededCheck6923385624928495830();
   }
   @Test
   public void test_ErrorMessagesCheck7430872850884076184() throws Throwable {
-    new UnusedMethodTypeVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck7430872850884076184();
+    new TestBody(this).test_ErrorMessagesCheck7430872850884076184();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

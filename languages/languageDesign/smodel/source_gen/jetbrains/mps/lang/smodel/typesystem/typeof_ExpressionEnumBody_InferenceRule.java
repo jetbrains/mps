@@ -11,6 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ExpressionEnumBody_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ExpressionEnumBody_InferenceRule() {
@@ -23,12 +24,16 @@ public class typeof_ExpressionEnumBody_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_Expression");
+    return AUX_xm73u7.EnumSwitchCaseBody_Expression_81c8e210;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_xm73u7 {
+    /*package*/ static final SConcept EnumSwitchCaseBody_Expression_81c8e210 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_Expression");
   }
 }

@@ -22,7 +22,7 @@ public class RunConfigurations_StyleSheet {
   public static void apply_lessThen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RunConfigurations_StyleSheet.lessThenStyleClass(editorContext, node).apply(style, editorCell);
+    new lessThenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -32,7 +32,7 @@ public class RunConfigurations_StyleSheet {
   public static void apply_greaterThen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RunConfigurations_StyleSheet.greaterThenStyleClass(editorContext, node).apply(style, editorCell);
+    new greaterThenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -42,7 +42,7 @@ public class RunConfigurations_StyleSheet {
   public static void apply_operation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RunConfigurations_StyleSheet.operationStyleClass(editorContext, node).apply(style, editorCell);
+    new operationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -52,7 +52,7 @@ public class RunConfigurations_StyleSheet {
   public static void apply_leftOperationBrace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RunConfigurations_StyleSheet.leftOperationBraceStyleClass(editorContext, node).apply(style, editorCell);
+    new leftOperationBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -62,7 +62,7 @@ public class RunConfigurations_StyleSheet {
   public static void apply_rightOperationBrace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RunConfigurations_StyleSheet.rightOperationBraceStyleClass(editorContext, node).apply(style, editorCell);
+    new rightOperationBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -72,7 +72,7 @@ public class RunConfigurations_StyleSheet {
   public static void apply_constructorParameter(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RunConfigurations_StyleSheet.constructorParameterStyleClass(editorContext, node).apply(style, editorCell);
+    new constructorParameterStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -82,7 +82,7 @@ public class RunConfigurations_StyleSheet {
   public static void apply_conceptFunctionHeader(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RunConfigurations_StyleSheet.conceptFunctionHeaderStyleClass(editorContext, node).apply(style, editorCell);
+    new conceptFunctionHeaderStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class lessThenStyleClass extends AbstractStyleClass {

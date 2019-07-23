@@ -79,7 +79,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new GetOperationType_EditorBuilder_a.operationSingleRoleHandler_4eg1u8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fd11186b7L, 0x11fd111c5e0L, "operation"), getEditorContext());
+    SingleRoleCellProvider provider = new operationSingleRoleHandler_4eg1u8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fd11186b7L, 0x11fd111c5e0L, "operation"), getEditorContext());
     return provider.createCell();
   }
   private static class operationSingleRoleHandler_4eg1u8_c0 extends SingleRoleCellProvider {
@@ -146,7 +146,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new GetOperationType_EditorBuilder_a.leftOperandTypeSingleRoleHandler_4eg1u8_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fd11186b7L, 0x11fd111e015L, "leftOperandType"), getEditorContext());
+    SingleRoleCellProvider provider = new leftOperandTypeSingleRoleHandler_4eg1u8_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fd11186b7L, 0x11fd111e015L, "leftOperandType"), getEditorContext());
     return provider.createCell();
   }
   private static class leftOperandTypeSingleRoleHandler_4eg1u8_e0 extends SingleRoleCellProvider {
@@ -210,7 +210,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new GetOperationType_EditorBuilder_a.rightOperandTypeSingleRoleHandler_4eg1u8_g0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fd11186b7L, 0x11fd111e18eL, "rightOperandType"), getEditorContext());
+    SingleRoleCellProvider provider = new rightOperandTypeSingleRoleHandler_4eg1u8_g0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fd11186b7L, 0x11fd111e18eL, "rightOperandType"), getEditorContext());
     return provider.createCell();
   }
   private static class rightOperandTypeSingleRoleHandler_4eg1u8_g0 extends SingleRoleCellProvider {

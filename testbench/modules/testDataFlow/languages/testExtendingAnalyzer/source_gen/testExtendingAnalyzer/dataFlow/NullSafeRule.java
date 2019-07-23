@@ -6,11 +6,12 @@ import jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.baseLanguage.dataFlow.notNullInstruction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NullSafeRule implements DataFlowConstructor {
   public boolean isApplicable(SNode node) {
@@ -19,7 +20,7 @@ public class NullSafeRule implements DataFlowConstructor {
     return concept.equals(applicableConcept) || concept.isSubConceptOf(applicableConcept);
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557dc29L, "testExtendingAnalyzer.structure.NullSafeDotExpression");
+    return AUX_f6y260.NullSafeDotExpression_fc38e850;
   }
   public void performActions(Program o, SNode node) {
     {
@@ -33,5 +34,9 @@ public class NullSafeRule implements DataFlowConstructor {
         ((Program) (o)).insert(instruction, position, true, before);
       }
     }
+  }
+
+  private static final class AUX_f6y260 {
+    /*package*/ static final SConcept NullSafeDotExpression_fc38e850 = MetaAdapterFactory.getConcept(0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557dc29L, "testExtendingAnalyzer.structure.NullSafeDotExpression");
   }
 }

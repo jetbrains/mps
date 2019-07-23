@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.diagram.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CellModel_DiagramPort__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd120282L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramPort");
+  private static final SAbstractConcept CONCEPT = AUX_l8vdq.CellModel_DiagramPort_4bce71e1;
 
   public static final SMethod<Boolean> canBeSynchronized_id3wXm3h1AYM7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeSynchronized").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3wXm3h1AYM7").build();
   public static final SMethod<Boolean> shellBeSynchronized_id3TPTV99_TMT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shellBeSynchronized").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3TPTV99_TMT").build();
@@ -82,5 +83,9 @@ public final class CellModel_DiagramPort__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_l8vdq {
+    /*package*/ static final SConcept CellModel_DiagramPort_4bce71e1 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd120282L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramPort");
   }
 }

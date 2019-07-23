@@ -31,11 +31,11 @@ public class ExtendingNullableAnalyzer_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck7974543756120908670() throws Throwable {
-    new ExtendingNullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck7974543756120908670();
+    new TestBody(this).test_ErrorMessagesCheck7974543756120908670();
   }
   @Test
   public void test_NodeWarningCheck7078910619968857445() throws Throwable {
-    new ExtendingNullableAnalyzer_Test.TestBody(this).test_NodeWarningCheck7078910619968857445();
+    new TestBody(this).test_NodeWarningCheck7078910619968857445();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

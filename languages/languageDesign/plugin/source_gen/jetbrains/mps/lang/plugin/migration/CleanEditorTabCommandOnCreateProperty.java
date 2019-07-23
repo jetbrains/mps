@@ -10,10 +10,11 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
   public String getCaption() {
@@ -36,7 +37,7 @@ public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
           return scope_khohta_a0d_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab"), false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_khohta.EditorTab_405dcfd1, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SPropertyOperations.remove(it, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, 0x71dc7d539b7857cfL, "commandOnCreate"));
         }
@@ -47,4 +48,7 @@ public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"), 3);
   }
 
+  private static final class AUX_khohta {
+    /*package*/ static final SConcept EditorTab_405dcfd1 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
+  }
 }

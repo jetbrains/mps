@@ -13,15 +13,16 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class remove_ReturnStatement extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new remove_ReturnStatement.SMP_Group_jk3faa_a());
+    result.add(new SMP_Group_jk3faa_a());
     return result;
   }
 
@@ -43,7 +44,7 @@ public class remove_ReturnStatement extends SubstituteMenuBase {
     protected boolean isApplicable(SubstituteMenuContext _context) {
       // return statements must be allowed until we find a way to implement early returns 
       // http://www.javac.info 
-      return false && (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"), true, false) != null);
+      return false && (SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_jk3faa.ClosureLiteral_6eeca0d3, true, false) != null);
     }
     @NotNull
     @Override
@@ -61,5 +62,9 @@ public class remove_ReturnStatement extends SubstituteMenuBase {
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList();
     }
+  }
+
+  private static final class AUX_jk3faa {
+    /*package*/ static final SConcept ClosureLiteral_6eeca0d3 = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
   }
 }

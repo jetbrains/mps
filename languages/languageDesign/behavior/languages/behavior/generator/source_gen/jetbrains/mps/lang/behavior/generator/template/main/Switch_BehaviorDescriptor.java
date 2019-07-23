@@ -15,19 +15,20 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.impl.reference.RefResolver;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_BehaviorDescriptor() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_BehaviorDescriptor.ReductionRule0());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2897519568668637315");
@@ -45,7 +46,7 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1570228009929814969"), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference"), false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1570228009929814969"), AUX_q5kmqu.ModelReference_33f91149, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -158,6 +159,10 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static SNodePointer templateNode_q5kmqu_c0a0a1a2a1a1a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4565427742314403561");
-  private static SNodePointer templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4147950839246919590");
+  private static final SNodePointer templateNode_q5kmqu_c0a0a1a2a1a1a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4565427742314403561");
+  private static final SNodePointer templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4147950839246919590");
+
+  private static final class AUX_q5kmqu {
+    /*package*/ static final SConcept ModelReference_33f91149 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
+  }
 }

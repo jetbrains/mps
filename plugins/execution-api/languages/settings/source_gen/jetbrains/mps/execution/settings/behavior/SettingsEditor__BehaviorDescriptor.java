@@ -4,7 +4,6 @@ package jetbrains.mps.execution.settings.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -18,9 +17,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013dL, "jetbrains.mps.execution.settings.structure.SettingsEditor");
+  private static final SAbstractConcept CONCEPT = AUX_p16t14.SettingsEditor_9ba05303;
 
   public static final SMethod<List<SNode>> getDeclaredOperations_idO$iR4J$gbn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclaredOperations").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$gbn").build();
 
@@ -30,7 +31,7 @@ public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getDeclaredOperations_idO$iR4J$gbn(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeDescendants(__thisNode__, MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012dL, "jetbrains.mps.execution.settings.structure.EditorOperationDeclaration"), false, new SAbstractConcept[]{});
+    return SNodeOperations.getNodeDescendants(__thisNode__, AUX_p16t14.EditorOperationDeclaration_9ba052c9, false, new SAbstractConcept[]{});
   }
 
   /*package*/ SettingsEditor__BehaviorDescriptor() {
@@ -77,5 +78,10 @@ public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_p16t14 {
+    /*package*/ static final SConcept SettingsEditor_9ba05303 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013dL, "jetbrains.mps.execution.settings.structure.SettingsEditor");
+    /*package*/ static final SConcept EditorOperationDeclaration_9ba052c9 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012dL, "jetbrains.mps.execution.settings.structure.EditorOperationDeclaration");
   }
 }

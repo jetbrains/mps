@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_PrintSequenceExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_PrintSequenceExpression_InferenceRule() {
@@ -26,7 +27,7 @@ public class typeof_PrintSequenceExpression_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6979f0787b7db64fL, "jetbrains.mps.console.base.structure.PrintSequenceExpression");
+    return AUX_u62o5j.PrintSequenceExpression_c488e435;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -64,5 +65,9 @@ public class typeof_PrintSequenceExpression_InferenceRule extends AbstractInfere
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), quotedNode_9);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"), quotedNode_5);
     return quotedNode_1;
+  }
+
+  private static final class AUX_u62o5j {
+    /*package*/ static final SConcept PrintSequenceExpression_c488e435 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6979f0787b7db64fL, "jetbrains.mps.console.base.structure.PrintSequenceExpression");
   }
 }

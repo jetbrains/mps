@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.quotation.migration.RawPropertyValueMigration;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public abstract class PropertyPatternVariableMigration<T> {
 
@@ -38,8 +39,8 @@ public abstract class PropertyPatternVariableMigration<T> {
         migrateRawValue(usage, SLinkOperations.getTarget(propertyDeclaration, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")));
         SetSequence.fromSet(myRawValueMigratedPPVDs).addElement(propPatternVariable);
       }
-      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(propertyDeclaration), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo")))) {
-        migrateEnumValue(usage, SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion")));
+      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(propertyDeclaration), AUX_1wxpu3.EnumPropertyMigrationInfo_a791f212))) {
+        migrateEnumValue(usage, SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), AUX_1wxpu3.PropertyDeclaration_ce818bfd), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), AUX_1wxpu3.EnumerationDeclartaion_dd035f36));
         SetSequence.fromSet(myEnumMigratedPPVDs).addElement(propPatternVariable);
       }
     }
@@ -67,5 +68,11 @@ public abstract class PropertyPatternVariableMigration<T> {
 
   protected final void downgradeEnumType(SNode expression, SNode enumeration) {
     myMigration.downgradeExpressionType(enumeration, expression);
+  }
+
+  private static final class AUX_1wxpu3 {
+    /*package*/ static final SConcept PropertyDeclaration_ce818bfd = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept EnumerationDeclartaion_dd035f36 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo_a791f212 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

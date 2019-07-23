@@ -21,7 +21,7 @@ public class CustomPropertyReferences1_Test extends BaseTransformationTest {
 
   @Test
   public void test_CustomPropertyReferences1() throws Throwable {
-    new CustomPropertyReferences1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

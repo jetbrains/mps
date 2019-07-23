@@ -10,12 +10,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class interface_node_pointer_types_are_comparable_ComparisonRule extends ComparisonRule_Runtime {
   public interface_node_pointer_types_are_comparable_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration")) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept")), AUX_z8kir4.InterfaceConceptDeclaration_efdf2bc9) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept")), AUX_z8kir4.InterfaceConceptDeclaration_efdf2bc9)) {
       return true;
     }
     return false;
@@ -31,9 +32,14 @@ public class interface_node_pointer_types_are_comparable_ComparisonRule extends 
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    return AUX_z8kir4.SNodePointerType_1589fb65;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    return AUX_z8kir4.SNodePointerType_1589fb65;
+  }
+
+  private static final class AUX_z8kir4 {
+    /*package*/ static final SConcept InterfaceConceptDeclaration_efdf2bc9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept SNodePointerType_1589fb65 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
   }
 }

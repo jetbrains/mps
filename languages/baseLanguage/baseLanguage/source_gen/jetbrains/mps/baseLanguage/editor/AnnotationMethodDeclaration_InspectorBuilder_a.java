@@ -26,6 +26,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class AnnotationMethodDeclaration_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -67,7 +68,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new AnnotationMethodDeclaration_InspectorBuilder_a.annotationListHandler_ux6pap_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new annotationListHandler_ux6pap_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_annotation");
     Style style = new StyleImpl();
@@ -93,7 +94,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
+      return AUX_37ksf1.AnnotationInstance_51bc59df;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -137,7 +138,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AnnotationMethodDeclaration_InspectorBuilder_a.defaultValueSingleRoleHandler_ux6pap_d0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, 0x505a7bf53e13af48L, "defaultValue"), getEditorContext());
+    SingleRoleCellProvider provider = new defaultValueSingleRoleHandler_ux6pap_d0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, 0x505a7bf53e13af48L, "defaultValue"), getEditorContext());
     return provider.createCell();
   }
   private static class defaultValueSingleRoleHandler_ux6pap_d0 extends SingleRoleCellProvider {
@@ -190,5 +191,9 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     protected String getNoTargetText() {
       return "<no defaultValue>";
     }
+  }
+
+  private static final class AUX_37ksf1 {
+    /*package*/ static final SConcept AnnotationInstance_51bc59df = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
   }
 }

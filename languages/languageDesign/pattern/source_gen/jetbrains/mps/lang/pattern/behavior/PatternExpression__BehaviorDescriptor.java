@@ -4,7 +4,6 @@ package jetbrains.mps.lang.pattern.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,13 +19,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class PatternExpression__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
+  private static final SAbstractConcept CONCEPT = AUX_nlfwk.PatternExpression_b5cd3dd6;
 
   public static final SMethod<List<SNode>> getVariables_id4dzCQkRGUKX = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getVariables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4dzCQkRGUKX").build();
   public static final SMethod<List<SNode>> getUniqueVariables_id4dzCQkRGULU = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getUniqueVariables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4dzCQkRGULU").build();
@@ -42,9 +43,9 @@ public final class PatternExpression__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static List<SNode> getVariables_id4dzCQkRGUKX(@NotNull SNode __thisNode__) {
     List<SNode> variables = new ArrayList<SNode>();
-    ListSequence.fromList(variables).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration"), false, new SAbstractConcept[]{})));
-    ListSequence.fromList(variables).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"), false, new SAbstractConcept[]{})));
-    ListSequence.fromList(variables).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration"), false, new SAbstractConcept[]{})));
+    ListSequence.fromList(variables).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, AUX_nlfwk.PatternVariableDeclaration_b5cd3dd8, false, new SAbstractConcept[]{})));
+    ListSequence.fromList(variables).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, AUX_nlfwk.LinkPatternVariableDeclaration_352d241b, false, new SAbstractConcept[]{})));
+    ListSequence.fromList(variables).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, AUX_nlfwk.PropertyPatternVariableDeclaration_b5cd3def, false, new SAbstractConcept[]{})));
     return variables;
   }
   /*package*/ static List<SNode> getUniqueVariables_id4dzCQkRGULU(@NotNull SNode __thisNode__) {
@@ -63,7 +64,7 @@ public final class PatternExpression__BehaviorDescriptor extends BaseBHDescripto
     List<SNode> variables = PatternExpression__BehaviorDescriptor.getVariables_id4dzCQkRGUKX.invoke(__thisNode__);
     List<SNode> result = new ArrayList<SNode>();
     for (SNode var : variables) {
-      if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(var), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern")) && SNodeOperations.getParent(var) != __thisNode__))) {
+      if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(var), AUX_nlfwk.OrPattern_60bda891) && SNodeOperations.getParent(var) != __thisNode__))) {
         ListSequence.fromList(result).addElement(var);
       }
     }
@@ -134,5 +135,13 @@ public final class PatternExpression__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_nlfwk {
+    /*package*/ static final SConcept PatternExpression_b5cd3dd6 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
+    /*package*/ static final SConcept PatternVariableDeclaration_b5cd3dd8 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration");
+    /*package*/ static final SConcept LinkPatternVariableDeclaration_352d241b = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration");
+    /*package*/ static final SConcept PropertyPatternVariableDeclaration_b5cd3def = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
+    /*package*/ static final SConcept OrPattern_60bda891 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern");
   }
 }

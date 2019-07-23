@@ -76,7 +76,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AddKeystrokeStatement_EditorBuilder_a.strokeSingleRoleHandler_4pzy21_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x70d8274412a8919cL, 0x70d8274412ab495dL, "stroke"), getEditorContext());
+    SingleRoleCellProvider provider = new strokeSingleRoleHandler_4pzy21_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x70d8274412a8919cL, 0x70d8274412ab495dL, "stroke"), getEditorContext());
     return provider.createCell();
   }
   private static class strokeSingleRoleHandler_4pzy21_c0 extends SingleRoleCellProvider {

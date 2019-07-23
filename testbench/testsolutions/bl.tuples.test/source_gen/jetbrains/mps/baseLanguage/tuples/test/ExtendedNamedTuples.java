@@ -28,7 +28,7 @@ public class ExtendedNamedTuples {
       return super._1();
     }
   }
-  public static class Bar extends ExtendedNamedTuples.Foo implements Tuples._4<Integer, String, String, Double> {
+  public static class Bar extends Foo implements Tuples._4<Integer, String, String, Double> {
     private MultiTuple._2<String, Double> tuple;
     public Bar() {
       super();
@@ -72,7 +72,7 @@ public class ExtendedNamedTuples {
       return this;
     }
   }
-  public static class Qux extends ExtendedNamedTuples.Bar implements Tuples._5<Integer, String, String, Double, String> {
+  public static class Qux extends Bar implements Tuples._5<Integer, String, String, Double, String> {
     private MultiTuple._1<String> tuple;
     public Qux() {
       super();

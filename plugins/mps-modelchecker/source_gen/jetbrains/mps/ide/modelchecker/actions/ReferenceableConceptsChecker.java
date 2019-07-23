@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -55,15 +55,15 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
     }
 
     if (SModuleOperations.isAspect(model, "structure")) {
-      for (SNode concept : ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
+      for (SNode concept : ListSequence.fromList(SModelOperations.roots(model, AUX_bv1a2a.AbstractConceptDeclaration_ec74828f))) {
         for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(concept, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration"))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SEnumOperations.isMember(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b8L);
           }
         })) {
           SNode target = SLinkOperations.getTarget(ref, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target"));
-          if (SNodeOperations.isInstanceOf(target, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
-            SNode decl = SNodeOperations.cast(target, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
+          if (SNodeOperations.isInstanceOf(target, AUX_bv1a2a.ConceptDeclaration_cb225da8)) {
+            SNode decl = SNodeOperations.cast(target, AUX_bv1a2a.ConceptDeclaration_cb225da8);
             if (SEnumOperations.isMember(SPropertyOperations.getEnum(decl, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope")), 0x4b014033eedc8becL)) {
               ListSequence.fromList(results).addElement(new NodeReportItemBase(MessageStatus.ERROR, SNodeOperations.getPointer(ref), "Reference to a non-referenceable concept found: " + SPropertyOperations.getString(target, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) {
                 @Override
@@ -74,8 +74,8 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
             }
           }
         }
-        if (SNodeOperations.isInstanceOf(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope")), 0x4b014033eedc8becL)) {
-          if (((boolean) (Boolean) BHReflection.invoke0(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("isSubconceptOf", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "73yVtVlWOga"), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468")))) {
+        if (SNodeOperations.isInstanceOf(concept, AUX_bv1a2a.ConceptDeclaration_cb225da8) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(concept, AUX_bv1a2a.ConceptDeclaration_cb225da8), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope")), 0x4b014033eedc8becL)) {
+          if (((boolean) (Boolean) BHReflection.invoke0(concept, AUX_bv1a2a.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("isSubconceptOf", AUX_bv1a2a.AbstractConceptDeclaration_ec74828f, "73yVtVlWOga"), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468")))) {
             ListSequence.fromList(results).addElement(new NodeReportItemBase(MessageStatus.WARNING, SNodeOperations.getPointer(concept), "INamedConcept inheritors are usually referenceable") {
               @Override
               public IssueKindReportItem.ItemKind getIssueKind() {
@@ -93,7 +93,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       }
       // Check for unresolved references 
       for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro"), ref.getLink())) != null)) {
+        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(AUX_bv1a2a.ReferenceMacro_62f8c34e, ref.getLink())) != null)) {
           continue;
         }
         SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
@@ -140,7 +140,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       return;
     }
     if (isAncestor) {
-      if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(cncpt), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2ea65c0b397bd5beL, "jetbrains.mps.lang.core.structure.ScopeFacade")) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(refNode, null, true)).contains(node))) {
+      if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(cncpt), AUX_bv1a2a.ScopeFacade_2fd16c9e) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(refNode, null, true)).contains(node))) {
         ListSequence.fromList(results).addElement(new NodeReportItemBase(MessageStatus.ERROR, SNodeOperations.getPointer(anchor), "Reference from outside to a node under ScopeFacade: facade=" + cncpt.getName()) {
           @Override
           public IssueKindReportItem.ItemKind getIssueKind() {
@@ -168,4 +168,10 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
     }
   }
 
+  private static final class AUX_bv1a2a {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ReferenceMacro_62f8c34e = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
+    /*package*/ static final SInterfaceConcept ScopeFacade_2fd16c9e = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2ea65c0b397bd5beL, "jetbrains.mps.lang.core.structure.ScopeFacade");
+  }
 }

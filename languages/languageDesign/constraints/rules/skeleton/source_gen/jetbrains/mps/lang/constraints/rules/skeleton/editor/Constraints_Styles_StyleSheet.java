@@ -21,7 +21,7 @@ public class Constraints_Styles_StyleSheet {
   public static void apply_RootHeading(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Constraints_Styles_StyleSheet.RootHeadingStyleClass(editorContext, node).apply(style, editorCell);
+    new RootHeadingStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -31,7 +31,7 @@ public class Constraints_Styles_StyleSheet {
   public static void apply_RuleBlockDeclaration(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Constraints_Styles_StyleSheet.RuleBlockDeclarationStyleClass(editorContext, node).apply(style, editorCell);
+    new RuleBlockDeclarationStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class RootHeadingStyleClass extends AbstractStyleClass {

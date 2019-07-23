@@ -32,19 +32,19 @@ public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeCycleInImportsCheck4205244270189351140() throws Throwable {
-    new ActionMapImportCycleDetection_Test.TestBody(this).test_NodeCycleInImportsCheck4205244270189351140();
+    new TestBody(this).test_NodeCycleInImportsCheck4205244270189351140();
   }
   @Test
   public void test_NodeCycleInImportsCheck4205244270189500694() throws Throwable {
-    new ActionMapImportCycleDetection_Test.TestBody(this).test_NodeCycleInImportsCheck4205244270189500694();
+    new TestBody(this).test_NodeCycleInImportsCheck4205244270189500694();
   }
   @Test
   public void test_NodeCycleInImportsCheck4205244270189549224() throws Throwable {
-    new ActionMapImportCycleDetection_Test.TestBody(this).test_NodeCycleInImportsCheck4205244270189549224();
+    new TestBody(this).test_NodeCycleInImportsCheck4205244270189549224();
   }
   @Test
   public void test_ErrorMessagesCheck6782712264220244949() throws Throwable {
-    new ActionMapImportCycleDetection_Test.TestBody(this).test_ErrorMessagesCheck6782712264220244949();
+    new TestBody(this).test_ErrorMessagesCheck6782712264220244949();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

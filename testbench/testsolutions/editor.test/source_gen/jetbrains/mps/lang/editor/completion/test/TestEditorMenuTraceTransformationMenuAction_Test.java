@@ -21,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class TestEditorMenuTraceTransformationMenuAction_Test extends BaseTransformationTest {
@@ -33,7 +34,7 @@ public class TestEditorMenuTraceTransformationMenuAction_Test extends BaseTransf
 
   @Test
   public void test_TestEditorMenuTraceTransformationMenuAction() throws Throwable {
-    new TestEditorMenuTraceTransformationMenuAction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {
@@ -56,12 +57,16 @@ public class TestEditorMenuTraceTransformationMenuAction_Test extends BaseTransf
 
           EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
 
-          SNodeReference transformAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections"))).first(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbfL, "parts")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384f93e6L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Action"))).first());
+          SNodeReference transformAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections"))).first(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbfL, "parts")), AUX_r9mj9i.TransformationMenuPart_Action_d5db21c)).first());
 
           EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, transformAction, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"));
         }
       });
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
     }
+  }
+
+  private static final class AUX_r9mj9i {
+    /*package*/ static final SConcept TransformationMenuPart_Action_d5db21c = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384f93e6L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Action");
   }
 }

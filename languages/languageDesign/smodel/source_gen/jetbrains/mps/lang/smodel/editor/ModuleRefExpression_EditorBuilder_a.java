@@ -29,6 +29,7 @@ import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLoo
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class ModuleRefExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -78,7 +79,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ModuleRefExpression_EditorBuilder_a.moduleIdSingleRoleHandler_mwn25y_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId"), getEditorContext());
+    SingleRoleCellProvider provider = new moduleIdSingleRoleHandler_mwn25y_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId"), getEditorContext());
     return provider.createCell();
   }
   private static class moduleIdSingleRoleHandler_mwn25y_c0 extends SingleRoleCellProvider {
@@ -113,7 +114,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId"));
       }
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afc2bc9L, "jetbrains.mps.lang.modelapi.structure.ModuleIdentity"), "jetbrains.mps.lang.modelapi.editor.ContextRepositoryModules_TM"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_qe52p4.ModuleIdentity_5629fa03, "jetbrains.mps.lang.modelapi.editor.ContextRepositoryModules_TM"));
     }
     @Override
     protected EditorCell createEmptyCell() {
@@ -141,5 +142,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_qe52p4 {
+    /*package*/ static final SInterfaceConcept ModuleIdentity_5629fa03 = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afc2bc9L, "jetbrains.mps.lang.modelapi.structure.ModuleIdentity");
   }
 }

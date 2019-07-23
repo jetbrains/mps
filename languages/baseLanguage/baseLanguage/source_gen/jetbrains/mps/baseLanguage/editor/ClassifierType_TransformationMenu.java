@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
@@ -26,6 +25,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassifierType_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -51,7 +52,7 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_eyzbhi.ClassifierType_42700403)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -65,11 +66,11 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
         }
 
       });
-      result.add(new ClassifierType_TransformationMenu.TMP_Include_eyzbhi_b0());
-      result.add(new ClassifierType_TransformationMenu.TMP_Include_eyzbhi_c0());
-      result.add(new ClassifierType_TransformationMenu.TMP_Include_eyzbhi_d0());
-      result.add(new ClassifierType_TransformationMenu.TMP_Include_eyzbhi_e0());
-      result.add(new ClassifierType_TransformationMenu.TMP_Include_eyzbhi_f0());
+      result.add(new TMP_Include_eyzbhi_b0());
+      result.add(new TMP_Include_eyzbhi_c0());
+      result.add(new TMP_Include_eyzbhi_d0());
+      result.add(new TMP_Include_eyzbhi_e0());
+      result.add(new TMP_Include_eyzbhi_f0());
     }
     return result;
   }
@@ -93,7 +94,7 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), "jetbrains.mps.baseLanguage.editor.addGenericParameter");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_eyzbhi.ClassifierType_42700403, "jetbrains.mps.baseLanguage.editor.addGenericParameter");
     }
 
   }
@@ -116,7 +117,7 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), "jetbrains.mps.baseLanguage.editor.ExtendedClassImplementTransform");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_eyzbhi.ClassifierType_42700403, "jetbrains.mps.baseLanguage.editor.ExtendedClassImplementTransform");
     }
 
   }
@@ -139,7 +140,7 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), "jetbrains.mps.baseLanguage.editor.binaryOperations");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_eyzbhi.ClassifierType_42700403, "jetbrains.mps.baseLanguage.editor.binaryOperations");
     }
 
   }
@@ -162,7 +163,7 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), "jetbrains.mps.baseLanguage.editor.csharp_rTransform");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_eyzbhi.ClassifierType_42700403, "jetbrains.mps.baseLanguage.editor.csharp_rTransform");
     }
 
   }
@@ -185,8 +186,12 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), "jetbrains.mps.baseLanguage.editor.classifierTypeInLocalVarRT");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_eyzbhi.ClassifierType_42700403, "jetbrains.mps.baseLanguage.editor.classifierTypeInLocalVarRT");
     }
 
+  }
+
+  private static final class AUX_eyzbhi {
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -26,17 +25,19 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ThisExtensionMethodSubstitute.SMP_Group_7qarbi_a());
+    result.add(new SMP_Group_7qarbi_a());
     return result;
   }
 
@@ -56,7 +57,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
   public class SMP_Group_7qarbi_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      if ((SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer")}, true, false) != null)) {
+      if ((SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{AUX_7qarbi.BaseExtensionMethodContainer_91d3d8e2}, true, false) != null)) {
         return true;
       }
       return false;
@@ -75,13 +76,13 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new ThisExtensionMethodSubstitute.SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0(), AUX_7qarbi.DotExpression_97ed08d8));
     }
     private class SMP_Param_7qarbi_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new ThisExtensionMethodSubstitute.SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0.SMP_Action_7qarbi_a0a(parameter).createItems(context);
+        return new SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0.SMP_Action_7qarbi_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -97,7 +98,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer"), false, false), MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration"), false, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_7qarbi.BaseExtensionMethodContainer_91d3d8e2, false, false), AUX_7qarbi.ExtensionMethodDeclaration_9924fbf7, false, new SAbstractConcept[]{});
       }
       private class SMP_Action_7qarbi_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -108,7 +109,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          ThisExtensionMethodSubstitute.SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0.SMP_Action_7qarbi_a0a.Item item = new ThisExtensionMethodSubstitute.SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0.SMP_Action_7qarbi_a0a.Item(_context);
+          SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0.SMP_Action_7qarbi_a0a.Item item = new SMP_Group_7qarbi_a.SMP_Param_7qarbi_a0.SMP_Action_7qarbi_a0a.Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -132,7 +133,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), context);
+            super(AUX_7qarbi.DotExpression_97ed08d8, context);
             _context = context;
           }
 
@@ -143,9 +144,9 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode operationExpression = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), null);
-            SLinkOperations.setTarget(SNodeFactoryOperations.setNewChild(operationExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63359483bL, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodCall")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SNodeOperations.cast(myParameterObject, MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration")));
-            SNode thisExpression = SNodeFactoryOperations.setNewChild(operationExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x2e076d2695911333L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ThisExtensionExpression"));
+            SNode operationExpression = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_7qarbi.DotExpression_97ed08d8, null);
+            SLinkOperations.setTarget(SNodeFactoryOperations.setNewChild(operationExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), AUX_7qarbi.ExtensionMethodCall_677f2e1d), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SNodeOperations.cast(myParameterObject, AUX_7qarbi.ExtensionMethodDeclaration_9924fbf7));
+            SNode thisExpression = SNodeFactoryOperations.setNewChild(operationExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), AUX_7qarbi.ThisExtensionExpression_ac8e7f76);
             return operationExpression;
           }
 
@@ -155,7 +156,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, AUX_7qarbi.DotExpression_97ed08d8, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -185,5 +186,13 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_7qarbi {
+    /*package*/ static final SConcept BaseExtensionMethodContainer_91d3d8e2 = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ExtensionMethodDeclaration_9924fbf7 = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration");
+    /*package*/ static final SConcept ExtensionMethodCall_677f2e1d = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63359483bL, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodCall");
+    /*package*/ static final SConcept ThisExtensionExpression_ac8e7f76 = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x2e076d2695911333L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ThisExtensionExpression");
   }
 }

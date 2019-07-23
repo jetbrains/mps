@@ -21,7 +21,7 @@ public class ConnectorDecoratorView extends AbstractDecoratorView {
   public Property<Color> backgroundColor = new ValueProperty<Color>(Color.LIGHT_GRAY);
 
   private Iterable<Segment> mySegments;
-  private Property<Boolean> myValid = new ConnectorDecoratorView.EventSourceProperty<Boolean>(Boolean.TRUE);
+  private Property<Boolean> myValid = new EventSourceProperty<Boolean>(Boolean.TRUE);
 
   public ConnectorDecoratorView() {
     new Mapper<ConnectorDecoratorView, ConnectorDecoratorView>(this, this) {

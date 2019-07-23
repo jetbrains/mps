@@ -24,7 +24,7 @@ public class CompletionStyle_ReturnAndVariableReference_Test extends BaseTransfo
 
   @Test
   public void test_CompletionStyle_ReturnAndVariableReference() throws Throwable {
-    new CompletionStyle_ReturnAndVariableReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

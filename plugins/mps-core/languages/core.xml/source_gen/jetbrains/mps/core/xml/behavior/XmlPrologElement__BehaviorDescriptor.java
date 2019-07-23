@@ -4,7 +4,6 @@ package jetbrains.mps.core.xml.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class XmlPrologElement__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement");
+  private static final SAbstractConcept CONCEPT = AUX_gcbyjb.XmlPrologElement_1e69ae59;
 
   public static final SMethod<Boolean> isSingle_id1653mnvAgni = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingle").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgni").build();
   public static final SMethod<Boolean> isFirst_id1653mnvAgw8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirst").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgw8").build();
@@ -82,5 +83,9 @@ public final class XmlPrologElement__BehaviorDescriptor extends BaseBHDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_gcbyjb {
+    /*package*/ static final SInterfaceConcept XmlPrologElement_1e69ae59 = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement");
   }
 }

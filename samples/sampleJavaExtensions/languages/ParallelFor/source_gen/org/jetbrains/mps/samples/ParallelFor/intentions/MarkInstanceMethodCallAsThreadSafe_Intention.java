@@ -19,6 +19,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MarkInstanceMethodCallAsThreadSafe_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -40,7 +41,7 @@ public final class MarkInstanceMethodCallAsThreadSafe_Intention extends Abstract
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation")) && AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe"))) == null;
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_61qryj.InstanceMethodCallOperation_cd28f5b6) && AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_61qryj.ThreadSafe_dcd8a07b)) == null;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
     return SNodeOperations.getParent(childNode) == node;
@@ -51,7 +52,7 @@ public final class MarkInstanceMethodCallAsThreadSafe_Intention extends Abstract
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new MarkInstanceMethodCallAsThreadSafe_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -64,11 +65,16 @@ public final class MarkInstanceMethodCallAsThreadSafe_Intention extends Abstract
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe")), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe"), null));
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_61qryj.ThreadSafe_dcd8a07b), SNodeFactoryOperations.createNewNode(AUX_61qryj.ThreadSafe_dcd8a07b, null));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return MarkInstanceMethodCallAsThreadSafe_Intention.this;
     }
+  }
+
+  private static final class AUX_61qryj {
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept ThreadSafe_dcd8a07b = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe");
   }
 }

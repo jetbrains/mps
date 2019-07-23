@@ -57,7 +57,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SubstringExpression_EditorBuilder_a.operandSingleRoleHandler_vmnbe9_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f4L, "operand"), getEditorContext());
+    SingleRoleCellProvider provider = new operandSingleRoleHandler_vmnbe9_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f4L, "operand"), getEditorContext());
     return provider.createCell();
   }
   private static class operandSingleRoleHandler_vmnbe9_a0 extends SingleRoleCellProvider {
@@ -121,7 +121,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SubstringExpression_EditorBuilder_a.startIndexSingleRoleHandler_vmnbe9_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f5L, "startIndex"), getEditorContext());
+    SingleRoleCellProvider provider = new startIndexSingleRoleHandler_vmnbe9_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f5L, "startIndex"), getEditorContext());
     return provider.createCell();
   }
   private static class startIndexSingleRoleHandler_vmnbe9_c0 extends SingleRoleCellProvider {
@@ -182,7 +182,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new SubstringExpression_EditorBuilder_a.endIndexSingleRoleHandler_vmnbe9_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f6L, "endIndex"), getEditorContext());
+    SingleRoleCellProvider provider = new endIndexSingleRoleHandler_vmnbe9_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f6L, "endIndex"), getEditorContext());
     return provider.createCell();
   }
   private static class endIndexSingleRoleHandler_vmnbe9_e0 extends SingleRoleCellProvider {

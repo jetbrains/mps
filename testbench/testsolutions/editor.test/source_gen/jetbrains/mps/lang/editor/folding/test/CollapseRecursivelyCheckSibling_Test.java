@@ -21,7 +21,7 @@ public class CollapseRecursivelyCheckSibling_Test extends BaseTransformationTest
 
   @Test
   public void test_CollapseRecursivelyCheckSibling() throws Throwable {
-    new CollapseRecursivelyCheckSibling_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -49,7 +49,7 @@ public class JUnitInProcessTermination_Test extends BaseTransformationTest {
 
   @Test
   public void test_terminate() throws Throwable {
-    new JUnitInProcessTermination_Test.TestBody(this).test_terminate();
+    new TestBody(this).test_terminate();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

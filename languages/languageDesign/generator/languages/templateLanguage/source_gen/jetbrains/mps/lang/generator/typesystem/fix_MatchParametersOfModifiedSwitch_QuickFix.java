@@ -6,12 +6,13 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class fix_MatchParametersOfModifiedSwitch_QuickFix extends QuickFix_Runtime {
   public fix_MatchParametersOfModifiedSwitch_QuickFix() {
@@ -21,14 +22,19 @@ public class fix_MatchParametersOfModifiedSwitch_QuickFix extends QuickFix_Runti
     return "Match parameters of modified switch";
   }
   public void execute(SNode node) {
-    SNode templateSwitch = SNodeOperations.cast(((SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, "jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration")) ? SNodeOperations.getParent(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, "jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration"))) : node)), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch"));
+    SNode templateSwitch = SNodeOperations.cast(((SNodeOperations.isInstanceOf(node, AUX_5nlgxz.TemplateParameterDeclaration_7d6fc426) ? SNodeOperations.getParent(SNodeOperations.as(node, AUX_5nlgxz.TemplateParameterDeclaration_7d6fc426)) : node)), AUX_5nlgxz.TemplateSwitch_30830689);
     ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"))).clear();
     SModel m = SNodeOperations.getModel(templateSwitch);
     for (SNode p : SLinkOperations.getChildren(SLinkOperations.getTarget(templateSwitch, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch")), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"))) {
-      SNode np = SModelOperations.createNewNode(m, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, "jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration"));
+      SNode np = SModelOperations.createNewNode(m, null, AUX_5nlgxz.TemplateParameterDeclaration_7d6fc426);
       SPropertyOperations.assign(np, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), SPropertyOperations.getString(p, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       SLinkOperations.setTarget(np, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type"), SNodeOperations.copyNode(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type"))));
       ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"))).addElement(np);
     }
+  }
+
+  private static final class AUX_5nlgxz {
+    /*package*/ static final SConcept TemplateParameterDeclaration_7d6fc426 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, "jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration");
+    /*package*/ static final SConcept TemplateSwitch_30830689 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
   }
 }

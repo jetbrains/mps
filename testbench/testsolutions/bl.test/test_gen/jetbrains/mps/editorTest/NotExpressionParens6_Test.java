@@ -21,7 +21,7 @@ public class NotExpressionParens6_Test extends BaseTransformationTest {
 
   @Test
   public void test_NotExpressionParens6() throws Throwable {
-    new NotExpressionParens6_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

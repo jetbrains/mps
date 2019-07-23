@@ -83,7 +83,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MatrixInitializer_EditorBuilder_a.rowsCountSingleRoleHandler_g16ylh_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d42453499L, "rowsCount"), getEditorContext());
+    SingleRoleCellProvider provider = new rowsCountSingleRoleHandler_g16ylh_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d42453499L, "rowsCount"), getEditorContext());
     return provider.createCell();
   }
   private static class rowsCountSingleRoleHandler_g16ylh_c0 extends SingleRoleCellProvider {
@@ -148,7 +148,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new MatrixInitializer_EditorBuilder_a.colsCountSingleRoleHandler_g16ylh_e0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4245349aL, "colsCount"), getEditorContext());
+    SingleRoleCellProvider provider = new colsCountSingleRoleHandler_g16ylh_e0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4245349aL, "colsCount"), getEditorContext());
     return provider.createCell();
   }
   private static class colsCountSingleRoleHandler_g16ylh_e0 extends SingleRoleCellProvider {
@@ -221,7 +221,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new MatrixInitializer_EditorBuilder_a.rowIndexSingleRoleHandler_g16ylh_h0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex"), getEditorContext());
+    SingleRoleCellProvider provider = new rowIndexSingleRoleHandler_g16ylh_h0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex"), getEditorContext());
     return provider.createCell();
   }
   private static class rowIndexSingleRoleHandler_g16ylh_h0 extends SingleRoleCellProvider {
@@ -285,7 +285,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new MatrixInitializer_EditorBuilder_a.colIndexSingleRoleHandler_g16ylh_j0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex"), getEditorContext());
+    SingleRoleCellProvider provider = new colIndexSingleRoleHandler_g16ylh_j0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex"), getEditorContext());
     return provider.createCell();
   }
   private static class colIndexSingleRoleHandler_g16ylh_j0 extends SingleRoleCellProvider {
@@ -355,7 +355,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new MatrixInitializer_EditorBuilder_a.expressionSingleRoleHandler_g16ylh_m0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240d857L, "expression"), getEditorContext());
+    SingleRoleCellProvider provider = new expressionSingleRoleHandler_g16ylh_m0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240d857L, "expression"), getEditorContext());
     return provider.createCell();
   }
   private static class expressionSingleRoleHandler_g16ylh_m0 extends SingleRoleCellProvider {

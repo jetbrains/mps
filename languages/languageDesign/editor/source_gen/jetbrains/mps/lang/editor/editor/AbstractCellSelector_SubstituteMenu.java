@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.IncludeSubstituteMenuSubstituteMenuPart;
@@ -26,6 +25,7 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Arrays;
@@ -35,17 +35,18 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new AbstractCellSelector_SubstituteMenu.SMP_Include_1rdeze_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_b(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880750L, "jetbrains.mps.lang.editor.structure.IdSelector")));
-    result.add(new AbstractCellSelector_SubstituteMenu.SMP_Group_1rdeze_c());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_d(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_e(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, "jetbrains.mps.lang.editor.structure.PropertyExpressionCellSelector")));
+    result.add(new SMP_Include_1rdeze_a());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_b(), AUX_1rdeze.IdSelector_918e7fa6));
+    result.add(new SMP_Group_1rdeze_c());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_d(), AUX_1rdeze.PropertyDeclarationCellSelector_9f6b369e));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_e(), AUX_1rdeze.PropertyExpressionCellSelector_6fb80621));
     return result;
   }
 
@@ -83,7 +84,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.editor.CellIdReferenceSelector_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3c0028bb8556f621L, "jetbrains.mps.lang.editor.structure.CellIdReferenceSelector");
+      return AUX_1rdeze.CellIdReferenceSelector_fea157ed;
     }
   }
   private class SMP_Action_1rdeze_b extends SingleItemSubstituteMenuPart {
@@ -91,7 +92,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_b.Item item = new AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_b.Item(_context);
+      SMP_Action_1rdeze_b.Item item = new SMP_Action_1rdeze_b.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -114,7 +115,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880750L, "jetbrains.mps.lang.editor.structure.IdSelector"), context);
+        super(AUX_1rdeze.IdSelector_918e7fa6, context);
         _context = context;
       }
 
@@ -161,7 +162,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_1rdeze_c extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation"));
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_1rdeze.SelectInEditorOperation_190f23c3);
     }
     @NotNull
     @Override
@@ -177,13 +178,13 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new AbstractCellSelector_SubstituteMenu.SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2(), AUX_1rdeze.PredefinedSelector_b9d2c991));
     }
     private class SMP_Param_1rdeze_a2 extends ParameterizedMenuPart<SEnumerationLiteral, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SEnumerationLiteral parameter, SubstituteMenuContext context) {
-        return new AbstractCellSelector_SubstituteMenu.SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c(parameter).createItems(context);
+        return new SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -210,7 +211,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          AbstractCellSelector_SubstituteMenu.SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c.Item item = new AbstractCellSelector_SubstituteMenu.SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c.Item(_context);
+          SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c.Item item = new SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c.Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -234,7 +235,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector"), context);
+            super(AUX_1rdeze.PredefinedSelector_b9d2c991, context);
             _context = context;
           }
 
@@ -256,7 +257,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector"), getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, AUX_1rdeze.PredefinedSelector_b9d2c991, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -283,7 +284,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_d.Item item = new AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_d.Item(_context);
+      SMP_Action_1rdeze_d.Item item = new SMP_Action_1rdeze_d.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -306,7 +307,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector"), context);
+        super(AUX_1rdeze.PropertyDeclarationCellSelector_9f6b369e, context);
         _context = context;
       }
 
@@ -355,7 +356,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_e.Item item = new AbstractCellSelector_SubstituteMenu.SMP_Action_1rdeze_e.Item(_context);
+      SMP_Action_1rdeze_e.Item item = new SMP_Action_1rdeze_e.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -378,7 +379,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, "jetbrains.mps.lang.editor.structure.PropertyExpressionCellSelector"), context);
+        super(AUX_1rdeze.PropertyExpressionCellSelector_6fb80621, context);
         _context = context;
       }
 
@@ -421,5 +422,14 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
         return true;
       }
     }
+  }
+
+  private static final class AUX_1rdeze {
+    /*package*/ static final SConcept IdSelector_918e7fa6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880750L, "jetbrains.mps.lang.editor.structure.IdSelector");
+    /*package*/ static final SConcept PropertyDeclarationCellSelector_9f6b369e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");
+    /*package*/ static final SConcept PropertyExpressionCellSelector_6fb80621 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, "jetbrains.mps.lang.editor.structure.PropertyExpressionCellSelector");
+    /*package*/ static final SConcept CellIdReferenceSelector_fea157ed = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3c0028bb8556f621L, "jetbrains.mps.lang.editor.structure.CellIdReferenceSelector");
+    /*package*/ static final SConcept SelectInEditorOperation_190f23c3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation");
+    /*package*/ static final SConcept PredefinedSelector_b9d2c991 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector");
   }
 }

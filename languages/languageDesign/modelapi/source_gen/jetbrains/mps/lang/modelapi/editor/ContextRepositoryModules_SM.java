@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -33,13 +32,15 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.DevKit;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ContextRepositoryModules_SM extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ContextRepositoryModules_SM.SMP_Param_5f0wb9_a(), MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_5f0wb9_a(), AUX_5f0wb9.ModulePointer_a7ab22d3));
     return result;
   }
 
@@ -60,7 +61,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SModuleReference parameter, SubstituteMenuContext context) {
-      return new ContextRepositoryModules_SM.SMP_Param_5f0wb9_a.SMP_Action_5f0wb9_a0(parameter).createItems(context);
+      return new SMP_Param_5f0wb9_a.SMP_Action_5f0wb9_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -91,7 +92,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        ContextRepositoryModules_SM.SMP_Param_5f0wb9_a.SMP_Action_5f0wb9_a0.Item item = new ContextRepositoryModules_SM.SMP_Param_5f0wb9_a.SMP_Action_5f0wb9_a0.Item(_context);
+        SMP_Param_5f0wb9_a.SMP_Action_5f0wb9_a0.Item item = new SMP_Param_5f0wb9_a.SMP_Action_5f0wb9_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -115,7 +116,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer"), context);
+          super(AUX_5f0wb9.ModulePointer_a7ab22d3, context);
           _context = context;
         }
 
@@ -126,7 +127,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          return (SNode) ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer")), _context.getModel(), myParameterObject);
+          return (SNode) ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(AUX_5f0wb9.ModulePointer_a7ab22d3), _context.getModel(), myParameterObject);
         }
 
         @Override
@@ -135,7 +136,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_5f0wb9.ModulePointer_a7ab22d3, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -190,5 +191,9 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_5f0wb9 {
+    /*package*/ static final SConcept ModulePointer_a7ab22d3 = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 }

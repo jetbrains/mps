@@ -18,6 +18,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IncludeDefaultAndNullMenu extends SubstituteMenuBase {
@@ -25,8 +26,8 @@ public class IncludeDefaultAndNullMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new IncludeDefaultAndNullMenu.SMP_Include_cs2ck2_a());
-    result.add(new IncludeDefaultAndNullMenu.SMP_Include_cs2ck2_b());
+    result.add(new SMP_Include_cs2ck2_a());
+    result.add(new SMP_Include_cs2ck2_b());
     return result;
   }
 
@@ -78,7 +79,11 @@ public class IncludeDefaultAndNullMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x41299cab94ed9982L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeDefaultAndNullMenu");
+      return AUX_cs2ck2.TestSubstitute_IncludeDefaultAndNullMenu_a3cda61;
     }
+  }
+
+  private static final class AUX_cs2ck2 {
+    /*package*/ static final SConcept TestSubstitute_IncludeDefaultAndNullMenu_a3cda61 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x41299cab94ed9982L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeDefaultAndNullMenu");
   }
 }

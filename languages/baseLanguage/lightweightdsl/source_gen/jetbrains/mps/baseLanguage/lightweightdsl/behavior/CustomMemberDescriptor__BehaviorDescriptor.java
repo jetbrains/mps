@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.lightweightdsl.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -18,15 +17,18 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.ImportUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor");
+  private static final SAbstractConcept CONCEPT = AUX_rm1dy5.CustomMemberDescriptor_739898b0;
 
   public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ay_HjIOVVe").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2gzehMfi1$l").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -41,7 +43,7 @@ public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
     SNode res = SNodeFactoryOperations.createNewNode(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt"))), null);
     ImportUtil.addModelDepsByNode(futureModel.getRepository(), futureModel, res, false);
-    return SNodeOperations.cast(res, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"));
+    return SNodeOperations.cast(res, AUX_rm1dy5.ClassifierMember_849b47d7);
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull SNode __thisNode__, SNode cls) {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt")))));
@@ -110,5 +112,10 @@ public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDesc
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
+  }
+
+  private static final class AUX_rm1dy5 {
+    /*package*/ static final SConcept CustomMemberDescriptor_739898b0 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor");
+    /*package*/ static final SInterfaceConcept ClassifierMember_849b47d7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }
 }

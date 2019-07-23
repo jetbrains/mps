@@ -4,7 +4,6 @@ package jetbrains.mps.build.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,14 +15,16 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BuildLayout_CustomCopy__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9ab2L, "jetbrains.mps.build.structure.BuildLayout_CustomCopy");
+  private static final SAbstractConcept CONCEPT = AUX_9c5u9z.BuildLayout_CustomCopy_4554d1e6;
 
   public static final SMethod<Boolean> isImplicit_id19QsrPuCW11 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isImplicit").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("19QsrPuCW11").build();
 
@@ -35,7 +36,7 @@ public final class BuildLayout_CustomCopy__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static boolean isImplicit_id19QsrPuCW11(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9ab2L, 0x7f76698a394e2d1eL, "handlers"))).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x127671bd5d12a2c2L, "jetbrains.mps.build.structure.BuildLayout_CopyProcessor"));
+        return SNodeOperations.isInstanceOf(it, AUX_9c5u9z.BuildLayout_CopyProcessor_33b82103);
       }
     });
   }
@@ -84,5 +85,10 @@ public final class BuildLayout_CustomCopy__BehaviorDescriptor extends BaseBHDesc
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_9c5u9z {
+    /*package*/ static final SConcept BuildLayout_CustomCopy_4554d1e6 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9ab2L, "jetbrains.mps.build.structure.BuildLayout_CustomCopy");
+    /*package*/ static final SConcept BuildLayout_CopyProcessor_33b82103 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x127671bd5d12a2c2L, "jetbrains.mps.build.structure.BuildLayout_CopyProcessor");
   }
 }

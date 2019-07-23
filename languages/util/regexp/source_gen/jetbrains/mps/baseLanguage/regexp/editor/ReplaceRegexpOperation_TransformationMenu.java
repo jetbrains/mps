@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -40,6 +40,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ReplaceRegexpOperation_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -65,7 +66,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceRegexpOperation"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_z6skvi.ReplaceRegexpOperation_b2e245d8)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -81,10 +82,10 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_a1());
-      result.add(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_b1());
-      result.add(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_c1());
-      result.add(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_d1());
+      result.add(new TMP_Group_z6skvi_a1());
+      result.add(new TMP_Group_z6skvi_b1());
+      result.add(new TMP_Group_z6skvi_c1());
+      result.add(new TMP_Group_z6skvi_d1());
     }
     return result;
   }
@@ -108,12 +109,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b(), AUX_z6skvi.InlineRegexpExpression_98f63000));
     }
     private class TMP_Action_z6skvi_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b.Item item = new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b.Item(context);
+        TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b.Item item = new TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -156,7 +157,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          return AUX_z6skvi.InlineRegexpExpression_98f63000;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -171,7 +172,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          SAbstractConcept outputConcept = AUX_z6skvi.InlineRegexpExpression_98f63000;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -200,12 +201,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b(), AUX_z6skvi.InlineRegexpExpression_98f63000));
     }
     private class TMP_Action_z6skvi_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b.Item item = new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b.Item(context);
+        TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b.Item item = new TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -248,7 +249,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          return AUX_z6skvi.InlineRegexpExpression_98f63000;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -263,7 +264,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          SAbstractConcept outputConcept = AUX_z6skvi.InlineRegexpExpression_98f63000;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -292,12 +293,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b(), AUX_z6skvi.InlineRegexpExpression_98f63000));
     }
     private class TMP_Action_z6skvi_a2b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b.Item item = new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b.Item(context);
+        TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b.Item item = new TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -340,7 +341,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          return AUX_z6skvi.InlineRegexpExpression_98f63000;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -355,7 +356,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          SAbstractConcept outputConcept = AUX_z6skvi.InlineRegexpExpression_98f63000;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -384,12 +385,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b(), AUX_z6skvi.InlineRegexpExpression_98f63000));
     }
     private class TMP_Action_z6skvi_a3b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b.Item item = new ReplaceRegexpOperation_TransformationMenu.TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b.Item(context);
+        TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b.Item item = new TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -432,7 +433,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          return AUX_z6skvi.InlineRegexpExpression_98f63000;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -447,7 +448,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+          SAbstractConcept outputConcept = AUX_z6skvi.InlineRegexpExpression_98f63000;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -456,5 +457,10 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
       }
 
     }
+  }
+
+  private static final class AUX_z6skvi {
+    /*package*/ static final SConcept ReplaceRegexpOperation_b2e245d8 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceRegexpOperation");
+    /*package*/ static final SConcept InlineRegexpExpression_98f63000 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
   }
 }

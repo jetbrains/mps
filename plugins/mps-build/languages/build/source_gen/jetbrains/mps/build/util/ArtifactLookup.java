@@ -8,9 +8,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ArtifactLookup {
   private final DependenciesHelper myDependencyHelper;
@@ -36,10 +38,10 @@ public class ArtifactLookup {
     }
 
     StringBuilder suffix = new StringBuilder();
-    SNode current = SNodeOperations.as(path, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"));
+    SNode current = SNodeOperations.as(path, AUX_arca2u.BuildRelativePath_e8191f19);
     if (current != null) {
       suffix.append("/").append(BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(path));
-      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"));
+      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), AUX_arca2u.BuildRelativePath_e8191f19);
     }
     SNode containingRoot = SNodeOperations.getContainingRoot(path);
     while (current != null) {
@@ -49,7 +51,7 @@ public class ArtifactLookup {
       }
 
       suffix.insert(0, BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(current)).insert(0, "/");
-      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"));
+      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), AUX_arca2u.BuildRelativePath_e8191f19);
     }
 
     return MultiTuple.<SNode,String>from((SNode) null, (String) null);
@@ -58,8 +60,8 @@ public class ArtifactLookup {
   public SNode findArtifact(Object id) {
     if (id instanceof SNode) {
       SNode node = (SNode) id;
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement")) && myArtifacts.parent(SNodeOperations.as(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement"))) != null) {
-        return SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement"));
+      if (SNodeOperations.isInstanceOf(node, AUX_arca2u.BuildLayout_PathElement_8e46fed3) && myArtifacts.parent(SNodeOperations.as(node, AUX_arca2u.BuildLayout_PathElement_8e46fed3)) != null) {
+        return SNodeOperations.cast(node, AUX_arca2u.BuildLayout_PathElement_8e46fed3);
       }
       SNode rv = doFind(id);
       if (rv == null) {
@@ -96,7 +98,7 @@ public class ArtifactLookup {
     if (myDependencyHelper == null) {
       return null;
     }
-    return SNodeOperations.as(myDependencyHelper.artifacts().get(id), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
+    return SNodeOperations.as(myDependencyHelper.artifacts().get(id), AUX_arca2u.BuildLayout_Node_b7bb997a);
   }
 
   protected void cache(Object id, SNode element) {
@@ -121,5 +123,11 @@ public class ArtifactLookup {
   }
   private static <T> T as_arca2u_a0a0a0b1a61(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_arca2u {
+    /*package*/ static final SConcept BuildRelativePath_e8191f19 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
+    /*package*/ static final SInterfaceConcept BuildLayout_PathElement_8e46fed3 = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement");
+    /*package*/ static final SConcept BuildLayout_Node_b7bb997a = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
   }
 }

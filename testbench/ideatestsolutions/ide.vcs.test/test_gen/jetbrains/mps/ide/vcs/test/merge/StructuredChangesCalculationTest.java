@@ -24,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import org.junit.Assert;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * Check correctness of diff algorithm
@@ -67,12 +68,12 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f3() { int var; } 
     testDiffCorectness(3, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, AUX_8ul4jo.LocalVariableDeclaration_d47683f3, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
             return Objects.equals(SPropertyOperations.getString(n, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "var");
           }
         });
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, AUX_8ul4jo.LocalVariableDeclaration_d47683f3, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
             return Objects.equals(SPropertyOperations.getString(n, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "var");
           }
@@ -87,12 +88,12 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f4() { int var = 12 + (9 - 8) * 7; } 
     testDiffCorectness(4, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, AUX_8ul4jo.LocalVariableDeclaration_d47683f3, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
             return Objects.equals(SPropertyOperations.getString(n, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "var");
           }
         });
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, AUX_8ul4jo.LocalVariableDeclaration_d47683f3, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
             return Objects.equals(SPropertyOperations.getString(n, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "var");
           }
@@ -157,8 +158,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f10(int a, int b) { b = 10; } 
     testDiffCorectness(10, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).first();
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).first();
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), AUX_8ul4jo.VariableReference_24d60dac, false, new SAbstractConcept[]{})).first();
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), AUX_8ul4jo.VariableReference_24d60dac, false, new SAbstractConcept[]{})).first();
         SNode target = ListSequence.fromList(SLinkOperations.getChildren(n2, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).getElement(1);
         return new ModelChange[]{new SetReferenceStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), SModelOperations.getPointer(SNodeOperations.getModel(target)), target.getNodeId(), "b")};
       }
@@ -181,8 +182,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f12() { n = 10; } 
     testDiffCorectness(12, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).first();
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).first();
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), AUX_8ul4jo.VariableReference_24d60dac, false, new SAbstractConcept[]{})).first();
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), AUX_8ul4jo.VariableReference_24d60dac, false, new SAbstractConcept[]{})).first();
         SNode target = SLinkOperations.getTarget(n21, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
         return new ModelChange[]{new SetReferenceStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), SModelOperations.getPointer(SNodeOperations.getModel(target)), target.getNodeId(), "n")};
       }
@@ -235,8 +236,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f16(int ... params) { f16(0, 1, 3-3, 2*2, 3-3, 4/4, 3-3); } 
     testDiffCorectness(16, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"), false, new SAbstractConcept[]{})).first();
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"), false, new SAbstractConcept[]{})).first();
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, AUX_8ul4jo.LocalMethodCall_637cfcfb, false, new SAbstractConcept[]{})).first();
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, AUX_8ul4jo.LocalMethodCall_637cfcfb, false, new SAbstractConcept[]{})).first();
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), 1, 2, 1, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), 5, 5, 6, 7)};
       }
     });
@@ -247,10 +248,10 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f18(int ... params) { f18(0, 1+2, 3-3, 2*2, 3-3, 4/4, 3-3); } 
     testDiffCorectness(18, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"), false, new SAbstractConcept[]{})).first();
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"), false, new SAbstractConcept[]{})).first();
-        SNode n12 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n11, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).getElement(1), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));
-        SNode n22 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n21, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).getElement(1), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, AUX_8ul4jo.LocalMethodCall_637cfcfb, false, new SAbstractConcept[]{})).first();
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, AUX_8ul4jo.LocalMethodCall_637cfcfb, false, new SAbstractConcept[]{})).first();
+        SNode n12 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n11, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).getElement(1), AUX_8ul4jo.PlusExpression_d4768414), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")), AUX_8ul4jo.IntegerConstant_a127eb0a);
+        SNode n22 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n21, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).getElement(1), AUX_8ul4jo.PlusExpression_d4768414), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")), AUX_8ul4jo.IntegerConstant_a127eb0a);
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), 2, 2, 2, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), 5, 5, 6, 7), new SetPropertyStructChange(getChangeSet(), n12.getNodeId(), n22.getNodeId(), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "2")};
       }
     });
@@ -325,16 +326,25 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         // test with the same model 
-        SNode n1 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071558326"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).getElement(ix), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration"));
-        SNode n2 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071561667"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).getElement(ix), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration"));
+        SNode n1 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071558326"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).getElement(ix), AUX_8ul4jo.MethodDeclaration_637cfcff);
+        SNode n2 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071561667"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).getElement(ix), AUX_8ul4jo.MethodDeclaration_637cfcff);
         ModelChange[] changes = ch.invoke(n1, n2);
         testDiffCorrectness(n1, n2, changes);
 
         // test with other model 
-        SNode n3 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)", "2193727838071561667"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).getElement(ix), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration"));
+        SNode n3 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)", "2193727838071561667"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).getElement(ix), AUX_8ul4jo.MethodDeclaration_637cfcff);
         ModelChange[] changes2 = ch.invoke(n1, n3);
         testDiffCorrectness(n1, n3, changes2);
       }
     });
+  }
+
+  private static final class AUX_8ul4jo {
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept LocalMethodCall_637cfcfb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept PlusExpression_d4768414 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
+    /*package*/ static final SConcept IntegerConstant_a127eb0a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
+    /*package*/ static final SConcept MethodDeclaration_637cfcff = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 }

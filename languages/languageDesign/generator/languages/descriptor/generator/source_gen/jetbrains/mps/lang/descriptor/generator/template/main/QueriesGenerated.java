@@ -41,6 +41,7 @@ import jetbrains.mps.generator.impl.plan.ModelScanner;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class QueriesGenerated {
@@ -321,14 +322,14 @@ public class QueriesGenerated {
   }
   public static boolean mc_Condition_1(final TemplateQueryContext _context) {
     //  can't use genContext.inputModel as it has lost stereotype (it's transient model) 
-    return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
+    return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), AUX_x583g4.Generator_33f90ea3);
   }
   public static boolean mc_Condition_4(final TemplateQueryContext _context) {
     //  can't use genContext.inputModel as it has lost stereotype (it's transient model) 
-    return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language"));
+    return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), AUX_x583g4.Language_33f90ea1);
   }
   public static SNode insertMacro_Query_2_0(final InsertMacroContext _context) {
-    return SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language"));
+    return SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), AUX_x583g4.Language_33f90ea1);
   }
   public static SNode insertMacro_Query_6_0(final InsertMacroContext _context) {
     return _context.getNode();
@@ -337,7 +338,7 @@ public class QueriesGenerated {
     return _context.getNode();
   }
   public static SNode insertMacro_Query_8_0(final InsertMacroContext _context) {
-    return SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
+    return SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), AUX_x583g4.Generator_33f90ea3);
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(((Language) _context.getVariable("var:langModule")).getRepository());
@@ -382,7 +383,7 @@ public class QueriesGenerated {
       }
     }, true).select(new ISelector<SLanguage, SNode>() {
       public SNode select(SLanguage it) {
-        SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId"));
+        SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, AUX_x583g4.LanguageId_f5e2e6b);
         LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, it);
         return lid;
       }
@@ -408,7 +409,7 @@ public class QueriesGenerated {
       }
     }, true).select(new ISelector<SLanguage, SNode>() {
       public SNode select(SLanguage it) {
-        SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId"));
+        SNode lid = SModelOperations.createNewNode(_context.getOutputModel(), null, AUX_x583g4.LanguageId_f5e2e6b);
         LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, it);
         return lid;
       }
@@ -416,5 +417,11 @@ public class QueriesGenerated {
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SConcept Generator_33f90ea3 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
+    /*package*/ static final SConcept Language_33f90ea1 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
+    /*package*/ static final SConcept LanguageId_f5e2e6b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
   }
 }

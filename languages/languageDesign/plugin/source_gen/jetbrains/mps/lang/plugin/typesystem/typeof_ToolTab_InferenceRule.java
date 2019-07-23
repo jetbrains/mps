@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ToolTab_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ToolTab_InferenceRule() {
@@ -54,7 +55,7 @@ public class typeof_ToolTab_InferenceRule extends AbstractInferenceRule_Runtime 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, "jetbrains.mps.lang.plugin.structure.ToolTab");
+    return AUX_6sqcaa.ToolTab_206a94d0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -95,5 +96,9 @@ public class typeof_ToolTab_InferenceRule extends AbstractInferenceRule_Runtime 
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType"), SNodeOperations.copyIfNecessary(quotedNode_4));
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_6sqcaa {
+    /*package*/ static final SConcept ToolTab_206a94d0 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, "jetbrains.mps.lang.plugin.structure.ToolTab");
   }
 }

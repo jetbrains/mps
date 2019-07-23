@@ -10,16 +10,22 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class add_parameter_to_closure {
   public static class NodeFactory_485694842828664421 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SNode disposeTabClosure = SLinkOperations.getTarget(newNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure"));
       if ((disposeTabClosure == null)) {
-        disposeTabClosure = SNodeFactoryOperations.setNewChild(newNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure"), MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"));
+        disposeTabClosure = SNodeFactoryOperations.setNewChild(newNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure"), AUX_eip8lx.ClosureLiteral_6eeca0d3);
       }
-      SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(disposeTabClosure, MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral")), MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter"), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6bd88e2e00aae68L, "jetbrains.mps.lang.plugin.structure.SmartDisposeClosureParameterDeclaration"));
+      SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(disposeTabClosure, AUX_eip8lx.ClosureLiteral_6eeca0d3), MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter"), AUX_eip8lx.SmartDisposeClosureParameterDeclaration_4574bb4b);
       SPropertyOperations.set(pd, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "component");
     }
+  }
+
+  private static final class AUX_eip8lx {
+    /*package*/ static final SConcept ClosureLiteral_6eeca0d3 = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept SmartDisposeClosureParameterDeclaration_4574bb4b = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6bd88e2e00aae68L, "jetbrains.mps.lang.plugin.structure.SmartDisposeClosureParameterDeclaration");
   }
 }

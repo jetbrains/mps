@@ -16,5 +16,5 @@ import java.util.regex.Matcher;
       }
     }
   }
-  private static Pattern REGEXP_3flcu7_a0a0a0b = Pattern.compile("abcde", 32);
+  private static final Pattern REGEXP_3flcu7_a0a0a0b = Pattern.compile("abcde", 32);
 }

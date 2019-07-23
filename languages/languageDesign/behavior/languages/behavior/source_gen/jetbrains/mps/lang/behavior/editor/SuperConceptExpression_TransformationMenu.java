@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -40,6 +40,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SuperConceptExpression_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -65,7 +66,7 @@ public class SuperConceptExpression_TransformationMenu extends TransformationMen
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_2w7hld.SuperConceptExpression_a6afd4b)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -81,7 +82,7 @@ public class SuperConceptExpression_TransformationMenu extends TransformationMen
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new SuperConceptExpression_TransformationMenu.TMP_Group_2w7hld_a1());
+      result.add(new TMP_Group_2w7hld_a1());
     }
     return result;
   }
@@ -105,12 +106,12 @@ public class SuperConceptExpression_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new SuperConceptExpression_TransformationMenu.TMP_Group_2w7hld_a1.TMP_Action_2w7hld_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_2w7hld_a1.TMP_Action_2w7hld_a0b());
     }
     private class TMP_Action_2w7hld_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        SuperConceptExpression_TransformationMenu.TMP_Group_2w7hld_a1.TMP_Action_2w7hld_a0b.Item item = new SuperConceptExpression_TransformationMenu.TMP_Group_2w7hld_a1.TMP_Action_2w7hld_a0b.Item(context);
+        TMP_Group_2w7hld_a1.TMP_Action_2w7hld_a0b.Item item = new TMP_Group_2w7hld_a1.TMP_Action_2w7hld_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -178,5 +179,9 @@ public class SuperConceptExpression_TransformationMenu extends TransformationMen
       }
 
     }
+  }
+
+  private static final class AUX_2w7hld {
+    /*package*/ static final SConcept SuperConceptExpression_a6afd4b = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
   }
 }

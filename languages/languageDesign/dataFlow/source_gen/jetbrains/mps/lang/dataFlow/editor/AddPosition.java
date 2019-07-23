@@ -12,6 +12,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddPosition {
 
@@ -22,7 +23,7 @@ public class AddPosition {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position")) == null) {
-          SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition"), null));
+          SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position"), SNodeFactoryOperations.createNewNode(AUX_bx31b9.InsertPosition_6469a9c5, null));
         }
       }
 
@@ -62,5 +63,9 @@ public class AddPosition {
     if (Objects.equals(actionType, CellActionType.RIGHT_TRANSFORM)) {
       editorCell.setAction(actionType, createAction_RIGHT_TRANSFORM(node));
     }
+  }
+
+  private static final class AUX_bx31b9 {
+    /*package*/ static final SConcept InsertPosition_6469a9c5 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition");
   }
 }

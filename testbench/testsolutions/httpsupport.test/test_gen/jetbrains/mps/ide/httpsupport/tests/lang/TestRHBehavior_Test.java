@@ -37,39 +37,39 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
 
   @Test
   public void test_testRHSimple() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testRHSimple();
+    new TestBody(this).test_testRHSimple();
   }
   @Test
   public void test_testRHNoRequiredParams() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testRHNoRequiredParams();
+    new TestBody(this).test_testRHNoRequiredParams();
   }
   @Test
   public void test_testRHRequiredParams() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testRHRequiredParams();
+    new TestBody(this).test_testRHRequiredParams();
   }
   @Test
   public void test_testRHException() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testRHException();
+    new TestBody(this).test_testRHException();
   }
   @Test
   public void test_testRHTurnBack1() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testRHTurnBack1();
+    new TestBody(this).test_testRHTurnBack1();
   }
   @Test
   public void test_testRHTurnBack2() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testRHTurnBack2();
+    new TestBody(this).test_testRHTurnBack2();
   }
   @Test
   public void test_testURlBuilder1() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testURlBuilder1();
+    new TestBody(this).test_testURlBuilder1();
   }
   @Test
   public void test_testURlBuilder2() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testURlBuilder2();
+    new TestBody(this).test_testURlBuilder2();
   }
   @Test
   public void test_testRHConflicts() throws Throwable {
-    new TestRHBehavior_Test.TestBody(this).test_testRHConflicts();
+    new TestBody(this).test_testRHConflicts();
   }
 
   @BeforeClass

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.dataFlow.analyzers.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,6 +14,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
@@ -23,9 +23,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
+  private static final SAbstractConcept CONCEPT = AUX_pu59qr.Analyzer_a97ba59e;
 
   public static final SMethod<String> getAnalyzerRunnerName_id9V7Nft_oXD = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAnalyzerRunnerName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("9V7Nft_oXD").build();
   public static final SMethod<String> getAnalyzerRunnerFqName_id9V7Nft_vlj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAnalyzerRunnerFqName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("9V7Nft_vlj").build();
@@ -52,7 +53,7 @@ public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getRules_id3_iNRJnrAhj(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode rule : SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule"))) {
+    for (SNode rule : SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), AUX_pu59qr.Rule_af60f527)) {
       if (SLinkOperations.getTarget(rule, MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x3952cf7bd76e6440L, "analyzer")) == __thisNode__) {
         ListSequence.fromList(result).addElement(rule);
       }
@@ -110,5 +111,10 @@ public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_pu59qr {
+    /*package*/ static final SConcept Analyzer_a97ba59e = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
+    /*package*/ static final SConcept Rule_af60f527 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule");
   }
 }

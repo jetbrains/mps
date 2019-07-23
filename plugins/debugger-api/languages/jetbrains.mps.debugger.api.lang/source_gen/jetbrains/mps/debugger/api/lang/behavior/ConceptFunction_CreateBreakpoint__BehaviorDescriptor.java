@@ -4,7 +4,6 @@ package jetbrains.mps.debugger.api.lang.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,10 +23,11 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 
 public final class ConceptFunction_CreateBreakpoint__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb93aL, "jetbrains.mps.debugger.api.lang.structure.ConceptFunction_CreateBreakpoint");
+  private static final SAbstractConcept CONCEPT = AUX_2a22mu.ConceptFunction_CreateBreakpoint_7f03840c;
 
   public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
   public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
@@ -39,16 +39,16 @@ public final class ConceptFunction_CreateBreakpoint__BehaviorDescriptor extends 
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x11a2c8c0148e6290L, "jetbrains.mps.debugger.api.lang.structure.ConceptFunctionParameter_DebuggableNode"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x11a2c8c0148e628cL, "jetbrains.mps.debugger.api.lang.structure.ConceptFunctionParameter_Debug_Project"));
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, AUX_2a22mu.ConceptFunction_e08795a5);
+    ListSequence.fromList(result).addElement(AUX_2a22mu.ConceptFunctionParameter_DebuggableNode_b1bccd5e);
+    ListSequence.fromList(result).addElement(AUX_2a22mu.ConceptFunctionParameter_Debug_Project_b1bccd45);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     return _quotation_createNode_m5jr7m_a0a1();
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
-    List<SNode> result = IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb93aL, "jetbrains.mps.debugger.api.lang.structure.ConceptFunction_CreateBreakpoint"));
+    List<SNode> result = IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invokeSuper(__thisNode__, AUX_2a22mu.ConceptFunction_CreateBreakpoint_7f03840c);
     ListSequence.fromList(result).addSequence(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5jr7m_a0a0a1a2())));
     return result;
   }
@@ -115,5 +115,12 @@ public final class ConceptFunction_CreateBreakpoint__BehaviorDescriptor extends 
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)"), facade.createNodeId("4474271214082915164")));
     return quotedNode_1;
+  }
+
+  private static final class AUX_2a22mu {
+    /*package*/ static final SConcept ConceptFunction_CreateBreakpoint_7f03840c = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb93aL, "jetbrains.mps.debugger.api.lang.structure.ConceptFunction_CreateBreakpoint");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_DebuggableNode_b1bccd5e = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x11a2c8c0148e6290L, "jetbrains.mps.debugger.api.lang.structure.ConceptFunctionParameter_DebuggableNode");
+    /*package*/ static final SConcept ConceptFunctionParameter_Debug_Project_b1bccd45 = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x11a2c8c0148e628cL, "jetbrains.mps.debugger.api.lang.structure.ConceptFunctionParameter_Debug_Project");
   }
 }

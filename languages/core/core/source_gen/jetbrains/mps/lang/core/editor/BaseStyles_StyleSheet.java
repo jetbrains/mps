@@ -18,7 +18,7 @@ public class BaseStyles_StyleSheet {
   public static void apply_StubImplementation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new BaseStyles_StyleSheet.StubImplementationStyleClass(editorContext, node).apply(style, editorCell);
+    new StubImplementationStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class StubImplementationStyleClass extends AbstractStyleClass {

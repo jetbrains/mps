@@ -22,6 +22,7 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ContextRepositoryModules_TM extends TransformationMenuBase {
@@ -48,7 +49,7 @@ public class ContextRepositoryModules_TM extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new ContextRepositoryModules_TM.TMP_IncludeSM_5f0wbp_a0());
+      result.add(new TMP_IncludeSM_5f0wbp_a0());
     }
     return result;
   }
@@ -75,7 +76,11 @@ public class ContextRepositoryModules_TM extends TransformationMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.modelapi.editor.ContextRepositoryModules_SM");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+      return AUX_5f0wbp.ModulePointer_a7ab22d3;
     }
+  }
+
+  private static final class AUX_5f0wbp {
+    /*package*/ static final SConcept ModulePointer_a7ab22d3 = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 }

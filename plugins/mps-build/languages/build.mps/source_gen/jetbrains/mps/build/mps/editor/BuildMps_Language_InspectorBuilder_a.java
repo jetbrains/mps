@@ -42,6 +42,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BuildMps_Language_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -116,7 +117,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       editorCell.setCellId("property_uuid");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_2v2360.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -159,7 +160,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new BuildMps_Language_InspectorBuilder_a.sourcesListHandler_ucemm3_b1a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new sourcesListHandler_ucemm3_b1a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_sources");
     Style style = new StyleImpl();
@@ -187,7 +188,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d5083341d2fL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSource");
+      return AUX_2v2360.BuildMps_ModuleSource_90a851b8;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -241,7 +242,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new BuildMps_Language_InspectorBuilder_a.dependenciesListHandler_ucemm3_d1a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new dependenciesListHandler_ucemm3_d1a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_dependencies");
     Style style = new StyleImpl();
@@ -268,7 +269,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d5083341cb7L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependency");
+      return AUX_2v2360.BuildMps_ModuleDependency_90a84db9;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -322,7 +323,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_2() {
-    AbstractCellListHandler handler = new BuildMps_Language_InspectorBuilder_a.runtimeListHandler_ucemm3_f1a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new runtimeListHandler_ucemm3_f1a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_runtime");
     Style style = new StyleImpl();
@@ -349,7 +350,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464389f7L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleRuntime");
+      return AUX_2v2360.BuildMps_ModuleRuntime_43138da7;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -413,7 +414,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_3() {
-    AbstractCellListHandler handler = new BuildMps_Language_InspectorBuilder_a.accessoryListHandler_ucemm3_a2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new accessoryListHandler_ucemm3_a2a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_accessory");
     Style style = new StyleImpl();
@@ -440,7 +441,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6e2dd2f4c4c3e91dL, "accessory");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleRef");
+      return AUX_2v2360.BuildMps_ModuleRef_1be2652d;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -495,7 +496,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMps_Language_InspectorBuilder_a.generatorSingleRoleHandler_ucemm3_a4a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator"), getEditorContext());
+    SingleRoleCellProvider provider = new generatorSingleRoleHandler_ucemm3_a4a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator"), getEditorContext());
     return provider.createCell();
   }
   private static class generatorSingleRoleHandler_ucemm3_a4a extends SingleRoleCellProvider {
@@ -551,5 +552,13 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     protected String getNoTargetText() {
       return "<no generator>";
     }
+  }
+
+  private static final class AUX_2v2360 {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept BuildMps_ModuleSource_90a851b8 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d5083341d2fL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSource");
+    /*package*/ static final SConcept BuildMps_ModuleDependency_90a84db9 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d5083341cb7L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependency");
+    /*package*/ static final SConcept BuildMps_ModuleRuntime_43138da7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464389f7L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleRuntime");
+    /*package*/ static final SConcept BuildMps_ModuleRef_1be2652d = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleRef");
   }
 }

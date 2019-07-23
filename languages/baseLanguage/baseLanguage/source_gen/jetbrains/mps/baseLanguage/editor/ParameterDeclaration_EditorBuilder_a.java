@@ -33,6 +33,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ParameterDeclaration_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -93,7 +94,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ParameterDeclaration_EditorBuilder_a.annotationListHandler_vsmugd_a0a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new annotationListHandler_vsmugd_a0a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_annotation");
     editorCell.setSRole(handler.getElementSRole());
@@ -116,7 +117,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
+      return AUX_ltvidt.AnnotationInstance_51bc59df;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -161,7 +162,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ParameterDeclaration_EditorBuilder_a.typeSingleRoleHandler_vsmugd_c0a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_vsmugd_c0a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_vsmugd_c0a extends SingleRoleCellProvider {
@@ -225,5 +226,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.baseLanguage.editor.VariableDeclaration_NameCellComponent");
     ParameterDeclaration_Name_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
+  }
+
+  private static final class AUX_ltvidt {
+    /*package*/ static final SConcept AnnotationInstance_51bc59df = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
   }
 }

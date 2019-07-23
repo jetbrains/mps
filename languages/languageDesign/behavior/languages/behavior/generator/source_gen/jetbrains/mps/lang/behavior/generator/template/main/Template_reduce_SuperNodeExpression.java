@@ -122,5 +122,5 @@ public class Template_reduce_SuperNodeExpression extends TemplateDeclarationBase
     rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
     return rv;
   }
-  private static SNodePointer ifMacroRef_7zc0vk_b0a0c0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5722502787474237111");
+  private static final SNodePointer ifMacroRef_7zc0vk_b0a0c0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5722502787474237111");
 }

@@ -8,7 +8,7 @@
   <root nodeRef="r:8bac3b50-f9ad-4677-8274-76544dbc0da8(jetbrains.mps.lang.editor.table.matrix.test@tests)/1310272842909633660">
     <file name="CreateX_Test.java">
       <node id="1310272842909633660" at="18,25,19,25" concept="4" />
-      <node id="1310272842909633660" at="23,47,24,49" concept="1" />
+      <node id="1310272842909633660" at="23,47,24,36" concept="1" />
       <node id="1310272842909633660" at="29,52,30,19" concept="4" />
       <node id="1310272842909633660" at="34,51,35,72" concept="1" />
       <node id="1310272842909656081" at="35,72,36,69" concept="1" />
@@ -18,7 +18,7 @@
       <node id="1310272842909633660" at="22,0,26,0" concept="2" trace="test_CreateX#()V" />
       <node id="1310272842909633660" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1310272842909633660" at="18,25,19,25" />
-      <scope id="1310272842909633660" at="23,47,24,49" />
+      <scope id="1310272842909633660" at="23,47,24,36" />
       <scope id="1310272842909633660" at="29,52,30,19" />
       <scope id="1310272842909633660" at="34,51,36,69" />
       <scope id="1310272842909633660" at="18,0,21,0" />
@@ -34,7 +34,7 @@
   <root nodeRef="r:8bac3b50-f9ad-4677-8274-76544dbc0da8(jetbrains.mps.lang.editor.table.matrix.test@tests)/1310272842909656084">
     <file name="CreateY_Test.java">
       <node id="1310272842909656084" at="18,25,19,25" concept="4" />
-      <node id="1310272842909656084" at="23,47,24,49" concept="1" />
+      <node id="1310272842909656084" at="23,47,24,36" concept="1" />
       <node id="1310272842909656084" at="29,52,30,19" concept="4" />
       <node id="1310272842909656084" at="34,51,35,72" concept="1" />
       <node id="1310272842909656104" at="35,72,36,69" concept="1" />
@@ -44,7 +44,7 @@
       <node id="1310272842909656084" at="22,0,26,0" concept="2" trace="test_CreateY#()V" />
       <node id="1310272842909656084" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1310272842909656084" at="18,25,19,25" />
-      <scope id="1310272842909656084" at="23,47,24,49" />
+      <scope id="1310272842909656084" at="23,47,24,36" />
       <scope id="1310272842909656084" at="29,52,30,19" />
       <scope id="1310272842909656084" at="34,51,36,69" />
       <scope id="1310272842909656084" at="18,0,21,0" />
@@ -60,7 +60,7 @@
   <root nodeRef="r:8bac3b50-f9ad-4677-8274-76544dbc0da8(jetbrains.mps.lang.editor.table.matrix.test@tests)/4379396156287837027">
     <file name="Create_Test.java">
       <node id="4379396156287837027" at="18,24,19,25" concept="4" />
-      <node id="4379396156287837027" at="23,46,24,48" concept="1" />
+      <node id="4379396156287837027" at="23,46,24,36" concept="1" />
       <node id="4379396156287837027" at="29,52,30,19" concept="4" />
       <node id="4379396156287837027" at="34,51,35,72" concept="1" />
       <node id="4379396156287837038" at="35,72,36,69" concept="1" />
@@ -70,7 +70,7 @@
       <node id="4379396156287837027" at="22,0,26,0" concept="2" trace="test_Create#()V" />
       <node id="4379396156287837027" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4379396156287837027" at="18,24,19,25" />
-      <scope id="4379396156287837027" at="23,46,24,48" />
+      <scope id="4379396156287837027" at="23,46,24,36" />
       <scope id="4379396156287837027" at="29,52,30,19" />
       <scope id="4379396156287837027" at="34,51,36,69" />
       <scope id="4379396156287837027" at="18,0,21,0" />
@@ -86,7 +86,7 @@
   <root nodeRef="r:8bac3b50-f9ad-4677-8274-76544dbc0da8(jetbrains.mps.lang.editor.table.matrix.test@tests)/8748948598094995664">
     <file name="RemoveY_Test.java">
       <node id="8748948598094995664" at="18,25,19,25" concept="4" />
-      <node id="8748948598094995664" at="23,47,24,49" concept="1" />
+      <node id="8748948598094995664" at="23,47,24,36" concept="1" />
       <node id="8748948598094995664" at="29,52,30,19" concept="4" />
       <node id="8748948598094995664" at="34,51,35,72" concept="1" />
       <node id="1315230867830196353" at="35,72,36,72" concept="1" />
@@ -96,7 +96,7 @@
       <node id="8748948598094995664" at="22,0,26,0" concept="2" trace="test_RemoveY#()V" />
       <node id="8748948598094995664" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8748948598094995664" at="18,25,19,25" />
-      <scope id="8748948598094995664" at="23,47,24,49" />
+      <scope id="8748948598094995664" at="23,47,24,36" />
       <scope id="8748948598094995664" at="29,52,30,19" />
       <scope id="8748948598094995664" at="34,51,36,72" />
       <scope id="8748948598094995664" at="18,0,21,0" />

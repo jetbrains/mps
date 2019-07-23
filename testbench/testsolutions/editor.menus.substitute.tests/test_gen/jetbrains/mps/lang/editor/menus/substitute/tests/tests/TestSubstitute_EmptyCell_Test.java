@@ -23,7 +23,7 @@ public class TestSubstitute_EmptyCell_Test extends BaseTransformationTest {
 
   @Test
   public void test_TestSubstitute_EmptyCell() throws Throwable {
-    new TestSubstitute_EmptyCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

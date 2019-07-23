@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -34,6 +33,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -44,6 +44,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CreateOrPattern_Contribution extends TransformationMenuBase {
   public CreateOrPattern_Contribution() {
@@ -72,7 +73,7 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new CreateOrPattern_Contribution.TMP_Group_sybsm7_a0());
+      result.add(new TMP_Group_sybsm7_a0());
     }
     return result;
   }
@@ -80,7 +81,7 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
   public class TMP_Group_sybsm7_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), false, false) != null;
+      return SNodeOperations.getNodeAncestor(_context.getNode(), AUX_sybsm7.PatternExpression_b5cd3dd6, false, false) != null;
     }
 
     @NotNull
@@ -96,12 +97,12 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new CreateOrPattern_Contribution.TMP_Group_sybsm7_a0.TMP_Action_sybsm7_a0a(), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_sybsm7_a0.TMP_Action_sybsm7_a0a(), AUX_sybsm7.OrPattern_60bda891));
     }
     private class TMP_Action_sybsm7_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        CreateOrPattern_Contribution.TMP_Group_sybsm7_a0.TMP_Action_sybsm7_a0a.Item item = new CreateOrPattern_Contribution.TMP_Group_sybsm7_a0.TMP_Action_sybsm7_a0a.Item(context);
+        TMP_Group_sybsm7_a0.TMP_Action_sybsm7_a0a.Item item = new TMP_Group_sybsm7_a0.TMP_Action_sybsm7_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -136,7 +137,7 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode orPattern = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern"), null);
+          SNode orPattern = SNodeFactoryOperations.createNewNode(AUX_sybsm7.OrPattern_60bda891, null);
           ListSequence.fromList(AttributeOperations.getAttributeList(_context.getNode(), new IAttributeDescriptor.AllAttributes())).addElement(orPattern);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.setTarget(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(orPattern, MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, 0x27f758f8bc6acaceL, "clause"))).first(), MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern")), MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode"), SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(SNodeOperations.getConcept(_context.getNode())))), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -145,7 +146,7 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern");
+          return AUX_sybsm7.OrPattern_60bda891;
         }
 
 
@@ -156,7 +157,7 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern");
+          SAbstractConcept outputConcept = AUX_sybsm7.OrPattern_60bda891;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -165,5 +166,10 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_sybsm7 {
+    /*package*/ static final SConcept PatternExpression_b5cd3dd6 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
+    /*package*/ static final SConcept OrPattern_60bda891 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern");
   }
 }

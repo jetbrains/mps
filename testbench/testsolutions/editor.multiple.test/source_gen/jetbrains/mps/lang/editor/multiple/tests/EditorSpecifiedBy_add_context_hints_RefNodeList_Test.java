@@ -21,7 +21,7 @@ public class EditorSpecifiedBy_add_context_hints_RefNodeList_Test extends BaseTr
 
   @Test
   public void test_EditorSpecifiedBy_add_context_hints_RefNodeList() throws Throwable {
-    new EditorSpecifiedBy_add_context_hints_RefNodeList_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -24,7 +24,7 @@ public class TestSubstitute_BooleanPropertyMenuPart_Test extends BaseTransformat
 
   @Test
   public void test_TestSubstitute_BooleanPropertyMenuPart() throws Throwable {
-    new TestSubstitute_BooleanPropertyMenuPart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

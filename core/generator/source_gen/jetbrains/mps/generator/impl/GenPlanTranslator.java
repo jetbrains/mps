@@ -17,6 +17,8 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /**
  * Mediator between a model with Plan node and {@link jetbrains.mps.generator.ModelGenerationPlan } run-time presentation.
@@ -47,19 +49,19 @@ public final class GenPlanTranslator {
     ArrayList<SModuleReference> generators = new ArrayList<SModuleReference>();
 
     for (SNode stepNode : SLinkOperations.getChildren(myPlanDeclaration, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, 0x19443180a2071807L, "steps"))) {
-      if (SNodeOperations.isInstanceOf(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint"))) {
-        planBuilder.recordCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint")), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec"))));
-      } else if (SNodeOperations.isInstanceOf(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, "jetbrains.mps.lang.generator.plan.structure.Transform"))) {
-        for (SNode lid : SLinkOperations.getChildren(SNodeOperations.as(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, "jetbrains.mps.lang.generator.plan.structure.Transform")), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages"))) {
-          langueges.add(((SLanguage) BHReflection.invoke0(lid, MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L, "jetbrains.mps.lang.smodel.structure.LanguageIdentity"), SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))));
+      if (SNodeOperations.isInstanceOf(stepNode, AUX_4w8wxl.Checkpoint_4c7f4192)) {
+        planBuilder.recordCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, AUX_4w8wxl.Checkpoint_4c7f4192), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec"))));
+      } else if (SNodeOperations.isInstanceOf(stepNode, AUX_4w8wxl.Transform_4c7f41a8)) {
+        for (SNode lid : SLinkOperations.getChildren(SNodeOperations.as(stepNode, AUX_4w8wxl.Transform_4c7f41a8), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages"))) {
+          langueges.add(((SLanguage) BHReflection.invoke0(lid, AUX_4w8wxl.LanguageIdentity_f5daa6f, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))));
         }
         planBuilder.transformLanguage(langueges.toArray(new SLanguage[langueges.size()]));
         langueges.clear();
-      } else if (SNodeOperations.isInstanceOf(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, "jetbrains.mps.lang.generator.plan.structure.ApplyGenerators"))) {
-        SNode applyGeneratorsStep = SNodeOperations.as(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, "jetbrains.mps.lang.generator.plan.structure.ApplyGenerators"));
+      } else if (SNodeOperations.isInstanceOf(stepNode, AUX_4w8wxl.ApplyGenerators_1f67a8b7)) {
+        SNode applyGeneratorsStep = SNodeOperations.as(stepNode, AUX_4w8wxl.ApplyGenerators_1f67a8b7);
         final boolean withExtended = SPropertyOperations.getBoolean(applyGeneratorsStep, MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xc11e5088a799353L, "withExtended"));
-        for (SNode generator : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(applyGeneratorsStep, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0x73246de9adf5a45cL, "generator")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x73246de9adecb80dL, "jetbrains.mps.lang.smodel.structure.GeneratorModulePointer")))) {
-          SModuleReference mr = ((SModuleReference) BHReflection.invoke0(SLinkOperations.getTarget(generator, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x73246de9adecb80dL, 0x73246de9adecb874L, "module")), MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e85338e1eL, "jetbrains.mps.lang.smodel.structure.ModuleIdentity"), SMethodTrimmedId.create("getModuleReference", null, "nJmxU5cSSU")));
+        for (SNode generator : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(applyGeneratorsStep, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0x73246de9adf5a45cL, "generator")), AUX_4w8wxl.GeneratorModulePointer_1f6a09d9))) {
+          SModuleReference mr = ((SModuleReference) BHReflection.invoke0(SLinkOperations.getTarget(generator, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x73246de9adecb80dL, 0x73246de9adecb874L, "module")), AUX_4w8wxl.ModuleIdentity_5afa6d61, SMethodTrimmedId.create("getModuleReference", null, "nJmxU5cSSU")));
           if (mr == null) {
             continue;
           }
@@ -72,16 +74,16 @@ public final class GenPlanTranslator {
           planBuilder.applyGenerators(generators);
         }
         generators.clear();
-      } else if (SNodeOperations.isInstanceOf(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, "jetbrains.mps.lang.generator.plan.structure.CheckpointSynchronization"))) {
-        planBuilder.synchronizeWithCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, "jetbrains.mps.lang.generator.plan.structure.CheckpointSynchronization")), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint"))));
-      } else if (SNodeOperations.isInstanceOf(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x56d679ca1f4b53ceL, "jetbrains.mps.lang.generator.plan.structure.CheckpointDeclaration"))) {
-        SNode cpDecl = SNodeOperations.as(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x56d679ca1f4b53ceL, "jetbrains.mps.lang.generator.plan.structure.CheckpointDeclaration"));
+      } else if (SNodeOperations.isInstanceOf(stepNode, AUX_4w8wxl.CheckpointSynchronization_776d3712)) {
+        planBuilder.synchronizeWithCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, AUX_4w8wxl.CheckpointSynchronization_776d3712), MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint"))));
+      } else if (SNodeOperations.isInstanceOf(stepNode, AUX_4w8wxl.CheckpointDeclaration_224eb19c)) {
+        SNode cpDecl = SNodeOperations.as(stepNode, AUX_4w8wxl.CheckpointDeclaration_224eb19c);
         planBuilder.declareCheckpoint(new CheckpointIdentity(myPlanIdentity, SPropertyOperations.getString(cpDecl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))));
-      } else if (SNodeOperations.isInstanceOf(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x336c2500000e1b2fL, "jetbrains.mps.lang.generator.plan.structure.IncludePlan"))) {
-        SNode includedPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x336c2500000e1b2fL, "jetbrains.mps.lang.generator.plan.structure.IncludePlan")), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x336c2500000e1b2fL, 0x336c2500000e1b32L, "plan"));
+      } else if (SNodeOperations.isInstanceOf(stepNode, AUX_4w8wxl.IncludePlan_1279e1cd)) {
+        SNode includedPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, AUX_4w8wxl.IncludePlan_1279e1cd), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x336c2500000e1b2fL, 0x336c2500000e1b32L, "plan"));
         new GenPlanTranslator(includedPlan).feed(planBuilder);
-      } else if (SNodeOperations.isInstanceOf(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x2bf683196b12a3cbL, "jetbrains.mps.lang.generator.plan.structure.Fork"))) {
-        SNode branchPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x2bf683196b12a3cbL, "jetbrains.mps.lang.generator.plan.structure.Fork")), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x2bf683196b12a3cbL, 0x2bf683196b12a3ccL, "plan"));
+      } else if (SNodeOperations.isInstanceOf(stepNode, AUX_4w8wxl.Fork_ed10121)) {
+        SNode branchPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, AUX_4w8wxl.Fork_ed10121), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x2bf683196b12a3cbL, 0x2bf683196b12a3ccL, "plan"));
         GenerationPlanBuilder branchBuilder = planBuilder.fork();
         new GenPlanTranslator(branchPlan).feed(branchBuilder);
         branchBuilder.wrapUp(new PlanIdentity(SPropertyOperations.getString(branchPlan, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))));
@@ -91,21 +93,38 @@ public final class GenPlanTranslator {
   }
 
   private CheckpointIdentity cpIdentity(SNode cpSpec) {
-    if (SNodeOperations.isInstanceOf(cpSpec, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec"))) {
-      return new CheckpointIdentity(myPlanIdentity, SPropertyOperations.getString(SNodeOperations.as(cpSpec, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+    if (SNodeOperations.isInstanceOf(cpSpec, AUX_4w8wxl.InPlaceCheckpointSpec_e4cad03b)) {
+      return new CheckpointIdentity(myPlanIdentity, SPropertyOperations.getString(SNodeOperations.as(cpSpec, AUX_4w8wxl.InPlaceCheckpointSpec_e4cad03b), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     }
-    if (SNodeOperations.isInstanceOf(cpSpec, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, "jetbrains.mps.lang.generator.plan.structure.DeclaredCheckpointSpec"))) {
-      SNode cpDecl = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, "jetbrains.mps.lang.generator.plan.structure.DeclaredCheckpointSpec")), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, 0x340cd07aed7cb300L, "cpDecl"));
-      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpDecl), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))), SPropertyOperations.getString(cpDecl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+    if (SNodeOperations.isInstanceOf(cpSpec, AUX_4w8wxl.DeclaredCheckpointSpec_e4d64064)) {
+      SNode cpDecl = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, AUX_4w8wxl.DeclaredCheckpointSpec_e4d64064), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, 0x340cd07aed7cb300L, "cpDecl"));
+      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpDecl), AUX_4w8wxl.Plan_4c7f418c), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))), SPropertyOperations.getString(cpDecl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     }
-    if (SNodeOperations.isInstanceOf(cpSpec, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec"))) {
-      SNode cpStep = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec")), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint"));
-      SNode inPlaceCPSpec = SNodeOperations.as(SLinkOperations.getTarget(cpStep, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec")), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec"));
+    if (SNodeOperations.isInstanceOf(cpSpec, AUX_4w8wxl.InPlaceCheckpointRefSpec_e4d640e7)) {
+      SNode cpStep = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, AUX_4w8wxl.InPlaceCheckpointRefSpec_e4d640e7), MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint"));
+      SNode inPlaceCPSpec = SNodeOperations.as(SLinkOperations.getTarget(cpStep, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec")), AUX_4w8wxl.InPlaceCheckpointSpec_e4cad03b);
       if (inPlaceCPSpec == null) {
         throw new IllegalStateException();
       }
-      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpStep), MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))), SPropertyOperations.getString(inPlaceCPSpec, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpStep), AUX_4w8wxl.Plan_4c7f418c), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))), SPropertyOperations.getString(inPlaceCPSpec, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     }
     throw new IllegalStateException("Unsupported checkpoint specification " + SNodeOperations.getConcept(cpSpec));
+  }
+
+  private static final class AUX_4w8wxl {
+    /*package*/ static final SConcept Checkpoint_4c7f4192 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint");
+    /*package*/ static final SInterfaceConcept LanguageIdentity_f5daa6f = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L, "jetbrains.mps.lang.smodel.structure.LanguageIdentity");
+    /*package*/ static final SConcept Transform_4c7f41a8 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, "jetbrains.mps.lang.generator.plan.structure.Transform");
+    /*package*/ static final SConcept ApplyGenerators_1f67a8b7 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, "jetbrains.mps.lang.generator.plan.structure.ApplyGenerators");
+    /*package*/ static final SInterfaceConcept ModuleIdentity_5afa6d61 = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e85338e1eL, "jetbrains.mps.lang.smodel.structure.ModuleIdentity");
+    /*package*/ static final SConcept GeneratorModulePointer_1f6a09d9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x73246de9adecb80dL, "jetbrains.mps.lang.smodel.structure.GeneratorModulePointer");
+    /*package*/ static final SConcept CheckpointSynchronization_776d3712 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, "jetbrains.mps.lang.generator.plan.structure.CheckpointSynchronization");
+    /*package*/ static final SConcept CheckpointDeclaration_224eb19c = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x56d679ca1f4b53ceL, "jetbrains.mps.lang.generator.plan.structure.CheckpointDeclaration");
+    /*package*/ static final SConcept IncludePlan_1279e1cd = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x336c2500000e1b2fL, "jetbrains.mps.lang.generator.plan.structure.IncludePlan");
+    /*package*/ static final SConcept Fork_ed10121 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x2bf683196b12a3cbL, "jetbrains.mps.lang.generator.plan.structure.Fork");
+    /*package*/ static final SConcept InPlaceCheckpointSpec_e4cad03b = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec");
+    /*package*/ static final SConcept DeclaredCheckpointSpec_e4d64064 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, "jetbrains.mps.lang.generator.plan.structure.DeclaredCheckpointSpec");
+    /*package*/ static final SConcept Plan_4c7f418c = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan");
+    /*package*/ static final SConcept InPlaceCheckpointRefSpec_e4d640e7 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec");
   }
 }

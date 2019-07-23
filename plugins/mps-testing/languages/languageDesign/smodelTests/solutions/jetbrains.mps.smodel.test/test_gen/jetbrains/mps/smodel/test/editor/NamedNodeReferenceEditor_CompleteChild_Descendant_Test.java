@@ -21,7 +21,7 @@ public class NamedNodeReferenceEditor_CompleteChild_Descendant_Test extends Base
 
   @Test
   public void test_NamedNodeReferenceEditor_CompleteChild_Descendant() throws Throwable {
-    new NamedNodeReferenceEditor_CompleteChild_Descendant_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

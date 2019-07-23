@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.javadoc.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,15 +15,17 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class LinkInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag");
+  private static final SAbstractConcept CONCEPT = AUX_nz26cr.LinkInlineDocTag_8b6a6704;
 
   public static final SMethod<String> buildCommentText_id7Qt73fl50wX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7Qt73fl50wX").build();
 
@@ -94,5 +95,9 @@ public final class LinkInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_nz26cr {
+    /*package*/ static final SConcept LinkInlineDocTag_8b6a6704 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag");
   }
 }

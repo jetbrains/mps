@@ -5,13 +5,13 @@ package jetbrains.mps.baseLanguage.closures.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.closures.util.Constants;
@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationScript {
   public UpdateClosuresRuntime_MigrationScript() {
@@ -40,7 +41,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+        return AUX_7zsbjc.ClassConcept_e2711824;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -107,7 +108,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+        return AUX_7zsbjc.ClassConcept_e2711824;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -177,7 +178,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+        return AUX_7zsbjc.ClassConcept_e2711824;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -249,7 +250,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+        return AUX_7zsbjc.ClassConcept_e2711824;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -300,7 +301,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
               public boolean accept(SNode it) {
                 return ename.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
               }
-            }), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"));
+            }), AUX_7zsbjc.Interface_bca2069);
             List<SNode> eifcParams = new ArrayList<SNode>();
             ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
@@ -332,7 +333,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+        return AUX_7zsbjc.ClassConcept_e2711824;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -383,7 +384,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
               public boolean accept(SNode it) {
                 return ename.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
               }
-            }), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"));
+            }), AUX_7zsbjc.Interface_bca2069);
             List<SNode> eifcParams = new ArrayList<SNode>();
             ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
@@ -415,7 +416,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+        return AUX_7zsbjc.ClassConcept_e2711824;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -464,7 +465,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
               public boolean accept(SNode it) {
                 return ename.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
               }
-            }), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"));
+            }), AUX_7zsbjc.Interface_bca2069);
             List<SNode> eifcParams = new ArrayList<SNode>();
             ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
@@ -1261,5 +1262,10 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1024639ed74L, "TypeVariableDeclaration"), null, null, false);
     SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_7zsbjc {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

@@ -357,8 +357,8 @@ public class Template_gen_static_method extends TemplateDeclarationBase implemen
     rv[13] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer templateNode_2hhfmn_c0a0a1a1a1a2a1a1a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905150327964");
-  private static SNodePointer templateNode_2hhfmn_c0a0a1a1a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151613299");
-  private static SNodePointer templateNode_2hhfmn_c0a0a1a2a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4923130412071517799");
-  private static SNodePointer templateNode_2hhfmn_c0a0a1a2a1a2a1a2a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151738388");
+  private static final SNodePointer templateNode_2hhfmn_c0a0a1a1a1a2a1a1a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905150327964");
+  private static final SNodePointer templateNode_2hhfmn_c0a0a1a1a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151613299");
+  private static final SNodePointer templateNode_2hhfmn_c0a0a1a2a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4923130412071517799");
+  private static final SNodePointer templateNode_2hhfmn_c0a0a1a2a1a2a1a2a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151738388");
 }

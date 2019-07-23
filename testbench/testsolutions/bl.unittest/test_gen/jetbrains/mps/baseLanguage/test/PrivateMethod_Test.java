@@ -32,15 +32,15 @@ public class PrivateMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck7938578788783487552() throws Throwable {
-    new PrivateMethod_Test.TestBody(this).test_ErrorMessagesCheck7938578788783487552();
+    new TestBody(this).test_ErrorMessagesCheck7938578788783487552();
   }
   @Test
   public void test_NodePrivateMethodIsNeverUsedCheck7938578788783488602() throws Throwable {
-    new PrivateMethod_Test.TestBody(this).test_NodePrivateMethodIsNeverUsedCheck7938578788783488602();
+    new TestBody(this).test_NodePrivateMethodIsNeverUsedCheck7938578788783488602();
   }
   @Test
   public void test_NodePrivateMethodIsNeverUsedCheck7938578788783495769() throws Throwable {
-    new PrivateMethod_Test.TestBody(this).test_NodePrivateMethodIsNeverUsedCheck7938578788783495769();
+    new TestBody(this).test_NodePrivateMethodIsNeverUsedCheck7938578788783495769();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

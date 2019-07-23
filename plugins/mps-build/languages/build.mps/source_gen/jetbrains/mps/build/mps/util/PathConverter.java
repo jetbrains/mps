@@ -21,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
 import java.io.IOException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PathConverter {
   private final RelativePathHelper workingDirectory;
@@ -40,7 +41,7 @@ public class PathConverter {
 
     final List<Tuples._2<String, SNode>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, SNode>>());
     final List<SNode> withoutPath = ListSequence.fromList(new ArrayList<SNode>());
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro"))).visitAll(new IVisitor<SNode>() {
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros")), AUX_jbtl65.BuildFolderMacro_b970540e)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         String path = normalizePath(BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(it, ctx), true);
         if (path != null && path.length() > 1) {
@@ -67,7 +68,7 @@ public class PathConverter {
    * 
    * @return never null
    */
-  public List<SNode> convertPath(String path) throws PathConverter.PathConvertException {
+  public List<SNode> convertPath(String path) throws PathConvertException {
     path = normalizePath(path, false);
     String withSlash = normalizePath(path, true);
     List<SNode> result = new ArrayList<SNode>();
@@ -87,7 +88,7 @@ public class PathConverter {
       try {
         ListSequence.fromList(result).addElement(myPathBuilder.buildRelative(workingDirectory.makeRelative(withSlash)));
       } catch (RelativePathHelper.PathException ex) {
-        throw new PathConverter.PathConvertException(ex.toString());
+        throw new PathConvertException(ex.toString());
       }
     }
     if (startsWithMacroPrefix) {
@@ -101,7 +102,7 @@ public class PathConverter {
       }
     }
     if (ListSequence.fromList(result).isEmpty()) {
-      throw new PathConverter.PathConvertException(String.format("source path (%s) should be under working directory (%s), or any macros default directory", path, workingDirectory.getBasePath()));
+      throw new PathConvertException(String.format("source path (%s) should be under working directory (%s), or any macros default directory", path, workingDirectory.getBasePath()));
     }
     return result;
   }
@@ -132,4 +133,7 @@ public class PathConverter {
 
 
 
+  private static final class AUX_jbtl65 {
+    /*package*/ static final SConcept BuildFolderMacro_b970540e = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro");
+  }
 }

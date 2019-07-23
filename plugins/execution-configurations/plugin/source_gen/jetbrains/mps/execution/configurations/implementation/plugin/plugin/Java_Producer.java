@@ -11,16 +11,18 @@ import java.util.ArrayList;
 import jetbrains.mps.execution.api.configurations.BaseMpsProducer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.plugins.runconfigs.MPSPsiElement;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.actions.ConfigurationContext;
 import jetbrains.mps.baseLanguage.behavior.StaticMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.execution.util.behavior.IMainClass__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class Java_Producer {
 
@@ -40,9 +42,9 @@ public final class Java_Producer {
       configurationFactory = configurationType.getConfigurationFactories()[0];
     }
     List<RuntimeConfigurationProducer> creators = ListSequence.fromList(new ArrayList<RuntimeConfigurationProducer>());
-    ListSequence.fromList(creators).addElement(new Java_Producer.ProducerPart_NodeClassConcept_d1i8dk_a(configurationFactory));
-    ListSequence.fromList(creators).addElement(new Java_Producer.ProducerPart_Node_d1i8dk_b(configurationFactory));
-    ListSequence.fromList(creators).addElement(new Java_Producer.ProducerPart_NodeIMainClass_d1i8dk_c(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_NodeClassConcept_d1i8dk_a(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_Node_d1i8dk_b(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_NodeIMainClass_d1i8dk_c(configurationFactory));
     return creators;
   }
 
@@ -53,7 +55,7 @@ public final class Java_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), AUX_ud0a6f.ClassConcept_e2711824);
     }
 
     @Override
@@ -80,8 +82,8 @@ public final class Java_Producer {
     }
 
     @Override
-    public Java_Producer.ProducerPart_NodeClassConcept_d1i8dk_a clone() {
-      return (Java_Producer.ProducerPart_NodeClassConcept_d1i8dk_a) super.clone();
+    public ProducerPart_NodeClassConcept_d1i8dk_a clone() {
+      return (ProducerPart_NodeClassConcept_d1i8dk_a) super.clone();
     }
   }
   public static final class ProducerPart_Node_d1i8dk_b extends BaseMpsProducer<SNode> {
@@ -91,20 +93,20 @@ public final class Java_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"));
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), AUX_ud0a6f.BaseConcept_bc2351f);
     }
 
     @Override
     protected Java_Configuration doCreateConfiguration(final SNode source) {
       setSourceElement(MPSPsiElement.createFor(source, getMpsProject()));
-      SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"), true, false);
+      SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, AUX_ud0a6f.StaticMethodDeclaration_9cd8c445, true, false);
       if (mainMethodCandidate == null) {
         return null;
       }
       if (!((boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(mainMethodCandidate))) {
         return null;
       }
-      SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
+      SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, AUX_ud0a6f.Classifier_4b7e553, false, false);
       if ((classifier == null)) {
         return null;
       }
@@ -126,8 +128,8 @@ public final class Java_Producer {
     }
 
     @Override
-    public Java_Producer.ProducerPart_Node_d1i8dk_b clone() {
-      return (Java_Producer.ProducerPart_Node_d1i8dk_b) super.clone();
+    public ProducerPart_Node_d1i8dk_b clone() {
+      return (ProducerPart_Node_d1i8dk_b) super.clone();
     }
   }
   public static final class ProducerPart_NodeIMainClass_d1i8dk_c extends BaseMpsProducer<SNode> {
@@ -137,7 +139,7 @@ public final class Java_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), MetaAdapterFactory.getInterfaceConcept(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L, "jetbrains.mps.execution.util.structure.IMainClass"));
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), AUX_ud0a6f.IMainClass_47cb36ac);
     }
 
     @Override
@@ -149,7 +151,7 @@ public final class Java_Producer {
       if (!(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(SNodeOperations.getModel(source)), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS")))) {
         return null;
       }
-      String name = (SNodeOperations.isInstanceOf(source, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")) ? SPropertyOperations.getString(SNodeOperations.cast(source, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : IMainClass__BehaviorDescriptor.getUnitName_id431DWIovi3n.invoke(source));
+      String name = (SNodeOperations.isInstanceOf(source, AUX_ud0a6f.INamedConcept_8cd7e247) ? SPropertyOperations.getString(SNodeOperations.cast(source, AUX_ud0a6f.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : IMainClass__BehaviorDescriptor.getUnitName_id431DWIovi3n.invoke(source));
       Java_Configuration configuration = ((Java_Configuration) getConfigurationFactory().createConfiguration("" + "Node " + name, getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getNode().setNode(source);
       return configuration;
@@ -165,8 +167,17 @@ public final class Java_Producer {
     }
 
     @Override
-    public Java_Producer.ProducerPart_NodeIMainClass_d1i8dk_c clone() {
-      return (Java_Producer.ProducerPart_NodeIMainClass_d1i8dk_c) super.clone();
+    public ProducerPart_NodeIMainClass_d1i8dk_c clone() {
+      return (ProducerPart_NodeIMainClass_d1i8dk_c) super.clone();
     }
+  }
+
+  private static final class AUX_ud0a6f {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept IMainClass_47cb36ac = MetaAdapterFactory.getInterfaceConcept(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L, "jetbrains.mps.execution.util.structure.IMainClass");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

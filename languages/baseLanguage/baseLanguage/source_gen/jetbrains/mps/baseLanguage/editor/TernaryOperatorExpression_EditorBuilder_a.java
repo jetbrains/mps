@@ -56,7 +56,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new TernaryOperatorExpression_EditorBuilder_a.conditionSingleRoleHandler_c45jqi_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_c45jqi_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_c45jqi_a0 extends SingleRoleCellProvider {
@@ -121,7 +121,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new TernaryOperatorExpression_EditorBuilder_a.ifTrueSingleRoleHandler_c45jqi_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue"), getEditorContext());
+    SingleRoleCellProvider provider = new ifTrueSingleRoleHandler_c45jqi_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue"), getEditorContext());
     return provider.createCell();
   }
   private static class ifTrueSingleRoleHandler_c45jqi_c0 extends SingleRoleCellProvider {
@@ -187,7 +187,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new TernaryOperatorExpression_EditorBuilder_a.ifFalseSingleRoleHandler_c45jqi_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse"), getEditorContext());
+    SingleRoleCellProvider provider = new ifFalseSingleRoleHandler_c45jqi_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse"), getEditorContext());
     return provider.createCell();
   }
   private static class ifFalseSingleRoleHandler_c45jqi_e0 extends SingleRoleCellProvider {

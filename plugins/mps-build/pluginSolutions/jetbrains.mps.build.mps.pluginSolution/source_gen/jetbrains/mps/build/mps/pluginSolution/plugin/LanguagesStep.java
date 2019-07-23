@@ -72,7 +72,7 @@ public class LanguagesStep extends AbstractStep {
         return 1;
       }
     }, true);
-    NamespaceTreeBuilder builder = new LanguagesStep.MyTreeBuilder(this.myProject);
+    NamespaceTreeBuilder builder = new MyTreeBuilder(this.myProject);
     for (ModuleData moduleData : ListSequence.fromList(children)) {
       builder.addNode(new CheckBoxNode(moduleData, false));
     }

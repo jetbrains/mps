@@ -24,7 +24,7 @@ public class DefaultEditor_DelOnInterfaceChild1DeleteParent_Test extends BaseTra
 
   @Test
   public void test_DefaultEditor_DelOnInterfaceChild1DeleteParent() throws Throwable {
-    new DefaultEditor_DelOnInterfaceChild1DeleteParent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

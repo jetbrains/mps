@@ -39,7 +39,7 @@ public class AddThrowDeclaration_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddThrowDeclaration() throws Throwable {
-    new AddThrowDeclaration_Test.TestBody(this).test_AddThrowDeclaration();
+    new TestBody(this).test_AddThrowDeclaration();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

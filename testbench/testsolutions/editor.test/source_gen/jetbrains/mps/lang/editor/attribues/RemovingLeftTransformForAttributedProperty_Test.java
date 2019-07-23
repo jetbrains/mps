@@ -22,7 +22,7 @@ public class RemovingLeftTransformForAttributedProperty_Test extends BaseTransfo
 
   @Test
   public void test_RemovingLeftTransformForAttributedProperty() throws Throwable {
-    new RemovingLeftTransformForAttributedProperty_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

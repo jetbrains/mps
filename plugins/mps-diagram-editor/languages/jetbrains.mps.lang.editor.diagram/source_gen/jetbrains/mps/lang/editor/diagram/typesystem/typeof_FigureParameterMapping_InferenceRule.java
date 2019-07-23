@@ -12,6 +12,7 @@ import jetbrains.mps.lang.editor.diagram.behavior.FigureParameterMapping__Behavi
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_FigureParameterMapping_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_FigureParameterMapping_InferenceRule() {
@@ -31,12 +32,16 @@ public class typeof_FigureParameterMapping_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a7d7c7L, "jetbrains.mps.lang.editor.diagram.structure.FigureParameterMapping");
+    return AUX_jncxd2.FigureParameterMapping_e994a522;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_jncxd2 {
+    /*package*/ static final SConcept FigureParameterMapping_e994a522 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a7d7c7L, "jetbrains.mps.lang.editor.diagram.structure.FigureParameterMapping");
   }
 }

@@ -26,6 +26,7 @@ import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class NewTemplateInCreateRootRule_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -52,7 +53,7 @@ public final class NewTemplateInCreateRootRule_Intention extends AbstractIntenti
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new NewTemplateInCreateRootRule_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -72,27 +73,27 @@ public final class NewTemplateInCreateRootRule_Intention extends AbstractIntenti
       final SNode rule = node;
       CreateFromUsageUtil.showCreateNewRootMenu(editorContext, new Setter<SNode>() {
         public void set(SNode root) {
-          if (!(SNodeOperations.isInstanceOf(root, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")))) {
+          if (!(SNodeOperations.isInstanceOf(root, AUX_h0ob8z.INamedConcept_8cd7e247))) {
             return;
           }
-          SPropertyOperations.set(SNodeOperations.cast(root, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), name.value);
+          SPropertyOperations.set(SNodeOperations.cast(root, AUX_h0ob8z.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), name.value);
           MacroIntentionsUtil.copyVirtualPackage(root, node);
-          SNodeFactoryOperations.setNewAttribute(root, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"));
-          SLinkOperations.setTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x10fbbd5854dL, "templateNode"), SNodeOperations.cast(root, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")));
+          SNodeFactoryOperations.setNewAttribute(root, new IAttributeDescriptor.NodeAttribute(AUX_h0ob8z.RootTemplateAnnotation_423b5b1a), AUX_h0ob8z.RootTemplateAnnotation_423b5b1a);
+          SLinkOperations.setTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x10fbbd5854dL, "templateNode"), SNodeOperations.cast(root, AUX_h0ob8z.INamedConcept_8cd7e247));
           SelectionUtil.selectCell(editorContext, rule, "templateName");
         }
       }, new Condition<SConcept>() {
         public boolean met(SConcept c) {
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch"))) {
+          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), AUX_h0ob8z.TemplateSwitch_30830689)) {
             return false;
           }
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"))) {
+          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), AUX_h0ob8z.MappingConfiguration_587b13db)) {
             return false;
           }
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration"))) {
+          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), AUX_h0ob8z.TemplateDeclaration_6074fd22)) {
             return false;
           }
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, "jetbrains.mps.lang.generator.structure.MappingScript"))) {
+          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), AUX_h0ob8z.MappingScript_44901c39)) {
             return false;
           }
           return true;
@@ -103,5 +104,14 @@ public final class NewTemplateInCreateRootRule_Intention extends AbstractIntenti
     public IntentionDescriptor getDescriptor() {
       return NewTemplateInCreateRootRule_Intention.this;
     }
+  }
+
+  private static final class AUX_h0ob8z {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept RootTemplateAnnotation_423b5b1a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept TemplateSwitch_30830689 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept TemplateDeclaration_6074fd22 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept MappingScript_44901c39 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, "jetbrains.mps.lang.generator.structure.MappingScript");
   }
 }

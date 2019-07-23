@@ -74,7 +74,7 @@ public class ScriptBuilder {
     if (ListSequence.fromList(errors).isNotEmpty()) {
       return new InvalidScript(errors);
     }
-    final Map<IFacet.Name, ScriptBuilder.FacetRefs> refs = MapSequence.fromMap(new HashMap<IFacet.Name, ScriptBuilder.FacetRefs>());
+    final Map<IFacet.Name, FacetRefs> refs = MapSequence.fromMap(new HashMap<IFacet.Name, FacetRefs>());
     this.collectRefs(refs, facetsView);
     if (ListSequence.fromList(errors).isNotEmpty()) {
       return new InvalidScript(errors);
@@ -133,15 +133,15 @@ public class ScriptBuilder {
       }
     }));
   }
-  private void collectRefs(final Map<IFacet.Name, ScriptBuilder.FacetRefs> refs, Map<IFacet.Name, IFacet> facetsView) {
+  private void collectRefs(final Map<IFacet.Name, FacetRefs> refs, Map<IFacet.Name, IFacet> facetsView) {
     for (IFacet fct : Sequence.fromIterable(MapSequence.fromMap(facetsView).values())) {
-      ScriptBuilder.FacetRefs facetRefs = new ScriptBuilder.FacetRefs(facetsView);
+      FacetRefs facetRefs = new FacetRefs(facetsView);
       facetRefs.collect(fct);
       MapSequence.fromMap(refs).put(fct.getName(), facetRefs);
     }
   }
-  private Iterable<IFacet.Name> toposortByExtended(final Map<IFacet.Name, ScriptBuilder.FacetRefs> refs, Map<IFacet.Name, IFacet> facetsView) {
-    for (IMapping<IFacet.Name, ScriptBuilder.FacetRefs> m : SetSequence.fromSet(MapSequence.fromMap(refs).mappingsSet())) {
+  private Iterable<IFacet.Name> toposortByExtended(final Map<IFacet.Name, FacetRefs> refs, Map<IFacet.Name, IFacet> facetsView) {
+    for (IMapping<IFacet.Name, FacetRefs> m : SetSequence.fromSet(MapSequence.fromMap(refs).mappingsSet())) {
       IFacet fct = MapSequence.fromMap(facetsView).get(m.key());
       for (IFacet ex : ListSequence.fromList(m.value().extended)) {
         ListSequence.fromList(MapSequence.fromMap(refs).get(ex.getName()).extendedBy).addElement(fct);

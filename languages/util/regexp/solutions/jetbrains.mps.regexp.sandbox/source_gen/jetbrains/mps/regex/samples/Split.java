@@ -19,6 +19,6 @@ import java.util.regex.Pattern;
       System.out.println("s = " + st);
     }
   }
-  private static Pattern REGEXP_nud8d_b0b0b = Pattern.compile("\\d+", 0);
-  private static Pattern REGEXP_nud8d_b0a0c = Pattern.compile("\\s+", 0);
+  private static final Pattern REGEXP_nud8d_b0b0b = Pattern.compile("\\d+", 0);
+  private static final Pattern REGEXP_nud8d_b0a0c = Pattern.compile("\\s+", 0);
 }

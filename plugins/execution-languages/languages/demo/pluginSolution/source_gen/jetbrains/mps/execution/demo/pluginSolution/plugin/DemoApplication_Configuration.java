@@ -7,11 +7,11 @@ import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
@@ -37,12 +37,13 @@ import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePoin
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DemoApplication_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(DemoApplication_Configuration.class);
-  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept"), new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(AUX_wfq56a.SomeConcept_beaeb5b9, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept")), MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid"));
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, AUX_wfq56a.SomeConcept_beaeb5b9), MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid"));
     }
   });
 
@@ -134,5 +135,9 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
   }
   public Object[] createMakeNodePointersTask() {
     return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNode().getNodeRef())};
+  }
+
+  private static final class AUX_wfq56a {
+    /*package*/ static final SConcept SomeConcept_beaeb5b9 = MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept");
   }
 }

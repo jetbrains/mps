@@ -4,7 +4,6 @@ package jetbrains.mps.lang.test.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,12 +17,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
+  private static final SAbstractConcept CONCEPT = AUX_hlbcog.TestInfo_c0c4a9c7;
 
   public static final SMethod<Boolean> reOpenProject_idThWTaQhG7P = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("reOpenProject").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("ThWTaQhG7P").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<String> getProjectPath_id4qWC2JVrBcn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getProjectPath").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4qWC2JVrBcn").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
@@ -34,7 +35,7 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean reOpenProject_idThWTaQhG7P(@NotNull SAbstractConcept __thisConcept__, SModel model) {
-    List<SNode> infos = SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo"));
+    List<SNode> infos = SModelOperations.roots(model, AUX_hlbcog.TestInfo_c0c4a9c7);
     if (ListSequence.fromList(infos).isEmpty()) {
       return false;
     }
@@ -42,7 +43,7 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
     return SPropertyOperations.getBoolean(testInfo, MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0xe51f392b64685d9L, "reOpenProject"));
   }
   /*package*/ static String getProjectPath_id4qWC2JVrBcn(@NotNull SAbstractConcept __thisConcept__, SModel model) {
-    List<SNode> infos = SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo"));
+    List<SNode> infos = SModelOperations.roots(model, AUX_hlbcog.TestInfo_c0c4a9c7);
     if (ListSequence.fromList(infos).isEmpty()) {
       return null;
     }
@@ -96,5 +97,9 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_hlbcog {
+    /*package*/ static final SConcept TestInfo_c0c4a9c7 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
   }
 }

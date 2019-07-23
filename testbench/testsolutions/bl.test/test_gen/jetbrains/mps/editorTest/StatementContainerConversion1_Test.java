@@ -21,7 +21,7 @@ public class StatementContainerConversion1_Test extends BaseTransformationTest {
 
   @Test
   public void test_StatementContainerConversion1() throws Throwable {
-    new StatementContainerConversion1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

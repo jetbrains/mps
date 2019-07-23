@@ -80,7 +80,7 @@ public class XmlModelPersistence implements ModelFactory {
     if (!(supports(dataSource))) {
       throw new UnsupportedDataSourceException(dataSource);
     }
-    CustomPersistenceLoadFacility facility = new XmlModelPersistence.XmlCustomPersistenceLoadFacility((StreamDataSource) dataSource, this);
+    CustomPersistenceLoadFacility facility = new XmlCustomPersistenceLoadFacility((StreamDataSource) dataSource, this);
     return CustomPersistenceModelWithHeader.readHeaderAndCreate((StreamDataSource) dataSource, facility);
   }
 
@@ -205,7 +205,7 @@ public class XmlModelPersistence implements ModelFactory {
   @NotNull
   @Override
   public ModelFactoryType getType() {
-    return XmlModelPersistence.XmlModelPersistenceType.INSTANCE;
+    return XmlModelPersistenceType.INSTANCE;
   }
 
   public enum XmlModelPersistenceType implements ModelFactoryType {
@@ -227,7 +227,7 @@ public class XmlModelPersistence implements ModelFactory {
     }
     org.jetbrains.mps.openapi.model.SModelId id = myFacade.createModelId("path:" + dataSource);
     SModelReference ref = myFacade.createModelReference(null, id, name);
-    XmlModelPersistence.XmlCustomPersistenceLoadFacility facility = new XmlModelPersistence.XmlCustomPersistenceLoadFacility((StreamDataSource) dataSource, this);
+    XmlCustomPersistenceLoadFacility facility = new XmlCustomPersistenceLoadFacility((StreamDataSource) dataSource, this);
     CustomPersistenceModelWithHeader newModel = CustomPersistenceModelWithHeader.createFromScratch(new SModelSimpleHeader(ref), (StreamDataSource) dataSource, facility);
     addEmptyRootAndImportXMLLang(newModel);
     return newModel;
@@ -276,7 +276,7 @@ public class XmlModelPersistence implements ModelFactory {
     // here the client of #save is responsible of providing the correct model 
     SModelSimpleHeader newHeader = new SModelSimpleHeader(model.getReference());
     jetbrains.mps.smodel.SModel modelData = ((SModelBase) model).getSModel();
-    XmlModelPersistence.XmlCustomPersistenceLoadFacility auxFacility = new XmlModelPersistence.XmlCustomPersistenceLoadFacility((StreamDataSource) dataSource, this);
+    XmlCustomPersistenceLoadFacility auxFacility = new XmlCustomPersistenceLoadFacility((StreamDataSource) dataSource, this);
     auxFacility.writeModel(newHeader, modelData);
   }
 

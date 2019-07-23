@@ -23,7 +23,7 @@ public class LT_DotExpression_with_UnaryMinus_Test extends BaseTransformationTes
 
   @Test
   public void test_LT_DotExpression_with_UnaryMinus() throws Throwable {
-    new LT_DotExpression_with_UnaryMinus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

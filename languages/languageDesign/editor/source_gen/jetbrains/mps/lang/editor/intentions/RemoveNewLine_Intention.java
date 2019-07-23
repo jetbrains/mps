@@ -16,8 +16,9 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.behavior.IStyleContainer__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class RemoveNewLine_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -44,7 +45,7 @@ public final class RemoveNewLine_Intention extends AbstractIntentionDescriptor i
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new RemoveNewLine_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -57,11 +58,15 @@ public final class RemoveNewLine_Intention extends AbstractIntentionDescriptor i
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120154df6f3L, "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem"))).first());
+      SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, AUX_hm08ke.IndentLayoutNewLineStyleClassItem_380790f6)).first());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return RemoveNewLine_Intention.this;
     }
+  }
+
+  private static final class AUX_hm08ke {
+    /*package*/ static final SConcept IndentLayoutNewLineStyleClassItem_380790f6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120154df6f3L, "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem");
   }
 }

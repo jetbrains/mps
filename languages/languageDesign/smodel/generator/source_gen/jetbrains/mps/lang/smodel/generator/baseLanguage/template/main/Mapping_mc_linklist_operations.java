@@ -12,11 +12,11 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
@@ -24,13 +24,14 @@ import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import java.util.Collections;
 import jetbrains.mps.generator.template.IfMacroContext;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class Mapping_mc_linklist_operations extends MapConfigBase implements TemplateMappingConfiguration {
   private final Collection<TemplateReductionRule> rules;
   public Mapping_mc_linklist_operations(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168908126680"), "mc_linklist_operations", model, false);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new Mapping_mc_linklist_operations.ReductionRule0(), new Mapping_mc_linklist_operations.ReductionRule1());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1());
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -38,7 +39,7 @@ public class Mapping_mc_linklist_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168908168826"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, "jetbrains.mps.lang.smodel.structure.SLinkListAccess"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168908168826"), AUX_mvfyrh.SLinkListAccess_937d34e, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -77,7 +78,7 @@ public class Mapping_mc_linklist_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168908199453"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1093caead54L, "jetbrains.mps.lang.smodel.structure.LinkList_AddNewChildOperation"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168908199453"), AUX_mvfyrh.LinkList_AddNewChildOperation_62a4ad04, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -161,4 +162,9 @@ public class Mapping_mc_linklist_operations extends MapConfigBase implements Tem
   private static final SNodePointer templateSwitchNode_mvfyrh_a0a0c0a1a1a4a2a2e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
   private static final SNodePointer callMacro_mvfyrh_b0a0a1a1a5a2a2e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145293");
   private static final SNodePointer ifMacroRef_mvfyrh_b0a0b0f0c0c4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "347387891234775606");
+
+  private static final class AUX_mvfyrh {
+    /*package*/ static final SConcept SLinkListAccess_937d34e = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, "jetbrains.mps.lang.smodel.structure.SLinkListAccess");
+    /*package*/ static final SConcept LinkList_AddNewChildOperation_62a4ad04 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1093caead54L, "jetbrains.mps.lang.smodel.structure.LinkList_AddNewChildOperation");
+  }
 }

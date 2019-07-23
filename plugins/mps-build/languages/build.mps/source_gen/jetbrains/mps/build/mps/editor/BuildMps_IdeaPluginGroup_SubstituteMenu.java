@@ -18,19 +18,20 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_IdeaPluginGroup_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new BuildMps_IdeaPluginGroup_SubstituteMenu.SMP_Include_jf8zv4_a());
-    result.add(new BuildMps_IdeaPluginGroup_SubstituteMenu.SMP_Subconcepts_jf8zv4_b());
+    result.add(new SMP_Include_jf8zv4_a());
+    result.add(new SMP_Subconcepts_jf8zv4_b());
     return result;
   }
 
@@ -68,12 +69,12 @@ public class BuildMps_IdeaPluginGroup_SubstituteMenu extends SubstituteMenuBase 
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginGroup_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
+      return AUX_jf8zv4.BuildMps_IdeaPluginGroup_d3614963;
     }
   }
   public class SMP_Subconcepts_jf8zv4_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_jf8zv4.BuildMps_IdeaPluginGroup_d3614963);
     }
     @NotNull
     @Override
@@ -91,5 +92,9 @@ public class BuildMps_IdeaPluginGroup_SubstituteMenu extends SubstituteMenuBase 
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_jf8zv4 {
+    /*package*/ static final SConcept BuildMps_IdeaPluginGroup_d3614963 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
   }
 }

@@ -9,12 +9,13 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BuildJavaVersionMigration_JDKDefault extends MigrationScriptBase {
   public String getCaption() {
@@ -32,11 +33,11 @@ public class BuildJavaVersionMigration_JDKDefault extends MigrationScriptBase {
     Iterable<SModel> models = m.getModels();
     Iterable<SNode> projects = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(((SModel) model), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+        return SModelOperations.nodes(((SModel) model), AUX_5w4pl0.BuildProject_808bb057);
       }
     });
     for (SNode project : Sequence.fromIterable(projects)) {
-      Iterable<SNode> javaOptionsSeq = SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, "jetbrains.mps.build.structure.BuildSource_JavaOptions"));
+      Iterable<SNode> javaOptionsSeq = SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts")), AUX_5w4pl0.BuildSource_JavaOptions_d1ea835c);
       for (SNode javaOptions : Sequence.fromIterable(javaOptionsSeq).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return "1.6".equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0x6120f2e858dfcfdcL, "javaLevel")));
@@ -50,4 +51,8 @@ public class BuildJavaVersionMigration_JDKDefault extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 1);
   }
 
+  private static final class AUX_5w4pl0 {
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildSource_JavaOptions_d1ea835c = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, "jetbrains.mps.build.structure.BuildSource_JavaOptions");
+  }
 }

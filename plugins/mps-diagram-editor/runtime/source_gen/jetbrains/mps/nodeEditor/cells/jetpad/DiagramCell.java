@@ -304,7 +304,7 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
 
           }
         }, editorContext))) {
-          result.add(new DiagramCell.DiagramSubstituteActionWraper(action) {
+          result.add(new DiagramSubstituteActionWraper(action) {
             @Override
             public boolean canSubstitute(String string) {
               return !(hasConnectionDragFeedback()) && super.canSubstitute(string);
@@ -328,25 +328,25 @@ public abstract class DiagramCell extends AbstractJetpadCell implements EditorCe
               return false;
             }
 
-            DiagramCell.ConnectionInfo connectionInfo = getConnectionInfo();
+            ConnectionInfo connectionInfo = getConnectionInfo();
             return connectionInfo.isValid() && canCreateConnector.invoke(connectionInfo.getFromNode(), connectionInfo.getFromId(), connectionInfo.getToNode(), connectionInfo.getToId());
           }
           @Override
           protected SNode doSubstitute(@Nullable EditorContext context, String string) {
             SNode result = NodeFactoryManager.createNode(childNodeConcept, null, container, SNodeOperations.getModel(container));
             ListSequence.fromList(SNodeOperations.getChildren(container, containingLink)).addElement(result);
-            DiagramCell.ConnectionInfo connectionInfo = getConnectionInfo();
+            ConnectionInfo connectionInfo = getConnectionInfo();
             setConnectorCallback.invoke(result, connectionInfo.getFromNode(), connectionInfo.getFromId(), connectionInfo.getToNode(), connectionInfo.getToId());
             return result;
           }
         };
-        return Collections.<SubstituteAction>singletonList(new DiagramCell.DiagramSubstituteActionWraper(action));
+        return Collections.<SubstituteAction>singletonList(new DiagramSubstituteActionWraper(action));
       }
     };
   }
 
-  public DiagramCell.ConnectionInfo getConnectionInfo() {
-    return new DiagramCell.ConnectionInfo();
+  public ConnectionInfo getConnectionInfo() {
+    return new ConnectionInfo();
   }
 
   @Override

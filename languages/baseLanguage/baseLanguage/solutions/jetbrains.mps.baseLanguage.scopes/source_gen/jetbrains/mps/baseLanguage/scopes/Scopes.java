@@ -6,9 +6,11 @@ import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.scopes.runtime.HidingByNameScope;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Scopes {
   private Scopes() {
@@ -18,7 +20,7 @@ public class Scopes {
       return variablesScope;
     }
     // hiding for variables only name based. so I can use SimpleScope and HidingByNameScope 
-    return new HidingByNameScope(MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4b64b50fb2fc7720L, "jetbrains.mps.baseLanguage.structure.IVariableDeclaration"), kind, variablesScope, parentScope);
+    return new HidingByNameScope(AUX_kflra7.IVariableDeclaration_5aa4e3c, kind, variablesScope, parentScope);
   }
   public static Scope forVariables(SAbstractConcept kind, Iterable<SNode> variables, Scope parentScope) {
     return forVariables(kind, new NamedElementsScope(variables), parentScope);
@@ -31,21 +33,29 @@ public class Scopes {
       return methodsScope;
     }
     // should be used for methods in getScope() 
-    return new HidingByNameScope(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), kind, methodsScope, parentScope);
+    return new HidingByNameScope(AUX_kflra7.BaseMethodDeclaration_9dbf9acb, kind, methodsScope, parentScope);
   }
   public static Scope defaultWithNameHiding(SAbstractConcept kind, Scope scope, @Nullable Scope parentScope) {
     if (parentScope == null) {
       return scope;
     }
     // hide anything by name 
-    return new HidingByNameScope(MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), kind, scope, parentScope);
+    return new HidingByNameScope(AUX_kflra7.INamedConcept_8cd7e247, kind, scope, parentScope);
   }
   public static Scope forLoopLabels(Iterable<SNode> labels, Scope parentScope) {
     // Hiding only other LoopLabels 
-    return new HidingByNameScope(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel"), new NamedElementsScope(labels), parentScope);
+    return new HidingByNameScope(AUX_kflra7.LoopLabel_d0e05d5e, AUX_kflra7.LoopLabel_d0e05d5e, new NamedElementsScope(labels), parentScope);
   }
   public static Scope forTypeVariables(Iterable<SNode> variables, Scope parentScope) {
     // Hiding only other type variables 
-    return new HidingByNameScope(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration"), new NamedElementsScope(variables), parentScope);
+    return new HidingByNameScope(AUX_kflra7.TypeVariableDeclaration_de3da816, AUX_kflra7.TypeVariableDeclaration_de3da816, new NamedElementsScope(variables), parentScope);
+  }
+
+  private static final class AUX_kflra7 {
+    /*package*/ static final SInterfaceConcept IVariableDeclaration_5aa4e3c = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4b64b50fb2fc7720L, "jetbrains.mps.baseLanguage.structure.IVariableDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept LoopLabel_d0e05d5e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
+    /*package*/ static final SConcept TypeVariableDeclaration_de3da816 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
   }
 }

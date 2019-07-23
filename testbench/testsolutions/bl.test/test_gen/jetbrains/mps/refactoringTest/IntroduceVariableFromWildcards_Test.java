@@ -34,7 +34,7 @@ public class IntroduceVariableFromWildcards_Test extends BaseTransformationTest 
 
   @Test
   public void test_IntroduceVariableFromWildcardsTest() throws Throwable {
-    new IntroduceVariableFromWildcards_Test.TestBody(this).test_IntroduceVariableFromWildcardsTest();
+    new TestBody(this).test_IntroduceVariableFromWildcardsTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

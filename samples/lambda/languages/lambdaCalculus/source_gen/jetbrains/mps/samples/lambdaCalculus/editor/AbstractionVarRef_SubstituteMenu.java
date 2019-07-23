@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AbstractionVarRef_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new AbstractionVarRef_SubstituteMenu.SMP_ReferenceScope_pjjfyb_a(), MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef")));
-    result.add(new AbstractionVarRef_SubstituteMenu.SMP_Subconcepts_pjjfyb_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pjjfyb_a(), AUX_pjjfyb.AbstractionVarRef_1e53a598));
+    result.add(new SMP_Subconcepts_pjjfyb_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class AbstractionVarRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_pjjfyb_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef"), MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable"));
+      super((SAbstractConcept) AUX_pjjfyb.AbstractionVarRef_1e53a598, MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class AbstractionVarRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_pjjfyb_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_pjjfyb.AbstractionVarRef_1e53a598);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class AbstractionVarRef_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_pjjfyb {
+    /*package*/ static final SConcept AbstractionVarRef_1e53a598 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef");
   }
 }

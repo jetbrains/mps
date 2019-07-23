@@ -17,7 +17,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
@@ -29,9 +28,11 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateOperationsAndNodeRefs extends MigrationScriptBase {
   public String getCaption() {
@@ -73,7 +74,7 @@ public class MigrateOperationsAndNodeRefs extends MigrationScriptBase {
       }, false).visitAll(new IVisitor<SNode>() {
         public void visit(final SNode nodeToMigrate) {
           pattern.match(nodeToMigrate);
-          List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute"), false, new SAbstractConcept[]{});
+          List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, AUX_3qm329.Attribute_2a18bbd3, false, new SAbstractConcept[]{});
           if (ListSequence.fromList(attributes).isNotEmpty()) {
             markAnnotatedNodeForReview(nodeToMigrate, attributes);
             return;
@@ -111,7 +112,7 @@ public class MigrateOperationsAndNodeRefs extends MigrationScriptBase {
       }, false).visitAll(new IVisitor<SNode>() {
         public void visit(final SNode nodeToMigrate) {
           pattern.match(nodeToMigrate);
-          List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute"), false, new SAbstractConcept[]{});
+          List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, AUX_3qm329.Attribute_2a18bbd3, false, new SAbstractConcept[]{});
           if (ListSequence.fromList(attributes).isNotEmpty()) {
             markAnnotatedNodeForReview(nodeToMigrate, attributes);
             return;
@@ -135,7 +136,7 @@ public class MigrateOperationsAndNodeRefs extends MigrationScriptBase {
           return scope_3qm329_a0e_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1097542784fL, "jetbrains.mps.lang.smodel.structure.Node_DeleteOperation"), true)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_3qm329.Node_DeleteOperation_281fbd16, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.getPointer(SNodeOperations.getContainingRoot(it)) != new SNodePointer("r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)", "7007208114699959039");
         }
@@ -215,5 +216,10 @@ public class MigrateOperationsAndNodeRefs extends MigrationScriptBase {
     quotedNode_4.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), jetbrains.mps.smodel.SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), quotedNode_4, facade.createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)"), facade.createNodeId("~SNamedElement.getName()")));
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_4);
     return quotedNode_2;
+  }
+
+  private static final class AUX_3qm329 {
+    /*package*/ static final SConcept Attribute_2a18bbd3 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
+    /*package*/ static final SConcept Node_DeleteOperation_281fbd16 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1097542784fL, "jetbrains.mps.lang.smodel.structure.Node_DeleteOperation");
   }
 }

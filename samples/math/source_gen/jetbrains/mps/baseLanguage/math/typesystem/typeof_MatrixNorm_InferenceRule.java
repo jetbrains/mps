@@ -23,6 +23,8 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_MatrixNorm_InferenceRule() {
@@ -32,7 +34,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
       final SNode mT = typeCheckingContext.typeOf(SLinkOperations.getTarget(norm, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, 0xa87de0e72bc0fd1L, "mat")), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835031830", true);
       typeCheckingContext.whenConcrete(mT, new Runnable() {
         public void run() {
-          if (!(SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(mT), MetaAdapterFactory.getInterfaceConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x513c04200c187a63L, "jetbrains.mps.baseLanguage.math.structure.MatrixOrVectorType")))) {
+          if (!(SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(mT), AUX_8pyikg.MatrixOrVectorType_23ad3ce7))) {
             {
               MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(norm, "Expression should have matrix or vector type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835032977", null, errorTarget);
@@ -49,7 +51,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
               } else if (MatchingUtil.matchNodes(t, _quotation_createNode_8pyikg_a0a2a2a0a0a0a1a0b0a0b_0())) {
                 i = _quotation_createNode_8pyikg_a0a0a2a2a0a0a0a1a0b0a0b();
                 f = _quotation_createNode_8pyikg_a0b0a2a2a0a0a0a1a0b0a0b();
-              } else if (SNodeOperations.isInstanceOf(t, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType"))) {
+              } else if (SNodeOperations.isInstanceOf(t, AUX_8pyikg.BigIntegerType_a60a11bf)) {
                 i = SNodeOperations.copyNode(MathTypeUtil.qBigInteger);
                 f = SNodeOperations.copyNode(MathTypeUtil.qBigDecimal);
               }
@@ -58,13 +60,13 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835033179", 0, null);
                 typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835033176", true), (SNode) ((floatResult ? f : i)), _info_12389875345);
               }
-            } else if (SNodeOperations.isInstanceOf(t, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120095d7138L, "jetbrains.mps.baseLanguage.math.structure.ComplexType"))) {
+            } else if (SNodeOperations.isInstanceOf(t, AUX_8pyikg.ComplexType_e67b5baf)) {
               {
                 SNode _nodeToCheck_1029348928467 = norm;
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835033410", 0, null);
                 typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835033415", true), (SNode) _quotation_createNode_8pyikg_a1a0c0a0a2a0a0a0a1a0b0a0b(), _info_12389875345);
               }
-            } else if (SNodeOperations.isInstanceOf(t, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120096f8e4cL, "jetbrains.mps.baseLanguage.math.structure.BigComplexType"))) {
+            } else if (SNodeOperations.isInstanceOf(t, AUX_8pyikg.BigComplexType_1d8a5dd4)) {
               {
                 SNode _nodeToCheck_1029348928467 = norm;
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835033432", 0, null);
@@ -83,7 +85,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, "jetbrains.mps.baseLanguage.math.structure.MatrixNorm");
+    return AUX_8pyikg.MatrixNorm_3e4ac8b0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -153,5 +155,13 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Double")));
     return quotedNode_1;
+  }
+
+  private static final class AUX_8pyikg {
+    /*package*/ static final SInterfaceConcept MatrixOrVectorType_23ad3ce7 = MetaAdapterFactory.getInterfaceConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x513c04200c187a63L, "jetbrains.mps.baseLanguage.math.structure.MatrixOrVectorType");
+    /*package*/ static final SConcept BigIntegerType_a60a11bf = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType");
+    /*package*/ static final SConcept ComplexType_e67b5baf = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120095d7138L, "jetbrains.mps.baseLanguage.math.structure.ComplexType");
+    /*package*/ static final SConcept BigComplexType_1d8a5dd4 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120096f8e4cL, "jetbrains.mps.baseLanguage.math.structure.BigComplexType");
+    /*package*/ static final SConcept MatrixNorm_3e4ac8b0 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, "jetbrains.mps.baseLanguage.math.structure.MatrixNorm");
   }
 }

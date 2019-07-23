@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassifierScopeUtils {
   private ClassifierScopeUtils() {
@@ -43,7 +44,7 @@ public class ClassifierScopeUtils {
       public boolean accept(SNode it) {
         return VisibilityUtil.isVisible(contextNode, it);
       }
-    }), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    }), AUX_uu0vlb.ClassConcept_e2711824);
     return visibleInheritedNestedClassifiers;
   }
 
@@ -59,8 +60,8 @@ public class ClassifierScopeUtils {
     }
     return getClassifierAndSuperClassifiersData(classifier).isCyclic;
   }
-  private static ClassifierScopeUtils.ClassifierAndSuperClassifiersData getClassifierAndSuperClassifiersData(@NotNull SNode classifier) {
-    return new ClassifierScopeUtils.ClassifierAndSuperClassifiersData(classifier);
+  private static ClassifierAndSuperClassifiersData getClassifierAndSuperClassifiersData(@NotNull SNode classifier) {
+    return new ClassifierAndSuperClassifiersData(classifier);
   }
 
   private static class ClassifierAndSuperClassifiersData {
@@ -110,5 +111,9 @@ public class ClassifierScopeUtils {
       SetSequence.fromSet(subClassifiers).removeElement(classifier);
       return false;
     }
+  }
+
+  private static final class AUX_uu0vlb {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

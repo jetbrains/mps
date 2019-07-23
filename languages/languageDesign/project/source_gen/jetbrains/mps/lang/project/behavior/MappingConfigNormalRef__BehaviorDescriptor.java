@@ -4,7 +4,6 @@ package jetbrains.mps.lang.project.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,12 +14,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MappingConfigNormalRef__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef");
+  private static final SAbstractConcept CONCEPT = AUX_7clgq6.MappingConfigNormalRef_56dc2f2c;
 
   public static final SMethod<Boolean> isComplete_id2n3WChplftH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isComplete").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2n3WChplftH").build();
 
@@ -86,5 +87,9 @@ public final class MappingConfigNormalRef__BehaviorDescriptor extends BaseBHDesc
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_7clgq6 {
+    /*package*/ static final SConcept MappingConfigNormalRef_56dc2f2c = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef");
   }
 }

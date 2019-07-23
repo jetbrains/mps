@@ -131,7 +131,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new WeaveMacro_InspectorBuilder_a.nodesToWeaveQuerySingleRoleHandler_1n0h5d_c2c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261ebL, "nodesToWeaveQuery"), getEditorContext());
+    SingleRoleCellProvider provider = new nodesToWeaveQuerySingleRoleHandler_1n0h5d_c2c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261ebL, "nodesToWeaveQuery"), getEditorContext());
     return provider.createCell();
   }
   private static class nodesToWeaveQuerySingleRoleHandler_1n0h5d_c2c0 extends SingleRoleCellProvider {
@@ -218,7 +218,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new WeaveMacro_InspectorBuilder_a.ruleConsequenceSingleRoleHandler_1n0h5d_c3c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261edL, "ruleConsequence"), getEditorContext());
+    SingleRoleCellProvider provider = new ruleConsequenceSingleRoleHandler_1n0h5d_c3c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261edL, "ruleConsequence"), getEditorContext());
     return provider.createCell();
   }
   private static class ruleConsequenceSingleRoleHandler_1n0h5d_c3c0 extends SingleRoleCellProvider {
@@ -302,7 +302,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new WeaveMacro_InspectorBuilder_a.anchorQuerySingleRoleHandler_1n0h5d_c4c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x2449b12bc386c28dL, "anchorQuery"), getEditorContext());
+    SingleRoleCellProvider provider = new anchorQuerySingleRoleHandler_1n0h5d_c4c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x2449b12bc386c28dL, "anchorQuery"), getEditorContext());
     return provider.createCell();
   }
   private static class anchorQuerySingleRoleHandler_1n0h5d_c4c0 extends SingleRoleCellProvider {

@@ -21,7 +21,7 @@ public class TextGenStyles_StyleSheet {
   public static void apply_TextGenOperation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TextGenStyles_StyleSheet.TextGenOperationStyleClass(editorContext, node).apply(style, editorCell);
+    new TextGenOperationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -31,7 +31,7 @@ public class TextGenStyles_StyleSheet {
   public static void apply_AppendPart(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TextGenStyles_StyleSheet.AppendPartStyleClass(editorContext, node).apply(style, editorCell);
+    new AppendPartStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class TextGenOperationStyleClass extends AbstractStyleClass {

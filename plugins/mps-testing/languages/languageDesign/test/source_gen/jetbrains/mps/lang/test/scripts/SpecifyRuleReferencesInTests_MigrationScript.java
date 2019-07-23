@@ -5,11 +5,12 @@ package jetbrains.mps.lang.test.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class SpecifyRuleReferencesInTests_MigrationScript extends BaseMigrationScript {
   public SpecifyRuleReferencesInTests_MigrationScript() {
@@ -25,7 +26,7 @@ public final class SpecifyRuleReferencesInTests_MigrationScript extends BaseMigr
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+        return AUX_hoze20.BaseConcept_bc2351f;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -46,5 +47,9 @@ public final class SpecifyRuleReferencesInTests_MigrationScript extends BaseMigr
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c89590387(jetbrains.mps.lang.test.scripts)/4098794966557888877");
+  }
+
+  private static final class AUX_hoze20 {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

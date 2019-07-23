@@ -15,9 +15,9 @@ import jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClas
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -28,6 +28,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class While_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -66,12 +67,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While"), "jetbrains.mps.samples.Kaja.editor.While_to_if"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_fp4rb5.While_65179009, "jetbrains.mps.samples.Kaja.editor.While_to_if"));
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new While_EditorBuilder_a.conditionSingleRoleHandler_xklbgd_b0(myNode, MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece2L, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_xklbgd_b0(myNode, MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece2L, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_xklbgd_b0 extends SingleRoleCellProvider {
@@ -144,7 +145,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(SLinkOperations.getTarget(getNode(), MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece3L, "body")), MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands"))).isNotEmpty();
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new While_EditorBuilder_a.bodySingleRoleHandler_xklbgd_d0(myNode, MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece3L, "body"), getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_xklbgd_d0(myNode, MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece3L, "body"), getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_xklbgd_d0 extends SingleRoleCellProvider {
@@ -211,5 +212,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_fp4rb5 {
+    /*package*/ static final SConcept While_65179009 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While");
   }
 }

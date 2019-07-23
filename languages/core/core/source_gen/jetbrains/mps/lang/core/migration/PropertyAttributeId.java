@@ -9,8 +9,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
@@ -28,6 +28,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PropertyAttributeId extends MigrationScriptBase {
   public String getCaption() {
@@ -45,7 +46,7 @@ public class PropertyAttributeId extends MigrationScriptBase {
     Iterable<SModel> models = m.getModels();
     Iterable<SNode> propertyAttributes = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(((SModel) model), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+        return SModelOperations.nodes(((SModel) model), AUX_iro8gh.PropertyAttribute_d001db89);
       }
     });
     Sequence.fromIterable(propertyAttributes).visitAll(new IVisitor<SNode>() {
@@ -56,7 +57,7 @@ public class PropertyAttributeId extends MigrationScriptBase {
 
     Iterable<SNode> referenceAttributes = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(((SModel) model), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"));
+        return SModelOperations.nodes(((SModel) model), AUX_iro8gh.LinkAttribute_d001db6f);
       }
     });
 
@@ -77,7 +78,7 @@ public class PropertyAttributeId extends MigrationScriptBase {
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_iro8gh.PropertyAttribute_d001db89, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return isEmptyString(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x129f3f61278d556dL, "propertyId")));
         }
@@ -90,7 +91,7 @@ public class PropertyAttributeId extends MigrationScriptBase {
           };
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"), false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_iro8gh.LinkAttribute_d001db6f, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return isEmptyString(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, 0x129f3f612792fc5cL, "linkId")));
         }
@@ -112,5 +113,10 @@ public class PropertyAttributeId extends MigrationScriptBase {
 
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_iro8gh {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept LinkAttribute_d001db6f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
   }
 }

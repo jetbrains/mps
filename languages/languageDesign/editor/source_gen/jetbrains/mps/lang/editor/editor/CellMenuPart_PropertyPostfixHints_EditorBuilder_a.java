@@ -113,7 +113,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CellMenuPart_PropertyPostfixHints_EditorBuilder_a.postfixesFunctionSingleRoleHandler_nmnci2_d1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x112e2300bcaL, 0x112e2300bcbL, "postfixesFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new postfixesFunctionSingleRoleHandler_nmnci2_d1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x112e2300bcaL, 0x112e2300bcbL, "postfixesFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class postfixesFunctionSingleRoleHandler_nmnci2_d1a extends SingleRoleCellProvider {

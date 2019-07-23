@@ -11,9 +11,9 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.behavior.ModelReferenceExpression__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -23,6 +23,7 @@ import jetbrains.mps.lang.modelapi.behavior.ModelPointer__BehaviorDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
   public String getCaption() {
@@ -46,21 +47,21 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
         }
       };
       final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(m.getRepository());
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, "jetbrains.mps.lang.smodel.structure.ModelReferenceExpression"), false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_lc3hzh.ModelReferenceExpression_d8cceb6, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x13bfe1ec0ddbc5f8L, "repo")) != null) && mrf.getModelByName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it)) != null;
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           final SModel where = SNodeOperations.getModel(it);
-          SNode newRef = SModelOperations.createNewNode(where, null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, "jetbrains.mps.lang.smodel.structure.ModelPointerExpression"));
-          SLinkOperations.setTarget(newRef, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, 0x19dc9460645d0827L, "modelRef"), ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer")), where, mrf.getModelByName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))));
+          SNode newRef = SModelOperations.createNewNode(where, null, AUX_lc3hzh.ModelPointerExpression_3024659d);
+          SLinkOperations.setTarget(newRef, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, 0x19dc9460645d0827L, "modelRef"), ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(AUX_lc3hzh.ModelPointer_a7ab22d2), where, mrf.getModelByName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))));
 
           final SNode repoAccessExpr = SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x13bfe1ec0ddbc5f8L, "repo"));
-          SNode imco = SModelOperations.createNewNode(where, null, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
+          SNode imco = SModelOperations.createNewNode(where, null, AUX_lc3hzh.InstanceMethodCallOperation_cd28f5b6);
           // FIXME node// here awaits when node.reference.set(nodePointer) operation is added to get replaced with the one. 
           SLinkOperations.setPointer(imco, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
-          SNode dotExp = SNodeOperations.replaceWithNewChild(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+          SNode dotExp = SNodeOperations.replaceWithNewChild(it, AUX_lc3hzh.DotExpression_97ed08d8);
           SLinkOperations.setTarget(dotExp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), newRef);
           SLinkOperations.setTarget(dotExp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), imco);
           ListSequence.fromList(SLinkOperations.getChildren(imco, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).addElement(repoAccessExpr);
@@ -72,4 +73,11 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 8);
   }
 
+  private static final class AUX_lc3hzh {
+    /*package*/ static final SConcept ModelReferenceExpression_d8cceb6 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, "jetbrains.mps.lang.smodel.structure.ModelReferenceExpression");
+    /*package*/ static final SConcept ModelPointerExpression_3024659d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, "jetbrains.mps.lang.smodel.structure.ModelPointerExpression");
+    /*package*/ static final SConcept ModelPointer_a7ab22d2 = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+  }
 }

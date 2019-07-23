@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TextGenAspectDescriptor extends TextGenAspectBase {
@@ -31,7 +32,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public void breakdownToUnits(@NotNull TextGenModelOutline outline) {
     for (SNode root : outline.getModel().getRootNodes()) {
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, "jetbrains.mps.sampleXML.structure.Document"))) {
+      if (root.getConcept().equals(AUX_t8hmqt.Document_9d04c349)) {
         String fname = getFileName_Document(root);
         String ext = getFileExtension_Document(root);
         outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
@@ -44,5 +45,9 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   }
   private static String getFileExtension_Document(SNode node) {
     return "xml";
+  }
+
+  private static final class AUX_t8hmqt {
+    /*package*/ static final SConcept Document_9d04c349 = MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, "jetbrains.mps.sampleXML.structure.Document");
   }
 }

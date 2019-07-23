@@ -4,7 +4,6 @@ package jetbrains.mps.lang.core.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,6 +15,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.language.SEnumeration;
@@ -26,9 +26,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+  private static final SAbstractConcept CONCEPT = AUX_l3ge84.PropertyAttribute_d001db89;
 
   public static final SMethod<SProperty> getProperty_id1avfQ4BBzOo = new SMethodBuilder<SProperty>(new SJavaCompoundTypeImpl(SProperty.class)).name("getProperty").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1avfQ4BBzOo").build();
   public static final SMethod<Void> setProperty_id6Gg5Klvu8CV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6Gg5Klvu8CV").build(SMethodBuilder.createJavaParameter(SProperty.class, ""));
@@ -58,9 +59,9 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
     SNode propertyDeclaration = (SNode) property.getDeclarationNode();
     if (property.getType() instanceof SEnumeration) {
       if (SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated")) && SNodeOperations.hasRole(propertyDeclaration, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty"))) {
-        propertyDeclaration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration"));
-      } else if (!(SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated"))) && SNodeOperations.hasRole(propertyDeclaration, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration")) && (AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"))) != null)) {
-        propertyDeclaration = SLinkOperations.getTarget(AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"))), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty"));
+        propertyDeclaration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), AUX_l3ge84.PropertyDeclaration_ce818bfd);
+      } else if (!(SPropertyOperations.getBoolean(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated"))) && SNodeOperations.hasRole(propertyDeclaration, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration")) && (AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(AUX_l3ge84.EnumPropertyMigrationInfo_a791f212)) != null)) {
+        propertyDeclaration = SLinkOperations.getTarget(AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(AUX_l3ge84.EnumPropertyMigrationInfo_a791f212)), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty"));
       }
     }
     return propertyDeclaration;
@@ -124,5 +125,11 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_l3ge84 {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept PropertyDeclaration_ce818bfd = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo_a791f212 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

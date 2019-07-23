@@ -13,10 +13,10 @@ public final class SimpleCommandQueue {
   private final Thread myThread;
   private boolean myDisposed = false;
   private boolean myHadExceptions = false;
-  private final LinkedList<SimpleCommandQueue.QueueElem> myQueue = new LinkedList<SimpleCommandQueue.QueueElem>();
+  private final LinkedList<QueueElem> myQueue = new LinkedList<QueueElem>();
 
   public SimpleCommandQueue(@NotNull String threadName) {
-    myThread = new SimpleCommandQueue.MyExecutorThread(threadName);
+    myThread = new MyExecutorThread(threadName);
   }
 
   /*package*/ void startThread() {
@@ -38,7 +38,7 @@ public final class SimpleCommandQueue {
   public void addTask(@NotNull Runnable task, Object key) {
     // removes task with the same key if any 
     synchronized (myQueue) {
-      SimpleCommandQueue.QueueElem elem = new SimpleCommandQueue.QueueElem(task, key);
+      QueueElem elem = new QueueElem(task, key);
       if (key != null) {
         myQueue.remove(elem);
       }
@@ -124,8 +124,8 @@ public final class SimpleCommandQueue {
 
     @Override
     public boolean equals(Object o) {
-      if (o instanceof SimpleCommandQueue.QueueElem && myKey != null) {
-        return myKey.equals(((SimpleCommandQueue.QueueElem) o).myKey);
+      if (o instanceof QueueElem && myKey != null) {
+        return myKey.equals(((QueueElem) o).myKey);
       } else {
         return super.equals(o);
       }

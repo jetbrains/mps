@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ImaginaryUnit_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ImaginaryUnit_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_ImaginaryUnit_InferenceRule extends AbstractInferenceRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11691060ce1L, "jetbrains.mps.samples.complex.structure.ImaginaryUnit");
+    return AUX_ir5twi.ImaginaryUnit_b1a92358;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_ImaginaryUnit_InferenceRule extends AbstractInferenceRule_Ru
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, "jetbrains.mps.samples.complex"), 0x11686a0422aL, "ComplexType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_ir5twi {
+    /*package*/ static final SConcept ImaginaryUnit_b1a92358 = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11691060ce1L, "jetbrains.mps.samples.complex.structure.ImaginaryUnit");
   }
 }

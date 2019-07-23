@@ -26,7 +26,7 @@ public class DeleteWhileStatementConditionTwoStep_Test extends BaseTransformatio
 
   @Test
   public void test_DeleteWhileStatementConditionTwoStep() throws Throwable {
-    new DeleteWhileStatementConditionTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

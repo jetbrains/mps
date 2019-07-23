@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +26,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -46,6 +46,8 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MethodDeclaration_final_native_sync_all_mods extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -71,8 +73,8 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0());
-      result.add(new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_b0());
+      result.add(new TMP_Group_b1erct_a0());
+      result.add(new TMP_Group_b1erct_b0());
     }
     return result;
   }
@@ -80,7 +82,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
   public class TMP_Group_b1erct_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")));
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_b1erct.Interface_bca2069));
     }
 
     @NotNull
@@ -96,12 +98,12 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a(), new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a(), new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a(), new TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a(), new TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a());
     }
     private class TMP_Action_b1erct_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a.Item item = new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a.Item(context);
+        TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a.Item item = new TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -166,7 +168,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     private class TMP_Action_b1erct_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a.Item item = new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a.Item(context);
+        TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a.Item item = new TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -231,7 +233,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     private class TMP_Action_b1erct_c0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a.Item item = new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a.Item(context);
+        TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a.Item item = new TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -309,7 +311,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new MethodDeclaration_final_native_sync_all_mods.TMP_Group_b1erct_b0.TMP_WrapSM_b1erct_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_b1erct_b0.TMP_WrapSM_b1erct_a1a());
     }
     public class TMP_WrapSM_b1erct_a1a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -332,7 +334,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
+        return AUX_b1erct.Modifier_b30bf498;
       }
 
 
@@ -343,7 +345,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
           @Override
           public void execute(@NotNull String pattern) {
             SNode createdNode = item.createNode(pattern);
-            ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).addElement(createdNode);
+            ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, AUX_b1erct.IHasModifiers_8f114dd7), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).addElement(createdNode);
             SelectionUtil.selectNode(_context.getEditorContext(), createdNode);
           }
 
@@ -363,5 +365,11 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         };
       }
     }
+  }
+
+  private static final class AUX_b1erct {
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Modifier_b30bf498 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
+    /*package*/ static final SInterfaceConcept IHasModifiers_8f114dd7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
   }
 }

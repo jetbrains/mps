@@ -44,6 +44,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Component;
 import javax.swing.JComponent;
 import jetbrains.mps.samples.Shapes.behavior.PreviewFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Canvas_ScenePreview_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -93,7 +94,7 @@ import jetbrains.mps.samples.Shapes.behavior.PreviewFactory;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_umdpai.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -117,7 +118,7 @@ import jetbrains.mps.samples.Shapes.behavior.PreviewFactory;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new Canvas_ScenePreview_EditorBuilder_a.shapesListHandler_3bcydw_a2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new shapesListHandler_3bcydw_a2a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_shapes");
     editorCell.setSRole(handler.getElementSRole());
@@ -140,7 +141,7 @@ import jetbrains.mps.samples.Shapes.behavior.PreviewFactory;
       return MetaAdapterFactory.getContainmentLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fa71dL, 0x51dcaa29974ffa47L, "shapes");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc161L, "jetbrains.mps.samples.Shapes.structure.Shape");
+      return AUX_umdpai.Shape_1470e15;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -191,5 +192,10 @@ import jetbrains.mps.samples.Shapes.behavior.PreviewFactory;
   }
   private JComponent _QueryFunction_JComponent_3bcydw_a0c2a() {
     return PreviewFactory.createPanel(myNode);
+  }
+
+  private static final class AUX_umdpai {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept Shape_1470e15 = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc161L, "jetbrains.mps.samples.Shapes.structure.Shape");
   }
 }

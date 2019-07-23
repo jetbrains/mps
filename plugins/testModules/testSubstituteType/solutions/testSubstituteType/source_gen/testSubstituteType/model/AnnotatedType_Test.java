@@ -32,47 +32,47 @@ public class AnnotatedType_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTypeCheck1470921783545289079() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeTypeCheck1470921783545289079();
+    new TestBody(this).test_NodeTypeCheck1470921783545289079();
   }
   @Test
   public void test_NodeTypeCheck1470921783545475598() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeTypeCheck1470921783545475598();
+    new TestBody(this).test_NodeTypeCheck1470921783545475598();
   }
   @Test
   public void test_NodeTypeCheck1470921783545475612() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeTypeCheck1470921783545475612();
+    new TestBody(this).test_NodeTypeCheck1470921783545475612();
   }
   @Test
   public void test_NodeErrorCheck8675420879155382069() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeErrorCheck8675420879155382069();
+    new TestBody(this).test_NodeErrorCheck8675420879155382069();
   }
   @Test
   public void test_NodeErrorCheck8675420879155452234() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeErrorCheck8675420879155452234();
+    new TestBody(this).test_NodeErrorCheck8675420879155452234();
   }
   @Test
   public void test_NodeErrorCheck8675420879155453375() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeErrorCheck8675420879155453375();
+    new TestBody(this).test_NodeErrorCheck8675420879155453375();
   }
   @Test
   public void test_NodeErrorCheck8675420879155482970() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeErrorCheck8675420879155482970();
+    new TestBody(this).test_NodeErrorCheck8675420879155482970();
   }
   @Test
   public void test_NodeErrorCheck8675420879155484751() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeErrorCheck8675420879155484751();
+    new TestBody(this).test_NodeErrorCheck8675420879155484751();
   }
   @Test
   public void test_NodeErrorCheck8675420879155485361() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeErrorCheck8675420879155485361();
+    new TestBody(this).test_NodeErrorCheck8675420879155485361();
   }
   @Test
   public void test_NodeErrorCheck1470921783545427862() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_NodeErrorCheck1470921783545427862();
+    new TestBody(this).test_NodeErrorCheck1470921783545427862();
   }
   @Test
   public void test_ErrorMessagesCheck8675420879155382183() throws Throwable {
-    new AnnotatedType_Test.TestBody(this).test_ErrorMessagesCheck8675420879155382183();
+    new TestBody(this).test_ErrorMessagesCheck8675420879155382183();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

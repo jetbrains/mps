@@ -14,6 +14,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_BuildFileIncludeSelector_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BuildFileIncludeSelector_NonTypesystemRule() {
@@ -32,7 +33,7 @@ public class check_BuildFileIncludeSelector_NonTypesystemRule extends AbstractNo
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9262f9cL, "jetbrains.mps.build.structure.BuildFileIncludeSelector");
+    return AUX_c7510j.BuildFileIncludeSelector_a8a34ff4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,5 +43,9 @@ public class check_BuildFileIncludeSelector_NonTypesystemRule extends AbstractNo
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_c7510j {
+    /*package*/ static final SConcept BuildFileIncludeSelector_a8a34ff4 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9262f9cL, "jetbrains.mps.build.structure.BuildFileIncludeSelector");
   }
 }

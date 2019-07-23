@@ -48,6 +48,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class IfInstanceOfVariable_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -90,9 +91,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
       Style style = new StyleImpl();
       new LocalVariableStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
-      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new IfInstanceOfVariable_EditorBuilder_a.IfInstanceOfVariable_name_postfixCellMenu_7qsf43_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new IfInstanceOfVariable_name_postfixCellMenu_7qsf43_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_b7x1vf.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -129,7 +130,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
     }
 
     public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, "jetbrains.mps.lang.smodel.structure.IfInstanceOfStatement")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a48L, "nodeConcept"));
+      SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(node), AUX_b7x1vf.IfInstanceOfStatement_3e5d1b96), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a48L, "nodeConcept"));
       List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "node");
       if (nodeConcept != null) {
         String name = NameUtil.decapitalize(SPropertyOperations.getString(nodeConcept, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
@@ -137,5 +138,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
       }
       return variableSuffixes;
     }
+  }
+
+  private static final class AUX_b7x1vf {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept IfInstanceOfStatement_3e5d1b96 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, "jetbrains.mps.lang.smodel.structure.IfInstanceOfStatement");
   }
 }

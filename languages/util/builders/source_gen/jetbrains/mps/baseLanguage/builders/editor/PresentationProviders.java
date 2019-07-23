@@ -7,15 +7,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.builders.behavior.BeanPropertyBuilder__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PresentationProviders {
   public static final IReferentPresentationProvider PRESENTATION_pd8zqj_a0a0a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return (String) BeanPropertyBuilder__BehaviorDescriptor.getPropertyName_id2kIZjjSEvS7.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, "jetbrains.mps.baseLanguage.builders.structure.BeanPropertyBuilder")), SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+      return (String) BeanPropertyBuilder__BehaviorDescriptor.getPropertyName_id2kIZjjSEvS7.invoke(SNodeOperations.asSConcept(AUX_nxpo3o.BeanPropertyBuilder_91c07849), SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     }
   };
+
+  private static final class AUX_nxpo3o {
+    /*package*/ static final SConcept BeanPropertyBuilder_91c07849 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, "jetbrains.mps.baseLanguage.builders.structure.BeanPropertyBuilder");
+  }
 }

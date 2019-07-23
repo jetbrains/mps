@@ -4,7 +4,6 @@ package jetbrains.mps.lang.modelapi.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -19,9 +18,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class NodeIdentity__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
+  private static final SAbstractConcept CONCEPT = AUX_khjlf4.NodeIdentity_a93801ce;
 
   public static final SMethod<SNodeReference> toNodeReference_id4nxIQVLmsc4 = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl(SNodeReference.class)).name("toNodeReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4nxIQVLmsc4").build();
   public static final SMethod<SNode> toNode_id46J8CTY3sAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl(SNode.class)).name("toNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("46J8CTY3sAt").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
@@ -89,5 +90,9 @@ public final class NodeIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_khjlf4 {
+    /*package*/ static final SInterfaceConcept NodeIdentity_a93801ce = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
   }
 }

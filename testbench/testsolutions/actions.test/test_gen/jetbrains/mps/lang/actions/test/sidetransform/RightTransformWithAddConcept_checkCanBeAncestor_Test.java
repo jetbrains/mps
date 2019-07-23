@@ -24,7 +24,7 @@ public class RightTransformWithAddConcept_checkCanBeAncestor_Test extends BaseTr
 
   @Test
   public void test_RightTransformWithAddConcept_checkCanBeAncestor() throws Throwable {
-    new RightTransformWithAddConcept_checkCanBeAncestor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

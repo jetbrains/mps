@@ -36,7 +36,7 @@ public class ChangeReturningType_Test extends BaseTransformationTest {
 
   @Test
   public void test_ChangeReturningType() throws Throwable {
-    new ChangeReturningType_Test.TestBody(this).test_ChangeReturningType();
+    new TestBody(this).test_ChangeReturningType();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

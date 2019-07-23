@@ -19,7 +19,7 @@ public class Collections_Style_StyleSheet {
   public static void apply_Operation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Collections_Style_StyleSheet.OperationStyleClass(editorContext, node).apply(style, editorCell);
+    new OperationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -29,7 +29,7 @@ public class Collections_Style_StyleSheet {
   public static void apply_AngleBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Collections_Style_StyleSheet.AngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new AngleBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -39,7 +39,7 @@ public class Collections_Style_StyleSheet {
   public static void apply_LeftAngleBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Collections_Style_StyleSheet.LeftAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new LeftAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -49,7 +49,7 @@ public class Collections_Style_StyleSheet {
   public static void apply_RightAngleBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Collections_Style_StyleSheet.RightAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new RightAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class OperationStyleClass extends AbstractStyleClass {

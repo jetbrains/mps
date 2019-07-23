@@ -21,7 +21,7 @@ public class AddMenuPart_ParameterizedSubstitute_Test extends BaseTransformation
 
   @Test
   public void test_AddMenuPart_ParameterizedSubstitute() throws Throwable {
-    new AddMenuPart_ParameterizedSubstitute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

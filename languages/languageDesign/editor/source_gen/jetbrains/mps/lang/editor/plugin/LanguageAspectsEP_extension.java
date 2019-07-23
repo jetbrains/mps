@@ -106,5 +106,5 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
 
     };
   }
-  private static String HELP_URL = URLFunction_ConfluenceDocUrl.getUrl() + "/Editor";
+  private static final String HELP_URL = URLFunction_ConfluenceDocUrl.getUrl() + "/Editor";
 }

@@ -24,7 +24,7 @@ public class TestSubstitute_AmbigousPositionDifferentConcepts_Test extends BaseT
 
   @Test
   public void test_TestSubstitute_AmbigousPositionDifferentConcepts() throws Throwable {
-    new TestSubstitute_AmbigousPositionDifferentConcepts_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

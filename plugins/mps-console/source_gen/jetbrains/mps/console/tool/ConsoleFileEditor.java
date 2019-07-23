@@ -45,7 +45,7 @@ public class ConsoleFileEditor implements DocumentsEditor {
       if (o == null || getClass() != o.getClass()) {
         return false;
       }
-      ConsoleFileEditor.MyFileEditorState that = (ConsoleFileEditor.MyFileEditorState) o;
+      MyFileEditorState that = (MyFileEditorState) o;
       if (!(memento.equals(that.memento))) {
         return false;
       }
@@ -81,13 +81,13 @@ public class ConsoleFileEditor implements DocumentsEditor {
         memento.value = myEditor.getEditorContext().getEditorComponentState();
       }
     });
-    return new ConsoleFileEditor.MyFileEditorState(memento.value);
+    return new MyFileEditorState(memento.value);
   }
   public void setState(@NotNull final FileEditorState state) {
-    if (state instanceof ConsoleFileEditor.MyFileEditorState) {
+    if (state instanceof MyFileEditorState) {
       myEditor.getEditorContext().getRepository().getModelAccess().runWriteAction(new Runnable() {
         public void run() {
-          myEditor.getEditorContext().restoreEditorComponentState(((ConsoleFileEditor.MyFileEditorState) state).getMemento());
+          myEditor.getEditorContext().restoreEditorComponentState(((MyFileEditorState) state).getMemento());
           myEditor.rebuildEditorContent();
         }
       });

@@ -27,7 +27,7 @@ public class FontFamilyLiteralPreviewTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_FontFamilyLiteralPreviewTest() throws Throwable {
-    new FontFamilyLiteralPreviewTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

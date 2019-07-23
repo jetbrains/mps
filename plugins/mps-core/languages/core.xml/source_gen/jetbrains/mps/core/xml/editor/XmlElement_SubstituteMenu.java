@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -22,14 +21,16 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.regex.Matcher;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.regex.Pattern;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new XmlElement_SubstituteMenu.SMP_Action_xunnx5_a(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_xunnx5_a(), AUX_xunnx5.XmlElement_6047438c));
     return result;
   }
 
@@ -51,7 +52,7 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      XmlElement_SubstituteMenu.SMP_Action_xunnx5_a.Item item = new XmlElement_SubstituteMenu.SMP_Action_xunnx5_a.Item(_context);
+      SMP_Action_xunnx5_a.Item item = new SMP_Action_xunnx5_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -74,7 +75,7 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"), context);
+        super(AUX_xunnx5.XmlElement_6047438c, context);
         _context = context;
       }
 
@@ -86,7 +87,7 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         Matcher _matcher_xunnx5_a1a6c5;
-        SNode element = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"), null);
+        SNode element = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_xunnx5.XmlElement_6047438c, null);
         if ((_matcher_xunnx5_a1a6c5 = REGEXP_xunnx5_a0a0a2a6c5.matcher(pattern)).find()) {
           SPropertyOperations.assign(element, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName"), _matcher_xunnx5_a1a6c5.group(1));
         }
@@ -108,6 +109,10 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
-  private static Pattern REGEXP_xunnx5_a0a0a2a6c5 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
-  private static Pattern REGEXP_xunnx5_a0a0a1a9c5 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
+  private static final Pattern REGEXP_xunnx5_a0a0a2a6c5 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
+  private static final Pattern REGEXP_xunnx5_a0a0a1a9c5 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
+
+  private static final class AUX_xunnx5 {
+    /*package*/ static final SConcept XmlElement_6047438c = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+  }
 }

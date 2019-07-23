@@ -16,6 +16,7 @@ import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import java.util.Objects;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SEnumOperations {
   @Deprecated
@@ -31,7 +32,7 @@ public class SEnumOperations {
   @Deprecated
   @ToRemove(version = 19.1)
   public static String getEnumMemberName(SNode member) {
-    return ((String) BHReflection.invoke0(member, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old"), SMethodTrimmedId.create("getName", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old"), "i2ZRO7Q")));
+    return ((String) BHReflection.invoke0(member, AUX_v1ztkw.EnumerationMemberDeclaration_Old_8a4754eb, SMethodTrimmedId.create("getName", AUX_v1ztkw.EnumerationMemberDeclaration_Old_8a4754eb, "i2ZRO7Q")));
   }
   @Deprecated
   @ToRemove(version = 19.1)
@@ -59,7 +60,7 @@ public class SEnumOperations {
   public static SNode enumMemberForName(SNode enumm, final String name) {
     return ListSequence.fromList(SLinkOperations.getChildren(enumm, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member"))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ((String) BHReflection.invoke0(it, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old"), SMethodTrimmedId.create("getName", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old"), "i2ZRO7Q"))).equals(name);
+        return ((String) BHReflection.invoke0(it, AUX_v1ztkw.EnumerationMemberDeclaration_Old_8a4754eb, SMethodTrimmedId.create("getName", AUX_v1ztkw.EnumerationMemberDeclaration_Old_8a4754eb, "i2ZRO7Q"))).equals(name);
       }
     });
   }
@@ -67,7 +68,7 @@ public class SEnumOperations {
   @ToRemove(version = 19.1)
   public static SNode enumMemberForValue(SNode enumm, final String value) {
     if (value == null) {
-      return ((SNode) BHReflection.invoke0(enumm, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old"), SMethodTrimmedId.create("getDefaultMember", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old"), "hEwIM$p")));
+      return ((SNode) BHReflection.invoke0(enumm, AUX_v1ztkw.EnumerationDataTypeDeclaration_Old_9e6b98ad, SMethodTrimmedId.create("getDefaultMember", AUX_v1ztkw.EnumerationDataTypeDeclaration_Old_9e6b98ad, "hEwIM$p")));
     }
     return ListSequence.fromList(SLinkOperations.getChildren(enumm, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member"))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -166,5 +167,10 @@ public class SEnumOperations {
   }
   public static boolean isMember(SEnumerationLiteral enumMember, long id) {
     return enumMember != null && MetaIdHelper.getEnumerationLiteral(enumMember).getIdValue() == id;
+  }
+
+  private static final class AUX_v1ztkw {
+    /*package*/ static final SConcept EnumerationMemberDeclaration_Old_8a4754eb = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old");
+    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old_9e6b98ad = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
   }
 }

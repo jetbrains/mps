@@ -16,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ArithmSymbol_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ArithmSymbol_InferenceRule() {
@@ -38,13 +39,13 @@ public class typeof_ArithmSymbol_InferenceRule extends AbstractInferenceRule_Run
                 typeCheckingContext.createLessThanInequality((SNode) SNodeOperations.copyNode(MathTypeUtil.qInt), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133323", true), true, true, _info_12389875345);
               }
             }
-          } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType")) || SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, "jetbrains.mps.baseLanguage.math.structure.VectorType"))) {
+          } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), AUX_4jhj26.MatrixType_c2d2403c) || SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), AUX_4jhj26.VectorType_c2d2403b)) {
           } else {
             String s = "";
-            if (SNodeOperations.isInstanceOf(symbol, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e12aa0L, "jetbrains.mps.baseLanguage.math.structure.BigProdExpression"))) {
+            if (SNodeOperations.isInstanceOf(symbol, AUX_4jhj26.BigProdExpression_aee0a83f)) {
               s = "Multiplicand's ";
             }
-            if (SNodeOperations.isInstanceOf(symbol, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe188eafbL, "jetbrains.mps.baseLanguage.math.structure.BigSumExpression"))) {
+            if (SNodeOperations.isInstanceOf(symbol, AUX_4jhj26.BigSumExpression_4ba54e22)) {
               s = "Summand's ";
             }
             {
@@ -57,12 +58,20 @@ public class typeof_ArithmSymbol_InferenceRule extends AbstractInferenceRule_Run
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e7ac42L, "jetbrains.mps.baseLanguage.math.structure.ArithmSymbol");
+    return AUX_4jhj26.ArithmSymbol_b5dcddb2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_4jhj26 {
+    /*package*/ static final SConcept BigProdExpression_aee0a83f = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e12aa0L, "jetbrains.mps.baseLanguage.math.structure.BigProdExpression");
+    /*package*/ static final SConcept BigSumExpression_4ba54e22 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe188eafbL, "jetbrains.mps.baseLanguage.math.structure.BigSumExpression");
+    /*package*/ static final SConcept VectorType_c2d2403b = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, "jetbrains.mps.baseLanguage.math.structure.VectorType");
+    /*package*/ static final SConcept MatrixType_c2d2403c = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
+    /*package*/ static final SConcept ArithmSymbol_b5dcddb2 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e7ac42L, "jetbrains.mps.baseLanguage.math.structure.ArithmSymbol");
   }
 }

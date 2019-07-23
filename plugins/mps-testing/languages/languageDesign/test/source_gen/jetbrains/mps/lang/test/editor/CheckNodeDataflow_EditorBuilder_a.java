@@ -64,7 +64,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CheckNodeDataflow_EditorBuilder_a.nodeToCheckSingleRoleHandler_r9gaet_b0(myNode, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11ada7b9a44L, 0x11ada7c82e2L, "nodeToCheck"), getEditorContext());
+    SingleRoleCellProvider provider = new nodeToCheckSingleRoleHandler_r9gaet_b0(myNode, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11ada7b9a44L, 0x11ada7c82e2L, "nodeToCheck"), getEditorContext());
     return provider.createCell();
   }
   private static class nodeToCheckSingleRoleHandler_r9gaet_b0 extends SingleRoleCellProvider {

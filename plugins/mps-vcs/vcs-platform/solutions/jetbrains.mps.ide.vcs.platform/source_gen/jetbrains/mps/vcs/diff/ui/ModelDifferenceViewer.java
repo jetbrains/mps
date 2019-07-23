@@ -54,7 +54,7 @@ public class ModelDifferenceViewer implements DataProvider {
   private ModelChangeSet myMetadataChangeSet;
   private SNodeId myRootId;
 
-  private ModelDifferenceViewer.ModelDifferenceTree myTree = null;
+  private ModelDifferenceTree myTree = null;
   private JPanel myComponent = new JPanel(new BorderLayout());
   private JBSplitter myPanel = new JBSplitter(true, 0.25f);
   private RootDifferencePane myRootDifferencePane = null;
@@ -101,11 +101,11 @@ public class ModelDifferenceViewer implements DataProvider {
 
     myPanel.setSecondComponent(myNoRootPanel);
     if (showTree) {
-      myTree = new ModelDifferenceViewer.ModelDifferenceTree(project.getRepository());
+      myTree = new ModelDifferenceTree(project.getRepository());
       myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myTree));
 
       // actions connected to model tree 
-      myGoToNeighbourRootActions = new ModelDifferenceViewer.MyGoToNeighbourRootActions();
+      myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();
       myGoToNeighbourRootActions.previous().registerCustomShortcutSet(GoToNeighbourRootActions.PREV_ROOT_SHORTCUT, myComponent);
       myGoToNeighbourRootActions.next().registerCustomShortcutSet(GoToNeighbourRootActions.NEXT_ROOT_SHORTCUT, myComponent);
       if (rootId != null) {

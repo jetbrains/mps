@@ -67,13 +67,13 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private final MPSTree myTree;
   private final TreeNodeFeatureExtractor myFeatureExtractor;
   private boolean myInitialized;
-  private final TreeHighlighter.MyTreeNodeListener myTreeNodeListener = new TreeHighlighter.MyTreeNodeListener();
-  private final TreeHighlighter.MyFeatureForestMapListener myFeatureListener = new TreeHighlighter.MyFeatureForestMapListener();
-  private final TreeHighlighter.MyFileStatusListener myFileStatusListener = new TreeHighlighter.MyFileStatusListener();
-  private TreeHighlighter.MyModelDisposeListener myGlobalModelListener;
-  private final TreeHighlighter.FeaturesHolder myFeaturesHolder = new TreeHighlighter.FeaturesHolder();
+  private final MyTreeNodeListener myTreeNodeListener = new MyTreeNodeListener();
+  private final MyFeatureForestMapListener myFeatureListener = new MyFeatureForestMapListener();
+  private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
+  private MyModelDisposeListener myGlobalModelListener;
+  private final FeaturesHolder myFeaturesHolder = new FeaturesHolder();
   private final MergingUpdateQueue myQueue;
-  private final Update myHighlightAllFeaturesUpdate = new TreeHighlighter.HighlightAll();
+  private final Update myHighlightAllFeaturesUpdate = new HighlightAll();
 
   /**
    * 
@@ -91,7 +91,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     myTree = tree;
     myFeatureExtractor = featureExtractor;
     if (removeNodesOnModelDisposal) {
-      myGlobalModelListener = new TreeHighlighter.MyModelDisposeListener();
+      myGlobalModelListener = new MyModelDisposeListener();
     }
     myQueue = queue;
   }
@@ -163,7 +163,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       // FIXME why do we need some command queue to schedule rehighlightNode() call, while there's also myQueue for 'all feature' re-highlight? 
       // FIXME this is the only place we care to use myCommandQueue! 
       // TODO replace with Update(node) into myQueue, and change rehighlightAllFeaturesUpdate.canEat to consume single node update 
-      myQueue.queue(new TreeHighlighter.HighlightNodeAndFeature(node, feature));
+      myQueue.queue(new HighlightNodeAndFeature(node, feature));
     }
   }
 
@@ -185,7 +185,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
   private void unhighlightNode(@NotNull MPSTreeNode node) {
     if (!(node.removeTreeMessages(this).isEmpty())) {
-      myQueue.queue(new TreeHighlighter.UpdatePresentation(node));
+      myQueue.queue(new UpdatePresentation(node));
     }
   }
 
@@ -232,7 +232,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       node.addTreeMessage(message);
     }
     if (message != null || hadMessages) {
-      myQueue.queue(new TreeHighlighter.UpdatePresentation(node));
+      myQueue.queue(new UpdatePresentation(node));
     }
   }
 
@@ -368,11 +368,11 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     @Override
     public boolean canEat(Update update) {
       // this one would re-highlight all, why bother with a single request 
-      if (update instanceof TreeHighlighter.HighlightNodeAndFeature) {
-        return ((TreeHighlighter.HighlightNodeAndFeature) update).isSameHighlighter(TreeHighlighter.this);
+      if (update instanceof HighlightNodeAndFeature) {
+        return ((HighlightNodeAndFeature) update).isSameHighlighter(TreeHighlighter.this);
       }
-      if (update instanceof TreeHighlighter.UpdatePresentation) {
-        ((TreeHighlighter.UpdatePresentation) update).isSameHighlighter(TreeHighlighter.this);
+      if (update instanceof UpdatePresentation) {
+        ((UpdatePresentation) update).isSameHighlighter(TreeHighlighter.this);
       }
       return false;
     }

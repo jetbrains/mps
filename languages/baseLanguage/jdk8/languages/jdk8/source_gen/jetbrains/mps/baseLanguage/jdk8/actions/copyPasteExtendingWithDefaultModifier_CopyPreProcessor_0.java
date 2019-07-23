@@ -4,39 +4,47 @@ package jetbrains.mps.baseLanguage.jdk8.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.CopyPreProcessor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class copyPasteExtendingWithDefaultModifier_CopyPreProcessor_0 implements CopyPreProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    return AUX_5y2f9i.InstanceMethodDeclaration_9dbf9b2b;
   }
   @Override
   public void preProcessNode(SNode copy, SNode original) {
     SNode methodParent = SNodeOperations.getParent(original);
-    if (SNodeOperations.isInstanceOf(methodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-      if (SNodeOperations.isInstanceOf(methodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+    if (SNodeOperations.isInstanceOf(methodParent, AUX_5y2f9i.Classifier_4b7e553)) {
+      if (SNodeOperations.isInstanceOf(methodParent, AUX_5y2f9i.Interface_bca2069)) {
         if (ListSequence.fromList(SLinkOperations.getChildren(copy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier")));
+            return !(SNodeOperations.isInstanceOf(it, AUX_5y2f9i.DefaultModifier_996633a0));
           }
         })) {
           SPropertyOperations.assign(copy, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), true);
         } else {
           ListSequence.fromList(SLinkOperations.getChildren(copy, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).removeWhere(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier"));
+              return SNodeOperations.isInstanceOf(it, AUX_5y2f9i.DefaultModifier_996633a0);
             }
           });
           SPropertyOperations.assign(copy, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), false);
         }
       }
     }
+  }
+
+  private static final class AUX_5y2f9i {
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept DefaultModifier_996633a0 = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier");
   }
 }

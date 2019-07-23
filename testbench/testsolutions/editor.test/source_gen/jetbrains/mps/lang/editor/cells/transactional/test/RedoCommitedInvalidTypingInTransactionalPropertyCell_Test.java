@@ -21,7 +21,7 @@ public class RedoCommitedInvalidTypingInTransactionalPropertyCell_Test extends B
 
   @Test
   public void test_RedoCommitedInvalidTypingInTransactionalPropertyCell() throws Throwable {
-    new RedoCommitedInvalidTypingInTransactionalPropertyCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

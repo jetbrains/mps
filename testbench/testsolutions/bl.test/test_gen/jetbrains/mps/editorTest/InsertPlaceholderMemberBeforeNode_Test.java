@@ -21,7 +21,7 @@ public class InsertPlaceholderMemberBeforeNode_Test extends BaseTransformationTe
 
   @Test
   public void test_InsertPlaceholderMemberBeforeNode() throws Throwable {
-    new InsertPlaceholderMemberBeforeNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

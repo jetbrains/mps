@@ -18,6 +18,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AddMyselfToMenuOfRuleBlockMember extends SubstituteMenuBase {
@@ -28,7 +29,7 @@ public class AddMyselfToMenuOfRuleBlockMember extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new AddMyselfToMenuOfRuleBlockMember.SMP_Include_y0tsy8_a());
+    result.add(new SMP_Include_y0tsy8_a());
     return result;
   }
 
@@ -66,7 +67,11 @@ public class AddMyselfToMenuOfRuleBlockMember extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
+      return AUX_y0tsy8.RuleWithMessage_dc955b88;
     }
+  }
+
+  private static final class AUX_y0tsy8 {
+    /*package*/ static final SConcept RuleWithMessage_dc955b88 = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
   }
 }

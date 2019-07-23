@@ -32,7 +32,7 @@ import java.net.URLClassLoader;
   private static final Logger LOG = LogManager.getLogger(PlatformPlugins.class);
   public static final String PLUGIN_DESCRIPTOR_LOCATION = "META-INF/plugin.xml";
 
-  private final Map<String, PlatformPlugins.Descriptor> myPlugins = new HashMap<String, PlatformPlugins.Descriptor>();
+  private final Map<String, Descriptor> myPlugins = new HashMap<String, Descriptor>();
   private final Map<String, ClassLoader> myLoaders = new HashMap<String, ClassLoader>();
   private final Pattern myPluginIdPattern = Pattern.compile("<id>([a-zA-Z_0-9.]+)</id>");
 
@@ -77,7 +77,7 @@ import java.net.URLClassLoader;
 
       // XXX detect dependencies from other plugins to create proper classloading dependencies,  match <depends></depends> much like plugin id, above 
       //     meanwhile, hope there's no plugin code that references classes from its dependencies. 
-      PlatformPlugins.Descriptor d = new PlatformPlugins.Descriptor(pluginId, pluginLocation, cp, langLibs);
+      Descriptor d = new Descriptor(pluginId, pluginLocation, cp, langLibs);
       myPlugins.put(pluginId, d);
       if (LOG.isDebugEnabled()) {
         LOG.debug(String.format("Discovered %s; cp=%s, modules=%s", d, cp, langLibs));
@@ -113,15 +113,15 @@ import java.net.URLClassLoader;
   }
 
   /*package*/ void buildClassLoaders(ClassLoader rootClassLoader) {
-    for (PlatformPlugins.Descriptor pd : myPlugins.values()) {
+    for (Descriptor pd : myPlugins.values()) {
       ClassLoader cl = createPluginClassLoader(pd, rootClassLoader);
       myLoaders.put(pd.id, cl);
     }
   }
 
-  /*package*/ Collection<PlatformPlugins.Descriptor> found() {
+  /*package*/ Collection<Descriptor> found() {
     //  provisional method, just to move forward. I indend to hide implementation structures from the outer world eventually. 
-    return Collections.<PlatformPlugins.Descriptor>unmodifiableCollection(myPlugins.values());
+    return Collections.<Descriptor>unmodifiableCollection(myPlugins.values());
   }
 
   @Nullable
@@ -171,7 +171,7 @@ import java.net.URLClassLoader;
     return (rv.isEmpty() ? Collections.<File>emptyList() : rv);
   }
 
-  private static ClassLoader createPluginClassLoader(PlatformPlugins.Descriptor pd, ClassLoader rootCL) {
+  private static ClassLoader createPluginClassLoader(Descriptor pd, ClassLoader rootCL) {
     if (pd.cp.isEmpty()) {
       return rootCL;
     }

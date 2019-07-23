@@ -37,7 +37,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
@@ -50,6 +49,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -137,10 +138,10 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
               public Object select(SearchResult<Object> it) {
                 return it.getObject();
               }
-            }).ofType(SNode.class), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+            }).ofType(SNode.class), AUX_jik3lj.AbstractConceptDeclaration_ec74828f);
             List<SNodeReference> rv = Sequence.fromIterable(allConcepts).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode concept) {
-                return ((boolean) (Boolean) BHReflection.invoke0(concept, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable"), SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR"))) || !(conceptsInUse.contains(NameUtil.nodeFQName(concept)));
+                return ((boolean) (Boolean) BHReflection.invoke0(concept, AUX_jik3lj.IDeprecatable_90d7bbb8, SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR"))) || !(conceptsInUse.contains(NameUtil.nodeFQName(concept)));
               }
             }).select(new ISelector<SNode, SNodeReference>() {
               public SNodeReference select(SNode it) {
@@ -184,5 +185,10 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
     });
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(false).forceNewTab(false).notFoundMessage("Nothing");
     UsagesViewTool.showUsages(((Project) MapSequence.fromMap(_params).get("ideaProject")), provider, new SearchQuery(GlobalScope.getInstance()), opt);
+  }
+
+  private static final class AUX_jik3lj {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IDeprecatable_90d7bbb8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable");
   }
 }

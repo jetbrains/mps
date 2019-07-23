@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DocMethodParameterReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new DocMethodParameterReference_SubstituteMenu.SMP_ReferenceScope_7j3pri_a(), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L, "jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference")));
-    result.add(new DocMethodParameterReference_SubstituteMenu.SMP_Subconcepts_7j3pri_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_7j3pri_a(), AUX_7j3pri.DocMethodParameterReference_1a7f35b8));
+    result.add(new SMP_Subconcepts_7j3pri_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class DocMethodParameterReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_7j3pri_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L, "jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference"), MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param"));
+      super((SAbstractConcept) AUX_7j3pri.DocMethodParameterReference_1a7f35b8, MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class DocMethodParameterReference_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_7j3pri_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L, "jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_7j3pri.DocMethodParameterReference_1a7f35b8);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class DocMethodParameterReference_SubstituteMenu extends SubstituteMenuBa
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_7j3pri {
+    /*package*/ static final SConcept DocMethodParameterReference_1a7f35b8 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L, "jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference");
   }
 }

@@ -41,6 +41,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CellMenuPart_Generic_Group_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -161,7 +162,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CellMenuPart_Generic_Group_EditorBuilder_a.parameterObjectTypeSingleRoleHandler_ngl4rk_c0b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType"), getEditorContext());
+    SingleRoleCellProvider provider = new parameterObjectTypeSingleRoleHandler_ngl4rk_c0b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType"), getEditorContext());
     return provider.createCell();
   }
   private static class parameterObjectTypeSingleRoleHandler_ngl4rk_c0b1a extends SingleRoleCellProvider {
@@ -242,7 +243,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CellMenuPart_Generic_Group_EditorBuilder_a.parametersFunctionSingleRoleHandler_ngl4rk_c1b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f58784317L, 0x10f58784318L, "parametersFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new parametersFunctionSingleRoleHandler_ngl4rk_c1b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f58784317L, 0x10f58784318L, "parametersFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class parametersFunctionSingleRoleHandler_ngl4rk_c1b1a extends SingleRoleCellProvider {
@@ -332,7 +333,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
       editorCell.setCellId("property_presentation");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_nr2vvy.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -374,7 +375,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new CellMenuPart_Generic_Group_EditorBuilder_a.matchingTextFunctionSingleRoleHandler_ngl4rk_c3b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8f6cadL, "matchingTextFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new matchingTextFunctionSingleRoleHandler_ngl4rk_c3b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8f6cadL, "matchingTextFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class matchingTextFunctionSingleRoleHandler_ngl4rk_c3b1a extends SingleRoleCellProvider {
@@ -455,7 +456,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new CellMenuPart_Generic_Group_EditorBuilder_a.descriptionTextFunctionSingleRoleHandler_ngl4rk_c4b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8fbee5L, "descriptionTextFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new descriptionTextFunctionSingleRoleHandler_ngl4rk_c4b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8fbee5L, "descriptionTextFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class descriptionTextFunctionSingleRoleHandler_ngl4rk_c4b1a extends SingleRoleCellProvider {
@@ -536,7 +537,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new CellMenuPart_Generic_Group_EditorBuilder_a.handlerFunctionSingleRoleHandler_ngl4rk_c5b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f58784317L, 0x10f58784319L, "handlerFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new handlerFunctionSingleRoleHandler_ngl4rk_c5b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f58784317L, 0x10f58784319L, "handlerFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class handlerFunctionSingleRoleHandler_ngl4rk_c5b1a extends SingleRoleCellProvider {
@@ -589,5 +590,9 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     protected String getNoTargetText() {
       return "<default>";
     }
+  }
+
+  private static final class AUX_nr2vvy {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

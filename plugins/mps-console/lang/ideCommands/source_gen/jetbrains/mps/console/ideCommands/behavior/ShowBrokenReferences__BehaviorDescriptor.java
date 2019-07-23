@@ -4,7 +4,6 @@ package jetbrains.mps.console.ideCommands.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -19,6 +18,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -35,9 +35,10 @@ import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBa
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, "jetbrains.mps.console.ideCommands.structure.ShowBrokenReferences");
+  private static final SAbstractConcept CONCEPT = AUX_wnixnx.ShowBrokenReferences_c34881db;
 
   public static final SMethod<Void> doExecute_id2SpVAIqougW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doExecute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2SpVAIqougW").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""));
 
@@ -137,5 +138,9 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
       return checkedDotOperand.getComponent(UsagesViewTool.class);
     }
     return null;
+  }
+
+  private static final class AUX_wnixnx {
+    /*package*/ static final SConcept ShowBrokenReferences_c34881db = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, "jetbrains.mps.console.ideCommands.structure.ShowBrokenReferences");
   }
 }

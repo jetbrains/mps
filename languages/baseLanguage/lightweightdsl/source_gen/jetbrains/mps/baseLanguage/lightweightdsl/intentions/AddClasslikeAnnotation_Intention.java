@@ -10,7 +10,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
@@ -23,9 +22,12 @@ import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLDescriptor__Behavio
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   public AddClasslikeAnnotation_Intention() {
@@ -43,7 +45,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"))) == null) && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass")));
+    return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_vr3e0l.DSLAnnotation_eee1a74)) == null) && !(SNodeOperations.isInstanceOf(node, AUX_vr3e0l.AutoInitDSLClass_f4d98b17));
   }
   @Override
   public boolean isSurroundWith() {
@@ -54,13 +56,13 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
     List<SNode> paramList = parameter(node, context);
     if (paramList != null) {
       for (SNode param : paramList) {
-        ListSequence.fromList(list).addElement(new AddClasslikeAnnotation_Intention.IntentionImplementation(param));
+        ListSequence.fromList(list).addElement(new IntentionImplementation(param));
       }
     }
     return list;
   }
   private List<SNode> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor"))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(node), AUX_vr3e0l.DSLDescriptor_799dc12a)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.is(DSLDescriptor__BehaviorDescriptor.getPreferredConcept_id1_lSsE3TA5X.invoke(it), new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198")));
       }
@@ -77,7 +79,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")), createDSLAnnotation_qk2y7i_a0a0a(myParameter));
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_vr3e0l.DSLAnnotation_eee1a74), createDSLAnnotation_qk2y7i_a0a0a(myParameter));
       ClassLikeInitHelper.init(node, myParameter, SNodeOperations.getModel(node));
     }
     @Override
@@ -90,8 +92,14 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
   }
   private static SNode createDSLAnnotation_qk2y7i_a0a0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_vr3e0l.DSLAnnotation_eee1a74, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor"), node0);
     return n1;
+  }
+
+  private static final class AUX_vr3e0l {
+    /*package*/ static final SInterfaceConcept AutoInitDSLClass_f4d98b17 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
+    /*package*/ static final SConcept DSLAnnotation_eee1a74 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
+    /*package*/ static final SConcept DSLDescriptor_799dc12a = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
   }
 }

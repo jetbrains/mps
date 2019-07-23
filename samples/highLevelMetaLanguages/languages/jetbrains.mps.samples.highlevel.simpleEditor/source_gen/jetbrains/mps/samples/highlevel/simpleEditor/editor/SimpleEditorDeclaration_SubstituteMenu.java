@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SimpleEditorDeclaration_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleEditorDeclaration_SubstituteMenu.SMP_ReferenceScope_roousu_a(), MetaAdapterFactory.getConcept(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL, "jetbrains.mps.samples.highlevel.simpleEditor.structure.SimpleEditorDeclaration")));
-    result.add(new SimpleEditorDeclaration_SubstituteMenu.SMP_Subconcepts_roousu_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_roousu_a(), AUX_roousu.SimpleEditorDeclaration_90aba99d));
+    result.add(new SMP_Subconcepts_roousu_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class SimpleEditorDeclaration_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_roousu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL, "jetbrains.mps.samples.highlevel.simpleEditor.structure.SimpleEditorDeclaration"), MetaAdapterFactory.getReferenceLink(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL, 0x346ead2c08ccf9f3L, "cncpt"));
+      super((SAbstractConcept) AUX_roousu.SimpleEditorDeclaration_90aba99d, MetaAdapterFactory.getReferenceLink(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL, 0x346ead2c08ccf9f3L, "cncpt"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class SimpleEditorDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_roousu_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL, "jetbrains.mps.samples.highlevel.simpleEditor.structure.SimpleEditorDeclaration"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_roousu.SimpleEditorDeclaration_90aba99d);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class SimpleEditorDeclaration_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_roousu {
+    /*package*/ static final SConcept SimpleEditorDeclaration_90aba99d = MetaAdapterFactory.getConcept(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL, "jetbrains.mps.samples.highlevel.simpleEditor.structure.SimpleEditorDeclaration");
   }
 }

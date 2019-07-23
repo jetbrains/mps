@@ -4,7 +4,6 @@ package jetbrains.mps.core.xml.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class XmlPart__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL, "jetbrains.mps.core.xml.structure.XmlPart");
+  private static final SAbstractConcept CONCEPT = AUX_2eap2t.XmlPart_2c43da1b;
 
   public static final SMethod<Boolean> isOneLineBlock_id1Qs9WekVZ7e = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isOneLineBlock").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1Qs9WekVZ7e").build();
   public static final SMethod<Boolean> isFirstPositionAllowed_id1Qs9WekVZ7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1Qs9WekVZ7m").build();
@@ -76,5 +77,9 @@ public final class XmlPart__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_2eap2t {
+    /*package*/ static final SInterfaceConcept XmlPart_2c43da1b = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL, "jetbrains.mps.core.xml.structure.XmlPart");
   }
 }

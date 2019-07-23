@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestListReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TestListReference_SubstituteMenu.SMP_ReferenceScope_5gn4im_a(), MetaAdapterFactory.getConcept(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d0614bL, "jetbrains.mps.lang.pattern.testLang.structure.TestListReference")));
-    result.add(new TestListReference_SubstituteMenu.SMP_Subconcepts_5gn4im_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_5gn4im_a(), AUX_5gn4im.TestListReference_ca86bcee));
+    result.add(new SMP_Subconcepts_5gn4im_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class TestListReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_5gn4im_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d0614bL, "jetbrains.mps.lang.pattern.testLang.structure.TestListReference"), MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d0614bL, 0x15b423b3f8d06220L, "listPattern"));
+      super((SAbstractConcept) AUX_5gn4im.TestListReference_ca86bcee, MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d0614bL, 0x15b423b3f8d06220L, "listPattern"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class TestListReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_5gn4im_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d0614bL, "jetbrains.mps.lang.pattern.testLang.structure.TestListReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_5gn4im.TestListReference_ca86bcee);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class TestListReference_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_5gn4im {
+    /*package*/ static final SConcept TestListReference_ca86bcee = MetaAdapterFactory.getConcept(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d0614bL, "jetbrains.mps.lang.pattern.testLang.structure.TestListReference");
   }
 }

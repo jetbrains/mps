@@ -26,7 +26,7 @@ public class DependencyTree extends MPSTree {
 
   public DependencyTree(DependenciesPanel parent) {
     myParent = parent;
-    addTreeSelectionListener(new DependencyTree.MyTreeSelectionListener());
+    addTreeSelectionListener(new MyTreeSelectionListener());
   }
 
   @Override

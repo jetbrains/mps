@@ -15,6 +15,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PropertyMacroActions {
 
@@ -26,7 +27,7 @@ public class PropertyMacroActions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode attributedNode = SNodeOperations.getParent(node);
         SNodeOperations.deleteNode(node);
-        SelectionUtil.selectCell(editorContext, attributedNode, "*" + CellIdManager.createPropertyId(SPropertyOperations.getString(SNodeOperations.as(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(node).getDeclarationNode(), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))));
+        SelectionUtil.selectCell(editorContext, attributedNode, "*" + CellIdManager.createPropertyId(SPropertyOperations.getString(SNodeOperations.as(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(node).getDeclarationNode(), AUX_yayzo3.PropertyDeclaration_ce818bfd), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))));
       }
 
     };
@@ -65,5 +66,9 @@ public class PropertyMacroActions {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_yayzo3 {
+    /*package*/ static final SConcept PropertyDeclaration_ce818bfd = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
   }
 }

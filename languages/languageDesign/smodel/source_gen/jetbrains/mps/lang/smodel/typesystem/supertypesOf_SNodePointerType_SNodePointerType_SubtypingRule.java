@@ -17,6 +17,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule() {
@@ -26,8 +27,8 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
     SNode concept = SLinkOperations.getTarget(type, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept"));
     // COPIED FROM supertypesOf_SNodeType_SNodeType 
     // DO NOT TOUCH THIS. CONCEPT MIGHT BE A TYPE VARIABLE 
-    if (concept != null && SNodeOperations.isInstanceOf(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) {
-      List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")));
+    if (concept != null && SNodeOperations.isInstanceOf(concept, AUX_to4p90.AbstractConceptDeclaration_ec74828f)) {
+      List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, AUX_to4p90.AbstractConceptDeclaration_ec74828f));
       for (SNode superConcept : ListSequence.fromList(superConcepts)) {
         ListSequence.fromList(list).addElement(createSNodePointerType_to4p90_a0a0a1a4a1(superConcept));
       }
@@ -36,7 +37,7 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
     return list;
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    return AUX_to4p90.SNodePointerType_1589fb65;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,13 +47,18 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
   }
   private static SNode createSNodePointerType_to4p90_a0a0a1a4a1(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_to4p90.SNodePointerType_1589fb65, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept"), node0);
     return n1;
   }
   private static SNode createSNodePointerType_to4p90_a0a2a4a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_to4p90.SNodePointerType_1589fb65, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_to4p90 {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept SNodePointerType_1589fb65 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
   }
 }

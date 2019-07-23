@@ -11,7 +11,6 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -20,6 +19,9 @@ import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RemoveOddAnnotations extends MigrationScriptBase {
   public String getCaption() {
@@ -42,13 +44,13 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
           return scope_gqzzto_a0d_0;
         }
       };
-      Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass"), false), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))).where(new IWhereFilter<SNode>() {
+      Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_gqzzto.AutoInitDSLClass_f4d98b17, false), AUX_gqzzto.ClassConcept_e2711824)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"))) != null);
+          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_gqzzto.DSLAnnotation_eee1a74)) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.deleteNode(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"))));
+          SNodeOperations.deleteNode(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_gqzzto.DSLAnnotation_eee1a74)));
         }
       });
     }
@@ -63,9 +65,9 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
           return scope_gqzzto_a0e_0;
         }
       };
-      return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass"), false), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))).where(new IWhereFilter<SNode>() {
+      return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_gqzzto.AutoInitDSLClass_f4d98b17, false), AUX_gqzzto.ClassConcept_e2711824)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"))) != null);
+          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_gqzzto.DSLAnnotation_eee1a74)) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -82,4 +84,9 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl"), 0);
   }
 
+  private static final class AUX_gqzzto {
+    /*package*/ static final SInterfaceConcept AutoInitDSLClass_f4d98b17 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept DSLAnnotation_eee1a74 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
+  }
 }

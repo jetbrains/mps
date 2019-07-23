@@ -46,9 +46,9 @@ import jetbrains.mps.baseLanguage.regexp.runtime.RegexpOperations;
       System.out.println("s = " + st);
     }
   }
-  private static Pattern REGEXP_efh9at_a0a0a0b = Pattern.compile("(\\w+)@(\\w+(?:\\.\\w+))", 0);
-  private static Pattern REGEXP_efh9at_a0a0a0c = Pattern.compile("(\\d+)", 0);
-  private static Pattern REGEXP_efh9at_a0a0a0d = Pattern.compile("(\\d+)", 0);
-  private static Pattern REGEXP_efh9at_b0a0a4 = Pattern.compile("\\((.*?)\\)", 0);
-  private static Pattern REGEXP_efh9at_b0a0f = Pattern.compile("\\s+", 0);
+  private static final Pattern REGEXP_efh9at_a0a0a0b = Pattern.compile("(\\w+)@(\\w+(?:\\.\\w+))", 0);
+  private static final Pattern REGEXP_efh9at_a0a0a0c = Pattern.compile("(\\d+)", 0);
+  private static final Pattern REGEXP_efh9at_a0a0a0d = Pattern.compile("(\\d+)", 0);
+  private static final Pattern REGEXP_efh9at_b0a0a4 = Pattern.compile("\\((.*?)\\)", 0);
+  private static final Pattern REGEXP_efh9at_b0a0f = Pattern.compile("\\s+", 0);
 }

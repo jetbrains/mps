@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TemplateSwitchReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TemplateSwitchReference_SubstituteMenu.SMP_ReferenceScope_ncgjod_a(), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, "jetbrains.mps.lang.generator.structure.TemplateSwitchReference")));
-    result.add(new TemplateSwitchReference_SubstituteMenu.SMP_Subconcepts_ncgjod_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ncgjod_a(), AUX_ncgjod.TemplateSwitchReference_b937f63f));
+    result.add(new SMP_Subconcepts_ncgjod_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class TemplateSwitchReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_ncgjod_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, "jetbrains.mps.lang.generator.structure.TemplateSwitchReference"), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, 0x1031eb352ffL, "templateSwitch"));
+      super((SAbstractConcept) AUX_ncgjod.TemplateSwitchReference_b937f63f, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, 0x1031eb352ffL, "templateSwitch"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class TemplateSwitchReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_ncgjod_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, "jetbrains.mps.lang.generator.structure.TemplateSwitchReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_ncgjod.TemplateSwitchReference_b937f63f);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class TemplateSwitchReference_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_ncgjod {
+    /*package*/ static final SConcept TemplateSwitchReference_b937f63f = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1031eb3122dL, "jetbrains.mps.lang.generator.structure.TemplateSwitchReference");
   }
 }

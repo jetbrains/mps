@@ -36,12 +36,12 @@ public class RefactoringUtil {
    */
   @Deprecated
   @ToRemove(version = 2018.2)
-  public static RefactoringUtil.Applicability getApplicability(IRefactoring refactoring, Collection entities) {
+  public static Applicability getApplicability(IRefactoring refactoring, Collection entities) {
     assert !(entities.isEmpty());
     assert (entities.size() == 1 || refactoring.getRefactoringTarget().allowMultipleTargets());
     IRefactoringTarget target = refactoring.getRefactoringTarget();
     if (!(RefactoringUtil.isApplicableToEntities(refactoring.getUserFriendlyName(), target, entities))) {
-      return RefactoringUtil.Applicability.NOT_APPLICABLE;
+      return Applicability.NOT_APPLICABLE;
     }
     for (IRefactoring r : RefactoringAccess.getInstance().getAllRefactorings()) {
       if (r.getOverridenRefactoringClass() == null) {
@@ -58,7 +58,7 @@ public class RefactoringUtil {
         continue;
       }
       if (r.getOverridenRefactoringClass() == refClass) {
-        return RefactoringUtil.Applicability.OVERRIDDEN;
+        return Applicability.OVERRIDDEN;
       }
       String overriddenName = r.getOverridenRefactoringClass().getName();
       String refClassName = refClass.getName();
@@ -66,7 +66,7 @@ public class RefactoringUtil {
       String refClassLoader = refClass.getClassLoader().toString();
       assert !(overriddenName.equals(refClassName)) : "Refactoring classes are loaded using different classloaders. overridden: " + overriddenClassLoader + "; " + "ref: " + refClassLoader + "; class: " + refClassName;
     }
-    return RefactoringUtil.Applicability.APPLICABLE;
+    return Applicability.APPLICABLE;
   }
   private static boolean isApplicableToEntities(String refactoringName, IRefactoringTarget target, Collection entities) {
     if (!(target.allowMultipleTargets()) && entities.size() > 1) {
@@ -91,26 +91,26 @@ public class RefactoringUtil {
 
   public enum Applicability {
     APPLICABLE() {
-      public boolean lessThan(RefactoringUtil.Applicability level) {
+      public boolean lessThan(Applicability level) {
         return false;
       }
 
     },
     NOT_APPLICABLE() {
-      public boolean lessThan(RefactoringUtil.Applicability level) {
+      public boolean lessThan(Applicability level) {
         return true;
       }
 
     },
     OVERRIDDEN() {
-      public boolean lessThan(RefactoringUtil.Applicability level) {
-        return level == RefactoringUtil.Applicability.APPLICABLE;
+      public boolean lessThan(Applicability level) {
+        return level == Applicability.APPLICABLE;
       }
 
     };
 
     private Applicability() {
     }
-    public abstract boolean lessThan(RefactoringUtil.Applicability level);
+    public abstract boolean lessThan(Applicability level);
   }
 }

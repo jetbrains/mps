@@ -31,31 +31,31 @@ public class TestExpectedType_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck4395293866213260523() throws Throwable {
-    new TestExpectedType_Test.TestBody(this).test_ErrorMessagesCheck4395293866213260523();
+    new TestBody(this).test_ErrorMessagesCheck4395293866213260523();
   }
   @Test
   public void test_NodeExpectedTypeCheck8101092317677991775() throws Throwable {
-    new TestExpectedType_Test.TestBody(this).test_NodeExpectedTypeCheck8101092317677991775();
+    new TestBody(this).test_NodeExpectedTypeCheck8101092317677991775();
   }
   @Test
   public void test_NodeExpectedTypeCheck8101092317677995689() throws Throwable {
-    new TestExpectedType_Test.TestBody(this).test_NodeExpectedTypeCheck8101092317677995689();
+    new TestBody(this).test_NodeExpectedTypeCheck8101092317677995689();
   }
   @Test
   public void test_NodeExpectedTypeCheck8101092317677999915() throws Throwable {
-    new TestExpectedType_Test.TestBody(this).test_NodeExpectedTypeCheck8101092317677999915();
+    new TestBody(this).test_NodeExpectedTypeCheck8101092317677999915();
   }
   @Test
   public void test_NodeExpectedTypeCheck8101092317678002448() throws Throwable {
-    new TestExpectedType_Test.TestBody(this).test_NodeExpectedTypeCheck8101092317678002448();
+    new TestBody(this).test_NodeExpectedTypeCheck8101092317678002448();
   }
   @Test
   public void test_NodeExpectedTypeCheck8101092317678005784() throws Throwable {
-    new TestExpectedType_Test.TestBody(this).test_NodeExpectedTypeCheck8101092317678005784();
+    new TestBody(this).test_NodeExpectedTypeCheck8101092317678005784();
   }
   @Test
   public void test_NodeExpectedTypeCheck8101092317678009113() throws Throwable {
-    new TestExpectedType_Test.TestBody(this).test_NodeExpectedTypeCheck8101092317678009113();
+    new TestBody(this).test_NodeExpectedTypeCheck8101092317678009113();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -5,7 +5,6 @@ package jetbrains.mps.lang.plugin.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -18,6 +17,8 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class FixDynamicReferences_MigrationScript extends BaseMigrationScript {
   public FixDynamicReferences_MigrationScript() {
@@ -33,7 +34,7 @@ public final class FixDynamicReferences_MigrationScript extends BaseMigrationScr
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+        return AUX_d99l52.BaseConcept_bc2351f;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -67,5 +68,9 @@ public final class FixDynamicReferences_MigrationScript extends BaseMigrationScr
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c89590367(jetbrains.mps.lang.plugin.scripts)/930311433812684751");
+  }
+
+  private static final class AUX_d99l52 {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

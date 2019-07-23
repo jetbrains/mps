@@ -16,7 +16,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -25,6 +24,7 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -33,6 +33,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class IsSubtypeExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -70,14 +71,14 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "isSubtype");
     editorCell.setCellId("Constant_ryfqc2_a0");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IsSubtypeExpression_EditorBuilder_a.ReplaceWith_IsSubtypeExpression_cellMenu_ryfqc2_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_IsSubtypeExpression_cellMenu_ryfqc2_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_IsSubtypeExpression_cellMenu_ryfqc2_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_IsSubtypeExpression_cellMenu_ryfqc2_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, "jetbrains.mps.lang.typesystem.structure.IsSubtypeExpression");
+      return AUX_daw5to.IsSubtypeExpression_5e9a1dac;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -94,7 +95,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IsSubtypeExpression_EditorBuilder_a.subtypeExpressionSingleRoleHandler_ryfqc2_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7be155L, "subtypeExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new subtypeExpressionSingleRoleHandler_ryfqc2_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7be155L, "subtypeExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class subtypeExpressionSingleRoleHandler_ryfqc2_c0 extends SingleRoleCellProvider {
@@ -155,7 +156,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new IsSubtypeExpression_EditorBuilder_a.supertypeExpressionSingleRoleHandler_ryfqc2_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7bf5e7L, "supertypeExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new supertypeExpressionSingleRoleHandler_ryfqc2_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7bf5e7L, "supertypeExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class supertypeExpressionSingleRoleHandler_ryfqc2_e0 extends SingleRoleCellProvider {
@@ -217,5 +218,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_daw5to {
+    /*package*/ static final SConcept IsSubtypeExpression_5e9a1dac = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, "jetbrains.mps.lang.typesystem.structure.IsSubtypeExpression");
   }
 }

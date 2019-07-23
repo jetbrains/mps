@@ -23,6 +23,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class StructureAspectDeclaration_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -70,7 +71,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new StructureAspectDeclaration_EditorBuilder_a.conceptsListHandler_vq6uem_b1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new conceptsListHandler_vq6uem_b1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_concepts");
     editorCell.setSRole(handler.getElementSRole());
@@ -93,7 +94,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x346ead2c08cc7fc8L, 0x346ead2c08cc7fd5L, "concepts");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x460f3ddb176b0a3cL, "jetbrains.mps.samples.highlevel.simpleStructure.structure.SimpleConceptDeclaration");
+      return AUX_c4xoog.SimpleConceptDeclaration_eb43d7c3;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -126,5 +127,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_c4xoog {
+    /*package*/ static final SConcept SimpleConceptDeclaration_eb43d7c3 = MetaAdapterFactory.getConcept(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x460f3ddb176b0a3cL, "jetbrains.mps.samples.highlevel.simpleStructure.structure.SimpleConceptDeclaration");
   }
 }

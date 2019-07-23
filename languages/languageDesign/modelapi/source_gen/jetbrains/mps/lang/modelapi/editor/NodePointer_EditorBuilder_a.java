@@ -37,6 +37,7 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.modelapi.behavior.NodeIdentity__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class NodePointer_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -68,7 +69,7 @@ import jetbrains.mps.lang.modelapi.behavior.NodeIdentity__BehaviorDescriptor;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new NodePointer_EditorBuilder_a.modelRefSingleRoleHandler_4hgp54_a0(myNode, MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf84L, "modelRef"), getEditorContext());
+    SingleRoleCellProvider provider = new modelRefSingleRoleHandler_4hgp54_a0(myNode, MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf84L, "modelRef"), getEditorContext());
     return provider.createCell();
   }
   private static class modelRefSingleRoleHandler_4hgp54_a0 extends SingleRoleCellProvider {
@@ -145,7 +146,7 @@ import jetbrains.mps.lang.modelapi.behavior.NodeIdentity__BehaviorDescriptor;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_5hk3va.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -162,5 +163,9 @@ import jetbrains.mps.lang.modelapi.behavior.NodeIdentity__BehaviorDescriptor;
   }
   private SNode _StyleParameter_QueryFunction_4hgp54_a0c0() {
     return (SNode) NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(getNode(), getEditorContext().getRepository());
+  }
+
+  private static final class AUX_5hk3va {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

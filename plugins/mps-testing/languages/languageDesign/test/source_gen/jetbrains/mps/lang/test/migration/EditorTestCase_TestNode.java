@@ -10,15 +10,16 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditorTestCase_TestNode extends MigrationScriptBase {
   public String getCaption() {
@@ -41,7 +42,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
           return scope_wvzb5u_a0d_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase"), false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_wvzb5u.EditorTestCase_77c60a8e, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314b78e4L, "nodeToEdit")) != null);
         }
@@ -53,7 +54,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
           }
         }
       });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase"), false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_wvzb5u.EditorTestCase_77c60a8e, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314bf3d3L, "result")) != null);
         }
@@ -77,7 +78,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
           return scope_wvzb5u_a0e_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase"), false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_wvzb5u.EditorTestCase_77c60a8e, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314b78e4L, "nodeToEdit")) != null);
         }
@@ -91,7 +92,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
           };
           return problem;
         }
-      }).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase"), false)).where(new IWhereFilter<SNode>() {
+      }).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_wvzb5u.EditorTestCase_77c60a8e, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314bf3d3L, "result")) != null);
         }
@@ -110,5 +111,9 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
   }
   public MigrationScriptReference getDescriptor() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 3);
+  }
+
+  private static final class AUX_wvzb5u {
+    /*package*/ static final SConcept EditorTestCase_77c60a8e = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
   }
 }

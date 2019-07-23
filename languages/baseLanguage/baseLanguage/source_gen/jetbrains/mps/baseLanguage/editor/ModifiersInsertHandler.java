@@ -43,7 +43,7 @@ public class ModifiersInsertHandler {
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         EditorCell contextCell = editorContext.getSelectedCell();
         SNode contextNode = contextCell.getSNode();
-        if (SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier")) && Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).first(), contextNode)) {
+        if (SNodeOperations.isInstanceOf(contextNode, AUX_urjr8q.Modifier_b30bf498) && Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).first(), contextNode)) {
           return false;
         }
         return true;
@@ -70,7 +70,7 @@ public class ModifiersInsertHandler {
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         EditorCell contextCell = editorContext.getSelectedCell();
         SNode contextNode = contextCell.getSNode();
-        if (SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier"))) {
+        if (SNodeOperations.isInstanceOf(contextNode, AUX_urjr8q.Modifier_b30bf498)) {
           if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers"))).count() <= 1) {
             // here I calculate whether there are some modifier concepts to insert at all. 
             // if yes then we allow to add a child into node.modifiers collection 
@@ -80,7 +80,7 @@ public class ModifiersInsertHandler {
               public SConcept select(SNode it) {
                 return SNodeOperations.getConcept(it);
               }
-            }).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier"), model)).where(new IWhereFilter<SConcept>() {
+            }).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_urjr8q.Modifier_b30bf498, model)).where(new IWhereFilter<SConcept>() {
               public boolean accept(SConcept it) {
                 return !(it.isAbstract());
               }
@@ -132,5 +132,9 @@ public class ModifiersInsertHandler {
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
     }
+  }
+
+  private static final class AUX_urjr8q {
+    /*package*/ static final SConcept Modifier_b30bf498 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
   }
 }

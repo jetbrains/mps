@@ -21,6 +21,7 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_IndexedTupleMemberAccessExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_IndexedTupleMemberAccessExpression_InferenceRule() {
@@ -44,7 +45,7 @@ public class typeof_IndexedTupleMemberAccessExpression_InferenceRule extends Abs
           typeCheckingContext.whenConcrete(tupleType, new Runnable() {
             public void run() {
               {
-                SNode coercedNode_2aq6od_a0c0a0c0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(tupleType), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType"));
+                SNode coercedNode_2aq6od_a0c0a0c0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(tupleType), AUX_290su0.IndexedTupleType_dd9476bd);
                 if (coercedNode_2aq6od_a0c0a0c0 != null) {
                   if (!(index >= 0 && index < ListSequence.fromList(SLinkOperations.getChildren(coercedNode_2aq6od_a0c0a0c0, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).count())) {
                     MessageTarget errorTarget = new NodeMessageTarget();
@@ -73,7 +74,7 @@ public class typeof_IndexedTupleMemberAccessExpression_InferenceRule extends Abs
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleMemberAccessExpression");
+    return AUX_290su0.IndexedTupleMemberAccessExpression_f04375cc;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -86,5 +87,10 @@ public class typeof_IndexedTupleMemberAccessExpression_InferenceRule extends Abs
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_290su0 {
+    /*package*/ static final SConcept IndexedTupleType_dd9476bd = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
+    /*package*/ static final SConcept IndexedTupleMemberAccessExpression_f04375cc = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleMemberAccessExpression");
   }
 }

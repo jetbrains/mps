@@ -4,6 +4,7 @@ package jetbrains.mps.lang.smodel.behavior;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
@@ -13,9 +14,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @Deprecated
 public class ConceptNodeUtil {
   public static boolean isSuper(SNode e) {
-    return SNodeOperations.isInstanceOf(e, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression")) || SNodeOperations.isInstanceOf(e, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression"));
+    return SNodeOperations.isInstanceOf(e, AUX_z7c53a.SuperNodeExpression_6fa6b15d) || SNodeOperations.isInstanceOf(e, AUX_z7c53a.SuperConceptExpression_a6afd4b);
   }
   public static boolean isThis(SNode e) {
-    return SNodeOperations.isInstanceOf(e, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) || SNodeOperations.isInstanceOf(e, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression"));
+    return SNodeOperations.isInstanceOf(e, AUX_z7c53a.ThisNodeExpression_70062b2e) || SNodeOperations.isInstanceOf(e, AUX_z7c53a.ThisConceptExpression_8a7f749d);
+  }
+
+  private static final class AUX_z7c53a {
+    /*package*/ static final SConcept SuperNodeExpression_6fa6b15d = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
+    /*package*/ static final SConcept SuperConceptExpression_a6afd4b = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
+    /*package*/ static final SConcept ThisNodeExpression_70062b2e = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
+    /*package*/ static final SConcept ThisConceptExpression_8a7f749d = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
   }
 }

@@ -419,8 +419,8 @@
       <node id="4819045807161544988" at="56,123,57,22" concept="4" />
       <node id="4819045807161545022" at="57,22,58,24" concept="4" />
       <node id="4819045807161545006" at="58,24,59,30" concept="4" />
-      <node id="6984321651747190737" at="64,73,65,50" concept="10" />
-      <node id="4819045807161912282" at="69,101,70,23" concept="4" />
+      <node id="6984321651747190737" at="64,47,65,50" concept="10" />
+      <node id="4819045807161912282" at="69,75,70,23" concept="4" />
       <node id="4819045807161912284" at="70,23,71,69" concept="9" />
       <node id="4819045807161912295" at="72,56,73,27" concept="4" />
       <node id="4819045807161912303" at="74,5,75,52" concept="9" />
@@ -428,11 +428,11 @@
       <node id="4819045807161912345" at="79,25,80,46" concept="9" />
       <node id="4819045807161912363" at="81,45,82,17" concept="10" />
       <node id="4819045807161912371" at="84,57,85,34" concept="4" />
-      <node id="4819045807161912389" at="88,194,89,86" concept="10" />
-      <node id="4819045807162991054" at="93,123,94,74" concept="9" />
+      <node id="4819045807161912389" at="88,194,89,60" concept="10" />
+      <node id="4819045807162991054" at="93,97,94,74" concept="9" />
       <node id="4819045807162991096" at="97,34,98,24" concept="4" />
-      <node id="4819045807162991104" at="100,7,101,74" concept="9" />
-      <node id="4819045807162991109" at="101,74,102,34" concept="4" />
+      <node id="4819045807162991104" at="100,7,101,48" concept="9" />
+      <node id="4819045807162991109" at="101,48,102,34" concept="4" />
       <node id="4819045807162991116" at="102,34,103,29" concept="4" />
       <node id="4819045807162991123" at="103,29,104,16" concept="10" />
       <node id="7052698666283758840" at="107,42,108,191" concept="0" />
@@ -452,7 +452,7 @@
       <node id="4819045807162991044" at="92,0,106,0" concept="8" trace="showMenu#(Ljava/util/List;Lcom/intellij/ui/awt/RelativePoint;)Ljetbrains/mps/ide/editor/util/GoToContextMenuHelperBase/ContextMenuComposite;" />
       <node id="4819045807161912275" at="68,0,91,0" concept="8" trace="buildPopup#(Ljava/util/List;)Ljetbrains/mps/ide/editor/util/GoToContextMenuHelperBase/ContextMenuComposite;" />
       <scope id="1616056205645052231" at="45,43,46,58" />
-      <scope id="7052698666283758748" at="64,73,65,50" />
+      <scope id="7052698666283758748" at="64,47,65,50" />
       <scope id="4819045807161912294" at="72,56,73,27" />
       <scope id="4819045807161912362" at="81,45,82,17" />
       <scope id="4819045807161912370" at="84,57,85,34" />
@@ -492,7 +492,7 @@
         <var name="ids" id="4819045807161912346" />
       </scope>
       <scope id="4819045807161912342" at="78,0,88,0" />
-      <scope id="4819045807162991053" at="93,123,104,16">
+      <scope id="4819045807162991053" at="93,97,104,16">
         <var name="menu" id="4819045807162991105" />
         <var name="model" id="4819045807162991055" />
       </scope>
@@ -500,7 +500,7 @@
         <var name="nodes" id="4819045807162991046" />
         <var name="point" id="4819045807162991050" />
       </scope>
-      <scope id="4819045807161912281" at="69,101,89,86">
+      <scope id="4819045807161912281" at="69,75,89,60">
         <var name="list" id="4819045807161912304" />
         <var name="listModel" id="4819045807161912285" />
         <var name="popup" id="4819045807161912319" />
@@ -777,43 +777,45 @@
   </root>
   <root nodeRef="r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/6984321651747607765">
     <file name="NamerFactory.java">
-      <node id="6984321651747553129" at="30,37,31,73" concept="9" />
-      <node id="123992983530946713" at="33,210,34,442" concept="10" />
-      <node id="6984321651747553145" at="35,17,36,52" concept="10" />
-      <node id="6984321651747553149" at="37,15,38,24" concept="10" />
-      <node id="6984321651747553161" at="40,44,41,22" concept="10" />
-      <node id="6984321651747609356" at="19,0,21,0" concept="8" trace="create#(Lorg/jetbrains/mps/openapi/module/SRepository;)Lcom/intellij/util/Function;" />
-      <node id="123992983530907549" at="32,37,35,17" concept="7" />
-      <node id="6984321651747553140" at="31,73,37,15" concept="7" />
-      <node id="6984321651747553126" at="29,0,40,0" concept="8" trace="compute#()Ljava/lang/String;" />
-      <node id="6984321651747553117" at="27,53,40,44" concept="9" />
-      <node id="6984321651747661803" at="27,0,43,0" concept="8" trace="fun#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Ljava/lang/String;" />
-      <node id="6984321651747645030" at="25,85,43,8" concept="10" />
-      <node id="6984321651747639234" at="23,0,45,0" concept="8" trace="create#(Lorg/jetbrains/mps/openapi/module/SRepository;)Lcom/intellij/util/Function;" />
-      <node id="6984321651747759912" at="22,0,46,0" concept="12" trace="DEFAULT_NAMER_FACTORY" />
-      <scope id="123992983530907551" at="33,210,34,442" />
-      <scope id="6984321651747609356" at="19,0,21,0">
+      <node id="6984321651747553129" at="31,37,32,73" concept="9" />
+      <node id="123992983530946713" at="34,96,35,214" concept="10" />
+      <node id="6984321651747553145" at="36,17,37,52" concept="10" />
+      <node id="6984321651747553149" at="38,15,39,24" concept="10" />
+      <node id="6984321651747553161" at="41,44,42,22" concept="10" />
+      <node id="6984321651747607765" at="49,0,50,0" concept="12" trace="INamedConcept_8cd7e247" />
+      <node id="6984321651747609356" at="20,0,22,0" concept="8" trace="create#(Lorg/jetbrains/mps/openapi/module/SRepository;)Lcom/intellij/util/Function;" />
+      <node id="123992983530907549" at="33,37,36,17" concept="7" />
+      <node id="6984321651747553140" at="32,73,38,15" concept="7" />
+      <node id="6984321651747553126" at="30,0,41,0" concept="8" trace="compute#()Ljava/lang/String;" />
+      <node id="6984321651747553117" at="28,53,41,44" concept="9" />
+      <node id="6984321651747661803" at="28,0,44,0" concept="8" trace="fun#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Ljava/lang/String;" />
+      <node id="6984321651747645030" at="26,85,44,8" concept="10" />
+      <node id="6984321651747639234" at="24,0,46,0" concept="8" trace="create#(Lorg/jetbrains/mps/openapi/module/SRepository;)Lcom/intellij/util/Function;" />
+      <node id="6984321651747759912" at="23,0,47,0" concept="12" trace="DEFAULT_NAMER_FACTORY" />
+      <scope id="123992983530907551" at="34,96,35,214" />
+      <scope id="6984321651747609356" at="20,0,22,0">
         <var name="repository" id="6984321651747834149" />
       </scope>
-      <scope id="6984321651747553144" at="32,37,36,52" />
-      <scope id="6984321651747553128" at="30,37,38,24">
+      <scope id="6984321651747553144" at="33,37,37,52" />
+      <scope id="6984321651747553128" at="31,37,39,24">
         <var name="resolved" id="6984321651747553130" />
       </scope>
-      <scope id="6984321651747553126" at="29,0,40,0" />
-      <scope id="6984321651747661809" at="27,53,41,22">
+      <scope id="6984321651747553126" at="30,0,41,0" />
+      <scope id="6984321651747661809" at="28,53,42,22">
         <var name="name" id="6984321651747553118" />
       </scope>
-      <scope id="6984321651747661803" at="27,0,43,0">
+      <scope id="6984321651747661803" at="28,0,44,0">
         <var name="ptr" id="6984321651747661807" />
       </scope>
-      <scope id="6984321651747639240" at="25,85,43,8" />
-      <scope id="6984321651747639234" at="23,0,45,0">
+      <scope id="6984321651747639240" at="26,85,44,8" />
+      <scope id="6984321651747639234" at="24,0,46,0">
         <var name="repo" id="6984321651747810030" />
       </scope>
-      <unit id="6984321651747553125" at="28,61,40,11" name="jetbrains.mps.ide.editor.util.NamerFactory$1$1$1" />
-      <unit id="6984321651747661801" at="26,17,43,7" name="jetbrains.mps.ide.editor.util.NamerFactory$1$1" />
-      <unit id="6984321651747639230" at="22,43,45,3" name="jetbrains.mps.ide.editor.util.NamerFactory$1" />
-      <unit id="6984321651747607765" at="18,0,47,0" name="jetbrains.mps.ide.editor.util.NamerFactory" />
+      <unit id="6984321651747607765" at="48,0,51,0" name="jetbrains.mps.ide.editor.util.NamerFactory$AUX_nid5o1" />
+      <unit id="6984321651747553125" at="29,61,41,11" name="jetbrains.mps.ide.editor.util.NamerFactory$1$1$1" />
+      <unit id="6984321651747661801" at="27,17,44,7" name="jetbrains.mps.ide.editor.util.NamerFactory$1$1" />
+      <unit id="6984321651747639230" at="23,43,46,3" name="jetbrains.mps.ide.editor.util.NamerFactory$1" />
+      <unit id="6984321651747607765" at="19,0,52,0" name="jetbrains.mps.ide.editor.util.NamerFactory" />
     </file>
   </root>
   <root nodeRef="r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/7052698666283512227">

@@ -33,7 +33,7 @@ public class ReportFiles_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.make.reduced.ReportFiles");
   public ReportFiles_Facet() {
-    ListSequence.fromList(targets).addElement(new ReportFiles_Facet.Target_report());
+    ListSequence.fromList(targets).addElement(new Target_report());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -51,7 +51,7 @@ public class ReportFiles_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new ReportFiles_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_report implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.make.reduced.ReportFiles.report");
@@ -148,8 +148,8 @@ public class ReportFiles_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 100;
     }
-    public static ReportFiles_Facet.Target_report.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, ReportFiles_Facet.Target_report.Parameters.class);
+    public static Target_report.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_report.Parameters.class);
     }
     public static class Parameters extends MultiTuple._4<List<String>, List<String>, List<String>, Map<String, SModel>> {
       public Parameters() {
@@ -191,7 +191,7 @@ public class ReportFiles_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.make.reduced.ReportFiles.report");
         if (properties.hasProperties(name)) {
-          ReportFiles_Facet.Target_report.Parameters props = properties.properties(name, ReportFiles_Facet.Target_report.Parameters.class);
+          Target_report.Parameters props = properties.properties(name, Target_report.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.make.reduced.ReportFiles.report.writtenFiles", null);
           MapSequence.fromMap(store).put("jetbrains.mps.make.reduced.ReportFiles.report.deletedFiles", null);
           MapSequence.fromMap(store).put("jetbrains.mps.make.reduced.ReportFiles.report.keptFiles", null);
@@ -203,7 +203,7 @@ public class ReportFiles_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.make.reduced.ReportFiles.report");
-          ReportFiles_Facet.Target_report.Parameters props = properties.properties(name, ReportFiles_Facet.Target_report.Parameters.class);
+          Target_report.Parameters props = properties.properties(name, Target_report.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.reduced.ReportFiles.report.writtenFiles")) {
             props.writtenFiles(null);
           }

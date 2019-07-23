@@ -13,6 +13,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddCast_QuickFix extends QuickFix_Runtime {
   public AddCast_QuickFix() {
@@ -20,25 +21,25 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
   }
   public String getDescription(SNode node) {
     String text = "expression";
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression"))) {
+    if (SNodeOperations.isInstanceOf(node, AUX_awytmr.BaseAssignmentExpression_8ed0d6ee)) {
       text = "right side of assignment";
-    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"))) {
+    } else if (SNodeOperations.isInstanceOf(node, AUX_awytmr.VariableDeclaration_3c610994)) {
       text = "initializer";
-    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c78301acL, "jetbrains.mps.baseLanguage.structure.BaseMethodCall")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation")) || SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))) {
+    } else if (SNodeOperations.isInstanceOf(node, AUX_awytmr.BaseMethodCall_4d8fb079) || SNodeOperations.isInstanceOf(node, AUX_awytmr.InstanceMethodCallOperation_cd28f5b6) || SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))) {
       text = "parameter";
-    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement")) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")) && (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))))) {
+    } else if (SNodeOperations.isInstanceOf(node, AUX_awytmr.Expression_4199e28d) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_awytmr.ReturnStatement_d4768417) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_awytmr.ExpressionStatement_9dbf9b0c) && (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), AUX_awytmr.ExpressionStatement_9dbf9b0c)))) {
       text = "returned expression";
     } else {
       text = "expression";
     }
-    return "Cast " + text + " to " + ((SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])))));
+    return "Cast " + text + " to " + ((SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), AUX_awytmr.Type_4199e276) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])))));
   }
   public void execute(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("expression")[0]), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")))) {
+    if (!(SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("expression")[0]), AUX_awytmr.Expression_4199e28d))) {
       return;
     }
-    SNode actualType = (SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])));
-    SNode cast = SNodeOperations.replaceWithNewChild(((SNode) AddCast_QuickFix.this.getField("expression")[0]), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression"));
+    SNode actualType = (SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), AUX_awytmr.Type_4199e276) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])));
+    SNode cast = SNodeOperations.replaceWithNewChild(((SNode) AddCast_QuickFix.this.getField("expression")[0]), AUX_awytmr.CastExpression_6a411f0c);
     SLinkOperations.setTarget(cast, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"), ((SNode) AddCast_QuickFix.this.getField("expression")[0]));
     SLinkOperations.setTarget(cast, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type"), SNodeOperations.copyNode(actualType));
     boolean needsParensAroundCastExpression = PrecedenceUtil.needsParensInsideCastExpression(cast);
@@ -47,5 +48,17 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
       SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), ((SNode) AddCast_QuickFix.this.getField("expression")[0]));
       SLinkOperations.setTarget(cast, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"), parens);
     }
+  }
+
+  private static final class AUX_awytmr {
+    /*package*/ static final SConcept BaseAssignmentExpression_8ed0d6ee = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
+    /*package*/ static final SConcept VariableDeclaration_3c610994 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept BaseMethodCall_4d8fb079 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c78301acL, "jetbrains.mps.baseLanguage.structure.BaseMethodCall");
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept ReturnStatement_d4768417 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept CastExpression_6a411f0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 }

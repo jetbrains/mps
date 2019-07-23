@@ -43,7 +43,7 @@ public class DependencyUtil {
    * Build set of dependencies for the given module, grouped under a fake root container
    */
   public DepLink build(SModule module) {
-    DepLink rv = new DepLink(module.getModuleReference(), DependencyUtil.Role.None, null);
+    DepLink rv = new DepLink(module.getModuleReference(), Role.None, null);
     List<DepLink> queue = ListSequence.fromList(new LinkedList<DepLink>());
     ListSequence.fromList(queue).addElement(rv);
     Map<Dependency, DepLink> visited = MapSequence.fromMap(new HashMap<Dependency, DepLink>());
@@ -64,7 +64,7 @@ public class DependencyUtil {
     }
     return rv;
   }
-  private List<DepLink> dependencies(DependencyUtil.Role role, SModuleReference moduleRef) {
+  private List<DepLink> dependencies(Role role, SModuleReference moduleRef) {
     List<DepLink> result = ListSequence.fromList(new ArrayList<DepLink>());
     SModule module = moduleRef.resolve(myRepo);
     if (module == null) {
@@ -85,12 +85,12 @@ public class DependencyUtil {
         if (module instanceof Language) {
           // generators and generators dependencies are now also added to language dependencies (MPS-15883) 
           for (Generator g : ((Language) module).getGenerators()) {
-            ListSequence.fromList(result).addElement(new DepLink(g.getModuleReference(), DependencyUtil.Role.OwnedGenerator, DependencyUtil.LinkType.Generator));
+            ListSequence.fromList(result).addElement(new DepLink(g.getModuleReference(), Role.OwnedGenerator, LinkType.Generator));
           }
         }
         if (module instanceof Generator) {
           SLanguage srcLang = ((Generator) module).sourceLanguage();
-          ListSequence.fromList(result).addElement(new DepLink(srcLang.getSourceModuleReference(), DependencyUtil.Role.SourceLanguage, DependencyUtil.LinkType.GeneratorLanguage));
+          ListSequence.fromList(result).addElement(new DepLink(srcLang.getSourceModuleReference(), Role.SourceLanguage, LinkType.GeneratorLanguage));
         }
         break;
 
@@ -105,14 +105,14 @@ public class DependencyUtil {
         if (devkit == null) {
           break;
         }
-        boolean direct = role == DependencyUtil.Role.UsedDevkit;
-        addDeps(result, devkit.getExtendedDevkits(), (direct ? DependencyUtil.Role.UsedDevkit : DependencyUtil.Role.DependencyDevkit), DependencyUtil.LinkType.ExtendsDevkit);
-        addDeps(result, devkit.getExportedLanguages(), (direct ? DependencyUtil.Role.UsedLanguage : DependencyUtil.Role.DependencyLanguage), DependencyUtil.LinkType.ExportsLanguage);
-        addDeps(result, devkit.getExportedSolutions(), (direct ? DependencyUtil.Role.RegularDependency : DependencyUtil.Role.RuntimeDependency), DependencyUtil.LinkType.ExportsSolution);
+        boolean direct = role == Role.UsedDevkit;
+        addDeps(result, devkit.getExtendedDevkits(), (direct ? Role.UsedDevkit : Role.DependencyDevkit), LinkType.ExtendsDevkit);
+        addDeps(result, devkit.getExportedLanguages(), (direct ? Role.UsedLanguage : Role.DependencyLanguage), LinkType.ExportsLanguage);
+        addDeps(result, devkit.getExportedSolutions(), (direct ? Role.RegularDependency : Role.RuntimeDependency), LinkType.ExportsSolution);
         break;
 
       case UsedLanguage:
-        addExtendedLanguages(module, DependencyUtil.Role.UsedLanguage, result);
+        addExtendedLanguages(module, Role.UsedLanguage, result);
         if (myNeedRuntime) {
           for (SDependency dep : module.getDeclaredDependencies()) {
             if (dep.getScope() == SDependencyScope.DESIGN || dep.getScope() == SDependencyScope.EXTENDS) {
@@ -120,7 +120,7 @@ public class DependencyUtil {
             }
             ListSequence.fromList(result).addElement(regularDependencyPresentation(dep));
           }
-          addDeps(result, as_he47wm_a0b0b0b0e3a6(module, Language.class).getRuntimeModulesReferences(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.ExportsRuntime);
+          addDeps(result, as_he47wm_a0b0b0b0e3a6(module, Language.class).getRuntimeModulesReferences(), Role.RuntimeDependency, LinkType.ExportsRuntime);
         }
         break;
 
@@ -136,7 +136,7 @@ public class DependencyUtil {
             ListSequence.fromList(result).addElement(regularDependencyPresentation(dep));
           } else if (myNeedRuntime) {
             // not sure there's reason to tell regular dependency from runtime dependency 
-            ListSequence.fromList(result).addElement(new DepLink(dep.getTargetModule(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.Depends));
+            ListSequence.fromList(result).addElement(new DepLink(dep.getTargetModule(), Role.RuntimeDependency, LinkType.Depends));
           }
         }
         if (myNeedRuntime) {
@@ -151,26 +151,26 @@ public class DependencyUtil {
             if (dep.getScope() == SDependencyScope.DESIGN) {
               continue;
             }
-            ListSequence.fromList(result).addElement(new DepLink(dep.getTargetModule(), DependencyUtil.Role.RuntimeDependency, (dep.isReexport() ? DependencyUtil.LinkType.ReexportsDep : DependencyUtil.LinkType.Depends)));
+            ListSequence.fromList(result).addElement(new DepLink(dep.getTargetModule(), Role.RuntimeDependency, (dep.isReexport() ? LinkType.ReexportsDep : LinkType.Depends)));
           }
           addUsedLanguagesAndDevkitsOf(module, result, false);
         }
         if (module instanceof Generator) {
-          ListSequence.fromList(result).addElement(new DepLink((as_he47wm_a0a0a0a0a0a1a6d0g(module, Generator.class)).sourceLanguage().getSourceModuleReference(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.GeneratorLanguage));
+          ListSequence.fromList(result).addElement(new DepLink((as_he47wm_a0a0a0a0a0a1a6d0g(module, Generator.class)).sourceLanguage().getSourceModuleReference(), Role.RuntimeDependency, LinkType.GeneratorLanguage));
         }
         break;
 
       case SourceLanguage:
         // dependency from generator to its source language 
-        addExtendedLanguages(module, DependencyUtil.Role.SourceLanguage, result);
+        addExtendedLanguages(module, Role.SourceLanguage, result);
         if (myNeedRuntime) {
-          addDeps(result, as_he47wm_a0b0a0c0h3a6(module, Language.class).getRuntimeModulesReferences(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.ExportsRuntime);
+          addDeps(result, as_he47wm_a0b0a0c0h3a6(module, Language.class).getRuntimeModulesReferences(), Role.RuntimeDependency, LinkType.ExportsRuntime);
         }
         break;
 
       case DependencyLanguage:
-        addExtendedLanguages(module, DependencyUtil.Role.DependencyLanguage, result);
-        addDeps(result, as_he47wm_a0b0b0i3a6(module, Language.class).getRuntimeModulesReferences(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.ExportsRuntime);
+        addExtendedLanguages(module, Role.DependencyLanguage, result);
+        addDeps(result, as_he47wm_a0b0b0i3a6(module, Language.class).getRuntimeModulesReferences(), Role.RuntimeDependency, LinkType.ExportsRuntime);
         break;
 
       default:
@@ -183,7 +183,7 @@ public class DependencyUtil {
       for (SLanguage lang : module.getUsedLanguages()) {
         SModuleReference langSourceModule = lang.getSourceModuleReference();
         if (langSourceModule != null) {
-          ListSequence.fromList(result).addElement(new DepLink(langSourceModule, (initialNotDependency ? DependencyUtil.Role.UsedLanguage : DependencyUtil.Role.DependencyLanguage), DependencyUtil.LinkType.UsesLanguage));
+          ListSequence.fromList(result).addElement(new DepLink(langSourceModule, (initialNotDependency ? Role.UsedLanguage : Role.DependencyLanguage), LinkType.UsesLanguage));
         }
       }
       return;
@@ -194,16 +194,16 @@ public class DependencyUtil {
         return it.getSourceModuleReference();
       }
     });
-    addDeps(result, Sequence.fromIterable(languages).where(new NotNullWhereFilter<SModuleReference>()), (initialNotDependency ? DependencyUtil.Role.UsedLanguage : DependencyUtil.Role.DependencyLanguage), DependencyUtil.LinkType.UsesLanguage);
-    addDeps(result, actualUses.devkits, (initialNotDependency ? DependencyUtil.Role.UsedDevkit : DependencyUtil.Role.DependencyDevkit), DependencyUtil.LinkType.UsesDevkit);
+    addDeps(result, Sequence.fromIterable(languages).where(new NotNullWhereFilter<SModuleReference>()), (initialNotDependency ? Role.UsedLanguage : Role.DependencyLanguage), LinkType.UsesLanguage);
+    addDeps(result, actualUses.devkits, (initialNotDependency ? Role.UsedDevkit : Role.DependencyDevkit), LinkType.UsesDevkit);
   }
 
-  private void addExtendedLanguages(SModule module, DependencyUtil.Role role, List<DepLink> result) {
+  private void addExtendedLanguages(SModule module, Role role, List<DepLink> result) {
     assert module instanceof Language;
     for (SDependency dep : module.getDeclaredDependencies()) {
       if (dep.getScope() == SDependencyScope.EXTENDS) {
         // Language can not extend anything but a language, that's why I don't care to check dep's target 
-        ListSequence.fromList(result).addElement(new DepLink(dep.getTargetModule(), role, DependencyUtil.LinkType.ExtendsLanguage));
+        ListSequence.fromList(result).addElement(new DepLink(dep.getTargetModule(), role, LinkType.ExtendsLanguage));
       }
     }
   }
@@ -213,23 +213,23 @@ public class DependencyUtil {
       case EXTENDS:
         SModule t = dep.getTarget();
         if (t instanceof Language) {
-          return new DepLink(dep.getTargetModule(), DependencyUtil.Role.RegularDependency, DependencyUtil.LinkType.ExtendsLanguage);
+          return new DepLink(dep.getTargetModule(), Role.RegularDependency, LinkType.ExtendsLanguage);
         } else if (t instanceof Generator) {
-          return new DepLink(dep.getTargetModule(), DependencyUtil.Role.RegularDependency, DependencyUtil.LinkType.ExtendsGenerator);
+          return new DepLink(dep.getTargetModule(), Role.RegularDependency, LinkType.ExtendsGenerator);
         } else {
           // just in case module could not be resolved 
-          return new DepLink(dep.getTargetModule(), DependencyUtil.Role.RegularDependency, DependencyUtil.LinkType.Depends);
+          return new DepLink(dep.getTargetModule(), Role.RegularDependency, LinkType.Depends);
         }
       case DESIGN:
-        return new DepLink(dep.getTargetModule(), DependencyUtil.Role.RegularDependency, DependencyUtil.LinkType.Depends);
+        return new DepLink(dep.getTargetModule(), Role.RegularDependency, LinkType.Depends);
       case RUNTIME:
-        return new DepLink(dep.getTargetModule(), DependencyUtil.Role.RuntimeDependency, DependencyUtil.LinkType.Depends);
+        return new DepLink(dep.getTargetModule(), Role.RuntimeDependency, LinkType.Depends);
       default:
-        return new DepLink(dep.getTargetModule(), DependencyUtil.Role.RegularDependency, (dep.isReexport() ? DependencyUtil.LinkType.ReexportsDep : DependencyUtil.LinkType.Depends));
+        return new DepLink(dep.getTargetModule(), Role.RegularDependency, (dep.isReexport() ? LinkType.ReexportsDep : LinkType.Depends));
     }
   }
 
-  public void addDeps(List<DepLink> result, Iterable<SModuleReference> modules, final DependencyUtil.Role role, final DependencyUtil.LinkType linktype) {
+  public void addDeps(List<DepLink> result, Iterable<SModuleReference> modules, final Role role, final LinkType linktype) {
     if (modules == null) {
       return;
     }
@@ -311,29 +311,29 @@ public class DependencyUtil {
     Role() {
     }
     public boolean isUsedLanguage() {
-      return this == DependencyUtil.Role.UsedLanguage;
+      return this == Role.UsedLanguage;
     }
     public boolean isDependency() {
-      return this == DependencyUtil.Role.RegularDependency || this == DependencyUtil.Role.OwnedGenerator || this == DependencyUtil.Role.RuntimeDependency;
+      return this == Role.RegularDependency || this == Role.OwnedGenerator || this == Role.RuntimeDependency;
     }
   }
-  public static class Dependency extends MultiTuple._2<SModuleReference, DependencyUtil.Role> {
+  public static class Dependency extends MultiTuple._2<SModuleReference, Role> {
     public Dependency() {
       super();
     }
-    public Dependency(SModuleReference module, DependencyUtil.Role role) {
+    public Dependency(SModuleReference module, Role role) {
       super(module, role);
     }
     public SModuleReference module(SModuleReference value) {
       return super._0(value);
     }
-    public DependencyUtil.Role role(DependencyUtil.Role value) {
+    public Role role(Role value) {
       return super._1(value);
     }
     public SModuleReference module() {
       return super._0();
     }
-    public DependencyUtil.Role role() {
+    public Role role() {
       return super._1();
     }
   }

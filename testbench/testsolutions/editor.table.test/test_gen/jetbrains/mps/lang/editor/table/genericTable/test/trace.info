@@ -9,7 +9,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/1626657127781621490">
     <file name="TabNavigation_Test.java">
       <node id="1626657127781621490" at="20,31,21,25" concept="5" />
-      <node id="1626657127781621490" at="25,53,26,55" concept="1" />
+      <node id="1626657127781621490" at="25,53,26,36" concept="1" />
       <node id="1626657127781621490" at="31,52,32,19" concept="5" />
       <node id="1626657127781621490" at="36,51,37,72" concept="1" />
       <node id="1626657127781667186" at="37,72,38,80" concept="1" />
@@ -19,7 +19,7 @@
       <node id="1626657127781621490" at="24,0,28,0" concept="2" trace="test_TabNavigation#()V" />
       <node id="1626657127781621490" at="35,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1626657127781621490" at="20,31,21,25" />
-      <scope id="1626657127781621490" at="25,53,26,55" />
+      <scope id="1626657127781621490" at="25,53,26,36" />
       <scope id="1626657127781621490" at="31,52,32,19" />
       <scope id="1626657127781621490" at="36,51,38,80" />
       <scope id="1626657127781621490" at="20,0,23,0" />
@@ -35,7 +35,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/1626657127781667188">
     <file name="TabNavigationNextLine_Test.java">
       <node id="1626657127781667188" at="20,39,21,25" concept="5" />
-      <node id="1626657127781667188" at="25,61,26,63" concept="1" />
+      <node id="1626657127781667188" at="25,61,26,36" concept="1" />
       <node id="1626657127781667188" at="31,52,32,19" concept="5" />
       <node id="1626657127781667188" at="36,51,37,72" concept="1" />
       <node id="1626657127781667236" at="37,72,38,80" concept="1" />
@@ -45,7 +45,7 @@
       <node id="1626657127781667188" at="24,0,28,0" concept="2" trace="test_TabNavigationNextLine#()V" />
       <node id="1626657127781667188" at="35,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1626657127781667188" at="20,39,21,25" />
-      <scope id="1626657127781667188" at="25,61,26,63" />
+      <scope id="1626657127781667188" at="25,61,26,36" />
       <scope id="1626657127781667188" at="31,52,32,19" />
       <scope id="1626657127781667188" at="36,51,38,80" />
       <scope id="1626657127781667188" at="20,0,23,0" />
@@ -61,7 +61,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/2025581204008440327">
     <file name="LocalHomeFromColumnSelection_Test.java">
       <node id="2025581204008440327" at="18,46,19,25" concept="5" />
-      <node id="2025581204008440327" at="23,68,24,70" concept="1" />
+      <node id="2025581204008440327" at="23,68,24,36" concept="1" />
       <node id="2025581204008440327" at="29,52,30,19" concept="5" />
       <node id="2025581204008440327" at="34,51,35,72" concept="1" />
       <node id="2025581204008440373" at="35,72,36,77" concept="1" />
@@ -72,7 +72,7 @@
       <node id="2025581204008440327" at="22,0,26,0" concept="2" trace="test_LocalHomeFromColumnSelection#()V" />
       <node id="2025581204008440327" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2025581204008440327" at="18,46,19,25" />
-      <scope id="2025581204008440327" at="23,68,24,70" />
+      <scope id="2025581204008440327" at="23,68,24,36" />
       <scope id="2025581204008440327" at="29,52,30,19" />
       <scope id="2025581204008440327" at="18,0,21,0" />
       <scope id="2025581204008440327" at="29,0,32,0">
@@ -88,7 +88,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/2025581204008442830">
     <file name="LocalEndFromColumnSelection_Test.java">
       <node id="2025581204008442830" at="18,45,19,25" concept="5" />
-      <node id="2025581204008442830" at="23,67,24,69" concept="1" />
+      <node id="2025581204008442830" at="23,67,24,36" concept="1" />
       <node id="2025581204008442830" at="29,52,30,19" concept="5" />
       <node id="2025581204008442830" at="34,51,35,72" concept="1" />
       <node id="2025581204008442876" at="35,72,36,77" concept="1" />
@@ -99,7 +99,7 @@
       <node id="2025581204008442830" at="22,0,26,0" concept="2" trace="test_LocalEndFromColumnSelection#()V" />
       <node id="2025581204008442830" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2025581204008442830" at="18,45,19,25" />
-      <scope id="2025581204008442830" at="23,67,24,69" />
+      <scope id="2025581204008442830" at="23,67,24,36" />
       <scope id="2025581204008442830" at="29,52,30,19" />
       <scope id="2025581204008442830" at="18,0,21,0" />
       <scope id="2025581204008442830" at="29,0,32,0">
@@ -115,7 +115,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/2025581204008533737">
     <file name="MoveElementsUpFromColumnSelection_Test.java">
       <node id="2025581204008533737" at="18,51,19,25" concept="5" />
-      <node id="2025581204008533737" at="23,73,24,75" concept="1" />
+      <node id="2025581204008533737" at="23,73,24,36" concept="1" />
       <node id="2025581204008533737" at="29,52,30,19" concept="5" />
       <node id="2025581204008533737" at="34,51,35,72" concept="1" />
       <node id="2025581204008533785" at="35,72,36,73" concept="1" />
@@ -126,7 +126,7 @@
       <node id="2025581204008533737" at="22,0,26,0" concept="2" trace="test_MoveElementsUpFromColumnSelection#()V" />
       <node id="2025581204008533737" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2025581204008533737" at="18,51,19,25" />
-      <scope id="2025581204008533737" at="23,73,24,75" />
+      <scope id="2025581204008533737" at="23,73,24,36" />
       <scope id="2025581204008533737" at="29,52,30,19" />
       <scope id="2025581204008533737" at="18,0,21,0" />
       <scope id="2025581204008533737" at="29,0,32,0">
@@ -142,7 +142,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/2025581204008533796">
     <file name="MoveElementsDownFromColumnSelection_Test.java">
       <node id="2025581204008533796" at="18,53,19,25" concept="5" />
-      <node id="2025581204008533796" at="23,75,24,77" concept="1" />
+      <node id="2025581204008533796" at="23,75,24,36" concept="1" />
       <node id="2025581204008533796" at="29,52,30,19" concept="5" />
       <node id="2025581204008533796" at="34,51,35,72" concept="1" />
       <node id="2025581204008533842" at="35,72,36,77" concept="1" />
@@ -153,7 +153,7 @@
       <node id="2025581204008533796" at="22,0,26,0" concept="2" trace="test_MoveElementsDownFromColumnSelection#()V" />
       <node id="2025581204008533796" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2025581204008533796" at="18,53,19,25" />
-      <scope id="2025581204008533796" at="23,75,24,77" />
+      <scope id="2025581204008533796" at="23,75,24,36" />
       <scope id="2025581204008533796" at="29,52,30,19" />
       <scope id="2025581204008533796" at="18,0,21,0" />
       <scope id="2025581204008533796" at="29,0,32,0">
@@ -169,7 +169,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/5097407566121950102">
     <file name="RootHomeFromColumnSelection_Test.java">
       <node id="5097407566121950102" at="18,45,19,25" concept="5" />
-      <node id="5097407566121950102" at="23,67,24,69" concept="1" />
+      <node id="5097407566121950102" at="23,67,24,36" concept="1" />
       <node id="5097407566121950102" at="29,52,30,19" concept="5" />
       <node id="5097407566121950102" at="34,51,35,72" concept="1" />
       <node id="5097407566121961293" at="35,72,36,77" concept="1" />
@@ -180,7 +180,7 @@
       <node id="5097407566121950102" at="22,0,26,0" concept="2" trace="test_RootHomeFromColumnSelection#()V" />
       <node id="5097407566121950102" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5097407566121950102" at="18,45,19,25" />
-      <scope id="5097407566121950102" at="23,67,24,69" />
+      <scope id="5097407566121950102" at="23,67,24,36" />
       <scope id="5097407566121950102" at="29,52,30,19" />
       <scope id="5097407566121950102" at="18,0,21,0" />
       <scope id="5097407566121950102" at="29,0,32,0">
@@ -196,7 +196,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/5097407566121988446">
     <file name="RootEndFromColumnSelection_Test.java">
       <node id="5097407566121988446" at="18,44,19,25" concept="5" />
-      <node id="5097407566121988446" at="23,66,24,68" concept="1" />
+      <node id="5097407566121988446" at="23,66,24,36" concept="1" />
       <node id="5097407566121988446" at="29,52,30,19" concept="5" />
       <node id="5097407566121988446" at="34,51,35,72" concept="1" />
       <node id="5097407566121988492" at="35,72,36,73" concept="1" />
@@ -207,7 +207,7 @@
       <node id="5097407566121988446" at="22,0,26,0" concept="2" trace="test_RootEndFromColumnSelection#()V" />
       <node id="5097407566121988446" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5097407566121988446" at="18,44,19,25" />
-      <scope id="5097407566121988446" at="23,66,24,68" />
+      <scope id="5097407566121988446" at="23,66,24,36" />
       <scope id="5097407566121988446" at="29,52,30,19" />
       <scope id="5097407566121988446" at="18,0,21,0" />
       <scope id="5097407566121988446" at="29,0,32,0">
@@ -223,7 +223,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/5476958923832872824">
     <file name="SelectUpFromColumnSelection_Test.java">
       <node id="5476958923832872824" at="18,45,19,25" concept="5" />
-      <node id="5476958923832872824" at="23,67,24,69" concept="1" />
+      <node id="5476958923832872824" at="23,67,24,36" concept="1" />
       <node id="5476958923832872824" at="29,52,30,19" concept="5" />
       <node id="5476958923832872824" at="34,51,35,72" concept="1" />
       <node id="5476958923832881564" at="35,72,36,77" concept="1" />
@@ -234,7 +234,7 @@
       <node id="5476958923832872824" at="22,0,26,0" concept="2" trace="test_SelectUpFromColumnSelection#()V" />
       <node id="5476958923832872824" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5476958923832872824" at="18,45,19,25" />
-      <scope id="5476958923832872824" at="23,67,24,69" />
+      <scope id="5476958923832872824" at="23,67,24,36" />
       <scope id="5476958923832872824" at="29,52,30,19" />
       <scope id="5476958923832872824" at="18,0,21,0" />
       <scope id="5476958923832872824" at="29,0,32,0">
@@ -250,7 +250,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/5476958923832881572">
     <file name="SelectDownFromColumnSelection_Test.java">
       <node id="5476958923832881572" at="18,47,19,25" concept="5" />
-      <node id="5476958923832881572" at="23,69,24,71" concept="1" />
+      <node id="5476958923832881572" at="23,69,24,36" concept="1" />
       <node id="5476958923832881572" at="29,52,30,19" concept="5" />
       <node id="5476958923832881572" at="34,51,35,72" concept="1" />
       <node id="5476958923832881622" at="35,72,36,73" concept="1" />
@@ -261,7 +261,7 @@
       <node id="5476958923832881572" at="22,0,26,0" concept="2" trace="test_SelectDownFromColumnSelection#()V" />
       <node id="5476958923832881572" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5476958923832881572" at="18,47,19,25" />
-      <scope id="5476958923832881572" at="23,69,24,71" />
+      <scope id="5476958923832881572" at="23,69,24,36" />
       <scope id="5476958923832881572" at="29,52,30,19" />
       <scope id="5476958923832881572" at="18,0,21,0" />
       <scope id="5476958923832881572" at="29,0,32,0">
@@ -277,7 +277,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/5481602834662762302">
     <file name="InsertRowBefore_FromFirstCell_ByIns_Test.java">
       <node id="5481602834662762302" at="18,53,19,25" concept="5" />
-      <node id="5481602834662762302" at="23,75,24,77" concept="1" />
+      <node id="5481602834662762302" at="23,75,24,36" concept="1" />
       <node id="5481602834662762302" at="29,52,30,19" concept="5" />
       <node id="5481602834662762302" at="34,51,35,72" concept="1" />
       <node id="4506581288955320773" at="35,72,36,75" concept="1" />
@@ -287,7 +287,7 @@
       <node id="5481602834662762302" at="22,0,26,0" concept="2" trace="test_InsertRowBefore_FromFirstCell_ByIns#()V" />
       <node id="5481602834662762302" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5481602834662762302" at="18,53,19,25" />
-      <scope id="5481602834662762302" at="23,75,24,77" />
+      <scope id="5481602834662762302" at="23,75,24,36" />
       <scope id="5481602834662762302" at="29,52,30,19" />
       <scope id="5481602834662762302" at="34,51,36,75" />
       <scope id="5481602834662762302" at="18,0,21,0" />
@@ -303,7 +303,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/5481602834662808045">
     <file name="InsertRowBefore_FromLastCell_ByIns_Test.java">
       <node id="5481602834662808045" at="18,52,19,25" concept="5" />
-      <node id="5481602834662808045" at="23,74,24,76" concept="1" />
+      <node id="5481602834662808045" at="23,74,24,36" concept="1" />
       <node id="5481602834662808045" at="29,52,30,19" concept="5" />
       <node id="5481602834662808045" at="34,51,35,72" concept="1" />
       <node id="4506581288955320777" at="35,72,36,75" concept="1" />
@@ -313,7 +313,7 @@
       <node id="5481602834662808045" at="22,0,26,0" concept="2" trace="test_InsertRowBefore_FromLastCell_ByIns#()V" />
       <node id="5481602834662808045" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5481602834662808045" at="18,52,19,25" />
-      <scope id="5481602834662808045" at="23,74,24,76" />
+      <scope id="5481602834662808045" at="23,74,24,36" />
       <scope id="5481602834662808045" at="29,52,30,19" />
       <scope id="5481602834662808045" at="34,51,36,75" />
       <scope id="5481602834662808045" at="18,0,21,0" />
@@ -329,7 +329,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6170050146384276436">
     <file name="Create_Test.java">
       <node id="6170050146384276436" at="18,24,19,25" concept="5" />
-      <node id="6170050146384276436" at="23,46,24,48" concept="1" />
+      <node id="6170050146384276436" at="23,46,24,36" concept="1" />
       <node id="6170050146384276436" at="29,52,30,19" concept="5" />
       <node id="6170050146384276436" at="34,51,35,72" concept="1" />
       <node id="4880455824535162704" at="35,72,36,69" concept="1" />
@@ -339,7 +339,7 @@
       <node id="6170050146384276436" at="22,0,26,0" concept="2" trace="test_Create#()V" />
       <node id="6170050146384276436" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6170050146384276436" at="18,24,19,25" />
-      <scope id="6170050146384276436" at="23,46,24,48" />
+      <scope id="6170050146384276436" at="23,46,24,36" />
       <scope id="6170050146384276436" at="29,52,30,19" />
       <scope id="6170050146384276436" at="34,51,36,69" />
       <scope id="6170050146384276436" at="18,0,21,0" />
@@ -355,7 +355,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6170050146384276465">
     <file name="RemoveRow_FromLastCell_Test.java">
       <node id="6170050146384276465" at="18,40,19,25" concept="5" />
-      <node id="6170050146384276465" at="23,62,24,64" concept="1" />
+      <node id="6170050146384276465" at="23,62,24,36" concept="1" />
       <node id="6170050146384276465" at="29,52,30,19" concept="5" />
       <node id="6170050146384276465" at="34,51,35,72" concept="1" />
       <node id="1315230867830196335" at="35,72,36,72" concept="1" />
@@ -365,7 +365,7 @@
       <node id="6170050146384276465" at="22,0,26,0" concept="2" trace="test_RemoveRow_FromLastCell#()V" />
       <node id="6170050146384276465" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6170050146384276465" at="18,40,19,25" />
-      <scope id="6170050146384276465" at="23,62,24,64" />
+      <scope id="6170050146384276465" at="23,62,24,36" />
       <scope id="6170050146384276465" at="29,52,30,19" />
       <scope id="6170050146384276465" at="34,51,36,72" />
       <scope id="6170050146384276465" at="18,0,21,0" />
@@ -381,7 +381,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6170050146384276509">
     <file name="EditCell_Test.java">
       <node id="6170050146384276509" at="18,26,19,25" concept="5" />
-      <node id="6170050146384276509" at="23,48,24,50" concept="1" />
+      <node id="6170050146384276509" at="23,48,24,36" concept="1" />
       <node id="6170050146384276509" at="29,52,30,19" concept="5" />
       <node id="6170050146384276509" at="34,51,35,72" concept="1" />
       <node id="4239542196496982845" at="35,72,36,71" concept="1" />
@@ -393,7 +393,7 @@
       <node id="6170050146384276509" at="22,0,26,0" concept="2" trace="test_EditCell#()V" />
       <node id="6170050146384276509" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6170050146384276509" at="18,26,19,25" />
-      <scope id="6170050146384276509" at="23,48,24,50" />
+      <scope id="6170050146384276509" at="23,48,24,36" />
       <scope id="6170050146384276509" at="29,52,30,19" />
       <scope id="6170050146384276509" at="18,0,21,0" />
       <scope id="6170050146384276509" at="29,0,32,0">
@@ -409,7 +409,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6170050146384276559">
     <file name="InsertRowAfter_Test.java">
       <node id="6170050146384276559" at="18,32,19,25" concept="5" />
-      <node id="6170050146384276559" at="23,54,24,56" concept="1" />
+      <node id="6170050146384276559" at="23,54,24,36" concept="1" />
       <node id="6170050146384276559" at="29,52,30,19" concept="5" />
       <node id="6170050146384276559" at="34,51,35,72" concept="1" />
       <node id="4880455824535162713" at="35,72,36,69" concept="1" />
@@ -419,7 +419,7 @@
       <node id="6170050146384276559" at="22,0,26,0" concept="2" trace="test_InsertRowAfter#()V" />
       <node id="6170050146384276559" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6170050146384276559" at="18,32,19,25" />
-      <scope id="6170050146384276559" at="23,54,24,56" />
+      <scope id="6170050146384276559" at="23,54,24,36" />
       <scope id="6170050146384276559" at="29,52,30,19" />
       <scope id="6170050146384276559" at="34,51,36,69" />
       <scope id="6170050146384276559" at="18,0,21,0" />
@@ -435,7 +435,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6341395909949371892">
     <file name="InsertRowBefore_Test.java">
       <node id="6341395909949371892" at="18,33,19,25" concept="5" />
-      <node id="6341395909949371892" at="23,55,24,57" concept="1" />
+      <node id="6341395909949371892" at="23,55,24,36" concept="1" />
       <node id="6341395909949371892" at="29,52,30,19" concept="5" />
       <node id="6341395909949371892" at="34,51,35,72" concept="1" />
       <node id="4880455824535162715" at="35,72,36,69" concept="1" />
@@ -445,7 +445,7 @@
       <node id="6341395909949371892" at="22,0,26,0" concept="2" trace="test_InsertRowBefore#()V" />
       <node id="6341395909949371892" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6341395909949371892" at="18,33,19,25" />
-      <scope id="6341395909949371892" at="23,55,24,57" />
+      <scope id="6341395909949371892" at="23,55,24,36" />
       <scope id="6341395909949371892" at="29,52,30,19" />
       <scope id="6341395909949371892" at="34,51,36,69" />
       <scope id="6341395909949371892" at="18,0,21,0" />
@@ -461,7 +461,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6610030841081007203">
     <file name="RemoveLastCell_Test.java">
       <node id="6610030841081007203" at="18,32,19,25" concept="5" />
-      <node id="6610030841081007203" at="23,54,24,56" concept="1" />
+      <node id="6610030841081007203" at="23,54,24,36" concept="1" />
       <node id="6610030841081007203" at="29,52,30,19" concept="5" />
       <node id="6610030841081007203" at="34,51,35,72" concept="1" />
       <node id="1315230867830173703" at="35,72,36,69" concept="1" />
@@ -472,7 +472,7 @@
       <node id="6610030841081007203" at="22,0,26,0" concept="2" trace="test_RemoveLastCell#()V" />
       <node id="6610030841081007203" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6610030841081007203" at="18,32,19,25" />
-      <scope id="6610030841081007203" at="23,54,24,56" />
+      <scope id="6610030841081007203" at="23,54,24,36" />
       <scope id="6610030841081007203" at="29,52,30,19" />
       <scope id="6610030841081007203" at="18,0,21,0" />
       <scope id="6610030841081007203" at="29,0,32,0">
@@ -488,7 +488,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6814837785823339529">
     <file name="InsertColumnBefore_Test.java">
       <node id="6814837785823339529" at="18,36,19,25" concept="5" />
-      <node id="6814837785823339529" at="23,58,24,60" concept="1" />
+      <node id="6814837785823339529" at="23,58,24,36" concept="1" />
       <node id="6814837785823339529" at="29,52,30,19" concept="5" />
       <node id="6814837785823339529" at="34,51,35,72" concept="1" />
       <node id="4880455824535162711" at="35,72,36,69" concept="1" />
@@ -498,7 +498,7 @@
       <node id="6814837785823339529" at="22,0,26,0" concept="2" trace="test_InsertColumnBefore#()V" />
       <node id="6814837785823339529" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6814837785823339529" at="18,36,19,25" />
-      <scope id="6814837785823339529" at="23,58,24,60" />
+      <scope id="6814837785823339529" at="23,58,24,36" />
       <scope id="6814837785823339529" at="29,52,30,19" />
       <scope id="6814837785823339529" at="34,51,36,69" />
       <scope id="6814837785823339529" at="18,0,21,0" />
@@ -514,7 +514,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6814837785823361407">
     <file name="InsertColumnAfter_Test.java">
       <node id="6814837785823361407" at="18,35,19,25" concept="5" />
-      <node id="6814837785823361407" at="23,57,24,59" concept="1" />
+      <node id="6814837785823361407" at="23,57,24,36" concept="1" />
       <node id="6814837785823361407" at="29,52,30,19" concept="5" />
       <node id="6814837785823361407" at="34,51,35,72" concept="1" />
       <node id="4880455824535162707" at="35,72,36,69" concept="1" />
@@ -524,7 +524,7 @@
       <node id="6814837785823361407" at="22,0,26,0" concept="2" trace="test_InsertColumnAfter#()V" />
       <node id="6814837785823361407" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6814837785823361407" at="18,35,19,25" />
-      <scope id="6814837785823361407" at="23,57,24,59" />
+      <scope id="6814837785823361407" at="23,57,24,36" />
       <scope id="6814837785823361407" at="29,52,30,19" />
       <scope id="6814837785823361407" at="34,51,36,69" />
       <scope id="6814837785823361407" at="18,0,21,0" />
@@ -540,7 +540,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/6814837785823361474">
     <file name="RemoveColumn_Test.java">
       <node id="6814837785823361474" at="18,30,19,25" concept="5" />
-      <node id="6814837785823361474" at="23,52,24,54" concept="1" />
+      <node id="6814837785823361474" at="23,52,24,36" concept="1" />
       <node id="6814837785823361474" at="29,52,30,19" concept="5" />
       <node id="6814837785823361474" at="34,51,35,72" concept="1" />
       <node id="1315230867830173698" at="35,72,36,69" concept="1" />
@@ -551,7 +551,7 @@
       <node id="6814837785823361474" at="22,0,26,0" concept="2" trace="test_RemoveColumn#()V" />
       <node id="6814837785823361474" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6814837785823361474" at="18,30,19,25" />
-      <scope id="6814837785823361474" at="23,52,24,54" />
+      <scope id="6814837785823361474" at="23,52,24,36" />
       <scope id="6814837785823361474" at="29,52,30,19" />
       <scope id="6814837785823361474" at="18,0,21,0" />
       <scope id="6814837785823361474" at="29,0,32,0">
@@ -567,7 +567,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/7541022036347681895">
     <file name="SelectLeftInCell_Test.java">
       <node id="7541022036347681895" at="18,34,19,25" concept="5" />
-      <node id="7541022036347681895" at="23,56,24,58" concept="1" />
+      <node id="7541022036347681895" at="23,56,24,36" concept="1" />
       <node id="7541022036347681895" at="29,52,30,19" concept="5" />
       <node id="7541022036347681895" at="34,51,35,72" concept="1" />
       <node id="7541022036347703700" at="35,72,36,73" concept="1" />
@@ -577,7 +577,7 @@
       <node id="7541022036347681895" at="22,0,26,0" concept="2" trace="test_SelectLeftInCell#()V" />
       <node id="7541022036347681895" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7541022036347681895" at="18,34,19,25" />
-      <scope id="7541022036347681895" at="23,56,24,58" />
+      <scope id="7541022036347681895" at="23,56,24,36" />
       <scope id="7541022036347681895" at="29,52,30,19" />
       <scope id="7541022036347681895" at="34,51,36,73" />
       <scope id="7541022036347681895" at="18,0,21,0" />
@@ -593,7 +593,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/8064689248313190611">
     <file name="SelectRow_Test.java">
       <node id="8064689248313190611" at="18,27,19,25" concept="5" />
-      <node id="8064689248313190611" at="23,49,24,51" concept="1" />
+      <node id="8064689248313190611" at="23,49,24,36" concept="1" />
       <node id="8064689248313190611" at="29,52,30,19" concept="5" />
       <node id="8064689248313190611" at="34,51,35,72" concept="1" />
       <node id="8064689248313199351" at="35,72,36,73" concept="1" />
@@ -605,7 +605,7 @@
       <node id="8064689248313190611" at="22,0,26,0" concept="2" trace="test_SelectRow#()V" />
       <node id="8064689248313190611" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8064689248313190611" at="18,27,19,25" />
-      <scope id="8064689248313190611" at="23,49,24,51" />
+      <scope id="8064689248313190611" at="23,49,24,36" />
       <scope id="8064689248313190611" at="29,52,30,19" />
       <scope id="8064689248313190611" at="18,0,21,0" />
       <scope id="8064689248313190611" at="29,0,32,0">
@@ -621,7 +621,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/8143909488490604939">
     <file name="RemoveRow_FromFirstCell_Test.java">
       <node id="8143909488490604939" at="18,41,19,25" concept="5" />
-      <node id="8143909488490604939" at="23,63,24,65" concept="1" />
+      <node id="8143909488490604939" at="23,63,24,36" concept="1" />
       <node id="8143909488490604939" at="29,52,30,19" concept="5" />
       <node id="8143909488490604939" at="34,51,35,72" concept="1" />
       <node id="1315230867830196332" at="35,72,36,69" concept="1" />
@@ -631,7 +631,7 @@
       <node id="8143909488490604939" at="22,0,26,0" concept="2" trace="test_RemoveRow_FromFirstCell#()V" />
       <node id="8143909488490604939" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8143909488490604939" at="18,41,19,25" />
-      <scope id="8143909488490604939" at="23,63,24,65" />
+      <scope id="8143909488490604939" at="23,63,24,36" />
       <scope id="8143909488490604939" at="29,52,30,19" />
       <scope id="8143909488490604939" at="34,51,36,69" />
       <scope id="8143909488490604939" at="18,0,21,0" />
@@ -647,7 +647,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/8316952525720946148">
     <file name="RemoveLastRow_Test.java">
       <node id="8316952525720946148" at="18,31,19,25" concept="5" />
-      <node id="8316952525720946148" at="23,53,24,55" concept="1" />
+      <node id="8316952525720946148" at="23,53,24,36" concept="1" />
       <node id="8316952525720946148" at="29,52,30,19" concept="5" />
       <node id="8316952525720946148" at="34,51,35,72" concept="1" />
       <node id="1315230867830196329" at="35,72,36,72" concept="1" />
@@ -657,7 +657,7 @@
       <node id="8316952525720946148" at="22,0,26,0" concept="2" trace="test_RemoveLastRow#()V" />
       <node id="8316952525720946148" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8316952525720946148" at="18,31,19,25" />
-      <scope id="8316952525720946148" at="23,53,24,55" />
+      <scope id="8316952525720946148" at="23,53,24,36" />
       <scope id="8316952525720946148" at="29,52,30,19" />
       <scope id="8316952525720946148" at="34,51,36,72" />
       <scope id="8316952525720946148" at="18,0,21,0" />
@@ -673,7 +673,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/8316952525720946183">
     <file name="CreateRowInEmptyTable_Test.java">
       <node id="8316952525720946183" at="18,39,19,25" concept="5" />
-      <node id="8316952525720946183" at="23,61,24,63" concept="1" />
+      <node id="8316952525720946183" at="23,61,24,36" concept="1" />
       <node id="8316952525720946183" at="29,52,30,19" concept="5" />
       <node id="8316952525720946183" at="34,51,35,72" concept="1" />
       <node id="8316952525720946214" at="35,72,36,69" concept="1" />
@@ -683,7 +683,7 @@
       <node id="8316952525720946183" at="22,0,26,0" concept="2" trace="test_CreateRowInEmptyTable#()V" />
       <node id="8316952525720946183" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8316952525720946183" at="18,39,19,25" />
-      <scope id="8316952525720946183" at="23,61,24,63" />
+      <scope id="8316952525720946183" at="23,61,24,36" />
       <scope id="8316952525720946183" at="29,52,30,19" />
       <scope id="8316952525720946183" at="34,51,36,69" />
       <scope id="8316952525720946183" at="18,0,21,0" />
@@ -699,7 +699,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/8316952525720946217">
     <file name="CreateCellInEmptyRow_Test.java">
       <node id="8316952525720946217" at="18,38,19,25" concept="5" />
-      <node id="8316952525720946217" at="23,60,24,62" concept="1" />
+      <node id="8316952525720946217" at="23,60,24,36" concept="1" />
       <node id="8316952525720946217" at="29,52,30,19" concept="5" />
       <node id="8316952525720946217" at="34,51,35,72" concept="1" />
       <node id="8316952525720946249" at="35,72,36,69" concept="1" />
@@ -710,7 +710,7 @@
       <node id="8316952525720946217" at="22,0,26,0" concept="2" trace="test_CreateCellInEmptyRow#()V" />
       <node id="8316952525720946217" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8316952525720946217" at="18,38,19,25" />
-      <scope id="8316952525720946217" at="23,60,24,62" />
+      <scope id="8316952525720946217" at="23,60,24,36" />
       <scope id="8316952525720946217" at="29,52,30,19" />
       <scope id="8316952525720946217" at="18,0,21,0" />
       <scope id="8316952525720946217" at="29,0,32,0">
@@ -726,7 +726,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/9080919888312484967">
     <file name="HomeFromColumnSelection_Test.java">
       <node id="9080919888312484967" at="18,41,19,25" concept="5" />
-      <node id="9080919888312484967" at="23,63,24,65" concept="1" />
+      <node id="9080919888312484967" at="23,63,24,36" concept="1" />
       <node id="9080919888312484967" at="29,52,30,19" concept="5" />
       <node id="9080919888312484967" at="34,51,35,72" concept="1" />
       <node id="9080919888312497292" at="35,72,36,77" concept="1" />
@@ -737,7 +737,7 @@
       <node id="9080919888312484967" at="22,0,26,0" concept="2" trace="test_HomeFromColumnSelection#()V" />
       <node id="9080919888312484967" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="9080919888312484967" at="18,41,19,25" />
-      <scope id="9080919888312484967" at="23,63,24,65" />
+      <scope id="9080919888312484967" at="23,63,24,36" />
       <scope id="9080919888312484967" at="29,52,30,19" />
       <scope id="9080919888312484967" at="18,0,21,0" />
       <scope id="9080919888312484967" at="29,0,32,0">
@@ -753,7 +753,7 @@
   <root nodeRef="r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)/9080919888312497299">
     <file name="EndFromColumnSelection_Test.java">
       <node id="9080919888312497299" at="18,40,19,25" concept="5" />
-      <node id="9080919888312497299" at="23,62,24,64" concept="1" />
+      <node id="9080919888312497299" at="23,62,24,36" concept="1" />
       <node id="9080919888312497299" at="29,52,30,19" concept="5" />
       <node id="9080919888312497299" at="34,51,35,72" concept="1" />
       <node id="9080919888312497345" at="35,72,36,73" concept="1" />
@@ -764,7 +764,7 @@
       <node id="9080919888312497299" at="22,0,26,0" concept="2" trace="test_EndFromColumnSelection#()V" />
       <node id="9080919888312497299" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="9080919888312497299" at="18,40,19,25" />
-      <scope id="9080919888312497299" at="23,62,24,64" />
+      <scope id="9080919888312497299" at="23,62,24,36" />
       <scope id="9080919888312497299" at="29,52,30,19" />
       <scope id="9080919888312497299" at="18,0,21,0" />
       <scope id="9080919888312497299" at="29,0,32,0">

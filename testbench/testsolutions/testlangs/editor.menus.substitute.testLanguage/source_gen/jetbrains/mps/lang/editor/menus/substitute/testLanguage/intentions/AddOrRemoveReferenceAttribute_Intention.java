@@ -14,9 +14,10 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddOrRemoveReferenceAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -37,7 +38,7 @@ public final class AddOrRemoveReferenceAttribute_Intention extends AbstractInten
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddOrRemoveReferenceAttribute_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -46,7 +47,7 @@ public final class AddOrRemoveReferenceAttribute_Intention extends AbstractInten
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d7L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_WithReference"))) == null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_k6x6qb.TestSubstituteAttribute_WithReference_22bbee5c)) == null)) {
         return "Add Reference Attribute";
       } else {
         return "Remove Reference Attribute";
@@ -54,15 +55,19 @@ public final class AddOrRemoveReferenceAttribute_Intention extends AbstractInten
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d7L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_WithReference"))) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d7L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_WithReference")), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d7L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_WithReference"));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_k6x6qb.TestSubstituteAttribute_WithReference_22bbee5c)) == null)) {
+        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(AUX_k6x6qb.TestSubstituteAttribute_WithReference_22bbee5c), AUX_k6x6qb.TestSubstituteAttribute_WithReference_22bbee5c);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d7L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_WithReference"))));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_k6x6qb.TestSubstituteAttribute_WithReference_22bbee5c)));
       }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddOrRemoveReferenceAttribute_Intention.this;
     }
+  }
+
+  private static final class AUX_k6x6qb {
+    /*package*/ static final SConcept TestSubstituteAttribute_WithReference_22bbee5c = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d7L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_WithReference");
   }
 }

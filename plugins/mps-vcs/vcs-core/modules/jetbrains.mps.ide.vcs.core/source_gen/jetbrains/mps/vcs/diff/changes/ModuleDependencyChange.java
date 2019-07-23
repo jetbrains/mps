@@ -11,8 +11,8 @@ import jetbrains.mps.extapi.model.SModelBase;
 
 public class ModuleDependencyChange extends DependencyChange {
   private SModuleReference myModuleReference;
-  private ModuleDependencyChange.DependencyType myType;
-  public ModuleDependencyChange(@NotNull ChangeSet changeSet, @NotNull SModuleReference moduleReference, @NotNull ModuleDependencyChange.DependencyType type, boolean delete) {
+  private DependencyType myType;
+  public ModuleDependencyChange(@NotNull ChangeSet changeSet, @NotNull SModuleReference moduleReference, @NotNull DependencyType type, boolean delete) {
     super(changeSet, delete);
     myModuleReference = moduleReference;
     myType = type;
@@ -37,7 +37,7 @@ public class ModuleDependencyChange extends DependencyChange {
   public SModuleReference getModuleReference() {
     return myModuleReference;
   }
-  public ModuleDependencyChange.DependencyType getDependencyType() {
+  public DependencyType getDependencyType() {
     return myType;
   }
   public enum DependencyType {

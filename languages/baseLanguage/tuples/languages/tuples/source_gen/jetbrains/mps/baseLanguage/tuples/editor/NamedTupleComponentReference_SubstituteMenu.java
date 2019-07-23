@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NamedTupleComponentReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new NamedTupleComponentReference_SubstituteMenu.SMP_ReferenceScope_1dtstp_a(), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentReference")));
-    result.add(new NamedTupleComponentReference_SubstituteMenu.SMP_Subconcepts_1dtstp_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_1dtstp_a(), AUX_1dtstp.NamedTupleComponentReference_1a22f6cc));
+    result.add(new SMP_Subconcepts_1dtstp_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class NamedTupleComponentReference_SubstituteMenu extends SubstituteMenuB
 
     public SMP_ReferenceScope_1dtstp_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentReference"), MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration"));
+      super((SAbstractConcept) AUX_1dtstp.NamedTupleComponentReference_1a22f6cc, MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class NamedTupleComponentReference_SubstituteMenu extends SubstituteMenuB
   }
   public class SMP_Subconcepts_1dtstp_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_1dtstp.NamedTupleComponentReference_1a22f6cc);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class NamedTupleComponentReference_SubstituteMenu extends SubstituteMenuB
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_1dtstp {
+    /*package*/ static final SConcept NamedTupleComponentReference_1a22f6cc = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentReference");
   }
 }

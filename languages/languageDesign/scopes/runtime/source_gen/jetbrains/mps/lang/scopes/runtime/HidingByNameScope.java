@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class HidingByNameScope extends Scope {
@@ -74,7 +75,7 @@ public class HidingByNameScope extends Scope {
   }
   @Override
   public boolean contains(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) || !(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(kindConcept)))) {
+    if (!(SNodeOperations.isInstanceOf(node, AUX_4kygkp.INamedConcept_8cd7e247)) || !(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(kindConcept)))) {
       return false;
     }
     if (scope.contains(node)) {
@@ -84,5 +85,9 @@ public class HidingByNameScope extends Scope {
       return false;
     }
     return parentScope.contains(node);
+  }
+
+  private static final class AUX_4kygkp {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

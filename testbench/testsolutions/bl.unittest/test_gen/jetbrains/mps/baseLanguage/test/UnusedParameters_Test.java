@@ -32,15 +32,15 @@ public class UnusedParameters_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck1220265437276() throws Throwable {
-    new UnusedParameters_Test.TestBody(this).test_ErrorMessagesCheck1220265437276();
+    new TestBody(this).test_ErrorMessagesCheck1220265437276();
   }
   @Test
   public void test_NodeUnusedParameterWarningCheck6923385624929809514() throws Throwable {
-    new UnusedParameters_Test.TestBody(this).test_NodeUnusedParameterWarningCheck6923385624929809514();
+    new TestBody(this).test_NodeUnusedParameterWarningCheck6923385624929809514();
   }
   @Test
   public void test_NodeUnusedParameterWarningCheck6923385624927380174() throws Throwable {
-    new UnusedParameters_Test.TestBody(this).test_NodeUnusedParameterWarningCheck6923385624927380174();
+    new TestBody(this).test_NodeUnusedParameterWarningCheck6923385624927380174();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

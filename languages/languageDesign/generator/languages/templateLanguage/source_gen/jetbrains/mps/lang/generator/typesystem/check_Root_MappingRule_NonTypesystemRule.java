@@ -22,6 +22,8 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_Root_MappingRule_NonTypesystemRule() {
@@ -29,9 +31,9 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode template = SLinkOperations.getTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template"));
     if ((template != null)) {
-      SNode attrib = AttributeOperations.getAttribute(template, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")));
+      SNode attrib = AttributeOperations.getAttribute(template, new IAttributeDescriptor.NodeAttribute(AUX_o6sy7v.RootTemplateAnnotation_423b5b1a));
       if ((attrib != null)) {
-        SNode templateApplicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(attrib, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept"));
+        SNode templateApplicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(attrib, AUX_o6sy7v.RootTemplateAnnotation_423b5b1a), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept"));
         SNode ruleApplicableConcept = SLinkOperations.getTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept"));
         if ((ruleApplicableConcept != null) && (templateApplicableConcept != null)) {
           if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(ruleApplicableConcept, templateApplicableConcept))) {
@@ -45,7 +47,7 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
         {
           MessageTarget errorTarget = new NodeMessageTarget();
           errorTarget = new ReferenceMessageTarget("template");
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, String.format("Root template %s misses annotation", (SNodeOperations.isInstanceOf(template, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")) ? SPropertyOperations.getString(SNodeOperations.cast(template, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(template))), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7312097483936371789", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, String.format("Root template %s misses annotation", (SNodeOperations.isInstanceOf(template, AUX_o6sy7v.INamedConcept_8cd7e247) ? SPropertyOperations.getString(SNodeOperations.cast(template, AUX_o6sy7v.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(template))), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7312097483936371789", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixRootTemplateAnnotation_QuickFix", false);
             intentionProvider.putArgument("rule", rule);
@@ -54,7 +56,7 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
         }
       }
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SLinkOperations.getTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept"))), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute"))) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SLinkOperations.getTarget(rule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept"))), AUX_o6sy7v.Attribute_2a18bbd3)) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         errorTarget = new ReferenceMessageTarget("applicableConcept");
@@ -63,12 +65,19 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, "jetbrains.mps.lang.generator.structure.Root_MappingRule");
+    return AUX_o6sy7v.Root_MappingRule_b12d6d81;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_o6sy7v {
+    /*package*/ static final SConcept RootTemplateAnnotation_423b5b1a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept Attribute_2a18bbd3 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
+    /*package*/ static final SConcept Root_MappingRule_b12d6d81 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, "jetbrains.mps.lang.generator.structure.Root_MappingRule");
   }
 }

@@ -14,6 +14,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_IdeaConfigurationXml_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IdeaConfigurationXml_NonTypesystemRule() {
@@ -28,7 +29,7 @@ public class check_IdeaConfigurationXml_NonTypesystemRule extends AbstractNonTyp
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml");
+    return AUX_nxbz69.IdeaConfigurationXml_62190880;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,5 +39,9 @@ public class check_IdeaConfigurationXml_NonTypesystemRule extends AbstractNonTyp
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
+  }
+
+  private static final class AUX_nxbz69 {
+    /*package*/ static final SConcept IdeaConfigurationXml_62190880 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml");
   }
 }

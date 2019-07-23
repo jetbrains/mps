@@ -25,7 +25,7 @@ public class TestSubstituteExceptionReferenceMatchingText_Test extends BaseTrans
 
   @Test
   public void test_TestSubstituteExceptionReferenceMatchingText() throws Throwable {
-    new TestSubstituteExceptionReferenceMatchingText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

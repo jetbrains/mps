@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -25,6 +25,7 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddClassifierDocComment_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -43,7 +44,7 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
     return true;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return (SNodeOperations.getNodeAncestor(childNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), true, false) == null) && (SNodeOperations.getNodeAncestor(childNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"), true, false) == null) && (SNodeOperations.getNodeAncestor(childNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"), true, false) == null) && SNodeOperations.getNodeAncestor(childNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false) == node;
+    return (SNodeOperations.getNodeAncestor(childNode, AUX_nmk0m3.BaseMethodDeclaration_9dbf9acb, true, false) == null) && (SNodeOperations.getNodeAncestor(childNode, AUX_nmk0m3.FieldDeclaration_e2711ac6, true, false) == null) && (SNodeOperations.getNodeAncestor(childNode, AUX_nmk0m3.StaticFieldDeclaration_9649293d, true, false) == null) && SNodeOperations.getNodeAncestor(childNode, AUX_nmk0m3.Classifier_4b7e553, true, false) == node;
   }
   @Override
   public boolean isSurroundWith() {
@@ -51,7 +52,7 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddClassifierDocComment_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -60,29 +61,29 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment"))) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
+      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nmk0m3.ClassifierDocComment_18e1a1e)) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
 
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment"))) != null)) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment")), null);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nmk0m3.ClassifierDocComment_18e1a1e)) != null)) {
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nmk0m3.ClassifierDocComment_18e1a1e), null);
         if (editorContext.getSelectedNode() != node) {
           editorContext.selectWRTFocusPolicy(node);
         }
         return;
       }
 
-      SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment")), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment"));
-      SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment"))), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body"), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"));
-      SNode firstPart = SNodeFactoryOperations.addNewChild(line, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"));
+      SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nmk0m3.ClassifierDocComment_18e1a1e), AUX_nmk0m3.ClassifierDocComment_18e1a1e);
+      SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nmk0m3.ClassifierDocComment_18e1a1e)), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body"), AUX_nmk0m3.CommentLine_7c8f6780);
+      SNode firstPart = SNodeFactoryOperations.addNewChild(line, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"), AUX_nmk0m3.TextCommentLinePart_b468bde4);
 
       //  Type variables 
       for (SNode typeVariableDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration")))) {
-        SNode paramTag = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag"), null);
+        SNode paramTag = SNodeFactoryOperations.createNewNode(AUX_nmk0m3.ParameterBlockDocTag_855e2781, null);
         SLinkOperations.setTarget(paramTag, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, 0x5ed0d79d7dbe86ebL, "parameter"), _quotation_createNode_peeqac_a0b0j0a(typeVariableDeclaration));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment"))), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags"))).addElement(paramTag);
+        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nmk0m3.ClassifierDocComment_18e1a1e)), MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags"))).addElement(paramTag);
       }
       SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);
     }
@@ -97,5 +98,16 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"), 0x5ed0d79d7dbe86dbL, "DocTypeParameterReference"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_nmk0m3 {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept FieldDeclaration_e2711ac6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration_9649293d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept ClassifierDocComment_18e1a1e = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
+    /*package*/ static final SConcept CommentLine_7c8f6780 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+    /*package*/ static final SConcept TextCommentLinePart_b468bde4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept ParameterBlockDocTag_855e2781 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag");
   }
 }

@@ -21,7 +21,7 @@ public class RT_ClassTypeVarialeDeclaration_with_AngleBracker_Test extends BaseT
 
   @Test
   public void test_RT_ClassTypeVarialeDeclaration_with_AngleBracker() throws Throwable {
-    new RT_ClassTypeVarialeDeclaration_with_AngleBracker_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

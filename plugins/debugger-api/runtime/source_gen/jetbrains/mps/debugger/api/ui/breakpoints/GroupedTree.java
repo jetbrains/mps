@@ -30,12 +30,12 @@ import javax.swing.UIManager;
     setEditable(true);
   }
   protected abstract MPSTreeNode createDataNode(D data);
-  protected abstract GroupedTree.GroupKind<D, Object> createRootGroupKind();
+  protected abstract GroupKind<D, Object> createRootGroupKind();
   protected abstract Collection<D> getData();
 
   @Override
   protected MPSTreeNode rebuild() {
-    return new GroupedTree.GroupTreeNode(createRootGroupKind(), new Object(), getData());
+    return new GroupTreeNode(createRootGroupKind(), new Object(), getData());
   }
 
   @Nullable
@@ -60,7 +60,7 @@ import javax.swing.UIManager;
       return group.toString();
     }
     @Nullable
-    public GroupedTree.GroupKind getSubGroupKind() {
+    public GroupKind getSubGroupKind() {
       return null;
     }
     public Map<T, Set<D>> sortByGroups(Collection<D> dataToSort) {
@@ -86,7 +86,7 @@ import javax.swing.UIManager;
 
   private class GroupTreeNode<T> extends MPSTreeNode {
 
-    public GroupTreeNode(@NotNull GroupedTree.GroupKind<D, T> kind, @NotNull T group, Collection<D> data) {
+    public GroupTreeNode(@NotNull GroupKind<D, T> kind, @NotNull T group, Collection<D> data) {
       // populate tree element with all data necessary for rendering, so that CheckBoxNodeRenderer shall not care to grab a model lock 
       // CheckBoxNodeRenderer deals with 
       String text = kind.getText(group);
@@ -132,7 +132,7 @@ import javax.swing.UIManager;
         }
       });
 
-      GroupedTree.GroupKind<D, Object> subGroupKind = kind.getSubGroupKind();
+      GroupKind<D, Object> subGroupKind = kind.getSubGroupKind();
       while (subGroupKind != null && !(subGroupKind.isVisible())) {
         subGroupKind = subGroupKind.getSubGroupKind();
       }
@@ -144,7 +144,7 @@ import javax.swing.UIManager;
         Map<Object, Set<D>> sorted = subGroupKind.sortByGroups(data);
         for (Object subGroup : sorted.keySet()) {
           if (subGroup != null) {
-            add(new GroupedTree.GroupTreeNode(subGroupKind, subGroup, sorted.get(subGroup)));
+            add(new GroupTreeNode(subGroupKind, subGroup, sorted.get(subGroup)));
           } else {
             for (D d : sorted.get(subGroup)) {
               add(createDataNode(d));

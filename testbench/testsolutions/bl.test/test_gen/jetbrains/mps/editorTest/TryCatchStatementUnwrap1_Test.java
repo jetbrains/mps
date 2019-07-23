@@ -22,7 +22,7 @@ public class TryCatchStatementUnwrap1_Test extends BaseTransformationTest {
 
   @Test
   public void test_TryCatchStatementUnwrap1() throws Throwable {
-    new TryCatchStatementUnwrap1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

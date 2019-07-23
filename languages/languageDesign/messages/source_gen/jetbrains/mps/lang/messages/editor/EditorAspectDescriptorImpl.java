@@ -81,5 +81,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL)).seal();
-  private static String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.lang.messages.editor.LiteralMessageAllowsMacros"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.lang.messages.editor.LiteralMessageAllowsMacros"};
 }

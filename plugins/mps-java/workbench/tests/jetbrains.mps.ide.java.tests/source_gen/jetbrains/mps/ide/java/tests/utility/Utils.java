@@ -14,7 +14,6 @@ import java.util.List;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.java.core.newparser.YetUnknownResolver;
@@ -50,9 +49,11 @@ import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Utils {
   private final SRepository myRepo;
@@ -81,7 +82,7 @@ public class Utils {
       List<SNode> res = parser.parse(code, howToParse, null, true).getNodes();
       Assert.assertSame(ListSequence.fromList(res).count(), 1);
 
-      final SNode result = SNodeOperations.cast(res.get(0), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+      final SNode result = SNodeOperations.cast(res.get(0), AUX_ofeq0.Classifier_4b7e553);
       SModelOperations.addRootNode(mdl, result);
       new ModelImports(mdl).copyUsedLanguagesFrom(SNodeOperations.getModel(expected));
 
@@ -131,7 +132,7 @@ public class Utils {
 
     Iterator<? extends SNode> roots = models.next().getRootNodes().iterator();
     Assert.assertTrue("The model has no roots", roots.hasNext());
-    SNode result = SNodeOperations.cast((roots.next()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    SNode result = SNodeOperations.cast((roots.next()), AUX_ofeq0.Classifier_4b7e553);
     result = SNodeOperations.copyNode(result);
     expected = SNodeOperations.copyNode(expected);
 
@@ -168,8 +169,8 @@ public class Utils {
       SModel m = expmr.resolve(myRepo);
       ListSequence.fromList(expectedModels).addElement(m);
       for (SNode root : ListSequence.fromList(SModelOperations.roots(m, null))) {
-        NodePatcher.removeStatements(SNodeOperations.cast(root, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
-        NodePatcher.fixNonStatic(SNodeOperations.cast(root, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
+        NodePatcher.removeStatements(SNodeOperations.cast(root, AUX_ofeq0.Classifier_4b7e553));
+        NodePatcher.fixNonStatic(SNodeOperations.cast(root, AUX_ofeq0.Classifier_4b7e553));
       }
     }
     compare(models, expectedModels);
@@ -212,7 +213,7 @@ public class Utils {
       final SModel resultModel = ListSequence.fromList(parsedModels).getElement(0);
 
       SModel expected = expectedRef.resolve(myRepo);
-      for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+      for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, AUX_ofeq0.Classifier_4b7e553))) {
         NodePatcher.fixNonStatic(root);
       }
 
@@ -252,7 +253,7 @@ public class Utils {
         NodePatcher.removeExtendsObject(binRoot);
         NodePatcher.removeInitializers(binRoot);
 
-        NodePatcher.sortNestedClass(SNodeOperations.cast(binRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
+        NodePatcher.sortNestedClass(SNodeOperations.cast(binRoot, AUX_ofeq0.Classifier_4b7e553));
 
         // FIXME should be fixed in java source stubs 
         NodePatcher.removeStatements(binRoot);
@@ -276,7 +277,7 @@ public class Utils {
         NodePatcher.fixNonStatic(srcRoot);
         NodePatcher.removeSourceLevelAnnotations(srcRoot, myRepo);
 
-        NodePatcher.sortNestedClass(SNodeOperations.cast(srcRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
+        NodePatcher.sortNestedClass(SNodeOperations.cast(srcRoot, AUX_ofeq0.Classifier_4b7e553));
       }
     }
 
@@ -320,8 +321,8 @@ public class Utils {
   }
 
   public static boolean compare2models(SModel left, SModel right, Map<SNode, SNode> nodeMap) {
-    List<SNode> binRoots = SModelOperations.roots(left, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
-    List<SNode> srcRoots = SModelOperations.roots(right, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    List<SNode> binRoots = SModelOperations.roots(left, AUX_ofeq0.Classifier_4b7e553);
+    List<SNode> srcRoots = SModelOperations.roots(right, AUX_ofeq0.Classifier_4b7e553);
 
     binRoots = ListSequence.fromList(binRoots).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
@@ -346,11 +347,11 @@ public class Utils {
 
   public static void buildModelNodeMap(SModel left, SModel right, Map<SNode, SNode> nodeMap) {
     Map<String, SNode> rightRootIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode rightRoot : ListSequence.fromList(SModelOperations.roots(right, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+    for (SNode rightRoot : ListSequence.fromList(SModelOperations.roots(right, AUX_ofeq0.Classifier_4b7e553))) {
       MapSequence.fromMap(rightRootIndex).put(SPropertyOperations.getString(rightRoot, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), rightRoot);
     }
 
-    for (SNode leftRoot : ListSequence.fromList(SModelOperations.roots(left, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+    for (SNode leftRoot : ListSequence.fromList(SModelOperations.roots(left, AUX_ofeq0.Classifier_4b7e553))) {
       SNode rightBrother = MapSequence.fromMap(rightRootIndex).get(SPropertyOperations.getString(leftRoot, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       if ((rightBrother != null)) {
         NodePatcher.copyImportAttrs(leftRoot, rightBrother);
@@ -362,11 +363,11 @@ public class Utils {
   public static void buildClassifierNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
     // handling this class and nested classes 
     Map<String, SNode> rightNestedIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(right, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, new SAbstractConcept[]{}))) {
+    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(right, AUX_ofeq0.Classifier_4b7e553, true, new SAbstractConcept[]{}))) {
       MapSequence.fromMap(rightNestedIndex).put(SPropertyOperations.getString(cl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), cl);
     }
 
-    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(left, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, new SAbstractConcept[]{}))) {
+    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(left, AUX_ofeq0.Classifier_4b7e553, true, new SAbstractConcept[]{}))) {
       SNode rightBrother = MapSequence.fromMap(rightNestedIndex).get(SPropertyOperations.getString(cl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
 
 
@@ -378,13 +379,13 @@ public class Utils {
 
     }
 
-    if (SNodeOperations.isInstanceOf(left, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation")) && SNodeOperations.isInstanceOf(right, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation"))) {
+    if (SNodeOperations.isInstanceOf(left, AUX_ofeq0.Annotation_14405306) && SNodeOperations.isInstanceOf(right, AUX_ofeq0.Annotation_14405306)) {
       Map<String, SNode> rightMethodIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(right, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method")))) {
+      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(right, AUX_ofeq0.Annotation_14405306), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method")))) {
         MapSequence.fromMap(rightMethodIndex).put(SPropertyOperations.getString(mthd, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), mthd);
       }
 
-      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(left, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method")))) {
+      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(left, AUX_ofeq0.Annotation_14405306), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method")))) {
         Assert.assertNull(MapSequence.fromMap(nodeMap).get(mthd));
         MapSequence.fromMap(nodeMap).put(mthd, MapSequence.fromMap(rightMethodIndex).get(SPropertyOperations.getString(mthd, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))));
       }
@@ -416,11 +417,11 @@ public class Utils {
     // local vars and params 
     List<SNode> leftVars = new ArrayList<SNode>();
     ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(left, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))));
-    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(left, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")})));
+    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(left, AUX_ofeq0.LocalVariableDeclaration_d47683f3, false, new SAbstractConcept[]{AUX_ofeq0.AnonymousClass_e4a73f97})));
 
     List<SNode> rightVars = new ArrayList<SNode>();
     ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(right, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))));
-    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(right, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"), false, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")})));
+    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(right, AUX_ofeq0.LocalVariableDeclaration_d47683f3, false, new SAbstractConcept[]{AUX_ofeq0.AnonymousClass_e4a73f97})));
 
     buildJustNodeMap(leftVars, rightVars, nodeMap);
 
@@ -436,5 +437,12 @@ public class Utils {
     for (SNode leftNode : ListSequence.fromList(left)) {
       MapSequence.fromMap(nodeMap).put(leftNode, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))));
     }
+  }
+
+  private static final class AUX_ofeq0 {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Annotation_14405306 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept AnonymousClass_e4a73f97 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 }

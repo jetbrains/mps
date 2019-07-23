@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.math.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -20,9 +19,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ExponentialOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, "jetbrains.mps.baseLanguage.math.structure.ExponentialOperation");
+  private static final SAbstractConcept CONCEPT = AUX_8721d.ExponentialOperation_5f7fb6a3;
 
   public static final SMethod<String> getOperationSymbol_id1653mnvAgnB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOperationSymbol").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgnB").build();
   public static final SMethod<List<SNode>> getAllowedSubstituends_id2D1PBM_bxH0 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllowedSubstituends").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2D1PBM_bxH0").build();
@@ -87,5 +88,9 @@ public final class ExponentialOperation__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_8721d {
+    /*package*/ static final SConcept ExponentialOperation_5f7fb6a3 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, "jetbrains.mps.baseLanguage.math.structure.ExponentialOperation");
   }
 }

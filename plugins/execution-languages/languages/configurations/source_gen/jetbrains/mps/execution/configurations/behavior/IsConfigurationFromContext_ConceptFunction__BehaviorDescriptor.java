@@ -4,7 +4,6 @@ package jetbrains.mps.execution.configurations.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -22,9 +21,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class IsConfigurationFromContext_ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x490c79b029c39076L, "jetbrains.mps.execution.configurations.structure.IsConfigurationFromContext_ConceptFunction");
+  private static final SAbstractConcept CONCEPT = AUX_y748nh.IsConfigurationFromContext_ConceptFunction_ca72b35e;
 
   public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
   public static final SMethod<Boolean> showName_id1653mnvAgry = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showName").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgry").build();
@@ -42,9 +42,9 @@ public final class IsConfigurationFromContext_ConceptFunction__BehaviorDescripto
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42b01609553bb8d3L, "jetbrains.mps.execution.configurations.structure.Configuration_Parameter"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42b01609553ff07fL, "jetbrains.mps.execution.configurations.structure.ContextConfiguration_Parameter"));
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, AUX_y748nh.ConceptFunction_e08795a5);
+    ListSequence.fromList(result).addElement(AUX_y748nh.Configuration_Parameter_78ad090c);
+    ListSequence.fromList(result).addElement(AUX_y748nh.ContextConfiguration_Parameter_a051ed16);
     return result;
   }
 
@@ -102,5 +102,12 @@ public final class IsConfigurationFromContext_ConceptFunction__BehaviorDescripto
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_y748nh {
+    /*package*/ static final SConcept IsConfigurationFromContext_ConceptFunction_ca72b35e = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x490c79b029c39076L, "jetbrains.mps.execution.configurations.structure.IsConfigurationFromContext_ConceptFunction");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept Configuration_Parameter_78ad090c = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42b01609553bb8d3L, "jetbrains.mps.execution.configurations.structure.Configuration_Parameter");
+    /*package*/ static final SConcept ContextConfiguration_Parameter_a051ed16 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42b01609553ff07fL, "jetbrains.mps.execution.configurations.structure.ContextConfiguration_Parameter");
   }
 }

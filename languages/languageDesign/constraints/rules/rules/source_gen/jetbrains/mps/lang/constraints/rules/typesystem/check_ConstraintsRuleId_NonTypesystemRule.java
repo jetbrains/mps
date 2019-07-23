@@ -20,6 +20,8 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.structure.util.ConceptIdHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConstraintsRuleId_NonTypesystemRule() {
@@ -36,7 +38,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
         }
       }
     } else {
-      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule"))).any(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), AUX_karv2c.Rule_5f090c4b)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return it != rule && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")), SPropertyOperations.getString(rule, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")));
         }
@@ -64,7 +66,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, "jetbrains.mps.lang.constraints.rules.structure.RuleIdHolder");
+    return AUX_karv2c.RuleIdHolder_daebc5e8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -74,5 +76,10 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_karv2c {
+    /*package*/ static final SConcept Rule_5f090c4b = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
+    /*package*/ static final SInterfaceConcept RuleIdHolder_daebc5e8 = MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, "jetbrains.mps.lang.constraints.rules.structure.RuleIdHolder");
   }
 }

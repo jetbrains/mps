@@ -23,6 +23,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ParametersDeclaration_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -57,7 +58,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ParametersDeclaration_EditorBuilder_a.componentListHandler_hy8r7y_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new componentListHandler_hy8r7y_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_component");
     editorCell.setSRole(handler.getElementSRole());
@@ -80,7 +81,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       return MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
+      return AUX_428mkg.NamedTupleComponentDeclaration_e8cbbb8c;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -119,5 +120,9 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       editorCell.setDefaultText("Enter creates a property");
       return editorCell;
     }
+  }
+
+  private static final class AUX_428mkg {
+    /*package*/ static final SConcept NamedTupleComponentDeclaration_e8cbbb8c = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
   }
 }

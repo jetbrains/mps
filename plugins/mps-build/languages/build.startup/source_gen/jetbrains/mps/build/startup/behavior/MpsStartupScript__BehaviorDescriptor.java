@@ -4,7 +4,6 @@ package jetbrains.mps.build.startup.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -27,9 +27,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, "jetbrains.mps.build.startup.structure.MpsStartupScript");
+  private static final SAbstractConcept CONCEPT = AUX_9sggks.MpsStartupScript_53ec61f1;
 
   /*package*/ static final SMethod<String> getDefaultVmoptions_id54lRqzvuHDj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultVmoptions").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("54lRqzvuHDj").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   /*package*/ static final SMethod<String> getCommentedVmoptions_id31jVCtHh$86 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCommentedVmoptions").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("31jVCtHh$86").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
@@ -76,7 +77,7 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
     });
   }
   /*package*/ static Iterable<SNode> getVmOptions_id2lwFGYOX$qJ(@NotNull SNode __thisNode__, boolean is64bit) {
-    return SNodeOperations.ofConcept(((is64bit ? SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x2560aecfb4da3f5bL, "vmOptions64")) : SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3442664L, "vmOptions")))), MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b343774cL, "jetbrains.mps.build.startup.structure.SimpleVmOptions"));
+    return SNodeOperations.ofConcept(((is64bit ? SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x2560aecfb4da3f5bL, "vmOptions64")) : SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3442664L, "vmOptions")))), AUX_9sggks.SimpleVmOptions_53ec7839);
   }
   /*package*/ static Iterable<SNode> getDefaultVmOptionsLines_id2lwFGYOXBOk(@NotNull SNode __thisNode__, boolean is64bit) {
     return Sequence.fromIterable(Sequence.fromArray(MpsStartupScript__BehaviorDescriptor.getDefaultVmoptions_id54lRqzvuHDj.invoke(__thisNode__, ((boolean) is64bit)).split("\\s"))).where(new IWhereFilter<String>() {
@@ -180,13 +181,13 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
   }
   private static SNode createTextLine_p7akvg_a0a0a0a0e(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, "jetbrains.mps.build.startup.structure.TextLine"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_9sggks.TextLine_3b17d3d4, null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text").getType().toString(p0));
     return n1;
   }
   private static SNode createTextLine_p7akvg_a0a0a0a0f(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, "jetbrains.mps.build.startup.structure.TextLine"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_9sggks.TextLine_3b17d3d4, null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text").getType().toString(p0));
     return n1;
   }
@@ -195,5 +196,11 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
   }
   public static String trim_9sggks_a0a0r(String str) {
     return (str == null ? null : str.trim());
+  }
+
+  private static final class AUX_9sggks {
+    /*package*/ static final SConcept MpsStartupScript_53ec61f1 = MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, "jetbrains.mps.build.startup.structure.MpsStartupScript");
+    /*package*/ static final SConcept SimpleVmOptions_53ec7839 = MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b343774cL, "jetbrains.mps.build.startup.structure.SimpleVmOptions");
+    /*package*/ static final SConcept TextLine_3b17d3d4 = MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, "jetbrains.mps.build.startup.structure.TextLine");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.findUsages;
 
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -17,9 +16,11 @@ import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DerivedInterfaces_Finder extends GeneratedFinder {
   public DerivedInterfaces_Finder() {
@@ -34,7 +35,7 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    return AUX_6acckn.Interface_bca2069;
   }
 
   @Override
@@ -51,7 +52,7 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
             new _FunctionTypes._void_P1_E0<SNode>() {
               public void invoke(SNode nodeUsage) {
                 if (SNodeOperations.hasRole(nodeUsage, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface"))) {
-                  SNode foundIntfc = SNodeOperations.cast(SNodeOperations.getParent(nodeUsage), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"));
+                  SNode foundIntfc = SNodeOperations.cast(SNodeOperations.getParent(nodeUsage), AUX_6acckn.Interface_bca2069);
                   callback.onUsageFound(createSingleResult(foundIntfc));
                   QueueSequence.fromQueue(queue).addLastElement(foundIntfc);
                 }
@@ -74,5 +75,9 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
   @Override
   public SNodeReference getDeclarationNode() {
     return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1200310287391");
+  }
+
+  private static final class AUX_6acckn {
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

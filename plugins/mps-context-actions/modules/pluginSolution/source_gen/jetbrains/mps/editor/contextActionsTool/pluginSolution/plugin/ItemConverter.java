@@ -89,7 +89,7 @@ public class ItemConverter {
       }
     }
 
-    return new ItemConverter.Item(actionItem, folderName, icon, tooltip);
+    return new Item(actionItem, folderName, icon, tooltip);
   }
 
   private static class Item implements ToolComponent.IItem {

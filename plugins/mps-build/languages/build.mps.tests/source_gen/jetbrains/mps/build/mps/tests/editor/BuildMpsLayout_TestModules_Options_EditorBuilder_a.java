@@ -28,6 +28,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BuildMpsLayout_TestModules_Options_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -90,7 +91,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMpsLayout_TestModules_Options_EditorBuilder_a.haltonfailureSingleRoleHandler_htktt1_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure"), getEditorContext());
+    SingleRoleCellProvider provider = new haltonfailureSingleRoleHandler_htktt1_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure"), getEditorContext());
     return provider.createCell();
   }
   private static class haltonfailureSingleRoleHandler_htktt1_b1a extends SingleRoleCellProvider {
@@ -157,7 +158,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new BuildMpsLayout_TestModules_Options_EditorBuilder_a.requiredPluginsListHandler_htktt1_d1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new requiredPluginsListHandler_htktt1_d1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_requiredPlugins");
     Style style = new StyleImpl();
@@ -184,7 +185,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
       return MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, "jetbrains.mps.build.mps.tests.structure.RequiredPlugin");
+      return AUX_vtdl7d.RequiredPlugin_8cae58d8;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -230,5 +231,9 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
       editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
       return editorCell;
     }
+  }
+
+  private static final class AUX_vtdl7d {
+    /*package*/ static final SConcept RequiredPlugin_8cae58d8 = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, "jetbrains.mps.build.mps.tests.structure.RequiredPlugin");
   }
 }

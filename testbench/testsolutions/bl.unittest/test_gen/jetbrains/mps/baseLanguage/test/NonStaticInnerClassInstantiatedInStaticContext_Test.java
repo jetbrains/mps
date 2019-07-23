@@ -32,27 +32,27 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
 
   @Test
   public void test_NodeNoEnclosingInstanceOfCheck6923385624927702653() throws Throwable {
-    new NonStaticInnerClassInstantiatedInStaticContext_Test.TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624927702653();
+    new TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624927702653();
   }
   @Test
   public void test_NodeNoEnclosingInstanceOfCheck6923385624929324173() throws Throwable {
-    new NonStaticInnerClassInstantiatedInStaticContext_Test.TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929324173();
+    new TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929324173();
   }
   @Test
   public void test_NodeNoEnclosingInstanceOfCheck6923385624929631137() throws Throwable {
-    new NonStaticInnerClassInstantiatedInStaticContext_Test.TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929631137();
+    new TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929631137();
   }
   @Test
   public void test_NodeNoEnclosingInstanceOfCheck6923385624929879922() throws Throwable {
-    new NonStaticInnerClassInstantiatedInStaticContext_Test.TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929879922();
+    new TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929879922();
   }
   @Test
   public void test_NodeNoEnclosingInstanceOfCheck6923385624929258956() throws Throwable {
-    new NonStaticInnerClassInstantiatedInStaticContext_Test.TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929258956();
+    new TestBody(this).test_NodeNoEnclosingInstanceOfCheck6923385624929258956();
   }
   @Test
   public void test_ErrorMessagesCheck966837649722301965() throws Throwable {
-    new NonStaticInnerClassInstantiatedInStaticContext_Test.TestBody(this).test_ErrorMessagesCheck966837649722301965();
+    new TestBody(this).test_ErrorMessagesCheck966837649722301965();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

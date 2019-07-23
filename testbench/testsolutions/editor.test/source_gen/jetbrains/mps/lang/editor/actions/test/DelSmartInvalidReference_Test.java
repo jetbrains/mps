@@ -22,7 +22,7 @@ public class DelSmartInvalidReference_Test extends BaseTransformationTest {
 
   @Test
   public void test_DelSmartInvalidReference() throws Throwable {
-    new DelSmartInvalidReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -24,7 +24,7 @@ public class RightTransformWithCustomItem_Simple_checkCanBeParent_Test extends B
 
   @Test
   public void test_RightTransformWithCustomItem_Simple_checkCanBeParent() throws Throwable {
-    new RightTransformWithCustomItem_Simple_checkCanBeParent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

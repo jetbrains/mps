@@ -31,87 +31,87 @@ public class TypeInference_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTypeSystemCheck6923385624927474402() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927474402();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927474402();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927959862() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927959862();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927959862();
   }
   @Test
   public void test_NodeErrorCheck8345119003641462720() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeErrorCheck8345119003641462720();
+    new TestBody(this).test_NodeErrorCheck8345119003641462720();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624928271119() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624928271119();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624928271119();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624929494038() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624929494038();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624929494038();
   }
   @Test
   public void test_NodeErrorCheck8345119003641471587() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeErrorCheck8345119003641471587();
+    new TestBody(this).test_NodeErrorCheck8345119003641471587();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927940163() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927940163();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927940163();
   }
   @Test
   public void test_NodeErrorCheck8345119003641471608() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeErrorCheck8345119003641471608();
+    new TestBody(this).test_NodeErrorCheck8345119003641471608();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624928215092() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624928215092();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624928215092();
   }
   @Test
   public void test_NodeErrorCheck8345119003641471627() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeErrorCheck8345119003641471627();
+    new TestBody(this).test_NodeErrorCheck8345119003641471627();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927005600() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927005600();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927005600();
   }
   @Test
   public void test_NodeErrorCheck8345119003641471646() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeErrorCheck8345119003641471646();
+    new TestBody(this).test_NodeErrorCheck8345119003641471646();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624928978334() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624928978334();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624928978334();
   }
   @Test
   public void test_NodeErrorCheck8345119003641471667() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeErrorCheck8345119003641471667();
+    new TestBody(this).test_NodeErrorCheck8345119003641471667();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624929302543() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624929302543();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624929302543();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624929336374() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624929336374();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624929336374();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927563665() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927563665();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927563665();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927161380() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927161380();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927161380();
   }
   @Test
   public void test_NodeErrorCheck8345119003641471688() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_NodeErrorCheck8345119003641471688();
+    new TestBody(this).test_NodeErrorCheck8345119003641471688();
   }
   @Test
   public void test_ErrorMessagesCheck488298296050687637() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_ErrorMessagesCheck488298296050687637();
+    new TestBody(this).test_ErrorMessagesCheck488298296050687637();
   }
   @Test
   public void test_ErrorMessagesCheck7261441936922433825() throws Throwable {
-    new TypeInference_Test.TestBody(this).test_ErrorMessagesCheck7261441936922433825();
+    new TestBody(this).test_ErrorMessagesCheck7261441936922433825();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

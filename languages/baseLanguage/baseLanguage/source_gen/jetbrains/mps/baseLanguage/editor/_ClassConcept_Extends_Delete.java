@@ -18,6 +18,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class _ClassConcept_Extends_Delete {
 
@@ -31,7 +32,7 @@ public class _ClassConcept_Extends_Delete {
           return;
         }
         SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass"), null);
-        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.ChildAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")))).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.ChildAttribute(AUX_gkrujk.BaseCommentAttribute_f7206635, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")))).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             SNodeOperations.deleteNode(it);
           }
@@ -79,5 +80,9 @@ public class _ClassConcept_Extends_Delete {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_gkrujk {
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 }

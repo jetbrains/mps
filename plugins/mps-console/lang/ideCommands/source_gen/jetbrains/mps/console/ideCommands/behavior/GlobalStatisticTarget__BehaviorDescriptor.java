@@ -4,7 +4,6 @@ package jetbrains.mps.console.ideCommands.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -30,9 +29,11 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class GlobalStatisticTarget__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a579cb8L, "jetbrains.mps.console.ideCommands.structure.GlobalStatisticTarget");
+  private static final SAbstractConcept CONCEPT = AUX_hzjedr.GlobalStatisticTarget_5c79ba55;
 
   public static final SMethod<Iterable<Tuples._2<String, Integer>>> getStat_id6vMIJHUBlVT = new SMethodBuilder<Iterable<Tuples._2<String, Integer>>>(new SJavaCompoundTypeImpl((Class<Iterable<Tuples._2<String, Integer>>>) ((Class) Object.class))).name("getStat").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6vMIJHUBlVT").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
   public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4x3U0fq41hN").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
@@ -110,5 +111,9 @@ public final class GlobalStatisticTarget__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_hzjedr {
+    /*package*/ static final SConcept GlobalStatisticTarget_5c79ba55 = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a579cb8L, "jetbrains.mps.console.ideCommands.structure.GlobalStatisticTarget");
   }
 }

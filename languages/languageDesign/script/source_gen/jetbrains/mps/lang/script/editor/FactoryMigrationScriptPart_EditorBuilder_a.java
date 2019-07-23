@@ -55,7 +55,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new FactoryMigrationScriptPart_EditorBuilder_a.factoryMethodSingleRoleHandler_chq41h_b0(myNode, MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x24105a807c757c2dL, 0x24105a807c757c2fL, "factoryMethod"), getEditorContext());
+    SingleRoleCellProvider provider = new factoryMethodSingleRoleHandler_chq41h_b0(myNode, MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x24105a807c757c2dL, 0x24105a807c757c2fL, "factoryMethod"), getEditorContext());
     return provider.createCell();
   }
   private static class factoryMethodSingleRoleHandler_chq41h_b0 extends SingleRoleCellProvider {

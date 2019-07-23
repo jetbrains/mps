@@ -34,7 +34,7 @@ public class SimpleFindAndMoveForIntroduceLocalVar_Test extends BaseTransformati
 
   @Test
   public void test_SimpleFindAndMoveForIntroduceLocalVarTest() throws Throwable {
-    new SimpleFindAndMoveForIntroduceLocalVar_Test.TestBody(this).test_SimpleFindAndMoveForIntroduceLocalVarTest();
+    new TestBody(this).test_SimpleFindAndMoveForIntroduceLocalVarTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

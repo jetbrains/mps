@@ -30,7 +30,7 @@ public class UnusedAssignmentWithIF_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck1217866439753() throws Throwable {
-    new UnusedAssignmentWithIF_Test.TestBody(this).test_ErrorMessagesCheck1217866439753();
+    new TestBody(this).test_ErrorMessagesCheck1217866439753();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

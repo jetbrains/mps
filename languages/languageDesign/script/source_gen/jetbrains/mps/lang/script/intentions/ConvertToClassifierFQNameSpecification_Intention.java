@@ -13,12 +13,13 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.script.behavior.AbstractClassifierSpecification__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertToClassifierFQNameSpecification_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -39,7 +40,7 @@ public final class ConvertToClassifierFQNameSpecification_Intention extends Abst
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ConvertToClassifierFQNameSpecification_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -52,7 +53,7 @@ public final class ConvertToClassifierFQNameSpecification_Intention extends Abst
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode classifierSpecification = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, "jetbrains.mps.lang.script.structure.FQNameClassifierSpecification"));
+      SNode classifierSpecification = SNodeFactoryOperations.replaceWithNewChild(node, AUX_uy8vp.FQNameClassifierSpecification_2dabc6b8);
       SPropertyOperations.assign(classifierSpecification, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, 0x4b6b6d7b2a6bdf42L, "classifierFQName"), AbstractClassifierSpecification__BehaviorDescriptor.getClassifierFqName_id4HFrnGErDob.invoke(node));
       SPropertyOperations.assign(classifierSpecification, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, 0x4b6b6d7b2a76ca23L, "smodelReference"), AbstractClassifierSpecification__BehaviorDescriptor.getSModelReference_id4HFrnGEt_VQ.invoke(node));
       SPropertyOperations.assign(classifierSpecification, MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, 0x7bba19eddf8bfaa0L, "snodeId"), SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier")).getNodeId().toString());
@@ -62,5 +63,9 @@ public final class ConvertToClassifierFQNameSpecification_Intention extends Abst
     public IntentionDescriptor getDescriptor() {
       return ConvertToClassifierFQNameSpecification_Intention.this;
     }
+  }
+
+  private static final class AUX_uy8vp {
+    /*package*/ static final SConcept FQNameClassifierSpecification_2dabc6b8 = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, "jetbrains.mps.lang.script.structure.FQNameClassifierSpecification");
   }
 }

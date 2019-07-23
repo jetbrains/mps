@@ -16,11 +16,11 @@
       <node id="138767106959665303" at="32,88,33,33" concept="1" />
       <node id="6293005617706016076" at="38,92,39,203" concept="1" />
       <node id="1496492112286760830" at="44,104,45,195" concept="1" />
-      <node id="6293005617706016074" at="49,14,50,73" concept="0" />
+      <node id="6293005617706016074" at="49,14,50,56" concept="0" />
       <node id="6293005617706016074" at="70,15,71,59" concept="1" />
-      <node id="1496492112286760828" at="81,14,82,75" concept="0" />
+      <node id="1496492112286760828" at="81,14,82,58" concept="0" />
       <node id="1496492112286760828" at="101,15,102,87" concept="1" />
-      <node id="138767106958845440" at="110,14,111,210" concept="0" />
+      <node id="138767106958845440" at="110,14,111,193" concept="0" />
       <node id="138767106958845440" at="132,15,133,66" concept="1" />
       <node id="138767106958845441" at="32,0,35,0" concept="2" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="6293005617706016074" at="38,0,41,0" concept="2" trace="sourceNodeQuery_1_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -46,9 +46,9 @@
     <file name="QueriesGenerated.java">
       <node id="138767106959768110" at="35,88,36,33" concept="1" />
       <node id="3409752288362167510" at="41,92,42,186" concept="1" />
-      <node id="3409752288362167508" at="50,73,51,73" concept="0" />
+      <node id="3409752288362167508" at="50,56,51,56" concept="0" />
       <node id="3409752288362167508" at="72,15,73,59" concept="1" />
-      <node id="138767106958624541" at="111,210,112,203" concept="0" />
+      <node id="138767106958624541" at="111,193,112,186" concept="0" />
       <node id="138767106958624541" at="134,15,135,66" concept="1" />
       <node id="138767106958624542" at="35,0,38,0" concept="2" trace="propertyMacro_GetValue_2_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="3409752288362167508" at="41,0,44,0" concept="2" trace="sourceNodeQuery_2_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />

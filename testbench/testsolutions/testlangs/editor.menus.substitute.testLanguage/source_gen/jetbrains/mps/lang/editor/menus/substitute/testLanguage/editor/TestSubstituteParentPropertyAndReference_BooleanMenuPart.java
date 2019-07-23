@@ -44,7 +44,7 @@ public class TestSubstituteParentPropertyAndReference_BooleanMenuPart extends Tr
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TestSubstituteParentPropertyAndReference_BooleanMenuPart.TMP_Property_qvruel_a0());
+      result.add(new TMP_Property_qvruel_a0());
     }
     return result;
   }

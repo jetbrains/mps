@@ -21,7 +21,7 @@ public class UndoVariableNameChangeAtOnce_Test extends BaseTransformationTest {
 
   @Test
   public void test_UndoVariableNameChangeAtOnce() throws Throwable {
-    new UndoVariableNameChangeAtOnce_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

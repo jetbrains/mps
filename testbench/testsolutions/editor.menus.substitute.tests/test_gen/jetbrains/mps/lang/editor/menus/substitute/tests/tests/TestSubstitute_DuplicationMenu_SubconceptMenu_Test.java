@@ -25,7 +25,7 @@ public class TestSubstitute_DuplicationMenu_SubconceptMenu_Test extends BaseTran
 
   @Test
   public void test_TestSubstitute_DuplicationMenu_SubconceptMenu() throws Throwable {
-    new TestSubstitute_DuplicationMenu_SubconceptMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -24,7 +24,7 @@ public class DeleteTryFinallyStatementFinallyKeywordTwoStep_Test extends BaseTra
 
   @Test
   public void test_DeleteTryFinallyStatementFinallyKeywordTwoStep() throws Throwable {
-    new DeleteTryFinallyStatementFinallyKeywordTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

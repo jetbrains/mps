@@ -16,6 +16,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ShowGenPlan_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ShowGenPlan_NonTypesystemRule() {
@@ -42,12 +43,16 @@ public class check_ShowGenPlan_NonTypesystemRule extends AbstractNonTypesystemRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan");
+    return AUX_cemjqk.ShowGenPlan_ea4b0b23;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_cemjqk {
+    /*package*/ static final SConcept ShowGenPlan_ea4b0b23 = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan");
   }
 }

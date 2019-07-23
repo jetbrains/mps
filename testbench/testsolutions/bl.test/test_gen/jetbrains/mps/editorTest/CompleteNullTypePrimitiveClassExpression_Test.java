@@ -22,7 +22,7 @@ public class CompleteNullTypePrimitiveClassExpression_Test extends BaseTransform
 
   @Test
   public void test_CompleteNullTypePrimitiveClassExpression() throws Throwable {
-    new CompleteNullTypePrimitiveClassExpression_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -29,7 +29,7 @@ public class ObjectWrapperFactory extends ValueWrapperFactory {
     return value instanceof IObjectValueProxy;
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new ObjectWrapperFactory.JavaObjectValue((IObjectValueProxy) value, threadReference);
+    return new JavaObjectValue((IObjectValueProxy) value, threadReference);
   }
   @Override
   public String getName() {
@@ -55,7 +55,7 @@ public class ObjectWrapperFactory extends ValueWrapperFactory {
             return it.name();
           }
         }, true)) {
-          watchables.add(new ObjectWrapperFactory.JavaField(f, ref, myThreadReference));
+          watchables.add(new JavaField(f, ref, myThreadReference));
         }
       }
       return watchables;

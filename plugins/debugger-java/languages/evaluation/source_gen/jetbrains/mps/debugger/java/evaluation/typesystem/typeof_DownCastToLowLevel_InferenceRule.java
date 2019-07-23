@@ -12,6 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_DownCastToLowLevel_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_DownCastToLowLevel_InferenceRule() {
@@ -22,7 +23,7 @@ public class typeof_DownCastToLowLevel_InferenceRule extends AbstractInferenceRu
       typeCheckingContext.whenConcrete(e, new Runnable() {
         public void run() {
           {
-            SNode coercedNode_pc09cd_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(e), MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType"));
+            SNode coercedNode_pc09cd_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(e), AUX_ubwxy0.DebuggedType_9357587d);
             if (coercedNode_pc09cd_a0a0 != null) {
               {
                 SNode _nodeToCheck_1029348928467 = downCastToLowLevel;
@@ -37,12 +38,17 @@ public class typeof_DownCastToLowLevel_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, "jetbrains.mps.debugger.java.evaluation.structure.DownCastToLowLevel");
+    return AUX_ubwxy0.DownCastToLowLevel_982bdfce;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_ubwxy0 {
+    /*package*/ static final SConcept DebuggedType_9357587d = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType");
+    /*package*/ static final SConcept DownCastToLowLevel_982bdfce = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, "jetbrains.mps.debugger.java.evaluation.structure.DownCastToLowLevel");
   }
 }

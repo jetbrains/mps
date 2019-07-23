@@ -26,7 +26,7 @@ public class BackspaceForVariableFromCommaTwoStep_Test extends BaseTransformatio
 
   @Test
   public void test_BackspaceForVariableFromCommaTwoStep() throws Throwable {
-    new BackspaceForVariableFromCommaTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

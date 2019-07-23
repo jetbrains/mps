@@ -4,7 +4,6 @@ package jetbrains.mps.build.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -19,9 +18,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class BuildSourceProjectRelativePath__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
+  private static final SAbstractConcept CONCEPT = AUX_1dfek1.BuildSourceProjectRelativePath_d4a7a399;
 
   public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRelativePath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Kip2_918YF").build();
   public static final SMethod<String> getBasePath_id4jjtc7WZMYz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBasePath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4jjtc7WZMYz").build(SMethodBuilder.createJavaParameter(Context.class, ""));
@@ -36,7 +37,7 @@ public final class BuildSourceProjectRelativePath__BehaviorDescriptor extends Ba
     return ((tail == null || tail.length() == 0) ? "${basedir}" : "${basedir}/" + tail);
   }
   /*package*/ static String getBasePath_id4jjtc7WZMYz(@NotNull SNode __thisNode__, Context context) {
-    return (String) BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false), context);
+    return (String) BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(SNodeOperations.getNodeAncestor(__thisNode__, AUX_1dfek1.BuildProject_808bb057, false, false), context);
   }
 
   /*package*/ BuildSourceProjectRelativePath__BehaviorDescriptor() {
@@ -85,5 +86,10 @@ public final class BuildSourceProjectRelativePath__BehaviorDescriptor extends Ba
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_1dfek1 {
+    /*package*/ static final SConcept BuildSourceProjectRelativePath_d4a7a399 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

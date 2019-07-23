@@ -17,10 +17,10 @@ import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
 
 public class JUnitOutOfProcessStarter implements JUnitProcessStarter {
-  private final JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0 myStarter0;
+  private final JUnitOutOfProcessStarter0 myStarter0;
 
   public JUnitOutOfProcessStarter(MPSProject project, @NotNull List<ITestNodeWrapper> testNodes, JUnitTests_Configuration junitRC, String toolWindowIdToShowNotifications, IDebuggerSettings debuggerSettings) {
-    myStarter0 = new JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0(project, testNodes, junitRC, toolWindowIdToShowNotifications, debuggerSettings);
+    myStarter0 = new JUnitOutOfProcessStarter0(project, testNodes, junitRC, toolWindowIdToShowNotifications, debuggerSettings);
   }
 
   @Override

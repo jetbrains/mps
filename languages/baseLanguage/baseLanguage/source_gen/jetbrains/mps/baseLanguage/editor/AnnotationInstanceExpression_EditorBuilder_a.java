@@ -47,7 +47,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AnnotationInstanceExpression_EditorBuilder_a.annotationInstanceSingleRoleHandler_2fh3co_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71a2770L, 0x114a71a8526L, "annotationInstance"), getEditorContext());
+    SingleRoleCellProvider provider = new annotationInstanceSingleRoleHandler_2fh3co_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71a2770L, 0x114a71a8526L, "annotationInstance"), getEditorContext());
     return provider.createCell();
   }
   private static class annotationInstanceSingleRoleHandler_2fh3co_a0 extends SingleRoleCellProvider {

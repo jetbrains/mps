@@ -11,6 +11,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_NodeInferTypeOperation_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
@@ -23,12 +24,16 @@ public class check_NodeInferTypeOperation_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L, "jetbrains.mps.lang.typesystem.structure.Node_InferTypeOperation");
+    return AUX_207s5h.Node_InferTypeOperation_ade35697;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_207s5h {
+    /*package*/ static final SConcept Node_InferTypeOperation_ade35697 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L, "jetbrains.mps.lang.typesystem.structure.Node_InferTypeOperation");
   }
 }

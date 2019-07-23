@@ -21,7 +21,7 @@ public class AbstractFieldUnavailable_Test extends BaseTransformationTest {
 
   @Test
   public void test_AbstractFieldUnavailable() throws Throwable {
-    new AbstractFieldUnavailable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -5,33 +5,40 @@ package jetbrains.mps.lang.editor.figures.constraints;
 import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.scope.ModelPlusImportedScope;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ExternalViewClassifierScope extends FilteringScope {
   private SModel myModel;
   public ExternalViewClassifierScope(SModel model) {
-    super(new ModelPlusImportedScope(model, false, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")));
+    super(new ModelPlusImportedScope(model, false, AUX_ep39o1.ClassConcept_e2711824));
     myModel = model;
   }
   @Override
   public boolean isExcluded(SNode node) {
-    SNode classConcept = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
+    SNode classConcept = SNodeOperations.cast(node, AUX_ep39o1.ClassConcept_e2711824);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), AUX_ep39o1.PrivateVisibility_63f5dbd4)) {
       return true;
     }
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"))) && SNodeOperations.getModel(classConcept) != myModel) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), AUX_ep39o1.PublicVisibility_63d95354)) && SNodeOperations.getModel(classConcept) != myModel) {
       return true;
     }
     if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classConcept) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classConcept))) {
       return true;
     }
     return !(ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(classConcept)).contains(SNodeOperations.getNode("67b3c41d-58b3-4756-b971-30bf8a9d63e6/java:jetbrains.jetpad.projectional.view(jetbrains.jetpad/)", "~View")));
+  }
+
+  private static final class AUX_ep39o1 {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept PrivateVisibility_63f5dbd4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept PublicVisibility_63d95354 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
   }
 }

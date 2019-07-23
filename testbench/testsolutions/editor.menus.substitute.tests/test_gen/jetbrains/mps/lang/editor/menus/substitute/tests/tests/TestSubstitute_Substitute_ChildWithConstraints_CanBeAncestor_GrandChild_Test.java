@@ -24,7 +24,7 @@ public class TestSubstitute_Substitute_ChildWithConstraints_CanBeAncestor_GrandC
 
   @Test
   public void test_TestSubstitute_Substitute_ChildWithConstraints_CanBeAncestor_GrandChild() throws Throwable {
-    new TestSubstitute_Substitute_ChildWithConstraints_CanBeAncestor_GrandChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

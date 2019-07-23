@@ -52,7 +52,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IntersectionSymbolClassPart_EditorBuilder_a.leftSingleRoleHandler_b4by2p_a0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left"), getEditorContext());
+    SingleRoleCellProvider provider = new leftSingleRoleHandler_b4by2p_a0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left"), getEditorContext());
     return provider.createCell();
   }
   private static class leftSingleRoleHandler_b4by2p_a0 extends SingleRoleCellProvider {
@@ -116,7 +116,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new IntersectionSymbolClassPart_EditorBuilder_a.rightSingleRoleHandler_b4by2p_c0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e2e56cL, "right"), getEditorContext());
+    SingleRoleCellProvider provider = new rightSingleRoleHandler_b4by2p_c0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e2e56cL, "right"), getEditorContext());
     return provider.createCell();
   }
   private static class rightSingleRoleHandler_b4by2p_c0 extends SingleRoleCellProvider {

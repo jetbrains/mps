@@ -43,7 +43,7 @@ public class Statements_Test extends TestCase {
     }
     Assert.assertEquals(4, i);
   }
-  private static Pattern REGEXP_yyh11i_a0a0c0a = Pattern.compile("(?:\\w+@\\w(?:.\\w+)*)", 0);
-  private static Pattern REGEXP_yyh11i_a0a0b0b = Pattern.compile("ab", 0);
-  private static Pattern REGEXP_yyh11i_a0a0b0c = Pattern.compile("(\\w\\w)", 0);
+  private static final Pattern REGEXP_yyh11i_a0a0c0a = Pattern.compile("(?:\\w+@\\w(?:.\\w+)*)", 0);
+  private static final Pattern REGEXP_yyh11i_a0a0b0b = Pattern.compile("ab", 0);
+  private static final Pattern REGEXP_yyh11i_a0a0b0c = Pattern.compile("(\\w\\w)", 0);
 }

@@ -8,9 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SimpleMathLongType_subtypeOf_Float_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public SimpleMathLongType_subtypeOf_Float_SubtypingRule() {
@@ -19,7 +20,7 @@ public class SimpleMathLongType_subtypeOf_Float_SubtypingRule extends SubtypingR
     return createSimpleMathFloatType_rmkbnt_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b837a88aL, "jetbrains.mps.samples.Expressions.structure.SimpleMathLongType");
+    return AUX_rmkbnt.SimpleMathLongType_bbf8afaa;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -32,7 +33,12 @@ public class SimpleMathLongType_subtypeOf_Float_SubtypingRule extends SubtypingR
   }
   private static SNode createSimpleMathFloatType_rmkbnt_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b3e3eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_rmkbnt.SimpleMathFloatType_4cc5e0ef, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_rmkbnt {
+    /*package*/ static final SConcept SimpleMathLongType_bbf8afaa = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b837a88aL, "jetbrains.mps.samples.Expressions.structure.SimpleMathLongType");
+    /*package*/ static final SConcept SimpleMathFloatType_4cc5e0ef = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b3e3eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatType");
   }
 }

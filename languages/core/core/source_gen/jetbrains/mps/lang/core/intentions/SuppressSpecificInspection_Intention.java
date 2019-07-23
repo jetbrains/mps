@@ -24,10 +24,11 @@ import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.core.behavior.ICanSuppressErrors__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SuppressSpecificInspection_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   public SuppressSpecificInspection_Intention() {
@@ -50,7 +51,7 @@ public final class SuppressSpecificInspection_Intention extends AbstractIntentio
     List<IssueKindReportItem> paramList = parameter(node, context);
     if (paramList != null) {
       for (IssueKindReportItem param : paramList) {
-        ListSequence.fromList(list).addElement(new SuppressSpecificInspection_Intention.IntentionImplementation(param));
+        ListSequence.fromList(list).addElement(new IntentionImplementation(param));
       }
     }
     return list;
@@ -75,7 +76,7 @@ public final class SuppressSpecificInspection_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode annotation = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation")))).insertElement(0, SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation"), null));
+      SNode annotation = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(AUX_p0fltw.SuppressErrorsAnnotation_4912d93))).insertElement(0, SNodeFactoryOperations.createNewNode(AUX_p0fltw.SuppressErrorsAnnotation_4912d93, null));
       SPropertyOperations.assign(annotation, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter"), myParameter.toPredicate(myParameter.getIdFlavours()).serialize());
       SPropertyOperations.assign(annotation, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message"), myParameter.getMessage());
     }
@@ -86,5 +87,9 @@ public final class SuppressSpecificInspection_Intention extends AbstractIntentio
     public Object getParameter() {
       return myParameter;
     }
+  }
+
+  private static final class AUX_p0fltw {
+    /*package*/ static final SConcept SuppressErrorsAnnotation_4912d93 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
   }
 }

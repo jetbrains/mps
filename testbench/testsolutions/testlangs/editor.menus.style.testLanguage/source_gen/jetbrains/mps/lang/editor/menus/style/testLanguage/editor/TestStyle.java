@@ -55,8 +55,8 @@ public class TestStyle extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TestStyle.TMP_Action_6pydjj_a0());
-      result.add(new TestStyle.TMP_Action_6pydjj_b0());
+      result.add(new TMP_Action_6pydjj_a0());
+      result.add(new TMP_Action_6pydjj_b0());
     }
     return result;
   }
@@ -64,7 +64,7 @@ public class TestStyle extends TransformationMenuBase {
   private class TMP_Action_6pydjj_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestStyle.TMP_Action_6pydjj_a0.Item item = new TestStyle.TMP_Action_6pydjj_a0.Item(context);
+      TMP_Action_6pydjj_a0.Item item = new TMP_Action_6pydjj_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -123,7 +123,7 @@ public class TestStyle extends TransformationMenuBase {
   private class TMP_Action_6pydjj_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestStyle.TMP_Action_6pydjj_b0.Item item = new TestStyle.TMP_Action_6pydjj_b0.Item(context);
+      TMP_Action_6pydjj_b0.Item item = new TMP_Action_6pydjj_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

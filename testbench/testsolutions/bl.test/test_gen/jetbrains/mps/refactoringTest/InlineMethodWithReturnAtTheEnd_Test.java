@@ -34,7 +34,7 @@ public class InlineMethodWithReturnAtTheEnd_Test extends BaseTransformationTest 
 
   @Test
   public void test_InlineMethodWithReturnAtTheEnd() throws Throwable {
-    new InlineMethodWithReturnAtTheEnd_Test.TestBody(this).test_InlineMethodWithReturnAtTheEnd();
+    new TestBody(this).test_InlineMethodWithReturnAtTheEnd();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

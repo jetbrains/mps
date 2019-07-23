@@ -112,6 +112,6 @@ public class Template_out_class extends TemplateDeclarationBase implements Templ
     rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
     return rv;
   }
-  private static SNodePointer template_lrc73l_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150125542");
-  private static SNodePointer copySrcMacro_lrc73l_b0a0c0e0b0e0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150187920");
+  private static final SNodePointer template_lrc73l_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150125542");
+  private static final SNodePointer copySrcMacro_lrc73l_b0a0c0e0b0e0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150187920");
 }

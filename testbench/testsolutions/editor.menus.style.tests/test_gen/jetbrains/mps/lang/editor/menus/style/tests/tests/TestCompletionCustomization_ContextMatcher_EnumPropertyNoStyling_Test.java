@@ -26,7 +26,7 @@ public class TestCompletionCustomization_ContextMatcher_EnumPropertyNoStyling_Te
 
   @Test
   public void test_TestCompletionCustomization_ContextMatcher_EnumPropertyNoStyling() throws Throwable {
-    new TestCompletionCustomization_ContextMatcher_EnumPropertyNoStyling_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -65,6 +65,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BuildGeneratorImpl extends AbstractBuildGenerator {
   private static final Logger LOG = LogManager.getLogger(BuildGeneratorImpl.class);
@@ -323,7 +324,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
         public boolean accept(SNode it) {
           return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "mps_home");
         }
-      }), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro"))), tips, branding, plugin, buildNumber, dateMacro), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children"))));
+      }), AUX_un708i.BuildFolderMacro_b970540e)), tips, branding, plugin, buildNumber, dateMacro), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children"))));
     } else {
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children"))).addElement(_quotation_createNode_un708i_a0a0a0ib0z_0(name + ".zip", plugin));
     }
@@ -357,11 +358,11 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros"))).addElement(version);
     SNode buildNumber = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(buildProject, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros"))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3449288aa0d560e2L, "jetbrains.mps.build.structure.BuildVariableMacro")) && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(SLinkOperations.getTarget(_quotation_createNode_un708i_a0a0a0a0a0a0l0bb(), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+        return SNodeOperations.isInstanceOf(it, AUX_un708i.BuildVariableMacro_66593451) && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(SLinkOperations.getTarget(_quotation_createNode_un708i_a0a0a0a0a0a0l0bb(), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       }
-    }), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3449288aa0d560e2L, "jetbrains.mps.build.structure.BuildVariableMacro"));
+    }), AUX_un708i.BuildVariableMacro_66593451);
 
-    SNode solution = SNodeOperations.as(SModelOperations.getModuleStub(targetSModel), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, "jetbrains.mps.lang.project.structure.Solution"));
+    SNode solution = SNodeOperations.as(SModelOperations.getModuleStub(targetSModel), AUX_un708i.Solution_33f90ea2);
 
     String prefix = myProject.getProject().getBasePath() + "/";
     String outPath = (SPropertyOperations.getString(solution, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath")).startsWith(prefix) ? SPropertyOperations.getString(solution, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath")).substring(prefix.length()) : SPropertyOperations.getString(solution, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath")));
@@ -396,7 +397,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   private SNode addStartupScripts(SModel targetSModel, SNode buildProject) {
     SNode startupScript = _quotation_createNode_un708i_a0a0db(SPropertyOperations.getString(buildProject, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "Scripts", ListSequence.fromList(SLinkOperations.getChildren(buildProject, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, "jetbrains.mps.build.mps.structure.BuildMps_Branding"));
+        return SNodeOperations.isInstanceOf(it, AUX_un708i.BuildMps_Branding_555c413a);
       }
     }));
 
@@ -1880,5 +1881,12 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_un708i {
+    /*package*/ static final SConcept BuildFolderMacro_b970540e = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro");
+    /*package*/ static final SConcept BuildVariableMacro_66593451 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3449288aa0d560e2L, "jetbrains.mps.build.structure.BuildVariableMacro");
+    /*package*/ static final SConcept Solution_33f90ea2 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, "jetbrains.mps.lang.project.structure.Solution");
+    /*package*/ static final SConcept BuildMps_Branding_555c413a = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, "jetbrains.mps.build.mps.structure.BuildMps_Branding");
   }
 }

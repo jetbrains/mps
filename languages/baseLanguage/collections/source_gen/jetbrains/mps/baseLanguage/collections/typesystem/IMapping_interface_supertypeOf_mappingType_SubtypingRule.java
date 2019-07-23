@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IMapping_interface_supertypeOf_mappingType_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public IMapping_interface_supertypeOf_mappingType_SubtypingRule() {
@@ -22,7 +23,7 @@ public class IMapping_interface_supertypeOf_mappingType_SubtypingRule extends Su
     return _quotation_createNode_chrt0k_a0a1(SLinkOperations.getTarget(mappingType, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e3925L, "keyType")), SLinkOperations.getTarget(mappingType, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e4f44L, "valueType")));
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType");
+    return AUX_chrt0k.MappingType_b4cb9d83;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,5 +47,9 @@ public class IMapping_interface_supertypeOf_mappingType_SubtypingRule extends Su
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(quotedNode_5));
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_chrt0k {
+    /*package*/ static final SConcept MappingType_b4cb9d83 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType");
   }
 }

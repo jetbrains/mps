@@ -8,11 +8,12 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatchParensRegexp_removeName {
 
@@ -25,7 +26,7 @@ public class MatchParensRegexp_removeName {
         if (DeletionApproverUtil.approve(editorContext, node, "*" + CellIdManager.createPropertyId("name"))) {
           return;
         }
-        SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp"));
+        SNodeFactoryOperations.replaceWithNewChild(node, AUX_348ebv.ParensRegexp_71ee432e);
       }
 
     };
@@ -64,5 +65,9 @@ public class MatchParensRegexp_removeName {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_348ebv {
+    /*package*/ static final SConcept ParensRegexp_71ee432e = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
   }
 }

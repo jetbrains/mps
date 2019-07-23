@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,13 +15,15 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BreakStatement__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
+  private static final SAbstractConcept CONCEPT = AUX_d5youw.BreakStatement_aab71ba2;
 
   public static final SMethod<SNode> getLoop_idhEwIHvD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLoop").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIHvD").build();
   public static final SMethod<SNode> getSwitch_idhEwIHvX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSwitch").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIHvX").build();
@@ -36,22 +37,22 @@ public final class BreakStatement__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SNode getLoop_idhEwIHvD(@NotNull SNode __thisNode__) {
     SNode loopOrSwitch = BreakStatement__BehaviorDescriptor.getLoopOrSwitch_idhEwIHwh.invoke(__thisNode__);
-    if (SNodeOperations.isInstanceOf(loopOrSwitch, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"))) {
-      return SNodeOperations.cast(loopOrSwitch, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"));
+    if (SNodeOperations.isInstanceOf(loopOrSwitch, AUX_d5youw.AbstractLoopStatement_bb2741d5)) {
+      return SNodeOperations.cast(loopOrSwitch, AUX_d5youw.AbstractLoopStatement_bb2741d5);
     }
     return null;
   }
   /*package*/ static SNode getSwitch_idhEwIHvX(@NotNull SNode __thisNode__) {
     SNode loopOrSwitch = BreakStatement__BehaviorDescriptor.getLoopOrSwitch_idhEwIHwh.invoke(__thisNode__);
-    if (SNodeOperations.isInstanceOf(loopOrSwitch, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"))) {
-      return SNodeOperations.cast(loopOrSwitch, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"));
+    if (SNodeOperations.isInstanceOf(loopOrSwitch, AUX_d5youw.SwitchStatement_11e52181)) {
+      return SNodeOperations.cast(loopOrSwitch, AUX_d5youw.SwitchStatement_11e52181);
     }
     return null;
   }
   /*package*/ static SNode getLoopOrSwitch_idhEwIHwh(@NotNull SNode __thisNode__) {
-    for (SNode item : SNodeOperations.getNodeAncestorsWhereConceptInList(__thisNode__, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement")}, false)) {
-      if (SNodeOperations.isInstanceOf(item, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"))) {
-        SNode switchStatement = SNodeOperations.cast(item, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement"));
+    for (SNode item : SNodeOperations.getNodeAncestorsWhereConceptInList(__thisNode__, new SAbstractConcept[]{AUX_d5youw.AbstractLoopStatement_bb2741d5, AUX_d5youw.SwitchStatement_11e52181}, false)) {
+      if (SNodeOperations.isInstanceOf(item, AUX_d5youw.SwitchStatement_11e52181)) {
+        SNode switchStatement = SNodeOperations.cast(item, AUX_d5youw.SwitchStatement_11e52181);
         if ((SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference")) != null)) {
           SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel"));
           if ((loopLabel != null)) {
@@ -69,8 +70,8 @@ public final class BreakStatement__BehaviorDescriptor extends BaseBHDescriptor {
           }
         }
       }
-      if (SNodeOperations.isInstanceOf(item, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"))) {
-        SNode loop = SNodeOperations.cast(item, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"));
+      if (SNodeOperations.isInstanceOf(item, AUX_d5youw.AbstractLoopStatement_bb2741d5)) {
+        SNode loop = SNodeOperations.cast(item, AUX_d5youw.AbstractLoopStatement_bb2741d5);
         if ((SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference")) != null)) {
           SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel"));
           if ((loopLabel != null)) {
@@ -145,5 +146,11 @@ public final class BreakStatement__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_d5youw {
+    /*package*/ static final SConcept BreakStatement_aab71ba2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
+    /*package*/ static final SConcept AbstractLoopStatement_bb2741d5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
+    /*package*/ static final SConcept SwitchStatement_11e52181 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
   }
 }

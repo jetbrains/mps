@@ -24,7 +24,7 @@ public class Subst_Child_WithNextEditorAndMenu_Test extends BaseTransformationTe
 
   @Test
   public void test_Subst_Child_WithNextEditorAndMenu() throws Throwable {
-    new Subst_Child_WithNextEditorAndMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

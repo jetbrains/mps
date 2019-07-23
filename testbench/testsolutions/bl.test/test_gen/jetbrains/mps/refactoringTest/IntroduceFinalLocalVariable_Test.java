@@ -34,7 +34,7 @@ public class IntroduceFinalLocalVariable_Test extends BaseTransformationTest {
 
   @Test
   public void test_IntroduceFinalLocalVariable() throws Throwable {
-    new IntroduceFinalLocalVariable_Test.TestBody(this).test_IntroduceFinalLocalVariable();
+    new TestBody(this).test_IntroduceFinalLocalVariable();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

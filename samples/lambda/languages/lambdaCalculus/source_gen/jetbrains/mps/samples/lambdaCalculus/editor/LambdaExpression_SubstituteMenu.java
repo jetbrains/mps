@@ -18,22 +18,23 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LambdaExpression_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new LambdaExpression_SubstituteMenu.SMP_Include_cf6h8s_a());
-    result.add(new LambdaExpression_SubstituteMenu.SMP_Include_cf6h8s_b());
-    result.add(new LambdaExpression_SubstituteMenu.SMP_Include_cf6h8s_c());
-    result.add(new LambdaExpression_SubstituteMenu.SMP_Include_cf6h8s_d());
-    result.add(new LambdaExpression_SubstituteMenu.SMP_Subconcepts_cf6h8s_e());
+    result.add(new SMP_Include_cf6h8s_a());
+    result.add(new SMP_Include_cf6h8s_b());
+    result.add(new SMP_Include_cf6h8s_c());
+    result.add(new SMP_Include_cf6h8s_d());
+    result.add(new SMP_Subconcepts_cf6h8s_e());
     return result;
   }
 
@@ -71,7 +72,7 @@ public class LambdaExpression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.samples.lambdaCalculus.editor.Let_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
+      return AUX_cf6h8s.LambdaExpression_e6319e38;
     }
   }
   public class SMP_Include_cf6h8s_b extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -95,7 +96,7 @@ public class LambdaExpression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.samples.lambdaCalculus.editor.ParenthesisSubstitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
+      return AUX_cf6h8s.LambdaExpression_e6319e38;
     }
   }
   public class SMP_Include_cf6h8s_c extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -119,7 +120,7 @@ public class LambdaExpression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.samples.lambdaCalculus.editor.Numeric_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
+      return AUX_cf6h8s.LambdaExpression_e6319e38;
     }
   }
   public class SMP_Include_cf6h8s_d extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -143,12 +144,12 @@ public class LambdaExpression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.samples.lambdaCalculus.editor.Lambda_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
+      return AUX_cf6h8s.LambdaExpression_e6319e38;
     }
   }
   public class SMP_Subconcepts_cf6h8s_e extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_cf6h8s.LambdaExpression_e6319e38);
     }
     @NotNull
     @Override
@@ -166,5 +167,9 @@ public class LambdaExpression_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_cf6h8s {
+    /*package*/ static final SConcept LambdaExpression_e6319e38 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
   }
 }

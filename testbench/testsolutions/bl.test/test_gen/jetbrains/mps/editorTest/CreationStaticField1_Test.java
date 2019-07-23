@@ -21,7 +21,7 @@ public class CreationStaticField1_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreationStaticField1() throws Throwable {
-    new CreationStaticField1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

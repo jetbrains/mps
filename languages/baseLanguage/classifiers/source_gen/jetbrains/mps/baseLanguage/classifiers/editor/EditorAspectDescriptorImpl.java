@@ -91,5 +91,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc7570L), MetaIdFactory.conceptId(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L), MetaIdFactory.conceptId(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL)).seal();
-  private static String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_ApplySideTransforms"};
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.lightweightdsl.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,6 +16,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -30,9 +30,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor");
+  private static final SAbstractConcept CONCEPT = AUX_kufr6g.MethodDescriptor_799dc131;
 
   public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ay_HjIOVVe").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getReturnType_id3m06Jgso0l8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnType").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3m06Jgso0l8").build();
@@ -44,7 +45,7 @@ public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
-    final SNode method = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance"), null);
+    final SNode method = SNodeFactoryOperations.createNewNode(AUX_kufr6g.MethodInstance_799dc109, null);
     SPropertyOperations.assign(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     SLinkOperations.setTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
     ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, 0x340eb2bd2e03d168L, "param"))).select(new ISelector<SNode, SNode>() {
@@ -52,7 +53,7 @@ public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor
         return (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(it, method);
       }
     }));
-    SLinkOperations.setTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), (SNodeOperations.isInstanceOf(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeDescriptor")) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeDescriptor")), method) : SNodeOperations.copyNode(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__))));
+    SLinkOperations.setTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), (SNodeOperations.isInstanceOf(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__), AUX_kufr6g.DependentTypeDescriptor_799dc111) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__), AUX_kufr6g.DependentTypeDescriptor_799dc111), method) : SNodeOperations.copyNode(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__))));
     SLinkOperations.setTarget(method, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl"), __thisNode__);
 
     if (futureModel != null) {
@@ -68,7 +69,7 @@ public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor
     }
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull final SNode __thisNode__, SNode cls) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance"))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), AUX_kufr6g.MethodInstance_799dc109)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl")) == __thisNode__;
       }
@@ -129,5 +130,11 @@ public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_kufr6g {
+    /*package*/ static final SConcept MethodDescriptor_799dc131 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor");
+    /*package*/ static final SConcept MethodInstance_799dc109 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance");
+    /*package*/ static final SConcept DependentTypeDescriptor_799dc111 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeDescriptor");
   }
 }

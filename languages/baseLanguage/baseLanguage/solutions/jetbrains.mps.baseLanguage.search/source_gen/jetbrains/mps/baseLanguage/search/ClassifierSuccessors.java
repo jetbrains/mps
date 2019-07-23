@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class ClassifierSuccessors implements CoreComponent {
   private static ClassifierSuccessors INSTANCE;
-  private ClassifierSuccessors.Finder myFastFinder;
+  private Finder myFastFinder;
 
   public ClassifierSuccessors() {
   }
@@ -34,7 +34,7 @@ public class ClassifierSuccessors implements CoreComponent {
     return (myFastFinder != null ? myFastFinder.getDerivedClassifiers(classifier, scope) : new ArrayList<SNode>());
   }
 
-  public void setFinder(ClassifierSuccessors.Finder finder) {
+  public void setFinder(Finder finder) {
     myFastFinder = finder;
   }
 

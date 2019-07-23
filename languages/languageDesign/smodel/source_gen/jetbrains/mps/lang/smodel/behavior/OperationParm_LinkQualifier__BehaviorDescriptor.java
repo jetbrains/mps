@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -20,15 +19,17 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x47bb2de70d00ff8cL, "jetbrains.mps.lang.smodel.structure.OperationParm_LinkQualifier");
+  private static final SAbstractConcept CONCEPT = AUX_irwhqq.OperationParm_LinkQualifier_7e6c07a0;
 
   public static final SMethod<SNode> getOperation_id52QkhOxfj6w = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52QkhOxfj6w").build();
   public static final SMethod<Iterable<SNode>> getLinkAccessScope_id2xk$X1Ld2Yi = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getLinkAccessScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xk$X1Ld2Yi").build();
@@ -39,11 +40,11 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static SNode getOperation_id52QkhOxfj6w(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation"));
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AUX_irwhqq.SNodeOperation_bc9074dc);
   }
   /*package*/ static Iterable<SNode> getLinkAccessScope_id2xk$X1Ld2Yi(@NotNull SNode __thisNode__) {
-    final boolean acceptAggregations = SNodeOperations.isInstanceOf(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110c2e679e7L, "jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation"));
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__))), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept")))).where(new IWhereFilter<SNode>() {
+    final boolean acceptAggregations = SNodeOperations.isInstanceOf(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__), AUX_irwhqq.Node_GetChildrenOperation_5b48299f);
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__))), AUX_irwhqq.SNodeType_dcb080ab), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (acceptAggregations ? SEnumOperations.isMember(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b9L) : SEnumOperations.isMember(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b8L));
       }
@@ -96,5 +97,12 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_irwhqq {
+    /*package*/ static final SConcept OperationParm_LinkQualifier_7e6c07a0 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x47bb2de70d00ff8cL, "jetbrains.mps.lang.smodel.structure.OperationParm_LinkQualifier");
+    /*package*/ static final SConcept SNodeOperation_bc9074dc = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept Node_GetChildrenOperation_5b48299f = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110c2e679e7L, "jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation");
+    /*package*/ static final SConcept SNodeType_dcb080ab = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 }

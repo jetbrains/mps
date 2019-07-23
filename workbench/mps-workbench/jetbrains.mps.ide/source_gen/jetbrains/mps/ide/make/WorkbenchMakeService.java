@@ -216,7 +216,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
     PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    final MakeTask task = new MakeTask(ideaPrj, scrName, makeSeq, new WorkbenchMakeService.Controller(controller, mh), mh, bg) {
+    final MakeTask task = new MakeTask(ideaPrj, scrName, makeSeq, new Controller(controller, mh), mh, bg) {
       @Override
       protected void aboutToStart() {
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_ABOUT_TO_START));

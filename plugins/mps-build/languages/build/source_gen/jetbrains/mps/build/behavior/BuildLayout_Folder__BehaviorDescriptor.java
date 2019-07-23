@@ -4,7 +4,6 @@ package jetbrains.mps.build.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,6 +17,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -28,9 +28,11 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
+  private static final SAbstractConcept CONCEPT = AUX_jyy3az.BuildLayout_Folder_b7bb9958;
 
   public static final SMethod<String> getChildrenOutputDir_WithMacro_id450ejGzh8bb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getChildrenOutputDir_WithMacro").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("450ejGzh8bb").build(SMethodBuilder.createJavaParameter(Context.class, ""));
   public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6IqTD4bJTWZ").build(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
@@ -56,11 +58,11 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     for (SNode ic : Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__))) {
       SNode node = SLinkOperations.getTarget(ic, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target"));
       // note: if node is imported directly - do not override its original location 
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node")) && helper.getLocation(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"))) == null) {
-        helper.putLocation(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node")), folderLocation);
+      if (SNodeOperations.isInstanceOf(node, AUX_jyy3az.BuildLayout_Node_b7bb997a) && helper.getLocation(SNodeOperations.as(node, AUX_jyy3az.BuildLayout_Node_b7bb997a)) == null) {
+        helper.putLocation(SNodeOperations.as(node, AUX_jyy3az.BuildLayout_Node_b7bb997a), folderLocation);
       }
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement")) && helper.getContentLocation(node) == null) {
-        helper.putContentLocation(SNodeOperations.as(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement")), folderLocation);
+      if (SNodeOperations.isInstanceOf(node, AUX_jyy3az.BuildLayout_PathElement_8e46fed3) && helper.getContentLocation(node) == null) {
+        helper.putContentLocation(SNodeOperations.as(node, AUX_jyy3az.BuildLayout_PathElement_8e46fed3), folderLocation);
       }
     }
   }
@@ -73,7 +75,7 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     if (object instanceof SNode) {
       final SNode node = (SNode) object;
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"))) {
+      if (SNodeOperations.isInstanceOf(node, AUX_jyy3az.BuildLayout_Node_b7bb997a)) {
         return Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target")) == node;
@@ -88,15 +90,15 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
       }
 
       for (SNode c : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children")))) {
-        if (SNodeOperations.isInstanceOf(c, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, "jetbrains.mps.build.structure.BuildLayout_Files"))) {
-          SNode files = SNodeOperations.as(c, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, "jetbrains.mps.build.structure.BuildLayout_Files"));
+        if (SNodeOperations.isInstanceOf(c, AUX_jyy3az.BuildLayout_Files_88830c8d)) {
+          SNode files = SNodeOperations.as(c, AUX_jyy3az.BuildLayout_Files_88830c8d);
           if (ListSequence.fromList(SLinkOperations.getChildren(files, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters"))).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(files, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path"))))) {
             return true;
           }
-        } else if (SNodeOperations.isInstanceOf(c, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy"))) {
-          SNode copy = SNodeOperations.as(c, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy"));
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copy, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles"))) {
-            SNode inputSet = SNodeOperations.cast(SLinkOperations.getTarget(copy, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles"));
+        } else if (SNodeOperations.isInstanceOf(c, AUX_jyy3az.BuildLayout_AbstractCopy_45552b09)) {
+          SNode copy = SNodeOperations.as(c, AUX_jyy3az.BuildLayout_Copy_8166911d);
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copy, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset")), AUX_jyy3az.BuildInputFiles_7fe8cc4e)) {
+            SNode inputSet = SNodeOperations.cast(SLinkOperations.getTarget(copy, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset")), AUX_jyy3az.BuildInputFiles_7fe8cc4e);
             if (ListSequence.fromList(SLinkOperations.getChildren(inputSet, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"))).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(inputSet, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"))))) {
               return true;
             }
@@ -104,11 +106,11 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
         }
       }
     }
-    return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"), object));
+    return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, AUX_jyy3az.BuildLayout_Folder_b7bb9958, object));
   }
   /*package*/ static Iterable<SNode> getImportContentChildren_id675BBdHStY4(@NotNull SNode __thisNode__) {
-    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, "jetbrains.mps.build.structure.BuildLayout_ImportContent"))).toListSequence();
-    return ListSequence.fromList(list).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(list, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"))).translate(new ITranslator2<SNode, SNode>() {
+    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children")), AUX_jyy3az.BuildLayout_ImportContent_ab833f7d)).toListSequence();
+    return ListSequence.fromList(list).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(list, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target")), AUX_jyy3az.BuildLayout_Folder_b7bb9958)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(it);
       }
@@ -170,5 +172,16 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_jyy3az {
+    /*package*/ static final SConcept BuildLayout_Folder_b7bb9958 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
+    /*package*/ static final SConcept BuildLayout_Node_b7bb997a = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SInterfaceConcept BuildLayout_PathElement_8e46fed3 = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement");
+    /*package*/ static final SConcept BuildLayout_Files_88830c8d = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, "jetbrains.mps.build.structure.BuildLayout_Files");
+    /*package*/ static final SConcept BuildLayout_AbstractCopy_45552b09 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
+    /*package*/ static final SConcept BuildLayout_Copy_8166911d = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
+    /*package*/ static final SConcept BuildInputFiles_7fe8cc4e = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles");
+    /*package*/ static final SConcept BuildLayout_ImportContent_ab833f7d = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, "jetbrains.mps.build.structure.BuildLayout_ImportContent");
   }
 }

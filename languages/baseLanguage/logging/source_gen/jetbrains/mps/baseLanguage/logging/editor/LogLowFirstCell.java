@@ -22,6 +22,7 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LogLowFirstCell extends TransformationMenuBase {
@@ -48,7 +49,7 @@ public class LogLowFirstCell extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new LogLowFirstCell.TMP_IncludeSM_gpckzl_a0());
+      result.add(new TMP_IncludeSM_gpckzl_a0());
     }
     return result;
   }
@@ -75,7 +76,11 @@ public class LogLowFirstCell extends TransformationMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
+      return AUX_gpckzl.LogLowLevelStatement_66a96b81;
     }
+  }
+
+  private static final class AUX_gpckzl {
+    /*package*/ static final SConcept LogLowLevelStatement_66a96b81 = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
   }
 }

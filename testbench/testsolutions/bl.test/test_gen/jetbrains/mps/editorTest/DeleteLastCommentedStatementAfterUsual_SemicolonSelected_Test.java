@@ -22,7 +22,7 @@ public class DeleteLastCommentedStatementAfterUsual_SemicolonSelected_Test exten
 
   @Test
   public void test_DeleteLastCommentedStatementAfterUsual_SemicolonSelected() throws Throwable {
-    new DeleteLastCommentedStatementAfterUsual_SemicolonSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -16,6 +16,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddDominance_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -42,7 +43,7 @@ public final class AddDominance_Intention extends AbstractIntentionDescriptor im
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddDominance_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -55,11 +56,15 @@ public final class AddDominance_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, "jetbrains.mps.lang.editor.structure.DominatesRecord"), null));
+      SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates"), SNodeFactoryOperations.createNewNode(AUX_wjnme9.DominatesRecord_40f78d67, null));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDominance_Intention.this;
     }
+  }
+
+  private static final class AUX_wjnme9 {
+    /*package*/ static final SConcept DominatesRecord_40f78d67 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, "jetbrains.mps.lang.editor.structure.DominatesRecord");
   }
 }

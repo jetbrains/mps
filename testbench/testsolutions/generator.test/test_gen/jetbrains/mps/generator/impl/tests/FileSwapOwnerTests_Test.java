@@ -45,43 +45,43 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
 
   @Test
   public void test_justWrite() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_justWrite();
+    new TestBody(this).test_justWrite();
   }
   @Test
   public void test_stringUserObjects() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_stringUserObjects();
+    new TestBody(this).test_stringUserObjects();
   }
   @Test
   public void test_intUserObjects() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_intUserObjects();
+    new TestBody(this).test_intUserObjects();
   }
   @Test
   public void test_charUserObjects() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_charUserObjects();
+    new TestBody(this).test_charUserObjects();
   }
   @Test
   public void test_numberUserObjects() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_numberUserObjects();
+    new TestBody(this).test_numberUserObjects();
   }
   @Test
   public void test_booleanUserObjects() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_booleanUserObjects();
+    new TestBody(this).test_booleanUserObjects();
   }
   @Test
   public void test_mpsUserObjects() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_mpsUserObjects();
+    new TestBody(this).test_mpsUserObjects();
   }
   @Test
   public void test_baseLanguageStructure() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_baseLanguageStructure();
+    new TestBody(this).test_baseLanguageStructure();
   }
   @Test
   public void test_testOverloadedOperatorsSandbox() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_testOverloadedOperatorsSandbox();
+    new TestBody(this).test_testOverloadedOperatorsSandbox();
   }
   @Test
   public void test_testSkipNodesWhileSaving() throws Throwable {
-    new FileSwapOwnerTests_Test.TestBody(this).test_testSkipNodesWhileSaving();
+    new TestBody(this).test_testSkipNodesWhileSaving();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

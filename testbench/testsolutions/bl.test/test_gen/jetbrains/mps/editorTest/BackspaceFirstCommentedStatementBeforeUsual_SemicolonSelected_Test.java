@@ -22,7 +22,7 @@ public class BackspaceFirstCommentedStatementBeforeUsual_SemicolonSelected_Test 
 
   @Test
   public void test_BackspaceFirstCommentedStatementBeforeUsual_SemicolonSelected() throws Throwable {
-    new BackspaceFirstCommentedStatementBeforeUsual_SemicolonSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

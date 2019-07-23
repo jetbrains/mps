@@ -26,6 +26,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class RequiredAnnotationDataDeclaration_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -73,7 +74,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new RequiredAnnotationDataDeclaration_EditorBuilder_a.dependenciesListHandler_ofdymt_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new dependenciesListHandler_ofdymt_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_dependencies");
     Style style = new StyleImpl();
@@ -104,7 +105,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ad9bc0L, 0x5e7aa366c2ad9bc1L, "dependencies");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, "jetbrains.mps.lang.migration.structure.AnnotationDataDependency");
+      return AUX_ctodp5.AnnotationDataDependency_dbf3b7fe;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -137,5 +138,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_ctodp5 {
+    /*package*/ static final SConcept AnnotationDataDependency_dbf3b7fe = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, "jetbrains.mps.lang.migration.structure.AnnotationDataDependency");
   }
 }

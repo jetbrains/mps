@@ -4,7 +4,6 @@ package jetbrains.mps.lang.generator.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -23,9 +22,11 @@ import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class RootTemplateAnnotation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+  private static final SAbstractConcept CONCEPT = AUX_o16orq.RootTemplateAnnotation_423b5b1a;
 
   public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3612de_vrfV").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
 
@@ -35,7 +36,7 @@ public final class RootTemplateAnnotation__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, final NodeReportItem reportItem) {
-    return ListSequence.fromList(AttributeOperations.getAttributeList(__thisNode__, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation")))).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(AttributeOperations.getAttributeList(__thisNode__, new IAttributeDescriptor.NodeAttribute(AUX_o16orq.SuppressErrorsAnnotation_4912d93))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke(it, reportItem);
       }
@@ -86,5 +87,10 @@ public final class RootTemplateAnnotation__BehaviorDescriptor extends BaseBHDesc
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_o16orq {
+    /*package*/ static final SConcept RootTemplateAnnotation_423b5b1a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept SuppressErrorsAnnotation_4912d93 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
   }
 }

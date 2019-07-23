@@ -18,6 +18,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ModuleXml_SpecifiesClasspath_NonTypesystemRule() {
@@ -26,8 +27,8 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
     if (ListSequence.fromList(SLinkOperations.getChildren(n, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries"))).isNotEmpty()) {
       return;
     }
-    SNode containerJar = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(n), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar"));
-    if ((containerJar != null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(containerJar, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd24L, "jetbrains.mps.build.structure.BuildLayout_CompileOutputOf"))).isNotEmpty()) {
+    SNode containerJar = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(n), AUX_b28qe6.BuildLayout_Folder_b7bb9958)), AUX_b28qe6.BuildLayout_Jar_b7d4ec38);
+    if ((containerJar != null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(containerJar, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children")), AUX_b28qe6.BuildLayout_CompileOutputOf_4c8096fb)).isNotEmpty()) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         errorTarget = new ReferenceMessageTarget("classpathEntries");
@@ -40,12 +41,19 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml");
+    return AUX_b28qe6.BuildMpsLayout_ModuleXml_1ea572ac;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_b28qe6 {
+    /*package*/ static final SConcept BuildLayout_Folder_b7bb9958 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
+    /*package*/ static final SConcept BuildLayout_Jar_b7d4ec38 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
+    /*package*/ static final SConcept BuildLayout_CompileOutputOf_4c8096fb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd24L, "jetbrains.mps.build.structure.BuildLayout_CompileOutputOf");
+    /*package*/ static final SConcept BuildMpsLayout_ModuleXml_1ea572ac = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml");
   }
 }

@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConceptDeclaration_ApplySideTransforms_1 extends TransformationMenuBase {
@@ -49,10 +50,10 @@ public class ConceptDeclaration_ApplySideTransforms_1 extends TransformationMenu
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConceptDeclaration_ApplySideTransforms_1.TMP_Include_odunnc_a0());
+      result.add(new TMP_Include_odunnc_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new ConceptDeclaration_ApplySideTransforms_1.TMP_Include_odunnc_a1());
+      result.add(new TMP_Include_odunnc_a1());
     }
     return result;
   }
@@ -91,7 +92,7 @@ public class ConceptDeclaration_ApplySideTransforms_1 extends TransformationMenu
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "jetbrains.mps.lang.structure.editor.CreateFirstDeclaration_ext_3");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_odunnc.AbstractConceptDeclaration_ec74828f, "jetbrains.mps.lang.structure.editor.CreateFirstDeclaration_ext_3");
     }
 
     @Nullable
@@ -99,5 +100,9 @@ public class ConceptDeclaration_ApplySideTransforms_1 extends TransformationMenu
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.RIGHT_SIDE_TRANSFORM;
     }
+  }
+
+  private static final class AUX_odunnc {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

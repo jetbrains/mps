@@ -12,6 +12,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BaseMethodParameterInformationQueryRestricted implements ParametersInformation<SNode> {
   public BaseMethodParameterInformationQueryRestricted() {
@@ -30,10 +31,14 @@ public class BaseMethodParameterInformationQueryRestricted implements Parameters
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), true)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, AUX_kusojb.Expression_4199e28d, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getParent(it) == methodCall && Objects.equals(SNodeOperations.getContainingLink(it), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"));
       }
     });
+  }
+
+  private static final class AUX_kusojb {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -20,9 +19,10 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class LastPositionAllowedStyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae8b8b7d7L, "jetbrains.mps.lang.editor.structure.LastPositionAllowedStyleClassItem");
+  private static final SAbstractConcept CONCEPT = AUX_eob5e.LastPositionAllowedStyleClassItem_b5c8be6;
 
   public static final SMethod<Boolean> isApplicableToCellConcept_id2u3gVK1lsco = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCellConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2u3gVK1lsco").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
   public static final SMethod<StyleAttribute<Boolean>> getStyleAttribute_id3a0zHG4tjdX = new SMethodBuilder<StyleAttribute<Boolean>>(new SJavaCompoundTypeImpl(StyleAttribute.class)).name("getStyleAttribute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3a0zHG4tjdX").build();
@@ -33,7 +33,7 @@ public final class LastPositionAllowedStyleClassItem__BehaviorDescriptor extends
   }
 
   /*package*/ static boolean isApplicableToCellConcept_id2u3gVK1lsco(@NotNull SAbstractConcept __thisConcept__, SConcept cellConcept) {
-    return cellConcept.isSubConceptOf(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL, "jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel"));
+    return cellConcept.isSubConceptOf(AUX_eob5e.CellModel_AbstractLabel_6c72ac90);
   }
   /*package*/ static StyleAttribute<Boolean> getStyleAttribute_id3a0zHG4tjdX(@NotNull SNode __thisNode__) {
     return StyleAttributes.LAST_POSITION_ALLOWED;
@@ -85,5 +85,10 @@ public final class LastPositionAllowedStyleClassItem__BehaviorDescriptor extends
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_eob5e {
+    /*package*/ static final SConcept LastPositionAllowedStyleClassItem_b5c8be6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae8b8b7d7L, "jetbrains.mps.lang.editor.structure.LastPositionAllowedStyleClassItem");
+    /*package*/ static final SConcept CellModel_AbstractLabel_6c72ac90 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL, "jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel");
   }
 }

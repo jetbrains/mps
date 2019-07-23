@@ -10,11 +10,11 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.plugin.behavior.BaseToolDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -22,6 +22,7 @@ import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BaseToolDeclaration_number extends MigrationScriptBase {
   public String getCaption() {
@@ -44,7 +45,7 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
           return scope_p58wrf_a0d_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, "jetbrains.mps.lang.plugin.structure.BaseToolDeclaration"), false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_p58wrf.BaseToolDeclaration_5c092e15, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (boolean) BaseToolDeclaration__BehaviorDescriptor.hasNumber_id5FstybB4d8v.invoke(it);
         }
@@ -66,7 +67,7 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
           return scope_p58wrf_a0e_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, "jetbrains.mps.lang.plugin.structure.BaseToolDeclaration"), false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_p58wrf.BaseToolDeclaration_5c092e15, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (boolean) BaseToolDeclaration__BehaviorDescriptor.hasNumber_id5FstybB4d8v.invoke(it);
         }
@@ -88,8 +89,13 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
 
   private static SNode createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, "jetbrains.mps.lang.plugin.structure.NumberToolShortcut"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_p58wrf.NumberToolShortcut_3de8b80d, null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number"), MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number").getType().toString(p0));
     return n1;
+  }
+
+  private static final class AUX_p58wrf {
+    /*package*/ static final SConcept BaseToolDeclaration_5c092e15 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, "jetbrains.mps.lang.plugin.structure.BaseToolDeclaration");
+    /*package*/ static final SConcept NumberToolShortcut_3de8b80d = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, "jetbrains.mps.lang.plugin.structure.NumberToolShortcut");
   }
 }

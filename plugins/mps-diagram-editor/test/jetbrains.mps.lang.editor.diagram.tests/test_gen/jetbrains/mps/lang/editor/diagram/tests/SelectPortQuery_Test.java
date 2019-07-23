@@ -33,7 +33,7 @@ public class SelectPortQuery_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelectPortQuery() throws Throwable {
-    new SelectPortQuery_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -17,9 +17,10 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddRemoveFigureAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -46,7 +47,7 @@ public final class AddRemoveFigureAttribute_Intention extends AbstractIntentionD
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddRemoveFigureAttribute_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -55,19 +56,23 @@ public final class AddRemoveFigureAttribute_Intention extends AbstractIntentionD
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute"))) == null ? "Add figure attribute" : "Remove figure attribute");
+      return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_wfjt8g.FigureAttribute_f11618c2)) == null ? "Add figure attribute" : "Remove figure attribute");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute"))) != null) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute")), null);
+      if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_wfjt8g.FigureAttribute_f11618c2)) != null) {
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_wfjt8g.FigureAttribute_f11618c2), null);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute")));
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_wfjt8g.FigureAttribute_f11618c2), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute")));
       }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddRemoveFigureAttribute_Intention.this;
     }
+  }
+
+  private static final class AUX_wfjt8g {
+    /*package*/ static final SConcept FigureAttribute_f11618c2 = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute");
   }
 }

@@ -10,11 +10,12 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.function.Predicate;
 import java.util.Collections;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * Scanner of a model with {@code ConceptDeclarations}to find cross-model dependencies.
@@ -45,7 +46,7 @@ public class ConceptDeclarationScanner {
 
   public ConceptDeclarationScanner scan(SModel m) {
     List<SNode> roots = SModelOperations.roots(m, null);
-    for (SNode cd : SNodeOperations.ofConcept(roots, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
+    for (SNode cd : SNodeOperations.ofConcept(roots, AUX_kgd9za.ConceptDeclaration_cb225da8)) {
       SNode ex = SLinkOperations.getTarget(cd, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends"));
       // ex could be null if no explicit BaseConcept in super 
       if (ex != null && SNodeOperations.getModel(ex) != m) {
@@ -57,7 +58,7 @@ public class ConceptDeclarationScanner {
         }
       }
     }
-    for (SNode icd : SNodeOperations.ofConcept(roots, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"))) {
+    for (SNode icd : SNodeOperations.ofConcept(roots, AUX_kgd9za.InterfaceConceptDeclaration_efdf2bc9)) {
       for (SNode iface : SLinkOperations.collect(SLinkOperations.getChildren(icd, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc"))) {
         if (SNodeOperations.getModel(iface) != m) {
           myExternalIfaces.add(iface);
@@ -103,5 +104,10 @@ public class ConceptDeclarationScanner {
 
   public Set<SNode> getExternalInterfaces() {
     return Collections.unmodifiableSet(myExternalIfaces);
+  }
+
+  private static final class AUX_kgd9za {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration_efdf2bc9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 }

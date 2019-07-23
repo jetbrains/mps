@@ -142,5 +142,5 @@ public class Template_weave_Statement extends TemplateDeclarationBase implements
     rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
     return rv;
   }
-  private static SNodePointer propertyMacro_6c7ipi_c0a0c0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009934893");
+  private static final SNodePointer propertyMacro_6c7ipi_c0a0c0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009934893");
 }

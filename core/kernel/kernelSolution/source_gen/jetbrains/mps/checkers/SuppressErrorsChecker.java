@@ -36,8 +36,8 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
   protected void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
     // do nothing 
   }
-  public static final FlavouredItem.ReportItemFlavour<SuppressErrorsChecker.SuppressedWrapperReportItem, SNodeReference> FLAVOUR_ACTIVE_SUPPRESSOR = new ReportItemBase.SimpleReportItemFlavour<SuppressErrorsChecker.SuppressedWrapperReportItem, SNodeReference>("FLAVOUR_ACTIVE_SUPPRESSOR", SuppressErrorsChecker.SuppressedWrapperReportItem.class, new Function<SuppressErrorsChecker.SuppressedWrapperReportItem, SNodeReference>() {
-    public SNodeReference apply(SuppressErrorsChecker.SuppressedWrapperReportItem reportItem) {
+  public static final FlavouredItem.ReportItemFlavour<SuppressedWrapperReportItem, SNodeReference> FLAVOUR_ACTIVE_SUPPRESSOR = new ReportItemBase.SimpleReportItemFlavour<SuppressedWrapperReportItem, SNodeReference>("FLAVOUR_ACTIVE_SUPPRESSOR", SuppressedWrapperReportItem.class, new Function<SuppressedWrapperReportItem, SNodeReference>() {
+    public SNodeReference apply(SuppressedWrapperReportItem reportItem) {
       return reportItem.getSuppressor();
     }
   });
@@ -98,7 +98,7 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
             SNode activeSupressor = Sequence.fromIterable(ErrorReportUtil.getActiveSuppressors(node, nodeReportItem)).first();
             if ((activeSupressor != null)) {
               foundError.suppress();
-              NodeReportItem replacement = new SuppressErrorsChecker.SuppressedWrapperReportItem(nodeReportItem, activeSupressor);
+              NodeReportItem replacement = new SuppressedWrapperReportItem(nodeReportItem, activeSupressor);
               checkingSession.postprocessingConsumer().consume(replacement);
 
             }

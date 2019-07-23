@@ -9,17 +9,18 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RemarkStatement_KeyMap extends KeyMapImpl {
   public RemarkStatement_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new RemarkStatement_KeyMap.RemarkStatement_KeyMap_Action0();
+    action = new RemarkStatement_KeyMap_Action0();
     this.putAction("any", "VK_ENTER", action);
   }
   public static class RemarkStatement_KeyMap_Action0 extends KeyMapActionImpl {
@@ -39,7 +40,7 @@ public class RemarkStatement_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_3zvjiu.RemarkStatement_3e86530f))) {
         return false;
       }
       return true;
@@ -53,12 +54,16 @@ public class RemarkStatement_KeyMap extends KeyMapImpl {
       int caretPostion = label.getCaretPosition();
       String text = SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value"));
       SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value"), text.substring(0, caretPostion));
-      SNode newRemark = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement"), null);
+      SNode newRemark = SNodeFactoryOperations.createNewNode(AUX_3zvjiu.RemarkStatement_3e86530f, null);
       SPropertyOperations.assign(newRemark, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value"), text.substring(caretPostion));
       SNodeOperations.insertNextSiblingChild(node, newRemark);
     }
     public String getKeyStroke() {
       return " ENTER";
     }
+  }
+
+  private static final class AUX_3zvjiu {
+    /*package*/ static final SConcept RemarkStatement_3e86530f = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement");
   }
 }

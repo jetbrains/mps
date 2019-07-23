@@ -25,6 +25,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class SimpleMathWrapper_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -64,7 +65,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new SimpleMathWrapper_EditorBuilder_a.expressionsListHandler_y4utgp_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new expressionsListHandler_y4utgp_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_expressions");
     Style style = new StyleImpl();
@@ -90,7 +91,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8237002L, 0x1cc69153b8237177L, "expressions");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL, "jetbrains.mps.samples.Expressions.structure.SimpleMathExpression");
+      return AUX_58avkl.SimpleMathExpression_559914a2;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -123,5 +124,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_58avkl {
+    /*package*/ static final SConcept SimpleMathExpression_559914a2 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL, "jetbrains.mps.samples.Expressions.structure.SimpleMathExpression");
   }
 }

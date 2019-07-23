@@ -24,6 +24,6 @@ import jetbrains.mps.baseLanguage.regexp.runtime.RegexpOperations;
     String s = "";
     s = RegexpOperations.replace(s, REGEXP_90k4hu_b0a1a2, new _Replacer_90k4hu_a0a0b0c(PredefinedRegexps.this));
   }
-  private static Pattern REGEXP_90k4hu_a0a0b0b = Pattern.compile("(?:(\\w+)@(\\w+))", 0);
-  private static Pattern REGEXP_90k4hu_b0a1a2 = Pattern.compile("(?:(\\w+)@(\\w+))", 0);
+  private static final Pattern REGEXP_90k4hu_a0a0b0b = Pattern.compile("(?:(\\w+)@(\\w+))", 0);
+  private static final Pattern REGEXP_90k4hu_b0a1a2 = Pattern.compile("(?:(\\w+)@(\\w+))", 0);
 }

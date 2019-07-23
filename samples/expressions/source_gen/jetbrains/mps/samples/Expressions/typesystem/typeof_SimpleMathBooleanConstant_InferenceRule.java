@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class typeof_SimpleMathBooleanConstant_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SimpleMathBooleanConstant_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_SimpleMathBooleanConstant_InferenceRule extends AbstractInfe
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b826823eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathBooleanConstant");
+    return AUX_rs87p9.SimpleMathBooleanConstant_85361308;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,7 +35,12 @@ public class typeof_SimpleMathBooleanConstant_InferenceRule extends AbstractInfe
   }
   private static SNode createSimpleMathBooleanType_rs87p9_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f68L, "jetbrains.mps.samples.Expressions.structure.SimpleMathBooleanType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_rs87p9.SimpleMathBooleanType_7cf3ce08, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_rs87p9 {
+    /*package*/ static final SConcept SimpleMathBooleanConstant_85361308 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b826823eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathBooleanConstant");
+    /*package*/ static final SConcept SimpleMathBooleanType_7cf3ce08 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f68L, "jetbrains.mps.samples.Expressions.structure.SimpleMathBooleanType");
   }
 }

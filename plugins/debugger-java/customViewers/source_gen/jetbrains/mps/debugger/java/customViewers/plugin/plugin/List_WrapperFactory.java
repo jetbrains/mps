@@ -22,7 +22,7 @@ public class List_WrapperFactory extends ValueWrapperFactory {
   public List_WrapperFactory() {
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new List_WrapperFactory.ListWrapper(value, threadReference);
+    return new ListWrapper(value, threadReference);
   }
   @Override
   public boolean canWrapValue(@NotNull final IValueProxy proxy) {

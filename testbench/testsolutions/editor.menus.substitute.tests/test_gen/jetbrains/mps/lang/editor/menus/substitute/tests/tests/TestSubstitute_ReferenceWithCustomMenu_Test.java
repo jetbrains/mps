@@ -24,7 +24,7 @@ public class TestSubstitute_ReferenceWithCustomMenu_Test extends BaseTransformat
 
   @Test
   public void test_TestSubstitute_ReferenceWithCustomMenu() throws Throwable {
-    new TestSubstitute_ReferenceWithCustomMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

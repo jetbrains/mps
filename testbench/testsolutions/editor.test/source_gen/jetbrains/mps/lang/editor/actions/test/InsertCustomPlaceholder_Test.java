@@ -21,7 +21,7 @@ public class InsertCustomPlaceholder_Test extends BaseTransformationTest {
 
   @Test
   public void test_InsertCustomPlaceholder() throws Throwable {
-    new InsertCustomPlaceholder_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

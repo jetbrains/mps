@@ -6,11 +6,12 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Word_ActionMap {
 
@@ -42,7 +43,7 @@ public class Word_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), editorContext, true, false).execute();
+        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, AUX_x1dxyg.Word_f8e99bb0), editorContext, true, false).execute();
       }
 
     };
@@ -53,7 +54,7 @@ public class Word_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), editorContext, true, false).execute();
+        NewElementStrategyFactory.createNewLineStrategy(SNodeOperations.cast(node, AUX_x1dxyg.Word_f8e99bb0), editorContext, true, false).execute();
       }
 
     };
@@ -104,5 +105,9 @@ public class Word_ActionMap {
     if (Objects.equals(actionType, CellActionType.INSERT_BEFORE)) {
       editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }
+  }
+
+  private static final class AUX_x1dxyg {
+    /*package*/ static final SConcept Word_f8e99bb0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 }

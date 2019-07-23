@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new DelTestChildWithSmartReference_SubstituteMenu.SMP_ReferenceScope_f29tzs_a(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference")));
-    result.add(new DelTestChildWithSmartReference_SubstituteMenu.SMP_Subconcepts_f29tzs_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_f29tzs_a(), AUX_f29tzs.DelTestChildWithSmartReference_fa48ee1d));
+    result.add(new SMP_Subconcepts_f29tzs_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
 
     public SMP_ReferenceScope_f29tzs_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference"), MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, 0x7a6a3ef59ad69e4aL, "reference"));
+      super((SAbstractConcept) AUX_f29tzs.DelTestChildWithSmartReference_fa48ee1d, MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, 0x7a6a3ef59ad69e4aL, "reference"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
   }
   public class SMP_Subconcepts_f29tzs_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_f29tzs.DelTestChildWithSmartReference_fa48ee1d);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_f29tzs {
+    /*package*/ static final SConcept DelTestChildWithSmartReference_fa48ee1d = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference");
   }
 }

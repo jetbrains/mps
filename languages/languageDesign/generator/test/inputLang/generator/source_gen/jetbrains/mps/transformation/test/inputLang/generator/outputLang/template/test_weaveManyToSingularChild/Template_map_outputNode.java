@@ -79,5 +79,5 @@ public class Template_map_outputNode extends TemplateDeclarationBase implements 
     rv[0] = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x11bc24e708cL, "specialChild");
     return rv;
   }
-  private static SNodePointer template_4esnh1_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738789586");
+  private static final SNodePointer template_4esnh1_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738789586");
 }

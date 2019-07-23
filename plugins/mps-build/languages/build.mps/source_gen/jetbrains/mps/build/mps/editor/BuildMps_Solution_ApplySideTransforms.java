@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_Solution_ApplySideTransforms extends TransformationMenuBase {
@@ -49,8 +50,8 @@ public class BuildMps_Solution_ApplySideTransforms extends TransformationMenuBas
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new BuildMps_Solution_ApplySideTransforms.TMP_Include_ij7rv5_a0());
-      result.add(new BuildMps_Solution_ApplySideTransforms.TMP_Include_ij7rv5_b0());
+      result.add(new TMP_Include_ij7rv5_a0());
+      result.add(new TMP_Include_ij7rv5_b0());
     }
     return result;
   }
@@ -74,7 +75,7 @@ public class BuildMps_Solution_ApplySideTransforms extends TransformationMenuBas
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"), "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_ij7rv5.BuildMps_Solution_41959b13, "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags");
     }
 
   }
@@ -97,8 +98,13 @@ public class BuildMps_Solution_ApplySideTransforms extends TransformationMenuBas
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module"), "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_Module_ext_4");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_ij7rv5.BuildMps_Module_8d74323e, "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_Module_ext_4");
     }
 
+  }
+
+  private static final class AUX_ij7rv5 {
+    /*package*/ static final SConcept BuildMps_Solution_41959b13 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
+    /*package*/ static final SConcept BuildMps_Module_8d74323e = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
   }
 }

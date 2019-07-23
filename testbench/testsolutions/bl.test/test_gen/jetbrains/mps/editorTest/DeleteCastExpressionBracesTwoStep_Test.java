@@ -26,7 +26,7 @@ public class DeleteCastExpressionBracesTwoStep_Test extends BaseTransformationTe
 
   @Test
   public void test_DeleteCastExpressionBracesTwoStep() throws Throwable {
-    new DeleteCastExpressionBracesTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

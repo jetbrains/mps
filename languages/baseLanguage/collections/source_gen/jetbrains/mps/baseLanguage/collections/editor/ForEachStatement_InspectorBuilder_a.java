@@ -72,7 +72,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ForEachStatement_InspectorBuilder_a.loopLabelSingleRoleHandler_kov3ab_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel"), getEditorContext());
+    SingleRoleCellProvider provider = new loopLabelSingleRoleHandler_kov3ab_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel"), getEditorContext());
     return provider.createCell();
   }
   private static class loopLabelSingleRoleHandler_kov3ab_c0 extends SingleRoleCellProvider {

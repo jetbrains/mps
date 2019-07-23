@@ -13,6 +13,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_StartProcessHandlerStatement_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_StartProcessHandlerStatement_NonTypesystemRule() {
@@ -26,12 +27,16 @@ public class check_StartProcessHandlerStatement_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0xd244b712f9d44d1L, "jetbrains.mps.execution.configurations.structure.StartProcessHandlerStatement");
+    return AUX_n5kh2m.StartProcessHandlerStatement_a9526a5e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_n5kh2m {
+    /*package*/ static final SConcept StartProcessHandlerStatement_a9526a5e = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0xd244b712f9d44d1L, "jetbrains.mps.execution.configurations.structure.StartProcessHandlerStatement");
   }
 }

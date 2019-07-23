@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DummyRunConfigurationInitializer_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new DummyRunConfigurationInitializer_SubstituteMenu.SMP_ReferenceScope_72d96c_a(), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, "jetbrains.mps.execution.configurations.structure.DummyRunConfigurationInitializer")));
-    result.add(new DummyRunConfigurationInitializer_SubstituteMenu.SMP_Subconcepts_72d96c_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_72d96c_a(), AUX_72d96c.DummyRunConfigurationInitializer_21a3d7cc));
+    result.add(new SMP_Subconcepts_72d96c_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class DummyRunConfigurationInitializer_SubstituteMenu extends SubstituteM
 
     public SMP_ReferenceScope_72d96c_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, "jetbrains.mps.execution.configurations.structure.DummyRunConfigurationInitializer"), MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, 0xd244b712f910117L, "configuration"));
+      super((SAbstractConcept) AUX_72d96c.DummyRunConfigurationInitializer_21a3d7cc, MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, 0xd244b712f910117L, "configuration"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class DummyRunConfigurationInitializer_SubstituteMenu extends SubstituteM
   }
   public class SMP_Subconcepts_72d96c_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, "jetbrains.mps.execution.configurations.structure.DummyRunConfigurationInitializer"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_72d96c.DummyRunConfigurationInitializer_21a3d7cc);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class DummyRunConfigurationInitializer_SubstituteMenu extends SubstituteM
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_72d96c {
+    /*package*/ static final SConcept DummyRunConfigurationInitializer_21a3d7cc = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, "jetbrains.mps.execution.configurations.structure.DummyRunConfigurationInitializer");
   }
 }

@@ -36,7 +36,7 @@ public class ChangeSigantureOfInterface_Test extends BaseTransformationTest {
 
   @Test
   public void test_ChangeSigantureOfInterface() throws Throwable {
-    new ChangeSigantureOfInterface_Test.TestBody(this).test_ChangeSigantureOfInterface();
+    new TestBody(this).test_ChangeSigantureOfInterface();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

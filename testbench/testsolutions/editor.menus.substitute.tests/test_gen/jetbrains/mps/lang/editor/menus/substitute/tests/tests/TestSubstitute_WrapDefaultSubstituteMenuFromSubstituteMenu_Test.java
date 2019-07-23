@@ -24,7 +24,7 @@ public class TestSubstitute_WrapDefaultSubstituteMenuFromSubstituteMenu_Test ext
 
   @Test
   public void test_TestSubstitute_WrapDefaultSubstituteMenuFromSubstituteMenu() throws Throwable {
-    new TestSubstitute_WrapDefaultSubstituteMenuFromSubstituteMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

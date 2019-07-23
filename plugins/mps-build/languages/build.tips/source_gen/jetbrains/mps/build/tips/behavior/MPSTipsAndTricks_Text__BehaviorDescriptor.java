@@ -4,22 +4,23 @@ package jetbrains.mps.build.tips.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MPSTipsAndTricks_Text__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks_Text");
+  private static final SAbstractConcept CONCEPT = AUX_nvw5b3.MPSTipsAndTricks_Text_62e7ed8a;
 
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
@@ -74,5 +75,9 @@ public final class MPSTipsAndTricks_Text__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_nvw5b3 {
+    /*package*/ static final SConcept MPSTipsAndTricks_Text_62e7ed8a = MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks_Text");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.classifiers.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.PasteWrapper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -12,20 +11,22 @@ import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    return AUX_h39015.StaticMethodDeclaration_9cd8c445;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
+    return AUX_h39015.DefaultClassifierMethodDeclaration_85f81215;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
@@ -78,5 +79,10 @@ public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapp
       }
     }
     return quotedNode_7;
+  }
+
+  private static final class AUX_h39015 {
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept DefaultClassifierMethodDeclaration_85f81215 = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
   }
 }

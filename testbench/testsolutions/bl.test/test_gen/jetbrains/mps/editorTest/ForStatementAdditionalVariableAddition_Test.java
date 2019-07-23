@@ -21,7 +21,7 @@ public class ForStatementAdditionalVariableAddition_Test extends BaseTransformat
 
   @Test
   public void test_ForStatementAdditionalVariableAddition() throws Throwable {
-    new ForStatementAdditionalVariableAddition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

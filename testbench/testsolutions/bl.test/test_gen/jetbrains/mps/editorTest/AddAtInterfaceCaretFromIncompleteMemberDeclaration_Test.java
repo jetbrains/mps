@@ -21,7 +21,7 @@ public class AddAtInterfaceCaretFromIncompleteMemberDeclaration_Test extends Bas
 
   @Test
   public void test_AddAtInterfaceCaretFromIncompleteMemberDeclaration() throws Throwable {
-    new AddAtInterfaceCaretFromIncompleteMemberDeclaration_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

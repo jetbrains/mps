@@ -9,14 +9,16 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.classifiers.behavior.BaseClassifierType__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IMemberOperation_NonTypesystemRule() {
@@ -24,7 +26,7 @@ public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(nodeToCheck));
     {
-      SNode coercedNode_hm5x7h_b0 = TypecheckingFacade.getFromContext().coerceType(operandType, MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType"));
+      SNode coercedNode_hm5x7h_b0 = TypecheckingFacade.getFromContext().coerceType(operandType, AUX_r68emf.BaseClassifierType_b980172f);
       if (coercedNode_hm5x7h_b0 != null) {
         if (!(ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_hm5x7h_b0, nodeToCheck)).contains(SLinkOperations.getTarget(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member"))))) {
           {
@@ -37,12 +39,17 @@ public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, "jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation");
+    return AUX_r68emf.IMemberOperation_7fb92977;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_r68emf {
+    /*package*/ static final SConcept BaseClassifierType_b980172f = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType");
+    /*package*/ static final SInterfaceConcept IMemberOperation_7fb92977 = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, "jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation");
   }
 }

@@ -72,13 +72,13 @@ public class DebuggerToolContentBuilder implements Disposable {
       return createDescriptorInternal(ui, profile);
     }
     buildUi(ui, console);
-    DebuggerToolContentBuilder.MyRunContentDescriptor contentDescriptor = createDescriptorInternal(ui, profile);
+    MyRunContentDescriptor contentDescriptor = createDescriptorInternal(ui, profile);
     ui.getOptions().setLeftToolbar(createActionToolbar(ui, contentDescriptor), ActionPlaces.DEBUGGER_TOOLBAR);
     ui.getOptions().setTopToolbar(((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.DebugStepsMenu_ActionGroup")), ActionPlaces.DEBUGGER_TOOLBAR);
     return contentDescriptor;
   }
-  private DebuggerToolContentBuilder.MyRunContentDescriptor createDescriptorInternal(RunnerLayoutUi ui, RunProfile profile) {
-    return new DebuggerToolContentBuilder.MyRunContentDescriptor(profile, myExecutionResult, myReuseProhibited, ui.getComponent(), this);
+  private MyRunContentDescriptor createDescriptorInternal(RunnerLayoutUi ui, RunProfile profile) {
+    return new MyRunContentDescriptor(profile, myExecutionResult, myReuseProhibited, ui.getComponent(), this);
   }
   private void buildUi(RunnerLayoutUi ui, ExecutionConsole console) {
     ui.getOptions().setMoveToGridActionEnabled(true).setMinimizeActionEnabled(true);

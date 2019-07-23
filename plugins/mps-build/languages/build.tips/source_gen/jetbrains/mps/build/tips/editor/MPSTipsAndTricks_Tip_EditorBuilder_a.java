@@ -45,6 +45,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class MPSTipsAndTricks_Tip_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -99,10 +100,10 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private boolean nodeCondition_bmdp68_a0a0() {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myNode), MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks")), MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, 0x5ea1926fdf2fb911L, "tips"))).first() != myNode;
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myNode), AUX_l8utda.MPSTipsAndTricks_60bfb12a), MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, 0x5ea1926fdf2fb911L, "tips"))).first() != myNode;
   }
   private boolean nodeCondition_bmdp68_a1a0() {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myNode), MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks")), MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, 0x5ea1926fdf2fb911L, "tips"))).first() != myNode;
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myNode), AUX_l8utda.MPSTipsAndTricks_60bfb12a), MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, 0x5ea1926fdf2fb911L, "tips"))).first() != myNode;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "____________________________________________________");
@@ -143,7 +144,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_l8utda.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -190,7 +191,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new MPSTipsAndTricks_Tip_EditorBuilder_a.textListHandler_bmdp68_a6a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new textListHandler_bmdp68_a6a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_text");
     Style style = new StyleImpl();
@@ -217,7 +218,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x5ea1926fdf32687eL, "text");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks_Text");
+      return AUX_l8utda.MPSTipsAndTricks_Text_62e7ed8a;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -269,7 +270,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MPSTipsAndTricks_Tip_EditorBuilder_a.imageSingleRoleHandler_bmdp68_j0a(myNode, MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x1377553280f7a6a7L, "image"), getEditorContext());
+    SingleRoleCellProvider provider = new imageSingleRoleHandler_bmdp68_j0a(myNode, MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x1377553280f7a6a7L, "image"), getEditorContext());
     return provider.createCell();
   }
   private static class imageSingleRoleHandler_bmdp68_j0a extends SingleRoleCellProvider {
@@ -335,5 +336,11 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_l8utda {
+    /*package*/ static final SConcept MPSTipsAndTricks_60bfb12a = MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept MPSTipsAndTricks_Text_62e7ed8a = MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks_Text");
   }
 }

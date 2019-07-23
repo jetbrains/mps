@@ -15,11 +15,11 @@
       <node id="8425555512443868045" at="30,88,31,175" concept="1" />
       <node id="8425555512443935449" at="33,92,34,77" concept="1" />
       <node id="8425555512443868055" at="36,92,37,183" concept="1" />
-      <node id="8425555512443868021" at="41,14,42,73" concept="0" />
-      <node id="8425555512443868053" at="42,73,43,73" concept="0" />
+      <node id="8425555512443868021" at="41,14,42,56" concept="0" />
+      <node id="8425555512443868053" at="42,56,43,56" concept="0" />
       <node id="8425555512443868021" at="62,15,63,59" concept="1" />
       <node id="8425555512443868053" at="64,15,65,59" concept="1" />
-      <node id="8425555512443868040" at="73,14,74,192" concept="0" />
+      <node id="8425555512443868040" at="73,14,74,175" concept="0" />
       <node id="8425555512443868040" at="94,15,95,66" concept="1" />
       <node id="8425555512443868043" at="30,0,33,0" concept="2" trace="propertyMacro_GetValue_0_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="8425555512443868021" at="33,0,36,0" concept="2" trace="sourceNodeQuery_0_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />

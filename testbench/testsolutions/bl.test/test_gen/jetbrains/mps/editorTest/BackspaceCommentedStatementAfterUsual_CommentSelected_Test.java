@@ -21,7 +21,7 @@ public class BackspaceCommentedStatementAfterUsual_CommentSelected_Test extends 
 
   @Test
   public void test_BackspaceCommentedStatementAfterUsual_CommentSelected() throws Throwable {
-    new BackspaceCommentedStatementAfterUsual_CommentSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

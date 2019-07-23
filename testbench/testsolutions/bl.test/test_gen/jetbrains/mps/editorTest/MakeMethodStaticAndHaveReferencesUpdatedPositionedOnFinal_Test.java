@@ -21,7 +21,7 @@ public class MakeMethodStaticAndHaveReferencesUpdatedPositionedOnFinal_Test exte
 
   @Test
   public void test_MakeMethodStaticAndHaveReferencesUpdatedPositionedOnFinal() throws Throwable {
-    new MakeMethodStaticAndHaveReferencesUpdatedPositionedOnFinal_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

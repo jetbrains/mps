@@ -6,32 +6,33 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.collections.plugin.CollectionsLanguage;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CustomContainersUtil {
   public CustomContainersUtil() {
   }
   public static Iterable<SNode> containerCreators(SModel model, final SNode type) {
-    return (Iterable<SNode>) ((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(type)), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType")) ? Sequence.fromIterable(containerDeclarations(model, type)).select(new ISelector<SNode, SNode>() {
+    return (Iterable<SNode>) ((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(type)), AUX_hzw3gy.MapType_a7cf7955) ? Sequence.fromIterable(containerDeclarations(model, type)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode ccd) {
         SNode cmc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, "jetbrains.mps.baseLanguage.collections.structure.CustomMapCreator"));
         SLinkOperations.setTarget(cmc, MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, 0x15e2150d4bff8a6aL, "containerDeclaration"), ccd);
         List<SNode> tvds = SLinkOperations.getChildren(ccd, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"));
-        List<SNode> ctParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType")), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType")), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType")), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType")));
-        List<SNode> typeParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.as(type, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType")), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType")), SLinkOperations.getTarget(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType")), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType")));
+        List<SNode> ctParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType")), AUX_hzw3gy.MapType_a7cf7955), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType")), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType")), AUX_hzw3gy.MapType_a7cf7955), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType")));
+        List<SNode> typeParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.as(type, AUX_hzw3gy.MapType_a7cf7955), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType")), SLinkOperations.getTarget(SNodeOperations.cast(type, AUX_hzw3gy.MapType_a7cf7955), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType")));
 with_ctParams:
         for (int idx = 0; idx < ListSequence.fromList(ctParams).count(); idx++) {
           SNode c = ListSequence.fromList(ctParams).getElement(idx);
-          if (SNodeOperations.isInstanceOf(c, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"))) {
-            SNode pt = ListSequence.fromList(typeParams).getElement((ListSequence.fromList(tvds).count() > 1 ? ListSequence.fromList(tvds).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(c, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration"))) : idx));
+          if (SNodeOperations.isInstanceOf(c, AUX_hzw3gy.TypeVariableReference_3815fc3)) {
+            SNode pt = ListSequence.fromList(typeParams).getElement((ListSequence.fromList(tvds).count() > 1 ? ListSequence.fromList(tvds).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(c, AUX_hzw3gy.TypeVariableReference_3815fc3), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration"))) : idx));
             switch (idx) {
               case 0:
                 SLinkOperations.setTarget(cmc, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType"), (SNode) SNodeOperations.copyNode(pt));
@@ -51,7 +52,7 @@ with_ctParams:
         SNode ccc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator"));
         SLinkOperations.setTarget(ccc, MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, 0x127be81db92655b4L, "containerDeclaration"), ccd);
         if (ListSequence.fromList(SLinkOperations.getChildren(ccd, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).count() == 1) {
-          SLinkOperations.setTarget(ccc, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType"), SNodeOperations.as(ListSequence.fromList(SNodeOperations.getChildren(type)).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")));
+          SLinkOperations.setTarget(ccc, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType"), SNodeOperations.as(ListSequence.fromList(SNodeOperations.getChildren(type)).first(), AUX_hzw3gy.Type_4199e276));
         }
         return ccc;
       }
@@ -63,5 +64,11 @@ with_ctParams:
         return SNodeOperations.getConcept(SLinkOperations.getTarget(ccd, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType"))) == SNodeOperations.getConcept(type);
       }
     });
+  }
+
+  private static final class AUX_hzw3gy {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept MapType_a7cf7955 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
+    /*package*/ static final SConcept TypeVariableReference_3815fc3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
   }
 }

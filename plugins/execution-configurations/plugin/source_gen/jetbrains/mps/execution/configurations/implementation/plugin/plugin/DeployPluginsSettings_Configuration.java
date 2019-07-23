@@ -27,7 +27,7 @@ import com.intellij.openapi.project.Project;
 public class DeployPluginsSettings_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(DeployPluginsSettings_Configuration.class);
   @NotNull
-  private DeployPluginsSettings_Configuration.MyState myState = new DeployPluginsSettings_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -70,7 +70,7 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (DeployPluginsSettings_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -92,7 +92,7 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      DeployPluginsSettings_Configuration.MyState state = new DeployPluginsSettings_Configuration.MyState();
+      MyState state = new MyState();
       if (myPluginsToDeploy != null) {
         state.myPluginsToDeploy = myPluginsToDeploy.clone();
       }

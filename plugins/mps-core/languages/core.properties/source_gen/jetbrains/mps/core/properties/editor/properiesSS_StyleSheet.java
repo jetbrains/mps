@@ -21,7 +21,7 @@ public class properiesSS_StyleSheet {
   public static void apply_Key(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new properiesSS_StyleSheet.KeyStyleClass(editorContext, node).apply(style, editorCell);
+    new KeyStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -31,7 +31,7 @@ public class properiesSS_StyleSheet {
   public static void apply_Comment(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new properiesSS_StyleSheet.CommentStyleClass(editorContext, node).apply(style, editorCell);
+    new CommentStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -41,7 +41,7 @@ public class properiesSS_StyleSheet {
   public static void apply_Separator(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new properiesSS_StyleSheet.SeparatorStyleClass(editorContext, node).apply(style, editorCell);
+    new SeparatorStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -51,7 +51,7 @@ public class properiesSS_StyleSheet {
   public static void apply_Value(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new properiesSS_StyleSheet.ValueStyleClass(editorContext, node).apply(style, editorCell);
+    new ValueStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class KeyStyleClass extends AbstractStyleClass {

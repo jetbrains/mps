@@ -7,11 +7,12 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConceptFunctionParameter_Customization implements EditorMenuItemCustomizer {
 
@@ -20,7 +21,7 @@ public class ConceptFunctionParameter_Customization implements EditorMenuItemCus
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    ConceptFunctionParameter_Customization.ConceptFunctionParameter_CustomizationSpecific customizer = new ConceptFunctionParameter_Customization.ConceptFunctionParameter_CustomizationSpecific();
+    ConceptFunctionParameter_CustomizationSpecific customizer = new ConceptFunctionParameter_CustomizationSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -29,7 +30,7 @@ public class ConceptFunctionParameter_Customization implements EditorMenuItemCus
   private static class ConceptFunctionParameter_CustomizationSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter")).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(AUX_fdgrdq.ConceptFunctionParameter_edf48040).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -58,4 +59,7 @@ public class ConceptFunctionParameter_Customization implements EditorMenuItemCus
   }
 
 
+  private static final class AUX_fdgrdq {
+    /*package*/ static final SConcept ConceptFunctionParameter_edf48040 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
+  }
 }

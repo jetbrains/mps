@@ -119,5 +119,5 @@ public final class TestEventMessage {
   static {
     TestEventMessage.ALL_TOKENS = ListSequence.fromListAndArray(new ArrayList<String>(), TestEventMessage.START_TEST, TestEventMessage.FINISH_TEST, TestEventMessage.FAILURE_TEST_BEGIN, TestEventMessage.ASSUMPTION_FAILURE_TEST_PREFIX, IGNORE_FAILURE_TEST_PREFIX, TestEventMessage.START_TESTRUN, FINISH_TESTRUN);
   }
-  private static Pattern REGEXP_gypf5b_a0a0b0b0hb = Pattern.compile("([^:]+)(?::([^:]+))?:memory=(\\d+):time=(\\d+)", 0);
+  private static final Pattern REGEXP_gypf5b_a0a0b0b0hb = Pattern.compile("([^:]+)(?::([^:]+))?:memory=(\\d+):time=(\\d+)", 0);
 }

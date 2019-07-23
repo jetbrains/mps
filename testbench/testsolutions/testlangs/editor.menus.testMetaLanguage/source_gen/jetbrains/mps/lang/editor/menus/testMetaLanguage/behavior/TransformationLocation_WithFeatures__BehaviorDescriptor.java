@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.menus.testMetaLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -21,9 +20,10 @@ import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TransformationLocation_WithFeatures__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x33f30f661f7e88deL, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationLocation_WithFeatures");
+  private static final SAbstractConcept CONCEPT = AUX_i665e.TransformationLocation_WithFeatures_e1d341b0;
 
   public static final SMethod<Collection<SConcept>> getAvailableFeatures_id1A4kJjlZ$rL = new SMethodBuilder<Collection<SConcept>>(new SJavaCompoundTypeImpl((Class<Collection<SConcept>>) ((Class) Object.class))).name("getAvailableFeatures").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1A4kJjlZ$rL").build();
   public static final SMethod<Collection<SConcept>> getRequiredFeatures_id7L5lpRJHK_w = new SMethodBuilder<Collection<SConcept>>(new SJavaCompoundTypeImpl((Class<Collection<SConcept>>) ((Class) Object.class))).name("getRequiredFeatures").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7L5lpRJHK_w").build();
@@ -34,10 +34,10 @@ public final class TransformationLocation_WithFeatures__BehaviorDescriptor exten
   }
 
   /*package*/ static Collection<SConcept> getAvailableFeatures_id1A4kJjlZ$rL(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3dfc1dL, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Optional"), MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3e09d8L, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Required"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_i665e.TransformationFeature_Optional_2bda9d7e, AUX_i665e.TransformationFeature_Required_2bdc0d99);
   }
   /*package*/ static Collection<SConcept> getRequiredFeatures_id7L5lpRJHK_w(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3e09d8L, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Required"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_i665e.TransformationFeature_Required_2bdc0d99);
   }
 
   /*package*/ TransformationLocation_WithFeatures__BehaviorDescriptor() {
@@ -86,5 +86,11 @@ public final class TransformationLocation_WithFeatures__BehaviorDescriptor exten
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_i665e {
+    /*package*/ static final SConcept TransformationLocation_WithFeatures_e1d341b0 = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x33f30f661f7e88deL, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationLocation_WithFeatures");
+    /*package*/ static final SConcept TransformationFeature_Optional_2bda9d7e = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3dfc1dL, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Optional");
+    /*package*/ static final SConcept TransformationFeature_Required_2bdc0d99 = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3e09d8L, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Required");
   }
 }

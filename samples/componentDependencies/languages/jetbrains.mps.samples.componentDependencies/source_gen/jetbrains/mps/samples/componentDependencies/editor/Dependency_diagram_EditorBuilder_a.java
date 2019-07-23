@@ -31,6 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Dependency_diagram_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -52,7 +53,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
   }
 
   private EditorCell createDiagramConnector_0() {
-    final ConnectorCell editorCell = new Dependency_diagram_EditorBuilder_a.ConnectorCellImpl_wb79wm_a(getEditorContext(), myNode);
+    final ConnectorCell editorCell = new ConnectorCellImpl_wb79wm_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramConnector_wb79wm_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
@@ -175,14 +176,14 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 
     public void synchronize() {
-      myInputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component")), MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be146L, "out"))).findFirst(new IWhereFilter<SNode>() {
+      myInputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), AUX_z0lzg8.Component_5ebb22db), MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be146L, "out"))).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(SPropertyOperations.getString(SLinkOperations.getTarget(getSNode(), MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
         }
       })));
       myOutputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to")), MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be142L, "in"))).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+          return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), AUX_z0lzg8.Component_5ebb22db), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
         }
       })));
     }
@@ -198,5 +199,9 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
     }
 
 
+  }
+
+  private static final class AUX_z0lzg8 {
+    /*package*/ static final SConcept Component_5ebb22db = MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component");
   }
 }

@@ -21,7 +21,7 @@ public class DontInsertPlaceholderIntoSingleChildRole_Test extends BaseTransform
 
   @Test
   public void test_DontInsertPlaceholderIntoSingleChildRole() throws Throwable {
-    new DontInsertPlaceholderIntoSingleChildRole_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

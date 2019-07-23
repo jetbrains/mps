@@ -21,7 +21,7 @@ public class CreationInterface2_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreationInterface2() throws Throwable {
-    new CreationInterface2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

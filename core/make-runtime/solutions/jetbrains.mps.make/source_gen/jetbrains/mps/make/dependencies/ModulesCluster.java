@@ -35,8 +35,8 @@ import java.util.LinkedList;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
 public class ModulesCluster {
-  private final Map<SModuleReference, ModulesCluster.ModuleDeps> myDepsGraph = MapSequence.fromMap(new HashMap<SModuleReference, ModulesCluster.ModuleDeps>());
-  private final Map<SLanguage, ModulesCluster.ModuleDeps> languageModules = MapSequence.fromMap(new HashMap<SLanguage, ModulesCluster.ModuleDeps>());
+  private final Map<SModuleReference, ModuleDeps> myDepsGraph = MapSequence.fromMap(new HashMap<SModuleReference, ModuleDeps>());
+  private final Map<SLanguage, ModuleDeps> languageModules = MapSequence.fromMap(new HashMap<SLanguage, ModuleDeps>());
   private final LanguageRegistry myLanguageRegistry;
 
   public ModulesCluster(LanguageRegistry languageRegistry) {
@@ -51,21 +51,21 @@ public class ModulesCluster {
     // ensure we've got all the vertexes of our graph ready 
     for (SModule m : Sequence.fromIterable(pool)) {
       SModuleReference mr = m.getModuleReference();
-      ModulesCluster.ModuleDeps md = new ModulesCluster.ModuleDeps(m);
+      ModuleDeps md = new ModuleDeps(m);
       MapSequence.fromMap(myDepsGraph).put(mr, md);
       if (m instanceof Language) {
         MapSequence.fromMap(languageModules).put(MetaAdapterFactory.getLanguage(mr), md);
       }
     }
 
-    for (ModulesCluster.ModuleDeps md : Sequence.fromIterable(MapSequence.fromMap(myDepsGraph).values())) {
+    for (ModuleDeps md : Sequence.fromIterable(MapSequence.fromMap(myDepsGraph).values())) {
       fillEdges(md);
     }
   }
 
   public Iterable<? extends Iterable<SModule>> buildOrder(Iterable<SModule> pool) {
     collectRequired(pool);
-    List<List<SModuleReference>> order = new ModulesCluster.ModulesGraph().totalOrder();
+    List<List<SModuleReference>> order = new ModulesGraph().totalOrder();
     Iterable<? extends Iterable<SModuleReference>> compacted = Sequence.fromIterable(this.compact(order)).toListSequence();
     return Sequence.fromIterable(compacted).select(new ISelector<Iterable<SModuleReference>, IListSequence<SModule>>() {
       public IListSequence<SModule> select(Iterable<SModuleReference> cycle) {
@@ -176,7 +176,7 @@ __switch__:
     });
   }
 
-  private void fillEdges(ModulesCluster.ModuleDeps rv) {
+  private void fillEdges(ModuleDeps rv) {
     final SModule mod = rv.getModule();
     // get a set of modules we are going to build transitive dependencies for 
     ArrayList<SModule> modExt = new ArrayList<SModule>();

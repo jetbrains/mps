@@ -4,7 +4,6 @@ package jetbrains.mps.execution.configurations.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -18,9 +17,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ConfigurationFromExecutorReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bcac62fL, "jetbrains.mps.execution.configurations.structure.ConfigurationFromExecutorReference");
+  private static final SAbstractConcept CONCEPT = AUX_xo4m24.ConfigurationFromExecutorReference_453b7fb0;
 
   public static final SMethod<SNode> getExecutor_id6LlKjXrML19 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExecutor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6LlKjXrML19").build();
 
@@ -30,7 +31,7 @@ public final class ConfigurationFromExecutorReference__BehaviorDescriptor extend
   }
 
   /*package*/ static SNode getExecutor_id6LlKjXrML19(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor"));
+    return SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), AUX_xo4m24.AbstractRunConfigurationExecutor_fd0cc5b0);
   }
 
   /*package*/ ConfigurationFromExecutorReference__BehaviorDescriptor() {
@@ -77,5 +78,10 @@ public final class ConfigurationFromExecutorReference__BehaviorDescriptor extend
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_xo4m24 {
+    /*package*/ static final SConcept ConfigurationFromExecutorReference_453b7fb0 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bcac62fL, "jetbrains.mps.execution.configurations.structure.ConfigurationFromExecutorReference");
+    /*package*/ static final SConcept AbstractRunConfigurationExecutor_fd0cc5b0 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
   }
 }

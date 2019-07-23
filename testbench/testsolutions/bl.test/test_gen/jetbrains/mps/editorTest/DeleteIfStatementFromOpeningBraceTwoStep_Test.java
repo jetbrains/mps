@@ -24,7 +24,7 @@ public class DeleteIfStatementFromOpeningBraceTwoStep_Test extends BaseTransform
 
   @Test
   public void test_DeleteIfStatementFromOpeningBraceTwoStep() throws Throwable {
-    new DeleteIfStatementFromOpeningBraceTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

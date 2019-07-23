@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.builders.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,9 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class BaseSimpleBuilderDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78d35b1L, "jetbrains.mps.baseLanguage.builders.structure.BaseSimpleBuilderDeclaration");
+  private static final SAbstractConcept CONCEPT = AUX_ph7wwh.BaseSimpleBuilderDeclaration_c6b4a6bc;
 
   public static final SMethod<SNode> getContextDeclaration_id5rdgdYBzN9n = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextDeclaration").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5rdgdYBzN9n").build();
 
@@ -71,5 +72,9 @@ public final class BaseSimpleBuilderDeclaration__BehaviorDescriptor extends Base
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_ph7wwh {
+    /*package*/ static final SConcept BaseSimpleBuilderDeclaration_c6b4a6bc = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78d35b1L, "jetbrains.mps.baseLanguage.builders.structure.BaseSimpleBuilderDeclaration");
   }
 }

@@ -10,10 +10,10 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -25,18 +25,19 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_PropertyNameUniqueness_NonTypesystemRule() {
   }
   public void applyRule(final SNode property, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> visibleMembers = Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getVisibleMembers_id5laDzmpBPtZ.invoke(check_5f44vd_a0a0a0b(SNodeOperations.getNodeAncestor(property, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false)), property)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> visibleMembers = Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getVisibleMembers_id5laDzmpBPtZ.invoke(check_5f44vd_a0a0a0b(SNodeOperations.getNodeAncestor(property, AUX_5f44vd.Classifier_4b7e553, false, false)), property)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(Objects.equals(it, property));
       }
     });
 
-    SNode duplicate = Sequence.fromIterable(SNodeOperations.ofConcept(visibleMembers, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property"))).findFirst(new IWhereFilter<SNode>() {
+    SNode duplicate = Sequence.fromIterable(SNodeOperations.ofConcept(visibleMembers, AUX_5f44vd.Property_f9d70e64)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(property, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
       }
@@ -44,12 +45,12 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
     if ((duplicate != null)) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "Duplicate property name with " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(duplicate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false)) + "." + SPropertyOperations.getString(duplicate, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915365475", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "Duplicate property name with " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(duplicate, AUX_5f44vd.Classifier_4b7e553, false, false)) + "." + SPropertyOperations.getString(duplicate, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915365475", null, errorTarget);
       }
     }
 
 
-    Iterable<SNode> visibleMethods = SNodeOperations.ofConcept(visibleMembers, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
+    Iterable<SNode> visibleMethods = SNodeOperations.ofConcept(visibleMembers, AUX_5f44vd.BaseMethodDeclaration_9dbf9acb);
     SNode dupMethod = Sequence.fromIterable(visibleMethods).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode method) {
         return Objects.equals(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), Property__BehaviorDescriptor.getGetterMethodName_idhEwIJ02.invoke(property)) && ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isEmpty();
@@ -58,7 +59,7 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
     if ((dupMethod != null)) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "The property getter is hiding a method of the same name: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(dupMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false)) + "." + SPropertyOperations.getString(dupMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "()", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915474315", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "The property getter is hiding a method of the same name: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(dupMethod, AUX_5f44vd.Classifier_4b7e553, false, false)) + "." + SPropertyOperations.getString(dupMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "()", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915474315", null, errorTarget);
       }
     }
 
@@ -71,13 +72,13 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
       if ((dupMethod != null)) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "The property setter is hiding a method of the same name: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(dupMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false)) + "." + SPropertyOperations.getString(dupMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "(" + BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(dupMethod) + ")", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915680442", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "The property setter is hiding a method of the same name: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(dupMethod, AUX_5f44vd.Classifier_4b7e553, false, false)) + "." + SPropertyOperations.getString(dupMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "(" + BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(dupMethod) + ")", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915680442", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property");
+    return AUX_5f44vd.Property_f9d70e64;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -90,5 +91,11 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
       return Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(checkedDotOperand);
     }
     return null;
+  }
+
+  private static final class AUX_5f44vd {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Property_f9d70e64 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property");
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

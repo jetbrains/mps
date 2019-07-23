@@ -7,7 +7,6 @@ import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ant.execution.AntSettings_Configuration;
@@ -40,10 +39,12 @@ import com.intellij.execution.BeforeRunTask;
 import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(BuildScript_Configuration.class);
-  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(AUX_gni7zc.BuildProject_808bb057, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
       return true;
     }
@@ -175,5 +176,9 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
   }
   public Object[] createMakeNodePointersTask() {
     return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNodePointer().getNodeRef())};
+  }
+
+  private static final class AUX_gni7zc {
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

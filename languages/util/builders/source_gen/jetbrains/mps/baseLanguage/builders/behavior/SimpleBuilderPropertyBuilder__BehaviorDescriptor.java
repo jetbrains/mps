@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.builders.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,13 +15,15 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SimpleBuilderPropertyBuilder__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyBuilder");
+  private static final SAbstractConcept CONCEPT = AUX_7qj0v3.SimpleBuilderPropertyBuilder_43bc9179;
 
   public static final SMethod<Boolean> isLeaf_id67LR$5LQnln = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLeaf").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LQnln").build();
   public static final SMethod<SNode> getResultType_id67LR$5LQPoF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getResultType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LQPoF").build();
@@ -46,10 +47,10 @@ public final class SimpleBuilderPropertyBuilder__BehaviorDescriptor extends Base
   /*package*/ static SNode getAttachStatementChild_id4ak9ytIaIgr(@NotNull SNode __thisNode__, SNode parentBuilder, SNode parentRef, SNode childRef) {
 
     SNode result = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, 0x4acc05c8d72ec061L, "declaration")), MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72870eaL, 0x4acc05c8d72b428eL, "set")));
-    for (SNode p : SNodeOperations.getNodeDescendants(result, MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e70L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyParent"), false, new SAbstractConcept[]{})) {
+    for (SNode p : SNodeOperations.getNodeDescendants(result, AUX_7qj0v3.SimpleBuilderPropertyParent_408d08db, false, new SAbstractConcept[]{})) {
       SNodeOperations.replaceWithAnother(p, SNodeOperations.copyNode(parentRef));
     }
-    for (SNode v : SNodeOperations.getNodeDescendants(result, MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e8aL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyValue"), false, new SAbstractConcept[]{})) {
+    for (SNode v : SNodeOperations.getNodeDescendants(result, AUX_7qj0v3.SimpleBuilderPropertyValue_408d0934, false, new SAbstractConcept[]{})) {
       SNodeOperations.replaceWithAnother(v, SNodeOperations.copyNode(childRef));
     }
     return result;
@@ -105,5 +106,11 @@ public final class SimpleBuilderPropertyBuilder__BehaviorDescriptor extends Base
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_7qj0v3 {
+    /*package*/ static final SConcept SimpleBuilderPropertyBuilder_43bc9179 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyBuilder");
+    /*package*/ static final SConcept SimpleBuilderPropertyParent_408d08db = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e70L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyParent");
+    /*package*/ static final SConcept SimpleBuilderPropertyValue_408d0934 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e8aL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyValue");
   }
 }

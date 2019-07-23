@@ -21,7 +21,7 @@ public class AddFinalInStaticField_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddFinalInStaticField() throws Throwable {
-    new AddFinalInStaticField_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

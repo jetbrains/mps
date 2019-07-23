@@ -37,7 +37,7 @@ public class ExtractDifferentReturns_Test extends BaseTransformationTest {
 
   @Test
   public void test_extractDifferentReturns() throws Throwable {
-    new ExtractDifferentReturns_Test.TestBody(this).test_extractDifferentReturns();
+    new TestBody(this).test_extractDifferentReturns();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

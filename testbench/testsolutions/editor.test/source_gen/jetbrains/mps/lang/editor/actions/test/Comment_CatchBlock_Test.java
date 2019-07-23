@@ -21,7 +21,7 @@ public class Comment_CatchBlock_Test extends BaseTransformationTest {
 
   @Test
   public void test_Comment_CatchBlock() throws Throwable {
-    new Comment_CatchBlock_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

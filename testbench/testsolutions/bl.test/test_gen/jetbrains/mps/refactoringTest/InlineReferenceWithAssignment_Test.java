@@ -34,7 +34,7 @@ public class InlineReferenceWithAssignment_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineReferenceWithAssignment() throws Throwable {
-    new InlineReferenceWithAssignment_Test.TestBody(this).test_InlineReferenceWithAssignment();
+    new TestBody(this).test_InlineReferenceWithAssignment();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

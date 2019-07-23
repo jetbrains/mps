@@ -10,11 +10,12 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.cells.BigCellUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class ScopeParameter_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -52,7 +53,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private boolean nodeCondition_pzkiaj_a0() {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a2L, "jetbrains.mps.lang.smodel.query.structure.ScopeParameter"));
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), AUX_l0rbfn.ScopeParameter_e23e4567);
   }
   private EditorCell createError_0() {
     EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<no scope>");
@@ -65,5 +66,9 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     style.set(StyleAttributes.AUTO_DELETABLE, true);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+
+  private static final class AUX_l0rbfn {
+    /*package*/ static final SConcept ScopeParameter_e23e4567 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a2L, "jetbrains.mps.lang.smodel.query.structure.ScopeParameter");
   }
 }

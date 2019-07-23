@@ -121,6 +121,7 @@
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter" />
     <classNode dependClassName="jetbrains.mps.smodel.behaviour.BHReflection" />
     <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SEnumeration" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SEnumerationLiteral" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />

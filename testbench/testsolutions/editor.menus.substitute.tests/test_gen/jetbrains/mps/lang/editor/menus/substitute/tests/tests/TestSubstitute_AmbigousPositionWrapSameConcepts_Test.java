@@ -21,7 +21,7 @@ public class TestSubstitute_AmbigousPositionWrapSameConcepts_Test extends BaseTr
 
   @Test
   public void test_TestSubstitute_AmbigousPositionWrapSameConcepts() throws Throwable {
-    new TestSubstitute_AmbigousPositionWrapSameConcepts_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,7 +4,6 @@ package jetbrains.mps.core.xml.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,12 +15,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace");
+  private static final SAbstractConcept CONCEPT = AUX_m6cntm.XmlWhitespace_20008e56;
 
   public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1Qs9WekVZ9$").build();
   public static final SMethod<Boolean> hasNewLineAfter_id1Qs9WekVZ9E = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNewLineAfter").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1Qs9WekVZ9E").build();
@@ -37,9 +39,9 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static boolean onNewLine_id1Qs9WekVZ9$(@NotNull SNode __thisNode__) {
     SNode left = SNodeOperations.getPrevSibling(__thisNode__);
-    if (SNodeOperations.isInstanceOf(left, MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement"))) {
-      SNode leftContent = SNodeOperations.cast(left, MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement"));
-      return SNodeOperations.isInstanceOf(leftContent, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace")) || isEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value"))) && (SNodeOperations.getNextSibling(__thisNode__) == null);
+    if (SNodeOperations.isInstanceOf(left, AUX_m6cntm.XmlPrologElement_1e69ae59)) {
+      SNode leftContent = SNodeOperations.cast(left, AUX_m6cntm.XmlPrologElement_1e69ae59);
+      return SNodeOperations.isInstanceOf(leftContent, AUX_m6cntm.XmlWhitespace_20008e56) || isEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value"))) && (SNodeOperations.getNextSibling(__thisNode__) == null);
     }
     return false;
   }
@@ -119,5 +121,10 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_m6cntm {
+    /*package*/ static final SConcept XmlWhitespace_20008e56 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace");
+    /*package*/ static final SInterfaceConcept XmlPrologElement_1e69ae59 = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement");
   }
 }

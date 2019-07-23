@@ -29,7 +29,7 @@ public class ActionMapImportConceptCompatibility_Test extends BaseTransformation
 
   @Test
   public void test_NodeImportedActionMapIsNotCheck2687536747038604396() throws Throwable {
-    new ActionMapImportConceptCompatibility_Test.TestBody(this).test_NodeImportedActionMapIsNotCheck2687536747038604396();
+    new TestBody(this).test_NodeImportedActionMapIsNotCheck2687536747038604396();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

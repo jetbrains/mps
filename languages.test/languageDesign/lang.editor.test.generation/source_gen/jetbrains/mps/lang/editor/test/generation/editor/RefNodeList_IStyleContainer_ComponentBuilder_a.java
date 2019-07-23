@@ -40,6 +40,7 @@ import jetbrains.mps.util.Pair;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Superscript;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class RefNodeList_IStyleContainer_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -72,7 +73,7 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new RefNodeList_IStyleContainer_ComponentBuilder_a.childrenListHandler_1fg3ie_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new childrenListHandler_1fg3ie_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Horizontal(), false);
     editorCell.setCellId("RNLISC_refNodeList_children");
     Style style = new StyleImpl();
@@ -192,7 +193,7 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
       return MetaAdapterFactory.getContainmentLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, 0xbde89531adcb99L, "children");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, "jetbrains.mps.lang.editor.test.generation.structure.RefNodeList");
+      return AUX_v8mrs9.RefNodeList_83541c8f;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -375,7 +376,7 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     return var;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new RefNodeList_IStyleContainer_ComponentBuilder_a.childrenListHandler_1fg3ie_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new childrenListHandler_1fg3ie_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("RNLISC_refNodeList_children1");
     Style style = new StyleImpl();
@@ -409,7 +410,7 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
       return MetaAdapterFactory.getContainmentLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, 0xbde89531adcb99L, "children");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, "jetbrains.mps.lang.editor.test.generation.structure.RefNodeList");
+      return AUX_v8mrs9.RefNodeList_83541c8f;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -462,7 +463,7 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     return editorCell;
   }
   private EditorCell createRefNodeList_2() {
-    AbstractCellListHandler handler = new RefNodeList_IStyleContainer_ComponentBuilder_a.childrenListHandler_1fg3ie_a2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new childrenListHandler_1fg3ie_a2a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Superscript(), false);
     editorCell.setCellId("RNLISC_refNodeList_children2");
     Style style = new StyleImpl();
@@ -490,7 +491,7 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
       return MetaAdapterFactory.getContainmentLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, 0xbde89531adcb99L, "children");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, "jetbrains.mps.lang.editor.test.generation.structure.RefNodeList");
+      return AUX_v8mrs9.RefNodeList_83541c8f;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -523,5 +524,9 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
         }
       }
     }
+  }
+
+  private static final class AUX_v8mrs9 {
+    /*package*/ static final SConcept RefNodeList_83541c8f = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, "jetbrains.mps.lang.editor.test.generation.structure.RefNodeList");
   }
 }

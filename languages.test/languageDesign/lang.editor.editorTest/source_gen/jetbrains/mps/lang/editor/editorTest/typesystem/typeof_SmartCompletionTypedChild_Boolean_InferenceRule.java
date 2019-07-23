@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_SmartCompletionTypedChild_Boolean_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SmartCompletionTypedChild_Boolean_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_SmartCompletionTypedChild_Boolean_InferenceRule extends Abst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d4aL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionTypedChild_Boolean");
+    return AUX_7x54v8.SmartCompletionTypedChild_Boolean_aa4a182a;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_SmartCompletionTypedChild_Boolean_InferenceRule extends Abst
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_7x54v8 {
+    /*package*/ static final SConcept SmartCompletionTypedChild_Boolean_aa4a182a = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d4aL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionTypedChild_Boolean");
   }
 }

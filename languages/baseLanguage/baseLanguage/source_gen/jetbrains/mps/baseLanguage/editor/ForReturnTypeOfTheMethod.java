@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +26,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ForReturnTypeOfTheMethod extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -52,8 +53,8 @@ public class ForReturnTypeOfTheMethod extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ForReturnTypeOfTheMethod.TMP_Group_fr0itg_a0());
-      result.add(new ForReturnTypeOfTheMethod.TMP_Include_fr0itg_b0());
+      result.add(new TMP_Group_fr0itg_a0());
+      result.add(new TMP_Include_fr0itg_b0());
     }
     return result;
   }
@@ -61,7 +62,7 @@ public class ForReturnTypeOfTheMethod extends TransformationMenuBase {
   public class TMP_Group_fr0itg_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_fr0itg.BaseMethodDeclaration_9dbf9acb);
     }
 
     @NotNull
@@ -77,7 +78,7 @@ public class ForReturnTypeOfTheMethod extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ForReturnTypeOfTheMethod.TMP_Group_fr0itg_a0.TMP_Include_fr0itg_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_fr0itg_a0.TMP_Include_fr0itg_a0a());
     }
     public class TMP_Include_fr0itg_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull
@@ -98,12 +99,12 @@ public class ForReturnTypeOfTheMethod extends TransformationMenuBase {
         final SNode node = _context.getNode();
         final EditorContext editorContext = _context.getEditorContext();
 
-        return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration"), "jetbrains.mps.baseLanguage.editor.addGenericTypeVariableInDeclaration");
+        return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_fr0itg.GenericDeclaration_dfe3792c, "jetbrains.mps.baseLanguage.editor.addGenericTypeVariableInDeclaration");
       }
       @Nullable
       @Override
       protected SNode getNode(TransformationMenuContext _context) {
-        return SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
+        return SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_fr0itg.BaseMethodDeclaration_9dbf9acb);
       }
 
     }
@@ -127,8 +128,14 @@ public class ForReturnTypeOfTheMethod extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), "jetbrains.mps.baseLanguage.editor.AddMethodModifiersOnTypes");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_fr0itg.Type_4199e276, "jetbrains.mps.baseLanguage.editor.AddMethodModifiersOnTypes");
     }
 
+  }
+
+  private static final class AUX_fr0itg {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept GenericDeclaration_dfe3792c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration");
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

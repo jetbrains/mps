@@ -27,7 +27,7 @@ public class IncludingSubstituteMenuForEmptyCell_Test extends BaseTransformation
 
   @Test
   public void test_IncludingSubstituteMenuForEmptyCell() throws Throwable {
-    new IncludingSubstituteMenuForEmptyCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

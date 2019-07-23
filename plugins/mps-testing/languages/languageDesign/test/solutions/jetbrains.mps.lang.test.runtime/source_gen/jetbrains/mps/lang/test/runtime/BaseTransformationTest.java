@@ -28,7 +28,7 @@ public abstract class BaseTransformationTest implements TransformationTest, Envi
 
   protected BaseTransformationTest(TestParametersCache paramCache) {
     myParamCache = paramCache;
-    myBeforeAsRule = new BaseTransformationTest.AlternativeBefore(this);
+    myBeforeAsRule = new AlternativeBefore(this);
   }
 
   @Override

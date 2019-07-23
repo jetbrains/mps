@@ -14,6 +14,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_LogicalSimpleMathExpression_InferenceRule() {
@@ -36,7 +37,7 @@ public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractIn
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81dcba5L, "jetbrains.mps.samples.Expressions.structure.LogicalSimpleMathExpression");
+    return AUX_ngq3xd.LogicalSimpleMathExpression_574d0c07;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,7 +47,12 @@ public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractIn
   }
   private static SNode createSimpleMathBooleanType_ngq3xd_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f68L, "jetbrains.mps.samples.Expressions.structure.SimpleMathBooleanType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_ngq3xd.SimpleMathBooleanType_7cf3ce08, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_ngq3xd {
+    /*package*/ static final SConcept LogicalSimpleMathExpression_574d0c07 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81dcba5L, "jetbrains.mps.samples.Expressions.structure.LogicalSimpleMathExpression");
+    /*package*/ static final SConcept SimpleMathBooleanType_7cf3ce08 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f68L, "jetbrains.mps.samples.Expressions.structure.SimpleMathBooleanType");
   }
 }

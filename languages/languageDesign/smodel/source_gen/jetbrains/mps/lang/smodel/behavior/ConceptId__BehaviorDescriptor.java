@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
@@ -25,9 +25,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+  private static final SAbstractConcept CONCEPT = AUX_7h2wmq.ConceptId_51d9f118;
 
   public static final SMethod<SAbstractConcept> getConcept_id5ZE7FBYYOpv = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBYYOpv").build();
   public static final SMethod<Void> setConcept_id5ZE7FBYYR6j = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBYYR6j").build(SMethodBuilder.createJavaParameter(SAbstractConcept.class, ""));
@@ -53,7 +54,7 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void setConcept_id5ZE7FBYYR6j(@NotNull SNode __thisNode__, @NotNull SAbstractConcept concept) {
     SConceptId cid = MetaIdHelper.getConcept(concept);
-    SNode lang = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId"));
+    SNode lang = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, AUX_7h2wmq.LanguageId_f5e2e6b);
     LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lang, concept.getLanguage());
     SLinkOperations.setTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb6feaL, "languageIdentity"), lang);
     SPropertyOperations.assign(__thisNode__, MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb73d7L, "conceptName"), concept.getName());
@@ -113,5 +114,10 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_7h2wmq {
+    /*package*/ static final SConcept ConceptId_51d9f118 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept LanguageId_f5e2e6b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
   }
 }

@@ -21,7 +21,7 @@ public class BS_InEmptyName_Test extends BaseTransformationTest {
 
   @Test
   public void test_BS_InEmptyName() throws Throwable {
-    new BS_InEmptyName_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

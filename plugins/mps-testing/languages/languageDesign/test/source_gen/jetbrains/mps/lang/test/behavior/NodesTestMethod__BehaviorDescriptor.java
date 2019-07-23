@@ -4,7 +4,6 @@ package jetbrains.mps.lang.test.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -15,15 +14,17 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class NodesTestMethod__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b54d88L, "jetbrains.mps.lang.test.structure.NodesTestMethod");
+  private static final SAbstractConcept CONCEPT = AUX_eos8du.NodesTestMethod_fd945a51;
 
   public static final SMethod<SNode> getTestCase_idhGBgWVd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTestCase").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGBgWVd").build();
   public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGBohAB").build();
@@ -36,7 +37,7 @@ public final class NodesTestMethod__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static SNode getTestCase_idhGBgWVd(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase"), false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, AUX_eos8du.NodesTestCase_fd5a0bf4, false, false);
   }
   /*package*/ static String getTestName_idhGBohAB(@NotNull SNode __thisNode__) {
     return "test_" + SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
@@ -93,5 +94,10 @@ public final class NodesTestMethod__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_eos8du {
+    /*package*/ static final SConcept NodesTestMethod_fd945a51 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b54d88L, "jetbrains.mps.lang.test.structure.NodesTestMethod");
+    /*package*/ static final SConcept NodesTestCase_fd5a0bf4 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

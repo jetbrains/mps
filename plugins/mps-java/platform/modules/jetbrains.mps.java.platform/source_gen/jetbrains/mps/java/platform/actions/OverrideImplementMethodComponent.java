@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 @com.intellij.openapi.components.State(name = "OverrideImplementMethodComponent", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
 public class OverrideImplementMethodComponent implements ProjectComponent, PersistentStateComponent<OverrideImplementMethodComponent.State> {
-  private OverrideImplementMethodComponent.State myState;
+  private State myState;
   public OverrideImplementMethodComponent(Project project, MPSCoreComponents coreComponents) {
   }
   @Override
@@ -33,15 +33,15 @@ public class OverrideImplementMethodComponent implements ProjectComponent, Persi
   @Override
   public void initComponent() {
     if (myState == null) {
-      myState = new OverrideImplementMethodComponent.State();
+      myState = new State();
     }
   }
   @Override
-  public void loadState(OverrideImplementMethodComponent.State state) {
+  public void loadState(State state) {
     myState = state;
   }
   @Override
-  public OverrideImplementMethodComponent.State getState() {
+  public State getState() {
     return myState;
   }
   @Override

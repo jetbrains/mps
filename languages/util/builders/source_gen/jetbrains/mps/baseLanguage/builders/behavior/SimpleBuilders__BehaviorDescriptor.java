@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.builders.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,15 +15,17 @@ import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SimpleBuilders__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders");
+  private static final SAbstractConcept CONCEPT = AUX_k350zp.SimpleBuilders_5384c0ad;
 
   public static final SMethod<Boolean> isDescendant_id4wDZIZrG$7u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4wDZIZrG$7u").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SNode>> getDescendands_id4wDZIZrG$7X = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDescendands").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4wDZIZrG$7X").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
@@ -46,7 +47,7 @@ public final class SimpleBuilders__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getDescendands_id4wDZIZrG$7X(@NotNull SNode __thisNode__, SModel context) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode sb : SModelOperations.rootsIncludingImported(context, MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders"))) {
+    for (SNode sb : SModelOperations.rootsIncludingImported(context, AUX_k350zp.SimpleBuilders_5384c0ad)) {
       if ((boolean) SimpleBuilders__BehaviorDescriptor.isDescendant_id4wDZIZrG$7u.invoke(sb, __thisNode__)) {
         ListSequence.fromList(result).addElement(sb);
       }
@@ -111,5 +112,9 @@ public final class SimpleBuilders__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_k350zp {
+    /*package*/ static final SConcept SimpleBuilders_5384c0ad = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders");
   }
 }

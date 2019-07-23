@@ -8,11 +8,16 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DefaultNodeFactory {
   public static class NodeFactory_8018723092206046483 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x28efa98d18cc670aL, "context"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, "jetbrains.mps.lang.context.structure.Context"), null));
+      SLinkOperations.setTarget(newNode, MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x28efa98d18cc670aL, "context"), SNodeFactoryOperations.createNewNode(AUX_lz37j7.Context_75879193, null));
     }
+  }
+
+  private static final class AUX_lz37j7 {
+    /*package*/ static final SConcept Context_75879193 = MetaAdapterFactory.getConcept(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, "jetbrains.mps.lang.context.structure.Context");
   }
 }

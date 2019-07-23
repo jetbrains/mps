@@ -13,20 +13,21 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_TextIcon_NonTypesystemRule() {
   }
   public void applyRule(final SNode textIcon, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Set<String> usedIds = SetSequence.fromSet(new HashSet<String>());
-    for (SNode ti : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(textIcon), MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon")))) {
+    for (SNode ti : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(textIcon), AUX_wiaqiw.TextIcon_d7600c94))) {
       if (SetSequence.fromSet(usedIds).contains(SPropertyOperations.getString(ti, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId")))) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
@@ -40,12 +41,16 @@ public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
+    return AUX_wiaqiw.TextIcon_d7600c94;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_wiaqiw {
+    /*package*/ static final SConcept TextIcon_d7600c94 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
   }
 }

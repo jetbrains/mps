@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CellActionMapImport_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new CellActionMapImport_SubstituteMenu.SMP_ReferenceScope_krpj2f_a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, "jetbrains.mps.lang.editor.structure.CellActionMapImport")));
-    result.add(new CellActionMapImport_SubstituteMenu.SMP_Subconcepts_krpj2f_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_krpj2f_a(), AUX_krpj2f.CellActionMapImport_ba8274ce));
+    result.add(new SMP_Subconcepts_krpj2f_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class CellActionMapImport_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_krpj2f_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, "jetbrains.mps.lang.editor.structure.CellActionMapImport"), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap"));
+      super((SAbstractConcept) AUX_krpj2f.CellActionMapImport_ba8274ce, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class CellActionMapImport_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_krpj2f_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, "jetbrains.mps.lang.editor.structure.CellActionMapImport"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_krpj2f.CellActionMapImport_ba8274ce);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class CellActionMapImport_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_krpj2f {
+    /*package*/ static final SConcept CellActionMapImport_ba8274ce = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, "jetbrains.mps.lang.editor.structure.CellActionMapImport");
   }
 }

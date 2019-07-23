@@ -6,11 +6,12 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NegativeSymbolClassRegexp_toPositive {
 
@@ -23,7 +24,7 @@ public class NegativeSymbolClassRegexp_toPositive {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2f48cL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp"));
+        SNodeFactoryOperations.replaceWithNewChild(node, AUX_y75jyn.PositiveSymbolClassRegexp_6cb78dc);
       }
 
     };
@@ -62,5 +63,9 @@ public class NegativeSymbolClassRegexp_toPositive {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_y75jyn {
+    /*package*/ static final SConcept PositiveSymbolClassRegexp_6cb78dc = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2f48cL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp");
   }
 }

@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -28,11 +27,14 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class privateStaticAccess_Contribution extends SubstituteMenuBase {
   public privateStaticAccess_Contribution() {
@@ -42,7 +44,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new privateStaticAccess_Contribution.SMP_Param_53df4d_a(), MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_53df4d_a(), AUX_53df4d.PrivateStaticFieldReference_e2660a65));
     return result;
   }
 
@@ -63,7 +65,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new privateStaticAccess_Contribution.SMP_Param_53df4d_a.SMP_Action_53df4d_a0(parameter).createItems(context);
+      return new SMP_Param_53df4d_a.SMP_Action_53df4d_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -79,16 +81,16 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      FilteringScope visibleClassifiers = new FilteringScope(new ClassifiersScope(_context.getModel(), SNodeOperations.as(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true)) {
+      FilteringScope visibleClassifiers = new FilteringScope(new ClassifiersScope(_context.getModel(), SNodeOperations.as(_context.getParentNode(), AUX_53df4d.Classifier_4b7e553), AUX_53df4d.Classifier_4b7e553, true)) {
         @Override
         public boolean isExcluded(SNode node) {
-          return super.isExcluded(node) || !(VisibilityUtil.isVisible(_context.getParentNode(), SNodeOperations.as(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible"))));
+          return super.isExcluded(node) || !(VisibilityUtil.isVisible(_context.getParentNode(), SNodeOperations.as(node, AUX_53df4d.IVisible_84badc76)));
         }
       };
       Iterable<SNode> availableElements = visibleClassifiers.getAvailableElements("");
       Iterable<SNode> seq = Sequence.fromIterable(availableElements).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+          return SNodeOperations.cast(it, AUX_53df4d.Classifier_4b7e553);
         }
       });
       return seq;
@@ -102,7 +104,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        privateStaticAccess_Contribution.SMP_Param_53df4d_a.SMP_Action_53df4d_a0.Item item = new privateStaticAccess_Contribution.SMP_Param_53df4d_a.SMP_Action_53df4d_a0.Item(_context);
+        SMP_Param_53df4d_a.SMP_Action_53df4d_a0.Item item = new SMP_Param_53df4d_a.SMP_Action_53df4d_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -126,7 +128,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference"), context);
+          super(AUX_53df4d.PrivateStaticFieldReference_e2660a65, context);
           _context = context;
         }
 
@@ -137,7 +139,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference"), null);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_53df4d.PrivateStaticFieldReference_e2660a65, null);
           SLinkOperations.setTarget(result, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), myParameterObject);
           return result;
         }
@@ -148,7 +150,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_53df4d.PrivateStaticFieldReference_e2660a65, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -171,5 +173,11 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_53df4d {
+    /*package*/ static final SConcept PrivateStaticFieldReference_e2660a65 = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept IVisible_84badc76 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
   }
 }

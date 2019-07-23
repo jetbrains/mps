@@ -41,7 +41,7 @@ public class Diff_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.tool.gentest.Diff");
   public Diff_Facet() {
-    ListSequence.fromList(targets).addElement(new Diff_Facet.Target_diff());
+    ListSequence.fromList(targets).addElement(new Target_diff());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -59,7 +59,7 @@ public class Diff_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Diff_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_diff implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.tool.gentest.Diff.diff");
@@ -160,8 +160,8 @@ public class Diff_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 500;
     }
-    public static Diff_Facet.Target_diff.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Diff_Facet.Target_diff.Parameters.class);
+    public static Target_diff.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_diff.Parameters.class);
     }
     public static class Parameters extends MultiTuple._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>> {
       public Parameters() {
@@ -191,7 +191,7 @@ public class Diff_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.tool.gentest.Diff.diff");
         if (properties.hasProperties(name)) {
-          Diff_Facet.Target_diff.Parameters props = properties.properties(name, Diff_Facet.Target_diff.Parameters.class);
+          Target_diff.Parameters props = properties.properties(name, Target_diff.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.tool.gentest.Diff.diff.fileToPath", null);
           MapSequence.fromMap(store).put("jetbrains.mps.tool.gentest.Diff.diff.excludedFiles", null);
         }
@@ -201,7 +201,7 @@ public class Diff_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.tool.gentest.Diff.diff");
-          Diff_Facet.Target_diff.Parameters props = properties.properties(name, Diff_Facet.Target_diff.Parameters.class);
+          Target_diff.Parameters props = properties.properties(name, Target_diff.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.tool.gentest.Diff.diff.fileToPath")) {
             props.fileToPath(null);
           }

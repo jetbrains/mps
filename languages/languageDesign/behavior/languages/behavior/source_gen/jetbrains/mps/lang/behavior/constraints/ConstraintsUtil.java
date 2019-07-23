@@ -4,30 +4,37 @@ package jetbrains.mps.lang.behavior.constraints;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConstraintsUtil {
   private ConstraintsUtil() {
   }
 
   public static boolean isInsideOfBehavior(SNode node) {
-    return (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), true, false) != null);
+    return (SNodeOperations.getNodeAncestor(node, AUX_y2zkbg.ConceptBehavior_68ebe6cd, true, false) != null);
   }
 
   public static boolean isInsideOfBehavior(SNode node, final boolean isStatic) {
     if (!(isInsideOfBehavior(node))) {
       return false;
     }
-    if ((SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration"), true, false) != null)) {
+    if ((SNodeOperations.getNodeAncestor(node, AUX_y2zkbg.ConceptConstructorDeclaration_6c2cb150, true, false) != null)) {
       return !(isStatic);
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), true)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, AUX_y2zkbg.ConceptMethodDeclaration_6c80ca4f, true)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getBoolean(it, MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic")) == isStatic;
       }
     });
+  }
+
+  private static final class AUX_y2zkbg {
+    /*package*/ static final SConcept ConceptBehavior_68ebe6cd = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptConstructorDeclaration_6c2cb150 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

@@ -23,7 +23,7 @@ public class DeleteClassConceptAbstractKeywordTwoStep_Test extends BaseTransform
 
   @Test
   public void test_DeleteClassConceptAbstractKeywordTwoStep() throws Throwable {
-    new DeleteClassConceptAbstractKeywordTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

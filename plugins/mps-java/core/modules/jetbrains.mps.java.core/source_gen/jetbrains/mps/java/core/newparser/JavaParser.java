@@ -37,6 +37,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.SModelInternal;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class JavaParser {
 
@@ -44,11 +45,11 @@ public class JavaParser {
   }
 
   @NotNull
-  public JavaParser.JavaParseResult parseCompilationUnit(String code) throws JavaParseException {
+  public JavaParseResult parseCompilationUnit(String code) throws JavaParseException {
     return parse(code, FeatureKind.CLASS, null, true);
   }
   @NotNull
-  public JavaParser.JavaParseResult parse(String code, FeatureKind what, SNode context, boolean recovery) throws JavaParseException {
+  public JavaParseResult parse(String code, FeatureKind what, SNode context, boolean recovery) throws JavaParseException {
     // in eclipse there is full recovery and statement recovery 
     // TODO use full recovery 
 
@@ -72,7 +73,7 @@ public class JavaParser {
 
         CompilationUnitDeclaration compRes = util.parseCompilationUnit(source, settings, true);
         if (compRes == null) {
-          return JavaParser.JavaParseResult.UNKNOWN_ERROR;
+          return JavaParseResult.UNKNOWN_ERROR;
         }
 
         ASTNode[] astTypes = compRes.types;
@@ -115,7 +116,7 @@ public class JavaParser {
 
         AbstractMethodDeclaration absMethod = util.parseStatements(source, settings, true, recovery);
         if (absMethod == null) {
-          return JavaParser.JavaParseResult.UNKNOWN_ERROR;
+          return JavaParseResult.UNKNOWN_ERROR;
         }
 
         Statement[] stmts = absMethod.statements;
@@ -140,7 +141,7 @@ public class JavaParser {
         throw new IllegalArgumentException("Parsing other than class and statements is not supported yet ");
     }
 
-    return new JavaParser.JavaParseResult(resultNodes, resultPackageName, problemDescription(util.recordedParsingInformation));
+    return new JavaParseResult(resultNodes, resultPackageName, problemDescription(util.recordedParsingInformation));
   }
   public void attachComments(char[] source, ASTConverter converter, RecordedParsingInformation parseInfo) {
 
@@ -203,7 +204,7 @@ public class JavaParser {
             line_ = line.substring(1);
           }
           SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-          BHReflection.invoke0(commentLine, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"), SMethodTrimmedId.create("parseAndAddWords", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"), "45vN3dBFprj"), line_);
+          BHReflection.invoke0(commentLine, AUX_9quruo.SingleLineComment_36a4c8f4, SMethodTrimmedId.create("parseAndAddWords", AUX_9quruo.SingleLineComment_36a4c8f4, "45vN3dBFprj"), line_);
           ListSequence.fromList(SLinkOperations.getChildren(block, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).insertElement(pos++, commentLine);
         }
       } else {
@@ -281,7 +282,7 @@ public class JavaParser {
     return (packageName.length() == 0 ? null : packageName.toString());
   }
   public static class JavaParseResult {
-    public static final JavaParser.JavaParseResult UNKNOWN_ERROR = new JavaParser.JavaParseResult(new ArrayList<SNode>(), "Parse failed and return no errors");
+    public static final JavaParseResult UNKNOWN_ERROR = new JavaParseResult(new ArrayList<SNode>(), "Parse failed and return no errors");
     @NotNull
     private List<SNode> nodes;
     private String pakage;
@@ -334,5 +335,9 @@ public class JavaParser {
         }
       }
     }
+  }
+
+  private static final class AUX_9quruo {
+    /*package*/ static final SConcept SingleLineComment_36a4c8f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
   }
 }

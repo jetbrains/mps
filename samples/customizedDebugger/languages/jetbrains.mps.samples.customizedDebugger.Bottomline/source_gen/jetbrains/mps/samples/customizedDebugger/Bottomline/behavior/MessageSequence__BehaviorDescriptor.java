@@ -4,7 +4,6 @@ package jetbrains.mps.samples.customizedDebugger.Bottomline.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,9 +17,11 @@ import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MessageSequence__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5b0L, "jetbrains.mps.samples.customizedDebugger.Bottomline.structure.MessageSequence");
+  private static final SAbstractConcept CONCEPT = AUX_sixfdg.MessageSequence_4497ebbf;
 
   public static final SMethod<String> getUnitName_id4pl5GY7LKmR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnitName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4pl5GY7LKmR").build();
 
@@ -77,5 +78,9 @@ public final class MessageSequence__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_sixfdg {
+    /*package*/ static final SConcept MessageSequence_4497ebbf = MetaAdapterFactory.getConcept(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5b0L, "jetbrains.mps.samples.customizedDebugger.Bottomline.structure.MessageSequence");
   }
 }

@@ -21,7 +21,7 @@ public class AddTextToPlaceholder_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddTextToPlaceholder() throws Throwable {
-    new AddTextToPlaceholder_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

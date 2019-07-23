@@ -21,7 +21,7 @@ public class DeleteOnlyCommentedCondition_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteOnlyCommentedCondition() throws Throwable {
-    new DeleteOnlyCommentedCondition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

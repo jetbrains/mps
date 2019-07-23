@@ -36,12 +36,12 @@ public class DeprecatedConceptMemberNotMigratedProblem<CM> extends NotMigratedNo
   }
 
   public static Problem deprecatedProperty(SNode reason, SProperty property) {
-    return new DeprecatedConceptMemberNotMigratedProblem.DeprecatedPropertyNotMigratedProblem(reason, property);
+    return new DeprecatedPropertyNotMigratedProblem(reason, property);
   }
   public static Problem deprecatedContainmentLink(SNode reason, SContainmentLink containmentLink) {
-    return new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(reason, containmentLink);
+    return new DeprecatedContainmentLinkNotMigratedProblem(reason, containmentLink);
   }
   public static Problem deprecatedReferenceLink(SNode reason, SReferenceLink referenceLink) {
-    return new DeprecatedConceptMemberNotMigratedProblem.DeprecatedReferenceLinkNotMigratedProblem(reason, referenceLink);
+    return new DeprecatedReferenceLinkNotMigratedProblem(reason, referenceLink);
   }
 }

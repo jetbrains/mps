@@ -97,7 +97,7 @@ import jetbrains.mps.smodel.IOperationContext;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ModelAccess_kasahx_0");
     editorCell.setDefaultText(" ");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new PatternTest_InspectorBuilder_a.PatternTest_generic_cellMenu_kasahx_a0b0a(), new PatternTest_InspectorBuilder_a.PatternTest_generic_cellMenu_kasahx_b0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new PatternTest_generic_cellMenu_kasahx_a0b0a(), new PatternTest_generic_cellMenu_kasahx_b0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class PatternTest_generic_cellMenu_kasahx_a0b0a extends AbstractCellMenuPart_Generic_Item {

@@ -23,7 +23,7 @@ public class SUBST_BooleanConstantArgument_with_Expression_Test extends BaseTran
 
   @Test
   public void test_SUBST_BooleanConstantArgument_with_Expression() throws Throwable {
-    new SUBST_BooleanConstantArgument_with_Expression_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

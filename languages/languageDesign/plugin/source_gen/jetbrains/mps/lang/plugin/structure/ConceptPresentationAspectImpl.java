@@ -1012,5 +1012,5 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static String HELP_URL = URLFunction_ConfluenceDocUrl.getUrl() + "/Plugin#Plugin-actionsandactiongroups";
+  private static final String HELP_URL = URLFunction_ConfluenceDocUrl.getUrl() + "/Plugin#Plugin-actionsandactiongroups";
 }

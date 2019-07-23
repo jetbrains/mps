@@ -26,6 +26,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Empty_Visibility_TransformtaionMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE, MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -51,10 +52,10 @@ public class Empty_Visibility_TransformtaionMenu extends TransformationMenuBase 
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new Empty_Visibility_TransformtaionMenu.TMP_IncludeSM_ej8f50_a0());
+      result.add(new TMP_IncludeSM_ej8f50_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new Empty_Visibility_TransformtaionMenu.TMP_Include_ej8f50_a1());
+      result.add(new TMP_Include_ej8f50_a1());
     }
     return result;
   }
@@ -93,7 +94,7 @@ public class Empty_Visibility_TransformtaionMenu extends TransformationMenuBase 
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af957d96eL, "jetbrains.mps.baseLanguage.structure.Visibility");
+      return AUX_ej8f50.Visibility_62961edf;
     }
   }
   public class TMP_Include_ej8f50_a1 extends IncludeTransformationMenuTransformationMenuPart {
@@ -110,5 +111,9 @@ public class Empty_Visibility_TransformtaionMenu extends TransformationMenuBase 
     }
 
 
+  }
+
+  private static final class AUX_ej8f50 {
+    /*package*/ static final SConcept Visibility_62961edf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af957d96eL, "jetbrains.mps.baseLanguage.structure.Visibility");
   }
 }

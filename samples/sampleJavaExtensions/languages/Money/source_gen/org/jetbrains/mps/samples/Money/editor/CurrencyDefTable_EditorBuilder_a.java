@@ -21,6 +21,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CurrencyDefTable_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -57,7 +58,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new CurrencyDefTable_EditorBuilder_a.unitsListHandler_6q11gp_b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new unitsListHandler_6q11gp_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_units");
     editorCell.setSRole(handler.getElementSRole());
@@ -80,7 +81,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3210b276d1443596L, 0x3210b276d144359cL, "units");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3210b276d1443597L, "org.jetbrains.mps.samples.Money.structure.CurrencyUnit");
+      return AUX_v3qy85.CurrencyUnit_bb863a53;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -113,5 +114,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_v3qy85 {
+    /*package*/ static final SConcept CurrencyUnit_bb863a53 = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3210b276d1443597L, "org.jetbrains.mps.samples.Money.structure.CurrencyUnit");
   }
 }

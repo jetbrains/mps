@@ -4,7 +4,6 @@ package jetbrains.mps.lang.util.order.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,6 +14,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -23,9 +23,11 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78147L, "jetbrains.mps.lang.util.order.structure.OrderDeclaration");
+  private static final SAbstractConcept CONCEPT = AUX_ju5b3a.OrderDeclaration_8528aa42;
 
   public static final SMethod<String> getGeneratedClassName_id2CFL3ni7zCY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2CFL3ni7zCY").build();
   public static final SMethod<Boolean> presents_id1jgMklchcXk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("presents").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1jgMklchcXk").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -39,7 +41,7 @@ public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static String getGeneratedClassName_id2CFL3ni7zCY(@NotNull SNode __thisNode__) {
     String n;
     if (isEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
-      n = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL, "jetbrains.mps.lang.util.order.structure.OrderParticipant"), false, false), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+      n = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNodeAncestor(__thisNode__, AUX_ju5b3a.OrderParticipant_c14fd45, false, false), AUX_ju5b3a.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     } else {
       n = SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     }
@@ -107,5 +109,11 @@ public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_ju5b3a {
+    /*package*/ static final SConcept OrderDeclaration_8528aa42 = MetaAdapterFactory.getConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78147L, "jetbrains.mps.lang.util.order.structure.OrderDeclaration");
+    /*package*/ static final SInterfaceConcept OrderParticipant_c14fd45 = MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL, "jetbrains.mps.lang.util.order.structure.OrderParticipant");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

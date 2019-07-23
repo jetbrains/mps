@@ -4,7 +4,6 @@ package jetbrains.mps.execution.configurations.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,6 +14,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.annotations.Nullable;
@@ -22,9 +22,10 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class RunConfigurationExecutor__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor");
+  private static final SAbstractConcept CONCEPT = AUX_v0bebz.RunConfigurationExecutor_4368a6ef;
 
   public static final SMethod<Boolean> isDebuggable_idoym_8btfV8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDebuggable").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("oym_8btfV8").build();
   public static final SMethod<Boolean> canBeSimple_id5pE1_aqYssM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeSimple").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5pE1_aqYssM").build();
@@ -48,7 +49,7 @@ public final class RunConfigurationExecutor__BehaviorDescriptor extends BaseBHDe
   @Nullable
   /*package*/ static SNode getCommand_id5pE1_aqZ2LK(@NotNull SNode __thisNode__) {
     {
-      SNode coercedNode_wnz9gp_a0d = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x6e425276ab38aea1L, "execute"))), MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, "jetbrains.mps.execution.commands.structure.CommandProcessType"));
+      SNode coercedNode_wnz9gp_a0d = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x6e425276ab38aea1L, "execute"))), AUX_v0bebz.CommandProcessType_b1238c37);
       if (coercedNode_wnz9gp_a0d != null) {
         if ((SLinkOperations.getTarget(coercedNode_wnz9gp_a0d, MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, 0x87f99370d7e1ea4L, "commandDeclaration")) != null)) {
           return SLinkOperations.getTarget(coercedNode_wnz9gp_a0d, MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, 0x87f99370d7e1ea4L, "commandDeclaration"));
@@ -115,5 +116,10 @@ public final class RunConfigurationExecutor__BehaviorDescriptor extends BaseBHDe
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, "jetbrains.mps.execution.commands"), 0x87f99370d7e1ea3L, "CommandProcessType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_v0bebz {
+    /*package*/ static final SConcept RunConfigurationExecutor_4368a6ef = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor");
+    /*package*/ static final SConcept CommandProcessType_b1238c37 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, "jetbrains.mps.execution.commands.structure.CommandProcessType");
   }
 }

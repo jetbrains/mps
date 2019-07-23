@@ -33,6 +33,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TryStatement_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -90,7 +91,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new TryStatement_EditorBuilder_a.bodySingleRoleHandler_cmnz0s_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body"), getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_cmnz0s_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body"), getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_cmnz0s_c0 extends SingleRoleCellProvider {
@@ -157,13 +158,13 @@ import jetbrains.mps.nodeEditor.MPSColors;
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     TryStatement_DeleteBodyEndingBrace.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement")));
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_8d0ude.TryStatement_d214e8c2));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new TryStatement_EditorBuilder_a.catchClauseListHandler_cmnz0s_e0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new catchClauseListHandler_cmnz0s_e0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_catchClause");
     editorCell.setSRole(handler.getElementSRole());
@@ -186,7 +187,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
+      return AUX_8d0ude.CatchClause_870e8b84;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -262,7 +263,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new TryStatement_EditorBuilder_a.finallyBodySingleRoleHandler_cmnz0s_c5a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody"), getEditorContext());
+    SingleRoleCellProvider provider = new finallyBodySingleRoleHandler_cmnz0s_c5a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody"), getEditorContext());
     return provider.createCell();
   }
   private static class finallyBodySingleRoleHandler_cmnz0s_c5a extends SingleRoleCellProvider {
@@ -331,5 +332,10 @@ import jetbrains.mps.nodeEditor.MPSColors;
     TryStatement_FinallyBlock_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_8d0ude {
+    /*package*/ static final SConcept TryStatement_d214e8c2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept CatchClause_870e8b84 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
   }
 }

@@ -18,7 +18,7 @@ public class TestStylesheet_StyleSheet {
   public static void apply_priorityStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TestStylesheet_StyleSheet.priorityStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new priorityStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -28,7 +28,7 @@ public class TestStylesheet_StyleSheet {
   public static void apply_priorityStyleCopy(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TestStylesheet_StyleSheet.priorityStyleCopyStyleClass(editorContext, node).apply(style, editorCell);
+    new priorityStyleCopyStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -38,7 +38,7 @@ public class TestStylesheet_StyleSheet {
   public static void apply_hugePriorityStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TestStylesheet_StyleSheet.hugePriorityStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new hugePriorityStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -48,7 +48,7 @@ public class TestStylesheet_StyleSheet {
   public static void apply_unapplyPriorityStyleCopy(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TestStylesheet_StyleSheet.unapplyPriorityStyleCopyStyleClass(editorContext, node).apply(style, editorCell);
+    new unapplyPriorityStyleCopyStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class priorityStyleStyleClass extends AbstractStyleClass {

@@ -37,7 +37,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.plugin.CopyPluginXml");
   public CopyPluginXml_Facet() {
-    ListSequence.fromList(targets).addElement(new CopyPluginXml_Facet.Target_copyPluginXml());
+    ListSequence.fromList(targets).addElement(new Target_copyPluginXml());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -55,7 +55,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new CopyPluginXml_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_copyPluginXml implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.plugin.CopyPluginXml.copyPluginXml");
@@ -168,8 +168,8 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 10;
     }
-    public static CopyPluginXml_Facet.Target_copyPluginXml.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, CopyPluginXml_Facet.Target_copyPluginXml.Parameters.class);
+    public static Target_copyPluginXml.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_copyPluginXml.Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<String> {
       public Parameters() {
@@ -193,7 +193,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.plugin.CopyPluginXml.copyPluginXml");
         if (properties.hasProperties(name)) {
-          CopyPluginXml_Facet.Target_copyPluginXml.Parameters props = properties.properties(name, CopyPluginXml_Facet.Target_copyPluginXml.Parameters.class);
+          Target_copyPluginXml.Parameters props = properties.properties(name, Target_copyPluginXml.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.lang.plugin.CopyPluginXml.copyPluginXml.pluginRoot", String.valueOf(props.pluginRoot()));
         }
       }
@@ -202,7 +202,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.plugin.CopyPluginXml.copyPluginXml");
-          CopyPluginXml_Facet.Target_copyPluginXml.Parameters props = properties.properties(name, CopyPluginXml_Facet.Target_copyPluginXml.Parameters.class);
+          Target_copyPluginXml.Parameters props = properties.properties(name, Target_copyPluginXml.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.lang.plugin.CopyPluginXml.copyPluginXml.pluginRoot")) {
             props.pluginRoot(String.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.lang.plugin.CopyPluginXml.copyPluginXml.pluginRoot")));
           }

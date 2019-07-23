@@ -47,7 +47,7 @@ import java.awt.Color;
 
 public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   public static DataKey<Ref<SNodeId>> NODE_ID_DATAKEY = DataKey.create("MPS_SNodeId");
-  private List<DiffModelTree.RootTreeNode> myRootNodes;
+  private List<RootTreeNode> myRootNodes;
   private Iterable<BaseAction> myActions;
   private final SRepository myRepo;
 
@@ -66,14 +66,14 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     setCellRenderer(new ColoredTreeCellRenderer() {
       @Override
       public void customizeCellRenderer(JTree p0, final Object value, boolean p2, boolean p3, boolean p4, int p5, boolean p6) {
-        if (value instanceof DiffModelTree.TreeNode) {
+        if (value instanceof TreeNode) {
           // FIXME this code is poor, need to check TreeNode subclasses if they really care to have model access 
           myRepo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              ((DiffModelTree.TreeNode) value).doUpdatePresentation();
+              ((TreeNode) value).doUpdatePresentation();
             }
           });
-          ((DiffModelTree.TreeNode) value).renderTreeNode(this);
+          ((TreeNode) value).renderTreeNode(this);
         }
       }
     });
@@ -81,7 +81,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     // listen for selection changes 
     getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
-        DiffModelTree.RootTreeNode[] node = getSelectedNodes(DiffModelTree.RootTreeNode.class, null);
+        RootTreeNode[] node = getSelectedNodes(RootTreeNode.class, null);
         if (node == null || node.length != 1) {
           onUnselect();
         } else {
@@ -91,33 +91,33 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     });
   }
 
-  protected DiffModelTree.TreeNode rebuild() {
-    DiffModelTree.ModelTreeNode modelNode = new DiffModelTree.ModelTreeNode();
+  protected TreeNode rebuild() {
+    ModelTreeNode modelNode = new ModelTreeNode();
     myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new IWhereFilter<SNodeId>() {
       public boolean accept(SNodeId r) {
         return r != null;
       }
-    }).select(new ISelector<SNodeId, DiffModelTree.RootTreeNode>() {
-      public DiffModelTree.RootTreeNode select(SNodeId r) {
-        return new DiffModelTree.RootTreeNode(r);
+    }).select(new ISelector<SNodeId, RootTreeNode>() {
+      public RootTreeNode select(SNodeId r) {
+        return new RootTreeNode(r);
       }
-    }).sort(new ISelector<DiffModelTree.RootTreeNode, String>() {
-      public String select(DiffModelTree.RootTreeNode rtn) {
+    }).sort(new ISelector<RootTreeNode, String>() {
+      public String select(RootTreeNode rtn) {
         return rtn.myVirtualPackage + "|" + rtn.myPresentation;
       }
     }, true).toListSequence();
-    for (DiffModelTree.RootTreeNode rtn : ListSequence.fromList(myRootNodes)) {
-      DiffModelTree.TreeNode parentNode = modelNode;
+    for (RootTreeNode rtn : ListSequence.fromList(myRootNodes)) {
+      TreeNode parentNode = modelNode;
       if (isNotEmptyString(rtn.myVirtualPackage)) {
         for (final String sub : Sequence.fromArray(rtn.myVirtualPackage.split("\\."))) {
-          Iterable<DiffModelTree.TreeNode> children = Collections.list(((Enumeration) parentNode.children()));
-          DiffModelTree.TreeNode child = Sequence.fromIterable(children).findFirst(new IWhereFilter<DiffModelTree.TreeNode>() {
-            public boolean accept(DiffModelTree.TreeNode c) {
-              return c instanceof DiffModelTree.PackageTreeNode && sub.equals(c.getText());
+          Iterable<TreeNode> children = Collections.list(((Enumeration) parentNode.children()));
+          TreeNode child = Sequence.fromIterable(children).findFirst(new IWhereFilter<TreeNode>() {
+            public boolean accept(TreeNode c) {
+              return c instanceof PackageTreeNode && sub.equals(c.getText());
             }
           });
           if (child == null) {
-            child = new DiffModelTree.PackageTreeNode(sub);
+            child = new PackageTreeNode(sub);
             parentNode.add(child);
           }
           parentNode = child;
@@ -130,7 +130,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
         return r == null;
       }
     })) {
-      DiffModelTree.RootTreeNode metadataNode = new DiffModelTree.MetadataTreeNode();
+      RootTreeNode metadataNode = new MetadataTreeNode();
       ListSequence.fromList(myRootNodes).addElement(metadataNode);
       modelNode.add(metadataNode);
     }
@@ -141,7 +141,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     // todo: find path by rootId 
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
-      DiffModelTree.RootTreeNode node = as_5x0uld_a0a0a2a9(getPathForRow(i).getLastPathComponent(), DiffModelTree.RootTreeNode.class);
+      RootTreeNode node = as_5x0uld_a0a0a2a9(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
       if (node != null && Objects.equals(node.getRootId(), rootId)) {
         path = getPathForRow(i);
         break;
@@ -160,8 +160,8 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void rebuildNow() {
-    DiffModelTree.TreeNode root = new ModelAccessHelper(myRepo).runReadAction(new Computable<DiffModelTree.TreeNode>() {
-      public DiffModelTree.TreeNode compute() {
+    TreeNode root = new ModelAccessHelper(myRepo).runReadAction(new Computable<TreeNode>() {
+      public TreeNode compute() {
         return rebuild();
       }
     });
@@ -173,7 +173,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
 
   protected abstract Iterable<SNodeId> getAffectedRoots();
   protected abstract Iterable<SModel> getModels();
-  protected abstract void updateRootCustomPresentation(@NotNull DiffModelTree.RootTreeNode rootTreeNode);
+  protected abstract void updateRootCustomPresentation(@NotNull RootTreeNode rootTreeNode);
   protected abstract Iterable<BaseAction> getRootActions();
   protected boolean isMultipleRootNames() {
     return false;
@@ -182,9 +182,9 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
   protected void onSelectRoot(@Nullable SNodeId rootId) {
   }
-  private DiffModelTree.RootTreeNode findRootNode(@Nullable final SNodeId nodeId) {
-    return ListSequence.fromList(myRootNodes).findFirst(new IWhereFilter<DiffModelTree.RootTreeNode>() {
-      public boolean accept(DiffModelTree.RootTreeNode r) {
+  private RootTreeNode findRootNode(@Nullable final SNodeId nodeId) {
+    return ListSequence.fromList(myRootNodes).findFirst(new IWhereFilter<RootTreeNode>() {
+      public boolean accept(RootTreeNode r) {
         return Objects.equals(nodeId, r.myRootId);
       }
     });
@@ -209,14 +209,14 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   @Override
   public Object getData(@NonNls String dataId) {
     if (NODE_ID_DATAKEY.is(dataId)) {
-      DiffModelTree.RootTreeNode[] selectedNodes = getSelectedNodes(DiffModelTree.RootTreeNode.class, null);
+      RootTreeNode[] selectedNodes = getSelectedNodes(RootTreeNode.class, null);
       if (selectedNodes != null && selectedNodes.length > 0) {
         return new Ref<SNodeId>(selectedNodes[0].getRootId());
       }
     }
     return null;
   }
-  public class ModelTreeNode extends DiffModelTree.TreeNode {
+  public class ModelTreeNode extends TreeNode {
     public ModelTreeNode() {
       super("model");
       String modelName = SModelOperations.getModelName(Sequence.fromIterable(getModels()).findFirst(new IWhereFilter<SModel>() {
@@ -230,12 +230,12 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       setIcon(IdeIcons.MODEL_ICON);
     }
   }
-  private class PackageTreeNode extends DiffModelTree.TreeNode {
+  private class PackageTreeNode extends TreeNode {
     private PackageTreeNode(@NotNull String packageName) {
       super(packageName);
     }
   }
-  public class RootTreeNode extends DiffModelTree.TreeNode {
+  public class RootTreeNode extends TreeNode {
     private SNodeId myRootId;
     private String myPresentation = null;
     private String myVirtualPackage = null;
@@ -282,7 +282,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       return myPresentation;
     }
   }
-  public class MetadataTreeNode extends DiffModelTree.RootTreeNode {
+  public class MetadataTreeNode extends RootTreeNode {
     public MetadataTreeNode() {
       super(null);
       setText("Model Properties");
@@ -355,7 +355,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       myTextStyle = textStyle;
     }
   }
-  private static String check_5x0uld_a0a62(DiffModelTree.RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
+  private static String check_5x0uld_a0a62(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getPresentation();
     }

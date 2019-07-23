@@ -17,6 +17,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_UnqualifiedStaticCall_NonTypesystemRule() {
@@ -27,14 +28,14 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
       return;
     }
     SNode target = ref.getTargetNode();
-    if (!(SNodeOperations.isInstanceOf(target, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")))) {
+    if (!(SNodeOperations.isInstanceOf(target, AUX_ktq4hh.StaticMethodDeclaration_9cd8c445))) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(target), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(target), AUX_ktq4hh.BaseCommentAttribute_f7206635)) {
       return;
     }
 
-    Scope staticMethodScope = Scope.getScope(SNodeOperations.getParent(localCall), localCall, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
+    Scope staticMethodScope = Scope.getScope(SNodeOperations.getParent(localCall), localCall, AUX_ktq4hh.StaticMethodDeclaration_9cd8c445);
     if (staticMethodScope == null) {
       return;
     }
@@ -49,18 +50,24 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticCall_QuickFix", true);
         intentionProvider.putArgument("replacee", localCall);
-        intentionProvider.putArgument("staticMethod", SNodeOperations.cast(target, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")));
+        intentionProvider.putArgument("staticMethod", SNodeOperations.cast(target, AUX_ktq4hh.StaticMethodDeclaration_9cd8c445));
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    return AUX_ktq4hh.LocalMethodCall_637cfcfb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_ktq4hh {
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept LocalMethodCall_637cfcfb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
   }
 }

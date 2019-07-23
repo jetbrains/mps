@@ -21,7 +21,7 @@ public class TestSideTransform_NodeWithComplexReference_CustomRightAction_Test e
 
   @Test
   public void test_TestSideTransform_NodeWithComplexReference_CustomRightAction() throws Throwable {
-    new TestSideTransform_NodeWithComplexReference_CustomRightAction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

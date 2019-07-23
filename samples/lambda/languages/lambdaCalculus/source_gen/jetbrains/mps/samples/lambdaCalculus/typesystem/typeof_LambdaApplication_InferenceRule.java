@@ -19,6 +19,7 @@ import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_LambdaApplication_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_LambdaApplication_InferenceRule() {
@@ -43,7 +44,7 @@ public class typeof_LambdaApplication_InferenceRule extends AbstractInferenceRul
         typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.getRepresentative(D_typevar_247065157659474805), (SNode) SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x184cd19a8be486c1L, "jetbrains.mps.samples.lambdaCalculus.structure.AnyType")), false, true, _info_12389875345);
       }
 
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef")) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef")), MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable")), SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(lambdaApplication, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function")), MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef")), MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable")))) {
+      if (SNodeOperations.isInstanceOf(node, AUX_uumt54.AbstractionVarRef_1e53a598) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.as(node, AUX_uumt54.AbstractionVarRef_1e53a598), MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable")), SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(lambdaApplication, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function")), AUX_uumt54.AbstractionVarRef_1e53a598), MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable")))) {
         {
           SNode _nodeToCheck_1029348928467 = node;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "1751004816843855988", 0, null);
@@ -65,7 +66,7 @@ public class typeof_LambdaApplication_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaApplication");
+    return AUX_uumt54.LambdaApplication_e7f179a7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -88,5 +89,10 @@ public class typeof_LambdaApplication_InferenceRule extends AbstractInferenceRul
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3ee0e3dd7c1afae8L, 0x3ee0e3dd7c1afaeaL, "range"), SNodeOperations.copyIfNecessary(quotedNode_5));
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_uumt54 {
+    /*package*/ static final SConcept AbstractionVarRef_1e53a598 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef");
+    /*package*/ static final SConcept LambdaApplication_e7f179a7 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaApplication");
   }
 }

@@ -32,23 +32,23 @@ public class VariableUninitialized_Test extends BaseTransformationTest {
 
   @Test
   public void test_VariableUninitialized() throws Throwable {
-    new VariableUninitialized_Test.TestBody(this).test_VariableUninitialized();
+    new TestBody(this).test_VariableUninitialized();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928777982() throws Throwable {
-    new VariableUninitialized_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928777982();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928777982();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927691402() throws Throwable {
-    new VariableUninitialized_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927691402();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927691402();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526513019283() throws Throwable {
-    new VariableUninitialized_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526513019283();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526513019283();
   }
   @Test
   public void test_ErrorMessagesCheck1216893950801() throws Throwable {
-    new VariableUninitialized_Test.TestBody(this).test_ErrorMessagesCheck1216893950801();
+    new TestBody(this).test_ErrorMessagesCheck1216893950801();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

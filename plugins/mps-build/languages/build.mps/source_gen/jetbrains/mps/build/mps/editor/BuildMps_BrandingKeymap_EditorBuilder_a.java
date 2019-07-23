@@ -80,7 +80,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingKeymap_EditorBuilder_a.winSingleRoleHandler_bveoqz_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x51cd30ffb57f91cfL, 0x51cd30ffb57f91d3L, "win"), getEditorContext());
+    SingleRoleCellProvider provider = new winSingleRoleHandler_bveoqz_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x51cd30ffb57f91cfL, 0x51cd30ffb57f91d3L, "win"), getEditorContext());
     return provider.createCell();
   }
   private static class winSingleRoleHandler_bveoqz_b1a extends SingleRoleCellProvider {
@@ -144,7 +144,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingKeymap_EditorBuilder_a.macSingleRoleHandler_bveoqz_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x51cd30ffb57f91cfL, 0x51cd30ffb57f91d8L, "mac"), getEditorContext());
+    SingleRoleCellProvider provider = new macSingleRoleHandler_bveoqz_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x51cd30ffb57f91cfL, 0x51cd30ffb57f91d8L, "mac"), getEditorContext());
     return provider.createCell();
   }
   private static class macSingleRoleHandler_bveoqz_d1a extends SingleRoleCellProvider {

@@ -30,47 +30,47 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck931754141965267346() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck931754141965267346();
+    new TestBody(this).test_ErrorMessagesCheck931754141965267346();
   }
   @Test
   public void test_ErrorMessagesCheck3016266886293102695() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck3016266886293102695();
+    new TestBody(this).test_ErrorMessagesCheck3016266886293102695();
   }
   @Test
   public void test_ErrorMessagesCheck2201735946499155433() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2201735946499155433();
+    new TestBody(this).test_ErrorMessagesCheck2201735946499155433();
   }
   @Test
   public void test_ErrorMessagesCheck2201735946499165976() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2201735946499165976();
+    new TestBody(this).test_ErrorMessagesCheck2201735946499165976();
   }
   @Test
   public void test_ErrorMessagesCheck2201735946499167109() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2201735946499167109();
+    new TestBody(this).test_ErrorMessagesCheck2201735946499167109();
   }
   @Test
   public void test_ErrorMessagesCheck2201735946499171707() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2201735946499171707();
+    new TestBody(this).test_ErrorMessagesCheck2201735946499171707();
   }
   @Test
   public void test_ErrorMessagesCheck2201735946499174525() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2201735946499174525();
+    new TestBody(this).test_ErrorMessagesCheck2201735946499174525();
   }
   @Test
   public void test_ErrorMessagesCheck2201735946499178993() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2201735946499178993();
+    new TestBody(this).test_ErrorMessagesCheck2201735946499178993();
   }
   @Test
   public void test_ErrorMessagesCheck2201735946499190158() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2201735946499190158();
+    new TestBody(this).test_ErrorMessagesCheck2201735946499190158();
   }
   @Test
   public void test_ErrorMessagesCheck3564379068314712774() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck3564379068314712774();
+    new TestBody(this).test_ErrorMessagesCheck3564379068314712774();
   }
   @Test
   public void test_ErrorMessagesCheck3564379068314715334() throws Throwable {
-    new SModelExpressionsDataFlow_Test.TestBody(this).test_ErrorMessagesCheck3564379068314715334();
+    new TestBody(this).test_ErrorMessagesCheck3564379068314715334();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -32,15 +32,15 @@ public class Collections_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeUnnamedWarningCheck6405893568802055213() throws Throwable {
-    new Collections_Test.TestBody(this).test_NodeUnnamedWarningCheck6405893568802055213();
+    new TestBody(this).test_NodeUnnamedWarningCheck6405893568802055213();
   }
   @Test
   public void test_NodeUnnamedWarningCheck9095983673872173449() throws Throwable {
-    new Collections_Test.TestBody(this).test_NodeUnnamedWarningCheck9095983673872173449();
+    new TestBody(this).test_NodeUnnamedWarningCheck9095983673872173449();
   }
   @Test
   public void test_ErrorMessagesCheck6405539316368555030() throws Throwable {
-    new Collections_Test.TestBody(this).test_ErrorMessagesCheck6405539316368555030();
+    new TestBody(this).test_ErrorMessagesCheck6405539316368555030();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

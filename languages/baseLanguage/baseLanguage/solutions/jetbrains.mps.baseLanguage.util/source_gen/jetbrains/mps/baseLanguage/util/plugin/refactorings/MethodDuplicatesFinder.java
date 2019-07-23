@@ -11,11 +11,12 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.pattern.util.IMatchModifier;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MethodDuplicatesFinder {
   private List<SNode> myNodesToFind;
@@ -32,9 +33,9 @@ public class MethodDuplicatesFinder {
   }
   public List<MethodMatch> findDuplicates(SNode root) {
     List<MethodMatch> found = new ArrayList<MethodMatch>();
-    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), false, new SAbstractConcept[]{}))) {
+    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, AUX_t9atjr.BaseConcept_bc2351f, false, new SAbstractConcept[]{}))) {
       SNode current = node;
-      MethodDuplicatesFinder.MethodMatchModifier modifier = new MethodDuplicatesFinder.MethodMatchModifier();
+      MethodMatchModifier modifier = new MethodMatchModifier();
       boolean hasNoErrors = true;
       for (SNode nodeToFind : ListSequence.fromList(this.myNodesToFind)) {
         if ((current == null) || SetSequence.fromSet(this.myUsedNodes).contains(current)) {
@@ -93,5 +94,9 @@ public class MethodDuplicatesFinder {
     public MethodMatch getMatch() {
       return this.myMatch;
     }
+  }
+
+  private static final class AUX_t9atjr {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

@@ -21,6 +21,7 @@ import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedPr
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   public String getCaption() {
@@ -44,7 +45,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
         }
       };
       EnumUsagesMigration migration = new EnumUsagesMigration();
-      for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, "jetbrains.mps.vcs.mergehints.structure.PropertyVCSDescriptor"), false))) {
+      for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_32rjqx.PropertyVCSDescriptor_eb95949a, false))) {
         migration.migratePropertyReference(propMessageTarget, MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop"));
       }
     }
@@ -59,9 +60,9 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
           return scope_32rjqx_a0e_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, "jetbrains.mps.vcs.mergehints.structure.PropertyVCSDescriptor"), false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_32rjqx.PropertyVCSDescriptor_eb95949a, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop"))), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo"));
+          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop"))), AUX_32rjqx.EnumPropertyMigrationInfo_a791f212);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
@@ -77,4 +78,8 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x37e03aa1728949bcL, 0x826930de5eceec76L, "jetbrains.mps.vcs.mergehints"), 1);
   }
 
+  private static final class AUX_32rjqx {
+    /*package*/ static final SConcept PropertyVCSDescriptor_eb95949a = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, "jetbrains.mps.vcs.mergehints.structure.PropertyVCSDescriptor");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo_a791f212 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+  }
 }

@@ -12,12 +12,13 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import java.util.Arrays;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SafeDeleteConceptMethod_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -46,7 +47,7 @@ public class SafeDeleteConceptMethod_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_4tgs0y.ConceptMethodDeclaration_6c80ca4f))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("target", node);
@@ -77,5 +78,9 @@ public class SafeDeleteConceptMethod_Action extends BaseAction {
       }
     });
 
+  }
+
+  private static final class AUX_4tgs0y {
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

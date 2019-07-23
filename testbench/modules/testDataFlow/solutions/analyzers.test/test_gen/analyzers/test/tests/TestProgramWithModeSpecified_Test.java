@@ -39,15 +39,15 @@ public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
 
   @Test
   public void test_testNonEmptyInstructionsWithModeSpecified() throws Throwable {
-    new TestProgramWithModeSpecified_Test.TestBody(this).test_testNonEmptyInstructionsWithModeSpecified();
+    new TestBody(this).test_testNonEmptyInstructionsWithModeSpecified();
   }
   @Test
   public void test_testNonEmptyInstructionsWithMoreSpecificModeSpecified() throws Throwable {
-    new TestProgramWithModeSpecified_Test.TestBody(this).test_testNonEmptyInstructionsWithMoreSpecificModeSpecified();
+    new TestBody(this).test_testNonEmptyInstructionsWithMoreSpecificModeSpecified();
   }
   @Test
   public void test_testEmptyInstructionsWithModeSpecified() throws Throwable {
-    new TestProgramWithModeSpecified_Test.TestBody(this).test_testEmptyInstructionsWithModeSpecified();
+    new TestBody(this).test_testEmptyInstructionsWithModeSpecified();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

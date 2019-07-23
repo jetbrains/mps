@@ -23,7 +23,7 @@ public class TestSideTransformExceptionActionIcon_Test extends BaseTransformatio
 
   @Test
   public void test_TestSideTransformExceptionActionIcon() throws Throwable {
-    new TestSideTransformExceptionActionIcon_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

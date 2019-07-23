@@ -21,7 +21,7 @@ public class TypeFailureInConfigDefinition_Test extends BaseTransformationTest {
 
   @Test
   public void test_TypeFailureInConfigDefinition() throws Throwable {
-    new TypeFailureInConfigDefinition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

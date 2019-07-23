@@ -10,10 +10,10 @@
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/2614955748379861497">
     <file name="ConstraintsReferenceInheritence_Scopes_Test.java">
       <node id="2614955748379861497" at="29,56,30,25" concept="6" />
-      <node id="2614955748379945983" at="34,126,35,161" concept="1" />
-      <node id="2614955748379963968" at="38,126,39,161" concept="1" />
-      <node id="2614955748380109681" at="42,126,43,161" concept="1" />
-      <node id="2614955748380109692" at="46,126,47,161" concept="1" />
+      <node id="2614955748379945983" at="34,126,35,117" concept="1" />
+      <node id="2614955748379963968" at="38,126,39,117" concept="1" />
+      <node id="2614955748380109681" at="42,126,43,117" concept="1" />
+      <node id="2614955748380109692" at="46,126,47,117" concept="1" />
       <node id="2614955748379861497" at="52,52,53,19" concept="6" />
       <node id="2614955748379945983" at="57,128,58,65" concept="4" />
       <node id="2614955748379945983" at="58,65,59,63" concept="4" />
@@ -40,10 +40,10 @@
       <node id="2614955748380109681" at="67,0,72,0" concept="3" trace="test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408#()V" />
       <node id="2614955748380109692" at="72,0,77,0" concept="3" trace="test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677#()V" />
       <scope id="2614955748379861497" at="29,56,30,25" />
-      <scope id="2614955748379945983" at="34,126,35,161" />
-      <scope id="2614955748379963968" at="38,126,39,161" />
-      <scope id="2614955748380109681" at="42,126,43,161" />
-      <scope id="2614955748380109692" at="46,126,47,161" />
+      <scope id="2614955748379945983" at="34,126,35,117" />
+      <scope id="2614955748379963968" at="38,126,39,117" />
+      <scope id="2614955748380109681" at="42,126,43,117" />
+      <scope id="2614955748380109692" at="46,126,47,117" />
       <scope id="2614955748379861497" at="52,52,53,19" />
       <scope id="2614955748379861497" at="29,0,32,0" />
       <scope id="2614955748379861497" at="52,0,55,0">
@@ -80,7 +80,7 @@
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/2614955748380186704">
     <file name="ConstraintsReferenceInheritence_Handler1_Test.java">
       <node id="2614955748380186704" at="18,58,19,25" concept="6" />
-      <node id="2614955748380186704" at="23,80,24,82" concept="1" />
+      <node id="2614955748380186704" at="23,80,24,36" concept="1" />
       <node id="2614955748380186704" at="29,52,30,19" concept="6" />
       <node id="2614955748380186704" at="34,51,35,72" concept="1" />
       <node id="2614955748380186742" at="35,72,36,49" concept="1" />
@@ -90,7 +90,7 @@
       <node id="2614955748380186704" at="22,0,26,0" concept="3" trace="test_ConstraintsReferenceInheritence_Handler1#()V" />
       <node id="2614955748380186704" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="2614955748380186704" at="18,58,19,25" />
-      <scope id="2614955748380186704" at="23,80,24,82" />
+      <scope id="2614955748380186704" at="23,80,24,36" />
       <scope id="2614955748380186704" at="29,52,30,19" />
       <scope id="2614955748380186704" at="34,51,36,49" />
       <scope id="2614955748380186704" at="18,0,21,0" />
@@ -106,7 +106,7 @@
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/2614955748380188401">
     <file name="ConstraintsReferenceInheritence_Handler2_Test.java">
       <node id="2614955748380188401" at="18,58,19,25" concept="6" />
-      <node id="2614955748380188401" at="23,80,24,82" concept="1" />
+      <node id="2614955748380188401" at="23,80,24,36" concept="1" />
       <node id="2614955748380188401" at="29,52,30,19" concept="6" />
       <node id="2614955748380188401" at="34,51,35,72" concept="1" />
       <node id="2614955748380188410" at="35,72,36,49" concept="1" />
@@ -116,7 +116,7 @@
       <node id="2614955748380188401" at="22,0,26,0" concept="3" trace="test_ConstraintsReferenceInheritence_Handler2#()V" />
       <node id="2614955748380188401" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="2614955748380188401" at="18,58,19,25" />
-      <scope id="2614955748380188401" at="23,80,24,82" />
+      <scope id="2614955748380188401" at="23,80,24,36" />
       <scope id="2614955748380188401" at="29,52,30,19" />
       <scope id="2614955748380188401" at="34,51,36,49" />
       <scope id="2614955748380188401" at="18,0,21,0" />
@@ -132,7 +132,7 @@
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/2614955748380192319">
     <file name="ConstraintsReferenceInheritence_Handler3_Test.java">
       <node id="2614955748380192319" at="18,58,19,25" concept="6" />
-      <node id="2614955748380192319" at="23,80,24,82" concept="1" />
+      <node id="2614955748380192319" at="23,80,24,36" concept="1" />
       <node id="2614955748380192319" at="29,52,30,19" concept="6" />
       <node id="2614955748380192319" at="34,51,35,72" concept="1" />
       <node id="2614955748380192328" at="35,72,36,49" concept="1" />
@@ -142,7 +142,7 @@
       <node id="2614955748380192319" at="22,0,26,0" concept="3" trace="test_ConstraintsReferenceInheritence_Handler3#()V" />
       <node id="2614955748380192319" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="2614955748380192319" at="18,58,19,25" />
-      <scope id="2614955748380192319" at="23,80,24,82" />
+      <scope id="2614955748380192319" at="23,80,24,36" />
       <scope id="2614955748380192319" at="29,52,30,19" />
       <scope id="2614955748380192319" at="34,51,36,49" />
       <scope id="2614955748380192319" at="18,0,21,0" />
@@ -158,12 +158,12 @@
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/5816870305080488164">
     <file name="ConstraintsInheritence_Test.java">
       <node id="5816870305080488164" at="29,40,30,25" concept="6" />
-      <node id="5816870305080793796" at="34,79,35,98" concept="1" />
-      <node id="5816870305080793812" at="38,79,39,98" concept="1" />
-      <node id="5816870305080792275" at="42,77,43,96" concept="1" />
-      <node id="5816870305080793804" at="46,79,47,98" concept="1" />
-      <node id="5816870305080793825" at="50,79,51,98" concept="1" />
-      <node id="5816870305080793833" at="54,79,55,98" concept="1" />
+      <node id="5816870305080793796" at="34,79,35,70" concept="1" />
+      <node id="5816870305080793812" at="38,79,39,70" concept="1" />
+      <node id="5816870305080792275" at="42,77,43,68" concept="1" />
+      <node id="5816870305080793804" at="46,79,47,70" concept="1" />
+      <node id="5816870305080793825" at="50,79,51,70" concept="1" />
+      <node id="5816870305080793833" at="54,79,55,70" concept="1" />
       <node id="5816870305080488164" at="60,52,61,19" concept="6" />
       <node id="5816870305080793796" at="65,81,66,65" concept="4" />
       <node id="5816870305080793796" at="66,65,67,63" concept="4" />
@@ -200,12 +200,12 @@
       <node id="5816870305080793825" at="85,0,90,0" concept="3" trace="test_NodeUnknownRuleCheck5816870305080793825#()V" />
       <node id="5816870305080793833" at="90,0,95,0" concept="3" trace="test_NodeUnknownRuleCheck5816870305080793833#()V" />
       <scope id="5816870305080488164" at="29,40,30,25" />
-      <scope id="5816870305080793796" at="34,79,35,98" />
-      <scope id="5816870305080793812" at="38,79,39,98" />
-      <scope id="5816870305080792275" at="42,77,43,96" />
-      <scope id="5816870305080793804" at="46,79,47,98" />
-      <scope id="5816870305080793825" at="50,79,51,98" />
-      <scope id="5816870305080793833" at="54,79,55,98" />
+      <scope id="5816870305080793796" at="34,79,35,70" />
+      <scope id="5816870305080793812" at="38,79,39,70" />
+      <scope id="5816870305080792275" at="42,77,43,68" />
+      <scope id="5816870305080793804" at="46,79,47,70" />
+      <scope id="5816870305080793825" at="50,79,51,70" />
+      <scope id="5816870305080793833" at="54,79,55,70" />
       <scope id="5816870305080488164" at="60,52,61,19" />
       <scope id="5816870305080488164" at="29,0,32,0" />
       <scope id="5816870305080488164" at="60,0,63,0">
@@ -254,8 +254,8 @@
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/8374682609824962305">
     <file name="ConstraintsInvocation_Test.java">
       <node id="8374682609824962305" at="26,39,27,25" concept="6" />
-      <node id="730305212589682236" at="31,78,32,96" concept="1" />
-      <node id="730305212589682205" at="35,78,36,96" concept="1" />
+      <node id="730305212589682236" at="31,78,32,69" concept="1" />
+      <node id="730305212589682205" at="35,78,36,69" concept="1" />
       <node id="8374682609824962305" at="41,52,42,19" concept="6" />
       <node id="730305212589682236" at="46,80,47,64" concept="4" />
       <node id="730305212589682236" at="47,64,48,62" concept="4" />
@@ -272,8 +272,8 @@
       <node id="730305212589682236" at="46,0,51,0" concept="3" trace="test_NodeUnknownRuleCheck730305212589682236#()V" />
       <node id="730305212589682205" at="51,0,56,0" concept="3" trace="test_NodeUnknownRuleCheck730305212589682205#()V" />
       <scope id="8374682609824962305" at="26,39,27,25" />
-      <scope id="730305212589682236" at="31,78,32,96" />
-      <scope id="730305212589682205" at="35,78,36,96" />
+      <scope id="730305212589682236" at="31,78,32,69" />
+      <scope id="730305212589682205" at="35,78,36,69" />
       <scope id="8374682609824962305" at="41,52,42,19" />
       <scope id="8374682609824962305" at="26,0,29,0" />
       <scope id="8374682609824962305" at="41,0,44,0">

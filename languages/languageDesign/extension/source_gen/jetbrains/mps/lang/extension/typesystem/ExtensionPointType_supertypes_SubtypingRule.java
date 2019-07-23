@@ -17,6 +17,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ExtensionPointType_supertypes_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public ExtensionPointType_supertypes_SubtypingRule() {
@@ -25,7 +26,7 @@ public class ExtensionPointType_supertypes_SubtypingRule extends SubtypingRule_R
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_bg8j1f_a0a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(ept, MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint")), MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType"))));
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, "jetbrains.mps.lang.extension.structure.ExtensionPointType");
+    return AUX_bg8j1f.ExtensionPointType_10968c5b;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,5 +45,9 @@ public class ExtensionPointType_supertypes_SubtypingRule extends SubtypingRule_R
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_bg8j1f {
+    /*package*/ static final SConcept ExtensionPointType_10968c5b = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, "jetbrains.mps.lang.extension.structure.ExtensionPointType");
   }
 }

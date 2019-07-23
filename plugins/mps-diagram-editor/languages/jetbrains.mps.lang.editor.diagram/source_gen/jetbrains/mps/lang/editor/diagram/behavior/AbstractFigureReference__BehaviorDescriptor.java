@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.diagram.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,9 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AbstractFigureReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a329d6L, "jetbrains.mps.lang.editor.diagram.structure.AbstractFigureReference");
+  private static final SAbstractConcept CONCEPT = AUX_ajt2mb.AbstractFigureReference_e469bb53;
 
   public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getFigureParameterNames").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1iN4mn3lWCq").build();
   public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureParameter").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1iN4mn3oxt8").build(SMethodBuilder.createJavaParameter(String.class, ""));
@@ -72,5 +73,9 @@ public final class AbstractFigureReference__BehaviorDescriptor extends BaseBHDes
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_ajt2mb {
+    /*package*/ static final SConcept AbstractFigureReference_e469bb53 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a329d6L, "jetbrains.mps.lang.editor.diagram.structure.AbstractFigureReference");
   }
 }

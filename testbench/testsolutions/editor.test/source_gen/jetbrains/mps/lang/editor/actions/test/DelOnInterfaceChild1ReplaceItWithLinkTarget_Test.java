@@ -22,7 +22,7 @@ public class DelOnInterfaceChild1ReplaceItWithLinkTarget_Test extends BaseTransf
 
   @Test
   public void test_DelOnInterfaceChild1ReplaceItWithLinkTarget() throws Throwable {
-    new DelOnInterfaceChild1ReplaceItWithLinkTarget_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

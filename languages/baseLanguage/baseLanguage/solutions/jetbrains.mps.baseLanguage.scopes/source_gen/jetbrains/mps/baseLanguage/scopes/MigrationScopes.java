@@ -6,13 +6,13 @@ import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * Used by deprecated concepts only
@@ -25,14 +25,14 @@ public class MigrationScopes {
   private MigrationScopes() {
   }
   public static Scope forVariables(SConcept declarationConcept, SNode contextNode, SContainmentLink link, int position) {
-    return filterByConceptScope(Scope.getScope(contextNode, link, position, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")), declarationConcept);
+    return filterByConceptScope(Scope.getScope(contextNode, link, position, AUX_blq7ee.VariableDeclaration_3c610994), declarationConcept);
   }
   public static Scope forMethods(SConcept declarationConcept, SNode contextNode, SContainmentLink link, int position) {
-    return filterByConceptScope(Scope.getScope(contextNode, link, position, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration")), declarationConcept);
+    return filterByConceptScope(Scope.getScope(contextNode, link, position, AUX_blq7ee.MethodDeclaration_637cfcff), declarationConcept);
   }
   private static Scope filterByConceptScope(@Nullable Scope innerScope, @NotNull SAbstractConcept concept) {
     if (innerScope != null) {
-      return new MigrationScopes.FilterByConceptScope(innerScope, concept);
+      return new FilterByConceptScope(innerScope, concept);
     } else {
       return new EmptyScope();
     }
@@ -48,5 +48,10 @@ public class MigrationScopes {
     public boolean isExcluded(SNode node) {
       return !(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(myConcept)));
     }
+  }
+
+  private static final class AUX_blq7ee {
+    /*package*/ static final SConcept VariableDeclaration_3c610994 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept MethodDeclaration_637cfcff = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 }

@@ -23,7 +23,7 @@ public class EditorHighlighterFactory extends AbstractProjectComponent {
   @Override
   public void projectOpened() {
     myMessageBusConnection = myProject.getMessageBus().connect();
-    myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new EditorHighlighterFactory.MyEditorComponentCreateListener());
+    myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new MyEditorComponentCreateListener());
   }
   @Override
   public void projectClosed() {

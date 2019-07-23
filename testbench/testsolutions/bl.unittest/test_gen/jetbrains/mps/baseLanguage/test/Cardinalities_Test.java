@@ -28,15 +28,15 @@ public class Cardinalities_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck1875480895988114782() throws Throwable {
-    new Cardinalities_Test.TestBody(this).test_NodeErrorCheck1875480895988114782();
+    new TestBody(this).test_NodeErrorCheck1875480895988114782();
   }
   @Test
   public void test_NodeErrorCheck1875480895987852095() throws Throwable {
-    new Cardinalities_Test.TestBody(this).test_NodeErrorCheck1875480895987852095();
+    new TestBody(this).test_NodeErrorCheck1875480895987852095();
   }
   @Test
   public void test_NodeErrorCheck1875480895987615991() throws Throwable {
-    new Cardinalities_Test.TestBody(this).test_NodeErrorCheck1875480895987615991();
+    new TestBody(this).test_NodeErrorCheck1875480895987615991();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

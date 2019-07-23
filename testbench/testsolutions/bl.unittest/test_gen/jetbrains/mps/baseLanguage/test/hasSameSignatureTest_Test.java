@@ -29,7 +29,7 @@ public class hasSameSignatureTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_list() throws Throwable {
-    new hasSameSignatureTest_Test.TestBody(this).test_list();
+    new TestBody(this).test_list();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

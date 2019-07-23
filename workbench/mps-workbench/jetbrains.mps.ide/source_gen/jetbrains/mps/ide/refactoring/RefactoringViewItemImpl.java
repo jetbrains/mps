@@ -100,7 +100,7 @@ public abstract class RefactoringViewItemImpl implements RefactoringViewItem.Ref
     myPanel.add(myUsagesView.getComponent(), BorderLayout.CENTER);
     myPanel.add(myButtonsPanel, BorderLayout.SOUTH);
     final FocusTraversalPolicy ftp = myPanel.getFocusTraversalPolicy();
-    myPanel.setFocusTraversalPolicy(new RefactoringViewItemImpl.MyFocusTraversalPolicy(ftp));
+    myPanel.setFocusTraversalPolicy(new MyFocusTraversalPolicy(ftp));
   }
   public JComponent getComponent() {
     return myPanel;

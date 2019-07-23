@@ -12,6 +12,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class rt_SubTask_AfterOrBefore {
 
@@ -22,9 +23,9 @@ public class rt_SubTask_AfterOrBefore {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before"))).isEmpty()) {
-          SLinkOperations.addNewChild(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before"), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency"));
+          SLinkOperations.addNewChild(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before"), AUX_rq5s6r.BwfSubTaskDependency_ea416a83);
         } else if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after"))).isEmpty()) {
-          SLinkOperations.addNewChild(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after"), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency"));
+          SLinkOperations.addNewChild(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after"), AUX_rq5s6r.BwfSubTaskDependency_ea416a83);
         }
       }
 
@@ -64,5 +65,9 @@ public class rt_SubTask_AfterOrBefore {
     if (Objects.equals(actionType, CellActionType.RIGHT_TRANSFORM)) {
       editorCell.setAction(actionType, createAction_RIGHT_TRANSFORM(node));
     }
+  }
+
+  private static final class AUX_rq5s6r {
+    /*package*/ static final SConcept BwfSubTaskDependency_ea416a83 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency");
   }
 }

@@ -445,12 +445,12 @@
       <node id="6422529625565074744" at="144,48,145,20" concept="3" />
       <node id="8964527901283880306" at="148,51,149,43" concept="9" />
       <node id="5994962923108340981" at="152,25,153,81" concept="3" />
-      <node id="2657001694103488301" at="153,81,154,76" concept="3" />
-      <node id="2657001694109215043" at="154,76,155,79" concept="3" />
+      <node id="2657001694103488301" at="153,81,154,59" concept="3" />
+      <node id="2657001694109215043" at="154,59,155,79" concept="3" />
       <node id="7014740539623239862" at="155,79,156,46" concept="3" />
       <node id="2657001694103488306" at="156,46,157,0" concept="11" />
-      <node id="449852004406511947" at="157,0,158,83" concept="3" />
-      <node id="7209139230536414666" at="158,83,159,119" concept="3" />
+      <node id="449852004406511947" at="157,0,158,66" concept="3" />
+      <node id="7209139230536414666" at="158,66,159,119" concept="3" />
       <node id="7209139230536585240" at="159,119,160,115" concept="3" />
       <node id="5456774780692033462" at="160,115,161,0" concept="11" />
       <node id="2657001694109447541" at="161,0,162,0" concept="11" />
@@ -1218,8 +1218,8 @@
         <var name="changeGroup" id="708166622413811524" />
         <var name="y" id="708166622413811526" />
       </scope>
-      <unit id="708166622413811559" at="28,161,32,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter$1" />
-      <unit id="708166622413811581" at="33,124,37,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter$2" />
+      <unit id="708166622413811559" at="28,141,32,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter$1" />
+      <unit id="708166622413811581" at="33,104,37,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter$2" />
       <unit id="2034046503373010848" at="54,98,59,7" name="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter$MyButton$1" />
       <unit id="708166622413811460" at="46,0,62,0" name="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter$MyButton" />
       <unit id="708166622413811400" at="18,0,63,0" name="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter" />

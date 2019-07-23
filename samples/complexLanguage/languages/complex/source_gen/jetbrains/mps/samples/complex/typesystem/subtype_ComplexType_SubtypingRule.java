@@ -8,9 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class subtype_ComplexType_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public subtype_ComplexType_SubtypingRule() {
@@ -19,7 +20,7 @@ public class subtype_ComplexType_SubtypingRule extends SubtypingRule_Runtime imp
     return _quotation_createNode_roewzw_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
+    return AUX_roewzw.DoubleType_635118d4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -32,5 +33,9 @@ public class subtype_ComplexType_SubtypingRule extends SubtypingRule_Runtime imp
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, "jetbrains.mps.samples.complex"), 0x11686a0422aL, "ComplexType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_roewzw {
+    /*package*/ static final SConcept DoubleType_635118d4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
   }
 }

@@ -13,6 +13,7 @@ import jetbrains.mps.baseLanguage.collections.behavior.IApplicableToNothing__Beh
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_AddElementOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_AddElementOperation_InferenceRule() {
@@ -38,12 +39,16 @@ public class typeof_AddElementOperation_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10e39e3ff80L, "jetbrains.mps.baseLanguage.collections.structure.AddElementOperation");
+    return AUX_k9676y.AddElementOperation_2f1edc3c;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_k9676y {
+    /*package*/ static final SConcept AddElementOperation_2f1edc3c = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10e39e3ff80L, "jetbrains.mps.baseLanguage.collections.structure.AddElementOperation");
   }
 }

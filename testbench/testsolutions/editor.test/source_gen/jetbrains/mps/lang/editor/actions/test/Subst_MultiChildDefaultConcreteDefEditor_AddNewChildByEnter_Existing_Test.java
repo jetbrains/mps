@@ -21,7 +21,7 @@ public class Subst_MultiChildDefaultConcreteDefEditor_AddNewChildByEnter_Existin
 
   @Test
   public void test_Subst_MultiChildDefaultConcreteDefEditor_AddNewChildByEnter_Existing() throws Throwable {
-    new Subst_MultiChildDefaultConcreteDefEditor_AddNewChildByEnter_Existing_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

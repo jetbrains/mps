@@ -21,7 +21,7 @@ public class Comment_CommentUncommentWithSelection_Test extends BaseTransformati
 
   @Test
   public void test_Comment_CommentUncommentWithSelection() throws Throwable {
-    new Comment_CommentUncommentWithSelection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

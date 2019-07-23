@@ -5,7 +5,6 @@ package jetbrains.mps.lang.generator.findUsages;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
@@ -21,8 +20,10 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class FindInPriorityRules_Finder extends GeneratedFinder {
   public FindInPriorityRules_Finder() {
@@ -41,7 +42,7 @@ public class FindInPriorityRules_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    return AUX_k8ktns.MappingConfiguration_587b13db;
   }
 
   @Override
@@ -49,7 +50,7 @@ public class FindInPriorityRules_Finder extends GeneratedFinder {
     monitor.start(getDescription(), 0);
     try {
       SModel modelOfSelectedMC = SNodeOperations.getModel(node);
-      final SNode moduleOfSelectedMC = SNodeOperations.as(SModelOperations.getModuleStub(modelOfSelectedMC), MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"));
+      final SNode moduleOfSelectedMC = SNodeOperations.as(SModelOperations.getModuleStub(modelOfSelectedMC), AUX_k8ktns.Generator_33f90ea3);
       SModule projectStructureModule = SNodeOperations.getModel(moduleOfSelectedMC).getModule();
       final String selectedModelReference = PersistenceFacade.getInstance().asString(SModelOperations.getPointer(modelOfSelectedMC));
       final String selectedNodeId = node.getNodeId().toString();
@@ -59,15 +60,15 @@ public class FindInPriorityRules_Finder extends GeneratedFinder {
         }
       };
       for (SModel projectStructureModel : projectStructureModule.getModels()) {
-        for (SNode gn : SModelOperations.nodes(projectStructureModel, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator"))) {
-          ListSequence.fromList(SNodeOperations.getNodeDescendants(gn, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70fL, "jetbrains.mps.lang.project.structure.MappingConfigRefAllGlobal"), false, new SAbstractConcept[]{})).visitAll(addResultFunc);
-          for (SNode mcer : ListSequence.fromList(SNodeOperations.getNodeDescendants(gn, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, "jetbrains.mps.lang.project.structure.MappingConfigExternalRef"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        for (SNode gn : SModelOperations.nodes(projectStructureModel, AUX_k8ktns.Generator_33f90ea3)) {
+          ListSequence.fromList(SNodeOperations.getNodeDescendants(gn, AUX_k8ktns.MappingConfigRefAllGlobal_53bbc375, false, new SAbstractConcept[]{})).visitAll(addResultFunc);
+          for (SNode mcer : ListSequence.fromList(SNodeOperations.getNodeDescendants(gn, AUX_k8ktns.MappingConfigExternalRef_56dc3308, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator")), MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210dL, "uuid")), SPropertyOperations.getString(moduleOfSelectedMC, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe22L, "uuid")));
             }
           })) {
-            ListSequence.fromList(SNodeOperations.getNodeDescendants(mcer, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595702d4L, "jetbrains.mps.lang.project.structure.MappingConfigRefAllLocal"), false, new SAbstractConcept[]{})).visitAll(addResultFunc);
-            ListSequence.fromList(SNodeOperations.getNodeDescendants(mcer, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+            ListSequence.fromList(SNodeOperations.getNodeDescendants(mcer, AUX_k8ktns.MappingConfigRefAllLocal_55a640db, false, new SAbstractConcept[]{})).visitAll(addResultFunc);
+            ListSequence.fromList(SNodeOperations.getNodeDescendants(mcer, AUX_k8ktns.MappingConfigNormalRef_56dc2f2c, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return SPropertyOperations.hasValue(it, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID"), "*") || (Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID")), selectedModelReference) && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572779L, "nodeID")), selectedNodeId));
               }
@@ -86,5 +87,14 @@ public class FindInPriorityRules_Finder extends GeneratedFinder {
   @Override
   public SNodeReference getDeclarationNode() {
     return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "7868642031296064248");
+  }
+
+  private static final class AUX_k8ktns {
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept Generator_33f90ea3 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
+    /*package*/ static final SConcept MappingConfigRefAllGlobal_53bbc375 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70fL, "jetbrains.mps.lang.project.structure.MappingConfigRefAllGlobal");
+    /*package*/ static final SConcept MappingConfigRefAllLocal_55a640db = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595702d4L, "jetbrains.mps.lang.project.structure.MappingConfigRefAllLocal");
+    /*package*/ static final SConcept MappingConfigNormalRef_56dc2f2c = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef");
+    /*package*/ static final SConcept MappingConfigExternalRef_56dc3308 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, "jetbrains.mps.lang.project.structure.MappingConfigExternalRef");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -17,9 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ITypeApplicable__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72de18bba2dc2a73L, "jetbrains.mps.baseLanguage.structure.ITypeApplicable");
+  private static final SAbstractConcept CONCEPT = AUX_ap4hj5.ITypeApplicable_a6dcb4b6;
 
   public static final SMethod<List<SNode>> getTypeApplicationParameters_id7bu6bIyR2DR = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeApplicationParameters").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7bu6bIyR2DR").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
@@ -71,5 +72,9 @@ public final class ITypeApplicable__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_ap4hj5 {
+    /*package*/ static final SInterfaceConcept ITypeApplicable_a6dcb4b6 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72de18bba2dc2a73L, "jetbrains.mps.baseLanguage.structure.ITypeApplicable");
   }
 }

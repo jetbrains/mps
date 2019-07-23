@@ -21,7 +21,7 @@ public class ConditionalPresentation_addQuery_RefNode_rich_Test extends BaseTran
 
   @Test
   public void test_ConditionalPresentation_addQuery_RefNode_rich() throws Throwable {
-    new ConditionalPresentation_addQuery_RefNode_rich_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

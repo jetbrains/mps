@@ -17,19 +17,20 @@ import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.editor.runtime.EditorCell_Empty;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.editor.GenerationTimeConceptStyles_StyleSheet.OptionalRoleStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class GenericLValueExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -82,7 +83,7 @@ import jetbrains.mps.baseLanguage.editor.GenerationTimeConceptStyles_StyleSheet.
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression"), "jetbrains.mps.baseLanguage.editor.GenericLValueExpression_RTM"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_j6vbwy.GenericLValueExpression_e5647799, "jetbrains.mps.baseLanguage.editor.GenericLValueExpression_RTM"));
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
@@ -130,7 +131,7 @@ import jetbrains.mps.baseLanguage.editor.GenerationTimeConceptStyles_StyleSheet.
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new GenericLValueExpression_EditorBuilder_a.typeSingleRoleHandler_dcvsu4_c1a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x723a3e657841dbf2L, "type"), getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_dcvsu4_c1a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x723a3e657841dbf2L, "type"), getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_dcvsu4_c1a extends SingleRoleCellProvider {
@@ -208,7 +209,7 @@ import jetbrains.mps.baseLanguage.editor.GenerationTimeConceptStyles_StyleSheet.
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new GenericLValueExpression_EditorBuilder_a.referenceExpressionSingleRoleHandler_dcvsu4_c2a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x5fc1cc47cb46233aL, "referenceExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new referenceExpressionSingleRoleHandler_dcvsu4_c2a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x5fc1cc47cb46233aL, "referenceExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class referenceExpressionSingleRoleHandler_dcvsu4_c2a extends SingleRoleCellProvider {
@@ -292,7 +293,7 @@ import jetbrains.mps.baseLanguage.editor.GenerationTimeConceptStyles_StyleSheet.
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new GenericLValueExpression_EditorBuilder_a.getValueExpressionSingleRoleHandler_dcvsu4_c3a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x53cc4e75e79ac302L, "getValueExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new getValueExpressionSingleRoleHandler_dcvsu4_c3a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x53cc4e75e79ac302L, "getValueExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class getValueExpressionSingleRoleHandler_dcvsu4_c3a extends SingleRoleCellProvider {
@@ -376,7 +377,7 @@ import jetbrains.mps.baseLanguage.editor.GenerationTimeConceptStyles_StyleSheet.
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new GenericLValueExpression_EditorBuilder_a.assignValueExressionSingleRoleHandler_dcvsu4_c4a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression"), getEditorContext());
+    SingleRoleCellProvider provider = new assignValueExressionSingleRoleHandler_dcvsu4_c4a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression"), getEditorContext());
     return provider.createCell();
   }
   private static class assignValueExressionSingleRoleHandler_dcvsu4_c4a extends SingleRoleCellProvider {
@@ -429,5 +430,9 @@ import jetbrains.mps.baseLanguage.editor.GenerationTimeConceptStyles_StyleSheet.
     protected String getNoTargetText() {
       return "<no assignValueExression>";
     }
+  }
+
+  private static final class AUX_j6vbwy {
+    /*package*/ static final SConcept GenericLValueExpression_e5647799 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression");
   }
 }

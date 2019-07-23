@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ElementReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ElementReference_SubstituteMenu.SMP_ReferenceScope_inm3f8_a(), MetaAdapterFactory.getConcept(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0xd0f6999e83a1e8aL, "jetbrains.mps.samples.SwingBuilder.structure.ElementReference")));
-    result.add(new ElementReference_SubstituteMenu.SMP_Subconcepts_inm3f8_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_inm3f8_a(), AUX_inm3f8.ElementReference_d2be17a6));
+    result.add(new SMP_Subconcepts_inm3f8_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class ElementReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_inm3f8_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0xd0f6999e83a1e8aL, "jetbrains.mps.samples.SwingBuilder.structure.ElementReference"), MetaAdapterFactory.getReferenceLink(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0xd0f6999e83a1e8aL, 0xd0f6999e83a1e8bL, "element"));
+      super((SAbstractConcept) AUX_inm3f8.ElementReference_d2be17a6, MetaAdapterFactory.getReferenceLink(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0xd0f6999e83a1e8aL, 0xd0f6999e83a1e8bL, "element"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class ElementReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_inm3f8_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0xd0f6999e83a1e8aL, "jetbrains.mps.samples.SwingBuilder.structure.ElementReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_inm3f8.ElementReference_d2be17a6);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class ElementReference_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_inm3f8 {
+    /*package*/ static final SConcept ElementReference_d2be17a6 = MetaAdapterFactory.getConcept(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0xd0f6999e83a1e8aL, "jetbrains.mps.samples.SwingBuilder.structure.ElementReference");
   }
 }

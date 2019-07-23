@@ -16,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_QueryParameter_NonTypesystemRule() {
@@ -23,7 +24,7 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
   public void applyRule(final SNode queryParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(queryParameter, false)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(check_z5utj9_a0a0a0a0a0b(SPropertyOperations.getString(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, "jetbrains.mps.ide.httpsupport.structure.QueryParameter")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), queryParameter));
+        return !(check_z5utj9_a0a0a0a0a0b(SPropertyOperations.getString(SNodeOperations.cast(it, AUX_z5utj9.QueryParameter_1d6de979), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), queryParameter));
       }
     }))) {
       MessageTarget errorTarget = new NodeMessageTarget();
@@ -31,7 +32,7 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, "jetbrains.mps.ide.httpsupport.structure.QueryParameter");
+    return AUX_z5utj9.QueryParameter_1d6de979;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,5 +45,9 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
       return checkedDotOperand.equals(SPropertyOperations.getString(queryParameter, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     }
     return false;
+  }
+
+  private static final class AUX_z5utj9 {
+    /*package*/ static final SConcept QueryParameter_1d6de979 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, "jetbrains.mps.ide.httpsupport.structure.QueryParameter");
   }
 }

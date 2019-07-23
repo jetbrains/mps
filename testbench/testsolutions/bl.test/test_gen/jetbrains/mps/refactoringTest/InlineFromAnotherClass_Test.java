@@ -34,7 +34,7 @@ public class InlineFromAnotherClass_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineFromAnotherClass() throws Throwable {
-    new InlineFromAnotherClass_Test.TestBody(this).test_InlineFromAnotherClass();
+    new TestBody(this).test_InlineFromAnotherClass();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

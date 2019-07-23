@@ -87,7 +87,7 @@ public enum FileType {
 
   @Nullable
   private static FileType getTypeByXmlRoot(File file) {
-    final FileType.XMLRootHandler handler = new FileType.XMLRootHandler();
+    final XMLRootHandler handler = new XMLRootHandler();
     InputStream is = null;
     try {
       is = new FileInputStream(file);

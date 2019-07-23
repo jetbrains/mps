@@ -6,10 +6,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.selectionRestoring.RestorableSelection;
 import jetbrains.mps.nodeEditor.selectionRestoring.RestorableSelectionByNode;
 import jetbrains.mps.nodeEditor.selectionRestoring.RestorableSelectionComposite;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * Used only in CellAction_CommentOrUncomment
@@ -29,14 +30,14 @@ public class CellAction_Comment extends AbstractCommentAction {
 
   @Override
   public boolean canExecute(EditorContext editorContext) {
-    if (SNodeOperations.getParent(this.myNode) == null || SNodeOperations.isInstanceOf(SNodeOperations.getParent(myNode), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"))) {
+    if (SNodeOperations.getParent(this.myNode) == null || SNodeOperations.isInstanceOf(SNodeOperations.getParent(myNode), AUX_9lx3n0.BaseCommentAttribute_f7206635)) {
       return false;
     }
     return isNonTrivialSingleSelection(editorContext);
   }
 
   public void executeInternal(EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(myNode, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute")))) {
+    if (!(SNodeOperations.isInstanceOf(myNode, AUX_9lx3n0.Attribute_2a18bbd3))) {
       CommentUtil.commentOut(myNode);
     }
   }
@@ -47,4 +48,8 @@ public class CellAction_Comment extends AbstractCommentAction {
     return new RestorableSelectionComposite(firstSelection, secondSelection);
   }
 
+  private static final class AUX_9lx3n0 {
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept Attribute_2a18bbd3 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
+  }
 }

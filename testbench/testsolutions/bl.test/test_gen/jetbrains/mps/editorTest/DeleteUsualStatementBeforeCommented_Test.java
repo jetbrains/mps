@@ -21,7 +21,7 @@ public class DeleteUsualStatementBeforeCommented_Test extends BaseTransformation
 
   @Test
   public void test_DeleteUsualStatementBeforeCommented() throws Throwable {
-    new DeleteUsualStatementBeforeCommented_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

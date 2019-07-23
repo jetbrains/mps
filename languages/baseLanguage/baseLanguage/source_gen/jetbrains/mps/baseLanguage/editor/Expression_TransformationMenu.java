@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
@@ -26,6 +25,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Expression_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -51,9 +52,9 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_a0());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_b0());
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+      result.add(new TMP_Include_g28b5z_a0());
+      result.add(new TMP_Include_g28b5z_b0());
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_g28b5z.Expression_4199e28d)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -69,7 +70,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_g28b5z.Expression_4199e28d)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -83,25 +84,25 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
         }
 
       });
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_b1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_c1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_d1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_e1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_f1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_g1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_h1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_i1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_j1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_k1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_l1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_m1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_n1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_o1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_p1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_q1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_r1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_s1());
-      result.add(new Expression_TransformationMenu.TMP_Include_g28b5z_t1());
+      result.add(new TMP_Include_g28b5z_b1());
+      result.add(new TMP_Include_g28b5z_c1());
+      result.add(new TMP_Include_g28b5z_d1());
+      result.add(new TMP_Include_g28b5z_e1());
+      result.add(new TMP_Include_g28b5z_f1());
+      result.add(new TMP_Include_g28b5z_g1());
+      result.add(new TMP_Include_g28b5z_h1());
+      result.add(new TMP_Include_g28b5z_i1());
+      result.add(new TMP_Include_g28b5z_j1());
+      result.add(new TMP_Include_g28b5z_k1());
+      result.add(new TMP_Include_g28b5z_l1());
+      result.add(new TMP_Include_g28b5z_m1());
+      result.add(new TMP_Include_g28b5z_n1());
+      result.add(new TMP_Include_g28b5z_o1());
+      result.add(new TMP_Include_g28b5z_p1());
+      result.add(new TMP_Include_g28b5z_q1());
+      result.add(new TMP_Include_g28b5z_r1());
+      result.add(new TMP_Include_g28b5z_s1());
+      result.add(new TMP_Include_g28b5z_t1());
     }
     return result;
   }
@@ -125,7 +126,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.expressionstmt_to_returnstms_on_expression");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.expressionstmt_to_returnstms_on_expression");
     }
 
   }
@@ -148,7 +149,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.expressionstmt_to_variable_declaration");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.expressionstmt_to_variable_declaration");
     }
 
   }
@@ -171,7 +172,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.dotExpression");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.dotExpression");
     }
 
   }
@@ -194,7 +195,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.SubstringExpression_Transform");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.SubstringExpression_Transform");
     }
 
   }
@@ -217,7 +218,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.instanceOf");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.instanceOf");
     }
 
   }
@@ -240,7 +241,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.expressionToNotExpression");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.expressionToNotExpression");
     }
 
   }
@@ -263,7 +264,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.UnaryMinusLeftTransform");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.UnaryMinusLeftTransform");
     }
 
   }
@@ -286,7 +287,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.expressionToParenthesis");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.expressionToParenthesis");
     }
 
   }
@@ -309,7 +310,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.binaryOperations_Expression");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.binaryOperations_Expression");
     }
 
   }
@@ -332,7 +333,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.csharp_rTransform_Expression");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.csharp_rTransform_Expression");
     }
 
   }
@@ -355,7 +356,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.postfix");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.postfix");
     }
 
   }
@@ -378,7 +379,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.Expression_to_type_Cast");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.Expression_to_type_Cast");
     }
 
   }
@@ -401,7 +402,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.ternaryOperator");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.ternaryOperator");
     }
 
   }
@@ -424,7 +425,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.prefix");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.prefix");
     }
 
   }
@@ -447,7 +448,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.arrayAccess");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.arrayAccess");
     }
 
   }
@@ -470,7 +471,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.expression_to_variable_declaration");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.expression_to_variable_declaration");
     }
 
   }
@@ -493,7 +494,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.expressionStatement");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.expressionStatement");
     }
 
   }
@@ -516,7 +517,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.assert_");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.assert_");
     }
 
   }
@@ -539,7 +540,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.assignments");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.assignments");
     }
 
   }
@@ -562,7 +563,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.addComment_Expression");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.addComment_Expression");
     }
 
   }
@@ -585,8 +586,12 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), "jetbrains.mps.baseLanguage.editor.Expression_wrapWithPassByRef");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_g28b5z.Expression_4199e28d, "jetbrains.mps.baseLanguage.editor.Expression_wrapWithPassByRef");
     }
 
+  }
+
+  private static final class AUX_g28b5z {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

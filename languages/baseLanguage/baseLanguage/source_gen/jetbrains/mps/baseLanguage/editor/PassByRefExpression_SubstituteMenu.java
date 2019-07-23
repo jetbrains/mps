@@ -16,6 +16,7 @@ import jetbrains.mps.smodel.SModelStereotype;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PassByRefExpression_SubstituteMenu extends SubstituteMenuBase {
@@ -23,7 +24,7 @@ public class PassByRefExpression_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new PassByRefExpression_SubstituteMenu.SMP_Group_jxkpru_a());
+    result.add(new SMP_Group_jxkpru_a());
     return result;
   }
 
@@ -59,7 +60,7 @@ public class PassByRefExpression_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, "jetbrains.mps.baseLanguage.structure.PassByRefExpression")) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_jxkpru.PassByRefExpression_243679e4) {
 
         @NotNull
         @Override
@@ -72,7 +73,11 @@ public class PassByRefExpression_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, "jetbrains.mps.baseLanguage.structure.PassByRefExpression")));
+      }, AUX_jxkpru.PassByRefExpression_243679e4));
     }
+  }
+
+  private static final class AUX_jxkpru {
+    /*package*/ static final SConcept PassByRefExpression_243679e4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, "jetbrains.mps.baseLanguage.structure.PassByRefExpression");
   }
 }

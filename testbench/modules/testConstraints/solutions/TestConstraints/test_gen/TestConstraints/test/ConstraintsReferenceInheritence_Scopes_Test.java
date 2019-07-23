@@ -32,19 +32,19 @@ public class ConstraintsReferenceInheritence_Scopes_Test extends BaseTransformat
 
   @Test
   public void test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979() throws Throwable {
-    new ConstraintsReferenceInheritence_Scopes_Test.TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979();
+    new TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979();
   }
   @Test
   public void test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperScoping_target_2614955748379963961() throws Throwable {
-    new ConstraintsReferenceInheritence_Scopes_Test.TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperScoping_target_2614955748379963961();
+    new TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperScoping_target_2614955748379963961();
   }
   @Test
   public void test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408() throws Throwable {
-    new ConstraintsReferenceInheritence_Scopes_Test.TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408();
+    new TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408();
   }
   @Test
   public void test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677() throws Throwable {
-    new ConstraintsReferenceInheritence_Scopes_Test.TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677();
+    new TestBody(this).test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

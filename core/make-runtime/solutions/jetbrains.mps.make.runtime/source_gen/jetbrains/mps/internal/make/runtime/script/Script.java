@@ -196,7 +196,7 @@ __switch__:
 
       LOG.debug("Beginning to execute script");
       CompositeResult results = new CompositeResult();
-      Script.ParametersPool pool = new Script.ParametersPool();
+      ParametersPool pool = new ParametersPool();
 
       LOG.debug("Initializing");
       IScriptController ctl = (controller != null ? controller : new IScriptController.Stub());
@@ -227,7 +227,7 @@ __switch__:
     }
     return (target.requiresInput() || target.producesOutput() ? 100 : 10);
   }
-  private void executeTargets(final IScriptController ctl, final Iterable<ITarget> toExecute, final Iterable<? extends IResource> scriptInput, final Script.ParametersPool pool, final CompositeResult results, final ProgressMonitor monitor) {
+  private void executeTargets(final IScriptController ctl, final Iterable<ITarget> toExecute, final Iterable<? extends IResource> scriptInput, final ParametersPool pool, final CompositeResult results, final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
     // add time statistic result first - in composite result output() is the last one 
     results.addResult(TIME_STATISTIC_RESULT_NAME, new IResult.SUCCESS(Sequence.<IResource>singleton(new TimeStatisticResource(timeStatistic))));
@@ -293,13 +293,13 @@ with_targets:
                   public boolean accept(IResource it) {
                     return !(monit.stopRequested());
                   }
-                }), monit, new Script.PropertiesAccessor(pool), subMonitor);
+                }), monit, new PropertiesAccessor(pool), subMonitor);
               } finally {
                 MapSequence.fromMap(timeStatistic).put(trg.getName(), ((MapSequence.fromMap(timeStatistic).containsKey(trg.getName()) ? MapSequence.fromMap(timeStatistic).get(trg.getName()) : 0)) + (System.currentTimeMillis() - startTime));
               }
               if (!(trg.producesOutput())) {
                 // ignore the output 
-                jr = new Script.SubsOutputResult(jr, (trg.requiresInput() ? Sequence.fromIterable(rawInput).subtract(Sequence.fromIterable(input)) : rawInput));
+                jr = new SubsOutputResult(jr, (trg.requiresInput() ? Sequence.fromIterable(rawInput).subtract(Sequence.fromIterable(input)) : rawInput));
               }
               results.addResult(trg.getName(), jr);
 
@@ -335,14 +335,14 @@ with_targets:
       }
     });
   }
-  private void configureTargets(IScriptController ctl, final Iterable<ITarget> toExecute, final Script.ParametersPool pool, final CompositeResult results) {
+  private void configureTargets(IScriptController ctl, final Iterable<ITarget> toExecute, final ParametersPool pool, final CompositeResult results) {
     ctl.runConfigWithMonitor(new _FunctionTypes._void_P1_E0<IConfigMonitor>() {
       public void invoke(IConfigMonitor cmon) {
         for (ITarget trg : Sequence.fromIterable(toExecute)) {
           try {
             LOG.debug("Configuring " + trg.getName());
             IConfig cfg = trg.createConfig();
-            if (cfg != null && !(cfg.configure(cmon, new Script.PropertiesAccessor(pool)))) {
+            if (cfg != null && !(cfg.configure(cmon, new PropertiesAccessor(pool)))) {
               LOG.debug("Configuration failed for target " + trg.getName());
               cmon.reportFeedback(new IFeedback.ERROR("Configuration failed for target " + trg.getName()));
               results.addResult(trg.getName(), new IResult.FAILURE(null));
@@ -397,13 +397,13 @@ with_targets:
     @Override
     public void setPredecessor(IPropertiesPool ppool) {
       if (ppool != null) {
-        this.copyFrom = ((Script.ParametersPool) ppool).cache;
+        this.copyFrom = ((ParametersPool) ppool).cache;
       }
     }
   }
   private class PropertiesWithBackstore implements IPropertiesPool {
     private final IPropertiesPool transProps;
-    private final IPropertiesPool persProps = new Script.ParametersPool();
+    private final IPropertiesPool persProps = new ParametersPool();
     private final Set<IFacet.Name> loadedFacets = SetSequence.fromSet(new HashSet<IFacet.Name>());
     private final IPropertiesIO propio;
     private Map<String, String> rawProps;
@@ -414,8 +414,8 @@ with_targets:
     }
     @Override
     public void setPredecessor(IPropertiesPool ppool) {
-      if (ppool instanceof Script.PropertiesWithBackstore) {
-        ppool = ((Script.PropertiesWithBackstore) ppool).transProps;
+      if (ppool instanceof PropertiesWithBackstore) {
+        ppool = ((PropertiesWithBackstore) ppool).transProps;
       }
       transProps.setPredecessor(ppool);
     }
@@ -471,7 +471,7 @@ with_targets:
       }
       IPropertiesIO pio = ((IResourceWithProperties) res).getProperties();
       if (!(MapSequence.fromMap(allProperties).containsKey(pio.getKey()))) {
-        Script.PropertiesWithBackstore props = new Script.PropertiesWithBackstore(transProps, pio);
+        PropertiesWithBackstore props = new PropertiesWithBackstore(transProps, pio);
         MapSequence.fromMap(allProperties).put(pio.getKey(), props);
       }
       return MapSequence.fromMap(allProperties).get(pio.getKey());

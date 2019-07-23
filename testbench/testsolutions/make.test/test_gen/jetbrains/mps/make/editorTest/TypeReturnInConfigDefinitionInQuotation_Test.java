@@ -21,7 +21,7 @@ public class TypeReturnInConfigDefinitionInQuotation_Test extends BaseTransforma
 
   @Test
   public void test_TypeReturnInConfigDefinitionInQuotation() throws Throwable {
-    new TypeReturnInConfigDefinitionInQuotation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

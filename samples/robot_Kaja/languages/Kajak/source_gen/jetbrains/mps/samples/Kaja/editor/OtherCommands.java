@@ -23,11 +23,12 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import java.util.Objects;
 import java.util.Arrays;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OtherCommands extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.CONTEXT_ASSISTANT);
@@ -53,9 +54,9 @@ public class OtherCommands extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new OtherCommands.TMP_Action_uewb7w_a0());
-      result.add(new OtherCommands.TMP_Action_uewb7w_b0());
-      result.add(new OtherCommands.TMP_Group_uewb7w_c0());
+      result.add(new TMP_Action_uewb7w_a0());
+      result.add(new TMP_Action_uewb7w_b0());
+      result.add(new TMP_Group_uewb7w_c0());
     }
     return result;
   }
@@ -63,7 +64,7 @@ public class OtherCommands extends TransformationMenuBase {
   private class TMP_Action_uewb7w_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      OtherCommands.TMP_Action_uewb7w_a0.Item item = new OtherCommands.TMP_Action_uewb7w_a0.Item(context);
+      TMP_Action_uewb7w_a0.Item item = new TMP_Action_uewb7w_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -98,7 +99,7 @@ public class OtherCommands extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f79f27L, "jetbrains.mps.samples.Kaja.structure.Drop"), null));
+        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_uewb7w.Drop_8702cbde, null));
       }
 
 
@@ -115,7 +116,7 @@ public class OtherCommands extends TransformationMenuBase {
   private class TMP_Action_uewb7w_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      OtherCommands.TMP_Action_uewb7w_b0.Item item = new OtherCommands.TMP_Action_uewb7w_b0.Item(context);
+      TMP_Action_uewb7w_b0.Item item = new TMP_Action_uewb7w_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -150,7 +151,7 @@ public class OtherCommands extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f85f1dL, "jetbrains.mps.samples.Kaja.structure.Pick"), null));
+        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_uewb7w.Pick_874922a3, null));
       }
 
 
@@ -167,7 +168,7 @@ public class OtherCommands extends TransformationMenuBase {
   public class TMP_Group_uewb7w_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return Objects.equals(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList"), false, false)), SNodeOperations.getContainingRoot(_context.getNode()));
+      return Objects.equals(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), AUX_uewb7w.CommandList_68ab082b, false, false)), SNodeOperations.getContainingRoot(_context.getNode()));
     }
 
     @NotNull
@@ -183,12 +184,12 @@ public class OtherCommands extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new OtherCommands.TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a());
     }
     private class TMP_Action_uewb7w_a2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        OtherCommands.TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a.Item item = new OtherCommands.TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a.Item(context);
+        TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a.Item item = new TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -223,7 +224,7 @@ public class OtherCommands extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, "jetbrains.mps.samples.Kaja.structure.Require"), null));
+          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_uewb7w.Require_9cfb5771, null));
           _context.getEditorContext().selectWRTFocusPolicy(inserted);
         }
 
@@ -238,5 +239,12 @@ public class OtherCommands extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_uewb7w {
+    /*package*/ static final SConcept Drop_8702cbde = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f79f27L, "jetbrains.mps.samples.Kaja.structure.Drop");
+    /*package*/ static final SConcept Pick_874922a3 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f85f1dL, "jetbrains.mps.samples.Kaja.structure.Pick");
+    /*package*/ static final SConcept CommandList_68ab082b = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList");
+    /*package*/ static final SConcept Require_9cfb5771 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, "jetbrains.mps.samples.Kaja.structure.Require");
   }
 }

@@ -25,7 +25,7 @@ public class InitiallyCollapsedInnerSwingComponent_Test extends BaseTransformati
 
   @Test
   public void test_InitiallyCollapsedInnerSwingComponent() throws Throwable {
-    new InitiallyCollapsedInnerSwingComponent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

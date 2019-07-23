@@ -47,6 +47,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class SubstituteMenuPart_ReferenceScope_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -99,7 +100,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
       protected EditorCell createReferenceCell(final SNode targetNode) {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
           public EditorCell compute() {
-            return new SubstituteMenuPart_ReferenceScope_EditorBuilder_a.Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
+            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
           }
         }, targetNode, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference"));
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
@@ -117,7 +118,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
       editorCell.setSRole(MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference"));
     }
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute"));
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_uyntee.LinkAttribute_d001db6f);
     Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
@@ -160,7 +161,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
         editorCell.setCellId("property_name");
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_uyntee.PropertyAttribute_d001db89);
         Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -214,7 +215,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SubstituteMenuPart_ReferenceScope_EditorBuilder_a.matchingTextFunctionSingleRoleHandler_nxj2k8_b1b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac473451e5L, "matchingTextFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new matchingTextFunctionSingleRoleHandler_nxj2k8_b1b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac473451e5L, "matchingTextFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class matchingTextFunctionSingleRoleHandler_nxj2k8_b1b0 extends SingleRoleCellProvider {
@@ -305,7 +306,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SubstituteMenuPart_ReferenceScope_EditorBuilder_a.visibleMatchingTextFunctionSingleRoleHandler_nxj2k8_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x1006e157e5b21db8L, "visibleMatchingTextFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new visibleMatchingTextFunctionSingleRoleHandler_nxj2k8_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x1006e157e5b21db8L, "visibleMatchingTextFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class visibleMatchingTextFunctionSingleRoleHandler_nxj2k8_b1c0 extends SingleRoleCellProvider {
@@ -418,7 +419,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new SubstituteMenuPart_ReferenceScope_EditorBuilder_a.descriptionTextFunctionSingleRoleHandler_nxj2k8_b1d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac47345fcfL, "descriptionTextFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new descriptionTextFunctionSingleRoleHandler_nxj2k8_b1d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac47345fcfL, "descriptionTextFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class descriptionTextFunctionSingleRoleHandler_nxj2k8_b1d0 extends SingleRoleCellProvider {
@@ -474,5 +475,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     protected String getNoTargetText() {
       return "<default>";
     }
+  }
+
+  private static final class AUX_uyntee {
+    /*package*/ static final SConcept LinkAttribute_d001db6f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

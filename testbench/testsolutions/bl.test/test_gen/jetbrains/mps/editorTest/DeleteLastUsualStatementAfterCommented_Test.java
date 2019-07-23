@@ -22,7 +22,7 @@ public class DeleteLastUsualStatementAfterCommented_Test extends BaseTransformat
 
   @Test
   public void test_DeleteLastUsualStatementAfterCommented() throws Throwable {
-    new DeleteLastUsualStatementAfterCommented_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

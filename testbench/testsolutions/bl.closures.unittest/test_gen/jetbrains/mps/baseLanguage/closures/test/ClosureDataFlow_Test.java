@@ -30,11 +30,11 @@ public class ClosureDataFlow_Test extends BaseTransformationTest {
 
   @Test
   public void test_ClosureDataFlow() throws Throwable {
-    new ClosureDataFlow_Test.TestBody(this).test_ClosureDataFlow();
+    new TestBody(this).test_ClosureDataFlow();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199348() throws Throwable {
-    new ClosureDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199348();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199348();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

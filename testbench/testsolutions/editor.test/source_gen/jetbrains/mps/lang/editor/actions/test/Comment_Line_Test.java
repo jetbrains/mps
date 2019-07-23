@@ -21,7 +21,7 @@ public class Comment_Line_Test extends BaseTransformationTest {
 
   @Test
   public void test_Comment_Line() throws Throwable {
-    new Comment_Line_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

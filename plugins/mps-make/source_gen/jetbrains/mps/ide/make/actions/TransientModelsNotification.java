@@ -24,7 +24,7 @@ public class TransientModelsNotification {
       updateWidgetLater();
     }
   };
-  private final IMakeNotificationListener myMakeNotificationListener = new TransientModelsNotification.MyMakeNotificationListener();
+  private final IMakeNotificationListener myMakeNotificationListener = new MyMakeNotificationListener();
 
   public TransientModelsNotification(final MPSProject project) {
     myProject = project;

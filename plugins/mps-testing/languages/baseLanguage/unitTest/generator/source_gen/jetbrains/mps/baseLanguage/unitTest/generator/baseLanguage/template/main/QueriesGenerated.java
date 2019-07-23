@@ -165,28 +165,28 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("1171932074431", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("8243879142738651539", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("8243879142738651567", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1171932074447", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1053275602486064363", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1053275602486064373", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1053275602486064381", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7080278351417156142", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1171981176506", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7080278351417154709", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1171983960883", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7080278351417154777", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1171985891285", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1171985905856", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7080278351417189478", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7080278351417154753", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1172028454624", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1172078363990", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1172078364000", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1172078364010", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7080278351417154731", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7080278351417106724", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("1171932074431", new SNQ(i++));
+    snqMethods.put("8243879142738651539", new SNQ(i++));
+    snqMethods.put("8243879142738651567", new SNQ(i++));
+    snqMethods.put("1171932074447", new SNQ(i++));
+    snqMethods.put("1053275602486064363", new SNQ(i++));
+    snqMethods.put("1053275602486064373", new SNQ(i++));
+    snqMethods.put("1053275602486064381", new SNQ(i++));
+    snqMethods.put("7080278351417156142", new SNQ(i++));
+    snqMethods.put("1171981176506", new SNQ(i++));
+    snqMethods.put("7080278351417154709", new SNQ(i++));
+    snqMethods.put("1171983960883", new SNQ(i++));
+    snqMethods.put("7080278351417154777", new SNQ(i++));
+    snqMethods.put("1171985891285", new SNQ(i++));
+    snqMethods.put("1171985905856", new SNQ(i++));
+    snqMethods.put("7080278351417189478", new SNQ(i++));
+    snqMethods.put("7080278351417154753", new SNQ(i++));
+    snqMethods.put("1172028454624", new SNQ(i++));
+    snqMethods.put("1172078363990", new SNQ(i++));
+    snqMethods.put("1172078364000", new SNQ(i++));
+    snqMethods.put("1172078364010", new SNQ(i++));
+    snqMethods.put("7080278351417154731", new SNQ(i++));
+    snqMethods.put("7080278351417106724", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -257,12 +257,12 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
     int i = 0;
-    snsqMethods.put("9110034126561014534", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("1711796806179938519", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("1711796806179939504", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("1171932074411", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("1171985035236", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("9110034126561076473", new QueriesGenerated.SNsQ(i++));
+    snsqMethods.put("9110034126561014534", new SNsQ(i++));
+    snsqMethods.put("1711796806179938519", new SNsQ(i++));
+    snsqMethods.put("1711796806179939504", new SNsQ(i++));
+    snsqMethods.put("1171932074411", new SNsQ(i++));
+    snsqMethods.put("1171985035236", new SNsQ(i++));
+    snsqMethods.put("9110034126561076473", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -301,9 +301,9 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("1171932074420", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "BTestCaseImpl"));
-    pvqMethods.put("5086493755336418404", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"), null));
-    pvqMethods.put("1171932074455", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "method"));
+    pvqMethods.put("1171932074420", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "BTestCaseImpl"));
+    pvqMethods.put("5086493755336418404", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"), null));
+    pvqMethods.put("1171932074455", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "method"));
   }
   @NotNull
   @Override
@@ -337,15 +337,15 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("8243879142738651521", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("8243879142738651575", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("1053275602486064351", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("7080278351417156130", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("7080278351417154697", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("7080278351417154765", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("7080278351417189480", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("7080278351417154741", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("7080278351417154719", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("8243879142738651521", new IfMC(i++));
+    imcMethods.put("8243879142738651575", new IfMC(i++));
+    imcMethods.put("1053275602486064351", new IfMC(i++));
+    imcMethods.put("7080278351417156130", new IfMC(i++));
+    imcMethods.put("7080278351417154697", new IfMC(i++));
+    imcMethods.put("7080278351417154765", new IfMC(i++));
+    imcMethods.put("7080278351417189480", new IfMC(i++));
+    imcMethods.put("7080278351417154741", new IfMC(i++));
+    imcMethods.put("7080278351417154719", new IfMC(i++));
   }
   @NotNull
   @Override

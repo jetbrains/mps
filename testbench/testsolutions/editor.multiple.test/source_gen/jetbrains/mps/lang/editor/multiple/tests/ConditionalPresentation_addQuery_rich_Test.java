@@ -21,7 +21,7 @@ public class ConditionalPresentation_addQuery_rich_Test extends BaseTransformati
 
   @Test
   public void test_ConditionalPresentation_addQuery_rich() throws Throwable {
-    new ConditionalPresentation_addQuery_rich_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

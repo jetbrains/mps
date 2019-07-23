@@ -34,6 +34,7 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class IsNullOperation_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -65,7 +66,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IsNullOperation_EditorBuilder_a.leftOperandSingleRoleHandler_ehpdiz_a0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand"), getEditorContext());
+    SingleRoleCellProvider provider = new leftOperandSingleRoleHandler_ehpdiz_a0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand"), getEditorContext());
     return provider.createCell();
   }
   private static class leftOperandSingleRoleHandler_ehpdiz_a0 extends SingleRoleCellProvider {
@@ -123,14 +124,14 @@ import jetbrains.mps.nodeEditor.MPSColors;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ".");
     editorCell.setCellId("Constant_ehpdiz_b0");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IsNullOperation_EditorBuilder_a.ReplaceWith_Operation_cellMenu_ehpdiz_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_Operation_cellMenu_ehpdiz_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_Operation_cellMenu_ehpdiz_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_Operation_cellMenu_ehpdiz_a0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation");
+      return AUX_xzy7n.Operation_1224df63;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -145,5 +146,9 @@ import jetbrains.mps.nodeEditor.MPSColors;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_xzy7n {
+    /*package*/ static final SConcept Operation_1224df63 = MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation");
   }
 }

@@ -11,12 +11,13 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.textGen.behavior.AbstractAppendPart__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SetWithIndent_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -35,7 +36,7 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart"));
+    return SNodeOperations.isInstanceOf(node, AUX_su4gw.ConstantStringAppendPart_a217ccb8) || SNodeOperations.isInstanceOf(node, AUX_su4gw.NodeAppendPart_9e9083d4);
   }
   @Override
   public boolean isSurroundWith() {
@@ -43,7 +44,7 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new SetWithIndent_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -57,15 +58,20 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean indent = (boolean) AbstractAppendPart__BehaviorDescriptor.withIndent_idi0uJgJ6.invoke(node);
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart"))) {
-        SPropertyOperations.assign(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart")), MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent"), !(indent));
+      if (SNodeOperations.isInstanceOf(node, AUX_su4gw.ConstantStringAppendPart_a217ccb8)) {
+        SPropertyOperations.assign(SNodeOperations.cast(node, AUX_su4gw.ConstantStringAppendPart_a217ccb8), MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent"), !(indent));
       } else {
-        SPropertyOperations.assign(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart")), MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent"), !(indent));
+        SPropertyOperations.assign(SNodeOperations.cast(node, AUX_su4gw.NodeAppendPart_9e9083d4), MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent"), !(indent));
       }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return SetWithIndent_Intention.this;
     }
+  }
+
+  private static final class AUX_su4gw {
+    /*package*/ static final SConcept NodeAppendPart_9e9083d4 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart");
+    /*package*/ static final SConcept ConstantStringAppendPart_a217ccb8 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart");
   }
 }

@@ -58,7 +58,7 @@ public class MPSVcsManager implements ProjectComponent {
       myChangeListManagerInitialized = true;
     }
   };
-  private MPSVcsManager.MyFileStatusListener myFileStatusListener = new MPSVcsManager.MyFileStatusListener();
+  private MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
   private MessageBusConnection myMessageBusConnection;
   public MPSVcsManager(Project project, ProjectLevelVcsManager manager, ChangeListManager clmanager) {
     myProject = project;
@@ -76,9 +76,9 @@ public class MPSVcsManager implements ProjectComponent {
     if (changeProvider == null) {
       return false;
     }
-    final MPSVcsManager.MyChangelistBuilder builder = new MPSVcsManager.MyChangelistBuilder(vfile);
+    final MyChangelistBuilder builder = new MyChangelistBuilder(vfile);
     try {
-      changeProvider.getChanges(scope, builder, new EmptyProgressIndicator(), new MPSVcsManager.StubChangeListManagerGate());
+      changeProvider.getChanges(scope, builder, new EmptyProgressIndicator(), new StubChangeListManagerGate());
     } catch (VcsException e) {
       LOG.error(null, e);
     }

@@ -25,7 +25,7 @@ public class TestSideTransformExceptionActionParameterized_Test extends BaseTran
 
   @Test
   public void test_TestSideTransformExceptionActionParameterized() throws Throwable {
-    new TestSideTransformExceptionActionParameterized_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

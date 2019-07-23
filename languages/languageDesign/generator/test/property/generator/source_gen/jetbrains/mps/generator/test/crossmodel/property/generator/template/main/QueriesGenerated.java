@@ -60,8 +60,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
     int i = 0;
-    snsqMethods.put("5176577547833330034", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("4220080364835967614", new QueriesGenerated.SNsQ(i++));
+    snsqMethods.put("5176577547833330034", new SNsQ(i++));
+    snsqMethods.put("4220080364835967614", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -92,11 +92,11 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("4220080364835917953", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "BeanClass"));
-    pvqMethods.put("5176577547833404373", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "get"));
-    pvqMethods.put("5176577547833393067", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "set"));
-    pvqMethods.put("5176577547833410172", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "value"));
-    pvqMethods.put("5925726056274261650", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "1"));
+    pvqMethods.put("4220080364835917953", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "BeanClass"));
+    pvqMethods.put("5176577547833404373", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "get"));
+    pvqMethods.put("5176577547833393067", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "set"));
+    pvqMethods.put("5176577547833410172", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "value"));
+    pvqMethods.put("5925726056274261650", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "1"));
   }
   @NotNull
   @Override
@@ -133,8 +133,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("5925726056274318831", new QueriesGenerated.RTQ(0, "A"));
-    rtqMethods.put("5925726056274316709", new QueriesGenerated.RTQ(1, "set"));
+    rtqMethods.put("5925726056274318831", new RTQ(0, "A"));
+    rtqMethods.put("5925726056274316709", new RTQ(1, "set"));
   }
   @NotNull
   @Override

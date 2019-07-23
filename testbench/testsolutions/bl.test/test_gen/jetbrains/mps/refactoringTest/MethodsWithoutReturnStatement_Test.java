@@ -36,7 +36,7 @@ public class MethodsWithoutReturnStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_checkReturnWithoutReturn() throws Throwable {
-    new MethodsWithoutReturnStatement_Test.TestBody(this).test_checkReturnWithoutReturn();
+    new TestBody(this).test_checkReturnWithoutReturn();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -25,7 +25,7 @@ public class StubModelsIndexer implements ApplicationComponent {
   }
   @Override
   public void initComponent() {
-    IdTableBuilding.registerIdIndexer(MPSPlatformFileTypeFactory.CLASS_FILE_TYPE, new StubModelsIndexer.MyFileTypeIdIndexer());
+    IdTableBuilding.registerIdIndexer(MPSPlatformFileTypeFactory.CLASS_FILE_TYPE, new MyFileTypeIdIndexer());
   }
   @Override
   public void disposeComponent() {

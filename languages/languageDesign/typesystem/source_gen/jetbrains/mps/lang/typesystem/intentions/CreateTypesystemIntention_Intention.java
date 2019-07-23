@@ -20,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CreateTypesystemIntention_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -46,7 +47,7 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new CreateTypesystemIntention_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -73,12 +74,12 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
   private static SNode createTypesystemQuickFix_wv8vj7_a0a0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, "jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_nynfqi.TypesystemQuickFix_528784d0, null, null, false);
     {
       n1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "fix_");
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3617feddL, "jetbrains.mps.lang.typesystem.structure.QuickFixExecuteBlock"), null, null, false);
+      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(AUX_nynfqi.QuickFixExecuteBlock_544d8c4d, null, null, false);
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
+        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(AUX_nynfqi.StatementList_9dbf9acf, null, null, false);
         n2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body"), n3);
       }
       n1.addChild(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock"), n2);
@@ -87,8 +88,15 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
   private static SNode createTypesystemIntention_wv8vj7_a0c0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, "jetbrains.mps.lang.typesystem.structure.TypesystemIntention"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_nynfqi.TypesystemIntention_208c03b8, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix"), node0);
     return n1;
+  }
+
+  private static final class AUX_nynfqi {
+    /*package*/ static final SConcept TypesystemQuickFix_528784d0 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, "jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix");
+    /*package*/ static final SConcept QuickFixExecuteBlock_544d8c4d = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3617feddL, "jetbrains.mps.lang.typesystem.structure.QuickFixExecuteBlock");
+    /*package*/ static final SConcept StatementList_9dbf9acf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept TypesystemIntention_208c03b8 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, "jetbrains.mps.lang.typesystem.structure.TypesystemIntention");
   }
 }

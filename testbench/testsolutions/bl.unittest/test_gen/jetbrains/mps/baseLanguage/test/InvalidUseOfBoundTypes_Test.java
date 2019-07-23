@@ -32,63 +32,63 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6923385624927426896() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624927426896();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624927426896();
   }
   @Test
   public void test_ErrorMessagesCheck4632498131795767328() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_ErrorMessagesCheck4632498131795767328();
+    new TestBody(this).test_ErrorMessagesCheck4632498131795767328();
   }
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6923385624929530242() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624929530242();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624929530242();
   }
   @Test
   public void test_ErrorMessagesCheck4632498131795771260() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_ErrorMessagesCheck4632498131795771260();
+    new TestBody(this).test_ErrorMessagesCheck4632498131795771260();
   }
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6923385624928690780() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624928690780();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624928690780();
   }
   @Test
   public void test_ErrorMessagesCheck4632498131795771535() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_ErrorMessagesCheck4632498131795771535();
+    new TestBody(this).test_ErrorMessagesCheck4632498131795771535();
   }
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6405539316368246786() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368246786();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368246786();
   }
   @Test
   public void test_ErrorMessagesCheck4632498131795772004() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_ErrorMessagesCheck4632498131795772004();
+    new TestBody(this).test_ErrorMessagesCheck4632498131795772004();
   }
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6405539316368298938() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368298938();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368298938();
   }
   @Test
   public void test_ErrorMessagesCheck4632498131795772509() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_ErrorMessagesCheck4632498131795772509();
+    new TestBody(this).test_ErrorMessagesCheck4632498131795772509();
   }
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6405539316368298991() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368298991();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368298991();
   }
   @Test
   public void test_ErrorMessagesCheck4632498131795773025() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_ErrorMessagesCheck4632498131795773025();
+    new TestBody(this).test_ErrorMessagesCheck4632498131795773025();
   }
   @Test
   public void test_ErrorMessagesCheck4632498131795773624() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_ErrorMessagesCheck4632498131795773624();
+    new TestBody(this).test_ErrorMessagesCheck4632498131795773624();
   }
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6923385624927141945() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624927141945();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6923385624927141945();
   }
   @Test
   public void test_NodeInvalidUseOfBoundTypeCheck6405539316368313510() throws Throwable {
-    new InvalidUseOfBoundTypes_Test.TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368313510();
+    new TestBody(this).test_NodeInvalidUseOfBoundTypeCheck6405539316368313510();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.query.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -19,9 +18,11 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class QueryExpression__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
+  private static final SAbstractConcept CONCEPT = AUX_w5s02o.QueryExpression_58f52cd1;
 
   public static final SMethod<Iterable<SConcept>> getSupportedParameters_id3J6h25QXCDW = new SMethodBuilder<Iterable<SConcept>>(new SJavaCompoundTypeImpl((Class<Iterable<SConcept>>) ((Class) Object.class))).name("getSupportedParameters").modifiers(SModifiersImpl.create(13, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3J6h25QXCDW").build();
   public static final SMethod<Boolean> legalAsStatement_id1653mnvAgqK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("legalAsStatement").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgqK").build();
@@ -38,16 +39,16 @@ public final class QueryExpression__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static String getHelpPage_id64VftqEen2L(@NotNull SAbstractConcept __thisConcept__) {
     String result = "Supported parameters:\n";
-    if (Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(__thisConcept__)).contains(MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope"))) {
+    if (Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(__thisConcept__)).contains(AUX_w5s02o.QueryParameterScope_e23e4568)) {
       result += "scope  (default = editable)  specifies the boundaries of the lookup operation\n";
     }
-    if (Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(__thisConcept__)).contains(MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x967fc67f6f09d70L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterExact"))) {
+    if (Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(__thisConcept__)).contains(AUX_w5s02o.QueryParameterExact_1d0ff961)) {
       result += "exact  (default = false)     exclude instances of descendant concepts\n";
     }
     return result;
   }
   /*package*/ static String getDisplayString_id5YxQmqOFZEf(@NotNull SAbstractConcept __thisConcept__) {
-    String result = HelpProvider__BehaviorDescriptor.getShortDisplayString_id64VftqEenfn.invoke0(__thisConcept__, MetaAdapterFactory.getInterfaceConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x613b3dd6aa6dac90L, "jetbrains.mps.lang.smodel.query.structure.ExpressionHelpProvider"));
+    String result = HelpProvider__BehaviorDescriptor.getShortDisplayString_id64VftqEenfn.invoke0(__thisConcept__, AUX_w5s02o.ExpressionHelpProvider_221d121e);
     if (Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(__thisConcept__)).isEmpty()) {
       return result;
     } else {
@@ -103,5 +104,12 @@ public final class QueryExpression__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_w5s02o {
+    /*package*/ static final SConcept QueryExpression_58f52cd1 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
+    /*package*/ static final SConcept QueryParameterScope_e23e4568 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope");
+    /*package*/ static final SConcept QueryParameterExact_1d0ff961 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x967fc67f6f09d70L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterExact");
+    /*package*/ static final SInterfaceConcept ExpressionHelpProvider_221d121e = MetaAdapterFactory.getInterfaceConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x613b3dd6aa6dac90L, "jetbrains.mps.lang.smodel.query.structure.ExpressionHelpProvider");
   }
 }

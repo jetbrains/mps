@@ -26,6 +26,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddNodeMacroParam_ifMacro_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   public AddNodeMacroParam_ifMacro_Intention() {
@@ -57,7 +58,7 @@ public final class AddNodeMacroParam_ifMacro_Intention extends AbstractIntention
     List<SNode> paramList = parameter(node, context);
     if (paramList != null) {
       for (SNode param : paramList) {
-        ListSequence.fromList(list).addElement(new AddNodeMacroParam_ifMacro_Intention.IntentionImplementation(param));
+        ListSequence.fromList(list).addElement(new IntentionImplementation(param));
       }
     }
     return list;
@@ -85,15 +86,15 @@ public final class AddNodeMacroParam_ifMacro_Intention extends AbstractIntention
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode nodeMacro = EditingUtil.addNodeMacro(node);
-      SNode ifMacro = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, "jetbrains.mps.lang.generator.structure.IfMacro"), null);
+      SNode ifMacro = SNodeFactoryOperations.createNewNode(AUX_caqpio.IfMacro_1dfa186c, null);
       SNodeOperations.replaceWithAnother(nodeMacro, ifMacro);
-      SNode ifMacro_Condition = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10feefdbd6eL, "jetbrains.mps.lang.generator.structure.IfMacro_Condition"), null);
-      SNode dotExpression = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), null);
-      SNode propertyAccess = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess"), null);
+      SNode ifMacro_Condition = SNodeFactoryOperations.createNewNode(AUX_caqpio.IfMacro_Condition_758d58ff, null);
+      SNode dotExpression = SNodeFactoryOperations.createNewNode(AUX_caqpio.DotExpression_97ed08d8, null);
+      SNode propertyAccess = SNodeFactoryOperations.createNewNode(AUX_caqpio.SPropertyAccess_5799f99, null);
       SLinkOperations.setTarget(propertyAccess, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property"), myParameter);
       SLinkOperations.setTarget(dotExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), propertyAccess);
-      SLinkOperations.setTarget(dotExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode"), null));
-      SNode expressionStatement = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"), null);
+      SLinkOperations.setTarget(dotExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SNodeFactoryOperations.createNewNode(AUX_caqpio.TemplateFunctionParameter_sourceNode_6cc2a91a, null));
+      SNode expressionStatement = SNodeFactoryOperations.createNewNode(AUX_caqpio.ExpressionStatement_9dbf9b0c, null);
       SLinkOperations.setTarget(expressionStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), dotExpression);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifMacro_Condition, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).addElement(expressionStatement);
       SLinkOperations.setTarget(ifMacro, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x10feeff8ac3L, "conditionFunction"), ifMacro_Condition);
@@ -107,5 +108,14 @@ public final class AddNodeMacroParam_ifMacro_Intention extends AbstractIntention
     public Object getParameter() {
       return myParameter;
     }
+  }
+
+  private static final class AUX_caqpio {
+    /*package*/ static final SConcept IfMacro_1dfa186c = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, "jetbrains.mps.lang.generator.structure.IfMacro");
+    /*package*/ static final SConcept IfMacro_Condition_758d58ff = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10feefdbd6eL, "jetbrains.mps.lang.generator.structure.IfMacro_Condition");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SPropertyAccess_5799f99 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
+    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode_6cc2a91a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
   }
 }

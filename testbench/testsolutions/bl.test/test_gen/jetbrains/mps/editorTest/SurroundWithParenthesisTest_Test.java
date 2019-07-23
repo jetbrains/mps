@@ -34,11 +34,11 @@ public class SurroundWithParenthesisTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_noBinaryOperation() throws Throwable {
-    new SurroundWithParenthesisTest_Test.TestBody(this).test_noBinaryOperation();
+    new TestBody(this).test_noBinaryOperation();
   }
   @Test
   public void test_thereIsAlreadyParenthesis() throws Throwable {
-    new SurroundWithParenthesisTest_Test.TestBody(this).test_thereIsAlreadyParenthesis();
+    new TestBody(this).test_thereIsAlreadyParenthesis();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

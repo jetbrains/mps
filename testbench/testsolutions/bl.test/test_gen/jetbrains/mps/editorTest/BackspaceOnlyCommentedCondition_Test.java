@@ -21,7 +21,7 @@ public class BackspaceOnlyCommentedCondition_Test extends BaseTransformationTest
 
   @Test
   public void test_BackspaceOnlyCommentedCondition() throws Throwable {
-    new BackspaceOnlyCommentedCondition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

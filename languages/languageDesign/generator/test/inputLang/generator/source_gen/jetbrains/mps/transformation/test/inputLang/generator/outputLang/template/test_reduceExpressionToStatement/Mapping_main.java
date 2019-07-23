@@ -14,15 +14,16 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
 import jetbrains.mps.generator.template.MapRootRuleContext;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class Mapping_main extends MapConfigBase implements TemplateMappingConfiguration {
@@ -30,8 +31,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_main(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150022679"), "main", model, false);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new Mapping_main.ReductionRule0());
-    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new Mapping_main.RootMappingRule0());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0());
+    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -43,7 +44,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150610748"), MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986c01fc7L, "jetbrains.mps.transformation.test.inputLang.structure.ExpressionToReduceToStatement"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150610748"), AUX_ief6mt.ExpressionToReduceToStatement_77d0f1e3, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -71,7 +72,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150078117"), MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, "jetbrains.mps.transformation.test.inputLang.structure.InputRootWithStatementList"), false, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150078117"), AUX_ief6mt.InputRootWithStatementList_14af8b8c, false, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -83,5 +84,10 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       Collection<SNode> result = new Template_out_class().apply(environment, context);
       return result;
     }
+  }
+
+  private static final class AUX_ief6mt {
+    /*package*/ static final SConcept ExpressionToReduceToStatement_77d0f1e3 = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986c01fc7L, "jetbrains.mps.transformation.test.inputLang.structure.ExpressionToReduceToStatement");
+    /*package*/ static final SConcept InputRootWithStatementList_14af8b8c = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, "jetbrains.mps.transformation.test.inputLang.structure.InputRootWithStatementList");
   }
 }

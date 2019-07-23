@@ -9,12 +9,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SetPackagingTypeToAuto_QuickFix extends QuickFix_Runtime {
   public SetPackagingTypeToAuto_QuickFix() {
     super(new SNodePointer("r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "685435297876952856"));
   }
   public void execute(SNode node) {
-    SLinkOperations.setTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x318cec002865ade0L, "packagingType"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x318cec002865ada1L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_AutoPluginLayoutType")));
+    SLinkOperations.setTarget(SNodeOperations.cast(node, AUX_67rfdd.BuildMpsLayout_Plugin_d1bb7c47), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x318cec002865ade0L, "packagingType"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x318cec002865ada1L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_AutoPluginLayoutType")));
+  }
+
+  private static final class AUX_67rfdd {
+    /*package*/ static final SConcept BuildMpsLayout_Plugin_d1bb7c47 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
   }
 }

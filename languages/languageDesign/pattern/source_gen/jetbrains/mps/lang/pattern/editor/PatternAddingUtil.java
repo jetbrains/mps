@@ -6,10 +6,11 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PatternAddingUtil {
   public PatternAddingUtil() {
@@ -23,16 +24,23 @@ public class PatternAddingUtil {
     if (node == null) {
       return false;
     }
-    return SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), true, false) != null;
+    return SNodeOperations.getNodeAncestor(node, AUX_7pxaax.PatternExpression_b5cd3dd6, true, false) != null;
   }
   public static void addVariablePattern(EditorContext context) {
     EditorCell contextCell = context.getSelectedCell();
     SNode node = contextCell.getSNode();
     if (contextCell.isReferenceCell()) {
       SReferenceLink ref = (SReferenceLink) contextCell.getSRole();
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"), ref), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"));
+      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.LinkAttribute(AUX_7pxaax.LinkPatternVariableDeclaration_352d241b, ref), AUX_7pxaax.LinkPatternVariableDeclaration_352d241b);
     } else {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478fL, "jetbrains.mps.lang.pattern.structure.Pattern")), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration"));
+      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(AUX_7pxaax.Pattern_b5cd3dd4), AUX_7pxaax.PatternVariableDeclaration_b5cd3dd8);
     }
+  }
+
+  private static final class AUX_7pxaax {
+    /*package*/ static final SConcept PatternExpression_b5cd3dd6 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
+    /*package*/ static final SConcept LinkPatternVariableDeclaration_352d241b = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration");
+    /*package*/ static final SConcept Pattern_b5cd3dd4 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478fL, "jetbrains.mps.lang.pattern.structure.Pattern");
+    /*package*/ static final SConcept PatternVariableDeclaration_b5cd3dd8 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration");
   }
 }

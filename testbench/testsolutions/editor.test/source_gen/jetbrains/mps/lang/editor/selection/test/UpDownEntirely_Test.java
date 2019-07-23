@@ -21,7 +21,7 @@ public class UpDownEntirely_Test extends BaseTransformationTest {
 
   @Test
   public void test_UpDownEntirely() throws Throwable {
-    new UpDownEntirely_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

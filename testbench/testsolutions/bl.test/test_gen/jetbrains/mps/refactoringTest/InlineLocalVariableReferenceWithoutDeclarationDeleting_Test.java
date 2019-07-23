@@ -34,7 +34,7 @@ public class InlineLocalVariableReferenceWithoutDeclarationDeleting_Test extends
 
   @Test
   public void test_InlineLocalVariableReferenceWithoutDeclarationDeleting() throws Throwable {
-    new InlineLocalVariableReferenceWithoutDeclarationDeleting_Test.TestBody(this).test_InlineLocalVariableReferenceWithoutDeclarationDeleting();
+    new TestBody(this).test_InlineLocalVariableReferenceWithoutDeclarationDeleting();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

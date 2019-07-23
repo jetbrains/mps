@@ -30,7 +30,7 @@ public class GetElementOperationFollowedByPropertyAccess_Test extends BaseTransf
 
   @Test
   public void test_ErrorMessagesCheck5679018521759346994() throws Throwable {
-    new GetElementOperationFollowedByPropertyAccess_Test.TestBody(this).test_ErrorMessagesCheck5679018521759346994();
+    new TestBody(this).test_ErrorMessagesCheck5679018521759346994();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

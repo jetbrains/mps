@@ -39,5 +39,5 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
     return Collections.<NodeFactory>emptyList();
   }
 
-  private static String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractEquationStatement", "CoerceExpression", "InfoStatement", "IsSubtypeExpression", "MessageStatement", "ReportErrorStatement", "TypeOfExpression", "WarningStatement"};
+  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractEquationStatement", "CoerceExpression", "InfoStatement", "IsSubtypeExpression", "MessageStatement", "ReportErrorStatement", "TypeOfExpression", "WarningStatement"};
 }

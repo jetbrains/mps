@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_BinaryStringOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_BinaryStringOperation_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_BinaryStringOperation_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1a34313bb1413cb6L, "jetbrains.mps.samples.lambdaCalculus.structure.BinaryStringOperation");
+    return AUX_wf0uj2.BinaryStringOperation_e85e5965;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_BinaryStringOperation_InferenceRule extends AbstractInferenc
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, "jetbrains.mps.samples.lambdaCalculus"), 0x3ee0e3dd7c1afae1L, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_wf0uj2 {
+    /*package*/ static final SConcept BinaryStringOperation_e85e5965 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1a34313bb1413cb6L, "jetbrains.mps.samples.lambdaCalculus.structure.BinaryStringOperation");
   }
 }

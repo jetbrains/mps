@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -22,9 +21,11 @@ import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class QueryFunction_Menu__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9039c3cL, "jetbrains.mps.lang.editor.structure.QueryFunction_Menu");
+  private static final SAbstractConcept CONCEPT = AUX_dn153j.QueryFunction_Menu_ad4dd794;
 
   public static final SMethod<Boolean> isParameterized_id1quYWAD0TOG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isParameterized").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1quYWAD0TOG").build();
   public static final SMethod<Boolean> usesParameterObjectFor_idhEwIGRw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObjectFor").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRw").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -36,17 +37,17 @@ public final class QueryFunction_Menu__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static boolean isParameterized_id1quYWAD0TOG(@NotNull SNode __thisNode__) {
-    SNode parameterizable = SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0dL, "jetbrains.mps.lang.editor.structure.IParameterizableMenuPart"), false, false);
+    SNode parameterizable = SNodeOperations.getNodeAncestor(__thisNode__, AUX_dn153j.IParameterizableMenuPart_a9bc2234, false, false);
     return (parameterizable != null) && (boolean) IParameterizableMenuPart__BehaviorDescriptor.isParameterized_id1quYWAD0Tfz.invoke(parameterizable);
   }
   /*package*/ static boolean usesParameterObjectFor_idhEwIGRw(@NotNull SNode __thisNode__, SNode parameter) {
-    return !((SNodeOperations.getConcept(parameter).equals(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1121e2c89d1L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_pattern")) || SNodeOperations.getConcept(parameter).equals(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3244dde8e1280eecL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_WrappedItem"))));
+    return !((SNodeOperations.getConcept(parameter).equals(AUX_dn153j.QueryFunctionParameter_pattern_22840343) || SNodeOperations.getConcept(parameter).equals(AUX_dn153j.QueryFunctionParameter_SubstituteMenu_WrappedItem_b5bfc53)));
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9039c3cL, "jetbrains.mps.lang.editor.structure.QueryFunction_Menu"));
+    ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, AUX_dn153j.QueryFunction_Menu_ad4dd794);
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
     if (((boolean) QueryFunction_Menu__BehaviorDescriptor.isParameterized_id1quYWAD0TOG.invoke(__thisNode__))) {
-      ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a903acc3L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_parameterObject"));
+      ListSequence.fromList(result).addElement(AUX_dn153j.QueryFunctionParameter_parameterObject_ad4fb0f0);
     }
     return result;
   }
@@ -99,5 +100,13 @@ public final class QueryFunction_Menu__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_dn153j {
+    /*package*/ static final SConcept QueryFunction_Menu_ad4dd794 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9039c3cL, "jetbrains.mps.lang.editor.structure.QueryFunction_Menu");
+    /*package*/ static final SInterfaceConcept IParameterizableMenuPart_a9bc2234 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0dL, "jetbrains.mps.lang.editor.structure.IParameterizableMenuPart");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_WrappedItem_b5bfc53 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3244dde8e1280eecL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_WrappedItem");
+    /*package*/ static final SConcept QueryFunctionParameter_pattern_22840343 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1121e2c89d1L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_pattern");
+    /*package*/ static final SConcept QueryFunctionParameter_parameterObject_ad4fb0f0 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a903acc3L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_parameterObject");
   }
 }

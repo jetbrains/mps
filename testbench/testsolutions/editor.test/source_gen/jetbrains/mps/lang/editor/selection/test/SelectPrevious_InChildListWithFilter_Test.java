@@ -21,7 +21,7 @@ public class SelectPrevious_InChildListWithFilter_Test extends BaseTransformatio
 
   @Test
   public void test_SelectPrevious_InChildListWithFilter() throws Throwable {
-    new SelectPrevious_InChildListWithFilter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

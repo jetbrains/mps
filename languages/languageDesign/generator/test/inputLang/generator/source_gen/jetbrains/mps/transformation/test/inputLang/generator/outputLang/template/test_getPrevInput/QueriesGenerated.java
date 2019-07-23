@@ -16,6 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 @Generated
 public class QueriesGenerated {
@@ -27,7 +28,7 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     SNode node = _context.getPreviousInputNodeByMappingLabel("ROOT INPUT");
-    return "ROOT INPUT: " + SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    return "ROOT INPUT: " + SPropertyOperations.getString(SNodeOperations.cast(node, AUX_x583g4.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
     SNode inputNode = _context.getPreviousInputNodeByMappingLabel("LEVEL 1");
@@ -68,21 +69,21 @@ public class QueriesGenerated {
   public static SNode mapSrcMacro_map_2_0(final MapSrcMacroContext _context) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, "jetbrains.mps.transformation.test.outputLang.structure.OutputNode"));
     SNode node = _context.getPreviousInputNodeByMappingLabel("ROOT INPUT");
-    String text = "ROOT INPUT: " + SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    String text = "ROOT INPUT: " + SPropertyOperations.getString(SNodeOperations.cast(node, AUX_x583g4.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     SPropertyOperations.set(result, MetaAdapterFactory.getProperty(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x11645b5a797L, "text"), text);
     return result;
   }
   public static SNode mapSrcMacro_map_2_1(final MapSrcMacroContext _context) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, "jetbrains.mps.transformation.test.outputLang.structure.OutputNode"));
     SNode node = _context.getPreviousInputNodeByMappingLabel("LEVEL 1");
-    String text = "LEVEL 1: " + SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    String text = "LEVEL 1: " + SPropertyOperations.getString(SNodeOperations.cast(node, AUX_x583g4.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     SPropertyOperations.set(result, MetaAdapterFactory.getProperty(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x11645b5a797L, "text"), text);
     return result;
   }
   public static SNode mapSrcMacro_map_2_2(final MapSrcMacroContext _context) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, "jetbrains.mps.transformation.test.outputLang.structure.OutputNode"));
     SNode node = _context.getPreviousInputNodeByMappingLabel("LEVEL 2");
-    String text = "LEVEL 2: " + SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    String text = "LEVEL 2: " + SPropertyOperations.getString(SNodeOperations.cast(node, AUX_x583g4.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     SPropertyOperations.set(result, MetaAdapterFactory.getProperty(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x11645b5a797L, "text"), text);
     return result;
   }
@@ -99,5 +100,9 @@ public class QueriesGenerated {
   }
   public static void mapSrcMacro_post_2_1(final MapSrcMacroPostProcContext _context) {
     _context.showInformationMessage(_context.getOutputNode(), "TEST post-proc (III)");
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

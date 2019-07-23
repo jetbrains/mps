@@ -21,7 +21,7 @@ public class RightTransformWithCustomItems_Parameterized_Test extends BaseTransf
 
   @Test
   public void test_RightTransformWithCustomItems_Parameterized() throws Throwable {
-    new RightTransformWithCustomItems_Parameterized_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

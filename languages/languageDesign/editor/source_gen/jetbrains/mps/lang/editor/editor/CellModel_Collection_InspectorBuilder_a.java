@@ -42,6 +42,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CellModel_Collection_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -135,7 +136,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CellModel_Collection_InspectorBuilder_a.cellLayoutSingleRoleHandler_cvgoyj_b0d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), getEditorContext());
+    SingleRoleCellProvider provider = new cellLayoutSingleRoleHandler_cvgoyj_b0d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), getEditorContext());
     return provider.createCell();
   }
   private static class cellLayoutSingleRoleHandler_cvgoyj_b0d0 extends SingleRoleCellProvider {
@@ -222,7 +223,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_b3hrc7.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -279,10 +280,10 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no usesFolding>");
       editorCell.setCellId("property_usesFolding");
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), "jetbrains.mps.lang.editor.editor.CellModel_Collection_UsesFoldingMenu"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_b3hrc7.CellModel_Collection_26007059, "jetbrains.mps.lang.editor.editor.CellModel_Collection_UsesFoldingMenu"));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_b3hrc7.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -298,7 +299,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CellModel_Collection_InspectorBuilder_a.usesFoldingConditionSingleRoleHandler_cvgoyj_a1c3a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x78de9e36d994f770L, "usesFoldingCondition"), getEditorContext());
+    SingleRoleCellProvider provider = new usesFoldingConditionSingleRoleHandler_cvgoyj_a1c3a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x78de9e36d994f770L, "usesFoldingCondition"), getEditorContext());
     return provider.createCell();
   }
   private static class usesFoldingConditionSingleRoleHandler_cvgoyj_a1c3a extends SingleRoleCellProvider {
@@ -394,10 +395,10 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no collapseByDefault>");
       editorCell.setCellId("property_collapseByDefault");
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), "jetbrains.mps.lang.editor.editor.CellModel_Collection_CollapseByDefaultMenu"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_b3hrc7.CellModel_Collection_26007059, "jetbrains.mps.lang.editor.editor.CellModel_Collection_CollapseByDefaultMenu"));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_b3hrc7.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -413,7 +414,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     }
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new CellModel_Collection_InspectorBuilder_a.collapseByDefaultConditionSingleRoleHandler_cvgoyj_a1d3a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x569b712fbc6ece29L, "collapseByDefaultCondition"), getEditorContext());
+    SingleRoleCellProvider provider = new collapseByDefaultConditionSingleRoleHandler_cvgoyj_a1d3a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x569b712fbc6ece29L, "collapseByDefaultCondition"), getEditorContext());
     return provider.createCell();
   }
   private static class collapseByDefaultConditionSingleRoleHandler_cvgoyj_a1d3a extends SingleRoleCellProvider {
@@ -488,7 +489,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new CellModel_Collection_InspectorBuilder_a.addHintsSingleRoleHandler_cvgoyj_b4d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x3ae0865e9aa66fc9L, "addHints"), getEditorContext());
+    SingleRoleCellProvider provider = new addHintsSingleRoleHandler_cvgoyj_b4d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x3ae0865e9aa66fc9L, "addHints"), getEditorContext());
     return provider.createCell();
   }
   private static class addHintsSingleRoleHandler_cvgoyj_b4d0 extends SingleRoleCellProvider {
@@ -564,7 +565,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new CellModel_Collection_InspectorBuilder_a.removeHintsSingleRoleHandler_cvgoyj_b5d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x3ae0865e9aa67219L, "removeHints"), getEditorContext());
+    SingleRoleCellProvider provider = new removeHintsSingleRoleHandler_cvgoyj_b5d0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x3ae0865e9aa67219L, "removeHints"), getEditorContext());
     return provider.createCell();
   }
   private static class removeHintsSingleRoleHandler_cvgoyj_b5d0 extends SingleRoleCellProvider {
@@ -618,5 +619,10 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     protected String getNoTargetText() {
       return "<no removeHints>";
     }
+  }
+
+  private static final class AUX_b3hrc7 {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept CellModel_Collection_26007059 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
   }
 }

@@ -21,7 +21,7 @@ public class RT_toArray_Test extends BaseTransformationTest {
 
   @Test
   public void test_RT_toArray() throws Throwable {
-    new RT_toArray_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

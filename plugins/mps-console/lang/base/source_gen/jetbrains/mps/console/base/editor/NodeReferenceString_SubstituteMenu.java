@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NodeReferenceString_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new NodeReferenceString_SubstituteMenu.SMP_ReferenceScope_d6a8xb_a(), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53ba81265L, "jetbrains.mps.console.base.structure.NodeReferenceString")));
-    result.add(new NodeReferenceString_SubstituteMenu.SMP_Subconcepts_d6a8xb_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_d6a8xb_a(), AUX_d6a8xb.NodeReferenceString_6c87e270));
+    result.add(new SMP_Subconcepts_d6a8xb_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class NodeReferenceString_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_d6a8xb_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53ba81265L, "jetbrains.mps.console.base.structure.NodeReferenceString"), MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target"));
+      super((SAbstractConcept) AUX_d6a8xb.NodeReferenceString_6c87e270, MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class NodeReferenceString_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_d6a8xb_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53ba81265L, "jetbrains.mps.console.base.structure.NodeReferenceString"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_d6a8xb.NodeReferenceString_6c87e270);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class NodeReferenceString_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_d6a8xb {
+    /*package*/ static final SConcept NodeReferenceString_6c87e270 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53ba81265L, "jetbrains.mps.console.base.structure.NodeReferenceString");
   }
 }

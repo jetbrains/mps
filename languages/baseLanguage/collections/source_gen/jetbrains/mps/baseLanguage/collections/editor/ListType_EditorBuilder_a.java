@@ -73,7 +73,7 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
     style.set(StyleAttributes.EDITABLE, false);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ListType_EditorBuilder_a.ListType_component_cellMenu_8617pm_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ListType_component_cellMenu_8617pm_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ListType_component_cellMenu_8617pm_a0a0 implements SubstituteInfoPartExt {
@@ -96,7 +96,7 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ListType_EditorBuilder_a.elementTypeSingleRoleHandler_8617pm_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType"), getEditorContext());
+    SingleRoleCellProvider provider = new elementTypeSingleRoleHandler_8617pm_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType"), getEditorContext());
     return provider.createCell();
   }
   private static class elementTypeSingleRoleHandler_8617pm_c0 extends SingleRoleCellProvider {

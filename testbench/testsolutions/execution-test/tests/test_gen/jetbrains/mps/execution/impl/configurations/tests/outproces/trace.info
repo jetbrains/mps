@@ -16,7 +16,7 @@
   <root nodeRef="r:70ba7cf7-d705-4776-9784-5a0abc3ae48a(jetbrains.mps.execution.impl.configurations.tests.outproces@tests)/3604131957890398125">
     <file name="MPSInstance_Test.java">
       <node id="3604131957890398125" at="30,29,31,25" concept="11" />
-      <node id="3604131957890398256" at="35,69,36,77" concept="1" />
+      <node id="3604131957890398256" at="35,69,36,60" concept="1" />
       <node id="3604131957890398125" at="41,52,42,19" concept="11" />
       <node id="168610716602212611" at="45,71,46,64" concept="7" />
       <node id="168610716602212613" at="46,64,47,101" concept="7" />
@@ -39,7 +39,7 @@
       <node id="3604131957890398256" at="34,0,38,0" concept="4" trace="test_simpleConfigurationIsRunnable#()V" />
       <node id="3604131957890398256" at="45,0,61,0" concept="4" trace="test_simpleConfigurationIsRunnable#()V" />
       <scope id="3604131957890398125" at="30,29,31,25" />
-      <scope id="3604131957890398256" at="35,69,36,77" />
+      <scope id="3604131957890398256" at="35,69,36,60" />
       <scope id="3604131957890398125" at="41,52,42,19" />
       <scope id="3604131957890398125" at="30,0,33,0" />
       <scope id="3604131957890398125" at="41,0,44,0">
@@ -62,11 +62,11 @@
   <root nodeRef="r:70ba7cf7-d705-4776-9784-5a0abc3ae48a(jetbrains.mps.execution.impl.configurations.tests.outproces@tests)/8128243960970298224">
     <file name="JUnitOutOfProcess_Test.java">
       <node id="8128243960970298224" at="47,35,48,25" concept="11" />
-      <node id="8128243960970298225" at="52,59,53,73" concept="1" />
-      <node id="7120092006645143711" at="56,59,57,73" concept="1" />
-      <node id="5101378672992586235" at="60,75,61,89" concept="1" />
-      <node id="5101378672992887243" at="64,85,65,99" concept="1" />
-      <node id="5248278678406337892" at="68,62,69,76" concept="1" />
+      <node id="8128243960970298225" at="52,59,53,50" concept="1" />
+      <node id="7120092006645143711" at="56,59,57,50" concept="1" />
+      <node id="5101378672992586235" at="60,75,61,66" concept="1" />
+      <node id="5101378672992887243" at="64,85,65,76" concept="1" />
+      <node id="5248278678406337892" at="68,62,69,53" concept="1" />
       <node id="8128243960970298224" at="74,52,75,19" concept="11" />
       <node id="5101378672992770158" at="78,61,79,263" concept="5" />
       <node id="2181232403821790423" at="79,263,80,69" concept="5" />
@@ -145,11 +145,11 @@
       <node id="7120092006645245950" at="108,145,132,7" concept="12" />
       <node id="7120092006645138817" at="108,0,134,0" concept="4" trace="runTestsWithSettings#(Ljetbrains/mps/execution/api/configurations/BaseMpsRunConfiguration;Ljava/util/List;Ljava/util/List;)V" />
       <scope id="8128243960970298224" at="47,35,48,25" />
-      <scope id="8128243960970298225" at="52,59,53,73" />
-      <scope id="7120092006645143711" at="56,59,57,73" />
-      <scope id="5101378672992586235" at="60,75,61,89" />
-      <scope id="5101378672992887243" at="64,85,65,99" />
-      <scope id="5248278678406337892" at="68,62,69,76" />
+      <scope id="8128243960970298225" at="52,59,53,50" />
+      <scope id="7120092006645143711" at="56,59,57,50" />
+      <scope id="5101378672992586235" at="60,75,61,66" />
+      <scope id="5101378672992887243" at="64,85,65,76" />
+      <scope id="5248278678406337892" at="68,62,69,53" />
       <scope id="8128243960970298224" at="74,52,75,19" />
       <scope id="7120092006645143122" at="121,69,122,120" />
       <scope id="7120092006645143135" at="123,34,124,57" />

@@ -32,7 +32,7 @@ import java.util.List;
 public class NodeBySeveralConcepts_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(NodeBySeveralConcepts_Configuration.class);
   @NotNull
-  private NodeBySeveralConcepts_Configuration.MyState myState = new NodeBySeveralConcepts_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -114,7 +114,7 @@ public class NodeBySeveralConcepts_Configuration implements IPersistentConfigura
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (NodeBySeveralConcepts_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -143,7 +143,7 @@ public class NodeBySeveralConcepts_Configuration implements IPersistentConfigura
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      NodeBySeveralConcepts_Configuration.MyState state = new NodeBySeveralConcepts_Configuration.MyState();
+      MyState state = new MyState();
       state.myNodePointer = myNodePointer;
       state.myNodeText = myNodeText;
       return state;

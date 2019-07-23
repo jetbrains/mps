@@ -23,7 +23,7 @@ public class TestSubstitute_ChildWithTrasparentAttribute_Test extends BaseTransf
 
   @Test
   public void test_TestSubstitute_ChildWithTrasparentAttribute() throws Throwable {
-    new TestSubstitute_ChildWithTrasparentAttribute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -12,6 +12,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_BuildStringNotEmpty_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
@@ -26,7 +27,7 @@ public class check_BuildStringNotEmpty_NonTypesystemRule extends AbstractNonType
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L, "jetbrains.mps.build.structure.BuildStringNotEmpty");
+    return AUX_r4mo4a.BuildStringNotEmpty_fb110cc3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,5 +37,9 @@ public class check_BuildStringNotEmpty_NonTypesystemRule extends AbstractNonType
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_r4mo4a {
+    /*package*/ static final SConcept BuildStringNotEmpty_fb110cc3 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L, "jetbrains.mps.build.structure.BuildStringNotEmpty");
   }
 }

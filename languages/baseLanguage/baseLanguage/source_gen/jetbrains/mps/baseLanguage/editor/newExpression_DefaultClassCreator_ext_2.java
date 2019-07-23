@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -64,7 +65,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new newExpression_DefaultClassCreator_ext_2.TMP_Group_fd8jk1_a0());
+      result.add(new TMP_Group_fd8jk1_a0());
     }
     return result;
   }
@@ -88,12 +89,12 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new newExpression_DefaultClassCreator_ext_2.TMP_Group_fd8jk1_a0.TMP_Action_fd8jk1_a0a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_fd8jk1_a0.TMP_Action_fd8jk1_a0a(), AUX_fd8jk1.ClassCreator_aea83ba8));
     }
     private class TMP_Action_fd8jk1_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        newExpression_DefaultClassCreator_ext_2.TMP_Group_fd8jk1_a0.TMP_Action_fd8jk1_a0a.Item item = new newExpression_DefaultClassCreator_ext_2.TMP_Group_fd8jk1_a0.TMP_Action_fd8jk1_a0a.Item(context);
+        TMP_Group_fd8jk1_a0.TMP_Action_fd8jk1_a0a.Item item = new TMP_Group_fd8jk1_a0.TMP_Action_fd8jk1_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -136,7 +137,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+          return AUX_fd8jk1.ClassCreator_aea83ba8;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -151,7 +152,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+          SAbstractConcept outputConcept = AUX_fd8jk1.ClassCreator_aea83ba8;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -160,5 +161,9 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
       }
 
     }
+  }
+
+  private static final class AUX_fd8jk1 {
+    /*package*/ static final SConcept ClassCreator_aea83ba8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
   }
 }

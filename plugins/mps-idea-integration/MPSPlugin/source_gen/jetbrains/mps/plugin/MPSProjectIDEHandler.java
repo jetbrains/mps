@@ -54,11 +54,12 @@ import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * This is a callback for mps-idea integraion plugin, responsible for actions in MPS Project. There's IProjectHandler in the IDEA instance, remote object we can ask for activities in IDEA project.
@@ -295,7 +296,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
           MPSProjectIDEHandler.LOG.error("Can't find a class " + classFqName);
           return;
         }
-        Iterable<SNode> allMethods = SNodeOperations.ofConcept(SNodeOperations.getChildren(cls), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
+        Iterable<SNode> allMethods = SNodeOperations.ofConcept(SNodeOperations.getChildren(cls), AUX_xnj2f8.BaseMethodDeclaration_9dbf9acb);
         SNode method = Sequence.fromIterable(allMethods).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return methodName.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) && ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == parameterCount;
@@ -325,12 +326,17 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
         continue;
       }
       SModel model = m;
-      for (SNode root : ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+      for (SNode root : ListSequence.fromList(SModelOperations.roots(model, AUX_xnj2f8.Classifier_4b7e553))) {
         if (name.equals(SPropertyOperations.getString(root, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
           return root;
         }
       }
     }
     return null;
+  }
+
+  private static final class AUX_xnj2f8 {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

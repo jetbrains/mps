@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
@@ -26,6 +25,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
@@ -34,15 +34,16 @@ import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new DebuggerReference_SubstituteMenu.SMP_Param_kfxouf_a(), MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference")));
-    result.add(new DebuggerReference_SubstituteMenu.SMP_Subconcepts_kfxouf_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference")) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kfxouf_a(), AUX_kfxouf.DebuggerReference_d4e4caf3));
+    result.add(new SMP_Subconcepts_kfxouf_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_kfxouf.DebuggerReference_d4e4caf3) {
 
       @NotNull
       @Override
@@ -55,7 +56,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference")));
+    }, AUX_kfxouf.DebuggerReference_d4e4caf3));
     return result;
   }
 
@@ -76,7 +77,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-      return new DebuggerReference_SubstituteMenu.SMP_Param_kfxouf_a.SMP_Action_kfxouf_a0(parameter).createItems(context);
+      return new SMP_Param_kfxouf_a.SMP_Action_kfxouf_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -107,7 +108,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        DebuggerReference_SubstituteMenu.SMP_Param_kfxouf_a.SMP_Action_kfxouf_a0.Item item = new DebuggerReference_SubstituteMenu.SMP_Param_kfxouf_a.SMP_Action_kfxouf_a0.Item(_context);
+        SMP_Param_kfxouf_a.SMP_Action_kfxouf_a0.Item item = new SMP_Param_kfxouf_a.SMP_Action_kfxouf_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -131,7 +132,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference"), context);
+          super(AUX_kfxouf.DebuggerReference_d4e4caf3, context);
           _context = context;
         }
 
@@ -142,7 +143,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode debuggerReference = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference"), null);
+          SNode debuggerReference = SNodeFactoryOperations.createNewNode(AUX_kfxouf.DebuggerReference_d4e4caf3, null);
           SPropertyOperations.set(debuggerReference, MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, 0xf528808f912d155L, "debuggerName"), myParameterObject);
           return debuggerReference;
         }
@@ -153,7 +154,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_kfxouf.DebuggerReference_d4e4caf3, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -176,7 +177,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_kfxouf_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_kfxouf.DebuggerReference_d4e4caf3);
     }
     @NotNull
     @Override
@@ -194,5 +195,9 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_kfxouf {
+    /*package*/ static final SConcept DebuggerReference_d4e4caf3 = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
   }
 }

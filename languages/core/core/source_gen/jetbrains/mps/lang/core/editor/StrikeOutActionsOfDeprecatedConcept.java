@@ -7,7 +7,6 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -15,6 +14,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.language.ConceptRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StrikeOutActionsOfDeprecatedConcept implements EditorMenuItemCustomizer {
 
@@ -23,7 +24,7 @@ public class StrikeOutActionsOfDeprecatedConcept implements EditorMenuItemCustom
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    StrikeOutActionsOfDeprecatedConcept.StrikeOutActionsOfDeprecatedConceptSpecific customizer = new StrikeOutActionsOfDeprecatedConcept.StrikeOutActionsOfDeprecatedConceptSpecific();
+    StrikeOutActionsOfDeprecatedConceptSpecific customizer = new StrikeOutActionsOfDeprecatedConceptSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -32,7 +33,7 @@ public class StrikeOutActionsOfDeprecatedConcept implements EditorMenuItemCustom
   private static class StrikeOutActionsOfDeprecatedConceptSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept")).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(AUX_owixse.BaseConcept_bc2351f).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -67,4 +68,7 @@ public class StrikeOutActionsOfDeprecatedConcept implements EditorMenuItemCustom
   }
 
 
+  private static final class AUX_owixse {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+  }
 }

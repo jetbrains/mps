@@ -10,7 +10,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.platform.refactoring.MoveNodeDialog;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.platform.actions.core.MoveNodesUtil;
@@ -22,6 +21,8 @@ import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.refactoring.participant.NodeCopyTracker;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveStaticMethodRefactoring;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MoveStaticMethod implements MoveNodesAction {
 
@@ -42,26 +43,26 @@ public class MoveStaticMethod implements MoveNodesAction {
     final Wrappers._boolean result = new Wrappers._boolean();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
+        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), AUX_blaz7k.StaticMethodDeclaration_9cd8c445);
       }
     });
     return result.value;
   }
 
   public void execute(MPSProject project, List<SNode> nodes) {
-    final SNode target = SNodeOperations.cast(ListSequence.fromList(nodes).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
+    final SNode target = SNodeOperations.cast(ListSequence.fromList(nodes).first(), AUX_blaz7k.StaticMethodDeclaration_9cd8c445);
 
     final SNode whereToMove = MoveNodeDialog.getSelectedObject(project, target, new MoveNodeDialog.NodeFilter("Select classifier to move to: refactoring can't be applied to the selected node") {
       @Override
       public boolean check(SNode selectedObject, SNode nodeToMove, SModel modelOfSelectedNode) {
-        return SNodeOperations.isInstanceOf(selectedObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToMove, null, false)).contains(selectedObject));
+        return SNodeOperations.isInstanceOf(selectedObject, AUX_blaz7k.Classifier_4b7e553) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToMove, null, false)).contains(selectedObject));
       }
     });
     if (whereToMove == null) {
       return;
     }
 
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new MoveStaticField.NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))), project) {
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new MoveStaticField.NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, AUX_blaz7k.Classifier_4b7e553)), project) {
       @Override
       public List<SNode> getNodesToSearch(SNode nodeToMove) {
         return ListSequence.fromListAndArray(new ArrayList<SNode>(), nodeToMove);
@@ -73,11 +74,11 @@ public class MoveStaticMethod implements MoveNodesAction {
         copyMap.copyAndTrack(nodesRootsToMove);
         Map<SNode, SNode> oldMembersToClasses = MapSequence.fromMap(new HashMap<SNode, SNode>());
         for (SNode oldNode : ListSequence.fromList(nodesRootsToMove)) {
-          MapSequence.fromMap(oldMembersToClasses).put(oldNode, SNodeOperations.getNodeAncestor(oldNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false));
+          MapSequence.fromMap(oldMembersToClasses).put(oldNode, SNodeOperations.getNodeAncestor(oldNode, AUX_blaz7k.ClassConcept_e2711824, false, false));
         }
         for (SNode oldNode : ListSequence.fromList(nodesRootsToMove)) {
           SNode newNode = MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode);
-          if (!(SNodeOperations.isInstanceOf(newNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")))) {
+          if (!(SNodeOperations.isInstanceOf(newNode, AUX_blaz7k.StaticMethodDeclaration_9cd8c445))) {
             throw new IllegalStateException();
           }
           SNode originalClass = MapSequence.fromMap(oldMembersToClasses).get(oldNode);
@@ -92,4 +93,9 @@ public class MoveStaticMethod implements MoveNodesAction {
     }).withValues(ListSequence.fromListAndArray(new ArrayList<SNode>(), target)));
   }
 
+  private static final class AUX_blaz7k {
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+  }
 }

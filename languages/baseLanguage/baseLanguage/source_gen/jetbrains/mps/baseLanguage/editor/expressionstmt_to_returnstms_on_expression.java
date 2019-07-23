@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -35,6 +34,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class expressionstmt_to_returnstms_on_expression extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -60,7 +61,7 @@ public class expressionstmt_to_returnstms_on_expression extends TransformationMe
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new expressionstmt_to_returnstms_on_expression.TMP_Group_vdgfyi_a0());
+      result.add(new TMP_Group_vdgfyi_a0());
     }
     return result;
   }
@@ -68,7 +69,7 @@ public class expressionstmt_to_returnstms_on_expression extends TransformationMe
   public class TMP_Group_vdgfyi_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.getConcept(_context.getNode()).isAbstract() && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"));
+      return SNodeOperations.getConcept(_context.getNode()).isAbstract() && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_vdgfyi.ExpressionStatement_9dbf9b0c);
     }
 
     @NotNull
@@ -84,12 +85,12 @@ public class expressionstmt_to_returnstms_on_expression extends TransformationMe
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new expressionstmt_to_returnstms_on_expression.TMP_Group_vdgfyi_a0.TMP_Action_vdgfyi_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_vdgfyi_a0.TMP_Action_vdgfyi_a0a());
     }
     private class TMP_Action_vdgfyi_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        expressionstmt_to_returnstms_on_expression.TMP_Group_vdgfyi_a0.TMP_Action_vdgfyi_a0a.Item item = new expressionstmt_to_returnstms_on_expression.TMP_Group_vdgfyi_a0.TMP_Action_vdgfyi_a0a.Item(context);
+        TMP_Group_vdgfyi_a0.TMP_Action_vdgfyi_a0a.Item item = new TMP_Group_vdgfyi_a0.TMP_Action_vdgfyi_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -124,7 +125,7 @@ public class expressionstmt_to_returnstms_on_expression extends TransformationMe
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"));
+          SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(_context.getNode()), AUX_vdgfyi.ReturnStatement_d4768417);
         }
 
 
@@ -146,5 +147,10 @@ public class expressionstmt_to_returnstms_on_expression extends TransformationMe
       }
 
     }
+  }
+
+  private static final class AUX_vdgfyi {
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept ReturnStatement_d4768417 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
   }
 }

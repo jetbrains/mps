@@ -21,7 +21,7 @@ public class Uncomment_LineOutOfCommentedNode_Test extends BaseTransformationTes
 
   @Test
   public void test_Uncomment_LineOutOfCommentedNode() throws Throwable {
-    new Uncomment_LineOutOfCommentedNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class InsertPlaceholderStatementBeforeNode_Test extends BaseTransformatio
 
   @Test
   public void test_InsertPlaceholderStatementBeforeNode() throws Throwable {
-    new InsertPlaceholderStatementBeforeNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

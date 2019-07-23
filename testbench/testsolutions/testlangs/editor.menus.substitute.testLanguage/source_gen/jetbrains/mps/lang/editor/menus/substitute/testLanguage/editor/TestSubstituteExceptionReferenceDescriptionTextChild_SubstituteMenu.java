@@ -10,23 +10,24 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu.SMP_ReferenceScope_utuqn2_a(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceDescriptionTextChild")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_utuqn2_a(), AUX_utuqn2.TestSubstituteExceptionReferenceDescriptionTextChild_5560c623));
     return result;
   }
 
@@ -47,7 +48,7 @@ public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu
 
     public SMP_ReferenceScope_utuqn2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceDescriptionTextChild"), MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, 0x63457d5cb582c0d3L, "reference"));
+      super((SAbstractConcept) AUX_utuqn2.TestSubstituteExceptionReferenceDescriptionTextChild_5560c623, MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, 0x63457d5cb582c0d3L, "reference"));
     }
     @NotNull
     @Override
@@ -64,7 +65,7 @@ public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu.SMP_ReferenceScope_utuqn2_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new SMP_ReferenceScope_utuqn2_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;
@@ -95,5 +96,9 @@ public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu
         return myTraceInfo;
       }
     }
+  }
+
+  private static final class AUX_utuqn2 {
+    /*package*/ static final SConcept TestSubstituteExceptionReferenceDescriptionTextChild_5560c623 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceDescriptionTextChild");
   }
 }

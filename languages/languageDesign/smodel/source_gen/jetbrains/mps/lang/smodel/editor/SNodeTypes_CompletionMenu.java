@@ -23,7 +23,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -33,6 +32,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -58,9 +59,9 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new SNodeTypes_CompletionMenu.TMP_Action_2o71or_a0());
-      result.add(new SNodeTypes_CompletionMenu.TMP_Action_2o71or_b0());
-      result.add(new SNodeTypes_CompletionMenu.TMP_Action_2o71or_c0());
+      result.add(new TMP_Action_2o71or_a0());
+      result.add(new TMP_Action_2o71or_b0());
+      result.add(new TMP_Action_2o71or_c0());
     }
     return result;
   }
@@ -68,7 +69,7 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
   private class TMP_Action_2o71or_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      SNodeTypes_CompletionMenu.TMP_Action_2o71or_a0.Item item = new SNodeTypes_CompletionMenu.TMP_Action_2o71or_a0.Item(context);
+      TMP_Action_2o71or_a0.Item item = new TMP_Action_2o71or_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -103,13 +104,13 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));
+        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_2o71or.SNodeType_dcb080ab);
       }
 
 
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
-        return SConceptOperations.shortDescription(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));
+        return SConceptOperations.shortDescription(AUX_2o71or.SNodeType_dcb080ab);
       }
 
 
@@ -132,7 +133,7 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
   private class TMP_Action_2o71or_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      SNodeTypes_CompletionMenu.TMP_Action_2o71or_b0.Item item = new SNodeTypes_CompletionMenu.TMP_Action_2o71or_b0.Item(context);
+      TMP_Action_2o71or_b0.Item item = new TMP_Action_2o71or_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -167,13 +168,13 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType"));
+        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_2o71or.SNodePointerType_1589fb65);
       }
 
 
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
-        return SConceptOperations.shortDescription(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType"));
+        return SConceptOperations.shortDescription(AUX_2o71or.SNodePointerType_1589fb65);
       }
 
 
@@ -196,7 +197,7 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
   private class TMP_Action_2o71or_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      SNodeTypes_CompletionMenu.TMP_Action_2o71or_c0.Item item = new SNodeTypes_CompletionMenu.TMP_Action_2o71or_c0.Item(context);
+      TMP_Action_2o71or_c0.Item item = new TMP_Action_2o71or_c0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -231,13 +232,13 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType"));
+        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_2o71or.SConceptType_7fe2a457);
       }
 
 
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
-        return SConceptOperations.shortDescription(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType"));
+        return SConceptOperations.shortDescription(AUX_2o71or.SConceptType_7fe2a457);
       }
 
 
@@ -256,5 +257,11 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_2o71or {
+    /*package*/ static final SConcept SNodeType_dcb080ab = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept SNodePointerType_1589fb65 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    /*package*/ static final SConcept SConceptType_7fe2a457 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
   }
 }

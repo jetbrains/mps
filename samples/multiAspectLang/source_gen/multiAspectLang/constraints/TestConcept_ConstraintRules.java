@@ -4,7 +4,6 @@ package multiAspectLang.constraints;
 
 import jetbrains.mps.core.aspects.constraints.rules.BaseRulesConstraintsDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
@@ -23,12 +22,13 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
+  private static final SAbstractConcept CONCEPT = AUX_6y4avc.TestConcept_e187f53f;
 
-  public static final Rule<CanBeRootContext> check_id7932913038699129641 = new TestConcept_ConstraintRules.Rule_unnamed_6y4avc_e0();
-  public static final Rule<ContainmentContext> check_id2716118816015675669 = new TestConcept_ConstraintRules.Rule_unnamed_6y4avc_a1();
+  public static final Rule<CanBeRootContext> check_id7932913038699129641 = new Rule_unnamed_6y4avc_e0();
+  public static final Rule<ContainmentContext> check_id2716118816015675669 = new Rule_unnamed_6y4avc_a1();
 
   private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id7932913038699129641, check_id2716118816015675669));
 
@@ -84,14 +84,14 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (String) SModelOperations.getModelName(TestConcept_ConstraintRules.Def_AModel7932913038696329443.getValue(context));
+      return (String) SModelOperations.getModelName(Def_AModel7932913038696329443.getValue(context));
     }
 
     public static boolean isDefined(@NotNull CanBeRootContext context) {
-      if (!(TestConcept_ConstraintRules.Def_AModel7932913038696329443.isDefined(context))) {
+      if (!(Def_AModel7932913038696329443.isDefined(context))) {
         return false;
       }
-      return ListSequence.fromList(SModelOperations.nodes(TestConcept_ConstraintRules.Def_AModel7932913038696329443.getValue(context), MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"))).isNotEmpty();
+      return ListSequence.fromList(SModelOperations.nodes(Def_AModel7932913038696329443.getValue(context), AUX_6y4avc.TestConcept_e187f53f)).isNotEmpty();
     }
   }
 
@@ -105,11 +105,11 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (String) SModelOperations.getModelName(TestConcept_ConstraintRules.Def_AModel7932913038696329443.getValue(context));
+      return (String) SModelOperations.getModelName(Def_AModel7932913038696329443.getValue(context));
     }
 
     public static boolean isDefined(@NotNull CanBeRootContext context) {
-      if (!(TestConcept_ConstraintRules.Def_AModel7932913038696329443.isDefined(context))) {
+      if (!(Def_AModel7932913038696329443.isDefined(context))) {
         return false;
       }
       return true;
@@ -126,12 +126,12 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
 
     @Override
     public boolean check(@NotNull CanBeRootContext context) {
-      return TestConcept_ConstraintRules.Def_AModelName2554379189374271668.getValue(context).startsWith("A");
+      return Def_AModelName2554379189374271668.getValue(context).startsWith("A");
     }
 
     @Override
     public boolean appliesTo(@NotNull CanBeRootContext context) {
-      if (!(TestConcept_ConstraintRules.Def_AModelName2554379189374271668.isDefined(context))) {
+      if (!(Def_AModelName2554379189374271668.isDefined(context))) {
         return false;
       }
       return true;
@@ -159,5 +159,9 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
 
   /*package*/ TestConcept_ConstraintRules() {
     super(CONCEPT);
+  }
+
+  private static final class AUX_6y4avc {
+    /*package*/ static final SConcept TestConcept_e187f53f = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
   }
 }

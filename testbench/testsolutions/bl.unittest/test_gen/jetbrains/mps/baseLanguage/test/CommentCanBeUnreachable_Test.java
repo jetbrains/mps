@@ -32,11 +32,11 @@ public class CommentCanBeUnreachable_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeUnusedVariableWarningCheck6923385624928604784() throws Throwable {
-    new CommentCanBeUnreachable_Test.TestBody(this).test_NodeUnusedVariableWarningCheck6923385624928604784();
+    new TestBody(this).test_NodeUnusedVariableWarningCheck6923385624928604784();
   }
   @Test
   public void test_ErrorMessagesCheck1226936244308() throws Throwable {
-    new CommentCanBeUnreachable_Test.TestBody(this).test_ErrorMessagesCheck1226936244308();
+    new TestBody(this).test_ErrorMessagesCheck1226936244308();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

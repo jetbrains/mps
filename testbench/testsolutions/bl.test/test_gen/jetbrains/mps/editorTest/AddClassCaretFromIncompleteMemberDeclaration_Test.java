@@ -21,7 +21,7 @@ public class AddClassCaretFromIncompleteMemberDeclaration_Test extends BaseTrans
 
   @Test
   public void test_AddClassCaretFromIncompleteMemberDeclaration() throws Throwable {
-    new AddClassCaretFromIncompleteMemberDeclaration_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

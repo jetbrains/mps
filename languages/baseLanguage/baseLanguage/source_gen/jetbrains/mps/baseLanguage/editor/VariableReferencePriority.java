@@ -7,13 +7,14 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class VariableReferencePriority implements EditorMenuItemCustomizer {
 
@@ -22,7 +23,7 @@ public class VariableReferencePriority implements EditorMenuItemCustomizer {
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    VariableReferencePriority.VariableReferencePrioritySpecific customizer = new VariableReferencePriority.VariableReferencePrioritySpecific();
+    VariableReferencePrioritySpecific customizer = new VariableReferencePrioritySpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -31,7 +32,7 @@ public class VariableReferencePriority implements EditorMenuItemCustomizer {
   private static class VariableReferencePrioritySpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(AUX_jmki95.VariableReference_24d60dac).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -54,7 +55,7 @@ public class VariableReferencePriority implements EditorMenuItemCustomizer {
     }
     private void customize_(SNode parentNode, SNode currentChild, SContainmentLink containmentLink, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       Object parameterObject = itemInformation.getParameterObject();
-      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, "jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration")) && (Objects.equals(SNodeOperations.getContainingRoot(((SNode) parameterObject)), SNodeOperations.getContainingRoot(parentNode)))) {
+      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), AUX_jmki95.BaseVariableDeclaration_dbe331ae) && (Objects.equals(SNodeOperations.getContainingRoot(((SNode) parameterObject)), SNodeOperations.getContainingRoot(parentNode)))) {
         style.setPriority(1.0);
         style.setBold();
       }
@@ -62,4 +63,8 @@ public class VariableReferencePriority implements EditorMenuItemCustomizer {
   }
 
 
+  private static final class AUX_jmki95 {
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept BaseVariableDeclaration_dbe331ae = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, "jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration");
+  }
 }

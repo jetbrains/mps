@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -20,13 +19,15 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ParenthesisSubstitute extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ParenthesisSubstitute.SMP_Action_smqx88_a(), MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, "jetbrains.mps.samples.lambdaCalculus.structure.ParenthesisExpression")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_smqx88_a(), AUX_smqx88.ParenthesisExpression_a3203df5));
     return result;
   }
 
@@ -48,7 +49,7 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      ParenthesisSubstitute.SMP_Action_smqx88_a.Item item = new ParenthesisSubstitute.SMP_Action_smqx88_a.Item(_context);
+      SMP_Action_smqx88_a.Item item = new SMP_Action_smqx88_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -71,7 +72,7 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, "jetbrains.mps.samples.lambdaCalculus.structure.ParenthesisExpression"), context);
+        super(AUX_smqx88.ParenthesisExpression_a3203df5, context);
         _context = context;
       }
 
@@ -82,7 +83,7 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, "jetbrains.mps.samples.lambdaCalculus.structure.ParenthesisExpression"), null);
+        SNode result = SNodeFactoryOperations.createNewNode(AUX_smqx88.ParenthesisExpression_a3203df5, null);
         return result;
       }
 
@@ -96,5 +97,9 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
         return "(";
       }
     }
+  }
+
+  private static final class AUX_smqx88 {
+    /*package*/ static final SConcept ParenthesisExpression_a3203df5 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, "jetbrains.mps.samples.lambdaCalculus.structure.ParenthesisExpression");
   }
 }

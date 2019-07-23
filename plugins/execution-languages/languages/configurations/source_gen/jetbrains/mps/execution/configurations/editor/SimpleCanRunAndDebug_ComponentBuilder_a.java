@@ -106,7 +106,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new SimpleCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_o92gz8_a0b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_o92gz8_a0b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_o92gz8_a0b1a extends AbstractCellMenuPart_Generic_Item {
@@ -144,7 +144,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new SimpleCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_o92gz8_a0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_o92gz8_a0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_o92gz8_a0c1a extends AbstractCellMenuPart_Generic_Item {
@@ -208,7 +208,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new SimpleCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_o92gz8_a0a3a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_o92gz8_a0a3a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_o92gz8_a0a3a extends AbstractCellMenuPart_Generic_Item {
@@ -246,7 +246,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new SimpleCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_o92gz8_a0b3a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_o92gz8_a0b3a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_o92gz8_a0b3a extends AbstractCellMenuPart_Generic_Item {

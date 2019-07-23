@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -21,9 +20,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class QueryFunction_SubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x77859491bd4702f5L, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu");
+  private static final SAbstractConcept CONCEPT = AUX_bvy0p8.QueryFunction_SubstituteMenu_3cd1dd62;
 
   public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
 
@@ -33,13 +33,13 @@ public final class QueryFunction_SubstituteMenu__BehaviorDescriptor extends Base
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x77859491bd4702f5L, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10ccb7e17b2L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ParentNode"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4b4c9b482992dc34L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_CurrentTargetNode"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11c6f1d424dL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Link"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext"));
-    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x69333c273254322aL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_model"));
-    SNode menuPart = SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart"), false, false);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, AUX_bvy0p8.QueryFunction_SubstituteMenu_3cd1dd62);
+    ListSequence.fromList(result).addElement(AUX_bvy0p8.QueryFunctionParameter_SubstituteMenu_ParentNode_e5da8d9f);
+    ListSequence.fromList(result).addElement(AUX_bvy0p8.QueryFunctionParameter_SubstituteMenu_CurrentTargetNode_5f948513);
+    ListSequence.fromList(result).addElement(AUX_bvy0p8.QueryFunctionParameter_SubstituteMenu_Link_198ec676);
+    ListSequence.fromList(result).addElement(AUX_bvy0p8.ConceptFunctionParameter_editorContext_94336d9a);
+    ListSequence.fromList(result).addElement(AUX_bvy0p8.ConceptFunctionParameter_model_8c1f2940);
+    SNode menuPart = SNodeOperations.getNodeAncestor(__thisNode__, AUX_bvy0p8.SubstituteMenuPart_c9bcc2e6, false, false);
     return result;
   }
 
@@ -87,5 +87,15 @@ public final class QueryFunction_SubstituteMenu__BehaviorDescriptor extends Base
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_bvy0p8 {
+    /*package*/ static final SConcept QueryFunction_SubstituteMenu_3cd1dd62 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x77859491bd4702f5L, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_ParentNode_e5da8d9f = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10ccb7e17b2L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ParentNode");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_CurrentTargetNode_5f948513 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4b4c9b482992dc34L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_CurrentTargetNode");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_Link_198ec676 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11c6f1d424dL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Link");
+    /*package*/ static final SConcept ConceptFunctionParameter_editorContext_94336d9a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
+    /*package*/ static final SConcept ConceptFunctionParameter_model_8c1f2940 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x69333c273254322aL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_model");
+    /*package*/ static final SConcept SubstituteMenuPart_c9bcc2e6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
   }
 }

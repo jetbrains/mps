@@ -31,63 +31,63 @@ public class TestDefaultParameterConverter_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck529363524336070898() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336070898();
+    new TestBody(this).test_ErrorMessagesCheck529363524336070898();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336073276() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336073276();
+    new TestBody(this).test_ErrorMessagesCheck529363524336073276();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336074363() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336074363();
+    new TestBody(this).test_ErrorMessagesCheck529363524336074363();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336074453() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336074453();
+    new TestBody(this).test_ErrorMessagesCheck529363524336074453();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336074483() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336074483();
+    new TestBody(this).test_ErrorMessagesCheck529363524336074483();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336074645() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336074645();
+    new TestBody(this).test_ErrorMessagesCheck529363524336074645();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336082678() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336082678();
+    new TestBody(this).test_ErrorMessagesCheck529363524336082678();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336082684() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336082684();
+    new TestBody(this).test_ErrorMessagesCheck529363524336082684();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336082690() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336082690();
+    new TestBody(this).test_ErrorMessagesCheck529363524336082690();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336074753() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336074753();
+    new TestBody(this).test_ErrorMessagesCheck529363524336074753();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336074801() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336074801();
+    new TestBody(this).test_ErrorMessagesCheck529363524336074801();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336074855() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336074855();
+    new TestBody(this).test_ErrorMessagesCheck529363524336074855();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336083420() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336083420();
+    new TestBody(this).test_ErrorMessagesCheck529363524336083420();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336083426() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_ErrorMessagesCheck529363524336083426();
+    new TestBody(this).test_ErrorMessagesCheck529363524336083426();
   }
   @Test
   public void test_NodeTypeSystemCheck8206790888929524961() throws Throwable {
-    new TestDefaultParameterConverter_Test.TestBody(this).test_NodeTypeSystemCheck8206790888929524961();
+    new TestBody(this).test_NodeTypeSystemCheck8206790888929524961();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

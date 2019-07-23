@@ -21,7 +21,7 @@ public class ProjectStructure_StyleSheet {
   public static void apply_KeyWord(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ProjectStructure_StyleSheet.KeyWordStyleClass(editorContext, node).apply(style, editorCell);
+    new KeyWordStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class KeyWordStyleClass extends AbstractStyleClass {

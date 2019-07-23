@@ -35,6 +35,7 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class AbstractComparableStatement_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -67,7 +68,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AbstractComparableStatement_EditorBuilder_a.leftExpressionSingleRoleHandler_2gd5o_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new leftExpressionSingleRoleHandler_2gd5o_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class leftExpressionSingleRoleHandler_2gd5o_a0 extends SingleRoleCellProvider {
@@ -126,7 +127,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     Style style = new StyleImpl();
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_2gd5o_a0b0()));
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new AbstractComparableStatement_EditorBuilder_a.ReplaceWith_AbstractEquationStatement_cellMenu_2gd5o_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_AbstractEquationStatement_cellMenu_2gd5o_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   private Color _StyleParameter_QueryFunction_2gd5o_a0b0() {
@@ -140,7 +141,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     public ReplaceWith_AbstractEquationStatement_cellMenu_2gd5o_a0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
+      return AUX_ps0m2q.AbstractEquationStatement_37e39569;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -148,7 +149,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new AbstractComparableStatement_EditorBuilder_a.rightExpressionSingleRoleHandler_2gd5o_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new rightExpressionSingleRoleHandler_2gd5o_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class rightExpressionSingleRoleHandler_2gd5o_c0 extends SingleRoleCellProvider {
@@ -207,5 +208,9 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     editorCell.setCellId("Constant_2gd5o_d0");
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_ps0m2q {
+    /*package*/ static final SConcept AbstractEquationStatement_37e39569 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
   }
 }

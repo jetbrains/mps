@@ -19,6 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class TestEditorMenuTraceSubstituteMenuParameterized_Test extends BaseTransformationTest {
@@ -31,7 +32,7 @@ public class TestEditorMenuTraceSubstituteMenuParameterized_Test extends BaseTra
 
   @Test
   public void test_TestEditorMenuTraceSubstituteMenuParameterized() throws Throwable {
-    new TestEditorMenuTraceSubstituteMenuParameterized_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {
@@ -52,10 +53,14 @@ public class TestEditorMenuTraceSubstituteMenuParameterized_Test extends BaseTra
           Assert.assertTrue(action != null);
 
           EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          SNode parameterizedPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Parameterized"))).first();
+          SNode parameterizedPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts")), AUX_hvn4gs.SubstituteMenuPart_Parameterized_97d44bd8)).first();
           EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(SLinkOperations.getTarget(parameterizedPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, 0x742ef6b4d0cca0c7L, "part"))), SNodeOperations.getPointer(parameterizedPart), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
         }
       });
     }
+  }
+
+  private static final class AUX_hvn4gs {
+    /*package*/ static final SConcept SubstituteMenuPart_Parameterized_97d44bd8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Parameterized");
   }
 }

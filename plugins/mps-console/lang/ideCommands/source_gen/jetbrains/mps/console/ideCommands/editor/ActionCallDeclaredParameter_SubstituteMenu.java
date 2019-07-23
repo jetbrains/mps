@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ActionCallDeclaredParameter_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ActionCallDeclaredParameter_SubstituteMenu.SMP_ReferenceScope_xyyani_a(), MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, "jetbrains.mps.console.ideCommands.structure.ActionCallDeclaredParameter")));
-    result.add(new ActionCallDeclaredParameter_SubstituteMenu.SMP_Subconcepts_xyyani_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_xyyani_a(), AUX_xyyani.ActionCallDeclaredParameter_48a6c9a4));
+    result.add(new SMP_Subconcepts_xyyani_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class ActionCallDeclaredParameter_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_xyyani_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, "jetbrains.mps.console.ideCommands.structure.ActionCallDeclaredParameter"), MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, 0x4d7759afce9587a8L, "declaration"));
+      super((SAbstractConcept) AUX_xyyani.ActionCallDeclaredParameter_48a6c9a4, MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, 0x4d7759afce9587a8L, "declaration"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class ActionCallDeclaredParameter_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_xyyani_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, "jetbrains.mps.console.ideCommands.structure.ActionCallDeclaredParameter"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_xyyani.ActionCallDeclaredParameter_48a6c9a4);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class ActionCallDeclaredParameter_SubstituteMenu extends SubstituteMenuBa
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_xyyani {
+    /*package*/ static final SConcept ActionCallDeclaredParameter_48a6c9a4 = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, "jetbrains.mps.console.ideCommands.structure.ActionCallDeclaredParameter");
   }
 }

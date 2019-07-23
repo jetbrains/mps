@@ -21,6 +21,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CustomToolShortcut_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -50,7 +51,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new CustomToolShortcut_EditorBuilder_a.changesListHandler_lt2026_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new changesListHandler_lt2026_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_changes");
     editorCell.setSRole(handler.getElementSRole());
@@ -73,7 +74,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, 0x68b8d4843b765b8L, "changes");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL, "jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke");
+      return AUX_3qbnps.AbstractToolKeystroke_d9b1de70;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -106,5 +107,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
         }
       }
     }
+  }
+
+  private static final class AUX_3qbnps {
+    /*package*/ static final SConcept AbstractToolKeystroke_d9b1de70 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL, "jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke");
   }
 }

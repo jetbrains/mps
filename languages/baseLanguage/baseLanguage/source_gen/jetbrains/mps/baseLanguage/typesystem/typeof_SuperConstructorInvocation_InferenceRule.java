@@ -23,6 +23,8 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SuperConstructorInvocation_InferenceRule() {
@@ -32,7 +34,7 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
     if (cdecl == null) {
       return;
     }
-    SNode thisClassifier = SNodeOperations.getNodeAncestor(sci, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
+    SNode thisClassifier = SNodeOperations.getNodeAncestor(sci, AUX_tm50ix.ClassConcept_e2711824, false, false);
     if (thisClassifier == null) {
       return;
     }
@@ -44,8 +46,8 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
     List<SNode> argl = SLinkOperations.getChildren(sci, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"));
     List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(cdecl, ((int) ListSequence.fromList(argl).count()));
     for (SNode type : ListSequence.fromList(typel)) {
-      if (SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType"))) {
-        IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(type, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType")), subs);
+      if (SNodeOperations.isInstanceOf(type, AUX_tm50ix.IGenericType_d5d80471)) {
+        IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(type, AUX_tm50ix.IGenericType_d5d80471), subs);
       }
     }
     {
@@ -56,11 +58,11 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
       while (type_it.hasNext() && arg_it.hasNext()) {
         type_var = type_it.next();
         arg_var = arg_it.next();
-        if (SNodeOperations.isInstanceOf(type_var, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType"))) {
+        if (SNodeOperations.isInstanceOf(type_var, AUX_tm50ix.IGenericType_d5d80471)) {
           {
             SNode _nodeToCheck_1029348928467 = arg_var;
             EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243956571", 0, null);
-            typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(type_var, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType")), subs), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243956573", true), false, true, _info_12389875345);
+            typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(type_var, AUX_tm50ix.IGenericType_d5d80471), subs), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "185741718243956573", true), false, true, _info_12389875345);
           }
         } else {
           if (!(typeCheckingContext.isSingleTypeComputation())) {
@@ -80,7 +82,7 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
+    return AUX_tm50ix.SuperConstructorInvocation_a3dc119a;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -93,5 +95,11 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_tm50ix {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SInterfaceConcept IGenericType_d5d80471 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SConcept SuperConstructorInvocation_a3dc119a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
   }
 }

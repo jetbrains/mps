@@ -29,10 +29,10 @@ public class RemoteSettingsEditor extends JPanel {
   private String myCommandLine;
   public RemoteSettingsEditor() {
     super(new GridBagLayout());
-    RemoteSettingsEditor.MyKeyAdapter listener = new RemoteSettingsEditor.MyKeyAdapter();
+    MyKeyAdapter listener = new MyKeyAdapter();
     myHostTextField = new JTextField();
     myHostTextField.addKeyListener(listener);
-    DefaultFormatter formatter = new RemoteSettingsEditor.MyDefaultFormatter();
+    DefaultFormatter formatter = new MyDefaultFormatter();
     formatter.setAllowsInvalid(true);
     formatter.setCommitsOnValidEdit(true);
     formatter.setOverwriteMode(false);

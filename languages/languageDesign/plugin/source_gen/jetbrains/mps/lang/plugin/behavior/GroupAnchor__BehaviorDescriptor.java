@@ -4,7 +4,6 @@ package jetbrains.mps.lang.plugin.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,13 +15,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class GroupAnchor__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11840f36089L, "jetbrains.mps.lang.plugin.structure.GroupAnchor");
+  private static final SAbstractConcept CONCEPT = AUX_a5salm.GroupAnchor_57defea;
 
   public static final SMethod<String> getId_idhEwIkYn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getId").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIkYn").build();
   public static final SMethod<String> getActionId_id4L4tRTddLSL = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getActionId").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4L4tRTddLSL").build();
@@ -36,7 +37,7 @@ public final class GroupAnchor__BehaviorDescriptor extends BaseBHDescriptor {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
   }
   /*package*/ static String getActionId_id4L4tRTddLSL(@NotNull SNode __thisNode__) {
-    return ActionGroupDeclaration__BehaviorDescriptor.getGeneratedName_idhEwJa82.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration"))) + GroupAnchor__BehaviorDescriptor.getId_idhEwIkYn.invoke(__thisNode__);
+    return ActionGroupDeclaration__BehaviorDescriptor.getGeneratedName_idhEwJa82.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), AUX_a5salm.ActionGroupDeclaration_3a039d1)) + GroupAnchor__BehaviorDescriptor.getId_idhEwIkYn.invoke(__thisNode__);
   }
 
   /*package*/ GroupAnchor__BehaviorDescriptor() {
@@ -85,5 +86,10 @@ public final class GroupAnchor__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_a5salm {
+    /*package*/ static final SConcept GroupAnchor_57defea = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11840f36089L, "jetbrains.mps.lang.plugin.structure.GroupAnchor");
+    /*package*/ static final SConcept ActionGroupDeclaration_3a039d1 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration");
   }
 }

@@ -27,7 +27,7 @@ public class ContextAssistant_ShownWhenMenu_Test extends BaseTransformationTest 
 
   @Test
   public void test_ContextAssistant_ShownWhenMenu() throws Throwable {
-    new ContextAssistant_ShownWhenMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

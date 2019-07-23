@@ -21,7 +21,7 @@ public class UndoChangesCursorPositionFirst_Test extends BaseTransformationTest 
 
   @Test
   public void test_UndoChangesCursorPositionFirst() throws Throwable {
-    new UndoChangesCursorPositionFirst_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

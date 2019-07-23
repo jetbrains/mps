@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_SubstituteMenuItem_MatchingText_Operation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SubstituteMenuItem_MatchingText_Operation_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_SubstituteMenuItem_MatchingText_Operation_InferenceRule exte
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3244dde8e1507ac6L, "jetbrains.mps.lang.editor.structure.SubstituteMenuItem_MatchingText_Operation");
+    return AUX_xhri86.SubstituteMenuItem_MatchingText_Operation_a4a93af0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_SubstituteMenuItem_MatchingText_Operation_InferenceRule exte
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_xhri86 {
+    /*package*/ static final SConcept SubstituteMenuItem_MatchingText_Operation_a4a93af0 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3244dde8e1507ac6L, "jetbrains.mps.lang.editor.structure.SubstituteMenuItem_MatchingText_Operation");
   }
 }

@@ -32,6 +32,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.RightParenStyleClass;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CellModel_Diagram_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -103,7 +104,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new CellModel_Diagram_EditorBuilder_a.diagramElementsListHandler_7br2q0_e0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new diagramElementsListHandler_7br2q0_e0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_diagramElements");
     editorCell.setSRole(handler.getElementSRole());
@@ -126,7 +127,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x4a53d4fb31a6b00cL, "diagramElements");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4a53d4fb31a6add1L, "jetbrains.mps.lang.editor.diagram.structure.DiagramElement");
+      return AUX_8cael2.DiagramElement_17bff5c;
     }
 
     private String getSeparatorText() {
@@ -186,7 +187,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CellModel_Diagram_EditorBuilder_a.paletteDeclarationSingleRoleHandler_7br2q0_g0(myNode, MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x5bdb7aaec1476e7cL, "paletteDeclaration"), getEditorContext());
+    SingleRoleCellProvider provider = new paletteDeclarationSingleRoleHandler_7br2q0_g0(myNode, MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x5bdb7aaec1476e7cL, "paletteDeclaration"), getEditorContext());
     return provider.createCell();
   }
   private static class paletteDeclarationSingleRoleHandler_7br2q0_g0 extends SingleRoleCellProvider {
@@ -251,5 +252,9 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+
+  private static final class AUX_8cael2 {
+    /*package*/ static final SConcept DiagramElement_17bff5c = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4a53d4fb31a6add1L, "jetbrains.mps.lang.editor.diagram.structure.DiagramElement");
   }
 }

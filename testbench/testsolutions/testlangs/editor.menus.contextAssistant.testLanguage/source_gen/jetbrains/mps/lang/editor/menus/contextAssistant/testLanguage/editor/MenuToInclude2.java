@@ -46,7 +46,7 @@ public class MenuToInclude2 extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new MenuToInclude2.TMP_Action_uz1ojm_a0());
+      result.add(new TMP_Action_uz1ojm_a0());
     }
     return result;
   }
@@ -54,7 +54,7 @@ public class MenuToInclude2 extends TransformationMenuBase {
   private class TMP_Action_uz1ojm_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      MenuToInclude2.TMP_Action_uz1ojm_a0.Item item = new MenuToInclude2.TMP_Action_uz1ojm_a0.Item(context);
+      TMP_Action_uz1ojm_a0.Item item = new TMP_Action_uz1ojm_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

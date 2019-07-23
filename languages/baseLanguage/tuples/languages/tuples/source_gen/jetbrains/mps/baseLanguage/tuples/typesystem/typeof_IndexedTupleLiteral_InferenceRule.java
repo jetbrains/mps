@@ -17,6 +17,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_IndexedTupleLiteral_InferenceRule() {
@@ -33,7 +34,7 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleLiteral");
+    return AUX_6bpfww.IndexedTupleLiteral_1ce280f8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,5 +54,9 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
       }
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_6bpfww {
+    /*package*/ static final SConcept IndexedTupleLiteral_1ce280f8 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleLiteral");
   }
 }

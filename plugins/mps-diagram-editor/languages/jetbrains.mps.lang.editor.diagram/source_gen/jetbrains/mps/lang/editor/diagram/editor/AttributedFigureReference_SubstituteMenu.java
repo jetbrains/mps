@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AttributedFigureReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new AttributedFigureReference_SubstituteMenu.SMP_ReferenceScope_luac2k_a(), MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, "jetbrains.mps.lang.editor.diagram.structure.AttributedFigureReference")));
-    result.add(new AttributedFigureReference_SubstituteMenu.SMP_Subconcepts_luac2k_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_luac2k_a(), AUX_luac2k.AttributedFigureReference_f116111d));
+    result.add(new SMP_Subconcepts_luac2k_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class AttributedFigureReference_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_luac2k_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, "jetbrains.mps.lang.editor.diagram.structure.AttributedFigureReference"), MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, 0x4b412569a0e43041L, "figureAttribute"));
+      super((SAbstractConcept) AUX_luac2k.AttributedFigureReference_f116111d, MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, 0x4b412569a0e43041L, "figureAttribute"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class AttributedFigureReference_SubstituteMenu extends SubstituteMenuBase
   }
   public class SMP_Subconcepts_luac2k_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, "jetbrains.mps.lang.editor.diagram.structure.AttributedFigureReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_luac2k.AttributedFigureReference_f116111d);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class AttributedFigureReference_SubstituteMenu extends SubstituteMenuBase
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_luac2k {
+    /*package*/ static final SConcept AttributedFigureReference_f116111d = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, "jetbrains.mps.lang.editor.diagram.structure.AttributedFigureReference");
   }
 }

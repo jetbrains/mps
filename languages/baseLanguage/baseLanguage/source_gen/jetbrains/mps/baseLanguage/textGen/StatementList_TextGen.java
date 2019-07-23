@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.traceable.behavior.ScopeConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class StatementList_TextGen extends TextGenDescriptorBase {
   @Override
@@ -21,7 +22,11 @@ public class StatementList_TextGen extends TextGenDescriptorBase {
       tgs.appendNode(stmt);
     }
     if (tgs.needPositions()) {
-      tgs.fillScopeInfo(ScopeConcept__BehaviorDescriptor.getScopeVariables_id4pl5GY7LKmA.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a2L, "jetbrains.mps.lang.traceable.structure.ScopeConcept"))));
+      tgs.fillScopeInfo(ScopeConcept__BehaviorDescriptor.getScopeVariables_id4pl5GY7LKmA.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), AUX_d59o5k.ScopeConcept_228d6871)));
     }
+  }
+
+  private static final class AUX_d59o5k {
+    /*package*/ static final SInterfaceConcept ScopeConcept_228d6871 = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a2L, "jetbrains.mps.lang.traceable.structure.ScopeConcept");
   }
 }

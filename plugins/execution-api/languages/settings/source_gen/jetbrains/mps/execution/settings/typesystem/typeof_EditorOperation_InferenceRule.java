@@ -57,12 +57,16 @@ public class typeof_EditorOperation_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, "jetbrains.mps.execution.settings.structure.EditorOperationCall");
+    return AUX_wbyn5.EditorOperationCall_9ba052ca;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_wbyn5 {
+    /*package*/ static final SConcept EditorOperationCall_9ba052ca = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, "jetbrains.mps.execution.settings.structure.EditorOperationCall");
   }
 }

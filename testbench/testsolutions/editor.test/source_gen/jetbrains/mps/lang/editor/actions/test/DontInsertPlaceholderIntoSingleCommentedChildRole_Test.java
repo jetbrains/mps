@@ -21,7 +21,7 @@ public class DontInsertPlaceholderIntoSingleCommentedChildRole_Test extends Base
 
   @Test
   public void test_DontInsertPlaceholderIntoSingleCommentedChildRole() throws Throwable {
-    new DontInsertPlaceholderIntoSingleCommentedChildRole_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

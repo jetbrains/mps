@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_Sout_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_Sout_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_Sout_InferenceRule extends AbstractInferenceRule_Runtime imp
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x2e4f876dc3944f48L, 0x93c5b5f4c0ec9b51L, 0x748e34155462f038L, "testLangWithRT.structure.Sout");
+    return AUX_e14ijz.Sout_89f2a8b1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_Sout_InferenceRule extends AbstractInferenceRule_Runtime imp
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_e14ijz {
+    /*package*/ static final SConcept Sout_89f2a8b1 = MetaAdapterFactory.getConcept(0x2e4f876dc3944f48L, 0x93c5b5f4c0ec9b51L, 0x748e34155462f038L, "testLangWithRT.structure.Sout");
   }
 }

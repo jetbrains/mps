@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
   public String getCaption() {
@@ -50,7 +51,7 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
           return scope_6mkphx_b0d_0;
         }
       };
-      Collection<SNode> SCAs = CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_AddConcept"), false);
+      Collection<SNode> SCAs = CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_6mkphx.SubstituteMenuPart_AddConcept_c9c91b55, false);
 
       for (SNode sca : CollectionSequence.fromCollection(SCAs)) {
         final SNode conceptNode = SLinkOperations.getTarget(sca, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, 0x9aeec2e0d781773L, "concept"));
@@ -101,5 +102,9 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu"), (SNode) parameter_1);
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference"), quotedNode_3);
     return quotedNode_2;
+  }
+
+  private static final class AUX_6mkphx {
+    /*package*/ static final SConcept SubstituteMenuPart_AddConcept_c9c91b55 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_AddConcept");
   }
 }

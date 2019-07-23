@@ -21,7 +21,7 @@ public class AddEnumImplementsAfterName_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddEnumImplementsAfterName() throws Throwable {
-    new AddEnumImplementsAfterName_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

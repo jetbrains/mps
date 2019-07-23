@@ -17,6 +17,8 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule() {
@@ -30,7 +32,7 @@ public class check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule extends 
       return;
     }
     SNode destinationMenuConcept;
-    destinationMenuConcept = check_uv1jfo_a0e0b(SNodeOperations.getNodeAncestor(part, MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu"), false, false));
+    destinationMenuConcept = check_uv1jfo_a0e0b(SNodeOperations.getNodeAncestor(part, AUX_uv1jfo.ISubstituteMenu_3907f4f4, false, false));
     if ((destinationMenuConcept == null)) {
       return;
     }
@@ -45,7 +47,7 @@ public class check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu");
+    return AUX_uv1jfo.SubstituteMenuPart_IncludeMenu_ecf2cb72;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -58,5 +60,10 @@ public class check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule extends 
       return IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(checkedDotOperand);
     }
     return null;
+  }
+
+  private static final class AUX_uv1jfo {
+    /*package*/ static final SInterfaceConcept ISubstituteMenu_3907f4f4 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
+    /*package*/ static final SConcept SubstituteMenuPart_IncludeMenu_ecf2cb72 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu");
   }
 }

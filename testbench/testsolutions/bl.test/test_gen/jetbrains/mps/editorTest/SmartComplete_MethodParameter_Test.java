@@ -24,7 +24,7 @@ public class SmartComplete_MethodParameter_Test extends BaseTransformationTest {
 
   @Test
   public void test_SmartComplete_MethodParameter() throws Throwable {
-    new SmartComplete_MethodParameter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

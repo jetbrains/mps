@@ -42,6 +42,7 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NonTypesystemRule_backToAll extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -67,8 +68,8 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new NonTypesystemRule_backToAll.TMP_Action_bg4dqh_a0());
-      result.add(new NonTypesystemRule_backToAll.TMP_WrapSM_bg4dqh_b0());
+      result.add(new TMP_Action_bg4dqh_a0());
+      result.add(new TMP_WrapSM_bg4dqh_b0());
     }
     return result;
   }
@@ -76,7 +77,7 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
   private class TMP_Action_bg4dqh_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      NonTypesystemRule_backToAll.TMP_Action_bg4dqh_a0.Item item = new NonTypesystemRule_backToAll.TMP_Action_bg4dqh_a0.Item(context);
+      TMP_Action_bg4dqh_a0.Item item = new TMP_Action_bg4dqh_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -154,7 +155,7 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
+      return AUX_bg4dqh.CheckingRuleReference_b0da7032;
     }
 
 
@@ -183,5 +184,9 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
         }
       };
     }
+  }
+
+  private static final class AUX_bg4dqh {
+    /*package*/ static final SConcept CheckingRuleReference_b0da7032 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
   }
 }

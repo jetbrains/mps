@@ -14,12 +14,12 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import javax.swing.JOptionPane;
 import jetbrains.mps.ide.platform.refactoring.RenameDialog;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -27,6 +27,7 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import org.apache.log4j.Level;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class Rename_Action extends BaseAction {
   private static final Logger LOG = LogManager.getLogger(Rename_Action.class);
@@ -56,7 +57,7 @@ public class Rename_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_64hb8r.INamedConcept_8cd7e247))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("target", node);
@@ -116,5 +117,9 @@ public class Rename_Action extends BaseAction {
       return false;
     }
     return !(propertyConstraint.isReadOnly());
+  }
+
+  private static final class AUX_64hb8r {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

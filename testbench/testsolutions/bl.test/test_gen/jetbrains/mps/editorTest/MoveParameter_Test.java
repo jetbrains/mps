@@ -21,7 +21,7 @@ public class MoveParameter_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveParameter() throws Throwable {
-    new MoveParameter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -18,6 +18,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddReturnBlockTag_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -36,8 +37,8 @@ public final class AddReturnBlockTag_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode returnType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), false, false), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"));
-    return (SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return")) == null) && (returnType != null) && !(SNodeOperations.isInstanceOf(returnType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
+    SNode returnType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, AUX_4g215x.BaseMethodDeclaration_9dbf9acb, false, false), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"));
+    return (SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return")) == null) && (returnType != null) && !(SNodeOperations.isInstanceOf(returnType, AUX_4g215x.VoidType_d96d05c9));
   }
   @Override
   public boolean isSurroundWith() {
@@ -45,7 +46,7 @@ public final class AddReturnBlockTag_Intention extends AbstractIntentionDescript
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddReturnBlockTag_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -58,7 +59,7 @@ public final class AddReturnBlockTag_Intention extends AbstractIntentionDescript
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode tag = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag"), null);
+      SNode tag = SNodeFactoryOperations.createNewNode(AUX_4g215x.ReturnBlockDocTag_643ca086, null);
       ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags"))).addElement(tag);
       BlockDocTagHelper.setFocus(editorContext, tag);
 
@@ -67,5 +68,11 @@ public final class AddReturnBlockTag_Intention extends AbstractIntentionDescript
     public IntentionDescriptor getDescriptor() {
       return AddReturnBlockTag_Intention.this;
     }
+  }
+
+  private static final class AUX_4g215x {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept VoidType_d96d05c9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept ReturnBlockDocTag_643ca086 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag");
   }
 }

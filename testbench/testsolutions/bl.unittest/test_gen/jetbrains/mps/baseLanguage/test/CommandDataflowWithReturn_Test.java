@@ -30,7 +30,7 @@ public class CommandDataflowWithReturn_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck1229350096076() throws Throwable {
-    new CommandDataflowWithReturn_Test.TestBody(this).test_ErrorMessagesCheck1229350096076();
+    new TestBody(this).test_ErrorMessagesCheck1229350096076();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

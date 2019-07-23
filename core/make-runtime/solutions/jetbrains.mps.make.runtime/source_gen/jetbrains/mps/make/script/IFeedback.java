@@ -5,7 +5,7 @@ package jetbrains.mps.make.script;
 import jetbrains.mps.messages.IMessage;
 
 public interface IFeedback {
-  IFeedback.Severity getSeverity();
+  Severity getSeverity();
   String getMessage();
   Object getSource();
   Throwable getException();
@@ -45,14 +45,14 @@ public interface IFeedback {
       return msg.getText();
     }
     @Override
-    public IFeedback.Severity getSeverity() {
+    public Severity getSeverity() {
       switch (msg.getKind()) {
         case ERROR:
-          return IFeedback.Severity.ERROR;
+          return Severity.ERROR;
         case WARNING:
-          return IFeedback.Severity.WARNING;
+          return Severity.WARNING;
         case INFORMATION:
-          return IFeedback.Severity.INFO;
+          return Severity.INFO;
         default:
           return null;
       }
@@ -66,23 +66,23 @@ public interface IFeedback {
       return msg.getException();
     }
   }
-  class Default extends IFeedback.Stub implements IFeedback {
+  class Default extends Stub implements IFeedback {
     private final String message;
     private final Throwable throwable;
-    private final IFeedback.Severity severity;
+    private final Severity severity;
     public Default(String message) {
       this(message, null);
     }
     public Default(String message, Throwable throwable) {
-      this(message, throwable, IFeedback.Severity.ERROR);
+      this(message, throwable, Severity.ERROR);
     }
-    public Default(String message, Throwable throwable, IFeedback.Severity severity) {
+    public Default(String message, Throwable throwable, Severity severity) {
       this.message = message;
       this.throwable = throwable;
       this.severity = severity;
     }
     @Override
-    public IFeedback.Severity getSeverity() {
+    public Severity getSeverity() {
       return severity;
     }
     @Override
@@ -99,28 +99,28 @@ public interface IFeedback {
       return throwable;
     }
   }
-  class ERROR extends IFeedback.Default implements IFeedback {
+  class ERROR extends Default implements IFeedback {
     public ERROR(String message) {
-      super(message, null, IFeedback.Severity.ERROR);
+      super(message, null, Severity.ERROR);
     }
     public ERROR(String message, Throwable throwable) {
-      super(message, throwable, IFeedback.Severity.ERROR);
+      super(message, throwable, Severity.ERROR);
     }
   }
-  class WARNING extends IFeedback.Default implements IFeedback {
+  class WARNING extends Default implements IFeedback {
     public WARNING(String message) {
-      super(message, null, IFeedback.Severity.WARNING);
+      super(message, null, Severity.WARNING);
     }
     public WARNING(String message, Throwable throwable) {
-      super(message, throwable, IFeedback.Severity.WARNING);
+      super(message, throwable, Severity.WARNING);
     }
   }
-  class INFORMATION extends IFeedback.Default implements IFeedback {
+  class INFORMATION extends Default implements IFeedback {
     public INFORMATION(String message) {
-      super(message, null, IFeedback.Severity.INFO);
+      super(message, null, Severity.INFO);
     }
     public INFORMATION(String message, Throwable throwable) {
-      super(message, throwable, IFeedback.Severity.INFO);
+      super(message, throwable, Severity.INFO);
     }
   }
 }

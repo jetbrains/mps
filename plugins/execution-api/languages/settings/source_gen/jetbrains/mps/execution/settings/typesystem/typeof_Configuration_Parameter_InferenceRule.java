@@ -9,16 +9,17 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.execution.settings.behavior.PersistentConfiguration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class typeof_Configuration_Parameter_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_Configuration_Parameter_InferenceRule() {
   }
   public void applyRule(final SNode configurationParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
 
-    SNode contextConfiguration = PersistentConfiguration__BehaviorDescriptor.getContextPersistentConfiguration_idO$iR4J$g1l.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, "jetbrains.mps.execution.settings.structure.PersistentConfiguration")), configurationParameter);
+    SNode contextConfiguration = PersistentConfiguration__BehaviorDescriptor.getContextPersistentConfiguration_idO$iR4J$g1l.invoke(SNodeOperations.asSConcept(AUX_luyquc.PersistentConfiguration_9ba047e4), configurationParameter);
     {
       SNode _nodeToCheck_1029348928467 = configurationParameter;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "2181232403819906005", 0, null);
@@ -26,12 +27,17 @@ public class typeof_Configuration_Parameter_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910390L, "jetbrains.mps.execution.settings.structure.Configuration_Parameter");
+    return AUX_luyquc.Configuration_Parameter_9ba0b844;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_luyquc {
+    /*package*/ static final SConcept PersistentConfiguration_9ba047e4 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, "jetbrains.mps.execution.settings.structure.PersistentConfiguration");
+    /*package*/ static final SConcept Configuration_Parameter_9ba0b844 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910390L, "jetbrains.mps.execution.settings.structure.Configuration_Parameter");
   }
 }

@@ -65,7 +65,7 @@
       <node id="7542046987151769313" at="95,42,96,25" concept="1" />
       <node id="4454445068919764745" at="96,25,97,25" concept="1" />
       <node id="4454445068919752773" at="97,25,98,25" concept="1" />
-      <node id="12077399789562175" at="101,57,102,44" concept="1" />
+      <node id="12077399789562175" at="101,57,102,34" concept="1" />
       <node id="26421392144127895" at="106,42,107,40" concept="1" />
       <node id="7542046987151769338" at="107,40,108,57" concept="1" />
       <node id="26421392144138315" at="108,57,109,57" concept="1" />
@@ -117,7 +117,7 @@
       <scope id="12077399789561873" at="74,37,75,20" />
       <scope id="12077399789561873" at="83,28,84,26" />
       <scope id="12077399789561873" at="86,38,87,25" />
-      <scope id="12077399789562167" at="101,57,102,44" />
+      <scope id="12077399789562167" at="101,57,102,34" />
       <scope id="12077399789561873" at="15,35,17,17" />
       <scope id="12077399789561873" at="36,34,38,17" />
       <scope id="12077399789561873" at="57,34,59,17" />
@@ -196,7 +196,7 @@
   <root nodeRef="r:a7e6c515-be7c-48fa-b7c6-1ffad39a5d77(jetbrains.mps.propertiesTest@tests)/6799807267502338718">
     <file name="CustomPropertyAccess_Test.java">
       <node id="6799807267502338718" at="27,38,28,25" concept="8" />
-      <node id="6799807267508922004" at="32,77,33,94" concept="1" />
+      <node id="6799807267508922004" at="32,77,33,68" concept="1" />
       <node id="6799807267502338718" at="38,52,39,19" concept="8" />
       <node id="6799807267508922004" at="43,79,44,65" concept="4" />
       <node id="6799807267508922004" at="44,65,45,63" concept="4" />
@@ -208,7 +208,7 @@
       <node id="6799807267508922004" at="31,0,35,0" concept="3" trace="test_ErrorMessagesCheck6799807267508922004#()V" />
       <node id="6799807267508922004" at="43,0,48,0" concept="3" trace="test_ErrorMessagesCheck6799807267508922004#()V" />
       <scope id="6799807267502338718" at="27,38,28,25" />
-      <scope id="6799807267508922004" at="32,77,33,94" />
+      <scope id="6799807267508922004" at="32,77,33,68" />
       <scope id="6799807267502338718" at="38,52,39,19" />
       <scope id="6799807267502338718" at="27,0,30,0" />
       <scope id="6799807267502338718" at="38,0,41,0">
@@ -227,7 +227,7 @@
   <root nodeRef="r:a7e6c515-be7c-48fa-b7c6-1ffad39a5d77(jetbrains.mps.propertiesTest@tests)/6799807267508922150">
     <file name="CustomPropertyReferences1_Test.java">
       <node id="6799807267508922150" at="18,43,19,25" concept="8" />
-      <node id="6799807267508922150" at="23,65,24,67" concept="1" />
+      <node id="6799807267508922150" at="23,65,24,36" concept="1" />
       <node id="6799807267508922150" at="29,52,30,19" concept="8" />
       <node id="6799807267508922150" at="34,51,35,72" concept="1" />
       <node id="6799807267508924346" at="35,72,36,22" concept="1" />
@@ -239,7 +239,7 @@
       <node id="6799807267508922150" at="22,0,26,0" concept="3" trace="test_CustomPropertyReferences1#()V" />
       <node id="6799807267508922150" at="33,0,40,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6799807267508922150" at="18,43,19,25" />
-      <scope id="6799807267508922150" at="23,65,24,67" />
+      <scope id="6799807267508922150" at="23,65,24,36" />
       <scope id="6799807267508922150" at="29,52,30,19" />
       <scope id="6799807267508922150" at="18,0,21,0" />
       <scope id="6799807267508922150" at="29,0,32,0">
@@ -255,7 +255,7 @@
   <root nodeRef="r:a7e6c515-be7c-48fa-b7c6-1ffad39a5d77(jetbrains.mps.propertiesTest@tests)/6799807267508942864">
     <file name="CustomPropertyReferences2_Test.java">
       <node id="6799807267508942864" at="18,43,19,25" concept="8" />
-      <node id="6799807267508942864" at="23,65,24,67" concept="1" />
+      <node id="6799807267508942864" at="23,65,24,36" concept="1" />
       <node id="6799807267508942864" at="29,52,30,19" concept="8" />
       <node id="6799807267508942864" at="34,51,35,72" concept="1" />
       <node id="6799807267508942909" at="35,72,36,27" concept="1" />
@@ -267,7 +267,7 @@
       <node id="6799807267508942864" at="22,0,26,0" concept="3" trace="test_CustomPropertyReferences2#()V" />
       <node id="6799807267508942864" at="33,0,40,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6799807267508942864" at="18,43,19,25" />
-      <scope id="6799807267508942864" at="23,65,24,67" />
+      <scope id="6799807267508942864" at="23,65,24,36" />
       <scope id="6799807267508942864" at="29,52,30,19" />
       <scope id="6799807267508942864" at="18,0,21,0" />
       <scope id="6799807267508942864" at="29,0,32,0">
@@ -283,7 +283,7 @@
   <root nodeRef="r:a7e6c515-be7c-48fa-b7c6-1ffad39a5d77(jetbrains.mps.propertiesTest@tests)/6799807267508959428">
     <file name="CustomPropertyReferences3_Test.java">
       <node id="6799807267508959428" at="18,43,19,25" concept="8" />
-      <node id="6799807267508959428" at="23,65,24,67" concept="1" />
+      <node id="6799807267508959428" at="23,65,24,36" concept="1" />
       <node id="6799807267508959428" at="29,52,30,19" concept="8" />
       <node id="6799807267508959428" at="34,51,35,72" concept="1" />
       <node id="6799807267508959477" at="35,72,36,22" concept="1" />
@@ -299,7 +299,7 @@
       <node id="6799807267508959428" at="22,0,26,0" concept="3" trace="test_CustomPropertyReferences3#()V" />
       <node id="6799807267508959428" at="33,0,44,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6799807267508959428" at="18,43,19,25" />
-      <scope id="6799807267508959428" at="23,65,24,67" />
+      <scope id="6799807267508959428" at="23,65,24,36" />
       <scope id="6799807267508959428" at="29,52,30,19" />
       <scope id="6799807267508959428" at="18,0,21,0" />
       <scope id="6799807267508959428" at="29,0,32,0">

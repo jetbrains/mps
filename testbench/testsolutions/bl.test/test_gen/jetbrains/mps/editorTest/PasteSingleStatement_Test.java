@@ -21,7 +21,7 @@ public class PasteSingleStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_PasteSingleStatement() throws Throwable {
-    new PasteSingleStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

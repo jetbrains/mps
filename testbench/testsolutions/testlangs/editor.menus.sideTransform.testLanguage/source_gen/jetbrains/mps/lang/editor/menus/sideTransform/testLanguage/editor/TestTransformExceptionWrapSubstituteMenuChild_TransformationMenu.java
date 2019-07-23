@@ -23,7 +23,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
@@ -40,6 +39,8 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -65,8 +66,8 @@ public class TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu ex
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu.TMP_WrapSM_u021up_a0());
-      result.add(new TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu.TMP_Action_u021up_b0());
+      result.add(new TMP_WrapSM_u021up_a0());
+      result.add(new TMP_Action_u021up_b0());
     }
     return result;
   }
@@ -92,7 +93,7 @@ public class TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu ex
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb27L, "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.TestSideTransform_SimpleNode");
+      return AUX_u021up.TestSideTransform_SimpleNode_15783b91;
     }
 
     @Override
@@ -128,7 +129,7 @@ public class TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu ex
   private class TMP_Action_u021up_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu.TMP_Action_u021up_b0.Item item = new TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu.TMP_Action_u021up_b0.Item(context);
+      TMP_Action_u021up_b0.Item item = new TMP_Action_u021up_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -183,5 +184,9 @@ public class TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu ex
       }
     }
 
+  }
+
+  private static final class AUX_u021up {
+    /*package*/ static final SConcept TestSideTransform_SimpleNode_15783b91 = MetaAdapterFactory.getConcept(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb27L, "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.TestSideTransform_SimpleNode");
   }
 }

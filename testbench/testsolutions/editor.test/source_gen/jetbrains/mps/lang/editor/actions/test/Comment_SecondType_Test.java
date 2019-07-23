@@ -21,7 +21,7 @@ public class Comment_SecondType_Test extends BaseTransformationTest {
 
   @Test
   public void test_Comment_SecondType() throws Throwable {
-    new Comment_SecondType_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

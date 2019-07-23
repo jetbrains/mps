@@ -69,7 +69,7 @@ import jetbrains.mps.editor.runtime.commands.EditorCommand;
     c.gridx = 1;
     c.gridwidth = 1;
     c.anchor = GridBagConstraints.LAST_LINE_END;
-    AddLinkChooser.ApplyAction action = new AddLinkChooser.ApplyAction();
+    ApplyAction action = new ApplyAction();
     mainPanel.add(new JButton(action), c);
 
     Object actionMapKey = new Object();

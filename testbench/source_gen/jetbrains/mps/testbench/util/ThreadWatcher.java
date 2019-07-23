@@ -12,7 +12,7 @@ import java.lang.management.ManagementFactory;
  * fyodor, Sep 8, 2010
  */
 public class ThreadWatcher implements Output {
-  private ThreadWatcher.ThreadState myState;
+  private ThreadState myState;
   private String myErrors;
   private String myDescription = "threads difference";
 
@@ -53,9 +53,9 @@ public class ThreadWatcher implements Output {
       }
     }
 
-    public ThreadWatcher.ThreadState[] diff(ThreadWatcher.ThreadState baseLine) {
-      ThreadWatcher.ThreadState newDiff = new ThreadWatcher.ThreadState();
-      ThreadWatcher.ThreadState oldDiff = new ThreadWatcher.ThreadState();
+    public ThreadState[] diff(ThreadState baseLine) {
+      ThreadState newDiff = new ThreadState();
+      ThreadState oldDiff = new ThreadState();
       for (long id : this.myAllThreads.keys()) {
         if (!((baseLine.myAllThreads.containsKey(id)))) {
           newDiff.myAllThreads.put(id, this.myAllThreads.get(id));
@@ -84,13 +84,13 @@ public class ThreadWatcher implements Output {
           oldDiff.myAllThreads.put(id, baseLine.myAllThreads.get(id));
         }
       }
-      return new ThreadWatcher.ThreadState[]{newDiff, oldDiff};
+      return new ThreadState[]{newDiff, oldDiff};
     }
   }
 
   public ThreadWatcher(boolean capture) {
     if (capture) {
-      this.myState = new ThreadWatcher.ThreadState();
+      this.myState = new ThreadState();
       myState.captureState();
     }
   }
@@ -117,8 +117,8 @@ public class ThreadWatcher implements Output {
     if (myErrors != null) {
       throw new IllegalStateException("Settled already");
     }
-    ThreadWatcher.ThreadState current = new ThreadWatcher.ThreadState();
-    ThreadWatcher.ThreadState[] diff;
+    ThreadState current = new ThreadState();
+    ThreadState[] diff;
     long step = 100;
     long leftMillis = millis;
     do {

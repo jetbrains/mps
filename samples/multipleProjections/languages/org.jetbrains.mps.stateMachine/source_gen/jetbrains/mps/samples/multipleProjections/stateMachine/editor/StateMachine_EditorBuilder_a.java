@@ -24,6 +24,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class StateMachine_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -57,7 +58,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new StateMachine_EditorBuilder_a.statesListHandler_qpt50r_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new statesListHandler_qpt50r_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_states");
     Style style = new StyleImpl();
@@ -85,7 +86,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       return MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, 0xa99ffe1c8456ba5L, "states");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457442L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.State");
+      return AUX_wxoemb.State_23cd09d5;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -129,7 +130,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new StateMachine_EditorBuilder_a.eventsListHandler_qpt50r_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new eventsListHandler_qpt50r_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_events");
     Style style = new StyleImpl();
@@ -157,7 +158,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       return MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, 0xa99ffe1c8456ba3L, "events");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743bL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.Event");
+      return AUX_wxoemb.Event_23cd09b9;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -201,7 +202,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNodeList_2() {
-    AbstractCellListHandler handler = new StateMachine_EditorBuilder_a.transitionsListHandler_qpt50r_e0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new transitionsListHandler_qpt50r_e0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_transitions");
     Style style = new StyleImpl();
@@ -229,7 +230,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       return MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, 0xa99ffe1c8456ba4L, "transitions");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.Transition");
+      return AUX_wxoemb.Transition_23cd09bb;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -262,5 +263,11 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
         }
       }
     }
+  }
+
+  private static final class AUX_wxoemb {
+    /*package*/ static final SConcept State_23cd09d5 = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457442L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.State");
+    /*package*/ static final SConcept Event_23cd09b9 = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743bL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.Event");
+    /*package*/ static final SConcept Transition_23cd09bb = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.Transition");
   }
 }

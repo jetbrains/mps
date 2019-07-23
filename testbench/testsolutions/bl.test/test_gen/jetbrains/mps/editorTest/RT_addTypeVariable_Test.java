@@ -21,7 +21,7 @@ public class RT_addTypeVariable_Test extends BaseTransformationTest {
 
   @Test
   public void test_RT_addTypeVariable() throws Throwable {
-    new RT_addTypeVariable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

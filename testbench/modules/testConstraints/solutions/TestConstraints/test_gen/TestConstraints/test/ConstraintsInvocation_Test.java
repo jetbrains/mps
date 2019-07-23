@@ -29,11 +29,11 @@ public class ConstraintsInvocation_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeUnknownRuleCheck730305212589682236() throws Throwable {
-    new ConstraintsInvocation_Test.TestBody(this).test_NodeUnknownRuleCheck730305212589682236();
+    new TestBody(this).test_NodeUnknownRuleCheck730305212589682236();
   }
   @Test
   public void test_NodeUnknownRuleCheck730305212589682205() throws Throwable {
-    new ConstraintsInvocation_Test.TestBody(this).test_NodeUnknownRuleCheck730305212589682205();
+    new TestBody(this).test_NodeUnknownRuleCheck730305212589682205();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

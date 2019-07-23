@@ -22,7 +22,7 @@ public class DelOnSpecialChild1DeleteParent_Test extends BaseTransformationTest 
 
   @Test
   public void test_DelOnSpecialChild1DeleteParent() throws Throwable {
-    new DelOnSpecialChild1DeleteParent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

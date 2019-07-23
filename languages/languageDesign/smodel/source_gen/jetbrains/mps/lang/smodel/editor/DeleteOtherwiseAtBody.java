@@ -16,6 +16,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DeleteOtherwiseAtBody {
 
@@ -25,7 +26,7 @@ public class DeleteOtherwiseAtBody {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody")))), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdc60L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody"))) {
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody")))), AUX_9hq1a7.EnumSwitchCaseBody_81c8de4e)) {
           if (DeletionApproverUtil.approve(editorContext, node, "OtherwiseClause")) {
             return;
           }
@@ -76,5 +77,9 @@ public class DeleteOtherwiseAtBody {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_9hq1a7 {
+    /*package*/ static final SConcept EnumSwitchCaseBody_81c8de4e = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdc60L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody");
   }
 }

@@ -24,7 +24,7 @@ public class LeftTransformWithCustomItems_Parameterized_checkCanBeParent_Test ex
 
   @Test
   public void test_LeftTransformWithCustomItems_Parameterized_checkCanBeParent() throws Throwable {
-    new LeftTransformWithCustomItems_Parameterized_checkCanBeParent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

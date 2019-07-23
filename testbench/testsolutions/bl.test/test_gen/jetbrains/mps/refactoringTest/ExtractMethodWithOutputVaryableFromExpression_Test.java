@@ -36,7 +36,7 @@ public class ExtractMethodWithOutputVaryableFromExpression_Test extends BaseTran
 
   @Test
   public void test_ExtractMethodWithOutputVaryableFromStatementTest() throws Throwable {
-    new ExtractMethodWithOutputVaryableFromExpression_Test.TestBody(this).test_ExtractMethodWithOutputVaryableFromStatementTest();
+    new TestBody(this).test_ExtractMethodWithOutputVaryableFromStatementTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

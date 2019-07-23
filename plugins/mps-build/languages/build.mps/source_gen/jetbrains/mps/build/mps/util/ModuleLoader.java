@@ -46,6 +46,7 @@ import java.util.Set;
 import java.util.Collections;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.AbstractModelAccess;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ModuleLoader {
   private final SNode myBuildProject;
@@ -89,11 +90,11 @@ public final class ModuleLoader {
   public void checkAllModules(final ModuleChecker.CheckType type) {
     Iterable<SNode> parts = SLinkOperations.getChildren(myBuildProject, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts"));
     if (type.doFullImport) {
-      ModuleLoader.Repo r = new ModuleLoader.Repo(new ModuleLoader.ModelAccessNoLimit());
+      Repo r = new Repo(new ModelAccessNoLimit());
       myRepository = new ModuleRepositoryFacade(r);
     }
 
-    Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(parts, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group")), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules"))).union(Sequence.fromIterable(SNodeOperations.ofConcept(parts, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule")))).where(new IWhereFilter<SNode>() {
+    Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(parts, AUX_a6ewnz.BuildMps_Group_9a78986e), MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules"))).union(Sequence.fromIterable(SNodeOperations.ofConcept(parts, AUX_a6ewnz.BuildMps_AbstractModule_ebf3f6db))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path")) != null);
       }
@@ -121,7 +122,7 @@ public final class ModuleLoader {
   }
 
   public ModuleChecker createModuleChecker(SNode module) {
-    assert SNodeOperations.getNodeAncestor(module, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false) == myBuildProject;
+    assert SNodeOperations.getNodeAncestor(module, AUX_a6ewnz.BuildProject_808bb057, false, false) == myBuildProject;
     String moduleFilePath = BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(module, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path")), myBuildContext);
     if (moduleFilePath == null) {
       reportError(String.format("cannot import module file for %s: file doesn't exist (%s)", SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(module, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path")), myBuildContext)), module);
@@ -155,7 +156,7 @@ public final class ModuleLoader {
       reportError(String.format("cannot import module file for %s: exception: %s", SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), ex.getMessage()), module);
     }
 
-    if (md instanceof LanguageDescriptor && SNodeOperations.isInstanceOf(module, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"))) {
+    if (md instanceof LanguageDescriptor && SNodeOperations.isInstanceOf(module, AUX_a6ewnz.BuildMps_Generator_bcabe904)) {
       // A hack to support multiple generator modules per language (BuildMps_Language limits generator to [0..1]. 
       // An idea here is to utilize BuildMps_Generator as project part, referencing its language mpl file. Though technically MPS hides 
       // module path for BuildMps_Generator, it's possible to edit it using reflective editor. 
@@ -280,5 +281,12 @@ public final class ModuleLoader {
     public boolean isCommandAction() {
       return false;
     }
+  }
+
+  private static final class AUX_a6ewnz {
+    /*package*/ static final SConcept BuildMps_Group_9a78986e = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
+    /*package*/ static final SConcept BuildMps_AbstractModule_ebf3f6db = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_Generator_bcabe904 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
   }
 }

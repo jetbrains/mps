@@ -11,6 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_InternalAnonymousClassCreator_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_InternalAnonymousClassCreator_InferenceRule() {
@@ -23,12 +24,16 @@ public class typeof_InternalAnonymousClassCreator_InferenceRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, "jetbrains.mps.baseLanguageInternal.structure.InternalAnonymousClassCreator");
+    return AUX_a92vyu.InternalAnonymousClassCreator_2fcc9172;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_a92vyu {
+    /*package*/ static final SConcept InternalAnonymousClassCreator_2fcc9172 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, "jetbrains.mps.baseLanguageInternal.structure.InternalAnonymousClassCreator");
   }
 }

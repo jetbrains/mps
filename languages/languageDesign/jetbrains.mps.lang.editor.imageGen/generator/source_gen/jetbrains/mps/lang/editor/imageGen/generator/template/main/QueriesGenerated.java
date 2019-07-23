@@ -43,7 +43,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, MapRootRuleCondition> mrrcMethods = new HashMap<String, MapRootRuleCondition>();
   {
     int i = 0;
-    mrrcMethods.put("3245637733310315479", new QueriesGenerated.MRRC(i++));
+    mrrcMethods.put("3245637733310315479", new MRRC(i++));
   }
   @Override
   @NotNull
@@ -72,10 +72,10 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("3245637733310317295", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x20c051df23a9da87L, "fileName"), "fileName"));
-    pvqMethods.put("3245637733310318545", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x2d0ad2528389ad26L, "id"), "id"));
-    pvqMethods.put("1380214350863106264", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11572e9L, "scale"), null));
-    pvqMethods.put("1380214350863109719", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11568fbL, "imageFormat"), null));
+    pvqMethods.put("3245637733310317295", new PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x20c051df23a9da87L, "fileName"), "fileName"));
+    pvqMethods.put("3245637733310318545", new PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x2d0ad2528389ad26L, "id"), "id"));
+    pvqMethods.put("1380214350863106264", new PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11572e9L, "scale"), null));
+    pvqMethods.put("1380214350863109719", new PVQ(i++, MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11568fbL, "imageFormat"), null));
   }
   @NotNull
   @Override

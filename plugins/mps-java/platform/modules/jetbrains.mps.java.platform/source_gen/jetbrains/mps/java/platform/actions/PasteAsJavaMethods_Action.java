@@ -11,7 +11,6 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.java.platform.util.JavaPaster;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -20,6 +19,8 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.java.core.newparser.FeatureKind;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PasteAsJavaMethods_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -38,7 +39,7 @@ public class PasteAsJavaMethods_Action extends BaseAction {
     if (ReadOnlyUtil.isSelectionReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")))) {
       return false;
     }
-    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false) != null) && JavaPaster.areDataAvailableInClipboard();
+    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), AUX_95maad.Classifier_4b7e553, true, false) != null) && JavaPaster.areDataAvailableInClipboard();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -88,5 +89,9 @@ public class PasteAsJavaMethods_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     new JavaPaster().pasteJava(((SNode) MapSequence.fromMap(_params).get("anchorNode")), FeatureKind.CLASS_CONTENT, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+  }
+
+  private static final class AUX_95maad {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

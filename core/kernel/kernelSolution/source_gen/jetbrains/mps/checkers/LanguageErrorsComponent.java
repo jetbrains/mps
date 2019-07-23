@@ -21,7 +21,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.util.Cancellable;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -40,6 +39,8 @@ import jetbrains.mps.smodel.AbstractNodesReadListener;
 import jetbrains.mps.smodel.NodeReadEventsCaster;
 import org.jetbrains.mps.openapi.model.SNodeChangeListenerAdapter;
 import org.jetbrains.mps.openapi.model.SModelListenerBase;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LanguageErrorsComponent extends LanguageErrorsCollector {
   /**
@@ -70,13 +71,13 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     public boolean myApproved;
   }
 
-  private MultiMap<SNode, LanguageErrorsComponent.ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, LanguageErrorsComponent.ApprovableError>();
+  private MultiMap<SNode, ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, ApprovableError>();
   private MultiMap<SNode, NodeReportItem> myPostprocessedNodesToErrors = new SetBasedMultiMap<SNode, NodeReportItem>();
   private ManyToManyMap<SNode, SNode> myDependenciesToNodesAndViceVersa = new ManyToManyMap<SNode, SNode>();
   private Set<SNode> myInvalidNodes = new HashSet<SNode>();
   private Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
-  private LanguageErrorsComponent.MyModelChangeListener myChangeListener = new LanguageErrorsComponent.MyModelChangeListener();
-  private LanguageErrorsComponent.MyModelUnloadListener myUnloadListener = new LanguageErrorsComponent.MyModelUnloadListener();
+  private MyModelChangeListener myChangeListener = new MyModelChangeListener();
+  private MyModelUnloadListener myUnloadListener = new MyModelUnloadListener();
   private Set<SModel> myListenedModels = new HashSet<SModel>();
   private boolean myFullCheckCompleted = false;
   private SNode myCurrentNode = null;
@@ -100,19 +101,19 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
 
   @Override
   protected void addErrorInternal(NodeReportItem errorReporter) {
-    myNodesToErrors.putValue(errorReporter.getNode().resolve(myModel.getRepository()), new LanguageErrorsComponent.ApprovableError(errorReporter, true));
+    myNodesToErrors.putValue(errorReporter.getNode().resolve(myModel.getRepository()), new ApprovableError(errorReporter, true));
   }
 
   public Set<NodeReportItem> getErrors() {
     Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
     SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(myPostprocessedNodesToErrors.values()));
-    Collection<? extends LanguageErrorsComponent.ApprovableError> values = myNodesToErrors.values();
-    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(values).where(new IWhereFilter<LanguageErrorsComponent.ApprovableError>() {
-      public boolean accept(LanguageErrorsComponent.ApprovableError it) {
+    Collection<? extends ApprovableError> values = myNodesToErrors.values();
+    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(values).where(new IWhereFilter<ApprovableError>() {
+      public boolean accept(ApprovableError it) {
         return it.myApproved;
       }
-    }).select(new ISelector<LanguageErrorsComponent.ApprovableError, NodeReportItem>() {
-      public NodeReportItem select(LanguageErrorsComponent.ApprovableError it) {
+    }).select(new ISelector<ApprovableError, NodeReportItem>() {
+      public NodeReportItem select(ApprovableError it) {
         return it.getError();
       }
     }));
@@ -209,7 +210,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       while (SetSequence.fromSet(myInvalidNodes).isNotEmpty()) {
         SNode node = SetSequence.fromSet(myInvalidNodes).first();
         SetSequence.fromSet(myInvalidNodes).removeElement(node);
-        if ((SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking"), true, false) != null)) {
+        if ((SNodeOperations.getNodeAncestor(node, AUX_29uvfh.ISkipConstraintsChecking_d942381, true, false) != null)) {
           continue;
         }
         checkNode(node, checkers, repository);
@@ -227,7 +228,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
 
       while (myFullCheckIterator.hasNext()) {
         SNode node = myFullCheckIterator.next();
-        if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking"))) {
+        if (SNodeOperations.isInstanceOf(node, AUX_29uvfh.ISkipConstraintsChecking_d942381)) {
           myFullCheckIterator.skipChildren();
           continue;
         }
@@ -241,10 +242,10 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       myFullCheckCompleted = true;
     }
 
-    final Map<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>> nodesToErrors = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>>());
-    for (Map.Entry<SNode, Collection<LanguageErrorsComponent.ApprovableError>> nodeErrors : myNodesToErrors.entrySet()) {
-      Collection<LanguageErrorsComponent.ApprovableError> value = nodeErrors.getValue();
-      MapSequence.fromMap(nodesToErrors).put(new IssueKindReportItem.PathObject.NodePathObject(nodeErrors.getKey().getReference()), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<LanguageErrorsComponent.ApprovableError>(), value)).asUnmodifiable());
+    final Map<IssueKindReportItem.PathObject, Collection<ApprovableError>> nodesToErrors = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<ApprovableError>>());
+    for (Map.Entry<SNode, Collection<ApprovableError>> nodeErrors : myNodesToErrors.entrySet()) {
+      Collection<ApprovableError> value = nodeErrors.getValue();
+      MapSequence.fromMap(nodesToErrors).put(new IssueKindReportItem.PathObject.NodePathObject(nodeErrors.getKey().getReference()), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<ApprovableError>(), value)).asUnmodifiable());
     }
     final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
       public void consume(NodeReportItem reportItem) {
@@ -285,7 +286,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     if (SNodeOperations.getModel(node) == null) {
       return;
     }
-    if ((SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking"), true, false) != null)) {
+    if ((SNodeOperations.getNodeAncestor(node, AUX_29uvfh.ISkipConstraintsChecking_d942381, true, false) != null)) {
       return;
     }
     try {
@@ -405,5 +406,9 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       removeModelListeners(model);
       SetSequence.fromSet(myListenedModels).removeElement(model);
     }
+  }
+
+  private static final class AUX_29uvfh {
+    /*package*/ static final SInterfaceConcept ISkipConstraintsChecking_d942381 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking");
   }
 }

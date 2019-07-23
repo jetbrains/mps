@@ -5,19 +5,20 @@ package jetbrains.mps.lang.migration.runtime.base;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MigrateManually extends Problem<SNode> implements NodeReportItem {
   private String myMsg;
   public MigrateManually(SNode annotation) {
-    this(((String) BHReflection.invoke0(annotation, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old"), SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
+    this(((String) BHReflection.invoke0(annotation, AUX_p91anz.MigrationAnnotation_old_10823922, SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
   }
   public static MigrateManually fromAnnotation(SNode annotation) {
-    return new MigrateManually(((String) BHReflection.invoke0(annotation, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old"), SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
+    return new MigrateManually(((String) BHReflection.invoke0(annotation, AUX_p91anz.MigrationAnnotation_old_10823922, SMethodTrimmedId.create("getResultsMessage", null, "29O0pTxWdnZ"))), SNodeOperations.getParent(annotation));
   }
   public MigrateManually(String message, SNode node) {
     super(node);
@@ -34,5 +35,9 @@ public class MigrateManually extends Problem<SNode> implements NodeReportItem {
   @Override
   public SNodeReference getNode() {
     return getReason().getReference();
+  }
+
+  private static final class AUX_p91anz {
+    /*package*/ static final SInterfaceConcept MigrationAnnotation_old_10823922 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61f0c2c8L, "jetbrains.mps.lang.core.structure.MigrationAnnotation_old");
   }
 }

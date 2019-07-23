@@ -14,7 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
@@ -23,6 +22,8 @@ import jetbrains.mps.generator.runtime.MapRootRuleBase;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.generator.impl.DefaultTemplateContext;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappingConfiguration {
@@ -31,9 +32,9 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_mc_Behavior(@NotNull TemplateModel model) {
     super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370950"), "mc_Behavior", model, false);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new Mapping_mc_Behavior.ReductionRule0(), new Mapping_mc_Behavior.ReductionRule1(), new Mapping_mc_Behavior.ReductionRule2(), new Mapping_mc_Behavior.ReductionRule3(), new Mapping_mc_Behavior.ReductionRule4());
-    createRules = TemplateUtil.<TemplateCreateRootRule>asCollection(new Mapping_mc_Behavior.CreateRootRule0());
-    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new Mapping_mc_Behavior.RootMappingRule0());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4());
+    createRules = TemplateUtil.<TemplateCreateRootRule>asCollection(new CreateRootRule0());
+    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -49,7 +50,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370951"), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression"), false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370951"), AUX_amxsvp.ThisNodeExpression_70062b2e, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -60,7 +61,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1703835097132694820"), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression"), false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1703835097132694820"), AUX_amxsvp.ThisConceptExpression_8a7f749d, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -71,7 +72,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370953"), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression"), false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370953"), AUX_amxsvp.SuperNodeExpression_6fa6b15d, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -82,7 +83,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7613853987897918223"), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression"), false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7613853987897918223"), AUX_amxsvp.SuperConceptExpression_a6afd4b, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -93,7 +94,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4731970554579986848"), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x5a277db47d54d7e1L, "jetbrains.mps.lang.behavior.structure.LocalBehaviorMethodCall"), false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4731970554579986848"), AUX_amxsvp.LocalBehaviorMethodCall_13388b6e, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -104,7 +105,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   }
   /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370955"), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), false, false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370955"), AUX_amxsvp.ConceptBehavior_68ebe6cd, false, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -126,5 +127,14 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
       Collection<SNode> result = new Template_BehaviorAspectDescriptor().apply(environment, context);
       return result;
     }
+  }
+
+  private static final class AUX_amxsvp {
+    /*package*/ static final SConcept ThisNodeExpression_70062b2e = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
+    /*package*/ static final SConcept ThisConceptExpression_8a7f749d = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
+    /*package*/ static final SConcept SuperNodeExpression_6fa6b15d = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
+    /*package*/ static final SConcept SuperConceptExpression_a6afd4b = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
+    /*package*/ static final SConcept LocalBehaviorMethodCall_13388b6e = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x5a277db47d54d7e1L, "jetbrains.mps.lang.behavior.structure.LocalBehaviorMethodCall");
+    /*package*/ static final SConcept ConceptBehavior_68ebe6cd = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
   }
 }

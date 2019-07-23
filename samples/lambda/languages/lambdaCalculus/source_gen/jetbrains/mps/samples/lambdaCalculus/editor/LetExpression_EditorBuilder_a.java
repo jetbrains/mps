@@ -59,7 +59,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new LetExpression_EditorBuilder_a.variableSingleRoleHandler_tphyk_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x74076973acb5af30L, "variable"), getEditorContext());
+    SingleRoleCellProvider provider = new variableSingleRoleHandler_tphyk_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x74076973acb5af30L, "variable"), getEditorContext());
     return provider.createCell();
   }
   private static class variableSingleRoleHandler_tphyk_b0 extends SingleRoleCellProvider {
@@ -120,7 +120,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new LetExpression_EditorBuilder_a.valueSingleRoleHandler_tphyk_d0(myNode, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x448ba254edbfc7a0L, "value"), getEditorContext());
+    SingleRoleCellProvider provider = new valueSingleRoleHandler_tphyk_d0(myNode, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x448ba254edbfc7a0L, "value"), getEditorContext());
     return provider.createCell();
   }
   private static class valueSingleRoleHandler_tphyk_d0 extends SingleRoleCellProvider {
@@ -181,7 +181,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new LetExpression_EditorBuilder_a.expressionSingleRoleHandler_tphyk_f0(myNode, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x448ba254edbfc7a1L, "expression"), getEditorContext());
+    SingleRoleCellProvider provider = new expressionSingleRoleHandler_tphyk_f0(myNode, MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x448ba254edbfc7a1L, "expression"), getEditorContext());
     return provider.createCell();
   }
   private static class expressionSingleRoleHandler_tphyk_f0 extends SingleRoleCellProvider {

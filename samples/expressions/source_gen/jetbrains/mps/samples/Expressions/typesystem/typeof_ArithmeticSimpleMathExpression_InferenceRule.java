@@ -18,6 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ArithmeticSimpleMathExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ArithmeticSimpleMathExpression_InferenceRule() {
@@ -74,7 +75,7 @@ public class typeof_ArithmeticSimpleMathExpression_InferenceRule extends Abstrac
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8289497L, "jetbrains.mps.samples.Expressions.structure.ArithmeticSimpleMathExpression");
+    return AUX_jrhb9c.ArithmeticSimpleMathExpression_8721704f;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -84,17 +85,22 @@ public class typeof_ArithmeticSimpleMathExpression_InferenceRule extends Abstrac
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8354763L, "jetbrains.mps.samples.Expressions.structure.SimpleMathNumberType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_jrhb9c.SimpleMathNumberType_b9f11ec3, null, null, false);
     return n1;
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8354763L, "jetbrains.mps.samples.Expressions.structure.SimpleMathNumberType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_jrhb9c.SimpleMathNumberType_b9f11ec3, null, null, false);
     return n1;
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0c0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8354763L, "jetbrains.mps.samples.Expressions.structure.SimpleMathNumberType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_jrhb9c.SimpleMathNumberType_b9f11ec3, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_jrhb9c {
+    /*package*/ static final SConcept ArithmeticSimpleMathExpression_8721704f = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8289497L, "jetbrains.mps.samples.Expressions.structure.ArithmeticSimpleMathExpression");
+    /*package*/ static final SConcept SimpleMathNumberType_b9f11ec3 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8354763L, "jetbrains.mps.samples.Expressions.structure.SimpleMathNumberType");
   }
 }

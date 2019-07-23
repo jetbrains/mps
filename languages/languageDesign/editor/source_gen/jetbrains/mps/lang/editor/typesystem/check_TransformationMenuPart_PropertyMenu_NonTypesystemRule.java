@@ -15,6 +15,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_TransformationMenuPart_PropertyMenu_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_TransformationMenuPart_PropertyMenu_NonTypesystemRule() {
@@ -28,12 +29,16 @@ public class check_TransformationMenuPart_PropertyMenu_NonTypesystemRule extends
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2717714f9c03978cL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_PropertyMenu");
+    return AUX_pg65hm.TransformationMenuPart_PropertyMenu_883a0ef6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_pg65hm {
+    /*package*/ static final SConcept TransformationMenuPart_PropertyMenu_883a0ef6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2717714f9c03978cL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_PropertyMenu");
   }
 }

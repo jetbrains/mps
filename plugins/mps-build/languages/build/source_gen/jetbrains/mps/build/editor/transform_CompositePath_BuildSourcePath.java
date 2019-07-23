@@ -21,7 +21,6 @@ import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
@@ -33,6 +32,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -43,6 +43,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class transform_CompositePath_BuildSourcePath extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -68,7 +69,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new transform_CompositePath_BuildSourcePath.TMP_Group_qnu3dg_a0());
+      result.add(new TMP_Group_qnu3dg_a0());
     }
     return result;
   }
@@ -99,12 +100,12 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new transform_CompositePath_BuildSourcePath.TMP_Group_qnu3dg_a0.TMP_Action_qnu3dg_a0a(), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_qnu3dg_a0.TMP_Action_qnu3dg_a0a(), AUX_qnu3dg.BuildSourceArchiveRelativePath_1b761014));
     }
     private class TMP_Action_qnu3dg_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        transform_CompositePath_BuildSourcePath.TMP_Group_qnu3dg_a0.TMP_Action_qnu3dg_a0a.Item item = new transform_CompositePath_BuildSourcePath.TMP_Group_qnu3dg_a0.TMP_Action_qnu3dg_a0a.Item(context);
+        TMP_Group_qnu3dg_a0.TMP_Action_qnu3dg_a0a.Item item = new TMP_Group_qnu3dg_a0.TMP_Action_qnu3dg_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -139,7 +140,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode archiveRelativePath = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath"), null);
+          SNode archiveRelativePath = SNodeFactoryOperations.createNewNode(AUX_qnu3dg.BuildSourceArchiveRelativePath_1b761014, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), archiveRelativePath);
           SLinkOperations.setTarget(archiveRelativePath, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath"), _context.getNode());
           SNodeFactoryOperations.setNewChild(archiveRelativePath, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), null);
@@ -150,7 +151,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath");
+          return AUX_qnu3dg.BuildSourceArchiveRelativePath_1b761014;
         }
 
 
@@ -161,7 +162,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath");
+          SAbstractConcept outputConcept = AUX_qnu3dg.BuildSourceArchiveRelativePath_1b761014;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -170,5 +171,9 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
       }
 
     }
+  }
+
+  private static final class AUX_qnu3dg {
+    /*package*/ static final SConcept BuildSourceArchiveRelativePath_1b761014 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath");
   }
 }

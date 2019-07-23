@@ -21,7 +21,7 @@ public class SelectPrevious_OnTopLevelInspectorNode_Test extends BaseTransformat
 
   @Test
   public void test_SelectPrevious_OnTopLevelInspectorNode() throws Throwable {
-    new SelectPrevious_OnTopLevelInspectorNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

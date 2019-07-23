@@ -21,7 +21,7 @@ public class DefaultInSwitch2_Test extends BaseTransformationTest {
 
   @Test
   public void test_DefaultInSwitch2() throws Throwable {
-    new DefaultInSwitch2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

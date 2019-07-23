@@ -87,7 +87,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ElsifClause_EditorBuilder_a.ElsifClause_generic_cellMenu_m61dlm_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ElsifClause_generic_cellMenu_m61dlm_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ElsifClause_generic_cellMenu_m61dlm_a0a0 extends AbstractCellMenuPart_Generic_Group {
@@ -133,7 +133,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ElsifClause_EditorBuilder_a.conditionSingleRoleHandler_m61dlm_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_m61dlm_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_m61dlm_c0 extends SingleRoleCellProvider {
@@ -207,7 +207,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ElsifClause_EditorBuilder_a.statementListSingleRoleHandler_m61dlm_f0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList"), getEditorContext());
+    SingleRoleCellProvider provider = new statementListSingleRoleHandler_m61dlm_f0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList"), getEditorContext());
     return provider.createCell();
   }
   private static class statementListSingleRoleHandler_m61dlm_f0 extends SingleRoleCellProvider {

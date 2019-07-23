@@ -25,6 +25,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ExplicitHintsSpecification_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -54,7 +55,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ExplicitHintsSpecification_EditorBuilder_a.hintsListHandler_a0aq3k_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new hintsListHandler_a0aq3k_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_hints");
     editorCell.setSRole(handler.getElementSRole());
@@ -77,7 +78,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
       return MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, 0x3ae0865e9a71295bL, "hints");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReference");
+      return AUX_t13uim.ConceptEditorHintDeclarationReference_e10c95d9;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -123,5 +124,9 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
       editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
       return editorCell;
     }
+  }
+
+  private static final class AUX_t13uim {
+    /*package*/ static final SConcept ConceptEditorHintDeclarationReference_e10c95d9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReference");
   }
 }

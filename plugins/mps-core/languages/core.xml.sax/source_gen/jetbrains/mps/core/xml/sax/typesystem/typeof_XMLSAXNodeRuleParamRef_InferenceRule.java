@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_XMLSAXNodeRuleParamRef_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_XMLSAXNodeRuleParamRef_InferenceRule() {
@@ -24,12 +25,16 @@ public class typeof_XMLSAXNodeRuleParamRef_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRuleParamRef");
+    return AUX_ypndyl.XMLSAXNodeRuleParamRef_883fc4d8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_ypndyl {
+    /*package*/ static final SConcept XMLSAXNodeRuleParamRef_883fc4d8 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRuleParamRef");
   }
 }

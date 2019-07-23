@@ -44,9 +44,9 @@ public final class PushEnvironmentRunnerBuilder extends RunnerBuilder {
       // Here, we assume it's generated (i.e. those we've full control over) tests that bear EnvironmentAware, therefore 
       // we don't support neither @Ignored not @RunWith here. 
       if (TestCase.class.isAssignableFrom(aClass)) {
-        return new JUnit38ClassRunner(new PushEnvironmentRunnerBuilder.JUnit38SuiteAdapter(aClass));
+        return new JUnit38ClassRunner(new JUnit38SuiteAdapter(aClass));
       }
-      return new PushEnvironmentRunnerBuilder.PushEnvJUnit4Runner(aClass);
+      return new PushEnvJUnit4Runner(aClass);
     } else {
       // push this environment-aware RunnerBuilder down to next RunWith runner, if any. 
       Runner runWithRunner = new AnnotatedBuilder(this).runnerForClass(aClass);

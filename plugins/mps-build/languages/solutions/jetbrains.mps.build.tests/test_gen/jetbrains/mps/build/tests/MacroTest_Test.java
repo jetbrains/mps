@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class MacroTest_Test extends BaseTransformationTest {
@@ -30,31 +31,31 @@ public class MacroTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_normalScope() throws Throwable {
-    new MacroTest_Test.TestBody(this).test_normalScope();
+    new TestBody(this).test_normalScope();
   }
   @Test
   public void test_onlySeePreviouslyDeclaredMacro() throws Throwable {
-    new MacroTest_Test.TestBody(this).test_onlySeePreviouslyDeclaredMacro();
+    new TestBody(this).test_onlySeePreviouslyDeclaredMacro();
   }
   @Test
   public void test_doNotSeeItsefl() throws Throwable {
-    new MacroTest_Test.TestBody(this).test_doNotSeeItsefl();
+    new TestBody(this).test_doNotSeeItsefl();
   }
   @Test
   public void test_doNotSeeImported() throws Throwable {
-    new MacroTest_Test.TestBody(this).test_doNotSeeImported();
+    new TestBody(this).test_doNotSeeImported();
   }
   @Test
   public void test_seeImportedVariableInScope() throws Throwable {
-    new MacroTest_Test.TestBody(this).test_seeImportedVariableInScope();
+    new TestBody(this).test_seeImportedVariableInScope();
   }
   @Test
   public void test_doNotSeeForwardVariabletInScope() throws Throwable {
-    new MacroTest_Test.TestBody(this).test_doNotSeeForwardVariabletInScope();
+    new TestBody(this).test_doNotSeeForwardVariabletInScope();
   }
   @Test
   public void test_seeBackwardVariableInScope() throws Throwable {
-    new MacroTest_Test.TestBody(this).test_seeBackwardVariableInScope();
+    new TestBody(this).test_seeBackwardVariableInScope();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -67,46 +68,50 @@ public class MacroTest_Test extends BaseTransformationTest {
       addNodeById("193602448594327347");
       addNodeById("763409143595572699");
       addNodeById("384280137912153748");
-      Assert.assertTrue(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("193602448594327348"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("193602448594330636"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330632"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
+      Assert.assertTrue(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("193602448594327348"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("193602448594330636"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330632"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
     }
     public void test_onlySeePreviouslyDeclaredMacro() throws Exception {
       addNodeById("193602448594327347");
       addNodeById("763409143595572699");
       addNodeById("384280137912153748");
-      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("193602448594327348"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("193602448594330632"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330636"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
+      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("193602448594327348"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("193602448594330632"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330636"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
     }
     public void test_doNotSeeItsefl() throws Exception {
       addNodeById("193602448594327347");
       addNodeById("763409143595572699");
       addNodeById("384280137912153748");
-      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
+      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
     }
     public void test_doNotSeeImported() throws Exception {
       addNodeById("193602448594327347");
       addNodeById("763409143595572699");
       addNodeById("384280137912153748");
-      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330632"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
-      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330636"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
+      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330632"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
+      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("763409143595572705"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("193602448594330636"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafadd002L, "BuildFolderMacro")))));
     }
     public void test_seeImportedVariableInScope() throws Exception {
       addNodeById("193602448594327347");
       addNodeById("763409143595572699");
       addNodeById("384280137912153748");
-      Assert.assertTrue(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("384280137912153739"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d01L, "BuildVarRefStringPart")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("384280137912153734"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x3449288aa0d560e2L, "BuildVariableMacro")))));
+      Assert.assertTrue(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("763409143595572700"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("384280137912153739"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d01L, "BuildVarRefStringPart")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("384280137912153734"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x3449288aa0d560e2L, "BuildVariableMacro")))));
     }
     public void test_doNotSeeForwardVariabletInScope() throws Exception {
       addNodeById("193602448594327347");
       addNodeById("763409143595572699");
       addNodeById("384280137912153748");
-      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("384280137912153749"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("384280137912153758"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d01L, "BuildVarRefStringPart")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("384280137912153753"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x3449288aa0d560e2L, "BuildVariableMacro")))));
+      Assert.assertFalse(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("384280137912153749"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("384280137912153758"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d01L, "BuildVarRefStringPart")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("384280137912153753"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x3449288aa0d560e2L, "BuildVariableMacro")))));
     }
     public void test_seeBackwardVariableInScope() throws Exception {
       addNodeById("193602448594327347");
       addNodeById("763409143595572699");
       addNodeById("384280137912153748");
-      Assert.assertTrue(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("384280137912153749"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"), SNodeOperations.cast(getNodeById("384280137912153762"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d01L, "BuildVarRefStringPart")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("384280137912153753"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x3449288aa0d560e2L, "BuildVariableMacro")))));
+      Assert.assertTrue(Sequence.fromIterable(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(getNodeById("384280137912153749"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4df58c6f18f84a13L, "BuildProject"))), AUX_oxxkhl.BuildMacro_808bb078, SNodeOperations.cast(getNodeById("384280137912153762"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d01L, "BuildVarRefStringPart")))).getAvailableElements("")).contains(SNodeOperations.cast(getNodeById("384280137912153753"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x3449288aa0d560e2L, "BuildVariableMacro")))));
     }
 
 
+  }
+
+  private static final class AUX_oxxkhl {
+    /*package*/ static final SConcept BuildMacro_808bb078 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro");
   }
 }

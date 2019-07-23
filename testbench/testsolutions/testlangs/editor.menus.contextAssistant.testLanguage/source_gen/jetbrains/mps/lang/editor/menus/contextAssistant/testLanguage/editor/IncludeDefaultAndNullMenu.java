@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IncludeDefaultAndNullMenu extends TransformationMenuBase {
@@ -49,8 +50,8 @@ public class IncludeDefaultAndNullMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new IncludeDefaultAndNullMenu.TMP_Include_cs2ck2_a0());
-      result.add(new IncludeDefaultAndNullMenu.TMP_Include_cs2ck2_b0());
+      result.add(new TMP_Include_cs2ck2_a0());
+      result.add(new TMP_Include_cs2ck2_b0());
     }
     return result;
   }
@@ -89,8 +90,12 @@ public class IncludeDefaultAndNullMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x41299cab94e578eeL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.IncludeDefaultAndNullMenu"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_cs2ck2.IncludeDefaultAndNullMenu_ddb3918e);
     }
 
+  }
+
+  private static final class AUX_cs2ck2 {
+    /*package*/ static final SConcept IncludeDefaultAndNullMenu_ddb3918e = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x41299cab94e578eeL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.IncludeDefaultAndNullMenu");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.generator.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,13 +15,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class InlineTemplateWithContext_RuleConsequence__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+  private static final SAbstractConcept CONCEPT = AUX_4i9n3j.InlineTemplateWithContext_RuleConsequence_cd06d77c;
 
   public static final SMethod<SAbstractConcept> getTemplateType_id6SoPMa83EEL = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getTemplateType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6SoPMa83EEL").build();
 
@@ -32,7 +33,7 @@ public final class InlineTemplateWithContext_RuleConsequence__BehaviorDescriptor
   }
 
   /*package*/ static SAbstractConcept getTemplateType_id6SoPMa83EEL(@NotNull SNode __thisNode__) {
-    List<SNode> fragments = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"), false, new SAbstractConcept[]{});
+    List<SNode> fragments = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode")), AUX_4i9n3j.TemplateFragment_1973fd34, false, new SAbstractConcept[]{});
     if ((ListSequence.fromList(fragments).first() != null) && (SNodeOperations.getParent(ListSequence.fromList(fragments).first()) != null)) {
       return SNodeOperations.getConcept(SNodeOperations.getParent(ListSequence.fromList(fragments).first()));
     }
@@ -83,5 +84,10 @@ public final class InlineTemplateWithContext_RuleConsequence__BehaviorDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_4i9n3j {
+    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence_cd06d77c = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+    /*package*/ static final SConcept TemplateFragment_1973fd34 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
   }
 }

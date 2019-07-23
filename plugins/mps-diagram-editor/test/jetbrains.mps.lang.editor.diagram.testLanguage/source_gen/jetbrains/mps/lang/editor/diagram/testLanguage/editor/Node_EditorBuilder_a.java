@@ -52,7 +52,7 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableContentVi
   }
 
   private EditorCell createDiagramNode_0() {
-    BlockCell editorCell = new Node_EditorBuilder_a.BlockCellImpl_aofvvp_a(getEditorContext(), myNode);
+    BlockCell editorCell = new BlockCellImpl_aofvvp_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramNode_aofvvp_a");
     editorCell.setBig(true);
     setCellContext(editorCell);

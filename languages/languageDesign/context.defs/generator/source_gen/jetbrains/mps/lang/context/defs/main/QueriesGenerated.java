@@ -20,6 +20,7 @@ import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 @Generated
 public class QueriesGenerated extends QueryProviderBase {
@@ -37,12 +38,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return "get" + NameUtil.capitalize(SPropertyOperations.getString(def, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL, "jetbrains.mps.lang.context.defs.structure.NativeDef"));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), AUX_x583g4.NativeDef_57b028ff);
   }
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("4636242761502389218", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("4636242761502389218", new IfMC(i++));
   }
   @NotNull
   @Override
@@ -70,9 +71,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("4636242761502876135", new QueriesGenerated.RTQ(0, "getValue"));
-    rtqMethods.put("4636242761502876145", new QueriesGenerated.RTQ(1, "Def"));
-    rtqMethods.put("546470471387639841", new QueriesGenerated.RTQ(2, "getClass"));
+    rtqMethods.put("4636242761502876135", new RTQ(0, "getValue"));
+    rtqMethods.put("4636242761502876145", new RTQ(1, "Def"));
+    rtqMethods.put("546470471387639841", new RTQ(2, "getClass"));
   }
   @NotNull
   @Override
@@ -102,5 +103,9 @@ public class QueriesGenerated extends QueryProviderBase {
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SInterfaceConcept NativeDef_57b028ff = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL, "jetbrains.mps.lang.context.defs.structure.NativeDef");
   }
 }

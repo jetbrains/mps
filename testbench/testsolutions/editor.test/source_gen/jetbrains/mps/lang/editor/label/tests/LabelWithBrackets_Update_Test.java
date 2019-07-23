@@ -23,7 +23,7 @@ public class LabelWithBrackets_Update_Test extends BaseTransformationTest {
 
   @Test
   public void test_LabelWithBrackets_Update() throws Throwable {
-    new LabelWithBrackets_Update_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

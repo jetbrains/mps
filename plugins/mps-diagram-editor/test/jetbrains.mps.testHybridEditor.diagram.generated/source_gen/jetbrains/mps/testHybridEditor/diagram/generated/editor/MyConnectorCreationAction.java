@@ -7,7 +7,6 @@ import jetbrains.jetpad.projectional.view.ViewTrait;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.jetpad.projectional.view.ViewTraitBuilder;
 import jetbrains.jetpad.projectional.view.ViewEvents;
@@ -20,9 +19,11 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MyConnectorCreationAction implements PaletteToggleAction {
   private ViewTrait myTrait;
@@ -32,7 +33,7 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
   public MyConnectorCreationAction(DiagramCell diagramCell) {
     myDiagramCell = diagramCell;
     myText = "Connector";
-    SAbstractConcept concept = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance");
+    SAbstractConcept concept = AUX_lbjacb.ConnectorInstance_d3c705fe;
     myIcon = GlobalIconManager.getInstance().getIconFor(concept);
   }
   protected ViewTrait getTrait() {
@@ -61,7 +62,7 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
           final Wrappers._boolean result = new Wrappers._boolean(false);
           repo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance")) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance")) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts"))) {
+              if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), AUX_lbjacb.BlockInstance_d3c3578c) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), AUX_lbjacb.BlockInstance_d3c3578c) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts"))) {
                 result.value = true;
               }
             }
@@ -74,9 +75,9 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
               SNode connectorInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance"));
               SLinkOperations.setTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
               SLinkOperations.setTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source")), MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block"), SNodeOperations.cast(connectionInfo.getFromNode(), MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance")));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source")), MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block"), SNodeOperations.cast(connectionInfo.getFromNode(), AUX_lbjacb.BlockInstance_d3c3578c));
               SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source")), MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort"), ((SNode) connectionInfo.getFromId()));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target")), MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block"), SNodeOperations.cast(connectionInfo.getToNode(), MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance")));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target")), MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block"), SNodeOperations.cast(connectionInfo.getToNode(), AUX_lbjacb.BlockInstance_d3c3578c));
               SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target")), MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort"), ((SNode) connectionInfo.getToId()));
               ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors"))).addElement(connectorInstance);
             }
@@ -104,5 +105,10 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
       return checkedDotOperand.booleanValue();
     }
     return false;
+  }
+
+  private static final class AUX_lbjacb {
+    /*package*/ static final SConcept ConnectorInstance_d3c705fe = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance");
+    /*package*/ static final SConcept BlockInstance_d3c3578c = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance");
   }
 }

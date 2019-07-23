@@ -33,23 +33,23 @@ public class SNodeGetReferenceOperation_Test extends BaseTransformationTest {
 
   @Test
   public void test_empty() throws Throwable {
-    new SNodeGetReferenceOperation_Test.TestBody(this).test_empty();
+    new TestBody(this).test_empty();
   }
   @Test
   public void test_byLinkDeclaration() throws Throwable {
-    new SNodeGetReferenceOperation_Test.TestBody(this).test_byLinkDeclaration();
+    new TestBody(this).test_byLinkDeclaration();
   }
   @Test
   public void test_bySpecializedLinkDeclaration() throws Throwable {
-    new SNodeGetReferenceOperation_Test.TestBody(this).test_bySpecializedLinkDeclaration();
+    new TestBody(this).test_bySpecializedLinkDeclaration();
   }
   @Test
   public void test_forNull() throws Throwable {
-    new SNodeGetReferenceOperation_Test.TestBody(this).test_forNull();
+    new TestBody(this).test_forNull();
   }
   @Test
   public void test_invalidLinkDeclaration() throws Throwable {
-    new SNodeGetReferenceOperation_Test.TestBody(this).test_invalidLinkDeclaration();
+    new TestBody(this).test_invalidLinkDeclaration();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

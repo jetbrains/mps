@@ -13,7 +13,7 @@ public class biggerTypeTest2 {
     System.out.println((eval()));
   }
   public static Object eval() {
-    return new biggerTypeTest2.Function_1751004816844298780();
+    return new Function_1751004816844298780();
   }
   public static class Function_1751004816844298780 extends Function {
     private List myOuterVars = new ArrayList();
@@ -35,7 +35,7 @@ public class biggerTypeTest2 {
       return 2;
     }
     public Function copy() {
-      return new biggerTypeTest2.Function_1751004816844298780(myOuterVars);
+      return new Function_1751004816844298780(myOuterVars);
     }
   }
 }

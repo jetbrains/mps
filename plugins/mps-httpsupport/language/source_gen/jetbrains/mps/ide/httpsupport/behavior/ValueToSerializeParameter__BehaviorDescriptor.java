@@ -4,7 +4,6 @@ package jetbrains.mps.ide.httpsupport.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -17,12 +16,14 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunctionParameter__BehaviorDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ValueToSerializeParameter__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8393f24L, "jetbrains.mps.ide.httpsupport.structure.ValueToSerializeParameter");
+  private static final SAbstractConcept CONCEPT = AUX_fq0my3.ValueToSerializeParameter_4fee88b8;
 
   public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("27DJnJtIQ9C").build();
 
@@ -32,7 +33,7 @@ public final class ValueToSerializeParameter__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__)), MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, "jetbrains.mps.ide.httpsupport.structure.ParameterConverterDeclaration")), MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType"));
+    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__)), AUX_fq0my3.ParameterConverterDeclaration_4f8ff72c), MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType"));
   }
 
   /*package*/ ValueToSerializeParameter__BehaviorDescriptor() {
@@ -79,5 +80,10 @@ public final class ValueToSerializeParameter__BehaviorDescriptor extends BaseBHD
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_fq0my3 {
+    /*package*/ static final SConcept ValueToSerializeParameter_4fee88b8 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8393f24L, "jetbrains.mps.ide.httpsupport.structure.ValueToSerializeParameter");
+    /*package*/ static final SConcept ParameterConverterDeclaration_4f8ff72c = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, "jetbrains.mps.ide.httpsupport.structure.ParameterConverterDeclaration");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,12 +15,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CellMenuDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, "jetbrains.mps.lang.editor.structure.CellMenuDescriptor");
+  private static final SAbstractConcept CONCEPT = AUX_rerfmg.CellMenuDescriptor_ff9b94f6;
 
   public static final SMethod<SNode> getEditedFeature_idhKy3mrJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditedFeature").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKy3mrJ").build();
 
@@ -31,11 +32,11 @@ public final class CellMenuDescriptor__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getEditedFeature_idhKy3mrJ(@NotNull SNode __thisNode__) {
-    SNode owner = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent")}, false, false);
-    if (SNodeOperations.isInstanceOf(owner, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, "jetbrains.mps.lang.editor.structure.CellModel_WithRole"))) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(owner, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, "jetbrains.mps.lang.editor.structure.CellModel_WithRole")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
-    } else if (SNodeOperations.isInstanceOf(owner, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent"))) {
-      SNode component = SNodeOperations.cast(owner, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent"));
+    SNode owner = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{AUX_rerfmg.EditorCellModel_226b88d6, AUX_rerfmg.CellMenuComponent_409bb26e}, false, false);
+    if (SNodeOperations.isInstanceOf(owner, AUX_rerfmg.CellModel_WithRole_a669eb72)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(owner, AUX_rerfmg.CellModel_WithRole_a669eb72), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
+    } else if (SNodeOperations.isInstanceOf(owner, AUX_rerfmg.CellMenuComponent_409bb26e)) {
+      SNode component = SNodeOperations.cast(owner, AUX_rerfmg.CellMenuComponent_409bb26e);
       SNode feature = SLinkOperations.getTarget(component, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, 0x10f7d739ad9L, "applicableFeature"));
       if ((feature != null)) {
         return SLinkOperations.getTarget(feature, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d762adcL, 0x10f7e408e08L, "relationDeclaration"));
@@ -90,5 +91,12 @@ public final class CellMenuDescriptor__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_rerfmg {
+    /*package*/ static final SConcept CellMenuDescriptor_ff9b94f6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, "jetbrains.mps.lang.editor.structure.CellMenuDescriptor");
+    /*package*/ static final SConcept EditorCellModel_226b88d6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
+    /*package*/ static final SConcept CellMenuComponent_409bb26e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent");
+    /*package*/ static final SConcept CellModel_WithRole_a669eb72 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, "jetbrains.mps.lang.editor.structure.CellModel_WithRole");
   }
 }

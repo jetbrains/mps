@@ -21,7 +21,7 @@ public class UndoChangesOfTransactionalPropertyCell_Test extends BaseTransformat
 
   @Test
   public void test_UndoChangesOfTransactionalPropertyCell() throws Throwable {
-    new UndoChangesOfTransactionalPropertyCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

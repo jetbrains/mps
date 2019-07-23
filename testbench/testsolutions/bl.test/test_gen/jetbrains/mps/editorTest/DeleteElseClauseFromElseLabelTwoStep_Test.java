@@ -26,7 +26,7 @@ public class DeleteElseClauseFromElseLabelTwoStep_Test extends BaseTransformatio
 
   @Test
   public void test_DeleteElseClauseFromElseLabelTwoStep() throws Throwable {
-    new DeleteElseClauseFromElseLabelTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

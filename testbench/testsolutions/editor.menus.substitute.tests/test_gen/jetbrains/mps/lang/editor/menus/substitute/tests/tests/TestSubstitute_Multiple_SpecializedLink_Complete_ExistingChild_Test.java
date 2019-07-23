@@ -24,7 +24,7 @@ public class TestSubstitute_Multiple_SpecializedLink_Complete_ExistingChild_Test
 
   @Test
   public void test_TestSubstitute_Multiple_SpecializedLink_Complete_ExistingChild() throws Throwable {
-    new TestSubstitute_Multiple_SpecializedLink_Complete_ExistingChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

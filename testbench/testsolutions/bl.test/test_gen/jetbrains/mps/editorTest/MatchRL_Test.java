@@ -21,7 +21,7 @@ public class MatchRL_Test extends BaseTransformationTest {
 
   @Test
   public void test_MatchRL() throws Throwable {
-    new MatchRL_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

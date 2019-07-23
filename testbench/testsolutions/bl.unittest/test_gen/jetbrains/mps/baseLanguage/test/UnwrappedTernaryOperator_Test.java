@@ -32,15 +32,15 @@ public class UnwrappedTernaryOperator_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTernaryOperatorMustBeCheck818296778600411956() throws Throwable {
-    new UnwrappedTernaryOperator_Test.TestBody(this).test_NodeTernaryOperatorMustBeCheck818296778600411956();
+    new TestBody(this).test_NodeTernaryOperatorMustBeCheck818296778600411956();
   }
   @Test
   public void test_NodeTernaryOperatorMustBeCheck818296778609411375() throws Throwable {
-    new UnwrappedTernaryOperator_Test.TestBody(this).test_NodeTernaryOperatorMustBeCheck818296778609411375();
+    new TestBody(this).test_NodeTernaryOperatorMustBeCheck818296778609411375();
   }
   @Test
   public void test_ErrorMessagesCheck818296778600411854() throws Throwable {
-    new UnwrappedTernaryOperator_Test.TestBody(this).test_ErrorMessagesCheck818296778600411854();
+    new TestBody(this).test_ErrorMessagesCheck818296778600411854();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

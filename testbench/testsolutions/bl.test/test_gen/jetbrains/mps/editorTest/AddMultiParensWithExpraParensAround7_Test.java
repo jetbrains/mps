@@ -21,7 +21,7 @@ public class AddMultiParensWithExpraParensAround7_Test extends BaseTransformatio
 
   @Test
   public void test_AddMultiParensWithExpraParensAround7() throws Throwable {
-    new AddMultiParensWithExpraParensAround7_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

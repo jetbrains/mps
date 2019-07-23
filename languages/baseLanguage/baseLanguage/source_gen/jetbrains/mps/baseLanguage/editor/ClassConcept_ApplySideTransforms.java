@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassConcept_ApplySideTransforms extends TransformationMenuBase {
@@ -49,8 +50,8 @@ public class ClassConcept_ApplySideTransforms extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ClassConcept_ApplySideTransforms.TMP_Include_b8zezy_a0());
-      result.add(new ClassConcept_ApplySideTransforms.TMP_Include_b8zezy_b0());
+      result.add(new TMP_Include_b8zezy_a0());
+      result.add(new TMP_Include_b8zezy_b0());
     }
     return result;
   }
@@ -74,7 +75,7 @@ public class ClassConcept_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration"), "jetbrains.mps.baseLanguage.editor.genericDeclaration_right");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_b8zezy.GenericDeclaration_dfe3792c, "jetbrains.mps.baseLanguage.editor.genericDeclaration_right");
     }
 
   }
@@ -97,8 +98,13 @@ public class ClassConcept_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_4");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_b8zezy.ClassConcept_e2711824, "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_4");
     }
 
+  }
+
+  private static final class AUX_b8zezy {
+    /*package*/ static final SConcept GenericDeclaration_dfe3792c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

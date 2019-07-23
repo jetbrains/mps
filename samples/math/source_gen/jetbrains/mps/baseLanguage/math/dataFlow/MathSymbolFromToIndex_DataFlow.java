@@ -8,11 +8,16 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MathSymbolFromToIndex_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().emitWrite(_context.getNode(), "r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1236595061381");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fea765cf0L, 0x11fea7bf632L, "from")));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol")), MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11feacc8f16L, "upperBound")));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_r48jnp.MathSymbol_4d8d6fdb), MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11feacc8f16L, "upperBound")));
+  }
+
+  private static final class AUX_r48jnp {
+    /*package*/ static final SConcept MathSymbol_4d8d6fdb = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
   }
 }

@@ -12,19 +12,20 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.MapRootRuleContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Mapping_main extends MapConfigBase implements TemplateMappingConfiguration {
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_main(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202255161944"), "main", model, false);
-    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new Mapping_main.RootMappingRule0(), new Mapping_main.RootMappingRule1());
+    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0(), new RootMappingRule1());
   }
   @Override
   public Collection<TemplateRootMappingRule> getRootRules() {
@@ -32,7 +33,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202255161953"), MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, "jetbrains.mps.transformation.test.inputLang.structure.InputRoot"), false, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202255161953"), AUX_ief6mt.InputRoot_10fdbd0b, false, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -48,7 +49,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class RootMappingRule1 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338801828"), MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, "jetbrains.mps.transformation.test.inputLang.structure.InputRoot"), false, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338801828"), AUX_ief6mt.InputRoot_10fdbd0b, false, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -61,5 +62,9 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       environment.registerLabel(context.getInput(), result, "ROOT INPUT");
       return result;
     }
+  }
+
+  private static final class AUX_ief6mt {
+    /*package*/ static final SConcept InputRoot_10fdbd0b = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, "jetbrains.mps.transformation.test.inputLang.structure.InputRoot");
   }
 }

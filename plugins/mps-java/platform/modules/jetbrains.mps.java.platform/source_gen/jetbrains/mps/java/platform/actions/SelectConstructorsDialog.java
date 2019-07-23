@@ -7,9 +7,11 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SelectConstructorsDialog extends GroupedNodesChooser {
   public SelectConstructorsDialog(SNodeReference[] ctors, MPSProject mpsProject) {
@@ -17,9 +19,14 @@ public class SelectConstructorsDialog extends GroupedNodesChooser {
   }
   @Override
   protected String getText(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    if (SNodeOperations.isInstanceOf(node, AUX_b2o40e.Classifier_4b7e553)) {
+      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, AUX_b2o40e.Classifier_4b7e553), AUX_b2o40e.INamedConcept_8cd7e247, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
     }
     return super.getText(node);
+  }
+
+  private static final class AUX_b2o40e {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

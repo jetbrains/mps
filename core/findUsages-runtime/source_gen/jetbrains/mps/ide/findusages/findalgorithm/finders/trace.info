@@ -322,7 +322,7 @@
       <node id="5103414995787364758" at="21,92,22,69" concept="7" />
       <node id="5103414995787364761" at="22,69,23,45" concept="2" />
       <node id="5103414995787364766" at="23,45,24,43" concept="8" />
-      <node id="5103414995787367245" at="31,123,32,58" concept="7" />
+      <node id="5103414995787367245" at="31,115,32,58" concept="7" />
       <node id="5103414995787367251" at="32,58,33,77" concept="2" />
       <node id="5103414995787367257" at="34,70,35,36" concept="2" />
       <node id="5103414995787425670" at="40,0,41,0" concept="6" trace="onUsageFound#(Ljetbrains/mps/ide/findusages/model/SearchResult;)V" />
@@ -344,7 +344,7 @@
       <scope id="5103414995787367254" at="33,77,36,5">
         <var name="result" id="5103414995787367260" />
       </scope>
-      <scope id="5103414995787367243" at="31,123,36,5">
+      <scope id="5103414995787367243" at="31,115,36,5">
         <var name="searchResults" id="5103414995787367244" />
       </scope>
       <scope id="8267733531687413178" at="20,0,26,0">

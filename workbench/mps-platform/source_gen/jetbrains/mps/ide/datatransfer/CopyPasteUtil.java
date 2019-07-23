@@ -29,7 +29,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.StaticReference;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import com.intellij.ide.CopyPasteManagerEx;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
@@ -45,6 +44,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class CopyPasteUtil {
   private static final Logger LOG = LogManager.getLogger(CopyPasteUtil.class);
@@ -176,7 +178,7 @@ public final class CopyPasteUtil {
         newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, newTargetNode);
       } else {
         // XXX special hack for BL, oh, really? 
-        if ((SNodeOperations.isInstanceOf(newSourceNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall")) || SNodeOperations.isInstanceOf(newSourceNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) && oldTargetNode != null) {
+        if ((SNodeOperations.isInstanceOf(newSourceNode, AUX_lwiaog.IMethodCall_ee2c776b) || SNodeOperations.isInstanceOf(newSourceNode, AUX_lwiaog.ClassifierType_42700403)) && oldTargetNode != null) {
           newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, oldTargetNode);
         } else {
           // XXX the code below is quite suspicious and deserves a refactoring. It seems the point here is to keep resolveInfo of original link, otherwise 
@@ -411,5 +413,10 @@ public final class CopyPasteUtil {
       break;
     }
     return false;
+  }
+
+  private static final class AUX_lwiaog {
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

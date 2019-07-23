@@ -4,7 +4,6 @@ package jetbrains.mps.lang.resources.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,6 +16,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.util.IconCreationUtil;
 import org.jetbrains.mps.openapi.util.Consumer;
@@ -29,9 +29,10 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
+  private static final SAbstractConcept CONCEPT = AUX_u2ztv.TextIcon_d7600c94;
 
   public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2p1v3tOadt0").build();
   public static final SMethod<List<Tuples._2<IFile, byte[]>>> generate_id7Mb2akaesv8 = new SMethodBuilder<List<Tuples._2<IFile, byte[]>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._2<IFile, byte[]>>>) ((Class) Object.class))).name("generate").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7Mb2akaesv8").build(SMethodBuilder.createJavaParameter(IFile.class, ""));
@@ -115,5 +116,9 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_u2ztv {
+    /*package*/ static final SConcept TextIcon_d7600c94 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
   }
 }

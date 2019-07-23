@@ -23,7 +23,7 @@ public class DeleteIncompleteMemberTransientKeywordTwoStep_Test extends BaseTran
 
   @Test
   public void test_DeleteIncompleteMemberTransientKeywordTwoStep() throws Throwable {
-    new DeleteIncompleteMemberTransientKeywordTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

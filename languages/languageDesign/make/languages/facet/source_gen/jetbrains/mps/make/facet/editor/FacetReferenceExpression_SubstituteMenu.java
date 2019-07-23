@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -25,16 +24,18 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new FacetReferenceExpression_SubstituteMenu.SMP_Param_micvva_a(), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_micvva_a(), AUX_micvva.FacetReferenceExpression_e8398170));
     return result;
   }
 
@@ -55,7 +56,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new FacetReferenceExpression_SubstituteMenu.SMP_Param_micvva_a.SMP_Action_micvva_a0(parameter).createItems(context);
+      return new SMP_Param_micvva_a.SMP_Action_micvva_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -71,7 +72,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration"));
+      return SModelOperations.nodesIncludingImported(_context.getModel(), AUX_micvva.FacetDeclaration_ec040a6d);
     }
     private class SMP_Action_micvva_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -82,7 +83,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        FacetReferenceExpression_SubstituteMenu.SMP_Param_micvva_a.SMP_Action_micvva_a0.Item item = new FacetReferenceExpression_SubstituteMenu.SMP_Param_micvva_a.SMP_Action_micvva_a0.Item(_context);
+        SMP_Param_micvva_a.SMP_Action_micvva_a0.Item item = new SMP_Param_micvva_a.SMP_Action_micvva_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -106,7 +107,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression"), context);
+          super(AUX_micvva.FacetReferenceExpression_e8398170, context);
           _context = context;
         }
 
@@ -126,7 +127,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_micvva.FacetReferenceExpression_e8398170, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -159,5 +160,10 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet"), (SNode) parameter_1);
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, 0x639ef64ff4850bb2L, "reference"), quotedNode_3);
     return quotedNode_2;
+  }
+
+  private static final class AUX_micvva {
+    /*package*/ static final SConcept FacetReferenceExpression_e8398170 = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression");
+    /*package*/ static final SConcept FacetDeclaration_ec040a6d = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
   }
 }

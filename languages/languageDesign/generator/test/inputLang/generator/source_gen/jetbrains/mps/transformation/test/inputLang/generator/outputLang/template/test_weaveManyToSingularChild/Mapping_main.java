@@ -13,7 +13,6 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.MapRootRuleContext;
@@ -23,6 +22,8 @@ import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
 import jetbrains.mps.generator.impl.WeaveContextImpl;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Mapping_main extends MapConfigBase implements TemplateMappingConfiguration {
@@ -30,8 +31,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateWeavingRule> weavings;
   public Mapping_main(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738629621"), "main", model, false);
-    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new Mapping_main.RootMappingRule0());
-    weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new Mapping_main.WeavingRule0());
+    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
+    weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new WeavingRule0());
   }
   @Override
   public Collection<TemplateRootMappingRule> getRootRules() {
@@ -43,7 +44,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738658950"), MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, "jetbrains.mps.transformation.test.inputLang.structure.InputRoot"), false, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738658950"), AUX_ief6mt.InputRoot_10fdbd0b, false, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -58,7 +59,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class WeavingRule0 extends WeaveRuleBase implements TemplateWeavingRule {
     public WeavingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738863683"), MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645be5a7aL, "jetbrains.mps.transformation.test.inputLang.structure.InputNode_A"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738863683"), AUX_ief6mt.InputNode_A_1727f4c, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -75,5 +76,10 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       Collection<SNode> tlist1 = environment.prepareWeave(weaveContext, new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738992786")).weaveTemplate(new Template_weave_InputNode_A());
       return tlist1 != null && !(tlist1.isEmpty());
     }
+  }
+
+  private static final class AUX_ief6mt {
+    /*package*/ static final SConcept InputRoot_10fdbd0b = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, "jetbrains.mps.transformation.test.inputLang.structure.InputRoot");
+    /*package*/ static final SConcept InputNode_A_1727f4c = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645be5a7aL, "jetbrains.mps.transformation.test.inputLang.structure.InputNode_A");
   }
 }

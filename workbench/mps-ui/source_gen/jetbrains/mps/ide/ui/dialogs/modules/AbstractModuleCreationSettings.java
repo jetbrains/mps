@@ -27,7 +27,7 @@ public abstract class AbstractModuleCreationSettings extends JPanel {
   protected JTextField myModuleName;
   protected JTextField myModuleLocation;
 
-  private AbstractModuleCreationSettings.ModuleCreationSettingsListener myListener;
+  private ModuleCreationSettingsListener myListener;
 
   protected boolean myLocationChangedByUser = false;
   protected boolean myLocationDocListenerEnabled = true;
@@ -113,7 +113,7 @@ public abstract class AbstractModuleCreationSettings extends JPanel {
     fireChanged();
   }
 
-  public void setListener(AbstractModuleCreationSettings.ModuleCreationSettingsListener listener) {
+  public void setListener(ModuleCreationSettingsListener listener) {
     myListener = listener;
   }
 

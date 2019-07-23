@@ -32,43 +32,43 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeDuplicateEntryCheck3031388763767076123() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_NodeDuplicateEntryCheck3031388763767076123();
+    new TestBody(this).test_NodeDuplicateEntryCheck3031388763767076123();
   }
   @Test
   public void test_NodeDuplicateEntryCheck3031388763767076139() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_NodeDuplicateEntryCheck3031388763767076139();
+    new TestBody(this).test_NodeDuplicateEntryCheck3031388763767076139();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763763461760() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_ErrorMessagesCheck3031388763763461760();
+    new TestBody(this).test_ErrorMessagesCheck3031388763763461760();
   }
   @Test
   public void test_NodeDuplicateEntryCheck3031388763767076604() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_NodeDuplicateEntryCheck3031388763767076604();
+    new TestBody(this).test_NodeDuplicateEntryCheck3031388763767076604();
   }
   @Test
   public void test_NodeDuplicateEntryCheck3031388763767076306() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_NodeDuplicateEntryCheck3031388763767076306();
+    new TestBody(this).test_NodeDuplicateEntryCheck3031388763767076306();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763763461771() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_ErrorMessagesCheck3031388763763461771();
+    new TestBody(this).test_ErrorMessagesCheck3031388763763461771();
   }
   @Test
   public void test_NodeDuplicateEntryCheck3031388763767077037() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_NodeDuplicateEntryCheck3031388763767077037();
+    new TestBody(this).test_NodeDuplicateEntryCheck3031388763767077037();
   }
   @Test
   public void test_NodeDuplicateEntryCheck3031388763767076810() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_NodeDuplicateEntryCheck3031388763767076810();
+    new TestBody(this).test_NodeDuplicateEntryCheck3031388763767076810();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763763461782() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_ErrorMessagesCheck3031388763763461782();
+    new TestBody(this).test_ErrorMessagesCheck3031388763763461782();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763763461800() throws Throwable {
-    new DuplicatesInClassifierChecks_Test.TestBody(this).test_ErrorMessagesCheck3031388763763461800();
+    new TestBody(this).test_ErrorMessagesCheck3031388763763461800();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

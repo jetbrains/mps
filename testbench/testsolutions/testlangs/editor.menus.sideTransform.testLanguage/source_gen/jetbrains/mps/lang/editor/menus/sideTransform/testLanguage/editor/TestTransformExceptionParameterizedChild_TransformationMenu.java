@@ -56,8 +56,8 @@ public class TestTransformExceptionParameterizedChild_TransformationMenu extends
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TestTransformExceptionParameterizedChild_TransformationMenu.TMP_Param_ucwuuv_a0());
-      result.add(new TestTransformExceptionParameterizedChild_TransformationMenu.TMP_Action_ucwuuv_b0());
+      result.add(new TMP_Param_ucwuuv_a0());
+      result.add(new TMP_Action_ucwuuv_b0());
     }
     return result;
   }
@@ -67,7 +67,7 @@ public class TestTransformExceptionParameterizedChild_TransformationMenu extends
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TestTransformExceptionParameterizedChild_TransformationMenu.TMP_Param_ucwuuv_a0.TMP_Action_ucwuuv_a0a(parameter).createItems(context);
+      return new TMP_Param_ucwuuv_a0.TMP_Action_ucwuuv_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -94,7 +94,7 @@ public class TestTransformExceptionParameterizedChild_TransformationMenu extends
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TestTransformExceptionParameterizedChild_TransformationMenu.TMP_Param_ucwuuv_a0.TMP_Action_ucwuuv_a0a.Item item = new TestTransformExceptionParameterizedChild_TransformationMenu.TMP_Param_ucwuuv_a0.TMP_Action_ucwuuv_a0a.Item(context);
+        TMP_Param_ucwuuv_a0.TMP_Action_ucwuuv_a0a.Item item = new TMP_Param_ucwuuv_a0.TMP_Action_ucwuuv_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -154,7 +154,7 @@ public class TestTransformExceptionParameterizedChild_TransformationMenu extends
   private class TMP_Action_ucwuuv_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestTransformExceptionParameterizedChild_TransformationMenu.TMP_Action_ucwuuv_b0.Item item = new TestTransformExceptionParameterizedChild_TransformationMenu.TMP_Action_ucwuuv_b0.Item(context);
+      TMP_Action_ucwuuv_b0.Item item = new TMP_Action_ucwuuv_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

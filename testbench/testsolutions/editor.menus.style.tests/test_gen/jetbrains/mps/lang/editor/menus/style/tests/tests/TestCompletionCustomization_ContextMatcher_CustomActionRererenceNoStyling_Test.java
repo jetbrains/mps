@@ -26,7 +26,7 @@ public class TestCompletionCustomization_ContextMatcher_CustomActionRererenceNoS
 
   @Test
   public void test_TestCompletionCustomization_ContextMatcher_CustomActionRererenceNoStyling() throws Throwable {
-    new TestCompletionCustomization_ContextMatcher_CustomActionRererenceNoStyling_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

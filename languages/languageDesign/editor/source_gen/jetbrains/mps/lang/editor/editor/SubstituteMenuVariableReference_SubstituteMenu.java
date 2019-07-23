@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SubstituteMenuVariableReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SubstituteMenuVariableReference_SubstituteMenu.SMP_ReferenceScope_g4q34h_a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableReference")));
-    result.add(new SubstituteMenuVariableReference_SubstituteMenu.SMP_Subconcepts_g4q34h_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_g4q34h_a(), AUX_g4q34h.SubstituteMenuVariableReference_162ed265));
+    result.add(new SMP_Subconcepts_g4q34h_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class SubstituteMenuVariableReference_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_g4q34h_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableReference"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
+      super((SAbstractConcept) AUX_g4q34h.SubstituteMenuVariableReference_162ed265, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class SubstituteMenuVariableReference_SubstituteMenu extends SubstituteMe
   }
   public class SMP_Subconcepts_g4q34h_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_g4q34h.SubstituteMenuVariableReference_162ed265);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class SubstituteMenuVariableReference_SubstituteMenu extends SubstituteMe
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_g4q34h {
+    /*package*/ static final SConcept SubstituteMenuVariableReference_162ed265 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableReference");
   }
 }

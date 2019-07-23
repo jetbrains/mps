@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -20,6 +19,7 @@ import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
@@ -28,9 +28,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, "jetbrains.mps.lang.editor.structure.StyleClass");
+  private static final SAbstractConcept CONCEPT = AUX_46naqs.StyleClass_23aca3d8;
 
   public static final SMethod<Boolean> hasCycles_id6rIuTvxpF4l = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasCycles").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6rIuTvxpF4l").build();
   public static final SMethod<Integer> getPriority_id1F_pHBEuveg = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1F_pHBEuveg").build();
@@ -67,7 +68,7 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
             down = false;
           } else {
             MapSequence.fromMap(priorities).put(ListSequence.fromList(extendsTree).first(), -1);
-            ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference"))).first(), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, 0x2ef3b3796a130c0eL, "styleClass")));
+            ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element")), AUX_46naqs.StyleClassReference_250cf680)).first(), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, 0x2ef3b3796a130c0eL, "styleClass")));
             ListSequence.fromList(childNums).insertElement(0, 0);
           }
         } else {
@@ -84,7 +85,7 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
         ListSequence.fromList(extendsTree).removeElementAt(0);
         ListSequence.fromList(childNums).removeElementAt(0);
         if (newIndex < ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element"))).count()) {
-          ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element"))).getElement(newIndex), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, 0x2ef3b3796a130c0eL, "styleClass")));
+          ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element"))).getElement(newIndex), AUX_46naqs.StyleClassReference_250cf680), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, 0x2ef3b3796a130c0eL, "styleClass")));
           ListSequence.fromList(childNums).insertElement(0, newIndex);
           down = true;
         }
@@ -100,11 +101,11 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
         return true;
       }
       ListSequence.fromList(dependencies).addSequence(ListSequence.fromList(adding));
-      adding = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(adding, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem")), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, "jetbrains.mps.lang.editor.structure.ApplyStyleClass"))).select(new ISelector<SNode, SNode>() {
+      adding = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(adding, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem")), AUX_46naqs.ApplyStyleClass_4858fc38)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
           return SLinkOperations.getTarget(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, 0x1b1161f6e66c1a3cL, "target")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, 0x7e9b10ab1edbd57eL, "style"));
         }
-      }), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, "jetbrains.mps.lang.editor.structure.StyleClass")));
+      }), AUX_46naqs.StyleClass_23aca3d8));
     }
     return false;
   }
@@ -118,7 +119,7 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
     return StyleSheet__BehaviorDescriptor.getClassFqName_idhEwJfl1.invoke(StyleClass__BehaviorDescriptor.getStyleSheet_idVHPC7elo9L.invoke(__thisNode__)) + "." + StyleClass__BehaviorDescriptor.getStyleClassName_idVHPC7elo9B.invoke(__thisNode__);
   }
   /*package*/ static SNode getStyleSheet_idVHPC7elo9L(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet"));
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AUX_46naqs.StyleSheet_7ecc4f59);
   }
 
   /*package*/ StyleClass__BehaviorDescriptor() {
@@ -177,5 +178,12 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_46naqs {
+    /*package*/ static final SConcept StyleClass_23aca3d8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, "jetbrains.mps.lang.editor.structure.StyleClass");
+    /*package*/ static final SConcept StyleClassReference_250cf680 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference");
+    /*package*/ static final SConcept ApplyStyleClass_4858fc38 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, "jetbrains.mps.lang.editor.structure.ApplyStyleClass");
+    /*package*/ static final SConcept StyleSheet_7ecc4f59 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet");
   }
 }

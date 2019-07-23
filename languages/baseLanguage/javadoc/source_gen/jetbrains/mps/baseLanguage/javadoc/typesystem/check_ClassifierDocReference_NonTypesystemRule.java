@@ -16,13 +16,15 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ClassifierDocReference_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ClassifierDocReference_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifierDocReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode clazz = SLinkOperations.getTarget(classifierDocReference, MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, 0x1ec532ec2531d2e5L, "classifier"));
-    if (!(VisibilityUtil.isVisible(classifierDocReference, SNodeOperations.as(clazz, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible"))))) {
+    if (!(VisibilityUtil.isVisible(classifierDocReference, SNodeOperations.as(clazz, AUX_rywffj.IVisible_84badc76)))) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(classifierDocReference, "Symbol " + SPropertyOperations.getString(clazz, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538863877", null, errorTarget);
@@ -30,12 +32,17 @@ public class check_ClassifierDocReference_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference");
+    return AUX_rywffj.ClassifierDocReference_7faec9b7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_rywffj {
+    /*package*/ static final SInterfaceConcept IVisible_84badc76 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SConcept ClassifierDocReference_7faec9b7 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference");
   }
 }

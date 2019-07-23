@@ -14,11 +14,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TransformStatement {
   public static class NodeFactory_1901572971594206036 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter"))).addElement(_quotation_createNode_md2x8h_a0a0a0a(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(SNodeOperations.as(enclosingNode, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement")))));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter"))).addElement(_quotation_createNode_md2x8h_a0a0a0a(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(SNodeOperations.as(enclosingNode, AUX_md2x8h.TransformStatement_c9168426))));
       SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0xc5cbfc0eeac457bL, "forceMultiLine"), true);
     }
     private static SNode _quotation_createNode_md2x8h_a0a0a0a(Object parameter_1) {
@@ -32,5 +33,9 @@ public class TransformStatement {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_3);
       return quotedNode_2;
     }
+  }
+
+  private static final class AUX_md2x8h {
+    /*package*/ static final SConcept TransformStatement_c9168426 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement");
   }
 }

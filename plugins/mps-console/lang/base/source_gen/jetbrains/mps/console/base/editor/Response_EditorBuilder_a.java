@@ -25,6 +25,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class Response_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -78,7 +79,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new Response_EditorBuilder_a.itemListHandler_mesn11_a0b0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new itemListHandler_mesn11_a0b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_item");
     editorCell.setSRole(handler.getElementSRole());
@@ -101,7 +102,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
       return MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getInterfaceConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b3583cL, "jetbrains.mps.console.base.structure.ResponseItem");
+      return AUX_t4or1l.ResponseItem_8aa5e646;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -138,5 +139,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
   private EditorCell createIndentCell_1() {
     EditorCell_Indent editorCell = new EditorCell_Indent(getEditorContext(), myNode);
     return editorCell;
+  }
+
+  private static final class AUX_t4or1l {
+    /*package*/ static final SInterfaceConcept ResponseItem_8aa5e646 = MetaAdapterFactory.getInterfaceConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b3583cL, "jetbrains.mps.console.base.structure.ResponseItem");
   }
 }

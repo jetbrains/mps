@@ -21,7 +21,7 @@ public class DefaultEditor_AddChild_Test extends BaseTransformationTest {
 
   @Test
   public void test_DefaultEditor_AddChild() throws Throwable {
-    new DefaultEditor_AddChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

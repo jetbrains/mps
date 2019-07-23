@@ -57,7 +57,7 @@ public class TestSubstituteParentPropertyAndReference_CustomReferenceMenu extend
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TestSubstituteParentPropertyAndReference_CustomReferenceMenu.TMP_Action_jhs4e4_a0());
+      result.add(new TMP_Action_jhs4e4_a0());
     }
     return result;
   }
@@ -65,7 +65,7 @@ public class TestSubstituteParentPropertyAndReference_CustomReferenceMenu extend
   private class TMP_Action_jhs4e4_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestSubstituteParentPropertyAndReference_CustomReferenceMenu.TMP_Action_jhs4e4_a0.Item item = new TestSubstituteParentPropertyAndReference_CustomReferenceMenu.TMP_Action_jhs4e4_a0.Item(context);
+      TMP_Action_jhs4e4_a0.Item item = new TMP_Action_jhs4e4_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

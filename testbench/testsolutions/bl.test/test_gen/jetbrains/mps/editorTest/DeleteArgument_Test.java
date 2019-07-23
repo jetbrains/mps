@@ -22,7 +22,7 @@ public class DeleteArgument_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteArgument() throws Throwable {
-    new DeleteArgument_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

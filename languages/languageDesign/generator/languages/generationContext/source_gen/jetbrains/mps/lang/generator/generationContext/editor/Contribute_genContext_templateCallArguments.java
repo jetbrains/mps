@@ -13,10 +13,12 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Contribute_genContext_templateCallArguments extends SubstituteMenuBase {
   public Contribute_genContext_templateCallArguments() {
@@ -26,7 +28,7 @@ public class Contribute_genContext_templateCallArguments extends SubstituteMenuB
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new Contribute_genContext_templateCallArguments.SMP_Group_my4xy0_a());
+    result.add(new SMP_Group_my4xy0_a());
     return result;
   }
 
@@ -48,7 +50,7 @@ public class Contribute_genContext_templateCallArguments extends SubstituteMenuB
     protected boolean isApplicable(SubstituteMenuContext _context) {
       // Allow use of genContext expression inside template calls without need to wrap them with ConceptFunction instance 
       // but don't show it twice inside a CF, where CFPs get contributed by dedicated menu contributor 
-      return (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall"), true, false) != null) && (SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"), true, false) == null);
+      return (SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_my4xy0.ITemplateCall_bd844c23, true, false) != null) && (SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_my4xy0.ConceptFunction_e08795a5, true, false) == null);
     }
     @NotNull
     @Override
@@ -64,7 +66,7 @@ public class Contribute_genContext_templateCallArguments extends SubstituteMenuB
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext")) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_my4xy0.TemplateFunctionParameter_generationContext_c78d9c30) {
 
         @NotNull
         @Override
@@ -77,7 +79,13 @@ public class Contribute_genContext_templateCallArguments extends SubstituteMenuB
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext")));
+      }, AUX_my4xy0.TemplateFunctionParameter_generationContext_c78d9c30));
     }
+  }
+
+  private static final class AUX_my4xy0 {
+    /*package*/ static final SInterfaceConcept ITemplateCall_bd844c23 = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept TemplateFunctionParameter_generationContext_c78d9c30 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext");
   }
 }

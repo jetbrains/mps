@@ -36,7 +36,7 @@ public class IntroduceFinalField_Test extends BaseTransformationTest {
 
   @Test
   public void test_IntroduceFinalField() throws Throwable {
-    new IntroduceFinalField_Test.TestBody(this).test_IntroduceFinalField();
+    new TestBody(this).test_IntroduceFinalField();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

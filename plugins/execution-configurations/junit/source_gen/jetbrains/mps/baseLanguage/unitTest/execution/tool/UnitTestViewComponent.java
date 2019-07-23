@@ -130,7 +130,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
   }
 
   private JPanel createTreePanel(JComponent toolbar, JComponent tree) {
-    UnitTestViewComponent.MyTreePanel treePanel = new UnitTestViewComponent.MyTreePanel(new BorderLayout());
+    MyTreePanel treePanel = new MyTreePanel(new BorderLayout());
     JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(tree);
     scrollPane.putClientProperty(UIUtil.KEEP_BORDER_SIDES, SideBorder.TOP);
     treePanel.add(scrollPane, BorderLayout.CENTER);

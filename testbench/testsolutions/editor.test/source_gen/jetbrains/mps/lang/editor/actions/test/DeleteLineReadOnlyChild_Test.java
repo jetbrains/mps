@@ -22,7 +22,7 @@ public class DeleteLineReadOnlyChild_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteLineReadOnlyChild() throws Throwable {
-    new DeleteLineReadOnlyChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

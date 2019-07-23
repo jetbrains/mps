@@ -15,14 +15,15 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public checkNumberOfArgs_NonTypesystemRule() {
   }
   public void applyRule(final SNode customConstructorUsage, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode args = SLinkOperations.getTarget(SLinkOperations.getTarget(customConstructorUsage, MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor")), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments"));
-    if (SNodeOperations.isInstanceOf(args, MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause"))) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause")), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter"))).count() != ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element"))).count()) {
+    if (SNodeOperations.isInstanceOf(args, AUX_j7zsho.CustomArgumentClause_6b8a6f02)) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, AUX_j7zsho.CustomArgumentClause_6b8a6f02), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter"))).count() != ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element"))).count()) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(customConstructorUsage, "Wrong number of arguments", "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "960932673514559399", null, errorTarget);
@@ -31,12 +32,17 @@ public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
+    return AUX_j7zsho.CustomConstructorUsage_5403bf01;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_j7zsho {
+    /*package*/ static final SConcept CustomArgumentClause_6b8a6f02 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
+    /*package*/ static final SConcept CustomConstructorUsage_5403bf01 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
   }
 }

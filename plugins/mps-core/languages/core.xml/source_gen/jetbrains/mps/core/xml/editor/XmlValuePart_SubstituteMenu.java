@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -21,6 +20,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.xml.constraints.XmlNameUtil;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
@@ -28,16 +28,17 @@ import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_a(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_b(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_c(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart")));
-    result.add(new XmlValuePart_SubstituteMenu.SMP_Subconcepts_rajt6d_d());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_a(), AUX_rajt6d.XmlValuePart_62249475));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_b(), AUX_rajt6d.XmlValuePart_62249475));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_c(), AUX_rajt6d.XmlValuePart_62249475));
+    result.add(new SMP_Subconcepts_rajt6d_d());
     return result;
   }
 
@@ -59,7 +60,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_a.Item item = new XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_a.Item(_context);
+      SMP_Action_rajt6d_a.Item item = new SMP_Action_rajt6d_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -82,7 +83,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart"), context);
+        super(AUX_rajt6d.XmlValuePart_62249475, context);
         _context = context;
       }
 
@@ -93,7 +94,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, "jetbrains.mps.core.xml.structure.XmlCharRefValue"), null);
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_rajt6d.XmlCharRefValue_d43d5d39, null);
       }
 
       @Override
@@ -112,7 +113,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_b.Item item = new XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_b.Item(_context);
+      SMP_Action_rajt6d_b.Item item = new SMP_Action_rajt6d_b.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -135,7 +136,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart"), context);
+        super(AUX_rajt6d.XmlValuePart_62249475, context);
         _context = context;
       }
 
@@ -146,7 +147,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue"), null);
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_rajt6d.XmlEntityRefValue_6224948f, null);
       }
 
       @Override
@@ -165,7 +166,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_c.Item item = new XmlValuePart_SubstituteMenu.SMP_Action_rajt6d_c.Item(_context);
+      SMP_Action_rajt6d_c.Item item = new SMP_Action_rajt6d_c.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -188,7 +189,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart"), context);
+        super(AUX_rajt6d.XmlValuePart_62249475, context);
         _context = context;
       }
 
@@ -199,7 +200,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue"), null);
+        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_rajt6d.XmlTextValue_62249478, null);
         SPropertyOperations.assign(val, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), pattern);
         return val;
       }
@@ -223,7 +224,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_rajt6d_d extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_rajt6d.XmlValuePart_62249475);
     }
     @NotNull
     @Override
@@ -241,5 +242,12 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_rajt6d {
+    /*package*/ static final SConcept XmlValuePart_62249475 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
+    /*package*/ static final SConcept XmlCharRefValue_d43d5d39 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, "jetbrains.mps.core.xml.structure.XmlCharRefValue");
+    /*package*/ static final SConcept XmlEntityRefValue_6224948f = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue");
+    /*package*/ static final SConcept XmlTextValue_62249478 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
   }
 }

@@ -21,7 +21,7 @@ public class AddMethodAllowed_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddMethodAllowed() throws Throwable {
-    new AddMethodAllowed_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class CommandSelectAllTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_CommandSelectAllTest() throws Throwable {
-    new CommandSelectAllTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

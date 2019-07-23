@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +37,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -63,7 +64,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_dkv885.BaseEmitJumpStatement_1c3d8c94)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -79,8 +80,8 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new BaseEmitJumpStatement_TransformationMenu.TMP_Action_dkv885_a1(), MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L, "jetbrains.mps.lang.dataFlow.structure.EmitIfJumpStatement")));
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new BaseEmitJumpStatement_TransformationMenu.TMP_Action_dkv885_b1(), MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L, "jetbrains.mps.lang.dataFlow.structure.EmitJumpStatement")));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dkv885_a1(), AUX_dkv885.EmitIfJumpStatement_1e024db8));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dkv885_b1(), AUX_dkv885.EmitJumpStatement_1f441c59));
     }
     return result;
   }
@@ -88,7 +89,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
   private class TMP_Action_dkv885_a1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      BaseEmitJumpStatement_TransformationMenu.TMP_Action_dkv885_a1.Item item = new BaseEmitJumpStatement_TransformationMenu.TMP_Action_dkv885_a1.Item(context);
+      TMP_Action_dkv885_a1.Item item = new TMP_Action_dkv885_a1.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -123,14 +124,14 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       @Override
       public void execute(@NotNull String pattern) {
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L, "jetbrains.mps.lang.dataFlow.structure.EmitIfJumpStatement")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_dkv885.EmitIfJumpStatement_1e024db8), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L, "jetbrains.mps.lang.dataFlow.structure.EmitIfJumpStatement");
+        return AUX_dkv885.EmitIfJumpStatement_1e024db8;
       }
 
 
@@ -141,7 +142,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L, "jetbrains.mps.lang.dataFlow.structure.EmitIfJumpStatement");
+        SAbstractConcept outputConcept = AUX_dkv885.EmitIfJumpStatement_1e024db8;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -153,7 +154,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
   private class TMP_Action_dkv885_b1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      BaseEmitJumpStatement_TransformationMenu.TMP_Action_dkv885_b1.Item item = new BaseEmitJumpStatement_TransformationMenu.TMP_Action_dkv885_b1.Item(context);
+      TMP_Action_dkv885_b1.Item item = new TMP_Action_dkv885_b1.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -188,14 +189,14 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       @Override
       public void execute(@NotNull String pattern) {
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L, "jetbrains.mps.lang.dataFlow.structure.EmitJumpStatement")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_dkv885.EmitJumpStatement_1f441c59), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L, "jetbrains.mps.lang.dataFlow.structure.EmitJumpStatement");
+        return AUX_dkv885.EmitJumpStatement_1f441c59;
       }
 
 
@@ -206,7 +207,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L, "jetbrains.mps.lang.dataFlow.structure.EmitJumpStatement");
+        SAbstractConcept outputConcept = AUX_dkv885.EmitJumpStatement_1f441c59;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -214,5 +215,11 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
       }
     }
 
+  }
+
+  private static final class AUX_dkv885 {
+    /*package*/ static final SConcept BaseEmitJumpStatement_1c3d8c94 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
+    /*package*/ static final SConcept EmitIfJumpStatement_1e024db8 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L, "jetbrains.mps.lang.dataFlow.structure.EmitIfJumpStatement");
+    /*package*/ static final SConcept EmitJumpStatement_1f441c59 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L, "jetbrains.mps.lang.dataFlow.structure.EmitJumpStatement");
   }
 }

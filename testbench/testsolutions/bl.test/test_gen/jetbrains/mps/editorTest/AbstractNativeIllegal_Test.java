@@ -31,11 +31,11 @@ public class AbstractNativeIllegal_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck8347245235047186104() throws Throwable {
-    new AbstractNativeIllegal_Test.TestBody(this).test_NodeErrorCheck8347245235047186104();
+    new TestBody(this).test_NodeErrorCheck8347245235047186104();
   }
   @Test
   public void test_ErrorMessagesCheck8347245235044889233() throws Throwable {
-    new AbstractNativeIllegal_Test.TestBody(this).test_ErrorMessagesCheck8347245235044889233();
+    new TestBody(this).test_ErrorMessagesCheck8347245235044889233();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -21,7 +21,7 @@ public class GenerationTimeConceptStyles_StyleSheet {
   public static void apply_OptionalRole(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new GenerationTimeConceptStyles_StyleSheet.OptionalRoleStyleClass(editorContext, node).apply(style, editorCell);
+    new OptionalRoleStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class OptionalRoleStyleClass extends AbstractStyleClass {

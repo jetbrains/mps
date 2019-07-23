@@ -45,7 +45,7 @@ public class JUnitInProcessUndo_Test extends BaseTransformationTest {
 
   @Test
   public void test_startTrickyTestCase() throws Throwable {
-    new JUnitInProcessUndo_Test.TestBody(this).test_startTrickyTestCase();
+    new TestBody(this).test_startTrickyTestCase();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

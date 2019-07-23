@@ -38,7 +38,7 @@ public class staticContainerClassTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_staticContainerClassTest() throws Throwable {
-    new staticContainerClassTest_Test.TestBody(this).test_staticContainerClassTest();
+    new TestBody(this).test_staticContainerClassTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

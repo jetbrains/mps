@@ -13,7 +13,7 @@ public class fixpoint {
     System.out.println((eval()));
   }
   public static Object eval() {
-    return new fixpoint.Function_1751004816843424603();
+    return new Function_1751004816843424603();
   }
   public static class Function_1751004816843424603 extends Function {
     private List myOuterVars = new ArrayList();
@@ -28,13 +28,13 @@ public class fixpoint {
       int i = 0;
       int j = 0;
       Function f = (Function) myArgs.get(i++);
-      return lambdaAbstr_1751004816843424696(new fixpoint.Function_1751004816843424603.Function_1751004816843561803(f), f);
+      return lambdaAbstr_1751004816843424696(new Function_1751004816843424603.Function_1751004816843561803(f), f);
     }
     public int getParamsCount() {
       return 1;
     }
     public Function copy() {
-      return new fixpoint.Function_1751004816843424603(myOuterVars);
+      return new Function_1751004816843424603(myOuterVars);
     }
     public static class Function_1751004816843561803 extends Function {
       private List myOuterVars = new ArrayList();
@@ -57,7 +57,7 @@ public class fixpoint {
         return 1;
       }
       public Function copy() {
-        return new fixpoint.Function_1751004816843424603.Function_1751004816843561803(myOuterVars);
+        return new Function_1751004816843424603.Function_1751004816843561803(myOuterVars);
       }
     }
     public static Object lambdaAbstr_1751004816843424696(Function x, Function f) {

@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -26,6 +25,7 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -39,6 +39,8 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BuildInputFiles_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -73,7 +75,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private boolean nodeCondition_1i9du0_a0a() {
-    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(myNode), MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61fe82bL, "jetbrains.mps.build.structure.BuildSourceSetContainer")));
+    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(myNode), AUX_zouxi.BuildSourceSetContainer_ff54916e));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "files");
@@ -82,14 +84,14 @@ import jetbrains.mps.nodeEditor.MPSColors;
     new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new BuildInputFiles_EditorBuilder_a.ReplaceWith_BuildInputResourceSet_cellMenu_1i9du0_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BuildInputResourceSet_cellMenu_1i9du0_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_BuildInputResourceSet_cellMenu_1i9du0_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_BuildInputResourceSet_cellMenu_1i9du0_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9216ceaL, "jetbrains.mps.build.structure.BuildInputResourceSet");
+      return AUX_zouxi.BuildInputResourceSet_7f967525;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -106,7 +108,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildInputFiles_EditorBuilder_a.dirSingleRoleHandler_1i9du0_c0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"), getEditorContext());
+    SingleRoleCellProvider provider = new dirSingleRoleHandler_1i9du0_c0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"), getEditorContext());
     return provider.createCell();
   }
   private static class dirSingleRoleHandler_1i9du0_c0 extends SingleRoleCellProvider {
@@ -164,7 +166,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     }
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new BuildInputFiles_EditorBuilder_a.selectorsListHandler_1i9du0_d0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new selectorsListHandler_1i9du0_d0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_selectors");
     Style style = new StyleImpl();
@@ -191,7 +193,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       return MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a7L, "jetbrains.mps.build.structure.BuildFileSelector");
+      return AUX_zouxi.BuildFileSelector_7fe8cc51;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -234,5 +236,11 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.setDefaultText("<any>");
       return editorCell;
     }
+  }
+
+  private static final class AUX_zouxi {
+    /*package*/ static final SInterfaceConcept BuildSourceSetContainer_ff54916e = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61fe82bL, "jetbrains.mps.build.structure.BuildSourceSetContainer");
+    /*package*/ static final SConcept BuildInputResourceSet_7f967525 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9216ceaL, "jetbrains.mps.build.structure.BuildInputResourceSet");
+    /*package*/ static final SConcept BuildFileSelector_7fe8cc51 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a7L, "jetbrains.mps.build.structure.BuildFileSelector");
   }
 }

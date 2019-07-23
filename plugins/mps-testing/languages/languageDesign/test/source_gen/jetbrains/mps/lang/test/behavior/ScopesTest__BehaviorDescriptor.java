@@ -4,7 +4,6 @@ package jetbrains.mps.lang.test.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,6 +15,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -28,9 +28,10 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
+  private static final SAbstractConcept CONCEPT = AUX_87vlgp.ScopesTest_1ed83fd8;
 
   public static final SMethod<SReference> getCheckingReference_id4IvydoGvimX = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl(SReference.class)).name("getCheckingReference").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4IvydoGvimX").build();
   public static final SMethod<Boolean> isSimple_id4IvydoGvpbr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimple").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4IvydoGvpbr").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -62,10 +63,10 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
     return SNodeOperations.getConcept(node).getReferenceLinks().size() == 1;
   }
   /*package*/ static boolean isApplicable_id4IvydoGviup(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    return ListSequence.fromList(SNodeOperations.getReferences(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest"))) == null) && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest")));
+    return ListSequence.fromList(SNodeOperations.getReferences(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_87vlgp.ScopesTest_1ed83fd8)) == null) && !(SNodeOperations.isInstanceOf(node, AUX_87vlgp.ScopesTest_1ed83fd8));
   }
   /*package*/ static SNode getTestCase_idhGBgWVd(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase"), false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, AUX_87vlgp.NodesTestCase_fd5a0bf4, false, false);
   }
   /*package*/ static boolean isMpsStartRequired_id2RMg39tmiFh(@NotNull SNode __thisNode__) {
     return true;
@@ -149,5 +150,10 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_87vlgp {
+    /*package*/ static final SConcept ScopesTest_1ed83fd8 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
+    /*package*/ static final SConcept NodesTestCase_fd5a0bf4 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

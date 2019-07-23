@@ -21,7 +21,7 @@ public class RemoveRow_FromLastCell_Test extends BaseTransformationTest {
 
   @Test
   public void test_RemoveRow_FromLastCell() throws Throwable {
-    new RemoveRow_FromLastCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -10,9 +10,9 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -22,13 +22,14 @@ import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeOf_ConceptFunction_InferenceRule() {
   }
   public void applyRule(final SNode func, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // function is expected to return value of any type 
-    final SNode expectedRetType = (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType")) ? null : ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func));
+    final SNode expectedRetType = (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func))), AUX_bbraw4.WildCardType_457cddf9) ? null : ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func));
     boolean noReturnExpected = ((expectedRetType == null) || TypecheckingFacade.getFromContext().isSubtype(expectedRetType, _quotation_createNode_bbraw4_b0a0a0c0b()));
     if (!(noReturnExpected)) {
       final SNode LCS_typevar_1186052624152 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -60,8 +61,8 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
       }
       // last expression statement can serve as return statement 
       SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(func);
-      if (SNodeOperations.isInstanceOf(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))) {
-        final SNode expression = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"));
+      if (SNodeOperations.isInstanceOf(lastStatement, AUX_bbraw4.ExpressionStatement_9dbf9b0c)) {
+        final SNode expression = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, AUX_bbraw4.ExpressionStatement_9dbf9b0c), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"));
         {
           SNode _nodeToCheck_1029348928467 = expression;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1186053063874", 0, null);
@@ -94,7 +95,7 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    return AUX_bbraw4.ConceptFunction_e08795a5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -107,5 +108,11 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_bbraw4 {
+    /*package*/ static final SConcept WildCardType_457cddf9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
   }
 }

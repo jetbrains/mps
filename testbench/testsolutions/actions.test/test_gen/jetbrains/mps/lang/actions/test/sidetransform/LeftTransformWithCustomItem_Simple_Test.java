@@ -21,7 +21,7 @@ public class LeftTransformWithCustomItem_Simple_Test extends BaseTransformationT
 
   @Test
   public void test_LeftTransformWithCustomItem_Simple() throws Throwable {
-    new LeftTransformWithCustomItem_Simple_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

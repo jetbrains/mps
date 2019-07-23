@@ -13,8 +13,8 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -31,6 +31,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineVariableReferenceRefactoring;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class InlineLocalVariable_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -49,14 +50,14 @@ public class InlineLocalVariable_Action extends BaseAction {
     if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(((SNode) MapSequence.fromMap(_params).get("node")))))) {
       return false;
     }
-    boolean result = SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
+    boolean result = SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_7stbw3.LocalVariableDeclaration_d47683f3);
     if (!(result)) {
-      if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"))) {
+      if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_7stbw3.VariableReference_24d60dac) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), AUX_7stbw3.VariableReference_24d60dac), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), AUX_7stbw3.LocalVariableDeclaration_d47683f3)) {
 
         if (SNodeOperations.hasRole(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"))) {
           return false;
         }
-        if (SNodeOperations.hasRole(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression")) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus")))) {
+        if (SNodeOperations.hasRole(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression")) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), AUX_7stbw3.UnaryMinus_b7e0120a))) {
           return false;
         }
 
@@ -120,10 +121,10 @@ public class InlineLocalVariable_Action extends BaseAction {
     final Wrappers._T<String> yesNoMessage = new Wrappers._T<String>(null);
     modelAccess.runReadAction(new Runnable() {
       public void run() {
-        SNode stmt = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), true, false);
+        SNode stmt = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), AUX_7stbw3.Statement_9dbf9b0e, true, false);
         alternativeSelection.value = (SNodeOperations.getNextSibling(stmt) != null ? SNodeOperations.getNextSibling(stmt) : SNodeOperations.getPrevSibling(stmt));
-        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"))) {
-          SNode localVariableDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
+        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_7stbw3.LocalVariableDeclaration_d47683f3)) {
+          SNode localVariableDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), AUX_7stbw3.LocalVariableDeclaration_d47683f3);
           InlineVariableAssignmentRefactoring inlineVARef = new InlineVariableAssignmentRefactoring(localVariableDeclaration);
 
           if ((SLinkOperations.getTarget(localVariableDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")) == null)) {
@@ -142,7 +143,7 @@ public class InlineLocalVariable_Action extends BaseAction {
 
           ref.value = inlineVARef;
         } else {
-          SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
+          SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), AUX_7stbw3.VariableReference_24d60dac);
           ref.value = new InlineVariableReferenceRefactoring(localVariableReference);
         }
       }
@@ -173,5 +174,12 @@ public class InlineLocalVariable_Action extends BaseAction {
         ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).selectWRTFocusPolicy(result);
       }
     });
+  }
+
+  private static final class AUX_7stbw3 {
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept UnaryMinus_b7e0120a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

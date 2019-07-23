@@ -9,15 +9,16 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptEditor_DefaultContextHintLabel extends KeyMapImpl {
   public ConceptEditor_DefaultContextHintLabel() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new ConceptEditor_DefaultContextHintLabel.ConceptEditor_DefaultContextHintLabel_Action0();
+    action = new ConceptEditor_DefaultContextHintLabel_Action0();
     this.putAction("any", "letter or digit", action);
   }
   public static class ConceptEditor_DefaultContextHintLabel_Action0 extends KeyMapActionImpl {
@@ -36,7 +37,7 @@ public class ConceptEditor_DefaultContextHintLabel extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_u3lscq.ConceptEditorDeclaration_9422d3dc))) {
         return false;
       }
       return true;
@@ -51,5 +52,9 @@ public class ConceptEditor_DefaultContextHintLabel extends KeyMapImpl {
     public String getKeyStroke() {
       return " letter or digit";
     }
+  }
+
+  private static final class AUX_u3lscq {
+    /*package*/ static final SConcept ConceptEditorDeclaration_9422d3dc = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
   }
 }

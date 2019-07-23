@@ -30,7 +30,7 @@ public class ForBreakUnreachable_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck9092976468699800071() throws Throwable {
-    new ForBreakUnreachable_Test.TestBody(this).test_ErrorMessagesCheck9092976468699800071();
+    new TestBody(this).test_ErrorMessagesCheck9092976468699800071();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

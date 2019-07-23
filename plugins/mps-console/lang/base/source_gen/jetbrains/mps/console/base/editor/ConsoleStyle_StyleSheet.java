@@ -18,7 +18,7 @@ public class ConsoleStyle_StyleSheet {
   public static void apply_ReadOnly(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ConsoleStyle_StyleSheet.ReadOnlyStyleClass(editorContext, node).apply(style, editorCell);
+    new ReadOnlyStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class ReadOnlyStyleClass extends AbstractStyleClass {

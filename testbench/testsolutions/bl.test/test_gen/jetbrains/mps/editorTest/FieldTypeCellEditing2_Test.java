@@ -21,7 +21,7 @@ public class FieldTypeCellEditing2_Test extends BaseTransformationTest {
 
   @Test
   public void test_FieldTypeCellEditing2() throws Throwable {
-    new FieldTypeCellEditing2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -18,7 +18,7 @@ public class FormsStylePack_StyleSheet {
   public static void apply_KeyWord(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new FormsStylePack_StyleSheet.KeyWordStyleClass(editorContext, node).apply(style, editorCell);
+    new KeyWordStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class KeyWordStyleClass extends AbstractStyleClass {

@@ -66,7 +66,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ReplaceWithRegexpOperation_EditorBuilder_a.regexpSingleRoleHandler_q2clzo_b0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp"), getEditorContext());
+    SingleRoleCellProvider provider = new regexpSingleRoleHandler_q2clzo_b0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp"), getEditorContext());
     return provider.createCell();
   }
   private static class regexpSingleRoleHandler_q2clzo_b0 extends SingleRoleCellProvider {
@@ -142,7 +142,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ReplaceWithRegexpOperation_EditorBuilder_a.replaceBlockSingleRoleHandler_q2clzo_e0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c94680172L, 0x11c946f4847L, "replaceBlock"), getEditorContext());
+    SingleRoleCellProvider provider = new replaceBlockSingleRoleHandler_q2clzo_e0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c94680172L, 0x11c946f4847L, "replaceBlock"), getEditorContext());
     return provider.createCell();
   }
   private static class replaceBlockSingleRoleHandler_q2clzo_e0 extends SingleRoleCellProvider {

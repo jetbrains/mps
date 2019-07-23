@@ -29,6 +29,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class InlineSwitch_RuleConsequence_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -64,7 +65,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new InlineSwitch_RuleConsequence_EditorBuilder_a.caseListHandler_yn898b_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new caseListHandler_yn898b_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_case");
     editorCell.setGridLayout(true);
@@ -88,7 +89,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, 0x11644fe0e06L, "case");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L, "jetbrains.mps.lang.generator.structure.InlineSwitch_Case");
+      return AUX_3y76o3.InlineSwitch_Case_a9802fd9;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -151,7 +152,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new InlineSwitch_RuleConsequence_EditorBuilder_a.defaultConsequenceSingleRoleHandler_yn898b_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, 0x11644fb7f64L, "defaultConsequence"), getEditorContext());
+    SingleRoleCellProvider provider = new defaultConsequenceSingleRoleHandler_yn898b_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, 0x11644fb7f64L, "defaultConsequence"), getEditorContext());
     return provider.createCell();
   }
   private static class defaultConsequenceSingleRoleHandler_yn898b_b2a extends SingleRoleCellProvider {
@@ -204,5 +205,9 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     protected String getNoTargetText() {
       return "<no defaultConsequence>";
     }
+  }
+
+  private static final class AUX_3y76o3 {
+    /*package*/ static final SConcept InlineSwitch_Case_a9802fd9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L, "jetbrains.mps.lang.generator.structure.InlineSwitch_Case");
   }
 }

@@ -5,8 +5,8 @@ package jetbrains.mps.baseLanguage.behavior;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -23,6 +23,7 @@ import jetbrains.mps.baseLanguage.scopes.ClassifiersScope;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ResolveUnknownUtil {
   public ResolveUnknownUtil() {
@@ -33,18 +34,18 @@ public final class ResolveUnknownUtil {
     if ((result == null)) {
       return null;
     }
-    if (SNodeOperations.isInstanceOf(result, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
+    if (SNodeOperations.isInstanceOf(result, AUX_3swnwg.Classifier_4b7e553)) {
       // change to something real as default, e.g. static field access expression without the field 
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode fieldRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
-          SLinkOperations.setTarget(fieldRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), SNodeOperations.cast(result, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
+          SLinkOperations.setTarget(fieldRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), SNodeOperations.cast(result, AUX_3swnwg.Classifier_4b7e553));
           return fieldRef;
         }
       };
     }
 
-    if (SNodeOperations.isInstanceOf(result, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+    if (SNodeOperations.isInstanceOf(result, AUX_3swnwg.Expression_4199e28d)) {
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           return result;
@@ -55,7 +56,7 @@ public final class ResolveUnknownUtil {
     return null;
   }
   public static _FunctionTypes._return_P0_E0<? extends SNode> resolveConsCall(final SNode x) {
-    SNode enclosingClass = SNodeOperations.getNodeAncestor(x, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
+    SNode enclosingClass = SNodeOperations.getNodeAncestor(x, AUX_3swnwg.ClassConcept_e2711824, false, false);
     if ((enclosingClass == null)) {
       return null;
     }
@@ -77,7 +78,7 @@ public final class ResolveUnknownUtil {
   public static _FunctionTypes._return_P0_E0<? extends SNode> resolveLocalCall(final SNode x) {
     final Wrappers._T<SNode> call = new Wrappers._T<SNode>(null);
 
-    Scope methodsScope = Scope.getScope(SNodeOperations.getParent(x), x, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration"));
+    Scope methodsScope = Scope.getScope(SNodeOperations.getParent(x), x, AUX_3swnwg.MethodDeclaration_637cfcff);
 
     if (methodsScope == null) {
       return null;
@@ -88,14 +89,14 @@ public final class ResolveUnknownUtil {
       return null;
     }
 
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"))) {
-      SNode decl = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
+    if (SNodeOperations.isInstanceOf(node, AUX_3swnwg.StaticMethodDeclaration_9cd8c445)) {
+      SNode decl = SNodeOperations.cast(node, AUX_3swnwg.StaticMethodDeclaration_9cd8c445);
       SNode scall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
       SLinkOperations.setTarget(scall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), decl);
       call.value = scall;
 
-    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"))) {
-      SNode decl = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
+    } else if (SNodeOperations.isInstanceOf(node, AUX_3swnwg.InstanceMethodDeclaration_9dbf9b2b)) {
+      SNode decl = SNodeOperations.cast(node, AUX_3swnwg.InstanceMethodDeclaration_9dbf9b2b);
       SNode icall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
       SLinkOperations.setTarget(icall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), decl);
       call.value = icall;
@@ -117,7 +118,7 @@ public final class ResolveUnknownUtil {
     if ((typ == null)) {
       return null;
     }
-    if (!(SNodeOperations.isInstanceOf(typ, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))) {
+    if (!(SNodeOperations.isInstanceOf(typ, AUX_3swnwg.ClassConcept_e2711824))) {
       return null;
     }
 
@@ -128,7 +129,7 @@ public final class ResolveUnknownUtil {
         SNode creator;
 
         SNode resolveResult = MethodResolveUtil.chooseByParameterType(Sequence.fromIterable(IMethodCall__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(x, "")).toListSequence(), SLinkOperations.getChildren(x, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument")), MethodResolveUtil.getTypesByTypeVars(typ, SLinkOperations.getChildren(typ, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))));
-        SNode ctor = (resolveResult == null ? null : SNodeOperations.as(resolveResult, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")));
+        SNode ctor = (resolveResult == null ? null : SNodeOperations.as(resolveResult, AUX_3swnwg.ConstructorDeclaration_9dbf9ae8));
 
         if ((ctor == null)) {
 
@@ -170,10 +171,10 @@ public final class ResolveUnknownUtil {
       return null;
     }
 
-    if (SNodeOperations.isInstanceOf(operand, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-      final SNode target = ((operand == null) ? null : SNodeOperations.cast(operand, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
+    if (SNodeOperations.isInstanceOf(operand, AUX_3swnwg.Classifier_4b7e553)) {
+      final SNode target = ((operand == null) ? null : SNodeOperations.cast(operand, AUX_3swnwg.Classifier_4b7e553));
 
-      if ((target != null) && !(SNodeOperations.isInstanceOf(target, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))) {
+      if ((target != null) && !(SNodeOperations.isInstanceOf(target, AUX_3swnwg.ClassConcept_e2711824))) {
         return null;
       }
 
@@ -181,7 +182,7 @@ public final class ResolveUnknownUtil {
         public SNode invoke() {
           SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
           if ((target != null)) {
-            SLinkOperations.setTarget(call, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), SNodeOperations.cast(target, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")));
+            SLinkOperations.setTarget(call, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), SNodeOperations.cast(target, AUX_3swnwg.ClassConcept_e2711824));
           } else {
             DynamicReference dr = new DynamicReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), call, null, className);
             call.setReference(dr.getLink(), dr);
@@ -194,13 +195,13 @@ public final class ResolveUnknownUtil {
         }
       };
 
-    } else if (SNodeOperations.isInstanceOf(operand, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+    } else if (SNodeOperations.isInstanceOf(operand, AUX_3swnwg.Expression_4199e28d)) {
       // operand is some other expression. it's supposed to be an instance method call then 
 
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode dotExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
-          SLinkOperations.setTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SNodeOperations.cast(operand, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+          SLinkOperations.setTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SNodeOperations.cast(operand, AUX_3swnwg.Expression_4199e28d));
 
           SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
           SLinkOperations.setTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), call);
@@ -258,8 +259,8 @@ public final class ResolveUnknownUtil {
         final String memberName = tokens[tokPos];
         SNode mbEnumConst = null;
 
-        if (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"))) {
-          mbEnumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant"))).where(new IWhereFilter<SNode>() {
+        if (SNodeOperations.isInstanceOf(cls, AUX_3swnwg.EnumClass_acf68fc0)) {
+          mbEnumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cls, AUX_3swnwg.EnumClass_acf68fc0), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant"))).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return memberName.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
             }
@@ -268,7 +269,7 @@ public final class ResolveUnknownUtil {
 
         if (mbEnumConst != null) {
           SNode enumRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-          SLinkOperations.setTarget(enumRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass"), SNodeOperations.cast(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass")));
+          SLinkOperations.setTarget(enumRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass"), SNodeOperations.cast(cls, AUX_3swnwg.EnumClass_acf68fc0));
           SLinkOperations.setTarget(enumRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration"), mbEnumConst);
           operand = enumRef;
 
@@ -308,7 +309,7 @@ public final class ResolveUnknownUtil {
     return dotExpr;
   }
   public static SNode tryFirstTokenAsVarRef(SNode x) {
-    Scope scope = Scope.getScope(SNodeOperations.getParent(x), x, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
+    Scope scope = Scope.getScope(SNodeOperations.getParent(x), x, AUX_3swnwg.VariableDeclaration_3c610994);
     if (scope == null) {
       // TODO make it more informative 
       return null;
@@ -360,18 +361,18 @@ public final class ResolveUnknownUtil {
     return null;
   }
   public static SNode findClass(SNode from, String className) {
-    SNode contextClas = SNodeOperations.getNodeAncestor(from, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false);
-    ClassifiersScope scope = new ClassifiersScope(SNodeOperations.getModel(from), contextClas, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true);
+    SNode contextClas = SNodeOperations.getNodeAncestor(from, AUX_3swnwg.Classifier_4b7e553, true, false);
+    ClassifiersScope scope = new ClassifiersScope(SNodeOperations.getModel(from), contextClas, AUX_3swnwg.Classifier_4b7e553, true);
 
     SNode claz = scope.resolve(from, className);
     if ((claz == null)) {
       return null;
     }
-    if (!(SNodeOperations.isInstanceOf(claz, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+    if (!(SNodeOperations.isInstanceOf(claz, AUX_3swnwg.Classifier_4b7e553))) {
       return null;
     }
 
-    return SNodeOperations.cast(claz, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    return SNodeOperations.cast(claz, AUX_3swnwg.Classifier_4b7e553);
   }
   public static SNode findConstructor(SNode claz, List<SNode> args) {
     SNode result;
@@ -379,7 +380,7 @@ public final class ResolveUnknownUtil {
     SNode c = claz;
     while ((c != null)) {
       ListSequence.fromList(chain).addElement(c);
-      c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+      c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), AUX_3swnwg.ClassConcept_e2711824);
     }
     Iterable<SNode> conss = ListSequence.fromList(chain).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
@@ -412,4 +413,15 @@ public final class ResolveUnknownUtil {
     }
   }
 
+  private static final class AUX_3swnwg {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept MethodDeclaration_637cfcff = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept ConstructorDeclaration_9dbf9ae8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept EnumClass_acf68fc0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept VariableDeclaration_3c610994 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+  }
 }

@@ -25,11 +25,12 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import com.intellij.openapi.extensions.PluginId;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassLikes_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup";
@@ -57,7 +58,7 @@ public class ClassLikes_ActionGroup extends GeneratedActionGroup {
       }
     }).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(((SModel) it), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor"));
+        return SModelOperations.roots(((SModel) it), AUX_ur1rqf.DSLDescriptor_799dc12a);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -77,5 +78,9 @@ public class ClassLikes_ActionGroup extends GeneratedActionGroup {
   }
   public boolean isStrict() {
     return false;
+  }
+
+  private static final class AUX_ur1rqf {
+    /*package*/ static final SConcept DSLDescriptor_799dc12a = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
   }
 }

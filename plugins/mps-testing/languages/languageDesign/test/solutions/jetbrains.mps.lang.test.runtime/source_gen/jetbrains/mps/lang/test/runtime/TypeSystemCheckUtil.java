@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import junit.framework.Assert;
 import jetbrains.mps.newTypesystem.TypesUtil;
@@ -15,6 +14,8 @@ import jetbrains.mps.newTypesystem.operation.AbstractOperation;
 import java.util.List;
 import java.util.Collections;
 import jetbrains.mps.newTypesystem.test.StateMatcher;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypeSystemCheckUtil {
   public TypeSystemCheckUtil() {
@@ -22,7 +23,7 @@ public class TypeSystemCheckUtil {
   public static void checkGenerationMode(SNode node) {
     TypeCheckingContext typeCheckingContext = TypeContextManager.getInstance().createTypeCheckingContext(node.getContainingRoot());
     typeCheckingContext.checkRoot(true);
-    for (SNode child : SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), false, new SAbstractConcept[]{})) {
+    for (SNode child : SNodeOperations.getNodeDescendants(node, AUX_ia0n0g.BaseConcept_bc2351f, false, new SAbstractConcept[]{})) {
       TypeCheckingContext typeCheckingContext2 = TypeContextManager.getInstance().createTracingTypeCheckingContext(node.getContainingRoot());
       SNode type1 = typeCheckingContext.getTypeDontCheck(child);
       if (type1 == null) {
@@ -49,5 +50,9 @@ public class TypeSystemCheckUtil {
       toRevert.undo(state);
     }
     Assert.assertTrue(StateMatcher.match(state, state2));
+  }
+
+  private static final class AUX_ia0n0g {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

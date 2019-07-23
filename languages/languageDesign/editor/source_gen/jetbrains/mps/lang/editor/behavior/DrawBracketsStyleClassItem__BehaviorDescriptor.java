@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -19,9 +18,11 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class DrawBracketsStyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11bdf8bf6bbL, "jetbrains.mps.lang.editor.structure.DrawBracketsStyleClassItem");
+  private static final SAbstractConcept CONCEPT = AUX_dl2md.DrawBracketsStyleClassItem_cc0a41d2;
 
   public static final SMethod<StyleAttribute<Boolean>> getStyleAttribute_id3a0zHG4tjdX = new SMethodBuilder<StyleAttribute<Boolean>>(new SJavaCompoundTypeImpl(StyleAttribute.class)).name("getStyleAttribute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3a0zHG4tjdX").build();
 
@@ -78,5 +79,9 @@ public final class DrawBracketsStyleClassItem__BehaviorDescriptor extends BaseBH
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_dl2md {
+    /*package*/ static final SConcept DrawBracketsStyleClassItem_cc0a41d2 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11bdf8bf6bbL, "jetbrains.mps.lang.editor.structure.DrawBracketsStyleClassItem");
   }
 }

@@ -21,7 +21,7 @@ public class SplitRichWord_Test extends BaseTransformationTest {
 
   @Test
   public void test_SplitRichWord() throws Throwable {
-    new SplitRichWord_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -11,15 +11,15 @@ import org.jetbrains.annotations.NotNull;
     myProject = project;
   }
   @NotNull
-  public AbstractInstaller.State getCurrentState() {
+  public State getCurrentState() {
     return install(true);
   }
   @NotNull
-  public AbstractInstaller.State install() {
+  public State install() {
     return install(false);
   }
   @NotNull
-  protected abstract AbstractInstaller.State install(boolean dryRun);
+  protected abstract State install(boolean dryRun);
   public abstract String getActionTitle();
   public String getActionTooltip() {
     return null;

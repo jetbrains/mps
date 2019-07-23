@@ -21,7 +21,7 @@ public class NO_RT_ClassTypeVarialeDeclaration_on_typing_ampersand_inbetween_Tes
 
   @Test
   public void test_NO_RT_ClassTypeVarialeDeclaration_on_typing_ampersand_inbetween() throws Throwable {
-    new NO_RT_ClassTypeVarialeDeclaration_on_typing_ampersand_inbetween_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -10,6 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.ParenthesisUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RebalanceBaseAssignmentExpression_QuickFix extends QuickFix_Runtime {
   public RebalanceBaseAssignmentExpression_QuickFix() {
@@ -22,8 +23,12 @@ public class RebalanceBaseAssignmentExpression_QuickFix extends QuickFix_Runtime
       SLinkOperations.setTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue"), ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]));
       ParenthesisUtil.checkOperationWRTPriority(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]));
     } else if (SLinkOperations.getTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")) == ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0])) {
-      SNode paren = SNodeFactoryOperations.replaceWithNewChild(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
+      SNode paren = SNodeFactoryOperations.replaceWithNewChild(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), AUX_x40bdw.ParenthesizedExpression_a4b89678);
       SLinkOperations.setTarget(paren, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]));
     }
+  }
+
+  private static final class AUX_x40bdw {
+    /*package*/ static final SConcept ParenthesizedExpression_a4b89678 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 }

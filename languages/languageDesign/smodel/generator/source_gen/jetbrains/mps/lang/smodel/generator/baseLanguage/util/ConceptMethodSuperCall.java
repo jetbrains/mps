@@ -6,10 +6,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.behavior.Node_ConceptMethodCall__BehaviorDescriptor;
 import jetbrains.mps.lang.behavior.behavior.SuperExpression__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConceptMethodSuperCall {
   private final SNode myCall;
@@ -37,33 +39,38 @@ public final class ConceptMethodSuperCall {
   public static class InvokationTarget {
     public final SNode targetConcept;
     public final SNode targetDeclaration;
-    public final ConceptMethodSuperCall.InvokationType type;
+    public final InvokationType type;
 
-    public InvokationTarget(SNode targetConcept, SNode targetDeclaration, ConceptMethodSuperCall.InvokationType type) {
+    public InvokationTarget(SNode targetConcept, SNode targetDeclaration, InvokationType type) {
       this.targetConcept = targetConcept;
       this.targetDeclaration = targetDeclaration;
       this.type = type;
     }
   }
 
-  public ConceptMethodSuperCall.InvokationTarget getMethodCallTarget() {
+  public InvokationTarget getMethodCallTarget() {
     SNode leftExpression = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(myCall);
-    assert SNodeOperations.isInstanceOf(leftExpression, MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression"));
+    assert SNodeOperations.isInstanceOf(leftExpression, AUX_hs6t20.SuperExpression_f47be25c);
     SNode methodDecl = SLinkOperations.getTarget(myCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     if (!((boolean) Node_ConceptMethodCall__BehaviorDescriptor.isVirtualMethodCall_idhEwIWlZ.invoke(myCall))) {
-      return new ConceptMethodSuperCall.InvokationTarget(null, methodDecl, ConceptMethodSuperCall.InvokationType.INVOKE_SPECIAL);
+      return new InvokationTarget(null, methodDecl, InvokationType.INVOKE_SPECIAL);
     } else {
       SNode specifiedSuperConcept;
-      specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke((SNodeOperations.cast(leftExpression, MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression"))));
+      specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke((SNodeOperations.cast(leftExpression, AUX_hs6t20.SuperExpression_f47be25c)));
       if (specifiedSuperConcept != null) {
         // if there is no implementation in the provided concept we will fail on runtime 
         // fixme quickfix for this case 
-        return new ConceptMethodSuperCall.InvokationTarget(specifiedSuperConcept, methodDecl, ConceptMethodSuperCall.InvokationType.INVOKE);
+        return new InvokationTarget(specifiedSuperConcept, methodDecl, InvokationType.INVOKE);
       } else {
-        SNode behavior = SNodeOperations.getNodeAncestor(myCall, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), false, true);
+        SNode behavior = SNodeOperations.getNodeAncestor(myCall, AUX_hs6t20.ConceptBehavior_68ebe6cd, false, true);
         assert behavior != null;
-        return new ConceptMethodSuperCall.InvokationTarget(SLinkOperations.getTarget(behavior, MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept")), methodDecl, ConceptMethodSuperCall.InvokationType.INVOKE_SUPER);
+        return new InvokationTarget(SLinkOperations.getTarget(behavior, MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept")), methodDecl, InvokationType.INVOKE_SUPER);
       }
     }
+  }
+
+  private static final class AUX_hs6t20 {
+    /*package*/ static final SInterfaceConcept SuperExpression_f47be25c = MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression");
+    /*package*/ static final SConcept ConceptBehavior_68ebe6cd = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
   }
 }

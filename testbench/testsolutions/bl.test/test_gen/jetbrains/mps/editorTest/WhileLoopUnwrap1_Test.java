@@ -22,7 +22,7 @@ public class WhileLoopUnwrap1_Test extends BaseTransformationTest {
 
   @Test
   public void test_WhileLoopUnwrap1() throws Throwable {
-    new WhileLoopUnwrap1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -34,7 +34,7 @@ public class VariableDeclarationInitializer_Test extends BaseTransformationTest 
 
   @Test
   public void test_DeclarationVariablesInMethod() throws Throwable {
-    new VariableDeclarationInitializer_Test.TestBody(this).test_DeclarationVariablesInMethod();
+    new TestBody(this).test_DeclarationVariablesInMethod();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

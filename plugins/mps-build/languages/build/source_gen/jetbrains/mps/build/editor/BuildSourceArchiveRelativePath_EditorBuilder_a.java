@@ -47,6 +47,7 @@ import jetbrains.mps.editor.runtime.cells.CellIdManager;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BuildSourceArchiveRelativePath_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -78,7 +79,7 @@ import jetbrains.mps.smodel.SNodePointer;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildSourceArchiveRelativePath_EditorBuilder_a.archivePathSingleRoleHandler_4z471d_a0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath"), getEditorContext());
+    SingleRoleCellProvider provider = new archivePathSingleRoleHandler_4z471d_a0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath"), getEditorContext());
     return provider.createCell();
   }
   private static class archivePathSingleRoleHandler_4z471d_a0 extends SingleRoleCellProvider {
@@ -146,7 +147,7 @@ import jetbrains.mps.smodel.SNodePointer;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BuildSourceArchiveRelativePath_EditorBuilder_a.compositePartSingleRoleHandler_4z471d_c0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), getEditorContext());
+    SingleRoleCellProvider provider = new compositePartSingleRoleHandler_4z471d_c0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), getEditorContext());
     return provider.createCell();
   }
   private static class compositePartSingleRoleHandler_4z471d_c0 extends SingleRoleCellProvider {
@@ -176,7 +177,7 @@ import jetbrains.mps.smodel.SNodePointer;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath")), new SubstituteInfoPartExt[]{new BuildSourceArchiveRelativePath_EditorBuilder_a.compositePartSingleRoleHandler_4z471d_c0.BuildSourceArchiveRelativePath_generic_cellMenu_4z471d_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), AUX_w8ill9.BuildCompositePath_8d3bfbf4), new SubstituteInfoPartExt[]{new compositePartSingleRoleHandler_4z471d_c0.BuildSourceArchiveRelativePath_generic_cellMenu_4z471d_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"));
@@ -249,5 +250,9 @@ import jetbrains.mps.smodel.SNodePointer;
         return new EditorMenuDescriptorBase("generic group with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "2896281290945209188"));
       }
     }
+  }
+
+  private static final class AUX_w8ill9 {
+    /*package*/ static final SConcept BuildCompositePath_8d3bfbf4 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
   }
 }

@@ -34,7 +34,7 @@ public class TestMigrateCommentBlock_Test extends BaseTransformationTest {
 
   @Test
   public void test_MigrateBlock() throws Throwable {
-    new TestMigrateCommentBlock_Test.TestBody(this).test_MigrateBlock();
+    new TestBody(this).test_MigrateBlock();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

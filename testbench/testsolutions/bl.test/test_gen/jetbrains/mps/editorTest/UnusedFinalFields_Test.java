@@ -32,35 +32,35 @@ public class UnusedFinalFields_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeVariableHasNotBeenInitializedCheck2501421320960355491() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedCheck2501421320960355491();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedCheck2501421320960355491();
   }
   @Test
   public void test_NodeFieldIsNeverAssignedCheck2501421320960355493() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_NodeFieldIsNeverAssignedCheck2501421320960355493();
+    new TestBody(this).test_NodeFieldIsNeverAssignedCheck2501421320960355493();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedCheck2501421320960363987() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedCheck2501421320960363987();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedCheck2501421320960363987();
   }
   @Test
   public void test_NodeFieldIsNeverAssignedCheck2501421320960363985() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_NodeFieldIsNeverAssignedCheck2501421320960363985();
+    new TestBody(this).test_NodeFieldIsNeverAssignedCheck2501421320960363985();
   }
   @Test
   public void test_NodeFieldUsedBeforeInitializedCheck2501421320960370065() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_NodeFieldUsedBeforeInitializedCheck2501421320960370065();
+    new TestBody(this).test_NodeFieldUsedBeforeInitializedCheck2501421320960370065();
   }
   @Test
   public void test_NodeFieldUsedBeforeInitializedCheck2501421320960374224() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_NodeFieldUsedBeforeInitializedCheck2501421320960374224();
+    new TestBody(this).test_NodeFieldUsedBeforeInitializedCheck2501421320960374224();
   }
   @Test
   public void test_ErrorMessagesCheck8129007564265890591() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_ErrorMessagesCheck8129007564265890591();
+    new TestBody(this).test_ErrorMessagesCheck8129007564265890591();
   }
   @Test
   public void test_NodeFieldUsedBeforeInitializedCheck2501421320960379909() throws Throwable {
-    new UnusedFinalFields_Test.TestBody(this).test_NodeFieldUsedBeforeInitializedCheck2501421320960379909();
+    new TestBody(this).test_NodeFieldUsedBeforeInitializedCheck2501421320960379909();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

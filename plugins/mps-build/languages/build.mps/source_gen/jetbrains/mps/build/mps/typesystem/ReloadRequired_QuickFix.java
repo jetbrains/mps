@@ -6,11 +6,12 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.mps.util.ModuleLoader;
 import jetbrains.mps.messages.LogHandler;
 import org.apache.log4j.Logger;
 import jetbrains.mps.build.mps.util.ModuleChecker;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReloadRequired_QuickFix extends QuickFix_Runtime {
   public ReloadRequired_QuickFix() {
@@ -20,21 +21,27 @@ public class ReloadRequired_QuickFix extends QuickFix_Runtime {
     return "Load required information from file";
   }
   public void execute(SNode node) {
-    SNode module = SNodeOperations.as(node, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule"));
+    SNode module = SNodeOperations.as(node, AUX_8991mf.BuildMps_AbstractModule_ebf3f6db);
     if (module == null) {
       return;
     }
 
-    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(node), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(node), AUX_8991mf.BuildProject_808bb057);
     if ((project == null)) {
       return;
     }
 
-    if (SNodeOperations.isInstanceOf(module, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"))) {
+    if (SNodeOperations.isInstanceOf(module, AUX_8991mf.BuildMps_Generator_bcabe904)) {
       return;
     }
 
     ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
     ml.createModuleChecker(module).check(ModuleChecker.CheckType.LOAD_IMPORTANT_PART);
+  }
+
+  private static final class AUX_8991mf {
+    /*package*/ static final SConcept BuildMps_AbstractModule_ebf3f6db = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_Generator_bcabe904 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
   }
 }

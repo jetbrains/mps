@@ -21,7 +21,7 @@ public class SUBST_BooleanConstant_with_value_Test extends BaseTransformationTes
 
   @Test
   public void test_SUBST_BooleanConstant_with_value() throws Throwable {
-    new SUBST_BooleanConstant_with_value_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -14,6 +14,7 @@ import org.jdom.output.XMLOutputter;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public abstract class ElementCreator {
   public static void byElement(SNode node, final TextGenContext ctx) {
@@ -42,17 +43,22 @@ public abstract class ElementCreator {
     }
     boolean first = true;
     for (SNode part : SLinkOperations.getChildren(element, MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8bbL, "content"))) {
-      if (SNodeOperations.isInstanceOf(part, MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, "jetbrains.mps.sampleXML.structure.Text"))) {
+      if (SNodeOperations.isInstanceOf(part, AUX_pg95nc.Text_9d04c369)) {
         if (!(first)) {
           result.addContent("\n");
         }
-        result.addContent(SPropertyOperations.getString(SNodeOperations.cast(part, MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, "jetbrains.mps.sampleXML.structure.Text")), MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text")));
+        result.addContent(SPropertyOperations.getString(SNodeOperations.cast(part, AUX_pg95nc.Text_9d04c369), MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text")));
       }
-      if (SNodeOperations.isInstanceOf(part, MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, "jetbrains.mps.sampleXML.structure.Element"))) {
-        result.addContent(ElementCreator.createElement(SNodeOperations.cast(part, MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, "jetbrains.mps.sampleXML.structure.Element")), ctx));
+      if (SNodeOperations.isInstanceOf(part, AUX_pg95nc.Element_9d04c34c)) {
+        result.addContent(ElementCreator.createElement(SNodeOperations.cast(part, AUX_pg95nc.Element_9d04c34c), ctx));
       }
       first = false;
     }
     return result;
+  }
+
+  private static final class AUX_pg95nc {
+    /*package*/ static final SConcept Text_9d04c369 = MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, "jetbrains.mps.sampleXML.structure.Text");
+    /*package*/ static final SConcept Element_9d04c34c = MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, "jetbrains.mps.sampleXML.structure.Element");
   }
 }

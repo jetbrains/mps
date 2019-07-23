@@ -58,7 +58,7 @@ import jetbrains.mps.build.editor.buildStyles_StyleSheet.keywordStyleClass;
     return SPropertyOperations.getBoolean(myNode, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x715eee405bff376dL, "reexport"));
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildSource_JavaDependencyJar_EditorBuilder_a.jarSingleRoleHandler_tvqbfe_a0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar"), getEditorContext());
+    SingleRoleCellProvider provider = new jarSingleRoleHandler_tvqbfe_a0(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar"), getEditorContext());
     return provider.createCell();
   }
   private static class jarSingleRoleHandler_tvqbfe_a0 extends SingleRoleCellProvider {

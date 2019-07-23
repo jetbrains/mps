@@ -59,7 +59,7 @@ public class NoWaitTransforms_ParallelFor_ext_3 extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new NoWaitTransforms_ParallelFor_ext_3.TMP_Group_tp4f9n_a0());
+      result.add(new TMP_Group_tp4f9n_a0());
     }
     return result;
   }
@@ -83,12 +83,12 @@ public class NoWaitTransforms_ParallelFor_ext_3 extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new NoWaitTransforms_ParallelFor_ext_3.TMP_Group_tp4f9n_a0.TMP_Action_tp4f9n_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_tp4f9n_a0.TMP_Action_tp4f9n_a0a());
     }
     private class TMP_Action_tp4f9n_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        NoWaitTransforms_ParallelFor_ext_3.TMP_Group_tp4f9n_a0.TMP_Action_tp4f9n_a0a.Item item = new NoWaitTransforms_ParallelFor_ext_3.TMP_Group_tp4f9n_a0.TMP_Action_tp4f9n_a0a.Item(context);
+        TMP_Group_tp4f9n_a0.TMP_Action_tp4f9n_a0a.Item item = new TMP_Group_tp4f9n_a0.TMP_Action_tp4f9n_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

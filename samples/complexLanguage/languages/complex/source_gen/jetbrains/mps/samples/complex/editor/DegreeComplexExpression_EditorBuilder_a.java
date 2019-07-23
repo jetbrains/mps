@@ -58,7 +58,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new DegreeComplexExpression_EditorBuilder_a.complexExpressionSingleRoleHandler_q607mw_b0(myNode, MetaAdapterFactory.getContainmentLink(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL, 0x11686b4a081L, "complexExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new complexExpressionSingleRoleHandler_q607mw_b0(myNode, MetaAdapterFactory.getContainmentLink(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL, 0x11686b4a081L, "complexExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class complexExpressionSingleRoleHandler_q607mw_b0 extends SingleRoleCellProvider {
@@ -125,7 +125,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new DegreeComplexExpression_EditorBuilder_a.degreeSingleRoleHandler_q607mw_e0(myNode, MetaAdapterFactory.getContainmentLink(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x116904e45f4L, 0x116904f9752L, "degree"), getEditorContext());
+    SingleRoleCellProvider provider = new degreeSingleRoleHandler_q607mw_e0(myNode, MetaAdapterFactory.getContainmentLink(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x116904e45f4L, 0x116904f9752L, "degree"), getEditorContext());
     return provider.createCell();
   }
   private static class degreeSingleRoleHandler_q607mw_e0 extends SingleRoleCellProvider {

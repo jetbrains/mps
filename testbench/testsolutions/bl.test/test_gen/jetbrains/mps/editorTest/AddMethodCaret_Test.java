@@ -21,7 +21,7 @@ public class AddMethodCaret_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddMethodCaret() throws Throwable {
-    new AddMethodCaret_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -6,7 +6,6 @@ import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.scopes.Scopes;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -14,6 +13,8 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * This class contains some stupid code to check testExternalBuild.
@@ -23,10 +24,10 @@ public class TestScope extends Scope {
   }
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
-    Scopes.forVariables(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"), this, null);
+    Scopes.forVariables(AUX_6psuht.DotExpression_97ed08d8, this, null);
     return Sequence.fromIterable(((Iterable<SNode>) ListSequence.fromList(new ArrayList<SNode>()))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+        return SNodeOperations.isInstanceOf(it, AUX_6psuht.DotExpression_97ed08d8);
       }
     });
   }
@@ -43,5 +44,9 @@ public class TestScope extends Scope {
         return "wow";
       }
     }.invoke();
+  }
+
+  private static final class AUX_6psuht {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 }

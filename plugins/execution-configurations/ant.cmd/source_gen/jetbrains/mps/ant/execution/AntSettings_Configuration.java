@@ -17,7 +17,7 @@ import org.apache.log4j.Level;
 public class AntSettings_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(AntSettings_Configuration.class);
   @NotNull
-  private AntSettings_Configuration.MyState myState = new AntSettings_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -41,7 +41,7 @@ public class AntSettings_Configuration implements IPersistentConfiguration {
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (AntSettings_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -77,7 +77,7 @@ public class AntSettings_Configuration implements IPersistentConfiguration {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      AntSettings_Configuration.MyState state = new AntSettings_Configuration.MyState();
+      MyState state = new MyState();
       state.myUseOtherAntLocation = myUseOtherAntLocation;
       state.myOtherAntLocation = myOtherAntLocation;
       state.myAntOptions = myAntOptions;

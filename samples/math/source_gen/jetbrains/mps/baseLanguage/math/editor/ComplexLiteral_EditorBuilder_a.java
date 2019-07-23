@@ -50,7 +50,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ComplexLiteral_EditorBuilder_a.realSingleRoleHandler_g5m0o6_a0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052224b0bL, 0x1205222bbd7L, "real"), getEditorContext());
+    SingleRoleCellProvider provider = new realSingleRoleHandler_g5m0o6_a0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052224b0bL, 0x1205222bbd7L, "real"), getEditorContext());
     return provider.createCell();
   }
   private static class realSingleRoleHandler_g5m0o6_a0 extends SingleRoleCellProvider {
@@ -111,7 +111,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ComplexLiteral_EditorBuilder_a.imagSingleRoleHandler_g5m0o6_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052224b0bL, 0x1205222bdbdL, "imag"), getEditorContext());
+    SingleRoleCellProvider provider = new imagSingleRoleHandler_g5m0o6_c0(myNode, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052224b0bL, 0x1205222bdbdL, "imag"), getEditorContext());
     return provider.createCell();
   }
   private static class imagSingleRoleHandler_g5m0o6_c0 extends SingleRoleCellProvider {

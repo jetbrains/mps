@@ -21,7 +21,7 @@ public class DeleteUnaryMinus_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteUnaryMinus() throws Throwable {
-    new DeleteUnaryMinus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

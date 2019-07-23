@@ -14,7 +14,7 @@
   <root nodeRef="r:c68260e6-0a07-47e7-af7c-570ace5903cf(org.jetbrains.mps.samples.Money.generator.template.generator.template.main@generator)/1790427706118386761">
     <file name="QueriesGenerated.java">
       <node id="1790427706118386798" at="57,88,58,195" concept="1" />
-      <node id="1790427706118386795" at="206,190,207,190" concept="0" />
+      <node id="1790427706118386795" at="206,173,207,173" concept="0" />
       <node id="1790427706118386795" at="231,15,232,66" concept="1" />
       <node id="1790427706118386796" at="57,0,60,0" concept="2" trace="propertyMacro_GetValue_7_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <scope id="1790427706118386797" at="57,88,58,195" />
@@ -28,8 +28,8 @@
     <file name="QueriesGenerated.java">
       <node id="2864272256649727834" at="72,92,73,187" concept="1" />
       <node id="2864272256649728159" at="75,92,76,186" concept="1" />
-      <node id="2864272256649727827" at="146,73,147,73" concept="0" />
-      <node id="2864272256649728152" at="147,73,148,73" concept="0" />
+      <node id="2864272256649727827" at="146,56,147,56" concept="0" />
+      <node id="2864272256649728152" at="147,56,148,56" concept="0" />
       <node id="2864272256649727827" at="181,15,182,59" concept="1" />
       <node id="2864272256649728152" at="183,15,184,59" concept="1" />
       <node id="2864272256649727827" at="72,0,75,0" concept="2" trace="sourceNodeQuery_8_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -50,8 +50,8 @@
     <file name="QueriesGenerated.java">
       <node id="2864272256651350068" at="78,92,79,187" concept="1" />
       <node id="2864272256651350078" at="81,92,82,186" concept="1" />
-      <node id="2864272256651350066" at="148,73,149,73" concept="0" />
-      <node id="2864272256651350076" at="149,73,150,73" concept="0" />
+      <node id="2864272256651350066" at="148,56,149,56" concept="0" />
+      <node id="2864272256651350076" at="149,56,150,56" concept="0" />
       <node id="2864272256651350066" at="185,15,186,59" concept="1" />
       <node id="2864272256651350076" at="187,15,188,59" concept="1" />
       <node id="2864272256651350066" at="78,0,81,0" concept="2" trace="sourceNodeQuery_9_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -72,8 +72,8 @@
     <file name="QueriesGenerated.java">
       <node id="2864272256651359472" at="84,93,85,187" concept="1" />
       <node id="2864272256651359482" at="87,93,88,186" concept="1" />
-      <node id="2864272256651359470" at="150,73,151,73" concept="0" />
-      <node id="2864272256651359480" at="151,73,152,73" concept="0" />
+      <node id="2864272256651359470" at="150,56,151,56" concept="0" />
+      <node id="2864272256651359480" at="151,56,152,56" concept="0" />
       <node id="2864272256651359470" at="189,15,190,60" concept="1" />
       <node id="2864272256651359480" at="191,15,192,60" concept="1" />
       <node id="2864272256651359470" at="84,0,87,0" concept="2" trace="sourceNodeQuery_10_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -94,8 +94,8 @@
     <file name="QueriesGenerated.java">
       <node id="2864272256651363164" at="90,93,91,187" concept="1" />
       <node id="2864272256651363174" at="93,93,94,186" concept="1" />
-      <node id="2864272256651363162" at="152,73,153,73" concept="0" />
-      <node id="2864272256651363172" at="153,73,154,73" concept="0" />
+      <node id="2864272256651363162" at="152,56,153,56" concept="0" />
+      <node id="2864272256651363172" at="153,56,154,56" concept="0" />
       <node id="2864272256651363162" at="193,16,194,60" concept="1" />
       <node id="2864272256651363172" at="195,16,196,60" concept="1" />
       <node id="2864272256651363162" at="90,0,93,0" concept="2" trace="sourceNodeQuery_11_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -120,12 +120,12 @@
       <node id="2864272256651347931" at="42,83,43,58" concept="1" />
       <node id="2864272256651353594" at="45,83,46,58" concept="1" />
       <node id="2864272256651360966" at="48,83,49,58" concept="1" />
-      <node id="5447719361346553352" at="98,14,99,73" concept="0" />
-      <node id="5447719361346553531" at="99,73,100,73" concept="0" />
-      <node id="2864272256649711187" at="100,73,101,73" concept="0" />
-      <node id="2864272256651347928" at="101,73,102,73" concept="0" />
-      <node id="2864272256651353591" at="102,73,103,73" concept="0" />
-      <node id="2864272256651360963" at="103,73,104,73" concept="0" />
+      <node id="5447719361346553352" at="98,14,99,56" concept="0" />
+      <node id="5447719361346553531" at="99,56,100,56" concept="0" />
+      <node id="2864272256649711187" at="100,56,101,56" concept="0" />
+      <node id="2864272256651347928" at="101,56,102,56" concept="0" />
+      <node id="2864272256651353591" at="102,56,103,56" concept="0" />
+      <node id="2864272256651360963" at="103,56,104,56" concept="0" />
       <node id="5447719361346553352" at="123,15,124,58" concept="1" />
       <node id="5447719361346553531" at="125,15,126,58" concept="1" />
       <node id="2864272256649711187" at="127,15,128,58" concept="1" />
@@ -174,8 +174,8 @@
     <file name="QueriesGenerated.java">
       <node id="5447719361346518801" at="51,88,52,188" concept="1" />
       <node id="5447719361346518814" at="54,88,55,331" concept="1" />
-      <node id="5447719361346518798" at="204,14,205,191" concept="0" />
-      <node id="5447719361346518811" at="205,191,206,190" concept="0" />
+      <node id="5447719361346518798" at="204,14,205,174" concept="0" />
+      <node id="5447719361346518811" at="205,174,206,173" concept="0" />
       <node id="5447719361346518798" at="227,15,228,66" concept="1" />
       <node id="5447719361346518811" at="229,15,230,66" concept="1" />
       <node id="5447719361346518799" at="51,0,54,0" concept="2" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
@@ -196,8 +196,8 @@
     <file name="QueriesGenerated.java">
       <node id="5447719361346558524" at="60,92,61,186" concept="1" />
       <node id="5447719361346558515" at="63,92,64,187" concept="1" />
-      <node id="5447719361346558522" at="142,14,143,73" concept="0" />
-      <node id="5447719361346558513" at="143,73,144,73" concept="0" />
+      <node id="5447719361346558522" at="142,14,143,56" concept="0" />
+      <node id="5447719361346558513" at="143,56,144,56" concept="0" />
       <node id="5447719361346558522" at="173,15,174,59" concept="1" />
       <node id="5447719361346558513" at="175,15,176,59" concept="1" />
       <node id="5447719361346558522" at="60,0,63,0" concept="2" trace="sourceNodeQuery_3_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -218,8 +218,8 @@
     <file name="QueriesGenerated.java">
       <node id="5447719361346558535" at="66,92,67,186" concept="1" />
       <node id="5447719361346558492" at="69,92,70,187" concept="1" />
-      <node id="5447719361346558533" at="144,73,145,73" concept="0" />
-      <node id="5447719361346558490" at="145,73,146,73" concept="0" />
+      <node id="5447719361346558533" at="144,56,145,56" concept="0" />
+      <node id="5447719361346558490" at="145,56,146,56" concept="0" />
       <node id="5447719361346558533" at="177,15,178,59" concept="1" />
       <node id="5447719361346558490" at="179,15,180,59" concept="1" />
       <node id="5447719361346558533" at="66,0,69,0" concept="2" trace="sourceNodeQuery_4_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />

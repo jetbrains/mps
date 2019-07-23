@@ -15,9 +15,9 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenStyleClass;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -37,6 +37,7 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class LogicalOperator_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -75,13 +76,13 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     Style style = new StyleImpl();
     new LeftParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression"), "jetbrains.mps.samples.Kaja.editor.NegateAndAlter"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_ht7amn.LogicalExpression_64fb6940, "jetbrains.mps.samples.Kaja.editor.NegateAndAlter"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new LogicalOperator_EditorBuilder_a.leftSingleRoleHandler_iyfdbj_b0(myNode, MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left"), getEditorContext());
+    SingleRoleCellProvider provider = new leftSingleRoleHandler_iyfdbj_b0(myNode, MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left"), getEditorContext());
     return provider.createCell();
   }
   private static class leftSingleRoleHandler_iyfdbj_b0 extends SingleRoleCellProvider {
@@ -143,14 +144,14 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     DeleteLogicalOperator.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new LogicalOperator_EditorBuilder_a.ReplaceWith_LogicalOperator_cellMenu_iyfdbj_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_LogicalOperator_cellMenu_iyfdbj_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_LogicalOperator_cellMenu_iyfdbj_a0c0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_LogicalOperator_cellMenu_iyfdbj_a0c0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator");
+      return AUX_ht7amn.LogicalOperator_689b9df9;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -158,7 +159,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new LogicalOperator_EditorBuilder_a.rightSingleRoleHandler_iyfdbj_d0(myNode, MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right"), getEditorContext());
+    SingleRoleCellProvider provider = new rightSingleRoleHandler_iyfdbj_d0(myNode, MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right"), getEditorContext());
     return provider.createCell();
   }
   private static class rightSingleRoleHandler_iyfdbj_d0 extends SingleRoleCellProvider {
@@ -219,9 +220,14 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     Style style = new StyleImpl();
     new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression"), "jetbrains.mps.samples.Kaja.editor.NegateAndAlter"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_ht7amn.LogicalExpression_64fb6940, "jetbrains.mps.samples.Kaja.editor.NegateAndAlter"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
+  }
+
+  private static final class AUX_ht7amn {
+    /*package*/ static final SConcept LogicalExpression_64fb6940 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
+    /*package*/ static final SConcept LogicalOperator_689b9df9 = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator");
   }
 }

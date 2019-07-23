@@ -22,7 +22,7 @@ public class DeleteLineVerticalMultipleCollection_Test extends BaseTransformatio
 
   @Test
   public void test_DeleteLineVerticalMultipleCollection() throws Throwable {
-    new DeleteLineVerticalMultipleCollection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

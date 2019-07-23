@@ -24,6 +24,7 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class _Component_Visibility_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -51,7 +52,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new _Component_Visibility_ComponentBuilder_a.visibilitySingleRoleHandler_4j2lax_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), getEditorContext());
+    SingleRoleCellProvider provider = new visibilitySingleRoleHandler_4j2lax_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), getEditorContext());
     return provider.createCell();
   }
   private static class visibilitySingleRoleHandler_4j2lax_a0 extends SingleRoleCellProvider {
@@ -106,10 +107,14 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible"), "jetbrains.mps.baseLanguage.editor.Empty_Visibility_TransformtaionMenu"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_9cm7qu.IVisible_84badc76, "jetbrains.mps.baseLanguage.editor.Empty_Visibility_TransformtaionMenu"));
       editorCell.setDefaultText("/*package*/");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
     }
+  }
+
+  private static final class AUX_9cm7qu {
+    /*package*/ static final SInterfaceConcept IVisible_84badc76 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
   }
 }

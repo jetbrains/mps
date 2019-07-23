@@ -7,7 +7,6 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -23,6 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Behavior_TabDescriptor extends RelationDescriptor {
   private static final Icon ICON = MPSIcons.Nodes.Behavior;
@@ -44,7 +44,7 @@ public class Behavior_TabDescriptor extends RelationDescriptor {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    return SNodeOperations.isInstanceOf(node, AUX_gu5wbf.AbstractConceptDeclaration_ec74828f);
   }
   @Nullable
   public Icon getIcon() {
@@ -73,12 +73,17 @@ public class Behavior_TabDescriptor extends RelationDescriptor {
       return null;
     }
 
-    return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("findConceptAspects", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "4G9PD8$NvPM"), aspectModel))).first();
+    return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, AUX_gu5wbf.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("findConceptAspects", AUX_gu5wbf.AbstractConceptDeclaration_ec74828f, "4G9PD8$NvPM"), aspectModel))).first();
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_gu5wbf.ConceptBehavior_68ebe6cd);
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
-    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.BEHAVIOR, node, SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"), null));
+    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.BEHAVIOR, node, SNodeFactoryOperations.createNewNode(AUX_gu5wbf.ConceptBehavior_68ebe6cd, null));
+  }
+
+  private static final class AUX_gu5wbf {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptBehavior_68ebe6cd = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
   }
 }

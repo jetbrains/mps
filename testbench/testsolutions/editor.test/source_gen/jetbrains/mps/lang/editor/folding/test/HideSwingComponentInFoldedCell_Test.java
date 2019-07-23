@@ -25,7 +25,7 @@ public class HideSwingComponentInFoldedCell_Test extends BaseTransformationTest 
 
   @Test
   public void test_HideSwingComponentInFoldedCell() throws Throwable {
-    new HideSwingComponentInFoldedCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

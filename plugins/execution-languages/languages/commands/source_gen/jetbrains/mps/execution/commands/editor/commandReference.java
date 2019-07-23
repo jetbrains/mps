@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -23,17 +22,19 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class commandReference extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new commandReference.SMP_Param_h8zl7k_a(), MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, "jetbrains.mps.execution.commands.structure.CommandReferenceExpression")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_h8zl7k_a(), AUX_h8zl7k.CommandReferenceExpression_30caf019));
     return result;
   }
 
@@ -54,7 +55,7 @@ public class commandReference extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new commandReference.SMP_Param_h8zl7k_a.SMP_Action_h8zl7k_a0(parameter).createItems(context);
+      return new SMP_Param_h8zl7k_a.SMP_Action_h8zl7k_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -70,7 +71,7 @@ public class commandReference extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, "jetbrains.mps.execution.commands.structure.CommandDeclaration"));
+      return SModelOperations.nodesIncludingImported(_context.getModel(), AUX_h8zl7k.CommandDeclaration_30caf03d);
     }
     private class SMP_Action_h8zl7k_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -81,7 +82,7 @@ public class commandReference extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        commandReference.SMP_Param_h8zl7k_a.SMP_Action_h8zl7k_a0.Item item = new commandReference.SMP_Param_h8zl7k_a.SMP_Action_h8zl7k_a0.Item(_context);
+        SMP_Param_h8zl7k_a.SMP_Action_h8zl7k_a0.Item item = new SMP_Param_h8zl7k_a.SMP_Action_h8zl7k_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -105,7 +106,7 @@ public class commandReference extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, "jetbrains.mps.execution.commands.structure.CommandReferenceExpression"), context);
+          super(AUX_h8zl7k.CommandReferenceExpression_30caf019, context);
           _context = context;
         }
 
@@ -116,7 +117,7 @@ public class commandReference extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode reference = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, "jetbrains.mps.execution.commands.structure.CommandReferenceExpression"), null);
+          SNode reference = SNodeFactoryOperations.createNewNode(AUX_h8zl7k.CommandReferenceExpression_30caf019, null);
           SLinkOperations.setTarget(reference, MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, 0xbe3a0d5ba1a2bdbL, "command"), myParameterObject);
           return reference;
         }
@@ -127,7 +128,7 @@ public class commandReference extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, "jetbrains.mps.execution.commands.structure.CommandReferenceExpression"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_h8zl7k.CommandReferenceExpression_30caf019, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -150,5 +151,10 @@ public class commandReference extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_h8zl7k {
+    /*package*/ static final SConcept CommandReferenceExpression_30caf019 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, "jetbrains.mps.execution.commands.structure.CommandReferenceExpression");
+    /*package*/ static final SConcept CommandDeclaration_30caf03d = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, "jetbrains.mps.execution.commands.structure.CommandDeclaration");
   }
 }

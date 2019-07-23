@@ -107,6 +107,6 @@ public class Template_reduce_LocalBehaviorMethodCallWithCast extends TemplateDec
     rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static SNodePointer copySrcMacro_6pcqdy_b0a0c0c0b0b0b0c0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037176834");
-  private static SNodePointer ifMacroRef_6pcqdy_b0a0c0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037160739");
+  private static final SNodePointer copySrcMacro_6pcqdy_b0a0c0c0b0b0b0c0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037176834");
+  private static final SNodePointer ifMacroRef_6pcqdy_b0a0c0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037160739");
 }

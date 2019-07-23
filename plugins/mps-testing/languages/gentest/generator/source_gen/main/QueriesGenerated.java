@@ -32,6 +32,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class QueriesGenerated extends QueryProviderBase {
@@ -100,7 +101,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // BEWARE, this method needs to get executed prior to prepareArguments() to ensure findModel uses repository of a project configured here 
     // FWIW, @Before, not @Rule as BaseTransformTest does for initializeOnce call as I don't expect subclasses of this generated class. 
     // See LOOP above for reasons why originalModel, not inputModel 
-    return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo"))).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), AUX_x583g4.TestInfo_c0c4a9c7)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d063L, "transformationPlan")) != null);
@@ -111,7 +112,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     // unfortunately, had to resort to originalModel as lang.test jumps in front of 
     // lang.test.generator and drops TestInfo roots 
-    return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo"))).take(1);
+    return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), AUX_x583g4.TestInfo_c0c4a9c7)).take(1);
   }
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf09c67L, "arguments"));
@@ -120,23 +121,23 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf09c67L, "arguments"));
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests")), MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, "jetbrains.mps.lang.test.generator.structure.TransformationMatchAssertion"));
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests")), AUX_x583g4.TransformationMatchAssertion_117aadd4);
   }
   public static Iterable<SNode> sourceNodesQuery_1_4(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d060L, "referenceModels"));
   }
   public static Iterable<SNode> sourceNodesQuery_1_5(final SourceSubstituteMacroNodesContext _context) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests")), MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, "jetbrains.mps.lang.test.generator.structure.TransformationMatchManyAssertion"));
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests")), AUX_x583g4.TransformationMatchManyAssertion_c74438e);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
     int i = 0;
-    snsqMethods.put("716743818716559716", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("7985317431307037803", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("7985317431307068138", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("7985317431306988014", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("6346338635721396810", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("6346338635721222539", new QueriesGenerated.SNsQ(i++));
+    snsqMethods.put("716743818716559716", new SNsQ(i++));
+    snsqMethods.put("7985317431307037803", new SNsQ(i++));
+    snsqMethods.put("7985317431307068138", new SNsQ(i++));
+    snsqMethods.put("7985317431306988014", new SNsQ(i++));
+    snsqMethods.put("6346338635721396810", new SNsQ(i++));
+    snsqMethods.put("6346338635721222539", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -175,16 +176,16 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("716743818716619936", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "project"));
-    pvqMethods.put("716743818716633424", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "modelref"));
-    pvqMethods.put("716743818716674044", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "false"));
-    pvqMethods.put("7985317431306989793", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatch"));
-    pvqMethods.put("6346338635721331627", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "3"));
-    pvqMethods.put("6346338635721222548", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatchMany"));
-    pvqMethods.put("2681075272524333361", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "GeneratorTestClass"));
-    pvqMethods.put("7985317431307070194", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "myArg"));
-    pvqMethods.put("7437836795857917427", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
-    pvqMethods.put("7985317431307775128", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("716743818716619936", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "project"));
+    pvqMethods.put("716743818716633424", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "modelref"));
+    pvqMethods.put("716743818716674044", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "false"));
+    pvqMethods.put("7985317431306989793", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatch"));
+    pvqMethods.put("6346338635721331627", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "3"));
+    pvqMethods.put("6346338635721222548", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "testTransformAndMatchMany"));
+    pvqMethods.put("2681075272524333361", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "GeneratorTestClass"));
+    pvqMethods.put("7985317431307070194", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "myArg"));
+    pvqMethods.put("7437836795857917427", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("7985317431307775128", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
   }
   @NotNull
   @Override
@@ -232,9 +233,9 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("716743818716944959", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("7985317431307213918", new QueriesGenerated.IfMC(i++));
-    imcMethods.put("6346338635721222502", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("716743818716944959", new IfMC(i++));
+    imcMethods.put("7985317431307213918", new IfMC(i++));
+    imcMethods.put("6346338635721222502", new IfMC(i++));
   }
   @NotNull
   @Override
@@ -266,13 +267,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("7985317431307113950", new QueriesGenerated.RTQ(0, "f"));
-    rtqMethods.put("7985317431307194769", new QueriesGenerated.RTQ(1, "f"));
-    rtqMethods.put("7985317431307179476", new QueriesGenerated.RTQ(2, "f"));
-    rtqMethods.put("6346338635721222466", new QueriesGenerated.RTQ(3, "f"));
-    rtqMethods.put("6346338635721222489", new QueriesGenerated.RTQ(4, "f"));
-    rtqMethods.put("6346338635721388511", new QueriesGenerated.RTQ(5, "f"));
-    rtqMethods.put("7985317431307754088", new QueriesGenerated.RTQ(6, "f"));
+    rtqMethods.put("7985317431307113950", new RTQ(0, "f"));
+    rtqMethods.put("7985317431307194769", new RTQ(1, "f"));
+    rtqMethods.put("7985317431307179476", new RTQ(2, "f"));
+    rtqMethods.put("6346338635721222466", new RTQ(3, "f"));
+    rtqMethods.put("6346338635721222489", new RTQ(4, "f"));
+    rtqMethods.put("6346338635721388511", new RTQ(5, "f"));
+    rtqMethods.put("7985317431307754088", new RTQ(6, "f"));
   }
   @NotNull
   @Override
@@ -310,5 +311,11 @@ public class QueriesGenerated extends QueryProviderBase {
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SConcept TestInfo_c0c4a9c7 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
+    /*package*/ static final SConcept TransformationMatchAssertion_117aadd4 = MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, "jetbrains.mps.lang.test.generator.structure.TransformationMatchAssertion");
+    /*package*/ static final SConcept TransformationMatchManyAssertion_c74438e = MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, "jetbrains.mps.lang.test.generator.structure.TransformationMatchManyAssertion");
   }
 }

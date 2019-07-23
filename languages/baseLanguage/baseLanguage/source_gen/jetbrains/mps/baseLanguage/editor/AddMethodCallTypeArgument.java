@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddMethodCallTypeArgument extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -64,7 +65,7 @@ public class AddMethodCallTypeArgument extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new AddMethodCallTypeArgument.TMP_Group_khwu2j_a0());
+      result.add(new TMP_Group_khwu2j_a0());
     }
     return result;
   }
@@ -88,12 +89,12 @@ public class AddMethodCallTypeArgument extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new AddMethodCallTypeArgument.TMP_Group_khwu2j_a0.TMP_Action_khwu2j_a0a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_khwu2j_a0.TMP_Action_khwu2j_a0a(), AUX_khwu2j.Type_4199e276));
     }
     private class TMP_Action_khwu2j_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        AddMethodCallTypeArgument.TMP_Group_khwu2j_a0.TMP_Action_khwu2j_a0a.Item item = new AddMethodCallTypeArgument.TMP_Group_khwu2j_a0.TMP_Action_khwu2j_a0a.Item(context);
+        TMP_Group_khwu2j_a0.TMP_Action_khwu2j_a0a.Item item = new TMP_Group_khwu2j_a0.TMP_Action_khwu2j_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -135,7 +136,7 @@ public class AddMethodCallTypeArgument extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+          return AUX_khwu2j.Type_4199e276;
         }
 
 
@@ -146,7 +147,7 @@ public class AddMethodCallTypeArgument extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+          SAbstractConcept outputConcept = AUX_khwu2j.Type_4199e276;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -155,5 +156,9 @@ public class AddMethodCallTypeArgument extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_khwu2j {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

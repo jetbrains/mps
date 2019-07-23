@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -20,9 +19,10 @@ import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TransformationLocation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation");
+  private static final SAbstractConcept CONCEPT = AUX_26bh2n.TransformationLocation_13eeb66;
 
   public static final SMethod<Collection<SConcept>> getRequiredFeatures_id7L5lpRJHK_w = new SMethodBuilder<Collection<SConcept>>(new SJavaCompoundTypeImpl((Class<Collection<SConcept>>) ((Class) Object.class))).name("getRequiredFeatures").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7L5lpRJHK_w").build();
   public static final SMethod<Collection<SConcept>> getAvailableFeatures_id1A4kJjlZ$rL = new SMethodBuilder<Collection<SConcept>>(new SJavaCompoundTypeImpl((Class<Collection<SConcept>>) ((Class) Object.class))).name("getAvailableFeatures").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1A4kJjlZ$rL").build();
@@ -85,5 +85,9 @@ public final class TransformationLocation__BehaviorDescriptor extends BaseBHDesc
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_26bh2n {
+    /*package*/ static final SConcept TransformationLocation_13eeb66 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation");
   }
 }

@@ -10,9 +10,10 @@ import jetbrains.jetpad.projectional.view.ViewTrait;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public abstract class AbstractPaletteCreationAction implements PaletteToggleAction {
   protected DiagramCell myDiagramCell;
@@ -34,7 +35,7 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
       // todo should pass concept here, not concept node 
       // FIXME the moment there's SConcept, not SNode, #init() down here doesn't need model read any more 
       SAbstractConcept concept = SNodeOperations.asSConcept(((SNode) iconNode));
-      icon = ((SNodeOperations.isInstanceOf(iconNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")) && !((mySubstituteAction.isReferentPresentation()))) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
+      icon = ((SNodeOperations.isInstanceOf(iconNode, AUX_9evbr.AbstractConceptDeclaration_ec74828f) && !((mySubstituteAction.isReferentPresentation()))) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
     } else {
       icon = IdeIcons.DEFAULT_ICON;
     }
@@ -62,4 +63,7 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
     myDiagramCell.setExternalTrait(getTrait());
   }
 
+  private static final class AUX_9evbr {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+  }
 }

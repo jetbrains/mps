@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.math.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ConjugateOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e64afe53L, "jetbrains.mps.baseLanguage.math.structure.ConjugateOperation");
+  private static final SAbstractConcept CONCEPT = AUX_r5uml4.ConjugateOperation_668ce64e;
 
   public static final SMethod<String> getOperationSymbol_id1653mnvAgnB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOperationSymbol").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgnB").build();
 
@@ -76,5 +77,9 @@ public final class ConjugateOperation__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_r5uml4 {
+    /*package*/ static final SConcept ConjugateOperation_668ce64e = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e64afe53L, "jetbrains.mps.baseLanguage.math.structure.ConjugateOperation");
   }
 }

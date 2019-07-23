@@ -13,9 +13,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.apache.log4j.Level;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -27,6 +27,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RefactoringScriptReference implements BaseScriptReference<RefactoringScript> {
   private static final Logger LOG = LogManager.getLogger(RefactoringScriptReference.class);
@@ -75,7 +76,7 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
           Language depModule = (Language) module;
           final int current = RefactoringScriptReference.this.getFromVersion();
           SModel migrationModel = SModuleOperations.getAspect(depModule, "migration");
-          final SNode log = ListSequence.fromList(SModelOperations.roots(migrationModel, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog"))).where(new IWhereFilter<SNode>() {
+          final SNode log = ListSequence.fromList(SModelOperations.roots(migrationModel, AUX_z5nzcg.RefactoringLog_f0aa76d9)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return SPropertyOperations.getInteger(it, MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d91L, "fromVersion")) == current;
             }
@@ -93,7 +94,7 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
           });
           List<RefactoringScriptReference> executeAfter = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(log, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d90L, "executeAfter")), MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d9dL, 0x1bf9eb43276b6d9eL, "refactoring"))).select(new ISelector<SNode, RefactoringScriptReference>() {
             public RefactoringScriptReference select(SNode it) {
-              return ((RefactoringScriptReference) (RefactoringScriptReference) BHReflection.invoke0(it, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog"), SMethodTrimmedId.create("getDescriptor", MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog"), "4uVwhQyPQ_Z")));
+              return ((RefactoringScriptReference) (RefactoringScriptReference) BHReflection.invoke0(it, AUX_z5nzcg.RefactoringLog_f0aa76d9, SMethodTrimmedId.create("getDescriptor", AUX_z5nzcg.RefactoringLog_f0aa76d9, "4uVwhQyPQ_Z")));
             }
           }).toListSequence();
           List<RefactoringPartImpl> parts = Sequence.fromIterable(participants).select(new ISelector<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>, RefactoringPartImpl>() {
@@ -106,10 +107,14 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
               return new RefactoringPartImpl(SLinkOperations.getTarget(log, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x31ee543051f2333cL, "options")), participantParts, participant);
             }
           }).toListSequence();
-          implementation.value = new BaseRefactoringScript(SPropertyOperations.getString(log, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), ((RefactoringScriptReference) BHReflection.invoke0(log, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog"), SMethodTrimmedId.create("getDescriptor", MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog"), "4uVwhQyPQ_Z"))), executeAfter, parts);
+          implementation.value = new BaseRefactoringScript(SPropertyOperations.getString(log, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), ((RefactoringScriptReference) BHReflection.invoke0(log, AUX_z5nzcg.RefactoringLog_f0aa76d9, SMethodTrimmedId.create("getDescriptor", AUX_z5nzcg.RefactoringLog_f0aa76d9, "4uVwhQyPQ_Z"))), executeAfter, parts);
         }
       }
     });
     return implementation.value;
+  }
+
+  private static final class AUX_z5nzcg {
+    /*package*/ static final SConcept RefactoringLog_f0aa76d9 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog");
   }
 }

@@ -32,15 +32,15 @@ public class CatchingUnthrownException_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeCaughtExceptionIsNeverCheck6923385624927429271() throws Throwable {
-    new CatchingUnthrownException_Test.TestBody(this).test_NodeCaughtExceptionIsNeverCheck6923385624927429271();
+    new TestBody(this).test_NodeCaughtExceptionIsNeverCheck6923385624927429271();
   }
   @Test
   public void test_NodeCaughtExceptionIsNeverCheck6923385624929290516() throws Throwable {
-    new CatchingUnthrownException_Test.TestBody(this).test_NodeCaughtExceptionIsNeverCheck6923385624929290516();
+    new TestBody(this).test_NodeCaughtExceptionIsNeverCheck6923385624929290516();
   }
   @Test
   public void test_ErrorMessagesCheck1220012521451() throws Throwable {
-    new CatchingUnthrownException_Test.TestBody(this).test_ErrorMessagesCheck1220012521451();
+    new TestBody(this).test_ErrorMessagesCheck1220012521451();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

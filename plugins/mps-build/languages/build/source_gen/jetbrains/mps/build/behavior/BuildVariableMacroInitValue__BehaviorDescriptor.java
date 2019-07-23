@@ -4,7 +4,6 @@ package jetbrains.mps.build.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,12 +15,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BuildVariableMacroInitValue__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd1e1aaL, "jetbrains.mps.build.structure.BuildVariableMacroInitValue");
+  private static final SAbstractConcept CONCEPT = AUX_7765cw.BuildVariableMacroInitValue_31bb6195;
 
   public static final SMethod<String> getMacroName_idd_WKSiPASu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMacroName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("d_WKSiPASu").build();
 
@@ -31,7 +32,7 @@ public final class BuildVariableMacroInitValue__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static String getMacroName_idd_WKSiPASu(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3449288aa0d560e2L, "jetbrains.mps.build.structure.BuildVariableMacro")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    return SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AUX_7765cw.BuildVariableMacro_66593451), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
 
   /*package*/ BuildVariableMacroInitValue__BehaviorDescriptor() {
@@ -78,5 +79,10 @@ public final class BuildVariableMacroInitValue__BehaviorDescriptor extends BaseB
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_7765cw {
+    /*package*/ static final SConcept BuildVariableMacroInitValue_31bb6195 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd1e1aaL, "jetbrains.mps.build.structure.BuildVariableMacroInitValue");
+    /*package*/ static final SConcept BuildVariableMacro_66593451 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3449288aa0d560e2L, "jetbrains.mps.build.structure.BuildVariableMacro");
   }
 }

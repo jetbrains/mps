@@ -164,7 +164,7 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
     if (index < 0) {
       throw new IndexOutOfBoundsException();
     }
-    return new AbstractMutableChildrenList.ForwardOnlyImmutableListIterator(childrenIteratorShifted(index), index);
+    return new ForwardOnlyImmutableListIterator(childrenIteratorShifted(index), index);
   }
 
   private class ForwardOnlyImmutableListIterator implements ListIterator<SNode> {

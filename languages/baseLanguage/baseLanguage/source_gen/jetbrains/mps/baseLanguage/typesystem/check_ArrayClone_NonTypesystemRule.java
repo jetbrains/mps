@@ -21,6 +21,7 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ArrayClone_NonTypesystemRule() {
@@ -32,7 +33,7 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
       return;
     }
 
-    SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(instanceMethodCallOperation), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
+    SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(instanceMethodCallOperation), AUX_84yqbr.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
     Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
     if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
       public boolean accept(SReference it) {
@@ -43,7 +44,7 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
       return;
     }
 
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(operand), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"))) {
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(operand), AUX_84yqbr.ArrayType_67000423)) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceMethodCallOperation, "should be clone operation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8824315269745705247", null, errorTarget);
@@ -57,12 +58,18 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    return AUX_84yqbr.InstanceMethodCallOperation_cd28f5b6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_84yqbr {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ArrayType_67000423 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 }

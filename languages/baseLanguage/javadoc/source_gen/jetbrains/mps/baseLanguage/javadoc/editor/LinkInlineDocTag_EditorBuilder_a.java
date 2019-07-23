@@ -18,12 +18,12 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -34,6 +34,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class LinkInlineDocTag_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -69,14 +70,14 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     Style style = new StyleImpl();
     new CommentTagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new LinkInlineDocTag_EditorBuilder_a.ReplaceWith_BaseInlineDocTag_cellMenu_bju3wr_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BaseInlineDocTag_cellMenu_bju3wr_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_BaseInlineDocTag_cellMenu_bju3wr_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_BaseInlineDocTag_cellMenu_bju3wr_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e838L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseInlineDocTag");
+      return AUX_jwo5pv.BaseInlineDocTag_87a9992c;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -84,7 +85,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new LinkInlineDocTag_EditorBuilder_a.referenceSingleRoleHandler_bju3wr_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x235789022a5d3a34L, "reference"), getEditorContext());
+    SingleRoleCellProvider provider = new referenceSingleRoleHandler_bju3wr_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x235789022a5d3a34L, "reference"), getEditorContext());
     return provider.createCell();
   }
   private static class referenceSingleRoleHandler_bju3wr_b0 extends SingleRoleCellProvider {
@@ -139,7 +140,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     }
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new LinkInlineDocTag_EditorBuilder_a.lineListHandler_bju3wr_c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new lineListHandler_bju3wr_c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_line");
     editorCell.setSRole(handler.getElementSRole());
@@ -162,7 +163,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
       return MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x2b1cb7939653411eL, "line");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+      return AUX_jwo5pv.CommentLine_7c8f6780;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -195,5 +196,10 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
         }
       }
     }
+  }
+
+  private static final class AUX_jwo5pv {
+    /*package*/ static final SConcept BaseInlineDocTag_87a9992c = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e838L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseInlineDocTag");
+    /*package*/ static final SConcept CommentLine_7c8f6780 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
   }
 }

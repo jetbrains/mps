@@ -37,7 +37,7 @@ public class ReplaceOutputVaryable_Test extends BaseTransformationTest {
 
   @Test
   public void test_ReplaceOutputVaryableTest() throws Throwable {
-    new ReplaceOutputVaryable_Test.TestBody(this).test_ReplaceOutputVaryableTest();
+    new TestBody(this).test_ReplaceOutputVaryableTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

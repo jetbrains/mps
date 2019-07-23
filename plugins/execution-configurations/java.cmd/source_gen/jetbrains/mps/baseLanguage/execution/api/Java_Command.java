@@ -208,7 +208,7 @@ public class Java_Command {
         return unitsForNode.get(0).getUnitName();
       } else {
         // if there's more than 1 unit, find one holding position that matches main method 
-        final SConcept staticMethodConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+        final SConcept staticMethodConcept = AUX_kk96hj.StaticMethodDeclaration_9cd8c445;
         final String mainMethodTraceableProperty = TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(_quotation_createNode_yvpt_a0a2a0b0a5a1());
         for (TraceablePositionInfo position : debugInfo.getRootInfo(SNodeOperations.getContainingRoot(node)).getPositions()) {
           if (Objects.equals(position.getConcept(), staticMethodConcept) && (Objects.equals(position.getPropertyString(), mainMethodTraceableProperty))) {
@@ -382,5 +382,9 @@ public class Java_Command {
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
+  }
+
+  private static final class AUX_kk96hj {
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
   }
 }

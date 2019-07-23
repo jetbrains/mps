@@ -21,7 +21,7 @@ public class SmartComplete_ReturnMethodCall_Test extends BaseTransformationTest 
 
   @Test
   public void test_SmartComplete_ReturnMethodCall() throws Throwable {
-    new SmartComplete_ReturnMethodCall_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

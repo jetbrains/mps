@@ -28,11 +28,11 @@ public class ImageExport_Test extends BaseTransformationTest {
 
   @Test
   public void test_manuallyExportedImage() throws Throwable {
-    new ImageExport_Test.TestBody(this).test_manuallyExportedImage();
+    new TestBody(this).test_manuallyExportedImage();
   }
   @Test
   public void test_imageExportedByGenerator() throws Throwable {
-    new ImageExport_Test.TestBody(this).test_imageExportedByGenerator();
+    new TestBody(this).test_imageExportedByGenerator();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

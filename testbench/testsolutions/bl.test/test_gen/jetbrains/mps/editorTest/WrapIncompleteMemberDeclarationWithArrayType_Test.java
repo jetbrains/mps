@@ -21,7 +21,7 @@ public class WrapIncompleteMemberDeclarationWithArrayType_Test extends BaseTrans
 
   @Test
   public void test_WrapIncompleteMemberDeclarationWithArrayType() throws Throwable {
-    new WrapIncompleteMemberDeclarationWithArrayType_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

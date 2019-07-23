@@ -46,6 +46,8 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.generator.GenerationFacade;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class CollectTests_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -162,14 +164,14 @@ public class CollectTests_Action extends BaseAction {
               public void run() {
                 projectRepo.getModelAccess().executeCommand(new Runnable() {
                   public void run() {
-                    SNode suite = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite"))).findFirst(new IWhereFilter<SNode>() {
+                    SNode suite = ListSequence.fromList(SModelOperations.roots(model, AUX_2a48xb.ModuleSuite_e5f1f89d)).findFirst(new IWhereFilter<SNode>() {
                       public boolean accept(SNode it) {
                         return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef"))).equals(module.value.getModuleReference());
                       }
                     });
                     if (suite == null) {
                       suite = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite"));
-                      SNode sref = SLinkOperations.setNewChild(suite, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef"), MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef"));
+                      SNode sref = SLinkOperations.setNewChild(suite, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef"), AUX_2a48xb.SolutionRef_3143dcdd);
                       SModuleReference mref = module.value.getModuleReference();
                       SPropertyOperations.assign(sref, MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbddL, "moduleFQName"), mref.getModuleName());
                       SPropertyOperations.assign(sref, MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbdeL, "moduleID"), mref.getModuleId().toString());
@@ -180,7 +182,7 @@ public class CollectTests_Action extends BaseAction {
                           return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
                         }
                       }))) {
-                        ListSequence.fromList(SLinkOperations.getChildren(suite, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef"))).addElement(SNodeOperations.cast(tref, MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef")));
+                        ListSequence.fromList(SLinkOperations.getChildren(suite, MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef"))).addElement(SNodeOperations.cast(tref, AUX_2a48xb.ITestRef_e5f1f8b7));
                         ((SModelInternal) model).addModelImport(smodel.getReference());
                         ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
                       }
@@ -210,5 +212,11 @@ public class CollectTests_Action extends BaseAction {
     if (frame != null) {
       frame.getStatusBar().setInfo(info);
     }
+  }
+
+  private static final class AUX_2a48xb {
+    /*package*/ static final SConcept ModuleSuite_e5f1f89d = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
+    /*package*/ static final SConcept SolutionRef_3143dcdd = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef");
+    /*package*/ static final SInterfaceConcept ITestRef_e5f1f8b7 = MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef");
   }
 }

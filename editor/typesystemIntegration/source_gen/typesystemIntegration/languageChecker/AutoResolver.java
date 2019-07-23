@@ -76,7 +76,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
 
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     // TODO: use same settings as in LanguageEditorChecker 
-    AutoResolver.BadReferences badReferences = collectBadReferences(rootNode);
+    BadReferences badReferences = collectBadReferences(rootNode);
 
     final Map<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>> nodesToErrors = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>>());
     for (SReference ref : SetSequence.fromSet(badReferences.brokenReferences())) {
@@ -233,12 +233,12 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
       return super._1();
     }
   }
-  private AutoResolver.BadReferences collectBadReferences(SNode cellNode) {
+  private BadReferences collectBadReferences(SNode cellNode) {
     boolean needToEnableLogging = jetbrains.mps.smodel.SReference.disableLogging();
     try {
       SModel model = SNodeOperations.getModel(cellNode);
       VisibilityUtil visibilityHelper = VisibilityUtil.forModel(model);
-      AutoResolver.BadReferences result = new BadReferences(SetSequence.fromSet(new HashSet<SReference>()), SetSequence.fromSet(new HashSet<SReference>()));
+      BadReferences result = new BadReferences(SetSequence.fromSet(new HashSet<SReference>()), SetSequence.fromSet(new HashSet<SReference>()));
       for (SNode node : SNodeUtil.getDescendants(cellNode)) {
         for (SReference ref : SNodeOperations.getReferences(node)) {
           if (jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref) == null) {

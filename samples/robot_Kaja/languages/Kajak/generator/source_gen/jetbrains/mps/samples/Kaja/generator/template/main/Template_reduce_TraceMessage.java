@@ -108,5 +108,5 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase implem
     rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     return rv;
   }
-  private static SNodePointer propertyMacro_zb4n4r_c0a0c0a0b0c0b0b0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3210697320273781183");
+  private static final SNodePointer propertyMacro_zb4n4r_c0a0c0a0b0c0b0b0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3210697320273781183");
 }

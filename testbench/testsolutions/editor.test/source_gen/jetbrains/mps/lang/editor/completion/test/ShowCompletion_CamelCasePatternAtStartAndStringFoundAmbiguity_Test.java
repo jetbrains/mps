@@ -24,7 +24,7 @@ public class ShowCompletion_CamelCasePatternAtStartAndStringFoundAmbiguity_Test 
 
   @Test
   public void test_ShowCompletion_CamelCasePatternAtStartAndStringFoundAmbiguity() throws Throwable {
-    new ShowCompletion_CamelCasePatternAtStartAndStringFoundAmbiguity_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

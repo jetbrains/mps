@@ -16,6 +16,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_Node_IsInstanceOfOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_Node_IsInstanceOfOperation_InferenceRule() {
@@ -27,8 +28,8 @@ public class typeof_Node_IsInstanceOfOperation_InferenceRule extends AbstractInf
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8933148862033747690", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8933148862033747692", true), (SNode) _quotation_createNode_bsicn0_a1a0c0b0b(), false, true, _info_12389875345);
     }
-    if (SNodeOperations.isInstanceOf(conceptArg, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference"))) {
-      SNode conceptReference = SNodeOperations.cast(conceptArg, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference"));
+    if (SNodeOperations.isInstanceOf(conceptArg, AUX_bsicn0.RefConcept_Reference_3c7bf60f)) {
+      SNode conceptReference = SNodeOperations.cast(conceptArg, AUX_bsicn0.RefConcept_Reference_3c7bf60f);
       {
         SNode _nodeToCheck_1029348928467 = op;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "4101496941862450650", 0, null);
@@ -43,7 +44,7 @@ public class typeof_Node_IsInstanceOfOperation_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10956bb6029L, "jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation");
+    return AUX_bsicn0.Node_IsInstanceOfOperation_3a392115;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -69,5 +70,10 @@ public class typeof_Node_IsInstanceOfOperation_InferenceRule extends AbstractInf
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_bsicn0 {
+    /*package*/ static final SConcept RefConcept_Reference_3c7bf60f = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
+    /*package*/ static final SConcept Node_IsInstanceOfOperation_3a392115 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10956bb6029L, "jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation");
   }
 }

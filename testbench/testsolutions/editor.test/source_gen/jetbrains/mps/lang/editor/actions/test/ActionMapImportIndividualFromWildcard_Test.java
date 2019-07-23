@@ -21,7 +21,7 @@ public class ActionMapImportIndividualFromWildcard_Test extends BaseTransformati
 
   @Test
   public void test_ActionMapImportIndividualFromWildcard() throws Throwable {
-    new ActionMapImportIndividualFromWildcard_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -32,219 +32,219 @@ public class GenericNewExpressionTypeParameters_Test extends BaseTransformationT
 
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624927777191() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927777191();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927777191();
   }
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624927838008() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927838008();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927838008();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624926980178() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624926980178();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624926980178();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929057845() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929057845();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929057845();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929879386() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929879386();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929879386();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927068829() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927068829();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927068829();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929808290() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929808290();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929808290();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928495811() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928495811();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928495811();
   }
   @Test
   public void test_ErrorMessagesCheck6871159928250315905() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_ErrorMessagesCheck6871159928250315905();
+    new TestBody(this).test_ErrorMessagesCheck6871159928250315905();
   }
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624929830247() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624929830247();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624929830247();
   }
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624928725186() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624928725186();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624928725186();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927414761() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927414761();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927414761();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928298412() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928298412();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928298412();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928766468() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928766468();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928766468();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927220129() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927220129();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927220129();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929780113() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929780113();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929780113();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928160475() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928160475();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928160475();
   }
   @Test
   public void test_ErrorMessagesCheck6871159928250416431() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_ErrorMessagesCheck6871159928250416431();
+    new TestBody(this).test_ErrorMessagesCheck6871159928250416431();
   }
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624927674012() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927674012();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927674012();
   }
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624927818606() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927818606();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927818606();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929688944() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929688944();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929688944();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927246785() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927246785();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927246785();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927744591() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927744591();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927744591();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928259092() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928259092();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928259092();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928182446() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928182446();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928182446();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929858529() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929858529();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929858529();
   }
   @Test
   public void test_ErrorMessagesCheck6871159928250456720() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_ErrorMessagesCheck6871159928250456720();
+    new TestBody(this).test_ErrorMessagesCheck6871159928250456720();
   }
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624927881541() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927881541();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624927881541();
   }
   @Test
   public void test_NodeWrongNumberOfTypeParametersCheck6923385624928891155() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624928891155();
+    new TestBody(this).test_NodeWrongNumberOfTypeParametersCheck6923385624928891155();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928235880() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928235880();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928235880();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929431629() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929431629();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929431629();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928798159() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928798159();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928798159();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928202213() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928202213();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928202213();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928047836() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928047836();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928047836();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929208028() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929208028();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929208028();
   }
   @Test
   public void test_ErrorMessagesCheck6871159928250496419() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_ErrorMessagesCheck6871159928250496419();
+    new TestBody(this).test_ErrorMessagesCheck6871159928250496419();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929078226() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929078226();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929078226();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929286960() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929286960();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929286960();
   }
   @Test
   public void test_ErrorMessagesCheck6871159928250570119() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_ErrorMessagesCheck6871159928250570119();
+    new TestBody(this).test_ErrorMessagesCheck6871159928250570119();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929037513() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929037513();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929037513();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928015142() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928015142();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928015142();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928443950() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928443950();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928443950();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927860713() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927860713();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927860713();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928540412() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928540412();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928540412();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928091182() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928091182();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928091182();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927497000() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927497000();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927497000();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928330830() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928330830();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928330830();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927928136() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927928136();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927928136();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928649513() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928649513();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928649513();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928818393() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928818393();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928818393();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928140797() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928140797();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928140797();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929356887() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929356887();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929356887();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928403065() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928403065();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928403065();
   }
   @Test
   public void test_ErrorMessagesCheck6871159928250743705() throws Throwable {
-    new GenericNewExpressionTypeParameters_Test.TestBody(this).test_ErrorMessagesCheck6871159928250743705();
+    new TestBody(this).test_ErrorMessagesCheck6871159928250743705();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

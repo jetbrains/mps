@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -31,6 +30,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -43,6 +43,7 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BuildCompositePath_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -68,7 +69,7 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_a4cilw.BuildCompositePath_8d3bfbf4)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -84,8 +85,8 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new BuildCompositePath_TransformationMenu.TMP_Group_a4cilw_a1());
-      result.add(new BuildCompositePath_TransformationMenu.TMP_Action_a4cilw_b1());
+      result.add(new TMP_Group_a4cilw_a1());
+      result.add(new TMP_Action_a4cilw_b1());
     }
     return result;
   }
@@ -94,10 +95,10 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode curr = _context.getNode();
-      while (SNodeOperations.isInstanceOf(curr, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath"))) {
+      while (SNodeOperations.isInstanceOf(curr, AUX_a4cilw.BuildCompositePath_8d3bfbf4)) {
         curr = SNodeOperations.getParent(curr);
       }
-      return SNodeOperations.isInstanceOf(curr, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"));
+      return SNodeOperations.isInstanceOf(curr, AUX_a4cilw.BuildRelativePath_e8191f19);
     }
 
     @NotNull
@@ -113,7 +114,7 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new BuildCompositePath_TransformationMenu.TMP_Group_a4cilw_a1.TMP_Include_a4cilw_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_a4cilw_a1.TMP_Include_a4cilw_a0b());
     }
     public class TMP_Include_a4cilw_a0b extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull
@@ -132,7 +133,7 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
       @Override
       protected SNode getNode(TransformationMenuContext _context) {
         SNode curr = _context.getNode();
-        while (SNodeOperations.isInstanceOf(curr, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath"))) {
+        while (SNodeOperations.isInstanceOf(curr, AUX_a4cilw.BuildCompositePath_8d3bfbf4)) {
           curr = SNodeOperations.getParent(curr);
         }
         return curr;
@@ -143,7 +144,7 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
   private class TMP_Action_a4cilw_b1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      BuildCompositePath_TransformationMenu.TMP_Action_a4cilw_b1.Item item = new BuildCompositePath_TransformationMenu.TMP_Action_a4cilw_b1.Item(context);
+      TMP_Action_a4cilw_b1.Item item = new TMP_Action_a4cilw_b1.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -203,10 +204,15 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
   }
   private static SNode createBuildCompositePath_a4cilw_a0a0a0b1(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_a4cilw.BuildCompositePath_8d3bfbf4, null, null, false);
     if (node0 != null) {
-      n1.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath"))));
+      n1.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_a4cilw.BuildCompositePath_8d3bfbf4)));
     }
     return n1;
+  }
+
+  private static final class AUX_a4cilw {
+    /*package*/ static final SConcept BuildCompositePath_8d3bfbf4 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
+    /*package*/ static final SConcept BuildRelativePath_e8191f19 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
   }
 }

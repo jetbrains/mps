@@ -32,47 +32,47 @@ public class OverridingRule_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck4065852147261983404() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_ErrorMessagesCheck4065852147261983404();
+    new TestBody(this).test_ErrorMessagesCheck4065852147261983404();
   }
   @Test
   public void test_NodeErrorFromConceptaCheck8837437332635283262() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_NodeErrorFromConceptaCheck8837437332635283262();
+    new TestBody(this).test_NodeErrorFromConceptaCheck8837437332635283262();
   }
   @Test
   public void test_ErrorMessagesCheck4065852147261983395() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_ErrorMessagesCheck4065852147261983395();
+    new TestBody(this).test_ErrorMessagesCheck4065852147261983395();
   }
   @Test
   public void test_NodeErrorFromConceptbCheck8837437332635283252() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_NodeErrorFromConceptbCheck8837437332635283252();
+    new TestBody(this).test_NodeErrorFromConceptbCheck8837437332635283252();
   }
   @Test
   public void test_ErrorMessagesCheck4065852147261983386() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_ErrorMessagesCheck4065852147261983386();
+    new TestBody(this).test_ErrorMessagesCheck4065852147261983386();
   }
   @Test
   public void test_ErrorMessagesCheck4065852147261983377() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_ErrorMessagesCheck4065852147261983377();
+    new TestBody(this).test_ErrorMessagesCheck4065852147261983377();
   }
   @Test
   public void test_NodeErrorFromConceptcCheck8837437332635281731() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_NodeErrorFromConceptcCheck8837437332635281731();
+    new TestBody(this).test_NodeErrorFromConceptcCheck8837437332635281731();
   }
   @Test
   public void test_ErrorMessagesCheck4065852147261983368() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_ErrorMessagesCheck4065852147261983368();
+    new TestBody(this).test_ErrorMessagesCheck4065852147261983368();
   }
   @Test
   public void test_ErrorMessagesCheck4065852147261983359() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_ErrorMessagesCheck4065852147261983359();
+    new TestBody(this).test_ErrorMessagesCheck4065852147261983359();
   }
   @Test
   public void test_NodeErrorFromConceptcCheck8837437332635285135() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_NodeErrorFromConceptcCheck8837437332635285135();
+    new TestBody(this).test_NodeErrorFromConceptcCheck8837437332635285135();
   }
   @Test
   public void test_ErrorMessagesCheck4065852147261983349() throws Throwable {
-    new OverridingRule_Test.TestBody(this).test_ErrorMessagesCheck4065852147261983349();
+    new TestBody(this).test_ErrorMessagesCheck4065852147261983349();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

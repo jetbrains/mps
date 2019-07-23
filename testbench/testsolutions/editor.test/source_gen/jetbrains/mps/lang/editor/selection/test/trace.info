@@ -8,7 +8,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/1550462124899260772">
     <file name="UpDownDummy_Test.java">
       <node id="1550462124899260772" at="18,29,19,25" concept="4" />
-      <node id="1550462124899260772" at="23,51,24,53" concept="1" />
+      <node id="1550462124899260772" at="23,51,24,36" concept="1" />
       <node id="1550462124899260772" at="29,52,30,19" concept="4" />
       <node id="1550462124899260772" at="34,51,35,72" concept="1" />
       <node id="1550462124899316438" at="35,72,36,71" concept="1" />
@@ -23,7 +23,7 @@
       <node id="1550462124899260772" at="22,0,26,0" concept="2" trace="test_UpDownDummy#()V" />
       <node id="1550462124899260772" at="33,0,43,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1550462124899260772" at="18,29,19,25" />
-      <scope id="1550462124899260772" at="23,51,24,53" />
+      <scope id="1550462124899260772" at="23,51,24,36" />
       <scope id="1550462124899260772" at="29,52,30,19" />
       <scope id="1550462124899260772" at="18,0,21,0" />
       <scope id="1550462124899260772" at="29,0,32,0">
@@ -39,7 +39,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/1550462124899316455">
     <file name="UpDownStack_Test.java">
       <node id="1550462124899316455" at="18,29,19,25" concept="4" />
-      <node id="1550462124899316455" at="23,51,24,53" concept="1" />
+      <node id="1550462124899316455" at="23,51,24,36" concept="1" />
       <node id="1550462124899316455" at="29,52,30,19" concept="4" />
       <node id="1550462124899316455" at="34,51,35,72" concept="1" />
       <node id="1550462124899316475" at="35,72,36,71" concept="1" />
@@ -51,7 +51,7 @@
       <node id="1550462124899316455" at="22,0,26,0" concept="2" trace="test_UpDownStack#()V" />
       <node id="1550462124899316455" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1550462124899316455" at="18,29,19,25" />
-      <scope id="1550462124899316455" at="23,51,24,53" />
+      <scope id="1550462124899316455" at="23,51,24,36" />
       <scope id="1550462124899316455" at="29,52,30,19" />
       <scope id="1550462124899316455" at="18,0,21,0" />
       <scope id="1550462124899316455" at="29,0,32,0">
@@ -67,7 +67,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/2025581204008535354">
     <file name="RootHomeWithLineSelectionFromFirstCell_Test.java">
       <node id="2025581204008535354" at="18,56,19,25" concept="4" />
-      <node id="2025581204008535354" at="23,78,24,80" concept="1" />
+      <node id="2025581204008535354" at="23,78,24,36" concept="1" />
       <node id="2025581204008535354" at="29,52,30,19" concept="4" />
       <node id="2025581204008535354" at="34,51,35,72" concept="1" />
       <node id="2025581204008535374" at="35,72,36,73" concept="1" />
@@ -78,7 +78,7 @@
       <node id="2025581204008535354" at="22,0,26,0" concept="2" trace="test_RootHomeWithLineSelectionFromFirstCell#()V" />
       <node id="2025581204008535354" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2025581204008535354" at="18,56,19,25" />
-      <scope id="2025581204008535354" at="23,78,24,80" />
+      <scope id="2025581204008535354" at="23,78,24,36" />
       <scope id="2025581204008535354" at="29,52,30,19" />
       <scope id="2025581204008535354" at="18,0,21,0" />
       <scope id="2025581204008535354" at="29,0,32,0">
@@ -94,7 +94,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/2144524799093561372">
     <file name="SelectNext_OnTopLevelInspectorNode_Test.java">
       <node id="2144524799093561372" at="18,52,19,25" concept="4" />
-      <node id="2144524799093561372" at="23,74,24,76" concept="1" />
+      <node id="2144524799093561372" at="23,74,24,36" concept="1" />
       <node id="2144524799093561372" at="29,52,30,19" concept="4" />
       <node id="2144524799093561372" at="34,51,35,72" concept="1" />
       <node id="2144524799093561382" at="35,72,36,73" concept="1" />
@@ -104,7 +104,7 @@
       <node id="2144524799093561372" at="22,0,26,0" concept="2" trace="test_SelectNext_OnTopLevelInspectorNode#()V" />
       <node id="2144524799093561372" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2144524799093561372" at="18,52,19,25" />
-      <scope id="2144524799093561372" at="23,74,24,76" />
+      <scope id="2144524799093561372" at="23,74,24,36" />
       <scope id="2144524799093561372" at="29,52,30,19" />
       <scope id="2144524799093561372" at="34,51,36,73" />
       <scope id="2144524799093561372" at="18,0,21,0" />
@@ -120,7 +120,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/3756708898179593010">
     <file name="SelectAllNonSelectableRootThroughNonSelectable_Test.java">
       <node id="3756708898179593010" at="21,64,22,25" concept="4" />
-      <node id="3756708898179593010" at="26,86,27,88" concept="1" />
+      <node id="3756708898179593010" at="26,86,27,36" concept="1" />
       <node id="3756708898179593010" at="32,52,33,19" concept="4" />
       <node id="3756708898179593010" at="37,51,38,72" concept="1" />
       <node id="3756708898179594969" at="38,72,39,72" concept="1" />
@@ -134,7 +134,7 @@
       <node id="3756708898179593609" at="39,72,44,9" concept="1" />
       <node id="3756708898179593010" at="36,0,47,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3756708898179593010" at="21,64,22,25" />
-      <scope id="3756708898179593010" at="26,86,27,88" />
+      <scope id="3756708898179593010" at="26,86,27,36" />
       <scope id="3756708898179593010" at="32,52,33,19" />
       <scope id="3756708898179593611" at="41,27,42,345" />
       <scope id="3756708898179593010" at="21,0,24,0" />
@@ -153,7 +153,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/4348968319430072522">
     <file name="SelectAll_Test.java">
       <node id="4348968319430072522" at="18,27,19,25" concept="4" />
-      <node id="4348968319430072522" at="23,49,24,51" concept="1" />
+      <node id="4348968319430072522" at="23,49,24,36" concept="1" />
       <node id="4348968319430072522" at="29,52,30,19" concept="4" />
       <node id="4348968319430072522" at="34,51,35,72" concept="1" />
       <node id="4348968319430072540" at="35,72,36,72" concept="1" />
@@ -163,7 +163,7 @@
       <node id="4348968319430072522" at="22,0,26,0" concept="2" trace="test_SelectAll#()V" />
       <node id="4348968319430072522" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4348968319430072522" at="18,27,19,25" />
-      <scope id="4348968319430072522" at="23,49,24,51" />
+      <scope id="4348968319430072522" at="23,49,24,36" />
       <scope id="4348968319430072522" at="29,52,30,19" />
       <scope id="4348968319430072522" at="34,51,36,72" />
       <scope id="4348968319430072522" at="18,0,21,0" />
@@ -179,7 +179,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/4348968319430081703">
     <file name="SelectAllAndEsc_Test.java">
       <node id="4348968319430081703" at="18,33,19,25" concept="4" />
-      <node id="4348968319430081703" at="23,55,24,57" concept="1" />
+      <node id="4348968319430081703" at="23,55,24,36" concept="1" />
       <node id="4348968319430081703" at="29,52,30,19" concept="4" />
       <node id="4348968319430081703" at="34,51,35,72" concept="1" />
       <node id="4348968319430081721" at="35,72,36,72" concept="1" />
@@ -190,7 +190,7 @@
       <node id="4348968319430081703" at="22,0,26,0" concept="2" trace="test_SelectAllAndEsc#()V" />
       <node id="4348968319430081703" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="4348968319430081703" at="18,33,19,25" />
-      <scope id="4348968319430081703" at="23,55,24,57" />
+      <scope id="4348968319430081703" at="23,55,24,36" />
       <scope id="4348968319430081703" at="29,52,30,19" />
       <scope id="4348968319430081703" at="18,0,21,0" />
       <scope id="4348968319430081703" at="29,0,32,0">
@@ -206,7 +206,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5097407566121753122">
     <file name="RootEndWithLineSelectionFromFirstCell_Test.java">
       <node id="5097407566121753122" at="18,55,19,25" concept="4" />
-      <node id="5097407566121753122" at="23,77,24,79" concept="1" />
+      <node id="5097407566121753122" at="23,77,24,36" concept="1" />
       <node id="5097407566121753122" at="29,52,30,19" concept="4" />
       <node id="5097407566121753122" at="34,51,35,72" concept="1" />
       <node id="5097407566121753138" at="35,72,36,73" concept="1" />
@@ -217,7 +217,7 @@
       <node id="5097407566121753122" at="22,0,26,0" concept="2" trace="test_RootEndWithLineSelectionFromFirstCell#()V" />
       <node id="5097407566121753122" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5097407566121753122" at="18,55,19,25" />
-      <scope id="5097407566121753122" at="23,77,24,79" />
+      <scope id="5097407566121753122" at="23,77,24,36" />
       <scope id="5097407566121753122" at="29,52,30,19" />
       <scope id="5097407566121753122" at="18,0,21,0" />
       <scope id="5097407566121753122" at="29,0,32,0">
@@ -233,7 +233,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5097407566121771937">
     <file name="RootHomeWithLineSelectionFromLastCell_Test.java">
       <node id="5097407566121771937" at="18,55,19,25" concept="4" />
-      <node id="5097407566121771937" at="23,77,24,79" concept="1" />
+      <node id="5097407566121771937" at="23,77,24,36" concept="1" />
       <node id="5097407566121771937" at="29,52,30,19" concept="4" />
       <node id="5097407566121771937" at="34,51,35,72" concept="1" />
       <node id="5097407566121771953" at="35,72,36,77" concept="1" />
@@ -244,7 +244,7 @@
       <node id="5097407566121771937" at="22,0,26,0" concept="2" trace="test_RootHomeWithLineSelectionFromLastCell#()V" />
       <node id="5097407566121771937" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5097407566121771937" at="18,55,19,25" />
-      <scope id="5097407566121771937" at="23,77,24,79" />
+      <scope id="5097407566121771937" at="23,77,24,36" />
       <scope id="5097407566121771937" at="29,52,30,19" />
       <scope id="5097407566121771937" at="18,0,21,0" />
       <scope id="5097407566121771937" at="29,0,32,0">
@@ -260,7 +260,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5097407566121847268">
     <file name="RootEndWithLineSelectionFromLastCell_Test.java">
       <node id="5097407566121847268" at="18,54,19,25" concept="4" />
-      <node id="5097407566121847268" at="23,76,24,78" concept="1" />
+      <node id="5097407566121847268" at="23,76,24,36" concept="1" />
       <node id="5097407566121847268" at="29,52,30,19" concept="4" />
       <node id="5097407566121847268" at="34,51,35,72" concept="1" />
       <node id="5097407566121847284" at="35,72,36,77" concept="1" />
@@ -271,7 +271,7 @@
       <node id="5097407566121847268" at="22,0,26,0" concept="2" trace="test_RootEndWithLineSelectionFromLastCell#()V" />
       <node id="5097407566121847268" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5097407566121847268" at="18,54,19,25" />
-      <scope id="5097407566121847268" at="23,76,24,78" />
+      <scope id="5097407566121847268" at="23,76,24,36" />
       <scope id="5097407566121847268" at="29,52,30,19" />
       <scope id="5097407566121847268" at="18,0,21,0" />
       <scope id="5097407566121847268" at="29,0,32,0">
@@ -287,7 +287,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5476958923832861246">
     <file name="SelectUpWithNodeRangeSelection_Test.java">
       <node id="5476958923832861246" at="18,48,19,25" concept="4" />
-      <node id="5476958923832861246" at="23,70,24,72" concept="1" />
+      <node id="5476958923832861246" at="23,70,24,36" concept="1" />
       <node id="5476958923832861246" at="29,52,30,19" concept="4" />
       <node id="5476958923832861246" at="34,51,35,72" concept="1" />
       <node id="5476958923832863127" at="35,72,36,73" concept="1" />
@@ -299,7 +299,7 @@
       <node id="5476958923832861246" at="22,0,26,0" concept="2" trace="test_SelectUpWithNodeRangeSelection#()V" />
       <node id="5476958923832861246" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5476958923832861246" at="18,48,19,25" />
-      <scope id="5476958923832861246" at="23,70,24,72" />
+      <scope id="5476958923832861246" at="23,70,24,36" />
       <scope id="5476958923832861246" at="29,52,30,19" />
       <scope id="5476958923832861246" at="18,0,21,0" />
       <scope id="5476958923832861246" at="29,0,32,0">
@@ -315,7 +315,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5476958923832863137">
     <file name="SelectDownWithNodeRangeSelection_Test.java">
       <node id="5476958923832863137" at="18,50,19,25" concept="4" />
-      <node id="5476958923832863137" at="23,72,24,74" concept="1" />
+      <node id="5476958923832863137" at="23,72,24,36" concept="1" />
       <node id="5476958923832863137" at="29,52,30,19" concept="4" />
       <node id="5476958923832863137" at="34,51,35,72" concept="1" />
       <node id="5476958923832863165" at="35,72,36,77" concept="1" />
@@ -327,7 +327,7 @@
       <node id="5476958923832863137" at="22,0,26,0" concept="2" trace="test_SelectDownWithNodeRangeSelection#()V" />
       <node id="5476958923832863137" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5476958923832863137" at="18,50,19,25" />
-      <scope id="5476958923832863137" at="23,72,24,74" />
+      <scope id="5476958923832863137" at="23,72,24,36" />
       <scope id="5476958923832863137" at="29,52,30,19" />
       <scope id="5476958923832863137" at="18,0,21,0" />
       <scope id="5476958923832863137" at="29,0,32,0">
@@ -343,7 +343,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/6132666365585678263">
     <file name="SelectNext_InChildListWithFilter_Test.java">
       <node id="6132666365585678263" at="18,50,19,25" concept="4" />
-      <node id="6132666365585678263" at="23,72,24,74" concept="1" />
+      <node id="6132666365585678263" at="23,72,24,36" concept="1" />
       <node id="6132666365585678263" at="29,52,30,19" concept="4" />
       <node id="6132666365585678263" at="34,51,35,72" concept="1" />
       <node id="6132666365585679324" at="35,72,36,73" concept="1" />
@@ -353,7 +353,7 @@
       <node id="6132666365585678263" at="22,0,26,0" concept="2" trace="test_SelectNext_InChildListWithFilter#()V" />
       <node id="6132666365585678263" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6132666365585678263" at="18,50,19,25" />
-      <scope id="6132666365585678263" at="23,72,24,74" />
+      <scope id="6132666365585678263" at="23,72,24,36" />
       <scope id="6132666365585678263" at="29,52,30,19" />
       <scope id="6132666365585678263" at="34,51,36,73" />
       <scope id="6132666365585678263" at="18,0,21,0" />
@@ -369,7 +369,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7023088407745945741">
     <file name="SelectPrevious_InChildListWithFilter_Test.java">
       <node id="7023088407745945741" at="18,54,19,25" concept="4" />
-      <node id="7023088407745945741" at="23,76,24,78" concept="1" />
+      <node id="7023088407745945741" at="23,76,24,36" concept="1" />
       <node id="7023088407745945741" at="29,52,30,19" concept="4" />
       <node id="7023088407745945741" at="34,51,35,72" concept="1" />
       <node id="6132666365585678809" at="35,72,36,77" concept="1" />
@@ -379,7 +379,7 @@
       <node id="7023088407745945741" at="22,0,26,0" concept="2" trace="test_SelectPrevious_InChildListWithFilter#()V" />
       <node id="7023088407745945741" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7023088407745945741" at="18,54,19,25" />
-      <scope id="7023088407745945741" at="23,76,24,78" />
+      <scope id="7023088407745945741" at="23,76,24,36" />
       <scope id="7023088407745945741" at="29,52,30,19" />
       <scope id="7023088407745945741" at="34,51,36,77" />
       <scope id="7023088407745945741" at="18,0,21,0" />
@@ -395,7 +395,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7023440913657702620">
     <file name="GoToReference_Test.java">
       <node id="7023440913657702620" at="20,31,21,25" concept="4" />
-      <node id="7023440913657702620" at="25,53,26,55" concept="1" />
+      <node id="7023440913657702620" at="25,53,26,36" concept="1" />
       <node id="7023440913657702620" at="31,52,32,19" concept="4" />
       <node id="7023440913657702620" at="36,51,37,53" concept="1" />
       <node id="7023440913657719793" at="37,53,38,78" concept="1" />
@@ -406,7 +406,7 @@
       <node id="7023440913657702620" at="24,0,28,0" concept="2" trace="test_GoToReference#()V" />
       <node id="7023440913657702620" at="35,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7023440913657702620" at="20,31,21,25" />
-      <scope id="7023440913657702620" at="25,53,26,55" />
+      <scope id="7023440913657702620" at="25,53,26,36" />
       <scope id="7023440913657702620" at="31,52,32,19" />
       <scope id="7023440913657702620" at="20,0,23,0" />
       <scope id="7023440913657702620" at="31,0,34,0">
@@ -422,7 +422,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7627714699894335141">
     <file name="SelectPrevious_OnTopLevelInspectorNode_Test.java">
       <node id="7627714699894335141" at="18,56,19,25" concept="4" />
-      <node id="7627714699894335141" at="23,78,24,80" concept="1" />
+      <node id="7627714699894335141" at="23,78,24,36" concept="1" />
       <node id="7627714699894335141" at="29,52,30,19" concept="4" />
       <node id="7627714699894335141" at="34,51,35,72" concept="1" />
       <node id="2144524799093356615" at="35,72,36,77" concept="1" />
@@ -432,7 +432,7 @@
       <node id="7627714699894335141" at="22,0,26,0" concept="2" trace="test_SelectPrevious_OnTopLevelInspectorNode#()V" />
       <node id="7627714699894335141" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7627714699894335141" at="18,56,19,25" />
-      <scope id="7627714699894335141" at="23,78,24,80" />
+      <scope id="7627714699894335141" at="23,78,24,36" />
       <scope id="7627714699894335141" at="29,52,30,19" />
       <scope id="7627714699894335141" at="34,51,36,77" />
       <scope id="7627714699894335141" at="18,0,21,0" />
@@ -448,7 +448,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7789927720473863959">
     <file name="SelectAllAndSelectDown_Test.java">
       <node id="7789927720473863959" at="18,40,19,25" concept="4" />
-      <node id="7789927720473863959" at="23,62,24,64" concept="1" />
+      <node id="7789927720473863959" at="23,62,24,36" concept="1" />
       <node id="7789927720473863959" at="29,52,30,19" concept="4" />
       <node id="7789927720473863959" at="34,51,35,72" concept="1" />
       <node id="7789927720473879703" at="35,72,36,72" concept="1" />
@@ -461,7 +461,7 @@
       <node id="7789927720473863959" at="22,0,26,0" concept="2" trace="test_SelectAllAndSelectDown#()V" />
       <node id="7789927720473863959" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7789927720473863959" at="18,40,19,25" />
-      <scope id="7789927720473863959" at="23,62,24,64" />
+      <scope id="7789927720473863959" at="23,62,24,36" />
       <scope id="7789927720473863959" at="29,52,30,19" />
       <scope id="7789927720473863959" at="18,0,21,0" />
       <scope id="7789927720473863959" at="29,0,32,0">
@@ -477,7 +477,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7789927720474090862">
     <file name="SelectUpThroughNonSelectable_Test.java">
       <node id="7789927720474090862" at="18,46,19,25" concept="4" />
-      <node id="7789927720474090862" at="23,68,24,70" concept="1" />
+      <node id="7789927720474090862" at="23,68,24,36" concept="1" />
       <node id="7789927720474090862" at="29,52,30,19" concept="4" />
       <node id="7789927720474090862" at="34,51,35,72" concept="1" />
       <node id="7789927720474557951" at="35,72,36,71" concept="1" />
@@ -487,7 +487,7 @@
       <node id="7789927720474090862" at="22,0,26,0" concept="2" trace="test_SelectUpThroughNonSelectable#()V" />
       <node id="7789927720474090862" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7789927720474090862" at="18,46,19,25" />
-      <scope id="7789927720474090862" at="23,68,24,70" />
+      <scope id="7789927720474090862" at="23,68,24,36" />
       <scope id="7789927720474090862" at="29,52,30,19" />
       <scope id="7789927720474090862" at="34,51,36,71" />
       <scope id="7789927720474090862" at="18,0,21,0" />
@@ -503,7 +503,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7789927720474557984">
     <file name="SelectUpNonSelectableRoot_Test.java">
       <node id="7789927720474557984" at="18,43,19,25" concept="4" />
-      <node id="7789927720474557984" at="23,65,24,67" concept="1" />
+      <node id="7789927720474557984" at="23,65,24,36" concept="1" />
       <node id="7789927720474557984" at="29,52,30,19" concept="4" />
       <node id="7789927720474557984" at="34,51,35,72" concept="1" />
       <node id="7789927720474558659" at="35,72,36,71" concept="1" />
@@ -513,7 +513,7 @@
       <node id="7789927720474557984" at="22,0,26,0" concept="2" trace="test_SelectUpNonSelectableRoot#()V" />
       <node id="7789927720474557984" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7789927720474557984" at="18,43,19,25" />
-      <scope id="7789927720474557984" at="23,65,24,67" />
+      <scope id="7789927720474557984" at="23,65,24,36" />
       <scope id="7789927720474557984" at="29,52,30,19" />
       <scope id="7789927720474557984" at="34,51,36,71" />
       <scope id="7789927720474557984" at="18,0,21,0" />
@@ -529,7 +529,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7789927720474561726">
     <file name="SelectAllNonSelectableRoot_Test.java">
       <node id="7789927720474561726" at="18,44,19,25" concept="4" />
-      <node id="7789927720474561726" at="23,66,24,68" concept="1" />
+      <node id="7789927720474561726" at="23,66,24,36" concept="1" />
       <node id="7789927720474561726" at="29,52,30,19" concept="4" />
       <node id="7789927720474561726" at="34,51,35,72" concept="1" />
       <node id="7789927720474797620" at="35,72,36,72" concept="1" />
@@ -539,7 +539,7 @@
       <node id="7789927720474561726" at="22,0,26,0" concept="2" trace="test_SelectAllNonSelectableRoot#()V" />
       <node id="7789927720474561726" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7789927720474561726" at="18,44,19,25" />
-      <scope id="7789927720474561726" at="23,66,24,68" />
+      <scope id="7789927720474561726" at="23,66,24,36" />
       <scope id="7789927720474561726" at="29,52,30,19" />
       <scope id="7789927720474561726" at="34,51,36,72" />
       <scope id="7789927720474561726" at="18,0,21,0" />
@@ -555,7 +555,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/789834969242091856">
     <file name="Up_Test.java">
       <node id="789834969242091856" at="18,20,19,25" concept="4" />
-      <node id="789834969242091856" at="23,42,24,44" concept="1" />
+      <node id="789834969242091856" at="23,42,24,36" concept="1" />
       <node id="789834969242091856" at="29,52,30,19" concept="4" />
       <node id="789834969242091856" at="34,51,35,70" concept="1" />
       <node id="789834969242110816" at="35,70,36,71" concept="1" />
@@ -565,7 +565,7 @@
       <node id="789834969242091856" at="22,0,26,0" concept="2" trace="test_Up#()V" />
       <node id="789834969242091856" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="789834969242091856" at="18,20,19,25" />
-      <scope id="789834969242091856" at="23,42,24,44" />
+      <scope id="789834969242091856" at="23,42,24,36" />
       <scope id="789834969242091856" at="29,52,30,19" />
       <scope id="789834969242091856" at="34,51,36,71" />
       <scope id="789834969242091856" at="18,0,21,0" />
@@ -581,7 +581,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/789834969242110843">
     <file name="UpDownEntirely_Test.java">
       <node id="789834969242110843" at="18,32,19,25" concept="4" />
-      <node id="789834969242110843" at="23,54,24,56" concept="1" />
+      <node id="789834969242110843" at="23,54,24,36" concept="1" />
       <node id="789834969242110843" at="29,52,30,19" concept="4" />
       <node id="789834969242110843" at="34,51,35,70" concept="1" />
       <node id="2139113728684621883" at="35,70,36,71" concept="1" />
@@ -593,7 +593,7 @@
       <node id="789834969242110843" at="22,0,26,0" concept="2" trace="test_UpDownEntirely#()V" />
       <node id="789834969242110843" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="789834969242110843" at="18,32,19,25" />
-      <scope id="789834969242110843" at="23,54,24,56" />
+      <scope id="789834969242110843" at="23,54,24,36" />
       <scope id="789834969242110843" at="29,52,30,19" />
       <scope id="789834969242110843" at="18,0,21,0" />
       <scope id="789834969242110843" at="29,0,32,0">
@@ -609,7 +609,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/8476046843709171800">
     <file name="CustomSelectAll_Test.java">
       <node id="8476046843709171800" at="18,33,19,25" concept="4" />
-      <node id="8476046843709171800" at="23,55,24,57" concept="1" />
+      <node id="8476046843709171800" at="23,55,24,36" concept="1" />
       <node id="8476046843709171800" at="29,52,30,19" concept="4" />
       <node id="8476046843709171800" at="34,51,35,72" concept="1" />
       <node id="1830938190578889005" at="35,72,36,72" concept="1" />
@@ -619,7 +619,7 @@
       <node id="8476046843709171800" at="22,0,26,0" concept="2" trace="test_CustomSelectAll#()V" />
       <node id="8476046843709171800" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="8476046843709171800" at="18,33,19,25" />
-      <scope id="8476046843709171800" at="23,55,24,57" />
+      <scope id="8476046843709171800" at="23,55,24,36" />
       <scope id="8476046843709171800" at="29,52,30,19" />
       <scope id="8476046843709171800" at="34,51,36,72" />
       <scope id="8476046843709171800" at="18,0,21,0" />
@@ -635,7 +635,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/9080919888312354538">
     <file name="HomeWithLineSelection_fromFirstCell_Test.java">
       <node id="9080919888312354538" at="18,53,19,25" concept="4" />
-      <node id="9080919888312354538" at="23,75,24,77" concept="1" />
+      <node id="9080919888312354538" at="23,75,24,36" concept="1" />
       <node id="9080919888312354538" at="29,52,30,19" concept="4" />
       <node id="9080919888312354538" at="34,51,35,72" concept="1" />
       <node id="9080919888312354557" at="35,72,36,77" concept="1" />
@@ -646,7 +646,7 @@
       <node id="9080919888312354538" at="22,0,26,0" concept="2" trace="test_HomeWithLineSelection_fromFirstCell#()V" />
       <node id="9080919888312354538" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="9080919888312354538" at="18,53,19,25" />
-      <scope id="9080919888312354538" at="23,75,24,77" />
+      <scope id="9080919888312354538" at="23,75,24,36" />
       <scope id="9080919888312354538" at="29,52,30,19" />
       <scope id="9080919888312354538" at="18,0,21,0" />
       <scope id="9080919888312354538" at="29,0,32,0">
@@ -662,7 +662,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/9080919888312408932">
     <file name="HomeWithLineSelection_fromLastCell_Test.java">
       <node id="9080919888312408932" at="18,52,19,25" concept="4" />
-      <node id="9080919888312408932" at="23,74,24,76" concept="1" />
+      <node id="9080919888312408932" at="23,74,24,36" concept="1" />
       <node id="9080919888312408932" at="29,52,30,19" concept="4" />
       <node id="9080919888312408932" at="34,51,35,72" concept="1" />
       <node id="9080919888312408948" at="35,72,36,77" concept="1" />
@@ -673,7 +673,7 @@
       <node id="9080919888312408932" at="22,0,26,0" concept="2" trace="test_HomeWithLineSelection_fromLastCell#()V" />
       <node id="9080919888312408932" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="9080919888312408932" at="18,52,19,25" />
-      <scope id="9080919888312408932" at="23,74,24,76" />
+      <scope id="9080919888312408932" at="23,74,24,36" />
       <scope id="9080919888312408932" at="29,52,30,19" />
       <scope id="9080919888312408932" at="18,0,21,0" />
       <scope id="9080919888312408932" at="29,0,32,0">
@@ -689,7 +689,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/9080919888312410798">
     <file name="EndWithLineSelection_fromFirstCell_Test.java">
       <node id="9080919888312410798" at="18,52,19,25" concept="4" />
-      <node id="9080919888312410798" at="23,74,24,76" concept="1" />
+      <node id="9080919888312410798" at="23,74,24,36" concept="1" />
       <node id="9080919888312410798" at="29,52,30,19" concept="4" />
       <node id="9080919888312410798" at="34,51,35,72" concept="1" />
       <node id="9080919888312410814" at="35,72,36,73" concept="1" />
@@ -700,7 +700,7 @@
       <node id="9080919888312410798" at="22,0,26,0" concept="2" trace="test_EndWithLineSelection_fromFirstCell#()V" />
       <node id="9080919888312410798" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="9080919888312410798" at="18,52,19,25" />
-      <scope id="9080919888312410798" at="23,74,24,76" />
+      <scope id="9080919888312410798" at="23,74,24,36" />
       <scope id="9080919888312410798" at="29,52,30,19" />
       <scope id="9080919888312410798" at="18,0,21,0" />
       <scope id="9080919888312410798" at="29,0,32,0">
@@ -716,7 +716,7 @@
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/9080919888312410820">
     <file name="EndWithLineSelection_fromLastCell_Test.java">
       <node id="9080919888312410820" at="18,51,19,25" concept="4" />
-      <node id="9080919888312410820" at="23,73,24,75" concept="1" />
+      <node id="9080919888312410820" at="23,73,24,36" concept="1" />
       <node id="9080919888312410820" at="29,52,30,19" concept="4" />
       <node id="9080919888312410820" at="34,51,35,72" concept="1" />
       <node id="9080919888312410836" at="35,72,36,73" concept="1" />
@@ -727,7 +727,7 @@
       <node id="9080919888312410820" at="22,0,26,0" concept="2" trace="test_EndWithLineSelection_fromLastCell#()V" />
       <node id="9080919888312410820" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="9080919888312410820" at="18,51,19,25" />
-      <scope id="9080919888312410820" at="23,73,24,75" />
+      <scope id="9080919888312410820" at="23,73,24,36" />
       <scope id="9080919888312410820" at="29,52,30,19" />
       <scope id="9080919888312410820" at="18,0,21,0" />
       <scope id="9080919888312410820" at="29,0,32,0">

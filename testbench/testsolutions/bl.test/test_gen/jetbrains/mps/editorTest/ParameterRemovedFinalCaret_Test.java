@@ -22,7 +22,7 @@ public class ParameterRemovedFinalCaret_Test extends BaseTransformationTest {
 
   @Test
   public void test_ParameterRemovedFinalCaret() throws Throwable {
-    new ParameterRemovedFinalCaret_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

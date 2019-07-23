@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class JUnit3TestWrapper extends AbstractTestWrapper<SNode> {
   private final String myQualifiedName;
@@ -26,7 +27,7 @@ public class JUnit3TestWrapper extends AbstractTestWrapper<SNode> {
     super(classConcept, true, AbstractTestWrapper.needsMPS(classConcept));
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classConcept);
     myName = SPropertyOperations.getString(classConcept, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
-    myMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classConcept)), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"))).where(new IWhereFilter<SNode>() {
+    myMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classConcept)), AUX_qb7e7i.InstanceMethodDeclaration_9dbf9b2b)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return JUnit3MethodWrapper.isTestMethod(it);
       }
@@ -61,5 +62,9 @@ public class JUnit3TestWrapper extends AbstractTestWrapper<SNode> {
         return (ITestNodeWrapper) it;
       }
     });
+  }
+
+  private static final class AUX_qb7e7i {
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 }

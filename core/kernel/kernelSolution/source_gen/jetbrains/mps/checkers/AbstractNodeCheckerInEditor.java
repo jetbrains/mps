@@ -5,10 +5,11 @@ package jetbrains.mps.checkers;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public abstract class AbstractNodeCheckerInEditor extends IChecker.AbstractNodeChecker<NodeReportItem> {
   public static final IChecker.AbstractNodeChecker.ErrorSkipCondition SKIP_CONSTRAINTS_CONDITION = new IChecker.AbstractNodeChecker.ErrorSkipCondition() {
@@ -16,7 +17,7 @@ public abstract class AbstractNodeCheckerInEditor extends IChecker.AbstractNodeC
       return false;
     }
     public boolean skipSubtree(SNode root) {
-      return SNodeOperations.isInstanceOf(root, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking"));
+      return SNodeOperations.isInstanceOf(root, AUX_vrv0m9.ISkipConstraintsChecking_d942381);
     }
   };
   protected abstract void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository);
@@ -28,5 +29,9 @@ public abstract class AbstractNodeCheckerInEditor extends IChecker.AbstractNodeC
         errorCollector.consume(reportItem);
       }
     }, repository);
+  }
+
+  private static final class AUX_vrv0m9 {
+    /*package*/ static final SInterfaceConcept ISkipConstraintsChecking_d942381 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking");
   }
 }

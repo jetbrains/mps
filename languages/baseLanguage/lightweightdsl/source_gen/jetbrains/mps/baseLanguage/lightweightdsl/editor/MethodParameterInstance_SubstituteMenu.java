@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MethodParameterInstance_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new MethodParameterInstance_SubstituteMenu.SMP_ReferenceScope_21wk31_a(), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance")));
-    result.add(new MethodParameterInstance_SubstituteMenu.SMP_Subconcepts_21wk31_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_21wk31_a(), AUX_21wk31.MethodParameterInstance_ada25f45));
+    result.add(new SMP_Subconcepts_21wk31_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class MethodParameterInstance_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_21wk31_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance"), MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, 0x7b3d7e6b7400c831L, "decl"));
+      super((SAbstractConcept) AUX_21wk31.MethodParameterInstance_ada25f45, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, 0x7b3d7e6b7400c831L, "decl"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class MethodParameterInstance_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_21wk31_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_21wk31.MethodParameterInstance_ada25f45);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class MethodParameterInstance_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_21wk31 {
+    /*package*/ static final SConcept MethodParameterInstance_ada25f45 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance");
   }
 }

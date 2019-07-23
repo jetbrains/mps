@@ -10,6 +10,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ChangeMethodSignatureParameters {
   private SNode myMethod;
@@ -29,9 +30,13 @@ public class ChangeMethodSignatureParameters {
     return this.myParametersIds;
   }
   public boolean isVisibilityChanged() {
-    return SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myMethod, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"))) != SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myOldMethod, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")));
+    return SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myMethod, AUX_viavx4.IVisible_84badc76), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"))) != SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myOldMethod, AUX_viavx4.IVisible_84badc76), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")));
   }
   public boolean isReturnValueChanged() {
     return !((MatchingUtil.matchNodes(SLinkOperations.getTarget(this.myMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), SLinkOperations.getTarget(this.myOldMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")))));
+  }
+
+  private static final class AUX_viavx4 {
+    /*package*/ static final SInterfaceConcept IVisible_84badc76 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
   }
 }

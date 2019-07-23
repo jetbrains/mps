@@ -74,6 +74,6 @@ public class Template_OutputRoot extends TemplateDeclarationBase implements Temp
     rv[0] = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x11645a94e4aL, "outputChild");
     return rv;
   }
-  private static SNodePointer template_38z9ys_a0a3 = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414086886");
-  private static SNodePointer copySrcListMacro_38z9ys_b0a0a1a4a1a4 = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414086893");
+  private static final SNodePointer template_38z9ys_a0a3 = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414086886");
+  private static final SNodePointer copySrcListMacro_38z9ys_b0a0a1a4a1a4 = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414086893");
 }

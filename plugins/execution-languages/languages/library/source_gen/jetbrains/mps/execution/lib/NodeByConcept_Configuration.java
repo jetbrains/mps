@@ -29,7 +29,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 public class NodeByConcept_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(NodeByConcept_Configuration.class);
   @NotNull
-  private NodeByConcept_Configuration.MyState myState = new NodeByConcept_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -94,7 +94,7 @@ public class NodeByConcept_Configuration implements IPersistentConfiguration {
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (NodeByConcept_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -123,7 +123,7 @@ public class NodeByConcept_Configuration implements IPersistentConfiguration {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      NodeByConcept_Configuration.MyState state = new NodeByConcept_Configuration.MyState();
+      MyState state = new MyState();
       state.myNodePointer = myNodePointer;
       state.myNodeText = myNodeText;
       return state;

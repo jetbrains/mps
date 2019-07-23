@@ -21,7 +21,7 @@ public class BooleanConstantDeleteWithParen2_Test extends BaseTransformationTest
 
   @Test
   public void test_BooleanConstantDeleteWithParen2() throws Throwable {
-    new BooleanConstantDeleteWithParen2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -32,19 +32,19 @@ public class BreakStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_noBreaks() throws Throwable {
-    new BreakStatement_Test.TestBody(this).test_noBreaks();
+    new TestBody(this).test_noBreaks();
   }
   @Test
   public void test_oneBreak() throws Throwable {
-    new BreakStatement_Test.TestBody(this).test_oneBreak();
+    new TestBody(this).test_oneBreak();
   }
   @Test
   public void test_oneContionue() throws Throwable {
-    new BreakStatement_Test.TestBody(this).test_oneContionue();
+    new TestBody(this).test_oneContionue();
   }
   @Test
   public void test_breakAndContinue() throws Throwable {
-    new BreakStatement_Test.TestBody(this).test_breakAndContinue();
+    new TestBody(this).test_breakAndContinue();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

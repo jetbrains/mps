@@ -129,7 +129,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.actionCanSubstituteSingleRoleHandler_zbbuom_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb580f353L, "actionCanSubstitute"), getEditorContext());
+    SingleRoleCellProvider provider = new actionCanSubstituteSingleRoleHandler_zbbuom_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb580f353L, "actionCanSubstitute"), getEditorContext());
     return provider.createCell();
   }
   private static class actionCanSubstituteSingleRoleHandler_zbbuom_c2a extends SingleRoleCellProvider {
@@ -213,7 +213,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.actionDescriptionTextSingleRoleHandler_zbbuom_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d495L, "actionDescriptionText"), getEditorContext());
+    SingleRoleCellProvider provider = new actionDescriptionTextSingleRoleHandler_zbbuom_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d495L, "actionDescriptionText"), getEditorContext());
     return provider.createCell();
   }
   private static class actionDescriptionTextSingleRoleHandler_zbbuom_g2a extends SingleRoleCellProvider {
@@ -297,7 +297,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.actionIconSingleRoleHandler_zbbuom_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d498L, "actionIcon"), getEditorContext());
+    SingleRoleCellProvider provider = new actionIconSingleRoleHandler_zbbuom_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d498L, "actionIcon"), getEditorContext());
     return provider.createCell();
   }
   private static class actionIconSingleRoleHandler_zbbuom_k2a extends SingleRoleCellProvider {
@@ -381,7 +381,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.actionTextSingleRoleHandler_zbbuom_o2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d49cL, "actionText"), getEditorContext());
+    SingleRoleCellProvider provider = new actionTextSingleRoleHandler_zbbuom_o2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d49cL, "actionText"), getEditorContext());
     return provider.createCell();
   }
   private static class actionTextSingleRoleHandler_zbbuom_o2a extends SingleRoleCellProvider {
@@ -465,7 +465,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.groupSingleRoleHandler_zbbuom_s2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d4eaL, "group"), getEditorContext());
+    SingleRoleCellProvider provider = new groupSingleRoleHandler_zbbuom_s2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d4eaL, "group"), getEditorContext());
     return provider.createCell();
   }
   private static class groupSingleRoleHandler_zbbuom_s2a extends SingleRoleCellProvider {
@@ -549,7 +549,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_5() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.includeMenuSingleRoleHandler_zbbuom_w2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d4f2L, "includeMenu"), getEditorContext());
+    SingleRoleCellProvider provider = new includeMenuSingleRoleHandler_zbbuom_w2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d4f2L, "includeMenu"), getEditorContext());
     return provider.createCell();
   }
   private static class includeMenuSingleRoleHandler_zbbuom_w2a extends SingleRoleCellProvider {
@@ -633,7 +633,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_6() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.parameterizedSingleRoleHandler_zbbuom_ab2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d4fbL, "parameterized"), getEditorContext());
+    SingleRoleCellProvider provider = new parameterizedSingleRoleHandler_zbbuom_ab2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d4fbL, "parameterized"), getEditorContext());
     return provider.createCell();
   }
   private static class parameterizedSingleRoleHandler_zbbuom_ab2a extends SingleRoleCellProvider {
@@ -717,7 +717,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_7() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.submenuSingleRoleHandler_zbbuom_eb2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d505L, "submenu"), getEditorContext());
+    SingleRoleCellProvider provider = new submenuSingleRoleHandler_zbbuom_eb2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d505L, "submenu"), getEditorContext());
     return provider.createCell();
   }
   private static class submenuSingleRoleHandler_zbbuom_eb2a extends SingleRoleCellProvider {
@@ -801,7 +801,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_8() {
-    SingleRoleCellProvider provider = new TestTransformExceptionParent_EditorBuilder_a.wrapSingleRoleHandler_zbbuom_ib2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d510L, "wrap"), getEditorContext());
+    SingleRoleCellProvider provider = new wrapSingleRoleHandler_zbbuom_ib2a(myNode, MetaAdapterFactory.getContainmentLink(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L, 0x63457d5cb582d510L, "wrap"), getEditorContext());
     return provider.createCell();
   }
   private static class wrapSingleRoleHandler_zbbuom_ib2a extends SingleRoleCellProvider {

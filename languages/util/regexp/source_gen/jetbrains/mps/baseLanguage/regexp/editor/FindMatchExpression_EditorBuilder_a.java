@@ -53,7 +53,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new FindMatchExpression_EditorBuilder_a.inputExpressionSingleRoleHandler_lzqhdw_a0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, 0x550fbf4ebc5f5df9L, "inputExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new inputExpressionSingleRoleHandler_lzqhdw_a0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, 0x550fbf4ebc5f5df9L, "inputExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class inputExpressionSingleRoleHandler_lzqhdw_a0 extends SingleRoleCellProvider {
@@ -117,7 +117,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new FindMatchExpression_EditorBuilder_a.regexpSingleRoleHandler_lzqhdw_c0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp"), getEditorContext());
+    SingleRoleCellProvider provider = new regexpSingleRoleHandler_lzqhdw_c0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp"), getEditorContext());
     return provider.createCell();
   }
   private static class regexpSingleRoleHandler_lzqhdw_c0 extends SingleRoleCellProvider {

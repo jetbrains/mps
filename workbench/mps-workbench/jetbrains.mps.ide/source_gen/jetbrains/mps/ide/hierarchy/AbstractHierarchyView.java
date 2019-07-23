@@ -42,7 +42,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 
 public abstract class AbstractHierarchyView extends BaseProjectTool {
   protected AbstractHierarchyTree myHierarchyTree;
-  protected AbstractHierarchyView.RootPanel myComponent;
+  protected RootPanel myComponent;
   private OccurenceNavigatorSupport myOccurenceNavigator;
 
   public AbstractHierarchyView(Project project, String id, int number, Icon icon) {
@@ -91,7 +91,7 @@ public abstract class AbstractHierarchyView extends BaseProjectTool {
       }
     };
     myHierarchyTree.setRootVisible(false);
-    this.myComponent = new AbstractHierarchyView.RootPanel();
+    this.myComponent = new RootPanel();
     myComponent.setContent(ScrollPaneFactory.createScrollPane(myHierarchyTree, true));
     showItemInHierarchy((SNodeReference) null);
     createControlPanel();

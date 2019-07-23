@@ -6,9 +6,10 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SetModuleJarClasspathEntry_QuickFix extends QuickFix_Runtime {
   public SetModuleJarClasspathEntry_QuickFix() {
@@ -18,7 +19,11 @@ public class SetModuleJarClasspathEntry_QuickFix extends QuickFix_Runtime {
     return "Add classpath entry that corresponds to jar root";
   }
   public void execute(SNode node) {
-    SNode moduleXml = SNodeOperations.as(node, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml"));
+    SNode moduleXml = SNodeOperations.as(node, AUX_rks6rm.BuildMpsLayout_ModuleXml_1ea572ac);
     SPropertyOperations.assign(SLinkOperations.addNewChild(moduleXml, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries"), null), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path"), ".");
+  }
+
+  private static final class AUX_rks6rm {
+    /*package*/ static final SConcept BuildMpsLayout_ModuleXml_1ea572ac = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml");
   }
 }

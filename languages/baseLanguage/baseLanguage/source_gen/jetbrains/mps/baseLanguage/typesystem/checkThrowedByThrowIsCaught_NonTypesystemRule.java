@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public checkThrowedByThrowIsCaught_NonTypesystemRule() {
@@ -26,20 +27,25 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
     }
     SNode throwableType = TypecheckingFacade.getFromContext().getTypeOf(throwable);
     Set<SNode> throwables = SetSequence.fromSet(new HashSet<SNode>());
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(throwable), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"))) {
-      SetSequence.fromSet(throwables).addElement(SNodeOperations.cast(throwableType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")));
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(throwable), AUX_x57bkl.Type_4199e276)) {
+      SetSequence.fromSet(throwables).addElement(SNodeOperations.cast(throwableType, AUX_x57bkl.Type_4199e276));
     }
-    if (SNodeOperations.isInstanceOf(throwableType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"))) {
+    if (SNodeOperations.isInstanceOf(throwableType, AUX_x57bkl.Type_4199e276)) {
       RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, throwStatement);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
+    return AUX_x57bkl.ThrowStatement_c08024f2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_x57bkl {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept ThrowStatement_c08024f2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
   }
 }

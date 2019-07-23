@@ -4,7 +4,6 @@ package jetbrains.mps.lang.migration.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -18,13 +17,15 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ReflectionNodeReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, "jetbrains.mps.lang.migration.structure.ReflectionNodeReference");
+  private static final SAbstractConcept CONCEPT = AUX_n0rc7z.ReflectionNodeReference_bcce0b54;
 
   public static final SMethod<SNodeReference> getNodeReference_id4uVwhQyQbdz = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl(SNodeReference.class)).name("getNodeReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4uVwhQyQbdz").build();
   public static final SMethod<SNode> tryToFindNode_id6szrkDoc2K7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryToFindNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6szrkDoc2K7").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
@@ -117,5 +118,9 @@ public final class ReflectionNodeReference__BehaviorDescriptor extends BaseBHDes
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_n0rc7z {
+    /*package*/ static final SConcept ReflectionNodeReference_bcce0b54 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, "jetbrains.mps.lang.migration.structure.ReflectionNodeReference");
   }
 }

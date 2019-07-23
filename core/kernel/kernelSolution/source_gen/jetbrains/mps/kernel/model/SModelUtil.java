@@ -55,7 +55,7 @@ public class SModelUtil {
   @Deprecated
   public static List<SNode> getDirectSuperConcepts(SNode concept) {
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    if (SNodeOperations.isInstanceOf(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
+    if (SNodeOperations.isInstanceOf(concept, AUX_74see4.ConceptDeclaration_cb225da8)) {
       SNode conceptDecl = (SNode) concept;
       SNode extended = SLinkOperations.getTarget(conceptDecl, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends"));
       if (extended != null) {
@@ -134,5 +134,9 @@ public class SModelUtil {
   }
   private static <T> T as_74see4_a0b0a(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_74see4 {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

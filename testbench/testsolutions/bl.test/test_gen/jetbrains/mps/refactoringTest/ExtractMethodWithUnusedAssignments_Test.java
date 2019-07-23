@@ -36,7 +36,7 @@ public class ExtractMethodWithUnusedAssignments_Test extends BaseTransformationT
 
   @Test
   public void test_ExtractMethodWithUnusedAssignmentsTest() throws Throwable {
-    new ExtractMethodWithUnusedAssignments_Test.TestBody(this).test_ExtractMethodWithUnusedAssignmentsTest();
+    new TestBody(this).test_ExtractMethodWithUnusedAssignmentsTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

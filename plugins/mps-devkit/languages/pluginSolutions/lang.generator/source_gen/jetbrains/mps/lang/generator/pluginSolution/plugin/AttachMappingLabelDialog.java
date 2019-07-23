@@ -21,9 +21,10 @@ import javax.swing.JComponent;
 import java.awt.Insets;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AttachMappingLabelDialog extends DialogWrapper {
   protected EditorContext myEditorContext;
@@ -104,20 +105,26 @@ public class AttachMappingLabelDialog extends DialogWrapper {
     myEditorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
         SNode mappingLabel = MappingLabelUtil.findOrCreateMappingLabelForName(AttachMappingLabelDialog.this.myTemplateNode, AttachMappingLabelDialog.this.myResultLabelName);
-        SNode existingMacro = ListSequence.fromList(AttributeOperations.getAttributeList(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro")))).last();
+        SNode existingMacro = ListSequence.fromList(AttributeOperations.getAttributeList(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(AUX_nujzp5.NodeMacro_2cb20614))).last();
         if (existingMacro != null) {
           SLinkOperations.setTarget(existingMacro, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel"), mappingLabel);
           return;
         }
-        SNode templateFragment = AttributeOperations.getAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment")));
+        SNode templateFragment = AttributeOperations.getAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(AUX_nujzp5.TemplateFragment_1973fd34));
         if (templateFragment != null) {
           SLinkOperations.setTarget(templateFragment, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration"), mappingLabel);
           return;
         }
         // create new Label macro 
-        SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x473cc5baf8a1e7a4L, "jetbrains.mps.lang.generator.structure.LabelMacro"));
+        SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(AUX_nujzp5.NodeMacro_2cb20614), AUX_nujzp5.LabelMacro_f548474b);
         SLinkOperations.setTarget(newMacro, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel"), mappingLabel);
       }
     });
+  }
+
+  private static final class AUX_nujzp5 {
+    /*package*/ static final SConcept NodeMacro_2cb20614 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept TemplateFragment_1973fd34 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    /*package*/ static final SConcept LabelMacro_f548474b = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x473cc5baf8a1e7a4L, "jetbrains.mps.lang.generator.structure.LabelMacro");
   }
 }

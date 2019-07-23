@@ -15,6 +15,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IfStatement_elseBlockStatement_delete {
 
@@ -26,9 +27,9 @@ public class IfStatement_elseBlockStatement_delete {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode statement;
         SNode ifFalseStatement = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"));
-        List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(ifFalseStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
+        List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(ifFalseStatement, AUX_hc8owh.BlockStatement_8943d110), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
         if (ListSequence.fromList(statements).isEmpty()) {
-          statement = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), null);
+          statement = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), AUX_hc8owh.Statement_9dbf9b0e, null);
         } else {
           statement = ListSequence.fromList(statements).first();
         }
@@ -71,5 +72,10 @@ public class IfStatement_elseBlockStatement_delete {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_hc8owh {
+    /*package*/ static final SConcept BlockStatement_8943d110 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class any_type_supertypeof_bottom_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
@@ -33,9 +34,14 @@ public class any_type_supertypeof_bottom_InequationReplacementRule extends Abstr
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1210c38a8adL, "jetbrains.mps.baseLanguage.structure.BLBottomType");
+    return AUX_8roqc7.BLBottomType_1099af70;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    return AUX_8roqc7.BaseConcept_bc2351f;
+  }
+
+  private static final class AUX_8roqc7 {
+    /*package*/ static final SConcept BLBottomType_1099af70 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1210c38a8adL, "jetbrains.mps.baseLanguage.structure.BLBottomType");
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

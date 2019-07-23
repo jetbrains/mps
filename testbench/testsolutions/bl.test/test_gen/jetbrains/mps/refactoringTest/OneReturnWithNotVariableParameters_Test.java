@@ -34,7 +34,7 @@ public class OneReturnWithNotVariableParameters_Test extends BaseTransformationT
 
   @Test
   public void test_OneReturnWithNotVariableParameters() throws Throwable {
-    new OneReturnWithNotVariableParameters_Test.TestBody(this).test_OneReturnWithNotVariableParameters();
+    new TestBody(this).test_OneReturnWithNotVariableParameters();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -11,6 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_WhenConcreteVariableReference_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_WhenConcreteVariableReference_InferenceRule() {
@@ -23,12 +24,16 @@ public class typeof_WhenConcreteVariableReference_InferenceRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, "jetbrains.mps.lang.typesystem.structure.WhenConcreteVariableReference");
+    return AUX_18kg6k.WhenConcreteVariableReference_1e313f06;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_18kg6k {
+    /*package*/ static final SConcept WhenConcreteVariableReference_1e313f06 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, "jetbrains.mps.lang.typesystem.structure.WhenConcreteVariableReference");
   }
 }

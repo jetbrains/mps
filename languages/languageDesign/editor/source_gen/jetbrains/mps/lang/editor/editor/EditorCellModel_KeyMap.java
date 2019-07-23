@@ -9,18 +9,19 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditorCellModel_KeyMap extends KeyMapImpl {
   public EditorCellModel_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new EditorCellModel_KeyMap.EditorCellModel_KeyMap_Action0();
+    action = new EditorCellModel_KeyMap_Action0();
     this.putAction("ctrl+shift", "VK_F", action);
-    action = new EditorCellModel_KeyMap.EditorCellModel_KeyMap_Action1();
+    action = new EditorCellModel_KeyMap_Action1();
     this.putAction("ctrl+alt+shift", "VK_F", action);
   }
   public static class EditorCellModel_KeyMap_Action0 extends KeyMapActionImpl {
@@ -42,7 +43,7 @@ public class EditorCellModel_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_oqoe35.EditorCellModel_226b88d6))) {
         return false;
       }
       return true;
@@ -81,7 +82,7 @@ public class EditorCellModel_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_oqoe35.EditorCellModel_226b88d6))) {
         return false;
       }
       return true;
@@ -100,5 +101,9 @@ public class EditorCellModel_KeyMap extends KeyMapImpl {
     public String getKeyStroke() {
       return "ctrl alt shift F";
     }
+  }
+
+  private static final class AUX_oqoe35 {
+    /*package*/ static final SConcept EditorCellModel_226b88d6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
   }
 }

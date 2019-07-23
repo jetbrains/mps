@@ -21,7 +21,7 @@ public class Test_CompleteActionParameterDeclaration_Test extends BaseTransforma
 
   @Test
   public void test_Test_CompleteActionParameterDeclaration() throws Throwable {
-    new Test_CompleteActionParameterDeclaration_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

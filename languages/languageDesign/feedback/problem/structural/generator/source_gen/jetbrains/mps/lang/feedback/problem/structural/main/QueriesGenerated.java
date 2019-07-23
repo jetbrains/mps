@@ -7,7 +7,6 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.feedback.problem.structural.behavior.MissingPropertyInConceptProblem__BehaviorDescriptor;
 import jetbrains.mps.lang.feedback.problem.structural.behavior.MissingChildInConceptProblem__BehaviorDescriptor;
 import java.util.Map;
@@ -17,6 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.GenerationFailureException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class QueriesGenerated extends QueryProviderBase {
@@ -24,17 +25,17 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
-    SNode node0 = SNodeOperations.cast(_context.getOriginalCopiedInputNode(_context.getNode()), MetaAdapterFactory.getConcept(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L, "jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyInConceptProblem"));
+    SNode node0 = SNodeOperations.cast(_context.getOriginalCopiedInputNode(_context.getNode()), AUX_x583g4.MissingPropertyInConceptProblem_7103a397);
     return (SNode) MissingPropertyInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ui32.invoke(node0);
   }
   public static Object referenceMacro_GetReferent_0_1(final ReferenceMacroContext _context) {
-    SNode node0 = SNodeOperations.cast(_context.getOriginalCopiedInputNode(_context.getNode()), MetaAdapterFactory.getConcept(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x2372fa56cc4ea3f4L, "jetbrains.mps.lang.feedback.problem.structural.structure.MissingChildInConceptProblem"));
+    SNode node0 = SNodeOperations.cast(_context.getOriginalCopiedInputNode(_context.getNode()), AUX_x583g4.MissingChildInConceptProblem_4ddb1e90);
     return (SNode) MissingChildInConceptProblem__BehaviorDescriptor.getConcept_id224Bjf9ukOx.invoke(node0);
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("6341931782024059299", new QueriesGenerated.RTQ(0, "BaseConcept"));
-    rtqMethods.put("1592627013225768459", new QueriesGenerated.RTQ(1, "BaseConcept"));
+    rtqMethods.put("6341931782024059299", new RTQ(0, "BaseConcept"));
+    rtqMethods.put("1592627013225768459", new RTQ(1, "BaseConcept"));
   }
   @NotNull
   @Override
@@ -62,5 +63,10 @@ public class QueriesGenerated extends QueryProviderBase {
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SConcept MissingPropertyInConceptProblem_7103a397 = MetaAdapterFactory.getConcept(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L, "jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyInConceptProblem");
+    /*package*/ static final SConcept MissingChildInConceptProblem_4ddb1e90 = MetaAdapterFactory.getConcept(0x7127d40929f043e8L, 0x917ff016ea288944L, 0x2372fa56cc4ea3f4L, "jetbrains.mps.lang.feedback.problem.structural.structure.MissingChildInConceptProblem");
   }
 }

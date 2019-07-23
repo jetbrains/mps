@@ -24,7 +24,7 @@ public class LeftTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test 
 
   @Test
   public void test_LeftTransformWithCustomItems_Parameterized_checkCanBeAncestor() throws Throwable {
-    new LeftTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

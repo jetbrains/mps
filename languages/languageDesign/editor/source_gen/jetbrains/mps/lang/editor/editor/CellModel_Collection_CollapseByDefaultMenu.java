@@ -59,8 +59,8 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new CellModel_Collection_CollapseByDefaultMenu.TMP_Property_ikacvd_a0());
-      result.add(new CellModel_Collection_CollapseByDefaultMenu.TMP_Action_ikacvd_b0());
+      result.add(new TMP_Property_ikacvd_a0());
+      result.add(new TMP_Action_ikacvd_b0());
     }
     return result;
   }
@@ -91,7 +91,7 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
   private class TMP_Action_ikacvd_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      CellModel_Collection_CollapseByDefaultMenu.TMP_Action_ikacvd_b0.Item item = new CellModel_Collection_CollapseByDefaultMenu.TMP_Action_ikacvd_b0.Item(context);
+      TMP_Action_ikacvd_b0.Item item = new TMP_Action_ikacvd_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

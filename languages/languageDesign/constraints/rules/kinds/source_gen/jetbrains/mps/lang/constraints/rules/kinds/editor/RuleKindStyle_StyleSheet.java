@@ -20,7 +20,7 @@ public class RuleKindStyle_StyleSheet {
   public static void apply_RuleKind(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RuleKindStyle_StyleSheet.RuleKindStyleClass(editorContext, node).apply(style, editorCell);
+    new RuleKindStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class RuleKindStyleClass extends AbstractStyleClass {

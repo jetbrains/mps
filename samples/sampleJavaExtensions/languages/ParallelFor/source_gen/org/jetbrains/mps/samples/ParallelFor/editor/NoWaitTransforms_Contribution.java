@@ -23,6 +23,7 @@ import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NoWaitTransforms_Contribution extends TransformationMenuBase {
   public NoWaitTransforms_Contribution() {
@@ -51,7 +52,7 @@ public class NoWaitTransforms_Contribution extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new NoWaitTransforms_Contribution.TMP_Group_uv3amh_a0());
+      result.add(new TMP_Group_uv3amh_a0());
     }
     return result;
   }
@@ -59,7 +60,7 @@ public class NoWaitTransforms_Contribution extends TransformationMenuBase {
   public class TMP_Group_uv3amh_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor")) && SNodeOperations.hasRole(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_uv3amh.ParallelFor_3fc29b38) && SNodeOperations.hasRole(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool"));
     }
 
     @NotNull
@@ -75,7 +76,7 @@ public class NoWaitTransforms_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new NoWaitTransforms_Contribution.TMP_Group_uv3amh_a0.TMP_Include_uv3amh_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_uv3amh_a0.TMP_Include_uv3amh_a0a());
     }
     public class TMP_Include_uv3amh_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull
@@ -97,5 +98,9 @@ public class NoWaitTransforms_Contribution extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_uv3amh {
+    /*package*/ static final SConcept ParallelFor_3fc29b38 = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
   }
 }

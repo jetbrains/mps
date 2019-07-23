@@ -19,6 +19,7 @@ import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class FloatConstantType_Test extends BaseTransformationTest {
@@ -33,11 +34,11 @@ public class FloatConstantType_Test extends BaseTransformationTest {
 
   @Test
   public void test_testTypes() throws Throwable {
-    new FloatConstantType_Test.TestBody(this).test_testTypes();
+    new TestBody(this).test_testTypes();
   }
   @Test
   public void test_ErrorMessagesCheck5868639094267614275() throws Throwable {
-    new FloatConstantType_Test.TestBody(this).test_ErrorMessagesCheck5868639094267614275();
+    new TestBody(this).test_ErrorMessagesCheck5868639094267614275();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -48,12 +49,12 @@ public class FloatConstantType_Test extends BaseTransformationTest {
 
     public void test_testTypes() throws Exception {
       addNodeById("5868639094257179247");
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant"));
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant"));
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant"));
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType"));
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType"));
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant")))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType"));
+      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), AUX_rchkxn.FloatingPointConstant_aa454d3c);
+      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), AUX_rchkxn.FloatingPointConstant_aa454d3c);
+      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant"))), AUX_rchkxn.FloatingPointFloatConstant_f651563);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), AUX_rchkxn.DoubleType_635118d4);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), AUX_rchkxn.DoubleType_635118d4);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant")))), AUX_rchkxn.FloatType_61b9ea5b);
     }
 
     public void test_ErrorMessagesCheck5868639094267614275() throws Exception {
@@ -62,5 +63,12 @@ public class FloatConstantType_Test extends BaseTransformationTest {
       new CheckErrorMessagesAction(nodeToCheck, false, false).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageAction>())).run();
     }
 
+  }
+
+  private static final class AUX_rchkxn {
+    /*package*/ static final SConcept FloatingPointConstant_aa454d3c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
+    /*package*/ static final SConcept FloatingPointFloatConstant_f651563 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant");
+    /*package*/ static final SConcept DoubleType_635118d4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
+    /*package*/ static final SConcept FloatType_61b9ea5b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
   }
 }

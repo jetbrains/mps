@@ -21,7 +21,7 @@ public class LT_DotExpression_with_MinusAssignment_Test extends BaseTransformati
 
   @Test
   public void test_LT_DotExpression_with_MinusAssignment() throws Throwable {
-    new LT_DotExpression_with_MinusAssignment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

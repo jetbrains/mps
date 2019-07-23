@@ -24,7 +24,7 @@ public class CompleteCamelCaseFromStart_Test extends BaseTransformationTest {
 
   @Test
   public void test_CompleteCamelCaseFromStart() throws Throwable {
-    new CompleteCamelCaseFromStart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

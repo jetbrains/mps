@@ -34,6 +34,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class addCondition extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -59,7 +60,7 @@ public class addCondition extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new addCondition.TMP_Action_r93q9p_a0());
+      result.add(new TMP_Action_r93q9p_a0());
     }
     return result;
   }
@@ -67,7 +68,7 @@ public class addCondition extends TransformationMenuBase {
   private class TMP_Action_r93q9p_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      addCondition.TMP_Action_r93q9p_a0.Item item = new addCondition.TMP_Action_r93q9p_a0.Item(context);
+      TMP_Action_r93q9p_a0.Item item = new TMP_Action_r93q9p_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -102,7 +103,7 @@ public class addCondition extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.setNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab20495600L, 0x7e9b10ab20495602L, "query"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd78e1636L, "jetbrains.mps.lang.editor.structure.QueryFunction_Boolean")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.setNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab20495600L, 0x7e9b10ab20495602L, "query"), AUX_r93q9p.QueryFunction_Boolean_dde49592), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
@@ -123,5 +124,9 @@ public class addCondition extends TransformationMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_r93q9p {
+    /*package*/ static final SConcept QueryFunction_Boolean_dde49592 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd78e1636L, "jetbrains.mps.lang.editor.structure.QueryFunction_Boolean");
   }
 }

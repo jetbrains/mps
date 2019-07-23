@@ -34,7 +34,7 @@ public class InlineMethodWithUnusedParameters_Test extends BaseTransformationTes
 
   @Test
   public void test_InlineMethodWithUnusedParameters() throws Throwable {
-    new InlineMethodWithUnusedParameters_Test.TestBody(this).test_InlineMethodWithUnusedParameters();
+    new TestBody(this).test_InlineMethodWithUnusedParameters();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

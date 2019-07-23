@@ -13,14 +13,15 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NewVarMacro extends MigrationScriptBase {
   public String getCaption() {
@@ -41,7 +42,7 @@ public class NewVarMacro extends MigrationScriptBase {
       }
     });
     for (final SModel md : CollectionSequence.fromCollection(models)) {
-      List<SNode> macros = ListSequence.fromList(SModelOperations.nodes(md, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro"))).where(new IWhereFilter<SNode>() {
+      List<SNode> macros = ListSequence.fromList(SModelOperations.nodes(md, AUX_dmxq9u.VarMacro_e790b770)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.isAttribute(it);
         }
@@ -59,34 +60,44 @@ public class NewVarMacro extends MigrationScriptBase {
 
   private static void replaceWithNew(SModel md, final SNode vm) {
     //  identical to ReplaceWithNewVarMacro intention 
-    List<SNode> taVarRef = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(vm), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, "jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    List<SNode> taVarRef = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(vm), AUX_dmxq9u.TemplateArgumentVariableRefExpression_7d8acc12, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro")) == vm;
       }
     }).toListSequence();
-    List<SNode> gcoVarRef = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(vm), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    List<SNode> gcoVarRef = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(vm), AUX_dmxq9u.GenerationContextOp_VarRef_f921d43f, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro")) == vm;
       }
     }).toListSequence();
-    SNode vd = SModelOperations.createNewNode(md, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration"));
+    SNode vd = SModelOperations.createNewNode(md, null, AUX_dmxq9u.VarDeclaration_9cf099c5);
     SLinkOperations.setTarget(vd, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type"), SLinkOperations.getTarget(vm, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644fbL, "type")));
     SLinkOperations.setTarget(vd, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value"), SLinkOperations.getTarget(vm, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644d4L, "value")));
     SPropertyOperations.assign(vd, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), SPropertyOperations.getString(vm, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     String comment = SPropertyOperations.getString(vm, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, 0x2d521c90e9601e88L, "comment"));
     SNode ml = SLinkOperations.getTarget(vm, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel"));
-    SNode vmNew = SNodeOperations.replaceWithNewChild(vm, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2"));
+    SNode vmNew = SNodeOperations.replaceWithNewChild(vm, AUX_dmxq9u.VarMacro2_9cf0971d);
     SLinkOperations.setTarget(vmNew, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel"), ml);
     SPropertyOperations.assign(vmNew, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, 0x2d521c90e9601e88L, "comment"), comment);
     ListSequence.fromList(SLinkOperations.getChildren(vmNew, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables"))).addElement(vd);
     for (SNode vref : ListSequence.fromList(taVarRef)) {
-      SNode refNew = SNodeOperations.replaceWithNewChild(vref, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2"));
+      SNode refNew = SNodeOperations.replaceWithNewChild(vref, AUX_dmxq9u.TemplateArgumentVarRefExpression2_a8ab2c12);
       SLinkOperations.setTarget(refNew, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl"), vd);
     }
     for (SNode vref : ListSequence.fromList(gcoVarRef)) {
-      SNode refNew = SNodeOperations.replaceWithNewChild(vref, MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2"));
+      SNode refNew = SNodeOperations.replaceWithNewChild(vref, AUX_dmxq9u.GenerationContextOp_VarRef2_9e870d41);
       SLinkOperations.setTarget(refNew, MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl"), vd);
     }
 
+  }
+
+  private static final class AUX_dmxq9u {
+    /*package*/ static final SConcept VarMacro_e790b770 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro");
+    /*package*/ static final SConcept TemplateArgumentVariableRefExpression_7d8acc12 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, "jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression");
+    /*package*/ static final SConcept GenerationContextOp_VarRef_f921d43f = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef");
+    /*package*/ static final SConcept VarDeclaration_9cf099c5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration");
+    /*package*/ static final SConcept VarMacro2_9cf0971d = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2");
+    /*package*/ static final SConcept TemplateArgumentVarRefExpression2_a8ab2c12 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2");
+    /*package*/ static final SConcept GenerationContextOp_VarRef2_9e870d41 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2");
   }
 }

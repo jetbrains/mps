@@ -70,7 +70,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ImmediateSupertypesExpression_EditorBuilder_a.subtypeExpressionSingleRoleHandler_to0oxu_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1120ebd8531L, 0x1120ebf9289L, "subtypeExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new subtypeExpressionSingleRoleHandler_to0oxu_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1120ebd8531L, 0x1120ebf9289L, "subtypeExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class subtypeExpressionSingleRoleHandler_to0oxu_c0 extends SingleRoleCellProvider {

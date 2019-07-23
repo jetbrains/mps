@@ -23,7 +23,7 @@ public class DeleteReturnStatementKeywordTwoStep_Test extends BaseTransformation
 
   @Test
   public void test_DeleteReturnStatementKeywordTwoStep() throws Throwable {
-    new DeleteReturnStatementKeywordTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -17,7 +17,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
 
 /*package*/ class ReflectiveEditorAction {
-  private final List<ReflectiveEditorAction.ReflectiveHintsAction> myActions;
+  private final List<ReflectiveHintsAction> myActions;
   private final EditorComponent myEditorComponent;
   private final boolean myIsReflective;
   private final boolean myIsForSubtree;
@@ -30,24 +30,24 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
     myEditorComponent = editorComponent;
     myIsReflective = isReflective;
     myIsForSubtree = isForSubtree;
-    myActions = affectedNodes.stream().map(new Function<SNode, ReflectiveEditorAction.ReflectiveHintsAction>() {
-      public ReflectiveEditorAction.ReflectiveHintsAction apply(SNode node) {
+    myActions = affectedNodes.stream().map(new Function<SNode, ReflectiveHintsAction>() {
+      public ReflectiveHintsAction apply(SNode node) {
         return getAction(node);
       }
-    }).collect(Collectors.<ReflectiveEditorAction.ReflectiveHintsAction>toList());
+    }).collect(Collectors.<ReflectiveHintsAction>toList());
   }
   @NotNull
-  private ReflectiveEditorAction.ReflectiveHintsAction getAction(SNode node) {
+  private ReflectiveHintsAction getAction(SNode node) {
     if (myIsForSubtree) {
-      return new ReflectiveEditorAction.MakeSubtreeAction(node);
+      return new MakeSubtreeAction(node);
     } else {
-      return new ReflectiveEditorAction.MakeNodeReflectiveAction(node);
+      return new MakeNodeReflectiveAction(node);
     }
   }
   /*package*/ void update(AnActionEvent event) {
     boolean multipleNodes = myActions.size() > 1;
-    boolean canMake = myActions.stream().anyMatch(new Predicate<ReflectiveEditorAction.ReflectiveHintsAction>() {
-      public boolean test(ReflectiveEditorAction.ReflectiveHintsAction action) {
+    boolean canMake = myActions.stream().anyMatch(new Predicate<ReflectiveHintsAction>() {
+      public boolean test(ReflectiveHintsAction action) {
         return action.isApplicable();
       }
     }) && !((multipleNodes && !(myIsForSubtree)));
@@ -98,7 +98,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
     myEditorComponent.getEditorContext().flushEvents();
   }
   private void doExecute() {
-    for (ReflectiveEditorAction.ReflectiveHintsAction action : myActions) {
+    for (ReflectiveHintsAction action : myActions) {
       if (action.isApplicable()) {
         action.execute();
       }
@@ -118,7 +118,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
     /*package*/ abstract boolean isApplicable();
     /*package*/ abstract void execute();
   }
-  /*package*/ class MakeNodeReflectiveAction extends ReflectiveEditorAction.ReflectiveHintsAction {
+  /*package*/ class MakeNodeReflectiveAction extends ReflectiveHintsAction {
     private MakeNodeReflectiveAction(SNode node) {
       super(node);
     }
@@ -131,7 +131,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
       ReflectiveHintsManager.makeNodeReflective(myNode, myEditorComponent);
     }
   }
-  /*package*/ class MakeSubtreeAction extends ReflectiveEditorAction.ReflectiveHintsAction {
+  /*package*/ class MakeSubtreeAction extends ReflectiveHintsAction {
     /*package*/ MakeSubtreeAction(SNode node) {
       super(node);
     }

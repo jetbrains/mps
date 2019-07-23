@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.regexp.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -22,9 +21,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
+  private static final SAbstractConcept CONCEPT = AUX_b2p8g5.Regexp_491174f0;
 
   public static final SMethod<SNode> getTopLevelRegexp_idhNm6Oh5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTopLevelRegexp").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hNm6Oh5").build();
   public static final SMethod<String> toString_idhEwIUjb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIUjb").build();
@@ -42,8 +43,8 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getTopLevelRegexp_idhNm6Oh5(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp"))) {
-      return Regexp__BehaviorDescriptor.getTopLevelRegexp_idhNm6Oh5.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp")));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), AUX_b2p8g5.Regexp_491174f0)) {
+      return Regexp__BehaviorDescriptor.getTopLevelRegexp_idhNm6Oh5.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AUX_b2p8g5.Regexp_491174f0));
     }
     return __thisNode__;
   }
@@ -81,7 +82,7 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean isValid_id48bMILtL4il(@NotNull SNode __thisNode__) {
     for (SNode n : ListSequence.fromList(SNodeOperations.getChildren(__thisNode__))) {
-      if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp")) && !((boolean) Regexp__BehaviorDescriptor.isValid_id48bMILtL4il.invoke(SNodeOperations.cast(n, MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp"))))) {
+      if (SNodeOperations.isInstanceOf(n, AUX_b2p8g5.Regexp_491174f0) && !((boolean) Regexp__BehaviorDescriptor.isValid_id48bMILtL4il.invoke(SNodeOperations.cast(n, AUX_b2p8g5.Regexp_491174f0)))) {
         return false;
       }
     }
@@ -148,5 +149,9 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_b2p8g5 {
+    /*package*/ static final SConcept Regexp_491174f0 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
   }
 }

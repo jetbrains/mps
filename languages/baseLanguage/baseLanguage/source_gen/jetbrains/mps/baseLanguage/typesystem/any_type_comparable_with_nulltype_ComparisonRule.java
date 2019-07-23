@@ -6,15 +6,16 @@ import jetbrains.mps.lang.typesystem.runtime.ComparisonRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class any_type_comparable_with_nulltype_ComparisonRule extends ComparisonRule_Runtime {
   public any_type_comparable_with_nulltype_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if (SNodeOperations.isInstanceOf(node1, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType")) || SNodeOperations.isInstanceOf(node1, MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeDescriptor"))) {
+    if (SNodeOperations.isInstanceOf(node1, AUX_189f4u.PrimitiveType_53355efd) || SNodeOperations.isInstanceOf(node1, AUX_189f4u.PrimitiveTypeDescriptor_26acd7f5)) {
       return false;
     }
     return true;
@@ -30,9 +31,16 @@ public class any_type_comparable_with_nulltype_ComparisonRule extends Comparison
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    return AUX_189f4u.BaseConcept_bc2351f;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
+    return AUX_189f4u.NullType_6bb6754a;
+  }
+
+  private static final class AUX_189f4u {
+    /*package*/ static final SConcept PrimitiveTypeDescriptor_26acd7f5 = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeDescriptor");
+    /*package*/ static final SConcept PrimitiveType_53355efd = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept NullType_6bb6754a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
   }
 }

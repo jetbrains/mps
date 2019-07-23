@@ -43,7 +43,7 @@ public class BaseConcept_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new BaseConcept_TransformationMenu.TMP_IncludeSM_m082ag_a0());
+      result.add(new TMP_IncludeSM_m082ag_a0());
     }
     return result;
   }

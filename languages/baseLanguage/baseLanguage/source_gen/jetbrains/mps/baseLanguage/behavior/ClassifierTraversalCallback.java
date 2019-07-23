@@ -7,8 +7,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.references.Reference;
 
 public interface ClassifierTraversalCallback {
-  void onEntered(@NotNull ClassifierTraversalCallback.TraversalInfo info);
-  void onExited(@NotNull ClassifierTraversalCallback.TraversalInfo info);
+  void onEntered(@NotNull TraversalInfo info);
+  void onExited(@NotNull TraversalInfo info);
 
   class TraversalInfo {
     private SNode myCurrentClassifier;
@@ -32,23 +32,23 @@ public interface ClassifierTraversalCallback {
         }
       };
     }
-    private ClassifierTraversalCallback.TraversalController myController;
-    public ClassifierTraversalCallback.TraversalController getController() {
+    private TraversalController myController;
+    public TraversalController getController() {
       return this.myController;
     }
-    private void _setController(ClassifierTraversalCallback.TraversalController value) {
+    private void _setController(TraversalController value) {
       this.myController = value;
     }
-    private ClassifierTraversalCallback.TraversalController setController(ClassifierTraversalCallback.TraversalController value) {
+    private TraversalController setController(TraversalController value) {
       _setController(value);
       return value;
     }
-    private Reference<ClassifierTraversalCallback.TraversalController> refToController() {
-      return new Reference<ClassifierTraversalCallback.TraversalController>() {
-        public ClassifierTraversalCallback.TraversalController get() {
+    private Reference<TraversalController> refToController() {
+      return new Reference<TraversalController>() {
+        public TraversalController get() {
           return getController();
         }
-        public void set(ClassifierTraversalCallback.TraversalController value) {
+        public void set(TraversalController value) {
           _setController(value);
         }
       };
@@ -57,9 +57,9 @@ public interface ClassifierTraversalCallback {
     private TraversalInfo() {
     }
 
-    /*package*/ static ClassifierTraversalCallback.TraversalInfo create(SNode classifier, ClassifierTraversalCallback.TraversalController controller) {
+    /*package*/ static TraversalInfo create(SNode classifier, TraversalController controller) {
       // no copy (sic) 
-      ClassifierTraversalCallback.TraversalInfo info = new ClassifierTraversalCallback.TraversalInfo();
+      TraversalInfo info = new TraversalInfo();
       info.setCurrentClassifier(classifier);
       info.setController(controller);
       return info;

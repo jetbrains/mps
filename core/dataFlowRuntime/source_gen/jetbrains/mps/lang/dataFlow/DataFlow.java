@@ -8,9 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.instructions.ReadInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DataFlow {
   /*package*/ static final String MAY_BE_UNREACHABLE = "mayBeUnreachable";
@@ -28,15 +29,15 @@ public class DataFlow {
     for (Instruction i : unreachable) {
       if (!(DataFlow.mayBeUnreachable(i)) && i.getSource() != null) {
         SNode unreachableNode = (SNode) i.getSource();
-        if (SNodeOperations.isInstanceOf(unreachableNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))) {
+        if (SNodeOperations.isInstanceOf(unreachableNode, AUX_fbp630.Statement_9dbf9b0e)) {
           unreachableNodes.add((SNode) i.getSource());
         } else {
-          if (SNodeOperations.isInstanceOf(unreachableNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"))) {
-            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")))) {
+          if (SNodeOperations.isInstanceOf(unreachableNode, AUX_fbp630.StatementList_9dbf9acf)) {
+            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), AUX_fbp630.Statement_9dbf9b0e))) {
               unreachableNodes.add((SNode) i.getSource());
             }
           } else {
-            unreachableNodes.add(SNodeOperations.getNodeAncestor(unreachableNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), true, false));
+            unreachableNodes.add(SNodeOperations.getNodeAncestor(unreachableNode, AUX_fbp630.Statement_9dbf9b0e, true, false));
           }
         }
       }
@@ -89,5 +90,10 @@ public class DataFlow {
       unusedAssignments.add((SNode) write.getSource());
     }
     return unusedAssignments;
+  }
+
+  private static final class AUX_fbp630 {
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept StatementList_9dbf9acf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 }

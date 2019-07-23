@@ -36,8 +36,8 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
@@ -51,6 +51,7 @@ import java.util.Comparator;
 import javax.swing.Icon;
 import java.awt.Graphics;
 import javax.swing.UIManager;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RunMigrationScriptsDialog extends JDialog {
   private List<SNodeReference> myScripts;
@@ -83,7 +84,7 @@ public class RunMigrationScriptsDialog extends JDialog {
     }, KeyStroke.getKeyStroke("ESCAPE"), JComponent.WHEN_IN_FOCUSED_WINDOW);
     JPanel panel = new JPanel(new BorderLayout());
     contentPane.add(panel, BorderLayout.CENTER);
-    RunMigrationScriptsDialog.MySortingTableModel tm = new RunMigrationScriptsDialog.MySortingTableModel();
+    MySortingTableModel tm = new MySortingTableModel();
     myTable = new JBTable(tm);
     tm.install(myTable);
     TableColumnModel columnModel = myTable.getColumnModel();
@@ -179,7 +180,7 @@ public class RunMigrationScriptsDialog extends JDialog {
     List<SNodeReference> list = ListSequence.fromList(new ArrayList<SNodeReference>());
     int[] ints = myTable.getSelectedRows();
     for (int anInt : ints) {
-      int modelIndex = ((RunMigrationScriptsDialog.MySortingTableModel) myTable.getModel()).convertRowIndexToModel(anInt);
+      int modelIndex = ((MySortingTableModel) myTable.getModel()).convertRowIndexToModel(anInt);
       ListSequence.fromList(list).addElement(ListSequence.fromList(myScripts).getElement(modelIndex));
     }
     return list;
@@ -188,7 +189,7 @@ public class RunMigrationScriptsDialog extends JDialog {
     List<SNodeReference> list = ListSequence.fromList(new ArrayList<SNodeReference>());
     int count = myTable.getModel().getRowCount();
     for (int i = 0; i < count; i++) {
-      if (((RunMigrationScriptsDialog.MySortingTableModel) myTable.getModel()).isChecked(i)) {
+      if (((MySortingTableModel) myTable.getModel()).isChecked(i)) {
         ListSequence.fromList(list).addElement(ListSequence.fromList(myScripts).getElement(i));
       }
     }
@@ -221,7 +222,7 @@ public class RunMigrationScriptsDialog extends JDialog {
       final SRepository repo = myProject.getRepository();
       repo.getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          SNode sn = SNodeOperations.cast(ListSequence.fromList(myScripts).getElement(row).resolve(repo), MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript"));
+          SNode sn = SNodeOperations.cast(ListSequence.fromList(myScripts).getElement(row).resolve(repo), AUX_cjy56u.MigrationScript_eaf59bfd);
           if (column == 0) {
             result.value = mySelectedScriptIds.contains(SNodeOperations.getPointer(sn));
           } else if (column == 1) {
@@ -250,7 +251,7 @@ public class RunMigrationScriptsDialog extends JDialog {
       super.setValueAt(aValue, row, column);
     }
   }
-  private class MySortingTableModel extends RunMigrationScriptsDialog.MyTableModel {
+  private class MySortingTableModel extends MyTableModel {
     private static final int NONE = 0;
     private static final int ASC = 1;
     private static final int DESC = 2;
@@ -305,11 +306,11 @@ public class RunMigrationScriptsDialog extends JDialog {
             Component c = table.getTableHeader().getDefaultRenderer().getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             column = table.convertColumnIndexToModel(column);
             if (mySortedColumn == column) {
-              if (mySortingOrder == RunMigrationScriptsDialog.MySortingTableModel.ASC) {
-                ((JLabel) c).setIcon(new RunMigrationScriptsDialog.MyDownIcon(7));
+              if (mySortingOrder == MySortingTableModel.ASC) {
+                ((JLabel) c).setIcon(new MyDownIcon(7));
               } else
-              if (mySortingOrder == RunMigrationScriptsDialog.MySortingTableModel.DESC) {
-                ((JLabel) c).setIcon(new RunMigrationScriptsDialog.MyUpIcon(8));
+              if (mySortingOrder == MySortingTableModel.DESC) {
+                ((JLabel) c).setIcon(new MyUpIcon(8));
               } else
               ((JLabel) c).setIcon(null);
             } else {
@@ -328,20 +329,20 @@ public class RunMigrationScriptsDialog extends JDialog {
           if (col == 0) {
             return;
           }
-          int sortingOrder = RunMigrationScriptsDialog.MySortingTableModel.ASC;
+          int sortingOrder = MySortingTableModel.ASC;
           if (mySortedColumn == col) {
-            if (mySortingOrder == RunMigrationScriptsDialog.MySortingTableModel.NONE) {
-              sortingOrder = RunMigrationScriptsDialog.MySortingTableModel.ASC;
+            if (mySortingOrder == MySortingTableModel.NONE) {
+              sortingOrder = MySortingTableModel.ASC;
             }
-            if (mySortingOrder == RunMigrationScriptsDialog.MySortingTableModel.ASC) {
-              sortingOrder = RunMigrationScriptsDialog.MySortingTableModel.DESC;
+            if (mySortingOrder == MySortingTableModel.ASC) {
+              sortingOrder = MySortingTableModel.DESC;
             }
-            if (mySortingOrder == RunMigrationScriptsDialog.MySortingTableModel.DESC) {
-              sortingOrder = RunMigrationScriptsDialog.MySortingTableModel.NONE;
+            if (mySortingOrder == MySortingTableModel.DESC) {
+              sortingOrder = MySortingTableModel.NONE;
             }
           } else {
-            if (mySortingOrder == RunMigrationScriptsDialog.MySortingTableModel.NONE) {
-              sortingOrder = RunMigrationScriptsDialog.MySortingTableModel.ASC;
+            if (mySortingOrder == MySortingTableModel.NONE) {
+              sortingOrder = MySortingTableModel.ASC;
             } else
             sortingOrder = mySortingOrder;
           }
@@ -425,5 +426,9 @@ public class RunMigrationScriptsDialog extends JDialog {
     public int getIconHeight() {
       return mySize + myYoff;
     }
+  }
+
+  private static final class AUX_cjy56u {
+    /*package*/ static final SConcept MigrationScript_eaf59bfd = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
   }
 }

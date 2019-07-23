@@ -31,11 +31,11 @@ public class TestAnalyzerWithModeSpecified_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck2955426575106132885() throws Throwable {
-    new TestAnalyzerWithModeSpecified_Test.TestBody(this).test_ErrorMessagesCheck2955426575106132885();
+    new TestBody(this).test_ErrorMessagesCheck2955426575106132885();
   }
   @Test
   public void test_NodeErrorCheck2955426575106132965() throws Throwable {
-    new TestAnalyzerWithModeSpecified_Test.TestBody(this).test_NodeErrorCheck2955426575106132965();
+    new TestBody(this).test_NodeErrorCheck2955426575106132965();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

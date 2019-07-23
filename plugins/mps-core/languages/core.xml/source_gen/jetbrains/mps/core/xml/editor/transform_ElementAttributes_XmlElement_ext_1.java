@@ -23,13 +23,13 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -46,6 +46,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class transform_ElementAttributes_XmlElement_ext_1 extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -71,8 +72,8 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new transform_ElementAttributes_XmlElement_ext_1.TMP_WrapSM_gxyyd8_a0());
-      result.add(new transform_ElementAttributes_XmlElement_ext_1.TMP_Group_gxyyd8_b0());
+      result.add(new TMP_WrapSM_gxyyd8_a0());
+      result.add(new TMP_Group_gxyyd8_b0());
     }
     return result;
   }
@@ -98,7 +99,7 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b3L, "jetbrains.mps.core.xml.structure.XmlBaseAttribute");
+      return AUX_gxyyd8.XmlBaseAttribute_6047438d;
     }
 
 
@@ -147,12 +148,12 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new transform_ElementAttributes_XmlElement_ext_1.TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a());
     }
     private class TMP_Action_gxyyd8_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        transform_ElementAttributes_XmlElement_ext_1.TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a.Item item = new transform_ElementAttributes_XmlElement_ext_1.TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a.Item(context);
+        TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a.Item item = new TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -215,5 +216,9 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
       }
 
     }
+  }
+
+  private static final class AUX_gxyyd8 {
+    /*package*/ static final SConcept XmlBaseAttribute_6047438d = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b3L, "jetbrains.mps.core.xml.structure.XmlBaseAttribute");
   }
 }

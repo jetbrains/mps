@@ -9,7 +9,6 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -19,6 +18,8 @@ import jetbrains.mps.generator.impl.plan.GenerationPlan;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DeriveGenPlanModel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -39,7 +40,7 @@ public class DeriveGenPlanModel_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_d31sgf.Plan_4c7f418c))) {
         node = null;
       }
       if (node == null) {
@@ -85,5 +86,9 @@ public class DeriveGenPlanModel_Action extends BaseAction {
         }
       }
     });
+  }
+
+  private static final class AUX_d31sgf {
+    /*package*/ static final SConcept Plan_4c7f418c = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan");
   }
 }

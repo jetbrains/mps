@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -20,13 +19,16 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MoveRefactoringUtils {
   public MoveRefactoringUtils() {
   }
   public static void addNodeAtLink(SNode container, SNode node) {
-    if (SNodeOperations.isInstanceOf(container, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")) && SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))) {
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(container, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember")));
+    if (SNodeOperations.isInstanceOf(container, AUX_rpe1sx.Classifier_4b7e553) && SNodeOperations.isInstanceOf(node, AUX_rpe1sx.ClassifierMember_849b47d7)) {
+      MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(container, AUX_rpe1sx.Classifier_4b7e553), SNodeOperations.cast(node, AUX_rpe1sx.ClassifierMember_849b47d7));
     } else {
       SAbstractConcept concept = SNodeOperations.getConcept(node);
       for (SContainmentLink link : CollectionSequence.fromCollection(SNodeOperations.getConcept(container).getContainmentLinks())) {
@@ -62,7 +64,7 @@ public class MoveRefactoringUtils {
     addImportIfNeed(SNodeOperations.getModel(node), SNodeOperations.getModel(toImport));
   }
   public static void fixImportsFromNode(SNode node) {
-    for (SNode descendant : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), false, new SAbstractConcept[]{}))) {
+    for (SNode descendant : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, AUX_rpe1sx.BaseConcept_bc2351f, false, new SAbstractConcept[]{}))) {
       for (SReference reference : ListSequence.fromList(SNodeOperations.getReferences(descendant))) {
         addNodeModelImportIfNeed(node, SLinkOperations.getTargetNode(reference));
       }
@@ -70,5 +72,11 @@ public class MoveRefactoringUtils {
   }
   public static boolean isReference(SNode node) {
     return ListSequence.fromList(SNodeOperations.getChildren(node)).isEmpty() && ListSequence.fromList(SNodeOperations.getReferences(node)).count() == 1;
+  }
+
+  private static final class AUX_rpe1sx {
+    /*package*/ static final SInterfaceConcept ClassifierMember_849b47d7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

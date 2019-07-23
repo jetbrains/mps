@@ -4,7 +4,6 @@ package jetbrains.mps.samples.requirementTracking.RequirementDefinition.behavior
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -15,12 +14,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class Entry__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, "jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.Entry");
+  private static final SAbstractConcept CONCEPT = AUX_pptgt5.Entry_bbfb6de3;
 
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
 
@@ -80,5 +81,9 @@ public final class Entry__BehaviorDescriptor extends BaseBHDescriptor {
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
+  }
+
+  private static final class AUX_pptgt5 {
+    /*package*/ static final SConcept Entry_bbfb6de3 = MetaAdapterFactory.getConcept(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, "jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.Entry");
   }
 }

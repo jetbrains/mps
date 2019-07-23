@@ -6,7 +6,6 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -27,6 +26,8 @@ import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConceptInstances_Finder extends GeneratedFinder {
   private static final Logger LOG = LogManager.getLogger(ConceptInstances_Finder.class);
@@ -42,7 +43,7 @@ public class ConceptInstances_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    return AUX_jb2bwn.AbstractConceptDeclaration_ec74828f;
   }
 
   @Override
@@ -98,5 +99,9 @@ public class ConceptInstances_Finder extends GeneratedFinder {
       return checkedDotOperand.getModel();
     }
     return null;
+  }
+
+  private static final class AUX_jb2bwn {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

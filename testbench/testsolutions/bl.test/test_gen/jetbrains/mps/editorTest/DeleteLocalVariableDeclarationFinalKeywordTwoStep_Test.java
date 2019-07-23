@@ -23,7 +23,7 @@ public class DeleteLocalVariableDeclarationFinalKeywordTwoStep_Test extends Base
 
   @Test
   public void test_DeleteLocalVariableDeclarationFinalKeywordTwoStep() throws Throwable {
-    new DeleteLocalVariableDeclarationFinalKeywordTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

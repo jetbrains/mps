@@ -21,7 +21,7 @@ public class AddMenuPart_WrapperSubstitute_returnSmallPart_Test extends BaseTran
 
   @Test
   public void test_AddMenuPart_WrapperSubstitute_returnSmallPart() throws Throwable {
-    new AddMenuPart_WrapperSubstitute_returnSmallPart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

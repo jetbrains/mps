@@ -37,7 +37,7 @@ public class ChangeParameterName_Test extends BaseTransformationTest {
 
   @Test
   public void test_ChangeParameterName() throws Throwable {
-    new ChangeParameterName_Test.TestBody(this).test_ChangeParameterName();
+    new TestBody(this).test_ChangeParameterName();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

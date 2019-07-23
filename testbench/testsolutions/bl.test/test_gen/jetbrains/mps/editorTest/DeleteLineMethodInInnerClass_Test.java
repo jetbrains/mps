@@ -22,7 +22,7 @@ public class DeleteLineMethodInInnerClass_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteLineMethodInInnerClass() throws Throwable {
-    new DeleteLineMethodInInnerClass_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

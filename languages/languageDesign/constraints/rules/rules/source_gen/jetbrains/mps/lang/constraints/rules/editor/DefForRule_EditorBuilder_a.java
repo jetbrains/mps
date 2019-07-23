@@ -45,6 +45,7 @@ import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.RefCellCellProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDefsAreDefinedHintStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class DefForRule_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -106,7 +107,7 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_65bqu0.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -133,7 +134,7 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new DefForRule_EditorBuilder_a.typeSingleRoleHandler_sv5oqe_c1a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x4bf59690bc00f6afL, "type"), getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_sv5oqe_c1a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x4bf59690bc00f6afL, "type"), getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_sv5oqe_c1a extends SingleRoleCellProvider {
@@ -202,11 +203,11 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
     return editorCell;
   }
   private EditorCell createRefCell_0() {
-    CellProviderWithRole provider = new RefCellCellProvider(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x126f1320a26da4abL, "expr"), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, "jetbrains.mps.lang.constraints.rules.structure.ExpressionWrapper"), "expr", getEditorContext()) {
+    CellProviderWithRole provider = new RefCellCellProvider(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x126f1320a26da4abL, "expr"), AUX_65bqu0.ExpressionWrapper_57946a02, "expr", getEditorContext()) {
 
       @Override
       protected EditorCell createRefCell(EditorContext context, SNode effectiveNode, SNode node) {
-        EditorCell cell = new DefForRule_EditorBuilder_a.Inline_Builder0(getEditorContext(), myNode, effectiveNode).createCell();
+        EditorCell cell = new Inline_Builder0(getEditorContext(), myNode, effectiveNode).createCell();
         installDeleteActions_notnull(cell);
         return cell;
       }
@@ -254,7 +255,7 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
       return editorCell;
     }
     private EditorCell createRefNode_1() {
-      SingleRoleCellProvider provider = new DefForRule_EditorBuilder_a.Inline_Builder0.expressionSingleRoleHandler_sv5oqe_a0a3a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression"), getEditorContext());
+      SingleRoleCellProvider provider = new Inline_Builder0.expressionSingleRoleHandler_sv5oqe_a0a3a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression"), getEditorContext());
       return provider.createCell();
     }
     private static class expressionSingleRoleHandler_sv5oqe_a0a3a extends SingleRoleCellProvider {
@@ -365,5 +366,10 @@ import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDe
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_65bqu0 {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept ExpressionWrapper_57946a02 = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, "jetbrains.mps.lang.constraints.rules.structure.ExpressionWrapper");
   }
 }

@@ -22,7 +22,7 @@ public class SideDeleteAtEndWithBackSpace_Test extends BaseTransformationTest {
 
   @Test
   public void test_SideDeleteAtEndWithBackSpace() throws Throwable {
-    new SideDeleteAtEndWithBackSpace_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

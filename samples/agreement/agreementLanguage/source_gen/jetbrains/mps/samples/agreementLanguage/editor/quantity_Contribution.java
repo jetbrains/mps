@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -20,8 +19,10 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class quantity_Contribution extends SubstituteMenuBase {
   public quantity_Contribution() {
@@ -31,8 +32,8 @@ public class quantity_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new quantity_Contribution.SMP_Action_82pfaq_a(), MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new quantity_Contribution.SMP_Action_82pfaq_b(), MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_82pfaq_a(), AUX_82pfaq.Quantity_9118c74));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_82pfaq_b(), AUX_82pfaq.Quantity_9118c74));
     return result;
   }
 
@@ -54,7 +55,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      quantity_Contribution.SMP_Action_82pfaq_a.Item item = new quantity_Contribution.SMP_Action_82pfaq_a.Item(_context);
+      SMP_Action_82pfaq_a.Item item = new SMP_Action_82pfaq_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -77,7 +78,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"), context);
+        super(AUX_82pfaq.Quantity_9118c74, context);
         _context = context;
       }
 
@@ -135,7 +136,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      quantity_Contribution.SMP_Action_82pfaq_b.Item item = new quantity_Contribution.SMP_Action_82pfaq_b.Item(_context);
+      SMP_Action_82pfaq_b.Item item = new SMP_Action_82pfaq_b.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -158,7 +159,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"), context);
+        super(AUX_82pfaq.Quantity_9118c74, context);
         _context = context;
       }
 
@@ -207,5 +208,9 @@ public class quantity_Contribution extends SubstituteMenuBase {
         return pattern.matches("[0-9]+\\.?[0-9]*");
       }
     }
+  }
+
+  private static final class AUX_82pfaq {
+    /*package*/ static final SConcept Quantity_9118c74 = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity");
   }
 }

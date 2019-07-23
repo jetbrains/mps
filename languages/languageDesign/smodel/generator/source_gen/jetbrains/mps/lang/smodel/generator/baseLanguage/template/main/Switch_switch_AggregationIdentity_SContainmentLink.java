@@ -17,14 +17,15 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Switch_switch_AggregationIdentity_SContainmentLink extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_AggregationIdentity_SContainmentLink() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_AggregationIdentity_SContainmentLink.ReductionRule0());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486285");
@@ -46,7 +47,7 @@ public class Switch_switch_AggregationIdentity_SContainmentLink extends Template
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486286"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486286"), AUX_u5tgn0.ContainmentLinkId_66fae691, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -54,5 +55,9 @@ public class Switch_switch_AggregationIdentity_SContainmentLink extends Template
       Collection<SNode> tlist1 = new Template_reduce_ContainmentLinkId_SContainmentLink().apply(environment, context);
       return tlist1;
     }
+  }
+
+  private static final class AUX_u5tgn0 {
+    /*package*/ static final SConcept ContainmentLinkId_66fae691 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId");
   }
 }

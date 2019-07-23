@@ -21,7 +21,7 @@ public class Subst_MultiChildWithCustomEmptyCellAndInsert_AddNewChildByEnter_Tes
 
   @Test
   public void test_Subst_MultiChildWithCustomEmptyCellAndInsert_AddNewChildByEnter() throws Throwable {
-    new Subst_MultiChildWithCustomEmptyCellAndInsert_AddNewChildByEnter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

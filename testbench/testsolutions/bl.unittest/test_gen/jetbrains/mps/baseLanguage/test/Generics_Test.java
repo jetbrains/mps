@@ -32,199 +32,199 @@ public class Generics_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck4246614868164066795() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck4246614868164066795();
+    new TestBody(this).test_ErrorMessagesCheck4246614868164066795();
   }
   @Test
   public void test_ErrorMessagesCheck4246614868164066847() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck4246614868164066847();
+    new TestBody(this).test_ErrorMessagesCheck4246614868164066847();
   }
   @Test
   public void test_ErrorMessagesCheck4246614868164066877() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck4246614868164066877();
+    new TestBody(this).test_ErrorMessagesCheck4246614868164066877();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929210654() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929210654();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929210654();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526512802146() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526512802146();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526512802146();
   }
   @Test
   public void test_ErrorMessagesCheck4246614868164066940() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck4246614868164066940();
+    new TestBody(this).test_ErrorMessagesCheck4246614868164066940();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624928769094() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeTypeSystemCheck6923385624928769094();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624928769094();
   }
   @Test
   public void test_ErrorMessagesCheck4246614868164066979() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck4246614868164066979();
+    new TestBody(this).test_ErrorMessagesCheck4246614868164066979();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624928697593() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeTypeSystemCheck6923385624928697593();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624928697593();
   }
   @Test
   public void test_ErrorMessagesCheck75433039838559829() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck75433039838559829();
+    new TestBody(this).test_ErrorMessagesCheck75433039838559829();
   }
   @Test
   public void test_NodeErrorCheck2432481583488315187() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488315187();
+    new TestBody(this).test_NodeErrorCheck2432481583488315187();
   }
   @Test
   public void test_NodeErrorCheck2432481583488449834() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488449834();
+    new TestBody(this).test_NodeErrorCheck2432481583488449834();
   }
   @Test
   public void test_NodeErrorCheck2432481583488320706() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488320706();
+    new TestBody(this).test_NodeErrorCheck2432481583488320706();
   }
   @Test
   public void test_NodeErrorCheck2432481583492117057() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583492117057();
+    new TestBody(this).test_NodeErrorCheck2432481583492117057();
   }
   @Test
   public void test_NodeErrorCheck2432481583489448272() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583489448272();
+    new TestBody(this).test_NodeErrorCheck2432481583489448272();
   }
   @Test
   public void test_NodeErrorCheck2432481583489437018() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583489437018();
+    new TestBody(this).test_NodeErrorCheck2432481583489437018();
   }
   @Test
   public void test_ErrorMessagesCheck2989670514234060636() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck2989670514234060636();
+    new TestBody(this).test_ErrorMessagesCheck2989670514234060636();
   }
   @Test
   public void test_NodeErrorCheck2432481583488337419() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488337419();
+    new TestBody(this).test_NodeErrorCheck2432481583488337419();
   }
   @Test
   public void test_NodeErrorCheck2432481583488343374() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488343374();
+    new TestBody(this).test_NodeErrorCheck2432481583488343374();
   }
   @Test
   public void test_NodeErrorCheck2432481583488470122() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488470122();
+    new TestBody(this).test_NodeErrorCheck2432481583488470122();
   }
   @Test
   public void test_NodeErrorCheck2432481583488407475() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488407475();
+    new TestBody(this).test_NodeErrorCheck2432481583488407475();
   }
   @Test
   public void test_NodeErrorCheck2432481583488467292() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488467292();
+    new TestBody(this).test_NodeErrorCheck2432481583488467292();
   }
   @Test
   public void test_NodeErrorCheck2432481583493095176() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583493095176();
+    new TestBody(this).test_NodeErrorCheck2432481583493095176();
   }
   @Test
   public void test_ErrorMessagesCheck2989670514234102966() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck2989670514234102966();
+    new TestBody(this).test_ErrorMessagesCheck2989670514234102966();
   }
   @Test
   public void test_NodeErrorCheck2432481583488519701() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488519701();
+    new TestBody(this).test_NodeErrorCheck2432481583488519701();
   }
   @Test
   public void test_NodeErrorCheck2432481583489284037() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583489284037();
+    new TestBody(this).test_NodeErrorCheck2432481583489284037();
   }
   @Test
   public void test_ErrorMessagesCheck2989670514234103616() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck2989670514234103616();
+    new TestBody(this).test_ErrorMessagesCheck2989670514234103616();
   }
   @Test
   public void test_NodeWildcardTypeArgumentExplicitlyCheck2432481583493875687() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeWildcardTypeArgumentExplicitlyCheck2432481583493875687();
+    new TestBody(this).test_NodeWildcardTypeArgumentExplicitlyCheck2432481583493875687();
   }
   @Test
   public void test_NodeErrorCheck2432481583488437090() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488437090();
+    new TestBody(this).test_NodeErrorCheck2432481583488437090();
   }
   @Test
   public void test_NodeErrorCheck2432481583488437096() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488437096();
+    new TestBody(this).test_NodeErrorCheck2432481583488437096();
   }
   @Test
   public void test_NodeErrorCheck2432481583488572526() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488572526();
+    new TestBody(this).test_NodeErrorCheck2432481583488572526();
   }
   @Test
   public void test_NodeErrorCheck5450156852667865188() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck5450156852667865188();
+    new TestBody(this).test_NodeErrorCheck5450156852667865188();
   }
   @Test
   public void test_NodeErrorCheck5450156852667875900() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck5450156852667875900();
+    new TestBody(this).test_NodeErrorCheck5450156852667875900();
   }
   @Test
   public void test_NodeErrorCheck2432481583489259581() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583489259581();
+    new TestBody(this).test_NodeErrorCheck2432481583489259581();
   }
   @Test
   public void test_ErrorMessagesCheck2989670514234103631() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck2989670514234103631();
+    new TestBody(this).test_ErrorMessagesCheck2989670514234103631();
   }
   @Test
   public void test_NodeErrorCheck2432481583488625033() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583488625033();
+    new TestBody(this).test_NodeErrorCheck2432481583488625033();
   }
   @Test
   public void test_NodeErrorCheck2432481583489271447() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck2432481583489271447();
+    new TestBody(this).test_NodeErrorCheck2432481583489271447();
   }
   @Test
   public void test_ErrorMessagesCheck2989670514234104686() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck2989670514234104686();
+    new TestBody(this).test_ErrorMessagesCheck2989670514234104686();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck2432481583489075236() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck2432481583489075236();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck2432481583489075236();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck2501421320960473492() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeUnusedLocalVariableCheck2501421320960473492();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck2501421320960473492();
   }
   @Test
   public void test_NodeTypeSystemCheck2501421320960473494() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeTypeSystemCheck2501421320960473494();
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960473494();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck2432481583489092952() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck2432481583489092952();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck2432481583489092952();
   }
   @Test
   public void test_NodeVariableIsAlreadyDefinedCheck2501421320960494505() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeVariableIsAlreadyDefinedCheck2501421320960494505();
+    new TestBody(this).test_NodeVariableIsAlreadyDefinedCheck2501421320960494505();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck2501421320960494507() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeUnusedLocalVariableCheck2501421320960494507();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck2501421320960494507();
   }
   @Test
   public void test_NodeTypeSystemCheck2501421320960494509() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeTypeSystemCheck2501421320960494509();
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960494509();
   }
   @Test
   public void test_ErrorMessagesCheck2989670514234105331() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck2989670514234105331();
+    new TestBody(this).test_ErrorMessagesCheck2989670514234105331();
   }
   @Test
   public void test_ErrorMessagesCheck7817233971112259125() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck7817233971112259125();
+    new TestBody(this).test_ErrorMessagesCheck7817233971112259125();
   }
   @Test
   public void test_ErrorMessagesCheck9160103748839840155() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck9160103748839840155();
+    new TestBody(this).test_ErrorMessagesCheck9160103748839840155();
   }
   @Test
   public void test_ErrorMessagesCheck6579380390974739222() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck6579380390974739222();
+    new TestBody(this).test_ErrorMessagesCheck6579380390974739222();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

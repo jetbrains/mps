@@ -21,7 +21,7 @@ public class RemoveVolatileInStaticFieldBackspace_Test extends BaseTransformatio
 
   @Test
   public void test_RemoveVolatileInStaticFieldBackspace() throws Throwable {
-    new RemoveVolatileInStaticFieldBackspace_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

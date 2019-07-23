@@ -122,8 +122,8 @@ public class EditorCell_Table extends EditorCell_Collection {
               }
             });
           }
-          editorCell.setAction(CellActionType.SELECT_PREVIOUS, new EditorCell_Table.SelectColumnAction(finalColumn, editorCell.getAction(CellActionType.SELECT_PREVIOUS)));
-          editorCell.setAction(CellActionType.SELECT_NEXT, new EditorCell_Table.SelectColumnAction(finalColumn, editorCell.getAction(CellActionType.SELECT_NEXT)));
+          editorCell.setAction(CellActionType.SELECT_PREVIOUS, new SelectColumnAction(finalColumn, editorCell.getAction(CellActionType.SELECT_PREVIOUS)));
+          editorCell.setAction(CellActionType.SELECT_NEXT, new SelectColumnAction(finalColumn, editorCell.getAction(CellActionType.SELECT_NEXT)));
           editorCell.setSubstituteInfo(myModel.getSubstituteInfo(row, column));
           if (editorCell.getCellId() == null) {
             editorCell.setCellId(rowId + "_column_" + column);

@@ -19,7 +19,7 @@ import java.io.OutputStream;
 import java.io.InputStream;
 
 public class FileProcessor {
-  private final List<FileProcessor.FileContent> myFilesAndContents = new ArrayList<FileProcessor.FileContent>();
+  private final List<FileContent> myFilesAndContents = new ArrayList<FileContent>();
   private final List<IFile> myFilesToDelete = new ArrayList<IFile>();
   private final IMessageHandler myMessageHandler;
 
@@ -28,7 +28,7 @@ public class FileProcessor {
   }
 
   public boolean saveContent(IFile file, String content) {
-    return saveContent(new FileProcessor.FileContent(file, content.getBytes(FileUtil.DEFAULT_CHARSET)));
+    return saveContent(new FileContent(file, content.getBytes(FileUtil.DEFAULT_CHARSET)));
   }
 
   public boolean saveContent(IFile file, Element content) {
@@ -48,14 +48,14 @@ public class FileProcessor {
       msg.setHintObject(file);
       myMessageHandler.handle(msg);
     }
-    return saveContent(new FileProcessor.FileContent(file, bos.toByteArray()));
+    return saveContent(new FileContent(file, bos.toByteArray()));
   }
 
   public boolean saveContent(IFile file, byte[] content) {
-    return saveContent(new FileProcessor.FileContent(file, content));
+    return saveContent(new FileContent(file, content));
   }
 
-  private boolean saveContent(FileProcessor.FileContent fileContent) {
+  private boolean saveContent(FileContent fileContent) {
     // XXX though it seems more honest to collect all fileContent 
     //     and make decision whether isChanged right before the write operation 
     //     I need to tell written/touch at this moment, therefore isChanged is here 
@@ -71,7 +71,7 @@ public class FileProcessor {
     myFilesToDelete.addAll(files);
   }
   public void flushChanges() {
-    for (FileProcessor.FileContent fileContent : myFilesAndContents) {
+    for (FileContent fileContent : myFilesAndContents) {
       fileContent.saveToFile(myMessageHandler);
     }
     for (IFile file : myFilesToDelete) {

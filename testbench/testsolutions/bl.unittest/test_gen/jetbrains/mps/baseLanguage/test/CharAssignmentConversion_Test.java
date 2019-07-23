@@ -31,55 +31,55 @@ public class CharAssignmentConversion_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck7223665169660103878() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660103878();
+    new TestBody(this).test_NodeErrorCheck7223665169660103878();
   }
   @Test
   public void test_NodeErrorCheck7223665169660123927() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660123927();
+    new TestBody(this).test_NodeErrorCheck7223665169660123927();
   }
   @Test
   public void test_NodeErrorCheck7223665169660160142() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660160142();
+    new TestBody(this).test_NodeErrorCheck7223665169660160142();
   }
   @Test
   public void test_NodeErrorCheck7223665169660143447() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660143447();
+    new TestBody(this).test_NodeErrorCheck7223665169660143447();
   }
   @Test
   public void test_NodeWarningCheck7223665169660183281() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeWarningCheck7223665169660183281();
+    new TestBody(this).test_NodeWarningCheck7223665169660183281();
   }
   @Test
   public void test_NodeWarningCheck7223665169660183443() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeWarningCheck7223665169660183443();
+    new TestBody(this).test_NodeWarningCheck7223665169660183443();
   }
   @Test
   public void test_NodeWarningCheck7223665169660183621() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeWarningCheck7223665169660183621();
+    new TestBody(this).test_NodeWarningCheck7223665169660183621();
   }
   @Test
   public void test_NodeErrorCheck7223665169660172859() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660172859();
+    new TestBody(this).test_NodeErrorCheck7223665169660172859();
   }
   @Test
   public void test_NodeWarningCheck7223665169660183784() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeWarningCheck7223665169660183784();
+    new TestBody(this).test_NodeWarningCheck7223665169660183784();
   }
   @Test
   public void test_NodeErrorCheck7223665169660183937() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660183937();
+    new TestBody(this).test_NodeErrorCheck7223665169660183937();
   }
   @Test
   public void test_NodeErrorCheck7223665169660313242() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660313242();
+    new TestBody(this).test_NodeErrorCheck7223665169660313242();
   }
   @Test
   public void test_NodeErrorCheck7223665169660313416() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_NodeErrorCheck7223665169660313416();
+    new TestBody(this).test_NodeErrorCheck7223665169660313416();
   }
   @Test
   public void test_ErrorMessagesCheck7223665169660100154() throws Throwable {
-    new CharAssignmentConversion_Test.TestBody(this).test_ErrorMessagesCheck7223665169660100154();
+    new TestBody(this).test_ErrorMessagesCheck7223665169660100154();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

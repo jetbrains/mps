@@ -131,7 +131,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MapSrcNodeMacro_InspectorBuilder_a.sourceNodeQuerySingleRoleHandler_dms3bp_c2c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11003064fa9L, "sourceNodeQuery"), getEditorContext());
+    SingleRoleCellProvider provider = new sourceNodeQuerySingleRoleHandler_dms3bp_c2c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11003064fa9L, "sourceNodeQuery"), getEditorContext());
     return provider.createCell();
   }
   private static class sourceNodeQuerySingleRoleHandler_dms3bp_c2c0 extends SingleRoleCellProvider {
@@ -218,7 +218,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new MapSrcNodeMacro_InspectorBuilder_a.mapperFunctionSingleRoleHandler_dms3bp_c3c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11094b2b653L, "mapperFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new mapperFunctionSingleRoleHandler_dms3bp_c3c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11094b2b653L, "mapperFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class mapperFunctionSingleRoleHandler_dms3bp_c3c0 extends SingleRoleCellProvider {
@@ -302,7 +302,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new MapSrcNodeMacro_InspectorBuilder_a.postMapperFunctionSingleRoleHandler_dms3bp_c4c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11d455be680L, "postMapperFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new postMapperFunctionSingleRoleHandler_dms3bp_c4c0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11d455be680L, "postMapperFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class postMapperFunctionSingleRoleHandler_dms3bp_c4c0 extends SingleRoleCellProvider {

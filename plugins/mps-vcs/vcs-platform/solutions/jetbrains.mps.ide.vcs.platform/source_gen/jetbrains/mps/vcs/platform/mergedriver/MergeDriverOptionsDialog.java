@@ -25,21 +25,21 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
   private JPanel myPanel = new JPanel(new GridLayout(0, 1));
   private JPanel myMainPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
   private Project myProject;
-  private MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalConfigFixesInstaller> myGitFixes;
-  private MergeDriverOptionsDialog.InstallerCheckBox<GitMergeDriverInstaller> myGitDriver;
-  private MergeDriverOptionsDialog.InstallerCheckBox<GitRepositoriesInstaller> myGitRepos;
-  private MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller> myCommonSvn;
-  private MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller> myIdeSvn;
+  private InstallerCheckBox<GitGlobalConfigFixesInstaller> myGitFixes;
+  private InstallerCheckBox<GitMergeDriverInstaller> myGitDriver;
+  private InstallerCheckBox<GitRepositoriesInstaller> myGitRepos;
+  private InstallerCheckBox<SvnInstaller> myCommonSvn;
+  private InstallerCheckBox<SvnInstaller> myIdeSvn;
   public MergeDriverOptionsDialog(Project project) {
     super(project);
     setTitle("MPS VCS Add-ons");
     // TODO get rid of code duplication 
     myProject = project;
-    myGitFixes = new MergeDriverOptionsDialog.InstallerCheckBox<GitGlobalConfigFixesInstaller>(new GitGlobalConfigFixesInstaller(myProject));
-    myGitDriver = new MergeDriverOptionsDialog.InstallerCheckBox<GitMergeDriverInstaller>(new GitMergeDriverInstaller(myProject));
-    myGitRepos = new MergeDriverOptionsDialog.InstallerCheckBox<GitRepositoriesInstaller>(new GitRepositoriesInstaller(myProject));
-    myCommonSvn = new MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller>(new SvnInstaller(myProject, false));
-    myIdeSvn = new MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller>(new SvnInstaller(myProject, true));
+    myGitFixes = new InstallerCheckBox<GitGlobalConfigFixesInstaller>(new GitGlobalConfigFixesInstaller(myProject));
+    myGitDriver = new InstallerCheckBox<GitMergeDriverInstaller>(new GitMergeDriverInstaller(myProject));
+    myGitRepos = new InstallerCheckBox<GitRepositoriesInstaller>(new GitRepositoriesInstaller(myProject));
+    myCommonSvn = new InstallerCheckBox<SvnInstaller>(new SvnInstaller(myProject, false));
+    myIdeSvn = new InstallerCheckBox<SvnInstaller>(new SvnInstaller(myProject, true));
     if (myCommonSvn.myInstaller.sameAs(myIdeSvn.myInstaller)) {
       myIdeSvn = null;
     }

@@ -4,7 +4,6 @@ package jetbrains.mps.testbench.suite.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,6 +15,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -23,9 +23,10 @@ import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescrip
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TestCaseRef__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, "jetbrains.mps.testbench.suite.structure.TestCaseRef");
+  private static final SAbstractConcept CONCEPT = AUX_hvywsp.TestCaseRef_e5f1f89f;
 
   public static final SMethod<Boolean> isSame_id1ouvi_ymQH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSame").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1ouvi_ymQH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> fqClassName_id2$98zG5liRT = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("fqClassName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2$98zG5liRT").build();
@@ -37,14 +38,14 @@ public final class TestCaseRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isSame_id1ouvi_ymQH(@NotNull SNode __thisNode__, SNode testRef) {
-    return SLinkOperations.getTarget(SNodeOperations.as(testRef, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, "jetbrains.mps.testbench.suite.structure.TestCaseRef")), MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase")) == SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase"));
+    return SLinkOperations.getTarget(SNodeOperations.as(testRef, AUX_hvywsp.TestCaseRef_e5f1f89f), MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase")) == SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase"));
   }
   /*package*/ static String fqClassName_id2$98zG5liRT(@NotNull SNode __thisNode__) {
     return (String) ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase")));
   }
   /*package*/ static Iterable<String> testNames_id3z1mdFUF$j3(@NotNull SNode __thisNode__) {
     List<SNode> testMethods;
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase")), MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase")), AUX_hvywsp.NodesTestCase_fd5a0bf4)) {
       testMethods = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase")));
     } else {
       testMethods = ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase")));
@@ -104,5 +105,10 @@ public final class TestCaseRef__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_hvywsp {
+    /*package*/ static final SConcept TestCaseRef_e5f1f89f = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, "jetbrains.mps.testbench.suite.structure.TestCaseRef");
+    /*package*/ static final SConcept NodesTestCase_fd5a0bf4 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

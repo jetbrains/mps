@@ -21,7 +21,7 @@ public class AddFinalBeforeClass_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddFinalBeforeClass() throws Throwable {
-    new AddFinalBeforeClass_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

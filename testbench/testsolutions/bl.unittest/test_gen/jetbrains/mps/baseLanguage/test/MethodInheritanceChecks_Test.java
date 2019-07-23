@@ -32,159 +32,159 @@ public class MethodInheritanceChecks_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeCyclicInheritanceInvolvingCheck7861981782410361587() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeCyclicInheritanceInvolvingCheck7861981782410361587();
+    new TestBody(this).test_NodeCyclicInheritanceInvolvingCheck7861981782410361587();
   }
   @Test
   public void test_NodeCyclicInheritanceInvolvingCheck7861981782410359293() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeCyclicInheritanceInvolvingCheck7861981782410359293();
+    new TestBody(this).test_NodeCyclicInheritanceInvolvingCheck7861981782410359293();
   }
   @Test
   public void test_NodeCyclicInheritanceInvolvingCheck7861981782410359259() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeCyclicInheritanceInvolvingCheck7861981782410359259();
+    new TestBody(this).test_NodeCyclicInheritanceInvolvingCheck7861981782410359259();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302563587016() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302563587016();
+    new TestBody(this).test_ErrorMessagesCheck3950519302563587016();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302603974449() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302603974449();
+    new TestBody(this).test_ErrorMessagesCheck3950519302603974449();
   }
   @Test
   public void test_NodeUnnamedErrorCheck7861981782411092996() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck7861981782411092996();
+    new TestBody(this).test_NodeUnnamedErrorCheck7861981782411092996();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302575606551() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302575606551();
+    new TestBody(this).test_ErrorMessagesCheck3950519302575606551();
   }
   @Test
   public void test_NodeUnnamedErrorCheck7861981782411093192() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck7861981782411093192();
+    new TestBody(this).test_NodeUnnamedErrorCheck7861981782411093192();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302603978920() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302603978920();
+    new TestBody(this).test_ErrorMessagesCheck3950519302603978920();
   }
   @Test
   public void test_NodeUnnamedErrorCheck824450455580543375() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck824450455580543375();
+    new TestBody(this).test_NodeUnnamedErrorCheck824450455580543375();
   }
   @Test
   public void test_NodeUnnamedErrorCheck824450455580547533() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeUnnamedErrorCheck824450455580547533();
+    new TestBody(this).test_NodeUnnamedErrorCheck824450455580547533();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763767112969() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3031388763767112969();
+    new TestBody(this).test_ErrorMessagesCheck3031388763767112969();
   }
   @Test
   public void test_ErrorMessagesCheck1189636919893848979() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck1189636919893848979();
+    new TestBody(this).test_ErrorMessagesCheck1189636919893848979();
   }
   @Test
   public void test_NodeFieldIsNeverUsedCheck4494124129037133172() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeFieldIsNeverUsedCheck4494124129037133172();
+    new TestBody(this).test_NodeFieldIsNeverUsedCheck4494124129037133172();
   }
   @Test
   public void test_ErrorMessagesCheck1189636919893869562() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck1189636919893869562();
+    new TestBody(this).test_ErrorMessagesCheck1189636919893869562();
   }
   @Test
   public void test_ErrorMessagesCheck1189636919893882191() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck1189636919893882191();
+    new TestBody(this).test_ErrorMessagesCheck1189636919893882191();
   }
   @Test
   public void test_NodeTheClassifierInheritsCheck7861981782411100015() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeTheClassifierInheritsCheck7861981782411100015();
+    new TestBody(this).test_NodeTheClassifierInheritsCheck7861981782411100015();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302577517634() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302577517634();
+    new TestBody(this).test_ErrorMessagesCheck3950519302577517634();
   }
   @Test
   public void test_NodeTheClassifierInheritsCheck7861981782411100061() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeTheClassifierInheritsCheck7861981782411100061();
+    new TestBody(this).test_NodeTheClassifierInheritsCheck7861981782411100061();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302577520721() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302577520721();
+    new TestBody(this).test_ErrorMessagesCheck3950519302577520721();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302577516277() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302577516277();
+    new TestBody(this).test_ErrorMessagesCheck3950519302577516277();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763757087163() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3031388763757087163();
+    new TestBody(this).test_ErrorMessagesCheck3031388763757087163();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302563602624() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302563602624();
+    new TestBody(this).test_ErrorMessagesCheck3950519302563602624();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302563602787() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302563602787();
+    new TestBody(this).test_ErrorMessagesCheck3950519302563602787();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302577516009() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302577516009();
+    new TestBody(this).test_ErrorMessagesCheck3950519302577516009();
   }
   @Test
   public void test_NodeTryingToAssignWeakerPrivilegesCheck1302032690836232732() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeTryingToAssignWeakerPrivilegesCheck1302032690836232732();
+    new TestBody(this).test_NodeTryingToAssignWeakerPrivilegesCheck1302032690836232732();
   }
   @Test
   public void test_NodePackageProtectedMethodCheck1302032690836232734() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodePackageProtectedMethodCheck1302032690836232734();
+    new TestBody(this).test_NodePackageProtectedMethodCheck1302032690836232734();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302583136514() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302583136514();
+    new TestBody(this).test_ErrorMessagesCheck3950519302583136514();
   }
   @Test
   public void test_NodeTryingToAssignWeakerPrivilegesCheck1302032690836243743() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeTryingToAssignWeakerPrivilegesCheck1302032690836243743();
+    new TestBody(this).test_NodeTryingToAssignWeakerPrivilegesCheck1302032690836243743();
   }
   @Test
   public void test_ErrorMessagesCheck3950519302583140773() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3950519302583140773();
+    new TestBody(this).test_ErrorMessagesCheck3950519302583140773();
   }
   @Test
   public void test_ErrorMessagesCheck3031388763767078529() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck3031388763767078529();
+    new TestBody(this).test_ErrorMessagesCheck3031388763767078529();
   }
   @Test
   public void test_ErrorMessagesCheck1302032690832743397() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck1302032690832743397();
+    new TestBody(this).test_ErrorMessagesCheck1302032690832743397();
   }
   @Test
   public void test_NodeTheMethodCannotOverrideCheck1302032690835331169() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeTheMethodCannotOverrideCheck1302032690835331169();
+    new TestBody(this).test_NodeTheMethodCannotOverrideCheck1302032690835331169();
   }
   @Test
   public void test_ErrorMessagesCheck1302032690835331176() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck1302032690835331176();
+    new TestBody(this).test_ErrorMessagesCheck1302032690835331176();
   }
   @Test
   public void test_NodeTheMethodCannotOverrideCheck1302032690832800457() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodeTheMethodCannotOverrideCheck1302032690832800457();
+    new TestBody(this).test_NodeTheMethodCannotOverrideCheck1302032690832800457();
   }
   @Test
   public void test_ErrorMessagesCheck1302032690832711497() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck1302032690832711497();
+    new TestBody(this).test_ErrorMessagesCheck1302032690832711497();
   }
   @Test
   public void test_NodePrivateMethodIsNeverUsedCheck1302032690836241299() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodePrivateMethodIsNeverUsedCheck1302032690836241299();
+    new TestBody(this).test_NodePrivateMethodIsNeverUsedCheck1302032690836241299();
   }
   @Test
   public void test_NodePrivateMethodDeclaredCheck1302032690836241301() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_NodePrivateMethodDeclaredCheck1302032690836241301();
+    new TestBody(this).test_NodePrivateMethodDeclaredCheck1302032690836241301();
   }
   @Test
   public void test_ErrorMessagesCheck1302032690835335309() throws Throwable {
-    new MethodInheritanceChecks_Test.TestBody(this).test_ErrorMessagesCheck1302032690835335309();
+    new TestBody(this).test_ErrorMessagesCheck1302032690835335309();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

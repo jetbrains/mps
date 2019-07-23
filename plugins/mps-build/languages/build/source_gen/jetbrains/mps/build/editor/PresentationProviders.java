@@ -6,22 +6,23 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.build.util.ScopeUtil;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PresentationProviders {
   public static final IReferentPresentationProvider PRESENTATION_4dmy40_a0a1a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
+      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, AUX_nxpo3o.BuildProject_808bb057, true, false);
       String target = null;
       if ((sourceNode != null) && contextProject != null) {
         Scope importedArtifactsScope = ScopeUtil.getVisibleArtifactsScope(contextProject, false);
@@ -39,7 +40,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
+      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, AUX_nxpo3o.BuildProject_808bb057, true, false);
       String target = null;
       if ((contextProject != null)) {
         Scope importedArtifactsScope = ScopeUtil.getVisibleArtifactsScope(contextProject, true);
@@ -57,7 +58,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
+      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, AUX_nxpo3o.BuildProject_808bb057, true, false);
       String target = null;
       if ((contextProject != null)) {
         Scope importedArtifactsScope = ScopeUtil.getVisibleJarsScope(contextProject);
@@ -66,7 +67,7 @@ public class PresentationProviders {
         }
       }
       if (target == null) {
-        target = (SNodeOperations.isInstanceOf(targetNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile")) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(targetNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path"))) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(targetNode));
+        target = (SNodeOperations.isInstanceOf(targetNode, AUX_nxpo3o.BuildInputSingleFile_7fe8cc2b) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(targetNode, AUX_nxpo3o.BuildInputSingleFile_7fe8cc2b), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path"))) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(targetNode));
       }
       return target;
     }
@@ -75,7 +76,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
+      SNode contextProject = SNodeOperations.getNodeAncestor(sourceNode, AUX_nxpo3o.BuildProject_808bb057, true, false);
       String target = null;
       if ((contextProject != null)) {
         Scope importedArtifactsScope = ScopeUtil.getVisibleJarFoldersScope(contextProject);
@@ -84,7 +85,7 @@ public class PresentationProviders {
         }
       }
       if (target == null) {
-        target = (SNodeOperations.isInstanceOf(targetNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, "jetbrains.mps.build.structure.BuildInputSingleFolder")) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(targetNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, "jetbrains.mps.build.structure.BuildInputSingleFolder")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path"))) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(targetNode));
+        target = (SNodeOperations.isInstanceOf(targetNode, AUX_nxpo3o.BuildInputSingleFolder_eab69018) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(targetNode, AUX_nxpo3o.BuildInputSingleFolder_eab69018), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path"))) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(targetNode));
       }
       return target;
     }
@@ -105,5 +106,11 @@ public class PresentationProviders {
   };
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_nxpo3o {
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildInputSingleFile_7fe8cc2b = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
+    /*package*/ static final SConcept BuildInputSingleFolder_eab69018 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, "jetbrains.mps.build.structure.BuildInputSingleFolder");
   }
 }

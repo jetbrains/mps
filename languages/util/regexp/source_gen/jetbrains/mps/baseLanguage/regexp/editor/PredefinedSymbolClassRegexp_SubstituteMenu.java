@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new PredefinedSymbolClassRegexp_SubstituteMenu.SMP_ReferenceScope_lmi5ai_a(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp")));
-    result.add(new PredefinedSymbolClassRegexp_SubstituteMenu.SMP_Subconcepts_lmi5ai_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_lmi5ai_a(), AUX_lmi5ai.PredefinedSymbolClassRegexp_4456959c));
+    result.add(new SMP_Subconcepts_lmi5ai_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_lmi5ai_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp"), MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass"));
+      super((SAbstractConcept) AUX_lmi5ai.PredefinedSymbolClassRegexp_4456959c, MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_lmi5ai_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_lmi5ai.PredefinedSymbolClassRegexp_4456959c);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_lmi5ai {
+    /*package*/ static final SConcept PredefinedSymbolClassRegexp_4456959c = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp");
   }
 }

@@ -23,7 +23,7 @@ public class Complete_WrapLVD_CellInDecisionTable_Test extends BaseTransformatio
 
   @Test
   public void test_Complete_WrapLVD_CellInDecisionTable() throws Throwable {
-    new Complete_WrapLVD_CellInDecisionTable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

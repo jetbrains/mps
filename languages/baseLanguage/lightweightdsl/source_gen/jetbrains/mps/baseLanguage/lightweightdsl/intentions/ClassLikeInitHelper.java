@@ -5,10 +5,10 @@ package jetbrains.mps.baseLanguage.lightweightdsl.intentions;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLDescriptor__BehaviorDescriptor;
@@ -16,12 +16,14 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ClassLikeInitHelper {
   public static void init(final SNode node, SNode descriptor, final SModel futureModel) {
-    if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass")))) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")));
-      SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"))), MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor"), descriptor);
+    if (!(SNodeOperations.isInstanceOf(node, AUX_aq31ra.AutoInitDSLClass_f4d98b17))) {
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_aq31ra.DSLAnnotation_eee1a74), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")));
+      SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_aq31ra.DSLAnnotation_eee1a74)), MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor"), descriptor);
     }
     Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -36,7 +38,7 @@ public class ClassLikeInitHelper {
   }
 
   public static void renew(final SNode node, SNode descriptor) {
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder"))).toListSequence().visitAll(new IVisitor<SNode>() {
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), AUX_aq31ra.MemberPlaceholder_6692a737)).toListSequence().visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         SNodeOperations.deleteNode(it);
       }
@@ -44,7 +46,7 @@ public class ClassLikeInitHelper {
     final SNode first = ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).first();
     Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x50c63f9f4a0dea5fL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.EmptyMemberDescriptor")));
+        return !(SNodeOperations.isInstanceOf(it, AUX_aq31ra.EmptyMemberDescriptor_7e8aa719));
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -60,5 +62,12 @@ public class ClassLikeInitHelper {
         }
       }
     });
+  }
+
+  private static final class AUX_aq31ra {
+    /*package*/ static final SConcept DSLAnnotation_eee1a74 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
+    /*package*/ static final SInterfaceConcept AutoInitDSLClass_f4d98b17 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
+    /*package*/ static final SConcept MemberPlaceholder_6692a737 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder");
+    /*package*/ static final SConcept EmptyMemberDescriptor_7e8aa719 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x50c63f9f4a0dea5fL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.EmptyMemberDescriptor");
   }
 }

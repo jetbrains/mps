@@ -10,7 +10,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -21,6 +20,8 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GoToUsageInMappingConfig_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -45,7 +46,7 @@ public class GoToUsageInMappingConfig_Action extends BaseAction {
     if ((SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)) == null)) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)), AUX_3szeus.MappingConfiguration_587b13db)) {
       return false;
     }
     return true;
@@ -84,5 +85,9 @@ public class GoToUsageInMappingConfig_Action extends BaseAction {
     MappingConfigFinder finder = new MappingConfigFinder(((Generator) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)), SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)));
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(true).forceNewTab(false);
     UsagesViewTool.showUsages(event.getData(CommonDataKeys.PROJECT), FindUtils.makeProvider(finder), new SearchQuery(null), opt);
+  }
+
+  private static final class AUX_3szeus {
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 }

@@ -43,8 +43,8 @@ public class NextPreviousTraverser {
   public static final ShortcutSet NEXT_CHANGE_SHORTCUT = CustomShortcutSet.fromString("F7");
   private List<ChangeGroupLayout> myChangeGroupLayouts;
   private EditorComponent myLastEditor;
-  private NextPreviousTraverser.TheAction myPreviousAction = new NextPreviousTraverser.TheAction(true);
-  private NextPreviousTraverser.TheAction myNextAction = new NextPreviousTraverser.TheAction(false);
+  private TheAction myPreviousAction = new TheAction(true);
+  private TheAction myNextAction = new TheAction(false);
   private ActionToolbar myActionToolbar = null;
   public NextPreviousTraverser(@NotNull List<ChangeGroupLayout> changeGroupLayouts, @NotNull EditorComponent firstEditor) {
     myChangeGroupLayouts = changeGroupLayouts;

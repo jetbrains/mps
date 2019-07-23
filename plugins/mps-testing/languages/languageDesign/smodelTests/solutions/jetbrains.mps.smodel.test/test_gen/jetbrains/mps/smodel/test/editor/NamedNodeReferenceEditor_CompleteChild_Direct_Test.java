@@ -21,7 +21,7 @@ public class NamedNodeReferenceEditor_CompleteChild_Direct_Test extends BaseTran
 
   @Test
   public void test_NamedNodeReferenceEditor_CompleteChild_Direct() throws Throwable {
-    new NamedNodeReferenceEditor_CompleteChild_Direct_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

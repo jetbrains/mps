@@ -20,11 +20,12 @@ import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.extapi.model.GeneratableSModel;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SNodeOperations {
   public SNodeOperations() {
@@ -225,11 +226,11 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getResolveInfo(SNode n) {
-    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo")));
+    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, AUX_kp8qxs.IResolveInfo_1483d860));
     if (resolveInfo != null) {
       return resolveInfo;
     }
-    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, AUX_kp8qxs.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   /**
    * 
@@ -318,5 +319,10 @@ public class SNodeOperations {
   public static boolean isGeneratable(SModel model) {
     // I wonder why this method doesn't reside in SModelOperations 
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
+  }
+
+  private static final class AUX_kp8qxs {
+    /*package*/ static final SInterfaceConcept IResolveInfo_1483d860 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

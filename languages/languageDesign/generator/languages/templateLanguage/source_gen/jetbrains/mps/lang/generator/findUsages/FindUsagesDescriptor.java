@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.smodel.runtime.FinderRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
@@ -27,6 +28,10 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
 
   @Override
   public void init(FinderRegistry reg) {
-    reg.add(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), 0, "FindInPriorityRules");
+    reg.add(AUX_o9tm2l.MappingConfiguration_587b13db, 0, "FindInPriorityRules");
+  }
+
+  private static final class AUX_o9tm2l {
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 }

@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.smodel.runtime.FinderRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
@@ -29,7 +30,11 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
 
   @Override
   public void init(FinderRegistry reg) {
-    reg.add(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), 0, "IdentityFinder");
-    reg.add(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), 1, "NodeAndDescendantsUsages");
+    reg.add(AUX_o9tm2l.BaseConcept_bc2351f, 0, "IdentityFinder");
+    reg.add(AUX_o9tm2l.BaseConcept_bc2351f, 1, "NodeAndDescendantsUsages");
+  }
+
+  private static final class AUX_o9tm2l {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -27,9 +26,11 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IconResourceReference_subs_Contribution extends SubstituteMenuBase {
   public IconResourceReference_subs_Contribution() {
@@ -39,7 +40,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new IconResourceReference_subs_Contribution.SMP_Param_c11kxs_a(), MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, "jetbrains.mps.lang.resources.structure.OldIconReference")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_c11kxs_a(), AUX_c11kxs.OldIconReference_a9e20c35));
     return result;
   }
 
@@ -60,7 +61,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new IconResourceReference_subs_Contribution.SMP_Param_c11kxs_a.SMP_Action_c11kxs_a0(parameter).createItems(context);
+      return new SMP_Param_c11kxs_a.SMP_Action_c11kxs_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -76,7 +77,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c0L, "jetbrains.mps.lang.resources.structure.OldIconDeclaration"));
+      return SModelOperations.nodesIncludingImported(_context.getModel(), AUX_c11kxs.OldIconDeclaration_a9e20c19);
     }
     private class SMP_Action_c11kxs_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -87,7 +88,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        IconResourceReference_subs_Contribution.SMP_Param_c11kxs_a.SMP_Action_c11kxs_a0.Item item = new IconResourceReference_subs_Contribution.SMP_Param_c11kxs_a.SMP_Action_c11kxs_a0.Item(_context);
+        SMP_Param_c11kxs_a.SMP_Action_c11kxs_a0.Item item = new SMP_Param_c11kxs_a.SMP_Action_c11kxs_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -111,7 +112,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, "jetbrains.mps.lang.resources.structure.OldIconReference"), context);
+          super(AUX_c11kxs.OldIconReference_a9e20c35, context);
           _context = context;
         }
 
@@ -131,7 +132,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, "jetbrains.mps.lang.resources.structure.OldIconReference"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_c11kxs.OldIconReference_a9e20c35, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -152,7 +153,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SConceptOperations.conceptAlias(MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, "jetbrains.mps.lang.resources.structure.OldIconReference")) + "<" + SPropertyOperations.getString(myParameterObject, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ">";
+          return SConceptOperations.conceptAlias(AUX_c11kxs.OldIconReference_a9e20c35) + "<" + SPropertyOperations.getString(myParameterObject, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ">";
         }
       }
     }
@@ -164,5 +165,10 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x7c8b08a50a39c6c7L, "OldIconReference"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, 0x7c8b08a50a39c6c8L, "declaration"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_c11kxs {
+    /*package*/ static final SConcept OldIconReference_a9e20c35 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, "jetbrains.mps.lang.resources.structure.OldIconReference");
+    /*package*/ static final SConcept OldIconDeclaration_a9e20c19 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c0L, "jetbrains.mps.lang.resources.structure.OldIconDeclaration");
   }
 }

@@ -20,9 +20,9 @@ public class NamedBoxFigure extends BoxFigure {
   private TextCell myCell = new TextCell();
 
   public NamedBoxFigure() {
-    this(new NamedBoxFigure.NamedBoxFigureMapperFactory());
+    this(new NamedBoxFigureMapperFactory());
   }
-  public NamedBoxFigure(NamedBoxFigure.NamedBoxFigureMapperFactory factory) {
+  public NamedBoxFigure(NamedBoxFigureMapperFactory factory) {
     CellView cellView = new CellView();
     myCell.textColor().set(Color.GRAY);
     myCell.text().set("<<No text>>");
@@ -38,7 +38,7 @@ public class NamedBoxFigure extends BoxFigure {
 
   private static class NamedBoxFigureMapperFactory implements MapperFactory<NamedBoxFigure, NamedBoxFigure> {
     public Mapper<? extends NamedBoxFigure, ? extends NamedBoxFigure> createMapper(NamedBoxFigure figure) {
-      return new NamedBoxFigure.NamedBoxFigureMapper<NamedBoxFigure>(figure);
+      return new NamedBoxFigureMapper<NamedBoxFigure>(figure);
     }
   }
   protected static class NamedBoxFigureMapper<T extends NamedBoxFigure> extends BoxFigure.BoxFigureMapper<T> {

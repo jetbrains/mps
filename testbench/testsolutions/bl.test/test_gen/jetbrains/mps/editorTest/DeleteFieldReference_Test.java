@@ -22,7 +22,7 @@ public class DeleteFieldReference_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteFieldReference() throws Throwable {
-    new DeleteFieldReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class PasteTextToEndOfLine_Test extends BaseTransformationTest {
 
   @Test
   public void test_PasteTextToEndOfLine() throws Throwable {
-    new PasteTextToEndOfLine_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

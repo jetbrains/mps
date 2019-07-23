@@ -22,7 +22,7 @@ public class Comment_DeleteMultipleRoleWholeComment_Test extends BaseTransformat
 
   @Test
   public void test_Comment_DeleteMultipleRoleWholeComment() throws Throwable {
-    new Comment_DeleteMultipleRoleWholeComment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

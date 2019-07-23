@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -16,12 +15,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class EnumSwitchCaseBody_StatementList__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_StatementList");
+  private static final SAbstractConcept CONCEPT = AUX_6yud17.EnumSwitchCaseBody_StatementList_81c8e214;
 
   public static final SMethod<Boolean> isExecuteSynchronous_idhTIpcC8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExecuteSynchronous").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hTIpcC8").build();
   public static final SMethod<Boolean> isPassLastExpressionValue_id28aPEVv$IZv = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPassLastExpressionValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("28aPEVv$IZv").build();
@@ -36,7 +37,7 @@ public final class EnumSwitchCaseBody_StatementList__BehaviorDescriptor extends 
     return true;
   }
   /*package*/ static boolean isPassLastExpressionValue_id28aPEVv$IZv(@NotNull SNode __thisNode__) {
-    return (boolean) EnumSwitchExpression__BehaviorDescriptor.evaluatesValue_id28aPEVwg1gU.invoke(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression")));
+    return (boolean) EnumSwitchExpression__BehaviorDescriptor.evaluatesValue_id28aPEVwg1gU.invoke(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), AUX_6yud17.EnumSwitchExpression_7e988de2));
   }
   /*package*/ static SNode getStatementList_id28aPEVv_31A(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList"));
@@ -90,5 +91,10 @@ public final class EnumSwitchCaseBody_StatementList__BehaviorDescriptor extends 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_6yud17 {
+    /*package*/ static final SConcept EnumSwitchCaseBody_StatementList_81c8e214 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_StatementList");
+    /*package*/ static final SConcept EnumSwitchExpression_7e988de2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
   }
 }

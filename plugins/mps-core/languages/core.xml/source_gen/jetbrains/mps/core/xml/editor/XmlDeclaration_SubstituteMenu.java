@@ -16,6 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlDeclaration_SubstituteMenu extends SubstituteMenuBase {
@@ -23,7 +24,7 @@ public class XmlDeclaration_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new XmlDeclaration_SubstituteMenu.SMP_Group_c5s0sa_a());
+    result.add(new SMP_Group_c5s0sa_a());
     return result;
   }
 
@@ -59,7 +60,7 @@ public class XmlDeclaration_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x4890619bb401ef6eL, "jetbrains.mps.core.xml.structure.XmlDeclaration")) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_c5s0sa.XmlDeclaration_c208e57e) {
 
         @NotNull
         @Override
@@ -72,7 +73,11 @@ public class XmlDeclaration_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x4890619bb401ef6eL, "jetbrains.mps.core.xml.structure.XmlDeclaration")));
+      }, AUX_c5s0sa.XmlDeclaration_c208e57e));
     }
+  }
+
+  private static final class AUX_c5s0sa {
+    /*package*/ static final SConcept XmlDeclaration_c208e57e = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x4890619bb401ef6eL, "jetbrains.mps.core.xml.structure.XmlDeclaration");
   }
 }

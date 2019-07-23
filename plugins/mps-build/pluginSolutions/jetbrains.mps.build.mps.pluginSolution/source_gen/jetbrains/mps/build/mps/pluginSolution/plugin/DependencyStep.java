@@ -15,7 +15,7 @@ import com.intellij.ide.wizard.CommitStepException;
 public class DependencyStep extends AbstractStep {
   private final AbstractBuildGenerator myGenerator;
   private final IErrorHandler myHandler;
-  private int mySelectedIndex = DependencyStep.DependencyKind.DEFAULT;
+  private int mySelectedIndex = DependencyKind.DEFAULT;
 
   public DependencyStep(AbstractBuildGenerator buildGenerator, IErrorHandler handler) {
     myGenerator = buildGenerator;
@@ -28,7 +28,7 @@ public class DependencyStep extends AbstractStep {
 
     ButtonGroup group = new ButtonGroup();
 
-    for (DependencyStep.DependencyKind kind : DependencyStep.DependencyKind.values()) {
+    for (DependencyKind kind : DependencyKind.values()) {
       final int index = kind.ordinal();
       final JRadioButton button = new JRadioButton(kind.getText(), index == mySelectedIndex);
       panel.add(button, LayoutUtil.createLabelConstraints(index));
@@ -64,7 +64,7 @@ public class DependencyStep extends AbstractStep {
   @Override
   public void _commit(boolean finished) throws CommitStepException {
     super._commit(finished);
-    myGenerator.setDependencyKind(DependencyStep.DependencyKind.values()[mySelectedIndex]);
+    myGenerator.setDependencyKind(DependencyKind.values()[mySelectedIndex]);
   }
 
   public enum DependencyKind {

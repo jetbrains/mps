@@ -6,10 +6,12 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class Annotation_TextGen extends TextGenDescriptorBase {
   @Override
@@ -18,7 +20,7 @@ public class Annotation_TextGen extends TextGenDescriptorBase {
     tgs.createUnitInfo();
     BaseLanguageTextGen.fileHeader(ctx.getPrimaryInput(), ctx);
     BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), AUX_ydmu3t.Interface_bca2069))) {
       BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), ctx);
     } else {
       tgs.indent();
@@ -30,7 +32,12 @@ public class Annotation_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
 
     if (tgs.needPositions()) {
-      tgs.fillUnitInfo(UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept"))));
+      tgs.fillUnitInfo(UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), AUX_ydmu3t.UnitConcept_228d6873)));
     }
+  }
+
+  private static final class AUX_ydmu3t {
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SInterfaceConcept UnitConcept_228d6873 = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
   }
 }

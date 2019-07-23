@@ -53,6 +53,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ArrayCreatorWithInitializer_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -86,7 +87,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ArrayCreatorWithInitializer_EditorBuilder_a.componentTypeSingleRoleHandler_ym22pt_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType"), getEditorContext());
+    SingleRoleCellProvider provider = new componentTypeSingleRoleHandler_ym22pt_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType"), getEditorContext());
     return provider.createCell();
   }
   private static class componentTypeSingleRoleHandler_ym22pt_a0 extends SingleRoleCellProvider {
@@ -148,7 +149,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     ArrayCreatorWithInitializers_Delete_Brackets.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, "jetbrains.mps.baseLanguage.structure.ArrayCreatorWithInitializer"), "jetbrains.mps.baseLanguage.editor.AddSquareBracketsToarrayCreatorWithInitializer"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_qi0ypp.ArrayCreatorWithInitializer_129ad3b8, "jetbrains.mps.baseLanguage.editor.AddSquareBracketsToarrayCreatorWithInitializer"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -166,7 +167,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ArrayCreatorWithInitializer_EditorBuilder_a.initValueListHandler_ym22pt_d0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new initValueListHandler_ym22pt_d0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("init");
     Style style = new StyleImpl();
@@ -196,7 +197,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+      return AUX_qi0ypp.Expression_4199e28d;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -226,7 +227,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
           elementCell.addKeyMap(new RefNodeListHandlerElementKeyMap(this, ","));
         }
         if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-          elementCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(getNode(), elementNode, getSLink(), getChildSConcept()), new SubstituteInfoPartExt[]{new ArrayCreatorWithInitializer_EditorBuilder_a.ArrayCreatorWithInitializer_initValue_cellMenu_ym22pt_a0d0(), new ArrayCreatorWithInitializer_EditorBuilder_a.ArrayCreatorWithInitializer_initValue_cellMenu_ym22pt_b0d0(), new SChildSubstituteInfoPartEx(elementCell)}));
+          elementCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(getNode(), elementNode, getSLink(), getChildSConcept()), new SubstituteInfoPartExt[]{new ArrayCreatorWithInitializer_initValue_cellMenu_ym22pt_a0d0(), new ArrayCreatorWithInitializer_initValue_cellMenu_ym22pt_b0d0(), new SChildSubstituteInfoPartEx(elementCell)}));
         }
       }
     }
@@ -294,7 +295,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
       return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
     }
     private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, "jetbrains.mps.baseLanguage.structure.ArrayLiteral"), null);
+      return SNodeFactoryOperations.createNewNode(AUX_qi0ypp.ArrayLiteral_a35f9232, null);
     }
   }
   private EditorCell createConstant_3() {
@@ -306,5 +307,11 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_qi0ypp {
+    /*package*/ static final SConcept ArrayCreatorWithInitializer_129ad3b8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, "jetbrains.mps.baseLanguage.structure.ArrayCreatorWithInitializer");
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ArrayLiteral_a35f9232 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, "jetbrains.mps.baseLanguage.structure.ArrayLiteral");
   }
 }

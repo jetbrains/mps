@@ -75,12 +75,12 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
     int i = 0;
-    snsqMethods.put("4233361609414462017", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("7985135009828791482", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("4736696158595700525", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("7985135009828854649", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("2319156231054489354", new QueriesGenerated.SNsQ(i++));
-    snsqMethods.put("7985135009828838072", new QueriesGenerated.SNsQ(i++));
+    snsqMethods.put("4233361609414462017", new SNsQ(i++));
+    snsqMethods.put("7985135009828791482", new SNsQ(i++));
+    snsqMethods.put("4736696158595700525", new SNsQ(i++));
+    snsqMethods.put("7985135009828854649", new SNsQ(i++));
+    snsqMethods.put("2319156231054489354", new SNsQ(i++));
+    snsqMethods.put("7985135009828838072", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -119,13 +119,13 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("7291101478621741015", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "intentionId"));
-    pvqMethods.put("8648766437736259194", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
-    pvqMethods.put("7291101478621741110", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "IntentionMenuPart"));
-    pvqMethods.put("4736696158595700432", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "refactoringClassName"));
-    pvqMethods.put("4736696158595700556", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "RefactoringMenuPart"));
-    pvqMethods.put("2319156231054489312", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "actionId"));
-    pvqMethods.put("2319156231054489385", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "PluginActionMenuPart"));
+    pvqMethods.put("7291101478621741015", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "intentionId"));
+    pvqMethods.put("8648766437736259194", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("7291101478621741110", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "IntentionMenuPart"));
+    pvqMethods.put("4736696158595700432", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "refactoringClassName"));
+    pvqMethods.put("4736696158595700556", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "RefactoringMenuPart"));
+    pvqMethods.put("2319156231054489312", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "actionId"));
+    pvqMethods.put("2319156231054489385", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "PluginActionMenuPart"));
   }
   @NotNull
   @Override

@@ -27,13 +27,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class substitute_IOperation_MappingType extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new substitute_IOperation_MappingType.SMP_Group_ioydli_a());
+    result.add(new SMP_Group_ioydli_a());
     return result;
   }
 
@@ -53,7 +54,7 @@ public class substitute_IOperation_MappingType extends SubstituteMenuBase {
   public class SMP_Group_ioydli_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"))), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType")) != null);
+      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), AUX_ioydli.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"))), AUX_ioydli.MappingType_b4cb9d83) != null);
     }
     @NotNull
     @Override
@@ -69,11 +70,11 @@ public class substitute_IOperation_MappingType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new substitute_IOperation_MappingType.SMP_Group_ioydli_a.SMP_Concepts_ioydli_a0(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L, "jetbrains.mps.baseLanguage.structure.IOperation")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ioydli_a.SMP_Concepts_ioydli_a0(), AUX_ioydli.IOperation_995a0bca));
     }
     public class SMP_Concepts_ioydli_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120e6ea9ddcL, "jetbrains.mps.baseLanguage.collections.structure.AbstractMappingOperation"), _context.getModel())).where(new IWhereFilter<SConcept>() {
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_ioydli.AbstractMappingOperation_c5d9417, _context.getModel())).where(new IWhereFilter<SConcept>() {
           public boolean accept(SConcept it) {
             return it instanceof SConcept && !(((SConcept) it).isAbstract());
           }
@@ -112,5 +113,12 @@ public class substitute_IOperation_MappingType extends SubstituteMenuBase {
         }.createItems(_context);
       }
     }
+  }
+
+  private static final class AUX_ioydli {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept MappingType_b4cb9d83 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType");
+    /*package*/ static final SInterfaceConcept IOperation_995a0bca = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L, "jetbrains.mps.baseLanguage.structure.IOperation");
+    /*package*/ static final SConcept AbstractMappingOperation_c5d9417 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120e6ea9ddcL, "jetbrains.mps.baseLanguage.collections.structure.AbstractMappingOperation");
   }
 }

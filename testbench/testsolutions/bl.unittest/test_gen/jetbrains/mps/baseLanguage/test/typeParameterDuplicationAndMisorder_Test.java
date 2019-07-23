@@ -32,39 +32,39 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
 
   @Test
   public void test_NodeTypeVariableIsNotNeededCheck6923385624929116385() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_NodeTypeVariableIsNotNeededCheck6923385624929116385();
+    new TestBody(this).test_NodeTypeVariableIsNotNeededCheck6923385624929116385();
   }
   @Test
   public void test_NodeUnnamedErrorCheck6923385624929116387() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_NodeUnnamedErrorCheck6923385624929116387();
+    new TestBody(this).test_NodeUnnamedErrorCheck6923385624929116387();
   }
   @Test
   public void test_NodeUnnamedErrorCheck6923385624929017230() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_NodeUnnamedErrorCheck6923385624929017230();
+    new TestBody(this).test_NodeUnnamedErrorCheck6923385624929017230();
   }
   @Test
   public void test_NodeUnnamedErrorCheck6923385624928447295() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_NodeUnnamedErrorCheck6923385624928447295();
+    new TestBody(this).test_NodeUnnamedErrorCheck6923385624928447295();
   }
   @Test
   public void test_NodeUnnamedErrorCheck6923385624927677357() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_NodeUnnamedErrorCheck6923385624927677357();
+    new TestBody(this).test_NodeUnnamedErrorCheck6923385624927677357();
   }
   @Test
   public void test_ErrorMessagesCheck2970924421778358827() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_ErrorMessagesCheck2970924421778358827();
+    new TestBody(this).test_ErrorMessagesCheck2970924421778358827();
   }
   @Test
   public void test_NodeUnnamedErrorCheck6923385624928047856() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_NodeUnnamedErrorCheck6923385624928047856();
+    new TestBody(this).test_NodeUnnamedErrorCheck6923385624928047856();
   }
   @Test
   public void test_NodeUnnamedErrorCheck6923385624927049758() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_NodeUnnamedErrorCheck6923385624927049758();
+    new TestBody(this).test_NodeUnnamedErrorCheck6923385624927049758();
   }
   @Test
   public void test_ErrorMessagesCheck2970924421778359047() throws Throwable {
-    new typeParameterDuplicationAndMisorder_Test.TestBody(this).test_ErrorMessagesCheck2970924421778359047();
+    new TestBody(this).test_ErrorMessagesCheck2970924421778359047();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

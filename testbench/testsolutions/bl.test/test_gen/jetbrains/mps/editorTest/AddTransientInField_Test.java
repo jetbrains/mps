@@ -21,7 +21,7 @@ public class AddTransientInField_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddTransientInField() throws Throwable {
-    new AddTransientInField_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

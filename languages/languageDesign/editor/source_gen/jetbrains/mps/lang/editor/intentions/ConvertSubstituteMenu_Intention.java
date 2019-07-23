@@ -15,17 +15,19 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertSubstituteMenu_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   public ConvertSubstituteMenu_Intention() {
@@ -48,13 +50,13 @@ public final class ConvertSubstituteMenu_Intention extends AbstractIntentionDesc
     List<SAbstractConcept> paramList = parameter(node, context);
     if (paramList != null) {
       for (SAbstractConcept param : paramList) {
-        ListSequence.fromList(list).addElement(new ConvertSubstituteMenu_Intention.IntentionImplementation(param));
+        ListSequence.fromList(list).addElement(new IntentionImplementation(param));
       }
     }
     return list;
   }
   private List<SAbstractConcept> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SConceptOperations.getAllSubConcepts(MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu"), SNodeOperations.getModel(node))).where(new IWhereFilter<SAbstractConcept>() {
+    return ListSequence.fromList(SConceptOperations.getAllSubConcepts(AUX_5rfcz0.ISubstituteMenu_3907f4f4, SNodeOperations.getModel(node))).where(new IWhereFilter<SAbstractConcept>() {
       public boolean accept(SAbstractConcept it) {
         return !(it.isAbstract()) && it != SNodeOperations.getConcept(node);
       }
@@ -76,8 +78,8 @@ public final class ConvertSubstituteMenu_Intention extends AbstractIntentionDesc
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newNode = SNodeFactoryOperations.createNewNode(myParameter, null);
-      if (SNodeOperations.isInstanceOf(newNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu"))) {
-        SLinkOperations.setTarget(SNodeOperations.cast(newNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"), IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(node));
+      if (SNodeOperations.isInstanceOf(newNode, AUX_5rfcz0.SubstituteMenu_38dd535e)) {
+        SLinkOperations.setTarget(SNodeOperations.cast(newNode, AUX_5rfcz0.SubstituteMenu_38dd535e), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"), IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(node));
       }
       ListSequence.fromList(SLinkOperations.getChildren(newNode, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))));
       SPropertyOperations.assign(newNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage")));
@@ -99,5 +101,10 @@ public final class ConvertSubstituteMenu_Intention extends AbstractIntentionDesc
     public Object getParameter() {
       return myParameter;
     }
+  }
+
+  private static final class AUX_5rfcz0 {
+    /*package*/ static final SInterfaceConcept ISubstituteMenu_3907f4f4 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
+    /*package*/ static final SConcept SubstituteMenu_38dd535e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
   }
 }

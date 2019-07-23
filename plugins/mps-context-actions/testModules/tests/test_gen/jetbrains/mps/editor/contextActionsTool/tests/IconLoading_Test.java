@@ -16,7 +16,7 @@ import jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.SidebarActionI
 
 public class IconLoading_Test extends TestCase {
   public void test_noClassDefFoundErrorWhenLoadingIcon() throws Exception {
-    TransformationMenuItem item = new IconLoading_Test.SidebarItemBase() {
+    TransformationMenuItem item = new SidebarItemBase() {
       @Override
       public IconResource getIcon() {
         throw new NoClassDefFoundError("Simulated error when loading an icon");
@@ -27,7 +27,7 @@ public class IconLoading_Test extends TestCase {
     Assert.assertNull(ListSequence.fromList(converted).getElement(0).getIcon());
   }
   public void test_runtimeExceptionWhenLoadingIcon() throws Exception {
-    TransformationMenuItem item = new IconLoading_Test.SidebarItemBase() {
+    TransformationMenuItem item = new SidebarItemBase() {
       @Override
       public IconResource getIcon() {
         throw new RuntimeException("Simulated exception when loading an icon");

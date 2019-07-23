@@ -17,7 +17,7 @@ public class TestTargetStyleSheet_StyleSheet {
   public static void apply_testStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TestTargetStyleSheet_StyleSheet.testStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new testStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -27,7 +27,7 @@ public class TestTargetStyleSheet_StyleSheet {
   public static void apply_testParentStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TestTargetStyleSheet_StyleSheet.testParentStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new testParentStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class testStyleStyleClass extends AbstractStyleClass {

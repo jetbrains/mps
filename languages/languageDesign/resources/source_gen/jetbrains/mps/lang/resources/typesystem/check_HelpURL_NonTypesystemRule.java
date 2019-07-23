@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_HelpURL_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_HelpURL_NonTypesystemRule() {
@@ -26,7 +27,7 @@ public class check_HelpURL_NonTypesystemRule extends AbstractNonTypesystemRule_R
     URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url")));
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, "jetbrains.mps.lang.resources.structure.HelpURL");
+    return AUX_nmfygl.HelpURL_270f81b3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,5 +37,9 @@ public class check_HelpURL_NonTypesystemRule extends AbstractNonTypesystemRule_R
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_nmfygl {
+    /*package*/ static final SConcept HelpURL_270f81b3 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, "jetbrains.mps.lang.resources.structure.HelpURL");
   }
 }

@@ -24,7 +24,7 @@ public class TestTransform_ChildWithConstraints_CanBeAncestor_Test extends BaseT
 
   @Test
   public void test_TestTransform_ChildWithConstraints_CanBeAncestor() throws Throwable {
-    new TestTransform_ChildWithConstraints_CanBeAncestor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -23,7 +23,7 @@ public class AssignmentToVariableDeclarationTransform_Test extends BaseTransform
 
   @Test
   public void test_AssignmentToVariableDeclarationTransform() throws Throwable {
-    new AssignmentToVariableDeclarationTransform_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

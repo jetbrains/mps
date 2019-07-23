@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -26,6 +25,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelChooser extends TextFieldWithBrowseButton.NoPathCompletion {
   private final Project myMpsProject;
@@ -58,7 +59,7 @@ public class ModelChooser extends TextFieldWithBrowseButton.NoPathCompletion {
     final Collection<SModelReference> modelRefs = new LinkedHashSet<SModelReference>();
     myMpsProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        SAbstractConcept concept = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
+        SAbstractConcept concept = AUX_6fbl6h.ITestCase_8c8c490a;
         ProjectScope scope = new ProjectScope(myMpsProject);
         Set<SNode> usages = getFindUsagesManager().findInstances(scope, Collections.singleton(concept), false, new EmptyProgressMonitor());
         for (SNode node : usages) {
@@ -86,5 +87,9 @@ public class ModelChooser extends TextFieldWithBrowseButton.NoPathCompletion {
   @Nullable
   public SModelReference getReference() {
     return myModelRef;
+  }
+
+  private static final class AUX_6fbl6h {
+    /*package*/ static final SInterfaceConcept ITestCase_8c8c490a = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
   }
 }

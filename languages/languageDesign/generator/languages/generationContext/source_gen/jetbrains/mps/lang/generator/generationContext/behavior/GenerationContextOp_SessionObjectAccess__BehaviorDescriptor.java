@@ -4,7 +4,6 @@ package jetbrains.mps.lang.generator.generationContext.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class GenerationContextOp_SessionObjectAccess__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8fe26de8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_SessionObjectAccess");
+  private static final SAbstractConcept CONCEPT = AUX_qoeuy1.GenerationContextOp_SessionObjectAccess_73857358;
 
   public static final SMethod<Boolean> lvalue_id1653mnvAgvW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvW").build();
 
@@ -76,5 +77,9 @@ public final class GenerationContextOp_SessionObjectAccess__BehaviorDescriptor e
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_qoeuy1 {
+    /*package*/ static final SConcept GenerationContextOp_SessionObjectAccess_73857358 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8fe26de8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_SessionObjectAccess");
   }
 }

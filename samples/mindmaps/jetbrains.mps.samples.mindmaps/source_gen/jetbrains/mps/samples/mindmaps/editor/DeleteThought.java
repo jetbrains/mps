@@ -6,15 +6,16 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DeleteThought {
 
@@ -24,7 +25,7 @@ public class DeleteThought {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, final SNode node) {
-        SNode mindMap = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, "jetbrains.mps.samples.mindmaps.structure.MindMap"), false, false);
+        SNode mindMap = SNodeOperations.getNodeAncestor(node, AUX_tcgyjr.MindMap_15680b5a, false, false);
 
         ListSequence.fromList(SLinkOperations.getChildren(mindMap, MetaAdapterFactory.getContainmentLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, 0x1198689ff14c5dbL, "relationships"))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -74,5 +75,9 @@ public class DeleteThought {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_tcgyjr {
+    /*package*/ static final SConcept MindMap_15680b5a = MetaAdapterFactory.getConcept(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, "jetbrains.mps.samples.mindmaps.structure.MindMap");
   }
 }

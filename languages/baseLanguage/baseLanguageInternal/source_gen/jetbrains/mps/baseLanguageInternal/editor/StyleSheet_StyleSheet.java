@@ -22,7 +22,7 @@ public class StyleSheet_StyleSheet {
   public static void apply_InternalKeyword(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StyleSheet_StyleSheet.InternalKeywordStyleClass(editorContext, node).apply(style, editorCell);
+    new InternalKeywordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -32,7 +32,7 @@ public class StyleSheet_StyleSheet {
   public static void apply_InternalName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StyleSheet_StyleSheet.InternalNameStyleClass(editorContext, node).apply(style, editorCell);
+    new InternalNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -42,7 +42,7 @@ public class StyleSheet_StyleSheet {
   public static void apply_SquareBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StyleSheet_StyleSheet.SquareBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new SquareBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class InternalKeywordStyleClass extends AbstractStyleClass {

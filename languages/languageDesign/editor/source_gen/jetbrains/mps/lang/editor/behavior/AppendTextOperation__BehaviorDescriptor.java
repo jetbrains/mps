@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -20,9 +19,11 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AppendTextOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e34c38c0ad5587L, "jetbrains.mps.lang.editor.structure.AppendTextOperation");
+  private static final SAbstractConcept CONCEPT = AUX_lbyhkw.AppendTextOperation_62017495;
 
   public static final SMethod<String> getMethodToGenerate_id1653mnvAf1C = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMethodToGenerate").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAf1C").build();
   public static final SMethod<List<SNode>> getOperationArgumentType_id5GZRL5t2d36 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getOperationArgumentType").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5GZRL5t2d36").build();
@@ -36,7 +37,7 @@ public final class AppendTextOperation__BehaviorDescriptor extends BaseBHDescrip
     return "append";
   }
   /*package*/ static List<SNode> getOperationArgumentType_id5GZRL5t2d36(@NotNull SAbstractConcept __thisConcept__) {
-    List<SNode> result = AbstractStyledTextOperation__BehaviorDescriptor.getOperationArgumentType_id5GZRL5t2d36.invokeSuper(__thisConcept__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e34c38c0ad5587L, "jetbrains.mps.lang.editor.structure.AppendTextOperation"));
+    List<SNode> result = AbstractStyledTextOperation__BehaviorDescriptor.getOperationArgumentType_id5GZRL5t2d36.invokeSuper(__thisConcept__, AUX_lbyhkw.AppendTextOperation_62017495);
     ListSequence.fromList(result).addElement(_quotation_createNode_jh7h4_a0a1a1());
     return result;
   }
@@ -93,5 +94,9 @@ public final class AppendTextOperation__BehaviorDescriptor extends BaseBHDescrip
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_lbyhkw {
+    /*package*/ static final SConcept AppendTextOperation_62017495 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e34c38c0ad5587L, "jetbrains.mps.lang.editor.structure.AppendTextOperation");
   }
 }

@@ -21,7 +21,7 @@ public class EndWithLineSelection_fromFirstCell_Test extends BaseTransformationT
 
   @Test
   public void test_EndWithLineSelection_fromFirstCell() throws Throwable {
-    new EndWithLineSelection_fromFirstCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

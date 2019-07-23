@@ -23,6 +23,8 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class XmlProlog_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -52,7 +54,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new XmlProlog_EditorBuilder_a.elementsListHandler_ul5idr_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new elementsListHandler_ul5idr_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_elements");
     editorCell.setSRole(handler.getElementSRole());
@@ -75,14 +77,14 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       return MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494871L, 0x6988ccb84e3bd0e6L, "elements");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement");
+      return AUX_iovffj.XmlPrologElement_1e69ae59;
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
       return nodeFactory();
     }
 
     public SNode nodeFactory() {
-      SNode n = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace"), null);
+      SNode n = SNodeFactoryOperations.createNewNode(AUX_iovffj.XmlWhitespace_20008e56, null);
       SPropertyOperations.assign(n, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value"), "");
       return n;
     }
@@ -122,5 +124,10 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       editorCell.setDefaultText("");
       return editorCell;
     }
+  }
+
+  private static final class AUX_iovffj {
+    /*package*/ static final SInterfaceConcept XmlPrologElement_1e69ae59 = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement");
+    /*package*/ static final SConcept XmlWhitespace_20008e56 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace");
   }
 }

@@ -21,7 +21,7 @@ public class MoveInManyStatementsListCommentedUp_Test extends BaseTransformation
 
   @Test
   public void test_MoveInManyStatementsListCommentedUp() throws Throwable {
-    new MoveInManyStatementsListCommentedUp_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -23,7 +23,7 @@ public class NoResizeNode_bottom_right_Test extends BaseTransformationTest {
 
   @Test
   public void test_NoResizeNode_bottom_right() throws Throwable {
-    new NoResizeNode_bottom_right_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

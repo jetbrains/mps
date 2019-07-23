@@ -21,7 +21,7 @@ public class FromArrayClassifierClassExpression_Test extends BaseTransformationT
 
   @Test
   public void test_FromArrayClassifierClassExpression() throws Throwable {
-    new FromArrayClassifierClassExpression_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

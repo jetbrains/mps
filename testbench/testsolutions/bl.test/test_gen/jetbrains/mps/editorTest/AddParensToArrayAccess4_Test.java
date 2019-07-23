@@ -21,7 +21,7 @@ public class AddParensToArrayAccess4_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddParensToArrayAccess4() throws Throwable {
-    new AddParensToArrayAccess4_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

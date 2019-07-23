@@ -22,6 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddRemoveFigureParameterAttributeField_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -40,10 +41,10 @@ public final class AddRemoveFigureParameterAttributeField_Intention extends Abst
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), AUX_6r1hsl.PublicVisibility_63d95354))) {
       return false;
     }
-    SNode classifierType = SNodeOperations.as(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
+    SNode classifierType = SNodeOperations.as(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")), AUX_6r1hsl.ClassifierType_42700403);
     if (classifierType == null && SLinkOperations.getTarget(classifierType, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")) == null) {
       return false;
     }
@@ -60,7 +61,7 @@ public final class AddRemoveFigureParameterAttributeField_Intention extends Abst
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddRemoveFigureParameterAttributeField_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -69,19 +70,25 @@ public final class AddRemoveFigureParameterAttributeField_Intention extends Abst
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField"))) == null ? "Add figure parameter attribute" : "Remove figure parameter attribute");
+      return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_6r1hsl.FigureParameterAttributeField_5603dccd)) == null ? "Add figure parameter attribute" : "Remove figure parameter attribute");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField"))) != null) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField")), null);
+      if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_6r1hsl.FigureParameterAttributeField_5603dccd)) != null) {
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_6r1hsl.FigureParameterAttributeField_5603dccd), null);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField")));
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_6r1hsl.FigureParameterAttributeField_5603dccd), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField")));
       }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddRemoveFigureParameterAttributeField_Intention.this;
     }
+  }
+
+  private static final class AUX_6r1hsl {
+    /*package*/ static final SConcept PublicVisibility_63d95354 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept FigureParameterAttributeField_5603dccd = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.query.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -18,9 +17,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class HelpProvider__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x690b986730edd07L, "jetbrains.mps.lang.smodel.query.structure.HelpProvider");
+  private static final SAbstractConcept CONCEPT = AUX_rsqnhl.HelpProvider_bcf805ef;
 
   public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("qgIopNa9Hb").build();
   public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHelpPage").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("64VftqEen2L").build();
@@ -107,5 +108,9 @@ public final class HelpProvider__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_rsqnhl {
+    /*package*/ static final SInterfaceConcept HelpProvider_bcf805ef = MetaAdapterFactory.getInterfaceConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x690b986730edd07L, "jetbrains.mps.lang.smodel.query.structure.HelpProvider");
   }
 }

@@ -21,7 +21,7 @@ public class CreateTransition_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreateTransition() throws Throwable {
-    new CreateTransition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

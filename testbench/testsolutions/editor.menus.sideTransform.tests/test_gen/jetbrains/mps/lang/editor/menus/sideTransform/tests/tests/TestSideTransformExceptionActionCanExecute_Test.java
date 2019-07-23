@@ -25,7 +25,7 @@ public class TestSideTransformExceptionActionCanExecute_Test extends BaseTransfo
 
   @Test
   public void test_TestSideTransformExceptionActionCanExecute() throws Throwable {
-    new TestSideTransformExceptionActionCanExecute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

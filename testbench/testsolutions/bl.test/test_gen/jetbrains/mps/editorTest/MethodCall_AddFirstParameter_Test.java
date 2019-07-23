@@ -21,7 +21,7 @@ public class MethodCall_AddFirstParameter_Test extends BaseTransformationTest {
 
   @Test
   public void test_MethodCall_AddFirstParameter() throws Throwable {
-    new MethodCall_AddFirstParameter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

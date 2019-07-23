@@ -22,7 +22,7 @@ public class BackspaceErrorReference_Test extends BaseTransformationTest {
 
   @Test
   public void test_BackspaceErrorReference() throws Throwable {
-    new BackspaceErrorReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

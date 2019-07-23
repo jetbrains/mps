@@ -16,13 +16,14 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RemoveUITestPropertyFromTestInfo extends MigrationScriptBase {
   public String getCaption() {
@@ -62,7 +63,7 @@ public class RemoveUITestPropertyFromTestInfo extends MigrationScriptBase {
       }, false).visitAll(new IVisitor<SNode>() {
         public void visit(final SNode nodeToMigrate) {
           pattern.match(nodeToMigrate);
-          List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute"), false, new SAbstractConcept[]{});
+          List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, AUX_vbjplg.Attribute_2a18bbd3, false, new SAbstractConcept[]{});
           if (ListSequence.fromList(attributes).isNotEmpty()) {
             markAnnotatedNodeForReview(nodeToMigrate, attributes);
             return;
@@ -90,5 +91,9 @@ public class RemoveUITestPropertyFromTestInfo extends MigrationScriptBase {
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 0x46bca02bfb6e730aL, "TestInfo"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_vbjplg {
+    /*package*/ static final SConcept Attribute_2a18bbd3 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
   }
 }

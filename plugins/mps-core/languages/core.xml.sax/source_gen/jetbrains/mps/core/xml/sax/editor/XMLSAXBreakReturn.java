@@ -9,16 +9,17 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class XMLSAXBreakReturn extends KeyMapImpl {
   public XMLSAXBreakReturn() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new XMLSAXBreakReturn.XMLSAXBreakReturn_Action0();
+    action = new XMLSAXBreakReturn_Action0();
     this.putAction("any", "VK_SPACE", action);
   }
   public static class XMLSAXBreakReturn_Action0 extends KeyMapActionImpl {
@@ -37,7 +38,7 @@ public class XMLSAXBreakReturn extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, "jetbrains.mps.core.xml.sax.structure.XMLSAXBreakStatement")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_dy8kzy.XMLSAXBreakStatement_1c3fd385))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -57,5 +58,9 @@ public class XMLSAXBreakReturn extends KeyMapImpl {
     public String getKeyStroke() {
       return " SPACE";
     }
+  }
+
+  private static final class AUX_dy8kzy {
+    /*package*/ static final SConcept XMLSAXBreakStatement_1c3fd385 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, "jetbrains.mps.core.xml.sax.structure.XMLSAXBreakStatement");
   }
 }

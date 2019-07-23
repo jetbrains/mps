@@ -57,8 +57,8 @@ public class TestTransformExceptionSubmenuChild_TransformationMenu extends Trans
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TestTransformExceptionSubmenuChild_TransformationMenu.TMP_SubMenu_gwmj7u_a0());
-      result.add(new TestTransformExceptionSubmenuChild_TransformationMenu.TMP_Action_gwmj7u_b0());
+      result.add(new TMP_SubMenu_gwmj7u_a0());
+      result.add(new TMP_Action_gwmj7u_b0());
     }
     return result;
   }
@@ -96,7 +96,7 @@ public class TestTransformExceptionSubmenuChild_TransformationMenu extends Trans
   private class TMP_Action_gwmj7u_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestTransformExceptionSubmenuChild_TransformationMenu.TMP_Action_gwmj7u_b0.Item item = new TestTransformExceptionSubmenuChild_TransformationMenu.TMP_Action_gwmj7u_b0.Item(context);
+      TMP_Action_gwmj7u_b0.Item item = new TMP_Action_gwmj7u_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

@@ -52,7 +52,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ShowBrokenReferences_EditorBuilder_a.targetSingleRoleHandler_f1q2ux_b0(myNode, MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, 0x1cf75b72b0ac828dL, "target"), getEditorContext());
+    SingleRoleCellProvider provider = new targetSingleRoleHandler_f1q2ux_b0(myNode, MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, 0x1cf75b72b0ac828dL, "target"), getEditorContext());
     return provider.createCell();
   }
   private static class targetSingleRoleHandler_f1q2ux_b0 extends SingleRoleCellProvider {

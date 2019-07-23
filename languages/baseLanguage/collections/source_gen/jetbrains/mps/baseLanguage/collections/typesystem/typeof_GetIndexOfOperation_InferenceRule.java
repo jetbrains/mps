@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_GetIndexOfOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_GetIndexOfOperation_InferenceRule() {
@@ -40,7 +41,7 @@ public class typeof_GetIndexOfOperation_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x110bc593e18L, "jetbrains.mps.baseLanguage.collections.structure.GetIndexOfOperation");
+    return AUX_aycuzy.GetIndexOfOperation_ff18bb34;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -64,5 +65,9 @@ public class typeof_GetIndexOfOperation_InferenceRule extends AbstractInferenceR
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_aycuzy {
+    /*package*/ static final SConcept GetIndexOfOperation_ff18bb34 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x110bc593e18L, "jetbrains.mps.baseLanguage.collections.structure.GetIndexOfOperation");
   }
 }

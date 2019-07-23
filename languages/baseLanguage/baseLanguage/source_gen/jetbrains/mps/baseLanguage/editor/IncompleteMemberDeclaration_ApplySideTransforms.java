@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IncompleteMemberDeclaration_ApplySideTransforms extends TransformationMenuBase {
@@ -49,10 +50,10 @@ public class IncompleteMemberDeclaration_ApplySideTransforms extends Transformat
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new IncompleteMemberDeclaration_ApplySideTransforms.TMP_Include_4wibnr_a0());
+      result.add(new TMP_Include_4wibnr_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new IncompleteMemberDeclaration_ApplySideTransforms.TMP_Include_4wibnr_a1());
+      result.add(new TMP_Include_4wibnr_a1());
     }
     return result;
   }
@@ -76,7 +77,7 @@ public class IncompleteMemberDeclaration_ApplySideTransforms extends Transformat
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_4wibnr.IncompleteMemberDeclaration_71f5ae66);
     }
 
   }
@@ -99,7 +100,7 @@ public class IncompleteMemberDeclaration_ApplySideTransforms extends Transformat
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_4wibnr.IncompleteMemberDeclaration_71f5ae66);
     }
 
     @Nullable
@@ -107,5 +108,9 @@ public class IncompleteMemberDeclaration_ApplySideTransforms extends Transformat
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.RIGHT_SIDE_TRANSFORM;
     }
+  }
+
+  private static final class AUX_4wibnr {
+    /*package*/ static final SConcept IncompleteMemberDeclaration_71f5ae66 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
   }
 }

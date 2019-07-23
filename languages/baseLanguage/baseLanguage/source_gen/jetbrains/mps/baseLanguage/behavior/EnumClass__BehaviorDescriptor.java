@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -15,6 +14,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -27,9 +27,11 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+  private static final SAbstractConcept CONCEPT = AUX_1esyfw.EnumClass_acf68fc0;
 
   public static final SMethod<SNode> findConstantByName_idhEwIiGU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findConstantByName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIiGU").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> getSuperclass_idi3H_lLu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSuperclass").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i3H_lLu").build();
@@ -60,7 +62,7 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     List<SNode> extended = ListSequence.fromList(new ArrayList<SNode>());
     SNode enumType = EnumClass__BehaviorDescriptor.getExtendedEnumJavaType_id6O4rE5gbZ0q.invoke(__thisNode__);
     ListSequence.fromList(extended).addElement(enumType);
-    ListSequence.fromList(extended).addSequence(ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"))));
+    ListSequence.fromList(extended).addSequence(ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invokeSuper(__thisNode__, AUX_1esyfw.EnumClass_acf68fc0)));
     return extended;
   }
   /*package*/ static SNode getExtendedEnumJavaType_id6O4rE5gbZ0q(@NotNull SNode __thisNode__) {
@@ -71,7 +73,7 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     return concreteEnumType;
   }
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
-    List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"));
+    List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, AUX_1esyfw.EnumClass_acf68fc0);
     ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant"))));
     return members;
   }
@@ -80,7 +82,7 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull SNode __thisNode__) {
-    List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"));
+    List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invokeSuper(__thisNode__, AUX_1esyfw.EnumClass_acf68fc0);
     final List<SNode> ownMethods = Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"));
     Iterable<SNode> remaining = ListSequence.fromList(methodsToImplement).where(new IWhereFilter<SNode>() {
       public boolean accept(final SNode toBeImplemented) {
@@ -94,15 +96,15 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     return Sequence.fromIterable(remaining).toListSequence();
   }
   /*package*/ static List<SNode> getMethodsToOverride_id4GM03FJm3zL(@NotNull SNode __thisNode__) {
-    final List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invokeSuper(__thisNode__, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"));
+    final List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invokeSuper(__thisNode__, AUX_1esyfw.EnumClass_acf68fc0);
     Iterable<SNode> ownMethods = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) || SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
+        return SNodeOperations.isInstanceOf(it, AUX_1esyfw.InstanceMethodDeclaration_9dbf9b2b) || SNodeOperations.isInstanceOf(it, AUX_1esyfw.ConstructorDeclaration_9dbf9ae8);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"));
-        return (v != null) && !(SNodeOperations.isInstanceOf(v, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal")));
+        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, AUX_1esyfw.IVisible_84badc76), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"));
+        return (v != null) && !(SNodeOperations.isInstanceOf(v, AUX_1esyfw.PrivateVisibility_63f5dbd4)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, AUX_1esyfw.InstanceMethodDeclaration_9dbf9b2b), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal")));
       }
     });
     Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where(new IWhereFilter<SNode>() {
@@ -182,5 +184,13 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
     return quotedNode_1;
+  }
+
+  private static final class AUX_1esyfw {
+    /*package*/ static final SConcept EnumClass_acf68fc0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept ConstructorDeclaration_9dbf9ae8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IVisible_84badc76 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SConcept PrivateVisibility_63f5dbd4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 }

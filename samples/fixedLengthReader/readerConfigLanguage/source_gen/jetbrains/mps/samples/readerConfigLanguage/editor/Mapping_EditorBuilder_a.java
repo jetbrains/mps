@@ -42,6 +42,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Mapping_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -98,7 +99,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.setCellId("property_code");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_cxhxqn.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -123,7 +124,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.setCellId("property_targetClass");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_cxhxqn.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -158,7 +159,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new Mapping_EditorBuilder_a.fieldListHandler_mcrsin_b1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new fieldListHandler_mcrsin_b1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_field");
     editorCell.setGridLayout(true);
@@ -182,7 +183,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       return MetaAdapterFactory.getContainmentLink(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6aabc30L, 0x103f6b56dcdL, "field");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6ab7909L, "jetbrains.mps.samples.readerConfigLanguage.structure.Field");
+      return AUX_cxhxqn.Field_ae78a6ce;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -225,5 +226,10 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.setDefaultText("");
       return editorCell;
     }
+  }
+
+  private static final class AUX_cxhxqn {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept Field_ae78a6ce = MetaAdapterFactory.getConcept(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6ab7909L, "jetbrains.mps.samples.readerConfigLanguage.structure.Field");
   }
 }

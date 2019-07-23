@@ -34,7 +34,7 @@ public class ConvertAnonymousGenGenericFields_Test extends BaseTransformationTes
 
   @Test
   public void test_TypeParametersTest() throws Throwable {
-    new ConvertAnonymousGenGenericFields_Test.TestBody(this).test_TypeParametersTest();
+    new TestBody(this).test_TypeParametersTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

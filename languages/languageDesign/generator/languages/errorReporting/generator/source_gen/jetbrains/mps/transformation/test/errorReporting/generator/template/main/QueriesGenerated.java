@@ -34,11 +34,11 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode weavingRule_ContextQuery_0_1(final WeavingMappingRuleContext _context) {
     return _context.getOutputNodeByMappingLabel("aaa", null);
   }
-  private final Map<String, QueriesGenerated.WRQ> wrcnMethods = new HashMap<String, QueriesGenerated.WRQ>();
+  private final Map<String, WRQ> wrcnMethods = new HashMap<String, WRQ>();
   {
     int i = 0;
-    wrcnMethods.put("7287346816896128674", new QueriesGenerated.WRQ(i++));
-    wrcnMethods.put("6145560071556216090", new QueriesGenerated.WRQ(i++));
+    wrcnMethods.put("7287346816896128674", new WRQ(i++));
+    wrcnMethods.put("6145560071556216090", new WRQ(i++));
   }
   @Override
   @NotNull

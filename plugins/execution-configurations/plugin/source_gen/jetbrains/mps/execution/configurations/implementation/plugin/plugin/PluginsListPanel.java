@@ -29,11 +29,12 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import jetbrains.mps.workbench.choose.NodesPresentation;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PluginsListPanel extends ListPanel<SNodeReference> {
   private final Function<SNode, String> myPluginNameFunc = new Function<SNode, String>() {
     public String apply(SNode n) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin")), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id"));
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, AUX_mqyx4j.BuildMpsLayout_Plugin_d1bb7c47), MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin")), MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id"));
     }
   };
 
@@ -71,7 +72,7 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
     return accessHelper.runReadAction(new Computable<List<SNodeReference>>() {
       public List<SNodeReference> compute() {
         CollectConsumer<SNode> collector = new CollectConsumer<SNode>();
-        FindUsagesFacade.getInstance().findInstances(new GlobalScope(mpsProject.getRepository()), Collections.singleton(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin")), false, collector, progress);
+        FindUsagesFacade.getInstance().findInstances(new GlobalScope(mpsProject.getRepository()), Collections.singleton(AUX_mqyx4j.BuildMpsLayout_Plugin_d1bb7c47), false, collector, progress);
         List<SNodeReference> rv = ListSequence.fromList(new ArrayList<SNodeReference>());
         for (SNode node : CollectionSequence.fromCollection(collector.getResult())) {
           ListSequence.fromList(rv).addElement(node.getReference());
@@ -86,5 +87,9 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
     ChooseByNameData d = new ChooseByNameData(new NodesPresentation(ProjectHelper.getProjectRepository(myProject), myPluginNameFunc));
     d.derivePrompts("node").setScope(nodesList, Collections.emptySet());
     return new NodeChooserDialog(myProject, d);
+  }
+
+  private static final class AUX_mqyx4j {
+    /*package*/ static final SConcept BuildMpsLayout_Plugin_d1bb7c47 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
   }
 }

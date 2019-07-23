@@ -13,6 +13,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_DowncastExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_DowncastExpression_InferenceRule() {
@@ -23,7 +24,7 @@ public class typeof_DowncastExpression_InferenceRule extends AbstractInferenceRu
       typeCheckingContext.whenConcrete(expType, new Runnable() {
         public void run() {
           {
-            SNode coercedNode_y5vcz7_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(expType), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"));
+            SNode coercedNode_y5vcz7_a0a0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(expType), AUX_2on3q6.Type_4199e276);
             if (coercedNode_y5vcz7_a0a0 != null) {
               {
                 SNode _nodeToCheck_1029348928467 = expression;
@@ -38,12 +39,17 @@ public class typeof_DowncastExpression_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11df825e596L, "jetbrains.mps.baseLanguage.collections.structure.DowncastExpression");
+    return AUX_2on3q6.DowncastExpression_e245e26e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_2on3q6 {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept DowncastExpression_e245e26e = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11df825e596L, "jetbrains.mps.baseLanguage.collections.structure.DowncastExpression");
   }
 }

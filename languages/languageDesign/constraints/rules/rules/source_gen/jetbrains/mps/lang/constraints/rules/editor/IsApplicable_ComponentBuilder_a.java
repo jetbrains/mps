@@ -132,7 +132,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     return ListSequence.fromList(new RequiredDefsCalculator().calculate(myNode)).isNotEmpty();
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IsApplicable_ComponentBuilder_a.conditionSingleRoleHandler_gagq4k_a1a0a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_gagq4k_a1a0a(myNode, MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_gagq4k_a1a0a extends SingleRoleCellProvider {
@@ -248,7 +248,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.5, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("always");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IsApplicable_ComponentBuilder_a.RuleBlockMemberWithApplicability_generic_cellMenu_gagq4k_a0a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RuleBlockMemberWithApplicability_generic_cellMenu_gagq4k_a0a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RuleBlockMemberWithApplicability_generic_cellMenu_gagq4k_a0a0a0 extends AbstractCellMenuPart_Generic_Item {
@@ -298,7 +298,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IsApplicable_ComponentBuilder_a.RuleBlockMemberWithApplicability_generic_cellMenu_gagq4k_a0a0a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RuleBlockMemberWithApplicability_generic_cellMenu_gagq4k_a0a0a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RuleBlockMemberWithApplicability_generic_cellMenu_gagq4k_a0a0a0a extends AbstractCellMenuPart_Generic_Item {

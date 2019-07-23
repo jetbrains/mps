@@ -22,7 +22,7 @@ public class QueryExpression_Delete_Test extends BaseTransformationTest {
 
   @Test
   public void test_QueryExpression_Delete() throws Throwable {
-    new QueryExpression_Delete_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

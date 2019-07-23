@@ -41,6 +41,8 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.logging.MessageObject;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -158,10 +160,10 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       public List<SNode> get() {
         List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
 
-        for (SNode node : SNodeOperations.getNodeDescendants(rootNode, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), true, new SAbstractConcept[]{})) {
+        for (SNode node : SNodeOperations.getNodeDescendants(rootNode, AUX_jeu62i.BaseConcept_bc2351f, true, new SAbstractConcept[]{})) {
           SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
-          if (SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
-            ListSequence.fromList(list).addElement(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
+          if (SNodeOperations.isInstanceOf(type, AUX_jeu62i.ClassifierType_42700403)) {
+            ListSequence.fromList(list).addElement(SNodeOperations.cast(type, AUX_jeu62i.ClassifierType_42700403));
           }
         }
 
@@ -176,7 +178,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
 
     for (SNode classifier : classifiers) {
       try {
-        ListSequence.fromList(result).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb113dL, "jetbrains.mps.baseLanguage.structure.IClassifier"), SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType"), SMethodTrimmedId.create("getMembers", MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType"), "6r77ob2V1Fr")))));
+        ListSequence.fromList(result).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, AUX_jeu62i.IClassifier_4cba8b09, SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), AUX_jeu62i.IClassifierType_4ce3f333, SMethodTrimmedId.create("getMembers", AUX_jeu62i.IClassifierType_4ce3f333, "6r77ob2V1Fr")))));
       } catch (Exception e) {
         CalcClassifiersInRootsStatistic_Action.this.message(Level.ERROR, "Error calculating type", e, _params);
       }
@@ -197,5 +199,12 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
   private void message(Level level, String message, Throwable e, final Map<String, Object> _params) {
     MessageObject msgObject = new MessageObject(message, null, "CalcClassifiersInRootsStatistic", ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
     LogManager.getLogger("###MESSAGES_VIEW_TOKEN###").log(level, msgObject, e);
+  }
+
+  private static final class AUX_jeu62i {
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SInterfaceConcept IClassifier_4cba8b09 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb113dL, "jetbrains.mps.baseLanguage.structure.IClassifier");
+    /*package*/ static final SInterfaceConcept IClassifierType_4ce3f333 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType");
   }
 }

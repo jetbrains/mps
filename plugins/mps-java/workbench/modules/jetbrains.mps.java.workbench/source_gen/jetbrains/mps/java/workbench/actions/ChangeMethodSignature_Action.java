@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -21,6 +20,7 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import com.intellij.openapi.ui.Messages;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
@@ -28,6 +28,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import java.util.Arrays;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ChangeMethodSignature_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -56,7 +57,7 @@ public class ChangeMethodSignature_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_miouaf.BaseMethodDeclaration_9dbf9acb))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("method", node);
@@ -90,9 +91,9 @@ public class ChangeMethodSignature_Action extends BaseAction {
     modelAccess.runWriteAction(new Runnable() {
       public void run() {
         repo.saveAll();
-        baseMethod.value = ((SNode) BHReflection.invoke0(((SNode) MapSequence.fromMap(_params).get("method")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), SMethodTrimmedId.create("getBaseMethod", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), "4mmymf_0z7l")));
+        baseMethod.value = ((SNode) BHReflection.invoke0(((SNode) MapSequence.fromMap(_params).get("method")), AUX_miouaf.BaseMethodDeclaration_9dbf9acb, SMethodTrimmedId.create("getBaseMethod", AUX_miouaf.BaseMethodDeclaration_9dbf9acb, "4mmymf_0z7l")));
         if (baseMethod.value != null) {
-          message.value = "Method " + ((SNode) MapSequence.fromMap(_params).get("method")).getPresentation() + " overrides method from " + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod.value), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ".\n";
+          message.value = "Method " + ((SNode) MapSequence.fromMap(_params).get("method")).getPresentation() + " overrides method from " + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod.value), AUX_miouaf.Classifier_4b7e553), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ".\n";
           message.value += "Do you want to change signature of this method instead?";
         }
       }
@@ -123,5 +124,10 @@ public class ChangeMethodSignature_Action extends BaseAction {
         RefactoringAccess.getInstance().getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", Arrays.asList("myRefactorings"), Arrays.asList(myRefactorings), methodToRefactor, ((MPSProject) MapSequence.fromMap(_params).get("project"))));
       }
     });
+  }
+
+  private static final class AUX_miouaf {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

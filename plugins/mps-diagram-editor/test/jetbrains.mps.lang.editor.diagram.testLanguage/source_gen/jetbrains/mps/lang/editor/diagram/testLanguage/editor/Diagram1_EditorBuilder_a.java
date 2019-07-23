@@ -35,6 +35,7 @@ import java.util.ListIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.jetpad.projectional.diagram.view.ConnectionRoutingView;
 import jetbrains.jetpad.projectional.diagram.layout.OrthogonalRouter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Diagram1_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -77,14 +78,14 @@ import jetbrains.jetpad.projectional.diagram.layout.OrthogonalRouter;
     return editorCell;
   }
   private EditorCell createDiagram_0() {
-    DiagramCell editorCell = new Diagram1_EditorBuilder_a.DiagramCellImpl_yfdxtz_a0a(getEditorContext(), myNode);
+    DiagramCell editorCell = new DiagramCellImpl_yfdxtz_a0a(getEditorContext(), myNode);
     editorCell.setCellId("Diagram_yfdxtz_a0a");
     return editorCell;
   }
   private class DiagramCellImpl_yfdxtz_a0a extends DiagramCell {
     private DiagramCellImpl_yfdxtz_a0a(EditorContext editorContext, SNode node) {
       super(editorContext, node);
-      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c01b3L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.RectangleNode"), MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c017aL, 0x71771b7f74c01b6L, "rectangles"), new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), AUX_kf6ysn.RectangleNode_a534da14, MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c017aL, 0x71771b7f74c01b6L, "rectangles"), new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
         }
       })}));
@@ -92,7 +93,7 @@ import jetbrains.jetpad.projectional.diagram.layout.OrthogonalRouter;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c01b3L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.RectangleNode"), MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c017aL, 0x71771b7f74c01b6L, "rectangles"), new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), AUX_kf6ysn.RectangleNode_a534da14, MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c017aL, 0x71771b7f74c01b6L, "rectangles"), new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
         }
       })};
@@ -171,5 +172,9 @@ import jetbrains.jetpad.projectional.diagram.layout.OrthogonalRouter;
       ConnectionRoutingView diagramView = new ConnectionRoutingView(new OrthogonalRouter());
       return diagramView;
     }
+  }
+
+  private static final class AUX_kf6ysn {
+    /*package*/ static final SConcept RectangleNode_a534da14 = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c01b3L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.RectangleNode");
   }
 }

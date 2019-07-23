@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Arrays;
@@ -27,6 +26,7 @@ import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
@@ -44,6 +44,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class FacetReferenceExpression_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -69,7 +70,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_bw4iz1.FacetReferenceExpression_e8398170)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -85,7 +86,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new FacetReferenceExpression_TransformationMenu.TMP_Group_bw4iz1_a1());
+      result.add(new TMP_Group_bw4iz1_a1());
     }
     return result;
   }
@@ -93,7 +94,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
   public class TMP_Group_bw4iz1_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression")));
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_bw4iz1.TargetReferenceExpression_13797f56));
     }
 
     @NotNull
@@ -109,14 +110,14 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new FacetReferenceExpression_TransformationMenu.TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b(), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b(), AUX_bw4iz1.TargetReferenceExpression_13797f56));
     }
     private class TMP_Param_bw4iz1_a0b extends ParameterizedMenuPart<SNode, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-        return new FacetReferenceExpression_TransformationMenu.TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1(parameter).createItems(context);
+        return new TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1(parameter).createItems(context);
       }
 
       @Nullable
@@ -143,7 +144,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          FacetReferenceExpression_TransformationMenu.TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1.Item item = new FacetReferenceExpression_TransformationMenu.TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1.Item(context);
+          TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1.Item item = new TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -178,7 +179,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode tre = SNodeOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression"));
+            SNode tre = SNodeOperations.replaceWithNewChild(_context.getNode(), AUX_bw4iz1.TargetReferenceExpression_13797f56);
             SLinkOperations.setTarget(tre, MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3aeL, "facetRef"), _context.getNode());
             SLinkOperations.setTarget(tre, MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3bcL, "target"), myParameterObject);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), tre, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -188,7 +189,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression");
+            return AUX_bw4iz1.TargetReferenceExpression_13797f56;
           }
 
 
@@ -199,7 +200,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
 
           public void customize(String pattern, EditorMenuItemStyle style) {
             EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-            SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression");
+            SAbstractConcept outputConcept = AUX_bw4iz1.TargetReferenceExpression_13797f56;
             EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
             for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
               customizer.customize(style, compositeContext);
@@ -209,5 +210,10 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
 
       }
     }
+  }
+
+  private static final class AUX_bw4iz1 {
+    /*package*/ static final SConcept FacetReferenceExpression_e8398170 = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression");
+    /*package*/ static final SConcept TargetReferenceExpression_13797f56 = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression");
   }
 }

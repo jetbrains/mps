@@ -23,7 +23,7 @@ public class PressingEndWithSelectedNode_Test extends BaseTransformationTest {
 
   @Test
   public void test_PressingEndWithSelectedNode() throws Throwable {
-    new PressingEndWithSelectedNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

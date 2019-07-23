@@ -7,12 +7,12 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import java.util.Objects;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -20,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BooleanLocalVariable implements EditorMenuItemCustomizer {
 
@@ -28,7 +29,7 @@ public class BooleanLocalVariable implements EditorMenuItemCustomizer {
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    BooleanLocalVariable.BooleanLocalVariableSpecific customizer = new BooleanLocalVariable.BooleanLocalVariableSpecific();
+    BooleanLocalVariableSpecific customizer = new BooleanLocalVariableSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -36,7 +37,7 @@ public class BooleanLocalVariable implements EditorMenuItemCustomizer {
 
   private static class BooleanLocalVariableSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")) {
+      return new EditorMenuItemModifyingConceptContextMatcher(AUX_spj20f.LocalVariableDeclaration_d47683f3) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
@@ -69,17 +70,23 @@ public class BooleanLocalVariable implements EditorMenuItemCustomizer {
     }
     private void customize_(SNode contextNode, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       SAbstractConcept outputConcept = itemInformation.getOutputConcept();
-      if (isBooleanVariable(contextNode) && outputConcept != null && outputConcept.isSubConceptOf(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant"))) {
+      if (isBooleanVariable(contextNode) && outputConcept != null && outputConcept.isSubConceptOf(AUX_spj20f.BooleanConstant_9dbf9ad0)) {
         style.setPriority(2.0);
         style.setBold();
       }
     }
     private boolean isBooleanVariable(SNode node) {
       SNode type = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"));
-      return SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType")) || SNodeOperations.isInstanceOf(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(type, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"), SNodeOperations.getModel(node).getRepository()));
+      return SNodeOperations.isInstanceOf(type, AUX_spj20f.BooleanType_6530abf6) || SNodeOperations.isInstanceOf(type, AUX_spj20f.ClassifierType_42700403) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(type, AUX_spj20f.ClassifierType_42700403), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"), SNodeOperations.getModel(node).getRepository()));
     }
 
   }
 
 
+  private static final class AUX_spj20f {
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept BooleanConstant_9dbf9ad0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept BooleanType_6530abf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+  }
 }

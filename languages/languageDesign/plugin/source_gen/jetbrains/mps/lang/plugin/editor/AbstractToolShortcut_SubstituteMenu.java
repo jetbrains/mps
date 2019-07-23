@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
@@ -40,14 +39,16 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new AbstractToolShortcut_SubstituteMenu.SMP_Subconcepts_7ty2v0_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new AbstractToolShortcut_SubstituteMenu.SMP_Wrap_7ty2v0_b(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, "jetbrains.mps.lang.plugin.structure.CustomToolShortcut")));
+    result.add(new SMP_Subconcepts_7ty2v0_a());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_7ty2v0_b(), AUX_7ty2v0.CustomToolShortcut_3de8b86a));
     return result;
   }
 
@@ -66,14 +67,14 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_7ty2v0_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b5f981L, "jetbrains.mps.lang.plugin.structure.AbstractToolShortcut")).stream().filter(new Predicate<SAbstractConcept>() {
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_7ty2v0.AbstractToolShortcut_3c377f61).stream().filter(new Predicate<SAbstractConcept>() {
         public boolean test(SAbstractConcept concept) {
           return filterConcept(_context, concept);
         }
       }).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-      return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, "jetbrains.mps.lang.plugin.structure.CustomToolShortcut")));
+      return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), AUX_7ty2v0.CustomToolShortcut_3de8b86a));
     }
     @NotNull
     @Override
@@ -115,7 +116,7 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, "jetbrains.mps.lang.plugin.structure.CustomToolShortcut");
+          return AUX_7ty2v0.CustomToolShortcut_3de8b86a;
         }
         @Nullable
         @Override
@@ -148,15 +149,21 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL, "jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke");
+      return AUX_7ty2v0.AbstractToolKeystroke_d9b1de70;
     }
   }
   private static SNode createCustomToolShortcut_7ty2v0_a0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, "jetbrains.mps.lang.plugin.structure.CustomToolShortcut"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_7ty2v0.CustomToolShortcut_3de8b86a, null, null, false);
     if (node0 != null) {
-      n1.addChild(MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, 0x68b8d4843b765b8L, "changes"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL, "jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke"))));
+      n1.addChild(MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, 0x68b8d4843b765b8L, "changes"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_7ty2v0.AbstractToolKeystroke_d9b1de70)));
     }
     return n1;
+  }
+
+  private static final class AUX_7ty2v0 {
+    /*package*/ static final SConcept CustomToolShortcut_3de8b86a = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, "jetbrains.mps.lang.plugin.structure.CustomToolShortcut");
+    /*package*/ static final SConcept AbstractToolShortcut_3c377f61 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b5f981L, "jetbrains.mps.lang.plugin.structure.AbstractToolShortcut");
+    /*package*/ static final SConcept AbstractToolKeystroke_d9b1de70 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL, "jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke");
   }
 }

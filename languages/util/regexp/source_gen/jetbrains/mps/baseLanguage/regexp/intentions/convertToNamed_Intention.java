@@ -13,8 +13,9 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class convertToNamed_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -35,7 +36,7 @@ public final class convertToNamed_Intention extends AbstractIntentionDescriptor 
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new convertToNamed_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -48,7 +49,7 @@ public final class convertToNamed_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode n = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp"));
+      SNode n = SNodeFactoryOperations.replaceWithNewChild(node, AUX_hoixkc.MatchParensRegexp_6b89f08c);
       editorContext.flushEvents();
       editorContext.selectWRTFocusPolicy(n);
     }
@@ -56,5 +57,9 @@ public final class convertToNamed_Intention extends AbstractIntentionDescriptor 
     public IntentionDescriptor getDescriptor() {
       return convertToNamed_Intention.this;
     }
+  }
+
+  private static final class AUX_hoixkc {
+    /*package*/ static final SConcept MatchParensRegexp_6b89f08c = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
   }
 }

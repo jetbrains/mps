@@ -31,20 +31,21 @@ import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
 import jetbrains.mps.make.script.IPropertiesPool;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Makeup_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.makeup.Makeup");
   public Makeup_Facet() {
-    ListSequence.fromList(targets).addElement(new Makeup_Facet.Target_ProcessMakeup());
+    ListSequence.fromList(targets).addElement(new Target_ProcessMakeup());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -62,7 +63,7 @@ public class Makeup_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Makeup_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_ProcessMakeup implements ITargetEx {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.makeup.Makeup.ProcessMakeup");
@@ -108,7 +109,7 @@ public class Makeup_Facet extends IFacet.Stub {
                   public void run() {
                     for (TextUnit tu : generatedTextUnits) {
                       SNode startNode = tu.getStartNode();
-                      SNode annotationCopy = AttributeOperations.getAttribute(startNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome")));
+                      SNode annotationCopy = AttributeOperations.getAttribute(startNode, new IAttributeDescriptor.NodeAttribute(AUX_laycg0.CopyOutcome_b441976c));
                       if ((annotationCopy == null)) {
                         continue;
                       }
@@ -211,5 +212,9 @@ public class Makeup_Facet extends IFacet.Stub {
       } catch (RuntimeException re) {
       }
     }
+  }
+
+  private static final class AUX_laycg0 {
+    /*package*/ static final SConcept CopyOutcome_b441976c = MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome");
   }
 }

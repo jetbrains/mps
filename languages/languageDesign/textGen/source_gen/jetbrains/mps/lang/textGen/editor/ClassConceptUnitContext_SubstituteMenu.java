@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassConceptUnitContext_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ClassConceptUnitContext_SubstituteMenu.SMP_ReferenceScope_n3f77i_a(), MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ac9073L, "jetbrains.mps.lang.textGen.structure.ClassConceptUnitContext")));
-    result.add(new ClassConceptUnitContext_SubstituteMenu.SMP_Subconcepts_n3f77i_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_n3f77i_a(), AUX_n3f77i.ClassConceptUnitContext_bff6ee86));
+    result.add(new SMP_Subconcepts_n3f77i_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class ClassConceptUnitContext_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_n3f77i_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ac9073L, "jetbrains.mps.lang.textGen.structure.ClassConceptUnitContext"), MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ac9073L, 0x377692d961ac9076L, "classifier"));
+      super((SAbstractConcept) AUX_n3f77i.ClassConceptUnitContext_bff6ee86, MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ac9073L, 0x377692d961ac9076L, "classifier"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class ClassConceptUnitContext_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_n3f77i_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ac9073L, "jetbrains.mps.lang.textGen.structure.ClassConceptUnitContext"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_n3f77i.ClassConceptUnitContext_bff6ee86);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class ClassConceptUnitContext_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_n3f77i {
+    /*package*/ static final SConcept ClassConceptUnitContext_bff6ee86 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ac9073L, "jetbrains.mps.lang.textGen.structure.ClassConceptUnitContext");
   }
 }

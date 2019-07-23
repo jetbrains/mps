@@ -22,7 +22,7 @@ public class AddMenuPart_SimpleItemSubstitute_smartComplete_Test extends BaseTra
 
   @Test
   public void test_AddMenuPart_SimpleItemSubstitute_smartComplete() throws Throwable {
-    new AddMenuPart_SimpleItemSubstitute_smartComplete_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

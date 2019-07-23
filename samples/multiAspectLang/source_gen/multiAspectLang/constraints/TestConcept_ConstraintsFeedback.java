@@ -4,7 +4,6 @@ package multiAspectLang.constraints;
 
 import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
@@ -15,9 +14,11 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 import java.util.stream.Stream;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TestConcept_ConstraintsFeedback extends BaseFeedbackDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
+  private static final SAbstractConcept CONCEPT = AUX_rhl8yx.TestConcept_e187f53f;
 
   private static final FeedbackProvider<CanBeRootContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_a = new BaseMessageProvider<CanBeRootContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_e0.ID_unnamed_6y4avc_e0)) {
     @NotNull
@@ -37,5 +38,9 @@ public final class TestConcept_ConstraintsFeedback extends BaseFeedbackDescripto
   @Override
   public Stream<FeedbackProvider> getDeclaredProviders() {
     return PROVIDERS.stream();
+  }
+
+  private static final class AUX_rhl8yx {
+    /*package*/ static final SConcept TestConcept_e187f53f = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
   }
 }

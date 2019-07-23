@@ -21,7 +21,7 @@ public class PerenthesiseMethodCallParams_Test extends BaseTransformationTest {
 
   @Test
   public void test_PerenthesiseMethodCallParams() throws Throwable {
-    new PerenthesiseMethodCallParams_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

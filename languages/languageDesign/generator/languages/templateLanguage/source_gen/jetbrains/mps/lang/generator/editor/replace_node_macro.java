@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,17 +21,18 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class replace_node_macro extends AbstractCellMenuComponent {
   public replace_node_macro() {
-    super(new SubstituteInfoPartExt[]{new replace_node_macro.NodeMacro_generic_cellMenu_f12orh_a0()});
+    super(new SubstituteInfoPartExt[]{new NodeMacro_generic_cellMenu_f12orh_a0()});
   }
   public static class NodeMacro_generic_cellMenu_f12orh_a0 extends AbstractCellMenuPart_Generic_Group {
     public NodeMacro_generic_cellMenu_f12orh_a0() {
     }
 
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro"), SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_f12orh.NodeMacro_2cb20614, SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return !(it.isAbstract());
         }
@@ -74,5 +74,9 @@ public class replace_node_macro extends AbstractCellMenuComponent {
     private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;
     }
+  }
+
+  private static final class AUX_f12orh {
+    /*package*/ static final SConcept NodeMacro_2cb20614 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
   }
 }

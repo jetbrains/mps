@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LowLevelVariableReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new LowLevelVariableReference_SubstituteMenu.SMP_ReferenceScope_2icqa4_a(), MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference")));
-    result.add(new LowLevelVariableReference_SubstituteMenu.SMP_Subconcepts_2icqa4_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2icqa4_a(), AUX_2icqa4.LowLevelVariableReference_3da7046f));
+    result.add(new SMP_Subconcepts_2icqa4_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class LowLevelVariableReference_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_2icqa4_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration"));
+      super((SAbstractConcept) AUX_2icqa4.LowLevelVariableReference_3da7046f, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class LowLevelVariableReference_SubstituteMenu extends SubstituteMenuBase
   }
   public class SMP_Subconcepts_2icqa4_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_2icqa4.LowLevelVariableReference_3da7046f);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class LowLevelVariableReference_SubstituteMenu extends SubstituteMenuBase
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_2icqa4 {
+    /*package*/ static final SConcept LowLevelVariableReference_3da7046f = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference");
   }
 }

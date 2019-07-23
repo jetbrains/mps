@@ -32,23 +32,23 @@ public class TestQueryPath_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck529363524336252998() throws Throwable {
-    new TestQueryPath_Test.TestBody(this).test_ErrorMessagesCheck529363524336252998();
+    new TestBody(this).test_ErrorMessagesCheck529363524336252998();
   }
   @Test
   public void test_NodeEmptySegmnetCheck529363524336253171() throws Throwable {
-    new TestQueryPath_Test.TestBody(this).test_NodeEmptySegmnetCheck529363524336253171();
+    new TestBody(this).test_NodeEmptySegmnetCheck529363524336253171();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336253166() throws Throwable {
-    new TestQueryPath_Test.TestBody(this).test_ErrorMessagesCheck529363524336253166();
+    new TestBody(this).test_ErrorMessagesCheck529363524336253166();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336254130() throws Throwable {
-    new TestQueryPath_Test.TestBody(this).test_ErrorMessagesCheck529363524336254130();
+    new TestBody(this).test_ErrorMessagesCheck529363524336254130();
   }
   @Test
   public void test_ErrorMessagesCheck529363524336254163() throws Throwable {
-    new TestQueryPath_Test.TestBody(this).test_ErrorMessagesCheck529363524336254163();
+    new TestBody(this).test_ErrorMessagesCheck529363524336254163();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

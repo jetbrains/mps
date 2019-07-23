@@ -6,10 +6,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * Produces BuildRelativePath and BuildCompositePath, knows factory for these nodes.
@@ -27,14 +28,14 @@ public final class PathBuilder {
    */
   @NotNull
   public SNode buildRelative(String path) {
-    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath"));
+    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, AUX_wkip57.BuildSourceProjectRelativePath_d4a7a399);
     SLinkOperations.setTarget(relPath, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), buildComposite(path));
     return relPath;
   }
 
   @NotNull
   public SNode buildRelative(SNode macro, String path) {
-    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath"));
+    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, AUX_wkip57.BuildSourceMacroRelativePath_b98b24fe);
     SLinkOperations.setTarget(relPath, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro"), macro);
     SLinkOperations.setTarget(relPath, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), buildComposite(path));
     return relPath;
@@ -48,7 +49,7 @@ public final class PathBuilder {
       if ((fname == null || fname.length() == 0)) {
         continue;
       }
-      SNode npath = SModelOperations.createNewNode(myNodeFactory, null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath"));
+      SNode npath = SModelOperations.createNewNode(myNodeFactory, null, AUX_wkip57.BuildCompositePath_8d3bfbf4);
       SPropertyOperations.assign(npath, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head"), fname);
       if (head == null) {
         head = tail = npath;
@@ -58,5 +59,11 @@ public final class PathBuilder {
       }
     }
     return head;
+  }
+
+  private static final class AUX_wkip57 {
+    /*package*/ static final SConcept BuildSourceProjectRelativePath_d4a7a399 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
+    /*package*/ static final SConcept BuildSourceMacroRelativePath_b98b24fe = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
+    /*package*/ static final SConcept BuildCompositePath_8d3bfbf4 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
   }
 }

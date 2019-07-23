@@ -32,83 +32,83 @@ public class UnreachableStatements_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeUnusedLocalVariableCheck5924873649943434426() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnusedLocalVariableCheck5924873649943434426();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck5924873649943434426();
   }
   @Test
   public void test_NodeUnusedVariableWarningCheck5924873649943434428() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnusedVariableWarningCheck5924873649943434428();
+    new TestBody(this).test_NodeUnusedVariableWarningCheck5924873649943434428();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck6923385624927474426() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnreachableNodeErrorCheck6923385624927474426();
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck6923385624927474426();
   }
   @Test
   public void test_ErrorMessagesCheck1216895632608() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck1216895632608();
+    new TestBody(this).test_ErrorMessagesCheck1216895632608();
   }
   @Test
   public void test_NodeUnreachableCodeCheck2557916264120514171() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnreachableCodeCheck2557916264120514171();
+    new TestBody(this).test_NodeUnreachableCodeCheck2557916264120514171();
   }
   @Test
   public void test_ErrorMessagesCheck2557916264120514158() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck2557916264120514158();
+    new TestBody(this).test_ErrorMessagesCheck2557916264120514158();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck8245314650935054824() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnreachableNodeErrorCheck8245314650935054824();
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck8245314650935054824();
   }
   @Test
   public void test_ErrorMessagesCheck8245314650935052537() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck8245314650935052537();
+    new TestBody(this).test_ErrorMessagesCheck8245314650935052537();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck8768955936813176762() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnreachableNodeErrorCheck8768955936813176762();
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck8768955936813176762();
   }
   @Test
   public void test_ErrorMessagesCheck8768955936813173396() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck8768955936813173396();
+    new TestBody(this).test_ErrorMessagesCheck8768955936813173396();
   }
   @Test
   public void test_ErrorMessagesCheck8768955936813179061() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck8768955936813179061();
+    new TestBody(this).test_ErrorMessagesCheck8768955936813179061();
   }
   @Test
   public void test_ErrorMessagesCheck8768955936813180900() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck8768955936813180900();
+    new TestBody(this).test_ErrorMessagesCheck8768955936813180900();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck8768955936813195443() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnreachableNodeErrorCheck8768955936813195443();
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck8768955936813195443();
   }
   @Test
   public void test_ErrorMessagesCheck8768955936813186030() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck8768955936813186030();
+    new TestBody(this).test_ErrorMessagesCheck8768955936813186030();
   }
   @Test
   public void test_NodeUnreachableCodeCheck2557916264120793751() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnreachableCodeCheck2557916264120793751();
+    new TestBody(this).test_NodeUnreachableCodeCheck2557916264120793751();
   }
   @Test
   public void test_ErrorMessagesCheck8768955936813197377() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck8768955936813197377();
+    new TestBody(this).test_ErrorMessagesCheck8768955936813197377();
   }
   @Test
   public void test_ErrorMessagesCheck8768955936813203327() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck8768955936813203327();
+    new TestBody(this).test_ErrorMessagesCheck8768955936813203327();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck2575419463997245412() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_NodeUnreachableNodeErrorCheck2575419463997245412();
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck2575419463997245412();
   }
   @Test
   public void test_ErrorMessagesCheck2575419463997245406() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck2575419463997245406();
+    new TestBody(this).test_ErrorMessagesCheck2575419463997245406();
   }
   @Test
   public void test_ErrorMessagesCheck2575419463997271506() throws Throwable {
-    new UnreachableStatements_Test.TestBody(this).test_ErrorMessagesCheck2575419463997271506();
+    new TestBody(this).test_ErrorMessagesCheck2575419463997271506();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

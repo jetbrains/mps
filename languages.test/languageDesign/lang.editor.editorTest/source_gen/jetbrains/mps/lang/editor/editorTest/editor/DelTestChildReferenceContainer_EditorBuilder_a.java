@@ -105,7 +105,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new DelTestChildReferenceContainer_EditorBuilder_a.childWithUsualReferenceSingleRoleHandler_ppxgb_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x7a6a3ef59ad69da8L, "childWithUsualReference"), getEditorContext());
+    SingleRoleCellProvider provider = new childWithUsualReferenceSingleRoleHandler_ppxgb_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x7a6a3ef59ad69da8L, "childWithUsualReference"), getEditorContext());
     return provider.createCell();
   }
   private static class childWithUsualReferenceSingleRoleHandler_ppxgb_c2a extends SingleRoleCellProvider {
@@ -189,7 +189,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new DelTestChildReferenceContainer_EditorBuilder_a.childWithSmartReferenceSingleRoleHandler_ppxgb_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x7a6a3ef59ad69db2L, "childWithSmartReference"), getEditorContext());
+    SingleRoleCellProvider provider = new childWithSmartReferenceSingleRoleHandler_ppxgb_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x7a6a3ef59ad69db2L, "childWithSmartReference"), getEditorContext());
     return provider.createCell();
   }
   private static class childWithSmartReferenceSingleRoleHandler_ppxgb_g2a extends SingleRoleCellProvider {
@@ -273,7 +273,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new DelTestChildReferenceContainer_EditorBuilder_a.childToReferenceSingleRoleHandler_ppxgb_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x5a98420815d28284L, "childToReference"), getEditorContext());
+    SingleRoleCellProvider provider = new childToReferenceSingleRoleHandler_ppxgb_k2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x5a98420815d28284L, "childToReference"), getEditorContext());
     return provider.createCell();
   }
   private static class childToReferenceSingleRoleHandler_ppxgb_k2a extends SingleRoleCellProvider {

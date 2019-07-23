@@ -56,10 +56,10 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("8276826811723504497", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("8276826811723518792", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("8276826811723576036", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2716118816014358737", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("8276826811723504497", new SNQ(i++));
+    snqMethods.put("8276826811723518792", new SNQ(i++));
+    snqMethods.put("8276826811723576036", new SNQ(i++));
+    snqMethods.put("2716118816014358737", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -94,7 +94,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("5258059200641603070", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), null));
+    pvqMethods.put("5258059200641603070", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), null));
   }
   @NotNull
   @Override
@@ -124,7 +124,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("8276826811723549583", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("8276826811723549583", new IfMC(i++));
   }
   @NotNull
   @Override

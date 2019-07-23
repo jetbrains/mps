@@ -22,7 +22,7 @@ public class TestNotApplicableConvertToTernaryOperatorIntention_Test extends Bas
 
   @Test
   public void test_TestNotApplicableConvertToTernaryOperatorIntention() throws Throwable {
-    new TestNotApplicableConvertToTernaryOperatorIntention_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

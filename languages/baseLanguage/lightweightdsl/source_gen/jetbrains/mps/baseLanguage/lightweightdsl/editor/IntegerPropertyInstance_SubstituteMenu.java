@@ -10,24 +10,25 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new IntegerPropertyInstance_SubstituteMenu.SMP_ReferenceScope_8aj7s_a(), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.IntegerPropertyInstance")));
-    result.add(new IntegerPropertyInstance_SubstituteMenu.SMP_Subconcepts_8aj7s_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8aj7s_a(), AUX_8aj7s.IntegerPropertyInstance_68a94341));
+    result.add(new SMP_Subconcepts_8aj7s_b());
     return result;
   }
 
@@ -48,7 +49,7 @@ public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8aj7s_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.IntegerPropertyInstance"), MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl"));
+      super((SAbstractConcept) AUX_8aj7s.IntegerPropertyInstance_68a94341, MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl"));
     }
     @NotNull
     @Override
@@ -65,7 +66,7 @@ public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_8aj7s_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.IntegerPropertyInstance"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_8aj7s.IntegerPropertyInstance_68a94341);
     }
     @NotNull
     @Override
@@ -83,5 +84,9 @@ public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_8aj7s {
+    /*package*/ static final SConcept IntegerPropertyInstance_68a94341 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.IntegerPropertyInstance");
   }
 }

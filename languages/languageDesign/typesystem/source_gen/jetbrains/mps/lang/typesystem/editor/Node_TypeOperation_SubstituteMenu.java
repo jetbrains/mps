@@ -16,6 +16,7 @@ import jetbrains.mps.lang.typesystem.typesystem.RulesUtil;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Node_TypeOperation_SubstituteMenu extends SubstituteMenuBase {
@@ -23,7 +24,7 @@ public class Node_TypeOperation_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new Node_TypeOperation_SubstituteMenu.SMP_Group_kpvr9g_a());
+    result.add(new SMP_Group_kpvr9g_a());
     return result;
   }
 
@@ -59,7 +60,7 @@ public class Node_TypeOperation_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7d5e03L, "jetbrains.mps.lang.typesystem.structure.Node_TypeOperation")) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_kpvr9g.Node_TypeOperation_843e383d) {
 
         @NotNull
         @Override
@@ -72,7 +73,11 @@ public class Node_TypeOperation_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7d5e03L, "jetbrains.mps.lang.typesystem.structure.Node_TypeOperation")));
+      }, AUX_kpvr9g.Node_TypeOperation_843e383d));
     }
+  }
+
+  private static final class AUX_kpvr9g {
+    /*package*/ static final SConcept Node_TypeOperation_843e383d = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7d5e03L, "jetbrains.mps.lang.typesystem.structure.Node_TypeOperation");
   }
 }

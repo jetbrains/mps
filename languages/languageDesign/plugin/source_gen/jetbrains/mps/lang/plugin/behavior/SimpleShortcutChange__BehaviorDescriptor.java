@@ -4,7 +4,6 @@ package jetbrains.mps.lang.plugin.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -25,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -33,9 +33,10 @@ import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange");
+  private static final SAbstractConcept CONCEPT = AUX_xeafuc.SimpleShortcutChange_b179307d;
 
   public static final SMethod<Void> addToKeymapChanges_id1adAGAvXyr3 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addToKeymapChanges").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1adAGAvXyr3").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Iterable<SEnumerationLiteral>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(EditorContext.class, ""));
 
@@ -50,7 +51,7 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
       public void visit(SEnumerationLiteral it) {
         {
           final String currentEnum = Keymap_MigrationUtils.value(it);
-          final Wrappers._T<SNode> keyMap = new Wrappers._T<SNode>(ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"))).findFirst(new IWhereFilter<SNode>() {
+          final Wrappers._T<SNode> keyMap = new Wrappers._T<SNode>(ListSequence.fromList(SModelOperations.roots(model, AUX_xeafuc.KeymapChangesDeclaration_b179307c)).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(it, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap"))).equals(currentEnum);
             }
@@ -61,9 +62,9 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
             SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), NameUtil.toValidCamelIdentifier(Keymap_MigrationUtils.value(it)));
             SPropertyOperations.setEnum(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap"), it);
             // If IdeaConfigurationXml exists, take it in account 
-            SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x77ff578948f6b772L, "isPluginXmlKeymap"), ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).isNotEmpty());
-            if (ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).isNotEmpty()) {
-              ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml"))).where(new IWhereFilter<SNode>() {
+            SPropertyOperations.set(keyMap.value, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x77ff578948f6b772L, "isPluginXmlKeymap"), ListSequence.fromList(SModelOperations.roots(model, AUX_xeafuc.IdeaConfigurationXml_62190880)).isNotEmpty());
+            if (ListSequence.fromList(SModelOperations.roots(model, AUX_xeafuc.IdeaConfigurationXml_62190880)).isNotEmpty()) {
+              ListSequence.fromList(SModelOperations.roots(model, AUX_xeafuc.IdeaConfigurationXml_62190880)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, 0x2c7d36ab0e3b095cL, "actions")) != null);
                 }
@@ -141,5 +142,11 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_xeafuc {
+    /*package*/ static final SConcept SimpleShortcutChange_b179307d = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange");
+    /*package*/ static final SConcept KeymapChangesDeclaration_b179307c = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration");
+    /*package*/ static final SConcept IdeaConfigurationXml_62190880 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml");
   }
 }

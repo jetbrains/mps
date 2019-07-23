@@ -23,7 +23,7 @@ public class Styles_StyleSheet {
   public static void apply_ref_link_role(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.ref_link_roleStyleClass(editorContext, node).apply(style, editorCell);
+    new ref_link_roleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -33,7 +33,7 @@ public class Styles_StyleSheet {
   public static void apply_operationParameter(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.operationParameterStyleClass(editorContext, node).apply(style, editorCell);
+    new operationParameterStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class ref_link_roleStyleClass extends AbstractStyleClass {

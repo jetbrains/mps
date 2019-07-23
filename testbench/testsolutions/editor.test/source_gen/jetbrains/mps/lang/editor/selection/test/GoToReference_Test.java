@@ -23,7 +23,7 @@ public class GoToReference_Test extends BaseTransformationTest {
 
   @Test
   public void test_GoToReference() throws Throwable {
-    new GoToReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.generator.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,9 +21,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class WeavingAnchorQuery__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe2b8adb3aba4b3bL, "jetbrains.mps.lang.generator.structure.WeavingAnchorQuery");
+  private static final SAbstractConcept CONCEPT = AUX_r7euh6.WeavingAnchorQuery_5d640479;
 
   public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
   public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
@@ -37,14 +37,14 @@ public final class WeavingAnchorQuery__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> rv = ListSequence.fromList(new ArrayList<SConcept>());
     // any query needs genContext 
-    ListSequence.fromList(rv).addElement(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext"));
+    ListSequence.fromList(rv).addElement(AUX_r7euh6.TemplateFunctionParameter_generationContext_c78d9c30);
     // this is source node for the weaving 
-    ListSequence.fromList(rv).addElement(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode"));
+    ListSequence.fromList(rv).addElement(AUX_r7euh6.TemplateFunctionParameter_sourceNode_6cc2a91a);
     // node being weaved 
-    ListSequence.fromList(rv).addElement(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x113d50d6be6L, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_outputNode"));
+    ListSequence.fromList(rv).addElement(AUX_r7euh6.TemplateFunctionParameter_outputNode_ff66c8d7);
     // Parent of the output node, the one outputNode is weaved (added) into. 
     // perhaps, shall be parentOutputNode? Either is in use only once, picked mainContextNode as it's the one in the weaving aspect of TF 
-    ListSequence.fromList(rv).addElement(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x113c23283bdL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_mainContextNode"));
+    ListSequence.fromList(rv).addElement(AUX_r7euh6.TemplateFunctionParameter_mainContextNode_3ff30687);
     // XXX perhaps, shall include SContainmentLink information as well? 
     return rv;
   }
@@ -106,5 +106,13 @@ public final class WeavingAnchorQuery__BehaviorDescriptor extends BaseBHDescript
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_r7euh6 {
+    /*package*/ static final SConcept WeavingAnchorQuery_5d640479 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe2b8adb3aba4b3bL, "jetbrains.mps.lang.generator.structure.WeavingAnchorQuery");
+    /*package*/ static final SConcept TemplateFunctionParameter_generationContext_c78d9c30 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext");
+    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode_6cc2a91a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
+    /*package*/ static final SConcept TemplateFunctionParameter_outputNode_ff66c8d7 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x113d50d6be6L, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_outputNode");
+    /*package*/ static final SConcept TemplateFunctionParameter_mainContextNode_3ff30687 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x113c23283bdL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_mainContextNode");
   }
 }

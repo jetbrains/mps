@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
@@ -16,15 +15,17 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConceptFunctionParameterCustomize_ContextNode__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e4c4L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ContextNode");
+  private static final SAbstractConcept CONCEPT = AUX_qm2dwm.ConceptFunctionParameterCustomize_ContextNode_21af520e;
 
   public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("27DJnJtIQ9C").build();
 
@@ -34,7 +35,7 @@ public final class ConceptFunctionParameterCustomize_ContextNode__BehaviorDescri
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    SNode concept = CompletionCustomizationContextSpecificator__BehaviorDescriptor.getConcept_id7U0pk79eiL7.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling"), false, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator")));
+    SNode concept = CompletionCustomizationContextSpecificator__BehaviorDescriptor.getConcept_id7U0pk79eiL7.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, AUX_qm2dwm.CompletionStyling_e17dd1cd, false, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator")));
     return _quotation_createNode_o1ng4y_a1a0(concept);
   }
 
@@ -89,5 +90,10 @@ public final class ConceptFunctionParameterCustomize_ContextNode__BehaviorDescri
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_qm2dwm {
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_ContextNode_21af520e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e4c4L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ContextNode");
+    /*package*/ static final SConcept CompletionStyling_e17dd1cd = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling");
   }
 }

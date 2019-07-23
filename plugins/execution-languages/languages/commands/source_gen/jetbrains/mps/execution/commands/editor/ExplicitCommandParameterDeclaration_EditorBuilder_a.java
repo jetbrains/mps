@@ -71,7 +71,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return SPropertyOperations.getBoolean(myNode, MetaAdapterFactory.getProperty(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be2L, 0xbe3a0d5ba1a2be3L, "isRequired"));
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ExplicitCommandParameterDeclaration_EditorBuilder_a.typeSingleRoleHandler_1nfcr6_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_1nfcr6_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_1nfcr6_a0 extends SingleRoleCellProvider {
@@ -149,7 +149,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ExplicitCommandParameterDeclaration_EditorBuilder_a.initializerSingleRoleHandler_1nfcr6_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), getEditorContext());
+    SingleRoleCellProvider provider = new initializerSingleRoleHandler_1nfcr6_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), getEditorContext());
     return provider.createCell();
   }
   private static class initializerSingleRoleHandler_1nfcr6_b2a extends SingleRoleCellProvider {

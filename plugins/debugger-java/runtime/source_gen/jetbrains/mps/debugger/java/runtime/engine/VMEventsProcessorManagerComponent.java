@@ -23,7 +23,7 @@ import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 
 public class VMEventsProcessorManagerComponent implements ProjectComponent {
   private final Map<EventsProcessor, DebugSession> myEventProcessorToSessionMap = MapSequence.fromMap(new HashMap<EventsProcessor, DebugSession>());
-  private final DebugProcessListener myListener = new VMEventsProcessorManagerComponent.MyDebugProcessesMulticaster();
+  private final DebugProcessListener myListener = new MyDebugProcessesMulticaster();
   private final List<DebugProcessListener> myAllProcessListeners = new ArrayList<DebugProcessListener>();
   private final DebugSessionManagerComponent myDebugManager;
   public VMEventsProcessorManagerComponent(DebugSessionManagerComponent component) {

@@ -22,7 +22,7 @@ public class RemoveNodeTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_RemoveNodeTest() throws Throwable {
-    new RemoveNodeTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

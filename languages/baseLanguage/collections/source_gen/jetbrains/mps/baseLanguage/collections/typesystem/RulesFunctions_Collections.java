@@ -6,8 +6,8 @@ import jetbrains.mps.lang.typesystem.dependencies.CheckingMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -15,6 +15,7 @@ import jetbrains.mps.lang.typesystem.dependencies.InferenceMethod;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RulesFunctions_Collections {
   public RulesFunctions_Collections() {
@@ -23,8 +24,8 @@ public class RulesFunctions_Collections {
   public static SNode getInput(final TypeCheckingContext typeCheckingContext, SNode op) {
     SNode input = null;
     SNode parent = SNodeOperations.getParent(op);
-    if (SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"))) {
-      input = SLinkOperations.getTarget(SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
+    if (SNodeOperations.isInstanceOf(parent, AUX_m3rnkt.DotExpression_97ed08d8)) {
+      input = SLinkOperations.getTarget(SNodeOperations.cast(parent, AUX_m3rnkt.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
     } else {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
@@ -36,8 +37,8 @@ public class RulesFunctions_Collections {
   public static SNode getOutput(SNode op) {
     SNode output;
     SNode parent = SNodeOperations.getParent(op);
-    if (SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"))) {
-      output = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L, "jetbrains.mps.baseLanguage.collections.structure.SequenceOperation"));
+    if (SNodeOperations.isInstanceOf(parent, AUX_m3rnkt.DotExpression_97ed08d8)) {
+      output = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(parent, AUX_m3rnkt.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_m3rnkt.SequenceOperation_8eeb983d);
       return output;
     } else {
       return null;
@@ -146,5 +147,10 @@ public class RulesFunctions_Collections {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_m3rnkt {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SequenceOperation_8eeb983d = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L, "jetbrains.mps.baseLanguage.collections.structure.SequenceOperation");
   }
 }

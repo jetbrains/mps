@@ -4,28 +4,38 @@ package jetbrains.mps.baseLanguage.collections.generator.baseLanguage.template.u
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Helper {
   public static boolean isCollectionElementAccess(SNode expression) {
-    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"))) {
-      SNode dotExpr = SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+    if (SNodeOperations.isInstanceOf(expression, AUX_hudo87.DotExpression_97ed08d8)) {
+      SNode dotExpr = SNodeOperations.cast(expression, AUX_hudo87.DotExpression_97ed08d8);
       // of course, there's more than a .size operation that doesn't consistute sequence element access, 
       // but at the moment I cover only most wide-spread case - there seems to be no simple way to tell 
       // true element access operations from other. 
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L, "jetbrains.mps.baseLanguage.collections.structure.SequenceOperation")) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10ec4627e6fL, "jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation")));
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_hudo87.SequenceOperation_8eeb983d) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")), AUX_hudo87.GetSizeOperation_4bb76350));
     }
-    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement"))) {
+    if (SNodeOperations.isInstanceOf(expression, AUX_hudo87.MapElement_26fd0ec6)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, "jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression"))) {
+    if (SNodeOperations.isInstanceOf(expression, AUX_hudo87.ListElementAccessExpression_315ff9d)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression"))) {
-      SNode oae = SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression"));
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement")) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue")), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, "jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression"));
+    if (SNodeOperations.isInstanceOf(expression, AUX_hudo87.OperationAssignmentExpression_f95e9b54)) {
+      SNode oae = SNodeOperations.cast(expression, AUX_hudo87.OperationAssignmentExpression_f95e9b54);
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue")), AUX_hudo87.MapElement_26fd0ec6) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue")), AUX_hudo87.ListElementAccessExpression_315ff9d);
     }
     return false;
+  }
+
+  private static final class AUX_hudo87 {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept GetSizeOperation_4bb76350 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10ec4627e6fL, "jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation");
+    /*package*/ static final SConcept SequenceOperation_8eeb983d = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L, "jetbrains.mps.baseLanguage.collections.structure.SequenceOperation");
+    /*package*/ static final SConcept MapElement_26fd0ec6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement");
+    /*package*/ static final SConcept ListElementAccessExpression_315ff9d = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, "jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression");
+    /*package*/ static final SConcept OperationAssignmentExpression_f95e9b54 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression");
   }
 }

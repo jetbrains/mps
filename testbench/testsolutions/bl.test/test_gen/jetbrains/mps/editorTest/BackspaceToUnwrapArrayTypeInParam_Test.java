@@ -21,7 +21,7 @@ public class BackspaceToUnwrapArrayTypeInParam_Test extends BaseTransformationTe
 
   @Test
   public void test_BackspaceToUnwrapArrayTypeInParam() throws Throwable {
-    new BackspaceToUnwrapArrayTypeInParam_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

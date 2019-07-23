@@ -17,14 +17,15 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Switch_switch_PropertyIdentity_SProperty extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_PropertyIdentity_SProperty() {
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new Switch_switch_PropertyIdentity_SProperty.ReductionRule0());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557175");
@@ -46,7 +47,7 @@ public class Switch_switch_PropertyIdentity_SProperty extends TemplateSwitchBase
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557182"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"), true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557182"), AUX_g196mm.PropertyId_52150612, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -54,5 +55,9 @@ public class Switch_switch_PropertyIdentity_SProperty extends TemplateSwitchBase
       Collection<SNode> tlist1 = new Template_reduce_PropertyId_SProperty().apply(environment, context);
       return tlist1;
     }
+  }
+
+  private static final class AUX_g196mm {
+    /*package*/ static final SConcept PropertyId_52150612 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId");
   }
 }

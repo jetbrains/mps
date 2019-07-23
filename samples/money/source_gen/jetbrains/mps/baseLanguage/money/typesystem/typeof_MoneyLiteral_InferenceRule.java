@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_MoneyLiteral_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_MoneyLiteral_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_MoneyLiteral_InferenceRule extends AbstractInferenceRule_Run
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, "jetbrains.mps.baseLanguage.money.structure.MoneyLiteral");
+    return AUX_1il3t.MoneyLiteral_262710da;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_MoneyLiteral_InferenceRule extends AbstractInferenceRule_Run
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, "jetbrains.mps.baseLanguage.money"), 0x1144b05194dL, "MoneyType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_1il3t {
+    /*package*/ static final SConcept MoneyLiteral_262710da = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, "jetbrains.mps.baseLanguage.money.structure.MoneyLiteral");
   }
 }

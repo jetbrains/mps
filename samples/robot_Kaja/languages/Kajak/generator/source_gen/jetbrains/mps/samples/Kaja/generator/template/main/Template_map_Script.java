@@ -439,16 +439,16 @@ public class Template_map_Script extends TemplateDeclarationBase implements Temp
     rv[14] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
     return rv;
   }
-  private static SNodePointer template_rbrxtl_a0a3 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570165");
-  private static SNodePointer propertyMacro_rbrxtl_c0a0c0b0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570172");
-  private static SNodePointer loopMacroRef_rbrxtl_b0a0a1a1a1a5a1a6a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039580697");
-  private static SNodePointer copySrcMacro_rbrxtl_b0a0e0c0b0b0f0b0g0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039580707");
-  private static SNodePointer loopMacroRef_rbrxtl_b0a0a1a7a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039720842");
-  private static SNodePointer copySrcMacro_rbrxtl_b0a0e0c0h0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039720854");
-  private static SNodePointer loopMacroRef_rbrxtl_b0a0a1a8a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4394627182934963470");
-  private static SNodePointer copySrcListMacro_rbrxtl_b0a0a3a2a8a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4394627182934963572");
-  private static SNodePointer templateNode_rbrxtl_c0a0a1a3a1a1a1a1a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039581792");
-  private static SNodePointer templateNode_rbrxtl_c0a0a1a1a1a4a1a1a1a1a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039581794");
-  private static SNodePointer templateNode_rbrxtl_c0a0a1a1a1a1a1a2a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363082567");
-  private static SNodePointer templateNode_rbrxtl_c0a0a1a1a1a1a1a3a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363093691");
+  private static final SNodePointer template_rbrxtl_a0a3 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570165");
+  private static final SNodePointer propertyMacro_rbrxtl_c0a0c0b0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570172");
+  private static final SNodePointer loopMacroRef_rbrxtl_b0a0a1a1a1a5a1a6a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039580697");
+  private static final SNodePointer copySrcMacro_rbrxtl_b0a0e0c0b0b0f0b0g0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039580707");
+  private static final SNodePointer loopMacroRef_rbrxtl_b0a0a1a7a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039720842");
+  private static final SNodePointer copySrcMacro_rbrxtl_b0a0e0c0h0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039720854");
+  private static final SNodePointer loopMacroRef_rbrxtl_b0a0a1a8a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4394627182934963470");
+  private static final SNodePointer copySrcListMacro_rbrxtl_b0a0a3a2a8a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4394627182934963572");
+  private static final SNodePointer templateNode_rbrxtl_c0a0a1a3a1a1a1a1a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039581792");
+  private static final SNodePointer templateNode_rbrxtl_c0a0a1a1a1a4a1a1a1a1a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039581794");
+  private static final SNodePointer templateNode_rbrxtl_c0a0a1a1a1a1a1a2a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363082567");
+  private static final SNodePointer templateNode_rbrxtl_c0a0a1a1a1a1a1a3a1a4a1a9a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363093691");
 }

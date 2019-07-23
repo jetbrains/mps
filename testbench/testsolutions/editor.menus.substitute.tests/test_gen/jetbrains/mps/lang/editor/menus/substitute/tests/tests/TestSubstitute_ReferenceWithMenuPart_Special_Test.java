@@ -24,7 +24,7 @@ public class TestSubstitute_ReferenceWithMenuPart_Special_Test extends BaseTrans
 
   @Test
   public void test_TestSubstitute_ReferenceWithMenuPart_Special() throws Throwable {
-    new TestSubstitute_ReferenceWithMenuPart_Special_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

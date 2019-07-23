@@ -19,8 +19,9 @@ import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.ide.hierarchy.HierarchyViewTool;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ShowConceptInHierarchy_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Toolwindows.ToolWindowHierarchy;
@@ -96,16 +97,16 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
   }
   private SNode getConceptNode(final Map<String, Object> _params) {
     SNode refNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
-    if (SNodeOperations.isInstanceOf(refNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) {
-      return SNodeOperations.cast(refNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    if (SNodeOperations.isInstanceOf(refNode, AUX_n0twtk.AbstractConceptDeclaration_ec74828f)) {
+      return SNodeOperations.cast(refNode, AUX_n0twtk.AbstractConceptDeclaration_ec74828f);
     }
-    if (SNodeOperations.isInstanceOf(refNode, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration"))) {
-      SNode concept = SNodeOperations.getNodeAncestor(refNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), false, false);
+    if (SNodeOperations.isInstanceOf(refNode, AUX_n0twtk.ConceptConstructorDeclaration_6c2cb150)) {
+      SNode concept = SNodeOperations.getNodeAncestor(refNode, AUX_n0twtk.AbstractConceptDeclaration_ec74828f, false, false);
       if (concept != null) {
         return concept;
       }
     }
-    SNode outerConcept = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), true, false);
+    SNode outerConcept = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), AUX_n0twtk.AbstractConceptDeclaration_ec74828f, true, false);
     if (outerConcept != null) {
       return outerConcept;
     }
@@ -115,9 +116,14 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
     }
     TabbedEditor tabbedEditor = (TabbedEditor) ((Editor) MapSequence.fromMap(_params).get("editor"));
     SNode editedNode = tabbedEditor.getCurrentlyEditedNode().resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository());
-    if (!(SNodeOperations.isInstanceOf(editedNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
+    if (!(SNodeOperations.isInstanceOf(editedNode, AUX_n0twtk.AbstractConceptDeclaration_ec74828f))) {
       return null;
     }
-    return SNodeOperations.cast(editedNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    return SNodeOperations.cast(editedNode, AUX_n0twtk.AbstractConceptDeclaration_ec74828f);
+  }
+
+  private static final class AUX_n0twtk {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptConstructorDeclaration_6c2cb150 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
   }
 }

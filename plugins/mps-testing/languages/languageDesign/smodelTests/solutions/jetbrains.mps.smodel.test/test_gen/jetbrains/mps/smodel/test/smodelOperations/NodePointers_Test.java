@@ -48,111 +48,111 @@ public class NodePointers_Test extends BaseTransformationTest {
 
   @Test
   public void test_ResolveData() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_ResolveData();
+    new TestBody(this).test_ResolveData();
   }
   @Test
   public void test_PointerEquality() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_PointerEquality();
+    new TestBody(this).test_PointerEquality();
   }
   @Test
   public void test_IsOperation() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_IsOperation();
+    new TestBody(this).test_IsOperation();
   }
   @Test
   public void test_SetPtrOperation() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_SetPtrOperation();
+    new TestBody(this).test_SetPtrOperation();
   }
   @Test
   public void test_ResolveDataModel() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_ResolveDataModel();
+    new TestBody(this).test_ResolveDataModel();
   }
   @Test
   public void test_ModelPointerEquality() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_ModelPointerEquality();
+    new TestBody(this).test_ModelPointerEquality();
   }
   @Test
   public void test_NodePointerGetModelOp() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodePointerGetModelOp();
+    new TestBody(this).test_NodePointerGetModelOp();
   }
   @Test
   public void test_OperationsNullSafe() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_OperationsNullSafe();
+    new TestBody(this).test_OperationsNullSafe();
   }
   @Test
   public void test_NodeTypeCheck535833678907605667() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678907605667();
+    new TestBody(this).test_NodeTypeCheck535833678907605667();
   }
   @Test
   public void test_NodeTypeCheck535833678907609256() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678907609256();
+    new TestBody(this).test_NodeTypeCheck535833678907609256();
   }
   @Test
   public void test_NodeTypeCheck535833678905705670() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678905705670();
+    new TestBody(this).test_NodeTypeCheck535833678905705670();
   }
   @Test
   public void test_NodeTypeCheck535833678905709959() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678905709959();
+    new TestBody(this).test_NodeTypeCheck535833678905709959();
   }
   @Test
   public void test_NodeTargetNodeNotFoundInRepositoryCheck535833678906728045() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTargetNodeNotFoundInRepositoryCheck535833678906728045();
+    new TestBody(this).test_NodeTargetNodeNotFoundInRepositoryCheck535833678906728045();
   }
   @Test
   public void test_NodeTypeSystemCheck535833678905879477() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeSystemCheck535833678905879477();
+    new TestBody(this).test_NodeTypeSystemCheck535833678905879477();
   }
   @Test
   public void test_NodeTypeSystemCheck535833678905721739() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeSystemCheck535833678905721739();
+    new TestBody(this).test_NodeTypeSystemCheck535833678905721739();
   }
   @Test
   public void test_NodeTypeSystemCheck535833678905852712() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeSystemCheck535833678905852712();
+    new TestBody(this).test_NodeTypeSystemCheck535833678905852712();
   }
   @Test
   public void test_NodeTypeSystemCheck535833678905854558() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeSystemCheck535833678905854558();
+    new TestBody(this).test_NodeTypeSystemCheck535833678905854558();
   }
   @Test
   public void test_NodeTypeSystemCheck535833678905860220() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeSystemCheck535833678905860220();
+    new TestBody(this).test_NodeTypeSystemCheck535833678905860220();
   }
   @Test
   public void test_NodeTypeCheck535833678905910987() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678905910987();
+    new TestBody(this).test_NodeTypeCheck535833678905910987();
   }
   @Test
   public void test_NodeTypeCheck535833678905916302() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678905916302();
+    new TestBody(this).test_NodeTypeCheck535833678905916302();
   }
   @Test
   public void test_NodeTypeCheck535833678905993796() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678905993796();
+    new TestBody(this).test_NodeTypeCheck535833678905993796();
   }
   @Test
   public void test_NodeTypeSystemCheck535833678905987697() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeSystemCheck535833678905987697();
+    new TestBody(this).test_NodeTypeSystemCheck535833678905987697();
   }
   @Test
   public void test_NodeTypeCheck535833678906005800() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck535833678906005800();
+    new TestBody(this).test_NodeTypeCheck535833678906005800();
   }
   @Test
   public void test_NodeTypeSystemCheck535833678906363602() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeSystemCheck535833678906363602();
+    new TestBody(this).test_NodeTypeSystemCheck535833678906363602();
   }
   @Test
   public void test_NodeTypeCheck6012981979751350087() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck6012981979751350087();
+    new TestBody(this).test_NodeTypeCheck6012981979751350087();
   }
   @Test
   public void test_NodeTypeCheck6012981979751302141() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_NodeTypeCheck6012981979751302141();
+    new TestBody(this).test_NodeTypeCheck6012981979751302141();
   }
   @Test
   public void test_ErrorMessagesCheck535833678905969550() throws Throwable {
-    new NodePointers_Test.TestBody(this).test_ErrorMessagesCheck535833678905969550();
+    new TestBody(this).test_ErrorMessagesCheck535833678905969550();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

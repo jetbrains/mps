@@ -8,8 +8,9 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class XmlText_TextGen extends TextGenDescriptorBase {
   @Override
@@ -18,8 +19,8 @@ public class XmlText_TextGen extends TextGenDescriptorBase {
     boolean needNewLine = (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(ctx.getPrimaryInput());
     if (!(needNewLine)) {
       SNode left = SNodeOperations.getPrevSibling(ctx.getPrimaryInput());
-      if (SNodeOperations.isInstanceOf(left, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent"))) {
-        needNewLine = (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent")));
+      if (SNodeOperations.isInstanceOf(left, AUX_8sfk4k.XmlContent_5d5001c3)) {
+        needNewLine = (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, AUX_8sfk4k.XmlContent_5d5001c3));
       }
     }
     if (needNewLine) {
@@ -27,5 +28,9 @@ public class XmlText_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value")));
+  }
+
+  private static final class AUX_8sfk4k {
+    /*package*/ static final SConcept XmlContent_5d5001c3 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent");
   }
 }

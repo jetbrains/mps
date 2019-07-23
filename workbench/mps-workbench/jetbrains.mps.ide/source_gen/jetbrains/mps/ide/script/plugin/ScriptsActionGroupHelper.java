@@ -10,12 +10,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.workbench.action.BaseGroup;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -26,6 +26,7 @@ import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.SortedSetSequence;
 import java.util.Collections;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ScriptsActionGroupHelper {
   public ScriptsActionGroupHelper() {
@@ -35,7 +36,7 @@ public class ScriptsActionGroupHelper {
     for (Language language : languages) {
       SModel m = SModuleOperations.getAspect(language, "scripts");
       if (m != null) {
-        ListSequence.fromList(migrationScripts).addSequence(ListSequence.fromList(SModelOperations.roots(m, MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript"))));
+        ListSequence.fromList(migrationScripts).addSequence(ListSequence.fromList(SModelOperations.roots(m, AUX_krfcdz.MigrationScript_eaf59bfd)));
       }
     }
     return migrationScripts;
@@ -139,5 +140,9 @@ public class ScriptsActionGroupHelper {
       sb.append(" [migrate to ").append(build).append("]");
     }
     return sb.toString();
+  }
+
+  private static final class AUX_krfcdz {
+    /*package*/ static final SConcept MigrationScript_eaf59bfd = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
   }
 }

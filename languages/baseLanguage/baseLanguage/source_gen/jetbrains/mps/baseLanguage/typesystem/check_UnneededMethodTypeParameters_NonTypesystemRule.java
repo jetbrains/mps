@@ -18,6 +18,7 @@ import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_UnneededMethodTypeParameters_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_UnneededMethodTypeParameters_NonTypesystemRule() {
@@ -25,9 +26,9 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
   public void applyRule(final SNode baseMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).visitAll(new IVisitor<SNode>() {
       public void visit(final SNode typeVarDeclaration) {
-        boolean unused = ListSequence.fromList(SNodeOperations.getNodeDescendants(baseMethodDeclaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        boolean unused = ListSequence.fromList(SNodeOperations.getNodeDescendants(baseMethodDeclaration, AUX_ba4mce.TypeVariableReference_3815fc3, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"), false)).isEmpty();
+            return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, AUX_ba4mce.SingleLineComment_36a4c8f4, false)).isEmpty();
           }
         }).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode ref) {
@@ -44,12 +45,18 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    return AUX_ba4mce.BaseMethodDeclaration_9dbf9acb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_ba4mce {
+    /*package*/ static final SConcept TypeVariableReference_3815fc3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept SingleLineComment_36a4c8f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -20,13 +19,15 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MenuTraceTransformationChild_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new MenuTraceTransformationChild_SubstituteMenu.SMP_Action_weg0w5_a(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776035327cL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_weg0w5_a(), AUX_weg0w5.MenuTraceTransformationChild_76e10f64));
     return result;
   }
 
@@ -48,7 +49,7 @@ public class MenuTraceTransformationChild_SubstituteMenu extends SubstituteMenuB
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      MenuTraceTransformationChild_SubstituteMenu.SMP_Action_weg0w5_a.Item item = new MenuTraceTransformationChild_SubstituteMenu.SMP_Action_weg0w5_a.Item(_context);
+      SMP_Action_weg0w5_a.Item item = new SMP_Action_weg0w5_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -71,7 +72,7 @@ public class MenuTraceTransformationChild_SubstituteMenu extends SubstituteMenuB
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776035327cL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild"), context);
+        super(AUX_weg0w5.MenuTraceTransformationChild_76e10f64, context);
         _context = context;
       }
 
@@ -95,5 +96,9 @@ public class MenuTraceTransformationChild_SubstituteMenu extends SubstituteMenuB
         return "menu trace transformation child substitute action";
       }
     }
+  }
+
+  private static final class AUX_weg0w5 {
+    /*package*/ static final SConcept MenuTraceTransformationChild_76e10f64 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776035327cL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild");
   }
 }

@@ -30,7 +30,7 @@ public class GenericCollections_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck6699137465481874845() throws Throwable {
-    new GenericCollections_Test.TestBody(this).test_ErrorMessagesCheck6699137465481874845();
+    new TestBody(this).test_ErrorMessagesCheck6699137465481874845();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

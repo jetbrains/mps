@@ -20,6 +20,7 @@ import jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeWrapper<N> {
   @NotNull
@@ -158,7 +159,7 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
       })) {
         return true;
       }
-      clazz = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(clazz, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+      clazz = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(clazz, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), AUX_w4cwe7.ClassConcept_e2711824);
     }
     return false;
   }
@@ -169,5 +170,9 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
         return SLinkOperations.hasPointer(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"), new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)", "~MPSLaunch"));
       }
     });
+  }
+
+  private static final class AUX_w4cwe7 {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

@@ -9,6 +9,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.structure.util.ConceptIdHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CorrectDuplicateId_QuickFix extends QuickFix_Runtime {
   public CorrectDuplicateId_QuickFix() {
@@ -31,8 +32,12 @@ public class CorrectDuplicateId_QuickFix extends QuickFix_Runtime {
       SPropertyOperations.assign(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0]), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId"), ConceptIdHelper.generateDatatypeId(SNodeOperations.getModel(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0])), ((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0])) + "");
     }
     if (((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0]) != null) {
-      SPropertyOperations.assign(((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0]), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId"), ConceptIdHelper.generateEnumMemberId(SNodeOperations.as(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0]), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion")), ((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0])) + "");
+      SPropertyOperations.assign(((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0]), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId"), ConceptIdHelper.generateEnumMemberId(SNodeOperations.as(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0]), AUX_2omx6t.EnumerationDeclartaion_dd035f36), ((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0])) + "");
     }
 
+  }
+
+  private static final class AUX_2omx6t {
+    /*package*/ static final SConcept EnumerationDeclartaion_dd035f36 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
   }
 }

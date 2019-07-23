@@ -223,10 +223,10 @@ public class Template_string_switch_template extends TemplateDeclarationBase imp
     rv[10] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     return rv;
   }
-  private static SNodePointer loopMacroRef_a36rdq_b0a0a1a1a2a6 = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "400642802550422239");
-  private static SNodePointer propertyMacro_a36rdq_c0a0c0a0b0b0d0c0b0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "400642802550422213");
-  private static SNodePointer copySrcMacro_a36rdq_b0a0c0c0d0c0b0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "400642802550422231");
-  private static SNodePointer copySrcMacro_a36rdq_b0a0c0c0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "8297320321098371692");
-  private static SNodePointer copySrcListMacro_a36rdq_b0a0a1a2a1a1a1a3a1a3a1a3a2a6 = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "3708576844065083880");
-  private static SNodePointer copySrcMacro_a36rdq_b0a0c0e0b0d0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "3708576844065051189");
+  private static final SNodePointer loopMacroRef_a36rdq_b0a0a1a1a2a6 = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "400642802550422239");
+  private static final SNodePointer propertyMacro_a36rdq_c0a0c0a0b0b0d0c0b0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "400642802550422213");
+  private static final SNodePointer copySrcMacro_a36rdq_b0a0c0c0d0c0b0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "400642802550422231");
+  private static final SNodePointer copySrcMacro_a36rdq_b0a0c0c0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "8297320321098371692");
+  private static final SNodePointer copySrcListMacro_a36rdq_b0a0a1a2a1a1a1a3a1a3a1a3a2a6 = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "3708576844065083880");
+  private static final SNodePointer copySrcMacro_a36rdq_b0a0c0e0b0d0c0g = new SNodePointer("r:23911370-3645-4974-be70-79d5cfba7db1(jetbrains.mps.baseLanguage.jdk7.generator.template.main@generator)", "3708576844065051189");
 }

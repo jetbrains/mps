@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NTCD_add_final_Contribution extends TransformationMenuBase {
   public NTCD_add_final_Contribution() {
@@ -67,7 +68,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new NTCD_add_final_Contribution.TMP_Group_d177af_a0());
+      result.add(new TMP_Group_d177af_a0());
     }
     return result;
   }
@@ -75,7 +76,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
   public class TMP_Group_d177af_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration")) && !(SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration")), MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final")));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_d177af.NamedTupleComponentDeclaration_e8cbbb8c) && !(SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), AUX_d177af.NamedTupleComponentDeclaration_e8cbbb8c), MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final")));
     }
 
     @NotNull
@@ -91,12 +92,12 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new NTCD_add_final_Contribution.TMP_Group_d177af_a0.TMP_Action_d177af_a0a(), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_d177af_a0.TMP_Action_d177af_a0a(), AUX_d177af.NamedTupleComponentDeclaration_e8cbbb8c));
     }
     private class TMP_Action_d177af_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        NTCD_add_final_Contribution.TMP_Group_d177af_a0.TMP_Action_d177af_a0a.Item item = new NTCD_add_final_Contribution.TMP_Group_d177af_a0.TMP_Action_d177af_a0a.Item(context);
+        TMP_Group_d177af_a0.TMP_Action_d177af_a0a.Item item = new TMP_Group_d177af_a0.TMP_Action_d177af_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -131,7 +132,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration")), MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final"), true);
+          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), AUX_d177af.NamedTupleComponentDeclaration_e8cbbb8c), MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final"), true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -139,7 +140,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
+          return AUX_d177af.NamedTupleComponentDeclaration_e8cbbb8c;
         }
 
 
@@ -150,7 +151,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
+          SAbstractConcept outputConcept = AUX_d177af.NamedTupleComponentDeclaration_e8cbbb8c;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -159,5 +160,9 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_d177af {
+    /*package*/ static final SConcept NamedTupleComponentDeclaration_e8cbbb8c = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
   }
 }

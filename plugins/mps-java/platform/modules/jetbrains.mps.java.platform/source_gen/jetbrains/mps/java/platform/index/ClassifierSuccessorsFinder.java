@@ -22,7 +22,6 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
@@ -34,11 +33,13 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import com.intellij.util.indexing.FileBasedIndex;
 import jetbrains.mps.workbench.index.SNodeEntry;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.openapi.module.Module;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, ApplicationComponent {
   public ClassifierSuccessorsFinder(MPSCoreComponents coreComponents) {
@@ -65,8 +66,8 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
         continue;
       }
       if (emd.isChanged()) {
-        ListSequence.fromList(modifiedClasses).addSequence(ListSequence.fromList(SModelOperations.nodes(md, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))));
-        ListSequence.fromList(modifiedInterfaces).addSequence(ListSequence.fromList(SModelOperations.nodes(md, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))));
+        ListSequence.fromList(modifiedClasses).addSequence(ListSequence.fromList(SModelOperations.nodes(md, AUX_zllyy.ClassConcept_e2711824)));
+        ListSequence.fromList(modifiedInterfaces).addSequence(ListSequence.fromList(SModelOperations.nodes(md, AUX_zllyy.Interface_bca2069)));
       } else {
         SetSequence.fromSet(unModifiedModelFiles).addElement(VirtualFileUtils.getOrCreateVirtualFile(modelFile));
       }
@@ -74,9 +75,9 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
     List<SNode> result = new ArrayList<SNode>();
     Queue<SNode> queue = QueueSequence.fromQueue(new LinkedList<SNode>());
     QueueSequence.fromQueue(queue).addLastElement(classifier);
-    ClassifierSuccessorsFinder.ValueProcessor valueProcessor = new ClassifierSuccessorsFinder.ValueProcessor(result, queue, SNodeOperations.getModel(classifier).getRepository());
-    ClassifierSuccessorsFinder.ModifiedSuccessorFinder modifiedSuccessorFinder = new ClassifierSuccessorsFinder.ModifiedSuccessorFinder(modifiedClasses, modifiedInterfaces, result, queue);
-    ClassifierSuccessorsFinder.SearchScope unModifiedFilesSearchScope = new ClassifierSuccessorsFinder.SearchScope(unModifiedModelFiles);
+    ValueProcessor valueProcessor = new ValueProcessor(result, queue, SNodeOperations.getModel(classifier).getRepository());
+    ModifiedSuccessorFinder modifiedSuccessorFinder = new ModifiedSuccessorFinder(modifiedClasses, modifiedInterfaces, result, queue);
+    SearchScope unModifiedFilesSearchScope = new SearchScope(unModifiedModelFiles);
     while (!(QueueSequence.fromQueue(queue).isEmpty())) {
       SNode nextClassifier = QueueSequence.fromQueue(queue).removeFirstElement();
       ClassifierSuccessorsIndexer.processValues(nextClassifier, valueProcessor, unModifiedFilesSearchScope);
@@ -124,10 +125,10 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
         return;
       }
       SetSequence.fromSet(myProcessedNodes).addElement(superClassifier);
-      if (SNodeOperations.isInstanceOf(superClassifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+      if (SNodeOperations.isInstanceOf(superClassifier, AUX_zllyy.Interface_bca2069)) {
         mapInterfaces();
         mapClasses();
-      } else if (SNodeOperations.isInstanceOf(superClassifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
+      } else if (SNodeOperations.isInstanceOf(superClassifier, AUX_zllyy.ClassConcept_e2711824)) {
         mapClasses();
       } else {
         return;
@@ -151,8 +152,8 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
         if (superClass != null) {
           safeMap(SLinkOperations.getTarget(superClass, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), aClass);
         }
-        if (SNodeOperations.isInstanceOf(aClass, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"))) {
-          safeMap(SLinkOperations.getTarget(SNodeOperations.cast(aClass, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier")), aClass);
+        if (SNodeOperations.isInstanceOf(aClass, AUX_zllyy.AnonymousClass_e4a73f97)) {
+          safeMap(SLinkOperations.getTarget(SNodeOperations.cast(aClass, AUX_zllyy.AnonymousClass_e4a73f97), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier")), aClass);
         }
         for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(aClass, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface")))) {
           safeMap(SLinkOperations.getTarget(implementedInterface, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), aClass);
@@ -205,8 +206,8 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
         }
         SetSequence.fromSet(myProcessedNodes).addElement(sNodeId);
         SNode node = sNodeId.getNodePointer().resolve(myRepo);
-        if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-          SNode classifier = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+        if (SNodeOperations.isInstanceOf(node, AUX_zllyy.Classifier_4b7e553)) {
+          SNode classifier = SNodeOperations.cast(node, AUX_zllyy.Classifier_4b7e553);
           ListSequence.fromList(myResult).addElement(classifier);
           QueueSequence.fromQueue(myQueue).addLastElement(classifier);
         }
@@ -242,5 +243,12 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
     public boolean isSearchInLibraries() {
       return false;
     }
+  }
+
+  private static final class AUX_zllyy {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept AnonymousClass_e4a73f97 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

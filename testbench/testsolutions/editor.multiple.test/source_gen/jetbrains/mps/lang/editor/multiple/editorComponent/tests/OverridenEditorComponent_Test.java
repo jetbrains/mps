@@ -21,7 +21,7 @@ public class OverridenEditorComponent_Test extends BaseTransformationTest {
 
   @Test
   public void test_OverridenEditorComponent() throws Throwable {
-    new OverridenEditorComponent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {
