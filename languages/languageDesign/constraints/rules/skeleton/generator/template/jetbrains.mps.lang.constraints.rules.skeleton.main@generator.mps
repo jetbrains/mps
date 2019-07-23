@@ -693,7 +693,7 @@
                                       <node concept="1iwH7S" id="3ZKqOfpB7lf" role="2Oq$k0" />
                                       <node concept="2kEO4f" id="3ZKqOfpB929" role="2OqNvi">
                                         <node concept="Xl_RD" id="3ZKqOfpB97d" role="2k5Stb">
-                                          <property role="Xl_RC" value="Could not resolve by reference macro ConstraintsAspectDescriptor2" />
+                                          <property role="Xl_RC" value="Could not resolve by reference macro GeneratedRulesConstraintsAspect" />
                                         </node>
                                       </node>
                                     </node>
@@ -701,7 +701,7 @@
                                   <node concept="3cpWs6" id="71FvR51faQV" role="3cqZAp">
                                     <node concept="3cpWs3" id="71FvR51fckV" role="3cqZAk">
                                       <node concept="Xl_RD" id="71FvR51fcvz" role="3uHU7w">
-                                        <property role="Xl_RC" value=".GeneratedConstraintsAspectDescriptor2" />
+                                        <property role="Xl_RC" value=".GeneratedRulesConstraintsAspect" />
                                       </node>
                                       <node concept="1eOMI4" id="3ZKqOfpB3L0" role="3uHU7B">
                                         <node concept="10QFUN" id="3ZKqOfpB3KX" role="1eOMHV">

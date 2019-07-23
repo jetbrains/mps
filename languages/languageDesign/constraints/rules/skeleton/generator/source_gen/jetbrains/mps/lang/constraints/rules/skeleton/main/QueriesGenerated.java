@@ -71,8 +71,8 @@ public class QueriesGenerated extends QueryProviderBase {
     if (refResolved != null) {
       return refResolved;
     }
-    _context.showWarningMessage(null, "Could not resolve by reference macro ConstraintsAspectDescriptor2");
-    return ((String) SModelOperations.getModelName(model)) + ".GeneratedConstraintsAspectDescriptor2";
+    _context.showWarningMessage(null, "Could not resolve by reference macro GeneratedRulesConstraintsAspect");
+    return ((String) SModelOperations.getModelName(model)) + ".GeneratedRulesConstraintsAspect";
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
     return ((SModel) _context.getVariable("var:model")) != null;
