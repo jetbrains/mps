@@ -37,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
   public boolean navigate(MPSProject p, SNode node) {
     assert SwingUtilities.isEventDispatchThread();
-    assert p.getModelAccess().canWrite();
+    assert p.getModelAccess().canRead();
 
     boolean isClassifier = SNodeOperations.isInstanceOf(node, AUX_tz3sru.Classifier_4b7e553);
     boolean isConstructor = SNodeOperations.isInstanceOf(node, AUX_tz3sru.ConstructorDeclaration_9dbf9ae8);

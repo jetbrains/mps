@@ -6489,8 +6489,8 @@
                 <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
               </node>
             </node>
-            <node concept="liA8E" id="4Mdt1Rl3xFM" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~ModelAccess.canWrite()" resolve="canWrite" />
+            <node concept="liA8E" id="33z3Yy7koEU" role="2OqNvi">
+              <ref role="37wK5l" to="lui2:~ModelAccess.canRead()" resolve="canRead" />
             </node>
           </node>
         </node>
