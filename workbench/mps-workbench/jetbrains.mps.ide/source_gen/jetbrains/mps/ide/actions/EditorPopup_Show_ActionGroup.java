@@ -18,5 +18,6 @@ public class EditorPopup_Show_ActionGroup extends GeneratedActionGroup {
     EditorPopup_Show_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action");
     EditorPopup_Show_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action");
     EditorPopup_Show_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowImplementations_Action");
+    EditorPopup_Show_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowDefinition_Action");
   }
 }

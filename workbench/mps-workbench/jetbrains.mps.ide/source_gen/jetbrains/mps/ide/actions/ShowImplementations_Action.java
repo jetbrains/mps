@@ -15,10 +15,9 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import java.util.ArrayList;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -26,12 +25,6 @@ import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import com.intellij.openapi.ui.popup.ComponentPopupBuilder;
-import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.openapi.util.Computable;
-import com.intellij.openapi.ui.popup.JBPopup;
-import com.intellij.ui.awt.RelativePoint;
-import java.awt.Point;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -96,51 +89,42 @@ public class ShowImplementations_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final List<SNode> nodes = new ArrayList<SNode>();
-    final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess();
-
-    final Wrappers._T<ShowImplementationComponent> component = new Wrappers._T<ShowImplementationComponent>();
+    final Wrappers._T<List<SNode>> nodes = new Wrappers._T<List<SNode>>();
     final Wrappers._T<String> title = new Wrappers._T<String>();
-
-    modelAccess.runReadAction(new Runnable() {
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        ListSequence.fromList(nodes).addElement(((SNode) MapSequence.fromMap(_params).get("node")));
-        SearchResults<SNode> results;
-        SearchScope scope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("project")));
-        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Interface$Kp)) {
-          results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder");
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l)) {
-          results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder");
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Interface$Kp)) {
-          results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder");
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Classifier$hJ)) {
-          results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
-        } else {
-          return;
-        }
-        for (SearchResult<SNode> searchResult : results.getSearchResults2()) {
-          SNode foundNode = searchResult.getObject();
-          if ((foundNode != null)) {
-            ListSequence.fromList(nodes).addElement(foundNode);
-          }
-        }
-
-        component.value = new ShowImplementationComponent(nodes, ((MPSProject) MapSequence.fromMap(_params).get("project")));
-        title.value = "Implementations of " + ((SNode) MapSequence.fromMap(_params).get("node")).getPresentation();
+        nodes.value = ShowImplementations_Action.this.findImplementations(_params);
+        title.value = "Definition of " + ((SNode) MapSequence.fromMap(_params).get("node")).getPresentation();
       }
     });
+    PopupWithNodeEditor popupWithNodeEditor = new SimplePopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), title.value, nodes.value);
+    popupWithNodeEditor.show();
+  }
+  /*package*/ List<SNode> findImplementations(final Map<String, Object> _params) {
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().checkReadAccess();
 
-    final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(component.value, component.value.getPreferredFocusableComponent()).setRequestFocus(true).setProject(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()).setMovable(true).setResizable(true).setCancelCallback(new Computable<Boolean>() {
-      public Boolean compute() {
-        component.value.dispose();
-        return true;
+    final List<SNode> nodes = new ArrayList<SNode>();
+    ListSequence.fromList(nodes).addElement(((SNode) MapSequence.fromMap(_params).get("node")));
+    SearchResults<SNode> results;
+    SearchScope scope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("project")));
+    if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Interface$Kp)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder");
+    } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder");
+    } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Interface$Kp)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder");
+    } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Classifier$hJ)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
+    } else {
+      return nodes;
+    }
+    for (SearchResult<SNode> searchResult : results.getSearchResults2()) {
+      SNode foundNode = searchResult.getObject();
+      if ((foundNode != null)) {
+        ListSequence.fromList(nodes).addElement(foundNode);
       }
-    });
-    pb.setTitle(title.value);
-    JBPopup popup = pb.createPopup();
-    popup.show(new RelativePoint(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY())));
-    component.value.getPreferredFocusableComponent().setRequestFocusEnabled(true);
-    component.value.setPopup(popup);
+    }
+    return nodes;
   }
 
   private static final class CONCEPTS {
