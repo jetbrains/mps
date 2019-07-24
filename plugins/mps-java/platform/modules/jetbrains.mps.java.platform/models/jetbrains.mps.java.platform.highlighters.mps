@@ -6053,6 +6053,163 @@
       </node>
     </node>
     <node concept="2tJIrI" id="1OIlcCDhxwX" role="jymVt" />
+    <node concept="2YIFZL" id="5PtqdhJ4fda" role="jymVt">
+      <property role="TrG5h" value="isSpellcheckerMessage" />
+      <node concept="10P_77" id="5PtqdhJ4gZ9" role="3clF45" />
+      <node concept="3Tm1VV" id="5PtqdhJ4fdd" role="1B3o_S" />
+      <node concept="3clFbS" id="5PtqdhJ4fde" role="3clF47">
+        <node concept="3cpWs6" id="5PtqdhJ4iCM" role="3cqZAp">
+          <node concept="2ZW3vV" id="5PtqdhJ4jbp" role="3cqZAk">
+            <node concept="3uibUv" id="5PtqdhJ4jra" role="2ZW6by">
+              <ref role="3uigEE" node="1OIlcCDh_Jr" resolve="CommentSpellChecker.M" />
+            </node>
+            <node concept="37vLTw" id="5PtqdhJ4iRr" role="2ZW6bz">
+              <ref role="3cqZAo" node="5PtqdhJ4hNe" resolve="msg" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="5PtqdhJ4hNe" role="3clF46">
+        <property role="TrG5h" value="msg" />
+        <node concept="3uibUv" id="5PtqdhJ4hNd" role="1tU5fm">
+          <ref role="3uigEE" to="kpve:~SimpleEditorMessage" resolve="SimpleEditorMessage" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="33z3Yy7kGnQ" role="jymVt" />
+    <node concept="2YIFZL" id="33z3Yy7kKa1" role="jymVt">
+      <property role="TrG5h" value="incorrectWords" />
+      <node concept="10Q1$e" id="33z3Yy7kMl_" role="3clF45">
+        <node concept="3uibUv" id="33z3Yy7kMly" role="10Q1$1">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="33z3Yy7kKa4" role="1B3o_S" />
+      <node concept="3clFbS" id="33z3Yy7kKa5" role="3clF47">
+        <node concept="3clFbJ" id="33z3Yy7kPI0" role="3cqZAp">
+          <node concept="3clFbS" id="33z3Yy7kPI2" role="3clFbx">
+            <node concept="3cpWs6" id="33z3Yy7kVQs" role="3cqZAp">
+              <node concept="2OqwBi" id="33z3Yy7kVZS" role="3cqZAk">
+                <node concept="2OwXpG" id="33z3Yy7kVZT" role="2OqNvi">
+                  <ref role="2Oxat5" node="5aO34D5s6zk" resolve="myWords" />
+                </node>
+                <node concept="1eOMI4" id="33z3Yy7kVZU" role="2Oq$k0">
+                  <node concept="10QFUN" id="33z3Yy7kVZV" role="1eOMHV">
+                    <node concept="3uibUv" id="33z3Yy7kVZW" role="10QFUM">
+                      <ref role="3uigEE" node="1OIlcCDh_Jr" resolve="CommentSpellChecker.M" />
+                    </node>
+                    <node concept="37vLTw" id="33z3Yy7kVZX" role="10QFUP">
+                      <ref role="3cqZAo" node="33z3Yy7kNjp" resolve="msg" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="33z3Yy7kOp9" role="3clFbw">
+            <node concept="3uibUv" id="33z3Yy7kOCu" role="2ZW6by">
+              <ref role="3uigEE" node="1OIlcCDh_Jr" resolve="CommentSpellChecker.M" />
+            </node>
+            <node concept="37vLTw" id="33z3Yy7kO98" role="2ZW6bz">
+              <ref role="3cqZAo" node="33z3Yy7kNjp" resolve="msg" />
+            </node>
+          </node>
+          <node concept="9aQIb" id="33z3Yy7kXqn" role="9aQIa">
+            <node concept="3clFbS" id="33z3Yy7kXqo" role="9aQI4">
+              <node concept="3cpWs6" id="33z3Yy7kXHT" role="3cqZAp">
+                <node concept="2ShNRf" id="33z3Yy7kXXo" role="3cqZAk">
+                  <node concept="3$_iS1" id="33z3Yy7lui$" role="2ShVmc">
+                    <node concept="3$GHV9" id="33z3Yy7luiA" role="3$GQph">
+                      <node concept="3cmrfG" id="33z3Yy7lvaN" role="3$I4v7">
+                        <property role="3cmrfH" value="0" />
+                      </node>
+                    </node>
+                    <node concept="3uibUv" id="33z3Yy7lu0$" role="3$_nBY">
+                      <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="33z3Yy7kNjp" role="3clF46">
+        <property role="TrG5h" value="msg" />
+        <node concept="3uibUv" id="33z3Yy7kNjo" role="1tU5fm">
+          <ref role="3uigEE" to="kpve:~SimpleEditorMessage" resolve="SimpleEditorMessage" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="33z3Yy7mEW4" role="jymVt" />
+    <node concept="2YIFZL" id="33z3Yy7mH$5" role="jymVt">
+      <property role="TrG5h" value="addToDictionary" />
+      <node concept="3cqZAl" id="33z3Yy7mH$7" role="3clF45" />
+      <node concept="3Tm1VV" id="33z3Yy7mH$8" role="1B3o_S" />
+      <node concept="3clFbS" id="33z3Yy7mH$9" role="3clF47">
+        <node concept="3cpWs8" id="33z3Yy7mMDQ" role="3cqZAp">
+          <node concept="3cpWsn" id="33z3Yy7mMDR" role="3cpWs9">
+            <property role="TrG5h" value="scm" />
+            <node concept="3uibUv" id="33z3Yy7mMyV" role="1tU5fm">
+              <ref role="3uigEE" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
+            </node>
+            <node concept="2YIFZM" id="33z3Yy7mMDS" role="33vP2m">
+              <ref role="37wK5l" to="v6uv:~SpellCheckerManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
+              <node concept="37vLTw" id="33z3Yy7mMDT" role="37wK5m">
+                <ref role="3cqZAo" node="33z3Yy7mKg2" resolve="project" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="33z3Yy7mMTZ" role="3cqZAp">
+          <node concept="3clFbS" id="33z3Yy7mMU1" role="3clFbx">
+            <node concept="3cpWs6" id="33z3Yy7mNWp" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="33z3Yy7mNA4" role="3clFbw">
+            <node concept="10Nm6u" id="33z3Yy7mNKo" role="3uHU7w" />
+            <node concept="37vLTw" id="33z3Yy7mNj5" role="3uHU7B">
+              <ref role="3cqZAo" node="33z3Yy7mMDR" resolve="scm" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="33z3Yy7mOmE" role="3cqZAp">
+          <node concept="2OqwBi" id="33z3Yy7mO_$" role="3clFbG">
+            <node concept="37vLTw" id="33z3Yy7mOmC" role="2Oq$k0">
+              <ref role="3cqZAo" node="33z3Yy7mMDR" resolve="scm" />
+            </node>
+            <node concept="liA8E" id="33z3Yy7mP4f" role="2OqNvi">
+              <ref role="37wK5l" to="v6uv:~SpellCheckerManager.acceptWordAsCorrect(java.lang.String,com.intellij.openapi.project.Project)" resolve="acceptWordAsCorrect" />
+              <node concept="37vLTw" id="33z3Yy7mQyy" role="37wK5m">
+                <ref role="3cqZAo" node="33z3Yy7mKnA" resolve="word" />
+              </node>
+              <node concept="37vLTw" id="33z3Yy7mQQn" role="37wK5m">
+                <ref role="3cqZAo" node="33z3Yy7mKg2" resolve="project" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="33z3Yy7mKg2" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="33z3Yy7mKg1" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+        <node concept="2AHcQZ" id="33z3Yy7mLW_" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="33z3Yy7mKnA" role="3clF46">
+        <property role="TrG5h" value="word" />
+        <node concept="3uibUv" id="33z3Yy7mKAD" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+        <node concept="2AHcQZ" id="33z3Yy7mLiH" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5PtqdhJ4k4b" role="jymVt" />
     <node concept="312cEu" id="1OIlcCDh_Jr" role="jymVt">
       <property role="TrG5h" value="M" />
       <node concept="312cEg" id="5aO34D5s6zk" role="jymVt">

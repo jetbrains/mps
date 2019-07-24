@@ -21,6 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import com.intellij.ui.JBColor;
@@ -202,6 +203,26 @@ public class CommentSpellChecker extends BaseEditorChecker {
       }
     }
     return true;
+  }
+
+  public static boolean isSpellcheckerMessage(SimpleEditorMessage msg) {
+    return msg instanceof M;
+  }
+
+  public static String[] incorrectWords(SimpleEditorMessage msg) {
+    if (msg instanceof M) {
+      return ((M) msg).myWords;
+    } else {
+      return new String[0];
+    }
+  }
+
+  public static void addToDictionary(@NotNull Project project, @NotNull String word) {
+    SpellCheckerManager scm = SpellCheckerManager.getInstance(project);
+    if (scm == null) {
+      return;
+    }
+    scm.acceptWordAsCorrect(word, project);
   }
 
   /*package*/ static class M extends DefaultEditorMessage {
