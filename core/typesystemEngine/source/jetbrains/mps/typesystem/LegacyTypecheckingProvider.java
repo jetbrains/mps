@@ -124,6 +124,13 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, false);
     }
 
+    @NotNull
+    @Override
+    public final Collection<SNode> getImmediateSupertypes(@NotNull SNode typeA) {
+      StructuralNodeSet<?> sns = TypeChecker.getInstance().getSubtypingManager().collectImmediateSupertypes(typeA); // weak is the default
+      return Collections.unmodifiableCollection(sns);
+    }
+
     @Override
     public final SNode coerceType(SNode type, @NotNull SConcept typeConcept) {
       if (type == null) return null;

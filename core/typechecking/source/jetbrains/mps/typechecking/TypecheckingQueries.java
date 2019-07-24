@@ -79,6 +79,14 @@ public interface TypecheckingQueries {
   }
 
   /**
+   * Provided for compatibility with the legacy system. Returns an empty collection.
+   */
+  @NotNull
+  default Collection<SNode> getImmediateSupertypes(@NotNull SNode type) {
+    return Collections.emptyList();
+  }
+
+  /**
    * Tries to coerce a type to the form represented with the specified {@code typeConcept}.
    * More specifically, the most generic instance of a target type that can be represented with {@code targetConcept} is constructed.
    * Then the specified {@code type} is converted to that target type, which serves as a pattern.
