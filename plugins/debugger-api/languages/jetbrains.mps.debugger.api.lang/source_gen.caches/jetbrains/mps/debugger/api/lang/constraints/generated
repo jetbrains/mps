@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="-ar8cs8976u3hzs9wv5cuwtgrecip8at">
-  <files names="ConstraintsAspectDescriptor.java:CreateBreakpointOperation_Constraints.java:GeneratedRulesConstraintsAspect.java" />
+  <files names="ConstraintsAspectDescriptor.java:CreateBreakpointOperation_Constraints.java" />
 </product>
 

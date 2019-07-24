@@ -14,9 +14,6 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,53,0" name="constraints.test.constraints.ConstraintsAspectDescriptor" />
     </file>
-    <file name="GeneratedRulesConstraintsAspect.java">
-      <unit at="11,0,19,0" name="constraints.test.constraints.GeneratedRulesConstraintsAspect" />
-    </file>
   </root>
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/2614955748379648780">
     <file name="TestRefConstraints_BaseReference_Handler_Constraints.java">

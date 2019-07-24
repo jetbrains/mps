@@ -14,9 +14,6 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,29,0" name="jetbrains.mps.baseLanguage.box.constraints.ConstraintsAspectDescriptor" />
     </file>
-    <file name="GeneratedRulesConstraintsAspect.java">
-      <unit at="11,0,19,0" name="jetbrains.mps.baseLanguage.box.constraints.GeneratedRulesConstraintsAspect" />
-    </file>
   </root>
   <root nodeRef="r:b704a46b-1614-4032-9568-b2fbd81322b3(jetbrains.mps.baseLanguage.box.constraints)/8995237445478594116">
     <file name="Box_ValueOperation_Constraints.java">

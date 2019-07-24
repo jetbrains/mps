@@ -5,8 +5,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor" />
@@ -14,7 +12,6 @@
     <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.samples.Kaja.actions.ActionAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.samples.Kaja.constraints.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.samples.Kaja.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.samples.Kaja.dataFlow.DataFlowAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.samples.Kaja.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.samples.Kaja.intentions.IntentionsDescriptor" />

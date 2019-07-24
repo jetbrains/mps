@@ -5,13 +5,10 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.textGen.behavior.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.textGen.constraints.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.textGen.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.lang.textGen.dataFlow.DataFlowAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.lang.textGen.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.lang.textGen.intentions.IntentionsDescriptor" />
