@@ -188,7 +188,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_2_1(final TemplateVarContext _context) {
     String name = SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     if (name == null) {
-      name = _context.createUniqueName("check" + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")), _context.getNode());
+      name = _context.createUniqueName("unnamed", _context.getNode());
     }
     return name;
   }

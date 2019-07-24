@@ -1581,16 +1581,8 @@
                         <node concept="2OqwBi" id="7CK8yHrclKo" role="37vLTx">
                           <node concept="1iwH7S" id="7CK8yHrclwu" role="2Oq$k0" />
                           <node concept="2piZGk" id="7CK8yHrcm1f" role="2OqNvi">
-                            <node concept="3cpWs3" id="3QbvyRDiceK" role="2piZGb">
-                              <node concept="2OqwBi" id="3QbvyRDic_g" role="3uHU7w">
-                                <node concept="30H73N" id="3QbvyRDicql" role="2Oq$k0" />
-                                <node concept="3TrcHB" id="3QbvyRDicMy" role="2OqNvi">
-                                  <ref role="3TsBF5" to="bm42:5OIo7_R7SN0" resolve="ruleId" />
-                                </node>
-                              </node>
-                              <node concept="Xl_RD" id="7CK8yHrco1g" role="3uHU7B">
-                                <property role="Xl_RC" value="check" />
-                              </node>
+                            <node concept="Xl_RD" id="7CK8yHrco1g" role="2piZGb">
+                              <property role="Xl_RC" value="unnamed" />
                             </node>
                             <node concept="30H73N" id="30CQStN_YlS" role="2pr8EU" />
                           </node>

@@ -27,8 +27,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
 
-  public static final Rule<CanBeRootContext> check_id7932913038699129641 = new TestConcept_ConstraintRules.Rule_unnamedRule_e0();
-  public static final Rule<ContainmentContext> check_id2716118816015675669 = new TestConcept_ConstraintRules.Rule_unnamedRule_a1();
+  public static final Rule<CanBeRootContext> check_id7932913038699129641 = new TestConcept_ConstraintRules.Rule_unnamed_6y4avc_e0();
+  public static final Rule<ContainmentContext> check_id2716118816015675669 = new TestConcept_ConstraintRules.Rule_unnamed_6y4avc_a1();
 
   private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id7932913038699129641, check_id2716118816015675669));
 
@@ -116,12 +116,12 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     }
   }
 
-  public static final class Rule_unnamedRule_e0 extends BaseRule<CanBeRootContext> {
+  public static final class Rule_unnamed_6y4avc_e0 extends BaseRule<CanBeRootContext> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/7932913038699129641");
-    public static final RuleId ID_unnamedRule_e0 = new RuleId(7932913038699129641L, SOURCE_NODE_REF);
+    public static final RuleId ID_unnamed_6y4avc_e0 = new RuleId(7932913038699129641L, SOURCE_NODE_REF);
 
-    public Rule_unnamedRule_e0() {
-      super(CONCEPT, PredefinedRuleKinds.CAN_BE_ROOT, ID_unnamedRule_e0, SOURCE_NODE_REF);
+    public Rule_unnamed_6y4avc_e0() {
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_ROOT, ID_unnamed_6y4avc_e0, SOURCE_NODE_REF);
     }
 
     @Override
@@ -138,12 +138,12 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     }
   }
 
-  public static final class Rule_unnamedRule_a1 extends BaseRule<ContainmentContext> {
+  public static final class Rule_unnamed_6y4avc_a1 extends BaseRule<ContainmentContext> {
     private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)/2716118816015675669");
-    public static final RuleId ID_unnamedRule_a1 = new RuleId(2716118816015675669L, SOURCE_NODE_REF);
+    public static final RuleId ID_unnamed_6y4avc_a1 = new RuleId(2716118816015675669L, SOURCE_NODE_REF);
 
-    public Rule_unnamedRule_a1() {
-      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_unnamedRule_a1, SOURCE_NODE_REF);
+    public Rule_unnamed_6y4avc_a1() {
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_unnamed_6y4avc_a1, SOURCE_NODE_REF);
     }
 
     @Override
