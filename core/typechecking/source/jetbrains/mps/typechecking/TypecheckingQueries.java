@@ -80,6 +80,8 @@ public interface TypecheckingQueries {
 
   /**
    * Provided for compatibility with the legacy system. Returns an empty collection.
+   * </p>
+   * For users of legacy typesystem, this method functions the same as the now deprecated "immediateSupertypes" expression. 
    */
   @NotNull
   default Collection<SNode> getImmediateSupertypes(@NotNull SNode type) {

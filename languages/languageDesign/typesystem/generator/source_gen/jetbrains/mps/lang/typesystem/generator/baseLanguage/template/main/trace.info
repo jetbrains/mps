@@ -2275,14 +2275,14 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b7(jetbrains.mps.lang.typesystem.generator.baseLanguage.template.main@generator)/1177069342792">
     <file name="QueriesGenerated.java">
-      <node id="8327569827255099316" at="1591,93,1592,191" concept="8" />
-      <node id="8327569827255098316" at="2479,73,2480,73" concept="3" />
-      <node id="8327569827255098316" at="2663,16,2664,60" concept="8" />
-      <node id="8327569827255098316" at="1591,0,1594,0" concept="11" trace="sourceNodeQuery_25_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="8327569827255098317" at="1591,93,1592,191" />
-      <scope id="8327569827255098316" at="2663,16,2664,60" />
-      <scope id="8327569827255098316" at="1591,0,1594,0">
-        <var name="_context" id="8327569827255098316" />
+      <node id="1177069454805" at="1591,93,1592,191" concept="8" />
+      <node id="1177069447756" at="2479,73,2480,67" concept="3" />
+      <node id="1177069447756" at="2663,16,2664,60" concept="8" />
+      <node id="1177069447756" at="1591,0,1594,0" concept="11" trace="sourceNodeQuery_25_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1177069447757" at="1591,93,1592,191" />
+      <scope id="1177069447756" at="2663,16,2664,60" />
+      <scope id="1177069447756" at="1591,0,1594,0">
+        <var name="_context" id="1177069447756" />
       </scope>
     </file>
   </root>
@@ -2309,7 +2309,7 @@
     <file name="QueriesGenerated.java">
       <node id="1177406558040" at="1594,93,1595,191" concept="8" />
       <node id="1177406558048" at="1597,93,1598,193" concept="8" />
-      <node id="1177406558038" at="2480,73,2481,67" concept="3" />
+      <node id="1177406558038" at="2480,67,2481,67" concept="3" />
       <node id="1177406558046" at="2481,67,2482,67" concept="3" />
       <node id="1177406558038" at="2665,16,2666,60" concept="8" />
       <node id="1177406558046" at="2667,16,2668,60" concept="8" />

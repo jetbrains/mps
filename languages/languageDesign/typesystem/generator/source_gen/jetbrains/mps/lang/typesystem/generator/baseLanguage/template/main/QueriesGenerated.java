@@ -2477,7 +2477,7 @@ parametersLoop:
     snqMethods.put("2490560865212519042", new QueriesGenerated.SNQ(i++));
     snqMethods.put("2490560865212519137", new QueriesGenerated.SNQ(i++));
     snqMethods.put("2490560865212519155", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("8327569827255098316", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("1177069447756", new QueriesGenerated.SNQ(i++));
     snqMethods.put("1177406558038", new QueriesGenerated.SNQ(i++));
     snqMethods.put("1177406558046", new QueriesGenerated.SNQ(i++));
     snqMethods.put("4519034502526420699", new QueriesGenerated.SNQ(i++));
