@@ -32,7 +32,7 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
       return new MessageProvider.StringMsg("The property '" + context.getProperty() + "' does not belong to the concept 'TestConcept', please do smth");
     }
   };
-  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotInConcept_pavl6x_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
+  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotDefinedInConcept_pavl6x_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingChildContext context) {
@@ -54,7 +54,7 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a, MSGPROVIDER_WhenChildIsNotInConcept_pavl6x_b, MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_c, MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_d));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a, MSGPROVIDER_WhenChildIsNotDefinedInConcept_pavl6x_b, MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_c, MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_d));
 
   public TestConcept_FeedbackFeedback() {
     super(CONCEPT);

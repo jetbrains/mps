@@ -42,14 +42,14 @@
       <node id="629795297587612187" at="112,92,113,21" concept="5" />
       <node id="629795297587612183" at="114,7,115,18" concept="5" />
       <node id="7932913038699129641" at="120,0,121,0" concept="6" trace="SOURCE_NODE_REF" />
-      <node id="7932913038699129641" at="121,0,122,0" concept="6" trace="ID_unnamedRule_6y4avc_e0" />
-      <node id="7932913038699129641" at="123,41,124,97" concept="8" />
+      <node id="7932913038699129641" at="121,0,122,0" concept="6" trace="ID_unnamedRule_e0" />
+      <node id="7932913038699129641" at="123,34,124,90" concept="8" />
       <node id="7932913038699129641" at="128,61,129,109" concept="5" />
       <node id="2554379189374271668" at="134,96,135,21" concept="5" />
       <node id="7932913038699129641" at="136,7,137,18" concept="5" />
       <node id="2716118816015675669" at="142,0,143,0" concept="6" trace="SOURCE_NODE_REF" />
-      <node id="2716118816015675669" at="143,0,144,0" concept="6" trace="ID_unnamedRule_6y4avc_a1" />
-      <node id="2716118816015675669" at="145,41,146,98" concept="8" />
+      <node id="2716118816015675669" at="143,0,144,0" concept="6" trace="ID_unnamedRule_a1" />
+      <node id="2716118816015675669" at="145,34,146,91" concept="8" />
       <node id="2716118816015675669" at="150,63,151,200" concept="5" />
       <node id="2716118816015675669" at="155,67,156,18" concept="5" />
       <node id="24399255754237582" at="160,45,161,19" concept="8" />
@@ -61,9 +61,9 @@
       <node id="2554379189374274573" at="90,72,93,7" concept="2" />
       <node id="629795297587612183" at="104,70,107,7" concept="2" />
       <node id="629795297587612187" at="111,72,114,7" concept="2" />
-      <node id="7932913038699129641" at="123,0,126,0" concept="0" trace="Rule_unnamedRule_6y4avc_e0#()V" />
+      <node id="7932913038699129641" at="123,0,126,0" concept="0" trace="Rule_unnamedRule_e0#()V" />
       <node id="2554379189374271668" at="133,65,136,7" concept="2" />
-      <node id="2716118816015675669" at="145,0,148,0" concept="0" trace="Rule_unnamedRule_6y4avc_a1#()V" />
+      <node id="2716118816015675669" at="145,0,148,0" concept="0" trace="Rule_unnamedRule_a1#()V" />
       <node id="24399255754237582" at="160,0,163,0" concept="0" trace="TestConcept_ConstraintRules#()V" />
       <node id="7932913038699129641" at="127,0,131,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Z" />
       <node id="2716118816015675669" at="149,0,153,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
@@ -85,10 +85,10 @@
       <scope id="2554379189374274573" at="91,92,92,21" />
       <scope id="629795297587612183" at="105,34,106,20" />
       <scope id="629795297587612187" at="112,92,113,21" />
-      <scope id="7932913038699129641" at="123,41,124,97" />
+      <scope id="7932913038699129641" at="123,34,124,90" />
       <scope id="7932913038699129641" at="128,61,129,109" />
       <scope id="2554379189374271668" at="134,96,135,21" />
-      <scope id="2716118816015675669" at="145,41,146,98" />
+      <scope id="2716118816015675669" at="145,34,146,91" />
       <scope id="2716118816015675669" at="150,63,151,200" />
       <scope id="2716118816015675669" at="155,67,156,18" />
       <scope id="24399255754237582" at="160,45,161,19" />
@@ -141,10 +141,10 @@
       </scope>
       <unit id="4622342125580529919" at="41,0,58,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Def_Concept4622342125580529919" />
       <unit id="7932913038696329443" at="59,0,76,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Def_AModel7932913038696329443" />
-      <unit id="2716118816015675669" at="141,0,159,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Rule_unnamedRule_6y4avc_a1" />
+      <unit id="2716118816015675669" at="141,0,159,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Rule_unnamedRule_a1" />
       <unit id="2554379189374271668" at="77,0,97,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Def_AModelName2554379189374271668" />
       <unit id="629795297587612183" at="98,0,118,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Def_AModelName2629795297587612183" />
-      <unit id="7932913038699129641" at="119,0,140,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Rule_unnamedRule_6y4avc_e0" />
+      <unit id="7932913038699129641" at="119,0,140,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules$Rule_unnamedRule_e0" />
       <unit id="24399255754237582" at="27,0,164,0" name="multiAspectLang.constraints.TestConcept_ConstraintRules" />
     </file>
     <file name="TestConcept_ConstraintsFeedback.java">

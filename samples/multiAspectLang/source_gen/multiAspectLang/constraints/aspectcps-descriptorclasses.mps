@@ -665,7 +665,7 @@
       <node concept="39e2AG" id="29" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:2mL_UKGnB4l" />
         <node concept="385nmt" id="2b" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_a1" />
+          <property role="385vuF" value="unnamedRule_a1" />
           <node concept="2$VJBW" id="2d" role="385v07">
             <property role="2$VJBR" value="2716118816015675669" />
             <node concept="2x4n5u" id="2e" role="3iCydw">
@@ -679,13 +679,13 @@
           </node>
         </node>
         <node concept="39e2AT" id="2c" role="39e2AY">
-          <ref role="39e2AS" node="3j" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_6y4avc_a1" />
+          <ref role="39e2AS" node="3j" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_a1" />
         </node>
       </node>
       <node concept="39e2AG" id="2a" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:6SnnA3pIuGD" />
         <node concept="385nmt" id="2g" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_e0" />
+          <property role="385vuF" value="unnamedRule_e0" />
           <node concept="2$VJBW" id="2i" role="385v07">
             <property role="2$VJBR" value="7932913038699129641" />
             <node concept="2x4n5u" id="2j" role="3iCydw">
@@ -699,7 +699,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="2h" role="39e2AY">
-          <ref role="39e2AS" node="3h" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_6y4avc_e0" />
+          <ref role="39e2AS" node="3h" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_e0" />
         </node>
       </node>
     </node>
@@ -708,7 +708,7 @@
       <node concept="39e2AG" id="2l" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:2mL_UKGnB4l" />
         <node concept="385nmt" id="2n" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_a1" />
+          <property role="385vuF" value="unnamedRule_a1" />
           <node concept="2$VJBW" id="2p" role="385v07">
             <property role="2$VJBR" value="2716118816015675669" />
             <node concept="2x4n5u" id="2q" role="3iCydw">
@@ -722,13 +722,13 @@
           </node>
         </node>
         <node concept="39e2AT" id="2o" role="39e2AY">
-          <ref role="39e2AS" node="9X" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_6y4avc_a1" />
+          <ref role="39e2AS" node="9X" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_a1" />
         </node>
       </node>
       <node concept="39e2AG" id="2m" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:6SnnA3pIuGD" />
         <node concept="385nmt" id="2s" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_e0" />
+          <property role="385vuF" value="unnamedRule_e0" />
           <node concept="2$VJBW" id="2u" role="385v07">
             <property role="2$VJBR" value="7932913038699129641" />
             <node concept="2x4n5u" id="2v" role="3iCydw">
@@ -742,7 +742,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="2t" role="39e2AY">
-          <ref role="39e2AS" node="8R" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_6y4avc_e0" />
+          <ref role="39e2AS" node="8R" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_e0" />
         </node>
       </node>
     </node>
@@ -751,7 +751,7 @@
       <node concept="39e2AG" id="2x" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:2mL_UKGnB4l" />
         <node concept="385nmt" id="2z" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_a1" />
+          <property role="385vuF" value="unnamedRule_a1" />
           <node concept="2$VJBW" id="2_" role="385v07">
             <property role="2$VJBR" value="2716118816015675669" />
             <node concept="2x4n5u" id="2A" role="3iCydw">
@@ -771,7 +771,7 @@
       <node concept="39e2AG" id="2y" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:6SnnA3pIuGD" />
         <node concept="385nmt" id="2C" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_e0" />
+          <property role="385vuF" value="unnamedRule_e0" />
           <node concept="2$VJBW" id="2E" role="385v07">
             <property role="2$VJBR" value="7932913038699129641" />
             <node concept="2x4n5u" id="2F" role="3iCydw">
@@ -794,7 +794,7 @@
       <node concept="39e2AG" id="2H" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:2mL_UKGnB4l" />
         <node concept="385nmt" id="2J" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_a1" />
+          <property role="385vuF" value="unnamedRule_a1" />
           <node concept="2$VJBW" id="2L" role="385v07">
             <property role="2$VJBR" value="2716118816015675669" />
             <node concept="2x4n5u" id="2M" role="3iCydw">
@@ -808,13 +808,13 @@
           </node>
         </node>
         <node concept="39e2AT" id="2K" role="39e2AY">
-          <ref role="39e2AS" node="9V" resolve="ID_unnamedRule_6y4avc_a1" />
+          <ref role="39e2AS" node="9V" resolve="ID_unnamedRule_a1" />
         </node>
       </node>
       <node concept="39e2AG" id="2I" role="39e3Y0">
         <ref role="39e2AK" to="2e5h:6SnnA3pIuGD" />
         <node concept="385nmt" id="2O" role="385vvn">
-          <property role="385vuF" value="unnamedRule_6y4avc_e0" />
+          <property role="385vuF" value="unnamedRule_e0" />
           <node concept="2$VJBW" id="2Q" role="385v07">
             <property role="2$VJBR" value="7932913038699129641" />
             <node concept="2x4n5u" id="2R" role="3iCydw">
@@ -828,7 +828,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="2P" role="39e2AY">
-          <ref role="39e2AS" node="8P" resolve="ID_unnamedRule_6y4avc_e0" />
+          <ref role="39e2AS" node="8P" resolve="ID_unnamedRule_e0" />
         </node>
       </node>
     </node>
@@ -932,7 +932,7 @@
       </node>
       <node concept="2ShNRf" id="3D" role="33vP2m">
         <node concept="1pGfFk" id="3M" role="2ShVmc">
-          <ref role="37wK5l" node="8R" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_6y4avc_e0" />
+          <ref role="37wK5l" node="8R" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_e0" />
           <node concept="cd27G" id="3O" role="lGtFl">
             <node concept="3u3nmq" id="3P" role="cd27D">
               <property role="3u3nmv" value="24399255754237582" />
@@ -979,7 +979,7 @@
       </node>
       <node concept="2ShNRf" id="3U" role="33vP2m">
         <node concept="1pGfFk" id="43" role="2ShVmc">
-          <ref role="37wK5l" node="9X" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_6y4avc_a1" />
+          <ref role="37wK5l" node="9X" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_a1" />
           <node concept="cd27G" id="45" role="lGtFl">
             <node concept="3u3nmq" id="46" role="cd27D">
               <property role="3u3nmv" value="24399255754237582" />
@@ -1750,7 +1750,7 @@
     <node concept="2tJIrI" id="3g" role="jymVt" />
     <node concept="312cEu" id="3h" role="jymVt">
       <property role="1EXbeo" value="true" />
-      <property role="TrG5h" value="Rule_unnamedRule_6y4avc_e0" />
+      <property role="TrG5h" value="Rule_unnamedRule_e0" />
       <node concept="Wx3nA" id="8O" role="jymVt">
         <property role="TrG5h" value="SOURCE_NODE_REF" />
         <property role="3TUv4t" value="true" />
@@ -1773,7 +1773,7 @@
       </node>
       <node concept="Wx3nA" id="8P" role="jymVt">
         <property role="3TUv4t" value="true" />
-        <property role="TrG5h" value="ID_unnamedRule_6y4avc_e0" />
+        <property role="TrG5h" value="ID_unnamedRule_e0" />
         <node concept="3uibUv" id="95" role="1tU5fm">
           <ref role="3uigEE" to="o99v:~RuleId" resolve="RuleId" />
         </node>
@@ -1805,7 +1805,7 @@
               <ref role="Rm8GQ" to="pdwk:~PredefinedRuleKinds.CAN_BE_ROOT" resolve="CAN_BE_ROOT" />
             </node>
             <node concept="37vLTw" id="9h" role="37wK5m">
-              <ref role="3cqZAo" node="8P" resolve="ID_unnamedRule_6y4avc_e0" />
+              <ref role="3cqZAo" node="8P" resolve="ID_unnamedRule_e0" />
             </node>
             <node concept="37vLTw" id="9i" role="37wK5m">
               <ref role="3cqZAo" node="8O" resolve="SOURCE_NODE_REF" />
@@ -1927,7 +1927,7 @@
     <node concept="2tJIrI" id="3i" role="jymVt" />
     <node concept="312cEu" id="3j" role="jymVt">
       <property role="1EXbeo" value="true" />
-      <property role="TrG5h" value="Rule_unnamedRule_6y4avc_a1" />
+      <property role="TrG5h" value="Rule_unnamedRule_a1" />
       <node concept="Wx3nA" id="9U" role="jymVt">
         <property role="TrG5h" value="SOURCE_NODE_REF" />
         <property role="3TUv4t" value="true" />
@@ -1950,7 +1950,7 @@
       </node>
       <node concept="Wx3nA" id="9V" role="jymVt">
         <property role="3TUv4t" value="true" />
-        <property role="TrG5h" value="ID_unnamedRule_6y4avc_a1" />
+        <property role="TrG5h" value="ID_unnamedRule_a1" />
         <node concept="3uibUv" id="ab" role="1tU5fm">
           <ref role="3uigEE" to="o99v:~RuleId" resolve="RuleId" />
         </node>
@@ -1982,7 +1982,7 @@
               <ref role="Rm8GQ" to="pdwk:~PredefinedRuleKinds.CAN_BE_CHILD" resolve="CAN_BE_CHILD" />
             </node>
             <node concept="37vLTw" id="an" role="37wK5m">
-              <ref role="3cqZAo" node="9V" resolve="ID_unnamedRule_6y4avc_a1" />
+              <ref role="3cqZAo" node="9V" resolve="ID_unnamedRule_a1" />
             </node>
             <node concept="37vLTw" id="ao" role="37wK5m">
               <ref role="3cqZAo" node="9U" resolve="SOURCE_NODE_REF" />
@@ -3089,8 +3089,8 @@
               <node concept="1pGfFk" id="h8" role="2ShVmc">
                 <ref role="37wK5l" to="j80a:~FailingRuleProblemId.&lt;init&gt;(jetbrains.mps.core.aspects.constraints.rules.RuleId)" resolve="FailingRuleProblemId" />
                 <node concept="10M0yZ" id="ha" role="37wK5m">
-                  <ref role="3cqZAo" node="8P" resolve="ID_unnamedRule_6y4avc_e0" />
-                  <ref role="1PxDUh" node="3h" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_6y4avc_e0" />
+                  <ref role="3cqZAo" node="8P" resolve="ID_unnamedRule_e0" />
+                  <ref role="1PxDUh" node="3h" resolve="TestConcept_ConstraintRules.Rule_unnamedRule_e0" />
                   <node concept="cd27G" id="hc" role="lGtFl">
                     <node concept="3u3nmq" id="hd" role="cd27D">
                       <property role="3u3nmv" value="24399255754237582" />
