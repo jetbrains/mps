@@ -16,13 +16,8 @@
 package jetbrains.mps.util;
 
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathAssert;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.Nullable;
-
-import java.io.File;
 
 class MacroHelperImpl implements MacroHelper {
   @Nullable
@@ -39,7 +34,7 @@ class MacroHelperImpl implements MacroHelper {
     if (path == null) {
       return null;
     }
-    new PathAssert(path).osIndependentPath();
+    new PathFormatChecker(path).osIndependentPath();
 
     return macros.expand(path, anchorFile);
   }
@@ -55,7 +50,7 @@ class MacroHelperImpl implements MacroHelper {
       return absolutePath;
     }
 
-    new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+    new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
     return macros.shrink(absolutePath, anchorFile);
   }

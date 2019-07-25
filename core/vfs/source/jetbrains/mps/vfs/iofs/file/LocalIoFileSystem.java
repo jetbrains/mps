@@ -17,7 +17,7 @@ package jetbrains.mps.vfs.iofs.file;
 
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +36,7 @@ public class LocalIoFileSystem implements IFileSystem {
   @NotNull
   @Override
   public IFile getFile(@NotNull String path) {
-    new PathAssert(path).absolute().noOddEndSlash().noDots().osIndependentPath();
+    new PathFormatChecker(path).absolute().noOddEndSlash().noDots().osIndependentPath();
     return new LocalFile(path, this);
   }
 

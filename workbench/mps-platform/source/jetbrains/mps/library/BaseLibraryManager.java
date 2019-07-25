@@ -24,7 +24,7 @@ import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.MacroProcessor;
-import jetbrains.mps.vfs.util.PathAssert.PathAssertionException;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -75,7 +75,7 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
         try {
           IFile file = FileSystem.getInstance().getFile(path);
           result.add(new LibDescriptor(file));
-        } catch (PathAssertionException e) {
+        } catch (PathFormatException e) {
           // fixme Michael Muhin
           Matcher matcher = MacroProcessor.MACRO_PATTERN.matcher(e.getProblemPath());
           if (matcher.find()) {

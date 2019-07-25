@@ -24,7 +24,7 @@ import jetbrains.mps.util.Pair;
 import jetbrains.mps.vfs.FileSystems;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.MacroProcessor;
-import jetbrains.mps.vfs.util.PathAssert.PathAssertionException;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -119,7 +119,7 @@ import java.util.regex.Matcher;
           error(String.format("Can't load module from %s. File doesn't exist.", descriptorPath));
           fireModuleNotFound(modulePath);
         }
-      } catch (PathAssertionException e) {
+      } catch (PathFormatException e) {
         Matcher matcher = MacroProcessor.MACRO_PATTERN.matcher(e.getProblemPath());
         if (matcher.find()) {
           LOG.warn("Some paths might contain unknown macros, please define them in 'Path variables' and reopen the project");

@@ -27,14 +27,14 @@ public class PathUtil {
   @NotNull
   public static String toSystemIndependent(@NotNull String path) {
     String result = path.replace(File.separator, IFileSystem.SEPARATOR);
-    new PathAssert(result).osIndependentPath();
+    new PathFormatChecker(result).osIndependentPath();
     return result;
   }
 
   @NotNull
   public static String toSystemDependent(@NotNull String path) {
     String result = path.replace(IFileSystem.SEPARATOR, File.separator);
-    new PathAssert(result).osDependentPath();
+    new PathFormatChecker(result).osDependentPath();
     return result;
   }
 

@@ -21,14 +21,12 @@ import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jdom.Document;
 import org.jdom.Element;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,7 +119,7 @@ public class Utils {
 
     @Override
     public String expandPath(String path) {
-      new PathAssert(path).osIndependentPath();
+      new PathFormatChecker(path).osIndependentPath();
 
       if (path.startsWith(MacrosFactory.MODULE)) {
         IFile anchorFolder = myModuleIFile.getParent();
@@ -139,7 +137,7 @@ public class Utils {
 
       //if we were unable to resolve any macro, check we are returning a "normalized" path
       if (!path.startsWith("${")) {
-        new PathAssert(path).noDots().absolute();
+        new PathFormatChecker(path).noDots().absolute();
       }
       return path;
     }

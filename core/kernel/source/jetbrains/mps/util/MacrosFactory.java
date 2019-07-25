@@ -21,7 +21,7 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -116,7 +116,7 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String expand(String path, IFile anchorFile) {
-      new PathAssert(path).osIndependentPath();
+      new PathFormatChecker(path).osIndependentPath();
 
       if (path.startsWith(MODULE)) {
         String expanded = path.replace(MODULE, getAnchorFolder(anchorFile).getPath());
@@ -127,7 +127,7 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String shrink(String absolutePath, IFile anchorFile) {
-      new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+      new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
       String prefix = getAnchorFolder(anchorFile).getPath();
       if (pathStartsWith(absolutePath, prefix)) {
@@ -154,7 +154,7 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String expand(String path, IFile anchorFile) {
-      new PathAssert(path).osIndependentPath();
+      new PathFormatChecker(path).osIndependentPath();
 
       path = path.replace(PROJECT, PROJECT_LEGACY);
       if (path.contains(PROJECT_LEGACY)) {
@@ -166,7 +166,7 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String shrink(String absolutePath, IFile anchorFile) {
-      new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+      new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
       String prefix = getProjectDir(anchorFile).getPath();
       if (pathStartsWith(absolutePath, prefix)) {
@@ -192,7 +192,7 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String expand(String path, @Nullable IFile anchorFile) {
-      new PathAssert(path).osIndependentPath();
+      new PathFormatChecker(path).osIndependentPath();
 
       if (path.startsWith(LIB_EXT)) {
         //[MM] PathManager now returns windows-style paths. This should be changed, but I don't do it in bugfix
@@ -236,7 +236,7 @@ public final class MacrosFactory implements MacroHelper.Source {
 
     @Override
     protected String shrink(String absolutePath, IFile anchorFile) {
-      new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+      new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
       if (pathStartsWith(absolutePath, libExtPath())) {
         String relationalPath = shrink(absolutePath, libExtPath());

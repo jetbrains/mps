@@ -17,7 +17,7 @@ package jetbrains.mps.vfs.iofs.jrt;
 
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +41,7 @@ public class JrtIoFileSystem implements IFileSystem {
   @NotNull
   @Override
   public IFile getFile(@NotNull String path) {
-    new PathAssert(path).absolute().noDots().osIndependentPath();
+    new PathFormatChecker(path).absolute().noDots().osIndependentPath();
     JrtPathSplitter jrtPathSplitter = new JrtPathSplitter(path);
     return getFile(jrtPathSplitter.getJdkPath(), jrtPathSplitter.getModule(), jrtPathSplitter.getPathInModule());
   }

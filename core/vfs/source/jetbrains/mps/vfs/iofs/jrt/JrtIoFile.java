@@ -22,7 +22,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -184,7 +184,7 @@ public class JrtIoFile implements IFile {
   @NotNull
   @Override
   public IFile findChild(@NotNull String name) {
-    new PathAssert(name).nonEmpty().noSeparators();
+    new PathFormatChecker(name).nonEmpty().noSeparators();
     String path = getPath();
     //the following is because there's one file that path ends with slash: JDK_MODE!/
     String fullPath = path.endsWith("!" + IFileSystem.SEPARATOR) ? path + name : path + IFileSystem.SEPARATOR + name;

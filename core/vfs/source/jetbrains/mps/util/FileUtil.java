@@ -17,9 +17,8 @@ package jetbrains.mps.util;
 
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -41,8 +40,6 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -198,7 +195,7 @@ public class FileUtil {
   @NotNull
   //replaces /xx/.. with /. Use with already-normalized paths
   public static String resolveParentDirs(@NotNull String path) {
-    new PathAssert(path).absolute().osIndependentPath();
+    new PathFormatChecker(path).absolute().osIndependentPath();
 
     String currentPath = path;
     if (currentPath.endsWith("/..")) {

@@ -35,7 +35,7 @@ import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.FileListener;
 import jetbrains.mps.vfs.refresh.FileListenerAdapter;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -89,7 +89,7 @@ public class IdeaFile implements IFile, CachingFile {
     myFS = fileSystem;
     myVirtualFilePtr = virtualFile;
     String path = virtualFile.getPath();
-    new PathAssert(path).absolute().noDots().osIndependentPath().noOddEndSlash();
+    new PathFormatChecker(path).absolute().noDots().osIndependentPath().noOddEndSlash();
     myPath = path;
   }
 
@@ -199,7 +199,7 @@ public class IdeaFile implements IFile, CachingFile {
   @Override
   @NotNull
   public IdeaFile findChild(@NotNull String name) {
-    new PathAssert(name).nonEmpty().noSeparators();
+    new PathFormatChecker(name).nonEmpty().noSeparators();
     String path = getPath();
     //the following is because there's one file that path ends with slash: JDK_MODE!/
     return myFS.getFile(path + (path.endsWith("!" + IFileSystem.SEPARATOR) ? "" : IFileSystem.SEPARATOR) + name);

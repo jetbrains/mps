@@ -21,16 +21,16 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
 //this is an internal class with assertions usable for checking formats of file paths in File/Jar/Jrt FSes
-public final class PathAssert {
+public final class PathFormatChecker {
   private final String myPath;
 
-  public PathAssert(@NotNull String path) {
+  public PathFormatChecker(@NotNull String path) {
     myPath = path;
   }
 
-  public PathAssert osIndependentPath() {
+  public PathFormatChecker osIndependentPath() {
     if (myPath.contains("\\")) {
-      throw new PathAssertionException("Not os-independent path: " + myPath, myPath);
+      throw new PathFormatException("Not os-independent path: " + myPath, myPath);
     }
     return this;
   }
@@ -38,50 +38,50 @@ public final class PathAssert {
   /*
     Michael, by the way some filesystems can create paths with '\'
    */
-  public PathAssert osDependentPath() {
+  public PathFormatChecker osDependentPath() {
     String badSeparator = File.separator.equals("/") ? "\\" : "/";
     if (myPath.contains(badSeparator)) {
-      throw new PathAssertionException("Not os-dependent path: " + myPath, myPath);
+      throw new PathFormatException("Not os-dependent path: " + myPath, myPath);
     }
     return this;
   }
 
-  public PathAssert absolute() {
+  public PathFormatChecker absolute() {
     if (!(new File(myPath).isAbsolute())) {
-      throw new PathAssertionException("Path should be absolute: " + myPath, myPath);
+      throw new PathFormatException("Path should be absolute: " + myPath, myPath);
     }
     return this;
   }
 
-  public PathAssert noDots() {
+  public PathFormatChecker noDots() {
     for (String part : myPath.split(IFileSystem.SEPARATOR)) {
       if (".".equals(part) || "..".equals(part)) {
-        throw new PathAssertionException("Path should not contain \".\" and \"..\": " + myPath, myPath);
+        throw new PathFormatException("Path should not contain \".\" and \"..\": " + myPath, myPath);
       }
     }
     return this;
   }
 
-  public PathAssert nonEmpty() {
+  public PathFormatChecker nonEmpty() {
     if (myPath.trim().isEmpty()) {
-      throw new PathAssertionException("Empty suffix not allowed: " + myPath, myPath);
+      throw new PathFormatException("Empty suffix not allowed: " + myPath, myPath);
     }
     return this;
   }
 
-  public PathAssert noSeparators() {
+  public PathFormatChecker noSeparators() {
     if (myPath.contains(IFileSystem.SEPARATOR)) {
-      throw new PathAssertionException("Separators are not allowed: " + myPath, myPath);
+      throw new PathFormatException("Separators are not allowed: " + myPath, myPath);
     }
     return this;
   }
 
   //Checks that no slash is after file name. E.g. /a/b/ is error, while c:/, /a.jar!/ and / are not
-  public PathAssert noOddEndSlash() {
+  public PathFormatChecker noOddEndSlash() {
     if (!(PathUtil.isRoot(myPath) ||
         !myPath.endsWith(IFileSystem.SEPARATOR) ||
         myPath.endsWith("!" + IFileSystem.SEPARATOR)))  {
-      throw new PathAssertionException("Only archive paths can end with " + IFileSystem.SEPARATOR + ": " + myPath, myPath);
+      throw new PathFormatException("Only archive paths can end with " + IFileSystem.SEPARATOR + ": " + myPath, myPath);
     }
     return this;
   }
@@ -90,11 +90,11 @@ public final class PathAssert {
    * Control flow exception for now
    * MM, please rewrite this hell
    */
-  public static final class PathAssertionException extends RuntimeException {
+  public static final class PathFormatException extends RuntimeException {
     @NotNull
     private final String myProblemPath;
 
-    public PathAssertionException(@NotNull String msg, @NotNull String problemPath) {
+    public PathFormatException(@NotNull String msg, @NotNull String problemPath) {
       super(msg);
       myProblemPath = problemPath;
     }

@@ -23,7 +23,7 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import org.jetbrains.annotations.NotNull;
@@ -132,7 +132,7 @@ public class JarEntryFile implements IFile {
   @Override
   @NotNull
   public IFile findChild(@NotNull String name) {
-    new PathAssert(name).nonEmpty().noSeparators();
+    new PathFormatChecker(name).nonEmpty().noSeparators();
     String path = myEntryPath.length() > 0 ? myEntryPath + IFileSystem.SEPARATOR + name : name;
     return myFileSystem.createFile(myJarFile, path, myJarFileData);
   }

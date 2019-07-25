@@ -22,7 +22,7 @@ import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
@@ -193,7 +193,7 @@ class LocalFile implements IFile {
   @Override
   @NotNull
   public IFile findChild(@NotNull String name) {
-    new PathAssert(name).nonEmpty().noSeparators();
+    new PathFormatChecker(name).nonEmpty().noSeparators();
     return myFileSystem.getFile(myPath + IFileSystem.SEPARATOR + name);
   }
 

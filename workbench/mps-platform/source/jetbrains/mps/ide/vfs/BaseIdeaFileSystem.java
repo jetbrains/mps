@@ -36,7 +36,7 @@ import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -84,7 +84,7 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
   @NotNull
   @Override
   public IdeaFile getFile(@NotNull String path) {
-    new PathAssert(path).absolute().noDots().osIndependentPath().noOddEndSlash();
+    new PathFormatChecker(path).absolute().noDots().osIndependentPath().noOddEndSlash();
     return new IdeaFile(this, path);
   }
 

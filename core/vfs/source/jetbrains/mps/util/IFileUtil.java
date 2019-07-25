@@ -20,7 +20,7 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -103,7 +103,7 @@ public class IFileUtil {
       LOG.error("getDescendant() can't step into an archive. File= " + file.getPath() + ", relativePath=" + relativePath+". Using a fallback solution. Support for '!' will soon be completely removed", new Throwable());
       return file.getFileSystem().getFile(file.getPath()+"/"+relativePath);
     }
-    new PathAssert(relativePath).osIndependentPath();
+    new PathFormatChecker(relativePath).osIndependentPath();
     for (String part : relativePath.split(IFileSystem.SEPARATOR)) {
       if (part.isEmpty() || part.equals(".")) {
         continue;

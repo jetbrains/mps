@@ -18,8 +18,7 @@ package jetbrains.mps.util;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathAssert;
-import jetbrains.mps.vfs.util.PathAssert;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,7 +32,7 @@ class Macros {
   }
 
   protected String expand(String path, @Nullable IFile anchorFile) {
-    new PathAssert(path).osIndependentPath();
+    new PathFormatChecker(path).osIndependentPath();
 
     if (!MacrosFactory.containsMacro(path)) {
       return path;
@@ -50,7 +49,7 @@ class Macros {
   }
 
   protected String shrink(String absolutePath, IFile anchorFile) {
-    new PathAssert(absolutePath).osIndependentPath().noDots().absolute();
+    new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
     String fileName;
     Set<String> macroNames = myComponent.getNames();
@@ -78,7 +77,7 @@ class Macros {
   }
 
   static boolean pathStartsWith(String absolutePath, @NotNull String with) {
-    new PathAssert(absolutePath).absolute();
+    new PathFormatChecker(absolutePath).absolute();
 
     if (absolutePath.equals(with)) {
       return true;
