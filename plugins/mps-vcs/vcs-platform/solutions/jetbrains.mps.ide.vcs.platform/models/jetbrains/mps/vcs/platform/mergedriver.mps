@@ -48,6 +48,7 @@
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
     <import index="wbby" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.crlf(jetbrains.mps.ide.vcs.platform/)" />
     <import index="hr4p" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea(jetbrains.mps.ide.vcs.platform/)" />
+    <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -78,9 +79,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -175,6 +181,9 @@
       <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
+      </concept>
+      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
+        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -5879,6 +5888,15 @@
   <node concept="312cEu" id="63ZcAL21OIF">
     <property role="TrG5h" value="MergeDriverNotification" />
     <node concept="3Tm1VV" id="63ZcAL21OIG" role="1B3o_S" />
+    <node concept="Wx3nA" id="63ZcAL21OJm" role="jymVt">
+      <property role="TrG5h" value="SUPPRESSED_PROPERTY_NAME" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="63ZcAL21OJn" role="1B3o_S" />
+      <node concept="17QB3L" id="63ZcAL21OJp" role="1tU5fm" />
+      <node concept="Xl_RD" id="63ZcAL21OJs" role="33vP2m">
+        <property role="Xl_RC" value="merge.driver.suppressed.notification" />
+      </node>
+    </node>
     <node concept="312cEg" id="63ZcAL21OIS" role="jymVt">
       <property role="TrG5h" value="myProject" />
       <node concept="3Tm6S6" id="63ZcAL21OIT" role="1B3o_S" />
@@ -5918,6 +5936,99 @@
             <node concept="37vLTw" id="2BHiRxeusHF" role="37vLTJ">
               <ref role="3cqZAo" node="63ZcAL21OIS" resolve="myProject" />
             </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2vytjHRXVXg" role="3cqZAp">
+          <node concept="1rXfSq" id="2vytjHRXVXe" role="3clFbG">
+            <ref role="37wK5l" node="2vytjHRXUzj" resolve="unsetObsoleteProperty" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="2vytjHRXUzj" role="jymVt">
+      <property role="TrG5h" value="unsetObsoleteProperty" />
+      <node concept="3clFbS" id="2vytjHRXUzm" role="3clF47">
+        <node concept="3SKdUt" id="2vytjHRYKWq" role="3cqZAp">
+          <node concept="1PaTwC" id="2vytjHRYKWr" role="3ndbpf">
+            <node concept="3oM_SD" id="2vytjHRYKX9" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKXb" role="1PaTwD">
+              <property role="3oM_SC" value="property" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKXu" role="1PaTwD">
+              <property role="3oM_SC" value="removed" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKY2" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKY7" role="1PaTwD">
+              <property role="3oM_SC" value="2019.2," />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKY_" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKYO" role="1PaTwD">
+              <property role="3oM_SC" value="wait" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKZk" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKZ_" role="1PaTwD">
+              <property role="3oM_SC" value="two" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYKZZ" role="1PaTwD">
+              <property role="3oM_SC" value="releases" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL0q" role="1PaTwD">
+              <property role="3oM_SC" value="till" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL0Q" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL13" role="1PaTwD">
+              <property role="3oM_SC" value="will" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL1x" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL1K" role="1PaTwD">
+              <property role="3oM_SC" value="cleared" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL2K" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL31" role="1PaTwD">
+              <property role="3oM_SC" value="config" />
+            </node>
+            <node concept="3oM_SD" id="2vytjHRYL3r" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2vytjHRXVjr" role="3cqZAp">
+          <node concept="2OqwBi" id="2vytjHRXVrW" role="3clFbG">
+            <node concept="2YIFZM" id="2vytjHRXVoB" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+            <node concept="liA8E" id="2vytjHRXVwx" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.unsetValue(java.lang.String)" resolve="unsetValue" />
+              <node concept="37vLTw" id="2vytjHRXVDK" role="37wK5m">
+                <ref role="3cqZAo" node="63ZcAL21OJm" resolve="SUPPRESSED_PROPERTY_NAME" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2vytjHRXU3B" role="1B3o_S" />
+      <node concept="3cqZAl" id="2vytjHRXUy_" role="3clF45" />
+      <node concept="2AHcQZ" id="2vytjHRY3f1" role="2AJF6D">
+        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
+        <node concept="2B6LJw" id="2vytjHRY3im" role="2B76xF">
+          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
+          <node concept="3b6qkQ" id="2vytjHRY3Kz" role="2B70Vg">
+            <property role="$nhwW" value="2020.1" />
           </node>
         </node>
       </node>
