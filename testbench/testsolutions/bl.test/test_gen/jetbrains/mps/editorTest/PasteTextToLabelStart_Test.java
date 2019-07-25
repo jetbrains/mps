@@ -21,7 +21,7 @@ public class PasteTextToLabelStart_Test extends BaseTransformationTest {
 
   @Test
   public void test_PasteTextToLabelStart() throws Throwable {
-    new PasteTextToLabelStart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

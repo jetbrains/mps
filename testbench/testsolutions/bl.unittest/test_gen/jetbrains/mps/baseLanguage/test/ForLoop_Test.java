@@ -30,11 +30,11 @@ public class ForLoop_Test extends BaseTransformationTest {
 
   @Test
   public void test_ForLoop() throws Throwable {
-    new ForLoop_Test.TestBody(this).test_ForLoop();
+    new TestBody(this).test_ForLoop();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199424() throws Throwable {
-    new ForLoop_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199424();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199424();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

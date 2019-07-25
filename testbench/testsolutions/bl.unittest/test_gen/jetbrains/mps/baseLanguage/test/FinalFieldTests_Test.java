@@ -32,27 +32,27 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck843236768048178247() throws Throwable {
-    new FinalFieldTests_Test.TestBody(this).test_ErrorMessagesCheck843236768048178247();
+    new TestBody(this).test_ErrorMessagesCheck843236768048178247();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedCheck6923385624928056097() throws Throwable {
-    new FinalFieldTests_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedCheck6923385624928056097();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedCheck6923385624928056097();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedCheck6923385624928725296() throws Throwable {
-    new FinalFieldTests_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedCheck6923385624928725296();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedCheck6923385624928725296();
   }
   @Test
   public void test_ErrorMessagesCheck2466039659637288472() throws Throwable {
-    new FinalFieldTests_Test.TestBody(this).test_ErrorMessagesCheck2466039659637288472();
+    new TestBody(this).test_ErrorMessagesCheck2466039659637288472();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck2466039659637220345() throws Throwable {
-    new FinalFieldTests_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck2466039659637220345();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck2466039659637220345();
   }
   @Test
   public void test_ErrorMessagesCheck2466039659637478694() throws Throwable {
-    new FinalFieldTests_Test.TestBody(this).test_ErrorMessagesCheck2466039659637478694();
+    new TestBody(this).test_ErrorMessagesCheck2466039659637478694();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

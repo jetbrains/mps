@@ -64,7 +64,7 @@ public class ModuleGenerationHolder {
   private final SModule module;
   private String tmpPath;
   private Map<String, String> path2tmp = MapSequence.fromMap(new HashMap<String, String>());
-  private final ModuleGenerationHolder.MyMessageHandler myMessageHandler = new ModuleGenerationHolder.MyMessageHandler();
+  private final MyMessageHandler myMessageHandler = new MyMessageHandler();
   private boolean isSuccessful;
 
   public ModuleGenerationHolder(SModule module, Project project) {

@@ -21,7 +21,7 @@ public class DeleteLastCommentedConditionAfterCommented_Test extends BaseTransfo
 
   @Test
   public void test_DeleteLastCommentedConditionAfterCommented() throws Throwable {
-    new DeleteLastCommentedConditionAfterCommented_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class BackspaceParameter_Test extends BaseTransformationTest {
 
   @Test
   public void test_BackspaceParameter() throws Throwable {
-    new BackspaceParameter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

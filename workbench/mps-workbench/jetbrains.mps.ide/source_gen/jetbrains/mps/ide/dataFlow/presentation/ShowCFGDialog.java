@@ -28,13 +28,13 @@ import java.awt.Rectangle;
 
 public class ShowCFGDialog extends DialogWrapper {
   private JScrollPane myScrollPane;
-  private ShowCFGDialog.MyComponent myComponent;
+  private MyComponent myComponent;
   private ControlFlowGraph<InstructionWrapper> myControlFlowGraph;
   private final MPSProject myProject;
   public ShowCFGDialog(@NotNull ControlFlowGraph<InstructionWrapper> graph, @NotNull MPSProject project, @NotNull String title) {
     super(project.getProject());
     myProject = project;
-    this.myComponent = new ShowCFGDialog.MyComponent();
+    this.myComponent = new MyComponent();
     this.myScrollPane = ScrollPaneFactory.createScrollPane(myComponent);
     this.myScrollPane.setBackground(this.getBackground());
     this.myComponent.setFont(this.myComponent.getFont().deriveFont(10.0f));

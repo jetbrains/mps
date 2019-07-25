@@ -28,7 +28,7 @@ public class ActionsTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_checkRoots() throws Throwable {
-    new ActionsTest_Test.TestBody(this).test_checkRoots();
+    new TestBody(this).test_checkRoots();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

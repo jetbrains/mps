@@ -70,7 +70,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new TypeAnnotated_EditorBuilder_a.annotationSingleRoleHandler_64ltmv_d0(myNode, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x48fdf6754d38a0a9L, 0x48fdf6754d38a0aaL, "annotation"), getEditorContext());
+    SingleRoleCellProvider provider = new annotationSingleRoleHandler_64ltmv_d0(myNode, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x48fdf6754d38a0a9L, 0x48fdf6754d38a0aaL, "annotation"), getEditorContext());
     return provider.createCell();
   }
   private static class annotationSingleRoleHandler_64ltmv_d0 extends SingleRoleCellProvider {

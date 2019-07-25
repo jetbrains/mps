@@ -40,7 +40,7 @@ import jetbrains.mps.ide.messages.Icons;
 
 /*package*/ class EvaluationTree extends MPSTree implements DataProvider {
   private ThreadReference myThreadReference;
-  private Map<IEvaluationContainer, EvaluationTree.EvaluationState> myStates = MapSequence.fromMap(new HashMap<IEvaluationContainer, EvaluationTree.EvaluationState>());
+  private Map<IEvaluationContainer, EvaluationState> myStates = MapSequence.fromMap(new HashMap<IEvaluationContainer, EvaluationState>());
   private final DebugSession myDebugSession;
   @Nullable
   private ActionGroup myActionGroup = null;
@@ -57,7 +57,7 @@ import jetbrains.mps.ide.messages.Icons;
   }
   /*package*/ void addModel(IEvaluationContainer model) {
     synchronized (myStates) {
-      MapSequence.fromMap(myStates).put(model, new EvaluationTree.InitializedState());
+      MapSequence.fromMap(myStates).put(model, new InitializedState());
     }
   }
   /*package*/ void removeModel(IEvaluationContainer model) {
@@ -67,22 +67,22 @@ import jetbrains.mps.ide.messages.Icons;
   }
   /*package*/ void setResultValue(JavaValue value, IEvaluationContainer model) {
     synchronized (myStates) {
-      MapSequence.fromMap(myStates).put(model, new EvaluationTree.ResultState(model.getPresentation(), value, myThreadReference));
+      MapSequence.fromMap(myStates).put(model, new ResultState(model.getPresentation(), value, myThreadReference));
     }
   }
   /*package*/ void setError(@NotNull String text, IEvaluationContainer model) {
     synchronized (myStates) {
-      MapSequence.fromMap(myStates).put(model, new EvaluationTree.FailureState(text));
+      MapSequence.fromMap(myStates).put(model, new FailureState(text));
     }
   }
   /*package*/ void setError(@NotNull Throwable error, IEvaluationContainer model) {
     synchronized (myStates) {
-      MapSequence.fromMap(myStates).put(model, new EvaluationTree.FailureState(error));
+      MapSequence.fromMap(myStates).put(model, new FailureState(error));
     }
   }
   /*package*/ void setEvaluating(IEvaluationContainer model) {
     synchronized (myStates) {
-      MapSequence.fromMap(myStates).put(model, new EvaluationTree.EvaluationInProgressState());
+      MapSequence.fromMap(myStates).put(model, new EvaluationInProgressState());
     }
   }
   @Override
@@ -153,20 +153,20 @@ import jetbrains.mps.ide.messages.Icons;
   public Object getData(@NonNls String dataId) {
     if (dataId.equals(EvaluationUi.EVALUATION_CONTAINER.getName())) {
       MPSTreeNode node = findSelectedNode();
-      if (node != null && node instanceof EvaluationTree.EvaluationModelNode) {
-        return ((EvaluationTree.EvaluationModelNode) node).getModel();
+      if (node != null && node instanceof EvaluationModelNode) {
+        return ((EvaluationModelNode) node).getModel();
       }
     } else if (dataId.equals(EvaluationUi.DEBUG_SESSION.getName())) {
       return myDebugSession;
     } else if (dataId.equals(VariablesTree.MPS_DEBUGGER_VALUE.getName())) {
       MPSTreeNode node = findSelectedNode();
-      if (node != null && node instanceof EvaluationTree.ResultState.MyWatchableNode) {
-        return ((EvaluationTree.ResultState.MyWatchableNode) node).getValue();
+      if (node != null && node instanceof ResultState.MyWatchableNode) {
+        return ((ResultState.MyWatchableNode) node).getValue();
       }
     } else if (dataId.equals(MPSCommonDataKeys.EXCEPTION.getName())) {
       MPSTreeNode node = findSelectedNode();
-      if (node != null && node instanceof EvaluationTree.ErrorTreeNode) {
-        return ((EvaluationTree.ErrorTreeNode) node).getThrowable();
+      if (node != null && node instanceof ErrorTreeNode) {
+        return ((ErrorTreeNode) node).getThrowable();
       }
     }
     return null;
@@ -187,24 +187,24 @@ import jetbrains.mps.ide.messages.Icons;
   public interface EvaluationModelNode {
     IEvaluationContainer getModel();
   }
-  private static class InitializedState extends EvaluationTree.EvaluationState {
+  private static class InitializedState extends EvaluationState {
     public InitializedState() {
     }
     @Override
     public void rebuild(MPSTreeNode rootTreeNode, IEvaluationContainer model) {
-      rootTreeNode.add(new EvaluationTree.InitialTreeNode(model));
+      rootTreeNode.add(new InitialTreeNode(model));
       // todo? 
     }
   }
-  private static class EvaluationInProgressState extends EvaluationTree.EvaluationState {
+  private static class EvaluationInProgressState extends EvaluationState {
     public EvaluationInProgressState() {
     }
     @Override
     public void rebuild(MPSTreeNode rootTreeNode, IEvaluationContainer model) {
-      rootTreeNode.add(new EvaluationTree.EvaluatingTreeNode(model));
+      rootTreeNode.add(new EvaluatingTreeNode(model));
     }
   }
-  private class ResultState extends EvaluationTree.EvaluationState {
+  private class ResultState extends EvaluationState {
     @NotNull
     private final JavaValue myValue;
     private final ThreadReference myThreadReference;
@@ -222,7 +222,7 @@ import jetbrains.mps.ide.messages.Icons;
         myCachedWatchable = new CalculatedWatchable(myPresentation, myValue, myThreadReference);
       }
       if (myCachedWatchable != null) {
-        WatchableNode watchableNode = new EvaluationTree.ResultState.MyWatchableNode(model, myCachedWatchable) {
+        WatchableNode watchableNode = new ResultState.MyWatchableNode(model, myCachedWatchable) {
           @Override
           public boolean isLeaf() {
             if (canEvalaute) {
@@ -233,10 +233,10 @@ import jetbrains.mps.ide.messages.Icons;
         };
         rootTreeNode.add(watchableNode);
       } else {
-        rootTreeNode.add(new EvaluationTree.InitialTreeNode(model));
+        rootTreeNode.add(new InitialTreeNode(model));
       }
     }
-    private class MyWatchableNode extends WatchableNode implements EvaluationTree.EvaluationModelNode {
+    private class MyWatchableNode extends WatchableNode implements EvaluationModelNode {
       private final IEvaluationContainer myModel;
       public MyWatchableNode(IEvaluationContainer model, @NotNull IWatchable watchable) {
         super(watchable, myDebugSession.getUiState());
@@ -248,7 +248,7 @@ import jetbrains.mps.ide.messages.Icons;
       }
     }
   }
-  private class FailureState extends EvaluationTree.EvaluationState {
+  private class FailureState extends EvaluationState {
     @Nullable
     private String myErrorText;
     private Throwable myError;
@@ -261,13 +261,13 @@ import jetbrains.mps.ide.messages.Icons;
     @Override
     public void rebuild(MPSTreeNode rootTreeNode, IEvaluationContainer model) {
       if (myError != null) {
-        rootTreeNode.add(new EvaluationTree.ErrorTreeNode(model, myError));
+        rootTreeNode.add(new ErrorTreeNode(model, myError));
       } else {
-        rootTreeNode.add(new EvaluationTree.ErrorTreeNode(model, myErrorText));
+        rootTreeNode.add(new ErrorTreeNode(model, myErrorText));
       }
     }
   }
-  private class ErrorTreeNode extends TextTreeNode implements EvaluationTree.EvaluationModelNode {
+  private class ErrorTreeNode extends TextTreeNode implements EvaluationModelNode {
     private final List<String> myExtendedMessage = ListSequence.fromList(new ArrayList<String>());
     private final IEvaluationContainer myModel;
     private Throwable myThrowable;
@@ -308,7 +308,7 @@ import jetbrains.mps.ide.messages.Icons;
       return myThrowable;
     }
   }
-  private static class EvaluatingTreeNode extends TextTreeNode implements EvaluationTree.EvaluationModelNode {
+  private static class EvaluatingTreeNode extends TextTreeNode implements EvaluationModelNode {
     private final IEvaluationContainer myModel;
     public EvaluatingTreeNode(IEvaluationContainer model) {
       super(model.getPresentation() + " = " + "evaluating...");

@@ -10,13 +10,13 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -26,13 +26,14 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new CellActionMapItem_SubstituteMenu.SMP_Param_8k8pf4_a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_8k8pf4_a(), AUX_8k8pf4.CellActionMapItem_de2dfc04));
     return result;
   }
 
@@ -53,7 +54,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SEnumerationLiteral parameter, SubstituteMenuContext context) {
-      return new CellActionMapItem_SubstituteMenu.SMP_Param_8k8pf4_a.SMP_Action_8k8pf4_a0(parameter).createItems(context);
+      return new SMP_Param_8k8pf4_a.SMP_Action_8k8pf4_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -80,7 +81,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        CellActionMapItem_SubstituteMenu.SMP_Param_8k8pf4_a.SMP_Action_8k8pf4_a0.Item item = new CellActionMapItem_SubstituteMenu.SMP_Param_8k8pf4_a.SMP_Action_8k8pf4_a0.Item(_context);
+        SMP_Param_8k8pf4_a.SMP_Action_8k8pf4_a0.Item item = new SMP_Param_8k8pf4_a.SMP_Action_8k8pf4_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -104,7 +105,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem"), context);
+          super(AUX_8k8pf4.CellActionMapItem_de2dfc04, context);
           _context = context;
         }
 
@@ -115,7 +116,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem"), _context.getCurrentTargetNode());
+          SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_8k8pf4.CellActionMapItem_de2dfc04, _context.getCurrentTargetNode());
           SPropertyOperations.assignEnum(newNode, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId"), myParameterObject);
           return newNode;
         }
@@ -126,7 +127,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_8k8pf4.CellActionMapItem_de2dfc04, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -146,5 +147,9 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_8k8pf4 {
+    /*package*/ static final SConcept CellActionMapItem_de2dfc04 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem");
   }
 }

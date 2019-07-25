@@ -9,8 +9,8 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -20,9 +20,6 @@ import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import com.intellij.openapi.ui.popup.ComponentPopupBuilder;
-import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.openapi.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -30,9 +27,13 @@ import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
+import com.intellij.openapi.ui.popup.ComponentPopupBuilder;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.ui.awt.RelativePoint;
 import java.awt.Point;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ShowImplementations_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -48,7 +49,7 @@ public class ShowImplementations_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass")) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.Interface_bca2069) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.ClassConcept_e2711824) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.ClassConcept_e2711824), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass")) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.InstanceMethodDeclaration_9dbf9b2b) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), AUX_1kl46g.Classifier_4b7e553);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -96,51 +97,55 @@ public class ShowImplementations_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final List<SNode> nodes = new ArrayList<SNode>();
     final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess();
-    final Wrappers._T<ShowImplementationComponent> component = new Wrappers._T<ShowImplementationComponent>(null);
-    final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(component.value, component.value.getPreferredFocusableComponent()).setRequestFocus(true).setProject(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()).setMovable(true).setResizable(true).setCancelCallback(new Computable<Boolean>() {
-      @Override
-      public Boolean compute() {
-        // XXX no idea whether model write is really necessary for dispose there (EDT likely yes), just replaces executeCommandInEDT as I'm confident there's no need for command when dealing with node copies 
-        modelAccess.runWriteInEDT(new Runnable() {
-          public void run() {
-            component.value.dispose();
-          }
-        });
-        return Boolean.TRUE;
-      }
-    });
+
+    final Wrappers._T<ShowImplementationComponent> component = new Wrappers._T<ShowImplementationComponent>();
+    final Wrappers._T<String> title = new Wrappers._T<String>();
+
     modelAccess.runReadAction(new Runnable() {
       public void run() {
         ListSequence.fromList(nodes).addElement(((SNode) MapSequence.fromMap(_params).get("node")));
-
         SearchResults<SNode> results;
         SearchScope scope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("project")));
-        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.Interface_bca2069)) {
           results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder");
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) {
+        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.ClassConcept_e2711824) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.ClassConcept_e2711824), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) {
           results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder");
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.InstanceMethodDeclaration_9dbf9b2b) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), AUX_1kl46g.Interface_bca2069)) {
           results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder");
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
+        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), AUX_1kl46g.InstanceMethodDeclaration_9dbf9b2b) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), AUX_1kl46g.Classifier_4b7e553)) {
           results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
         } else {
           return;
         }
-        for (SearchResult<SNode> searchResult : results.getSearchResults()) {
+        for (SearchResult<SNode> searchResult : results.getSearchResults2()) {
           SNode foundNode = searchResult.getObject();
           if ((foundNode != null)) {
             ListSequence.fromList(nodes).addElement(foundNode);
           }
         }
+
         component.value = new ShowImplementationComponent(nodes, ((MPSProject) MapSequence.fromMap(_params).get("project")));
-        String title = "Definition of " + ((SNode) MapSequence.fromMap(_params).get("node")).getPresentation();
-        pb.setTitle(title);
+        title.value = "Implementations of " + ((SNode) MapSequence.fromMap(_params).get("node")).getPresentation();
       }
     });
 
+    final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(component.value, component.value.getPreferredFocusableComponent()).setRequestFocus(true).setProject(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()).setMovable(true).setResizable(true).setCancelCallback(new Computable<Boolean>() {
+      public Boolean compute() {
+        component.value.dispose();
+        return true;
+      }
+    });
+    pb.setTitle(title.value);
     JBPopup popup = pb.createPopup();
     popup.show(new RelativePoint(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY())));
     component.value.getPreferredFocusableComponent().setRequestFocusEnabled(true);
     component.value.setPopup(popup);
+  }
+
+  private static final class AUX_1kl46g {
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

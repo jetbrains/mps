@@ -21,7 +21,7 @@ public class Comment_LocalVariableDeclarationStatement_Test extends BaseTransfor
 
   @Test
   public void test_Comment_LocalVariableDeclarationStatement() throws Throwable {
-    new Comment_LocalVariableDeclarationStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

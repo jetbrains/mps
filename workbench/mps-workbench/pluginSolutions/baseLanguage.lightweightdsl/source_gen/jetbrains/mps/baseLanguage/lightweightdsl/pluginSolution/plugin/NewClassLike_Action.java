@@ -28,6 +28,7 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NewClassLike_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -54,7 +55,7 @@ public class NewClassLike_Action extends BaseAction {
       SAbstractConcept concept = SNodeOperations.asSConcept(pc);
       icon = GlobalIconManager.getInstance().getIconFor(concept);
     } else {
-      SAbstractConcept concept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+      SAbstractConcept concept = AUX_9wburn.ClassConcept_e2711824;
       icon = GlobalIconManager.getInstance().getIconFor(concept);
     }
     event.getPresentation().setIcon(icon);
@@ -82,13 +83,13 @@ public class NewClassLike_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SAbstractConcept c = SNodeOperations.asSConcept(DSLDescriptor__BehaviorDescriptor.getPreferredConcept_id1_lSsE3TA5X.invoke(NewClassLike_Action.this.descr));
     SNode newClass;
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
-      newClass = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), null);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), AUX_9wburn.ClassConcept_e2711824)) {
+      newClass = SNodeFactoryOperations.createNewNode(AUX_9wburn.ClassConcept_e2711824, null);
       event.getData(MPSCommonDataKeys.MODEL).addRootNode(newClass);
-      AttributeOperations.setAttribute(newClass, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")), createDSLAnnotation_3skzbb_a0c0c0a(NewClassLike_Action.this.descr));
+      AttributeOperations.setAttribute(newClass, new IAttributeDescriptor.NodeAttribute(AUX_9wburn.DSLAnnotation_eee1a74), createDSLAnnotation_3skzbb_a0c0c0a(NewClassLike_Action.this.descr));
       ClassLikeInitHelper.init(newClass, NewClassLike_Action.this.descr, event.getData(MPSCommonDataKeys.MODEL));
     } else {
-      newClass = SNodeOperations.cast(SNodeFactoryOperations.createNewRootNode(event.getData(MPSCommonDataKeys.MODEL), c, null), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+      newClass = SNodeOperations.cast(SNodeFactoryOperations.createNewRootNode(event.getData(MPSCommonDataKeys.MODEL), c, null), AUX_9wburn.ClassConcept_e2711824);
     }
     if (!(NewRootNodeAction.trySelectInCurrentPane(event.getData(MPSCommonDataKeys.MPS_PROJECT), newClass))) {
       new ProjectPaneNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).select(newClass.getReference());
@@ -109,8 +110,13 @@ public class NewClassLike_Action extends BaseAction {
   }
   private static SNode createDSLAnnotation_3skzbb_a0c0c0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_9wburn.DSLAnnotation_eee1a74, null, null, false);
     n1.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor"), node0);
     return n1;
+  }
+
+  private static final class AUX_9wburn {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept DSLAnnotation_eee1a74 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
   }
 }

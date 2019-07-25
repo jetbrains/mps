@@ -21,7 +21,7 @@ public class ActionMapImport_Test extends BaseTransformationTest {
 
   @Test
   public void test_ActionMapImport() throws Throwable {
-    new ActionMapImport_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

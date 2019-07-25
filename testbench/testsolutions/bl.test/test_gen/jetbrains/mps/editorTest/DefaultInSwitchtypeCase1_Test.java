@@ -21,7 +21,7 @@ public class DefaultInSwitchtypeCase1_Test extends BaseTransformationTest {
 
   @Test
   public void test_DefaultInSwitchtypeCase1() throws Throwable {
-    new DefaultInSwitchtypeCase1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

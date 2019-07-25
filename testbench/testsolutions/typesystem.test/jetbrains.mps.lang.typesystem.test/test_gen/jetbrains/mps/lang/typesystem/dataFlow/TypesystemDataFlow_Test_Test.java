@@ -30,35 +30,35 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck7084752438137077608() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438137077608();
+    new TestBody(this).test_ErrorMessagesCheck7084752438137077608();
   }
   @Test
   public void test_ErrorMessagesCheck7084752438136654360() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438136654360();
+    new TestBody(this).test_ErrorMessagesCheck7084752438136654360();
   }
   @Test
   public void test_ErrorMessagesCheck7084752438136654891() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438136654891();
+    new TestBody(this).test_ErrorMessagesCheck7084752438136654891();
   }
   @Test
   public void test_ErrorMessagesCheck7084752438136655422() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438136655422();
+    new TestBody(this).test_ErrorMessagesCheck7084752438136655422();
   }
   @Test
   public void test_ErrorMessagesCheck7084752438137101036() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438137101036();
+    new TestBody(this).test_ErrorMessagesCheck7084752438137101036();
   }
   @Test
   public void test_ErrorMessagesCheck7084752438137102056() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438137102056();
+    new TestBody(this).test_ErrorMessagesCheck7084752438137102056();
   }
   @Test
   public void test_ErrorMessagesCheck7084752438137101567() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438137101567();
+    new TestBody(this).test_ErrorMessagesCheck7084752438137101567();
   }
   @Test
   public void test_ErrorMessagesCheck7084752438137102524() throws Throwable {
-    new TypesystemDataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck7084752438137102524();
+    new TestBody(this).test_ErrorMessagesCheck7084752438137102524();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

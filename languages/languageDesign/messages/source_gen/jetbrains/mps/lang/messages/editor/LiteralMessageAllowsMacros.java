@@ -21,13 +21,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -36,6 +36,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class LiteralMessageAllowsMacros extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -61,7 +62,7 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new LiteralMessageAllowsMacros.TMP_Param_bp93v8_a0());
+      result.add(new TMP_Param_bp93v8_a0());
     }
     return result;
   }
@@ -71,13 +72,13 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-      return new LiteralMessageAllowsMacros.TMP_Param_bp93v8_a0.TMP_Action_bp93v8_a0a(parameter).createItems(context);
+      return new TMP_Param_bp93v8_a0.TMP_Action_bp93v8_a0a(parameter).createItems(context);
     }
 
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-      return SNodeOperations.ofConcept(Scope.getScope(_context.getNode(), _context.getNode(), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef")).getAvailableElements(null), MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef"));
+      return SNodeOperations.ofConcept(Scope.getScope(_context.getNode(), _context.getNode(), AUX_bp93v8.TypedDef_953dd8f0).getAvailableElements(null), AUX_bp93v8.TypedDef_953dd8f0);
     }
     @NotNull
     @Override
@@ -98,7 +99,7 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        LiteralMessageAllowsMacros.TMP_Param_bp93v8_a0.TMP_Action_bp93v8_a0a.Item item = new LiteralMessageAllowsMacros.TMP_Param_bp93v8_a0.TMP_Action_bp93v8_a0a.Item(context);
+        TMP_Param_bp93v8_a0.TMP_Action_bp93v8_a0a.Item item = new TMP_Param_bp93v8_a0.TMP_Action_bp93v8_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -159,5 +160,9 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_bp93v8 {
+    /*package*/ static final SInterfaceConcept TypedDef_953dd8f0 = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef");
   }
 }

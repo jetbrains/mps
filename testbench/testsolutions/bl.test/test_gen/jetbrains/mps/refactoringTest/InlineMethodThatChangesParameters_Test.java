@@ -34,7 +34,7 @@ public class InlineMethodThatChangesParameters_Test extends BaseTransformationTe
 
   @Test
   public void test_InlineMethodThatChangesParameters() throws Throwable {
-    new InlineMethodThatChangesParameters_Test.TestBody(this).test_InlineMethodThatChangesParameters();
+    new TestBody(this).test_InlineMethodThatChangesParameters();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

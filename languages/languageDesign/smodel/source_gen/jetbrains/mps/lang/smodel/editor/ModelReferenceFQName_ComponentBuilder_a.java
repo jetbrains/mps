@@ -53,7 +53,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
     } else {
       editorCell = createError_0();
     }
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ModelReferenceFQName_ComponentBuilder_a.ModelReferenceExpression_component_cellMenu_ho2vdo_a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ModelReferenceExpression_component_cellMenu_ho2vdo_a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   private boolean nodeCondition_ho2vdo_a0() {

@@ -41,7 +41,7 @@ import jetbrains.mps.execution.lib.ClonableList;
 public class JUnitSettings_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(JUnitSettings_Configuration.class);
   @NotNull
-  private JUnitSettings_Configuration.MyState myState = new JUnitSettings_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -157,7 +157,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (JUnitSettings_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -242,7 +242,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      JUnitSettings_Configuration.MyState state = new JUnitSettings_Configuration.MyState();
+      MyState state = new MyState();
       state.myModelRef = myModelRef;
       state.myModuleRef = myModuleRef;
       state.myInProcess = myInProcess;

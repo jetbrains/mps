@@ -63,8 +63,8 @@ public final class ConvertToBinaryWorker {
       if (myStripImplementation) {
         options.add(DefaultModelPersistence.ContentLoadingExtentOptions.STRIP_IMPLEMENTATION);
       }
-      SModel model = modelFactory.load(new ConvertToBinaryWorker.FileDataSource(sourceFile), options.toArray(new ModelLoadingOption[0]));
-      pf.getModelFactory(MPSExtentions.MODEL_BINARY).save(model, new ConvertToBinaryWorker.FileDataSource(destFile));
+      SModel model = modelFactory.load(new FileDataSource(sourceFile), options.toArray(new ModelLoadingOption[0]));
+      pf.getModelFactory(MPSExtentions.MODEL_BINARY).save(model, new FileDataSource(destFile));
     } catch (RuntimeException ex) {
       System.out.printf("Conversion of %s\n", sourceFile);
       ex.printStackTrace();

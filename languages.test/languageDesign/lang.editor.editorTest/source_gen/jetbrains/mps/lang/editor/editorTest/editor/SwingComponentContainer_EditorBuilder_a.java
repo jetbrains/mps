@@ -138,7 +138,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SwingComponentContainer_EditorBuilder_a.collapsedComponentSingleRoleHandler_ycnsl1_b2c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x4c2f3af68cccbb1cL, "collapsedComponent"), getEditorContext());
+    SingleRoleCellProvider provider = new collapsedComponentSingleRoleHandler_ycnsl1_b2c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x4c2f3af68cccbb1cL, "collapsedComponent"), getEditorContext());
     return provider.createCell();
   }
   private static class collapsedComponentSingleRoleHandler_ycnsl1_b2c0 extends SingleRoleCellProvider {
@@ -265,7 +265,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SwingComponentContainer_EditorBuilder_a.expandedComponentSingleRoleHandler_ycnsl1_b7c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x4c2f3af68cccbb1eL, "expandedComponent"), getEditorContext());
+    SingleRoleCellProvider provider = new expandedComponentSingleRoleHandler_ycnsl1_b7c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x4c2f3af68cccbb1eL, "expandedComponent"), getEditorContext());
     return provider.createCell();
   }
   private static class expandedComponentSingleRoleHandler_ycnsl1_b7c0 extends SingleRoleCellProvider {
@@ -393,7 +393,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new SwingComponentContainer_EditorBuilder_a.collapsedInnerContainerSingleRoleHandler_ycnsl1_b21c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x3511b2d0e7c164e6L, "collapsedInnerContainer"), getEditorContext());
+    SingleRoleCellProvider provider = new collapsedInnerContainerSingleRoleHandler_ycnsl1_b21c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x3511b2d0e7c164e6L, "collapsedInnerContainer"), getEditorContext());
     return provider.createCell();
   }
   private static class collapsedInnerContainerSingleRoleHandler_ycnsl1_b21c0 extends SingleRoleCellProvider {
@@ -520,7 +520,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new SwingComponentContainer_EditorBuilder_a.expandedInnerContainerSingleRoleHandler_ycnsl1_b71c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x3511b2d0e7c164eaL, "expandedInnerContainer"), getEditorContext());
+    SingleRoleCellProvider provider = new expandedInnerContainerSingleRoleHandler_ycnsl1_b71c0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4c2f3af68ccbed52L, 0x3511b2d0e7c164eaL, "expandedInnerContainer"), getEditorContext());
     return provider.createCell();
   }
   private static class expandedInnerContainerSingleRoleHandler_ycnsl1_b71c0 extends SingleRoleCellProvider {

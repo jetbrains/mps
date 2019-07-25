@@ -12,9 +12,10 @@ import javax.swing.JOptionPane;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MoveUpDialog extends RefactoringDialog {
   private static String REFACTORING_NAME = RefactoringBundle.message("move.title");
@@ -43,7 +44,7 @@ public class MoveUpDialog extends RefactoringDialog {
     }
     myConcept = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<SNode>() {
       public SNode compute() {
-        return SNodeOperations.as(((ChildHierarchyTreeNode) treeNode).getNodeReference().resolve(myProject.getRepository()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+        return SNodeOperations.as(((ChildHierarchyTreeNode) treeNode).getNodeReference().resolve(myProject.getRepository()), AUX_2wjqlm.AbstractConceptDeclaration_ec74828f);
       }
     });
     super.doRefactoringAction();
@@ -57,5 +58,9 @@ public class MoveUpDialog extends RefactoringDialog {
     MoveUpDialog dialog = new MoveUpDialog(project, target, nodeType);
     dialog.show();
     return dialog.myConcept;
+  }
+
+  private static final class AUX_2wjqlm {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

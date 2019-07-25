@@ -14,12 +14,14 @@ import java.util.LinkedHashSet;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
 
@@ -28,8 +30,8 @@ public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
   public UpdateResult update(final EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     SNode node = editorComponent.getEditedNode();
-    for (SNode n : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L, "jetbrains.mps.lang.core.structure.ICanSuppressErrors"), true, new SAbstractConcept[]{}))) {
-      List<SNode> suppresses = AttributeOperations.getAttributeList(n, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation")));
+    for (SNode n : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, AUX_ugc8ze.ICanSuppressErrors_96ee6c6c, true, new SAbstractConcept[]{}))) {
+      List<SNode> suppresses = AttributeOperations.getAttributeList(n, new IAttributeDescriptor.NodeAttribute(AUX_ugc8ze.SuppressErrorsAnnotation_4912d93));
       if (ListSequence.fromList(suppresses).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SuppressErrorsMessage.getOwnCell(editorComponent, it) != null;
@@ -43,5 +45,10 @@ public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
       }
     }
     return new UpdateResult.Completed(true, messages);
+  }
+
+  private static final class AUX_ugc8ze {
+    /*package*/ static final SConcept SuppressErrorsAnnotation_4912d93 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
+    /*package*/ static final SInterfaceConcept ICanSuppressErrors_96ee6c6c = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L, "jetbrains.mps.lang.core.structure.ICanSuppressErrors");
   }
 }

@@ -23,7 +23,7 @@ public class DeleteIncompleteMemberVolatileKeywordTwoStep_Test extends BaseTrans
 
   @Test
   public void test_DeleteIncompleteMemberVolatileKeywordTwoStep() throws Throwable {
-    new DeleteIncompleteMemberVolatileKeywordTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

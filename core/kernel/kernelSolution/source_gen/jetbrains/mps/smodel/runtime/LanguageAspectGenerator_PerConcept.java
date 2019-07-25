@@ -26,10 +26,10 @@ import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 public abstract class LanguageAspectGenerator_PerConcept extends LanguageAspectGenerator_Class {
-  protected abstract Collection<LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor> createConceptDescriptors();
+  protected abstract Collection<ConceptGeneratorDescriptor> createConceptDescriptors();
 
-  private Collection<LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor> myDescriptors = null;
-  protected final Collection<LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor> getDescriptors() {
+  private Collection<ConceptGeneratorDescriptor> myDescriptors = null;
+  protected final Collection<ConceptGeneratorDescriptor> getDescriptors() {
     if (myDescriptors == null) {
       myDescriptors = createConceptDescriptors();
     }
@@ -40,8 +40,8 @@ public abstract class LanguageAspectGenerator_PerConcept extends LanguageAspectG
   @Override
   public SNode generateDescriptor(Collection<SModel> aspectModels) {
     List<SNode> methods = new ArrayList<SNode>();
-    for (final LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor acd : CollectionSequence.fromCollection(getDescriptors()).where(new IWhereFilter<LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor>() {
-      public boolean accept(LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor it) {
+    for (final ConceptGeneratorDescriptor acd : CollectionSequence.fromCollection(getDescriptors()).where(new IWhereFilter<ConceptGeneratorDescriptor>() {
+      public boolean accept(ConceptGeneratorDescriptor it) {
         return !(it.isAttached());
       }
     })) {
@@ -59,8 +59,8 @@ public abstract class LanguageAspectGenerator_PerConcept extends LanguageAspectG
       ListSequence.fromList(methods).addElement(_quotation_createNode_mxlioj_a0a5a1a5(resultDecl, addStmts, resultDecl, acd.getInterfaceClass(), acd.getGeneratedMethodName()));
     }
 
-    for (final LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor acd : CollectionSequence.fromCollection(getDescriptors()).where(new IWhereFilter<LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor>() {
-      public boolean accept(LanguageAspectGenerator_PerConcept.ConceptGeneratorDescriptor it) {
+    for (final ConceptGeneratorDescriptor acd : CollectionSequence.fromCollection(getDescriptors()).where(new IWhereFilter<ConceptGeneratorDescriptor>() {
+      public boolean accept(ConceptGeneratorDescriptor it) {
         return it.isAttached();
       }
     })) {

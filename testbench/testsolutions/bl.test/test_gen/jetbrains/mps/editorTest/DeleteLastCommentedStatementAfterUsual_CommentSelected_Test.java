@@ -21,7 +21,7 @@ public class DeleteLastCommentedStatementAfterUsual_CommentSelected_Test extends
 
   @Test
   public void test_DeleteLastCommentedStatementAfterUsual_CommentSelected() throws Throwable {
-    new DeleteLastCommentedStatementAfterUsual_CommentSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

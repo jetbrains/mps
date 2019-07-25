@@ -27,7 +27,7 @@ public class ActionLookup_SubconceptDefinesAMenuWithoutSuperconceptsLocation_Tes
 
   @Test
   public void test_ActionLookup_SubconceptDefinesAMenuWithoutSuperconceptsLocation() throws Throwable {
-    new ActionLookup_SubconceptDefinesAMenuWithoutSuperconceptsLocation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

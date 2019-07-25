@@ -33,8 +33,8 @@ import java.awt.event.MouseEvent;
 public abstract class BreakpointsUiComponentEx<B, L extends B> {
   protected final FileEditorManager myFileEditorManager;
   protected final Project myProject;
-  private final LeftMarginMouseListener myMouseListener = new BreakpointsUiComponentEx.MyLeftMarginMouseListener();
-  private final BreakpointsUiComponentEx.MyEditorComponentCreateListener myEditorComponentCreationHandler = new BreakpointsUiComponentEx.MyEditorComponentCreateListener();
+  private final LeftMarginMouseListener myMouseListener = new MyLeftMarginMouseListener();
+  private final MyEditorComponentCreateListener myEditorComponentCreationHandler = new MyEditorComponentCreateListener();
   private MessageBusConnection myMessageBusConnection;
   private final MultiMap<L, BreakpointIconRenderrerEx<L>> myBreakpointRender = new MultiMap<L, BreakpointIconRenderrerEx<L>>();
 

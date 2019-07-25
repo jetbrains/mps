@@ -22,7 +22,7 @@ public class DefaultEditor_DelOnChild1DeleteParent_Test extends BaseTransformati
 
   @Test
   public void test_DefaultEditor_DelOnChild1DeleteParent() throws Throwable {
-    new DefaultEditor_DelOnChild1DeleteParent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

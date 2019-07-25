@@ -21,7 +21,7 @@ public class UndoCommitedInvalidTypingInTransactionalPropertyCell_Test extends B
 
   @Test
   public void test_UndoCommitedInvalidTypingInTransactionalPropertyCell() throws Throwable {
-    new UndoCommitedInvalidTypingInTransactionalPropertyCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

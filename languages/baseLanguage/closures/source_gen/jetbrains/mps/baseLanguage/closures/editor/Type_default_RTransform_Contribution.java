@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Type_default_RTransform_Contribution extends TransformationMenuBase {
@@ -52,8 +53,8 @@ public class Type_default_RTransform_Contribution extends TransformationMenuBase
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new Type_default_RTransform_Contribution.TMP_Include_62yvx5_a0());
-      result.add(new Type_default_RTransform_Contribution.TMP_Include_62yvx5_b0());
+      result.add(new TMP_Include_62yvx5_a0());
+      result.add(new TMP_Include_62yvx5_b0());
     }
     return result;
   }
@@ -77,7 +78,7 @@ public class Type_default_RTransform_Contribution extends TransformationMenuBase
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), "jetbrains.mps.baseLanguage.closures.editor.add_throw_to_FunctionType");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_62yvx5.Type_4199e276, "jetbrains.mps.baseLanguage.closures.editor.add_throw_to_FunctionType");
     }
 
   }
@@ -100,8 +101,12 @@ public class Type_default_RTransform_Contribution extends TransformationMenuBase
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), "jetbrains.mps.baseLanguage.closures.editor.add_throw_to_ClosureLiteralType");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_62yvx5.Type_4199e276, "jetbrains.mps.baseLanguage.closures.editor.add_throw_to_ClosureLiteralType");
     }
 
+  }
+
+  private static final class AUX_62yvx5 {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

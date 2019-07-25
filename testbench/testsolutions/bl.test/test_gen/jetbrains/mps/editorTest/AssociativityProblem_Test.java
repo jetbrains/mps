@@ -21,7 +21,7 @@ public class AssociativityProblem_Test extends BaseTransformationTest {
 
   @Test
   public void test_AssociativityProblem() throws Throwable {
-    new AssociativityProblem_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

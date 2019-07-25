@@ -18,7 +18,7 @@ public class TestContext extends Context {
   public static final String DEPLOY_MACRO = "build.layout";
   public static final String DEPLOY = "${" + DEPLOY_MACRO + "}";
   public TestContext(SModel currentModel) {
-    super(new TestContext.TestGenContext(currentModel));
+    super(new TestGenContext(currentModel));
   }
 
   public static class TestGenContext extends TemplateQueryContext {

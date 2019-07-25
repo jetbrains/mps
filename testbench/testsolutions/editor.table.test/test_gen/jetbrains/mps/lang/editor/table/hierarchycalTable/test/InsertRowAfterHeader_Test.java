@@ -21,7 +21,7 @@ public class InsertRowAfterHeader_Test extends BaseTransformationTest {
 
   @Test
   public void test_InsertRowAfterHeader() throws Throwable {
-    new InsertRowAfterHeader_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

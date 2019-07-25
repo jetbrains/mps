@@ -16,7 +16,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/2739111710909360159">
     <file name="TestCompletionCustomization_ContextMatcher_CustomActionRererenceNoStyling_Test.java">
       <node id="2739111710909360159" at="23,91,24,25" concept="11" />
-      <node id="2739111710909360159" at="28,113,29,115" concept="2" />
+      <node id="2739111710909360159" at="28,113,29,36" concept="2" />
       <node id="2739111710909360159" at="34,52,35,19" concept="11" />
       <node id="2739111710909360159" at="39,51,40,72" concept="2" />
       <node id="2739111710909360163" at="40,72,41,180" concept="2" />
@@ -32,7 +32,7 @@
       <node id="2739111710909360171" at="41,180,49,16" concept="2" />
       <node id="2739111710909360159" at="38,0,51,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2739111710909360159" at="23,91,24,25" />
-      <scope id="2739111710909360159" at="28,113,29,115" />
+      <scope id="2739111710909360159" at="28,113,29,36" />
       <scope id="2739111710909360159" at="34,52,35,19" />
       <scope id="2739111710909360159" at="23,0,26,0" />
       <scope id="2739111710909360159" at="34,0,37,0">
@@ -53,7 +53,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/2739111710911113674">
     <file name="TestCompletionCustomization_ContextMatcher_CustomActionRererenceWithStyling_Test.java">
       <node id="2739111710911113674" at="23,93,24,25" concept="11" />
-      <node id="2739111710911113674" at="28,115,29,117" concept="2" />
+      <node id="2739111710911113674" at="28,115,29,36" concept="2" />
       <node id="2739111710911113674" at="34,52,35,19" concept="11" />
       <node id="2739111710911113674" at="39,51,40,72" concept="2" />
       <node id="2739111710911113678" at="40,72,41,180" concept="2" />
@@ -69,7 +69,7 @@
       <node id="2739111710911113686" at="41,180,49,15" concept="2" />
       <node id="2739111710911113674" at="38,0,51,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2739111710911113674" at="23,93,24,25" />
-      <scope id="2739111710911113674" at="28,115,29,117" />
+      <scope id="2739111710911113674" at="28,115,29,36" />
       <scope id="2739111710911113674" at="34,52,35,19" />
       <scope id="2739111710911113674" at="23,0,26,0" />
       <scope id="2739111710911113674" at="34,0,37,0">
@@ -90,7 +90,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/2739111710912337300">
     <file name="TestCompletionCustomization_ContextMatcher_CustomActionChildLink_Test.java">
       <node id="2739111710912337300" at="24,82,25,25" concept="11" />
-      <node id="2739111710912337300" at="29,104,30,106" concept="2" />
+      <node id="2739111710912337300" at="29,104,30,36" concept="2" />
       <node id="2739111710912337300" at="35,52,36,19" concept="11" />
       <node id="2739111710912337300" at="40,51,41,72" concept="2" />
       <node id="2739111710914974520" at="41,72,42,60" concept="6" />
@@ -117,7 +117,7 @@
       <node id="2739111710912972245" at="55,157,63,15" concept="2" />
       <node id="2739111710912337300" at="39,0,65,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2739111710912337300" at="24,82,25,25" />
-      <scope id="2739111710912337300" at="29,104,30,106" />
+      <scope id="2739111710912337300" at="29,104,30,36" />
       <scope id="2739111710912337300" at="35,52,36,19" />
       <scope id="2739111710912337300" at="24,0,27,0" />
       <scope id="2739111710912337300" at="35,0,38,0">
@@ -146,7 +146,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/3806643308052492268">
     <file name="TestCompletionCustomization_ContextMatcher_CustomActionEnumNoStyling_Test.java">
       <node id="3806643308052492268" at="23,86,24,25" concept="11" />
-      <node id="3806643308052492268" at="28,108,29,110" concept="2" />
+      <node id="3806643308052492268" at="28,108,29,36" concept="2" />
       <node id="3806643308052492268" at="34,52,35,19" concept="11" />
       <node id="3806643308052492268" at="39,51,40,72" concept="2" />
       <node id="3806643308052492272" at="40,72,41,143" concept="2" />
@@ -162,7 +162,7 @@
       <node id="3806643308052492282" at="41,143,49,16" concept="2" />
       <node id="3806643308052492268" at="38,0,51,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="3806643308052492268" at="23,86,24,25" />
-      <scope id="3806643308052492268" at="28,108,29,110" />
+      <scope id="3806643308052492268" at="28,108,29,36" />
       <scope id="3806643308052492268" at="34,52,35,19" />
       <scope id="3806643308052492268" at="23,0,26,0" />
       <scope id="3806643308052492268" at="34,0,37,0">
@@ -183,7 +183,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/3806643308053010695">
     <file name="TestCompletionCustomization_ContextMatcher_CustomActionEnumWithStyling_Test.java">
       <node id="3806643308053010695" at="23,88,24,25" concept="11" />
-      <node id="3806643308053010695" at="28,110,29,112" concept="2" />
+      <node id="3806643308053010695" at="28,110,29,36" concept="2" />
       <node id="3806643308053010695" at="34,52,35,19" concept="11" />
       <node id="3806643308053010695" at="39,51,40,72" concept="2" />
       <node id="3806643308053010699" at="40,72,41,143" concept="2" />
@@ -199,7 +199,7 @@
       <node id="3806643308053010707" at="41,143,49,15" concept="2" />
       <node id="3806643308053010695" at="38,0,51,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="3806643308053010695" at="23,88,24,25" />
-      <scope id="3806643308053010695" at="28,110,29,112" />
+      <scope id="3806643308053010695" at="28,110,29,36" />
       <scope id="3806643308053010695" at="34,52,35,19" />
       <scope id="3806643308053010695" at="23,0,26,0" />
       <scope id="3806643308053010695" at="34,0,37,0">
@@ -220,7 +220,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4151313971380872174">
     <file name="TestCompletionCustomization_ContextMatcher_ReferenceInlinePrimaryNoStyling_Test.java">
       <node id="4151313971380872174" at="23,92,24,25" concept="11" />
-      <node id="4151313971380872174" at="28,114,29,116" concept="2" />
+      <node id="4151313971380872174" at="28,114,29,36" concept="2" />
       <node id="4151313971380872174" at="34,52,35,19" concept="11" />
       <node id="4151313971380872174" at="39,51,40,72" concept="2" />
       <node id="4151313971380872184" at="42,44,43,75" concept="2" />
@@ -235,7 +235,7 @@
       <node id="4151313971380872180" at="40,72,48,16" concept="2" />
       <node id="4151313971380872174" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4151313971380872174" at="23,92,24,25" />
-      <scope id="4151313971380872174" at="28,114,29,116" />
+      <scope id="4151313971380872174" at="28,114,29,36" />
       <scope id="4151313971380872174" at="34,52,35,19" />
       <scope id="4151313971380872174" at="23,0,26,0" />
       <scope id="4151313971380872174" at="34,0,37,0">
@@ -256,7 +256,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4151313971380872201">
     <file name="TestCompletionCustomization_ContextMatcher_ReferenceInlinePrimaryWithStyling_Test.java">
       <node id="4151313971380872201" at="23,94,24,25" concept="11" />
-      <node id="4151313971380872201" at="28,116,29,118" concept="2" />
+      <node id="4151313971380872201" at="28,116,29,36" concept="2" />
       <node id="4151313971380872201" at="34,52,35,19" concept="11" />
       <node id="4151313971380872201" at="39,51,40,72" concept="2" />
       <node id="4151313971380872211" at="42,44,43,75" concept="2" />
@@ -271,7 +271,7 @@
       <node id="4151313971380872207" at="40,72,48,15" concept="2" />
       <node id="4151313971380872201" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4151313971380872201" at="23,94,24,25" />
-      <scope id="4151313971380872201" at="28,116,29,118" />
+      <scope id="4151313971380872201" at="28,116,29,36" />
       <scope id="4151313971380872201" at="34,52,35,19" />
       <scope id="4151313971380872201" at="23,0,26,0" />
       <scope id="4151313971380872201" at="34,0,37,0">
@@ -292,7 +292,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4639084645851051480">
     <file name="TestCompletionCustomization_ContextMatcher_ReferenceNoStyling_Test.java">
       <node id="4639084645851051480" at="23,79,24,25" concept="11" />
-      <node id="4639084645851051480" at="28,101,29,103" concept="2" />
+      <node id="4639084645851051480" at="28,101,29,36" concept="2" />
       <node id="4639084645851051480" at="34,52,35,19" concept="11" />
       <node id="4639084645851051480" at="39,51,40,72" concept="2" />
       <node id="4639084645851051490" at="42,44,43,75" concept="2" />
@@ -307,7 +307,7 @@
       <node id="4639084645851051486" at="40,72,48,16" concept="2" />
       <node id="4639084645851051480" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4639084645851051480" at="23,79,24,25" />
-      <scope id="4639084645851051480" at="28,101,29,103" />
+      <scope id="4639084645851051480" at="28,101,29,36" />
       <scope id="4639084645851051480" at="34,52,35,19" />
       <scope id="4639084645851051480" at="23,0,26,0" />
       <scope id="4639084645851051480" at="34,0,37,0">
@@ -328,7 +328,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4639084645851051930">
     <file name="TestCompletionCustomization_ContextMatcher_ReferenceWithStyling_Test.java">
       <node id="4639084645851051930" at="23,81,24,25" concept="11" />
-      <node id="4639084645851051930" at="28,103,29,105" concept="2" />
+      <node id="4639084645851051930" at="28,103,29,36" concept="2" />
       <node id="4639084645851051930" at="34,52,35,19" concept="11" />
       <node id="4639084645851051930" at="39,51,40,72" concept="2" />
       <node id="4639084645851051940" at="42,44,43,75" concept="2" />
@@ -343,7 +343,7 @@
       <node id="4639084645851051936" at="40,72,48,15" concept="2" />
       <node id="4639084645851051930" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4639084645851051930" at="23,81,24,25" />
-      <scope id="4639084645851051930" at="28,103,29,105" />
+      <scope id="4639084645851051930" at="28,103,29,36" />
       <scope id="4639084645851051930" at="34,52,35,19" />
       <scope id="4639084645851051930" at="23,0,26,0" />
       <scope id="4639084645851051930" at="34,0,37,0">
@@ -364,7 +364,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4639084645851223280">
     <file name="TestCompletionCustomization_ContextMatcher_ChildInLink_Test.java">
       <node id="4639084645851223280" at="23,72,24,25" concept="11" />
-      <node id="4639084645851223280" at="28,94,29,96" concept="2" />
+      <node id="4639084645851223280" at="28,94,29,36" concept="2" />
       <node id="4639084645851223280" at="34,52,35,19" concept="11" />
       <node id="4639084645851223280" at="39,51,40,72" concept="2" />
       <node id="4639084645851223294" at="42,44,43,75" concept="2" />
@@ -386,7 +386,7 @@
       <node id="4639084645851223313" at="49,69,57,15" concept="2" />
       <node id="4639084645851223280" at="38,0,59,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4639084645851223280" at="23,72,24,25" />
-      <scope id="4639084645851223280" at="28,94,29,96" />
+      <scope id="4639084645851223280" at="28,94,29,36" />
       <scope id="4639084645851223280" at="34,52,35,19" />
       <scope id="4639084645851223280" at="23,0,26,0" />
       <scope id="4639084645851223280" at="34,0,37,0">
@@ -412,7 +412,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4639084645851282601">
     <file name="TestCompletionCustomization_ContextMatcher_NoFeatureNoStyling_Test.java">
       <node id="4639084645851282601" at="23,79,24,25" concept="11" />
-      <node id="4639084645851282601" at="28,101,29,103" concept="2" />
+      <node id="4639084645851282601" at="28,101,29,36" concept="2" />
       <node id="4639084645851282601" at="34,52,35,19" concept="11" />
       <node id="4639084645851282601" at="39,51,40,72" concept="2" />
       <node id="4639084645851282611" at="42,44,43,75" concept="2" />
@@ -427,7 +427,7 @@
       <node id="4639084645851282607" at="40,72,48,16" concept="2" />
       <node id="4639084645851282601" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4639084645851282601" at="23,79,24,25" />
-      <scope id="4639084645851282601" at="28,101,29,103" />
+      <scope id="4639084645851282601" at="28,101,29,36" />
       <scope id="4639084645851282601" at="34,52,35,19" />
       <scope id="4639084645851282601" at="23,0,26,0" />
       <scope id="4639084645851282601" at="34,0,37,0">
@@ -448,7 +448,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4639084645851282628">
     <file name="TestCompletionCustomization_ContextMatcher_NoFeatureWithStyling_Test.java">
       <node id="4639084645851282628" at="23,81,24,25" concept="11" />
-      <node id="4639084645851282628" at="28,103,29,105" concept="2" />
+      <node id="4639084645851282628" at="28,103,29,36" concept="2" />
       <node id="4639084645851282628" at="34,52,35,19" concept="11" />
       <node id="4639084645851282628" at="39,51,40,72" concept="2" />
       <node id="4639084645851282638" at="42,44,43,75" concept="2" />
@@ -463,7 +463,7 @@
       <node id="4639084645851282634" at="40,72,48,15" concept="2" />
       <node id="4639084645851282628" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4639084645851282628" at="23,81,24,25" />
-      <scope id="4639084645851282628" at="28,103,29,105" />
+      <scope id="4639084645851282628" at="28,103,29,36" />
       <scope id="4639084645851282628" at="34,52,35,19" />
       <scope id="4639084645851282628" at="23,0,26,0" />
       <scope id="4639084645851282628" at="34,0,37,0">
@@ -484,7 +484,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/4639084645853212578">
     <file name="TestCompletionCustomization_ContextMatcher_ChildToSubstitute_Test.java">
       <node id="4639084645853212578" at="23,78,24,25" concept="11" />
-      <node id="4639084645853212578" at="28,100,29,102" concept="2" />
+      <node id="4639084645853212578" at="28,100,29,36" concept="2" />
       <node id="4639084645853212578" at="34,52,35,19" concept="11" />
       <node id="4639084645853212578" at="39,51,40,72" concept="2" />
       <node id="4639084645853212592" at="42,44,43,75" concept="2" />
@@ -507,7 +507,7 @@
       <node id="4639084645853212611" at="50,71,58,15" concept="2" />
       <node id="4639084645853212578" at="38,0,60,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4639084645853212578" at="23,78,24,25" />
-      <scope id="4639084645853212578" at="28,100,29,102" />
+      <scope id="4639084645853212578" at="28,100,29,36" />
       <scope id="4639084645853212578" at="34,52,35,19" />
       <scope id="4639084645853212578" at="23,0,26,0" />
       <scope id="4639084645853212578" at="34,0,37,0">
@@ -533,7 +533,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668062139505">
     <file name="TestCompletionCustomization_ContextMatcher_SimpleSubstituteMenu_Test.java">
       <node id="5310043668062139505" at="23,81,24,25" concept="11" />
-      <node id="5310043668062139505" at="28,103,29,105" concept="2" />
+      <node id="5310043668062139505" at="28,103,29,36" concept="2" />
       <node id="5310043668062139505" at="34,52,35,19" concept="11" />
       <node id="5310043668062139505" at="39,51,40,72" concept="2" />
       <node id="5310043668062139516" at="42,44,43,75" concept="2" />
@@ -555,7 +555,7 @@
       <node id="5310043668062335545" at="49,69,57,15" concept="2" />
       <node id="5310043668062139505" at="38,0,59,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668062139505" at="23,81,24,25" />
-      <scope id="5310043668062139505" at="28,103,29,105" />
+      <scope id="5310043668062139505" at="28,103,29,36" />
       <scope id="5310043668062139505" at="34,52,35,19" />
       <scope id="5310043668062139505" at="23,0,26,0" />
       <scope id="5310043668062139505" at="34,0,37,0">
@@ -581,7 +581,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668062443902">
     <file name="TestCompletionCustomization_ContextMatcher_DefaultSubstituteMenu_Test.java">
       <node id="5310043668062443902" at="23,82,24,25" concept="11" />
-      <node id="5310043668062443902" at="28,104,29,106" concept="2" />
+      <node id="5310043668062443902" at="28,104,29,36" concept="2" />
       <node id="5310043668062443902" at="34,52,35,19" concept="11" />
       <node id="5310043668062443902" at="39,51,40,72" concept="2" />
       <node id="5310043668062443914" at="42,44,43,75" concept="2" />
@@ -603,7 +603,7 @@
       <node id="5310043668062443933" at="49,69,57,15" concept="2" />
       <node id="5310043668062443902" at="38,0,59,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668062443902" at="23,82,24,25" />
-      <scope id="5310043668062443902" at="28,104,29,106" />
+      <scope id="5310043668062443902" at="28,104,29,36" />
       <scope id="5310043668062443902" at="34,52,35,19" />
       <scope id="5310043668062443902" at="23,0,26,0" />
       <scope id="5310043668062443902" at="34,0,37,0">
@@ -629,7 +629,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668063022762">
     <file name="TestCompletionCustomization_ContextMatcher_ParameterizedSubstituteMenu_Test.java">
       <node id="5310043668063022762" at="23,88,24,25" concept="11" />
-      <node id="5310043668063022762" at="28,110,29,112" concept="2" />
+      <node id="5310043668063022762" at="28,110,29,36" concept="2" />
       <node id="5310043668063022762" at="34,52,35,19" concept="11" />
       <node id="5310043668063022762" at="39,51,40,72" concept="2" />
       <node id="5310043668063022774" at="42,44,43,75" concept="2" />
@@ -651,7 +651,7 @@
       <node id="5310043668063022793" at="49,69,57,15" concept="2" />
       <node id="5310043668063022762" at="38,0,59,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668063022762" at="23,88,24,25" />
-      <scope id="5310043668063022762" at="28,110,29,112" />
+      <scope id="5310043668063022762" at="28,110,29,36" />
       <scope id="5310043668063022762" at="34,52,35,19" />
       <scope id="5310043668063022762" at="23,0,26,0" />
       <scope id="5310043668063022762" at="34,0,37,0">
@@ -677,7 +677,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668063086042">
     <file name="TestCompletionCustomization_ContextMatcher_WrapSubstituteMenu_Test.java">
       <node id="5310043668063086042" at="23,79,24,25" concept="11" />
-      <node id="5310043668063086042" at="28,101,29,103" concept="2" />
+      <node id="5310043668063086042" at="28,101,29,36" concept="2" />
       <node id="5310043668063086042" at="34,52,35,19" concept="11" />
       <node id="5310043668063086042" at="39,51,40,72" concept="2" />
       <node id="5310043668063086054" at="42,44,43,75" concept="2" />
@@ -699,7 +699,7 @@
       <node id="5310043668063086073" at="49,69,57,15" concept="2" />
       <node id="5310043668063086042" at="38,0,59,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668063086042" at="23,79,24,25" />
-      <scope id="5310043668063086042" at="28,101,29,103" />
+      <scope id="5310043668063086042" at="28,101,29,36" />
       <scope id="5310043668063086042" at="34,52,35,19" />
       <scope id="5310043668063086042" at="23,0,26,0" />
       <scope id="5310043668063086042" at="34,0,37,0">
@@ -725,7 +725,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668063146794">
     <file name="TestCompletionCustomization_ContextMatcher_BooleanPropertyWithStyling_Test.java">
       <node id="5310043668063146794" at="23,87,24,25" concept="11" />
-      <node id="5310043668063146794" at="28,109,29,111" concept="2" />
+      <node id="5310043668063146794" at="28,109,29,36" concept="2" />
       <node id="5310043668063146794" at="34,52,35,19" concept="11" />
       <node id="5310043668063146794" at="39,51,40,72" concept="2" />
       <node id="5310043668063146829" at="42,44,43,75" concept="2" />
@@ -740,7 +740,7 @@
       <node id="5310043668063146825" at="40,72,48,15" concept="2" />
       <node id="5310043668063146794" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668063146794" at="23,87,24,25" />
-      <scope id="5310043668063146794" at="28,109,29,111" />
+      <scope id="5310043668063146794" at="28,109,29,36" />
       <scope id="5310043668063146794" at="34,52,35,19" />
       <scope id="5310043668063146794" at="23,0,26,0" />
       <scope id="5310043668063146794" at="34,0,37,0">
@@ -761,7 +761,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668063168541">
     <file name="TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling_Test.java">
       <node id="5310043668063168541" at="23,85,24,25" concept="11" />
-      <node id="5310043668063168541" at="28,107,29,109" concept="2" />
+      <node id="5310043668063168541" at="28,107,29,36" concept="2" />
       <node id="5310043668063168541" at="34,52,35,19" concept="11" />
       <node id="5310043668063168541" at="39,51,40,72" concept="2" />
       <node id="5310043668063168551" at="42,44,43,75" concept="2" />
@@ -776,7 +776,7 @@
       <node id="5310043668063168547" at="40,72,48,16" concept="2" />
       <node id="5310043668063168541" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668063168541" at="23,85,24,25" />
-      <scope id="5310043668063168541" at="28,107,29,109" />
+      <scope id="5310043668063168541" at="28,107,29,36" />
       <scope id="5310043668063168541" at="34,52,35,19" />
       <scope id="5310043668063168541" at="23,0,26,0" />
       <scope id="5310043668063168541" at="34,0,37,0">
@@ -797,7 +797,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668063170627">
     <file name="TestCompletionCustomization_ContextMatcher_EnumPropertyNoStyling_Test.java">
       <node id="5310043668063170627" at="23,82,24,25" concept="11" />
-      <node id="5310043668063170627" at="28,104,29,106" concept="2" />
+      <node id="5310043668063170627" at="28,104,29,36" concept="2" />
       <node id="5310043668063170627" at="34,52,35,19" concept="11" />
       <node id="5310043668063170627" at="39,51,40,72" concept="2" />
       <node id="5310043668063170637" at="42,44,43,75" concept="2" />
@@ -812,7 +812,7 @@
       <node id="5310043668063170633" at="40,72,48,16" concept="2" />
       <node id="5310043668063170627" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668063170627" at="23,82,24,25" />
-      <scope id="5310043668063170627" at="28,104,29,106" />
+      <scope id="5310043668063170627" at="28,104,29,36" />
       <scope id="5310043668063170627" at="34,52,35,19" />
       <scope id="5310043668063170627" at="23,0,26,0" />
       <scope id="5310043668063170627" at="34,0,37,0">
@@ -833,7 +833,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/5310043668063170654">
     <file name="TestCompletionCustomization_ContextMatcher_EnumPropertyWithStyling_Test.java">
       <node id="5310043668063170654" at="23,84,24,25" concept="11" />
-      <node id="5310043668063170654" at="28,106,29,108" concept="2" />
+      <node id="5310043668063170654" at="28,106,29,36" concept="2" />
       <node id="5310043668063170654" at="34,52,35,19" concept="11" />
       <node id="5310043668063170654" at="39,51,40,72" concept="2" />
       <node id="5310043668063170664" at="42,44,43,75" concept="2" />
@@ -848,7 +848,7 @@
       <node id="5310043668063170660" at="40,72,48,15" concept="2" />
       <node id="5310043668063170654" at="38,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5310043668063170654" at="23,84,24,25" />
-      <scope id="5310043668063170654" at="28,106,29,108" />
+      <scope id="5310043668063170654" at="28,106,29,36" />
       <scope id="5310043668063170654" at="34,52,35,19" />
       <scope id="5310043668063170654" at="23,0,26,0" />
       <scope id="5310043668063170654" at="34,0,37,0">
@@ -869,7 +869,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/8199816903239853065">
     <file name="TestCompletionCustomization_Style_Test.java">
       <node id="8199816903239853065" at="25,51,26,25" concept="11" />
-      <node id="8199816903239853065" at="30,73,31,75" concept="2" />
+      <node id="8199816903239853065" at="30,73,31,36" concept="2" />
       <node id="8199816903239853065" at="36,52,37,19" concept="11" />
       <node id="8199816903239853065" at="41,51,42,53" concept="2" />
       <node id="8199816903239938842" at="42,53,43,0" concept="8" />
@@ -893,7 +893,7 @@
       <node id="8199816903239853075" at="43,0,59,15" concept="2" />
       <node id="8199816903239853065" at="40,0,61,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8199816903239853065" at="25,51,26,25" />
-      <scope id="8199816903239853065" at="30,73,31,75" />
+      <scope id="8199816903239853065" at="30,73,31,36" />
       <scope id="8199816903239853065" at="36,52,37,19" />
       <scope id="8199816903239853065" at="25,0,28,0" />
       <scope id="8199816903239853065" at="36,0,39,0">
@@ -916,7 +916,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/8199816903240221461">
     <file name="TestCompletionCustomization_ContextMatcher_ChildInLinkInlineMenu_Test.java">
       <node id="8199816903240221461" at="23,82,24,25" concept="11" />
-      <node id="8199816903240221461" at="28,104,29,106" concept="2" />
+      <node id="8199816903240221461" at="28,104,29,36" concept="2" />
       <node id="8199816903240221461" at="34,52,35,19" concept="11" />
       <node id="8199816903240221461" at="39,51,40,72" concept="2" />
       <node id="8199816903240221473" at="42,44,43,75" concept="2" />
@@ -938,7 +938,7 @@
       <node id="8199816903240221492" at="49,69,57,15" concept="2" />
       <node id="8199816903240221461" at="38,0,59,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8199816903240221461" at="23,82,24,25" />
-      <scope id="8199816903240221461" at="28,104,29,106" />
+      <scope id="8199816903240221461" at="28,104,29,36" />
       <scope id="8199816903240221461" at="34,52,35,19" />
       <scope id="8199816903240221461" at="23,0,26,0" />
       <scope id="8199816903240221461" at="34,0,37,0">
@@ -964,7 +964,7 @@
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/8373324885176752930">
     <file name="TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureNoStyling_Test.java">
       <node id="8373324885176752930" at="23,91,24,25" concept="11" />
-      <node id="8373324885176752930" at="28,113,29,115" concept="2" />
+      <node id="8373324885176752930" at="28,113,29,36" concept="2" />
       <node id="8373324885176752930" at="34,52,35,19" concept="11" />
       <node id="8373324885176752930" at="39,51,40,72" concept="2" />
       <node id="8373324885176815402" at="40,72,41,175" concept="2" />
@@ -980,7 +980,7 @@
       <node id="8373324885176752936" at="41,175,49,16" concept="2" />
       <node id="8373324885176752930" at="38,0,51,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8373324885176752930" at="23,91,24,25" />
-      <scope id="8373324885176752930" at="28,113,29,115" />
+      <scope id="8373324885176752930" at="28,113,29,36" />
       <scope id="8373324885176752930" at="34,52,35,19" />
       <scope id="8373324885176752930" at="23,0,26,0" />
       <scope id="8373324885176752930" at="34,0,37,0">
@@ -1041,8 +1041,10 @@
       <node id="3806643308052253784" at="155,55,156,21" concept="7" />
       <node id="3806643308052253792" at="158,47,159,20" concept="7" />
       <node id="3806643308052361846" at="161,86,162,39" concept="6" />
-      <node id="3806643308052387205" at="163,268,164,53" concept="2" />
-      <node id="3806643308052308071" at="165,9,166,304" concept="7" />
+      <node id="3806643308052387205" at="163,131,164,53" concept="2" />
+      <node id="3806643308052308071" at="165,9,166,167" concept="7" />
+      <node id="8373324885176989047" at="172,0,173,0" concept="9" trace="TestCompletionCustomization_ContextMatcherChildInMatchingLink_159d0e88" />
+      <node id="8373324885176989047" at="173,0,174,0" concept="9" trace="TestCompletionCustomization_ParentTestContextMatcher_5aa6e2a6" />
       <node id="2739111710915099829" at="97,20,99,15" concept="0" />
       <node id="2739111710912672026" at="117,0,120,0" concept="5" trace="invoke#(Ljetbrains/mps/openapi/editor/EditorContext;Ljava/lang/String;Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3806643308052253702" at="125,0,128,0" concept="5" trace="getIconNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -1078,7 +1080,7 @@
       <node id="8373324885176894071" at="31,0,45,0" concept="5" trace="createActions#()Ljava/util/List;" />
       <node id="3806643308052421153" at="47,104,62,6" concept="7" />
       <node id="8373324885176989342" at="29,135,45,6" concept="7" />
-      <node id="2739111710915099794" at="91,669,107,12" concept="6" />
+      <node id="2739111710915099794" at="91,395,107,12" concept="6" />
       <node id="3806643308052421144" at="47,0,64,0" concept="10" trace="createEnumPropertySubstituteInfo#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljetbrains/mps/openapi/editor/cells/SubstituteInfo;" />
       <node id="8373324885176989223" at="29,0,47,0" concept="10" trace="createTextPropertySubstituteInfo#(Ljetbrains/mps/openapi/editor/EditorComponent;null)Ljetbrains/mps/openapi/editor/cells/SubstituteInfo;" />
       <node id="2739111710909371179" at="66,0,85,0" concept="5" trace="createActions#()Ljava/util/List;" />
@@ -1107,7 +1109,7 @@
       <scope id="3806643308052253775" at="152,51,153,18" />
       <scope id="3806643308052253783" at="155,55,156,21" />
       <scope id="3806643308052253791" at="158,47,159,20" />
-      <scope id="3806643308052366410" at="163,268,164,53" />
+      <scope id="3806643308052366410" at="163,131,164,53" />
       <scope id="3806643308052326369" at="35,99,37,28" />
       <scope id="3806643308052421190" at="53,99,55,28" />
       <scope id="2739111710909371214" at="70,99,72,28" />
@@ -1167,7 +1169,7 @@
       <scope id="2739111710913871358" at="75,0,79,0" />
       <scope id="2739111710915127360" at="103,0,107,0" />
       <scope id="2739111710912671852" at="115,92,120,7" />
-      <scope id="3806643308052253802" at="161,86,166,304">
+      <scope id="3806643308052253802" at="161,86,166,167">
         <var name="parent" id="3806643308052361847" />
       </scope>
       <scope id="8373324885177094024" at="33,43,39,14" />
@@ -1214,7 +1216,7 @@
       <scope id="2739111710909371183" at="66,56,83,20">
         <var name="list" id="2739111710909371185" />
       </scope>
-      <scope id="2739111710912347255" at="91,669,108,27">
+      <scope id="2739111710912347255" at="91,395,108,27">
         <var name="action" id="2739111710915099795" />
       </scope>
       <scope id="8373324885176989223" at="29,0,47,0">
@@ -1247,6 +1249,7 @@
         <var name="text" id="3806643308052259776" />
       </scope>
       <unit id="2739111710912672026" at="116,57,120,5" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$5" />
+      <unit id="8373324885176989047" at="171,0,175,0" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$AUX_afigzd" />
       <unit id="3806643308052326367" at="34,59,39,11" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$1$1" />
       <unit id="3806643308052421181" at="52,79,57,11" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$2$1" />
       <unit id="2739111710909371205" at="69,237,74,11" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$3$1$1" />
@@ -1258,13 +1261,13 @@
       <unit id="2739111710909371177" at="65,15,85,5" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$3" />
       <unit id="2739111710912347240" at="88,15,113,5" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$4" />
       <unit id="3806643308052253700" at="124,15,168,5" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper$6" />
-      <unit id="8373324885176989047" at="28,0,172,0" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper" />
+      <unit id="8373324885176989047" at="28,0,176,0" name="jetbrains.mps.lang.editor.menus.style.tests.tests.CustomizationTestHelper" />
     </file>
   </root>
   <root nodeRef="r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)/8373324885177967313">
     <file name="TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureWithStyling_Test.java">
       <node id="8373324885177967313" at="23,93,24,25" concept="11" />
-      <node id="8373324885177967313" at="28,115,29,117" concept="2" />
+      <node id="8373324885177967313" at="28,115,29,36" concept="2" />
       <node id="8373324885177967313" at="34,52,35,19" concept="11" />
       <node id="8373324885177967313" at="39,51,40,72" concept="2" />
       <node id="8373324885177967317" at="40,72,41,175" concept="2" />
@@ -1280,7 +1283,7 @@
       <node id="8373324885177967327" at="41,175,49,15" concept="2" />
       <node id="8373324885177967313" at="38,0,51,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8373324885177967313" at="23,93,24,25" />
-      <scope id="8373324885177967313" at="28,115,29,117" />
+      <scope id="8373324885177967313" at="28,115,29,36" />
       <scope id="8373324885177967313" at="34,52,35,19" />
       <scope id="8373324885177967313" at="23,0,26,0" />
       <scope id="8373324885177967313" at="34,0,37,0">

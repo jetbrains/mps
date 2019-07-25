@@ -21,7 +21,6 @@ import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -29,9 +28,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TraceInfoTest implements EnvironmentAware {
   private Environment myEnv;
@@ -84,7 +85,7 @@ public class TraceInfoTest implements EnvironmentAware {
             TestClass.ifTest();
           }
         });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement")));
+        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, AUX_4iw502.IfStatement_9dbf9b10));
       }
     });
   }
@@ -98,7 +99,7 @@ public class TraceInfoTest implements EnvironmentAware {
             TestClass.forTest();
           }
         });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement")));
+        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, AUX_4iw502.ForStatement_1eab9ef9));
       }
     });
   }
@@ -111,7 +112,7 @@ public class TraceInfoTest implements EnvironmentAware {
             TestClass.blockStatementTest();
           }
         });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement")));
+        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, AUX_4iw502.ThrowStatement_c08024f2));
       }
     });
   }
@@ -128,7 +129,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it.", SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable")));
+          Assert.assertTrue("Node " + node + " for variable it.", SNodeOperations.isInstanceOf(node, AUX_4iw502.ForEachVariable_d0a5f9e5));
         }
       }
     });
@@ -146,7 +147,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it_gen.", SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable")));
+          Assert.assertTrue("Node " + node + " for variable it_gen.", SNodeOperations.isInstanceOf(node, AUX_4iw502.ForEachVariable_d0a5f9e5));
         }
       }
     });
@@ -161,7 +162,7 @@ public class TraceInfoTest implements EnvironmentAware {
   public void internalClassTest() {
     invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+        SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), AUX_4iw502.ClassConcept_e2711824);
         SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals("internalClassTest");
@@ -191,5 +192,13 @@ public class TraceInfoTest implements EnvironmentAware {
       return (nodeRef == null ? null : nodeRef.resolve(myProject.getRepository()));
     }
     return null;
+  }
+
+  private static final class AUX_4iw502 {
+    /*package*/ static final SConcept IfStatement_9dbf9b10 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept ForStatement_1eab9ef9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept ThrowStatement_c08024f2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
+    /*package*/ static final SConcept ForEachVariable_d0a5f9e5 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

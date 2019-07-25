@@ -37,7 +37,7 @@ public class SimpleFindForExtractFromManyStatements_Test extends BaseTransformat
 
   @Test
   public void test_SimpleFindForExtractFromManyStatementsTest() throws Throwable {
-    new SimpleFindForExtractFromManyStatements_Test.TestBody(this).test_SimpleFindForExtractFromManyStatementsTest();
+    new TestBody(this).test_SimpleFindForExtractFromManyStatementsTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

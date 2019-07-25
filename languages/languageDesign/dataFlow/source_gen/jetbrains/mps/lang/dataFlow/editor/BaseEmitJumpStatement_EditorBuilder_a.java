@@ -35,6 +35,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BaseEmitJumpStatement_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -85,14 +86,14 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     Style style = new StyleImpl();
     new InstructionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new BaseEmitJumpStatement_EditorBuilder_a.ReplaceWith_BaseEmitJumpStatement_cellMenu_bs8xw7_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BaseEmitJumpStatement_cellMenu_bs8xw7_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_BaseEmitJumpStatement_cellMenu_bs8xw7_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_BaseEmitJumpStatement_cellMenu_bs8xw7_a0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
+      return AUX_8yqhif.BaseEmitJumpStatement_1c3d8c94;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -100,7 +101,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BaseEmitJumpStatement_EditorBuilder_a.jumpToSingleRoleHandler_bs8xw7_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, 0x118e5bcba84L, "jumpTo"), getEditorContext());
+    SingleRoleCellProvider provider = new jumpToSingleRoleHandler_bs8xw7_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, 0x118e5bcba84L, "jumpTo"), getEditorContext());
     return provider.createCell();
   }
   private static class jumpToSingleRoleHandler_bs8xw7_c0 extends SingleRoleCellProvider {
@@ -155,7 +156,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BaseEmitJumpStatement_EditorBuilder_a.positionSingleRoleHandler_bs8xw7_d0(myNode, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position"), getEditorContext());
+    SingleRoleCellProvider provider = new positionSingleRoleHandler_bs8xw7_d0(myNode, MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position"), getEditorContext());
     return provider.createCell();
   }
   private static class positionSingleRoleHandler_bs8xw7_d0 extends SingleRoleCellProvider {
@@ -212,5 +213,9 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
       editorCell.getStyle().putAll(style);
       return editorCell;
     }
+  }
+
+  private static final class AUX_8yqhif {
+    /*package*/ static final SConcept BaseEmitJumpStatement_1c3d8c94 = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
   }
 }

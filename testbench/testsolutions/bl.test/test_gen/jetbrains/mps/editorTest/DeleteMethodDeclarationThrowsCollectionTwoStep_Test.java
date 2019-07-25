@@ -23,7 +23,7 @@ public class DeleteMethodDeclarationThrowsCollectionTwoStep_Test extends BaseTra
 
   @Test
   public void test_DeleteMethodDeclarationThrowsCollectionTwoStep() throws Throwable {
-    new DeleteMethodDeclarationThrowsCollectionTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

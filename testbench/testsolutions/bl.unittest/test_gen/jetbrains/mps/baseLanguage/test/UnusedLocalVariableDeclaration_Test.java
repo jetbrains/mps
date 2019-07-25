@@ -32,43 +32,43 @@ public class UnusedLocalVariableDeclaration_Test extends BaseTransformationTest 
 
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck215889526509545817() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck215889526509545817();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck215889526509545817();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526509546049() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526509546049();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526509546049();
   }
   @Test
   public void test_ErrorMessagesCheck215889526509545709() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck215889526509545709();
+    new TestBody(this).test_ErrorMessagesCheck215889526509545709();
   }
   @Test
   public void test_ErrorMessagesCheck215889526509546687() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck215889526509546687();
+    new TestBody(this).test_ErrorMessagesCheck215889526509546687();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck215889526509553873() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck215889526509553873();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck215889526509553873();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526509554611() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526509554611();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526509554611();
   }
   @Test
   public void test_ErrorMessagesCheck215889526509553154() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck215889526509553154();
+    new TestBody(this).test_ErrorMessagesCheck215889526509553154();
   }
   @Test
   public void test_ErrorMessagesCheck215889526509562440() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck215889526509562440();
+    new TestBody(this).test_ErrorMessagesCheck215889526509562440();
   }
   @Test
   public void test_ErrorMessagesCheck215889526509562472() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck215889526509562472();
+    new TestBody(this).test_ErrorMessagesCheck215889526509562472();
   }
   @Test
   public void test_ErrorMessagesCheck215889526509563288() throws Throwable {
-    new UnusedLocalVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck215889526509563288();
+    new TestBody(this).test_ErrorMessagesCheck215889526509563288();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -26,7 +26,7 @@ public class DeleteElseIfClauseFromIfLastBraceTwoStep_Test extends BaseTransform
 
   @Test
   public void test_DeleteElseIfClauseFromIfLastBraceTwoStep() throws Throwable {
-    new DeleteElseIfClauseFromIfLastBraceTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

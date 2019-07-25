@@ -23,7 +23,7 @@ public class ResizeNode_bottom_centeral_Test extends BaseTransformationTest {
 
   @Test
   public void test_ResizeNode_bottom_centeral() throws Throwable {
-    new ResizeNode_bottom_centeral_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -6,7 +6,6 @@
   <languages />
   <imports>
     <import index="xdek" ref="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)" />
-    <import index="o99v" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules(jetbrains.mps.lang.constraints.rules.runtime/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
@@ -52,8 +51,6 @@
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
-        <property id="1221565133444" name="isFinal" index="1EXbeo" />
-        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -170,6 +167,10 @@
         <property id="1173996588177" name="fqClassName" index="1nD$Q0" />
         <child id="1179332974947" name="type" index="2lIhxL" />
       </concept>
+      <concept id="4927083583736784422" name="jetbrains.mps.baseLanguageInternal.structure.ExtractToSingleConstantExpression" flags="ng" index="1BaE9c">
+        <property id="4927083583736815155" name="uniqueFieldName" index="1BaxDp" />
+        <child id="4927083583736819744" name="expression" index="1Bazha" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -231,75 +232,83 @@
       <node concept="3clFbS" id="d" role="3clF47">
         <node concept="XkiVB" id="i" role="3cqZAp">
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-          <node concept="2YIFZM" id="k" role="37wK5m">
-            <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
-            <node concept="1adDum" id="m" role="37wK5m">
-              <property role="1adDun" value="0xad93155d79b24759L" />
-              <node concept="cd27G" id="r" role="lGtFl">
-                <node concept="3u3nmq" id="s" role="cd27D">
+          <node concept="1BaE9c" id="k" role="37wK5m">
+            <property role="1BaxDp" value="CombinedMessageExpression_4c275d" />
+            <node concept="2YIFZM" id="m" role="1Bazha">
+              <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
+              <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
+              <node concept="1adDum" id="o" role="37wK5m">
+                <property role="1adDun" value="0xad93155d79b24759L" />
+                <node concept="cd27G" id="t" role="lGtFl">
+                  <node concept="3u3nmq" id="u" role="cd27D">
+                    <property role="3u3nmv" value="5258059200642172323" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="p" role="37wK5m">
+                <property role="1adDun" value="0xb10c55123e763903L" />
+                <node concept="cd27G" id="v" role="lGtFl">
+                  <node concept="3u3nmq" id="w" role="cd27D">
+                    <property role="3u3nmv" value="5258059200642172323" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="q" role="37wK5m">
+                <property role="1adDun" value="0x48f860fc0e40455fL" />
+                <node concept="cd27G" id="x" role="lGtFl">
+                  <node concept="3u3nmq" id="y" role="cd27D">
+                    <property role="3u3nmv" value="5258059200642172323" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Xl_RD" id="r" role="37wK5m">
+                <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" />
+                <node concept="cd27G" id="z" role="lGtFl">
+                  <node concept="3u3nmq" id="$" role="cd27D">
+                    <property role="3u3nmv" value="5258059200642172323" />
+                  </node>
+                </node>
+              </node>
+              <node concept="cd27G" id="s" role="lGtFl">
+                <node concept="3u3nmq" id="_" role="cd27D">
                   <property role="3u3nmv" value="5258059200642172323" />
                 </node>
               </node>
             </node>
-            <node concept="1adDum" id="n" role="37wK5m">
-              <property role="1adDun" value="0xb10c55123e763903L" />
-              <node concept="cd27G" id="t" role="lGtFl">
-                <node concept="3u3nmq" id="u" role="cd27D">
-                  <property role="3u3nmv" value="5258059200642172323" />
-                </node>
-              </node>
-            </node>
-            <node concept="1adDum" id="o" role="37wK5m">
-              <property role="1adDun" value="0x48f860fc0e40455fL" />
-              <node concept="cd27G" id="v" role="lGtFl">
-                <node concept="3u3nmq" id="w" role="cd27D">
-                  <property role="3u3nmv" value="5258059200642172323" />
-                </node>
-              </node>
-            </node>
-            <node concept="Xl_RD" id="p" role="37wK5m">
-              <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.CombinedMessageExpression" />
-              <node concept="cd27G" id="x" role="lGtFl">
-                <node concept="3u3nmq" id="y" role="cd27D">
-                  <property role="3u3nmv" value="5258059200642172323" />
-                </node>
-              </node>
-            </node>
-            <node concept="cd27G" id="q" role="lGtFl">
-              <node concept="3u3nmq" id="z" role="cd27D">
+            <node concept="cd27G" id="n" role="lGtFl">
+              <node concept="3u3nmq" id="A" role="cd27D">
                 <property role="3u3nmv" value="5258059200642172323" />
               </node>
             </node>
           </node>
           <node concept="cd27G" id="l" role="lGtFl">
-            <node concept="3u3nmq" id="$" role="cd27D">
+            <node concept="3u3nmq" id="B" role="cd27D">
               <property role="3u3nmv" value="5258059200642172323" />
             </node>
           </node>
         </node>
         <node concept="cd27G" id="j" role="lGtFl">
-          <node concept="3u3nmq" id="_" role="cd27D">
+          <node concept="3u3nmq" id="C" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="e" role="1B3o_S">
-        <node concept="cd27G" id="A" role="lGtFl">
-          <node concept="3u3nmq" id="B" role="cd27D">
+        <node concept="cd27G" id="D" role="lGtFl">
+          <node concept="3u3nmq" id="E" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
       <node concept="cd27G" id="f" role="lGtFl">
-        <node concept="3u3nmq" id="C" role="cd27D">
+        <node concept="3u3nmq" id="F" role="cd27D">
           <property role="3u3nmv" value="5258059200642172323" />
         </node>
       </node>
     </node>
     <node concept="2tJIrI" id="4" role="jymVt">
-      <node concept="cd27G" id="D" role="lGtFl">
-        <node concept="3u3nmq" id="E" role="cd27D">
+      <node concept="cd27G" id="G" role="lGtFl">
+        <node concept="3u3nmq" id="H" role="cd27D">
           <property role="3u3nmv" value="5258059200642172323" />
         </node>
       </node>
@@ -309,723 +318,723 @@
       <property role="TrG5h" value="calculateCanBeParentConstraint" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
-      <node concept="3Tmbuc" id="F" role="1B3o_S">
-        <node concept="cd27G" id="K" role="lGtFl">
-          <node concept="3u3nmq" id="L" role="cd27D">
+      <node concept="3Tmbuc" id="I" role="1B3o_S">
+        <node concept="cd27G" id="N" role="lGtFl">
+          <node concept="3u3nmq" id="O" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="G" role="3clF45">
+      <node concept="3uibUv" id="J" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
-        <node concept="3uibUv" id="M" role="11_B2D">
+        <node concept="3uibUv" id="P" role="11_B2D">
           <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeParent" resolve="ConstraintContext_CanBeParent" />
-          <node concept="cd27G" id="P" role="lGtFl">
-            <node concept="3u3nmq" id="Q" role="cd27D">
+          <node concept="cd27G" id="S" role="lGtFl">
+            <node concept="3u3nmq" id="T" role="cd27D">
               <property role="3u3nmv" value="5258059200642172323" />
             </node>
           </node>
         </node>
-        <node concept="3uibUv" id="N" role="11_B2D">
+        <node concept="3uibUv" id="Q" role="11_B2D">
           <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
-          <node concept="cd27G" id="R" role="lGtFl">
-            <node concept="3u3nmq" id="S" role="cd27D">
+          <node concept="cd27G" id="U" role="lGtFl">
+            <node concept="3u3nmq" id="V" role="cd27D">
               <property role="3u3nmv" value="5258059200642172323" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="O" role="lGtFl">
-          <node concept="3u3nmq" id="T" role="cd27D">
+        <node concept="cd27G" id="R" role="lGtFl">
+          <node concept="3u3nmq" id="W" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
-      <node concept="3clFbS" id="H" role="3clF47">
-        <node concept="3clFbF" id="U" role="3cqZAp">
-          <node concept="2ShNRf" id="W" role="3clFbG">
-            <node concept="YeOm9" id="Y" role="2ShVmc">
-              <node concept="1Y3b0j" id="10" role="YeSDq">
+      <node concept="3clFbS" id="K" role="3clF47">
+        <node concept="3clFbF" id="X" role="3cqZAp">
+          <node concept="2ShNRf" id="Z" role="3clFbG">
+            <node concept="YeOm9" id="11" role="2ShVmc">
+              <node concept="1Y3b0j" id="13" role="YeSDq">
                 <property role="2bfB8j" value="true" />
                 <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                <node concept="3Tm1VV" id="12" role="1B3o_S">
-                  <node concept="cd27G" id="17" role="lGtFl">
-                    <node concept="3u3nmq" id="18" role="cd27D">
+                <node concept="3Tm1VV" id="15" role="1B3o_S">
+                  <node concept="cd27G" id="1a" role="lGtFl">
+                    <node concept="3u3nmq" id="1b" role="cd27D">
                       <property role="3u3nmv" value="5258059200642172323" />
                     </node>
                   </node>
                 </node>
-                <node concept="3clFb_" id="13" role="jymVt">
+                <node concept="3clFb_" id="16" role="jymVt">
                   <property role="1EzhhJ" value="false" />
                   <property role="TrG5h" value="invoke" />
                   <property role="DiZV1" value="false" />
                   <property role="od$2w" value="false" />
-                  <node concept="3Tm1VV" id="19" role="1B3o_S">
-                    <node concept="cd27G" id="1g" role="lGtFl">
-                      <node concept="3u3nmq" id="1h" role="cd27D">
+                  <node concept="3Tm1VV" id="1c" role="1B3o_S">
+                    <node concept="cd27G" id="1j" role="lGtFl">
+                      <node concept="3u3nmq" id="1k" role="cd27D">
                         <property role="3u3nmv" value="5258059200642172323" />
                       </node>
                     </node>
                   </node>
-                  <node concept="2AHcQZ" id="1a" role="2AJF6D">
+                  <node concept="2AHcQZ" id="1d" role="2AJF6D">
                     <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-                    <node concept="cd27G" id="1i" role="lGtFl">
-                      <node concept="3u3nmq" id="1j" role="cd27D">
+                    <node concept="cd27G" id="1l" role="lGtFl">
+                      <node concept="3u3nmq" id="1m" role="cd27D">
                         <property role="3u3nmv" value="5258059200642172323" />
                       </node>
                     </node>
                   </node>
-                  <node concept="3uibUv" id="1b" role="3clF45">
+                  <node concept="3uibUv" id="1e" role="3clF45">
                     <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
-                    <node concept="cd27G" id="1k" role="lGtFl">
-                      <node concept="3u3nmq" id="1l" role="cd27D">
+                    <node concept="cd27G" id="1n" role="lGtFl">
+                      <node concept="3u3nmq" id="1o" role="cd27D">
                         <property role="3u3nmv" value="5258059200642172323" />
                       </node>
                     </node>
                   </node>
-                  <node concept="37vLTG" id="1c" role="3clF46">
+                  <node concept="37vLTG" id="1f" role="3clF46">
                     <property role="TrG5h" value="context" />
-                    <node concept="3uibUv" id="1m" role="1tU5fm">
+                    <node concept="3uibUv" id="1p" role="1tU5fm">
                       <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeParent" resolve="ConstraintContext_CanBeParent" />
-                      <node concept="cd27G" id="1p" role="lGtFl">
-                        <node concept="3u3nmq" id="1q" role="cd27D">
+                      <node concept="cd27G" id="1s" role="lGtFl">
+                        <node concept="3u3nmq" id="1t" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="2AHcQZ" id="1n" role="2AJF6D">
+                    <node concept="2AHcQZ" id="1q" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-                      <node concept="cd27G" id="1r" role="lGtFl">
-                        <node concept="3u3nmq" id="1s" role="cd27D">
+                      <node concept="cd27G" id="1u" role="lGtFl">
+                        <node concept="3u3nmq" id="1v" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="1o" role="lGtFl">
-                      <node concept="3u3nmq" id="1t" role="cd27D">
+                    <node concept="cd27G" id="1r" role="lGtFl">
+                      <node concept="3u3nmq" id="1w" role="cd27D">
                         <property role="3u3nmv" value="5258059200642172323" />
                       </node>
                     </node>
                   </node>
-                  <node concept="37vLTG" id="1d" role="3clF46">
+                  <node concept="37vLTG" id="1g" role="3clF46">
                     <property role="TrG5h" value="checkingNodeContext" />
-                    <node concept="3uibUv" id="1u" role="1tU5fm">
+                    <node concept="3uibUv" id="1x" role="1tU5fm">
                       <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
-                      <node concept="cd27G" id="1x" role="lGtFl">
-                        <node concept="3u3nmq" id="1y" role="cd27D">
+                      <node concept="cd27G" id="1$" role="lGtFl">
+                        <node concept="3u3nmq" id="1_" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="2AHcQZ" id="1v" role="2AJF6D">
+                    <node concept="2AHcQZ" id="1y" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-                      <node concept="cd27G" id="1z" role="lGtFl">
-                        <node concept="3u3nmq" id="1$" role="cd27D">
+                      <node concept="cd27G" id="1A" role="lGtFl">
+                        <node concept="3u3nmq" id="1B" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="1w" role="lGtFl">
-                      <node concept="3u3nmq" id="1_" role="cd27D">
+                    <node concept="cd27G" id="1z" role="lGtFl">
+                      <node concept="3u3nmq" id="1C" role="cd27D">
                         <property role="3u3nmv" value="5258059200642172323" />
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbS" id="1e" role="3clF47">
-                    <node concept="3cpWs8" id="1A" role="3cqZAp">
-                      <node concept="3cpWsn" id="1G" role="3cpWs9">
+                  <node concept="3clFbS" id="1h" role="3clF47">
+                    <node concept="3cpWs8" id="1D" role="3cqZAp">
+                      <node concept="3cpWsn" id="1J" role="3cpWs9">
                         <property role="TrG5h" value="result" />
-                        <node concept="10P_77" id="1I" role="1tU5fm">
-                          <node concept="cd27G" id="1L" role="lGtFl">
-                            <node concept="3u3nmq" id="1M" role="cd27D">
+                        <node concept="10P_77" id="1L" role="1tU5fm">
+                          <node concept="cd27G" id="1O" role="lGtFl">
+                            <node concept="3u3nmq" id="1P" role="cd27D">
                               <property role="3u3nmv" value="5258059200642172323" />
                             </node>
                           </node>
                         </node>
-                        <node concept="1rXfSq" id="1J" role="33vP2m">
+                        <node concept="1rXfSq" id="1M" role="33vP2m">
                           <ref role="37wK5l" node="6" resolve="staticCanBeAParent" />
-                          <node concept="2OqwBi" id="1N" role="37wK5m">
-                            <node concept="37vLTw" id="1S" role="2Oq$k0">
-                              <ref role="3cqZAo" node="1c" resolve="context" />
-                              <node concept="cd27G" id="1V" role="lGtFl">
-                                <node concept="3u3nmq" id="1W" role="cd27D">
-                                  <property role="3u3nmv" value="5258059200642172323" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="liA8E" id="1T" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getNode()" resolve="getNode" />
-                              <node concept="cd27G" id="1X" role="lGtFl">
-                                <node concept="3u3nmq" id="1Y" role="cd27D">
-                                  <property role="3u3nmv" value="5258059200642172323" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="1U" role="lGtFl">
-                              <node concept="3u3nmq" id="1Z" role="cd27D">
-                                <property role="3u3nmv" value="5258059200642172323" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="2OqwBi" id="1O" role="37wK5m">
-                            <node concept="37vLTw" id="20" role="2Oq$k0">
-                              <ref role="3cqZAo" node="1c" resolve="context" />
-                              <node concept="cd27G" id="23" role="lGtFl">
-                                <node concept="3u3nmq" id="24" role="cd27D">
-                                  <property role="3u3nmv" value="5258059200642172323" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="liA8E" id="21" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getChildNode()" resolve="getChildNode" />
-                              <node concept="cd27G" id="25" role="lGtFl">
-                                <node concept="3u3nmq" id="26" role="cd27D">
-                                  <property role="3u3nmv" value="5258059200642172323" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="22" role="lGtFl">
-                              <node concept="3u3nmq" id="27" role="cd27D">
-                                <property role="3u3nmv" value="5258059200642172323" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="2OqwBi" id="1P" role="37wK5m">
-                            <node concept="37vLTw" id="28" role="2Oq$k0">
-                              <ref role="3cqZAo" node="1c" resolve="context" />
-                              <node concept="cd27G" id="2b" role="lGtFl">
-                                <node concept="3u3nmq" id="2c" role="cd27D">
-                                  <property role="3u3nmv" value="5258059200642172323" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="liA8E" id="29" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getChildConcept()" resolve="getChildConcept" />
-                              <node concept="cd27G" id="2d" role="lGtFl">
-                                <node concept="3u3nmq" id="2e" role="cd27D">
-                                  <property role="3u3nmv" value="5258059200642172323" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="cd27G" id="2a" role="lGtFl">
-                              <node concept="3u3nmq" id="2f" role="cd27D">
-                                <property role="3u3nmv" value="5258059200642172323" />
-                              </node>
-                            </node>
-                          </node>
                           <node concept="2OqwBi" id="1Q" role="37wK5m">
-                            <node concept="37vLTw" id="2g" role="2Oq$k0">
-                              <ref role="3cqZAo" node="1c" resolve="context" />
-                              <node concept="cd27G" id="2j" role="lGtFl">
-                                <node concept="3u3nmq" id="2k" role="cd27D">
+                            <node concept="37vLTw" id="1V" role="2Oq$k0">
+                              <ref role="3cqZAo" node="1f" resolve="context" />
+                              <node concept="cd27G" id="1Y" role="lGtFl">
+                                <node concept="3u3nmq" id="1Z" role="cd27D">
                                   <property role="3u3nmv" value="5258059200642172323" />
                                 </node>
                               </node>
                             </node>
-                            <node concept="liA8E" id="2h" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getLink()" resolve="getLink" />
-                              <node concept="cd27G" id="2l" role="lGtFl">
-                                <node concept="3u3nmq" id="2m" role="cd27D">
+                            <node concept="liA8E" id="1W" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getNode()" resolve="getNode" />
+                              <node concept="cd27G" id="20" role="lGtFl">
+                                <node concept="3u3nmq" id="21" role="cd27D">
                                   <property role="3u3nmv" value="5258059200642172323" />
                                 </node>
                               </node>
                             </node>
-                            <node concept="cd27G" id="2i" role="lGtFl">
-                              <node concept="3u3nmq" id="2n" role="cd27D">
+                            <node concept="cd27G" id="1X" role="lGtFl">
+                              <node concept="3u3nmq" id="22" role="cd27D">
                                 <property role="3u3nmv" value="5258059200642172323" />
                               </node>
                             </node>
                           </node>
-                          <node concept="cd27G" id="1R" role="lGtFl">
-                            <node concept="3u3nmq" id="2o" role="cd27D">
+                          <node concept="2OqwBi" id="1R" role="37wK5m">
+                            <node concept="37vLTw" id="23" role="2Oq$k0">
+                              <ref role="3cqZAo" node="1f" resolve="context" />
+                              <node concept="cd27G" id="26" role="lGtFl">
+                                <node concept="3u3nmq" id="27" role="cd27D">
+                                  <property role="3u3nmv" value="5258059200642172323" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="24" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getChildNode()" resolve="getChildNode" />
+                              <node concept="cd27G" id="28" role="lGtFl">
+                                <node concept="3u3nmq" id="29" role="cd27D">
+                                  <property role="3u3nmv" value="5258059200642172323" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="25" role="lGtFl">
+                              <node concept="3u3nmq" id="2a" role="cd27D">
+                                <property role="3u3nmv" value="5258059200642172323" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="1S" role="37wK5m">
+                            <node concept="37vLTw" id="2b" role="2Oq$k0">
+                              <ref role="3cqZAo" node="1f" resolve="context" />
+                              <node concept="cd27G" id="2e" role="lGtFl">
+                                <node concept="3u3nmq" id="2f" role="cd27D">
+                                  <property role="3u3nmv" value="5258059200642172323" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="2c" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getChildConcept()" resolve="getChildConcept" />
+                              <node concept="cd27G" id="2g" role="lGtFl">
+                                <node concept="3u3nmq" id="2h" role="cd27D">
+                                  <property role="3u3nmv" value="5258059200642172323" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2d" role="lGtFl">
+                              <node concept="3u3nmq" id="2i" role="cd27D">
+                                <property role="3u3nmv" value="5258059200642172323" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="1T" role="37wK5m">
+                            <node concept="37vLTw" id="2j" role="2Oq$k0">
+                              <ref role="3cqZAo" node="1f" resolve="context" />
+                              <node concept="cd27G" id="2m" role="lGtFl">
+                                <node concept="3u3nmq" id="2n" role="cd27D">
+                                  <property role="3u3nmv" value="5258059200642172323" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="2k" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeParent.getLink()" resolve="getLink" />
+                              <node concept="cd27G" id="2o" role="lGtFl">
+                                <node concept="3u3nmq" id="2p" role="cd27D">
+                                  <property role="3u3nmv" value="5258059200642172323" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="cd27G" id="2l" role="lGtFl">
+                              <node concept="3u3nmq" id="2q" role="cd27D">
+                                <property role="3u3nmv" value="5258059200642172323" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="cd27G" id="1U" role="lGtFl">
+                            <node concept="3u3nmq" id="2r" role="cd27D">
                               <property role="3u3nmv" value="5258059200642172323" />
                             </node>
                           </node>
                         </node>
-                        <node concept="cd27G" id="1K" role="lGtFl">
-                          <node concept="3u3nmq" id="2p" role="cd27D">
+                        <node concept="cd27G" id="1N" role="lGtFl">
+                          <node concept="3u3nmq" id="2s" role="cd27D">
                             <property role="3u3nmv" value="5258059200642172323" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="1H" role="lGtFl">
-                        <node concept="3u3nmq" id="2q" role="cd27D">
+                      <node concept="cd27G" id="1K" role="lGtFl">
+                        <node concept="3u3nmq" id="2t" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="1B" role="3cqZAp">
-                      <node concept="cd27G" id="2r" role="lGtFl">
-                        <node concept="3u3nmq" id="2s" role="cd27D">
+                    <node concept="3clFbH" id="1E" role="3cqZAp">
+                      <node concept="cd27G" id="2u" role="lGtFl">
+                        <node concept="3u3nmq" id="2v" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbJ" id="1C" role="3cqZAp">
-                      <node concept="3clFbS" id="2t" role="3clFbx">
-                        <node concept="3clFbF" id="2w" role="3cqZAp">
-                          <node concept="2OqwBi" id="2y" role="3clFbG">
-                            <node concept="37vLTw" id="2$" role="2Oq$k0">
-                              <ref role="3cqZAo" node="1d" resolve="checkingNodeContext" />
-                              <node concept="cd27G" id="2B" role="lGtFl">
-                                <node concept="3u3nmq" id="2C" role="cd27D">
+                    <node concept="3clFbJ" id="1F" role="3cqZAp">
+                      <node concept="3clFbS" id="2w" role="3clFbx">
+                        <node concept="3clFbF" id="2z" role="3cqZAp">
+                          <node concept="2OqwBi" id="2_" role="3clFbG">
+                            <node concept="37vLTw" id="2B" role="2Oq$k0">
+                              <ref role="3cqZAo" node="1g" resolve="checkingNodeContext" />
+                              <node concept="cd27G" id="2E" role="lGtFl">
+                                <node concept="3u3nmq" id="2F" role="cd27D">
                                   <property role="3u3nmv" value="5258059200642172323" />
                                 </node>
                               </node>
                             </node>
-                            <node concept="liA8E" id="2_" role="2OqNvi">
+                            <node concept="liA8E" id="2C" role="2OqNvi">
                               <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
-                              <node concept="1dyn4i" id="2D" role="37wK5m">
+                              <node concept="1dyn4i" id="2G" role="37wK5m">
                                 <property role="1dyqJU" value="canBeParentBreakingPoint" />
-                                <node concept="2ShNRf" id="2F" role="1dyrYi">
-                                  <node concept="1pGfFk" id="2H" role="2ShVmc">
+                                <node concept="2ShNRf" id="2I" role="1dyrYi">
+                                  <node concept="1pGfFk" id="2K" role="2ShVmc">
                                     <ref role="37wK5l" to="w1kc:~SNodePointer.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="SNodePointer" />
-                                    <node concept="Xl_RD" id="2J" role="37wK5m">
+                                    <node concept="Xl_RD" id="2M" role="37wK5m">
                                       <property role="Xl_RC" value="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)" />
-                                      <node concept="cd27G" id="2M" role="lGtFl">
-                                        <node concept="3u3nmq" id="2N" role="cd27D">
+                                      <node concept="cd27G" id="2P" role="lGtFl">
+                                        <node concept="3u3nmq" id="2Q" role="cd27D">
                                           <property role="3u3nmv" value="5258059200642172323" />
                                         </node>
                                       </node>
                                     </node>
-                                    <node concept="Xl_RD" id="2K" role="37wK5m">
+                                    <node concept="Xl_RD" id="2N" role="37wK5m">
                                       <property role="Xl_RC" value="5258059200642172324" />
-                                      <node concept="cd27G" id="2O" role="lGtFl">
-                                        <node concept="3u3nmq" id="2P" role="cd27D">
+                                      <node concept="cd27G" id="2R" role="lGtFl">
+                                        <node concept="3u3nmq" id="2S" role="cd27D">
                                           <property role="3u3nmv" value="5258059200642172323" />
                                         </node>
                                       </node>
                                     </node>
-                                    <node concept="cd27G" id="2L" role="lGtFl">
-                                      <node concept="3u3nmq" id="2Q" role="cd27D">
+                                    <node concept="cd27G" id="2O" role="lGtFl">
+                                      <node concept="3u3nmq" id="2T" role="cd27D">
                                         <property role="3u3nmv" value="5258059200642172323" />
                                       </node>
                                     </node>
                                   </node>
-                                  <node concept="cd27G" id="2I" role="lGtFl">
-                                    <node concept="3u3nmq" id="2R" role="cd27D">
+                                  <node concept="cd27G" id="2L" role="lGtFl">
+                                    <node concept="3u3nmq" id="2U" role="cd27D">
                                       <property role="3u3nmv" value="5258059200642172323" />
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="cd27G" id="2G" role="lGtFl">
-                                  <node concept="3u3nmq" id="2S" role="cd27D">
+                                <node concept="cd27G" id="2J" role="lGtFl">
+                                  <node concept="3u3nmq" id="2V" role="cd27D">
                                     <property role="3u3nmv" value="5258059200642172323" />
                                   </node>
                                 </node>
                               </node>
-                              <node concept="cd27G" id="2E" role="lGtFl">
-                                <node concept="3u3nmq" id="2T" role="cd27D">
+                              <node concept="cd27G" id="2H" role="lGtFl">
+                                <node concept="3u3nmq" id="2W" role="cd27D">
                                   <property role="3u3nmv" value="5258059200642172323" />
                                 </node>
                               </node>
                             </node>
-                            <node concept="cd27G" id="2A" role="lGtFl">
-                              <node concept="3u3nmq" id="2U" role="cd27D">
+                            <node concept="cd27G" id="2D" role="lGtFl">
+                              <node concept="3u3nmq" id="2X" role="cd27D">
                                 <property role="3u3nmv" value="5258059200642172323" />
                               </node>
                             </node>
                           </node>
-                          <node concept="cd27G" id="2z" role="lGtFl">
-                            <node concept="3u3nmq" id="2V" role="cd27D">
+                          <node concept="cd27G" id="2A" role="lGtFl">
+                            <node concept="3u3nmq" id="2Y" role="cd27D">
                               <property role="3u3nmv" value="5258059200642172323" />
                             </node>
                           </node>
                         </node>
-                        <node concept="cd27G" id="2x" role="lGtFl">
-                          <node concept="3u3nmq" id="2W" role="cd27D">
+                        <node concept="cd27G" id="2$" role="lGtFl">
+                          <node concept="3u3nmq" id="2Z" role="cd27D">
                             <property role="3u3nmv" value="5258059200642172323" />
                           </node>
                         </node>
                       </node>
-                      <node concept="1Wc70l" id="2u" role="3clFbw">
-                        <node concept="3y3z36" id="2X" role="3uHU7w">
-                          <node concept="10Nm6u" id="30" role="3uHU7w">
-                            <node concept="cd27G" id="33" role="lGtFl">
-                              <node concept="3u3nmq" id="34" role="cd27D">
+                      <node concept="1Wc70l" id="2x" role="3clFbw">
+                        <node concept="3y3z36" id="30" role="3uHU7w">
+                          <node concept="10Nm6u" id="33" role="3uHU7w">
+                            <node concept="cd27G" id="36" role="lGtFl">
+                              <node concept="3u3nmq" id="37" role="cd27D">
                                 <property role="3u3nmv" value="5258059200642172323" />
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="31" role="3uHU7B">
-                            <ref role="3cqZAo" node="1d" resolve="checkingNodeContext" />
-                            <node concept="cd27G" id="35" role="lGtFl">
-                              <node concept="3u3nmq" id="36" role="cd27D">
+                          <node concept="37vLTw" id="34" role="3uHU7B">
+                            <ref role="3cqZAo" node="1g" resolve="checkingNodeContext" />
+                            <node concept="cd27G" id="38" role="lGtFl">
+                              <node concept="3u3nmq" id="39" role="cd27D">
                                 <property role="3u3nmv" value="5258059200642172323" />
                               </node>
                             </node>
                           </node>
-                          <node concept="cd27G" id="32" role="lGtFl">
-                            <node concept="3u3nmq" id="37" role="cd27D">
+                          <node concept="cd27G" id="35" role="lGtFl">
+                            <node concept="3u3nmq" id="3a" role="cd27D">
                               <property role="3u3nmv" value="5258059200642172323" />
                             </node>
                           </node>
                         </node>
-                        <node concept="3fqX7Q" id="2Y" role="3uHU7B">
-                          <node concept="37vLTw" id="38" role="3fr31v">
-                            <ref role="3cqZAo" node="1G" resolve="result" />
-                            <node concept="cd27G" id="3a" role="lGtFl">
-                              <node concept="3u3nmq" id="3b" role="cd27D">
+                        <node concept="3fqX7Q" id="31" role="3uHU7B">
+                          <node concept="37vLTw" id="3b" role="3fr31v">
+                            <ref role="3cqZAo" node="1J" resolve="result" />
+                            <node concept="cd27G" id="3d" role="lGtFl">
+                              <node concept="3u3nmq" id="3e" role="cd27D">
                                 <property role="3u3nmv" value="5258059200642172323" />
                               </node>
                             </node>
                           </node>
-                          <node concept="cd27G" id="39" role="lGtFl">
-                            <node concept="3u3nmq" id="3c" role="cd27D">
+                          <node concept="cd27G" id="3c" role="lGtFl">
+                            <node concept="3u3nmq" id="3f" role="cd27D">
                               <property role="3u3nmv" value="5258059200642172323" />
                             </node>
                           </node>
                         </node>
-                        <node concept="cd27G" id="2Z" role="lGtFl">
-                          <node concept="3u3nmq" id="3d" role="cd27D">
+                        <node concept="cd27G" id="32" role="lGtFl">
+                          <node concept="3u3nmq" id="3g" role="cd27D">
                             <property role="3u3nmv" value="5258059200642172323" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="2v" role="lGtFl">
-                        <node concept="3u3nmq" id="3e" role="cd27D">
+                      <node concept="cd27G" id="2y" role="lGtFl">
+                        <node concept="3u3nmq" id="3h" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="1D" role="3cqZAp">
-                      <node concept="cd27G" id="3f" role="lGtFl">
-                        <node concept="3u3nmq" id="3g" role="cd27D">
-                          <property role="3u3nmv" value="5258059200642172323" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbF" id="1E" role="3cqZAp">
-                      <node concept="37vLTw" id="3h" role="3clFbG">
-                        <ref role="3cqZAo" node="1G" resolve="result" />
-                        <node concept="cd27G" id="3j" role="lGtFl">
-                          <node concept="3u3nmq" id="3k" role="cd27D">
-                            <property role="3u3nmv" value="5258059200642172323" />
-                          </node>
-                        </node>
-                      </node>
+                    <node concept="3clFbH" id="1G" role="3cqZAp">
                       <node concept="cd27G" id="3i" role="lGtFl">
-                        <node concept="3u3nmq" id="3l" role="cd27D">
+                        <node concept="3u3nmq" id="3j" role="cd27D">
                           <property role="3u3nmv" value="5258059200642172323" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="1F" role="lGtFl">
-                      <node concept="3u3nmq" id="3m" role="cd27D">
+                    <node concept="3clFbF" id="1H" role="3cqZAp">
+                      <node concept="37vLTw" id="3k" role="3clFbG">
+                        <ref role="3cqZAo" node="1J" resolve="result" />
+                        <node concept="cd27G" id="3m" role="lGtFl">
+                          <node concept="3u3nmq" id="3n" role="cd27D">
+                            <property role="3u3nmv" value="5258059200642172323" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="cd27G" id="3l" role="lGtFl">
+                        <node concept="3u3nmq" id="3o" role="cd27D">
+                          <property role="3u3nmv" value="5258059200642172323" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="cd27G" id="1I" role="lGtFl">
+                      <node concept="3u3nmq" id="3p" role="cd27D">
                         <property role="3u3nmv" value="5258059200642172323" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="1f" role="lGtFl">
-                    <node concept="3u3nmq" id="3n" role="cd27D">
+                  <node concept="cd27G" id="1i" role="lGtFl">
+                    <node concept="3u3nmq" id="3q" role="cd27D">
                       <property role="3u3nmv" value="5258059200642172323" />
                     </node>
                   </node>
                 </node>
-                <node concept="3uibUv" id="14" role="2Ghqu4">
+                <node concept="3uibUv" id="17" role="2Ghqu4">
                   <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeParent" resolve="ConstraintContext_CanBeParent" />
-                  <node concept="cd27G" id="3o" role="lGtFl">
-                    <node concept="3u3nmq" id="3p" role="cd27D">
+                  <node concept="cd27G" id="3r" role="lGtFl">
+                    <node concept="3u3nmq" id="3s" role="cd27D">
                       <property role="3u3nmv" value="5258059200642172323" />
                     </node>
                   </node>
                 </node>
-                <node concept="3uibUv" id="15" role="2Ghqu4">
+                <node concept="3uibUv" id="18" role="2Ghqu4">
                   <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
-                  <node concept="cd27G" id="3q" role="lGtFl">
-                    <node concept="3u3nmq" id="3r" role="cd27D">
+                  <node concept="cd27G" id="3t" role="lGtFl">
+                    <node concept="3u3nmq" id="3u" role="cd27D">
                       <property role="3u3nmv" value="5258059200642172323" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="16" role="lGtFl">
-                  <node concept="3u3nmq" id="3s" role="cd27D">
+                <node concept="cd27G" id="19" role="lGtFl">
+                  <node concept="3u3nmq" id="3v" role="cd27D">
                     <property role="3u3nmv" value="5258059200642172323" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="11" role="lGtFl">
-                <node concept="3u3nmq" id="3t" role="cd27D">
+              <node concept="cd27G" id="14" role="lGtFl">
+                <node concept="3u3nmq" id="3w" role="cd27D">
                   <property role="3u3nmv" value="5258059200642172323" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="Z" role="lGtFl">
-              <node concept="3u3nmq" id="3u" role="cd27D">
+            <node concept="cd27G" id="12" role="lGtFl">
+              <node concept="3u3nmq" id="3x" role="cd27D">
                 <property role="3u3nmv" value="5258059200642172323" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="X" role="lGtFl">
-            <node concept="3u3nmq" id="3v" role="cd27D">
+          <node concept="cd27G" id="10" role="lGtFl">
+            <node concept="3u3nmq" id="3y" role="cd27D">
               <property role="3u3nmv" value="5258059200642172323" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="V" role="lGtFl">
-          <node concept="3u3nmq" id="3w" role="cd27D">
+        <node concept="cd27G" id="Y" role="lGtFl">
+          <node concept="3u3nmq" id="3z" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="I" role="2AJF6D">
+      <node concept="2AHcQZ" id="L" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        <node concept="cd27G" id="3x" role="lGtFl">
-          <node concept="3u3nmq" id="3y" role="cd27D">
+        <node concept="cd27G" id="3$" role="lGtFl">
+          <node concept="3u3nmq" id="3_" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="J" role="lGtFl">
-        <node concept="3u3nmq" id="3z" role="cd27D">
+      <node concept="cd27G" id="M" role="lGtFl">
+        <node concept="3u3nmq" id="3A" role="cd27D">
           <property role="3u3nmv" value="5258059200642172323" />
         </node>
       </node>
     </node>
     <node concept="2YIFZL" id="6" role="jymVt">
       <property role="TrG5h" value="staticCanBeAParent" />
-      <node concept="10P_77" id="3$" role="3clF45">
-        <node concept="cd27G" id="3G" role="lGtFl">
-          <node concept="3u3nmq" id="3H" role="cd27D">
+      <node concept="10P_77" id="3B" role="3clF45">
+        <node concept="cd27G" id="3J" role="lGtFl">
+          <node concept="3u3nmq" id="3K" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="3_" role="1B3o_S">
-        <node concept="cd27G" id="3I" role="lGtFl">
-          <node concept="3u3nmq" id="3J" role="cd27D">
+      <node concept="3Tm6S6" id="3C" role="1B3o_S">
+        <node concept="cd27G" id="3L" role="lGtFl">
+          <node concept="3u3nmq" id="3M" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
-      <node concept="3clFbS" id="3A" role="3clF47">
-        <node concept="3clFbF" id="3K" role="3cqZAp">
-          <node concept="3fqX7Q" id="3M" role="3clFbG">
-            <node concept="2OqwBi" id="3O" role="3fr31v">
-              <node concept="37vLTw" id="3Q" role="2Oq$k0">
-                <ref role="3cqZAo" node="3C" resolve="childNode" />
-                <node concept="cd27G" id="3T" role="lGtFl">
-                  <node concept="3u3nmq" id="3U" role="cd27D">
+      <node concept="3clFbS" id="3D" role="3clF47">
+        <node concept="3clFbF" id="3N" role="3cqZAp">
+          <node concept="3fqX7Q" id="3P" role="3clFbG">
+            <node concept="2OqwBi" id="3R" role="3fr31v">
+              <node concept="37vLTw" id="3T" role="2Oq$k0">
+                <ref role="3cqZAo" node="3F" resolve="childNode" />
+                <node concept="cd27G" id="3W" role="lGtFl">
+                  <node concept="3u3nmq" id="3X" role="cd27D">
                     <property role="3u3nmv" value="5258059200642174287" />
                   </node>
                 </node>
               </node>
-              <node concept="1mIQ4w" id="3R" role="2OqNvi">
-                <node concept="chp4Y" id="3V" role="cj9EA">
+              <node concept="1mIQ4w" id="3U" role="2OqNvi">
+                <node concept="chp4Y" id="3Y" role="cj9EA">
                   <ref role="cht4Q" to="t9po:4zSofKeg4lv" resolve="CombinedMessageExpression" />
-                  <node concept="cd27G" id="3X" role="lGtFl">
-                    <node concept="3u3nmq" id="3Y" role="cd27D">
+                  <node concept="cd27G" id="40" role="lGtFl">
+                    <node concept="3u3nmq" id="41" role="cd27D">
                       <property role="3u3nmv" value="5258059200642174289" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="3W" role="lGtFl">
-                  <node concept="3u3nmq" id="3Z" role="cd27D">
+                <node concept="cd27G" id="3Z" role="lGtFl">
+                  <node concept="3u3nmq" id="42" role="cd27D">
                     <property role="3u3nmv" value="5258059200642174288" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="3S" role="lGtFl">
-                <node concept="3u3nmq" id="40" role="cd27D">
+              <node concept="cd27G" id="3V" role="lGtFl">
+                <node concept="3u3nmq" id="43" role="cd27D">
                   <property role="3u3nmv" value="5258059200642174286" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="3P" role="lGtFl">
-              <node concept="3u3nmq" id="41" role="cd27D">
+            <node concept="cd27G" id="3S" role="lGtFl">
+              <node concept="3u3nmq" id="44" role="cd27D">
                 <property role="3u3nmv" value="5258059200642174284" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="3N" role="lGtFl">
-            <node concept="3u3nmq" id="42" role="cd27D">
+          <node concept="cd27G" id="3Q" role="lGtFl">
+            <node concept="3u3nmq" id="45" role="cd27D">
               <property role="3u3nmv" value="5258059200642172572" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="3L" role="lGtFl">
-          <node concept="3u3nmq" id="43" role="cd27D">
+        <node concept="cd27G" id="3O" role="lGtFl">
+          <node concept="3u3nmq" id="46" role="cd27D">
             <property role="3u3nmv" value="5258059200642172325" />
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="3B" role="3clF46">
-        <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="44" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-          <node concept="cd27G" id="46" role="lGtFl">
-            <node concept="3u3nmq" id="47" role="cd27D">
-              <property role="3u3nmv" value="5258059200642172323" />
-            </node>
-          </node>
-        </node>
-        <node concept="cd27G" id="45" role="lGtFl">
-          <node concept="3u3nmq" id="48" role="cd27D">
-            <property role="3u3nmv" value="5258059200642172323" />
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="3C" role="3clF46">
-        <property role="TrG5h" value="childNode" />
-        <node concept="3uibUv" id="49" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-          <node concept="cd27G" id="4b" role="lGtFl">
-            <node concept="3u3nmq" id="4c" role="cd27D">
-              <property role="3u3nmv" value="5258059200642172323" />
-            </node>
-          </node>
-        </node>
-        <node concept="cd27G" id="4a" role="lGtFl">
-          <node concept="3u3nmq" id="4d" role="cd27D">
-            <property role="3u3nmv" value="5258059200642172323" />
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="3D" role="3clF46">
-        <property role="TrG5h" value="childConcept" />
-        <node concept="3uibUv" id="4e" role="1tU5fm">
-          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
-          <node concept="cd27G" id="4g" role="lGtFl">
-            <node concept="3u3nmq" id="4h" role="cd27D">
-              <property role="3u3nmv" value="5258059200642172323" />
-            </node>
-          </node>
-        </node>
-        <node concept="cd27G" id="4f" role="lGtFl">
-          <node concept="3u3nmq" id="4i" role="cd27D">
-            <property role="3u3nmv" value="5258059200642172323" />
-          </node>
-        </node>
-      </node>
       <node concept="37vLTG" id="3E" role="3clF46">
-        <property role="TrG5h" value="link" />
-        <node concept="3uibUv" id="4j" role="1tU5fm">
-          <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
-          <node concept="cd27G" id="4l" role="lGtFl">
-            <node concept="3u3nmq" id="4m" role="cd27D">
+        <property role="TrG5h" value="node" />
+        <node concept="3uibUv" id="47" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+          <node concept="cd27G" id="49" role="lGtFl">
+            <node concept="3u3nmq" id="4a" role="cd27D">
               <property role="3u3nmv" value="5258059200642172323" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="4k" role="lGtFl">
-          <node concept="3u3nmq" id="4n" role="cd27D">
+        <node concept="cd27G" id="48" role="lGtFl">
+          <node concept="3u3nmq" id="4b" role="cd27D">
             <property role="3u3nmv" value="5258059200642172323" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="3F" role="lGtFl">
-        <node concept="3u3nmq" id="4o" role="cd27D">
+      <node concept="37vLTG" id="3F" role="3clF46">
+        <property role="TrG5h" value="childNode" />
+        <node concept="3uibUv" id="4c" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+          <node concept="cd27G" id="4e" role="lGtFl">
+            <node concept="3u3nmq" id="4f" role="cd27D">
+              <property role="3u3nmv" value="5258059200642172323" />
+            </node>
+          </node>
+        </node>
+        <node concept="cd27G" id="4d" role="lGtFl">
+          <node concept="3u3nmq" id="4g" role="cd27D">
+            <property role="3u3nmv" value="5258059200642172323" />
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3G" role="3clF46">
+        <property role="TrG5h" value="childConcept" />
+        <node concept="3uibUv" id="4h" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+          <node concept="cd27G" id="4j" role="lGtFl">
+            <node concept="3u3nmq" id="4k" role="cd27D">
+              <property role="3u3nmv" value="5258059200642172323" />
+            </node>
+          </node>
+        </node>
+        <node concept="cd27G" id="4i" role="lGtFl">
+          <node concept="3u3nmq" id="4l" role="cd27D">
+            <property role="3u3nmv" value="5258059200642172323" />
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3H" role="3clF46">
+        <property role="TrG5h" value="link" />
+        <node concept="3uibUv" id="4m" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
+          <node concept="cd27G" id="4o" role="lGtFl">
+            <node concept="3u3nmq" id="4p" role="cd27D">
+              <property role="3u3nmv" value="5258059200642172323" />
+            </node>
+          </node>
+        </node>
+        <node concept="cd27G" id="4n" role="lGtFl">
+          <node concept="3u3nmq" id="4q" role="cd27D">
+            <property role="3u3nmv" value="5258059200642172323" />
+          </node>
+        </node>
+      </node>
+      <node concept="cd27G" id="3I" role="lGtFl">
+        <node concept="3u3nmq" id="4r" role="cd27D">
           <property role="3u3nmv" value="5258059200642172323" />
         </node>
       </node>
     </node>
     <node concept="cd27G" id="7" role="lGtFl">
-      <node concept="3u3nmq" id="4p" role="cd27D">
+      <node concept="3u3nmq" id="4s" role="cd27D">
         <property role="3u3nmv" value="5258059200642172323" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="4q">
+  <node concept="312cEu" id="4t">
     <property role="TrG5h" value="ConstraintsAspectDescriptor" />
     <property role="3GE5qa" value="Constraints" />
-    <node concept="3uibUv" id="4r" role="1zkMxy">
+    <node concept="3uibUv" id="4u" role="1zkMxy">
       <ref role="3uigEE" to="ze1i:~BaseConstraintsAspectDescriptor" resolve="BaseConstraintsAspectDescriptor" />
     </node>
-    <node concept="3Tm1VV" id="4s" role="1B3o_S" />
-    <node concept="3clFbW" id="4t" role="jymVt">
-      <node concept="3cqZAl" id="4w" role="3clF45" />
-      <node concept="3Tm1VV" id="4x" role="1B3o_S" />
-      <node concept="3clFbS" id="4y" role="3clF47" />
+    <node concept="3Tm1VV" id="4v" role="1B3o_S" />
+    <node concept="3clFbW" id="4w" role="jymVt">
+      <node concept="3cqZAl" id="4z" role="3clF45" />
+      <node concept="3Tm1VV" id="4$" role="1B3o_S" />
+      <node concept="3clFbS" id="4_" role="3clF47" />
     </node>
-    <node concept="2tJIrI" id="4u" role="jymVt" />
-    <node concept="3clFb_" id="4v" role="jymVt">
+    <node concept="2tJIrI" id="4x" role="jymVt" />
+    <node concept="3clFb_" id="4y" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getConstraints" />
       <property role="DiZV1" value="false" />
-      <node concept="2AHcQZ" id="4z" role="2AJF6D">
+      <node concept="2AHcQZ" id="4A" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
-      <node concept="3Tm1VV" id="4$" role="1B3o_S" />
-      <node concept="3uibUv" id="4_" role="3clF45">
+      <node concept="3Tm1VV" id="4B" role="1B3o_S" />
+      <node concept="3uibUv" id="4C" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
       </node>
-      <node concept="37vLTG" id="4A" role="3clF46">
+      <node concept="37vLTG" id="4D" role="3clF46">
         <property role="TrG5h" value="concept" />
-        <node concept="3bZ5Sz" id="4C" role="1tU5fm" />
+        <node concept="3bZ5Sz" id="4F" role="1tU5fm" />
       </node>
-      <node concept="3clFbS" id="4B" role="3clF47">
-        <node concept="1_3QMa" id="4D" role="3cqZAp">
-          <node concept="37vLTw" id="4F" role="1_3QMn">
-            <ref role="3cqZAo" node="4A" resolve="concept" />
+      <node concept="3clFbS" id="4E" role="3clF47">
+        <node concept="1_3QMa" id="4G" role="3cqZAp">
+          <node concept="37vLTw" id="4I" role="1_3QMn">
+            <ref role="3cqZAo" node="4D" resolve="concept" />
           </node>
-          <node concept="1pnPoh" id="4G" role="1_3QMm">
-            <node concept="3clFbS" id="4L" role="1pnPq1">
-              <node concept="3cpWs6" id="4N" role="3cqZAp">
-                <node concept="1nCR9W" id="4O" role="3cqZAk">
+          <node concept="1pnPoh" id="4J" role="1_3QMm">
+            <node concept="3clFbS" id="4O" role="1pnPq1">
+              <node concept="3cpWs6" id="4Q" role="3cqZAp">
+                <node concept="1nCR9W" id="4R" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.lang.messages.constraints.MessageExpression_Constraints" />
-                  <node concept="3uibUv" id="4P" role="2lIhxL">
+                  <node concept="3uibUv" id="4S" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="4M" role="1pnPq6">
+            <node concept="3gn64h" id="4P" role="1pnPq6">
               <ref role="3gnhBz" to="t9po:4zSofKedyR4" resolve="MessageExpression" />
             </node>
           </node>
-          <node concept="1pnPoh" id="4H" role="1_3QMm">
-            <node concept="3clFbS" id="4Q" role="1pnPq1">
-              <node concept="3cpWs6" id="4S" role="3cqZAp">
-                <node concept="1nCR9W" id="4T" role="3cqZAk">
+          <node concept="1pnPoh" id="4K" role="1_3QMm">
+            <node concept="3clFbS" id="4T" role="1pnPq1">
+              <node concept="3cpWs6" id="4V" role="3cqZAp">
+                <node concept="1nCR9W" id="4W" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.lang.messages.constraints.CombinedMessageExpression_Constraints" />
-                  <node concept="3uibUv" id="4U" role="2lIhxL">
+                  <node concept="3uibUv" id="4X" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="4R" role="1pnPq6">
+            <node concept="3gn64h" id="4U" role="1pnPq6">
               <ref role="3gnhBz" to="t9po:4zSofKeg4lv" resolve="CombinedMessageExpression" />
             </node>
           </node>
-          <node concept="1pnPoh" id="4I" role="1_3QMm">
-            <node concept="3clFbS" id="4V" role="1pnPq1">
-              <node concept="3cpWs6" id="4X" role="3cqZAp">
-                <node concept="1nCR9W" id="4Y" role="3cqZAk">
+          <node concept="1pnPoh" id="4L" role="1_3QMm">
+            <node concept="3clFbS" id="4Y" role="1pnPq1">
+              <node concept="3cpWs6" id="50" role="3cqZAp">
+                <node concept="1nCR9W" id="51" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.lang.messages.constraints.MacroMessageExpression_Constraints" />
-                  <node concept="3uibUv" id="4Z" role="2lIhxL">
+                  <node concept="3uibUv" id="52" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="4W" role="1pnPq6">
+            <node concept="3gn64h" id="4Z" role="1pnPq6">
               <ref role="3gnhBz" to="t9po:4zSofKeguiy" resolve="MacroMessageExpression" />
             </node>
           </node>
-          <node concept="1pnPoh" id="4J" role="1_3QMm">
-            <node concept="3clFbS" id="50" role="1pnPq1">
-              <node concept="3cpWs6" id="52" role="3cqZAp">
-                <node concept="1nCR9W" id="53" role="3cqZAk">
+          <node concept="1pnPoh" id="4M" role="1_3QMm">
+            <node concept="3clFbS" id="53" role="1pnPq1">
+              <node concept="3cpWs6" id="55" role="3cqZAp">
+                <node concept="1nCR9W" id="56" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.lang.messages.constraints.LiteralMessageExpression_Constraints" />
-                  <node concept="3uibUv" id="54" role="2lIhxL">
+                  <node concept="3uibUv" id="57" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="51" role="1pnPq6">
+            <node concept="3gn64h" id="54" role="1pnPq6">
               <ref role="3gnhBz" to="t9po:4zSofKedyR5" resolve="LiteralMessageExpression" />
             </node>
           </node>
-          <node concept="3clFbS" id="4K" role="1prKM_" />
+          <node concept="3clFbS" id="4N" role="1prKM_" />
         </node>
-        <node concept="3cpWs6" id="4E" role="3cqZAp">
-          <node concept="2ShNRf" id="55" role="3cqZAk">
-            <node concept="1pGfFk" id="56" role="2ShVmc">
+        <node concept="3cpWs6" id="4H" role="3cqZAp">
+          <node concept="2ShNRf" id="58" role="3cqZAk">
+            <node concept="1pGfFk" id="59" role="2ShVmc">
               <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-              <node concept="37vLTw" id="57" role="37wK5m">
-                <ref role="3cqZAo" node="4A" resolve="concept" />
+              <node concept="37vLTw" id="5a" role="37wK5m">
+                <ref role="3cqZAo" node="4D" resolve="concept" />
               </node>
             </node>
           </node>
@@ -1033,1303 +1042,1287 @@
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="58">
-    <property role="TrG5h" value="GeneratedRulesConstraintsAspect" />
-    <property role="1EXbeo" value="true" />
-    <node concept="3Tm1VV" id="59" role="1B3o_S" />
-    <node concept="3uibUv" id="5a" role="EKbjA">
-      <ref role="3uigEE" to="o99v:~RulesConstraintsAspect" resolve="RulesConstraintsAspect" />
-    </node>
-    <node concept="3clFb_" id="5b" role="jymVt">
-      <property role="TrG5h" value="getDescriptor" />
-      <node concept="3Tm1VV" id="5c" role="1B3o_S" />
-      <node concept="37vLTG" id="5d" role="3clF46">
-        <property role="TrG5h" value="concept" />
-        <node concept="3bZ5Sz" id="5i" role="1tU5fm" />
-        <node concept="2AHcQZ" id="5j" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3uibUv" id="5e" role="3clF45">
-        <ref role="3uigEE" to="o99v:~RulesConstraintsDescriptor" resolve="RulesConstraintsDescriptor" />
-      </node>
-      <node concept="3clFbS" id="5f" role="3clF47">
-        <node concept="1_3QMa" id="5k" role="3cqZAp">
-          <node concept="37vLTw" id="5m" role="1_3QMn">
-            <ref role="3cqZAo" node="5d" resolve="concept" />
-          </node>
-          <node concept="3clFbS" id="5n" role="1prKM_" />
-        </node>
-        <node concept="3cpWs6" id="5l" role="3cqZAp">
-          <node concept="10Nm6u" id="5o" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="5g" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="2AHcQZ" id="5h" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-  </node>
-  <node concept="39dXUE" id="5p">
-    <node concept="39e2AJ" id="5q" role="39e2AI">
+  <node concept="39dXUE" id="5b">
+    <node concept="39e2AJ" id="5c" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="5s" role="39e3Y0">
+      <node concept="39e2AG" id="5d" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="5t" role="39e2AY">
-          <ref role="39e2AS" node="4q" resolve="ConstraintsAspectDescriptor" />
-        </node>
-      </node>
-    </node>
-    <node concept="39e2AJ" id="5r" role="39e2AI">
-      <property role="39e3Y2" value="constraints2DescriptorClass" />
-      <node concept="39e2AG" id="5u" role="39e3Y0">
-        <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="5v" role="39e2AY">
-          <ref role="39e2AS" node="58" resolve="GeneratedRulesConstraintsAspect" />
+        <node concept="39e2AT" id="5e" role="39e2AY">
+          <ref role="39e2AS" node="4t" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="5w">
+  <node concept="312cEu" id="5f">
     <property role="TrG5h" value="LiteralMessageExpression_Constraints" />
-    <node concept="3Tm1VV" id="5x" role="1B3o_S">
-      <node concept="cd27G" id="5C" role="lGtFl">
-        <node concept="3u3nmq" id="5D" role="cd27D">
+    <node concept="3Tm1VV" id="5g" role="1B3o_S">
+      <node concept="cd27G" id="5n" role="lGtFl">
+        <node concept="3u3nmq" id="5o" role="cd27D">
           <property role="3u3nmv" value="5258059200641965860" />
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="5y" role="1zkMxy">
+    <node concept="3uibUv" id="5h" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
-      <node concept="cd27G" id="5E" role="lGtFl">
-        <node concept="3u3nmq" id="5F" role="cd27D">
+      <node concept="cd27G" id="5p" role="lGtFl">
+        <node concept="3u3nmq" id="5q" role="cd27D">
           <property role="3u3nmv" value="5258059200641965860" />
         </node>
       </node>
     </node>
-    <node concept="3clFbW" id="5z" role="jymVt">
-      <node concept="3cqZAl" id="5G" role="3clF45">
-        <node concept="cd27G" id="5K" role="lGtFl">
-          <node concept="3u3nmq" id="5L" role="cd27D">
+    <node concept="3clFbW" id="5i" role="jymVt">
+      <node concept="3cqZAl" id="5r" role="3clF45">
+        <node concept="cd27G" id="5v" role="lGtFl">
+          <node concept="3u3nmq" id="5w" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3clFbS" id="5H" role="3clF47">
-        <node concept="XkiVB" id="5M" role="3cqZAp">
+      <node concept="3clFbS" id="5s" role="3clF47">
+        <node concept="XkiVB" id="5x" role="3cqZAp">
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-          <node concept="2YIFZM" id="5O" role="37wK5m">
-            <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
-            <node concept="1adDum" id="5Q" role="37wK5m">
-              <property role="1adDun" value="0xad93155d79b24759L" />
-              <node concept="cd27G" id="5V" role="lGtFl">
-                <node concept="3u3nmq" id="5W" role="cd27D">
+          <node concept="1BaE9c" id="5z" role="37wK5m">
+            <property role="1BaxDp" value="LiteralMessageExpression_d1e3ef58" />
+            <node concept="2YIFZM" id="5_" role="1Bazha">
+              <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
+              <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
+              <node concept="1adDum" id="5B" role="37wK5m">
+                <property role="1adDun" value="0xad93155d79b24759L" />
+                <node concept="cd27G" id="5G" role="lGtFl">
+                  <node concept="3u3nmq" id="5H" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641965860" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="5C" role="37wK5m">
+                <property role="1adDun" value="0xb10c55123e763903L" />
+                <node concept="cd27G" id="5I" role="lGtFl">
+                  <node concept="3u3nmq" id="5J" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641965860" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="5D" role="37wK5m">
+                <property role="1adDun" value="0x48f860fc0e362dc5L" />
+                <node concept="cd27G" id="5K" role="lGtFl">
+                  <node concept="3u3nmq" id="5L" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641965860" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Xl_RD" id="5E" role="37wK5m">
+                <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" />
+                <node concept="cd27G" id="5M" role="lGtFl">
+                  <node concept="3u3nmq" id="5N" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641965860" />
+                  </node>
+                </node>
+              </node>
+              <node concept="cd27G" id="5F" role="lGtFl">
+                <node concept="3u3nmq" id="5O" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="1adDum" id="5R" role="37wK5m">
-              <property role="1adDun" value="0xb10c55123e763903L" />
-              <node concept="cd27G" id="5X" role="lGtFl">
-                <node concept="3u3nmq" id="5Y" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641965860" />
-                </node>
-              </node>
-            </node>
-            <node concept="1adDum" id="5S" role="37wK5m">
-              <property role="1adDun" value="0x48f860fc0e362dc5L" />
-              <node concept="cd27G" id="5Z" role="lGtFl">
-                <node concept="3u3nmq" id="60" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641965860" />
-                </node>
-              </node>
-            </node>
-            <node concept="Xl_RD" id="5T" role="37wK5m">
-              <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" />
-              <node concept="cd27G" id="61" role="lGtFl">
-                <node concept="3u3nmq" id="62" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641965860" />
-                </node>
-              </node>
-            </node>
-            <node concept="cd27G" id="5U" role="lGtFl">
-              <node concept="3u3nmq" id="63" role="cd27D">
+            <node concept="cd27G" id="5A" role="lGtFl">
+              <node concept="3u3nmq" id="5P" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="5P" role="lGtFl">
-            <node concept="3u3nmq" id="64" role="cd27D">
+          <node concept="cd27G" id="5$" role="lGtFl">
+            <node concept="3u3nmq" id="5Q" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="5N" role="lGtFl">
-          <node concept="3u3nmq" id="65" role="cd27D">
+        <node concept="cd27G" id="5y" role="lGtFl">
+          <node concept="3u3nmq" id="5R" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="5I" role="1B3o_S">
-        <node concept="cd27G" id="66" role="lGtFl">
-          <node concept="3u3nmq" id="67" role="cd27D">
+      <node concept="3Tm1VV" id="5t" role="1B3o_S">
+        <node concept="cd27G" id="5S" role="lGtFl">
+          <node concept="3u3nmq" id="5T" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="5J" role="lGtFl">
-        <node concept="3u3nmq" id="68" role="cd27D">
+      <node concept="cd27G" id="5u" role="lGtFl">
+        <node concept="3u3nmq" id="5U" role="cd27D">
           <property role="3u3nmv" value="5258059200641965860" />
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="5$" role="jymVt">
-      <node concept="cd27G" id="69" role="lGtFl">
-        <node concept="3u3nmq" id="6a" role="cd27D">
+    <node concept="2tJIrI" id="5j" role="jymVt">
+      <node concept="cd27G" id="5V" role="lGtFl">
+        <node concept="3u3nmq" id="5W" role="cd27D">
           <property role="3u3nmv" value="5258059200641965860" />
         </node>
       </node>
     </node>
-    <node concept="312cEu" id="5_" role="jymVt">
+    <node concept="312cEu" id="5k" role="jymVt">
       <property role="TrG5h" value="Message_Property" />
-      <node concept="3clFbW" id="6b" role="jymVt">
-        <node concept="3cqZAl" id="6j" role="3clF45">
-          <node concept="cd27G" id="6o" role="lGtFl">
-            <node concept="3u3nmq" id="6p" role="cd27D">
+      <node concept="3clFbW" id="5X" role="jymVt">
+        <node concept="3cqZAl" id="65" role="3clF45">
+          <node concept="cd27G" id="6a" role="lGtFl">
+            <node concept="3u3nmq" id="6b" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3Tm1VV" id="6k" role="1B3o_S">
-          <node concept="cd27G" id="6q" role="lGtFl">
-            <node concept="3u3nmq" id="6r" role="cd27D">
+        <node concept="3Tm1VV" id="66" role="1B3o_S">
+          <node concept="cd27G" id="6c" role="lGtFl">
+            <node concept="3u3nmq" id="6d" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3clFbS" id="6l" role="3clF47">
-          <node concept="XkiVB" id="6s" role="3cqZAp">
+        <node concept="3clFbS" id="67" role="3clF47">
+          <node concept="XkiVB" id="6e" role="3cqZAp">
             <ref role="37wK5l" to="79pl:~BasePropertyConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SProperty,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BasePropertyConstraintsDescriptor" />
-            <node concept="2YIFZM" id="6u" role="37wK5m">
+            <node concept="2YIFZM" id="6g" role="37wK5m">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String)" resolve="getProperty" />
-              <node concept="1adDum" id="6x" role="37wK5m">
+              <node concept="1adDum" id="6j" role="37wK5m">
                 <property role="1adDun" value="0xad93155d79b24759L" />
-                <node concept="cd27G" id="6B" role="lGtFl">
-                  <node concept="3u3nmq" id="6C" role="cd27D">
+                <node concept="cd27G" id="6p" role="lGtFl">
+                  <node concept="3u3nmq" id="6q" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="1adDum" id="6y" role="37wK5m">
+              <node concept="1adDum" id="6k" role="37wK5m">
                 <property role="1adDun" value="0xb10c55123e763903L" />
-                <node concept="cd27G" id="6D" role="lGtFl">
-                  <node concept="3u3nmq" id="6E" role="cd27D">
+                <node concept="cd27G" id="6r" role="lGtFl">
+                  <node concept="3u3nmq" id="6s" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="1adDum" id="6z" role="37wK5m">
+              <node concept="1adDum" id="6l" role="37wK5m">
                 <property role="1adDun" value="0x48f860fc0e362dc5L" />
-                <node concept="cd27G" id="6F" role="lGtFl">
-                  <node concept="3u3nmq" id="6G" role="cd27D">
+                <node concept="cd27G" id="6t" role="lGtFl">
+                  <node concept="3u3nmq" id="6u" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="1adDum" id="6$" role="37wK5m">
+              <node concept="1adDum" id="6m" role="37wK5m">
                 <property role="1adDun" value="0x48f860fc0e362dc6L" />
-                <node concept="cd27G" id="6H" role="lGtFl">
-                  <node concept="3u3nmq" id="6I" role="cd27D">
+                <node concept="cd27G" id="6v" role="lGtFl">
+                  <node concept="3u3nmq" id="6w" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="Xl_RD" id="6_" role="37wK5m">
+              <node concept="Xl_RD" id="6n" role="37wK5m">
                 <property role="Xl_RC" value="message" />
-                <node concept="cd27G" id="6J" role="lGtFl">
-                  <node concept="3u3nmq" id="6K" role="cd27D">
+                <node concept="cd27G" id="6x" role="lGtFl">
+                  <node concept="3u3nmq" id="6y" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="6A" role="lGtFl">
-                <node concept="3u3nmq" id="6L" role="cd27D">
+              <node concept="cd27G" id="6o" role="lGtFl">
+                <node concept="3u3nmq" id="6z" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="37vLTw" id="6v" role="37wK5m">
-              <ref role="3cqZAo" node="6m" resolve="container" />
-              <node concept="cd27G" id="6M" role="lGtFl">
-                <node concept="3u3nmq" id="6N" role="cd27D">
+            <node concept="37vLTw" id="6h" role="37wK5m">
+              <ref role="3cqZAo" node="68" resolve="container" />
+              <node concept="cd27G" id="6$" role="lGtFl">
+                <node concept="3u3nmq" id="6_" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="6w" role="lGtFl">
-              <node concept="3u3nmq" id="6O" role="cd27D">
+            <node concept="cd27G" id="6i" role="lGtFl">
+              <node concept="3u3nmq" id="6A" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="6t" role="lGtFl">
-            <node concept="3u3nmq" id="6P" role="cd27D">
+          <node concept="cd27G" id="6f" role="lGtFl">
+            <node concept="3u3nmq" id="6B" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="37vLTG" id="6m" role="3clF46">
+        <node concept="37vLTG" id="68" role="3clF46">
           <property role="TrG5h" value="container" />
-          <node concept="3uibUv" id="6Q" role="1tU5fm">
+          <node concept="3uibUv" id="6C" role="1tU5fm">
             <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
-            <node concept="cd27G" id="6S" role="lGtFl">
-              <node concept="3u3nmq" id="6T" role="cd27D">
+            <node concept="cd27G" id="6E" role="lGtFl">
+              <node concept="3u3nmq" id="6F" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="6R" role="lGtFl">
-            <node concept="3u3nmq" id="6U" role="cd27D">
+          <node concept="cd27G" id="6D" role="lGtFl">
+            <node concept="3u3nmq" id="6G" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="6n" role="lGtFl">
-          <node concept="3u3nmq" id="6V" role="cd27D">
+        <node concept="cd27G" id="69" role="lGtFl">
+          <node concept="3u3nmq" id="6H" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3clFb_" id="6c" role="jymVt">
+      <node concept="3clFb_" id="5Y" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="hasOwnValidator" />
         <property role="DiZV1" value="false" />
-        <node concept="3Tm1VV" id="6W" role="1B3o_S">
-          <node concept="cd27G" id="71" role="lGtFl">
-            <node concept="3u3nmq" id="72" role="cd27D">
+        <node concept="3Tm1VV" id="6I" role="1B3o_S">
+          <node concept="cd27G" id="6N" role="lGtFl">
+            <node concept="3u3nmq" id="6O" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="10P_77" id="6X" role="3clF45">
-          <node concept="cd27G" id="73" role="lGtFl">
-            <node concept="3u3nmq" id="74" role="cd27D">
+        <node concept="10P_77" id="6J" role="3clF45">
+          <node concept="cd27G" id="6P" role="lGtFl">
+            <node concept="3u3nmq" id="6Q" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3clFbS" id="6Y" role="3clF47">
-          <node concept="3clFbF" id="75" role="3cqZAp">
-            <node concept="3clFbT" id="77" role="3clFbG">
+        <node concept="3clFbS" id="6K" role="3clF47">
+          <node concept="3clFbF" id="6R" role="3cqZAp">
+            <node concept="3clFbT" id="6T" role="3clFbG">
               <property role="3clFbU" value="true" />
-              <node concept="cd27G" id="79" role="lGtFl">
-                <node concept="3u3nmq" id="7a" role="cd27D">
+              <node concept="cd27G" id="6V" role="lGtFl">
+                <node concept="3u3nmq" id="6W" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="78" role="lGtFl">
-              <node concept="3u3nmq" id="7b" role="cd27D">
+            <node concept="cd27G" id="6U" role="lGtFl">
+              <node concept="3u3nmq" id="6X" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="76" role="lGtFl">
-            <node concept="3u3nmq" id="7c" role="cd27D">
+          <node concept="cd27G" id="6S" role="lGtFl">
+            <node concept="3u3nmq" id="6Y" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="2AHcQZ" id="6Z" role="2AJF6D">
+        <node concept="2AHcQZ" id="6L" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-          <node concept="cd27G" id="7d" role="lGtFl">
-            <node concept="3u3nmq" id="7e" role="cd27D">
+          <node concept="cd27G" id="6Z" role="lGtFl">
+            <node concept="3u3nmq" id="70" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="70" role="lGtFl">
-          <node concept="3u3nmq" id="7f" role="cd27D">
+        <node concept="cd27G" id="6M" role="lGtFl">
+          <node concept="3u3nmq" id="71" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="Wx3nA" id="6d" role="jymVt">
+      <node concept="Wx3nA" id="5Z" role="jymVt">
         <property role="TrG5h" value="validatePropertyBreakingPoint" />
         <property role="3TUv4t" value="true" />
-        <node concept="3uibUv" id="7g" role="1tU5fm">
+        <node concept="3uibUv" id="72" role="1tU5fm">
           <ref role="3uigEE" to="w1kc:~SNodePointer" resolve="SNodePointer" />
-          <node concept="cd27G" id="7k" role="lGtFl">
-            <node concept="3u3nmq" id="7l" role="cd27D">
+          <node concept="cd27G" id="76" role="lGtFl">
+            <node concept="3u3nmq" id="77" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3Tm6S6" id="7h" role="1B3o_S">
-          <node concept="cd27G" id="7m" role="lGtFl">
-            <node concept="3u3nmq" id="7n" role="cd27D">
+        <node concept="3Tm6S6" id="73" role="1B3o_S">
+          <node concept="cd27G" id="78" role="lGtFl">
+            <node concept="3u3nmq" id="79" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="2ShNRf" id="7i" role="33vP2m">
-          <node concept="1pGfFk" id="7o" role="2ShVmc">
+        <node concept="2ShNRf" id="74" role="33vP2m">
+          <node concept="1pGfFk" id="7a" role="2ShVmc">
             <ref role="37wK5l" to="w1kc:~SNodePointer.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="SNodePointer" />
-            <node concept="Xl_RD" id="7q" role="37wK5m">
+            <node concept="Xl_RD" id="7c" role="37wK5m">
               <property role="Xl_RC" value="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)" />
-              <node concept="cd27G" id="7t" role="lGtFl">
-                <node concept="3u3nmq" id="7u" role="cd27D">
+              <node concept="cd27G" id="7f" role="lGtFl">
+                <node concept="3u3nmq" id="7g" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="Xl_RD" id="7r" role="37wK5m">
+            <node concept="Xl_RD" id="7d" role="37wK5m">
               <property role="Xl_RC" value="5258059200641965863" />
-              <node concept="cd27G" id="7v" role="lGtFl">
-                <node concept="3u3nmq" id="7w" role="cd27D">
+              <node concept="cd27G" id="7h" role="lGtFl">
+                <node concept="3u3nmq" id="7i" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="7s" role="lGtFl">
-              <node concept="3u3nmq" id="7x" role="cd27D">
+            <node concept="cd27G" id="7e" role="lGtFl">
+              <node concept="3u3nmq" id="7j" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="7p" role="lGtFl">
-            <node concept="3u3nmq" id="7y" role="cd27D">
+          <node concept="cd27G" id="7b" role="lGtFl">
+            <node concept="3u3nmq" id="7k" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="7j" role="lGtFl">
-          <node concept="3u3nmq" id="7z" role="cd27D">
+        <node concept="cd27G" id="75" role="lGtFl">
+          <node concept="3u3nmq" id="7l" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3clFb_" id="6e" role="jymVt">
+      <node concept="3clFb_" id="60" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="validateValue" />
         <property role="DiZV1" value="false" />
-        <node concept="3Tm1VV" id="7$" role="1B3o_S">
-          <node concept="cd27G" id="7G" role="lGtFl">
-            <node concept="3u3nmq" id="7H" role="cd27D">
+        <node concept="3Tm1VV" id="7m" role="1B3o_S">
+          <node concept="cd27G" id="7u" role="lGtFl">
+            <node concept="3u3nmq" id="7v" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="10P_77" id="7_" role="3clF45">
-          <node concept="cd27G" id="7I" role="lGtFl">
-            <node concept="3u3nmq" id="7J" role="cd27D">
+        <node concept="10P_77" id="7n" role="3clF45">
+          <node concept="cd27G" id="7w" role="lGtFl">
+            <node concept="3u3nmq" id="7x" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="37vLTG" id="7A" role="3clF46">
+        <node concept="37vLTG" id="7o" role="3clF46">
           <property role="TrG5h" value="node" />
-          <node concept="3Tqbb2" id="7K" role="1tU5fm">
-            <node concept="cd27G" id="7M" role="lGtFl">
-              <node concept="3u3nmq" id="7N" role="cd27D">
+          <node concept="3Tqbb2" id="7y" role="1tU5fm">
+            <node concept="cd27G" id="7$" role="lGtFl">
+              <node concept="3u3nmq" id="7_" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="7L" role="lGtFl">
-            <node concept="3u3nmq" id="7O" role="cd27D">
+          <node concept="cd27G" id="7z" role="lGtFl">
+            <node concept="3u3nmq" id="7A" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="37vLTG" id="7B" role="3clF46">
+        <node concept="37vLTG" id="7p" role="3clF46">
           <property role="TrG5h" value="propertyValue" />
-          <node concept="3uibUv" id="7P" role="1tU5fm">
+          <node concept="3uibUv" id="7B" role="1tU5fm">
             <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-            <node concept="cd27G" id="7R" role="lGtFl">
-              <node concept="3u3nmq" id="7S" role="cd27D">
+            <node concept="cd27G" id="7D" role="lGtFl">
+              <node concept="3u3nmq" id="7E" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="7Q" role="lGtFl">
-            <node concept="3u3nmq" id="7T" role="cd27D">
+          <node concept="cd27G" id="7C" role="lGtFl">
+            <node concept="3u3nmq" id="7F" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="37vLTG" id="7C" role="3clF46">
+        <node concept="37vLTG" id="7q" role="3clF46">
           <property role="TrG5h" value="checkingNodeContext" />
-          <node concept="3uibUv" id="7U" role="1tU5fm">
+          <node concept="3uibUv" id="7G" role="1tU5fm">
             <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
-            <node concept="cd27G" id="7W" role="lGtFl">
-              <node concept="3u3nmq" id="7X" role="cd27D">
+            <node concept="cd27G" id="7I" role="lGtFl">
+              <node concept="3u3nmq" id="7J" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="7V" role="lGtFl">
-            <node concept="3u3nmq" id="7Y" role="cd27D">
+          <node concept="cd27G" id="7H" role="lGtFl">
+            <node concept="3u3nmq" id="7K" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3clFbS" id="7D" role="3clF47">
-          <node concept="3cpWs8" id="7Z" role="3cqZAp">
-            <node concept="3cpWsn" id="83" role="3cpWs9">
+        <node concept="3clFbS" id="7r" role="3clF47">
+          <node concept="3cpWs8" id="7L" role="3cqZAp">
+            <node concept="3cpWsn" id="7P" role="3cpWs9">
               <property role="TrG5h" value="result" />
-              <node concept="10P_77" id="85" role="1tU5fm">
-                <node concept="cd27G" id="88" role="lGtFl">
-                  <node concept="3u3nmq" id="89" role="cd27D">
+              <node concept="10P_77" id="7R" role="1tU5fm">
+                <node concept="cd27G" id="7U" role="lGtFl">
+                  <node concept="3u3nmq" id="7V" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="1rXfSq" id="86" role="33vP2m">
-                <ref role="37wK5l" node="6f" resolve="staticValidateProperty" />
-                <node concept="37vLTw" id="8a" role="37wK5m">
-                  <ref role="3cqZAo" node="7A" resolve="node" />
-                  <node concept="cd27G" id="8d" role="lGtFl">
-                    <node concept="3u3nmq" id="8e" role="cd27D">
+              <node concept="1rXfSq" id="7S" role="33vP2m">
+                <ref role="37wK5l" node="61" resolve="staticValidateProperty" />
+                <node concept="37vLTw" id="7W" role="37wK5m">
+                  <ref role="3cqZAo" node="7o" resolve="node" />
+                  <node concept="cd27G" id="7Z" role="lGtFl">
+                    <node concept="3u3nmq" id="80" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="2YIFZM" id="8b" role="37wK5m">
+                <node concept="2YIFZM" id="7X" role="37wK5m">
                   <ref role="1Pybhc" to="i8bi:5IkW5anFfnn" resolve="SPropertyOperations" />
                   <ref role="37wK5l" to="i8bi:7xvVBHRhWnm" resolve="castString" />
-                  <node concept="37vLTw" id="8f" role="37wK5m">
-                    <ref role="3cqZAo" node="7B" resolve="propertyValue" />
-                    <node concept="cd27G" id="8h" role="lGtFl">
-                      <node concept="3u3nmq" id="8i" role="cd27D">
+                  <node concept="37vLTw" id="81" role="37wK5m">
+                    <ref role="3cqZAo" node="7p" resolve="propertyValue" />
+                    <node concept="cd27G" id="83" role="lGtFl">
+                      <node concept="3u3nmq" id="84" role="cd27D">
                         <property role="3u3nmv" value="5258059200641965860" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="8g" role="lGtFl">
-                    <node concept="3u3nmq" id="8j" role="cd27D">
+                  <node concept="cd27G" id="82" role="lGtFl">
+                    <node concept="3u3nmq" id="85" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="8c" role="lGtFl">
-                  <node concept="3u3nmq" id="8k" role="cd27D">
+                <node concept="cd27G" id="7Y" role="lGtFl">
+                  <node concept="3u3nmq" id="86" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="87" role="lGtFl">
-                <node concept="3u3nmq" id="8l" role="cd27D">
+              <node concept="cd27G" id="7T" role="lGtFl">
+                <node concept="3u3nmq" id="87" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="84" role="lGtFl">
-              <node concept="3u3nmq" id="8m" role="cd27D">
+            <node concept="cd27G" id="7Q" role="lGtFl">
+              <node concept="3u3nmq" id="88" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="3clFbJ" id="80" role="3cqZAp">
-            <node concept="3clFbS" id="8n" role="3clFbx">
-              <node concept="3clFbF" id="8q" role="3cqZAp">
-                <node concept="2OqwBi" id="8s" role="3clFbG">
-                  <node concept="37vLTw" id="8u" role="2Oq$k0">
-                    <ref role="3cqZAo" node="7C" resolve="checkingNodeContext" />
-                    <node concept="cd27G" id="8x" role="lGtFl">
-                      <node concept="3u3nmq" id="8y" role="cd27D">
+          <node concept="3clFbJ" id="7M" role="3cqZAp">
+            <node concept="3clFbS" id="89" role="3clFbx">
+              <node concept="3clFbF" id="8c" role="3cqZAp">
+                <node concept="2OqwBi" id="8e" role="3clFbG">
+                  <node concept="37vLTw" id="8g" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7q" resolve="checkingNodeContext" />
+                    <node concept="cd27G" id="8j" role="lGtFl">
+                      <node concept="3u3nmq" id="8k" role="cd27D">
                         <property role="3u3nmv" value="5258059200641965860" />
                       </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="8v" role="2OqNvi">
+                  <node concept="liA8E" id="8h" role="2OqNvi">
                     <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
-                    <node concept="37vLTw" id="8z" role="37wK5m">
-                      <ref role="3cqZAo" node="6d" resolve="validatePropertyBreakingPoint" />
-                      <node concept="cd27G" id="8_" role="lGtFl">
-                        <node concept="3u3nmq" id="8A" role="cd27D">
+                    <node concept="37vLTw" id="8l" role="37wK5m">
+                      <ref role="3cqZAo" node="5Z" resolve="validatePropertyBreakingPoint" />
+                      <node concept="cd27G" id="8n" role="lGtFl">
+                        <node concept="3u3nmq" id="8o" role="cd27D">
                           <property role="3u3nmv" value="5258059200641965860" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="8$" role="lGtFl">
-                      <node concept="3u3nmq" id="8B" role="cd27D">
+                    <node concept="cd27G" id="8m" role="lGtFl">
+                      <node concept="3u3nmq" id="8p" role="cd27D">
                         <property role="3u3nmv" value="5258059200641965860" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="8w" role="lGtFl">
-                    <node concept="3u3nmq" id="8C" role="cd27D">
+                  <node concept="cd27G" id="8i" role="lGtFl">
+                    <node concept="3u3nmq" id="8q" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="8t" role="lGtFl">
-                  <node concept="3u3nmq" id="8D" role="cd27D">
+                <node concept="cd27G" id="8f" role="lGtFl">
+                  <node concept="3u3nmq" id="8r" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="8r" role="lGtFl">
-                <node concept="3u3nmq" id="8E" role="cd27D">
+              <node concept="cd27G" id="8d" role="lGtFl">
+                <node concept="3u3nmq" id="8s" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="1Wc70l" id="8o" role="3clFbw">
-              <node concept="3y3z36" id="8F" role="3uHU7w">
-                <node concept="10Nm6u" id="8I" role="3uHU7w">
-                  <node concept="cd27G" id="8L" role="lGtFl">
-                    <node concept="3u3nmq" id="8M" role="cd27D">
+            <node concept="1Wc70l" id="8a" role="3clFbw">
+              <node concept="3y3z36" id="8t" role="3uHU7w">
+                <node concept="10Nm6u" id="8w" role="3uHU7w">
+                  <node concept="cd27G" id="8z" role="lGtFl">
+                    <node concept="3u3nmq" id="8$" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="8J" role="3uHU7B">
-                  <ref role="3cqZAo" node="7C" resolve="checkingNodeContext" />
-                  <node concept="cd27G" id="8N" role="lGtFl">
-                    <node concept="3u3nmq" id="8O" role="cd27D">
+                <node concept="37vLTw" id="8x" role="3uHU7B">
+                  <ref role="3cqZAo" node="7q" resolve="checkingNodeContext" />
+                  <node concept="cd27G" id="8_" role="lGtFl">
+                    <node concept="3u3nmq" id="8A" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="8K" role="lGtFl">
-                  <node concept="3u3nmq" id="8P" role="cd27D">
+                <node concept="cd27G" id="8y" role="lGtFl">
+                  <node concept="3u3nmq" id="8B" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="3fqX7Q" id="8G" role="3uHU7B">
-                <node concept="37vLTw" id="8Q" role="3fr31v">
-                  <ref role="3cqZAo" node="83" resolve="result" />
-                  <node concept="cd27G" id="8S" role="lGtFl">
-                    <node concept="3u3nmq" id="8T" role="cd27D">
+              <node concept="3fqX7Q" id="8u" role="3uHU7B">
+                <node concept="37vLTw" id="8C" role="3fr31v">
+                  <ref role="3cqZAo" node="7P" resolve="result" />
+                  <node concept="cd27G" id="8E" role="lGtFl">
+                    <node concept="3u3nmq" id="8F" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="8R" role="lGtFl">
-                  <node concept="3u3nmq" id="8U" role="cd27D">
+                <node concept="cd27G" id="8D" role="lGtFl">
+                  <node concept="3u3nmq" id="8G" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="8H" role="lGtFl">
-                <node concept="3u3nmq" id="8V" role="cd27D">
+              <node concept="cd27G" id="8v" role="lGtFl">
+                <node concept="3u3nmq" id="8H" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="8p" role="lGtFl">
-              <node concept="3u3nmq" id="8W" role="cd27D">
+            <node concept="cd27G" id="8b" role="lGtFl">
+              <node concept="3u3nmq" id="8I" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="81" role="3cqZAp">
-            <node concept="37vLTw" id="8X" role="3clFbG">
-              <ref role="3cqZAo" node="83" resolve="result" />
-              <node concept="cd27G" id="8Z" role="lGtFl">
-                <node concept="3u3nmq" id="90" role="cd27D">
+          <node concept="3clFbF" id="7N" role="3cqZAp">
+            <node concept="37vLTw" id="8J" role="3clFbG">
+              <ref role="3cqZAo" node="7P" resolve="result" />
+              <node concept="cd27G" id="8L" role="lGtFl">
+                <node concept="3u3nmq" id="8M" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="8Y" role="lGtFl">
+            <node concept="cd27G" id="8K" role="lGtFl">
+              <node concept="3u3nmq" id="8N" role="cd27D">
+                <property role="3u3nmv" value="5258059200641965860" />
+              </node>
+            </node>
+          </node>
+          <node concept="cd27G" id="7O" role="lGtFl">
+            <node concept="3u3nmq" id="8O" role="cd27D">
+              <property role="3u3nmv" value="5258059200641965860" />
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7s" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+          <node concept="cd27G" id="8P" role="lGtFl">
+            <node concept="3u3nmq" id="8Q" role="cd27D">
+              <property role="3u3nmv" value="5258059200641965860" />
+            </node>
+          </node>
+        </node>
+        <node concept="cd27G" id="7t" role="lGtFl">
+          <node concept="3u3nmq" id="8R" role="cd27D">
+            <property role="3u3nmv" value="5258059200641965860" />
+          </node>
+        </node>
+      </node>
+      <node concept="2YIFZL" id="61" role="jymVt">
+        <property role="TrG5h" value="staticValidateProperty" />
+        <node concept="37vLTG" id="8S" role="3clF46">
+          <property role="TrG5h" value="node" />
+          <node concept="3Tqbb2" id="8Y" role="1tU5fm">
+            <node concept="cd27G" id="90" role="lGtFl">
               <node concept="3u3nmq" id="91" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="82" role="lGtFl">
+          <node concept="cd27G" id="8Z" role="lGtFl">
             <node concept="3u3nmq" id="92" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="2AHcQZ" id="7E" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-          <node concept="cd27G" id="93" role="lGtFl">
-            <node concept="3u3nmq" id="94" role="cd27D">
-              <property role="3u3nmv" value="5258059200641965860" />
-            </node>
-          </node>
-        </node>
-        <node concept="cd27G" id="7F" role="lGtFl">
-          <node concept="3u3nmq" id="95" role="cd27D">
-            <property role="3u3nmv" value="5258059200641965860" />
-          </node>
-        </node>
-      </node>
-      <node concept="2YIFZL" id="6f" role="jymVt">
-        <property role="TrG5h" value="staticValidateProperty" />
-        <node concept="37vLTG" id="96" role="3clF46">
-          <property role="TrG5h" value="node" />
-          <node concept="3Tqbb2" id="9c" role="1tU5fm">
-            <node concept="cd27G" id="9e" role="lGtFl">
-              <node concept="3u3nmq" id="9f" role="cd27D">
-                <property role="3u3nmv" value="5258059200641965860" />
-              </node>
-            </node>
-          </node>
-          <node concept="cd27G" id="9d" role="lGtFl">
-            <node concept="3u3nmq" id="9g" role="cd27D">
-              <property role="3u3nmv" value="5258059200641965860" />
-            </node>
-          </node>
-        </node>
-        <node concept="37vLTG" id="97" role="3clF46">
+        <node concept="37vLTG" id="8T" role="3clF46">
           <property role="TrG5h" value="propertyValue" />
-          <node concept="3uibUv" id="9h" role="1tU5fm">
+          <node concept="3uibUv" id="93" role="1tU5fm">
             <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            <node concept="cd27G" id="9j" role="lGtFl">
-              <node concept="3u3nmq" id="9k" role="cd27D">
+            <node concept="cd27G" id="95" role="lGtFl">
+              <node concept="3u3nmq" id="96" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="9i" role="lGtFl">
-            <node concept="3u3nmq" id="9l" role="cd27D">
+          <node concept="cd27G" id="94" role="lGtFl">
+            <node concept="3u3nmq" id="97" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="10P_77" id="98" role="3clF45">
-          <node concept="cd27G" id="9m" role="lGtFl">
-            <node concept="3u3nmq" id="9n" role="cd27D">
+        <node concept="10P_77" id="8U" role="3clF45">
+          <node concept="cd27G" id="98" role="lGtFl">
+            <node concept="3u3nmq" id="99" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3Tm6S6" id="99" role="1B3o_S">
-          <node concept="cd27G" id="9o" role="lGtFl">
-            <node concept="3u3nmq" id="9p" role="cd27D">
+        <node concept="3Tm6S6" id="8V" role="1B3o_S">
+          <node concept="cd27G" id="9a" role="lGtFl">
+            <node concept="3u3nmq" id="9b" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3clFbS" id="9a" role="3clF47">
-          <node concept="3clFbF" id="9q" role="3cqZAp">
-            <node concept="2OqwBi" id="9s" role="3clFbG">
-              <node concept="37vLTw" id="9u" role="2Oq$k0">
-                <ref role="3cqZAo" node="97" resolve="propertyValue" />
-                <node concept="cd27G" id="9x" role="lGtFl">
-                  <node concept="3u3nmq" id="9y" role="cd27D">
+        <node concept="3clFbS" id="8W" role="3clF47">
+          <node concept="3clFbF" id="9c" role="3cqZAp">
+            <node concept="2OqwBi" id="9e" role="3clFbG">
+              <node concept="37vLTw" id="9g" role="2Oq$k0">
+                <ref role="3cqZAo" node="8T" resolve="propertyValue" />
+                <node concept="cd27G" id="9j" role="lGtFl">
+                  <node concept="3u3nmq" id="9k" role="cd27D">
                     <property role="3u3nmv" value="5258059200641972644" />
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="9v" role="2OqNvi">
+              <node concept="liA8E" id="9h" role="2OqNvi">
                 <ref role="37wK5l" to="wyt6:~String.matches(java.lang.String)" resolve="matches" />
-                <node concept="Xl_RD" id="9z" role="37wK5m">
+                <node concept="Xl_RD" id="9l" role="37wK5m">
                   <property role="Xl_RC" value="([^%]|\\\\%)*" />
-                  <node concept="cd27G" id="9_" role="lGtFl">
-                    <node concept="3u3nmq" id="9A" role="cd27D">
+                  <node concept="cd27G" id="9n" role="lGtFl">
+                    <node concept="3u3nmq" id="9o" role="cd27D">
                       <property role="3u3nmv" value="5258059200642017385" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="9$" role="lGtFl">
-                  <node concept="3u3nmq" id="9B" role="cd27D">
+                <node concept="cd27G" id="9m" role="lGtFl">
+                  <node concept="3u3nmq" id="9p" role="cd27D">
                     <property role="3u3nmv" value="5258059200642017379" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="9w" role="lGtFl">
-                <node concept="3u3nmq" id="9C" role="cd27D">
+              <node concept="cd27G" id="9i" role="lGtFl">
+                <node concept="3u3nmq" id="9q" role="cd27D">
                   <property role="3u3nmv" value="5258059200641974059" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="9t" role="lGtFl">
-              <node concept="3u3nmq" id="9D" role="cd27D">
+            <node concept="cd27G" id="9f" role="lGtFl">
+              <node concept="3u3nmq" id="9r" role="cd27D">
                 <property role="3u3nmv" value="5258059200641972646" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="9r" role="lGtFl">
-            <node concept="3u3nmq" id="9E" role="cd27D">
+          <node concept="cd27G" id="9d" role="lGtFl">
+            <node concept="3u3nmq" id="9s" role="cd27D">
               <property role="3u3nmv" value="5258059200641965864" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="9b" role="lGtFl">
-          <node concept="3u3nmq" id="9F" role="cd27D">
+        <node concept="cd27G" id="8X" role="lGtFl">
+          <node concept="3u3nmq" id="9t" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="6g" role="1B3o_S">
-        <node concept="cd27G" id="9G" role="lGtFl">
-          <node concept="3u3nmq" id="9H" role="cd27D">
+      <node concept="3Tm1VV" id="62" role="1B3o_S">
+        <node concept="cd27G" id="9u" role="lGtFl">
+          <node concept="3u3nmq" id="9v" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="6h" role="1zkMxy">
+      <node concept="3uibUv" id="63" role="1zkMxy">
         <ref role="3uigEE" to="79pl:~BasePropertyConstraintsDescriptor" resolve="BasePropertyConstraintsDescriptor" />
-        <node concept="cd27G" id="9I" role="lGtFl">
-          <node concept="3u3nmq" id="9J" role="cd27D">
+        <node concept="cd27G" id="9w" role="lGtFl">
+          <node concept="3u3nmq" id="9x" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="6i" role="lGtFl">
-        <node concept="3u3nmq" id="9K" role="cd27D">
+      <node concept="cd27G" id="64" role="lGtFl">
+        <node concept="3u3nmq" id="9y" role="cd27D">
           <property role="3u3nmv" value="5258059200641965860" />
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="5A" role="jymVt">
+    <node concept="3clFb_" id="5l" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getSpecifiedProperties" />
       <property role="DiZV1" value="false" />
-      <node concept="3Tmbuc" id="9L" role="1B3o_S">
-        <node concept="cd27G" id="9Q" role="lGtFl">
-          <node concept="3u3nmq" id="9R" role="cd27D">
+      <node concept="3Tmbuc" id="9z" role="1B3o_S">
+        <node concept="cd27G" id="9C" role="lGtFl">
+          <node concept="3u3nmq" id="9D" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="9M" role="3clF45">
+      <node concept="3uibUv" id="9$" role="3clF45">
         <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
-        <node concept="3uibUv" id="9S" role="11_B2D">
+        <node concept="3uibUv" id="9E" role="11_B2D">
           <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
-          <node concept="cd27G" id="9V" role="lGtFl">
-            <node concept="3u3nmq" id="9W" role="cd27D">
+          <node concept="cd27G" id="9H" role="lGtFl">
+            <node concept="3u3nmq" id="9I" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3uibUv" id="9T" role="11_B2D">
+        <node concept="3uibUv" id="9F" role="11_B2D">
           <ref role="3uigEE" to="ze1i:~PropertyConstraintsDescriptor" resolve="PropertyConstraintsDescriptor" />
-          <node concept="cd27G" id="9X" role="lGtFl">
-            <node concept="3u3nmq" id="9Y" role="cd27D">
+          <node concept="cd27G" id="9J" role="lGtFl">
+            <node concept="3u3nmq" id="9K" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="9U" role="lGtFl">
-          <node concept="3u3nmq" id="9Z" role="cd27D">
+        <node concept="cd27G" id="9G" role="lGtFl">
+          <node concept="3u3nmq" id="9L" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="3clFbS" id="9N" role="3clF47">
-        <node concept="3cpWs8" id="a0" role="3cqZAp">
-          <node concept="3cpWsn" id="a4" role="3cpWs9">
+      <node concept="3clFbS" id="9_" role="3clF47">
+        <node concept="3cpWs8" id="9M" role="3cqZAp">
+          <node concept="3cpWsn" id="9Q" role="3cpWs9">
             <property role="TrG5h" value="properties" />
-            <node concept="3uibUv" id="a6" role="1tU5fm">
+            <node concept="3uibUv" id="9S" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
-              <node concept="3uibUv" id="a9" role="11_B2D">
+              <node concept="3uibUv" id="9V" role="11_B2D">
                 <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
-                <node concept="cd27G" id="ac" role="lGtFl">
-                  <node concept="3u3nmq" id="ad" role="cd27D">
+                <node concept="cd27G" id="9Y" role="lGtFl">
+                  <node concept="3u3nmq" id="9Z" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="3uibUv" id="aa" role="11_B2D">
+              <node concept="3uibUv" id="9W" role="11_B2D">
                 <ref role="3uigEE" to="ze1i:~PropertyConstraintsDescriptor" resolve="PropertyConstraintsDescriptor" />
-                <node concept="cd27G" id="ae" role="lGtFl">
-                  <node concept="3u3nmq" id="af" role="cd27D">
+                <node concept="cd27G" id="a0" role="lGtFl">
+                  <node concept="3u3nmq" id="a1" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="ab" role="lGtFl">
-                <node concept="3u3nmq" id="ag" role="cd27D">
+              <node concept="cd27G" id="9X" role="lGtFl">
+                <node concept="3u3nmq" id="a2" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="2ShNRf" id="a7" role="33vP2m">
-              <node concept="1pGfFk" id="ah" role="2ShVmc">
+            <node concept="2ShNRf" id="9T" role="33vP2m">
+              <node concept="1pGfFk" id="a3" role="2ShVmc">
                 <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;()" resolve="HashMap" />
-                <node concept="3uibUv" id="aj" role="1pMfVU">
+                <node concept="3uibUv" id="a5" role="1pMfVU">
                   <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
-                  <node concept="cd27G" id="am" role="lGtFl">
-                    <node concept="3u3nmq" id="an" role="cd27D">
+                  <node concept="cd27G" id="a8" role="lGtFl">
+                    <node concept="3u3nmq" id="a9" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="3uibUv" id="ak" role="1pMfVU">
+                <node concept="3uibUv" id="a6" role="1pMfVU">
                   <ref role="3uigEE" to="ze1i:~PropertyConstraintsDescriptor" resolve="PropertyConstraintsDescriptor" />
-                  <node concept="cd27G" id="ao" role="lGtFl">
-                    <node concept="3u3nmq" id="ap" role="cd27D">
+                  <node concept="cd27G" id="aa" role="lGtFl">
+                    <node concept="3u3nmq" id="ab" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="cd27G" id="al" role="lGtFl">
-                  <node concept="3u3nmq" id="aq" role="cd27D">
+                <node concept="cd27G" id="a7" role="lGtFl">
+                  <node concept="3u3nmq" id="ac" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="cd27G" id="ai" role="lGtFl">
-                <node concept="3u3nmq" id="ar" role="cd27D">
+              <node concept="cd27G" id="a4" role="lGtFl">
+                <node concept="3u3nmq" id="ad" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="a8" role="lGtFl">
-              <node concept="3u3nmq" id="as" role="cd27D">
+            <node concept="cd27G" id="9U" role="lGtFl">
+              <node concept="3u3nmq" id="ae" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="a5" role="lGtFl">
-            <node concept="3u3nmq" id="at" role="cd27D">
+          <node concept="cd27G" id="9R" role="lGtFl">
+            <node concept="3u3nmq" id="af" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="a1" role="3cqZAp">
-          <node concept="2OqwBi" id="au" role="3clFbG">
-            <node concept="37vLTw" id="aw" role="2Oq$k0">
-              <ref role="3cqZAo" node="a4" resolve="properties" />
-              <node concept="cd27G" id="az" role="lGtFl">
-                <node concept="3u3nmq" id="a$" role="cd27D">
+        <node concept="3clFbF" id="9N" role="3cqZAp">
+          <node concept="2OqwBi" id="ag" role="3clFbG">
+            <node concept="37vLTw" id="ai" role="2Oq$k0">
+              <ref role="3cqZAo" node="9Q" resolve="properties" />
+              <node concept="cd27G" id="al" role="lGtFl">
+                <node concept="3u3nmq" id="am" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="liA8E" id="ax" role="2OqNvi">
+            <node concept="liA8E" id="aj" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
-              <node concept="2YIFZM" id="a_" role="37wK5m">
+              <node concept="2YIFZM" id="an" role="37wK5m">
                 <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
                 <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String)" resolve="getProperty" />
-                <node concept="1adDum" id="aC" role="37wK5m">
+                <node concept="1adDum" id="aq" role="37wK5m">
                   <property role="1adDun" value="0xad93155d79b24759L" />
-                  <node concept="cd27G" id="aI" role="lGtFl">
-                    <node concept="3u3nmq" id="aJ" role="cd27D">
+                  <node concept="cd27G" id="aw" role="lGtFl">
+                    <node concept="3u3nmq" id="ax" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="1adDum" id="aD" role="37wK5m">
+                <node concept="1adDum" id="ar" role="37wK5m">
                   <property role="1adDun" value="0xb10c55123e763903L" />
-                  <node concept="cd27G" id="aK" role="lGtFl">
+                  <node concept="cd27G" id="ay" role="lGtFl">
+                    <node concept="3u3nmq" id="az" role="cd27D">
+                      <property role="3u3nmv" value="5258059200641965860" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="1adDum" id="as" role="37wK5m">
+                  <property role="1adDun" value="0x48f860fc0e362dc5L" />
+                  <node concept="cd27G" id="a$" role="lGtFl">
+                    <node concept="3u3nmq" id="a_" role="cd27D">
+                      <property role="3u3nmv" value="5258059200641965860" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="1adDum" id="at" role="37wK5m">
+                  <property role="1adDun" value="0x48f860fc0e362dc6L" />
+                  <node concept="cd27G" id="aA" role="lGtFl">
+                    <node concept="3u3nmq" id="aB" role="cd27D">
+                      <property role="3u3nmv" value="5258059200641965860" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="au" role="37wK5m">
+                  <property role="Xl_RC" value="message" />
+                  <node concept="cd27G" id="aC" role="lGtFl">
+                    <node concept="3u3nmq" id="aD" role="cd27D">
+                      <property role="3u3nmv" value="5258059200641965860" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="cd27G" id="av" role="lGtFl">
+                  <node concept="3u3nmq" id="aE" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641965860" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2ShNRf" id="ao" role="37wK5m">
+                <node concept="1pGfFk" id="aF" role="2ShVmc">
+                  <ref role="37wK5l" node="5X" resolve="LiteralMessageExpression_Constraints.Message_Property" />
+                  <node concept="Xjq3P" id="aH" role="37wK5m">
+                    <node concept="cd27G" id="aJ" role="lGtFl">
+                      <node concept="3u3nmq" id="aK" role="cd27D">
+                        <property role="3u3nmv" value="5258059200641965860" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="cd27G" id="aI" role="lGtFl">
                     <node concept="3u3nmq" id="aL" role="cd27D">
                       <property role="3u3nmv" value="5258059200641965860" />
                     </node>
                   </node>
                 </node>
-                <node concept="1adDum" id="aE" role="37wK5m">
-                  <property role="1adDun" value="0x48f860fc0e362dc5L" />
-                  <node concept="cd27G" id="aM" role="lGtFl">
-                    <node concept="3u3nmq" id="aN" role="cd27D">
-                      <property role="3u3nmv" value="5258059200641965860" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="1adDum" id="aF" role="37wK5m">
-                  <property role="1adDun" value="0x48f860fc0e362dc6L" />
-                  <node concept="cd27G" id="aO" role="lGtFl">
-                    <node concept="3u3nmq" id="aP" role="cd27D">
-                      <property role="3u3nmv" value="5258059200641965860" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="Xl_RD" id="aG" role="37wK5m">
-                  <property role="Xl_RC" value="message" />
-                  <node concept="cd27G" id="aQ" role="lGtFl">
-                    <node concept="3u3nmq" id="aR" role="cd27D">
-                      <property role="3u3nmv" value="5258059200641965860" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="cd27G" id="aH" role="lGtFl">
-                  <node concept="3u3nmq" id="aS" role="cd27D">
+                <node concept="cd27G" id="aG" role="lGtFl">
+                  <node concept="3u3nmq" id="aM" role="cd27D">
                     <property role="3u3nmv" value="5258059200641965860" />
                   </node>
                 </node>
               </node>
-              <node concept="2ShNRf" id="aA" role="37wK5m">
-                <node concept="1pGfFk" id="aT" role="2ShVmc">
-                  <ref role="37wK5l" node="6b" resolve="LiteralMessageExpression_Constraints.Message_Property" />
-                  <node concept="Xjq3P" id="aV" role="37wK5m">
-                    <node concept="cd27G" id="aX" role="lGtFl">
-                      <node concept="3u3nmq" id="aY" role="cd27D">
-                        <property role="3u3nmv" value="5258059200641965860" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="cd27G" id="aW" role="lGtFl">
-                    <node concept="3u3nmq" id="aZ" role="cd27D">
-                      <property role="3u3nmv" value="5258059200641965860" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="cd27G" id="aU" role="lGtFl">
-                  <node concept="3u3nmq" id="b0" role="cd27D">
-                    <property role="3u3nmv" value="5258059200641965860" />
-                  </node>
-                </node>
-              </node>
-              <node concept="cd27G" id="aB" role="lGtFl">
-                <node concept="3u3nmq" id="b1" role="cd27D">
+              <node concept="cd27G" id="ap" role="lGtFl">
+                <node concept="3u3nmq" id="aN" role="cd27D">
                   <property role="3u3nmv" value="5258059200641965860" />
                 </node>
               </node>
             </node>
-            <node concept="cd27G" id="ay" role="lGtFl">
-              <node concept="3u3nmq" id="b2" role="cd27D">
+            <node concept="cd27G" id="ak" role="lGtFl">
+              <node concept="3u3nmq" id="aO" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="av" role="lGtFl">
-            <node concept="3u3nmq" id="b3" role="cd27D">
+          <node concept="cd27G" id="ah" role="lGtFl">
+            <node concept="3u3nmq" id="aP" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="a2" role="3cqZAp">
-          <node concept="37vLTw" id="b4" role="3clFbG">
-            <ref role="3cqZAo" node="a4" resolve="properties" />
-            <node concept="cd27G" id="b6" role="lGtFl">
-              <node concept="3u3nmq" id="b7" role="cd27D">
+        <node concept="3clFbF" id="9O" role="3cqZAp">
+          <node concept="37vLTw" id="aQ" role="3clFbG">
+            <ref role="3cqZAo" node="9Q" resolve="properties" />
+            <node concept="cd27G" id="aS" role="lGtFl">
+              <node concept="3u3nmq" id="aT" role="cd27D">
                 <property role="3u3nmv" value="5258059200641965860" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="b5" role="lGtFl">
-            <node concept="3u3nmq" id="b8" role="cd27D">
+          <node concept="cd27G" id="aR" role="lGtFl">
+            <node concept="3u3nmq" id="aU" role="cd27D">
               <property role="3u3nmv" value="5258059200641965860" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="a3" role="lGtFl">
-          <node concept="3u3nmq" id="b9" role="cd27D">
+        <node concept="cd27G" id="9P" role="lGtFl">
+          <node concept="3u3nmq" id="aV" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="9O" role="2AJF6D">
+      <node concept="2AHcQZ" id="9A" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        <node concept="cd27G" id="ba" role="lGtFl">
-          <node concept="3u3nmq" id="bb" role="cd27D">
+        <node concept="cd27G" id="aW" role="lGtFl">
+          <node concept="3u3nmq" id="aX" role="cd27D">
             <property role="3u3nmv" value="5258059200641965860" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="9P" role="lGtFl">
-        <node concept="3u3nmq" id="bc" role="cd27D">
+      <node concept="cd27G" id="9B" role="lGtFl">
+        <node concept="3u3nmq" id="aY" role="cd27D">
           <property role="3u3nmv" value="5258059200641965860" />
         </node>
       </node>
     </node>
-    <node concept="cd27G" id="5B" role="lGtFl">
-      <node concept="3u3nmq" id="bd" role="cd27D">
+    <node concept="cd27G" id="5m" role="lGtFl">
+      <node concept="3u3nmq" id="aZ" role="cd27D">
         <property role="3u3nmv" value="5258059200641965860" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="be">
+  <node concept="312cEu" id="b0">
     <property role="TrG5h" value="MacroMessageExpression_Constraints" />
-    <node concept="3Tm1VV" id="bf" role="1B3o_S">
-      <node concept="cd27G" id="bk" role="lGtFl">
-        <node concept="3u3nmq" id="bl" role="cd27D">
+    <node concept="3Tm1VV" id="b1" role="1B3o_S">
+      <node concept="cd27G" id="b6" role="lGtFl">
+        <node concept="3u3nmq" id="b7" role="cd27D">
           <property role="3u3nmv" value="5258059200644194848" />
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="bg" role="1zkMxy">
+    <node concept="3uibUv" id="b2" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
-      <node concept="cd27G" id="bm" role="lGtFl">
-        <node concept="3u3nmq" id="bn" role="cd27D">
+      <node concept="cd27G" id="b8" role="lGtFl">
+        <node concept="3u3nmq" id="b9" role="cd27D">
           <property role="3u3nmv" value="5258059200644194848" />
         </node>
       </node>
     </node>
-    <node concept="3clFbW" id="bh" role="jymVt">
-      <node concept="3cqZAl" id="bo" role="3clF45">
-        <node concept="cd27G" id="bs" role="lGtFl">
-          <node concept="3u3nmq" id="bt" role="cd27D">
+    <node concept="3clFbW" id="b3" role="jymVt">
+      <node concept="3cqZAl" id="ba" role="3clF45">
+        <node concept="cd27G" id="be" role="lGtFl">
+          <node concept="3u3nmq" id="bf" role="cd27D">
             <property role="3u3nmv" value="5258059200644194848" />
           </node>
         </node>
       </node>
-      <node concept="3clFbS" id="bp" role="3clF47">
-        <node concept="XkiVB" id="bu" role="3cqZAp">
+      <node concept="3clFbS" id="bb" role="3clF47">
+        <node concept="XkiVB" id="bg" role="3cqZAp">
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-          <node concept="2YIFZM" id="bw" role="37wK5m">
-            <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
-            <node concept="1adDum" id="by" role="37wK5m">
-              <property role="1adDun" value="0xad93155d79b24759L" />
-              <node concept="cd27G" id="bB" role="lGtFl">
-                <node concept="3u3nmq" id="bC" role="cd27D">
+          <node concept="1BaE9c" id="bi" role="37wK5m">
+            <property role="1BaxDp" value="MacroMessageExpression_203c595" />
+            <node concept="2YIFZM" id="bk" role="1Bazha">
+              <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
+              <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
+              <node concept="1adDum" id="bm" role="37wK5m">
+                <property role="1adDun" value="0xad93155d79b24759L" />
+                <node concept="cd27G" id="br" role="lGtFl">
+                  <node concept="3u3nmq" id="bs" role="cd27D">
+                    <property role="3u3nmv" value="5258059200644194848" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="bn" role="37wK5m">
+                <property role="1adDun" value="0xb10c55123e763903L" />
+                <node concept="cd27G" id="bt" role="lGtFl">
+                  <node concept="3u3nmq" id="bu" role="cd27D">
+                    <property role="3u3nmv" value="5258059200644194848" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="bo" role="37wK5m">
+                <property role="1adDun" value="0x48f860fc0e41e4a2L" />
+                <node concept="cd27G" id="bv" role="lGtFl">
+                  <node concept="3u3nmq" id="bw" role="cd27D">
+                    <property role="3u3nmv" value="5258059200644194848" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Xl_RD" id="bp" role="37wK5m">
+                <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.MacroMessageExpression" />
+                <node concept="cd27G" id="bx" role="lGtFl">
+                  <node concept="3u3nmq" id="by" role="cd27D">
+                    <property role="3u3nmv" value="5258059200644194848" />
+                  </node>
+                </node>
+              </node>
+              <node concept="cd27G" id="bq" role="lGtFl">
+                <node concept="3u3nmq" id="bz" role="cd27D">
                   <property role="3u3nmv" value="5258059200644194848" />
                 </node>
               </node>
             </node>
-            <node concept="1adDum" id="bz" role="37wK5m">
-              <property role="1adDun" value="0xb10c55123e763903L" />
-              <node concept="cd27G" id="bD" role="lGtFl">
-                <node concept="3u3nmq" id="bE" role="cd27D">
-                  <property role="3u3nmv" value="5258059200644194848" />
-                </node>
-              </node>
-            </node>
-            <node concept="1adDum" id="b$" role="37wK5m">
-              <property role="1adDun" value="0x48f860fc0e41e4a2L" />
-              <node concept="cd27G" id="bF" role="lGtFl">
-                <node concept="3u3nmq" id="bG" role="cd27D">
-                  <property role="3u3nmv" value="5258059200644194848" />
-                </node>
-              </node>
-            </node>
-            <node concept="Xl_RD" id="b_" role="37wK5m">
-              <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.MacroMessageExpression" />
-              <node concept="cd27G" id="bH" role="lGtFl">
-                <node concept="3u3nmq" id="bI" role="cd27D">
-                  <property role="3u3nmv" value="5258059200644194848" />
-                </node>
-              </node>
-            </node>
-            <node concept="cd27G" id="bA" role="lGtFl">
-              <node concept="3u3nmq" id="bJ" role="cd27D">
+            <node concept="cd27G" id="bl" role="lGtFl">
+              <node concept="3u3nmq" id="b$" role="cd27D">
                 <property role="3u3nmv" value="5258059200644194848" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="bx" role="lGtFl">
-            <node concept="3u3nmq" id="bK" role="cd27D">
+          <node concept="cd27G" id="bj" role="lGtFl">
+            <node concept="3u3nmq" id="b_" role="cd27D">
               <property role="3u3nmv" value="5258059200644194848" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="bv" role="lGtFl">
-          <node concept="3u3nmq" id="bL" role="cd27D">
+        <node concept="cd27G" id="bh" role="lGtFl">
+          <node concept="3u3nmq" id="bA" role="cd27D">
             <property role="3u3nmv" value="5258059200644194848" />
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="bq" role="1B3o_S">
-        <node concept="cd27G" id="bM" role="lGtFl">
-          <node concept="3u3nmq" id="bN" role="cd27D">
+      <node concept="3Tm1VV" id="bc" role="1B3o_S">
+        <node concept="cd27G" id="bB" role="lGtFl">
+          <node concept="3u3nmq" id="bC" role="cd27D">
             <property role="3u3nmv" value="5258059200644194848" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="br" role="lGtFl">
-        <node concept="3u3nmq" id="bO" role="cd27D">
+      <node concept="cd27G" id="bd" role="lGtFl">
+        <node concept="3u3nmq" id="bD" role="cd27D">
           <property role="3u3nmv" value="5258059200644194848" />
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="bi" role="jymVt">
-      <node concept="cd27G" id="bP" role="lGtFl">
-        <node concept="3u3nmq" id="bQ" role="cd27D">
+    <node concept="2tJIrI" id="b4" role="jymVt">
+      <node concept="cd27G" id="bE" role="lGtFl">
+        <node concept="3u3nmq" id="bF" role="cd27D">
           <property role="3u3nmv" value="5258059200644194848" />
         </node>
       </node>
     </node>
-    <node concept="cd27G" id="bj" role="lGtFl">
-      <node concept="3u3nmq" id="bR" role="cd27D">
+    <node concept="cd27G" id="b5" role="lGtFl">
+      <node concept="3u3nmq" id="bG" role="cd27D">
         <property role="3u3nmv" value="5258059200644194848" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="bS">
+  <node concept="312cEu" id="bH">
     <property role="TrG5h" value="MessageExpression_Constraints" />
-    <node concept="3Tm1VV" id="bT" role="1B3o_S">
-      <node concept="cd27G" id="bZ" role="lGtFl">
-        <node concept="3u3nmq" id="c0" role="cd27D">
+    <node concept="3Tm1VV" id="bI" role="1B3o_S">
+      <node concept="cd27G" id="bO" role="lGtFl">
+        <node concept="3u3nmq" id="bP" role="cd27D">
           <property role="3u3nmv" value="5258059200641720568" />
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="bU" role="1zkMxy">
+    <node concept="3uibUv" id="bJ" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
-      <node concept="cd27G" id="c1" role="lGtFl">
-        <node concept="3u3nmq" id="c2" role="cd27D">
+      <node concept="cd27G" id="bQ" role="lGtFl">
+        <node concept="3u3nmq" id="bR" role="cd27D">
           <property role="3u3nmv" value="5258059200641720568" />
         </node>
       </node>
     </node>
-    <node concept="3clFbW" id="bV" role="jymVt">
-      <node concept="3cqZAl" id="c3" role="3clF45">
-        <node concept="cd27G" id="c7" role="lGtFl">
-          <node concept="3u3nmq" id="c8" role="cd27D">
+    <node concept="3clFbW" id="bK" role="jymVt">
+      <node concept="3cqZAl" id="bS" role="3clF45">
+        <node concept="cd27G" id="bW" role="lGtFl">
+          <node concept="3u3nmq" id="bX" role="cd27D">
             <property role="3u3nmv" value="5258059200641720568" />
           </node>
         </node>
       </node>
-      <node concept="3clFbS" id="c4" role="3clF47">
-        <node concept="XkiVB" id="c9" role="3cqZAp">
+      <node concept="3clFbS" id="bT" role="3clF47">
+        <node concept="XkiVB" id="bY" role="3cqZAp">
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-          <node concept="2YIFZM" id="cb" role="37wK5m">
-            <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
-            <node concept="1adDum" id="cd" role="37wK5m">
-              <property role="1adDun" value="0xad93155d79b24759L" />
-              <node concept="cd27G" id="ci" role="lGtFl">
-                <node concept="3u3nmq" id="cj" role="cd27D">
+          <node concept="1BaE9c" id="c0" role="37wK5m">
+            <property role="1BaxDp" value="MessageExpression_d1e3ef57" />
+            <node concept="2YIFZM" id="c2" role="1Bazha">
+              <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
+              <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
+              <node concept="1adDum" id="c4" role="37wK5m">
+                <property role="1adDun" value="0xad93155d79b24759L" />
+                <node concept="cd27G" id="c9" role="lGtFl">
+                  <node concept="3u3nmq" id="ca" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="c5" role="37wK5m">
+                <property role="1adDun" value="0xb10c55123e763903L" />
+                <node concept="cd27G" id="cb" role="lGtFl">
+                  <node concept="3u3nmq" id="cc" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="c6" role="37wK5m">
+                <property role="1adDun" value="0x48f860fc0e362dc4L" />
+                <node concept="cd27G" id="cd" role="lGtFl">
+                  <node concept="3u3nmq" id="ce" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Xl_RD" id="c7" role="37wK5m">
+                <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.MessageExpression" />
+                <node concept="cd27G" id="cf" role="lGtFl">
+                  <node concept="3u3nmq" id="cg" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="cd27G" id="c8" role="lGtFl">
+                <node concept="3u3nmq" id="ch" role="cd27D">
                   <property role="3u3nmv" value="5258059200641720568" />
                 </node>
               </node>
             </node>
-            <node concept="1adDum" id="ce" role="37wK5m">
-              <property role="1adDun" value="0xb10c55123e763903L" />
-              <node concept="cd27G" id="ck" role="lGtFl">
-                <node concept="3u3nmq" id="cl" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641720568" />
-                </node>
-              </node>
-            </node>
-            <node concept="1adDum" id="cf" role="37wK5m">
-              <property role="1adDun" value="0x48f860fc0e362dc4L" />
-              <node concept="cd27G" id="cm" role="lGtFl">
-                <node concept="3u3nmq" id="cn" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641720568" />
-                </node>
-              </node>
-            </node>
-            <node concept="Xl_RD" id="cg" role="37wK5m">
-              <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.MessageExpression" />
-              <node concept="cd27G" id="co" role="lGtFl">
-                <node concept="3u3nmq" id="cp" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641720568" />
-                </node>
-              </node>
-            </node>
-            <node concept="cd27G" id="ch" role="lGtFl">
-              <node concept="3u3nmq" id="cq" role="cd27D">
+            <node concept="cd27G" id="c3" role="lGtFl">
+              <node concept="3u3nmq" id="ci" role="cd27D">
                 <property role="3u3nmv" value="5258059200641720568" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="cc" role="lGtFl">
-            <node concept="3u3nmq" id="cr" role="cd27D">
+          <node concept="cd27G" id="c1" role="lGtFl">
+            <node concept="3u3nmq" id="cj" role="cd27D">
               <property role="3u3nmv" value="5258059200641720568" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="ca" role="lGtFl">
-          <node concept="3u3nmq" id="cs" role="cd27D">
+        <node concept="cd27G" id="bZ" role="lGtFl">
+          <node concept="3u3nmq" id="ck" role="cd27D">
             <property role="3u3nmv" value="5258059200641720568" />
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="c5" role="1B3o_S">
-        <node concept="cd27G" id="ct" role="lGtFl">
-          <node concept="3u3nmq" id="cu" role="cd27D">
+      <node concept="3Tm1VV" id="bU" role="1B3o_S">
+        <node concept="cd27G" id="cl" role="lGtFl">
+          <node concept="3u3nmq" id="cm" role="cd27D">
             <property role="3u3nmv" value="5258059200641720568" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="c6" role="lGtFl">
-        <node concept="3u3nmq" id="cv" role="cd27D">
+      <node concept="cd27G" id="bV" role="lGtFl">
+        <node concept="3u3nmq" id="cn" role="cd27D">
           <property role="3u3nmv" value="5258059200641720568" />
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="bW" role="jymVt">
-      <node concept="cd27G" id="cw" role="lGtFl">
-        <node concept="3u3nmq" id="cx" role="cd27D">
+    <node concept="2tJIrI" id="bL" role="jymVt">
+      <node concept="cd27G" id="co" role="lGtFl">
+        <node concept="3u3nmq" id="cp" role="cd27D">
           <property role="3u3nmv" value="5258059200641720568" />
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="bX" role="jymVt">
+    <node concept="3clFb_" id="bM" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDefaultConcreteConcept" />
       <property role="DiZV1" value="false" />
-      <node concept="2AHcQZ" id="cy" role="2AJF6D">
+      <node concept="2AHcQZ" id="cq" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        <node concept="cd27G" id="cB" role="lGtFl">
-          <node concept="3u3nmq" id="cC" role="cd27D">
+        <node concept="cd27G" id="cv" role="lGtFl">
+          <node concept="3u3nmq" id="cw" role="cd27D">
             <property role="3u3nmv" value="5258059200641720568" />
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="cz" role="3clF45">
+      <node concept="3uibUv" id="cr" role="3clF45">
         <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
-        <node concept="cd27G" id="cD" role="lGtFl">
-          <node concept="3u3nmq" id="cE" role="cd27D">
+        <node concept="cd27G" id="cx" role="lGtFl">
+          <node concept="3u3nmq" id="cy" role="cd27D">
             <property role="3u3nmv" value="5258059200641720568" />
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="c$" role="1B3o_S">
-        <node concept="cd27G" id="cF" role="lGtFl">
-          <node concept="3u3nmq" id="cG" role="cd27D">
+      <node concept="3Tm1VV" id="cs" role="1B3o_S">
+        <node concept="cd27G" id="cz" role="lGtFl">
+          <node concept="3u3nmq" id="c$" role="cd27D">
             <property role="3u3nmv" value="5258059200641720568" />
           </node>
         </node>
       </node>
-      <node concept="3clFbS" id="c_" role="3clF47">
-        <node concept="3clFbF" id="cH" role="3cqZAp">
-          <node concept="2YIFZM" id="cJ" role="3clFbG">
-            <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
-            <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
-            <node concept="1adDum" id="cL" role="37wK5m">
-              <property role="1adDun" value="0xad93155d79b24759L" />
-              <node concept="cd27G" id="cQ" role="lGtFl">
-                <node concept="3u3nmq" id="cR" role="cd27D">
+      <node concept="3clFbS" id="ct" role="3clF47">
+        <node concept="3clFbF" id="c_" role="3cqZAp">
+          <node concept="1BaE9c" id="cB" role="3clFbG">
+            <property role="1BaxDp" value="LiteralMessageExpression_d1e3ef58" />
+            <node concept="2YIFZM" id="cD" role="1Bazha">
+              <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
+              <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
+              <node concept="1adDum" id="cF" role="37wK5m">
+                <property role="1adDun" value="0xad93155d79b24759L" />
+                <node concept="cd27G" id="cK" role="lGtFl">
+                  <node concept="3u3nmq" id="cL" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="cG" role="37wK5m">
+                <property role="1adDun" value="0xb10c55123e763903L" />
+                <node concept="cd27G" id="cM" role="lGtFl">
+                  <node concept="3u3nmq" id="cN" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1adDum" id="cH" role="37wK5m">
+                <property role="1adDun" value="0x48f860fc0e362dc5L" />
+                <node concept="cd27G" id="cO" role="lGtFl">
+                  <node concept="3u3nmq" id="cP" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="Xl_RD" id="cI" role="37wK5m">
+                <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" />
+                <node concept="cd27G" id="cQ" role="lGtFl">
+                  <node concept="3u3nmq" id="cR" role="cd27D">
+                    <property role="3u3nmv" value="5258059200641720568" />
+                  </node>
+                </node>
+              </node>
+              <node concept="cd27G" id="cJ" role="lGtFl">
+                <node concept="3u3nmq" id="cS" role="cd27D">
                   <property role="3u3nmv" value="5258059200641720568" />
                 </node>
               </node>
             </node>
-            <node concept="1adDum" id="cM" role="37wK5m">
-              <property role="1adDun" value="0xb10c55123e763903L" />
-              <node concept="cd27G" id="cS" role="lGtFl">
-                <node concept="3u3nmq" id="cT" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641720568" />
-                </node>
-              </node>
-            </node>
-            <node concept="1adDum" id="cN" role="37wK5m">
-              <property role="1adDun" value="0x48f860fc0e362dc5L" />
-              <node concept="cd27G" id="cU" role="lGtFl">
-                <node concept="3u3nmq" id="cV" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641720568" />
-                </node>
-              </node>
-            </node>
-            <node concept="Xl_RD" id="cO" role="37wK5m">
-              <property role="Xl_RC" value="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" />
-              <node concept="cd27G" id="cW" role="lGtFl">
-                <node concept="3u3nmq" id="cX" role="cd27D">
-                  <property role="3u3nmv" value="5258059200641720568" />
-                </node>
-              </node>
-            </node>
-            <node concept="cd27G" id="cP" role="lGtFl">
-              <node concept="3u3nmq" id="cY" role="cd27D">
+            <node concept="cd27G" id="cE" role="lGtFl">
+              <node concept="3u3nmq" id="cT" role="cd27D">
                 <property role="3u3nmv" value="5258059200641720568" />
               </node>
             </node>
           </node>
-          <node concept="cd27G" id="cK" role="lGtFl">
-            <node concept="3u3nmq" id="cZ" role="cd27D">
+          <node concept="cd27G" id="cC" role="lGtFl">
+            <node concept="3u3nmq" id="cU" role="cd27D">
               <property role="3u3nmv" value="5258059200641720568" />
             </node>
           </node>
         </node>
-        <node concept="cd27G" id="cI" role="lGtFl">
-          <node concept="3u3nmq" id="d0" role="cd27D">
+        <node concept="cd27G" id="cA" role="lGtFl">
+          <node concept="3u3nmq" id="cV" role="cd27D">
             <property role="3u3nmv" value="5258059200641720568" />
           </node>
         </node>
       </node>
-      <node concept="cd27G" id="cA" role="lGtFl">
-        <node concept="3u3nmq" id="d1" role="cd27D">
+      <node concept="cd27G" id="cu" role="lGtFl">
+        <node concept="3u3nmq" id="cW" role="cd27D">
           <property role="3u3nmv" value="5258059200641720568" />
         </node>
       </node>
     </node>
-    <node concept="cd27G" id="bY" role="lGtFl">
-      <node concept="3u3nmq" id="d2" role="cd27D">
+    <node concept="cd27G" id="bN" role="lGtFl">
+      <node concept="3u3nmq" id="cX" role="cd27D">
         <property role="3u3nmv" value="5258059200641720568" />
       </node>
     </node>

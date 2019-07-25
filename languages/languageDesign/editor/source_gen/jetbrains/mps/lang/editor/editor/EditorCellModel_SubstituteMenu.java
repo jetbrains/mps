@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -21,6 +20,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -41,33 +41,34 @@ import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_b(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_c(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_d(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_e(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_f(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_g(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_h(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_i(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_j(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_k(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_l(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_m(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_n(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_o(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_p(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_q(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_r(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_s(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new EditorCellModel_SubstituteMenu.SMP_Param_le0q3j_t(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
-    result.add(new EditorCellModel_SubstituteMenu.SMP_Subconcepts_le0q3j_u());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_a(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_b(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_c(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_d(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_e(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_f(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_g(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_h(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_i(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_j(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_k(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_l(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_m(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_n(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_o(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_p(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_q(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_r(), AUX_le0q3j.CellModel_Constant_27dff49b));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_le0q3j_s(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_le0q3j_t(), AUX_le0q3j.EditorCellModel_226b88d6));
+    result.add(new SMP_Subconcepts_le0q3j_u());
     return result;
   }
 
@@ -89,7 +90,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_a.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_a.Item(_context);
+      SMP_Action_le0q3j_a.Item item = new SMP_Action_le0q3j_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -112,7 +113,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -123,8 +124,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical"), null));
+        SNode result = SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellModel_Collection_26007059, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Vertical_21ecb90d, null));
         return result;
       }
 
@@ -149,7 +150,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_b.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_b.Item(_context);
+      SMP_Action_le0q3j_b.Item item = new SMP_Action_le0q3j_b.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -172,7 +173,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -183,9 +184,9 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical"), null));
-        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), true, false) != null)) {
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Collection_26007059, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Vertical_21ecb90d, null));
+        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_le0q3j.CellModel_Collection_26007059, true, false) != null)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
         return result;
@@ -212,7 +213,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_c.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_c.Item(_context);
+      SMP_Action_le0q3j_c.Item item = new SMP_Action_le0q3j_c.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -235,7 +236,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -246,8 +247,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal"), null));
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Collection_26007059, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Horizontal_21c61206, null));
         return result;
       }
 
@@ -272,7 +273,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_d.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_d.Item(_context);
+      SMP_Action_le0q3j_d.Item item = new SMP_Action_le0q3j_d.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -295,7 +296,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -306,9 +307,9 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal"), null));
-        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), true, false) != null)) {
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Collection_26007059, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Horizontal_21c61206, null));
+        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_le0q3j.CellModel_Collection_26007059, true, false) != null)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
         return result;
@@ -335,7 +336,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_e.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_e.Item(_context);
+      SMP_Action_le0q3j_e.Item item = new SMP_Action_le0q3j_e.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -358,7 +359,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -369,8 +370,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), _context.getCurrentTargetNode());
-        SNodeFactoryOperations.setNewChild(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent"));
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Collection_26007059, _context.getCurrentTargetNode());
+        SNodeFactoryOperations.setNewChild(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), AUX_le0q3j.CellLayout_Indent_3a0f3674);
         return result;
       }
 
@@ -395,7 +396,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_f.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_f.Item(_context);
+      SMP_Action_le0q3j_f.Item item = new SMP_Action_le0q3j_f.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -418,7 +419,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -429,9 +430,9 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), _context.getCurrentTargetNode());
-        SNodeFactoryOperations.setNewChild(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent"));
-        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), true, false) != null)) {
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Collection_26007059, _context.getCurrentTargetNode());
+        SNodeFactoryOperations.setNewChild(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), AUX_le0q3j.CellLayout_Indent_3a0f3674);
+        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_le0q3j.CellModel_Collection_26007059, true, false) != null)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
         return result;
@@ -458,7 +459,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_g.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_g.Item(_context);
+      SMP_Action_le0q3j_g.Item item = new SMP_Action_le0q3j_g.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -481,7 +482,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -492,8 +493,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent"), null));
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefNodeList_ae335dd1, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Indent_3a0f3674, null));
         return result;
       }
 
@@ -518,7 +519,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_h.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_h.Item(_context);
+      SMP_Action_le0q3j_h.Item item = new SMP_Action_le0q3j_h.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -541,7 +542,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -552,8 +553,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent"), null));
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefNodeList_ae335dd1, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Indent_3a0f3674, null));
         return result;
       }
 
@@ -578,7 +579,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_i.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_i.Item(_context);
+      SMP_Action_le0q3j_i.Item item = new SMP_Action_le0q3j_i.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -601,7 +602,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -612,8 +613,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical"), null));
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefNodeList_ae335dd1, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Vertical_21ecb90d, null));
         return result;
       }
 
@@ -638,7 +639,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_j.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_j.Item(_context);
+      SMP_Action_le0q3j_j.Item item = new SMP_Action_le0q3j_j.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -661,7 +662,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -672,9 +673,9 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical"), null));
-        if (SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"))) {
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefNodeList_ae335dd1, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Vertical_21ecb90d, null));
+        if (SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_le0q3j.CellModel_Collection_26007059)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
         return result;
@@ -701,7 +702,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_k.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_k.Item(_context);
+      SMP_Action_le0q3j_k.Item item = new SMP_Action_le0q3j_k.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -724,7 +725,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -735,8 +736,8 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal"), null));
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefNodeList_ae335dd1, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Horizontal_21c61206, null));
         return result;
       }
 
@@ -761,7 +762,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_l.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_l.Item(_context);
+      SMP_Action_le0q3j_l.Item item = new SMP_Action_le0q3j_l.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -784,7 +785,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -795,9 +796,9 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList"), _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal"), null));
-        if (SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"))) {
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefNodeList_ae335dd1, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout"), SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellLayout_Horizontal_21c61206, null));
+        if (SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_le0q3j.CellModel_Collection_26007059)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
         return result;
@@ -824,7 +825,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_m.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_m.Item(_context);
+      SMP_Action_le0q3j_m.Item item = new SMP_Action_le0q3j_m.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -847,7 +848,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -858,7 +859,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell"), _context.getCurrentTargetNode());
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefCell_a9be5399, _context.getCurrentTargetNode());
       }
 
       @Override
@@ -882,7 +883,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_n.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_n.Item(_context);
+      SMP_Action_le0q3j_n.Item item = new SMP_Action_le0q3j_n.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -905,7 +906,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -916,7 +917,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode"), _context.getCurrentTargetNode());
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_RefNode_2d0a6e61, _context.getCurrentTargetNode());
       }
 
       @Override
@@ -940,7 +941,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_o.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_o.Item(_context);
+      SMP_Action_le0q3j_o.Item item = new SMP_Action_le0q3j_o.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -963,7 +964,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -974,7 +975,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property"), _context.getCurrentTargetNode());
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Property_297921b8, _context.getCurrentTargetNode());
       }
 
       @Override
@@ -998,7 +999,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_p.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_p.Item(_context);
+      SMP_Action_le0q3j_p.Item item = new SMP_Action_le0q3j_p.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1021,7 +1022,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -1032,7 +1033,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, "jetbrains.mps.lang.editor.structure.CellModel_Alternation"), _context.getCurrentTargetNode());
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Alternation_fc4574d2, _context.getCurrentTargetNode());
         return result;
       }
 
@@ -1057,7 +1058,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_q.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_q.Item(_context);
+      SMP_Action_le0q3j_q.Item item = new SMP_Action_le0q3j_q.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1080,7 +1081,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -1091,7 +1092,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant"), _context.getCurrentTargetNode());
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Constant_27dff49b, _context.getCurrentTargetNode());
         SPropertyOperations.set(result, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text"), NameUtil.stripQuotes(pattern, "\"", "\""));
         return result;
       }
@@ -1128,7 +1129,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_r.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_r.Item(_context);
+      SMP_Action_le0q3j_r.Item item = new SMP_Action_le0q3j_r.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1151,7 +1152,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant"), context);
+        super(AUX_le0q3j.CellModel_Constant_27dff49b, context);
         _context = context;
       }
 
@@ -1162,7 +1163,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode constant = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant"), _context.getCurrentTargetNode());
+        SNode constant = SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellModel_Constant_27dff49b, _context.getCurrentTargetNode());
         SPropertyOperations.assign(constant, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text"), NameUtil.stripQuotes(pattern, "\"", "\""));
         return constant;
       }
@@ -1199,7 +1200,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_s.Item item = new EditorCellModel_SubstituteMenu.SMP_Action_le0q3j_s.Item(_context);
+      SMP_Action_le0q3j_s.Item item = new SMP_Action_le0q3j_s.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1222,7 +1223,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+        super(AUX_le0q3j.EditorCellModel_226b88d6, context);
         _context = context;
       }
 
@@ -1233,7 +1234,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfa61615ec3L, "jetbrains.mps.lang.editor.structure.CellModel_Error"), _context.getCurrentTargetNode());
+        SNode result = SNodeFactoryOperations.createNewNode(AUX_le0q3j.CellModel_Error_d5140ab9, _context.getCurrentTargetNode());
         SPropertyOperations.set(result, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfa61615ec3L, 0xfa61615ec4L, "text"), NameUtil.stripQuotes(pattern, "!", "!"));
         return result;
       }
@@ -1269,7 +1270,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new EditorCellModel_SubstituteMenu.SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91(parameter).createItems(context);
+      return new SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -1285,13 +1286,13 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      Scope scope = Scope.getScope(_context.getParentNode(), _context.getCurrentTargetNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration"));
+      Scope scope = Scope.getScope(_context.getParentNode(), _context.getCurrentTargetNode(), AUX_le0q3j.EditorComponentDeclaration_2ddc41f7);
       if (scope == null) {
         return Collections.emptyList();
       }
       return Sequence.fromIterable(scope.getAvailableElements("")).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.as(it, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration"));
+          return SNodeOperations.as(it, AUX_le0q3j.EditorComponentDeclaration_2ddc41f7);
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -1308,7 +1309,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        EditorCellModel_SubstituteMenu.SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91.Item item = new EditorCellModel_SubstituteMenu.SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91.Item(_context);
+        SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91.Item item = new SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -1332,7 +1333,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), context);
+          super(AUX_le0q3j.EditorCellModel_226b88d6, context);
           _context = context;
         }
 
@@ -1343,7 +1344,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode component = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component"), null);
+          SNode component = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_le0q3j.CellModel_Component_58bccf85, null);
           SLinkOperations.setTarget(component, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent"), myParameterObject);
           return component;
         }
@@ -1354,7 +1355,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_le0q3j.EditorCellModel_226b88d6, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -1383,7 +1384,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_le0q3j_u extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_le0q3j.EditorCellModel_226b88d6);
     }
     @NotNull
     @Override
@@ -1401,5 +1402,22 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_le0q3j {
+    /*package*/ static final SConcept EditorCellModel_226b88d6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
+    /*package*/ static final SConcept CellModel_Constant_27dff49b = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant");
+    /*package*/ static final SConcept CellModel_Collection_26007059 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
+    /*package*/ static final SConcept CellLayout_Vertical_21ecb90d = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical");
+    /*package*/ static final SConcept CellLayout_Horizontal_21c61206 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal");
+    /*package*/ static final SConcept CellLayout_Indent_3a0f3674 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
+    /*package*/ static final SConcept CellModel_RefNodeList_ae335dd1 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList");
+    /*package*/ static final SConcept CellModel_RefCell_a9be5399 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
+    /*package*/ static final SConcept CellModel_RefNode_2d0a6e61 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
+    /*package*/ static final SConcept CellModel_Property_297921b8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
+    /*package*/ static final SConcept CellModel_Alternation_fc4574d2 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, "jetbrains.mps.lang.editor.structure.CellModel_Alternation");
+    /*package*/ static final SConcept CellModel_Error_d5140ab9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfa61615ec3L, "jetbrains.mps.lang.editor.structure.CellModel_Error");
+    /*package*/ static final SConcept EditorComponentDeclaration_2ddc41f7 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
+    /*package*/ static final SConcept CellModel_Component_58bccf85 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component");
   }
 }

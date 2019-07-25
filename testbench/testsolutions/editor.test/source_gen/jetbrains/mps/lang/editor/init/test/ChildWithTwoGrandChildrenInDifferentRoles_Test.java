@@ -21,7 +21,7 @@ public class ChildWithTwoGrandChildrenInDifferentRoles_Test extends BaseTransfor
 
   @Test
   public void test_ChildWithTwoGrandChildrenInDifferentRoles() throws Throwable {
-    new ChildWithTwoGrandChildrenInDifferentRoles_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

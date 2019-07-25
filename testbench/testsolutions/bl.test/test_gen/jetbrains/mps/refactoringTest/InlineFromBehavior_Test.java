@@ -34,7 +34,7 @@ public class InlineFromBehavior_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineFromBehavior() throws Throwable {
-    new InlineFromBehavior_Test.TestBody(this).test_InlineFromBehavior();
+    new TestBody(this).test_InlineFromBehavior();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

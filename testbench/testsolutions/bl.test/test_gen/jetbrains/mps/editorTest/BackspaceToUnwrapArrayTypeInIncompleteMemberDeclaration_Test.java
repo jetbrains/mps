@@ -21,7 +21,7 @@ public class BackspaceToUnwrapArrayTypeInIncompleteMemberDeclaration_Test extend
 
   @Test
   public void test_BackspaceToUnwrapArrayTypeInIncompleteMemberDeclaration() throws Throwable {
-    new BackspaceToUnwrapArrayTypeInIncompleteMemberDeclaration_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -21,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
@@ -35,14 +35,16 @@ import jetbrains.mps.smodel.ConceptDescendantsCache;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class GenerationContextOp_ContextVarRef_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new GenerationContextOp_ContextVarRef_SubstituteMenu.SMP_Param_adcwvm_a(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef")));
-    result.add(new GenerationContextOp_ContextVarRef_SubstituteMenu.SMP_Subconcepts_adcwvm_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_adcwvm_a(), AUX_adcwvm.GenerationContextOp_ContextVarRef_4f0f126e));
+    result.add(new SMP_Subconcepts_adcwvm_b());
     return result;
   }
 
@@ -63,7 +65,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-      return new GenerationContextOp_ContextVarRef_SubstituteMenu.SMP_Param_adcwvm_a.SMP_Action_adcwvm_a0(parameter).createItems(context);
+      return new SMP_Param_adcwvm_a.SMP_Action_adcwvm_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -82,8 +84,8 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
       SNode n = _context.getParentNode();
       List<String> rv = ListSequence.fromList(new ArrayList<String>());
       while (n != null) {
-        if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider"))) {
-          ListSequence.fromList(rv).addSequence(ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider")))).select(new ISelector<SNode, String>() {
+        if (SNodeOperations.isInstanceOf(n, AUX_adcwvm.ContextVariableProvider_b3c6f7bb)) {
+          ListSequence.fromList(rv).addSequence(ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, AUX_adcwvm.ContextVariableProvider_b3c6f7bb))).select(new ISelector<SNode, String>() {
             public String select(SNode it) {
               return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
             }
@@ -102,7 +104,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        GenerationContextOp_ContextVarRef_SubstituteMenu.SMP_Param_adcwvm_a.SMP_Action_adcwvm_a0.Item item = new GenerationContextOp_ContextVarRef_SubstituteMenu.SMP_Param_adcwvm_a.SMP_Action_adcwvm_a0.Item(_context);
+        SMP_Param_adcwvm_a.SMP_Action_adcwvm_a0.Item item = new SMP_Param_adcwvm_a.SMP_Action_adcwvm_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -126,7 +128,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef"), context);
+          super(AUX_adcwvm.GenerationContextOp_ContextVarRef_4f0f126e, context);
           _context = context;
         }
 
@@ -137,7 +139,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode rv = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef"), null);
+          SNode rv = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_adcwvm.GenerationContextOp_ContextVarRef_4f0f126e, null);
           SPropertyOperations.assign(rv, MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName"), myParameterObject);
           return rv;
         }
@@ -148,7 +150,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_adcwvm.GenerationContextOp_ContextVarRef_4f0f126e, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -171,7 +173,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
   }
   public class SMP_Subconcepts_adcwvm_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_adcwvm.GenerationContextOp_ContextVarRef_4f0f126e);
     }
     @NotNull
     @Override
@@ -189,5 +191,10 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_adcwvm {
+    /*package*/ static final SConcept GenerationContextOp_ContextVarRef_4f0f126e = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef");
+    /*package*/ static final SInterfaceConcept ContextVariableProvider_b3c6f7bb = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider");
   }
 }

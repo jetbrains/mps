@@ -4,7 +4,6 @@ package jetbrains.mps.editor.contextActionsTool.lang.menus.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -21,9 +20,10 @@ import java.util.HashSet;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TransformationLocation_ContextActionsTool__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da8L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationLocation_ContextActionsTool");
+  private static final SAbstractConcept CONCEPT = AUX_nmn4vo.TransformationLocation_ContextActionsTool_677d9d1;
 
   public static final SMethod<Collection<SConcept>> getRequiredFeatures_id7L5lpRJHK_w = new SMethodBuilder<Collection<SConcept>>(new SJavaCompoundTypeImpl((Class<Collection<SConcept>>) ((Class) Object.class))).name("getRequiredFeatures").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7L5lpRJHK_w").build();
 
@@ -33,7 +33,7 @@ public final class TransformationLocation_ContextActionsTool__BehaviorDescriptor
   }
 
   /*package*/ static Collection<SConcept> getRequiredFeatures_id7L5lpRJHK_w(@NotNull SNode __thisNode__) {
-    return CollectionSequence.fromCollectionAndArray(new HashSet<SConcept>(), MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1ac7L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Icon"), MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da5L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Tooltip"));
+    return CollectionSequence.fromCollectionAndArray(new HashSet<SConcept>(), AUX_nmn4vo.TransformationFeature_Icon_6776dc6, AUX_nmn4vo.TransformationFeature_Tooltip_677d9ce);
   }
 
   /*package*/ TransformationLocation_ContextActionsTool__BehaviorDescriptor() {
@@ -80,5 +80,11 @@ public final class TransformationLocation_ContextActionsTool__BehaviorDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_nmn4vo {
+    /*package*/ static final SConcept TransformationLocation_ContextActionsTool_677d9d1 = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da8L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationLocation_ContextActionsTool");
+    /*package*/ static final SConcept TransformationFeature_Icon_6776dc6 = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1ac7L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Icon");
+    /*package*/ static final SConcept TransformationFeature_Tooltip_677d9ce = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da5L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Tooltip");
   }
 }

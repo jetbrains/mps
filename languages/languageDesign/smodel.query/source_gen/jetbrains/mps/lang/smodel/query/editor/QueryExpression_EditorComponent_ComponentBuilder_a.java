@@ -35,6 +35,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleSheet.RightAngleBracketStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class QueryExpression_EditorComponent_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -74,14 +75,14 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
     editorCell.getStyle().putAll(style);
     QueryExpression_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new QueryExpression_KeyMap());
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new QueryExpression_EditorComponent_ComponentBuilder_a.ReplaceWith_QueryExpression_cellMenu_adikco_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_QueryExpression_cellMenu_adikco_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_QueryExpression_cellMenu_adikco_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_QueryExpression_cellMenu_adikco_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
+      return AUX_8p3m07.QueryExpression_58f52cd1;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -109,7 +110,7 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new QueryExpression_EditorComponent_ComponentBuilder_a.parameterSingleRoleHandler_adikco_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter"), getEditorContext());
+    SingleRoleCellProvider provider = new parameterSingleRoleHandler_adikco_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter"), getEditorContext());
     return provider.createCell();
   }
   private static class parameterSingleRoleHandler_adikco_b1a extends SingleRoleCellProvider {
@@ -172,5 +173,9 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
     QueryExpression_ParameterActions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_8p3m07 {
+    /*package*/ static final SConcept QueryExpression_58f52cd1 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
   }
 }

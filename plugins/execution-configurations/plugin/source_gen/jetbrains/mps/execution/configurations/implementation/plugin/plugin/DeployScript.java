@@ -49,7 +49,7 @@ public class DeployScript {
   private static final Logger LOG = LogManager.getLogger(DeployScript.class);
   public static final Key<DeployScript> KEY = Key.create("Deploy.Script");
 
-  private final DeployScript.TemporalModuleWithDescriptorFile myModule;
+  private final TemporalModuleWithDescriptorFile myModule;
   private final Project myProject;
   private final Set<SModel> myModelsToMake = SetSequence.fromSet(new HashSet<SModel>());
   private final String myDeployScriptPath;
@@ -57,7 +57,7 @@ public class DeployScript {
 
   public DeployScript(@NotNull Project project, List<SNodeReference> plugins) {
     myProject = project;
-    myModule = new DeployScript.TemporalModuleWithDescriptorFile(FileUtil.createTmpDir().getAbsolutePath());
+    myModule = new TemporalModuleWithDescriptorFile(FileUtil.createTmpDir().getAbsolutePath());
     SRepository projectRepo = project.getRepository();
     assert projectRepo instanceof SRepositoryExt;
     ((SRepositoryExt) projectRepo).registerModule(myModule, project);

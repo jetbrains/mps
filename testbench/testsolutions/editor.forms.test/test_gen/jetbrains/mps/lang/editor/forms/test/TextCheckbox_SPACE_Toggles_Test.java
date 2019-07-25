@@ -23,7 +23,7 @@ public class TextCheckbox_SPACE_Toggles_Test extends BaseTransformationTest {
 
   @Test
   public void test_TextCheckbox_SPACE_Toggles() throws Throwable {
-    new TextCheckbox_SPACE_Toggles_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

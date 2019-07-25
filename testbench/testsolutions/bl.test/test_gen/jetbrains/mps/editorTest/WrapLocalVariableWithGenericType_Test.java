@@ -21,7 +21,7 @@ public class WrapLocalVariableWithGenericType_Test extends BaseTransformationTes
 
   @Test
   public void test_WrapLocalVariableWithGenericType() throws Throwable {
-    new WrapLocalVariableWithGenericType_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

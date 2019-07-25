@@ -21,7 +21,7 @@ public class InsertPrevSiblingOperation_Focus_Test extends BaseTransformationTes
 
   @Test
   public void test_InsertPrevSiblingOperation_Focus() throws Throwable {
-    new InsertPrevSiblingOperation_Focus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

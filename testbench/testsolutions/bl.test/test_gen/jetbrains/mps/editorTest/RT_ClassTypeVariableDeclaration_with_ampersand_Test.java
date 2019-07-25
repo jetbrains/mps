@@ -21,7 +21,7 @@ public class RT_ClassTypeVariableDeclaration_with_ampersand_Test extends BaseTra
 
   @Test
   public void test_RT_ClassTypeVariableDeclaration_with_ampersand() throws Throwable {
-    new RT_ClassTypeVariableDeclaration_with_ampersand_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

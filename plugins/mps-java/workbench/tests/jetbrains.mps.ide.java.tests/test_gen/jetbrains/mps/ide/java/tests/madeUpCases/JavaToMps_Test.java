@@ -32,43 +32,43 @@ public class JavaToMps_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelfRef() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_SelfRef();
+    new TestBody(this).test_SelfRef();
   }
   @Test
   public void test_ClassWInnerInterace() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_ClassWInnerInterace();
+    new TestBody(this).test_ClassWInnerInterace();
   }
   @Test
   public void test_Imports1() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_Imports1();
+    new TestBody(this).test_Imports1();
   }
   @Test
   public void test_Imports2() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_Imports2();
+    new TestBody(this).test_Imports2();
   }
   @Test
   public void test_Imports3() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_Imports3();
+    new TestBody(this).test_Imports3();
   }
   @Test
   public void test_Annotations() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_Annotations();
+    new TestBody(this).test_Annotations();
   }
   @Test
   public void test_ClassNesting() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_ClassNesting();
+    new TestBody(this).test_ClassNesting();
   }
   @Test
   public void test_FullSource() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_FullSource();
+    new TestBody(this).test_FullSource();
   }
   @Test
   public void test_LittleSource() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_LittleSource();
+    new TestBody(this).test_LittleSource();
   }
   @Test
   public void test_ByteCodeVsSourceStubs() throws Throwable {
-    new JavaToMps_Test.TestBody(this).test_ByteCodeVsSourceStubs();
+    new TestBody(this).test_ByteCodeVsSourceStubs();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

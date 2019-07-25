@@ -49,7 +49,7 @@ public class EventsProcessor {
   protected static final int STATE_DETACHING = 2;
   protected static final int STATE_DETACHED = 3;
   private final ManagerThread myManagerThread = new ManagerThread();
-  private EventsProcessor.EventProcessorRunnable myRunnable = new EventsProcessor.EventProcessorRunnable();
+  private EventProcessorRunnable myRunnable = new EventProcessorRunnable();
   private VirtualMachine myVirtualMachine;
   protected final AtomicInteger myState = new AtomicInteger(STATE_INITIAL);
   private RequestManager myRequestManager;
@@ -107,7 +107,7 @@ public class EventsProcessor {
       }
     }));
   }
-  public void step(@NotNull final EventsProcessor.StepKind kind, @NotNull final Context context) {
+  public void step(@NotNull final StepKind kind, @NotNull final Context context) {
     myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
         int jdiType = kind.getJdiType();

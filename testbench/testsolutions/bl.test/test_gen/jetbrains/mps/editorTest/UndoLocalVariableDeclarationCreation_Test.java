@@ -21,7 +21,7 @@ public class UndoLocalVariableDeclarationCreation_Test extends BaseTransformatio
 
   @Test
   public void test_UndoLocalVariableDeclarationCreation() throws Throwable {
-    new UndoLocalVariableDeclarationCreation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

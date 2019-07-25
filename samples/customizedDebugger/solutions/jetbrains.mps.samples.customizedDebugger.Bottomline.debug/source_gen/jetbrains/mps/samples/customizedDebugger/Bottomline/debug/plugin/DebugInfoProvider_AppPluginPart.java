@@ -17,12 +17,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debug.api.Debuggers;
 import jetbrains.mps.debug.api.DebuggerNotPresentException;
 import org.apache.log4j.Level;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
   private static final Logger LOG = LogManager.getLogger(DebugInfoProvider_AppPluginPart.class);
@@ -48,7 +49,7 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       BreakpointCreator creator = new BreakpointCreator(null, null);
       creator.canCreate(new _FunctionTypes._return_P2_E0<Boolean, SAbstractConcept, SNode>() {
         public Boolean invoke(SAbstractConcept concept, SNode debuggableNode) {
-          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5e4L, "jetbrains.mps.samples.customizedDebugger.Bottomline.structure.OutputMessage"))) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), AUX_xj3d25.OutputMessage_4497ec5c)) {
             return true;
           }
           return false;
@@ -86,5 +87,9 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       manager.removeCreator(creator);
     }
     SetSequence.fromSet(DebugInfoProvider_AppPluginPart.this.myCreators).clear();
+  }
+
+  private static final class AUX_xj3d25 {
+    /*package*/ static final SConcept OutputMessage_4497ec5c = MetaAdapterFactory.getConcept(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5e4L, "jetbrains.mps.samples.customizedDebugger.Bottomline.structure.OutputMessage");
   }
 }

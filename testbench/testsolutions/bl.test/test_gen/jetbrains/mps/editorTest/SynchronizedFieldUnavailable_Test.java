@@ -21,7 +21,7 @@ public class SynchronizedFieldUnavailable_Test extends BaseTransformationTest {
 
   @Test
   public void test_SynchronizedFieldUnavailable() throws Throwable {
-    new SynchronizedFieldUnavailable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

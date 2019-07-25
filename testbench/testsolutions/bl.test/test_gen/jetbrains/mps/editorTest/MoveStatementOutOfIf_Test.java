@@ -21,7 +21,7 @@ public class MoveStatementOutOfIf_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveStatementOutOfIf() throws Throwable {
-    new MoveStatementOutOfIf_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

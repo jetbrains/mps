@@ -40,5 +40,5 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<PastePostProcessor> getPastePostProcessors() {
     return Arrays.asList(new PastePostProcessor[]{new StructureIds_PastePostProcessor_0(), new StructureIds_PastePostProcessor_1(), new StructureIds_PastePostProcessor_2(), new StructureIds_PastePostProcessor_3(), new StructureIds_PastePostProcessor_4(), new StructureIds_PastePostProcessor_5()});
   }
-  private static String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractConceptDeclaration", "ConceptDeclaration", "DataTypeDeclaration", "EnumerationMemberDeclaration", "LinkDeclaration", "PropertyDeclaration"};
+  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractConceptDeclaration", "ConceptDeclaration", "DataTypeDeclaration", "EnumerationMemberDeclaration", "LinkDeclaration", "PropertyDeclaration"};
 }

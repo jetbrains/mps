@@ -29,7 +29,7 @@ public class AnonymousClassJavaName_Test extends BaseTransformationTest {
 
   @Test
   public void test_testJavaNames() throws Throwable {
-    new AnonymousClassJavaName_Test.TestBody(this).test_testJavaNames();
+    new TestBody(this).test_testJavaNames();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

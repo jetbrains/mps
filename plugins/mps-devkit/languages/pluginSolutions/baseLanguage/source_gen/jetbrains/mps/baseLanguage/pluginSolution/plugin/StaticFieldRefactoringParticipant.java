@@ -6,7 +6,6 @@ import jetbrains.mps.smodel.structure.Extension;
 import jetbrains.mps.refactoring.participant.MoveNodeRefactoringParticipant;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -14,6 +13,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.core.pluginSolution.plugin.UpdateReferencesParticipantBase;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class StaticFieldRefactoringParticipant extends StaticMemberRefactoringParticipant {
 
@@ -31,16 +32,16 @@ public class StaticFieldRefactoringParticipant extends StaticMemberRefactoringPa
   }
 
   public boolean isApplicable(SNode nodeToMove) {
-    return SNodeOperations.isInstanceOf(nodeToMove, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"));
+    return SNodeOperations.isInstanceOf(nodeToMove, AUX_58c0dr.StaticFieldDeclaration_9649293d);
   }
 
   @Override
   protected void doUpdateReference(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> newTarget, final String resolveInfo) {
-    if (!((SNodeOperations.isInstanceOf(containingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")) || SNodeOperations.isInstanceOf(containingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference")))) || newTarget.other() == null) {
+    if (!((SNodeOperations.isInstanceOf(containingNode, AUX_58c0dr.VariableReference_24d60dac) || SNodeOperations.isInstanceOf(containingNode, AUX_58c0dr.StaticFieldReference_31c8669a))) || newTarget.other() == null) {
       super.doUpdateReference(selectedOptions, repository, containingNode, role, newTarget, resolveInfo);
     } else {
       @Nullable SNode tryToResolveNewTarget = newTarget.baseData().reference().resolve(repository);
-      if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false)) {
+      if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, AUX_58c0dr.Classifier_4b7e553, false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, AUX_58c0dr.Classifier_4b7e553, false, false)) {
         SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
         super.doUpdateReference(selectedOptions, repository, replacement, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), newTarget, resolveInfo);
@@ -51,5 +52,12 @@ public class StaticFieldRefactoringParticipant extends StaticMemberRefactoringPa
         super.doUpdateReference(selectedOptions, repository, replacement, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
       }
     }
+  }
+
+  private static final class AUX_58c0dr {
+    /*package*/ static final SConcept StaticFieldDeclaration_9649293d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept VariableReference_24d60dac = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept StaticFieldReference_31c8669a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

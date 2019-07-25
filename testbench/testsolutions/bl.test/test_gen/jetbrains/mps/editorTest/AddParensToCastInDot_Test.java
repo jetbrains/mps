@@ -21,7 +21,7 @@ public class AddParensToCastInDot_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddParensToCastInDot() throws Throwable {
-    new AddParensToCastInDot_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

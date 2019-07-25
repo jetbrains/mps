@@ -25,10 +25,11 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.SidebarActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Math extends TransformationMenuBase {
   public Math() {
@@ -57,11 +58,11 @@ public class Math extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ACTIONS_TOOL).contains(_context.getMenuLocation())) {
-      result.add(new Math.TMP_SubMenu_pmdw_a0());
-      result.add(new Math.TMP_SubMenu_pmdw_b0());
-      result.add(new Math.TMP_SubMenu_pmdw_c0());
-      result.add(new Math.TMP_SubMenu_pmdw_d0());
-      result.add(new Math.TMP_SubMenu_pmdw_e0());
+      result.add(new TMP_SubMenu_pmdw_a0());
+      result.add(new TMP_SubMenu_pmdw_b0());
+      result.add(new TMP_SubMenu_pmdw_c0());
+      result.add(new TMP_SubMenu_pmdw_d0());
+      result.add(new TMP_SubMenu_pmdw_e0());
     }
     return result;
   }
@@ -93,7 +94,7 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a());
     }
     public class TMP_SubMenu_pmdw_a0a extends SubMenuMenuTransformationMenuPart {
       @Override
@@ -122,12 +123,12 @@ public class Math extends TransformationMenuBase {
 
       @Override
       protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0(), new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0(), new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0(), new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0());
+        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0(), new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0(), new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0(), new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0());
       }
       private class TMP_Action_pmdw_a0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0.Item item = new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0.Item(context);
+          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -162,7 +163,7 @@ public class Math extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e16047L, "jetbrains.mps.baseLanguage.math.structure.BigMaxExpression"));
+            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.BigMaxExpression_aefa123b);
           }
 
 
@@ -187,7 +188,7 @@ public class Math extends TransformationMenuBase {
       private class TMP_Action_pmdw_b0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0.Item item = new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0.Item(context);
+          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -222,7 +223,7 @@ public class Math extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e1674dL, "jetbrains.mps.baseLanguage.math.structure.BigMinExpression"));
+            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.BigMinExpression_aefaf375);
           }
 
 
@@ -247,7 +248,7 @@ public class Math extends TransformationMenuBase {
       private class TMP_Action_pmdw_c0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0.Item item = new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0.Item(context);
+          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -282,7 +283,7 @@ public class Math extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e12aa0L, "jetbrains.mps.baseLanguage.math.structure.BigProdExpression"));
+            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.BigProdExpression_aee0a83f);
           }
 
 
@@ -307,7 +308,7 @@ public class Math extends TransformationMenuBase {
       private class TMP_Action_pmdw_d0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0.Item item = new Math.TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0.Item(context);
+          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -342,7 +343,7 @@ public class Math extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe188eafbL, "jetbrains.mps.baseLanguage.math.structure.BigSumExpression"));
+            SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.BigSumExpression_4ba54e22);
           }
 
 
@@ -393,12 +394,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Math.TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a(), new Math.TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a(), new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a());
     }
     private class TMP_Action_pmdw_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a.Item item = new Math.TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a.Item(context);
+        TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a.Item item = new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -433,7 +434,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode m = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor"));
+          SNode m = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.MatrixConstructor_c63cc751);
           SPropertyOperations.assign(m, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column"), true);
         }
 
@@ -459,7 +460,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a.Item item = new Math.TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a.Item(context);
+        TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a.Item item = new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -494,7 +495,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.MatrixConstructor_c63cc751);
         }
 
 
@@ -544,12 +545,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a(), new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a(), new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a(), new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a(), new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a(), new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a(), new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a());
     }
     private class TMP_Action_pmdw_a2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a.Item item = new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a.Item(context);
+        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -584,7 +585,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1207697a328L, "jetbrains.mps.baseLanguage.math.structure.DecimalPlusExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.DecimalPlusExpression_a1c37431);
         }
 
 
@@ -609,7 +610,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a.Item item = new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a.Item(context);
+        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -644,7 +645,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12076988136L, "jetbrains.mps.baseLanguage.math.structure.DecimalMinusExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.DecimalMinusExpression_a20d114f);
         }
 
 
@@ -669,7 +670,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_c2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a.Item item = new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a.Item(context);
+        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -704,7 +705,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120769754c8L, "jetbrains.mps.baseLanguage.math.structure.DecimalMulExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.DecimalMulExpression_a1a741d1);
         }
 
 
@@ -729,7 +730,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_d2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a.Item item = new Math.TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a.Item(context);
+        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -764,7 +765,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1207697107bL, "jetbrains.mps.baseLanguage.math.structure.DecimalDivExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.DecimalDivExpression_a06420f6);
         }
 
 
@@ -814,12 +815,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a(), new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a(), new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a(), new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a(), new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a(), new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a(), new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a());
     }
     private class TMP_Action_pmdw_a3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a.Item item = new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a.Item(context);
+        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -854,7 +855,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12051ecbe19L, "jetbrains.mps.baseLanguage.math.structure.AbsExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.AbsExpression_5d9838c4);
         }
 
 
@@ -879,7 +880,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a.Item item = new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a.Item(context);
+        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -914,7 +915,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205311f8ffL, "jetbrains.mps.baseLanguage.math.structure.LogExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.LogExpression_fbefa188);
         }
 
 
@@ -939,7 +940,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_c3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a.Item item = new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a.Item(context);
+        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -974,7 +975,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120531e6b2fL, "jetbrains.mps.baseLanguage.math.structure.ExponentExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.ExponentExpression_2d862bf6);
         }
 
 
@@ -999,7 +1000,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_d3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a.Item item = new Math.TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a.Item(context);
+        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1034,7 +1035,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052b2cdd3L, "jetbrains.mps.baseLanguage.math.structure.PowExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.PowExpression_64103b99);
         }
 
 
@@ -1084,12 +1085,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a(), new Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a(), new Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a(), new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a(), new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a());
     }
     private class TMP_Action_pmdw_a4a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a.Item item = new Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a.Item(context);
+        TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a.Item item = new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1124,7 +1125,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205311204eL, "jetbrains.mps.baseLanguage.math.structure.SineExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.SineExpression_fba684d3);
         }
 
 
@@ -1149,7 +1150,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b4a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a.Item item = new Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a.Item(context);
+        TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a.Item item = new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1184,7 +1185,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12053114b76L, "jetbrains.mps.baseLanguage.math.structure.CosineExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.CosineExpression_fbb513d7);
         }
 
 
@@ -1209,7 +1210,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_c4a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a.Item item = new Math.TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a.Item(context);
+        TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a.Item item = new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1244,7 +1245,7 @@ public class Math extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205311cb56L, "jetbrains.mps.baseLanguage.math.structure.TangentExpression"));
+          SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_pmdw.TangentExpression_fbe0acac);
         }
 
 
@@ -1266,5 +1267,24 @@ public class Math extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_pmdw {
+    /*package*/ static final SConcept BigMaxExpression_aefa123b = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e16047L, "jetbrains.mps.baseLanguage.math.structure.BigMaxExpression");
+    /*package*/ static final SConcept BigMinExpression_aefaf375 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e1674dL, "jetbrains.mps.baseLanguage.math.structure.BigMinExpression");
+    /*package*/ static final SConcept BigProdExpression_aee0a83f = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0e12aa0L, "jetbrains.mps.baseLanguage.math.structure.BigProdExpression");
+    /*package*/ static final SConcept BigSumExpression_4ba54e22 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe188eafbL, "jetbrains.mps.baseLanguage.math.structure.BigSumExpression");
+    /*package*/ static final SConcept MatrixConstructor_c63cc751 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor");
+    /*package*/ static final SConcept DecimalPlusExpression_a1c37431 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1207697a328L, "jetbrains.mps.baseLanguage.math.structure.DecimalPlusExpression");
+    /*package*/ static final SConcept DecimalMinusExpression_a20d114f = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12076988136L, "jetbrains.mps.baseLanguage.math.structure.DecimalMinusExpression");
+    /*package*/ static final SConcept DecimalMulExpression_a1a741d1 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120769754c8L, "jetbrains.mps.baseLanguage.math.structure.DecimalMulExpression");
+    /*package*/ static final SConcept DecimalDivExpression_a06420f6 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1207697107bL, "jetbrains.mps.baseLanguage.math.structure.DecimalDivExpression");
+    /*package*/ static final SConcept AbsExpression_5d9838c4 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12051ecbe19L, "jetbrains.mps.baseLanguage.math.structure.AbsExpression");
+    /*package*/ static final SConcept LogExpression_fbefa188 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205311f8ffL, "jetbrains.mps.baseLanguage.math.structure.LogExpression");
+    /*package*/ static final SConcept ExponentExpression_2d862bf6 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120531e6b2fL, "jetbrains.mps.baseLanguage.math.structure.ExponentExpression");
+    /*package*/ static final SConcept PowExpression_64103b99 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052b2cdd3L, "jetbrains.mps.baseLanguage.math.structure.PowExpression");
+    /*package*/ static final SConcept SineExpression_fba684d3 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205311204eL, "jetbrains.mps.baseLanguage.math.structure.SineExpression");
+    /*package*/ static final SConcept CosineExpression_fbb513d7 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12053114b76L, "jetbrains.mps.baseLanguage.math.structure.CosineExpression");
+    /*package*/ static final SConcept TangentExpression_fbe0acac = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205311cb56L, "jetbrains.mps.baseLanguage.math.structure.TangentExpression");
   }
 }

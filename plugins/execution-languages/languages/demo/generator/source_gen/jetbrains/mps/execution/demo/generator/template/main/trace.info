@@ -13,8 +13,8 @@
     <file name="QueriesGenerated.java">
       <node id="823947676949193266" at="24,88,25,175" concept="1" />
       <node id="823947676949193301" at="27,88,28,175" concept="1" />
-      <node id="823947676949193263" at="32,14,33,208" concept="0" />
-      <node id="823947676949193298" at="33,208,34,193" concept="0" />
+      <node id="823947676949193263" at="32,14,33,191" concept="0" />
+      <node id="823947676949193298" at="33,191,34,176" concept="0" />
       <node id="823947676949193263" at="54,15,55,66" concept="1" />
       <node id="823947676949193298" at="56,15,57,66" concept="1" />
       <node id="823947676949193264" at="24,0,27,0" concept="2" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

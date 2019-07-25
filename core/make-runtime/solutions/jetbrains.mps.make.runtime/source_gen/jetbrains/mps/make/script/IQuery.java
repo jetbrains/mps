@@ -5,7 +5,7 @@ package jetbrains.mps.make.script;
 import jetbrains.mps.internal.make.runtime.util.SmartWrapper;
 
 public interface IQuery<T extends IOption> {
-  IQuery.Name getName();
+  Name getName();
   String getTitle();
   String getText();
   Iterable<T> options();

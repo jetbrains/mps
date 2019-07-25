@@ -117,7 +117,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CellModel_Alternation_EditorBuilder_a.ifTrueCellModelSingleRoleHandler_zgm7s3_b0b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76638039L, "ifTrueCellModel"), getEditorContext());
+    SingleRoleCellProvider provider = new ifTrueCellModelSingleRoleHandler_zgm7s3_b0b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76638039L, "ifTrueCellModel"), getEditorContext());
     return provider.createCell();
   }
   private static class ifTrueCellModelSingleRoleHandler_zgm7s3_b0b0 extends SingleRoleCellProvider {
@@ -194,7 +194,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CellModel_Alternation_EditorBuilder_a.ifFalseCellModelSingleRoleHandler_zgm7s3_b1b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd7663bd83L, "ifFalseCellModel"), getEditorContext());
+    SingleRoleCellProvider provider = new ifFalseCellModelSingleRoleHandler_zgm7s3_b1b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd7663bd83L, "ifFalseCellModel"), getEditorContext());
     return provider.createCell();
   }
   private static class ifFalseCellModelSingleRoleHandler_zgm7s3_b1b0 extends SingleRoleCellProvider {
@@ -287,7 +287,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new CellModel_Alternation_EditorBuilder_a.ifTrueCellModelSingleRoleHandler_zgm7s3_b0c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76638039L, "ifTrueCellModel"), getEditorContext());
+    SingleRoleCellProvider provider = new ifTrueCellModelSingleRoleHandler_zgm7s3_b0c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76638039L, "ifTrueCellModel"), getEditorContext());
     return provider.createCell();
   }
   private static class ifTrueCellModelSingleRoleHandler_zgm7s3_b0c0 extends SingleRoleCellProvider {
@@ -364,7 +364,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new CellModel_Alternation_EditorBuilder_a.ifFalseCellModelSingleRoleHandler_zgm7s3_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd7663bd83L, "ifFalseCellModel"), getEditorContext());
+    SingleRoleCellProvider provider = new ifFalseCellModelSingleRoleHandler_zgm7s3_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd7663bd83L, "ifFalseCellModel"), getEditorContext());
     return provider.createCell();
   }
   private static class ifFalseCellModelSingleRoleHandler_zgm7s3_b1c0 extends SingleRoleCellProvider {

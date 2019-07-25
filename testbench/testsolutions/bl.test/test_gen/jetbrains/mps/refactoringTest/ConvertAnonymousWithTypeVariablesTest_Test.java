@@ -34,7 +34,7 @@ public class ConvertAnonymousWithTypeVariablesTest_Test extends BaseTransformati
 
   @Test
   public void test_TypeVariablesTest() throws Throwable {
-    new ConvertAnonymousWithTypeVariablesTest_Test.TestBody(this).test_TypeVariablesTest();
+    new TestBody(this).test_TypeVariablesTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

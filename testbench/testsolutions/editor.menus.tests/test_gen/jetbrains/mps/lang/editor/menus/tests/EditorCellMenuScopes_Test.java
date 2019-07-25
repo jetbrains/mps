@@ -32,27 +32,27 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
 
   @Test
   public void test_ScopeOf_TransformationMenuReference_Default_concept_1068638940632614994() throws Throwable {
-    new EditorCellMenuScopes_Test.TestBody(this).test_ScopeOf_TransformationMenuReference_Default_concept_1068638940632614994();
+    new TestBody(this).test_ScopeOf_TransformationMenuReference_Default_concept_1068638940632614994();
   }
   @Test
   public void test_ScopeOf_TransformationMenuReference_Named_menu_1068638940632808481() throws Throwable {
-    new EditorCellMenuScopes_Test.TestBody(this).test_ScopeOf_TransformationMenuReference_Named_menu_1068638940632808481();
+    new TestBody(this).test_ScopeOf_TransformationMenuReference_Named_menu_1068638940632808481();
   }
   @Test
   public void test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583379447() throws Throwable {
-    new EditorCellMenuScopes_Test.TestBody(this).test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583379447();
+    new TestBody(this).test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583379447();
   }
   @Test
   public void test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583467351() throws Throwable {
-    new EditorCellMenuScopes_Test.TestBody(this).test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583467351();
+    new TestBody(this).test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583467351();
   }
   @Test
   public void test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583467622() throws Throwable {
-    new EditorCellMenuScopes_Test.TestBody(this).test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583467622();
+    new TestBody(this).test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583467622();
   }
   @Test
   public void test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583468879() throws Throwable {
-    new EditorCellMenuScopes_Test.TestBody(this).test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583468879();
+    new TestBody(this).test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583468879();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

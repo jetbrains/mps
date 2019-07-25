@@ -26,7 +26,7 @@ public class DeleteIfStatementConditionTwoStep_Test extends BaseTransformationTe
 
   @Test
   public void test_DeleteIfStatementConditionTwoStep() throws Throwable {
-    new DeleteIfStatementConditionTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

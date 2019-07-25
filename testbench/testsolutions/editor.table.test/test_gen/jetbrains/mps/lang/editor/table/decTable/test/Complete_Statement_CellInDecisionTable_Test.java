@@ -21,7 +21,7 @@ public class Complete_Statement_CellInDecisionTable_Test extends BaseTransformat
 
   @Test
   public void test_Complete_Statement_CellInDecisionTable() throws Throwable {
-    new Complete_Statement_CellInDecisionTable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

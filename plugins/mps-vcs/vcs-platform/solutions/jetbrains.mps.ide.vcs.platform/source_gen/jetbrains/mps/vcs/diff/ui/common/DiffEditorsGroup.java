@@ -27,14 +27,14 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class DiffEditorsGroup {
   private List<DiffEditor> myDiffEditors = ListSequence.fromList(new ArrayList<DiffEditor>());
-  private DiffEditorsGroup.MyCellSelectionListener myCellSelectionListener = new DiffEditorsGroup.MyCellSelectionListener();
+  private MyCellSelectionListener myCellSelectionListener = new MyCellSelectionListener();
   private boolean myViewportSetInProgress = false;
   public DiffEditorsGroup() {
   }
   public void add(DiffEditor diffEditor) {
     ListSequence.fromList(myDiffEditors).addElement(diffEditor);
     diffEditor.getMainEditor().getSelectionManager().addSelectionListener(myCellSelectionListener);
-    diffEditor.getMainEditor().getViewport().addChangeListener(new DiffEditorsGroup.MyViewportChangeListener(diffEditor));
+    diffEditor.getMainEditor().getViewport().addChangeListener(new MyViewportChangeListener(diffEditor));
   }
   public void synchronizeViewWithOther(final DiffEditor thisDiffEditor, final DiffEditor otherDiffEditor) {
     if (thisDiffEditor == otherDiffEditor) {

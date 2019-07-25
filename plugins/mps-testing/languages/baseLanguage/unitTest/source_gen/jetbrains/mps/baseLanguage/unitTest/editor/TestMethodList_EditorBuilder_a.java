@@ -26,6 +26,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TestMethodList_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -55,7 +56,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new TestMethodList_EditorBuilder_a.testMethodListHandler_bc5hcd_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new testMethodListHandler_bc5hcd_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_testMethod");
     Style style = new StyleImpl();
@@ -81,7 +82,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
       return MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc95061dL, 0x110dc95061eL, "testMethod");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc92748eL, "jetbrains.mps.baseLanguage.unitTest.structure.TestMethod");
+      return AUX_viw9yp.TestMethod_13cf7466;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -124,5 +125,9 @@ import jetbrains.mps.nodeEditor.MPSColors;
       editorCell.setDefaultText("<<test methods>>");
       return editorCell;
     }
+  }
+
+  private static final class AUX_viw9yp {
+    /*package*/ static final SConcept TestMethod_13cf7466 = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc92748eL, "jetbrains.mps.baseLanguage.unitTest.structure.TestMethod");
   }
 }

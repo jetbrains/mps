@@ -35,13 +35,13 @@ public class RefactoringView extends TabbedUsagesTool {
     return true;
   }
   public void showRefactoringView(RefactoringContext refactoringContext, @NotNull RefactoringViewAction refactoringViewAction, @Nullable Runnable disposeAction, SearchResults searchResults, SearchTask searchTask) {
-    RefactoringViewItemImpl refactoringViewItem = new RefactoringView.MyRefactoringViewItem(refactoringContext, refactoringViewAction, disposeAction, searchResults, searchTask);
+    RefactoringViewItemImpl refactoringViewItem = new MyRefactoringViewItem(refactoringContext, refactoringViewAction, disposeAction, searchResults, searchTask);
     myRefactoringViews.add(refactoringViewItem);
     addContent(refactoringViewItem.getComponent(), refactoringContext.getRefactoring().getUserFriendlyName(), null, false);
     openTool(true);
   }
   public void showRefactoringView(Project p, @NotNull RefactoringViewAction refactorAction, @Nullable Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
-    RefactoringViewItemImpl refactoringViewItem = new RefactoringView.MyRefactoringViewItem(ProjectHelper.toMPSProject(p), refactorAction, disposeAction, searchResults, searchTask);
+    RefactoringViewItemImpl refactoringViewItem = new MyRefactoringViewItem(ProjectHelper.toMPSProject(p), refactorAction, disposeAction, searchResults, searchTask);
     myRefactoringViews.add(refactoringViewItem);
     addContent(refactoringViewItem.getComponent(), name, null, false);
     openTool(true);

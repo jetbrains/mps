@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StaticFieldDeclaration_ApplySideTransforms extends TransformationMenuBase {
@@ -49,10 +50,10 @@ public class StaticFieldDeclaration_ApplySideTransforms extends TransformationMe
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new StaticFieldDeclaration_ApplySideTransforms.TMP_Include_fy93tp_a0());
+      result.add(new TMP_Include_fy93tp_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new StaticFieldDeclaration_ApplySideTransforms.TMP_Include_fy93tp_a1());
+      result.add(new TMP_Include_fy93tp_a1());
     }
     return result;
   }
@@ -91,7 +92,7 @@ public class StaticFieldDeclaration_ApplySideTransforms extends TransformationMe
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_fy93tp.StaticFieldDeclaration_9649293d);
     }
 
     @Nullable
@@ -99,5 +100,9 @@ public class StaticFieldDeclaration_ApplySideTransforms extends TransformationMe
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.RIGHT_SIDE_TRANSFORM;
     }
+  }
+
+  private static final class AUX_fy93tp {
+    /*package*/ static final SConcept StaticFieldDeclaration_9649293d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 }

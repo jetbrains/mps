@@ -21,7 +21,7 @@ public class EditorSpecifiedBy_add_remove_context_hints_RefNode_Test extends Bas
 
   @Test
   public void test_EditorSpecifiedBy_add_remove_context_hints_RefNode() throws Throwable {
-    new EditorSpecifiedBy_add_remove_context_hints_RefNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

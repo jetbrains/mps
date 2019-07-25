@@ -89,7 +89,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ToolTab_EditorBuilder_a.componentExpressionSingleRoleHandler_vspo6f_d0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad10L, "componentExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new componentExpressionSingleRoleHandler_vspo6f_d0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad10L, "componentExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class componentExpressionSingleRoleHandler_vspo6f_d0 extends SingleRoleCellProvider {
@@ -158,7 +158,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ToolTab_EditorBuilder_a.titleExpressionSingleRoleHandler_vspo6f_f0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad11L, "titleExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new titleExpressionSingleRoleHandler_vspo6f_f0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad11L, "titleExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class titleExpressionSingleRoleHandler_vspo6f_f0 extends SingleRoleCellProvider {
@@ -227,7 +227,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new ToolTab_EditorBuilder_a.iconExpressionSingleRoleHandler_vspo6f_h0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad12L, "iconExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new iconExpressionSingleRoleHandler_vspo6f_h0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad12L, "iconExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class iconExpressionSingleRoleHandler_vspo6f_h0 extends SingleRoleCellProvider {
@@ -296,7 +296,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new ToolTab_EditorBuilder_a.disposeTabClosureSingleRoleHandler_vspo6f_j0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure"), getEditorContext());
+    SingleRoleCellProvider provider = new disposeTabClosureSingleRoleHandler_vspo6f_j0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure"), getEditorContext());
     return provider.createCell();
   }
   private static class disposeTabClosureSingleRoleHandler_vspo6f_j0 extends SingleRoleCellProvider {

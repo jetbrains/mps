@@ -22,7 +22,7 @@ public class DocumentationCommentStyleSheet_StyleSheet {
   public static void apply_Comment(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DocumentationCommentStyleSheet_StyleSheet.CommentStyleClass(editorContext, node).apply(style, editorCell);
+    new CommentStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -32,7 +32,7 @@ public class DocumentationCommentStyleSheet_StyleSheet {
   public static void apply_CommentTag(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DocumentationCommentStyleSheet_StyleSheet.CommentTagStyleClass(editorContext, node).apply(style, editorCell);
+    new CommentTagStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -42,7 +42,7 @@ public class DocumentationCommentStyleSheet_StyleSheet {
   public static void apply_CommentHTMLTag(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DocumentationCommentStyleSheet_StyleSheet.CommentHTMLTagStyleClass(editorContext, node).apply(style, editorCell);
+    new CommentHTMLTagStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class CommentStyleClass extends AbstractStyleClass {

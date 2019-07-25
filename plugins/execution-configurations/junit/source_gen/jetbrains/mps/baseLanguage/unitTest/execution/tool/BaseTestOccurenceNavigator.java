@@ -49,7 +49,7 @@ public abstract class BaseTestOccurenceNavigator implements OccurenceNavigator, 
   @Override
   public OccurenceNavigator.OccurenceInfo goNextOccurence() {
     setNewSelectedIndex(true);
-    BaseTestOccurenceNavigator.TestNavigator navigator = new BaseTestOccurenceNavigator.TestNavigator();
+    TestNavigator navigator = new TestNavigator();
     navigator.navigate(true);
     return new OccurenceNavigator.OccurenceInfo(navigator, mySelected, myCount);
   }
@@ -57,7 +57,7 @@ public abstract class BaseTestOccurenceNavigator implements OccurenceNavigator, 
   @Override
   public OccurenceNavigator.OccurenceInfo goPreviousOccurence() {
     setNewSelectedIndex(false);
-    BaseTestOccurenceNavigator.TestNavigator navigator = new BaseTestOccurenceNavigator.TestNavigator();
+    TestNavigator navigator = new TestNavigator();
     navigator.navigate(true);
     return new OccurenceNavigator.OccurenceInfo(navigator, mySelected, myCount);
   }

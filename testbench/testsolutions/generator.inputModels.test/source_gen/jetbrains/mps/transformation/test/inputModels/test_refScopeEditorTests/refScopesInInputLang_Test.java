@@ -21,7 +21,7 @@ public class refScopesInInputLang_Test extends BaseTransformationTest {
 
   @Test
   public void test_refScopesInInputLang() throws Throwable {
-    new refScopesInInputLang_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

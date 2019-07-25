@@ -16,15 +16,16 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesystemRule() {
   }
   public void applyRule(final SNode parenthesizedExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) Expression__BehaviorDescriptor.singleValue_id1o8Ht9sES3u.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(parenthesizedExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"))))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parenthesizedExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"))) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parenthesizedExpression), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression")))) {
+    if ((boolean) Expression__BehaviorDescriptor.singleValue_id1o8Ht9sES3u.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(parenthesizedExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"))))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parenthesizedExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression")), AUX_1w5bsq.ParenthesizedExpression_a4b89678)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parenthesizedExpression), AUX_1w5bsq.ParenthesizedExpression_a4b89678))) {
       SNode currentParent = parenthesizedExpression;
-      while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"))) {
-        currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
+      while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), AUX_1w5bsq.ParenthesizedExpression_a4b89678)) {
+        currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), AUX_1w5bsq.ParenthesizedExpression_a4b89678);
       }
       {
         MessageTarget errorTarget = new NodeMessageTarget();
@@ -38,12 +39,16 @@ public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    return AUX_1w5bsq.ParenthesizedExpression_a4b89678;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_1w5bsq {
+    /*package*/ static final SConcept ParenthesizedExpression_a4b89678 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 }

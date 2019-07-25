@@ -23,7 +23,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.messageTargets.CellFinder;
 import java.util.Objects;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
@@ -43,14 +42,16 @@ import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChangeEditorMessage extends EditorMessageWithTarget {
   private static final Logger LOG = LogManager.getLogger(ChangeEditorMessage.class);
   private static final String NAME_PROPERTY = "name";
   private ModelChange myChange;
-  private ChangeEditorMessage.ConflictChecker myConflictsChecker;
+  private ConflictChecker myConflictsChecker;
   private boolean myHighlighted;
-  protected ChangeEditorMessage(SNode node, MessageTarget target, EditorMessageOwner owner, ModelChange change, ChangeEditorMessage.ConflictChecker conflictChecker, boolean highlighted) {
+  protected ChangeEditorMessage(SNode node, MessageTarget target, EditorMessageOwner owner, ModelChange change, ConflictChecker conflictChecker, boolean highlighted) {
     super(node, MessageStatus.OK, target, null, "", owner);
     myChange = change;
     myConflictsChecker = conflictChecker;
@@ -118,7 +119,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
         EditorCell cell = ChangeEditorMessage.super.getCell(editor);
         if (cell != null && cell.isBig() && !(isDirectCell(cell))) {
           SNode node = getNode();
-          if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
+          if (SNodeOperations.isInstanceOf(node, AUX_myu41h.INamedConcept_8cd7e247)) {
             cell = CellFinder.getCellForProperty(editor, node, NAME_PROPERTY);
           }
         }
@@ -420,5 +421,9 @@ __switch__:
       return checkedDotOperand.getParent();
     }
     return null;
+  }
+
+  private static final class AUX_myu41h {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

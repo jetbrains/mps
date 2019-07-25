@@ -21,7 +21,7 @@ public class BackspaceLineBetweenWordAndWrapper_Test extends BaseTransformationT
 
   @Test
   public void test_BackspaceLineBetweenWordAndWrapper() throws Throwable {
-    new BackspaceLineBetweenWordAndWrapper_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

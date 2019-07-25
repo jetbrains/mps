@@ -21,6 +21,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class DeleteLineAction {
   /*package*/ static boolean canExecute(EditorCell currentSelectedCell) {
@@ -73,7 +74,10 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
   }
 
   private static SContainmentLink getContainmentLink(SNode node) {
-    return (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf"))) : node.getContainmentLink());
+    return (SNodeOperations.isInstanceOf(node, AUX_a19vay.ChildAttribute_96496d6c) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, AUX_a19vay.ChildAttribute_96496d6c), AUX_a19vay.ChildAttribute_96496d6c, SMethodTrimmedId.create("getLink", AUX_a19vay.ChildAttribute_96496d6c, "BpxLfMirzf"))) : node.getContainmentLink());
   }
 
+  private static final class AUX_a19vay {
+    /*package*/ static final SConcept ChildAttribute_96496d6c = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+  }
 }

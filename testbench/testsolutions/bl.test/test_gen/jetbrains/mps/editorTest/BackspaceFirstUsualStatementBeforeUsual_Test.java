@@ -22,7 +22,7 @@ public class BackspaceFirstUsualStatementBeforeUsual_Test extends BaseTransforma
 
   @Test
   public void test_BackspaceFirstUsualStatementBeforeUsual() throws Throwable {
-    new BackspaceFirstUsualStatementBeforeUsual_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

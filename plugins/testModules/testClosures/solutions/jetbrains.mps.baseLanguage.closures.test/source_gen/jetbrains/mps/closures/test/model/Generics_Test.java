@@ -31,15 +31,15 @@ public class Generics_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck5462327771639049246() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck5462327771639049246();
+    new TestBody(this).test_NodeErrorCheck5462327771639049246();
   }
   @Test
   public void test_ErrorMessagesCheck5419091611223712729() throws Throwable {
-    new Generics_Test.TestBody(this).test_ErrorMessagesCheck5419091611223712729();
+    new TestBody(this).test_ErrorMessagesCheck5419091611223712729();
   }
   @Test
   public void test_NodeErrorCheck1674014916759209386() throws Throwable {
-    new Generics_Test.TestBody(this).test_NodeErrorCheck1674014916759209386();
+    new TestBody(this).test_NodeErrorCheck1674014916759209386();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -28,7 +28,7 @@ public class RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test exten
 
   @Test
   public void test_RefactoringMenuItemBase_ApplicableRefactoring_CanExecute() throws Throwable {
-    new RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

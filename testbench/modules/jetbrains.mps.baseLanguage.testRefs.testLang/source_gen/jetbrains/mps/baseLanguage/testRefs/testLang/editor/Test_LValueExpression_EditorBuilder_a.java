@@ -71,7 +71,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Test_LValueExpression_EditorBuilder_a.valueDeclReferenceSingleRoleHandler_6ggxtt_c0(myNode, MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099bL, "valueDeclReference"), getEditorContext());
+    SingleRoleCellProvider provider = new valueDeclReferenceSingleRoleHandler_6ggxtt_c0(myNode, MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099bL, "valueDeclReference"), getEditorContext());
     return provider.createCell();
   }
   private static class valueDeclReferenceSingleRoleHandler_6ggxtt_c0 extends SingleRoleCellProvider {
@@ -135,7 +135,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new Test_LValueExpression_EditorBuilder_a.referenceDeclReferenceSingleRoleHandler_6ggxtt_e0(myNode, MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099dL, "referenceDeclReference"), getEditorContext());
+    SingleRoleCellProvider provider = new referenceDeclReferenceSingleRoleHandler_6ggxtt_e0(myNode, MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099dL, "referenceDeclReference"), getEditorContext());
     return provider.createCell();
   }
   private static class referenceDeclReferenceSingleRoleHandler_6ggxtt_e0 extends SingleRoleCellProvider {

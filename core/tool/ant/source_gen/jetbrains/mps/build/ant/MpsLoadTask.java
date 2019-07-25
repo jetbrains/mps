@@ -70,7 +70,7 @@ public class MpsLoadTask extends Task {
     myWhatToDo.updateFailOnError(failOnError);
   }
 
-  public void setLogLevel(MpsLoadTask.LogLevelAttribute logLevel) {
+  public void setLogLevel(LogLevelAttribute logLevel) {
     myWhatToDo.updateLogLevel(logLevel.getLevel());
   }
 

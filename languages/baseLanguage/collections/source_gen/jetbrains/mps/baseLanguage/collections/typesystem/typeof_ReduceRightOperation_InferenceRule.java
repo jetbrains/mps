@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ReduceRightOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ReduceRightOperation_InferenceRule() {
@@ -40,7 +41,7 @@ public class typeof_ReduceRightOperation_InferenceRule extends AbstractInference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15200106678481b3L, "jetbrains.mps.baseLanguage.collections.structure.ReduceRightOperation");
+    return AUX_ok08sq.ReduceRightOperation_199782f6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -79,5 +80,9 @@ public class typeof_ReduceRightOperation_InferenceRule extends AbstractInference
       quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), SNodeOperations.copyIfNecessary(quotedNode_7));
     }
     return quotedNode_4;
+  }
+
+  private static final class AUX_ok08sq {
+    /*package*/ static final SConcept ReduceRightOperation_199782f6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15200106678481b3L, "jetbrains.mps.baseLanguage.collections.structure.ReduceRightOperation");
   }
 }

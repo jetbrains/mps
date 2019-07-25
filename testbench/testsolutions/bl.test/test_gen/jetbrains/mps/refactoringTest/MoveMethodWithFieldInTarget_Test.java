@@ -34,7 +34,7 @@ public class MoveMethodWithFieldInTarget_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveMethodWithFields2() throws Throwable {
-    new MoveMethodWithFieldInTarget_Test.TestBody(this).test_MoveMethodWithFields2();
+    new TestBody(this).test_MoveMethodWithFields2();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

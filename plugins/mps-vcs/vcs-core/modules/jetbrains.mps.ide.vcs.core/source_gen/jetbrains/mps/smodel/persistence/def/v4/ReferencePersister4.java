@@ -43,15 +43,15 @@ public class ReferencePersister4 implements IReferencePersister {
     this.mySourceNode = sourceNode;
     this.myRole = role;
     if (attTargetNodeId != null) {
-      ReferencePersister4.ReferenceTargetDescriptor targetDescriptor = parseAttTargetNodeId(attTargetNodeId, useUIDs);
+      ReferenceTargetDescriptor targetDescriptor = parseAttTargetNodeId(attTargetNodeId, useUIDs);
       this.myTargetId = targetDescriptor.targetInfo;
       this.myImportedModelInfo = targetDescriptor.importedModelInfo;
       this.myNotImported = targetDescriptor.notImported;
     }
     this.myResolveInfo = resolveInfo;
   }
-  private ReferencePersister4.ReferenceTargetDescriptor parseAttTargetNodeId(String attTargetNodeId, boolean useUIDs) {
-    ReferencePersister4.ReferenceTargetDescriptor referenceTargetDescriptor = new ReferencePersister4.ReferenceTargetDescriptor();
+  private ReferenceTargetDescriptor parseAttTargetNodeId(String attTargetNodeId, boolean useUIDs) {
+    ReferenceTargetDescriptor referenceTargetDescriptor = new ReferenceTargetDescriptor();
     int i;
     if (useUIDs) {
       i = attTargetNodeId.indexOf('#');

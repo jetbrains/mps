@@ -23,7 +23,7 @@ public class ResizeNode_top_left_Test extends BaseTransformationTest {
 
   @Test
   public void test_ResizeNode_top_left() throws Throwable {
-    new ResizeNode_top_left_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

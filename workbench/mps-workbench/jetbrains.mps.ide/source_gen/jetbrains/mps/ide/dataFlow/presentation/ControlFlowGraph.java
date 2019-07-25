@@ -114,9 +114,9 @@ public class ControlFlowGraph<T extends IInstruction<T>> {
     }
   }
   protected void addAdditionalLine(IBlock startBlock, IBlock endBlock) {
-    addAdditionalLine(startBlock, endBlock, new ControlFlowGraph.SimpleLineCreator());
+    addAdditionalLine(startBlock, endBlock, new SimpleLineCreator());
   }
-  protected void addAdditionalLine(IBlock startBlock, IBlock endBlock, ControlFlowGraph.LineCreator lineCreator) {
+  protected void addAdditionalLine(IBlock startBlock, IBlock endBlock, LineCreator lineCreator) {
     int startIndex = this.myBlocks.indexOf(startBlock);
     int endIndex = this.myBlocks.indexOf(endBlock);
     int rightIndent = 0;
@@ -167,9 +167,9 @@ public class ControlFlowGraph<T extends IInstruction<T>> {
   }
 
   protected void addSimpleLine(IBlock block, IBlock nextBlock) {
-    addSimpleLine(block, nextBlock, new ControlFlowGraph.SimpleLineCreator());
+    addSimpleLine(block, nextBlock, new SimpleLineCreator());
   }
-  protected void addSimpleLine(IBlock block, IBlock nextBlock, ControlFlowGraph.LineCreator lineCreator) {
+  protected void addSimpleLine(IBlock block, IBlock nextBlock, LineCreator lineCreator) {
     int levelX = block.getX() + block.getWidth() / 2;
     int y1 = block.getY() + block.getHeight();
     int y2 = nextBlock.getY();
@@ -206,7 +206,7 @@ public class ControlFlowGraph<T extends IInstruction<T>> {
   protected interface LineCreator {
     Line createLine(int first, int second, int level, LineDirection direction);
   }
-  private class SimpleLineCreator implements ControlFlowGraph.LineCreator {
+  private class SimpleLineCreator implements LineCreator {
     public Line createLine(int first, int second, int level, LineDirection direction) {
       return new Line(first, second, level, direction);
     }

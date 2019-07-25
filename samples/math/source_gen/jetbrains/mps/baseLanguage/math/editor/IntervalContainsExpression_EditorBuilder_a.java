@@ -31,6 +31,7 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.editor.BinaryOperation_RightArgument_Actions;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class IntervalContainsExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -62,7 +63,7 @@ import jetbrains.mps.baseLanguage.editor.BinaryOperation_RightArgument_Actions;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IntervalContainsExpression_EditorBuilder_a.leftExpressionSingleRoleHandler_8gz0ko_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new leftExpressionSingleRoleHandler_8gz0ko_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class leftExpressionSingleRoleHandler_8gz0ko_a0 extends SingleRoleCellProvider {
@@ -121,14 +122,14 @@ import jetbrains.mps.baseLanguage.editor.BinaryOperation_RightArgument_Actions;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "contains");
     editorCell.setCellId("Constant_8gz0ko_b0");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IntervalContainsExpression_EditorBuilder_a.ReplaceWith_BinaryOperation_cellMenu_8gz0ko_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BinaryOperation_cellMenu_8gz0ko_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_BinaryOperation_cellMenu_8gz0ko_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_BinaryOperation_cellMenu_8gz0ko_a0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+      return AUX_unekrq.BinaryOperation_7c4c55f3;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -136,7 +137,7 @@ import jetbrains.mps.baseLanguage.editor.BinaryOperation_RightArgument_Actions;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new IntervalContainsExpression_EditorBuilder_a.rightExpressionSingleRoleHandler_8gz0ko_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new rightExpressionSingleRoleHandler_8gz0ko_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class rightExpressionSingleRoleHandler_8gz0ko_c0 extends SingleRoleCellProvider {
@@ -190,5 +191,9 @@ import jetbrains.mps.baseLanguage.editor.BinaryOperation_RightArgument_Actions;
     protected String getNoTargetText() {
       return "<no rightExpression>";
     }
+  }
+
+  private static final class AUX_unekrq {
+    /*package*/ static final SConcept BinaryOperation_7c4c55f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 }

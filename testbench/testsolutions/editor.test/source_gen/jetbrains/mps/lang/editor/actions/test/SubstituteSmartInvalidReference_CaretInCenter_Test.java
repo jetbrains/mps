@@ -24,7 +24,7 @@ public class SubstituteSmartInvalidReference_CaretInCenter_Test extends BaseTran
 
   @Test
   public void test_SubstituteSmartInvalidReference_CaretInCenter() throws Throwable {
-    new SubstituteSmartInvalidReference_CaretInCenter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

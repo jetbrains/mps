@@ -22,7 +22,7 @@ public class BackspaceFirstLineFromStartAndWholeText_Test extends BaseTransforma
 
   @Test
   public void test_BackspaceFirstLineFromStartAndWholeText() throws Throwable {
-    new BackspaceFirstLineFromStartAndWholeText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

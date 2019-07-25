@@ -6,8 +6,9 @@ import jetbrains.mps.smodel.action.IReferentPresentationProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PresentationProviders {
   public static final IReferentPresentationProvider PRESENTATION_37ht8c_a0a0a = new IReferentPresentationProvider() {
@@ -15,7 +16,7 @@ public class PresentationProviders {
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
       if (SNodeOperations.getContainingRoot(targetNode) != SNodeOperations.getContainingRoot(sourceNode)) {
-        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), AUX_nxpo3o.BuildProject_808bb057);
         if (proj != null) {
           return SPropertyOperations.getString(proj, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "/" + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
         }
@@ -28,7 +29,7 @@ public class PresentationProviders {
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
       if (SNodeOperations.getContainingRoot(targetNode) != SNodeOperations.getContainingRoot(sourceNode)) {
-        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), AUX_nxpo3o.BuildProject_808bb057);
         if (proj != null) {
           return SPropertyOperations.getString(proj, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "/" + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
         }
@@ -36,4 +37,8 @@ public class PresentationProviders {
       return SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     }
   };
+
+  private static final class AUX_nxpo3o {
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+  }
 }

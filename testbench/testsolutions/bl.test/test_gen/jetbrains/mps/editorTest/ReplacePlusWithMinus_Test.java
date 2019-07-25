@@ -21,7 +21,7 @@ public class ReplacePlusWithMinus_Test extends BaseTransformationTest {
 
   @Test
   public void test_ReplacePlusWithMinus() throws Throwable {
-    new ReplacePlusWithMinus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

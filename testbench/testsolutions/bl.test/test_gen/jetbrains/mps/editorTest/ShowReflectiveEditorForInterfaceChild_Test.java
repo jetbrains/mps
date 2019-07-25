@@ -21,7 +21,7 @@ public class ShowReflectiveEditorForInterfaceChild_Test extends BaseTransformati
 
   @Test
   public void test_ShowReflectiveEditorForInterfaceChild() throws Throwable {
-    new ShowReflectiveEditorForInterfaceChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

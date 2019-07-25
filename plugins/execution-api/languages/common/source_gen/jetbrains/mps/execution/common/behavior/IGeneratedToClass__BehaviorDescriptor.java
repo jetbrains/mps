@@ -4,7 +4,6 @@ package jetbrains.mps.execution.common.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,6 +16,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.NodeNameUtil;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.regexp.runtime.RegexpOperations;
@@ -24,9 +24,10 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import java.util.regex.Pattern;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass");
+  private static final SAbstractConcept CONCEPT = AUX_mgabp8.IGeneratedToClass_aaa6e4b2;
 
   public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4JBsSb").build();
   public static final SMethod<String> getGeneratedClassName_idO$iR4JBsSg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4JBsSg").build();
@@ -52,7 +53,7 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     return IGeneratedToClass__BehaviorDescriptor.getNamespace_id1XgDflG1h$6.invoke(__thisNode__) + "." + IGeneratedToClass__BehaviorDescriptor.getGeneratedClassName_idO$iR4JBsSg.invoke(__thisNode__);
   }
   /*package*/ static String getValidClassName_id2eOtvO7hJjT(@NotNull SNode __thisNode__, @NonNls String name) {
-    return (String) IGeneratedToClass__BehaviorDescriptor.getValidClassName_id3gpm$NHlLi1.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass")), name);
+    return (String) IGeneratedToClass__BehaviorDescriptor.getValidClassName_id3gpm$NHlLi1.invoke(SNodeOperations.asSConcept(AUX_mgabp8.IGeneratedToClass_aaa6e4b2), name);
   }
   /*package*/ static String getGeneratedClassName_idO$iR4JBsSG(@NotNull SNode __thisNode__, String name) {
     if ((name == null || name.length() == 0)) {
@@ -71,7 +72,7 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     while (result.contains(symbol)) {
       int index = result.indexOf(symbol);
       result = result.replace(symbol, "");
-      result = IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass")), result, ((int) index));
+      result = IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(AUX_mgabp8.IGeneratedToClass_aaa6e4b2), result, ((int) index));
     }
     return result;
   }
@@ -86,7 +87,7 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a3a52, new _Replacer_mgabp8_a0a0d0z(null));
     // in the beggining 
     name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a5a52, new _Replacer_mgabp8_a0a0f0z(null));
-    return (String) IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass")), name, ((int) 0));
+    return (String) IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(AUX_mgabp8.IGeneratedToClass_aaa6e4b2), name, ((int) 0));
   }
 
   /*package*/ IGeneratedToClass__BehaviorDescriptor() {
@@ -150,7 +151,11 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static Pattern REGEXP_mgabp8_b0a1a52 = Pattern.compile("(\\w)\\W+(\\w)", 0);
-  private static Pattern REGEXP_mgabp8_b0a3a52 = Pattern.compile("(.)\\W+$", 0);
-  private static Pattern REGEXP_mgabp8_b0a5a52 = Pattern.compile("^\\W+(\\w)", 0);
+  private static final Pattern REGEXP_mgabp8_b0a1a52 = Pattern.compile("(\\w)\\W+(\\w)", 0);
+  private static final Pattern REGEXP_mgabp8_b0a3a52 = Pattern.compile("(.)\\W+$", 0);
+  private static final Pattern REGEXP_mgabp8_b0a5a52 = Pattern.compile("^\\W+(\\w)", 0);
+
+  private static final class AUX_mgabp8 {
+    /*package*/ static final SInterfaceConcept IGeneratedToClass_aaa6e4b2 = MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass");
+  }
 }

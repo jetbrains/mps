@@ -44,6 +44,7 @@ import jetbrains.mps.lang.core.pluginSolution.plugin.UpdateModelImports;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LanguageStructureMigrationParticipant<I, F> extends RefactoringParticipantBase<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>, SNode, SNode> implements MoveNodeRefactoringParticipant<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> {
 
@@ -91,16 +92,16 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
 
   public static class MigrationBuilder {
     private static final String myId = "refactoringSession.migrationBuilder";
-    public static LanguageStructureMigrationParticipant.MigrationBuilder getBuilder(RefactoringSession session, Language module) {
-      Map<SModuleReference, LanguageStructureMigrationParticipant.MigrationBuilder> moduleBuilders = (Map<SModuleReference, LanguageStructureMigrationParticipant.MigrationBuilder>) session.getObject(LanguageStructureMigrationParticipant.MigrationBuilder.myId);
+    public static MigrationBuilder getBuilder(RefactoringSession session, Language module) {
+      Map<SModuleReference, MigrationBuilder> moduleBuilders = (Map<SModuleReference, MigrationBuilder>) session.getObject(MigrationBuilder.myId);
       if (moduleBuilders == null) {
-        moduleBuilders = MapSequence.fromMap(new HashMap<SModuleReference, LanguageStructureMigrationParticipant.MigrationBuilder>());
-        session.putObject(LanguageStructureMigrationParticipant.MigrationBuilder.myId, moduleBuilders);
+        moduleBuilders = MapSequence.fromMap(new HashMap<SModuleReference, MigrationBuilder>());
+        session.putObject(MigrationBuilder.myId, moduleBuilders);
       }
 
-      LanguageStructureMigrationParticipant.MigrationBuilder builder = MapSequence.fromMap(moduleBuilders).get(module.getModuleReference());
+      MigrationBuilder builder = MapSequence.fromMap(moduleBuilders).get(module.getModuleReference());
       if (builder == null) {
-        builder = new LanguageStructureMigrationParticipant.MigrationBuilder(session, module);
+        builder = new MigrationBuilder(session, module);
         MapSequence.fromMap(moduleBuilders).put(module.getModuleReference(), builder);
       }
       return builder;
@@ -141,22 +142,22 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
     }
     private static SNode createPureMigrationScript_kz6lmo_a0d0d11(Object p0, Object p1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, "jetbrains.mps.lang.migration.structure.PureMigrationScript"), null, null, false);
+      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_kz6lmo.PureMigrationScript_45927c66, null, null, false);
       n1.setProperty(MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836cabcL, "fromVersion"), MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836cabcL, "fromVersion").getType().toString(p0));
       n1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name").getType().toString(p1));
       return n1;
     }
     private static SNode createMoveNodeMigrationPart_kz6lmo_a0a0e11(SNode node0, SNode node1, SNode node2) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, "jetbrains.mps.lang.migration.structure.MoveNodeMigrationPart"), null, null, false);
+      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_kz6lmo.MoveNodeMigrationPart_3e887e9b, null, null, false);
       if (node0 != null) {
-        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1648ccL, "jetbrains.mps.lang.migration.structure.AbstractNodeReference"))));
+        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_kz6lmo.AbstractNodeReference_c12f549c)));
       }
       if (node1 != null) {
-        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1648ccL, "jetbrains.mps.lang.migration.structure.AbstractNodeReference"))));
+        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, AUX_kz6lmo.AbstractNodeReference_c12f549c)));
       }
       if (node2 != null) {
-        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x2b3f57492c165c59L, "specialization"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node2, MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c165c5dL, "jetbrains.mps.lang.migration.structure.MoveNodeSpecialization"))));
+        n1.addChild(MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x2b3f57492c165c59L, "specialization"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node2, AUX_kz6lmo.MoveNodeSpecialization_c13b2660)));
       }
       return n1;
     }
@@ -196,7 +197,7 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
         Language sourceModule = as_kz6lmo_a0a0a2a0a0j0q(check_kz6lmo_a0a0a2a0a0j0q(check_kz6lmo_a0a0a0c0a0a9a61(initialState._1().resolve(repository))), Language.class);
         Language targetModule = as_kz6lmo_a0a1a2a0a0j0q(check_kz6lmo_a0a1a2a0a0j0q(check_kz6lmo_a0a0b0c0a0a9a61(finalState._1().resolve(repository))), Language.class);
         if (sourceModule != null) {
-          LanguageStructureMigrationParticipant.MigrationBuilder logBuilder = LanguageStructureMigrationParticipant.MigrationBuilder.getBuilder(refactoringSession, sourceModule);
+          MigrationBuilder logBuilder = MigrationBuilder.getBuilder(refactoringSession, sourceModule);
           myStructureSpecialization.confirm(selectedOptions, initialState, finalState, repository, logBuilder, updateModelImports);
         }
       }
@@ -247,5 +248,12 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
   }
   private static <T> T as_kz6lmo_a0a1a2a0a0j0q(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_kz6lmo {
+    /*package*/ static final SConcept PureMigrationScript_45927c66 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, "jetbrains.mps.lang.migration.structure.PureMigrationScript");
+    /*package*/ static final SConcept MoveNodeMigrationPart_3e887e9b = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, "jetbrains.mps.lang.migration.structure.MoveNodeMigrationPart");
+    /*package*/ static final SConcept AbstractNodeReference_c12f549c = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1648ccL, "jetbrains.mps.lang.migration.structure.AbstractNodeReference");
+    /*package*/ static final SConcept MoveNodeSpecialization_c13b2660 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c165c5dL, "jetbrains.mps.lang.migration.structure.MoveNodeSpecialization");
   }
 }

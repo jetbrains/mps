@@ -45,7 +45,7 @@ public class WithExecutableAction extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), "test location").contains(_context.getMenuLocation())) {
-      result.add(new WithExecutableAction.TMP_Action_mk0emr_a0());
+      result.add(new TMP_Action_mk0emr_a0());
     }
     return result;
   }
@@ -53,7 +53,7 @@ public class WithExecutableAction extends TransformationMenuBase {
   private class TMP_Action_mk0emr_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      WithExecutableAction.TMP_Action_mk0emr_a0.Item item = new WithExecutableAction.TMP_Action_mk0emr_a0.Item(context);
+      TMP_Action_mk0emr_a0.Item item = new TMP_Action_mk0emr_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

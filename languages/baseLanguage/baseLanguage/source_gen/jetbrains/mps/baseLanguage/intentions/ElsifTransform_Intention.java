@@ -17,6 +17,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ElsifTransform_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -36,7 +37,7 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     SNode ifFalseStatement = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"));
-    return (ifFalseStatement != null) && SNodeOperations.isInstanceOf(ifFalseStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+    return (ifFalseStatement != null) && SNodeOperations.isInstanceOf(ifFalseStatement, AUX_g4jq20.IfStatement_9dbf9b10);
   }
   @Override
   public boolean isSurroundWith() {
@@ -44,7 +45,7 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new ElsifTransform_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -59,7 +60,7 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode ifFalseStatement = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"));
       while (true) {
-        SNode ifStatement = SNodeOperations.cast(ifFalseStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+        SNode ifStatement = SNodeOperations.cast(ifFalseStatement, AUX_g4jq20.IfStatement_9dbf9b10);
         SNode elsifClause = SNodeFactoryOperations.addNewChild(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses"), null);
         SLinkOperations.setTarget(elsifClause, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition"), SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition")));
         SLinkOperations.setTarget(elsifClause, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList"), SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue")));
@@ -67,7 +68,7 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
         if ((ifFalseStatement == null)) {
           break;
         }
-        if (!(SNodeOperations.isInstanceOf(ifFalseStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement")))) {
+        if (!(SNodeOperations.isInstanceOf(ifFalseStatement, AUX_g4jq20.IfStatement_9dbf9b10))) {
           SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"), ifFalseStatement);
           break;
         }
@@ -77,5 +78,9 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
     public IntentionDescriptor getDescriptor() {
       return ElsifTransform_Intention.this;
     }
+  }
+
+  private static final class AUX_g4jq20 {
+    /*package*/ static final SConcept IfStatement_9dbf9b10 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

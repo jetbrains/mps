@@ -21,7 +21,7 @@ public class AddVolatileInFieldLeftOfType_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddVolatileInFieldLeftOfType() throws Throwable {
-    new AddVolatileInFieldLeftOfType_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -30,6 +29,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.ConstraintsVerifiableAc
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -40,6 +40,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddFieldModifiersOnTypes extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -65,7 +66,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0());
+      result.add(new TMP_Group_ohj0iz_a0());
     }
     return result;
   }
@@ -73,7 +74,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
   public class TMP_Group_ohj0iz_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_ohj0iz.FieldDeclaration_e2711ac6);
     }
 
     @NotNull
@@ -89,12 +90,12 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_a0a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), new ConstraintsFilteringTransformationMenuPartDecorator(new AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_b0a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), new ConstraintsFilteringTransformationMenuPartDecorator(new AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_c0a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_a0a(), AUX_ohj0iz.FieldDeclaration_e2711ac6), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_b0a(), AUX_ohj0iz.FieldDeclaration_e2711ac6), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_c0a(), AUX_ohj0iz.FieldDeclaration_e2711ac6));
     }
     private class TMP_Action_ohj0iz_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_a0a.Item item = new AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_a0a.Item(context);
+        TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_a0a.Item item = new TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -129,16 +130,16 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_ohj0iz.FieldDeclaration_e2711ac6);
           SPropertyOperations.set(field, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient"), true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), "transientModifier", -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_ohj0iz.FieldDeclaration_e2711ac6), "transientModifier", -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+          return AUX_ohj0iz.FieldDeclaration_e2711ac6;
         }
 
 
@@ -149,7 +150,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+          SAbstractConcept outputConcept = AUX_ohj0iz.FieldDeclaration_e2711ac6;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -161,7 +162,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
     private class TMP_Action_ohj0iz_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_b0a.Item item = new AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_b0a.Item(context);
+        TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_b0a.Item item = new TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_b0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -196,16 +197,16 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_ohj0iz.FieldDeclaration_e2711ac6);
           SPropertyOperations.set(field, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile"), true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), "volatileModifier", -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_ohj0iz.FieldDeclaration_e2711ac6), "volatileModifier", -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+          return AUX_ohj0iz.FieldDeclaration_e2711ac6;
         }
 
 
@@ -216,7 +217,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+          SAbstractConcept outputConcept = AUX_ohj0iz.FieldDeclaration_e2711ac6;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -228,7 +229,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
     private class TMP_Action_ohj0iz_c0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_c0a.Item item = new AddFieldModifiersOnTypes.TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_c0a.Item(context);
+        TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_c0a.Item item = new TMP_Group_ohj0iz_a0.TMP_Action_ohj0iz_c0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -263,8 +264,8 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
-          SNode staticField = SNodeFactoryOperations.replaceWithNewChild(field, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"));
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_ohj0iz.FieldDeclaration_e2711ac6);
+          SNode staticField = SNodeFactoryOperations.replaceWithNewChild(field, AUX_ohj0iz.StaticFieldDeclaration_9649293d);
           MemberDeclarationRefactoringUtil.rewireFieldReferences(field, staticField);
 
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), staticField, "staticModifier", -1);
@@ -275,7 +276,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+          return AUX_ohj0iz.FieldDeclaration_e2711ac6;
         }
 
 
@@ -286,7 +287,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+          SAbstractConcept outputConcept = AUX_ohj0iz.FieldDeclaration_e2711ac6;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -295,5 +296,10 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_ohj0iz {
+    /*package*/ static final SConcept FieldDeclaration_e2711ac6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration_9649293d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 }

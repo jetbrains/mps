@@ -22,7 +22,7 @@ public class BackspaceFirstCommentedStatementBeforeUsual_CommentSelected_Test ex
 
   @Test
   public void test_BackspaceFirstCommentedStatementBeforeUsual_CommentSelected() throws Throwable {
-    new BackspaceFirstCommentedStatementBeforeUsual_CommentSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

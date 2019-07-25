@@ -6,12 +6,14 @@ import jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.baseLanguage.behavior.NextProgramPoint;
 import jetbrains.mps.baseLanguage.behavior.IConditional__BehaviorDescriptor;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class RuleInstanceofExpression implements DataFlowConstructor {
   public boolean isApplicable(SNode node) {
@@ -20,13 +22,13 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
     return concept.equals(applicableConcept) || concept.isSubConceptOf(applicableConcept);
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    return AUX_umjtao.InstanceOfExpression_70765a36;
   }
   public void performActions(Program o, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ac89e1b122cd5c2L, "jetbrains.mps.baseLanguage.structure.IConditional")))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_umjtao.IConditional_d904c968))) {
       return;
     }
-    SNode conditional = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ac89e1b122cd5c2L, "jetbrains.mps.baseLanguage.structure.IConditional"));
+    SNode conditional = SNodeOperations.cast(SNodeOperations.getParent(node), AUX_umjtao.IConditional_d904c968);
 
     NextProgramPoint pp = IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(conditional, node, ((boolean) true));
     if (pp != null) {
@@ -59,5 +61,10 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
       }
     }
     // If instanceof didn't match, no idea whether leftExpression is nullable or not. 
+  }
+
+  private static final class AUX_umjtao {
+    /*package*/ static final SConcept InstanceOfExpression_70765a36 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    /*package*/ static final SInterfaceConcept IConditional_d904c968 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ac89e1b122cd5c2L, "jetbrains.mps.baseLanguage.structure.IConditional");
   }
 }

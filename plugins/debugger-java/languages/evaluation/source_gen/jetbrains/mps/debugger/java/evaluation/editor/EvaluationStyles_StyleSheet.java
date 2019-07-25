@@ -21,7 +21,7 @@ public class EvaluationStyles_StyleSheet {
   public static void apply_ContextKeyword(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new EvaluationStyles_StyleSheet.ContextKeywordStyleClass(editorContext, node).apply(style, editorCell);
+    new ContextKeywordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -31,7 +31,7 @@ public class EvaluationStyles_StyleSheet {
   public static void apply_Header(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new EvaluationStyles_StyleSheet.HeaderStyleClass(editorContext, node).apply(style, editorCell);
+    new HeaderStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class ContextKeywordStyleClass extends AbstractStyleClass {

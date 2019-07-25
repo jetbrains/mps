@@ -16,13 +16,13 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -35,6 +35,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SampleRefMigration extends MigrationScriptBase {
   public String getCaption() {
@@ -66,7 +67,7 @@ public class SampleRefMigration extends MigrationScriptBase {
       };
 
       // get all old references in all models of this module 
-      List<SNode> references = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104931574dL, "ref.structure.OldComponentRef"), true)).toListSequence();
+      List<SNode> references = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_u457zm.OldComponentRef_e959e272, true)).toListSequence();
 
       // cache for reading data annotations 
       final Map<SModule, Map<String, String>> idMaps = MapSequence.fromMap(new HashMap<SModule, Map<String, String>>());
@@ -117,7 +118,7 @@ public class SampleRefMigration extends MigrationScriptBase {
           return scope_u457zm_a0e_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104931574dL, "ref.structure.OldComponentRef"), false)).select(new ISelector<SNode, NotMigratedNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_u457zm.OldComponentRef_e959e272, false)).select(new ISelector<SNode, NotMigratedNode>() {
         public NotMigratedNode select(SNode it) {
           return new NotMigratedNode(it) {
             public String getMessage() {
@@ -140,7 +141,7 @@ public class SampleRefMigration extends MigrationScriptBase {
           return scope_u457zm_a0g_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation"), false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_u457zm.MigrationDataAnnotation_24ae4237, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(MigrationScriptReference.deserialize(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript"))), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 1));
         }
@@ -157,4 +158,8 @@ public class SampleRefMigration extends MigrationScriptBase {
 
 
 
+  private static final class AUX_u457zm {
+    /*package*/ static final SConcept OldComponentRef_e959e272 = MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104931574dL, "ref.structure.OldComponentRef");
+    /*package*/ static final SConcept MigrationDataAnnotation_24ae4237 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation");
+  }
 }

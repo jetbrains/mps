@@ -21,7 +21,7 @@ public class FieldInitializerRequired1_Test extends BaseTransformationTest {
 
   @Test
   public void test_FieldInitializerRequired1() throws Throwable {
-    new FieldInitializerRequired1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

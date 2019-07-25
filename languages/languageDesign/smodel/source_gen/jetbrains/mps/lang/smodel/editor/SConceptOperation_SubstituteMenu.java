@@ -14,10 +14,10 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
@@ -27,13 +27,14 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new SConceptOperation_SubstituteMenu.SMP_Group_gutaar_a());
+    result.add(new SMP_Group_gutaar_a());
     return result;
   }
 
@@ -57,7 +58,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       isParentDot = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_gutaar.DotExpression_97ed08d8);
         }
       }.compute();
     }
@@ -75,7 +76,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SConceptOperation_SubstituteMenu.SMP_Group_gutaar_a.SMP_Group_gutaar_a0(), new SConceptOperation_SubstituteMenu.SMP_Group_gutaar_a.SMP_Group_gutaar_b0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_a0(), new SMP_Group_gutaar_a.SMP_Group_gutaar_b0());
     }
     public class SMP_Group_gutaar_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -96,12 +97,12 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SConceptOperation_SubstituteMenu.SMP_Group_gutaar_a.SMP_Group_gutaar_a0.SMP_Group_gutaar_a0a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_a0.SMP_Group_gutaar_a0a());
       }
       public class SMP_Group_gutaar_a0a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
         @Override
         protected boolean isApplicable(SubstituteMenuContext _context) {
-          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
+          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), AUX_gutaar.DotExpression_97ed08d8), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"));
           SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
           return TypecheckingFacade.getFromContext().isStrongSubtype(leftType, _quotation_createNode_gutaar_b0a2a0a0a());
         }
@@ -119,11 +120,11 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
         @Override
         protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-          return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SConceptOperation_SubstituteMenu.SMP_Group_gutaar_a.SMP_Group_gutaar_a0.SMP_Group_gutaar_a0a.SMP_Subconcepts_gutaar_a0a0());
+          return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_a0.SMP_Group_gutaar_a0a.SMP_Subconcepts_gutaar_a0a0());
         }
         public class SMP_Subconcepts_gutaar_a0a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
           protected Collection getConcepts(final SubstituteMenuContext _context) {
-            return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation"));
+            return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_gutaar.SConceptOperation_9b6a6bf7);
           }
           @NotNull
           @Override
@@ -163,11 +164,11 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SConceptOperation_SubstituteMenu.SMP_Group_gutaar_a.SMP_Group_gutaar_b0.SMP_Subconcepts_gutaar_a1a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_b0.SMP_Subconcepts_gutaar_a1a());
       }
       public class SMP_Subconcepts_gutaar_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation"));
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_gutaar.SConceptOperation_9b6a6bf7);
         }
         @NotNull
         @Override
@@ -193,5 +194,10 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x5cab42cd97571ceeL, "SConceptType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_gutaar {
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SConceptOperation_9b6a6bf7 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation");
   }
 }

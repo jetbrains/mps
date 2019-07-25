@@ -18,6 +18,8 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ExpressionStatement_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ExpressionStatement_NonTypesystemRule() {
@@ -27,19 +29,24 @@ public class check_ExpressionStatement_NonTypesystemRule extends AbstractNonType
       return;
     }
 
-    SNode statementListContainer = SNodeOperations.getNodeAncestor(expressionStatement, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer"), false, false);
+    SNode statementListContainer = SNodeOperations.getNodeAncestor(expressionStatement, AUX_tm7l6h.IStatementListContainer_5e186851, false, false);
     if (!(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(IStatementListContainer__BehaviorDescriptor.getStatementList_id28aPEVv_31A.invoke(statementListContainer)) == expressionStatement && (boolean) IStatementListContainer__BehaviorDescriptor.isPassLastExpressionValue_id28aPEVv$IZv.invoke(statementListContainer))) {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expressionStatement, "Not a legal statement, the expression value should be used or returned", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    return AUX_tm7l6h.ExpressionStatement_9dbf9b0c;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_tm7l6h {
+    /*package*/ static final SInterfaceConcept IStatementListContainer_5e186851 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
   }
 }

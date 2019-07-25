@@ -21,7 +21,7 @@ public class MethodAddGenericCaretFromVisibility2_Test extends BaseTransformatio
 
   @Test
   public void test_MethodAddGenericCaretFromVisibility2() throws Throwable {
-    new MethodAddGenericCaretFromVisibility2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

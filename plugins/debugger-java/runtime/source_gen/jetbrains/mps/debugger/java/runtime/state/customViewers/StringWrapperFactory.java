@@ -28,7 +28,7 @@ public class StringWrapperFactory extends ValueWrapperFactory {
     return "String";
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new StringWrapperFactory.JavaStringValue(((IObjectValueProxy) value), threadReference);
+    return new JavaStringValue(((IObjectValueProxy) value), threadReference);
   }
   private static class JavaStringValue extends ObjectWrapperFactory.JavaObjectValue {
     public JavaStringValue(IObjectValueProxy value, ThreadReference threadReference) {

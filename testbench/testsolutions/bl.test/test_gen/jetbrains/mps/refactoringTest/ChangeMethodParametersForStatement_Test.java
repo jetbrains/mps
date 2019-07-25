@@ -39,7 +39,7 @@ public class ChangeMethodParametersForStatement_Test extends BaseTransformationT
 
   @Test
   public void test_changeMethodParametersForStatement() throws Throwable {
-    new ChangeMethodParametersForStatement_Test.TestBody(this).test_changeMethodParametersForStatement();
+    new TestBody(this).test_changeMethodParametersForStatement();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

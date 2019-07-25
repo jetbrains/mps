@@ -41,6 +41,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class InferenceRule_add_OverridesConceptFunction extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -66,7 +67,7 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new InferenceRule_add_OverridesConceptFunction.TMP_Group_5qd74_a0());
+      result.add(new TMP_Group_5qd74_a0());
     }
     return result;
   }
@@ -90,14 +91,14 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new InferenceRule_add_OverridesConceptFunction.TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a());
     }
     private class TMP_Param_5qd74_a0a extends ParameterizedMenuPart<String, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-        return new InferenceRule_add_OverridesConceptFunction.TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a.TMP_Action_5qd74_a0a0(parameter).createItems(context);
+        return new TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a.TMP_Action_5qd74_a0a0(parameter).createItems(context);
       }
 
       @Nullable
@@ -124,7 +125,7 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          InferenceRule_add_OverridesConceptFunction.TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a.TMP_Action_5qd74_a0a0.Item item = new InferenceRule_add_OverridesConceptFunction.TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a.TMP_Action_5qd74_a0a0.Item(context);
+          TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a.TMP_Action_5qd74_a0a0.Item item = new TMP_Group_5qd74_a0.TMP_Param_5qd74_a0a.TMP_Action_5qd74_a0a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -160,13 +161,13 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
           @Override
           public void execute(@NotNull String pattern) {
             SPropertyOperations.remove(_context.getNode(), MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides"));
-            SNode fun = SNodeFactoryOperations.setNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun"), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1885777d1370d97bL, "jetbrains.mps.lang.typesystem.structure.OverridesConceptFunction"));
+            SNode fun = SNodeFactoryOperations.setNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun"), AUX_5qd74.OverridesConceptFunction_bca3b90f);
 
             if (!("{".equals(myParameterObject))) {
-              SNode estmt = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(fun, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"));
-              SNode bcst = SNodeFactoryOperations.setNewChild(estmt, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant"));
+              SNode estmt = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(fun, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), AUX_5qd74.ExpressionStatement_9dbf9b0c);
+              SNode bcst = SNodeFactoryOperations.setNewChild(estmt, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), AUX_5qd74.BooleanConstant_9dbf9ad0);
               SPropertyOperations.set(bcst, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), Boolean.valueOf(myParameterObject));
-              SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression")), SelectionManager.FIRST_CELL);
+              SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).first(), AUX_5qd74.ExpressionStatement_9dbf9b0c), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression")), SelectionManager.FIRST_CELL);
             } else {
               SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), SelectionManager.FIRST_CELL);
             }
@@ -193,5 +194,11 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
 
       }
     }
+  }
+
+  private static final class AUX_5qd74 {
+    /*package*/ static final SConcept OverridesConceptFunction_bca3b90f = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1885777d1370d97bL, "jetbrains.mps.lang.typesystem.structure.OverridesConceptFunction");
+    /*package*/ static final SConcept ExpressionStatement_9dbf9b0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept BooleanConstant_9dbf9ad0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
   }
 }

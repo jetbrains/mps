@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -43,6 +43,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ThisClassifierExpression_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -68,7 +69,7 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_myg648.ThisClassifierExpression_b632a0cf)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -84,7 +85,7 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ThisClassifierExpression_TransformationMenu.TMP_Group_myg648_a1());
+      result.add(new TMP_Group_myg648_a1());
     }
     return result;
   }
@@ -108,14 +109,14 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ThisClassifierExpression_TransformationMenu.TMP_Group_myg648_a1.TMP_Param_myg648_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_myg648_a1.TMP_Param_myg648_a0b());
     }
     private class TMP_Param_myg648_a0b extends ParameterizedMenuPart<SNode, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-        return new ThisClassifierExpression_TransformationMenu.TMP_Group_myg648_a1.TMP_Param_myg648_a0b.TMP_Action_myg648_a0a1(parameter).createItems(context);
+        return new TMP_Group_myg648_a1.TMP_Param_myg648_a0b.TMP_Action_myg648_a0a1(parameter).createItems(context);
       }
 
       @Nullable
@@ -142,7 +143,7 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          ThisClassifierExpression_TransformationMenu.TMP_Group_myg648_a1.TMP_Param_myg648_a0b.TMP_Action_myg648_a0a1.Item item = new ThisClassifierExpression_TransformationMenu.TMP_Group_myg648_a1.TMP_Param_myg648_a0b.TMP_Action_myg648_a0a1.Item(context);
+          TMP_Group_myg648_a1.TMP_Param_myg648_a0b.TMP_Action_myg648_a0a1.Item item = new TMP_Group_myg648_a1.TMP_Param_myg648_a0b.TMP_Action_myg648_a0a1.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -177,7 +178,7 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode expr = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression"), null);
+            SNode expr = SNodeFactoryOperations.createNewNode(AUX_myg648.ThisClassifierExpression_b632a0cf, null);
             SLinkOperations.setTarget(expr, MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier"), myParameterObject);
             SNodeOperations.replaceWithAnother(_context.getNode(), expr);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), expr, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -203,5 +204,9 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
 
       }
     }
+  }
+
+  private static final class AUX_myg648 {
+    /*package*/ static final SConcept ThisClassifierExpression_b632a0cf = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression");
   }
 }

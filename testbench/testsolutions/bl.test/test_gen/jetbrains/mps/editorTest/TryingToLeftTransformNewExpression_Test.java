@@ -22,7 +22,7 @@ public class TryingToLeftTransformNewExpression_Test extends BaseTransformationT
 
   @Test
   public void test_TryingToLeftTransformNewExpression() throws Throwable {
-    new TryingToLeftTransformNewExpression_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

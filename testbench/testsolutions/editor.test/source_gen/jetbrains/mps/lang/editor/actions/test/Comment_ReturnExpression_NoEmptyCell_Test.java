@@ -21,7 +21,7 @@ public class Comment_ReturnExpression_NoEmptyCell_Test extends BaseTransformatio
 
   @Test
   public void test_Comment_ReturnExpression_NoEmptyCell() throws Throwable {
-    new Comment_ReturnExpression_NoEmptyCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

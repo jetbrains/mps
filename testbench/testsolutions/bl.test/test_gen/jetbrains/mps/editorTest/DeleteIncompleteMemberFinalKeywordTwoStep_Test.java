@@ -23,7 +23,7 @@ public class DeleteIncompleteMemberFinalKeywordTwoStep_Test extends BaseTransfor
 
   @Test
   public void test_DeleteIncompleteMemberFinalKeywordTwoStep() throws Throwable {
-    new DeleteIncompleteMemberFinalKeywordTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

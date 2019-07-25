@@ -7,8 +7,8 @@ public class MPS9324<T> {
   public MPS9324() {
   }
   public void method() {
-    MPS9324.Predicate<MPS9324.Parameter<T>> i = new MPS9324.Predicate<MPS9324.Parameter<T>>() {
-      public void doIt(MPS9324.Parameter<T> p) {
+    Predicate<Parameter<T>> i = new Predicate<Parameter<T>>() {
+      public void doIt(Parameter<T> p) {
       }
     };
   }

@@ -9,18 +9,19 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.actions.ExpectedType_FactoryUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CastExpression_KeyMap extends KeyMapImpl {
   public CastExpression_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new CastExpression_KeyMap.CastExpression_KeyMap_Action0();
+    action = new CastExpression_KeyMap_Action0();
     this.putAction("any", "VK_DELETE", action);
-    action = new CastExpression_KeyMap.CastExpression_KeyMap_Action1();
+    action = new CastExpression_KeyMap_Action1();
     this.putAction("ctrl+shift", "VK_SPACE", action);
   }
   public static class CastExpression_KeyMap_Action0 extends KeyMapActionImpl {
@@ -39,7 +40,7 @@ public class CastExpression_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_lml8w2.CastExpression_6a411f0c))) {
         return false;
       }
       return true;
@@ -74,7 +75,7 @@ public class CastExpression_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_lml8w2.CastExpression_6a411f0c))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -93,5 +94,9 @@ public class CastExpression_KeyMap extends KeyMapImpl {
     public String getKeyStroke() {
       return "ctrl shift SPACE";
     }
+  }
+
+  private static final class AUX_lml8w2 {
+    /*package*/ static final SConcept CastExpression_6a411f0c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 }

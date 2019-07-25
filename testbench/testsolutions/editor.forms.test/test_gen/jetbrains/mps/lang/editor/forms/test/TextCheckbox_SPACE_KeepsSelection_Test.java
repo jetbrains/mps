@@ -23,7 +23,7 @@ public class TextCheckbox_SPACE_KeepsSelection_Test extends BaseTransformationTe
 
   @Test
   public void test_TextCheckbox_SPACE_KeepsSelection() throws Throwable {
-    new TextCheckbox_SPACE_KeepsSelection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

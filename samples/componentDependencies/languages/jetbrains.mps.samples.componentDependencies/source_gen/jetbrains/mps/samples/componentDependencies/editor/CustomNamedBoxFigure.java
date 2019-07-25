@@ -20,10 +20,10 @@ public class CustomNamedBoxFigure extends NamedBoxFigure {
   private TextCell myCell = new TextCell();
 
   public CustomNamedBoxFigure() {
-    this(new CustomNamedBoxFigure.CustomNamedBoxFigureMapperFactory());
+    this(new CustomNamedBoxFigureMapperFactory());
     background().set(Color.LIGHT_YELLOW);
   }
-  public CustomNamedBoxFigure(CustomNamedBoxFigure.CustomNamedBoxFigureMapperFactory factory) {
+  public CustomNamedBoxFigure(CustomNamedBoxFigureMapperFactory factory) {
     CellView cellView = new CellView();
     myCell.textColor().set(Color.BLACK);
     myCell.text().set("<<No text>>");

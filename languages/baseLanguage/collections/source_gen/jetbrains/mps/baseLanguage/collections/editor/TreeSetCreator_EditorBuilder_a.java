@@ -85,7 +85,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new TreeSetCreator_EditorBuilder_a.comparatorSingleRoleHandler_yg6waa_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator"), getEditorContext());
+    SingleRoleCellProvider provider = new comparatorSingleRoleHandler_yg6waa_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator"), getEditorContext());
     return provider.createCell();
   }
   private static class comparatorSingleRoleHandler_yg6waa_b1a extends SingleRoleCellProvider {

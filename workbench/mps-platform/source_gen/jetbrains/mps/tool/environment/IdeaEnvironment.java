@@ -288,7 +288,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
   @NotNull
   private MPSProject openProjectInIdeaEnvironment(File projectFile) {
     if (!(projectFile.exists())) {
-      throw new IdeaEnvironment.ProjectDirectoryDoesNotExistException(projectFile.getAbsolutePath());
+      throw new ProjectDirectoryDoesNotExistException(projectFile.getAbsolutePath());
     }
     final ProjectManagerEx projectManager = ProjectManagerEx.getInstanceEx();
     final String filePath = projectFile.getAbsolutePath();
@@ -310,14 +310,14 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
     }, ModalityState.NON_MODAL);
 
     if (!(exc.isNull())) {
-      throw new IdeaEnvironment.CouldNotLoadProjectException(String.format("ProjectManager could not load project from '%s'", projectFile.getAbsolutePath()), exc.get());
+      throw new CouldNotLoadProjectException(String.format("ProjectManager could not load project from '%s'", projectFile.getAbsolutePath()), exc.get());
     }
 
     if (project.isNull()) {
-      throw new IdeaEnvironment.ProjectCouldNotBeOpenedException(String.format("Could not open project (null in return) from the '%s'", projectFile.getAbsolutePath()), exc.get());
+      throw new ProjectCouldNotBeOpenedException(String.format("Could not open project (null in return) from the '%s'", projectFile.getAbsolutePath()), exc.get());
     }
 
-    final IdeaEnvironment.PostStartupActivitiesWaiter waiter = new IdeaEnvironment.PostStartupActivitiesWaiter(project.get());
+    final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get());
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
       public void run() {
         waiter.init();
@@ -399,7 +399,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
       try {
         mySem.acquire();
       } catch (InterruptedException e) {
-        throw new IdeaEnvironment.InterruptedWhileWaitingForPostStartupException("Caught exception while waiting for the post startup activities", e);
+        throw new InterruptedWhileWaitingForPostStartupException("Caught exception while waiting for the post startup activities", e);
       }
       waitForDumbModeToFinish();
       assert startupManager.postStartupActivityPassed();

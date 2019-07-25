@@ -22,7 +22,7 @@ public class DeleteLineStatementInHorizontalCollection_Test extends BaseTransfor
 
   @Test
   public void test_DeleteLineStatementInHorizontalCollection() throws Throwable {
-    new DeleteLineStatementInHorizontalCollection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

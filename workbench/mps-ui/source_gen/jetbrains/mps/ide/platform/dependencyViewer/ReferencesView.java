@@ -18,7 +18,7 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 public class ReferencesView extends UsagesView {
   public ReferencesView(Project project, DependenciesPanel component) {
     super(project, new ViewOptions(false, false, false, false, false, false));
-    setCustomNodeRepresentator(new ReferencesView.MyNodeRepresentator());
+    setCustomNodeRepresentator(new MyNodeRepresentator());
     UsagesTree usagesTree = getTreeComponent().getTree();
     usagesTree.setSelectionRow(0);
     usagesTree.setShowPopupMenu(false);

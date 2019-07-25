@@ -33,13 +33,13 @@
       <node id="966640927460541557" at="73,0,74,0" concept="6" trace="getStringPresentation#(Lcom/sun/jdi/Value;Lcom/sun/jdi/ThreadReference;)Ljava/lang/String;" />
       <node id="7494124042451449909" at="75,25,76,22" concept="8" />
       <node id="4727801710070562723" at="88,9,89,34" concept="8" />
-      <node id="4727801710070562686" at="91,69,92,128" concept="14" />
+      <node id="4727801710070562686" at="91,53,92,112" concept="14" />
       <node id="4727801710070562681" at="93,14,94,49" concept="14" />
       <node id="4727801710070562700" at="96,42,97,55" concept="14" />
       <node id="4727801710070562708" at="98,38,99,55" concept="14" />
       <node id="4963955491753986465" at="101,61,102,60" concept="14" />
       <node id="4963955491753986477" at="103,7,104,46" concept="14" />
-      <node id="4968420405390489536" at="106,69,107,152" concept="14" />
+      <node id="4968420405390489536" at="106,53,107,136" concept="14" />
       <node id="4968420405390508470" at="108,14,109,41" concept="14" />
       <node id="4727801710070562716" at="111,27,112,39" concept="14" />
       <node id="4963955491753976931" at="125,9,126,34" concept="8" />
@@ -83,8 +83,8 @@
       <node id="7494124042451449889" at="74,0,79,0" concept="10" trace="getInstance#()Ljetbrains/mps/debugger/java/api/evaluation/EvaluationUtils;" />
       <node id="4727801710070562675" at="90,37,95,7" concept="5" />
       <node id="4968420405390505277" at="105,50,110,7" concept="5" />
-      <node id="4963955491753976918" at="124,115,147,5" concept="15" />
-      <node id="4727801710070562672" at="87,121,113,5" concept="15" />
+      <node id="4963955491753976918" at="124,99,147,5" concept="15" />
+      <node id="4727801710070562672" at="87,105,113,5" concept="15" />
       <node id="4963955491753976908" at="124,0,150,0" concept="10" trace="consumeEvaluationException#(Ljetbrains/mps/debugger/java/api/evaluation/EvaluationUtils/EvaluationInvocatable;null)null" />
       <node id="4727801710070562664" at="87,0,115,0" concept="10" trace="handleInvocationExceptions#(Ljetbrains/mps/debugger/java/api/evaluation/EvaluationUtils/Invocatable;)null" />
       <scope id="4727801710070561580" at="35,28,35,28" />
@@ -122,7 +122,7 @@
       </scope>
       <scope id="7494124042451449907" at="75,25,76,22" />
       <scope id="4727801710070562722" at="88,9,89,34" />
-      <scope id="4727801710070562685" at="91,69,92,128" />
+      <scope id="4727801710070562685" at="91,53,92,112" />
       <scope id="4727801710070562680" at="93,14,94,49" />
       <scope id="4727801710070562698" at="96,0,97,55">
         <var name="e" id="4727801710070562704" />
@@ -133,7 +133,7 @@
       </scope>
       <scope id="4727801710070562707" at="98,38,99,55" />
       <scope id="4963955491753986464" at="101,61,102,60" />
-      <scope id="4968420405390505287" at="106,69,107,152" />
+      <scope id="4968420405390505287" at="106,53,107,136" />
       <scope id="4968420405390505282" at="108,14,109,41" />
       <scope id="4727801710070562714" at="111,0,112,39">
         <var name="t" id="4727801710070562720" />
@@ -250,8 +250,8 @@
         <var name="e" id="4968420405390489431" />
       </scope>
       <scope id="4968420405390489433" at="105,50,110,7" />
-      <scope id="4963955491753976911" at="124,115,148,19" />
-      <scope id="4727801710070562671" at="87,121,113,5" />
+      <scope id="4963955491753976911" at="124,99,148,19" />
+      <scope id="4727801710070562671" at="87,105,113,5" />
       <scope id="4963955491753976908" at="124,0,150,0">
         <var name="failure" id="4963955491753977105" />
         <var name="invocatable" id="4963955491753976914" />

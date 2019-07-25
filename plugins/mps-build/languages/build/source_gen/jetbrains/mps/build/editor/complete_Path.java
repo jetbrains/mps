@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.SNodePointer;
 
 public class complete_Path extends AbstractCellMenuComponent {
   public complete_Path() {
-    super(new SubstituteInfoPartExt[]{new complete_Path.BuildSourcePath_generic_cellMenu_1iqwn9_a0()});
+    super(new SubstituteInfoPartExt[]{new BuildSourcePath_generic_cellMenu_1iqwn9_a0()});
   }
   public static class BuildSourcePath_generic_cellMenu_1iqwn9_a0 extends AbstractCellMenuPart_Generic_Group {
     public BuildSourcePath_generic_cellMenu_1iqwn9_a0() {

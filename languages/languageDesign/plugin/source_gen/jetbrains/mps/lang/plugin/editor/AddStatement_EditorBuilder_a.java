@@ -59,7 +59,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AddStatement_EditorBuilder_a.itemSingleRoleHandler_pqcdbz_b0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11dafad4b27L, 0x11dafaf1482L, "item"), getEditorContext());
+    SingleRoleCellProvider provider = new itemSingleRoleHandler_pqcdbz_b0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11dafad4b27L, 0x11dafaf1482L, "item"), getEditorContext());
     return provider.createCell();
   }
   private static class itemSingleRoleHandler_pqcdbz_b0 extends SingleRoleCellProvider {

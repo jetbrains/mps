@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.SNodePointer;
 
 public class ModelReferenceCompletion extends AbstractCellMenuComponent {
   public ModelReferenceCompletion() {
-    super(new SubstituteInfoPartExt[]{new ModelReferenceCompletion.ModelReferenceExpression_generic_cellMenu_fkcdzz_a0()});
+    super(new SubstituteInfoPartExt[]{new ModelReferenceExpression_generic_cellMenu_fkcdzz_a0()});
   }
   public static class ModelReferenceExpression_generic_cellMenu_fkcdzz_a0 extends AbstractCellMenuPart_Generic_Group {
     public ModelReferenceExpression_generic_cellMenu_fkcdzz_a0() {

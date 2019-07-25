@@ -22,7 +22,7 @@ public class FieldDeletion_Test extends BaseTransformationTest {
 
   @Test
   public void test_FieldDeletion() throws Throwable {
-    new FieldDeletion_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

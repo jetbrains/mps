@@ -21,7 +21,7 @@ public class MoveCommentedStatementToIf_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveCommentedStatementToIf() throws Throwable {
-    new MoveCommentedStatementToIf_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

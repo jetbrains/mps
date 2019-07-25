@@ -21,7 +21,7 @@ public class AddNative1_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddNative1() throws Throwable {
-    new AddNative1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

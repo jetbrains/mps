@@ -21,7 +21,7 @@ public class FinalMethodInInterfaceIsUnavalaible_Test extends BaseTransformation
 
   @Test
   public void test_FinalMethodInInterfaceIsUnavalaible() throws Throwable {
-    new FinalMethodInInterfaceIsUnavalaible_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

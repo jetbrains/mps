@@ -12,6 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class enumerator_subtypeOf_enumerator_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public enumerator_subtypeOf_enumerator_InequationReplacementRule() {
@@ -40,9 +41,13 @@ public class enumerator_subtypeOf_enumerator_InequationReplacementRule extends A
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020864111L, "jetbrains.mps.baseLanguage.collections.structure.EnumeratorType");
+    return AUX_hvd151.EnumeratorType_d0b5273;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020864111L, "jetbrains.mps.baseLanguage.collections.structure.EnumeratorType");
+    return AUX_hvd151.EnumeratorType_d0b5273;
+  }
+
+  private static final class AUX_hvd151 {
+    /*package*/ static final SConcept EnumeratorType_d0b5273 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020864111L, "jetbrains.mps.baseLanguage.collections.structure.EnumeratorType");
   }
 }

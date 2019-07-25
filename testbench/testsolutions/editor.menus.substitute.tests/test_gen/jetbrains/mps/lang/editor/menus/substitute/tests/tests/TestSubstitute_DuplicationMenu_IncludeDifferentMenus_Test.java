@@ -25,7 +25,7 @@ public class TestSubstitute_DuplicationMenu_IncludeDifferentMenus_Test extends B
 
   @Test
   public void test_TestSubstitute_DuplicationMenu_IncludeDifferentMenus() throws Throwable {
-    new TestSubstitute_DuplicationMenu_IncludeDifferentMenus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

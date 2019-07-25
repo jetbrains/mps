@@ -9,11 +9,12 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_GetIteratorOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_GetIteratorOperation_InferenceRule() {
@@ -36,7 +37,7 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
               {
                 SNode matchingNode_aqh9x4_a0a2a = typeCheckingContext.getExpandedNode(OPERAND);
                 if (matchingNode_aqh9x4_a0a2a != null) {
-                  matches_aqh9x4_a0a2a = matchingNode_aqh9x4_a0a2a.getConcept().isSubConceptOf(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType"));
+                  matches_aqh9x4_a0a2a = matchingNode_aqh9x4_a0a2a.getConcept().isSubConceptOf(AUX_2s4nhf.ListType_a33b8e3e);
                 }
               }
               if (matches_aqh9x4_a0a2a) {
@@ -50,7 +51,7 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
                 {
                   SNode matchingNode_aqh9x4_b0a2a = typeCheckingContext.getExpandedNode(OPERAND);
                   if (matchingNode_aqh9x4_b0a2a != null) {
-                    matches_aqh9x4_b0a2a = matchingNode_aqh9x4_b0a2a.getConcept().isSubConceptOf(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType"));
+                    matches_aqh9x4_b0a2a = matchingNode_aqh9x4_b0a2a.getConcept().isSubConceptOf(AUX_2s4nhf.SetType_d8fa38cf);
                   }
                 }
                 if (matches_aqh9x4_b0a2a) {
@@ -72,7 +73,7 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ecef58aL, "jetbrains.mps.baseLanguage.collections.structure.GetIteratorOperation");
+    return AUX_2s4nhf.GetIteratorOperation_dc62d34;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -123,5 +124,11 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ed2b158L, 0x1201ed311a7L, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
+  }
+
+  private static final class AUX_2s4nhf {
+    /*package*/ static final SConcept ListType_a33b8e3e = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept SetType_d8fa38cf = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    /*package*/ static final SConcept GetIteratorOperation_dc62d34 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ecef58aL, "jetbrains.mps.baseLanguage.collections.structure.GetIteratorOperation");
   }
 }

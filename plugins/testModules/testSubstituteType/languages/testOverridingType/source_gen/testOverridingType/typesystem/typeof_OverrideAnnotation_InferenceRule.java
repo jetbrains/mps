@@ -13,6 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import testAnnotatedType.behavior.PresenceCondition__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_OverrideAnnotation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_OverrideAnnotation_InferenceRule() {
@@ -25,7 +26,7 @@ public class typeof_OverrideAnnotation_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x391548fac32006d4L, "testOverridingType.structure.OverrideAnnotation");
+    return AUX_z5i4zj.OverrideAnnotation_8ef10817;
   }
   public IsApplicableStatus isApplicableAndPattern(final SNode argument) {
     if (argument.getConcept().isSubConceptOf(getApplicableConcept())) {
@@ -43,5 +44,9 @@ public class typeof_OverrideAnnotation_InferenceRule extends AbstractInferenceRu
   }
   public boolean supersedesAttributed(final SNode overrideAnnotation, IsApplicableStatus status) {
     return true;
+  }
+
+  private static final class AUX_z5i4zj {
+    /*package*/ static final SConcept OverrideAnnotation_8ef10817 = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x391548fac32006d4L, "testOverridingType.structure.OverrideAnnotation");
   }
 }

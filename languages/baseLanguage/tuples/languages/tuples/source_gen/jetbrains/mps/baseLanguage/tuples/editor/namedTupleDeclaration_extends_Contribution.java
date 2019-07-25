@@ -13,8 +13,8 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Objects;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -34,6 +34,7 @@ import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBase {
   public namedTupleDeclaration_extends_Contribution() {
@@ -43,7 +44,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new namedTupleDeclaration_extends_Contribution.SMP_Group_evf1f9_a());
+    result.add(new SMP_Group_evf1f9_a());
     return result;
   }
 
@@ -63,7 +64,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
   public class SMP_Group_evf1f9_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration")) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended"));
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_evf1f9.NamedTupleDeclaration_f12ba641) && Objects.equals(_context.getLink(), MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended"));
     }
     @NotNull
     @Override
@@ -79,13 +80,13 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new namedTupleDeclaration_extends_Contribution.SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0(), AUX_evf1f9.ClassifierType_42700403));
     }
     private class SMP_Param_evf1f9_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new namedTupleDeclaration_extends_Contribution.SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a(parameter).createItems(context);
+        return new SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -101,7 +102,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope(_context.getParentNode(), false).getAvailableElements(null), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))).where(new IWhereFilter<SNode>() {
+        return Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope(_context.getParentNode(), false).getAvailableElements(null), AUX_evf1f9.Interface_bca2069)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return new TupleIntefaceUtils(it).isTupleInterface();
           }
@@ -116,7 +117,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          namedTupleDeclaration_extends_Contribution.SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a.Item item = new namedTupleDeclaration_extends_Contribution.SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a.Item(_context);
+          SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a.Item item = new SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a.Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -140,7 +141,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), context);
+            super(AUX_evf1f9.ClassifierType_42700403, context);
             _context = context;
           }
 
@@ -160,7 +161,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"), getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, AUX_evf1f9.ClassifierType_42700403, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -197,5 +198,11 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_evf1f9 {
+    /*package*/ static final SConcept NamedTupleDeclaration_f12ba641 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

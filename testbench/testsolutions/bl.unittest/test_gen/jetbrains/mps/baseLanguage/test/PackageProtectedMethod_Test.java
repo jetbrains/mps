@@ -32,15 +32,15 @@ public class PackageProtectedMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck7938578788783497191() throws Throwable {
-    new PackageProtectedMethod_Test.TestBody(this).test_ErrorMessagesCheck7938578788783497191();
+    new TestBody(this).test_ErrorMessagesCheck7938578788783497191();
   }
   @Test
   public void test_NodePackageProtectedMethodCheck7938578788783497198() throws Throwable {
-    new PackageProtectedMethod_Test.TestBody(this).test_NodePackageProtectedMethodCheck7938578788783497198();
+    new TestBody(this).test_NodePackageProtectedMethodCheck7938578788783497198();
   }
   @Test
   public void test_NodePackageProtectedMethodCheck7938578788783497209() throws Throwable {
-    new PackageProtectedMethod_Test.TestBody(this).test_NodePackageProtectedMethodCheck7938578788783497209();
+    new TestBody(this).test_NodePackageProtectedMethodCheck7938578788783497209();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

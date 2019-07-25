@@ -21,7 +21,7 @@ public class InsertRowBefore_FromLastCell_ByIns_Test extends BaseTransformationT
 
   @Test
   public void test_InsertRowBefore_FromLastCell_ByIns() throws Throwable {
-    new InsertRowBefore_FromLastCell_ByIns_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

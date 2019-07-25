@@ -37,7 +37,7 @@ public class PriorityCheckTestMulFirst_Test extends BaseTransformationTest {
 
   @Test
   public void test_testRotation() throws Throwable {
-    new PriorityCheckTestMulFirst_Test.TestBody(this).test_testRotation();
+    new TestBody(this).test_testRotation();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

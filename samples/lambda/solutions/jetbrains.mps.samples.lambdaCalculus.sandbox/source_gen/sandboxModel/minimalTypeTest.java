@@ -13,7 +13,7 @@ public class minimalTypeTest {
     System.out.println((eval()));
   }
   public static Object eval() {
-    return new minimalTypeTest.Function_1751004816843568058();
+    return new Function_1751004816843568058();
   }
   public static class Function_1751004816843568058 extends Function {
     private List myOuterVars = new ArrayList();
@@ -34,7 +34,7 @@ public class minimalTypeTest {
       return 1;
     }
     public Function copy() {
-      return new minimalTypeTest.Function_1751004816843568058(myOuterVars);
+      return new Function_1751004816843568058(myOuterVars);
     }
   }
 }

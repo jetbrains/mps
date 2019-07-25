@@ -29,7 +29,7 @@ public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeImportHasNoEffectCheck858085313517684344() throws Throwable {
-    new WarnOnImportingAbsentAction_Test.TestBody(this).test_NodeImportHasNoEffectCheck858085313517684344();
+    new TestBody(this).test_NodeImportHasNoEffectCheck858085313517684344();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

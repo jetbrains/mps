@@ -34,7 +34,7 @@ public class OneReturnWithParameteres_Test extends BaseTransformationTest {
 
   @Test
   public void test_OneReturnWithParameteres() throws Throwable {
-    new OneReturnWithParameteres_Test.TestBody(this).test_OneReturnWithParameteres();
+    new TestBody(this).test_OneReturnWithParameteres();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

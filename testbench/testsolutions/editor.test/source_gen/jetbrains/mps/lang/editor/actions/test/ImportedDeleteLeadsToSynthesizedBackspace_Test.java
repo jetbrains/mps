@@ -21,7 +21,7 @@ public class ImportedDeleteLeadsToSynthesizedBackspace_Test extends BaseTransfor
 
   @Test
   public void test_ImportedDeleteLeadsToSynthesizedBackspace() throws Throwable {
-    new ImportedDeleteLeadsToSynthesizedBackspace_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

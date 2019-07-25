@@ -71,7 +71,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MoneyCreator_EditorBuilder_a.amountSingleRoleHandler_ccfkrk_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473383db1L, "amount"), getEditorContext());
+    SingleRoleCellProvider provider = new amountSingleRoleHandler_ccfkrk_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473383db1L, "amount"), getEditorContext());
     return provider.createCell();
   }
   private static class amountSingleRoleHandler_ccfkrk_c0 extends SingleRoleCellProvider {
@@ -132,7 +132,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new MoneyCreator_EditorBuilder_a.currencySingleRoleHandler_ccfkrk_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473390f4aL, "currency"), getEditorContext());
+    SingleRoleCellProvider provider = new currencySingleRoleHandler_ccfkrk_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473390f4aL, "currency"), getEditorContext());
     return provider.createCell();
   }
   private static class currencySingleRoleHandler_ccfkrk_e0 extends SingleRoleCellProvider {

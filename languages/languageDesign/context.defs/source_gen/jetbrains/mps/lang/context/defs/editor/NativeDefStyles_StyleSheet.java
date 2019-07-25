@@ -21,7 +21,7 @@ public class NativeDefStyles_StyleSheet {
   public static void apply_NativeDefStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new NativeDefStyles_StyleSheet.NativeDefStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new NativeDefStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class NativeDefStyleStyleClass extends AbstractStyleClass {

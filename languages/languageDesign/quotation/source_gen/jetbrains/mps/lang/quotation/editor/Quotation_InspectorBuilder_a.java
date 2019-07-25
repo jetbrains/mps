@@ -102,7 +102,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new Quotation_InspectorBuilder_a.Quotation_component_cellMenu_29llnk_a0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new Quotation_component_cellMenu_29llnk_a0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     editorCell.setCellId("ReadOnlyModelAccessor_29llnk_0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.EDITABLE, false);
@@ -121,7 +121,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
   private EditorCell createError_0() {
     EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<not specified>");
     editorCell.setCellId("Error_29llnk_0");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new Quotation_InspectorBuilder_a.Quotation_component_cellMenu_29llnk_a0c0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new Quotation_component_cellMenu_29llnk_a0c0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class Quotation_component_cellMenu_29llnk_a0c0a implements SubstituteInfoPartExt {

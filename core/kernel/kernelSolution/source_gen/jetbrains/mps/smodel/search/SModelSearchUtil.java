@@ -6,10 +6,11 @@ import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * 
@@ -30,7 +31,7 @@ public class SModelSearchUtil {
     if (role == null) {
       return null;
     }
-    return ((SNode) BHReflection.invoke0(SNodeOperations.cast(conceptDeclaration, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("findLinkDeclaration", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "hEwILKz"), role));
+    return ((SNode) BHReflection.invoke0(SNodeOperations.cast(conceptDeclaration, AUX_ensy2o.AbstractConceptDeclaration_ec74828f), AUX_ensy2o.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("findLinkDeclaration", AUX_ensy2o.AbstractConceptDeclaration_ec74828f, "hEwILKz"), role));
   }
   /**
    * use node<ACD />.getLinkDeclarations()
@@ -38,13 +39,13 @@ public class SModelSearchUtil {
   @Deprecated
   @ToRemove(version = 2018.1)
   public static List<SNode> getLinkDeclarations(SNode concept) {
-    return ((List<SNode>) (List<SNode>) BHReflection.invoke0(SNodeOperations.cast(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("getLinkDeclarations", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "hEwILKK")));
+    return ((List<SNode>) (List<SNode>) BHReflection.invoke0(SNodeOperations.cast(concept, AUX_ensy2o.AbstractConceptDeclaration_ec74828f), AUX_ensy2o.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("getLinkDeclarations", AUX_ensy2o.AbstractConceptDeclaration_ec74828f, "hEwILKK")));
   }
   @Deprecated
   @ToRemove(version = 2018.1)
   public static List<SNode> getPropertyDeclarations(SNode concept) {
     // uses in mbeddr 
-    return ((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("getPropertyDeclarations", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "hEwILLM")));
+    return ((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(concept, AUX_ensy2o.AbstractConceptDeclaration_ec74828f), AUX_ensy2o.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("getPropertyDeclarations", AUX_ensy2o.AbstractConceptDeclaration_ec74828f, "hEwILLM")));
   }
   @Nullable
   @Deprecated
@@ -53,6 +54,10 @@ public class SModelSearchUtil {
     if (concept == null || propertyName == null) {
       return null;
     }
-    return ((SNode) BHReflection.invoke0(SNodeOperations.cast(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("findPropertyDeclaration", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "hK3S4A1"), propertyName));
+    return ((SNode) BHReflection.invoke0(SNodeOperations.cast(concept, AUX_ensy2o.AbstractConceptDeclaration_ec74828f), AUX_ensy2o.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("findPropertyDeclaration", AUX_ensy2o.AbstractConceptDeclaration_ec74828f, "hK3S4A1"), propertyName));
+  }
+
+  private static final class AUX_ensy2o {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

@@ -22,7 +22,7 @@ public class NamedNodeReferenceEditor_DeleteChildWithChild_Test extends BaseTran
 
   @Test
   public void test_NamedNodeReferenceEditor_DeleteChildWithChild() throws Throwable {
-    new NamedNodeReferenceEditor_DeleteChildWithChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

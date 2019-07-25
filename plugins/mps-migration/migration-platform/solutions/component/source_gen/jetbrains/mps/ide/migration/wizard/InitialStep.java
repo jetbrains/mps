@@ -20,7 +20,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import jetbrains.mps.ide.migration.MigrationRegistry;
 import javax.swing.Icon;
 import jetbrains.mps.ide.icons.GlobalIconManager;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.migration.global.ProjectMigration;
@@ -48,6 +47,8 @@ import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ide.wizard.AbstractWizardStepEx;
 import com.intellij.ide.wizard.CommitStepException;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InitialStep extends BaseStep {
   public static final String ID = "initial";
@@ -124,12 +125,12 @@ public class InitialStep extends BaseStep {
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         MigrationRegistry manager = mySession.getMigrationRegistry();
-        final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript"));
+        final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(AUX_nznoqw.MigrationScript_43a85fbf);
 
         // module resave 
         if (mySession.getRequiredSteps().contains(MigrationSession.MigrationStepKind.RESAVE)) {
           DefaultMutableTreeNode uroot = new DefaultMutableTreeNode("Update Module Descriptors");
-          DefaultMutableTreeNode umig = new InitialStep.MyTreeNode("Update Versions in Descriptors", migrationIcon);
+          DefaultMutableTreeNode umig = new MyTreeNode("Update Versions in Descriptors", migrationIcon);
           uroot.add(umig);
           root.add(uroot);
         }
@@ -139,7 +140,7 @@ public class InitialStep extends BaseStep {
         final DefaultMutableTreeNode proot = new DefaultMutableTreeNode("Project Migrations");
         CollectionSequence.fromCollection(manager.getProjectMigrations()).visitAll(new IVisitor<ProjectMigration>() {
           public void visit(ProjectMigration it) {
-            DefaultMutableTreeNode node = new InitialStep.MyTreeNode(it.getDescription(), migrationIcon);
+            DefaultMutableTreeNode node = new MyTreeNode(it.getDescription(), migrationIcon);
             if (it instanceof CleanupProjectMigration) {
               croot.add(node);
             } else {
@@ -169,14 +170,14 @@ public class InitialStep extends BaseStep {
           }
         }).distinct().visitAll(new IVisitor<SLanguage>() {
           public void visit(SLanguage it) {
-            MapSequence.fromMap(l2n).put(it, new InitialStep.MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), Icons.Language));
+            MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), Icons.Language));
           }
         });
         Sequence.fromIterable(scripts).ofType(MigrationScriptReference.class).visitAll(new IVisitor<MigrationScriptReference>() {
           public void visit(MigrationScriptReference it) {
             MigrationScript ms = it.resolve(mySession.getProject(), false);
             String caption = (ms != null ? ms.getCaption() : "Missing: <script for version " + it.getFromVersion() + ">");
-            MapSequence.fromMap(l2n).get(it.getLanguage()).add(new InitialStep.MyTreeNode(caption, migrationIcon));
+            MapSequence.fromMap(l2n).get(it.getLanguage()).add(new MyTreeNode(caption, migrationIcon));
           }
         });
         int migratedModulesNum = CollectionSequence.fromCollection(migrationsApplied).where(new IWhereFilter<ScriptApplied>() {
@@ -213,7 +214,7 @@ public class InitialStep extends BaseStep {
           public void visit(RefactoringScriptReference it) {
             RefactoringScript rs = it.resolve(mySession.getProject(), false);
             String caption = (rs != null ? rs.getCaption() : "Missing: <script for version " + it.getFromVersion() + ">");
-            DefaultMutableTreeNode node = new InitialStep.MyTreeNode(caption, migrationIcon);
+            DefaultMutableTreeNode node = new MyTreeNode(caption, migrationIcon);
             MapSequence.fromMap(m2n).get(it.getModule()).add(node);
           }
         });
@@ -244,8 +245,8 @@ public class InitialStep extends BaseStep {
       @Override
       public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
         super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
-        if (value instanceof InitialStep.MyTreeNode) {
-          setIcon(as_nznoqw_a0a0a0b0a0a0a0i0l(value, InitialStep.MyTreeNode.class).getIcon());
+        if (value instanceof MyTreeNode) {
+          setIcon(as_nznoqw_a0a0a0b0a0a0a0i0l(value, MyTreeNode.class).getIcon());
         } else {
           setIcon((expanded ? IdeIcons.OPENED_FOLDER : IdeIcons.CLOSED_FOLDER));
         }
@@ -306,5 +307,9 @@ public class InitialStep extends BaseStep {
   }
   private static <T> T as_nznoqw_a0a0a0b0a0a0a0i0l(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_nznoqw {
+    /*package*/ static final SConcept MigrationScript_43a85fbf = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
   }
 }

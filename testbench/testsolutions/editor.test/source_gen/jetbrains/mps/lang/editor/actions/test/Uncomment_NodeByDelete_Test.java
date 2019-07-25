@@ -21,7 +21,7 @@ public class Uncomment_NodeByDelete_Test extends BaseTransformationTest {
 
   @Test
   public void test_Uncomment_NodeByDelete() throws Throwable {
-    new Uncomment_NodeByDelete_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

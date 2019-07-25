@@ -20,7 +20,6 @@ import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
@@ -31,6 +30,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -43,6 +43,7 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class stringOperations_Contribution extends TransformationMenuBase {
   public stringOperations_Contribution() {
@@ -71,7 +72,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new stringOperations_Contribution.TMP_Group_uamzhl_a0());
+      result.add(new TMP_Group_uamzhl_a0());
     }
     return result;
   }
@@ -95,12 +96,12 @@ public class stringOperations_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_a0a(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression")), new ConstraintsFilteringTransformationMenuPartDecorator(new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_b0a(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpExpression")), new ConstraintsFilteringTransformationMenuPartDecorator(new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_c0a(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceWithRegexpExpression")), new ConstraintsFilteringTransformationMenuPartDecorator(new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_d0a(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_a0a(), AUX_uamzhl.FindMatchExpression_b889f21d), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_b0a(), AUX_uamzhl.MatchRegexpExpression_40e960d6), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_c0a(), AUX_uamzhl.ReplaceWithRegexpExpression_dc4e5a7a), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_d0a(), AUX_uamzhl.SplitExpression_1541c9af));
     }
     private class TMP_Action_uamzhl_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_a0a.Item item = new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_a0a.Item(context);
+        TMP_Group_uamzhl_a0.TMP_Action_uamzhl_a0a.Item item = new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -135,7 +136,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode findMatchExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression"));
+          SNode findMatchExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_uamzhl.FindMatchExpression_b889f21d);
           SLinkOperations.setTarget(findMatchExpression, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, 0x550fbf4ebc5f5df9L, "inputExpression"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), findMatchExpression, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -144,7 +145,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression");
+          return AUX_uamzhl.FindMatchExpression_b889f21d;
         }
 
 
@@ -155,7 +156,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression");
+          SAbstractConcept outputConcept = AUX_uamzhl.FindMatchExpression_b889f21d;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -167,7 +168,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
     private class TMP_Action_uamzhl_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_b0a.Item item = new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_b0a.Item(context);
+        TMP_Group_uamzhl_a0.TMP_Action_uamzhl_b0a.Item item = new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_b0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -202,7 +203,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode matchRegexpExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpExpression"));
+          SNode matchRegexpExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_uamzhl.MatchRegexpExpression_40e960d6);
           SLinkOperations.setTarget(matchRegexpExpression, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, 0x112972c11f2L, "inputExpression"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), matchRegexpExpression, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -211,7 +212,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpExpression");
+          return AUX_uamzhl.MatchRegexpExpression_40e960d6;
         }
 
 
@@ -222,7 +223,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpExpression");
+          SAbstractConcept outputConcept = AUX_uamzhl.MatchRegexpExpression_40e960d6;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -234,7 +235,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
     private class TMP_Action_uamzhl_c0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_c0a.Item item = new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_c0a.Item(context);
+        TMP_Group_uamzhl_a0.TMP_Action_uamzhl_c0a.Item item = new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_c0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -269,7 +270,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceWithRegexpExpression"));
+          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_uamzhl.ReplaceWithRegexpExpression_dc4e5a7a);
           SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, 0x1117ef5b26bL, "expr"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -278,7 +279,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceWithRegexpExpression");
+          return AUX_uamzhl.ReplaceWithRegexpExpression_dc4e5a7a;
         }
 
 
@@ -289,7 +290,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceWithRegexpExpression");
+          SAbstractConcept outputConcept = AUX_uamzhl.ReplaceWithRegexpExpression_dc4e5a7a;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -301,7 +302,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
     private class TMP_Action_uamzhl_d0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_d0a.Item item = new stringOperations_Contribution.TMP_Group_uamzhl_a0.TMP_Action_uamzhl_d0a.Item(context);
+        TMP_Group_uamzhl_a0.TMP_Action_uamzhl_d0a.Item item = new TMP_Group_uamzhl_a0.TMP_Action_uamzhl_d0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -336,7 +337,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression"));
+          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), AUX_uamzhl.SplitExpression_1541c9af);
           SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, 0x1119d425aa1L, "expr"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -345,7 +346,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression");
+          return AUX_uamzhl.SplitExpression_1541c9af;
         }
 
 
@@ -356,7 +357,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression");
+          SAbstractConcept outputConcept = AUX_uamzhl.SplitExpression_1541c9af;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -371,5 +372,12 @@ public class stringOperations_Contribution extends TransformationMenuBase {
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_uamzhl {
+    /*package*/ static final SConcept FindMatchExpression_b889f21d = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression");
+    /*package*/ static final SConcept MatchRegexpExpression_40e960d6 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpExpression");
+    /*package*/ static final SConcept ReplaceWithRegexpExpression_dc4e5a7a = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceWithRegexpExpression");
+    /*package*/ static final SConcept SplitExpression_1541c9af = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression");
   }
 }

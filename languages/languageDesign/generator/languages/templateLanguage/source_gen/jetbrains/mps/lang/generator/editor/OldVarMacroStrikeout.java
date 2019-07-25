@@ -7,11 +7,12 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OldVarMacroStrikeout implements EditorMenuItemCustomizer {
 
@@ -20,7 +21,7 @@ public class OldVarMacroStrikeout implements EditorMenuItemCustomizer {
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    OldVarMacroStrikeout.OldVarMacroStrikeoutSpecific customizer = new OldVarMacroStrikeout.OldVarMacroStrikeoutSpecific();
+    OldVarMacroStrikeoutSpecific customizer = new OldVarMacroStrikeoutSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -29,7 +30,7 @@ public class OldVarMacroStrikeout implements EditorMenuItemCustomizer {
   private static class OldVarMacroStrikeoutSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro")).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(AUX_jd5e54.VarMacro_e790b770).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -57,4 +58,7 @@ public class OldVarMacroStrikeout implements EditorMenuItemCustomizer {
   }
 
 
+  private static final class AUX_jd5e54 {
+    /*package*/ static final SConcept VarMacro_e790b770 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro");
+  }
 }

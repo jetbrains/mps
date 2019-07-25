@@ -11,11 +11,12 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddUnits_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -34,7 +35,7 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c532bL, "testWrappedType.structure.TypeWithUnits")));
+    return !(SNodeOperations.isInstanceOf(node, AUX_udkpb1.TypeWithUnits_c907693f));
   }
   @Override
   public boolean isSurroundWith() {
@@ -42,7 +43,7 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddUnits_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -55,12 +56,16 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode twi = SNodeOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c532bL, "testWrappedType.structure.TypeWithUnits"));
+      SNode twi = SNodeOperations.replaceWithNewChild(node, AUX_udkpb1.TypeWithUnits_c907693f);
       SLinkOperations.setTarget(twi, MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped"), node);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddUnits_Intention.this;
     }
+  }
+
+  private static final class AUX_udkpb1 {
+    /*package*/ static final SConcept TypeWithUnits_c907693f = MetaAdapterFactory.getConcept(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c532bL, "testWrappedType.structure.TypeWithUnits");
   }
 }

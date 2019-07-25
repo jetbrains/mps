@@ -98,7 +98,7 @@ public class VCSPersistenceUtil {
         return null;
       }
 
-      return new VCSPersistenceUtil.MyModel(model, header);
+      return new MyModel(model, header);
     } catch (ModelReadException e) {
       return null;
     }
@@ -132,7 +132,7 @@ public class VCSPersistenceUtil {
     SModuleReference moduleRef = (moduleId != null || moduleName != null ? new ModuleReference(moduleName, moduleId) : null);
     if (moduleRef == null && !((modelId.isGloballyUnique()))) {
       // make globally unique anyway to avoid exception for old models without modules 
-      modelId = new VCSPersistenceUtil.SModelIdProxy(modelId);
+      modelId = new SModelIdProxy(modelId);
     }
     return new jetbrains.mps.smodel.SModelReference(moduleRef, modelId, modelName);
   }
@@ -157,7 +157,7 @@ public class VCSPersistenceUtil {
     }
     @Override
     public boolean equals(Object object) {
-      return object instanceof VCSPersistenceUtil.SModelIdProxy && myOldModelId.equals(((VCSPersistenceUtil.SModelIdProxy) object).myOldModelId);
+      return object instanceof SModelIdProxy && myOldModelId.equals(((SModelIdProxy) object).myOldModelId);
     }
     @Override
     public String toString() {

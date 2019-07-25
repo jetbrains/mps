@@ -21,7 +21,7 @@ public class BackspaceCommentedConditionAfterCommented_Test extends BaseTransfor
 
   @Test
   public void test_BackspaceCommentedConditionAfterCommented() throws Throwable {
-    new BackspaceCommentedConditionAfterCommented_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

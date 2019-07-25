@@ -21,7 +21,7 @@ public class CopyMethodCall_Test extends BaseTransformationTest {
 
   @Test
   public void test_CopyMethodCall() throws Throwable {
-    new CopyMethodCall_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

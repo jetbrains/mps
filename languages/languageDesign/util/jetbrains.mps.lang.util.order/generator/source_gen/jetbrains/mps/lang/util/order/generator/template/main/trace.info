@@ -14,9 +14,9 @@
     <file name="QueriesGenerated.java">
       <node id="3038738109029045563" at="31,88,32,120" concept="1" />
       <node id="174635545557610814" at="34,104,35,189" concept="1" />
-      <node id="174635545557610475" at="39,14,40,74" concept="0" />
+      <node id="174635545557610475" at="39,14,40,57" concept="0" />
       <node id="174635545557610475" at="59,15,60,87" concept="1" />
-      <node id="3038738109028954252" at="68,14,69,205" concept="0" />
+      <node id="3038738109028954252" at="68,14,69,188" concept="0" />
       <node id="3038738109028954252" at="89,15,90,66" concept="1" />
       <node id="3038738109028954253" at="31,0,34,0" concept="2" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="174635545557610475" at="34,0,37,0" concept="2" trace="sourceNodesQuery_1_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />

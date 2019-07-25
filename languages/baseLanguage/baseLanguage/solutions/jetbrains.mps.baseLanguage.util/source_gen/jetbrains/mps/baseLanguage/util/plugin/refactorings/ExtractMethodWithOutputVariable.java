@@ -6,13 +6,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ExtractMethodWithOutputVariable extends ExtractMethodFromStatementsRefactoring {
   private SNode myOutputVariable;
@@ -21,11 +22,11 @@ import jetbrains.mps.smodel.SModelUtil_new;
     super(parameters);
     List<SNode> output = this.myAnalyzer.getOutputVariables();
     if (ListSequence.fromList(output).isNotEmpty()) {
-      this.myOutputVariable = SNodeOperations.cast(ListSequence.fromList(output).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
+      this.myOutputVariable = SNodeOperations.cast(ListSequence.fromList(output).first(), AUX_n3576q.VariableDeclaration_3c610994);
     }
     for (SNode statement : ListSequence.fromList(this.myStatements)) {
-      if (SNodeOperations.isInstanceOf(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"))) {
-        SNode tmp = SNodeOperations.cast(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"));
+      if (SNodeOperations.isInstanceOf(statement, AUX_n3576q.LocalVariableDeclarationStatement_d47683f4)) {
+        SNode tmp = SNodeOperations.cast(statement, AUX_n3576q.LocalVariableDeclarationStatement_d47683f4);
         if (SLinkOperations.getTarget(tmp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration")) == this.myOutputVariable) {
           this.myDeclarationStatement = tmp;
         }
@@ -50,7 +51,7 @@ import jetbrains.mps.smodel.SModelUtil_new;
       SLinkOperations.setTarget(SLinkOperations.getTarget(this.myDeclarationStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), methodCall);
     } else {
       SNode newStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"));
-      SLinkOperations.setTarget(newStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), _quotation_createNode_n3576q_a0b0a2a5(methodCall, ((SNode) BHReflection.invoke0(this.myOutputVariable, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), SMethodTrimmedId.create("createReference", null, "hEwJfME")))));
+      SLinkOperations.setTarget(newStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), _quotation_createNode_n3576q_a0b0a2a5(methodCall, ((SNode) BHReflection.invoke0(this.myOutputVariable, AUX_n3576q.VariableDeclaration_3c610994, SMethodTrimmedId.create("createReference", null, "hEwJfME")))));
       SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statements).first(), newStatement);
     }
     for (SNode statement : ListSequence.fromList(statements)) {
@@ -74,5 +75,10 @@ import jetbrains.mps.smodel.SModelUtil_new;
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"), SNodeOperations.copyIfNecessary(quotedNode_5));
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_n3576q {
+    /*package*/ static final SConcept VariableDeclaration_3c610994 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement_d47683f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
   }
 }

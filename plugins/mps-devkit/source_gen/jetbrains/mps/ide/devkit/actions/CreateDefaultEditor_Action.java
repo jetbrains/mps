@@ -9,8 +9,8 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
@@ -28,6 +28,7 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CreateDefaultEditor_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -43,7 +44,7 @@ public class CreateDefaultEditor_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
+    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), AUX_e50aup.ConceptDeclaration_cb225da8);
     if (conceptDeclaration == null || SPropertyOperations.getBoolean(conceptDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract")) || SPropertyOperations.getString(conceptDeclaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) == null) {
       return false;
     }
@@ -52,15 +53,15 @@ public class CreateDefaultEditor_Action extends BaseAction {
     QueueSequence.fromQueue(toCheck).addLastElement(conceptDeclaration);
     while (QueueSequence.fromQueue(toCheck).isNotEmpty()) {
       SNode acd = QueueSequence.fromQueue(toCheck).removeFirstElement();
-      List<SNode> aspects = ((List<SNode>) BHReflection.invoke0(acd, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("findConceptAspectCollection", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "1n18fON7w20"), LanguageAspect.EDITOR));
-      if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(acd), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"))) && ListSequence.fromList(aspects).any(new IWhereFilter<SNode>() {
+      List<SNode> aspects = ((List<SNode>) BHReflection.invoke0(acd, AUX_e50aup.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("findConceptAspectCollection", AUX_e50aup.AbstractConceptDeclaration_ec74828f, "1n18fON7w20"), LanguageAspect.EDITOR));
+      if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(acd), AUX_e50aup.BaseConcept_bc2351f)) && ListSequence.fromList(aspects).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode a) {
-          return SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"));
+          return SNodeOperations.isInstanceOf(a, AUX_e50aup.ConceptEditorDeclaration_9422d3dc);
         }
       })) {
         return false;
       }
-      QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(acd, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2")))));
+      QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(acd, AUX_e50aup.AbstractConceptDeclaration_ec74828f, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2")))));
     }
     return true;
   }
@@ -91,15 +92,23 @@ public class CreateDefaultEditor_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
-    SNode editorDeclaration = ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.EDITOR, conceptDeclaration, SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"), null));
-    assert ((SNode) BHReflection.invoke0(editorDeclaration, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent"), SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))) != null;
-    assert Objects.equals(((SNode) BHReflection.invoke0(editorDeclaration, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent"), SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))), conceptDeclaration);
-    BHReflection.invoke0(editorDeclaration, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"), SMethodTrimmedId.create("createDefaultEditor", MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"), "2$SWsiCt8Y$"), ((boolean) false));
+    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), AUX_e50aup.ConceptDeclaration_cb225da8);
+    SNode editorDeclaration = ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.EDITOR, conceptDeclaration, SNodeFactoryOperations.createNewNode(AUX_e50aup.ConceptEditorDeclaration_9422d3dc, null));
+    assert ((SNode) BHReflection.invoke0(editorDeclaration, AUX_e50aup.AbstractComponent_15de0cd2, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))) != null;
+    assert Objects.equals(((SNode) BHReflection.invoke0(editorDeclaration, AUX_e50aup.AbstractComponent_15de0cd2, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))), conceptDeclaration);
+    BHReflection.invoke0(editorDeclaration, AUX_e50aup.ConceptEditorDeclaration_9422d3dc, SMethodTrimmedId.create("createDefaultEditor", AUX_e50aup.ConceptEditorDeclaration_9422d3dc, "2$SWsiCt8Y$"), ((boolean) false));
     if (((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorPanelManager() != null) {
       ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorPanelManager().openEditor(editorDeclaration);
     } else {
       ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent().update();
     }
+  }
+
+  private static final class AUX_e50aup {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept ConceptEditorDeclaration_9422d3dc = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept AbstractComponent_15de0cd2 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
   }
 }

@@ -21,7 +21,7 @@ public class HomeWithLineSelection_fromLastCell_Test extends BaseTransformationT
 
   @Test
   public void test_HomeWithLineSelection_fromLastCell() throws Throwable {
-    new HomeWithLineSelection_fromLastCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

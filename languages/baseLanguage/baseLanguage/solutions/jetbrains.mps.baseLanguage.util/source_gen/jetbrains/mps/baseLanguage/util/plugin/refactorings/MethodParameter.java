@@ -8,7 +8,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Set;
@@ -21,8 +20,10 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.pattern.util.IMatchModifier;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MethodParameter extends MethodParameterModel {
   private SNode myDeclaration;
@@ -40,7 +41,7 @@ public class MethodParameter extends MethodParameterModel {
       this.setTypeName("null");
     }
     this.setName(name);
-    this.myVariableReference = SNodeOperations.cast(reference, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
+    this.myVariableReference = SNodeOperations.cast(reference, AUX_8psez8.Expression_4199e28d);
     this.myAvailableTypes = this.createAvailableTypes();
   }
   public List<String> createAvailableTypes() {
@@ -49,16 +50,16 @@ public class MethodParameter extends MethodParameterModel {
       return result;
     }
     List<SNode> found = new ArrayList<SNode>();
-    Set<MethodParameter.NodeWrapper> visited = SetSequence.fromSet(new HashSet<MethodParameter.NodeWrapper>());
+    Set<NodeWrapper> visited = SetSequence.fromSet(new HashSet<NodeWrapper>());
     final Deque<SNode> queue = LinkedListSequence.fromListAndArrayNew(new LinkedList<SNode>(), myType);
     while (!(LinkedListSequence.fromLinkedListNew(queue).isEmpty())) {
       SNode t = LinkedListSequence.fromLinkedListNew(queue).removeElementAt(0);
-      if (SetSequence.fromSet(visited).contains(new MethodParameter.NodeWrapper(t))) {
+      if (SetSequence.fromSet(visited).contains(new NodeWrapper(t))) {
         continue;
       }
       ListSequence.fromList(found).addElement(t);
-      SetSequence.fromSet(visited).addElement(new MethodParameter.NodeWrapper(t));
-      ListSequence.fromList(((List<SNode>) BHReflection.invoke0(t, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"), SMethodTrimmedId.create("getSupertypes", null, "4w2h6RLlygH")))).visitAll(new IVisitor<SNode>() {
+      SetSequence.fromSet(visited).addElement(new NodeWrapper(t));
+      ListSequence.fromList(((List<SNode>) BHReflection.invoke0(t, AUX_8psez8.Type_4199e276, SMethodTrimmedId.create("getSupertypes", null, "4w2h6RLlygH")))).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           LinkedListSequence.fromLinkedListNew(queue).addElement(it);
         }
@@ -99,8 +100,8 @@ public class MethodParameter extends MethodParameterModel {
     return SNodeOperations.copyNode(this.myVariableReference);
   }
   public boolean isFinal() {
-    if (SNodeOperations.isInstanceOf(this.myDeclaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"))) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(this.myDeclaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"));
+    if (SNodeOperations.isInstanceOf(this.myDeclaration, AUX_8psez8.VariableDeclaration_3c610994)) {
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(this.myDeclaration, AUX_8psez8.VariableDeclaration_3c610994), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"));
     }
     return false;
   }
@@ -121,12 +122,17 @@ public class MethodParameter extends MethodParameterModel {
 
     @Override
     public boolean equals(Object that) {
-      if (!(that instanceof MethodParameter.NodeWrapper)) {
+      if (!(that instanceof NodeWrapper)) {
         return false;
       }
       // ignore attributes while matching types 
-      return MatchingUtil.matchNodes(this.myNode, ((MethodParameter.NodeWrapper) that).myNode, IMatchModifier.DEFAULT, false);
+      return MatchingUtil.matchNodes(this.myNode, ((NodeWrapper) that).myNode, IMatchModifier.DEFAULT, false);
     }
   }
 
+  private static final class AUX_8psez8 {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept VariableDeclaration_3c610994 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+  }
 }

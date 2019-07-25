@@ -21,7 +21,7 @@ public class ModelIdentityCompletion_SetPtrOperation_Test extends BaseTransforma
 
   @Test
   public void test_ModelIdentityCompletion_SetPtrOperation() throws Throwable {
-    new ModelIdentityCompletion_SetPtrOperation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -46,16 +46,16 @@ public class DebuggerToolPanel {
   private final AbstractDebugSession myDebugSession;
   @NotNull
   private AbstractUiState myUiState;
-  private DebuggerToolPanel.ThreadsComboBoxModel myThreadsComboBoxModel;
-  private DebuggerToolPanel.StackFramesListModel myStackFramesListModel;
+  private ThreadsComboBoxModel myThreadsComboBoxModel;
+  private StackFramesListModel myStackFramesListModel;
   private VariablesTree myVariablesTree;
   private JList myFramesList;
   public DebuggerToolPanel(@NotNull Project project, @NotNull AbstractDebugSession session, @NotNull RunnerLayoutUi ui) {
     myDebugSession = session;
     myUiState = myDebugSession.getUiState();
-    myDebugSession.addChangeListener(new DebuggerToolPanel.MySessionChangeListener());
+    myDebugSession.addChangeListener(new MySessionChangeListener());
     ui.getDefaults().initTabDefaults(0, "Debugger", null);
-    JPanel framesPanel = new DebuggerToolPanel.DebuggerPanel(new BorderLayout());
+    JPanel framesPanel = new DebuggerPanel(new BorderLayout());
     framesPanel.add(createThreadsComponent(), BorderLayout.NORTH);
     framesPanel.add(createStackFrameComponent(), BorderLayout.CENTER);
     Content framesContent = ui.createContent(DebuggerToolContent.FRAMES, framesPanel, "Frames", Icons.FRAMES, null);
@@ -95,7 +95,7 @@ public class DebuggerToolPanel {
     return new JBScrollPane(myVariablesTree);
   }
   private JComponent createThreadsComponent() {
-    myThreadsComboBoxModel = new DebuggerToolPanel.ThreadsComboBoxModel();
+    myThreadsComboBoxModel = new ThreadsComboBoxModel();
     ComboBox threadsComboBox = new ComboBox(myThreadsComboBoxModel);
     threadsComboBox.setRenderer(new ListCellRendererWrapper<IThread>() {
       @Override
@@ -109,7 +109,7 @@ public class DebuggerToolPanel {
     return threadsComboBox;
   }
   private JComponent createStackFrameComponent() {
-    myStackFramesListModel = new DebuggerToolPanel.StackFramesListModel();
+    myStackFramesListModel = new StackFramesListModel();
     myFramesList = new JBList(myStackFramesListModel);
     myFramesList.addListSelectionListener(new ListSelectionListener() {
       @Override

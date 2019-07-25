@@ -18,9 +18,9 @@ public class BoxFigure extends AbstractVerticalLayoutFigure {
   public Property<Integer> lineWidth = new ValueProperty<Integer>(1);
 
   public BoxFigure() {
-    this(new BoxFigure.BoxFigureMapperFactory());
+    this(new BoxFigureMapperFactory());
   }
-  protected BoxFigure(BoxFigure.BoxFigureMapperFactory mapperFactory) {
+  protected BoxFigure(BoxFigureMapperFactory mapperFactory) {
     myPolyLine.color().set(Color.GRAY);
     children().add(myPolyLine);
     if (mapperFactory != null) {
@@ -47,7 +47,7 @@ public class BoxFigure extends AbstractVerticalLayoutFigure {
   }
   private static class BoxFigureMapperFactory implements MapperFactory<BoxFigure, BoxFigure> {
     public Mapper<? extends BoxFigure, ? extends BoxFigure> createMapper(BoxFigure figure) {
-      return new BoxFigure.BoxFigureMapper<BoxFigure>(figure);
+      return new BoxFigureMapper<BoxFigure>(figure);
     }
   }
   protected static class BoxFigureMapper<T extends BoxFigure> extends AbstractVerticalLayoutFigure.AbstractVerticalLayoutFigureMapper<T> {

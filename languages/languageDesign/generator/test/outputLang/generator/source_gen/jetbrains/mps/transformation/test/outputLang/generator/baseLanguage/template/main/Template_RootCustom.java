@@ -280,9 +280,9 @@ public class Template_RootCustom extends TemplateDeclarationBase implements Temp
     rv[10] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
     return rv;
   }
-  private static SNodePointer template_xizpik_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412775");
-  private static SNodePointer propertyMacro_xizpik_c0a0c0a0b0e0e0b0b0b0b0d0b0f0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2721957369897795323");
-  private static SNodePointer templateNode_xizpik_c0a0a1a1a1a1a1a2a1a3a1a5a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905120210705");
-  private static SNodePointer templateNode_xizpik_c0a0a1a2a1a1a1a2a1a3a1a5a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363088829");
-  private static SNodePointer copySrcMacro_xizpik_b0a0c0e0b0g0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412787");
+  private static final SNodePointer template_xizpik_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412775");
+  private static final SNodePointer propertyMacro_xizpik_c0a0c0a0b0e0e0b0b0b0b0d0b0f0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2721957369897795323");
+  private static final SNodePointer templateNode_xizpik_c0a0a1a1a1a1a1a2a1a3a1a5a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905120210705");
+  private static final SNodePointer templateNode_xizpik_c0a0a1a2a1a1a1a2a1a3a1a5a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363088829");
+  private static final SNodePointer copySrcMacro_xizpik_b0a0c0e0b0g0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412787");
 }

@@ -99,6 +99,6 @@ public class Template_reduce_Or extends TemplateDeclarationBase implements Templ
     rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
     return rv;
   }
-  private static SNodePointer copySrcMacro_osjz7v_b0a0c0b0b0b0c0g = new SNodePointer("r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e(jetbrains.mps.samples.KajaAndOr.generator.template.main@generator)", "1904811872814344209");
-  private static SNodePointer copySrcMacro_osjz7v_b0a0c0c0b0b0c0g = new SNodePointer("r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e(jetbrains.mps.samples.KajaAndOr.generator.template.main@generator)", "1904811872814344199");
+  private static final SNodePointer copySrcMacro_osjz7v_b0a0c0b0b0b0c0g = new SNodePointer("r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e(jetbrains.mps.samples.KajaAndOr.generator.template.main@generator)", "1904811872814344209");
+  private static final SNodePointer copySrcMacro_osjz7v_b0a0c0c0b0b0c0g = new SNodePointer("r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e(jetbrains.mps.samples.KajaAndOr.generator.template.main@generator)", "1904811872814344199");
 }

@@ -15,7 +15,7 @@ import org.apache.log4j.Level;
 public final class TestTreeIconRepainter implements Disposable {
   private static final Logger LOG = LogManager.getLogger(TestTreeIconRepainter.class);
   private final Alarm myAlarm = new Alarm();
-  private final ConcurrentMap<TestTreeNode, TestTreeIconRepainter.RenewPresentationTask> myNode2TaskMap = new ConcurrentHashMap<TestTreeNode, TestTreeIconRepainter.RenewPresentationTask>();
+  private final ConcurrentMap<TestTreeNode, RenewPresentationTask> myNode2TaskMap = new ConcurrentHashMap<TestTreeNode, RenewPresentationTask>();
 
   public TestTreeIconRepainter(@NotNull Disposable parent) {
     Disposer.register(parent, this);
@@ -57,8 +57,8 @@ public final class TestTreeIconRepainter implements Disposable {
         LOG.warn("Too many active requests");
       }
     }
-    TestTreeIconRepainter.RenewPresentationTask newTask = new TestTreeIconRepainter.RenewPresentationTask(node);
-    TestTreeIconRepainter.RenewPresentationTask oldTask = myNode2TaskMap.putIfAbsent(node, newTask);
+    RenewPresentationTask newTask = new RenewPresentationTask(node);
+    RenewPresentationTask oldTask = myNode2TaskMap.putIfAbsent(node, newTask);
     if (oldTask != null) {
       myAlarm.cancelRequest(oldTask);
     }

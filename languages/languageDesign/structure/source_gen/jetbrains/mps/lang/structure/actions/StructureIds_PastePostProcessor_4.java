@@ -4,18 +4,23 @@ package jetbrains.mps.lang.structure.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.PastePostProcessor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.structure.util.ConceptIdSetter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class StructureIds_PastePostProcessor_4 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
+    return AUX_kuurpz.DataTypeDeclaration_9e6b98ac;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
     ConceptIdSetter.processDatatype(pastedNode, SNodeOperations.getModel(pastedNode));
+  }
+
+  private static final class AUX_kuurpz {
+    /*package*/ static final SConcept DataTypeDeclaration_9e6b98ac = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
   }
 }

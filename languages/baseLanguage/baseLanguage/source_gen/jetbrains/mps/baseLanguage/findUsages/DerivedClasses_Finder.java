@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.findUsages;
 
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -20,6 +19,8 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DerivedClasses_Finder extends GeneratedFinder {
   public DerivedClasses_Finder() {
@@ -34,7 +35,7 @@ public class DerivedClasses_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    return AUX_rhibce.ClassConcept_e2711824;
   }
 
   @Override
@@ -42,7 +43,7 @@ public class DerivedClasses_Finder extends GeneratedFinder {
     try {
       monitor.start("Derived Classes", 1000);
       final Queue<SNode> currentClasses = QueueSequence.fromQueue(new LinkedList<SNode>());
-      QueueSequence.fromQueue(currentClasses).addLastElement(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")));
+      QueueSequence.fromQueue(currentClasses).addLastElement(SNodeOperations.cast(node, AUX_rhibce.ClassConcept_e2711824));
       while (QueueSequence.fromQueue(currentClasses).isNotEmpty()) {
         SNode nextNode = QueueSequence.fromQueue(currentClasses).removeFirstElement();
         FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
@@ -50,9 +51,9 @@ public class DerivedClasses_Finder extends GeneratedFinder {
             SNode nodeParam = (SNode) searchResult.getObject();
             new _FunctionTypes._void_P1_E0<SNode>() {
               public void invoke(SNode directDescendant) {
-                SNode foundClass = SNodeOperations.cast(directDescendant, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+                SNode foundClass = SNodeOperations.cast(directDescendant, AUX_rhibce.ClassConcept_e2711824);
                 callback.onUsageFound(createSingleResult(foundClass));
-                if (!(SNodeOperations.isInstanceOf(foundClass, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass")))) {
+                if (!(SNodeOperations.isInstanceOf(foundClass, AUX_rhibce.AnonymousClass_e4a73f97))) {
                   QueueSequence.fromQueue(currentClasses).addLastElement(foundClass);
                 }
               }
@@ -74,5 +75,10 @@ public class DerivedClasses_Finder extends GeneratedFinder {
   @Override
   public SNodeReference getDeclarationNode() {
     return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1200310473077");
+  }
+
+  private static final class AUX_rhibce {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass_e4a73f97 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="-3hxwogie6muxurcdwke4m9p12s28wtw">
-  <files names="ConstraintsAspectDescriptor.java:EventVariableReference_Constraints.java:GeneratedRulesConstraintsAspect.java:ValueReference_Constraints.java" />
+  <files names="ConstraintsAspectDescriptor.java:EventVariableReference_Constraints.java:ValueReference_Constraints.java" />
 </product>
 

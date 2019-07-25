@@ -12,7 +12,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
@@ -25,6 +24,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GoToRules_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -57,7 +58,7 @@ public class GoToRules_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_uwipkg.AbstractConceptDeclaration_ec74828f))) {
         node = null;
       }
       if (node == null) {
@@ -92,5 +93,9 @@ public class GoToRules_Action extends BaseAction {
       m.add(a).setBackground(Color.WHITE);
     }
     m.show(event.getData(MPSCommonDataKeys.FRAME), event.getData(MPSEditorDataKeys.EDITOR_CELL).getX(), event.getData(MPSEditorDataKeys.EDITOR_CELL).getY());
+  }
+
+  private static final class AUX_uwipkg {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

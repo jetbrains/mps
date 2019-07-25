@@ -34,7 +34,7 @@ public class InlineAssignment_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineAssingmentInClosure() throws Throwable {
-    new InlineAssignment_Test.TestBody(this).test_InlineAssingmentInClosure();
+    new TestBody(this).test_InlineAssingmentInClosure();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

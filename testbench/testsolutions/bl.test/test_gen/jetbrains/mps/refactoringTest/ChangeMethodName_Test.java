@@ -36,7 +36,7 @@ public class ChangeMethodName_Test extends BaseTransformationTest {
 
   @Test
   public void test_ChangeMethodName() throws Throwable {
-    new ChangeMethodName_Test.TestBody(this).test_ChangeMethodName();
+    new TestBody(this).test_ChangeMethodName();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

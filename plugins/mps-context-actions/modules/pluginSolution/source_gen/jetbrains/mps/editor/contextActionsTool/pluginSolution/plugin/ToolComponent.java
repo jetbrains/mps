@@ -38,7 +38,7 @@ public class ToolComponent extends JComponent {
       reloadItems();
     }
   };
-  private List<ToolComponent.IItem> myLoadedItems;
+  private List<IItem> myLoadedItems;
   private BaseTool myTool;
   private ItemExecutor myItemExecutor;
 
@@ -95,16 +95,16 @@ public class ToolComponent extends JComponent {
    * 
    * @param items the items to show
    */
-  protected void loadItems(List<ToolComponent.IItem> items) {
+  protected void loadItems(List<IItem> items) {
     if (items == null) {
-      items = ListSequence.fromList(new ArrayList<ToolComponent.IItem>());
+      items = ListSequence.fromList(new ArrayList<IItem>());
     }
     myLoadedItems = items;
     myItemPanel.removeAll();
 
     Map<String, Folder> folders = new TreeMap<String, Folder>();
 
-    for (ToolComponent.IItem item : ListSequence.fromList(items)) {
+    for (IItem item : ListSequence.fromList(items)) {
       if (!(matchesFilter(item))) {
         continue;
       }
@@ -121,7 +121,7 @@ public class ToolComponent extends JComponent {
     repaint();
   }
 
-  private boolean matchesFilter(ToolComponent.IItem item) {
+  private boolean matchesFilter(IItem item) {
     if ((myFilterString == null || myFilterString.length() == 0)) {
       return true;
     }
@@ -137,7 +137,7 @@ public class ToolComponent extends JComponent {
     return false;
   }
 
-  private JLabel createLabel(final ToolComponent.IItem item) throws InvalidDnDOperationException, HeadlessException {
+  private JLabel createLabel(final IItem item) throws InvalidDnDOperationException, HeadlessException {
     final JLabel jlabel = new HoverLabel((myViewType == ViewType.LIST ? item.getLabel() : abbreviate(item.getLabel(), 15)));
 
     if (myViewType == ViewType.SYMBOLS) {

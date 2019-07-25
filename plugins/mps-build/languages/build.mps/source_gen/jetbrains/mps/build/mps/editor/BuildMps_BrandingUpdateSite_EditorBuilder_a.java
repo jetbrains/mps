@@ -86,7 +86,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingUpdateSite_EditorBuilder_a.checkUrlSingleRoleHandler_1r2vma_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d07L, 0x54c4eb89feb19db8L, "checkUrl"), getEditorContext());
+    SingleRoleCellProvider provider = new checkUrlSingleRoleHandler_1r2vma_b1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d07L, 0x54c4eb89feb19db8L, "checkUrl"), getEditorContext());
     return provider.createCell();
   }
   private static class checkUrlSingleRoleHandler_1r2vma_b1a extends SingleRoleCellProvider {
@@ -153,7 +153,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingUpdateSite_EditorBuilder_a.updateUrlSingleRoleHandler_1r2vma_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d07L, 0x54c4eb89feb19db9L, "updateUrl"), getEditorContext());
+    SingleRoleCellProvider provider = new updateUrlSingleRoleHandler_1r2vma_d1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d07L, 0x54c4eb89feb19db9L, "updateUrl"), getEditorContext());
     return provider.createCell();
   }
   private static class updateUrlSingleRoleHandler_1r2vma_d1a extends SingleRoleCellProvider {
@@ -220,7 +220,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new BuildMps_BrandingUpdateSite_EditorBuilder_a.updateChannelSingleRoleHandler_1r2vma_f1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d07L, 0x7a0ffb6a57a037f3L, "updateChannel"), getEditorContext());
+    SingleRoleCellProvider provider = new updateChannelSingleRoleHandler_1r2vma_f1a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083d2d07L, 0x7a0ffb6a57a037f3L, "updateChannel"), getEditorContext());
     return provider.createCell();
   }
   private static class updateChannelSingleRoleHandler_1r2vma_f1a extends SingleRoleCellProvider {

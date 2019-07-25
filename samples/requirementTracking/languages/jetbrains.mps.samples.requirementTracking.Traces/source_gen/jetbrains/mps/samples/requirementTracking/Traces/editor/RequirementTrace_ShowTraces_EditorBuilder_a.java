@@ -31,6 +31,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class RequirementTrace_ShowTraces_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -84,7 +85,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new RequirementTrace_ShowTraces_EditorBuilder_a.mentionsListHandler_yys6sy_b1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new mentionsListHandler_yys6sy_b1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("MentionsCell");
     editorCell.setFoldable(nodeCondition_yys6sy_a1b0());
@@ -108,7 +109,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
       return MetaAdapterFactory.getContainmentLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, 0x39ed36a1ccd45001L, "mentions");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementEntryReference");
+      return AUX_hky80s.RequirementEntryReference_ed851e11;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -164,5 +165,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
     DeleteRequirementTrace.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_hky80s {
+    /*package*/ static final SConcept RequirementEntryReference_ed851e11 = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementEntryReference");
   }
 }

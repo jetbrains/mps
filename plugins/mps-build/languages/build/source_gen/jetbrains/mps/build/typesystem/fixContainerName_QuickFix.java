@@ -6,12 +6,13 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class fixContainerName_QuickFix extends QuickFix_Runtime {
   public fixContainerName_QuickFix() {
@@ -21,10 +22,10 @@ public class fixContainerName_QuickFix extends QuickFix_Runtime {
     return "Change extension to " + ((String) fixContainerName_QuickFix.this.getField("newExtension")[0]);
   }
   public void execute(SNode node) {
-    SNode containerName = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString"));
+    SNode containerName = SNodeOperations.cast(node, AUX_uzundk.BuildString_bd6afb30);
     SNode last = ListSequence.fromList(SLinkOperations.getChildren(containerName, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts"))).last();
-    if (SNodeOperations.isInstanceOf(last, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart"))) {
-      SNode text = SNodeOperations.cast(last, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart"));
+    if (SNodeOperations.isInstanceOf(last, AUX_uzundk.BuildTextStringPart_a64ab0ce)) {
+      SNode text = SNodeOperations.cast(last, AUX_uzundk.BuildTextStringPart_a64ab0ce);
       int dot = SPropertyOperations.getString(text, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text")).indexOf('.');
       SPropertyOperations.assign(text, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), ((dot >= 0 ? SPropertyOperations.getString(text, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text")).substring(0, dot) : SPropertyOperations.getString(text, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text")))) + ((String) fixContainerName_QuickFix.this.getField("newExtension")[0]));
     } else {
@@ -33,8 +34,13 @@ public class fixContainerName_QuickFix extends QuickFix_Runtime {
   }
   private static SNode createBuildTextStringPart_uzundk_a0a0a0c0c(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_uzundk.BuildTextStringPart_a64ab0ce, null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text").getType().toString(p0));
     return n1;
+  }
+
+  private static final class AUX_uzundk {
+    /*package*/ static final SConcept BuildString_bd6afb30 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString");
+    /*package*/ static final SConcept BuildTextStringPart_a64ab0ce = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
   }
 }

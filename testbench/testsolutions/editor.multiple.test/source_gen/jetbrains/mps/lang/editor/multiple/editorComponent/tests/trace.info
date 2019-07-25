@@ -8,7 +8,7 @@
   <root nodeRef="r:fb7fa8cf-2ae4-458a-8a14-51580c7c210c(jetbrains.mps.lang.editor.multiple.editorComponent.tests)/6420745394459121798">
     <file name="DefaultEditorComponent_Test.java">
       <node id="6420745394459121798" at="18,40,19,25" concept="4" />
-      <node id="6420745394459121798" at="23,62,24,64" concept="1" />
+      <node id="6420745394459121798" at="23,62,24,36" concept="1" />
       <node id="6420745394459121798" at="29,52,30,19" concept="4" />
       <node id="6420745394459121798" at="34,51,35,72" concept="1" />
       <node id="6420745394459121860" at="35,72,36,29" concept="1" />
@@ -18,7 +18,7 @@
       <node id="6420745394459121798" at="22,0,26,0" concept="2" trace="test_DefaultEditorComponent#()V" />
       <node id="6420745394459121798" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6420745394459121798" at="18,40,19,25" />
-      <scope id="6420745394459121798" at="23,62,24,64" />
+      <scope id="6420745394459121798" at="23,62,24,36" />
       <scope id="6420745394459121798" at="29,52,30,19" />
       <scope id="6420745394459121798" at="34,51,36,29" />
       <scope id="6420745394459121798" at="18,0,21,0" />
@@ -34,7 +34,7 @@
   <root nodeRef="r:fb7fa8cf-2ae4-458a-8a14-51580c7c210c(jetbrains.mps.lang.editor.multiple.editorComponent.tests)/6420745394459130152">
     <file name="EditorComponentSpecifiedBy_context_hint_Test.java">
       <node id="6420745394459130152" at="18,57,19,25" concept="4" />
-      <node id="6420745394459130152" at="23,79,24,81" concept="1" />
+      <node id="6420745394459130152" at="23,79,24,36" concept="1" />
       <node id="6420745394459130152" at="29,52,30,19" concept="4" />
       <node id="6420745394459130152" at="34,51,35,72" concept="1" />
       <node id="6420745394459130217" at="35,72,36,34" concept="1" />
@@ -44,7 +44,7 @@
       <node id="6420745394459130152" at="22,0,26,0" concept="2" trace="test_EditorComponentSpecifiedBy_context_hint#()V" />
       <node id="6420745394459130152" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6420745394459130152" at="18,57,19,25" />
-      <scope id="6420745394459130152" at="23,79,24,81" />
+      <scope id="6420745394459130152" at="23,79,24,36" />
       <scope id="6420745394459130152" at="29,52,30,19" />
       <scope id="6420745394459130152" at="34,51,36,34" />
       <scope id="6420745394459130152" at="18,0,21,0" />
@@ -60,7 +60,7 @@
   <root nodeRef="r:fb7fa8cf-2ae4-458a-8a14-51580c7c210c(jetbrains.mps.lang.editor.multiple.editorComponent.tests)/6420745394459130264">
     <file name="MostSpecificEditorComponent_Test.java">
       <node id="6420745394459130264" at="18,45,19,25" concept="4" />
-      <node id="6420745394459130264" at="23,67,24,69" concept="1" />
+      <node id="6420745394459130264" at="23,67,24,36" concept="1" />
       <node id="6420745394459130264" at="29,52,30,19" concept="4" />
       <node id="6420745394459130264" at="34,51,35,72" concept="1" />
       <node id="6420745394459384388" at="35,72,36,34" concept="1" />
@@ -70,7 +70,7 @@
       <node id="6420745394459130264" at="22,0,26,0" concept="2" trace="test_MostSpecificEditorComponent#()V" />
       <node id="6420745394459130264" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6420745394459130264" at="18,45,19,25" />
-      <scope id="6420745394459130264" at="23,67,24,69" />
+      <scope id="6420745394459130264" at="23,67,24,36" />
       <scope id="6420745394459130264" at="29,52,30,19" />
       <scope id="6420745394459130264" at="34,51,36,34" />
       <scope id="6420745394459130264" at="18,0,21,0" />
@@ -86,7 +86,7 @@
   <root nodeRef="r:fb7fa8cf-2ae4-458a-8a14-51580c7c210c(jetbrains.mps.lang.editor.multiple.editorComponent.tests)/6420745394459902267">
     <file name="OverridenEditorComponent_Test.java">
       <node id="6420745394459902267" at="18,42,19,25" concept="4" />
-      <node id="6420745394459902267" at="23,64,24,66" concept="1" />
+      <node id="6420745394459902267" at="23,64,24,36" concept="1" />
       <node id="6420745394459902267" at="29,52,30,19" concept="4" />
       <node id="6420745394459902267" at="34,51,35,72" concept="1" />
       <node id="6420745394460144884" at="35,72,36,24" concept="1" />
@@ -96,7 +96,7 @@
       <node id="6420745394459902267" at="22,0,26,0" concept="2" trace="test_OverridenEditorComponent#()V" />
       <node id="6420745394459902267" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6420745394459902267" at="18,42,19,25" />
-      <scope id="6420745394459902267" at="23,64,24,66" />
+      <scope id="6420745394459902267" at="23,64,24,36" />
       <scope id="6420745394459902267" at="29,52,30,19" />
       <scope id="6420745394459902267" at="34,51,36,24" />
       <scope id="6420745394459902267" at="18,0,21,0" />

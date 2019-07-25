@@ -2,12 +2,11 @@
 <model ref="r:99451de3-aa41-4a05-92a3-2879d5c07b99(jetbrains.mps.baseLanguageInternal.generator.template.util)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="saw1" ref="r:f04c1476-2f91-4f59-be13-c8e009abebee(jetbrains.mps.baseLanguageInternal.generator.template.main@generator)" />
@@ -15,7 +14,6 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tp68" ref="r:00000000-0000-4000-0000-011c895903ac(jetbrains.mps.baseLanguageInternal.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
   </imports>
   <registry>
@@ -29,6 +27,7 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -330,10 +329,11 @@
     <property role="TrG5h" value="ContextUtil" />
     <node concept="3Tm1VV" id="7Evf$wpZFfk" role="1B3o_S" />
     <node concept="3clFbW" id="7Evf$wpZFfl" role="jymVt">
+      <node concept="3Tm6S6" id="4hwx6CziGza" role="1B3o_S" />
       <node concept="3cqZAl" id="7Evf$wpZFfm" role="3clF45" />
-      <node concept="3Tm1VV" id="7Evf$wpZFfn" role="1B3o_S" />
       <node concept="3clFbS" id="7Evf$wpZFfo" role="3clF47" />
     </node>
+    <node concept="2tJIrI" id="4hwx6CziGsD" role="jymVt" />
     <node concept="2YIFZL" id="7Evf$wpZFfp" role="jymVt">
       <property role="TrG5h" value="getContextForConstant" />
       <node concept="3Tqbb2" id="7Evf$wpZFft" role="3clF45">
@@ -513,6 +513,7 @@
         <node concept="10P_77" id="7Evf$wpZFgp" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4hwx6CziGsE" role="jymVt" />
     <node concept="2YIFZL" id="7Evf$wpZFlv" role="jymVt">
       <property role="TrG5h" value="getContextForMethod" />
       <node concept="3Tqbb2" id="7Evf$wpZFlF" role="3clF45">
@@ -697,6 +698,7 @@
         <node concept="10P_77" id="7Evf$wpZFlN" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4hwx6CziGsF" role="jymVt" />
     <node concept="2YIFZL" id="53cdeWkjJoo" role="jymVt">
       <property role="TrG5h" value="getContextForInnerClass" />
       <node concept="3Tqbb2" id="53cdeWkjJop" role="3clF45">

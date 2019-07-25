@@ -9,17 +9,18 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.FieldReferenceOperation__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.InstanceMethodCallOperation__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ThisExpressionToLocal extends KeyMapImpl {
   public ThisExpressionToLocal() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new ThisExpressionToLocal.ThisExpressionToLocal_Action0();
+    action = new ThisExpressionToLocal_Action0();
     this.putAction("any", "VK_DELETE", action);
   }
   public static class ThisExpressionToLocal_Action0 extends KeyMapActionImpl {
@@ -38,7 +39,7 @@ public class ThisExpressionToLocal extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_xcmp2l.ThisExpression_a046bcfc))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -48,20 +49,20 @@ public class ThisExpressionToLocal extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_xcmp2l.DotExpression_97ed08d8);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode dot = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+      SNode dot = SNodeOperations.cast(SNodeOperations.getParent(node), AUX_xcmp2l.DotExpression_97ed08d8);
       SNode operation = SLinkOperations.getTarget(dot, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"));
-      if (SNodeOperations.isInstanceOf(operation, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"))) {
-        SNode fieldRef = SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"));
+      if (SNodeOperations.isInstanceOf(operation, AUX_xcmp2l.FieldReferenceOperation_fc8d5dda)) {
+        SNode fieldRef = SNodeOperations.cast(operation, AUX_xcmp2l.FieldReferenceOperation_fc8d5dda);
         if ((boolean) FieldReferenceOperation__BehaviorDescriptor.canBeConvertedToLocal_id4APqwMfC3hI.invoke(fieldRef)) {
           FieldReferenceOperation__BehaviorDescriptor.convertToLocal_id4APqwMfCtHb.invoke(fieldRef);
           return;
         }
       }
-      if (SNodeOperations.isInstanceOf(operation, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"))) {
-        SNode methodCall = SNodeOperations.cast(operation, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
+      if (SNodeOperations.isInstanceOf(operation, AUX_xcmp2l.InstanceMethodCallOperation_cd28f5b6)) {
+        SNode methodCall = SNodeOperations.cast(operation, AUX_xcmp2l.InstanceMethodCallOperation_cd28f5b6);
         if ((boolean) InstanceMethodCallOperation__BehaviorDescriptor.canBeConvertedToLocal_id4APqwMfCiZK.invoke(methodCall)) {
           InstanceMethodCallOperation__BehaviorDescriptor.convertToLocal_id4APqwMfCtHI.invoke(methodCall);
           return;
@@ -71,5 +72,12 @@ public class ThisExpressionToLocal extends KeyMapImpl {
     public String getKeyStroke() {
       return " DELETE";
     }
+  }
+
+  private static final class AUX_xcmp2l {
+    /*package*/ static final SConcept ThisExpression_a046bcfc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept FieldReferenceOperation_fc8d5dda = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 }

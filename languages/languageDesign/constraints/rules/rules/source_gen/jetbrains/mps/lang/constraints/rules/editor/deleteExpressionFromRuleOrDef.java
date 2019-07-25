@@ -7,12 +7,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class deleteExpressionFromRuleOrDef {
 
@@ -23,7 +24,7 @@ public class deleteExpressionFromRuleOrDef {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         // I do not know how to do without this hack 
-        SNode highestRuleMember = RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"), false, false));
+        SNode highestRuleMember = RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(SNodeOperations.getNodeAncestor(node, AUX_hpvmoc.RuleBlockMember_c70a5095, false, false));
         if (!(DeletionApproverUtil.approve(editorContext, highestRuleMember))) {
           SNodeOperations.deleteNode(highestRuleMember);
         }
@@ -65,5 +66,9 @@ public class deleteExpressionFromRuleOrDef {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_hpvmoc {
+    /*package*/ static final SInterfaceConcept RuleBlockMember_c70a5095 = MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember");
   }
 }

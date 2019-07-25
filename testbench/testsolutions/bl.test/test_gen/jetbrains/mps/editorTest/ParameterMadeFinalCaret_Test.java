@@ -21,7 +21,7 @@ public class ParameterMadeFinalCaret_Test extends BaseTransformationTest {
 
   @Test
   public void test_ParameterMadeFinalCaret() throws Throwable {
-    new ParameterMadeFinalCaret_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class MakeFieldStaticAndHaveReferencesUpdatedPositionedOnType_Test extend
 
   @Test
   public void test_MakeFieldStaticAndHaveReferencesUpdatedPositionedOnType() throws Throwable {
-    new MakeFieldStaticAndHaveReferencesUpdatedPositionedOnType_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

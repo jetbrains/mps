@@ -25,7 +25,7 @@ public class TestSideTransform_TestWrappedItem_Test extends BaseTransformationTe
 
   @Test
   public void test_TestSideTransform_TestWrappedItem() throws Throwable {
-    new TestSideTransform_TestWrappedItem_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

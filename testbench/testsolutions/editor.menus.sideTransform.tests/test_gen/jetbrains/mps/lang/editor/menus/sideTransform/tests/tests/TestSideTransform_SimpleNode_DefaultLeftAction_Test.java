@@ -21,7 +21,7 @@ public class TestSideTransform_SimpleNode_DefaultLeftAction_Test extends BaseTra
 
   @Test
   public void test_TestSideTransform_SimpleNode_DefaultLeftAction() throws Throwable {
-    new TestSideTransform_SimpleNode_DefaultLeftAction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

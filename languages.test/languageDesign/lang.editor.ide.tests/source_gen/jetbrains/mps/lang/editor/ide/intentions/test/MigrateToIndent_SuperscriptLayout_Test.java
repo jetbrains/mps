@@ -22,7 +22,7 @@ public class MigrateToIndent_SuperscriptLayout_Test extends BaseTransformationTe
 
   @Test
   public void test_MigrateToIndent_SuperscriptLayout() throws Throwable {
-    new MigrateToIndent_SuperscriptLayout_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

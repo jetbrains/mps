@@ -26,7 +26,7 @@ public class TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling
 
   @Test
   public void test_TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling() throws Throwable {
-    new TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -18,6 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.Enumeration;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public abstract class ModelTreeBuilder implements TreeExpansionListener {
   private JTree myTree;
@@ -58,7 +59,7 @@ public abstract class ModelTreeBuilder implements TreeExpansionListener {
   public static Iterable<SNode> sortChildNodes(Iterable<SNode> nodes) {
     return Sequence.fromIterable(nodes).sort(new ISelector<SNode, String>() {
       public String select(SNode node) {
-        return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage")) + "|" + ((String) BHReflection.invoke0(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+        return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage")) + "|" + ((String) BHReflection.invoke0(node, AUX_xjwuju.BaseConcept_bc2351f, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
       }
     }, true);
   }
@@ -87,5 +88,9 @@ public abstract class ModelTreeBuilder implements TreeExpansionListener {
       }
     }
     return null;
+  }
+
+  private static final class AUX_xjwuju {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

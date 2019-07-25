@@ -34,7 +34,7 @@ public class InapplicableIntention_NotIncludedInMenu_Test extends BaseTransforma
 
   @Test
   public void test_InapplicableIntention_NotIncludedInMenu() throws Throwable {
-    new InapplicableIntention_NotIncludedInMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

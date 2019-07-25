@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_SubstituteMenuItem_OutputConcept_Operation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SubstituteMenuItem_OutputConcept_Operation_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_SubstituteMenuItem_OutputConcept_Operation_InferenceRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3244dde8e1507acbL, "jetbrains.mps.lang.editor.structure.SubstituteMenuItem_OutputConcept_Operation");
+    return AUX_txk528.SubstituteMenuItem_OutputConcept_Operation_a4a93b0a;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_SubstituteMenuItem_OutputConcept_Operation_InferenceRule ext
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x5cab42cd97571ceeL, "SConceptType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_txk528 {
+    /*package*/ static final SConcept SubstituteMenuItem_OutputConcept_Operation_a4a93b0a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3244dde8e1507acbL, "jetbrains.mps.lang.editor.structure.SubstituteMenuItem_OutputConcept_Operation");
   }
 }

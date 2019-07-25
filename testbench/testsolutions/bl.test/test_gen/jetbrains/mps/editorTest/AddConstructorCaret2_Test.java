@@ -21,7 +21,7 @@ public class AddConstructorCaret2_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddConstructorCaret2() throws Throwable {
-    new AddConstructorCaret2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

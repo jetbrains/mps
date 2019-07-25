@@ -37,5 +37,5 @@ public class CellKeyMapCaretPolicy_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_8bbhom_a0a0a = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109ae53b170L, 0x109ae53b2baL, 0x109ae558032L, 0x109ae5610ccL, 0x10a424bd3a5L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_8bbhom_a0a0a = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109ae53b170L, 0x109ae53b2baL, 0x109ae558032L, 0x109ae5610ccL, 0x10a424bd3a5L);
 }

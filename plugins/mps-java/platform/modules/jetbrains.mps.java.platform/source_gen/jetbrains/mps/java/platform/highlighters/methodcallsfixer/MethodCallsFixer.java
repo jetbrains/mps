@@ -21,12 +21,13 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.module.TransientSModule;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Map;
 import jetbrains.mps.ide.ThreadUtils;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MethodCallsFixer extends BaseEditorChecker {
   private static boolean DISABLED = true;
@@ -114,7 +115,7 @@ public class MethodCallsFixer extends BaseEditorChecker {
     }
 
     if (!(incremental)) {
-      for (SNode methodCall : SNodeOperations.getNodeDescendants(rootNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"), false, new SAbstractConcept[]{})) {
+      for (SNode methodCall : SNodeOperations.getNodeDescendants(rootNode, AUX_2ncc3r.IMethodCall_ee2c776b, false, new SAbstractConcept[]{})) {
         myCurrentSession.checkMethodCall(methodCall);
       }
     }
@@ -136,5 +137,9 @@ public class MethodCallsFixer extends BaseEditorChecker {
         }
       });
     }
+  }
+
+  private static final class AUX_2ncc3r {
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

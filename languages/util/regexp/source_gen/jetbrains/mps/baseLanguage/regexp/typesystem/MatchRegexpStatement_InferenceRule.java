@@ -13,6 +13,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MatchRegexpStatement_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public MatchRegexpStatement_InferenceRule() {
@@ -25,7 +26,7 @@ public class MatchRegexpStatement_InferenceRule extends AbstractInferenceRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11176652f14L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpStatement");
+    return AUX_omd5rf.MatchRegexpStatement_e55d73;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,5 +39,9 @@ public class MatchRegexpStatement_InferenceRule extends AbstractInferenceRule_Ru
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_omd5rf {
+    /*package*/ static final SConcept MatchRegexpStatement_e55d73 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11176652f14L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpStatement");
   }
 }

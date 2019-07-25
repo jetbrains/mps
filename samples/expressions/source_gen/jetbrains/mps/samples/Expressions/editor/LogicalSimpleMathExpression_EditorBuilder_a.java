@@ -52,7 +52,7 @@ import jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet.KeyWordSty
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new LogicalSimpleMathExpression_EditorBuilder_a.leftSingleRoleHandler_hge5w8_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5476L, "left"), getEditorContext());
+    SingleRoleCellProvider provider = new leftSingleRoleHandler_hge5w8_a0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5476L, "left"), getEditorContext());
     return provider.createCell();
   }
   private static class leftSingleRoleHandler_hge5w8_a0 extends SingleRoleCellProvider {
@@ -114,7 +114,7 @@ import jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet.KeyWordSty
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new LogicalSimpleMathExpression_EditorBuilder_a.rightSingleRoleHandler_hge5w8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5478L, "right"), getEditorContext());
+    SingleRoleCellProvider provider = new rightSingleRoleHandler_hge5w8_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5478L, "right"), getEditorContext());
     return provider.createCell();
   }
   private static class rightSingleRoleHandler_hge5w8_c0 extends SingleRoleCellProvider {

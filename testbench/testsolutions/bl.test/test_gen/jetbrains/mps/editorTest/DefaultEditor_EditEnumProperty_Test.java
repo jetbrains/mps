@@ -21,7 +21,7 @@ public class DefaultEditor_EditEnumProperty_Test extends BaseTransformationTest 
 
   @Test
   public void test_DefaultEditor_EditEnumProperty() throws Throwable {
-    new DefaultEditor_EditEnumProperty_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

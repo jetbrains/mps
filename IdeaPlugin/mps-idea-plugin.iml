@@ -24,7 +24,7 @@
       <sourceFolder url="file://$MODULE_DIR$/mps-testing/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
-    <orderEntry type="jdk" jdkName="IDEA IC" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="IDEA IC" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="generator-engine" />
     <orderEntry type="module" module-name="java-stub" />

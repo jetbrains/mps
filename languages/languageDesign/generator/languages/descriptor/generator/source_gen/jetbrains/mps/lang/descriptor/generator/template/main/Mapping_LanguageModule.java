@@ -15,13 +15,14 @@ import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
 import jetbrains.mps.generator.impl.DefaultTemplateContext;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Mapping_LanguageModule extends MapConfigBase implements TemplateMappingConfiguration {
@@ -29,8 +30,8 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_LanguageModule(@NotNull TemplateModel model) {
     super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192647143"), "LanguageModule", model, false);
-    createRules = TemplateUtil.<TemplateCreateRootRule>asCollection(new Mapping_LanguageModule.CreateRootRule0());
-    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new Mapping_LanguageModule.RootMappingRule0());
+    createRules = TemplateUtil.<TemplateCreateRootRule>asCollection(new CreateRootRule0());
+    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
@@ -46,7 +47,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
   }
   /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8780540425167303786"), MetaAdapterFactory.getConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, "jetbrains.mps.lang.descriptor.structure.LanguageDescriptor"), false, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8780540425167303786"), AUX_lmpaze.LanguageDescriptor_b4fbf763, false, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -64,5 +65,9 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
       Collection<SNode> result = new Template_language_descriptor().apply(environment, context);
       return result;
     }
+  }
+
+  private static final class AUX_lmpaze {
+    /*package*/ static final SConcept LanguageDescriptor_b4fbf763 = MetaAdapterFactory.getConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, "jetbrains.mps.lang.descriptor.structure.LanguageDescriptor");
   }
 }

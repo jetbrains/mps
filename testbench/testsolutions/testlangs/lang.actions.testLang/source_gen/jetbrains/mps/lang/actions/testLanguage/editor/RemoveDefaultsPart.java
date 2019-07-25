@@ -21,7 +21,7 @@ public class RemoveDefaultsPart extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new RemoveDefaultsPart.SMP_Group_vrn6z8_a());
+    result.add(new SMP_Group_vrn6z8_a());
     return result;
   }
 

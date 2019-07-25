@@ -9,17 +9,18 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BuildSimpleName_text extends KeyMapImpl {
   public BuildSimpleName_text() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new BuildSimpleName_text.BuildSimpleName_text_Action0();
+    action = new BuildSimpleName_text_Action0();
     this.putAction("any", "$", action);
   }
   public static class BuildSimpleName_text_Action0 extends KeyMapActionImpl {
@@ -41,7 +42,7 @@ public class BuildSimpleName_text extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_4bhgsw.BuildTextStringPart_a64ab0ce))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -54,7 +55,7 @@ public class BuildSimpleName_text extends KeyMapImpl {
       if (!(editorContext.getSelectedCell() instanceof EditorCell_Label)) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart")))) {
+      if (!(SNodeOperations.isInstanceOf(node, AUX_4bhgsw.BuildStringPart_a64ab0ca))) {
         return false;
       }
       return isNotEmptyString(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text")));
@@ -64,12 +65,12 @@ public class BuildSimpleName_text extends KeyMapImpl {
 
       String currText = SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"));
       if (index < currText.length() && index > 0) {
-        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart"));
+        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, AUX_4bhgsw.BuildTextStringPart_a64ab0ce);
         SPropertyOperations.assign(newText, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), currText.substring(index));
         SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), currText.substring(0, index));
         SNodeOperations.insertNextSiblingChild(node, newText);
       }
-      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart"));
+      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, AUX_4bhgsw.BuildVarRefStringPart_a64ab0cc);
       if (index != 0) {
         SNodeOperations.insertNextSiblingChild(node, newRef);
       } else {
@@ -83,5 +84,11 @@ public class BuildSimpleName_text extends KeyMapImpl {
     private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;
     }
+  }
+
+  private static final class AUX_4bhgsw {
+    /*package*/ static final SConcept BuildTextStringPart_a64ab0ce = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
+    /*package*/ static final SConcept BuildStringPart_a64ab0ca = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart");
+    /*package*/ static final SConcept BuildVarRefStringPart_a64ab0cc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart");
   }
 }

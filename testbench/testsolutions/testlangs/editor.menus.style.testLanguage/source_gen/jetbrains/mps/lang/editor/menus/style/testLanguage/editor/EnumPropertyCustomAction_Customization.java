@@ -7,14 +7,15 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import java.util.Objects;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EnumPropertyCustomAction_Customization implements EditorMenuItemCustomizer {
 
@@ -23,7 +24,7 @@ public class EnumPropertyCustomAction_Customization implements EditorMenuItemCus
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    EnumPropertyCustomAction_Customization.EnumPropertyCustomAction_CustomizationSpecific customizer = new EnumPropertyCustomAction_Customization.EnumPropertyCustomAction_CustomizationSpecific();
+    EnumPropertyCustomAction_CustomizationSpecific customizer = new EnumPropertyCustomAction_CustomizationSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -31,7 +32,7 @@ public class EnumPropertyCustomAction_Customization implements EditorMenuItemCus
 
   private static class EnumPropertyCustomAction_CustomizationSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher")) {
+      return new EditorMenuItemModifyingConceptContextMatcher(AUX_iqommw.TestCompletionCustomization_ParentTestContextMatcher_5aa6e2a6) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
@@ -72,4 +73,7 @@ public class EnumPropertyCustomAction_Customization implements EditorMenuItemCus
   }
 
 
+  private static final class AUX_iqommw {
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher_5aa6e2a6 = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
+  }
 }

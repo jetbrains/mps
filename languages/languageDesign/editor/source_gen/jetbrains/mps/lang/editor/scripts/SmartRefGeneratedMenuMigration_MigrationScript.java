@@ -5,7 +5,6 @@ package jetbrains.mps.lang.editor.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.GlobalScope;
@@ -19,11 +18,14 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.behavior.IMenuPartWithOutputConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMigrationScript {
   public SmartRefGeneratedMenuMigration_MigrationScript() {
@@ -39,7 +41,7 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute");
+        return AUX_ycv8zm.GeneratedSubstituteMenuAttribute_7274169f;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -65,7 +67,7 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute");
+        return AUX_ycv8zm.GeneratedSubstituteMenuAttribute_7274169f;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -73,7 +75,7 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        final SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named"));
+        final SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), AUX_ycv8zm.SubstituteMenu_Named_2042e193);
         // we need a scope with project modules (the script deals with modules in a project). 
         // I assume the node comes from a project module here. Since there's no RepositoryScope, 
         // I resort to GlobalScope that takes SRepository. I don't need to persist/re-run these find results 
@@ -86,19 +88,19 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
           public SNode select(SearchResult<SNode> it) {
             return it.getObject();
           }
-        }), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named"))).select(new ISelector<SNode, SNode>() {
+        }), AUX_ycv8zm.SubstituteMenuReference_Named_2755df75)).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
             return SNodeOperations.getParent(it);
           }
-        }), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu"))).visitAll(new IVisitor<SNode>() {
+        }), AUX_ycv8zm.SubstituteMenuPart_IncludeMenu_ecf2cb72)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode includeMenu) {
 
             Iterable<SNode> parts = SLinkOperations.getChildren(parent, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"));
             for (SNode part : Sequence.fromIterable(parts)) {
               {
                 final SNode aPart = part;
-                if (SNodeOperations.isInstanceOf(aPart, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x326f55034e5c1baaL, "jetbrains.mps.lang.editor.structure.AbstractOutputConceptContainerSubstituteMenuPart"))) {
-                  if (SLinkOperations.getTarget(aPart, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee6ee2b8485887fL, 0x6ee6ee2b84858889L, "outputConcept")) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu"), false, false))) {
+                if (SNodeOperations.isInstanceOf(aPart, AUX_ycv8zm.AbstractOutputConceptContainerSubstituteMenuPart_c17c122)) {
+                  if (SLinkOperations.getTarget(aPart, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee6ee2b8485887fL, 0x6ee6ee2b84858889L, "outputConcept")) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, AUX_ycv8zm.ISubstituteMenu_3907f4f4, false, false))) {
                     SLinkOperations.setTarget(aPart, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee6ee2b8485887fL, 0x6ee6ee2b84858889L, "outputConcept"), IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart));
                   }
                 }
@@ -121,5 +123,14 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c8959029d(jetbrains.mps.lang.editor.scripts)/5076612878471698562");
+  }
+
+  private static final class AUX_ycv8zm {
+    /*package*/ static final SConcept GeneratedSubstituteMenuAttribute_7274169f = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute");
+    /*package*/ static final SConcept SubstituteMenu_Named_2042e193 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
+    /*package*/ static final SConcept SubstituteMenuReference_Named_2755df75 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
+    /*package*/ static final SConcept SubstituteMenuPart_IncludeMenu_ecf2cb72 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu");
+    /*package*/ static final SConcept AbstractOutputConceptContainerSubstituteMenuPart_c17c122 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x326f55034e5c1baaL, "jetbrains.mps.lang.editor.structure.AbstractOutputConceptContainerSubstituteMenuPart");
+    /*package*/ static final SInterfaceConcept ISubstituteMenu_3907f4f4 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
   }
 }

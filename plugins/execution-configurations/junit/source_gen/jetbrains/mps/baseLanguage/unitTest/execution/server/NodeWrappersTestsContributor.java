@@ -49,7 +49,7 @@ public class NodeWrappersTestsContributor implements TestsContributor {
     myTestNodes = testNodes;
     myProject = mpsProject;
     myClassloaderManager = mpsProject.getComponent(ClassLoaderManager.class);
-    myRunnerBuilder = new PushEnvironmentRunnerBuilder(new NodeWrappersTestsContributor.InProcessEnvironment());
+    myRunnerBuilder = new PushEnvironmentRunnerBuilder(new InProcessEnvironment());
   }
 
   private void notifyByBaloon(String msg, final ITestNodeWrapper<?> wrapper, Exception e) {

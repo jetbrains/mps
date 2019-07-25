@@ -38,11 +38,11 @@ public class TestProgramWithMoreSpecificMode_Test extends BaseTransformationTest
 
   @Test
   public void test_testLessSpecificMode() throws Throwable {
-    new TestProgramWithMoreSpecificMode_Test.TestBody(this).test_testLessSpecificMode();
+    new TestBody(this).test_testLessSpecificMode();
   }
   @Test
   public void test_testMoreSpecificMode() throws Throwable {
-    new TestProgramWithMoreSpecificMode_Test.TestBody(this).test_testMoreSpecificMode();
+    new TestBody(this).test_testMoreSpecificMode();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

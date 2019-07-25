@@ -22,7 +22,7 @@ public class TestSubstitute_StringDefaultProperty_Test extends BaseTransformatio
 
   @Test
   public void test_TestSubstitute_StringDefaultProperty() throws Throwable {
-    new TestSubstitute_StringDefaultProperty_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

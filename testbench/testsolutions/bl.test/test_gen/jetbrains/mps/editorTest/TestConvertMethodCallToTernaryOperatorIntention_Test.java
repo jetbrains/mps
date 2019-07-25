@@ -21,7 +21,7 @@ public class TestConvertMethodCallToTernaryOperatorIntention_Test extends BaseTr
 
   @Test
   public void test_TestConvertMethodCallToTernaryOperatorIntention() throws Throwable {
-    new TestConvertMethodCallToTernaryOperatorIntention_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -11,7 +11,6 @@ import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -23,6 +22,8 @@ import java.util.HashSet;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RenameImplementingMethodsParticipant extends RefactoringParticipantBase<SNodeReference, String, SNode, String> implements RenameNodeRefactoringParticipant<SNodeReference, String> {
 
@@ -49,7 +50,7 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
   }
   public List<RefactoringParticipant.Option> getAvailableOptions(SNodeReference initialState, SRepository repository) {
     SNode renamingNode = initialState.resolve(repository);
-    if (SNodeOperations.isInstanceOf(renamingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
+    if (SNodeOperations.isInstanceOf(renamingNode, AUX_t7hzu7.BaseMethodDeclaration_9dbf9acb)) {
       return ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Option>(), OPTION);
     } else {
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
@@ -61,10 +62,10 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, String>>());
     }
     SNode renamingNode = initialState.resolve(repository);
-    if (!(SNodeOperations.isInstanceOf(renamingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")))) {
+    if (!(SNodeOperations.isInstanceOf(renamingNode, AUX_t7hzu7.BaseMethodDeclaration_9dbf9acb))) {
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, String>>());
     }
-    SNode method = SNodeOperations.cast(renamingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
+    SNode method = SNodeOperations.cast(renamingNode, AUX_t7hzu7.BaseMethodDeclaration_9dbf9acb);
     List<RefactoringParticipant.Change<SNodeReference, String>> result = ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, String>>());
     for (final SNode node : ListSequence.fromList(MethodRefactoringUtils.findOverridingMethods(searchScope, method, progressMonitor))) {
       final SearchResults searchResults = new SearchResults(SetSequence.fromSetAndArray(new HashSet<SNode>(), node), ListSequence.fromListAndArray(new ArrayList<SearchResult<SNode>>(), new SearchResult<SNode>(node, "overriding method")));
@@ -84,5 +85,9 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
       });
     }
     return result;
+  }
+
+  private static final class AUX_t7hzu7 {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

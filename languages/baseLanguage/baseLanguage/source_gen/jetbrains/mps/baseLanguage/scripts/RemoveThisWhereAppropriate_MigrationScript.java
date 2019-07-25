@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.FieldReferenceOperation__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.InstanceMethodCallOperation__BehaviorDescriptor;
@@ -13,6 +12,8 @@ import jetbrains.mps.baseLanguage.behavior.StaticMethodCall__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class RemoveThisWhereAppropriate_MigrationScript extends BaseMigrationScript {
   public RemoveThisWhereAppropriate_MigrationScript() {
@@ -28,7 +29,7 @@ public final class RemoveThisWhereAppropriate_MigrationScript extends BaseMigrat
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+        return AUX_la33m7.FieldReferenceOperation_fc8d5dda;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -57,7 +58,7 @@ public final class RemoveThisWhereAppropriate_MigrationScript extends BaseMigrat
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+        return AUX_la33m7.InstanceMethodCallOperation_cd28f5b6;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -86,7 +87,7 @@ public final class RemoveThisWhereAppropriate_MigrationScript extends BaseMigrat
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall");
+        return AUX_la33m7.StaticMethodCall_9cd8c444;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -110,5 +111,11 @@ public final class RemoveThisWhereAppropriate_MigrationScript extends BaseMigrat
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c895902c9(jetbrains.mps.baseLanguage.scripts)/1704189004094297789");
+  }
+
+  private static final class AUX_la33m7 {
+    /*package*/ static final SConcept FieldReferenceOperation_fc8d5dda = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept InstanceMethodCallOperation_cd28f5b6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept StaticMethodCall_9cd8c444 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall");
   }
 }

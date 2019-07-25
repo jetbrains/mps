@@ -21,7 +21,7 @@ public class CrossParensRemoval3_Test extends BaseTransformationTest {
 
   @Test
   public void test_CrossParensRemoval3() throws Throwable {
-    new CrossParensRemoval3_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

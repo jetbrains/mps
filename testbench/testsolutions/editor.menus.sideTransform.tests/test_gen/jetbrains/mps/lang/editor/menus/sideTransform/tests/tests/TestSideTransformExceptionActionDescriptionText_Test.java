@@ -25,7 +25,7 @@ public class TestSideTransformExceptionActionDescriptionText_Test extends BaseTr
 
   @Test
   public void test_TestSideTransformExceptionActionDescriptionText() throws Throwable {
-    new TestSideTransformExceptionActionDescriptionText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

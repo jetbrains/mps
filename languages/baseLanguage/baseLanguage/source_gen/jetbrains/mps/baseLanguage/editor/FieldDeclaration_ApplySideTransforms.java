@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FieldDeclaration_ApplySideTransforms extends TransformationMenuBase {
@@ -49,10 +50,10 @@ public class FieldDeclaration_ApplySideTransforms extends TransformationMenuBase
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new FieldDeclaration_ApplySideTransforms.TMP_Include_po2l7a_a0());
+      result.add(new TMP_Include_po2l7a_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new FieldDeclaration_ApplySideTransforms.TMP_Include_po2l7a_a1());
+      result.add(new TMP_Include_po2l7a_a1());
     }
     return result;
   }
@@ -91,7 +92,7 @@ public class FieldDeclaration_ApplySideTransforms extends TransformationMenuBase
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_po2l7a.FieldDeclaration_e2711ac6);
     }
 
     @Nullable
@@ -99,5 +100,9 @@ public class FieldDeclaration_ApplySideTransforms extends TransformationMenuBase
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.RIGHT_SIDE_TRANSFORM;
     }
+  }
+
+  private static final class AUX_po2l7a {
+    /*package*/ static final SConcept FieldDeclaration_e2711ac6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
   }
 }

@@ -24,7 +24,7 @@ public class TestSubstitute_EnumPropertyWithIsValidConstraints_Test extends Base
 
   @Test
   public void test_TestSubstitute_EnumPropertyWithIsValidConstraints() throws Throwable {
-    new TestSubstitute_EnumPropertyWithIsValidConstraints_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

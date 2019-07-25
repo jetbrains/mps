@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SplitConstantCellIntoWords_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -55,7 +56,7 @@ public final class SplitConstantCellIntoWords_Intention extends AbstractIntentio
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new SplitConstantCellIntoWords_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -69,8 +70,8 @@ public final class SplitConstantCellIntoWords_Intention extends AbstractIntentio
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       String text = SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text")).trim();
-      SNode collection = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"), null);
-      SNodeFactoryOperations.setNewChild(collection, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192de4f16L, "jetbrains.mps.lang.editor.structure.CellLayout_Flow"));
+      SNode collection = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), AUX_y1b6qz.CellModel_Collection_26007059, null);
+      SNodeFactoryOperations.setNewChild(collection, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout"), AUX_y1b6qz.CellLayout_Flow_236bf206);
       SNodeOperations.replaceWithAnother(node, collection);
       String[] strings = text.split(" ");
       int i = 0;
@@ -80,25 +81,25 @@ public final class SplitConstantCellIntoWords_Intention extends AbstractIntentio
         boolean leftPaddingSet = false;
         boolean rightPaddingSet = false;
         for (SNode styleClassItem : SLinkOperations.getChildren(constantCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem"))) {
-          if (SNodeOperations.isInstanceOf(styleClassItem, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41cffc4L, "jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem"))) {
+          if (SNodeOperations.isInstanceOf(styleClassItem, AUX_y1b6qz.PaddingLeftStyleClassItem_42019df6)) {
             leftPaddingSet = true;
             if (i != 0) {
-              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41cffc4L, "jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem")), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), "0.5");
+              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, AUX_y1b6qz.PaddingLeftStyleClassItem_42019df6), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), "0.5");
             }
           }
-          if (SNodeOperations.isInstanceOf(styleClassItem, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41d378fL, "jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem"))) {
+          if (SNodeOperations.isInstanceOf(styleClassItem, AUX_y1b6qz.PaddingRightStyleClassItem_42118f70)) {
             rightPaddingSet = true;
             if (i != strings.length - 1) {
-              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41d378fL, "jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem")), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), "0.5");
+              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, AUX_y1b6qz.PaddingRightStyleClassItem_42118f70), MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), "0.5");
             }
           }
         }
         if (!(leftPaddingSet)) {
-          SNode paddingLeftStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41cffc4L, "jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem"));
+          SNode paddingLeftStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem"), AUX_y1b6qz.PaddingLeftStyleClassItem_42019df6);
           SPropertyOperations.set(paddingLeftStyleClassItem, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), "0.5");
         }
         if (!(rightPaddingSet)) {
-          SNode paddingRightStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41d378fL, "jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem"));
+          SNode paddingRightStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem"), AUX_y1b6qz.PaddingRightStyleClassItem_42118f70);
           SPropertyOperations.set(paddingRightStyleClassItem, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value"), "0.5");
         }
         ListSequence.fromList(SLinkOperations.getChildren(collection, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel"))).addElement(constantCell);
@@ -109,5 +110,12 @@ public final class SplitConstantCellIntoWords_Intention extends AbstractIntentio
     public IntentionDescriptor getDescriptor() {
       return SplitConstantCellIntoWords_Intention.this;
     }
+  }
+
+  private static final class AUX_y1b6qz {
+    /*package*/ static final SConcept CellModel_Collection_26007059 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
+    /*package*/ static final SConcept CellLayout_Flow_236bf206 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192de4f16L, "jetbrains.mps.lang.editor.structure.CellLayout_Flow");
+    /*package*/ static final SConcept PaddingLeftStyleClassItem_42019df6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41cffc4L, "jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem");
+    /*package*/ static final SConcept PaddingRightStyleClassItem_42118f70 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41d378fL, "jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem");
   }
 }

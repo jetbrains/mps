@@ -28,7 +28,7 @@ public interface IFinder {
    * the default behavior is provided in order to guarantee a two-way compatibility
    */
   @SuppressWarnings(value = "unused")
-  default void find(@NotNull SearchQuery query, @NotNull IFinder.FindCallback callback, @NotNull ProgressMonitor monitor) {
+  default void find(@NotNull SearchQuery query, @NotNull FindCallback callback, @NotNull ProgressMonitor monitor) {
     SearchResults<?> searchResults = find(query, monitor);
     callback.onSearchedObjectsCalculated(searchResults.getSearchedObjects());
     for (SearchResult<?> result : searchResults.getSearchResults2()) {

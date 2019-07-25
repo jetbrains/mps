@@ -23,7 +23,7 @@ public class SubstituteMenuReference_ReplaceWithQueryInSubstituteMenu_Test exten
 
   @Test
   public void test_SubstituteMenuReference_ReplaceWithQueryInSubstituteMenu() throws Throwable {
-    new SubstituteMenuReference_ReplaceWithQueryInSubstituteMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

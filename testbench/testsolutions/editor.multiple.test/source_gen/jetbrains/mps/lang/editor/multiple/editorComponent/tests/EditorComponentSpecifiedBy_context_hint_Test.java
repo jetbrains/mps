@@ -21,7 +21,7 @@ public class EditorComponentSpecifiedBy_context_hint_Test extends BaseTransforma
 
   @Test
   public void test_EditorComponentSpecifiedBy_context_hint() throws Throwable {
-    new EditorComponentSpecifiedBy_context_hint_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

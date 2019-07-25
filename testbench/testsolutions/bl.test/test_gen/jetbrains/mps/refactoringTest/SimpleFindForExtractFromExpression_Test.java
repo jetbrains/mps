@@ -37,7 +37,7 @@ public class SimpleFindForExtractFromExpression_Test extends BaseTransformationT
 
   @Test
   public void test_SimpleFindForExtractFromExpressionTest() throws Throwable {
-    new SimpleFindForExtractFromExpression_Test.TestBody(this).test_SimpleFindForExtractFromExpressionTest();
+    new TestBody(this).test_SimpleFindForExtractFromExpressionTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

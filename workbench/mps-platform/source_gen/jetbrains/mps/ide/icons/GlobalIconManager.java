@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 public class GlobalIconManager extends BaseIconManager implements BaseComponent {
   private ClassLoaderManager myClm;
-  private GlobalIconManager.MyDeployListener myListener = new GlobalIconManager.MyDeployListener();
+  private MyDeployListener myListener = new MyDeployListener();
 
   public GlobalIconManager(MPSCoreComponents cc) {
     super(cc.getPlatform().findComponent(ConceptRegistry.class));

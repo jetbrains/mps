@@ -39,18 +39,18 @@ import java.util.ArrayList;
 
 public class CurrentDifferenceRegistry implements ProjectComponent {
   private final Map<SModelReference, CurrentDifference> myCurrentDifferences = MapSequence.fromMap(new HashMap<SModelReference, CurrentDifference>());
-  private final SRepositoryContentAdapter myModelRepositoryListener = new CurrentDifferenceRegistry.MyRepositoryListener();
+  private final SRepositoryContentAdapter myModelRepositoryListener = new MyRepositoryListener();
   private final SimpleCommandQueue myCommandQueue = new SimpleCommandQueue("ChangesManager command queue");
-  private final CurrentDifferenceRegistry.MyEventsCollector myEventsCollector;
+  private final MyEventsCollector myEventsCollector;
   private final CurrentDifferenceBroadcaster myGlobalBroadcaster = new CurrentDifferenceBroadcaster(myCommandQueue);
-  private final CurrentDifferenceRegistry.MyFileStatusListener myFileStatusListener = new CurrentDifferenceRegistry.MyFileStatusListener();
+  private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
   private final FileStatusManager myFileStatusManager;
   private final MPSProject myMpsProject;
 
   public CurrentDifferenceRegistry(MPSProject mpsProject, ProjectLevelVcsManager vcsManager, FileStatusManager fileStatusManager) {
     myFileStatusManager = fileStatusManager;
     myMpsProject = mpsProject;
-    myEventsCollector = new CurrentDifferenceRegistry.MyEventsCollector(mpsProject.getRepository());
+    myEventsCollector = new MyEventsCollector(mpsProject.getRepository());
   }
 
   @Override

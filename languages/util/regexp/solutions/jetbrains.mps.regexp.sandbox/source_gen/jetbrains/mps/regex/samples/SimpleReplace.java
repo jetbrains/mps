@@ -16,6 +16,6 @@ import java.util.regex.Pattern;
     String s = "";
     s = RegexpOperations.replace(s, REGEXP_x5qji9_b0a1a2, new _Replacer_x5qji9_a0a0b0c(SimpleReplace.this));
   }
-  private static Pattern REGEXP_x5qji9_b0a1a1 = Pattern.compile("abc", 0);
-  private static Pattern REGEXP_x5qji9_b0a1a2 = Pattern.compile("\\((.*?)\\)", 0);
+  private static final Pattern REGEXP_x5qji9_b0a1a1 = Pattern.compile("abc", 0);
+  private static final Pattern REGEXP_x5qji9_b0a1a2 = Pattern.compile("\\((.*?)\\)", 0);
 }

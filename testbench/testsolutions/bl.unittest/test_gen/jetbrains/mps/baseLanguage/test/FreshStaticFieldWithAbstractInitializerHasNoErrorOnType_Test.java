@@ -31,15 +31,15 @@ public class FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test extend
 
   @Test
   public void test_NodeErrorCheck4928571864874057148() throws Throwable {
-    new FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test.TestBody(this).test_NodeErrorCheck4928571864874057148();
+    new TestBody(this).test_NodeErrorCheck4928571864874057148();
   }
   @Test
   public void test_NodeErrorCheck4928571864874096707() throws Throwable {
-    new FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test.TestBody(this).test_NodeErrorCheck4928571864874096707();
+    new TestBody(this).test_NodeErrorCheck4928571864874096707();
   }
   @Test
   public void test_ErrorMessagesCheck4928571864874057128() throws Throwable {
-    new FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test.TestBody(this).test_ErrorMessagesCheck4928571864874057128();
+    new TestBody(this).test_ErrorMessagesCheck4928571864874057128();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

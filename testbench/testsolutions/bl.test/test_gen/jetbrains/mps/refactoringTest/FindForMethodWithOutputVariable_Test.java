@@ -37,7 +37,7 @@ public class FindForMethodWithOutputVariable_Test extends BaseTransformationTest
 
   @Test
   public void test_FindForMethodWithOutputVariableTest() throws Throwable {
-    new FindForMethodWithOutputVariable_Test.TestBody(this).test_FindForMethodWithOutputVariableTest();
+    new TestBody(this).test_FindForMethodWithOutputVariableTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

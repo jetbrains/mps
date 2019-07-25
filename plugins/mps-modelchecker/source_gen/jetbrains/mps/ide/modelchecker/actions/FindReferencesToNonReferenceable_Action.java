@@ -26,14 +26,16 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Arrays;
 import java.util.Comparator;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class FindReferencesToNonReferenceable_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -98,12 +100,12 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
           public void visit(SModel it) {
             for (SNode n : it.getRootNodes()) {
               for (SNode i : SNodeOperations.getNodeDescendants(n, null, true, new SAbstractConcept[]{})) {
-                SNode ccp = SNodeOperations.as(SNodeOperations.asNode(SNodeOperations.getConcept(i)), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
+                SNode ccp = SNodeOperations.as(SNodeOperations.asNode(SNodeOperations.getConcept(i)), AUX_sv9tdc.ConceptDeclaration_cb225da8);
                 if (ccp != null) {
                   total.value++;
                   if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(ccp, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope")), 0x4b014033eedc8becL))) {
                     referenceable.value++;
-                    String cname = ((String) BHReflection.invoke0(ccp, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+                    String cname = ((String) BHReflection.invoke0(ccp, AUX_sv9tdc.INamedConcept_8cd7e247, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
                     if (MapSequence.fromMap(used).containsKey(cname)) {
                       MapSequence.fromMap(used).put(cname, MapSequence.fromMap(used).get(cname) + 1);
                     } else {
@@ -127,5 +129,10 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
     for (String s : usedNames) {
       System.out.println(MapSequence.fromMap(used).get(s) + "  " + s);
     }
+  }
+
+  private static final class AUX_sv9tdc {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

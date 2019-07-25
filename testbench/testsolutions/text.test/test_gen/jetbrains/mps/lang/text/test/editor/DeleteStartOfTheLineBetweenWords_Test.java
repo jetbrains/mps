@@ -21,7 +21,7 @@ public class DeleteStartOfTheLineBetweenWords_Test extends BaseTransformationTes
 
   @Test
   public void test_DeleteStartOfTheLineBetweenWords() throws Throwable {
-    new DeleteStartOfTheLineBetweenWords_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

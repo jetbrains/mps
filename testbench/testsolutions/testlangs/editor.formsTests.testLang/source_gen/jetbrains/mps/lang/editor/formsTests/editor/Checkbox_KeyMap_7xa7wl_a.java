@@ -15,7 +15,7 @@ public class Checkbox_KeyMap_7xa7wl_a extends KeyMapImpl {
   public Checkbox_KeyMap_7xa7wl_a() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new Checkbox_KeyMap_7xa7wl_a.Checkbox_KeyMap_7xa7wl_a_Action0();
+    action = new Checkbox_KeyMap_7xa7wl_a_Action0();
     this.putAction("none", "VK_SPACE", action);
   }
   public static class Checkbox_KeyMap_7xa7wl_a_Action0 extends KeyMapActionImpl {

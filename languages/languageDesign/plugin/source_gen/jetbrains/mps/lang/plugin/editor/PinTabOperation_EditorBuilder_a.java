@@ -72,7 +72,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrack
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new PinTabOperation_EditorBuilder_a.componentExpressionSingleRoleHandler_flvp9u_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x3b9dce676f3861a1L, 0x4ac06ca1bf6e2840L, "componentExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new componentExpressionSingleRoleHandler_flvp9u_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x3b9dce676f3861a1L, 0x4ac06ca1bf6e2840L, "componentExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class componentExpressionSingleRoleHandler_flvp9u_c0 extends SingleRoleCellProvider {

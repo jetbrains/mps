@@ -26,7 +26,7 @@ import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 public class TargetRange {
   private Map<ITarget.Name, ITarget> targetsView = MapSequence.fromMap(new HashMap<ITarget.Name, ITarget>());
   private Set<ITarget> allTargets = SetSequence.fromSet(new HashSet<ITarget>());
-  private Map<ITarget.Name, TargetRange.TargetRefs> allRefs = MapSequence.fromMap(new HashMap<ITarget.Name, TargetRange.TargetRefs>());
+  private Map<ITarget.Name, TargetRefs> allRefs = MapSequence.fromMap(new HashMap<ITarget.Name, TargetRefs>());
   public TargetRange() {
   }
   public void addTarget(ITarget trg) {
@@ -93,7 +93,7 @@ public class TargetRange {
     return MapSequence.fromMap(targetsView).containsKey(name);
   }
   public Iterable<ITarget> sortedTargets() {
-    return Sequence.fromIterable(new TargetRange.TargetsGraph().topologicalSort()).select(new ISelector<ITarget.Name, ITarget>() {
+    return Sequence.fromIterable(new TargetsGraph().topologicalSort()).select(new ISelector<ITarget.Name, ITarget>() {
       public ITarget select(ITarget.Name tn) {
         return MapSequence.fromMap(targetsView).get(tn);
       }
@@ -103,7 +103,7 @@ public class TargetRange {
     if (!(MapSequence.fromMap(targetsView).containsKey(target))) {
       throw new IllegalArgumentException("unknown target");
     }
-    return Sequence.fromIterable(new TargetRange.TargetsGraph().precursors(target)).select(new ISelector<ITarget.Name, ITarget>() {
+    return Sequence.fromIterable(new TargetsGraph().precursors(target)).select(new ISelector<ITarget.Name, ITarget>() {
       public ITarget select(ITarget.Name tn) {
         return MapSequence.fromMap(targetsView).get(tn);
       }
@@ -124,23 +124,23 @@ public class TargetRange {
     });
   }
   public boolean hasCycles() {
-    return ListSequence.fromList(new TargetRange.TargetsGraph().findCycles()).isNotEmpty();
+    return ListSequence.fromList(new TargetsGraph().findCycles()).isNotEmpty();
   }
   public List<List<ITarget.Name>> cycles() {
-    return new TargetRange.TargetsGraph().findCycles();
+    return new TargetsGraph().findCycles();
   }
   private ITarget primAddTarget(ITarget trg) {
     ITarget prev = MapSequence.fromMap(targetsView).get(trg.getName());
     if (prev != null) {
-      trg = new TargetRange.CompositeTarget(trg, prev);
+      trg = new CompositeTarget(trg, prev);
     }
     MapSequence.fromMap(targetsView).put(trg.getName(), trg);
     return trg;
   }
   private void updateRefs(ITarget trg) {
-    TargetRange.TargetRefs refs = MapSequence.fromMap(allRefs).get(trg.getName());
+    TargetRefs refs = MapSequence.fromMap(allRefs).get(trg.getName());
     if (refs == null) {
-      refs = new TargetRange.TargetRefs();
+      refs = new TargetRefs();
       MapSequence.fromMap(allRefs).put(trg.getName(), refs);
     }
     ListSequence.fromList(refs.before).addSequence(Sequence.fromIterable(trg.before()).concat(Sequence.fromIterable(trg.notAfter())));
@@ -155,7 +155,7 @@ public class TargetRange {
         ListSequence.fromList(MapSequence.fromMap(allRefs).get(bf).before).addElement(trg.getName());
       }
     }
-    for (IMapping<ITarget.Name, TargetRange.TargetRefs> m : MapSequence.fromMap(allRefs)) {
+    for (IMapping<ITarget.Name, TargetRefs> m : MapSequence.fromMap(allRefs)) {
       if (ListSequence.fromList(m.value().before).contains(trg.getName()) && !(ListSequence.fromList(refs.after).contains(m.key()))) {
         ListSequence.fromList(refs.after).addElement(m.key());
       }

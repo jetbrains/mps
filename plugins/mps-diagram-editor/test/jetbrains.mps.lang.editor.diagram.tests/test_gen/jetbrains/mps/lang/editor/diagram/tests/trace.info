@@ -16,7 +16,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1030067674862347159">
     <file name="ResizeNode_bottom_left_Test.java">
       <node id="1030067674862347159" at="20,40,21,25" concept="12" />
-      <node id="1030067674862347159" at="25,62,26,64" concept="2" />
+      <node id="1030067674862347159" at="25,62,26,36" concept="2" />
       <node id="1030067674862347159" at="31,52,32,19" concept="12" />
       <node id="1030067674862347159" at="36,51,37,72" concept="2" />
       <node id="1030067674862347167" at="38,7,39,28" concept="6" />
@@ -32,7 +32,7 @@
       <node id="1030067674862347167" at="37,72,45,7" concept="0" />
       <node id="1030067674862347159" at="35,0,47,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1030067674862347159" at="20,40,21,25" />
-      <scope id="1030067674862347159" at="25,62,26,64" />
+      <scope id="1030067674862347159" at="25,62,26,36" />
       <scope id="1030067674862347159" at="31,52,32,19" />
       <scope id="1030067674862347159" at="20,0,23,0" />
       <scope id="1030067674862347159" at="31,0,34,0">
@@ -53,7 +53,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1030067674862347669">
     <file name="ResizeNode_bottom_centeral_Test.java">
       <node id="1030067674862347669" at="20,44,21,25" concept="12" />
-      <node id="1030067674862347669" at="25,66,26,68" concept="2" />
+      <node id="1030067674862347669" at="25,66,26,36" concept="2" />
       <node id="1030067674862347669" at="31,52,32,19" concept="12" />
       <node id="1030067674862347669" at="36,51,37,72" concept="2" />
       <node id="1030067674862347677" at="38,7,39,29" concept="6" />
@@ -76,7 +76,7 @@
       <node id="1030067674862347677" at="37,72,52,7" concept="0" />
       <node id="1030067674862347669" at="35,0,54,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1030067674862347669" at="20,44,21,25" />
-      <scope id="1030067674862347669" at="25,66,26,68" />
+      <scope id="1030067674862347669" at="25,66,26,36" />
       <scope id="1030067674862347669" at="31,52,32,19" />
       <scope id="1030067674862347669" at="20,0,23,0" />
       <scope id="1030067674862347669" at="31,0,34,0">
@@ -97,7 +97,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1030067674862347894">
     <file name="ResizeNode_bottom_right_Test.java">
       <node id="1030067674862347894" at="20,41,21,25" concept="12" />
-      <node id="1030067674862347894" at="25,63,26,65" concept="2" />
+      <node id="1030067674862347894" at="25,63,26,36" concept="2" />
       <node id="1030067674862347894" at="31,52,32,19" concept="12" />
       <node id="1030067674862347894" at="36,51,37,72" concept="2" />
       <node id="1030067674862347902" at="38,7,39,29" concept="6" />
@@ -112,7 +112,7 @@
       <node id="1030067674862347902" at="37,72,44,7" concept="0" />
       <node id="1030067674862347894" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1030067674862347894" at="20,41,21,25" />
-      <scope id="1030067674862347894" at="25,63,26,65" />
+      <scope id="1030067674862347894" at="25,63,26,36" />
       <scope id="1030067674862347894" at="31,52,32,19" />
       <scope id="1030067674862347894" at="20,0,23,0" />
       <scope id="1030067674862347894" at="31,0,34,0">
@@ -133,7 +133,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1030067674862429074">
     <file name="NegativeResizeNode_right_central_Test.java">
       <node id="1030067674862429074" at="20,50,21,25" concept="12" />
-      <node id="1030067674862429074" at="25,72,26,74" concept="2" />
+      <node id="1030067674862429074" at="25,72,26,36" concept="2" />
       <node id="1030067674862429074" at="31,52,32,19" concept="12" />
       <node id="1030067674862429074" at="36,51,37,72" concept="2" />
       <node id="1030067674862429082" at="38,7,39,29" concept="6" />
@@ -148,7 +148,7 @@
       <node id="1030067674862429082" at="37,72,44,7" concept="0" />
       <node id="1030067674862429074" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1030067674862429074" at="20,50,21,25" />
-      <scope id="1030067674862429074" at="25,72,26,74" />
+      <scope id="1030067674862429074" at="25,72,26,36" />
       <scope id="1030067674862429074" at="31,52,32,19" />
       <scope id="1030067674862429074" at="20,0,23,0" />
       <scope id="1030067674862429074" at="31,0,34,0">
@@ -169,7 +169,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1030067674863337573">
     <file name="ToZeroSize_ResizeNode_bottom_right_Test.java">
       <node id="1030067674863337573" at="20,52,21,25" concept="12" />
-      <node id="1030067674863337573" at="25,74,26,76" concept="2" />
+      <node id="1030067674863337573" at="25,74,26,36" concept="2" />
       <node id="1030067674863337573" at="31,52,32,19" concept="12" />
       <node id="1030067674863337573" at="36,51,37,72" concept="2" />
       <node id="1030067674863337581" at="38,7,39,29" concept="6" />
@@ -184,7 +184,7 @@
       <node id="1030067674863337581" at="37,72,44,7" concept="0" />
       <node id="1030067674863337573" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1030067674863337573" at="20,52,21,25" />
-      <scope id="1030067674863337573" at="25,74,26,76" />
+      <scope id="1030067674863337573" at="25,74,26,36" />
       <scope id="1030067674863337573" at="31,52,32,19" />
       <scope id="1030067674863337573" at="20,0,23,0" />
       <scope id="1030067674863337573" at="31,0,34,0">
@@ -205,7 +205,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/141381309807570241">
     <file name="BlockDecoratorTest_Test.java">
       <node id="141381309807570241" at="31,36,32,25" concept="12" />
-      <node id="141381309807570241" at="36,58,37,60" concept="2" />
+      <node id="141381309807570241" at="36,58,37,36" concept="2" />
       <node id="141381309807570241" at="42,52,43,19" concept="12" />
       <node id="141381309807570241" at="47,51,48,70" concept="2" />
       <node id="1560508619094151776" at="48,70,49,30" concept="6" />
@@ -232,7 +232,7 @@
       <node id="8637675947033361684" at="61,58,66,9" concept="6" />
       <node id="141381309807570241" at="46,0,72,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="141381309807570241" at="31,36,32,25" />
-      <scope id="141381309807570241" at="36,58,37,60" />
+      <scope id="141381309807570241" at="36,58,37,36" />
       <scope id="141381309807570241" at="42,52,43,19" />
       <scope id="1560508619094753195" at="52,27,53,297" />
       <scope id="8637675947033361692" at="63,40,64,50" />
@@ -261,7 +261,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1560508619094015367">
     <file name="PortDecoratorTest_Test.java">
       <node id="1560508619094015367" at="31,35,32,25" concept="12" />
-      <node id="1560508619094015367" at="36,57,37,59" concept="2" />
+      <node id="1560508619094015367" at="36,57,37,36" concept="2" />
       <node id="1560508619094015367" at="42,52,43,19" concept="12" />
       <node id="1560508619094015367" at="47,51,48,72" concept="2" />
       <node id="1560508619094843920" at="48,72,49,63" concept="6" />
@@ -290,7 +290,7 @@
       <node id="8637675947033301915" at="63,58,68,9" concept="6" />
       <node id="1560508619094015367" at="46,0,74,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1560508619094015367" at="31,35,32,25" />
-      <scope id="1560508619094015367" at="36,57,37,59" />
+      <scope id="1560508619094015367" at="36,57,37,36" />
       <scope id="1560508619094015367" at="42,52,43,19" />
       <scope id="1560508619094843925" at="51,27,52,296" />
       <scope id="8637675947033301923" at="65,40,66,50" />
@@ -377,7 +377,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1560508619094462934">
     <file name="PortHasNoDecoratorTest_Test.java">
       <node id="1560508619094462934" at="24,40,25,25" concept="12" />
-      <node id="1560508619094462934" at="29,62,30,64" concept="2" />
+      <node id="1560508619094462934" at="29,62,30,36" concept="2" />
       <node id="1560508619094462934" at="35,52,36,19" concept="12" />
       <node id="1560508619094462934" at="40,51,41,72" concept="2" />
       <node id="1560508619094539122" at="41,72,42,77" concept="6" />
@@ -395,7 +395,7 @@
       <node id="1560508619094539125" at="42,77,47,9" concept="2" />
       <node id="1560508619094462934" at="39,0,54,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1560508619094462934" at="24,40,25,25" />
-      <scope id="1560508619094462934" at="29,62,30,64" />
+      <scope id="1560508619094462934" at="29,62,30,36" />
       <scope id="1560508619094462934" at="35,52,36,19" />
       <scope id="1560508619094539127" at="44,27,45,361" />
       <scope id="1560508619094462934" at="24,0,27,0" />
@@ -416,7 +416,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1638882350373384592">
     <file name="LinkDecoratorTest_Test.java">
       <node id="1638882350373384592" at="31,35,32,25" concept="12" />
-      <node id="1638882350373384592" at="36,57,37,59" concept="2" />
+      <node id="1638882350373384592" at="36,57,37,36" concept="2" />
       <node id="1638882350373384592" at="42,52,43,19" concept="12" />
       <node id="1638882350373384592" at="47,51,48,72" concept="2" />
       <node id="1560508619094826344" at="48,72,49,63" concept="6" />
@@ -442,7 +442,7 @@
       <node id="7634868377612971666" at="61,63,66,9" concept="6" />
       <node id="1638882350373384592" at="46,0,71,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1638882350373384592" at="31,35,32,25" />
-      <scope id="1638882350373384592" at="36,57,37,59" />
+      <scope id="1638882350373384592" at="36,57,37,36" />
       <scope id="1638882350373384592" at="42,52,43,19" />
       <scope id="1560508619094826349" at="51,27,52,313" />
       <scope id="7634868377612971673" at="63,40,64,41" />
@@ -471,7 +471,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1658153848510287943">
     <file name="CollapseDiagramVisibility_Test.java">
       <node id="1658153848510287943" at="23,43,24,25" concept="12" />
-      <node id="1658153848510287943" at="28,65,29,67" concept="2" />
+      <node id="1658153848510287943" at="28,65,29,36" concept="2" />
       <node id="1658153848510287943" at="34,52,35,19" concept="12" />
       <node id="1658153848510287943" at="39,51,40,72" concept="2" />
       <node id="1658153848510632978" at="40,72,41,74" concept="2" />
@@ -487,7 +487,7 @@
       <node id="1453235961835825229" at="41,74,50,9" concept="2" />
       <node id="1658153848510287943" at="38,0,52,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1658153848510287943" at="23,43,24,25" />
-      <scope id="1658153848510287943" at="28,65,29,67" />
+      <scope id="1658153848510287943" at="28,65,29,36" />
       <scope id="1658153848510287943" at="34,52,35,19" />
       <scope id="5489671301386766635" at="46,85,47,64" />
       <scope id="1658153848510287943" at="23,0,26,0" />
@@ -512,7 +512,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/1658153848510799094">
     <file name="InitiallyCollapsedDiagramVisibility_Test.java">
       <node id="1658153848510799094" at="23,53,24,25" concept="12" />
-      <node id="1658153848510799094" at="28,75,29,77" concept="2" />
+      <node id="1658153848510799094" at="28,75,29,36" concept="2" />
       <node id="1658153848510799094" at="34,52,35,19" concept="12" />
       <node id="1658153848510799094" at="39,51,40,53" concept="2" />
       <node id="1658153848510799104" at="42,27,43,115" concept="6" />
@@ -528,7 +528,7 @@
       <node id="4212255956137507893" at="40,53,49,9" concept="2" />
       <node id="1658153848510799094" at="38,0,52,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="1658153848510799094" at="23,53,24,25" />
-      <scope id="1658153848510799094" at="28,75,29,77" />
+      <scope id="1658153848510799094" at="28,75,29,36" />
       <scope id="1658153848510799094" at="34,52,35,19" />
       <scope id="1658153848510799120" at="45,85,46,64" />
       <scope id="1658153848510799094" at="23,0,26,0" />
@@ -553,7 +553,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/2278461409091538798">
     <file name="SelectPort_Test.java">
       <node id="2278461409091538798" at="20,28,21,25" concept="12" />
-      <node id="2278461409091538798" at="25,50,26,52" concept="2" />
+      <node id="2278461409091538798" at="25,50,26,36" concept="2" />
       <node id="2278461409091538798" at="31,52,32,19" concept="12" />
       <node id="2278461409091538798" at="36,51,37,72" concept="2" />
       <node id="2278461409091538814" at="38,7,39,29" concept="6" />
@@ -568,7 +568,7 @@
       <node id="2278461409091538814" at="37,72,44,7" concept="0" />
       <node id="2278461409091538798" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2278461409091538798" at="20,28,21,25" />
-      <scope id="2278461409091538798" at="25,50,26,52" />
+      <scope id="2278461409091538798" at="25,50,26,36" />
       <scope id="2278461409091538798" at="31,52,32,19" />
       <scope id="2278461409091538798" at="20,0,23,0" />
       <scope id="2278461409091538798" at="31,0,34,0">
@@ -589,7 +589,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/2278461409091838098">
     <file name="SelectPortQuery_Test.java">
       <node id="2278461409091838098" at="30,33,31,25" concept="12" />
-      <node id="2278461409091838098" at="35,55,36,57" concept="2" />
+      <node id="2278461409091838098" at="35,55,36,36" concept="2" />
       <node id="2278461409091838098" at="41,52,42,19" concept="12" />
       <node id="2278461409091838098" at="46,51,47,72" concept="2" />
       <node id="2278461409091838108" at="48,7,49,29" concept="6" />
@@ -614,7 +614,7 @@
       <node id="2278461409092628337" at="55,77,63,9" concept="2" />
       <node id="2278461409091838098" at="45,0,68,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2278461409091838098" at="30,33,31,25" />
-      <scope id="2278461409091838098" at="35,55,36,57" />
+      <scope id="2278461409091838098" at="35,55,36,36" />
       <scope id="2278461409091838098" at="41,52,42,19" />
       <scope id="2278461409091838098" at="30,0,33,0" />
       <scope id="2278461409091838098" at="41,0,44,0">
@@ -643,7 +643,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/2278461409093334296">
     <file name="UnSelectPort_Test.java">
       <node id="2278461409093334296" at="20,30,21,25" concept="12" />
-      <node id="2278461409093334296" at="25,52,26,54" concept="2" />
+      <node id="2278461409093334296" at="25,52,26,36" concept="2" />
       <node id="2278461409093334296" at="31,52,32,19" concept="12" />
       <node id="2278461409093334296" at="36,51,37,72" concept="2" />
       <node id="2278461409093422504" at="37,72,38,83" concept="2" />
@@ -653,7 +653,7 @@
       <node id="2278461409093334296" at="24,0,28,0" concept="5" trace="test_UnSelectPort#()V" />
       <node id="2278461409093334296" at="35,0,40,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2278461409093334296" at="20,30,21,25" />
-      <scope id="2278461409093334296" at="25,52,26,54" />
+      <scope id="2278461409093334296" at="25,52,26,36" />
       <scope id="2278461409093334296" at="31,52,32,19" />
       <scope id="2278461409093334296" at="36,51,38,83" />
       <scope id="2278461409093334296" at="20,0,23,0" />
@@ -669,7 +669,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/2278461409093519741">
     <file name="CreatePort_Test.java">
       <node id="2278461409093519741" at="23,28,24,25" concept="12" />
-      <node id="2278461409093519741" at="28,50,29,52" concept="2" />
+      <node id="2278461409093519741" at="28,50,29,36" concept="2" />
       <node id="2278461409093519741" at="34,52,35,19" concept="12" />
       <node id="2278461409093519741" at="39,51,40,72" concept="2" />
       <node id="2278461409093724423" at="42,27,43,462" concept="2" />
@@ -690,7 +690,7 @@
       <node id="2278461409094006792" at="47,91,54,7" concept="0" />
       <node id="2278461409093519741" at="38,0,57,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2278461409093519741" at="23,28,24,25" />
-      <scope id="2278461409093519741" at="28,50,29,52" />
+      <scope id="2278461409093519741" at="28,50,29,36" />
       <scope id="2278461409093519741" at="34,52,35,19" />
       <scope id="2278461409094182557" at="42,27,43,462" />
       <scope id="2278461409093519741" at="23,0,26,0" />
@@ -714,7 +714,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/2278461409094282963">
     <file name="StopShowCompletionOnTheDiagram_Test.java">
       <node id="2278461409094282963" at="23,48,24,25" concept="12" />
-      <node id="2278461409094282963" at="28,70,29,72" concept="2" />
+      <node id="2278461409094282963" at="28,70,29,36" concept="2" />
       <node id="2278461409094282963" at="34,52,35,19" concept="12" />
       <node id="2278461409094282963" at="39,51,40,72" concept="2" />
       <node id="2278461409094282969" at="41,7,42,29" concept="6" />
@@ -733,7 +733,7 @@
       <node id="2278461409094282969" at="40,72,47,7" concept="0" />
       <node id="2278461409094282963" at="38,0,53,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="2278461409094282963" at="23,48,24,25" />
-      <scope id="2278461409094282963" at="28,70,29,72" />
+      <scope id="2278461409094282963" at="28,70,29,36" />
       <scope id="2278461409094282963" at="34,52,35,19" />
       <scope id="2278461409094282963" at="23,0,26,0" />
       <scope id="2278461409094282963" at="34,0,37,0">
@@ -754,7 +754,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/3873095776497110117">
     <file name="ResizeNode_top_right_Test.java">
       <node id="3873095776497110117" at="20,38,21,25" concept="12" />
-      <node id="3873095776497110117" at="25,60,26,62" concept="2" />
+      <node id="3873095776497110117" at="25,60,26,36" concept="2" />
       <node id="3873095776497110117" at="31,52,32,19" concept="12" />
       <node id="3873095776497110117" at="36,51,37,72" concept="2" />
       <node id="3873095776497110125" at="38,7,39,29" concept="6" />
@@ -769,7 +769,7 @@
       <node id="3873095776497110125" at="37,72,44,7" concept="0" />
       <node id="3873095776497110117" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="3873095776497110117" at="20,38,21,25" />
-      <scope id="3873095776497110117" at="25,60,26,62" />
+      <scope id="3873095776497110117" at="25,60,26,36" />
       <scope id="3873095776497110117" at="31,52,32,19" />
       <scope id="3873095776497110117" at="20,0,23,0" />
       <scope id="3873095776497110117" at="31,0,34,0">
@@ -790,7 +790,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/3873095776498193006">
     <file name="NoResizeNode_bottom_right_Test.java">
       <node id="3873095776498193006" at="20,43,21,25" concept="12" />
-      <node id="3873095776498193006" at="25,65,26,67" concept="2" />
+      <node id="3873095776498193006" at="25,65,26,36" concept="2" />
       <node id="3873095776498193006" at="31,52,32,19" concept="12" />
       <node id="3873095776498193006" at="36,51,37,72" concept="2" />
       <node id="3873095776498193014" at="38,7,39,29" concept="6" />
@@ -805,7 +805,7 @@
       <node id="3873095776498193014" at="37,72,44,7" concept="0" />
       <node id="3873095776498193006" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="3873095776498193006" at="20,43,21,25" />
-      <scope id="3873095776498193006" at="25,65,26,67" />
+      <scope id="3873095776498193006" at="25,65,26,36" />
       <scope id="3873095776498193006" at="31,52,32,19" />
       <scope id="3873095776498193006" at="20,0,23,0" />
       <scope id="3873095776498193006" at="31,0,34,0">
@@ -826,7 +826,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/3873095776498950263">
     <file name="ResizeNode_left_central_Test.java">
       <node id="3873095776498950263" at="20,41,21,25" concept="12" />
-      <node id="3873095776498950263" at="25,63,26,65" concept="2" />
+      <node id="3873095776498950263" at="25,63,26,36" concept="2" />
       <node id="3873095776498950263" at="31,52,32,19" concept="12" />
       <node id="3873095776498950263" at="36,51,37,72" concept="2" />
       <node id="3873095776498950271" at="38,7,39,29" concept="6" />
@@ -841,7 +841,7 @@
       <node id="3873095776498950271" at="37,72,44,7" concept="0" />
       <node id="3873095776498950263" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="3873095776498950263" at="20,41,21,25" />
-      <scope id="3873095776498950263" at="25,63,26,65" />
+      <scope id="3873095776498950263" at="25,63,26,36" />
       <scope id="3873095776498950263" at="31,52,32,19" />
       <scope id="3873095776498950263" at="20,0,23,0" />
       <scope id="3873095776498950263" at="31,0,34,0">
@@ -862,7 +862,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/3873095776499066417">
     <file name="ResizeNode_right_central_Test.java">
       <node id="3873095776499066417" at="20,42,21,25" concept="12" />
-      <node id="3873095776499066417" at="25,64,26,66" concept="2" />
+      <node id="3873095776499066417" at="25,64,26,36" concept="2" />
       <node id="3873095776499066417" at="31,52,32,19" concept="12" />
       <node id="3873095776499066417" at="36,51,37,72" concept="2" />
       <node id="3873095776499066425" at="38,7,39,29" concept="6" />
@@ -879,7 +879,7 @@
       <node id="3873095776499066425" at="37,72,46,7" concept="0" />
       <node id="3873095776499066417" at="35,0,48,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="3873095776499066417" at="20,42,21,25" />
-      <scope id="3873095776499066417" at="25,64,26,66" />
+      <scope id="3873095776499066417" at="25,64,26,36" />
       <scope id="3873095776499066417" at="31,52,32,19" />
       <scope id="3873095776499066417" at="20,0,23,0" />
       <scope id="3873095776499066417" at="31,0,34,0">
@@ -900,7 +900,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/4459951312287474208">
     <file name="ShowCompletionOnTheDiagram_Test.java">
       <node id="4459951312287474208" at="21,44,22,25" concept="12" />
-      <node id="4459951312287474208" at="26,66,27,68" concept="2" />
+      <node id="4459951312287474208" at="26,66,27,36" concept="2" />
       <node id="4459951312287474208" at="32,52,33,19" concept="12" />
       <node id="4459951312287474208" at="37,51,38,72" concept="2" />
       <node id="4459951312287601562" at="39,7,40,29" concept="6" />
@@ -916,7 +916,7 @@
       <node id="4459951312287601562" at="38,72,45,7" concept="0" />
       <node id="4459951312287474208" at="36,0,48,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4459951312287474208" at="21,44,22,25" />
-      <scope id="4459951312287474208" at="26,66,27,68" />
+      <scope id="4459951312287474208" at="26,66,27,36" />
       <scope id="4459951312287474208" at="32,52,33,19" />
       <scope id="4459951312287474208" at="21,0,24,0" />
       <scope id="4459951312287474208" at="32,0,35,0">
@@ -937,7 +937,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/4459951312287600639">
     <file name="SelectDiagram_Test.java">
       <node id="4459951312287600639" at="21,31,22,25" concept="12" />
-      <node id="4459951312287600639" at="26,53,27,55" concept="2" />
+      <node id="4459951312287600639" at="26,53,27,36" concept="2" />
       <node id="4459951312287600639" at="32,52,33,19" concept="12" />
       <node id="4459951312287600639" at="37,51,38,72" concept="2" />
       <node id="4459951312287600645" at="39,7,40,29" concept="6" />
@@ -953,7 +953,7 @@
       <node id="4459951312287600645" at="38,72,45,7" concept="0" />
       <node id="4459951312287600639" at="36,0,48,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4459951312287600639" at="21,31,22,25" />
-      <scope id="4459951312287600639" at="26,53,27,55" />
+      <scope id="4459951312287600639" at="26,53,27,36" />
       <scope id="4459951312287600639" at="32,52,33,19" />
       <scope id="4459951312287600639" at="21,0,24,0" />
       <scope id="4459951312287600639" at="32,0,35,0">
@@ -974,7 +974,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/4459951312287602047">
     <file name="SelectDiagramFromNode_Test.java">
       <node id="4459951312287602047" at="21,39,22,25" concept="12" />
-      <node id="4459951312287602047" at="26,61,27,63" concept="2" />
+      <node id="4459951312287602047" at="26,61,27,36" concept="2" />
       <node id="4459951312287602047" at="32,52,33,19" concept="12" />
       <node id="4459951312287602047" at="37,51,38,72" concept="2" />
       <node id="4459951312287602060" at="38,72,39,0" concept="9" />
@@ -992,7 +992,7 @@
       <node id="4459951312287602055" at="39,0,46,7" concept="0" />
       <node id="4459951312287602047" at="36,0,50,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4459951312287602047" at="21,39,22,25" />
-      <scope id="4459951312287602047" at="26,61,27,63" />
+      <scope id="4459951312287602047" at="26,61,27,36" />
       <scope id="4459951312287602047" at="32,52,33,19" />
       <scope id="4459951312287602047" at="21,0,24,0" />
       <scope id="4459951312287602047" at="32,0,35,0">
@@ -1013,7 +1013,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/5003005296038308967">
     <file name="DeleteDiagramNode_Test.java">
       <node id="5003005296038308967" at="20,35,21,25" concept="12" />
-      <node id="5003005296038308967" at="25,57,26,59" concept="2" />
+      <node id="5003005296038308967" at="25,57,26,36" concept="2" />
       <node id="5003005296038308967" at="31,52,32,19" concept="12" />
       <node id="5003005296038308967" at="36,51,37,72" concept="2" />
       <node id="5003005296038309178" at="37,72,38,83" concept="2" />
@@ -1023,7 +1023,7 @@
       <node id="5003005296038308967" at="24,0,28,0" concept="5" trace="test_DeleteDiagramNode#()V" />
       <node id="5003005296038308967" at="35,0,40,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5003005296038308967" at="20,35,21,25" />
-      <scope id="5003005296038308967" at="25,57,26,59" />
+      <scope id="5003005296038308967" at="25,57,26,36" />
       <scope id="5003005296038308967" at="31,52,32,19" />
       <scope id="5003005296038308967" at="36,51,38,83" />
       <scope id="5003005296038308967" at="20,0,23,0" />
@@ -1039,7 +1039,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/5540569706412486831">
     <file name="NegativeResizeNode_bottom_central_Test.java">
       <node id="5540569706412486831" at="20,51,21,25" concept="12" />
-      <node id="5540569706412486831" at="25,73,26,75" concept="2" />
+      <node id="5540569706412486831" at="25,73,26,36" concept="2" />
       <node id="5540569706412486831" at="31,52,32,19" concept="12" />
       <node id="5540569706412486831" at="36,51,37,72" concept="2" />
       <node id="5540569706412486839" at="38,7,39,29" concept="6" />
@@ -1054,7 +1054,7 @@
       <node id="5540569706412486839" at="37,72,44,7" concept="0" />
       <node id="5540569706412486831" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5540569706412486831" at="20,51,21,25" />
-      <scope id="5540569706412486831" at="25,73,26,75" />
+      <scope id="5540569706412486831" at="25,73,26,36" />
       <scope id="5540569706412486831" at="31,52,32,19" />
       <scope id="5540569706412486831" at="20,0,23,0" />
       <scope id="5540569706412486831" at="31,0,34,0">
@@ -1075,7 +1075,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/5540569706412511201">
     <file name="NegativeResizeNode_bottom_right_Test.java">
       <node id="5540569706412511201" at="20,49,21,25" concept="12" />
-      <node id="5540569706412511201" at="25,71,26,73" concept="2" />
+      <node id="5540569706412511201" at="25,71,26,36" concept="2" />
       <node id="5540569706412511201" at="31,52,32,19" concept="12" />
       <node id="5540569706412511201" at="36,51,37,72" concept="2" />
       <node id="5540569706412511209" at="38,7,39,29" concept="6" />
@@ -1090,7 +1090,7 @@
       <node id="5540569706412511209" at="37,72,44,7" concept="0" />
       <node id="5540569706412511201" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5540569706412511201" at="20,49,21,25" />
-      <scope id="5540569706412511201" at="25,71,26,73" />
+      <scope id="5540569706412511201" at="25,71,26,36" />
       <scope id="5540569706412511201" at="31,52,32,19" />
       <scope id="5540569706412511201" at="20,0,23,0" />
       <scope id="5540569706412511201" at="31,0,34,0">
@@ -1111,7 +1111,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/5540569706413448775">
     <file name="CreateLink_Test.java">
       <node id="5540569706413448775" at="20,28,21,25" concept="12" />
-      <node id="5540569706413448775" at="25,50,26,52" concept="2" />
+      <node id="5540569706413448775" at="25,50,26,36" concept="2" />
       <node id="5540569706413448775" at="31,52,32,19" concept="12" />
       <node id="5540569706413448775" at="36,51,37,72" concept="2" />
       <node id="5540569706415591133" at="38,7,39,30" concept="6" />
@@ -1131,7 +1131,7 @@
       <node id="5540569706415591133" at="37,72,49,7" concept="0" />
       <node id="5540569706413448775" at="35,0,51,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5540569706413448775" at="20,28,21,25" />
-      <scope id="5540569706413448775" at="25,50,26,52" />
+      <scope id="5540569706413448775" at="25,50,26,36" />
       <scope id="5540569706413448775" at="31,52,32,19" />
       <scope id="5540569706413448775" at="20,0,23,0" />
       <scope id="5540569706413448775" at="31,0,34,0">
@@ -1152,7 +1152,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/604142159147796275">
     <file name="CreateDiagramNode_Test.java">
       <node id="604142159147796275" at="20,35,21,25" concept="12" />
-      <node id="604142159147796275" at="25,57,26,59" concept="2" />
+      <node id="604142159147796275" at="25,57,26,36" concept="2" />
       <node id="604142159147796275" at="31,52,32,19" concept="12" />
       <node id="604142159147796275" at="36,51,37,72" concept="2" />
       <node id="3873095776496149342" at="38,7,39,30" concept="6" />
@@ -1173,7 +1173,7 @@
       <node id="8041297453110210972" at="44,7,51,7" concept="0" />
       <node id="604142159147796275" at="35,0,53,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="604142159147796275" at="20,35,21,25" />
-      <scope id="604142159147796275" at="25,57,26,59" />
+      <scope id="604142159147796275" at="25,57,26,36" />
       <scope id="604142159147796275" at="31,52,32,19" />
       <scope id="604142159147796275" at="20,0,23,0" />
       <scope id="604142159147796275" at="31,0,34,0">
@@ -1199,7 +1199,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/7604889971551653125">
     <file name="ResizeNode_top_left_Test.java">
       <node id="7604889971551653125" at="20,37,21,25" concept="12" />
-      <node id="7604889971551653125" at="25,59,26,61" concept="2" />
+      <node id="7604889971551653125" at="25,59,26,36" concept="2" />
       <node id="7604889971551653125" at="31,52,32,19" concept="12" />
       <node id="7604889971551653125" at="36,51,37,72" concept="2" />
       <node id="7604889971551653133" at="38,7,39,29" concept="6" />
@@ -1214,7 +1214,7 @@
       <node id="7604889971551653133" at="37,72,44,7" concept="0" />
       <node id="7604889971551653125" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="7604889971551653125" at="20,37,21,25" />
-      <scope id="7604889971551653125" at="25,59,26,61" />
+      <scope id="7604889971551653125" at="25,59,26,36" />
       <scope id="7604889971551653125" at="31,52,32,19" />
       <scope id="7604889971551653125" at="20,0,23,0" />
       <scope id="7604889971551653125" at="31,0,34,0">
@@ -1235,7 +1235,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/8041297453110598744">
     <file name="SelectAnotherNodeFromCode_Test.java">
       <node id="8041297453110598744" at="29,43,30,25" concept="12" />
-      <node id="8041297453110598744" at="34,65,35,67" concept="2" />
+      <node id="8041297453110598744" at="34,65,35,36" concept="2" />
       <node id="8041297453110598744" at="40,52,41,19" concept="12" />
       <node id="8041297453110598744" at="45,51,46,72" concept="2" />
       <node id="8041297453111221943" at="50,31,51,323" concept="2" />
@@ -1259,7 +1259,7 @@
       <node id="8041297453111219303" at="46,72,55,9" concept="2" />
       <node id="8041297453110598744" at="44,0,69,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8041297453110598744" at="29,43,30,25" />
-      <scope id="8041297453110598744" at="34,65,35,67" />
+      <scope id="8041297453110598744" at="34,65,35,36" />
       <scope id="8041297453110598744" at="40,52,41,19" />
       <scope id="8041297453111307836" at="50,31,51,323" />
       <scope id="8041297453110598744" at="29,0,32,0" />
@@ -1289,7 +1289,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/8095638845859254308">
     <file name="SelectAnotherNode_Test.java">
       <node id="8095638845859254308" at="20,35,21,25" concept="12" />
-      <node id="8095638845859254308" at="25,57,26,59" concept="2" />
+      <node id="8095638845859254308" at="25,57,26,36" concept="2" />
       <node id="8095638845859254308" at="31,52,32,19" concept="12" />
       <node id="8095638845859254308" at="36,51,37,72" concept="2" />
       <node id="8095638845859270591" at="38,7,39,29" concept="6" />
@@ -1304,7 +1304,7 @@
       <node id="8095638845859270591" at="37,72,44,7" concept="0" />
       <node id="8095638845859254308" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8095638845859254308" at="20,35,21,25" />
-      <scope id="8095638845859254308" at="25,57,26,59" />
+      <scope id="8095638845859254308" at="25,57,26,36" />
       <scope id="8095638845859254308" at="31,52,32,19" />
       <scope id="8095638845859254308" at="20,0,23,0" />
       <scope id="8095638845859254308" at="31,0,34,0">
@@ -1325,7 +1325,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/8095638845859348584">
     <file name="SelectNodeOuter_Test.java">
       <node id="8095638845859348584" at="20,33,21,25" concept="12" />
-      <node id="8095638845859348584" at="25,55,26,57" concept="2" />
+      <node id="8095638845859348584" at="25,55,26,36" concept="2" />
       <node id="8095638845859348584" at="31,52,32,19" concept="12" />
       <node id="8095638845859348584" at="36,51,37,72" concept="2" />
       <node id="8095638845859348594" at="38,7,39,29" concept="6" />
@@ -1340,7 +1340,7 @@
       <node id="8095638845859348594" at="37,72,44,7" concept="0" />
       <node id="8095638845859348584" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8095638845859348584" at="20,33,21,25" />
-      <scope id="8095638845859348584" at="25,55,26,57" />
+      <scope id="8095638845859348584" at="25,55,26,36" />
       <scope id="8095638845859348584" at="31,52,32,19" />
       <scope id="8095638845859348584" at="20,0,23,0" />
       <scope id="8095638845859348584" at="31,0,34,0">
@@ -1361,7 +1361,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/8095638845859579504">
     <file name="MoveNode_Test.java">
       <node id="8095638845859579504" at="20,26,21,25" concept="12" />
-      <node id="8095638845859579504" at="25,48,26,50" concept="2" />
+      <node id="8095638845859579504" at="25,48,26,36" concept="2" />
       <node id="8095638845859579504" at="31,52,32,19" concept="12" />
       <node id="8095638845859579504" at="36,51,37,72" concept="2" />
       <node id="8095638845859579512" at="38,7,39,29" concept="6" />
@@ -1376,7 +1376,7 @@
       <node id="8095638845859579512" at="37,72,44,7" concept="0" />
       <node id="8095638845859579504" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8095638845859579504" at="20,26,21,25" />
-      <scope id="8095638845859579504" at="25,48,26,50" />
+      <scope id="8095638845859579504" at="25,48,26,36" />
       <scope id="8095638845859579504" at="31,52,32,19" />
       <scope id="8095638845859579504" at="20,0,23,0" />
       <scope id="8095638845859579504" at="31,0,34,0">
@@ -1397,7 +1397,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/822550549811942062">
     <file name="DeleteLink_Test.java">
       <node id="822550549811942062" at="20,28,21,25" concept="12" />
-      <node id="822550549811942062" at="25,50,26,52" concept="2" />
+      <node id="822550549811942062" at="25,50,26,36" concept="2" />
       <node id="822550549811942062" at="31,52,32,19" concept="12" />
       <node id="822550549811942062" at="36,51,37,70" concept="2" />
       <node id="822550549812590941" at="37,70,38,83" concept="2" />
@@ -1407,7 +1407,7 @@
       <node id="822550549811942062" at="24,0,28,0" concept="5" trace="test_DeleteLink#()V" />
       <node id="822550549811942062" at="35,0,40,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="822550549811942062" at="20,28,21,25" />
-      <scope id="822550549811942062" at="25,50,26,52" />
+      <scope id="822550549811942062" at="25,50,26,36" />
       <scope id="822550549811942062" at="31,52,32,19" />
       <scope id="822550549811942062" at="36,51,38,83" />
       <scope id="822550549811942062" at="20,0,23,0" />
@@ -1423,7 +1423,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/822550549814487817">
     <file name="SelectLink_Test.java">
       <node id="822550549814487817" at="20,28,21,25" concept="12" />
-      <node id="822550549814487817" at="25,50,26,52" concept="2" />
+      <node id="822550549814487817" at="25,50,26,36" concept="2" />
       <node id="822550549814487817" at="31,52,32,19" concept="12" />
       <node id="822550549814487817" at="36,51,37,70" concept="2" />
       <node id="822550549814495009" at="38,7,39,30" concept="6" />
@@ -1438,7 +1438,7 @@
       <node id="822550549814495009" at="37,70,44,7" concept="0" />
       <node id="822550549814487817" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="822550549814487817" at="20,28,21,25" />
-      <scope id="822550549814487817" at="25,50,26,52" />
+      <scope id="822550549814487817" at="25,50,26,36" />
       <scope id="822550549814487817" at="31,52,32,19" />
       <scope id="822550549814487817" at="20,0,23,0" />
       <scope id="822550549814487817" at="31,0,34,0">
@@ -1459,7 +1459,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/822550549814665085">
     <file name="UnSelectLink_Test.java">
       <node id="822550549814665085" at="20,30,21,25" concept="12" />
-      <node id="822550549814665085" at="25,52,26,54" concept="2" />
+      <node id="822550549814665085" at="25,52,26,36" concept="2" />
       <node id="822550549814665085" at="31,52,32,19" concept="12" />
       <node id="822550549814665085" at="36,51,37,70" concept="2" />
       <node id="822550549814669320" at="37,70,38,83" concept="2" />
@@ -1469,7 +1469,7 @@
       <node id="822550549814665085" at="24,0,28,0" concept="5" trace="test_UnSelectLink#()V" />
       <node id="822550549814665085" at="35,0,40,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="822550549814665085" at="20,30,21,25" />
-      <scope id="822550549814665085" at="25,52,26,54" />
+      <scope id="822550549814665085" at="25,52,26,36" />
       <scope id="822550549814665085" at="31,52,32,19" />
       <scope id="822550549814665085" at="36,51,38,83" />
       <scope id="822550549814665085" at="20,0,23,0" />
@@ -1485,7 +1485,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/822550549814784606">
     <file name="ChangeNodeName_Test.java">
       <node id="822550549814784606" at="22,32,23,25" concept="12" />
-      <node id="822550549814784606" at="27,54,28,56" concept="2" />
+      <node id="822550549814784606" at="27,54,28,36" concept="2" />
       <node id="822550549814784606" at="33,52,34,19" concept="12" />
       <node id="822550549814784606" at="38,51,39,71" concept="2" />
       <node id="2303280755028749479" at="40,7,41,29" concept="6" />
@@ -1504,7 +1504,7 @@
       <node id="2303280755028749479" at="39,71,46,7" concept="0" />
       <node id="822550549814784606" at="37,0,52,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="822550549814784606" at="22,32,23,25" />
-      <scope id="822550549814784606" at="27,54,28,56" />
+      <scope id="822550549814784606" at="27,54,28,36" />
       <scope id="822550549814784606" at="33,52,34,19" />
       <scope id="822550549814784606" at="22,0,25,0" />
       <scope id="822550549814784606" at="33,0,36,0">
@@ -1525,7 +1525,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/83003444452611279">
     <file name="BlockHasNoDecoratorTest_Test.java">
       <node id="83003444452611279" at="24,41,25,25" concept="12" />
-      <node id="83003444452611279" at="29,63,30,65" concept="2" />
+      <node id="83003444452611279" at="29,63,30,36" concept="2" />
       <node id="83003444452611279" at="35,52,36,19" concept="12" />
       <node id="83003444452611279" at="40,51,41,68" concept="2" />
       <node id="1560508619094548466" at="41,68,42,77" concept="6" />
@@ -1543,7 +1543,7 @@
       <node id="1560508619094548469" at="42,77,47,9" concept="2" />
       <node id="83003444452611279" at="39,0,54,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="83003444452611279" at="24,41,25,25" />
-      <scope id="83003444452611279" at="29,63,30,65" />
+      <scope id="83003444452611279" at="29,63,30,36" />
       <scope id="83003444452611279" at="35,52,36,19" />
       <scope id="1560508619094548471" at="44,27,45,361" />
       <scope id="83003444452611279" at="24,0,27,0" />
@@ -1564,7 +1564,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/83003444452667991">
     <file name="LinkHasNoDecoratorTest_Test.java">
       <node id="83003444452667991" at="24,40,25,25" concept="12" />
-      <node id="83003444452667991" at="29,62,30,64" concept="2" />
+      <node id="83003444452667991" at="29,62,30,36" concept="2" />
       <node id="83003444452667991" at="35,52,36,19" concept="12" />
       <node id="83003444452667991" at="40,51,41,68" concept="2" />
       <node id="1560508619094544035" at="41,68,42,77" concept="6" />
@@ -1581,7 +1581,7 @@
       <node id="1560508619094544038" at="42,77,47,9" concept="2" />
       <node id="83003444452667991" at="39,0,53,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="83003444452667991" at="24,40,25,25" />
-      <scope id="83003444452667991" at="29,62,30,64" />
+      <scope id="83003444452667991" at="29,62,30,36" />
       <scope id="83003444452667991" at="35,52,36,19" />
       <scope id="1560508619094544040" at="44,27,45,378" />
       <scope id="83003444452667991" at="24,0,27,0" />
@@ -1602,7 +1602,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/834109970984588248">
     <file name="SelectDiagramNode_Test.java">
       <node id="834109970984588248" at="20,35,21,25" concept="12" />
-      <node id="834109970984588248" at="25,57,26,59" concept="2" />
+      <node id="834109970984588248" at="25,57,26,36" concept="2" />
       <node id="834109970984588248" at="31,52,32,19" concept="12" />
       <node id="834109970984588248" at="36,51,37,70" concept="2" />
       <node id="3873095776496336997" at="38,7,39,29" concept="6" />
@@ -1617,7 +1617,7 @@
       <node id="3873095776496336997" at="37,70,44,7" concept="0" />
       <node id="834109970984588248" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="834109970984588248" at="20,35,21,25" />
-      <scope id="834109970984588248" at="25,57,26,59" />
+      <scope id="834109970984588248" at="25,57,26,36" />
       <scope id="834109970984588248" at="31,52,32,19" />
       <scope id="834109970984588248" at="20,0,23,0" />
       <scope id="834109970984588248" at="31,0,34,0">
@@ -1638,7 +1638,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/8794120090375557118">
     <file name="CreateDiagramNodeWithPosition_Test.java">
       <node id="8794120090375557118" at="22,47,23,25" concept="12" />
-      <node id="8794120090375557118" at="27,69,28,71" concept="2" />
+      <node id="8794120090375557118" at="27,69,28,36" concept="2" />
       <node id="8794120090375557118" at="33,52,34,19" concept="12" />
       <node id="8794120090375557118" at="38,51,39,72" concept="2" />
       <node id="3873095776496336603" at="40,7,41,30" concept="6" />
@@ -1661,7 +1661,7 @@
       <node id="8041297453110211288" at="46,7,53,7" concept="0" />
       <node id="8794120090375557118" at="37,0,57,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8794120090375557118" at="22,47,23,25" />
-      <scope id="8794120090375557118" at="27,69,28,71" />
+      <scope id="8794120090375557118" at="27,69,28,36" />
       <scope id="8794120090375557118" at="33,52,34,19" />
       <scope id="8794120090375557118" at="22,0,25,0" />
       <scope id="8794120090375557118" at="33,0,36,0">
@@ -1687,7 +1687,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/8794120090376139994">
     <file name="UnSelectDiagramNode_Test.java">
       <node id="8794120090376139994" at="20,37,21,25" concept="12" />
-      <node id="8794120090376139994" at="25,59,26,61" concept="2" />
+      <node id="8794120090376139994" at="25,59,26,36" concept="2" />
       <node id="8794120090376139994" at="31,52,32,19" concept="12" />
       <node id="8794120090376139994" at="36,51,37,72" concept="2" />
       <node id="8794120090376178275" at="37,72,38,83" concept="2" />
@@ -1697,7 +1697,7 @@
       <node id="8794120090376139994" at="24,0,28,0" concept="5" trace="test_UnSelectDiagramNode#()V" />
       <node id="8794120090376139994" at="35,0,40,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8794120090376139994" at="20,37,21,25" />
-      <scope id="8794120090376139994" at="25,59,26,61" />
+      <scope id="8794120090376139994" at="25,59,26,36" />
       <scope id="8794120090376139994" at="31,52,32,19" />
       <scope id="8794120090376139994" at="36,51,38,83" />
       <scope id="8794120090376139994" at="20,0,23,0" />
@@ -1713,7 +1713,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/8794120090377706340">
     <file name="ResizeNode_top_centeral_Test.java">
       <node id="8794120090377706340" at="20,41,21,25" concept="12" />
-      <node id="8794120090377706340" at="25,63,26,65" concept="2" />
+      <node id="8794120090377706340" at="25,63,26,36" concept="2" />
       <node id="8794120090377706340" at="31,52,32,19" concept="12" />
       <node id="8794120090377706340" at="36,51,37,72" concept="2" />
       <node id="210559400606913032" at="38,7,39,29" concept="6" />
@@ -1728,7 +1728,7 @@
       <node id="210559400606913032" at="37,72,44,7" concept="0" />
       <node id="8794120090377706340" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8794120090377706340" at="20,41,21,25" />
-      <scope id="8794120090377706340" at="25,63,26,65" />
+      <scope id="8794120090377706340" at="25,63,26,36" />
       <scope id="8794120090377706340" at="31,52,32,19" />
       <scope id="8794120090377706340" at="20,0,23,0" />
       <scope id="8794120090377706340" at="31,0,34,0">
@@ -1749,7 +1749,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/931754141964485576">
     <file name="InitiallyExpandedDiagramVisibility_Test.java">
       <node id="931754141964485576" at="23,52,24,25" concept="12" />
-      <node id="931754141964485576" at="28,74,29,76" concept="2" />
+      <node id="931754141964485576" at="28,74,29,36" concept="2" />
       <node id="931754141964485576" at="34,52,35,19" concept="12" />
       <node id="931754141964485576" at="39,51,40,52" concept="2" />
       <node id="931754141964485584" at="42,27,43,115" concept="6" />
@@ -1765,7 +1765,7 @@
       <node id="4212255956137515712" at="40,52,49,9" concept="2" />
       <node id="931754141964485576" at="38,0,52,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="931754141964485576" at="23,52,24,25" />
-      <scope id="931754141964485576" at="28,74,29,76" />
+      <scope id="931754141964485576" at="28,74,29,36" />
       <scope id="931754141964485576" at="34,52,35,19" />
       <scope id="931754141964485600" at="45,85,46,63" />
       <scope id="931754141964485576" at="23,0,26,0" />
@@ -1790,7 +1790,7 @@
   <root nodeRef="r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)/931754141965328763">
     <file name="ExpandDiagramVisibility_Test.java">
       <node id="931754141965328763" at="23,41,24,25" concept="12" />
-      <node id="931754141965328763" at="28,63,29,65" concept="2" />
+      <node id="931754141965328763" at="28,63,29,36" concept="2" />
       <node id="931754141965328763" at="34,52,35,19" concept="12" />
       <node id="931754141965328763" at="39,51,40,70" concept="2" />
       <node id="931754141965335061" at="40,70,41,72" concept="2" />
@@ -1807,7 +1807,7 @@
       <node id="4212255956137497357" at="41,72,50,9" concept="2" />
       <node id="931754141965328763" at="38,0,53,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="931754141965328763" at="23,41,24,25" />
-      <scope id="931754141965328763" at="28,63,29,65" />
+      <scope id="931754141965328763" at="28,63,29,36" />
       <scope id="931754141965328763" at="34,52,35,19" />
       <scope id="931754141965328787" at="46,85,47,63" />
       <scope id="931754141965328763" at="23,0,26,0" />

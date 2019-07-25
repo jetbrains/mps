@@ -14,15 +14,15 @@ import jetbrains.mps.project.Project;
 @State(name = "BreakpointViewSettings", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
 public class BreakpointViewSettingsComponent implements PersistentStateComponent<BreakpointViewSettingsComponent.MyState>, ProjectComponent {
-  private BreakpointViewSettingsComponent.MyState myState = new BreakpointViewSettingsComponent.MyState();
+  private MyState myState = new MyState();
   public BreakpointViewSettingsComponent() {
   }
   @Override
-  public BreakpointViewSettingsComponent.MyState getState() {
+  public MyState getState() {
     return myState;
   }
   @Override
-  public void loadState(BreakpointViewSettingsComponent.MyState state) {
+  public void loadState(MyState state) {
     myState = state;
   }
   @Override

@@ -21,7 +21,7 @@ public class Comment_LastStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_Comment_LastStatement() throws Throwable {
-    new Comment_LastStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

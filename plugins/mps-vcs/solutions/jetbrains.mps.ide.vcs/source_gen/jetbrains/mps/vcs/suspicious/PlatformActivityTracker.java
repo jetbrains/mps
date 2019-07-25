@@ -14,8 +14,8 @@ import jetbrains.mps.ide.platform.watching.ReloadListener;
  * Monitors and {@link jetbrains.mps.vcs.suspicious.PlatformActivityTracker#isProcessingAllowed() tells} if it's ok to perform our VCS operations (i.e. if no other backround platform VCS job is running and VFS is ready for action
  */
 /*package*/ class PlatformActivityTracker {
-  private final PlatformActivityTracker.BanVFMListener myVirtualFileManagerListener = new PlatformActivityTracker.BanVFMListener();
-  private final PlatformActivityTracker.BanReloadListener myReloadListener = new PlatformActivityTracker.BanReloadListener();
+  private final BanVFMListener myVirtualFileManagerListener = new BanVFMListener();
+  private final BanReloadListener myReloadListener = new BanReloadListener();
   private final ProjectManager myProjectManager;
   private final VirtualFileManager myVirtualFileManager;
   private final ReloadManagerComponent myReloadManager;

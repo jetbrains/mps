@@ -21,7 +21,7 @@ public class ResolveSuperInterfaceMethodReference_Test extends BaseTransformatio
 
   @Test
   public void test_ResolveSuperInterfaceMethodReference() throws Throwable {
-    new ResolveSuperInterfaceMethodReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

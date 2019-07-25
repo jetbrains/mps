@@ -18,5 +18,5 @@ public class TestClass {
         System.out.println(":-( again");
     }
   }
-  private static String[] stringSwitchCases_6lh81f_a0b0b = new String[]{"1", "2"};
+  private static final String[] stringSwitchCases_6lh81f_a0b0b = new String[]{"1", "2"};
 }

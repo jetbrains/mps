@@ -21,7 +21,7 @@ public class SelectUpFromColumnSelection_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelectUpFromColumnSelection() throws Throwable {
-    new SelectUpFromColumnSelection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

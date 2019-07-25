@@ -32,39 +32,39 @@ public class FieldCanBeLocalVar_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck6923385624929411102() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624929411102();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624929411102();
   }
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck6923385624927778166() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624927778166();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck6923385624927778166();
   }
   @Test
   public void test_NodeFieldIsAssignedButNeverCheck6923385624927778168() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_NodeFieldIsAssignedButNeverCheck6923385624927778168();
+    new TestBody(this).test_NodeFieldIsAssignedButNeverCheck6923385624927778168();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305588892() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305588892();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305588892();
   }
   @Test
   public void test_ErrorMessagesCheck6640766779615226140() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_ErrorMessagesCheck6640766779615226140();
+    new TestBody(this).test_ErrorMessagesCheck6640766779615226140();
   }
   @Test
   public void test_ErrorMessagesCheck4400998065754588523() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_ErrorMessagesCheck4400998065754588523();
+    new TestBody(this).test_ErrorMessagesCheck4400998065754588523();
   }
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck4400998065754643596() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck4400998065754643596();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck4400998065754643596();
   }
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck4400998065754644137() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck4400998065754644137();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck4400998065754644137();
   }
   @Test
   public void test_NodeFieldCanBeConvertedIntoCheck4400998065754644682() throws Throwable {
-    new FieldCanBeLocalVar_Test.TestBody(this).test_NodeFieldCanBeConvertedIntoCheck4400998065754644682();
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck4400998065754644682();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

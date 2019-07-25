@@ -55,7 +55,7 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.PortDecoratorView;
   }
 
   private EditorCell createDiagramNode_0() {
-    BlockCell editorCell = new Block_diagram_EditorBuilder_a.BlockCellImpl_pj4dhh_a(getEditorContext(), myNode);
+    BlockCell editorCell = new BlockCellImpl_pj4dhh_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramNode_pj4dhh_a");
     editorCell.setBig(true);
     setCellContext(editorCell);

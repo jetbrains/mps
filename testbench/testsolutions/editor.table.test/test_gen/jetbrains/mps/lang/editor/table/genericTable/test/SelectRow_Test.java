@@ -21,7 +21,7 @@ public class SelectRow_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelectRow() throws Throwable {
-    new SelectRow_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

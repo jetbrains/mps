@@ -36,7 +36,7 @@ public class ExtractFromExpression_Test extends BaseTransformationTest {
 
   @Test
   public void test_extractFromExpression() throws Throwable {
-    new ExtractFromExpression_Test.TestBody(this).test_extractFromExpression();
+    new TestBody(this).test_extractFromExpression();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

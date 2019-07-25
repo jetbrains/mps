@@ -21,7 +21,7 @@ public class RemoveStaticInStaticFieldDelete1_Test extends BaseTransformationTes
 
   @Test
   public void test_RemoveStaticInStaticFieldDelete1() throws Throwable {
-    new RemoveStaticInStaticFieldDelete1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class LT_PostfixIncrement_with_Plus_Test extends BaseTransformationTest {
 
   @Test
   public void test_LT_PostfixIncrement_with_Plus() throws Throwable {
-    new LT_PostfixIncrement_with_Plus_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

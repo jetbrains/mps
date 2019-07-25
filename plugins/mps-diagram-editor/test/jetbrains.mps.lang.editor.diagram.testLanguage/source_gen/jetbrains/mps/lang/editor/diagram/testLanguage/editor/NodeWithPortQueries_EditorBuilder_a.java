@@ -63,7 +63,7 @@ import jetbrains.jetpad.model.property.ReadableProperty;
   }
 
   private EditorCell createDiagramNode_0() {
-    BlockCell editorCell = new NodeWithPortQueries_EditorBuilder_a.BlockCellImpl_tny8cn_a(getEditorContext(), myNode);
+    BlockCell editorCell = new BlockCellImpl_tny8cn_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramNode_tny8cn_a");
     editorCell.setBig(true);
     setCellContext(editorCell);

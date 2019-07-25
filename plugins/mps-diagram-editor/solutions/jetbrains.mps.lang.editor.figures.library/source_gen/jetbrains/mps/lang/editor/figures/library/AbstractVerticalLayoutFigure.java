@@ -28,7 +28,7 @@ public abstract class AbstractVerticalLayoutFigure extends RectView implements R
   protected void doValidate(View.ValidationContext context) {
     super.doValidate(context);
     Vector prefSize = prop(PREFERRED_SIZE).get();
-    AbstractVerticalLayoutFigure.Insets insets = getInsets();
+    Insets insets = getInsets();
 
     int width = 0;
     int height = insets.top + insets.bottom;
@@ -68,11 +68,11 @@ public abstract class AbstractVerticalLayoutFigure extends RectView implements R
   protected boolean isExcludedFromLayout(View childView) {
     return !((childView.visible().get()));
   }
-  protected AbstractVerticalLayoutFigure.Insets getInsets() {
-    return AbstractVerticalLayoutFigure.Insets.EMPTY_INSETS;
+  protected Insets getInsets() {
+    return Insets.EMPTY_INSETS;
   }
   public static class Insets {
-    public static final AbstractVerticalLayoutFigure.Insets EMPTY_INSETS = new AbstractVerticalLayoutFigure.Insets(0, 0, 0, 0);
+    public static final Insets EMPTY_INSETS = new Insets(0, 0, 0, 0);
 
     public final int top;
     public final int bottom;
@@ -84,8 +84,8 @@ public abstract class AbstractVerticalLayoutFigure extends RectView implements R
       this.left = left;
       this.right = right;
     }
-    public AbstractVerticalLayoutFigure.Insets join(AbstractVerticalLayoutFigure.Insets insets) {
-      return new AbstractVerticalLayoutFigure.Insets(top + insets.top, bottom + insets.bottom, left + insets.left, right + insets.right);
+    public Insets join(Insets insets) {
+      return new Insets(top + insets.top, bottom + insets.bottom, left + insets.left, right + insets.right);
     }
   }
   protected static class AbstractVerticalLayoutFigureMapper<T extends AbstractVerticalLayoutFigure> extends Mapper<T, T> {

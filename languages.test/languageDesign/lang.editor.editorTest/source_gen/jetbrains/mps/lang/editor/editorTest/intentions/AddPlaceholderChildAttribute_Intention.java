@@ -14,9 +14,10 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddPlaceholderChildAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -37,7 +38,7 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new AddPlaceholderChildAttribute_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -46,7 +47,7 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x34450358999d2201L, "jetbrains.mps.lang.editor.editorTest.structure.PlaceholderChildAttribute"))) == null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_8g75xb.PlaceholderChildAttribute_4c3bdb31)) == null)) {
         return "Add Attribute";
       } else {
         return "Remove Attribute";
@@ -54,15 +55,19 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x34450358999d2201L, "jetbrains.mps.lang.editor.editorTest.structure.PlaceholderChildAttribute"))) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x34450358999d2201L, "jetbrains.mps.lang.editor.editorTest.structure.PlaceholderChildAttribute")), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x34450358999d2201L, "jetbrains.mps.lang.editor.editorTest.structure.PlaceholderChildAttribute"));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_8g75xb.PlaceholderChildAttribute_4c3bdb31)) == null)) {
+        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(AUX_8g75xb.PlaceholderChildAttribute_4c3bdb31), AUX_8g75xb.PlaceholderChildAttribute_4c3bdb31);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x34450358999d2201L, "jetbrains.mps.lang.editor.editorTest.structure.PlaceholderChildAttribute"))));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_8g75xb.PlaceholderChildAttribute_4c3bdb31)));
       }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddPlaceholderChildAttribute_Intention.this;
     }
+  }
+
+  private static final class AUX_8g75xb {
+    /*package*/ static final SConcept PlaceholderChildAttribute_4c3bdb31 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x34450358999d2201L, "jetbrains.mps.lang.editor.editorTest.structure.PlaceholderChildAttribute");
   }
 }

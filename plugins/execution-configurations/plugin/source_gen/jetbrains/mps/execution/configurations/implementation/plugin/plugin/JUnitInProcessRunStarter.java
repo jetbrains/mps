@@ -46,7 +46,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   @Override
   public ProcessHandler execute() throws ExecutionException {
     if (!(checkExecutionIsPossible())) {
-      return new JUnitInProcessRunStarter.EmptyProcessHandler();
+      return new EmptyProcessHandler();
     }
     final JUnitTestExecutor executor = new JUnitTestExecutor(myTestsContributor);
     final Future<?> future = doExecute(executor);

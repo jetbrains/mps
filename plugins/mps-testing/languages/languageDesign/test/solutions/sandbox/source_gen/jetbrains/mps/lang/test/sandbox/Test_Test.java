@@ -33,47 +33,47 @@ public class Test_Test extends BaseTransformationTest {
 
   @Test
   public void test_testError() throws Throwable {
-    new Test_Test.TestBody(this).test_testError();
+    new TestBody(this).test_testError();
   }
   @Test
   public void test_hasType() throws Throwable {
-    new Test_Test.TestBody(this).test_hasType();
+    new TestBody(this).test_hasType();
   }
   @Test
   public void test_hasError() throws Throwable {
-    new Test_Test.TestBody(this).test_hasError();
+    new TestBody(this).test_hasError();
   }
   @Test
   public void test_hasTypeInSet() throws Throwable {
-    new Test_Test.TestBody(this).test_hasTypeInSet();
+    new TestBody(this).test_hasTypeInSet();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199196() throws Throwable {
-    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199196();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199196();
   }
   @Test
   public void test_NodeTypeCheck6594325605663849546() throws Throwable {
-    new Test_Test.TestBody(this).test_NodeTypeCheck6594325605663849546();
+    new TestBody(this).test_NodeTypeCheck6594325605663849546();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199214() throws Throwable {
-    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199214();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199214();
   }
   @Test
   public void test_NodeErrorCheck6594325605663849637() throws Throwable {
-    new Test_Test.TestBody(this).test_NodeErrorCheck6594325605663849637();
+    new TestBody(this).test_NodeErrorCheck6594325605663849637();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199232() throws Throwable {
-    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199232();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199232();
   }
   @Test
   public void test_NodeTypeSetCheck6594325605663852576() throws Throwable {
-    new Test_Test.TestBody(this).test_NodeTypeSetCheck6594325605663852576();
+    new TestBody(this).test_NodeTypeSetCheck6594325605663852576();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199250() throws Throwable {
-    new Test_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199250();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199250();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

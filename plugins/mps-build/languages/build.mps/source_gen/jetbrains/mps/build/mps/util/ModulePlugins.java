@@ -13,9 +13,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.mps.behavior.BuildMps_IdeaPluginContent__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -25,6 +25,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ModulePlugins {
   private final TemplateQueryContext myContext;
@@ -44,7 +45,7 @@ public class ModulePlugins {
   public void collect(@NotNull Iterable<SNode> modules, @NotNull List<SNode> additionalPlugins) {
     List<SNode> initialPlugins = ListSequence.fromListWithValues(new ArrayList<SNode>(), additionalPlugins);
     for (final SNode module : Sequence.fromIterable(modules)) {
-      List<SNode> projectPlugins = SNodeOperations.getNodeDescendants(SNodeOperations.cast(SNodeOperations.getContainingRoot(module), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject")), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin"), false, new SAbstractConcept[]{});
+      List<SNode> projectPlugins = SNodeOperations.getNodeDescendants(SNodeOperations.cast(SNodeOperations.getContainingRoot(module), AUX_ookyii.BuildProject_808bb057), AUX_ookyii.BuildMps_IdeaPlugin_d1bb7c62, false, new SAbstractConcept[]{});
       for (SNode plugin : ListSequence.fromList(projectPlugins)) {
         if (ListSequence.fromList(SLinkOperations.getChildren(plugin, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content"))).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -94,5 +95,10 @@ public class ModulePlugins {
         return it._0();
       }
     }, true).toListSequence();
+  }
+
+  private static final class AUX_ookyii {
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_IdeaPlugin_d1bb7c62 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
   }
 }

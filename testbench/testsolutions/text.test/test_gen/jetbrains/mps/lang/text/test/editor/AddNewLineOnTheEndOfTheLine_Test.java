@@ -21,7 +21,7 @@ public class AddNewLineOnTheEndOfTheLine_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddNewLineOnTheEndOfTheLine() throws Throwable {
-    new AddNewLineOnTheEndOfTheLine_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

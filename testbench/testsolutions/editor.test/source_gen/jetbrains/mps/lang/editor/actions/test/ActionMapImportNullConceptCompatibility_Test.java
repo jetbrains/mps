@@ -32,19 +32,19 @@ public class ActionMapImportNullConceptCompatibility_Test extends BaseTransforma
 
   @Test
   public void test_ErrorMessagesCheck1465006755400919484() throws Throwable {
-    new ActionMapImportNullConceptCompatibility_Test.TestBody(this).test_ErrorMessagesCheck1465006755400919484();
+    new TestBody(this).test_ErrorMessagesCheck1465006755400919484();
   }
   @Test
   public void test_NodeImportedActionMapIsNotCheck1465006755400969509() throws Throwable {
-    new ActionMapImportNullConceptCompatibility_Test.TestBody(this).test_NodeImportedActionMapIsNotCheck1465006755400969509();
+    new TestBody(this).test_NodeImportedActionMapIsNotCheck1465006755400969509();
   }
   @Test
   public void test_ErrorMessagesCheck1465006755400968886() throws Throwable {
-    new ActionMapImportNullConceptCompatibility_Test.TestBody(this).test_ErrorMessagesCheck1465006755400968886();
+    new TestBody(this).test_ErrorMessagesCheck1465006755400968886();
   }
   @Test
   public void test_ErrorMessagesCheck1465006755400969544() throws Throwable {
-    new ActionMapImportNullConceptCompatibility_Test.TestBody(this).test_ErrorMessagesCheck1465006755400969544();
+    new TestBody(this).test_ErrorMessagesCheck1465006755400969544();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -21,7 +21,7 @@ public class PasteExpressionAfterStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_PasteExpressionAfterStatement() throws Throwable {
-    new PasteExpressionAfterStatement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -59,7 +59,7 @@ import jetbrains.mps.lang.project.editor.ProjectStructure_StyleSheet.KeyWordStyl
     return SPropertyOperations.getBoolean(myNode, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x5869770da61dfe29L, "reexport"));
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ModuleDependency_EditorBuilder_a.moduleRefSingleRoleHandler_c4v0tm_a0(myNode, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef"), getEditorContext());
+    SingleRoleCellProvider provider = new moduleRefSingleRoleHandler_c4v0tm_a0(myNode, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef"), getEditorContext());
     return provider.createCell();
   }
   private static class moduleRefSingleRoleHandler_c4v0tm_a0 extends SingleRoleCellProvider {

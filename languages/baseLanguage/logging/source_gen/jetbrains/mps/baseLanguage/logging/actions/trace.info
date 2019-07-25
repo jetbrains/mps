@@ -5,6 +5,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="ActionAspectDescriptorImpl.java">
       <unit at="13,0,32,0" name="jetbrains.mps.baseLanguage.logging.actions.ActionAspectDescriptorImpl" />
@@ -12,65 +13,68 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959057c(jetbrains.mps.baseLanguage.logging.actions)/6057591418743042049">
     <file name="LogStatementConversions.java">
-      <node id="6057591418743042056" at="16,7,17,37" concept="4" />
-      <node id="6057591418743042125" at="18,203,19,345" concept="1" />
-      <node id="6057591418743048769" at="19,345,20,340" concept="1" />
-      <node id="6057591418743057908" at="20,340,21,349" concept="1" />
-      <node id="6057591418743065494" at="24,7,25,37" concept="4" />
-      <node id="6057591418743065497" at="26,211,27,345" concept="1" />
-      <node id="6057591418743065505" at="27,345,28,340" concept="1" />
-      <node id="6057591418743065513" at="28,340,29,349" concept="1" />
-      <node id="6057591418743066493" at="36,7,37,37" concept="4" />
-      <node id="6057591418743066496" at="38,203,39,345" concept="1" />
-      <node id="6057591418743066504" at="39,345,40,340" concept="1" />
-      <node id="6057591418743066512" at="40,340,41,349" concept="1" />
-      <node id="6057591418743066522" at="44,7,45,37" concept="4" />
-      <node id="6057591418743066525" at="46,211,47,345" concept="1" />
-      <node id="6057591418743066533" at="47,345,48,340" concept="1" />
-      <node id="6057591418743066541" at="48,340,49,349" concept="1" />
-      <node id="6057591418743042056" at="17,37,22,9" concept="2" />
-      <node id="6057591418743065494" at="25,37,30,9" concept="2" />
-      <node id="6057591418743066493" at="37,37,42,9" concept="2" />
-      <node id="6057591418743066522" at="45,37,50,9" concept="2" />
-      <node id="6057591418743042056" at="15,91,23,7" concept="0" />
-      <node id="6057591418743065494" at="23,7,31,7" concept="0" />
-      <node id="6057591418743066493" at="35,91,43,7" concept="0" />
-      <node id="6057591418743066522" at="43,7,51,7" concept="0" />
-      <node id="6057591418743042050" at="15,0,33,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="6057591418743066490" at="35,0,53,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="6057591418743042058" at="18,203,21,349" />
-      <scope id="6057591418743065496" at="26,211,29,349" />
-      <scope id="6057591418743066495" at="38,203,41,349" />
-      <scope id="6057591418743066524" at="46,211,49,349" />
-      <scope id="6057591418743042056" at="16,7,22,9">
+      <node id="6057591418743042056" at="17,7,18,37" concept="4" />
+      <node id="6057591418743042125" at="19,82,20,345" concept="1" />
+      <node id="6057591418743048769" at="20,345,21,340" concept="1" />
+      <node id="6057591418743057908" at="21,340,22,349" concept="1" />
+      <node id="6057591418743065494" at="25,7,26,37" concept="4" />
+      <node id="6057591418743065497" at="27,90,28,345" concept="1" />
+      <node id="6057591418743065505" at="28,345,29,340" concept="1" />
+      <node id="6057591418743065513" at="29,340,30,349" concept="1" />
+      <node id="6057591418743066493" at="37,7,38,37" concept="4" />
+      <node id="6057591418743066496" at="39,82,40,345" concept="1" />
+      <node id="6057591418743066504" at="40,345,41,340" concept="1" />
+      <node id="6057591418743066512" at="41,340,42,349" concept="1" />
+      <node id="6057591418743066522" at="45,7,46,37" concept="4" />
+      <node id="6057591418743066525" at="47,90,48,345" concept="1" />
+      <node id="6057591418743066533" at="48,345,49,340" concept="1" />
+      <node id="6057591418743066541" at="49,340,50,349" concept="1" />
+      <node id="6057591418743042049" at="57,0,58,0" concept="5" trace="MsgStatement_2c00a533" />
+      <node id="6057591418743042049" at="58,0,59,0" concept="5" trace="LogLowLevelStatement_66a96b81" />
+      <node id="6057591418743042056" at="18,37,23,9" concept="2" />
+      <node id="6057591418743065494" at="26,37,31,9" concept="2" />
+      <node id="6057591418743066493" at="38,37,43,9" concept="2" />
+      <node id="6057591418743066522" at="46,37,51,9" concept="2" />
+      <node id="6057591418743042056" at="16,91,24,7" concept="0" />
+      <node id="6057591418743065494" at="24,7,32,7" concept="0" />
+      <node id="6057591418743066493" at="36,91,44,7" concept="0" />
+      <node id="6057591418743066522" at="44,7,52,7" concept="0" />
+      <node id="6057591418743042050" at="16,0,34,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="6057591418743066490" at="36,0,54,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="6057591418743042058" at="19,82,22,349" />
+      <scope id="6057591418743065496" at="27,90,30,349" />
+      <scope id="6057591418743066495" at="39,82,42,349" />
+      <scope id="6057591418743066524" at="47,90,50,349" />
+      <scope id="6057591418743042056" at="17,7,23,9">
         <var name="msg" id="6057591418743042056" />
       </scope>
-      <scope id="6057591418743065494" at="24,7,30,9">
+      <scope id="6057591418743065494" at="25,7,31,9">
         <var name="msg" id="6057591418743065494" />
       </scope>
-      <scope id="6057591418743066493" at="36,7,42,9">
+      <scope id="6057591418743066493" at="37,7,43,9">
         <var name="msg" id="6057591418743066493" />
       </scope>
-      <scope id="6057591418743066522" at="44,7,50,9">
+      <scope id="6057591418743066522" at="45,7,51,9">
         <var name="msg" id="6057591418743066522" />
       </scope>
-      <scope id="6057591418743042050" at="15,91,31,7" />
-      <scope id="6057591418743066490" at="35,91,51,7" />
-      <scope id="6057591418743042050" at="15,0,33,0">
+      <scope id="6057591418743042050" at="16,91,32,7" />
+      <scope id="6057591418743066490" at="36,91,52,7" />
+      <scope id="6057591418743042050" at="16,0,34,0">
         <var name="enclosingNode" id="6057591418743042050" />
         <var name="model" id="6057591418743042050" />
         <var name="newNode" id="6057591418743042050" />
         <var name="sampleNode" id="6057591418743042050" />
       </scope>
-      <scope id="6057591418743066490" at="35,0,53,0">
+      <scope id="6057591418743066490" at="36,0,54,0">
         <var name="enclosingNode" id="6057591418743066490" />
         <var name="model" id="6057591418743066490" />
         <var name="newNode" id="6057591418743066490" />
         <var name="sampleNode" id="6057591418743066490" />
       </scope>
-      <unit id="6057591418743042050" at="14,0,34,0" name="jetbrains.mps.baseLanguage.logging.actions.LogStatementConversions$NodeFactory_6057591418743042050" />
-      <unit id="6057591418743066490" at="34,0,54,0" name="jetbrains.mps.baseLanguage.logging.actions.LogStatementConversions$NodeFactory_6057591418743066490" />
-      <unit id="6057591418743042049" at="13,0,55,0" name="jetbrains.mps.baseLanguage.logging.actions.LogStatementConversions" />
+      <unit id="6057591418743042049" at="56,0,60,0" name="jetbrains.mps.baseLanguage.logging.actions.LogStatementConversions$AUX_7stlq1" />
+      <unit id="6057591418743042050" at="15,0,35,0" name="jetbrains.mps.baseLanguage.logging.actions.LogStatementConversions$NodeFactory_6057591418743042050" />
+      <unit id="6057591418743066490" at="35,0,55,0" name="jetbrains.mps.baseLanguage.logging.actions.LogStatementConversions$NodeFactory_6057591418743066490" />
+      <unit id="6057591418743042049" at="14,0,61,0" name="jetbrains.mps.baseLanguage.logging.actions.LogStatementConversions" />
     </file>
   </root>
 </debug-info>

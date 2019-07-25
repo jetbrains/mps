@@ -21,7 +21,7 @@ public class CompleteImmediately_OnlyStartsWithPattern_Test extends BaseTransfor
 
   @Test
   public void test_CompleteImmediately_OnlyStartsWithPattern() throws Throwable {
-    new CompleteImmediately_OnlyStartsWithPattern_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

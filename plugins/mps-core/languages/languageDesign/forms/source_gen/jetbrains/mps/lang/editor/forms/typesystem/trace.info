@@ -7,6 +7,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="TypesystemDescriptor.java">
       <unit at="8,0,16,0" name="jetbrains.mps.lang.editor.forms.typesystem.TypesystemDescriptor" />
@@ -14,60 +15,62 @@
   </root>
   <root nodeRef="r:dcdc35e4-9e23-4315-b822-9c8981abf5fa(jetbrains.mps.lang.editor.forms.typesystem)/5347446703374068849">
     <file name="CheckboxUI_Text_validity_NonTypesystemRule.java">
-      <node id="5347446703374071167" at="24,7,25,60" concept="5" />
-      <node id="5347446703374071167" at="25,60,26,61" concept="2" />
-      <node id="5347446703374071167" at="26,61,27,238" concept="5" />
-      <node id="5347446703374072706" at="31,7,32,60" concept="5" />
-      <node id="5347446703374072706" at="32,60,33,60" concept="2" />
-      <node id="5347446703374072706" at="33,60,34,237" concept="5" />
-      <node id="5347446703374074910" at="38,7,39,60" concept="5" />
-      <node id="5347446703374074910" at="39,60,40,251" concept="5" />
-      <node id="5347446703374068849" at="44,50,45,165" concept="6" />
-      <node id="5347446703374068849" at="47,68,48,102" concept="6" />
-      <node id="5347446703374068849" at="50,30,51,17" concept="6" />
-      <node id="5347446703374068849" at="20,0,22,0" concept="1" trace="CheckboxUI_Text_validity_NonTypesystemRule#()V" />
-      <node id="5347446703374068849" at="44,0,47,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="5347446703374068849" at="47,0,50,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="5347446703374068849" at="50,0,53,0" concept="4" trace="overrides#()Z" />
-      <node id="5347446703374074910" at="37,526,41,7" concept="0" />
-      <node id="5347446703374071167" at="23,181,28,7" concept="0" />
-      <node id="5347446703374072706" at="30,180,35,7" concept="0" />
-      <node id="5347446703374073004" at="36,5,42,5" concept="3" />
-      <node id="5347446703374068998" at="22,115,29,5" concept="3" />
-      <node id="5347446703374071981" at="29,5,36,5" concept="3" />
-      <node id="5347446703374068849" at="22,0,44,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="5347446703374068849" at="20,55,20,55" />
-      <scope id="5347446703374068849" at="44,50,45,165" />
-      <scope id="5347446703374068849" at="47,68,48,102" />
-      <scope id="5347446703374068849" at="50,30,51,17" />
-      <scope id="5347446703374068849" at="20,0,22,0" />
-      <scope id="5347446703374074910" at="38,7,40,251">
+      <node id="5347446703374071167" at="25,7,26,60" concept="5" />
+      <node id="5347446703374071167" at="26,60,27,61" concept="2" />
+      <node id="5347446703374071167" at="27,61,28,238" concept="5" />
+      <node id="5347446703374072706" at="32,7,33,60" concept="5" />
+      <node id="5347446703374072706" at="33,60,34,60" concept="2" />
+      <node id="5347446703374072706" at="34,60,35,237" concept="5" />
+      <node id="5347446703374074910" at="39,7,40,60" concept="5" />
+      <node id="5347446703374074910" at="40,60,41,251" concept="5" />
+      <node id="5347446703374068849" at="45,50,46,47" concept="6" />
+      <node id="5347446703374068849" at="48,68,49,102" concept="6" />
+      <node id="5347446703374068849" at="51,30,52,17" concept="6" />
+      <node id="5347446703374068849" at="56,0,57,0" concept="7" trace="CheckboxUI_Text_9f5ef45a" />
+      <node id="5347446703374068849" at="21,0,23,0" concept="1" trace="CheckboxUI_Text_validity_NonTypesystemRule#()V" />
+      <node id="5347446703374068849" at="45,0,48,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5347446703374068849" at="48,0,51,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="5347446703374068849" at="51,0,54,0" concept="4" trace="overrides#()Z" />
+      <node id="5347446703374074910" at="38,526,42,7" concept="0" />
+      <node id="5347446703374071167" at="24,181,29,7" concept="0" />
+      <node id="5347446703374072706" at="31,180,36,7" concept="0" />
+      <node id="5347446703374073004" at="37,5,43,5" concept="3" />
+      <node id="5347446703374068998" at="23,115,30,5" concept="3" />
+      <node id="5347446703374071981" at="30,5,37,5" concept="3" />
+      <node id="5347446703374068849" at="23,0,45,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="5347446703374068849" at="21,55,21,55" />
+      <scope id="5347446703374068849" at="45,50,46,47" />
+      <scope id="5347446703374068849" at="48,68,49,102" />
+      <scope id="5347446703374068849" at="51,30,52,17" />
+      <scope id="5347446703374068849" at="21,0,23,0" />
+      <scope id="5347446703374074910" at="39,7,41,251">
         <var name="_reporter_2309309498" id="5347446703374074910" />
         <var name="errorTarget" id="5347446703374074910" />
       </scope>
-      <scope id="5347446703374071167" at="24,7,27,238">
+      <scope id="5347446703374071167" at="25,7,28,238">
         <var name="_reporter_2309309498" id="5347446703374071167" />
         <var name="errorTarget" id="5347446703374071167" />
       </scope>
-      <scope id="5347446703374072706" at="31,7,34,237">
+      <scope id="5347446703374072706" at="32,7,35,237">
         <var name="_reporter_2309309498" id="5347446703374072706" />
         <var name="errorTarget" id="5347446703374072706" />
       </scope>
-      <scope id="5347446703374068849" at="44,0,47,0" />
-      <scope id="5347446703374068849" at="47,0,50,0">
+      <scope id="5347446703374068849" at="45,0,48,0" />
+      <scope id="5347446703374068849" at="48,0,51,0">
         <var name="argument" id="5347446703374068849" />
       </scope>
-      <scope id="5347446703374068849" at="50,0,53,0" />
-      <scope id="5347446703374073006" at="37,526,41,7" />
-      <scope id="5347446703374068999" at="23,181,28,7" />
-      <scope id="5347446703374071983" at="30,180,35,7" />
-      <scope id="5347446703374068850" at="22,115,42,5" />
-      <scope id="5347446703374068849" at="22,0,44,0">
+      <scope id="5347446703374068849" at="51,0,54,0" />
+      <scope id="5347446703374073006" at="38,526,42,7" />
+      <scope id="5347446703374068999" at="24,181,29,7" />
+      <scope id="5347446703374071983" at="31,180,36,7" />
+      <scope id="5347446703374068850" at="23,115,43,5" />
+      <scope id="5347446703374068849" at="23,0,45,0">
         <var name="status" id="5347446703374068849" />
         <var name="typeCheckingContext" id="5347446703374068849" />
         <var name="ui" id="5347446703374068849" />
       </scope>
-      <unit id="5347446703374068849" at="19,0,54,0" name="jetbrains.mps.lang.editor.forms.typesystem.CheckboxUI_Text_validity_NonTypesystemRule" />
+      <unit id="5347446703374068849" at="55,0,58,0" name="jetbrains.mps.lang.editor.forms.typesystem.CheckboxUI_Text_validity_NonTypesystemRule$AUX_6xi8tz" />
+      <unit id="5347446703374068849" at="20,0,59,0" name="jetbrains.mps.lang.editor.forms.typesystem.CheckboxUI_Text_validity_NonTypesystemRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="5347446703374068849" at="10,5,11,101" concept="5" />

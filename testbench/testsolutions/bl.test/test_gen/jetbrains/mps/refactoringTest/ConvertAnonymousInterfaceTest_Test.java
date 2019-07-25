@@ -34,7 +34,7 @@ public class ConvertAnonymousInterfaceTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_InterfaceTest() throws Throwable {
-    new ConvertAnonymousInterfaceTest_Test.TestBody(this).test_InterfaceTest();
+    new TestBody(this).test_InterfaceTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -32,19 +32,19 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeNotLegalStatementTheExpressionCheck6401638465588611410() throws Throwable {
-    new PropertySetterReturn_Test.TestBody(this).test_NodeNotLegalStatementTheExpressionCheck6401638465588611410();
+    new TestBody(this).test_NodeNotLegalStatementTheExpressionCheck6401638465588611410();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305744070() throws Throwable {
-    new PropertySetterReturn_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305744070();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305744070();
   }
   @Test
   public void test_NodeNoReturnValueExpectedCheck6696611297029670760() throws Throwable {
-    new PropertySetterReturn_Test.TestBody(this).test_NodeNoReturnValueExpectedCheck6696611297029670760();
+    new TestBody(this).test_NodeNoReturnValueExpectedCheck6696611297029670760();
   }
   @Test
   public void test_ErrorMessagesCheck5772383102105107061() throws Throwable {
-    new PropertySetterReturn_Test.TestBody(this).test_ErrorMessagesCheck5772383102105107061();
+    new TestBody(this).test_ErrorMessagesCheck5772383102105107061();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

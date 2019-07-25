@@ -15,7 +15,6 @@ import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
@@ -24,6 +23,8 @@ import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
 import jetbrains.mps.generator.impl.WeaveContextImpl;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Mapping_mc_concept_switch extends MapConfigBase implements TemplateMappingConfiguration {
@@ -31,8 +32,8 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
   private final Collection<TemplateWeavingRule> weavings;
   public Mapping_mc_concept_switch(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1717381292179408189"), "mc_concept_switch", model, false);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new Mapping_mc_concept_switch.ReductionRule0());
-    weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new Mapping_mc_concept_switch.WeavingRule0());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0());
+    weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new WeavingRule0());
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
@@ -48,7 +49,7 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6039268229364247704"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6039268229364247704"), AUX_9bhay9.ConceptSwitchStatement_81b215c7, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -59,7 +60,7 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
   }
   /*package*/ static final class WeavingRule0 extends WeaveRuleBase implements TemplateWeavingRule {
     public WeavingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945740913"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945740913"), AUX_9bhay9.ConceptSwitchStatement_81b215c7, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -76,5 +77,9 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
       Collection<SNode> tlist1 = environment.prepareWeave(weaveContext, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945759568")).weaveTemplate(new Template_weave_ConceptSwitchMap());
       return tlist1 != null && !(tlist1.isEmpty());
     }
+  }
+
+  private static final class AUX_9bhay9 {
+    /*package*/ static final SConcept ConceptSwitchStatement_81b215c7 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
   }
 }

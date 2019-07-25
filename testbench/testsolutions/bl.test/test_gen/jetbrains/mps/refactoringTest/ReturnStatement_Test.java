@@ -32,15 +32,15 @@ public class ReturnStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_alwaysReturn() throws Throwable {
-    new ReturnStatement_Test.TestBody(this).test_alwaysReturn();
+    new TestBody(this).test_alwaysReturn();
   }
   @Test
   public void test_retunInAnonymousClass() throws Throwable {
-    new ReturnStatement_Test.TestBody(this).test_retunInAnonymousClass();
+    new TestBody(this).test_retunInAnonymousClass();
   }
   @Test
   public void test_notAlwaysReturn() throws Throwable {
-    new ReturnStatement_Test.TestBody(this).test_notAlwaysReturn();
+    new TestBody(this).test_notAlwaysReturn();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

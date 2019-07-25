@@ -35,9 +35,9 @@ import jetbrains.mps.make.MakeNotification;
 public class ReloadManagerComponent extends ReloadManager implements ApplicationComponent {
   private static final Logger LOG = LogManager.getLogger(ReloadManagerComponent.class);
   private final ProjectManager myProjectManager;
-  private final IMakeNotificationListener myMakeListener = new ReloadManagerComponent.NotReloadingOnMakeListener();
+  private final IMakeNotificationListener myMakeListener = new NotReloadingOnMakeListener();
   private final List<ReloadListener> myReloadListeners = ListSequence.fromList(new ArrayList<ReloadListener>());
-  private final ReloadManagerComponent.ReloadSessionBroker myReloadSessionBroker = new ReloadManagerComponent.ReloadSessionBroker();
+  private final ReloadSessionBroker myReloadSessionBroker = new ReloadSessionBroker();
   private final MergingUpdateQueue myTaskQueue = new MergingUpdateQueue("Reload Manager Queue", 500, true, null, null, null, true);
   private final Object myUpdateId = new Object();
   private final AtomicInteger mySuspendCount = new AtomicInteger(0);

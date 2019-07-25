@@ -83,15 +83,15 @@ public class MoveNodesUtil {
     }
   }
 
-  public static void moveTo(final MPSProject project, final String refactoringName, final Map<MoveNodesUtil.NodeProcessor, List<SNode>> processorToMoveRoots) {
+  public static void moveTo(final MPSProject project, final String refactoringName, final Map<NodeProcessor, List<SNode>> processorToMoveRoots) {
     moveTo(project, refactoringName, processorToMoveRoots, new DefaultRefactoringUI(project));
   }
 
-  public static void moveTo(final Project project, final String refactoringName, final Map<MoveNodesUtil.NodeProcessor, List<SNode>> processorToMoveRoots, RefactoringUI refactoringUI) {
+  public static void moveTo(final Project project, final String refactoringName, final Map<NodeProcessor, List<SNode>> processorToMoveRoots, RefactoringUI refactoringUI) {
 
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        for (IMapping<MoveNodesUtil.NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
+        for (IMapping<NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
           if (!(mapping.key().isValid(mapping.value()))) {
             throw new IllegalArgumentException();
           }
@@ -103,8 +103,8 @@ public class MoveNodesUtil {
     final List<SNode> allNodes = ListSequence.fromList(new ArrayList<SNode>());
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        for (IMapping<MoveNodesUtil.NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
-          MoveNodesUtil.NodeProcessor processor = mapping.key();
+        for (IMapping<NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
+          NodeProcessor processor = mapping.key();
           for (SNode moveRoot : ListSequence.fromList(mapping.value())) {
             List<SNode> nodesToSearch = processor.getNodesToSearch(moveRoot);
             MapSequence.fromMap(moveRootsToDescendants).put(SNodeOperations.getPointer(moveRoot), ListSequence.fromList(nodesToSearch).select(new ISelector<SNode, SNodeReference>() {
@@ -117,7 +117,7 @@ public class MoveNodesUtil {
         }
       }
     });
-    final MoveNodesUtil.ListIndex<SNodeReference> nodeChangesCorrespondence = new MoveNodesUtil.ListIndex<SNodeReference>(ListSequence.fromList(allNodes).select(new ISelector<SNode, SNodeReference>() {
+    final ListIndex<SNodeReference> nodeChangesCorrespondence = new ListIndex<SNodeReference>(ListSequence.fromList(allNodes).select(new ISelector<SNode, SNodeReference>() {
       public SNodeReference select(SNode it) {
         return SNodeOperations.getPointer(it);
       }
@@ -146,9 +146,9 @@ public class MoveNodesUtil {
       public void doRefactor(final Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, SNode, SNode, SNode>> participantStates, RefactoringSession refactoringSession) {
         myRefactoringSession = refactoringSession;
 
-        for (IMapping<MoveNodesUtil.NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
+        for (IMapping<NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
           List<SNode> moveRoots = mapping.value();
-          MoveNodesUtil.NodeProcessor processor = mapping.key();
+          NodeProcessor processor = mapping.key();
 
           for (SNode moveRoot : ListSequence.fromList(moveRoots)) {
             MapSequence.fromMap(removeOldRoots).put(moveRoot, RefactoringParticipant.KeepOldNodes.max(ListSequence.fromList(MapSequence.fromMap(moveRootsToDescendants).get(SNodeOperations.getPointer(moveRoot))).translate(new ITranslator2<SNodeReference, RefactoringParticipant.KeepOldNodes>() {
@@ -176,7 +176,7 @@ public class MoveNodesUtil {
       }
       @Override
       public void doCleanup() {
-        for (MoveNodesUtil.NodeProcessor processor : SetSequence.fromSet(MapSequence.fromMap(processorToMoveRoots).keySet())) {
+        for (NodeProcessor processor : SetSequence.fromSet(MapSequence.fromMap(processorToMoveRoots).keySet())) {
           processor.removeAfterRefactoring(removeOldRoots, myRefactoringSession);
         }
       }
@@ -199,7 +199,7 @@ public class MoveNodesUtil {
 
   }
 
-  public static class NodeCreatingProcessor extends MoveNodesUtil.NodeProcessor {
+  public static class NodeCreatingProcessor extends NodeProcessor {
     protected NodeLocation myNodeLocation;
     protected Project myProject;
     public NodeCreatingProcessor(NodeLocation location, Project project) {
@@ -231,7 +231,7 @@ public class MoveNodesUtil {
     }
   }
 
-  public static class ExistingTargetProcessor extends MoveNodesUtil.NodeProcessor {
+  public static class ExistingTargetProcessor extends NodeProcessor {
     private SNodeReference myTarget;
     private Project myProject;
     public ExistingTargetProcessor(SNodeReference target, Project project) {

@@ -25,7 +25,7 @@ public class ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNo
 
   @Test
   public void test_ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode() throws Throwable {
-    new ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

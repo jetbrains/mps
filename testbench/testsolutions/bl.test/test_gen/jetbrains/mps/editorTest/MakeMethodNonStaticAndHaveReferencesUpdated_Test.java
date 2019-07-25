@@ -21,7 +21,7 @@ public class MakeMethodNonStaticAndHaveReferencesUpdated_Test extends BaseTransf
 
   @Test
   public void test_MakeMethodNonStaticAndHaveReferencesUpdated() throws Throwable {
-    new MakeMethodNonStaticAndHaveReferencesUpdated_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

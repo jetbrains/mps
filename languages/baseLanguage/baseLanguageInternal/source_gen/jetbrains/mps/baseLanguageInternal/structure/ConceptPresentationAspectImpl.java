@@ -19,6 +19,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ExtractStaticMethod_CallExpression;
   private ConceptPresentation props_ExtractToConstantExpression;
   private ConceptPresentation props_ExtractToConstantRefExpression;
+  private ConceptPresentation props_ExtractToSingleConstantExpression;
   private ConceptPresentation props_InternalAnonymousClass;
   private ConceptPresentation props_InternalAnonymousClassCreator;
   private ConceptPresentation props_InternalClassCreator;
@@ -112,6 +113,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ExtractToConstantRefExpression = cpb.create();
         }
         return props_ExtractToConstantRefExpression;
+      case LanguageConceptSwitch.ExtractToSingleConstantExpression:
+        if (props_ExtractToSingleConstantExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("extract to single constant");
+          props_ExtractToSingleConstantExpression = cpb.create();
+        }
+        return props_ExtractToSingleConstantExpression;
       case LanguageConceptSwitch.InternalAnonymousClass:
         if (props_InternalAnonymousClass == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

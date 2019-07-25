@@ -22,7 +22,7 @@ public class DeleteStaticMethodCallClassifierTwoStep_Test extends BaseTransforma
 
   @Test
   public void test_DeleteStaticMethodCallClassifierTwoStep() throws Throwable {
-    new DeleteStaticMethodCallClassifierTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

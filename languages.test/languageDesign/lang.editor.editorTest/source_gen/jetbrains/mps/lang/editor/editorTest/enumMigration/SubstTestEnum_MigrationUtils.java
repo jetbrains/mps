@@ -33,5 +33,5 @@ public class SubstTestEnum_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_xixabb_a0a0a = EnumerationLiteralsIndex.build(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, 0xd4944c0b03f658dL, 0xd4944c0b03f65d3L, 0xd4944c0b03f65d6L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_xixabb_a0a0a = EnumerationLiteralsIndex.build(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, 0xd4944c0b03f658dL, 0xd4944c0b03f65d3L, 0xd4944c0b03f65d6L);
 }

@@ -66,7 +66,7 @@ public class CheckProjectStructure extends BaseCheckerTest {
     BaseCheckModulesTest.getContextProject().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         GenerationDependenciesCache genDeps = new GenerationDependenciesCache();
-        for (SModel sm : new CheckProjectStructure.TestsModelExtractor().excludeDoNoGenerate().excludeGenerators().getModels(myModule)) {
+        for (SModel sm : new TestsModelExtractor().excludeDoNoGenerate().excludeGenerators().getModels(myModule)) {
           SModule module = sm.getModule();
           if (module == null) {
             errors.add("Model without a module: " + sm.getReference().toString());

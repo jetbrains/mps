@@ -23,6 +23,7 @@ import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class QueriesGenerated extends QueryProviderBase {
@@ -30,7 +31,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, "jetbrains.mps.baseLanguage.money.structure.MoneyCreator"));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), AUX_x583g4.MoneyCreator_163dfa97);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     return Util.isPlusMinusExpressionMoneyExpression(_context.getNode());
@@ -55,10 +56,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return new_node;
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, "jetbrains.mps.baseLanguage.money.structure.MoneyCreator")), MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473383db1L, "amount"));
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), AUX_x583g4.MoneyCreator_163dfa97), MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473383db1L, "amount"));
   }
   public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, "jetbrains.mps.baseLanguage.money.structure.MoneyCreator")), MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473390f4aL, "currency"));
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), AUX_x583g4.MoneyCreator_163dfa97), MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473390f4aL, "currency"));
   }
   public static SNode sourceNodeQuery_0_4(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"));
@@ -96,11 +97,11 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("1187347245210", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1187344468783", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1187349818788", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1187344489147", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1187344492617", new QueriesGenerated.RRC(i++));
+    rrcMethods.put("1187347245210", new RRC(i++));
+    rrcMethods.put("1187344468783", new RRC(i++));
+    rrcMethods.put("1187349818788", new RRC(i++));
+    rrcMethods.put("1187344489147", new RRC(i++));
+    rrcMethods.put("1187344492617", new RRC(i++));
   }
   @Override
   @NotNull
@@ -137,21 +138,21 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("1187347202363", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1187347224873", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2110953167961230052", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2110953167961228859", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888347510", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888349960", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888375666", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888321098", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888394951", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1187350367397", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888412279", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1187350349293", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888432992", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888379132", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1217888377424", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("1187347202363", new SNQ(i++));
+    snqMethods.put("1187347224873", new SNQ(i++));
+    snqMethods.put("2110953167961230052", new SNQ(i++));
+    snqMethods.put("2110953167961228859", new SNQ(i++));
+    snqMethods.put("1217888347510", new SNQ(i++));
+    snqMethods.put("1217888349960", new SNQ(i++));
+    snqMethods.put("1217888375666", new SNQ(i++));
+    snqMethods.put("1217888321098", new SNQ(i++));
+    snqMethods.put("1217888394951", new SNQ(i++));
+    snqMethods.put("1187350367397", new SNQ(i++));
+    snqMethods.put("1217888412279", new SNQ(i++));
+    snqMethods.put("1187350349293", new SNQ(i++));
+    snqMethods.put("1217888432992", new SNQ(i++));
+    snqMethods.put("1217888379132", new SNQ(i++));
+    snqMethods.put("1217888377424", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -204,5 +205,9 @@ public class QueriesGenerated extends QueryProviderBase {
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SConcept MoneyCreator_163dfa97 = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, "jetbrains.mps.baseLanguage.money.structure.MoneyCreator");
   }
 }

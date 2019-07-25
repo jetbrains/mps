@@ -23,7 +23,7 @@ public class TestSubstitute_NamedMenu_Test extends BaseTransformationTest {
 
   @Test
   public void test_TestSubstitute_NamedMenu() throws Throwable {
-    new TestSubstitute_NamedMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -32,21 +32,21 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 
 public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> {
-  public static final Key<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask");
+  public static final Key<MakeNodePointers_BeforeTask_RunTask> KEY = Key.create("jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask");
 
   public MakeNodePointers_BeforeTask() {
     super("MakeNodePointers", "Make");
   }
 
-  protected MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask createTaskImpl() {
-    return new MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask();
+  protected MakeNodePointers_BeforeTask_RunTask createTaskImpl() {
+    return new MakeNodePointers_BeforeTask_RunTask();
   }
 
-  public Key<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> getId() {
+  public Key<MakeNodePointers_BeforeTask_RunTask> getId() {
     return KEY;
   }
 
-  public static class MakeNodePointers_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<MakeNodePointers_BeforeTask.MakeNodePointers_BeforeTask_RunTask> {
+  public static class MakeNodePointers_BeforeTask_RunTask extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<MakeNodePointers_BeforeTask_RunTask> {
     private List<SNodeReference> myNodePointers;
 
     public MakeNodePointers_BeforeTask_RunTask() {

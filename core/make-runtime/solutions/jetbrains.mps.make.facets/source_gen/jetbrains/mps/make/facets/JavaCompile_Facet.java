@@ -50,8 +50,8 @@ public class JavaCompile_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.make.facets.JavaCompile");
   public JavaCompile_Facet() {
-    ListSequence.fromList(targets).addElement(new JavaCompile_Facet.Target_compile());
-    ListSequence.fromList(targets).addElement(new JavaCompile_Facet.Target_auxCompile());
+    ListSequence.fromList(targets).addElement(new Target_compile());
+    ListSequence.fromList(targets).addElement(new Target_auxCompile());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -69,7 +69,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new JavaCompile_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_compile implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.JavaCompile.compile");
@@ -182,8 +182,8 @@ public class JavaCompile_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 300;
     }
-    public static JavaCompile_Facet.Target_compile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, JavaCompile_Facet.Target_compile.Parameters.class);
+    public static Target_compile.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_compile.Parameters.class);
     }
     public static class Parameters extends MultiTuple._3<Boolean, Boolean, JavaCompilerOptions> {
       public Parameters() {
@@ -226,7 +226,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
           switch (0) {
             case 0:
               // FIXME project property is no longer needed (we take project from make session), remove after 2017.2 
-              if (Boolean.TRUE.equals(JavaCompile_Facet.Target_compile.vars(pa.global()).skipCompilation())) {
+              if (Boolean.TRUE.equals(Target_compile.vars(pa.global()).skipCompilation())) {
                 _output_wf1ya0_a0b = Sequence.fromIterable(_output_wf1ya0_a0b).concat(Sequence.fromIterable(input));
                 return new IResult.SUCCESS(_output_wf1ya0_a0b);
               }
@@ -342,8 +342,8 @@ public class JavaCompile_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 100;
     }
-    public static JavaCompile_Facet.Target_auxCompile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, JavaCompile_Facet.Target_auxCompile.Parameters.class);
+    public static Target_auxCompile.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_auxCompile.Parameters.class);
     }
     public static class Parameters extends MultiTuple._2<Project, Boolean> {
       public Parameters() {
@@ -373,7 +373,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.JavaCompile.compile");
         if (properties.hasProperties(name)) {
-          JavaCompile_Facet.Target_compile.Parameters props = properties.properties(name, JavaCompile_Facet.Target_compile.Parameters.class);
+          Target_compile.Parameters props = properties.properties(name, Target_compile.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.JavaCompile.compile.compiledAnything", String.valueOf(props.compiledAnything()));
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.JavaCompile.compile.skipCompilation", String.valueOf(props.skipCompilation()));
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.JavaCompile.compile.options", null);
@@ -382,7 +382,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.JavaCompile.auxCompile");
         if (properties.hasProperties(name)) {
-          JavaCompile_Facet.Target_auxCompile.Parameters props = properties.properties(name, JavaCompile_Facet.Target_auxCompile.Parameters.class);
+          Target_auxCompile.Parameters props = properties.properties(name, Target_auxCompile.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.JavaCompile.auxCompile.unused", null);
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.JavaCompile.auxCompile.skipAuxCompile", String.valueOf(props.skipAuxCompile()));
         }
@@ -392,7 +392,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.JavaCompile.compile");
-          JavaCompile_Facet.Target_compile.Parameters props = properties.properties(name, JavaCompile_Facet.Target_compile.Parameters.class);
+          Target_compile.Parameters props = properties.properties(name, Target_compile.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.JavaCompile.compile.compiledAnything")) {
             props.compiledAnything(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.make.facets.JavaCompile.compile.compiledAnything")));
           }
@@ -405,7 +405,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
         }
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.JavaCompile.auxCompile");
-          JavaCompile_Facet.Target_auxCompile.Parameters props = properties.properties(name, JavaCompile_Facet.Target_auxCompile.Parameters.class);
+          Target_auxCompile.Parameters props = properties.properties(name, Target_auxCompile.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.JavaCompile.auxCompile.unused")) {
             props.unused(null);
           }

@@ -74,6 +74,6 @@ public class Template_language_descriptor extends TemplateDeclarationBase implem
     rv[0] = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language");
     return rv;
   }
-  private static SNodePointer template_xu4w5k_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1698302279987411125");
-  private static SNodePointer insertMacro_xu4w5k_b0a0a1a3a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1509962061695074411");
+  private static final SNodePointer template_xu4w5k_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1698302279987411125");
+  private static final SNodePointer insertMacro_xu4w5k_b0a0a1a3a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1509962061695074411");
 }

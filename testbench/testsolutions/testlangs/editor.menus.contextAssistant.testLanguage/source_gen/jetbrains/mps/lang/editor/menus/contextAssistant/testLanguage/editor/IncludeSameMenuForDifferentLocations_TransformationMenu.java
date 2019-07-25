@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IncludeSameMenuForDifferentLocations_TransformationMenu extends TransformationMenuBase {
@@ -49,8 +50,8 @@ public class IncludeSameMenuForDifferentLocations_TransformationMenu extends Tra
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new IncludeSameMenuForDifferentLocations_TransformationMenu.TMP_Include_4zygkz_a0());
-      result.add(new IncludeSameMenuForDifferentLocations_TransformationMenu.TMP_Include_4zygkz_b0());
+      result.add(new TMP_Include_4zygkz_a0());
+      result.add(new TMP_Include_4zygkz_b0());
     }
     return result;
   }
@@ -74,7 +75,7 @@ public class IncludeSameMenuForDifferentLocations_TransformationMenu extends Tra
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x41299cab94ea85efL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.IncludeSameMenuForDifferentLocations"), "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuWithDifferentLocations");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_4zygkz.IncludeSameMenuForDifferentLocations_6d29b76, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuWithDifferentLocations");
     }
 
   }
@@ -97,7 +98,7 @@ public class IncludeSameMenuForDifferentLocations_TransformationMenu extends Tra
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x41299cab94ea85efL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.IncludeSameMenuForDifferentLocations"), "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuWithDifferentLocations");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_4zygkz.IncludeSameMenuForDifferentLocations_6d29b76, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuWithDifferentLocations");
     }
 
     @Nullable
@@ -105,5 +106,9 @@ public class IncludeSameMenuForDifferentLocations_TransformationMenu extends Tra
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.SUBSTITUTE;
     }
+  }
+
+  private static final class AUX_4zygkz {
+    /*package*/ static final SConcept IncludeSameMenuForDifferentLocations_6d29b76 = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x41299cab94ea85efL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.IncludeSameMenuForDifferentLocations");
   }
 }

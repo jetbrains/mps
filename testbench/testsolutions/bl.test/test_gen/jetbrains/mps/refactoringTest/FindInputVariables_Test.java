@@ -34,7 +34,7 @@ public class FindInputVariables_Test extends BaseTransformationTest {
 
   @Test
   public void test_inputVariablesTest() throws Throwable {
-    new FindInputVariables_Test.TestBody(this).test_inputVariablesTest();
+    new TestBody(this).test_inputVariablesTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

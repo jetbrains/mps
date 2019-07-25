@@ -26,7 +26,7 @@ public class DeleteLocalVariableDeclarationInitializerFromEqualsTwoStep_Test ext
 
   @Test
   public void test_DeleteLocalVariableDeclarationInitializerFromEqualsTwoStep() throws Throwable {
-    new DeleteLocalVariableDeclarationInitializerFromEqualsTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

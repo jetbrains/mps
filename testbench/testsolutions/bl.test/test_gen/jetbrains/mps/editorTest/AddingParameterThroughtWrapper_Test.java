@@ -21,7 +21,7 @@ public class AddingParameterThroughtWrapper_Test extends BaseTransformationTest 
 
   @Test
   public void test_AddingParameterThroughtWrapper() throws Throwable {
-    new AddingParameterThroughtWrapper_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

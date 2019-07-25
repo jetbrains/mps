@@ -26,6 +26,7 @@ import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TwoStepDeleteDefaultChildContainer_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -121,7 +122,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new TwoStepDeleteDefaultChildContainer_EditorBuilder_a.singleOptionalChildSingleRoleHandler_9pl8qs_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e1b6642L, "singleOptionalChild"), getEditorContext());
+    SingleRoleCellProvider provider = new singleOptionalChildSingleRoleHandler_9pl8qs_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e1b6642L, "singleOptionalChild"), getEditorContext());
     return provider.createCell();
   }
   private static class singleOptionalChildSingleRoleHandler_9pl8qs_c2a extends SingleRoleCellProvider {
@@ -205,7 +206,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new TwoStepDeleteDefaultChildContainer_EditorBuilder_a.singleRequiredChildSingleRoleHandler_9pl8qs_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e1b6644L, "singleRequiredChild"), getEditorContext());
+    SingleRoleCellProvider provider = new singleRequiredChildSingleRoleHandler_9pl8qs_g2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e1b6644L, "singleRequiredChild"), getEditorContext());
     return provider.createCell();
   }
   private static class singleRequiredChildSingleRoleHandler_9pl8qs_g2a extends SingleRoleCellProvider {
@@ -289,7 +290,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new TwoStepDeleteDefaultChildContainer_EditorBuilder_a.multipleChildListHandler_9pl8qs_k2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new multipleChildListHandler_9pl8qs_k2a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_multipleChild");
     Style style = new StyleImpl();
@@ -317,7 +318,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
       return MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e1b6647L, "multipleChild");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d5eL, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteDefaultChild");
+      return AUX_43xfq2.TwoStepDeleteDefaultChild_437fe039;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -377,7 +378,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new TwoStepDeleteDefaultChildContainer_EditorBuilder_a.labelChildSingleRoleHandler_9pl8qs_o2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e268c51L, "labelChild"), getEditorContext());
+    SingleRoleCellProvider provider = new labelChildSingleRoleHandler_9pl8qs_o2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e268c51L, "labelChild"), getEditorContext());
     return provider.createCell();
   }
   private static class labelChildSingleRoleHandler_9pl8qs_o2a extends SingleRoleCellProvider {
@@ -461,7 +462,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new TwoStepDeleteDefaultChildContainer_EditorBuilder_a.cellCollectionChildSingleRoleHandler_9pl8qs_s2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e28ba80L, "cellCollectionChild"), getEditorContext());
+    SingleRoleCellProvider provider = new cellCollectionChildSingleRoleHandler_9pl8qs_s2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x1139cad76e28ba80L, "cellCollectionChild"), getEditorContext());
     return provider.createCell();
   }
   private static class cellCollectionChildSingleRoleHandler_9pl8qs_s2a extends SingleRoleCellProvider {
@@ -545,7 +546,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new TwoStepDeleteDefaultChildContainer_EditorBuilder_a.childWithAttributeSingleRoleHandler_9pl8qs_w2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x2198294affa4d1e4L, "childWithAttribute"), getEditorContext());
+    SingleRoleCellProvider provider = new childWithAttributeSingleRoleHandler_9pl8qs_w2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d024c706L, 0x2198294affa4d1e4L, "childWithAttribute"), getEditorContext());
     return provider.createCell();
   }
   private static class childWithAttributeSingleRoleHandler_9pl8qs_w2a extends SingleRoleCellProvider {
@@ -611,5 +612,9 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_43xfq2 {
+    /*package*/ static final SConcept TwoStepDeleteDefaultChild_437fe039 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d5eL, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteDefaultChild");
   }
 }

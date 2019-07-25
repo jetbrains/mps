@@ -32,23 +32,23 @@ public class WildCardsInAnonymousClassCreators_Test extends BaseTransformationTe
 
   @Test
   public void test_ErrorMessagesCheck8187342170694474094() throws Throwable {
-    new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_ErrorMessagesCheck8187342170694474094();
+    new TestBody(this).test_ErrorMessagesCheck8187342170694474094();
   }
   @Test
   public void test_NodeSupertypeMayNotSpecifyCheck6923385624928216045() throws Throwable {
-    new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624928216045();
+    new TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624928216045();
   }
   @Test
   public void test_NodeTheMethodsReturnTypeIsCheck5450156852673963011() throws Throwable {
-    new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_NodeTheMethodsReturnTypeIsCheck5450156852673963011();
+    new TestBody(this).test_NodeTheMethodsReturnTypeIsCheck5450156852673963011();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170694475514() throws Throwable {
-    new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_ErrorMessagesCheck8187342170694475514();
+    new TestBody(this).test_ErrorMessagesCheck8187342170694475514();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170694479318() throws Throwable {
-    new WildCardsInAnonymousClassCreators_Test.TestBody(this).test_ErrorMessagesCheck8187342170694479318();
+    new TestBody(this).test_ErrorMessagesCheck8187342170694479318();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

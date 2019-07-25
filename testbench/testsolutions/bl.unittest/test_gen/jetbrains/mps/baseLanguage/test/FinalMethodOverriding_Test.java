@@ -32,23 +32,23 @@ public class FinalMethodOverriding_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTheMethodCannotOverrideCheck6091751241368225336() throws Throwable {
-    new FinalMethodOverriding_Test.TestBody(this).test_NodeTheMethodCannotOverrideCheck6091751241368225336();
+    new TestBody(this).test_NodeTheMethodCannotOverrideCheck6091751241368225336();
   }
   @Test
   public void test_ErrorMessagesCheck7471623575883346737() throws Throwable {
-    new FinalMethodOverriding_Test.TestBody(this).test_ErrorMessagesCheck7471623575883346737();
+    new TestBody(this).test_ErrorMessagesCheck7471623575883346737();
   }
   @Test
   public void test_NodePackageProtectedMethodCheck6091751241368225027() throws Throwable {
-    new FinalMethodOverriding_Test.TestBody(this).test_NodePackageProtectedMethodCheck6091751241368225027();
+    new TestBody(this).test_NodePackageProtectedMethodCheck6091751241368225027();
   }
   @Test
   public void test_NodeTheMethodCannotOverrideCheck6091751241368225029() throws Throwable {
-    new FinalMethodOverriding_Test.TestBody(this).test_NodeTheMethodCannotOverrideCheck6091751241368225029();
+    new TestBody(this).test_NodeTheMethodCannotOverrideCheck6091751241368225029();
   }
   @Test
   public void test_ErrorMessagesCheck7471623575883519712() throws Throwable {
-    new FinalMethodOverriding_Test.TestBody(this).test_ErrorMessagesCheck7471623575883519712();
+    new TestBody(this).test_ErrorMessagesCheck7471623575883519712();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

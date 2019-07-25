@@ -34,7 +34,7 @@ public class ConvertAnonymousWithParameterReference_Test extends BaseTransformat
 
   @Test
   public void test_WithParameterReferenceTest() throws Throwable {
-    new ConvertAnonymousWithParameterReference_Test.TestBody(this).test_WithParameterReferenceTest();
+    new TestBody(this).test_WithParameterReferenceTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

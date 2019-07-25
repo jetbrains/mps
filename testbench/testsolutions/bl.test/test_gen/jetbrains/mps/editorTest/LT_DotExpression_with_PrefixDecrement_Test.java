@@ -21,7 +21,7 @@ public class LT_DotExpression_with_PrefixDecrement_Test extends BaseTransformati
 
   @Test
   public void test_LT_DotExpression_with_PrefixDecrement() throws Throwable {
-    new LT_DotExpression_with_PrefixDecrement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

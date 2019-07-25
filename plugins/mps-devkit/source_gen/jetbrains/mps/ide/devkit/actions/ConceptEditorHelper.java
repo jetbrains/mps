@@ -11,13 +11,14 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConceptEditorHelper {
   public static List<SConcept> getAvailableConceptAspects(SLanguage l, SNode node) {
@@ -32,10 +33,10 @@ public class ConceptEditorHelper {
       if (!(((SConcept) c).isRootable())) {
         continue;
       }
-      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(c), MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect")))) {
+      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(c), AUX_bp9td.IConceptAspect_bb65b752))) {
         continue;
       }
-      if (((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.castConcept(c, MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect"))), MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect"), SMethodTrimmedId.create("canBeAppliedToNode", null, "7IH442d05tK"), node))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.castConcept(c, AUX_bp9td.IConceptAspect_bb65b752)), AUX_bp9td.IConceptAspect_bb65b752, SMethodTrimmedId.create("canBeAppliedToNode", null, "7IH442d05tK"), node))) {
         ListSequence.fromList(result).addElement(((SConcept) c));
       }
     }
@@ -56,5 +57,9 @@ public class ConceptEditorHelper {
         return (conceptIndex == -1 ? conceptOrder.length : conceptIndex);
       }
     }, true).toListSequence();
+  }
+
+  private static final class AUX_bp9td {
+    /*package*/ static final SInterfaceConcept IConceptAspect_bb65b752 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
   }
 }

@@ -36,7 +36,7 @@ public class ExtractFromAnonymous_Test extends BaseTransformationTest {
 
   @Test
   public void test_ExtractFromAnonymous() throws Throwable {
-    new ExtractFromAnonymous_Test.TestBody(this).test_ExtractFromAnonymous();
+    new TestBody(this).test_ExtractFromAnonymous();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

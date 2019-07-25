@@ -22,7 +22,7 @@ public class Comment_DeleteMultipleRoleNodeInsideComment_Test extends BaseTransf
 
   @Test
   public void test_Comment_DeleteMultipleRoleNodeInsideComment() throws Throwable {
-    new Comment_DeleteMultipleRoleNodeInsideComment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

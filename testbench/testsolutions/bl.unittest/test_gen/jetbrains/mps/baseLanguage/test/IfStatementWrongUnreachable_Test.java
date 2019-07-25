@@ -32,15 +32,15 @@ public class IfStatementWrongUnreachable_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck1217864879944() throws Throwable {
-    new IfStatementWrongUnreachable_Test.TestBody(this).test_ErrorMessagesCheck1217864879944();
+    new TestBody(this).test_ErrorMessagesCheck1217864879944();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck6923385624927388248() throws Throwable {
-    new IfStatementWrongUnreachable_Test.TestBody(this).test_NodeUnreachableNodeErrorCheck6923385624927388248();
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck6923385624927388248();
   }
   @Test
   public void test_ErrorMessagesCheck1217864892290() throws Throwable {
-    new IfStatementWrongUnreachable_Test.TestBody(this).test_ErrorMessagesCheck1217864892290();
+    new TestBody(this).test_ErrorMessagesCheck1217864892290();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -27,7 +27,7 @@ public class TestEditorMenuTraceEnumPropertyRegularEditor_Test extends BaseTrans
 
   @Test
   public void test_TestEditorMenuTraceEnumPropertyRegularEditor() throws Throwable {
-    new TestEditorMenuTraceEnumPropertyRegularEditor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

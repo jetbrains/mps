@@ -19,7 +19,7 @@ public class TranslatingSequence<U, V> extends AbstractChainedSequence<U, V> imp
   }
   @Override
   public Iterator<V> iterator() {
-    return new TranslatingSequence.TranslatingIterator();
+    return new TranslatingIterator();
   }
   private class TranslatingIterator implements Iterator<V> {
     private Iterator<U> inputIt;

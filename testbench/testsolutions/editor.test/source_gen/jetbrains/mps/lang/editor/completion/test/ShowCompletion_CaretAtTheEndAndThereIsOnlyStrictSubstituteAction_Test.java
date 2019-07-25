@@ -24,7 +24,7 @@ public class ShowCompletion_CaretAtTheEndAndThereIsOnlyStrictSubstituteAction_Te
 
   @Test
   public void test_ShowCompletion_CaretAtTheEndAndThereIsOnlyStrictSubstituteAction() throws Throwable {
-    new ShowCompletion_CaretAtTheEndAndThereIsOnlyStrictSubstituteAction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -28,7 +28,7 @@ public class ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_T
 
   @Test
   public void test_ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu() throws Throwable {
-    new ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

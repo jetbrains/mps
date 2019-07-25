@@ -23,7 +23,7 @@ public class DeleteEnumImplementsTwoStep_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteEnumImplementsTwoStep() throws Throwable {
-    new DeleteEnumImplementsTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

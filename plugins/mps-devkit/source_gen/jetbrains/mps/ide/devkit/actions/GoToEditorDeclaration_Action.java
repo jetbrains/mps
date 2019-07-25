@@ -19,10 +19,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.LanguageAspect;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Language;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GoToEditorDeclaration_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Editor;
@@ -83,7 +84,7 @@ public class GoToEditorDeclaration_Action extends BaseAction {
     return new ModelAccessHelper(repo).runReadAction(new Computable<SNodeReference>() {
       public SNodeReference compute() {
         SNode conceptNode = sn.resolve(repo);
-        if (!(SNodeOperations.isInstanceOf(conceptNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
+        if (!(SNodeOperations.isInstanceOf(conceptNode, AUX_x5ox5x.AbstractConceptDeclaration_ec74828f))) {
           return null;
         }
         if (!(LanguageAspect.STRUCTURE.is(SNodeOperations.getModel(conceptNode)))) {
@@ -97,5 +98,9 @@ public class GoToEditorDeclaration_Action extends BaseAction {
         return (editorDecl == null ? null : SNodeOperations.getPointer(editorDecl));
       }
     });
+  }
+
+  private static final class AUX_x5ox5x {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

@@ -8,11 +8,13 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /**
  * Modifies checkpoint model, on save() creates node attribute for nodes with 'origin trace' user object, on load(), injects a user object for nodes with attribute.
@@ -34,20 +36,26 @@ public final class TransitionTracePersistence {
         continue;
       }
       SNodeId origin = originTrace.getOrigin(n);
-      SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId"), SMethodTrimmedId.create("create", MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId"), "6UZRahyzeh3"), myCheckpointModel, origin));
-      SNode ot = AttributeOperations.createAndSetAttrbiute(n, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, "jetbrains.mps.lang.generator.structure.OriginTrace")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, "jetbrains.mps.lang.generator.structure.OriginTrace"));
+      SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(AUX_lqgdsn.ElementaryNodeId_193936e1), AUX_lqgdsn.ElementaryNodeId_193936e1, SMethodTrimmedId.create("create", AUX_lqgdsn.ElementaryNodeId_193936e1, "6UZRahyzeh3"), myCheckpointModel, origin));
+      SNode ot = AttributeOperations.createAndSetAttrbiute(n, new IAttributeDescriptor.NodeAttribute(AUX_lqgdsn.OriginTrace_c5ec8162), AUX_lqgdsn.OriginTrace_c5ec8162);
       SLinkOperations.setTarget(ot, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, 0x6ebfdca4628bfd4dL, "origin"), nid);
     }
   }
 
   public void load(TransitionTrace into) {
     for (SNode n : SNodeUtil.getDescendants(myCheckpointModel)) {
-      SNode originTrace = AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, "jetbrains.mps.lang.generator.structure.OriginTrace")));
+      SNode originTrace = AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(AUX_lqgdsn.OriginTrace_c5ec8162));
       if ((originTrace == null)) {
         continue;
       }
-      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, 0x6ebfdca4628bfd4dL, "origin")), MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity"), SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
+      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, 0x6ebfdca4628bfd4dL, "origin")), AUX_lqgdsn.NodeIdentity_b6a3fabb, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
       into.setOrigin(n, value);
     }
+  }
+
+  private static final class AUX_lqgdsn {
+    /*package*/ static final SConcept ElementaryNodeId_193936e1 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId");
+    /*package*/ static final SConcept OriginTrace_c5ec8162 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, "jetbrains.mps.lang.generator.structure.OriginTrace");
+    /*package*/ static final SInterfaceConcept NodeIdentity_b6a3fabb = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity");
   }
 }

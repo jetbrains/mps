@@ -38,6 +38,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class addGenericTypeVariableInDeclaration extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -63,10 +64,10 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a0());
+      result.add(new TMP_Group_gsk890_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a1());
+      result.add(new TMP_Group_gsk890_a1());
     }
     return result;
   }
@@ -74,7 +75,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   public class TMP_Group_gsk890_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation")) || SNodeOperations.isInstanceOf(_context.getNode(), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"))));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), AUX_gsk890.Annotation_14405306) || SNodeOperations.isInstanceOf(_context.getNode(), AUX_gsk890.ConceptMethodDeclaration_6c80ca4f)));
     }
 
     @NotNull
@@ -90,12 +91,12 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a0.TMP_Action_gsk890_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_gsk890_a0.TMP_Action_gsk890_a0a());
     }
     private class TMP_Action_gsk890_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a0.TMP_Action_gsk890_a0a.Item item = new addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a0.TMP_Action_gsk890_a0a.Item(context);
+        TMP_Group_gsk890_a0.TMP_Action_gsk890_a0a.Item item = new TMP_Group_gsk890_a0.TMP_Action_gsk890_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -161,7 +162,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   public class TMP_Group_gsk890_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation")) || SNodeOperations.isInstanceOf(_context.getNode(), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"))));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), AUX_gsk890.Annotation_14405306) || SNodeOperations.isInstanceOf(_context.getNode(), AUX_gsk890.ConceptMethodDeclaration_6c80ca4f)));
     }
 
     @NotNull
@@ -177,12 +178,12 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a1.TMP_Action_gsk890_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_gsk890_a1.TMP_Action_gsk890_a0b());
     }
     private class TMP_Action_gsk890_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a1.TMP_Action_gsk890_a0b.Item item = new addGenericTypeVariableInDeclaration.TMP_Group_gsk890_a1.TMP_Action_gsk890_a0b.Item(context);
+        TMP_Group_gsk890_a1.TMP_Action_gsk890_a0b.Item item = new TMP_Group_gsk890_a1.TMP_Action_gsk890_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -244,5 +245,10 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
       }
 
     }
+  }
+
+  private static final class AUX_gsk890 {
+    /*package*/ static final SConcept Annotation_14405306 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

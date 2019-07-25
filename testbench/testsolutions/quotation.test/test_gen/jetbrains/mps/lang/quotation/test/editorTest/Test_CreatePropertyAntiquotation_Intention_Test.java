@@ -22,7 +22,7 @@ public class Test_CreatePropertyAntiquotation_Intention_Test extends BaseTransfo
 
   @Test
   public void test_Test_CreatePropertyAntiquotation_Intention() throws Throwable {
-    new Test_CreatePropertyAntiquotation_Intention_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

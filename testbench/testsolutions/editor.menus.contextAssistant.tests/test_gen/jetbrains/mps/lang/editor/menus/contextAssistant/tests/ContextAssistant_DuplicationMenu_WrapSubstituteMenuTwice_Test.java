@@ -25,7 +25,7 @@ public class ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test exten
 
   @Test
   public void test_ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice() throws Throwable {
-    new ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

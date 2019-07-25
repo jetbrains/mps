@@ -31,7 +31,7 @@ public class AspectMethodsFinder extends BaseFinder implements Finder {
   @Override
   public void find(SearchQuery query, @NotNull IFinder.FindCallback callback, ProgressMonitor monitor) {
     // I've got no idea what aspect methods it looks for. MPS Integration plugin in Idea takes PsiMethod and pass here package statement and method name 
-    final AspectMethodsFinder.AspectMethodQueryData data = (AspectMethodsFinder.AspectMethodQueryData) query.getObjectHolder().getObject();
+    final AspectMethodQueryData data = (AspectMethodQueryData) query.getObjectHolder().getObject();
     final List<SModel> applicableModelDescriptors = new ArrayList<SModel>();
     for (SModel model : query.getScope().getModels()) {
       if (data.myModelName.equals(model.getName().getLongName()) && !(SModelStereotype.isStubModel(model))) {
@@ -55,10 +55,10 @@ public class AspectMethodsFinder extends BaseFinder implements Finder {
   public String getDescription() {
     return "Aspect Methods";
   }
-  public static class AspectMethodsHolder implements IHolder<AspectMethodsFinder.AspectMethodQueryData> {
+  public static class AspectMethodsHolder implements IHolder<AspectMethodQueryData> {
     private static final String METHOD_NAME = "method_name";
     private static final String MODEL_NAME = "model_name";
-    private AspectMethodsFinder.AspectMethodQueryData myData = new AspectMethodsFinder.AspectMethodQueryData();
+    private AspectMethodQueryData myData = new AspectMethodQueryData();
     public AspectMethodsHolder() {
     }
     public AspectMethodsHolder(String modelName, String methodName) {
@@ -66,7 +66,7 @@ public class AspectMethodsFinder extends BaseFinder implements Finder {
       myData.myMethodName = methodName;
     }
     @Override
-    public AspectMethodsFinder.AspectMethodQueryData getObject() {
+    public AspectMethodQueryData getObject() {
       return myData;
     }
     @NotNull

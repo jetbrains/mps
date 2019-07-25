@@ -24,7 +24,7 @@ public class URLStyleSimpleTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_URLStyleSimpleTest() throws Throwable {
-    new URLStyleSimpleTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

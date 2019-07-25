@@ -31,27 +31,27 @@ public class DispatchTypeCheckingErrors_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck3813896760029621933() throws Throwable {
-    new DispatchTypeCheckingErrors_Test.TestBody(this).test_ErrorMessagesCheck3813896760029621933();
+    new TestBody(this).test_ErrorMessagesCheck3813896760029621933();
   }
   @Test
   public void test_NodeErrorCheck3813896760029624351() throws Throwable {
-    new DispatchTypeCheckingErrors_Test.TestBody(this).test_NodeErrorCheck3813896760029624351();
+    new TestBody(this).test_NodeErrorCheck3813896760029624351();
   }
   @Test
   public void test_NodeErrorCheck3813896760029586546() throws Throwable {
-    new DispatchTypeCheckingErrors_Test.TestBody(this).test_NodeErrorCheck3813896760029586546();
+    new TestBody(this).test_NodeErrorCheck3813896760029586546();
   }
   @Test
   public void test_ErrorMessagesCheck3813896760029627239() throws Throwable {
-    new DispatchTypeCheckingErrors_Test.TestBody(this).test_ErrorMessagesCheck3813896760029627239();
+    new TestBody(this).test_ErrorMessagesCheck3813896760029627239();
   }
   @Test
   public void test_NodeErrorCheck3813896760029637821() throws Throwable {
-    new DispatchTypeCheckingErrors_Test.TestBody(this).test_NodeErrorCheck3813896760029637821();
+    new TestBody(this).test_NodeErrorCheck3813896760029637821();
   }
   @Test
   public void test_ErrorMessagesCheck3813896760029629781() throws Throwable {
-    new DispatchTypeCheckingErrors_Test.TestBody(this).test_ErrorMessagesCheck3813896760029629781();
+    new TestBody(this).test_ErrorMessagesCheck3813896760029629781();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

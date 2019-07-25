@@ -53,8 +53,8 @@ public final class MergeSession {
   private MergeTemporaryModel myResultModel;
   private Set<ModelChange> myResolvedChanges = SetSequence.fromSet(new HashSet<ModelChange>());
   private NodeCopier myNodeCopier;
-  private MergeSession.MyResultModelListener myModelListener = new MergeSession.MyResultModelListener();
-  private MergeSession.ChangesInvalidateHandler myChangesInvalidateHandler;
+  private MyResultModelListener myModelListener = new MyResultModelListener();
+  private ChangesInvalidateHandler myChangesInvalidateHandler;
 
   public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository) {
     MergeTemporaryModel result = MergeTemporaryModel.writableCloneOf(base);
@@ -292,7 +292,7 @@ public final class MergeSession {
     myResolvedChanges = stateCopy.myResolvedChanges;
     myNodeCopier.setState(stateCopy.myIdReplacementCache, myResultModel);
   }
-  public void setChangesInvalidateHandler(MergeSession.ChangesInvalidateHandler changesInvalidateHandler) {
+  public void setChangesInvalidateHandler(ChangesInvalidateHandler changesInvalidateHandler) {
     myChangesInvalidateHandler = changesInvalidateHandler;
   }
   private void invalidateChanges() {
@@ -361,7 +361,7 @@ public final class MergeSession {
       invalidateDeletedRoot(event);
     }
   }
-  private static void check_bow6nj_a0a64(MergeSession.ChangesInvalidateHandler checkedDotOperand) {
+  private static void check_bow6nj_a0a64(ChangesInvalidateHandler checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.someChangesInvalidated();
     }

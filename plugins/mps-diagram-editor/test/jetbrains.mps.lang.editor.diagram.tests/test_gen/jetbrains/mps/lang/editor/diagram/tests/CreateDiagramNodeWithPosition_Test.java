@@ -25,7 +25,7 @@ public class CreateDiagramNodeWithPosition_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreateDiagramNodeWithPosition() throws Throwable {
-    new CreateDiagramNodeWithPosition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -23,7 +23,7 @@ public class UnSelectLink_Test extends BaseTransformationTest {
 
   @Test
   public void test_UnSelectLink() throws Throwable {
-    new UnSelectLink_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

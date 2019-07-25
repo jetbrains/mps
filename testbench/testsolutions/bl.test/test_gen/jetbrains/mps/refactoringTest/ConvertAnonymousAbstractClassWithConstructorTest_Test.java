@@ -34,7 +34,7 @@ public class ConvertAnonymousAbstractClassWithConstructorTest_Test extends BaseT
 
   @Test
   public void test_AbstractClassWithConstructorTest() throws Throwable {
-    new ConvertAnonymousAbstractClassWithConstructorTest_Test.TestBody(this).test_AbstractClassWithConstructorTest();
+    new TestBody(this).test_AbstractClassWithConstructorTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

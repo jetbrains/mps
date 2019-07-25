@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 public class IExtensibleMenuPart_factory {
   public static class NodeFactory_7985135009829579183 implements NodeFactory {
     public void setup(final SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      Iterable<SConcept> requiredFeatures = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(enclosingNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection"), true, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations"))).translate(new ITranslator2<SNode, SConcept>() {
+      Iterable<SConcept> requiredFeatures = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(enclosingNode, AUX_nfpdkw.TransformationMenuSection_68a16062, true, false), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations"))).translate(new ITranslator2<SNode, SConcept>() {
         public Iterable<SConcept> translate(SNode it) {
           return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getRequiredFeatures_id7L5lpRJHK_w.invoke(it);
         }
@@ -31,5 +31,9 @@ public class IExtensibleMenuPart_factory {
         }
       });
     }
+  }
+
+  private static final class AUX_nfpdkw {
+    /*package*/ static final SConcept TransformationMenuSection_68a16062 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection");
   }
 }

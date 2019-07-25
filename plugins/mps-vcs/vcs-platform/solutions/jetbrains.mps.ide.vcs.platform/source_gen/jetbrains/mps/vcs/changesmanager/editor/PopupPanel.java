@@ -23,8 +23,8 @@ import java.awt.event.FocusEvent;
 /*package*/ class PopupPanel extends JPanel {
   private ChangeStripsPainter myPainter;
   private ChangeGroup myChangeGroup;
-  private PopupPanel.MyMouseListener myMouseListener = new PopupPanel.MyMouseListener();
-  private PopupPanel.MyFocusListener myFocusListener = new PopupPanel.MyFocusListener();
+  private MyMouseListener myMouseListener = new MyMouseListener();
+  private MyFocusListener myFocusListener = new MyFocusListener();
   private EditorComponent myEditor;
   private BaseVersionEditorComponent myBaseEditor;
   private ActionToolbar myToolbar;

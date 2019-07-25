@@ -32,23 +32,23 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeOperatorCannotBeAppliedCheck2472582545953979358() throws Throwable {
-    new SuppressErrorsTest_Test.TestBody(this).test_NodeOperatorCannotBeAppliedCheck2472582545953979358();
+    new TestBody(this).test_NodeOperatorCannotBeAppliedCheck2472582545953979358();
   }
   @Test
   public void test_ErrorMessagesCheck2472582545954064375() throws Throwable {
-    new SuppressErrorsTest_Test.TestBody(this).test_ErrorMessagesCheck2472582545954064375();
+    new TestBody(this).test_ErrorMessagesCheck2472582545954064375();
   }
   @Test
   public void test_ErrorMessagesCheck2472582545954064484() throws Throwable {
-    new SuppressErrorsTest_Test.TestBody(this).test_ErrorMessagesCheck2472582545954064484();
+    new TestBody(this).test_ErrorMessagesCheck2472582545954064484();
   }
   @Test
   public void test_NodeOperatorCannotBeAppliedCheck2472582545953984250() throws Throwable {
-    new SuppressErrorsTest_Test.TestBody(this).test_NodeOperatorCannotBeAppliedCheck2472582545953984250();
+    new TestBody(this).test_NodeOperatorCannotBeAppliedCheck2472582545953984250();
   }
   @Test
   public void test_ErrorMessagesCheck2472582545954064584() throws Throwable {
-    new SuppressErrorsTest_Test.TestBody(this).test_ErrorMessagesCheck2472582545954064584();
+    new TestBody(this).test_ErrorMessagesCheck2472582545954064584();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

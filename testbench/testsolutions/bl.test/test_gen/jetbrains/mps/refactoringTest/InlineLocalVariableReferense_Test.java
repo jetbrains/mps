@@ -34,7 +34,7 @@ public class InlineLocalVariableReferense_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineLocalVariableReferense() throws Throwable {
-    new InlineLocalVariableReferense_Test.TestBody(this).test_InlineLocalVariableReferense();
+    new TestBody(this).test_InlineLocalVariableReferense();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

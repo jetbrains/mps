@@ -35,27 +35,27 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
 
   @Test
   public void test_empty() throws Throwable {
-    new SLinkImplicitSelect_Test.TestBody(this).test_empty();
+    new TestBody(this).test_empty();
   }
   @Test
   public void test_singleChild() throws Throwable {
-    new SLinkImplicitSelect_Test.TestBody(this).test_singleChild();
+    new TestBody(this).test_singleChild();
   }
   @Test
   public void test_multipleChildren() throws Throwable {
-    new SLinkImplicitSelect_Test.TestBody(this).test_multipleChildren();
+    new TestBody(this).test_multipleChildren();
   }
   @Test
   public void test_operationsOnList() throws Throwable {
-    new SLinkImplicitSelect_Test.TestBody(this).test_operationsOnList();
+    new TestBody(this).test_operationsOnList();
   }
   @Test
   public void test_specializedLinks() throws Throwable {
-    new SLinkImplicitSelect_Test.TestBody(this).test_specializedLinks();
+    new TestBody(this).test_specializedLinks();
   }
   @Test
   public void test_inheritedLinks() throws Throwable {
-    new SLinkImplicitSelect_Test.TestBody(this).test_inheritedLinks();
+    new TestBody(this).test_inheritedLinks();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

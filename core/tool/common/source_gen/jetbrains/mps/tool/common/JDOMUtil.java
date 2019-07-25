@@ -90,7 +90,7 @@ public class JDOMUtil {
     writer.close();
   }
   public static XMLOutputter createOutputter() {
-    XMLOutputter xmlOutputter = new JDOMUtil.MyXMLOutputter();
+    XMLOutputter xmlOutputter = new MyXMLOutputter();
     xmlOutputter.setFormat(Format.getPrettyFormat().setLineSeparator(System.getProperty("line.separator")));
     return xmlOutputter;
   }

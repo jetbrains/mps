@@ -22,7 +22,7 @@ public class transformationTest_StyleSheet {
   public static void apply_AssertStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.AssertStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new AssertStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -32,7 +32,7 @@ public class transformationTest_StyleSheet {
   public static void apply_NodeAnnotation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.NodeAnnotationStyleClass(editorContext, node).apply(style, editorCell);
+    new NodeAnnotationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -42,7 +42,7 @@ public class transformationTest_StyleSheet {
   public static void apply_NodeOperation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.NodeOperationStyleClass(editorContext, node).apply(style, editorCell);
+    new NodeOperationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -52,7 +52,7 @@ public class transformationTest_StyleSheet {
   public static void apply_TestLabel(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.TestLabelStyleClass(editorContext, node).apply(style, editorCell);
+    new TestLabelStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -62,7 +62,7 @@ public class transformationTest_StyleSheet {
   public static void apply_EditorOperation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.EditorOperationStyleClass(editorContext, node).apply(style, editorCell);
+    new EditorOperationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -72,7 +72,7 @@ public class transformationTest_StyleSheet {
   public static void apply_AnyBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -82,7 +82,7 @@ public class transformationTest_StyleSheet {
   public static void apply_Parenthesis(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
+    new ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -92,7 +92,7 @@ public class transformationTest_StyleSheet {
   public static void apply_LeftParen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.LeftParenStyleClass(editorContext, node).apply(style, editorCell);
+    new LeftParenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -102,7 +102,7 @@ public class transformationTest_StyleSheet {
   public static void apply_RightParen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.RightParenStyleClass(editorContext, node).apply(style, editorCell);
+    new RightParenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -112,7 +112,7 @@ public class transformationTest_StyleSheet {
   public static void apply_LeftParenAfterName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new transformationTest_StyleSheet.LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class AssertStyleStyleClass extends AbstractStyleClass {

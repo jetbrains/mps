@@ -50,6 +50,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ComplexCanRunAndDebug_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -122,7 +123,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ComplexCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_2konf7_a0b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_2konf7_a0b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_2konf7_a0b1a extends AbstractCellMenuPart_Generic_Item {
@@ -160,7 +161,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ComplexCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_2konf7_a0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_2konf7_a0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_2konf7_a0c1a extends AbstractCellMenuPart_Generic_Item {
@@ -233,7 +234,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ComplexCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_2konf7_a0a1c0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_2konf7_a0a1c0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_2konf7_a0a1c0 extends AbstractCellMenuPart_Generic_Item {
@@ -265,7 +266,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ComplexCanRunAndDebug_ComponentBuilder_a.debuggerConfigurationSingleRoleHandler_2konf7_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration"), getEditorContext());
+    SingleRoleCellProvider provider = new debuggerConfigurationSingleRoleHandler_2konf7_b1c0(myNode, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration"), getEditorContext());
     return provider.createCell();
   }
   private static class debuggerConfigurationSingleRoleHandler_2konf7_b1c0 extends SingleRoleCellProvider {
@@ -326,7 +327,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ComplexCanRunAndDebug_ComponentBuilder_a.RunConfigurationExecutor_generic_cellMenu_2konf7_a0c2a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new RunConfigurationExecutor_generic_cellMenu_2konf7_a0c2a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class RunConfigurationExecutor_generic_cellMenu_2konf7_a0c2a extends AbstractCellMenuPart_Generic_Item {
@@ -351,10 +352,14 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNodeFactoryOperations.setNewChild(node, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration"), MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5d457621242d16f5L, "jetbrains.mps.debugger.api.lang.structure.DebuggerConfiguration"));
+      SNodeFactoryOperations.setNewChild(node, MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration"), AUX_czglrw.DebuggerConfiguration_6a04aafd);
     }
     public String getMatchingText() {
       return "debug";
     }
+  }
+
+  private static final class AUX_czglrw {
+    /*package*/ static final SConcept DebuggerConfiguration_6a04aafd = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5d457621242d16f5L, "jetbrains.mps.debugger.api.lang.structure.DebuggerConfiguration");
   }
 }

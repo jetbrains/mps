@@ -21,7 +21,7 @@ public class Test_CreatePropertyAntiquotation_Key_Test extends BaseTransformatio
 
   @Test
   public void test_Test_CreatePropertyAntiquotation_Key() throws Throwable {
-    new Test_CreatePropertyAntiquotation_Key_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

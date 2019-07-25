@@ -24,7 +24,7 @@ public class TwoStepDeleteCollectionNotCoveringSelected_Test extends BaseTransfo
 
   @Test
   public void test_TwoStepDeleteCollectionNotCoveringSelected() throws Throwable {
-    new TwoStepDeleteCollectionNotCoveringSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

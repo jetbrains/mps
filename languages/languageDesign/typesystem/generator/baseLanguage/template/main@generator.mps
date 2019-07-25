@@ -9870,46 +9870,31 @@
     <property role="TrG5h" value="ImmediateSupertypes_to_expression" />
     <property role="3GE5qa" value="query" />
     <ref role="3gUMe" to="tpd4:h8eJokL" resolve="ImmediateSupertypesExpression" />
-    <node concept="9aQIb" id="7ehuabNNgAX" role="13RCb5">
-      <node concept="3clFbS" id="7ehuabNNgAY" role="9aQI4">
-        <node concept="3cpWs8" id="7ehuabNNgB2" role="3cqZAp">
-          <node concept="3cpWsn" id="7ehuabNNgB5" role="3cpWs9">
-            <property role="TrG5h" value="node" />
-            <node concept="3Tqbb2" id="7ehuabNNgB1" role="1tU5fm" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="7ehuabNNgBl" role="3cqZAp">
-          <node concept="2OqwBi" id="7ehuabNNgHQ" role="3clFbG">
-            <node concept="1PxgMI" id="7ehuabNNhaG" role="2Oq$k0">
-              <property role="1BlNFB" value="true" />
-              <node concept="chp4Y" id="7ehuabNNhbd" role="3oSUPX">
-                <ref role="cht4Q" to="tpee:fz3vP1H" resolve="Type" />
-              </node>
-              <node concept="37vLTw" id="7ehuabNNgBj" role="1m5AlR">
-                <ref role="3cqZAo" node="7ehuabNNgB5" resolve="node" />
-                <node concept="29HgVG" id="7ehuabNNhIG" role="lGtFl">
-                  <node concept="3NFfHV" id="7ehuabNNhJc" role="3NFExx">
-                    <node concept="3clFbS" id="7ehuabNNhJd" role="2VODD2">
-                      <node concept="3clFbF" id="7ehuabNNhYO" role="3cqZAp">
-                        <node concept="2OqwBi" id="7ehuabNNi9q" role="3clFbG">
-                          <node concept="30H73N" id="7ehuabNNhYN" role="2Oq$k0" />
-                          <node concept="3TrEf2" id="7ehuabNNiz5" role="2OqNvi">
-                            <ref role="3Tt5mk" to="tpd4:h8eJTa9" resolve="subtypeExpression" />
-                          </node>
-                        </node>
-                      </node>
+    <node concept="2OqwBi" id="hHmEUwy" role="13RCb5">
+      <node concept="2YIFZM" id="5mAh$9VVXZy" role="2Oq$k0">
+        <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+        <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
+      </node>
+      <node concept="liA8E" id="hHmEUwN" role="2OqNvi">
+        <ref role="37wK5l" to="1ka:~TypecheckingFacade.getImmediateSupertypes(org.jetbrains.mps.openapi.model.SNode)" resolve="getImmediateSupertypes" />
+        <node concept="10Nm6u" id="h8eNq2u" role="37wK5m">
+          <node concept="29HgVG" id="h8eNADb" role="lGtFl">
+            <node concept="3NFfHV" id="h8eNADc" role="3NFExx">
+              <node concept="3clFbS" id="h8eNADd" role="2VODD2">
+                <node concept="3clFbF" id="h8eNCnl" role="3cqZAp">
+                  <node concept="2OqwBi" id="hxx$P4R" role="3clFbG">
+                    <node concept="30H73N" id="h8eNCnm" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="h8eND4M" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpd4:h8eJTa9" resolve="subtypeExpression" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="2qgKlT" id="7ehuabNNgYe" role="2OqNvi">
-              <ref role="37wK5l" to="tpek:4w2h6RLlygH" resolve="getSupertypes" />
-            </node>
-            <node concept="raruj" id="7ehuabNNhDG" role="lGtFl" />
           </node>
         </node>
       </node>
+      <node concept="raruj" id="h8eN_fz" role="lGtFl" />
     </node>
   </node>
   <node concept="13MO4I" id="h8uzwdP">

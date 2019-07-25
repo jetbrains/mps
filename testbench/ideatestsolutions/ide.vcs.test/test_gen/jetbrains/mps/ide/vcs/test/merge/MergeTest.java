@@ -38,6 +38,7 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * Tests merge algorithm
@@ -84,7 +85,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testOnlyMineChanges() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SPropertyOperations.assign(getMineClassRoot(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "ChangedName");
         return myMineModel;
@@ -94,7 +95,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testOnlyTheirsChanges() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SPropertyOperations.assign(getTheirsClassRoot(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "ChangedName");
         return myTheirsModel;
@@ -104,7 +105,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testSymmetricChanges_AddRoot() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SNode newRoot = createClassConcept_u0wfvp_a0a0a0a0u();
         SModelOperations.addRootNode(myTheirsModel, newRoot);
@@ -116,7 +117,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testSymmetricChanges_DeleteRoot() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SNodeOperations.deleteNode(getMineClassRoot());
         SNodeOperations.deleteNode(getTheirsClassRoot());
@@ -127,7 +128,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testSymmetricChanges_AddChild() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SNode newChild = createInstanceMethodDeclaration_u0wfvp_a0a0a0a0y();
         insertMemberPreservingId(getMineClassRoot(), newChild, -1);
@@ -148,7 +149,7 @@ public class MergeTest extends ChangesTestBase {
   }
   @Test
   public void testSymmetricChanges_AddComment() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
 
@@ -160,7 +161,7 @@ public class MergeTest extends ChangesTestBase {
   }
   @Test
   public void testSymmetricChanges_Uncomment() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         ChangesTestUtil.uncommentFirstCommentedMethod(getMineClassRoot());
         ChangesTestUtil.uncommentFirstCommentedMethod(getTheirsClassRoot());
@@ -171,10 +172,10 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testSymmetricChanges_RemoveChildAttribute() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getMineClassRoot(), new IAttributeDescriptor.ChildAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getMineClassRoot(), new IAttributeDescriptor.ChildAttribute(AUX_u0wfvp.BaseCommentAttribute_f7206635, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(AUX_u0wfvp.BaseCommentAttribute_f7206635, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
         return myMineModel;
       }
     });
@@ -183,7 +184,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testSymmetricChanges_Property() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SPropertyOperations.assign(getMineClassRoot(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "ChangedName");
         SPropertyOperations.assign(getTheirsClassRoot(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "ChangedName");
@@ -194,12 +195,12 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testSymmetricChanges_Link() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SNodeReference method1Decl = new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610");
         SNodeId method1NodeId = method1Decl.getNodeId();
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myMineModel.getNode(method1NodeId)), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myTheirsModel.getNode(method1NodeId)), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
+        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myMineModel.getNode(method1NodeId)), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), AUX_u0wfvp.ClassifierType_42700403), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
+        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myTheirsModel.getNode(method1NodeId)), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), AUX_u0wfvp.ClassifierType_42700403), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
         return myMineModel;
       }
     });
@@ -208,7 +209,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testAddChildAndAddChildAttributeOnDifferentPositionsDontConflict() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelChanger() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
         SNode placeholder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember"));
         SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
@@ -224,7 +225,7 @@ public class MergeTest extends ChangesTestBase {
   }
   @Test
   public void testAddTwoChildAttributeOnDifferentPositionsDontConflict() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelChanger() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
 
         SNode mineCommentedMethod = ChangesTestUtil.createCommentedMethod();
@@ -241,29 +242,29 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testAddChildAttributeAndNodeAttribute() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelChanger() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
 
         SNode reviewMigration = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
         SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
 
-        AttributeOperations.setAttribute(getMineClassRoot(), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration")), reviewMigration);
+        AttributeOperations.setAttribute(getMineClassRoot(), new IAttributeDescriptor.NodeAttribute(AUX_u0wfvp.ReviewMigration_54683616), reviewMigration);
         insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, 0);
 
-        AttributeOperations.setAttribute(getClassRoot(expectedModel), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports")), (SNode) CopyUtil.copyAndPreserveId(reviewMigration));
+        AttributeOperations.setAttribute(getClassRoot(expectedModel), new IAttributeDescriptor.NodeAttribute(AUX_u0wfvp.JavaImports_af71158f), (SNode) CopyUtil.copyAndPreserveId(reviewMigration));
         insertCommentPreservingId(getClassRoot(expectedModel), commentedMethod, 0);
       }
     });
   }
   @Test
   public void testRemoveChildAndRemoveChildAttribute() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelChanger() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
         SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(AUX_u0wfvp.BaseCommentAttribute_f7206635, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
 
 
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getClassRoot(expectedModel), new IAttributeDescriptor.ChildAttribute(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getClassRoot(expectedModel), new IAttributeDescriptor.ChildAttribute(AUX_u0wfvp.BaseCommentAttribute_f7206635, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")))).first()));
         SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getClassRoot(expectedModel), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).first()));
       }
     });
@@ -302,7 +303,7 @@ public class MergeTest extends ChangesTestBase {
   }
   @Test
   public void testAddChildAndUncommentChildDontConflict() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelChanger() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
 
         SNode placeholderMember = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember"));
@@ -319,7 +320,7 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testAddChildAndSetPropertyDontConflict() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelChanger() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
         SNode newChild = createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15();
         SPropertyOperations.assign(getMineClassRoot(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "ChangedName");
@@ -367,8 +368,8 @@ public class MergeTest extends ChangesTestBase {
     }).count(), numberOfConflictingChanges);
   }
 
-  private void testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(final MergeTest.ModelChanger changer) {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new MergeTest.ModelCreator() {
+  private void testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(final ModelChanger changer) {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
         SModel expectedModel = MergeTemporaryModel.writableCloneOf(myBaseModel);
         changer.changeModel(expectedModel);
@@ -376,7 +377,7 @@ public class MergeTest extends ChangesTestBase {
       }
     });
   }
-  private void testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(MergeTest.ModelCreator creator) {
+  private void testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(ModelCreator creator) {
     SModel expectedModel = creator.createModel();
 
     final MergeSession session = MergeSession.createMergeSession(myBaseModel, myMineModel, myTheirsModel);
@@ -399,7 +400,7 @@ public class MergeTest extends ChangesTestBase {
 
 
   private SNode getClassRoot(SModel model) {
-    return ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))).first();
+    return ListSequence.fromList(SModelOperations.roots(model, AUX_u0wfvp.ClassConcept_e2711824)).first();
   }
   private SNode getMineClassRoot() {
     return getClassRoot(myMineModel);
@@ -436,31 +437,42 @@ public class MergeTest extends ChangesTestBase {
   }
   private static SNode createClassConcept_u0wfvp_a0a0a0a0u() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_u0wfvp.ClassConcept_e2711824, null, null, false);
     return n1;
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0y() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_u0wfvp.InstanceMethodDeclaration_9dbf9b2b, null, null, false);
     {
       n1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "newMethod");
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
+      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(AUX_u0wfvp.StatementList_9dbf9acf, null, null, false);
       n1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"), null, null, false);
+      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(AUX_u0wfvp.VoidType_d96d05c9, null, null, false);
       n1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), n3);
     }
     return n1;
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_u0wfvp.InstanceMethodDeclaration_9dbf9b2b, null, null, false);
     {
       n1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "newMethod");
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), null, null, false);
+      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(AUX_u0wfvp.StatementList_9dbf9acf, null, null, false);
       n1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"), null, null, false);
+      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(AUX_u0wfvp.VoidType_d96d05c9, null, null, false);
       n1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), n3);
     }
     return n1;
+  }
+
+  private static final class AUX_u0wfvp {
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ReviewMigration_54683616 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration");
+    /*package*/ static final SConcept JavaImports_af71158f = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept StatementList_9dbf9acf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept VoidType_d96d05c9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
   }
 }

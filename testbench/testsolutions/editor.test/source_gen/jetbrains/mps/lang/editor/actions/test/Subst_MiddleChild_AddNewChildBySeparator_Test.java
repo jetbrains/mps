@@ -21,7 +21,7 @@ public class Subst_MiddleChild_AddNewChildBySeparator_Test extends BaseTransform
 
   @Test
   public void test_Subst_MiddleChild_AddNewChildBySeparator() throws Throwable {
-    new Subst_MiddleChild_AddNewChildBySeparator_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

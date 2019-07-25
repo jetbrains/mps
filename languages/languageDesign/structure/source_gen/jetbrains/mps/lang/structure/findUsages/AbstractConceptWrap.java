@@ -8,6 +8,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ abstract class AbstractConceptWrap implements AbstractConceptLike {
   private final SNode myPeer;
@@ -40,10 +41,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
   @NotNull
   public static AbstractConceptWrap wrap(SNode toWrap) {
-    if (SNodeOperations.isInstanceOf(toWrap, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
-      return new ConceptWrap(SNodeOperations.cast(toWrap, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")));
-    } else if (SNodeOperations.isInstanceOf(toWrap, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"))) {
-      return new InterfaceConceptWrap(SNodeOperations.cast(toWrap, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration")));
+    if (SNodeOperations.isInstanceOf(toWrap, AUX_n1l388.ConceptDeclaration_cb225da8)) {
+      return new ConceptWrap(SNodeOperations.cast(toWrap, AUX_n1l388.ConceptDeclaration_cb225da8));
+    } else if (SNodeOperations.isInstanceOf(toWrap, AUX_n1l388.InterfaceConceptDeclaration_efdf2bc9)) {
+      return new InterfaceConceptWrap(SNodeOperations.cast(toWrap, AUX_n1l388.InterfaceConceptDeclaration_efdf2bc9));
     }
     throw new IllegalArgumentException("Impossible to wrap the " + toWrap);
   }
@@ -51,5 +52,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
   @Override
   public String toString() {
     return "AbstractConceptWrap{" + "myPeer=" + myPeer + "}";
+  }
+
+  private static final class AUX_n1l388 {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration_efdf2bc9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 }

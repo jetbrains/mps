@@ -34,7 +34,7 @@ public class InlineModelWithConstants_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineModelWithConstants() throws Throwable {
-    new InlineModelWithConstants_Test.TestBody(this).test_InlineModelWithConstants();
+    new TestBody(this).test_InlineModelWithConstants();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

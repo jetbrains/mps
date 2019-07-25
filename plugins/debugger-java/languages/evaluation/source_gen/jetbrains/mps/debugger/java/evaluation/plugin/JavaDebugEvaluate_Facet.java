@@ -32,10 +32,10 @@ import jetbrains.mps.generator.impl.CloneUtil;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.Properties;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder;
 import jetbrains.mps.generator.GenerationStatus;
 import jetbrains.mps.make.script.IFeedback;
@@ -66,14 +66,15 @@ import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class JavaDebugEvaluate_Facet extends IFacet.Stub {
   private static final Logger LOG = LogManager.getLogger(JavaDebugEvaluate_Facet.class);
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate");
   public JavaDebugEvaluate_Facet() {
-    ListSequence.fromList(targets).addElement(new JavaDebugEvaluate_Facet.Target_transformEvaluator());
-    ListSequence.fromList(targets).addElement(new JavaDebugEvaluate_Facet.Target_compileEvaluator());
+    ListSequence.fromList(targets).addElement(new Target_transformEvaluator());
+    ListSequence.fromList(targets).addElement(new Target_compileEvaluator());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -91,7 +92,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new JavaDebugEvaluate_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_transformEvaluator implements ITargetEx {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.transformEvaluator");
@@ -128,7 +129,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                       if (evaluator.value != null) {
                         try {
                           assert SNodeOperations.getModel(evaluator.value) != null;
-                          SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+                          SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, AUX_9b2k1t.InstanceMethodDeclaration_9dbf9b2b, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
                             public boolean accept(SNode it) {
                               return "evaluate".equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
                             }
@@ -348,8 +349,8 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
       }
       return t;
     }
-    public static JavaDebugEvaluate_Facet.Target_compileEvaluator.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, JavaDebugEvaluate_Facet.Target_compileEvaluator.Parameters.class);
+    public static Target_compileEvaluator.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_compileEvaluator.Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<SModule> {
       public Parameters() {
@@ -373,7 +374,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator");
         if (properties.hasProperties(name)) {
-          JavaDebugEvaluate_Facet.Target_compileEvaluator.Parameters props = properties.properties(name, JavaDebugEvaluate_Facet.Target_compileEvaluator.Parameters.class);
+          Target_compileEvaluator.Parameters props = properties.properties(name, Target_compileEvaluator.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator.evaluationClasspathModule", null);
         }
       }
@@ -382,7 +383,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator");
-          JavaDebugEvaluate_Facet.Target_compileEvaluator.Parameters props = properties.properties(name, JavaDebugEvaluate_Facet.Target_compileEvaluator.Parameters.class);
+          Target_compileEvaluator.Parameters props = properties.properties(name, Target_compileEvaluator.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator.evaluationClasspathModule")) {
             props.evaluationClasspathModule(null);
           }
@@ -390,5 +391,9 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
       } catch (RuntimeException re) {
       }
     }
+  }
+
+  private static final class AUX_9b2k1t {
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 }

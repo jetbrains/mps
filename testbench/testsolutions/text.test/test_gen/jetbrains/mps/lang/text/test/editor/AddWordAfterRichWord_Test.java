@@ -21,7 +21,7 @@ public class AddWordAfterRichWord_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddWordAfterRichWord() throws Throwable {
-    new AddWordAfterRichWord_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

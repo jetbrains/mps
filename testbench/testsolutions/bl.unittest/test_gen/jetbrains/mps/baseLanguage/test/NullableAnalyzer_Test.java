@@ -32,495 +32,495 @@ public class NullableAnalyzer_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927436728() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927436728();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927436728();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624929290285() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929290285();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929290285();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927280957() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927280957();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927280957();
   }
   @Test
   public void test_testDot6011730950863071516() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testDot6011730950863071516();
+    new TestBody(this).test_testDot6011730950863071516();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305621536() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305621536();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305621536();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624929530194() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929530194();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929530194();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927477751() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927477751();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927477751();
   }
   @Test
   public void test_testIf1228615757308491250() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testIf1228615757308491250();
+    new TestBody(this).test_testIf1228615757308491250();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927841333() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927841333();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927841333();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927680682() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927680682();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927680682();
   }
   @Test
   public void test_testWhile6011730950863071627() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testWhile6011730950863071627();
+    new TestBody(this).test_testWhile6011730950863071627();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927885573() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927885573();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927885573();
   }
   @Test
   public void test_testWrite6011730950863071665() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testWrite6011730950863071665();
+    new TestBody(this).test_testWrite6011730950863071665();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927684007() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927684007();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927684007();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927677337() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927677337();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927677337();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927643021() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927643021();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927643021();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3906759656525711757() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3906759656525711757();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3906759656525711757();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3906759656525723919() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3906759656525723919();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3906759656525723919();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927201040() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927201040();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927201040();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3906759656533635223() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3906759656533635223();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3906759656533635223();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656536181767() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656536181767();
+    new TestBody(this).test_ErrorMessagesCheck3906759656536181767();
   }
   @Test
   public void test_testForLoop6689253151531890256() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testForLoop6689253151531890256();
+    new TestBody(this).test_testForLoop6689253151531890256();
   }
   @Test
   public void test_NodeNullIsReturnedFromMethodCheck6923385624929642188() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeNullIsReturnedFromMethodCheck6923385624929642188();
+    new TestBody(this).test_NodeNullIsReturnedFromMethodCheck6923385624929642188();
   }
   @Test
   public void test_NodeExpressionMightEvaluateCheck6923385624928447275() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeExpressionMightEvaluateCheck6923385624928447275();
+    new TestBody(this).test_NodeExpressionMightEvaluateCheck6923385624928447275();
   }
   @Test
   public void test_NodeExpressionMightEvaluateCheck6923385624929406744() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeExpressionMightEvaluateCheck6923385624929406744();
+    new TestBody(this).test_NodeExpressionMightEvaluateCheck6923385624929406744();
   }
   @Test
   public void test_testReturnNotNull5899025696847062708() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testReturnNotNull5899025696847062708();
+    new TestBody(this).test_testReturnNotNull5899025696847062708();
   }
   @Test
   public void test_NodeArgumentMightBeNullCheck6923385624929136789() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeArgumentMightBeNullCheck6923385624929136789();
+    new TestBody(this).test_NodeArgumentMightBeNullCheck6923385624929136789();
   }
   @Test
   public void test_NodeArgumentMightBeNullCheck6923385624927896994() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeArgumentMightBeNullCheck6923385624927896994();
+    new TestBody(this).test_NodeArgumentMightBeNullCheck6923385624927896994();
   }
   @Test
   public void test_NodeArgumentMightBeNullCheck6923385624927614991() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeArgumentMightBeNullCheck6923385624927614991();
+    new TestBody(this).test_NodeArgumentMightBeNullCheck6923385624927614991();
   }
   @Test
   public void test_testCallNotNull741163781873507801() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testCallNotNull741163781873507801();
+    new TestBody(this).test_testCallNotNull741163781873507801();
   }
   @Test
   public void test_NodeArgumentMightBeNullCheck3906759656524279986() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeArgumentMightBeNullCheck3906759656524279986();
+    new TestBody(this).test_NodeArgumentMightBeNullCheck3906759656524279986();
   }
   @Test
   public void test_NodeArgumentMightBeNullCheck3906759656524489339() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeArgumentMightBeNullCheck3906759656524489339();
+    new TestBody(this).test_NodeArgumentMightBeNullCheck3906759656524489339();
   }
   @Test
   public void test_NodeArgumentMightBeNullCheck3906759656525494487() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeArgumentMightBeNullCheck3906759656525494487();
+    new TestBody(this).test_NodeArgumentMightBeNullCheck3906759656525494487();
   }
   @Test
   public void test_NodeArgumentMightBeNullCheck3906759656525494537() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeArgumentMightBeNullCheck3906759656525494537();
+    new TestBody(this).test_NodeArgumentMightBeNullCheck3906759656525494537();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927087401() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927087401();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927087401();
   }
   @Test
   public void test_NodeWarningCheck3759707308809084829() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeWarningCheck3759707308809084829();
+    new TestBody(this).test_NodeWarningCheck3759707308809084829();
   }
   @Test
   public void test_NodeWarningCheck3759707308809084275() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeWarningCheck3759707308809084275();
+    new TestBody(this).test_NodeWarningCheck3759707308809084275();
   }
   @Test
   public void test_testAnnotationParam6011730950863071781() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testAnnotationParam6011730950863071781();
+    new TestBody(this).test_testAnnotationParam6011730950863071781();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624929410127() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929410127();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929410127();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624929704316() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929704316();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624929704316();
   }
   @Test
   public void test_testTernaryOperation3383816410303507497() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testTernaryOperation3383816410303507497();
+    new TestBody(this).test_testTernaryOperation3383816410303507497();
   }
   @Test
   public void test_testContinue8673157736019176311() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testContinue8673157736019176311();
+    new TestBody(this).test_testContinue8673157736019176311();
   }
   @Test
   public void test_testIfNullNew8673157736019186600() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testIfNullNew8673157736019186600();
+    new TestBody(this).test_testIfNullNew8673157736019186600();
   }
   @Test
   public void test_testIfNull7209837885461331385() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testIfNull7209837885461331385();
+    new TestBody(this).test_testIfNull7209837885461331385();
   }
   @Test
   public void test_testIfNullReturnNotEmpty8673157736019186652() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testIfNullReturnNotEmpty8673157736019186652();
+    new TestBody(this).test_testIfNullReturnNotEmpty8673157736019186652();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck6923385624927607320() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927607320();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck6923385624927607320();
   }
   @Test
   public void test_testMPS109353613402085300515297() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testMPS109353613402085300515297();
+    new TestBody(this).test_testMPS109353613402085300515297();
   }
   @Test
   public void test_testMPS126403177492234623156275() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testMPS126403177492234623156275();
+    new TestBody(this).test_testMPS126403177492234623156275();
   }
   @Test
   public void test_testMPS173886215810068353174462() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_testMPS173886215810068353174462();
+    new TestBody(this).test_testMPS173886215810068353174462();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656521455536() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656521455536();
+    new TestBody(this).test_ErrorMessagesCheck3906759656521455536();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600187694436() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187694436();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187694436();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187637070() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187637070();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187637070();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600189556048() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600189556048();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600189556048();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3906759656521455531() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3906759656521455531();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3906759656521455531();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187716594() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187716594();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187716594();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187727051() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187727051();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187727051();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3217533289695254944() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695254944();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695254944();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187769814() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187769814();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187769814();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600187781001() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187781001();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187781001();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600187628441() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187628441();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187628441();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187769633() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187769633();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187769633();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187770007() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187770007();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187770007();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600187808508() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187808508();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187808508();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600187809331() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187809331();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600187809331();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187875006() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187875006();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187875006();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656523205036() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656523205036();
+    new TestBody(this).test_ErrorMessagesCheck3906759656523205036();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656521409347() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656521409347();
+    new TestBody(this).test_ErrorMessagesCheck3906759656521409347();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188057882() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188057882();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188057882();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600187969423() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600187969423();
+    new TestBody(this).test_ErrorMessagesCheck1383888600187969423();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3217533289695378321() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695378321();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695378321();
   }
   @Test
   public void test_ErrorMessagesCheck4235809288656751763() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck4235809288656751763();
+    new TestBody(this).test_ErrorMessagesCheck4235809288656751763();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3217533289695378206() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695378206();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695378206();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600190617190() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600190617190();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600190617190();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188002511() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188002511();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188002511();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188071188() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188071188();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188071188();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188012959() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188012959();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188012959();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3217533289695398448() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695398448();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695398448();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188081718() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188081718();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188081718();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188119931() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188119931();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188119931();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188098338() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188098338();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188098338();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188098352() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188098352();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188098352();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656523215923() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656523215923();
+    new TestBody(this).test_ErrorMessagesCheck3906759656523215923();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3217533289695418196() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695418196();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695418196();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188130284() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188130284();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188130284();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188146607() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188146607();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188146607();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188168258() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188168258();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188168258();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188146628() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188146628();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188146628();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3906759656523217172() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3906759656523217172();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3906759656523217172();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600189293148() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600189293148();
+    new TestBody(this).test_ErrorMessagesCheck1383888600189293148();
   }
   @Test
   public void test_ErrorMessagesCheck4235809288656752243() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck4235809288656752243();
+    new TestBody(this).test_ErrorMessagesCheck4235809288656752243();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600190632902() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600190632902();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600190632902();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600190643225() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600190643225();
+    new TestBody(this).test_ErrorMessagesCheck1383888600190643225();
   }
   @Test
   public void test_ErrorMessagesCheck4235809288656752432() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck4235809288656752432();
+    new TestBody(this).test_ErrorMessagesCheck4235809288656752432();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656523227048() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656523227048();
+    new TestBody(this).test_ErrorMessagesCheck3906759656523227048();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3217533289695419569() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695419569();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3217533289695419569();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600190654136() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600190654136();
+    new TestBody(this).test_ErrorMessagesCheck1383888600190654136();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656523741779() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656523741779();
+    new TestBody(this).test_ErrorMessagesCheck3906759656523741779();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3906759656523189908() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3906759656523189908();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3906759656523189908();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188256964() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188256964();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188256964();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188257024() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188257024();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188257024();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188268775() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188268775();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188268775();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188269064() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188269064();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188269064();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188269359() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188269359();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188269359();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188269659() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188269659();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188269659();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188272152() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188272152();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188272152();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188272484() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188272484();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188272484();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188272819() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188272819();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188272819();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188273148() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188273148();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188273148();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188273501() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188273501();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188273501();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600189314116() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600189314116();
+    new TestBody(this).test_ErrorMessagesCheck1383888600189314116();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188274171() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188274171();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188274171();
   }
   @Test
   public void test_ErrorMessagesCheck1383888600188274532() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1383888600188274532();
+    new TestBody(this).test_ErrorMessagesCheck1383888600188274532();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188274541() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188274541();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188274541();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656524918032() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656524918032();
+    new TestBody(this).test_ErrorMessagesCheck3906759656524918032();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck3906759656524998358() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck3906759656524998358();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck3906759656524998358();
   }
   @Test
   public void test_ErrorMessagesCheck1415485672491929159() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1415485672491929159();
+    new TestBody(this).test_ErrorMessagesCheck1415485672491929159();
   }
   @Test
   public void test_ErrorMessagesCheck3906759656539420312() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck3906759656539420312();
+    new TestBody(this).test_ErrorMessagesCheck3906759656539420312();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1383888600188285752() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188285752();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1383888600188285752();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedErrorCheck1415485672489641128() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck1415485672489641128();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck1415485672489641128();
   }
   @Test
   public void test_ErrorMessagesCheck1415485672489685436() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_ErrorMessagesCheck1415485672489685436();
+    new TestBody(this).test_ErrorMessagesCheck1415485672489685436();
   }
   @Test
   public void test_NodeOperationCanProduceNPECheck1415485672489695289() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeOperationCanProduceNPECheck1415485672489695289();
+    new TestBody(this).test_NodeOperationCanProduceNPECheck1415485672489695289();
   }
   @Test
   public void test_NodeWarningCheck1415485672491981590() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeWarningCheck1415485672491981590();
+    new TestBody(this).test_NodeWarningCheck1415485672491981590();
   }
   @Test
   public void test_NodeWarningCheck1415485672491963180() throws Throwable {
-    new NullableAnalyzer_Test.TestBody(this).test_NodeWarningCheck1415485672491963180();
+    new TestBody(this).test_NodeWarningCheck1415485672491963180();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

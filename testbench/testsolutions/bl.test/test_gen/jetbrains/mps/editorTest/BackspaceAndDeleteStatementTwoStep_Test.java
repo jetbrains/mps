@@ -26,7 +26,7 @@ public class BackspaceAndDeleteStatementTwoStep_Test extends BaseTransformationT
 
   @Test
   public void test_BackspaceAndDeleteStatementTwoStep() throws Throwable {
-    new BackspaceAndDeleteStatementTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

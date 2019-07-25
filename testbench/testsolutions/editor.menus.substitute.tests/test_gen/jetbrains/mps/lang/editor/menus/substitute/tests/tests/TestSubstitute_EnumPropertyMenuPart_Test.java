@@ -24,7 +24,7 @@ public class TestSubstitute_EnumPropertyMenuPart_Test extends BaseTransformation
 
   @Test
   public void test_TestSubstitute_EnumPropertyMenuPart() throws Throwable {
-    new TestSubstitute_EnumPropertyMenuPart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

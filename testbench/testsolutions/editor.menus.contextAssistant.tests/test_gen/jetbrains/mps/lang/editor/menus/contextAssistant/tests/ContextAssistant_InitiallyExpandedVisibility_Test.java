@@ -30,7 +30,7 @@ public class ContextAssistant_InitiallyExpandedVisibility_Test extends BaseTrans
 
   @Test
   public void test_ContextAssistant_InitiallyExpandedVisibility() throws Throwable {
-    new ContextAssistant_InitiallyExpandedVisibility_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

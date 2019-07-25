@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import jetbrains.mps.execution.api.configurations.BaseMpsProducer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.plugins.runconfigs.MPSPsiElement;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class DemoApplication_Producer {
 
@@ -33,7 +34,7 @@ public final class DemoApplication_Producer {
       configurationFactory = configurationType.getConfigurationFactories()[0];
     }
     List<RuntimeConfigurationProducer> creators = ListSequence.fromList(new ArrayList<RuntimeConfigurationProducer>());
-    ListSequence.fromList(creators).addElement(new DemoApplication_Producer.ProducerPart_NodeSomeConcept_rh22bz_a(configurationFactory));
+    ListSequence.fromList(creators).addElement(new ProducerPart_NodeSomeConcept_rh22bz_a(configurationFactory));
     return creators;
   }
 
@@ -44,7 +45,7 @@ public final class DemoApplication_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept"));
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), AUX_6g01ma.SomeConcept_beaeb5b9);
     }
 
     @Override
@@ -60,8 +61,12 @@ public final class DemoApplication_Producer {
 
 
     @Override
-    public DemoApplication_Producer.ProducerPart_NodeSomeConcept_rh22bz_a clone() {
-      return (DemoApplication_Producer.ProducerPart_NodeSomeConcept_rh22bz_a) super.clone();
+    public ProducerPart_NodeSomeConcept_rh22bz_a clone() {
+      return (ProducerPart_NodeSomeConcept_rh22bz_a) super.clone();
     }
+  }
+
+  private static final class AUX_6g01ma {
+    /*package*/ static final SConcept SomeConcept_beaeb5b9 = MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept");
   }
 }

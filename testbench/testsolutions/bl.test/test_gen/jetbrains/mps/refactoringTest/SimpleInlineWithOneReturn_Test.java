@@ -34,7 +34,7 @@ public class SimpleInlineWithOneReturn_Test extends BaseTransformationTest {
 
   @Test
   public void test_SimpleInlineWithOneReturn() throws Throwable {
-    new SimpleInlineWithOneReturn_Test.TestBody(this).test_SimpleInlineWithOneReturn();
+    new TestBody(this).test_SimpleInlineWithOneReturn();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

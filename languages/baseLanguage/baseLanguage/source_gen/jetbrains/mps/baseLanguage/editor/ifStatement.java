@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ifStatement extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -64,8 +65,8 @@ public class ifStatement extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ifStatement.TMP_Group_dmkm09_a0());
-      result.add(new ifStatement.TMP_Param_dmkm09_b0());
+      result.add(new TMP_Group_dmkm09_a0());
+      result.add(new TMP_Param_dmkm09_b0());
     }
     return result;
   }
@@ -89,14 +90,14 @@ public class ifStatement extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ifStatement.TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a());
     }
     private class TMP_Param_dmkm09_a0a extends ParameterizedMenuPart<String, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-        return new ifStatement.TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0(parameter).createItems(context);
+        return new TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0(parameter).createItems(context);
       }
 
       @Nullable
@@ -123,7 +124,7 @@ public class ifStatement extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          ifStatement.TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0.Item item = new ifStatement.TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0.Item(context);
+          TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0.Item item = new TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -158,7 +159,7 @@ public class ifStatement extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNodeFactoryOperations.setNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement"));
+            SNodeFactoryOperations.setNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"), AUX_dmkm09.BlockStatement_8943d110);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -188,7 +189,7 @@ public class ifStatement extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new ifStatement.TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a(parameter).createItems(context);
+      return new TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a(parameter).createItems(context);
     }
 
     @Nullable
@@ -215,7 +216,7 @@ public class ifStatement extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ifStatement.TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a.Item item = new ifStatement.TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a.Item(context);
+        TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a.Item item = new TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -273,5 +274,9 @@ public class ifStatement extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_dmkm09 {
+    /*package*/ static final SConcept BlockStatement_8943d110 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
   }
 }

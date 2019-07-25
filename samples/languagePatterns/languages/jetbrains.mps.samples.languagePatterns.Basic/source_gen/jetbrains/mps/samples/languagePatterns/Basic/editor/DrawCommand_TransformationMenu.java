@@ -26,8 +26,8 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -36,6 +36,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DrawCommand_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM);
@@ -61,7 +62,7 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DrawCommand_TransformationMenu.TMP_Param_oy1rtc_a0());
+      result.add(new TMP_Param_oy1rtc_a0());
     }
     return result;
   }
@@ -71,7 +72,7 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new DrawCommand_TransformationMenu.TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a(parameter).createItems(context);
+      return new TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -98,7 +99,7 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        DrawCommand_TransformationMenu.TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a.Item item = new DrawCommand_TransformationMenu.TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a.Item(context);
+        TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a.Item item = new TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -133,7 +134,7 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode style = (Objects.equals(myParameterObject, "solid") ? SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666fc55L, "jetbrains.mps.samples.languagePatterns.Basic.structure.SolidLine"), null) : SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666ff96L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DottedLine"), null));
+          SNode style = (Objects.equals(myParameterObject, "solid") ? SNodeFactoryOperations.createNewNode(AUX_oy1rtc.SolidLine_8be2853d, null) : SNodeFactoryOperations.createNewNode(AUX_oy1rtc.DottedLine_8be2f505, null));
           SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle"), style);
         }
 
@@ -160,5 +161,10 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_oy1rtc {
+    /*package*/ static final SConcept SolidLine_8be2853d = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666fc55L, "jetbrains.mps.samples.languagePatterns.Basic.structure.SolidLine");
+    /*package*/ static final SConcept DottedLine_8be2f505 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666ff96L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DottedLine");
   }
 }

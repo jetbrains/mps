@@ -10,12 +10,13 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.lang.pattern.migration.PropertyPatternVariableMigration;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigratePropertyPatternVariables extends MigrationScriptBase {
   public String getCaption() {
@@ -41,7 +42,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
       new PropertyPatternVariableMigration<SNode>() {
         @Override
         protected Iterable<SNode> getUsagesToMigrate() {
-          return CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_PropertyPatternRef"), false);
+          return CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_mymgc3.GenerationContextOp_PropertyPatternRef_e935bb5a, false);
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
@@ -65,4 +66,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, "jetbrains.mps.lang.generator.generationContext"), 1);
   }
 
+  private static final class AUX_mymgc3 {
+    /*package*/ static final SConcept GenerationContextOp_PropertyPatternRef_e935bb5a = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_PropertyPatternRef");
+  }
 }

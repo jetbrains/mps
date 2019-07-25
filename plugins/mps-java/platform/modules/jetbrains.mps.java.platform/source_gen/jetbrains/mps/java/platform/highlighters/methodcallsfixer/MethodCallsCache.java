@@ -16,8 +16,9 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /**
  * Caches method calls and method declarations visited by the checker.
@@ -62,7 +63,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
       public SNode select(SNodeReference it) {
         return it.resolve(myRepository);
       }
-    }), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"));
+    }), AUX_2mfvif.IMethodCall_ee2c776b);
   }
 
   /*package*/ void putCheckedMethodCall(SNode methodCallNode, SNode methodNode, String methodName) {
@@ -88,5 +89,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
   /*package*/ boolean isMethodCallUpToDate(SNode methodCall) {
     SNodeReference methodCallPointer = SNodeOperations.getPointer(methodCall);
     return myCheckedMethodCalls.contains(methodCallPointer) && SLinkOperations.getTarget(methodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")) == myMethodCallsToSetDecls.get(methodCallPointer).resolve(myRepository);
+  }
+
+  private static final class AUX_2mfvif {
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

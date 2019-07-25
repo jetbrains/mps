@@ -55,6 +55,7 @@ import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.IOperationContext;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class IfStatement_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -109,14 +110,14 @@ import jetbrains.mps.smodel.IOperationContext;
     editorCell.getStyle().putAll(style);
     Delete_If.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IfStatement_EditorBuilder_a.ReplaceWith_WhileStatement_cellMenu_eb7h0d_a0a0(), new IfStatement_EditorBuilder_a.ReplaceWith_DoWhileStatement_cellMenu_eb7h0d_b0a0(), new IfStatement_EditorBuilder_a.ReplaceWith_ForStatement_cellMenu_eb7h0d_c0a0(), new IfStatement_EditorBuilder_a.ReplaceWith_ForeachStatement_cellMenu_eb7h0d_d0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_WhileStatement_cellMenu_eb7h0d_a0a0(), new ReplaceWith_DoWhileStatement_cellMenu_eb7h0d_b0a0(), new ReplaceWith_ForStatement_cellMenu_eb7h0d_c0a0(), new ReplaceWith_ForeachStatement_cellMenu_eb7h0d_d0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_WhileStatement_cellMenu_eb7h0d_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_WhileStatement_cellMenu_eb7h0d_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
+      return AUX_vzk7wx.WhileStatement_1f5f4332;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -127,7 +128,7 @@ import jetbrains.mps.smodel.IOperationContext;
     public ReplaceWith_DoWhileStatement_cellMenu_eb7h0d_b0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
+      return AUX_vzk7wx.DoWhileStatement_50b6f79b;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -138,7 +139,7 @@ import jetbrains.mps.smodel.IOperationContext;
     public ReplaceWith_ForStatement_cellMenu_eb7h0d_c0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+      return AUX_vzk7wx.ForStatement_1eab9ef9;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -149,7 +150,7 @@ import jetbrains.mps.smodel.IOperationContext;
     public ReplaceWith_ForeachStatement_cellMenu_eb7h0d_d0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
+      return AUX_vzk7wx.ForeachStatement_bf20b0bc;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -167,7 +168,7 @@ import jetbrains.mps.smodel.IOperationContext;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IfStatement_EditorBuilder_a.conditionSingleRoleHandler_eb7h0d_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_eb7h0d_c0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_eb7h0d_c0 extends SingleRoleCellProvider {
@@ -275,7 +276,7 @@ import jetbrains.mps.smodel.IOperationContext;
     return !((boolean) IfStatement__BehaviorDescriptor.isGuardIf_idi0z$SHa.invoke(getNode()));
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new IfStatement_EditorBuilder_a.ifTrueSingleRoleHandler_eb7h0d_a1e0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue"), getEditorContext());
+    SingleRoleCellProvider provider = new ifTrueSingleRoleHandler_eb7h0d_a1e0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue"), getEditorContext());
     return provider.createCell();
   }
   private static class ifTrueSingleRoleHandler_eb7h0d_a1e0 extends SingleRoleCellProvider {
@@ -337,13 +338,13 @@ import jetbrains.mps.smodel.IOperationContext;
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     IfStatement_LastBrace.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"), "jetbrains.mps.baseLanguage.editor.ifStatement"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_vzk7wx.IfStatement_9dbf9b10, "jetbrains.mps.baseLanguage.editor.ifStatement"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new IfStatement_EditorBuilder_a.elsifClausesListHandler_eb7h0d_f0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new elsifClausesListHandler_eb7h0d_f0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_elsifClauses");
     editorCell.setSRole(handler.getElementSRole());
@@ -366,7 +367,7 @@ import jetbrains.mps.smodel.IOperationContext;
       return MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, "jetbrains.mps.baseLanguage.structure.ElsifClause");
+      return AUX_vzk7wx.ElsifClause_979d802b;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -419,7 +420,7 @@ import jetbrains.mps.smodel.IOperationContext;
     editorCell.getStyle().putAll(style);
     IfStatement_elseDelete_action.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IfStatement_EditorBuilder_a.IfStatement_generic_cellMenu_eb7h0d_a0a6a(), new IfStatement_EditorBuilder_a.IfStatement_generic_cellMenu_eb7h0d_b0a6a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new IfStatement_generic_cellMenu_eb7h0d_a0a6a(), new IfStatement_generic_cellMenu_eb7h0d_b0a6a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class IfStatement_generic_cellMenu_eb7h0d_a0a6a extends AbstractCellMenuPart_Generic_Item {
@@ -478,7 +479,7 @@ import jetbrains.mps.smodel.IOperationContext;
     }
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new IfStatement_EditorBuilder_a.ifFalseStatementSingleRoleHandler_eb7h0d_b6a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"), getEditorContext());
+    SingleRoleCellProvider provider = new ifFalseStatementSingleRoleHandler_eb7h0d_b6a(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement"), getEditorContext());
     return provider.createCell();
   }
   private static class ifFalseStatementSingleRoleHandler_eb7h0d_b6a extends SingleRoleCellProvider {
@@ -531,5 +532,14 @@ import jetbrains.mps.smodel.IOperationContext;
     protected String getNoTargetText() {
       return "<no ifFalseStatement>";
     }
+  }
+
+  private static final class AUX_vzk7wx {
+    /*package*/ static final SConcept WhileStatement_1f5f4332 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
+    /*package*/ static final SConcept DoWhileStatement_50b6f79b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
+    /*package*/ static final SConcept ForStatement_1eab9ef9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept ForeachStatement_bf20b0bc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
+    /*package*/ static final SConcept IfStatement_9dbf9b10 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept ElsifClause_979d802b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, "jetbrains.mps.baseLanguage.structure.ElsifClause");
   }
 }

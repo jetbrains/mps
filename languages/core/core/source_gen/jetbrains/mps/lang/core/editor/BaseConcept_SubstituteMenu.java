@@ -42,7 +42,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a());
+    result.add(new SMP_Group_s3h0kg_a());
     return result;
   }
 
@@ -66,7 +66,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       isChildNullOrExactlyBaseConcept = new Computable<Boolean>() {
         public Boolean compute() {
-          return (_context.getCurrentTargetNode() == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getCurrentTargetNode())), BaseConcept_SubstituteMenu.AUX_s3h0kg.BaseConcept_id1133920641626);
+          return (_context.getCurrentTargetNode() == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getCurrentTargetNode())), AUX_s3h0kg.BaseConcept_bc2351f);
         }
       }.compute();
     }
@@ -84,7 +84,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0(), new BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_b0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0(), new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_b0());
     }
     public class SMP_Group_s3h0kg_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -105,13 +105,13 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a(), BaseConcept_SubstituteMenu.AUX_s3h0kg.BaseConcept_id1133920641626));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a(), AUX_s3h0kg.BaseConcept_bc2351f));
       }
       private class SMP_Param_s3h0kg_a0a extends ParameterizedMenuPart<SAbstractConcept, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SAbstractConcept parameter, SubstituteMenuContext context) {
-          return new BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0(parameter).createItems(context);
+          return new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -127,7 +127,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected Iterable<? extends SAbstractConcept> getParameters(SubstituteMenuContext _context) {
-          return ((Iterable<SConcept>) SConceptOperations.getAllSubConcepts2(BaseConcept_SubstituteMenu.AUX_s3h0kg.BaseConcept_id1133920641626, SNodeOperations.getModel(_context.getParentNode())));
+          return ((Iterable<SConcept>) SConceptOperations.getAllSubConcepts2(AUX_s3h0kg.BaseConcept_bc2351f, SNodeOperations.getModel(_context.getParentNode())));
         }
         private class SMP_Action_s3h0kg_a0a0 extends SingleItemSubstituteMenuPart {
           private final SAbstractConcept myParameterObject;
@@ -138,7 +138,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0.Item item = new BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0.Item(_context);
+            SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0.Item item = new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0.Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -162,7 +162,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
             private final SubstituteMenuContext _context;
             private EditorMenuTraceInfo myTraceInfo;
             public Item(SubstituteMenuContext context) {
-              super(BaseConcept_SubstituteMenu.AUX_s3h0kg.BaseConcept_id1133920641626, context);
+              super(AUX_s3h0kg.BaseConcept_bc2351f, context);
               _context = context;
             }
 
@@ -182,7 +182,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
             }
             @NotNull
             protected CompletionItemInformation createInformation(String pattern) {
-              return new CompletionItemInformation(myParameterObject, BaseConcept_SubstituteMenu.AUX_s3h0kg.BaseConcept_id1133920641626, getMatchingText(pattern), getDescriptionText(pattern));
+              return new CompletionItemInformation(myParameterObject, AUX_s3h0kg.BaseConcept_bc2351f, getMatchingText(pattern), getDescriptionText(pattern));
             }
             @Nullable
             @Override
@@ -223,7 +223,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new BaseConcept_SubstituteMenu.SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_b0.SMP_Include_s3h0kg_a1a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_b0.SMP_Include_s3h0kg_a1a());
       }
       public class SMP_Include_s3h0kg_a1a extends IncludeSubstituteMenuSubstituteMenuPart {
 
@@ -251,7 +251,8 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
-  public static final class AUX_s3h0kg {
-    /*package*/ static final SConcept BaseConcept_id1133920641626 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+
+  private static final class AUX_s3h0kg {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

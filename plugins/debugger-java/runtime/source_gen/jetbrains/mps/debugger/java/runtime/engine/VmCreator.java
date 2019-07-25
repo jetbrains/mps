@@ -314,7 +314,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
     }
   }
   private void executeAfterProcessStarted(final Runnable run) {
-    VmCreator.RunsAfterProcessStarted processListener = new VmCreator.RunsAfterProcessStarted(run);
+    RunsAfterProcessStarted processListener = new RunsAfterProcessStarted(run);
     addProcessListener(processListener);
     if (myExecutionResult != null) {
       if (myExecutionResult.getProcessHandler().isStartNotified()) {

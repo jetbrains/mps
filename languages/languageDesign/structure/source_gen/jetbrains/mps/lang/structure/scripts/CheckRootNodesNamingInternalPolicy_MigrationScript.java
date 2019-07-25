@@ -5,13 +5,14 @@ package jetbrains.mps.lang.structure.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends BaseMigrationScript {
   public CheckRootNodesNamingInternalPolicy_MigrationScript() {
@@ -27,7 +28,7 @@ public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends Ba
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+        return AUX_rkab70.ConceptDeclaration_cb225da8;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -62,7 +63,7 @@ public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends Ba
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+        return AUX_rkab70.ConceptDeclaration_cb225da8;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -96,5 +97,9 @@ public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends Ba
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_rkab70 {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

@@ -47,7 +47,7 @@ public abstract class ListPanel<T> extends JBPanel {
   protected final List<T> myValues = ListSequence.fromList(new ArrayList<T>());
   protected final List<T> myCandidates = ListSequence.fromList(new ArrayList<T>());
   private ActionListener myListener;
-  private final ListPanel.MyAbstractListModel myListModel;
+  private final MyAbstractListModel myListModel;
   protected Project myProject;
   @Nullable
   private final MPSProject myMpsProject;
@@ -62,14 +62,14 @@ public abstract class ListPanel<T> extends JBPanel {
     setLayout(new GridBagLayout());
     JBPanel mainPanel = new JBPanel(new BorderLayout());
 
-    myListModel = new ListPanel.MyAbstractListModel();
+    myListModel = new MyAbstractListModel();
     myListComponent = new JBList(myListModel);
     JScrollPane scrolledListComponent = ScrollPaneFactory.createScrollPane(myListComponent);
     scrolledListComponent.doLayout();
     mainPanel.add(scrolledListComponent, BorderLayout.CENTER);
 
-    AnAction add = new ListPanel.MyListAddAction(myListComponent);
-    AnAction remove = new ListPanel.MyListRemoveAction(this.myListComponent);
+    AnAction add = new MyListAddAction(myListComponent);
+    AnAction remove = new MyListRemoveAction(this.myListComponent);
     DefaultActionGroup group = ActionUtils.groupFromActions(add, remove);
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUN_CONFIGURATIONS_COMBOBOX, group, false);
     mainPanel.add(toolbar.getComponent(), BorderLayout.EAST);

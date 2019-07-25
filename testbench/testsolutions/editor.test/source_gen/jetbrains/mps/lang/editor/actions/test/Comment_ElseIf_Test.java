@@ -21,7 +21,7 @@ public class Comment_ElseIf_Test extends BaseTransformationTest {
 
   @Test
   public void test_Comment_ElseIf() throws Throwable {
-    new Comment_ElseIf_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

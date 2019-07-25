@@ -21,14 +21,14 @@ import org.jetbrains.annotations.NonNls;
   public GeneratorTestWrapper(@NotNull final SNode node) {
     super(node, true, true);
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node);
-    myMethods = ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests"))).select(new ISelector<SNode, GeneratorTestWrapper.TransformMatchStatementWrapper>() {
-      public GeneratorTestWrapper.TransformMatchStatementWrapper select(SNode it) {
+    myMethods = ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests"))).select(new ISelector<SNode, TransformMatchStatementWrapper>() {
+      public TransformMatchStatementWrapper select(SNode it) {
         final int i = ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, 0x7b1db36ecf0d067L, "tests"))).indexOf(it);
         // FIXME this is a hack. I don't want to introduce getMethodName into TestAssertion, and the only information passed during test 
         // execution is method name (JUnit's Request/Description), therefore I'm forced to use method name to match ITestNodeWrappers in UI. 
         // Perhaps, with JUnit5 there's a way to pass additional identification of a test so that we are not bound to generated method names. 
         final String methodName = "testTransformAndMatch" + i;
-        return new GeneratorTestWrapper.TransformMatchStatementWrapper(GeneratorTestWrapper.this, it, methodName);
+        return new TransformMatchStatementWrapper(GeneratorTestWrapper.this, it, methodName);
       }
     }).ofType(ITestNodeWrapper.class).toListSequence();
   }

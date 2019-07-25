@@ -21,7 +21,7 @@ public class SelectTwoCells_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelectTwoCells() throws Throwable {
-    new SelectTwoCells_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

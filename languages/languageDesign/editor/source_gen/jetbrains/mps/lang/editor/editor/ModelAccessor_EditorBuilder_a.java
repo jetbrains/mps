@@ -160,7 +160,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ModelAccessor_EditorBuilder_a.getterSingleRoleHandler_bwxq1q_b1a1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x111f9dbb2ccL, 0x111f9dbc6d2L, "getter"), getEditorContext());
+    SingleRoleCellProvider provider = new getterSingleRoleHandler_bwxq1q_b1a1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x111f9dbb2ccL, 0x111f9dbc6d2L, "getter"), getEditorContext());
     return provider.createCell();
   }
   private static class getterSingleRoleHandler_bwxq1q_b1a1a extends SingleRoleCellProvider {
@@ -268,7 +268,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ModelAccessor_EditorBuilder_a.setterSingleRoleHandler_bwxq1q_b4a1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x111f9dbb2ccL, 0x111f9dbde82L, "setter"), getEditorContext());
+    SingleRoleCellProvider provider = new setterSingleRoleHandler_bwxq1q_b4a1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x111f9dbb2ccL, 0x111f9dbde82L, "setter"), getEditorContext());
     return provider.createCell();
   }
   private static class setterSingleRoleHandler_bwxq1q_b4a1a extends SingleRoleCellProvider {
@@ -376,7 +376,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrace
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new ModelAccessor_EditorBuilder_a.validatorSingleRoleHandler_bwxq1q_b7a1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x111f9dbb2ccL, 0x111f9dbf7b9L, "validator"), getEditorContext());
+    SingleRoleCellProvider provider = new validatorSingleRoleHandler_bwxq1q_b7a1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x111f9dbb2ccL, 0x111f9dbf7b9L, "validator"), getEditorContext());
     return provider.createCell();
   }
   private static class validatorSingleRoleHandler_bwxq1q_b7a1a extends SingleRoleCellProvider {

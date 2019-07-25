@@ -32,11 +32,11 @@ public class DiffButtonsPainter extends ButtonsPainter {
     });
     if (isHighlightLeft()) {
       if (!(allInsert)) {
-        button = new DiffButtonsPainter.MyButton(changeGroup, getX(0), y, "Replace", IdeIcons.APPLY_RIGHT);
+        button = new MyButton(changeGroup, getX(0), y, "Replace", IdeIcons.APPLY_RIGHT);
       }
     } else {
       if (allInsert) {
-        button = new DiffButtonsPainter.MyButton(changeGroup, getX(0), y, "Remove", IdeIcons.EXCLUDE);
+        button = new MyButton(changeGroup, getX(0), y, "Remove", IdeIcons.EXCLUDE);
       }
     }
     if (button != null) {

@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
+    <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="-1" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -1239,6 +1239,36 @@
     <node concept="1YaCAy" id="78MdKhpRWU8" role="1YuTPh">
       <property role="TrG5h" value="node" />
       <ref role="1YaFvo" to="tp68:78MdKhpRWcg" resolve="InternalTypedStaticFieldReference" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="4hwx6CziFrF">
+    <property role="TrG5h" value="typeof_ExtractToSingleConstantExpression" />
+    <node concept="3clFbS" id="4hwx6CziFrG" role="18ibNy">
+      <node concept="1Z5TYs" id="4hwx6CziFrM" role="3cqZAp">
+        <node concept="mw_s8" id="4hwx6CziFrN" role="1ZfhKB">
+          <node concept="1Z2H0r" id="4hwx6CziFrO" role="mwGJk">
+            <node concept="2OqwBi" id="4hwx6CziFrP" role="1Z2MuG">
+              <node concept="1YBJjd" id="4hwx6CziFrQ" role="2Oq$k0">
+                <ref role="1YBMHb" node="4hwx6CziFrI" resolve="expression" />
+              </node>
+              <node concept="3TrEf2" id="4hhCrttpyVj" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp68:4hwx6CziF0w" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="4hwx6CziFrS" role="1ZfhK$">
+          <node concept="1Z2H0r" id="4hwx6CziFrT" role="mwGJk">
+            <node concept="1YBJjd" id="4hwx6CziFrU" role="1Z2MuG">
+              <ref role="1YBMHb" node="4hwx6CziFrI" resolve="expression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4hwx6CziFrI" role="1YuTPh">
+      <property role="TrG5h" value="expression" />
+      <ref role="1YaFvo" to="tp68:4hwx6CziyoA" resolve="ExtractToSingleConstantExpression" />
     </node>
   </node>
 </model>

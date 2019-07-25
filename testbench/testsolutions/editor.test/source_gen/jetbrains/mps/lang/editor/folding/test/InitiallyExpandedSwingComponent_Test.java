@@ -25,7 +25,7 @@ public class InitiallyExpandedSwingComponent_Test extends BaseTransformationTest
 
   @Test
   public void test_InitiallyExpandedSwingComponent() throws Throwable {
-    new InitiallyExpandedSwingComponent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

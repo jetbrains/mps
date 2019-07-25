@@ -21,7 +21,7 @@ public class Uncomment_StatementAtFirstPosition_Test extends BaseTransformationT
 
   @Test
   public void test_Uncomment_StatementAtFirstPosition() throws Throwable {
-    new Uncomment_StatementAtFirstPosition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -10,9 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TextGenAspectDescriptor extends TextGenAspectBase {
   private final LanguageConceptSwitch myIndex = new LanguageConceptSwitch();
@@ -35,13 +36,13 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public void breakdownToUnits(@NotNull TextGenModelOutline outline) {
     for (SNode root : outline.getModel().getRootNodes()) {
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2058L, "jetbrains.mps.samples.files.structure.File"))) {
+      if (root.getConcept().equals(AUX_t8hmqt.File_ca4f615d)) {
         String fname = getFileName_File(root);
         String ext = getFileExtension_File(root);
         outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
         continue;
       }
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x32e7e3e1f3d0e288L, "jetbrains.mps.samples.files.structure.File2"))) {
+      if (root.getConcept().equals(AUX_t8hmqt.File2_dee1a806)) {
         String fname = getFileName_File2(root);
         String ext = getFileExtension_File2(root);
         outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), getPath_File2(root), root);
@@ -63,5 +64,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   }
   private static String getPath_File2(SNode node) {
     return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x32e7e3e1f3d0e288L, 0x32e7e3e1f3d0e28bL, "path"));
+  }
+
+  private static final class AUX_t8hmqt {
+    /*package*/ static final SConcept File_ca4f615d = MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2058L, "jetbrains.mps.samples.files.structure.File");
+    /*package*/ static final SConcept File2_dee1a806 = MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x32e7e3e1f3d0e288L, "jetbrains.mps.samples.files.structure.File2");
   }
 }

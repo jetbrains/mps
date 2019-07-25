@@ -6,8 +6,9 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.core.behavior.ChildAttribute__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class add_ChildAttribute_id_QuickFix extends QuickFix_Runtime {
   public add_ChildAttribute_id_QuickFix() {
@@ -17,7 +18,11 @@ public class add_ChildAttribute_id_QuickFix extends QuickFix_Runtime {
     return "Add id to child attribute";
   }
   public void execute(SNode node) {
-    SNode childAttribute = SNodeOperations.as(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"));
+    SNode childAttribute = SNodeOperations.as(node, AUX_3haqhx.ChildAttribute_96496d6c);
     ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(childAttribute, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(childAttribute));
+  }
+
+  private static final class AUX_3haqhx {
+    /*package*/ static final SConcept ChildAttribute_96496d6c = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

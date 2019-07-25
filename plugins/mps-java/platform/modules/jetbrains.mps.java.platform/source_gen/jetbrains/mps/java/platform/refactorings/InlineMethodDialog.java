@@ -45,7 +45,7 @@ import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 
 public class InlineMethodDialog extends RefactoringDialog {
   private InlineMethodModel myModel;
-  private InlineMethodDialog.PreviewAction myPreviewAction;
+  private PreviewAction myPreviewAction;
   private boolean myForAll;
   private final SRepository myEditorRepo;
   private final EditorContext myEditorContext;
@@ -128,7 +128,7 @@ public class InlineMethodDialog extends RefactoringDialog {
   @Override
   protected void createDefaultActions() {
     super.createDefaultActions();
-    myPreviewAction = new InlineMethodDialog.PreviewAction();
+    myPreviewAction = new PreviewAction();
   }
   @Override
   @NotNull

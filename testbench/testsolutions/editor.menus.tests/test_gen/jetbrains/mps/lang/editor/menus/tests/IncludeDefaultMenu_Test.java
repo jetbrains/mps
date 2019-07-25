@@ -29,23 +29,23 @@ public class IncludeDefaultMenu_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeConceptShouldBeSpecifiedCheck8095208975669727090() throws Throwable {
-    new IncludeDefaultMenu_Test.TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669727090();
+    new TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669727090();
   }
   @Test
   public void test_NodeConceptShouldBeSpecifiedCheck8095208975669728885() throws Throwable {
-    new IncludeDefaultMenu_Test.TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669728885();
+    new TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669728885();
   }
   @Test
   public void test_NodeConceptShouldBeSpecifiedCheck8095208975669729693() throws Throwable {
-    new IncludeDefaultMenu_Test.TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669729693();
+    new TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669729693();
   }
   @Test
   public void test_NodeConceptShouldBeSpecifiedCheck8095208975669729758() throws Throwable {
-    new IncludeDefaultMenu_Test.TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669729758();
+    new TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669729758();
   }
   @Test
   public void test_NodeConceptShouldBeSpecifiedCheck8095208975669730924() throws Throwable {
-    new IncludeDefaultMenu_Test.TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669730924();
+    new TestBody(this).test_NodeConceptShouldBeSpecifiedCheck8095208975669730924();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

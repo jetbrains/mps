@@ -34,7 +34,7 @@ public class TeamCityParameterizedRunner extends BaseMpsRunner {
     List<Runner> runners = new ArrayList<Runner>();
     List<Object[]> parametersList = getParametersList(getTestClass());
     for (int i = 0; i < parametersList.size(); i++) {
-      TeamCityParameterizedRunner.TestClassRunnerForParameters runner = new TeamCityParameterizedRunner.TestClassRunnerForParameters(getTestClass().getJavaClass(), parametersList, i);
+      TestClassRunnerForParameters runner = new TestClassRunnerForParameters(getTestClass().getJavaClass(), parametersList, i);
       runners.add(runner);
     }
     return runners;

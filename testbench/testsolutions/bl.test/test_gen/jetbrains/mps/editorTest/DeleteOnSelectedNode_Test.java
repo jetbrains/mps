@@ -21,7 +21,7 @@ public class DeleteOnSelectedNode_Test extends BaseTransformationTest {
 
   @Test
   public void test_DeleteOnSelectedNode() throws Throwable {
-    new DeleteOnSelectedNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

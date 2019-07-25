@@ -21,7 +21,7 @@ public class AddConstructorNotAllowed1_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddConstructorNotAllowed1() throws Throwable {
-    new AddConstructorNotAllowed1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -24,51 +24,54 @@
   </root>
   <root nodeRef="r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e(jetbrains.mps.samples.KajaAndOr.generator.template.main@generator)/1904811872814327578">
     <file name="Mapping_main.java">
-      <node id="1904811872814327578" at="23,0,24,0" concept="3" trace="rules" />
-      <node id="1904811872814327578" at="24,53,25,182" concept="12" />
-      <node id="1904811872814327578" at="25,182,26,131" concept="2" />
-      <node id="1904811872814327578" at="29,64,30,17" concept="8" />
-      <node id="1904811872814327601" at="33,29,34,312" concept="12" />
-      <node id="1904811872814327601" at="37,103,38,80" concept="7" />
-      <node id="1904811872814327601" at="38,80,39,87" concept="7" />
-      <node id="1904811872814327601" at="39,87,40,20" concept="8" />
-      <node id="1904811872814327663" at="44,29,45,311" concept="12" />
-      <node id="1904811872814327663" at="48,103,49,80" concept="7" />
-      <node id="1904811872814327663" at="49,80,50,86" concept="7" />
-      <node id="1904811872814327663" at="50,86,51,20" concept="8" />
-      <node id="1904811872814327601" at="33,0,36,0" concept="1" trace="ReductionRule0#()V" />
-      <node id="1904811872814327663" at="44,0,47,0" concept="1" trace="ReductionRule1#()V" />
-      <node id="1904811872814327578" at="24,0,28,0" concept="1" trace="Mapping_main#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />
-      <node id="1904811872814327578" at="28,0,32,0" concept="6" trace="getReductionRules#()Ljava/util/Collection;" />
-      <node id="1904811872814327601" at="36,0,42,0" concept="6" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-      <node id="1904811872814327663" at="47,0,53,0" concept="6" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-      <scope id="1904811872814327578" at="29,64,30,17" />
-      <scope id="1904811872814327601" at="33,29,34,312" />
-      <scope id="1904811872814327663" at="44,29,45,311" />
-      <scope id="1904811872814327578" at="24,53,26,131" />
-      <scope id="1904811872814327601" at="33,0,36,0" />
-      <scope id="1904811872814327601" at="37,103,40,20">
+      <node id="1904811872814327578" at="24,0,25,0" concept="3" trace="rules" />
+      <node id="1904811872814327578" at="25,53,26,182" concept="12" />
+      <node id="1904811872814327578" at="26,182,27,105" concept="2" />
+      <node id="1904811872814327578" at="30,64,31,17" concept="8" />
+      <node id="1904811872814327601" at="34,29,35,194" concept="12" />
+      <node id="1904811872814327601" at="38,103,39,80" concept="7" />
+      <node id="1904811872814327601" at="39,80,40,87" concept="7" />
+      <node id="1904811872814327601" at="40,87,41,20" concept="8" />
+      <node id="1904811872814327663" at="45,29,46,193" concept="12" />
+      <node id="1904811872814327663" at="49,103,50,80" concept="7" />
+      <node id="1904811872814327663" at="50,80,51,86" concept="7" />
+      <node id="1904811872814327663" at="51,86,52,20" concept="8" />
+      <node id="1904811872814327578" at="57,0,58,0" concept="10" trace="And_689b965b" />
+      <node id="1904811872814327578" at="58,0,59,0" concept="10" trace="Or_689b9d9c" />
+      <node id="1904811872814327601" at="34,0,37,0" concept="1" trace="ReductionRule0#()V" />
+      <node id="1904811872814327663" at="45,0,48,0" concept="1" trace="ReductionRule1#()V" />
+      <node id="1904811872814327578" at="25,0,29,0" concept="1" trace="Mapping_main#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />
+      <node id="1904811872814327578" at="29,0,33,0" concept="6" trace="getReductionRules#()Ljava/util/Collection;" />
+      <node id="1904811872814327601" at="37,0,43,0" concept="6" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
+      <node id="1904811872814327663" at="48,0,54,0" concept="6" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
+      <scope id="1904811872814327578" at="30,64,31,17" />
+      <scope id="1904811872814327601" at="34,29,35,194" />
+      <scope id="1904811872814327663" at="45,29,46,193" />
+      <scope id="1904811872814327578" at="25,53,27,105" />
+      <scope id="1904811872814327601" at="34,0,37,0" />
+      <scope id="1904811872814327601" at="38,103,41,20">
         <var name="environment" id="1904811872814327601" />
         <var name="tlist1" id="1904811872814327601" />
       </scope>
-      <scope id="1904811872814327663" at="44,0,47,0" />
-      <scope id="1904811872814327663" at="48,103,51,20">
+      <scope id="1904811872814327663" at="45,0,48,0" />
+      <scope id="1904811872814327663" at="49,103,52,20">
         <var name="environment" id="1904811872814327663" />
         <var name="tlist1" id="1904811872814327663" />
       </scope>
-      <scope id="1904811872814327578" at="24,0,28,0">
+      <scope id="1904811872814327578" at="25,0,29,0">
         <var name="model" id="1904811872814327578" />
       </scope>
-      <scope id="1904811872814327578" at="28,0,32,0" />
-      <scope id="1904811872814327601" at="36,0,42,0">
+      <scope id="1904811872814327578" at="29,0,33,0" />
+      <scope id="1904811872814327601" at="37,0,43,0">
         <var name="context" id="1904811872814327601" />
       </scope>
-      <scope id="1904811872814327663" at="47,0,53,0">
+      <scope id="1904811872814327663" at="48,0,54,0">
         <var name="context" id="1904811872814327663" />
       </scope>
-      <unit id="1904811872814327601" at="32,0,43,0" name="jetbrains.mps.samples.KajaAndOr.generator.template.main.Mapping_main$ReductionRule0" />
-      <unit id="1904811872814327663" at="43,0,54,0" name="jetbrains.mps.samples.KajaAndOr.generator.template.main.Mapping_main$ReductionRule1" />
-      <unit id="1904811872814327578" at="21,0,55,0" name="jetbrains.mps.samples.KajaAndOr.generator.template.main.Mapping_main" />
+      <unit id="1904811872814327578" at="56,0,60,0" name="jetbrains.mps.samples.KajaAndOr.generator.template.main.Mapping_main$AUX_ief6mt" />
+      <unit id="1904811872814327601" at="33,0,44,0" name="jetbrains.mps.samples.KajaAndOr.generator.template.main.Mapping_main$ReductionRule0" />
+      <unit id="1904811872814327663" at="44,0,55,0" name="jetbrains.mps.samples.KajaAndOr.generator.template.main.Mapping_main$ReductionRule1" />
+      <unit id="1904811872814327578" at="22,0,61,0" name="jetbrains.mps.samples.KajaAndOr.generator.template.main.Mapping_main" />
     </file>
   </root>
   <root nodeRef="r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e(jetbrains.mps.samples.KajaAndOr.generator.template.main@generator)/1904811872814327603">

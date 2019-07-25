@@ -34,7 +34,7 @@ public class InlineVariableBinaryInBinaryOnDeclaration_Test extends BaseTransfor
 
   @Test
   public void test_simpleInlineVariable() throws Throwable {
-    new InlineVariableBinaryInBinaryOnDeclaration_Test.TestBody(this).test_simpleInlineVariable();
+    new TestBody(this).test_simpleInlineVariable();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

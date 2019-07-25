@@ -9,7 +9,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
@@ -19,6 +18,8 @@ import jetbrains.mps.lang.editor.editor.EditorLanguageKeyPack_KeyPack.PARENTH_St
 import jetbrains.mps.util.Pair;
 import java.awt.Color;
 import jetbrains.mps.lang.editor.editor.EditorLanguageKeyPack_KeyPack.KEYWORD_StyleKey;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Styles_StyleSheet {
   /**
@@ -29,7 +30,7 @@ public class Styles_StyleSheet {
   public static void apply_rootCellModelStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.rootCellModelStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -39,7 +40,7 @@ public class Styles_StyleSheet {
   public static void apply_style(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.styleStyleClass(editorContext, node).apply(style, editorCell);
+    new styleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -49,7 +50,7 @@ public class Styles_StyleSheet {
   public static void apply_reference(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.referenceStyleClass(editorContext, node).apply(style, editorCell);
+    new referenceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -59,7 +60,7 @@ public class Styles_StyleSheet {
   public static void apply_item(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.itemStyleClass(editorContext, node).apply(style, editorCell);
+    new itemStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -69,7 +70,7 @@ public class Styles_StyleSheet {
   public static void apply_header(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.headerStyleClass(editorContext, node).apply(style, editorCell);
+    new headerStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -79,7 +80,7 @@ public class Styles_StyleSheet {
   public static void apply_property(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.propertyStyleClass(editorContext, node).apply(style, editorCell);
+    new propertyStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -89,7 +90,7 @@ public class Styles_StyleSheet {
   public static void apply_bordered(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.borderedStyleClass(editorContext, node).apply(style, editorCell);
+    new borderedStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -99,7 +100,7 @@ public class Styles_StyleSheet {
   public static void apply_borderedCollection(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.borderedCollectionStyleClass(editorContext, node).apply(style, editorCell);
+    new borderedCollectionStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -109,7 +110,7 @@ public class Styles_StyleSheet {
   public static void apply_tag(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.tagStyleClass(editorContext, node).apply(style, editorCell);
+    new tagStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -119,7 +120,7 @@ public class Styles_StyleSheet {
   public static void apply_attributedCellLabel(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.attributedCellLabelStyleClass(editorContext, node).apply(style, editorCell);
+    new attributedCellLabelStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -129,7 +130,7 @@ public class Styles_StyleSheet {
   public static void apply_string(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.stringStyleClass(editorContext, node).apply(style, editorCell);
+    new stringStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -139,7 +140,7 @@ public class Styles_StyleSheet {
   public static void apply_AnyBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -149,7 +150,7 @@ public class Styles_StyleSheet {
   public static void apply_Parenthesis(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
+    new ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -159,7 +160,7 @@ public class Styles_StyleSheet {
   public static void apply_LeftParen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.LeftParenStyleClass(editorContext, node).apply(style, editorCell);
+    new LeftParenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -169,7 +170,7 @@ public class Styles_StyleSheet {
   public static void apply_RightParen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.RightParenStyleClass(editorContext, node).apply(style, editorCell);
+    new RightParenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -179,7 +180,7 @@ public class Styles_StyleSheet {
   public static void apply_LeftParenAfterName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -189,7 +190,7 @@ public class Styles_StyleSheet {
   public static void apply_EditorKeyWordForeground(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.EditorKeyWordForegroundStyleClass(editorContext, node).apply(style, editorCell);
+    new EditorKeyWordForegroundStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -199,7 +200,7 @@ public class Styles_StyleSheet {
   public static void apply_EditorKeyWord(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.EditorKeyWordStyleClass(editorContext, node).apply(style, editorCell);
+    new EditorKeyWordStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class rootCellModelStyleStyleClass extends AbstractStyleClass {
@@ -216,31 +217,31 @@ public class Styles_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_kkd5s1_a0a() {
-      if (!(SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+      if (!(SNodeOperations.isInstanceOf(getNode(), AUX_f5vaad.EditorCellModel_226b88d6))) {
         return false;
       }
-      return (boolean) EditorCellModel__BehaviorDescriptor.isIndented_idi0pN94$.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
+      return (boolean) EditorCellModel__BehaviorDescriptor.isIndented_idi0pN94$.invoke(SNodeOperations.cast(getNode(), AUX_f5vaad.EditorCellModel_226b88d6));
     }
     private boolean _StyleParameter_QueryFunction_kkd5s1_a1a() {
-      if (!(SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+      if (!(SNodeOperations.isInstanceOf(getNode(), AUX_f5vaad.EditorCellModel_226b88d6))) {
         return false;
       }
-      if ((boolean) EditorCellModel__BehaviorDescriptor.isNewLine_idi0pLPAc.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+      if ((boolean) EditorCellModel__BehaviorDescriptor.isNewLine_idi0pLPAc.invoke(SNodeOperations.cast(getNode(), AUX_f5vaad.EditorCellModel_226b88d6))) {
         return true;
       }
-      if ((boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+      if ((boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(SNodeOperations.cast(getNode(), AUX_f5vaad.EditorCellModel_226b88d6))) {
         return true;
       }
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) {
-        return (boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(SNodeOperations.cast(SNodeOperations.getParent(getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(getNode()), AUX_f5vaad.EditorCellModel_226b88d6)) {
+        return (boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(SNodeOperations.cast(SNodeOperations.getParent(getNode()), AUX_f5vaad.EditorCellModel_226b88d6));
       }
       return false;
     }
     private boolean _StyleParameter_QueryFunction_kkd5s1_a2a() {
-      if (!(SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+      if (!(SNodeOperations.isInstanceOf(getNode(), AUX_f5vaad.EditorCellModel_226b88d6))) {
         return false;
       }
-      return (boolean) EditorCellModel__BehaviorDescriptor.isOnNewLine_idi0pUMOG.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
+      return (boolean) EditorCellModel__BehaviorDescriptor.isOnNewLine_idi0pUMOG.invoke(SNodeOperations.cast(getNode(), AUX_f5vaad.EditorCellModel_226b88d6));
     }
   }
   public static class styleStyleClass extends AbstractStyleClass {
@@ -453,5 +454,9 @@ public class Styles_StyleSheet {
       new EditorKeyWordForegroundStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     }
 
+  }
+
+  private static final class AUX_f5vaad {
+    /*package*/ static final SConcept EditorCellModel_226b88d6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
   }
 }

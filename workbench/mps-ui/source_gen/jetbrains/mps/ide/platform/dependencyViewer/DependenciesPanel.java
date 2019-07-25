@@ -170,9 +170,9 @@ public class DependenciesPanel extends JPanel {
 
   private JComponent createToolbar() {
     DefaultActionGroup group = new DefaultActionGroup();
-    group.add(new DependenciesPanel.CloseAction());
-    group.add(new DependenciesPanel.RerunAction());
-    group.add(new DependenciesPanel.ToggleUsedLanguages());
+    group.add(new CloseAction());
+    group.add(new RerunAction());
+    group.add(new ToggleUsedLanguages());
     return ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true).getComponent();
   }
 

@@ -32,19 +32,19 @@ public class FeaturesAndLocations_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeThisFeatureIsNotAllowedCheck4740302442485194061() throws Throwable {
-    new FeaturesAndLocations_Test.TestBody(this).test_NodeThisFeatureIsNotAllowedCheck4740302442485194061();
+    new TestBody(this).test_NodeThisFeatureIsNotAllowedCheck4740302442485194061();
   }
   @Test
   public void test_NodeMissingFeaturesCheck4740302442485174508() throws Throwable {
-    new FeaturesAndLocations_Test.TestBody(this).test_NodeMissingFeaturesCheck4740302442485174508();
+    new TestBody(this).test_NodeMissingFeaturesCheck4740302442485174508();
   }
   @Test
   public void test_ErrorMessagesCheck4740302442485195517() throws Throwable {
-    new FeaturesAndLocations_Test.TestBody(this).test_ErrorMessagesCheck4740302442485195517();
+    new TestBody(this).test_ErrorMessagesCheck4740302442485195517();
   }
   @Test
   public void test_ErrorMessagesCheck4740302442485195092() throws Throwable {
-    new FeaturesAndLocations_Test.TestBody(this).test_ErrorMessagesCheck4740302442485195092();
+    new TestBody(this).test_ErrorMessagesCheck4740302442485195092();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

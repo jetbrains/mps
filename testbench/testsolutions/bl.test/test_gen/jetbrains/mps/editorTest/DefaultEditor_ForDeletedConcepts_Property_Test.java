@@ -21,7 +21,7 @@ public class DefaultEditor_ForDeletedConcepts_Property_Test extends BaseTransfor
 
   @Test
   public void test_DefaultEditor_ForDeletedConcepts_Property() throws Throwable {
-    new DefaultEditor_ForDeletedConcepts_Property_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -22,7 +22,7 @@ public class DeleteLineHorizontalSingleCollection_Test extends BaseTransformatio
 
   @Test
   public void test_DeleteLineHorizontalSingleCollection() throws Throwable {
-    new DeleteLineHorizontalSingleCollection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

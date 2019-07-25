@@ -54,7 +54,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BasePlaceholder_EditorBuilder_a.contentSingleRoleHandler_rkx1ed_a0(myNode, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, 0x339681b4da4ef1bdL, "content"), getEditorContext());
+    SingleRoleCellProvider provider = new contentSingleRoleHandler_rkx1ed_a0(myNode, MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, 0x339681b4da4ef1bdL, "content"), getEditorContext());
     return provider.createCell();
   }
   private static class contentSingleRoleHandler_rkx1ed_a0 extends SingleRoleCellProvider {
@@ -110,13 +110,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
       BasePlaceholderEmptyCell_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), BasePlaceholder_EditorBuilder_a.AUX_b89va1.BasePlaceholder_id3717301156197626279, "jetbrains.mps.lang.core.editor.BasePlaceholder_TransformationMenu"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_b89va1.BasePlaceholder_150d8742, "jetbrains.mps.lang.core.editor.BasePlaceholder_TransformationMenu"));
       editorCell.setDefaultText("");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
     }
   }
-  public static final class AUX_b89va1 {
-    /*package*/ static final SConcept BasePlaceholder_id3717301156197626279 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder");
+
+  private static final class AUX_b89va1 {
+    /*package*/ static final SConcept BasePlaceholder_150d8742 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder");
   }
 }

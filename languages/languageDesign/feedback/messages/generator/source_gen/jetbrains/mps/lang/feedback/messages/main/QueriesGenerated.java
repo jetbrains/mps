@@ -66,11 +66,11 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("24399255755849310", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7716791493893199856", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("8276826811723400156", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7716791493893203891", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("7716791493893190854", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("24399255755849310", new SNQ(i++));
+    snqMethods.put("7716791493893199856", new SNQ(i++));
+    snqMethods.put("8276826811723400156", new SNQ(i++));
+    snqMethods.put("7716791493893203891", new SNQ(i++));
+    snqMethods.put("7716791493893190854", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -107,7 +107,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("2186761456951162255", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "PROVIDER"));
+    pvqMethods.put("2186761456951162255", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "PROVIDER"));
   }
   @NotNull
   @Override
@@ -137,7 +137,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("3299718585667229489", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("3299718585667229489", new IfMC(i++));
   }
   @NotNull
   @Override
@@ -165,9 +165,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, CallArgumentQuery> caqMethods = new HashMap<String, CallArgumentQuery>();
   {
-    caqMethods.put("7716791493892608741", new QueriesGenerated.CAQ(0));
-    caqMethods.put("7716791493892604314", new QueriesGenerated.CAQ(1));
-    caqMethods.put("7716791493892583843", new QueriesGenerated.CAQ(2));
+    caqMethods.put("7716791493892608741", new CAQ(0));
+    caqMethods.put("7716791493892604314", new CAQ(1));
+    caqMethods.put("7716791493892583843", new CAQ(2));
   }
   @NotNull
   @Override

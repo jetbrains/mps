@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -20,10 +19,13 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f4L, "jetbrains.mps.lang.editor.structure.ContextVariable_Node");
+  private static final SAbstractConcept CONCEPT = AUX_ilj1cb.ContextVariable_Node_8fb4b9d9;
 
   public static final SMethod<SAbstractConcept> getProviderConcept_idaxxf7pcCKs = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getProviderConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("axxf7pcCKs").build();
   /*package*/ static final SMethod<SNode> getApplicableConcept_id4Fjf6xN2WlM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("4Fjf6xN2WlM").build();
@@ -35,10 +37,10 @@ public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static SAbstractConcept getProviderConcept_idaxxf7pcCKs(@NotNull SAbstractConcept __thisConcept__) {
-    return MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f3L, "jetbrains.mps.lang.editor.structure.INodeProvider");
+    return AUX_ilj1cb.INodeProvider_8fb4b9d8;
   }
   /*package*/ static SNode getApplicableConcept_id4Fjf6xN2WlM(@NotNull SNode __thisNode__) {
-    SNode provider = SNodeOperations.cast(ContextVariable__BehaviorDescriptor.findProvider_idhEwJh7Q.invoke(__thisNode__), MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f3L, "jetbrains.mps.lang.editor.structure.INodeProvider"));
+    SNode provider = SNodeOperations.cast(ContextVariable__BehaviorDescriptor.findProvider_idhEwJh7Q.invoke(__thisNode__), AUX_ilj1cb.INodeProvider_8fb4b9d8);
     return ((provider == null) ? null : INodeProvider__BehaviorDescriptor.getApplicableConcept_id7_cYeEu4lWA.invoke(provider));
   }
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
@@ -100,5 +102,10 @@ public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescri
     quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
+  }
+
+  private static final class AUX_ilj1cb {
+    /*package*/ static final SConcept ContextVariable_Node_8fb4b9d9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f4L, "jetbrains.mps.lang.editor.structure.ContextVariable_Node");
+    /*package*/ static final SInterfaceConcept INodeProvider_8fb4b9d8 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f3L, "jetbrains.mps.lang.editor.structure.INodeProvider");
   }
 }

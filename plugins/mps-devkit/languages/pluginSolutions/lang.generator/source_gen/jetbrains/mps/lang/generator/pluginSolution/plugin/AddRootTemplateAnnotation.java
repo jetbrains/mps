@@ -13,6 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class AddRootTemplateAnnotation implements CreateNodeExtension {
   public boolean isApplicable(@NotNull SModel m) {
@@ -24,8 +25,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
       return;
     }
     SNode node = n;
-    if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) == null)) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), SModelOperations.createNewNode(SNodeOperations.getModel(node), null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")));
+    if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_tnz6xi.RootTemplateAnnotation_423b5b1a)) == null)) {
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_tnz6xi.RootTemplateAnnotation_423b5b1a), SModelOperations.createNewNode(SNodeOperations.getModel(node), null, AUX_tnz6xi.RootTemplateAnnotation_423b5b1a));
     }
+  }
+
+  private static final class AUX_tnz6xi {
+    /*package*/ static final SConcept RootTemplateAnnotation_423b5b1a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
   }
 }

@@ -25,7 +25,7 @@ public class TestSubstituteExceptionParameterized_Test extends BaseTransformatio
 
   @Test
   public void test_TestSubstituteExceptionParameterized() throws Throwable {
-    new TestSubstituteExceptionParameterized_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

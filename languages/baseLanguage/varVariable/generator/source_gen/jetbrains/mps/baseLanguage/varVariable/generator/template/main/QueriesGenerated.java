@@ -39,8 +39,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("8425555512443868021", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("8425555512443868053", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("8425555512443868021", new SNQ(i++));
+    snqMethods.put("8425555512443868053", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -71,7 +71,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("8425555512443868040", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "n"));
+    pvqMethods.put("8425555512443868040", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "n"));
   }
   @NotNull
   @Override

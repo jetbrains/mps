@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.smodel.runtime.FinderRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
@@ -63,24 +64,34 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
 
   @Override
   public void init(FinderRegistry reg) {
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), 0, "AllMethodUsages");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), 1, "BaseMethod");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), 2, "BaseMethodUsages");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), 3, "ClassAncestors");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), 4, "ClassUsages");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"), 5, "ConstructorUsages");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), 6, "DerivedClasses");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"), 7, "DerivedInterfaces");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), 8, "DerivedMethods");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), 9, "ExactMethodUsages");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), 10, "FieldUsages");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), 11, "ImplementedInterfaces");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"), 12, "ImplementingClasses");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"), 13, "InterfaceAncestors");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), 14, "InterfaceMethodImplementations");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), 15, "OverridingFields");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), 16, "OverridingMethods");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"), 17, "ParameterUsages");
-    reg.add(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), 18, "StraightDerivedClasses");
+    reg.add(AUX_o9tm2l.BaseMethodDeclaration_9dbf9acb, 0, "AllMethodUsages");
+    reg.add(AUX_o9tm2l.BaseMethodDeclaration_9dbf9acb, 1, "BaseMethod");
+    reg.add(AUX_o9tm2l.InstanceMethodDeclaration_9dbf9b2b, 2, "BaseMethodUsages");
+    reg.add(AUX_o9tm2l.ClassConcept_e2711824, 3, "ClassAncestors");
+    reg.add(AUX_o9tm2l.ClassConcept_e2711824, 4, "ClassUsages");
+    reg.add(AUX_o9tm2l.ConstructorDeclaration_9dbf9ae8, 5, "ConstructorUsages");
+    reg.add(AUX_o9tm2l.ClassConcept_e2711824, 6, "DerivedClasses");
+    reg.add(AUX_o9tm2l.Interface_bca2069, 7, "DerivedInterfaces");
+    reg.add(AUX_o9tm2l.InstanceMethodDeclaration_9dbf9b2b, 8, "DerivedMethods");
+    reg.add(AUX_o9tm2l.BaseMethodDeclaration_9dbf9acb, 9, "ExactMethodUsages");
+    reg.add(AUX_o9tm2l.VariableDeclaration_3c610994, 10, "FieldUsages");
+    reg.add(AUX_o9tm2l.ClassConcept_e2711824, 11, "ImplementedInterfaces");
+    reg.add(AUX_o9tm2l.Interface_bca2069, 12, "ImplementingClasses");
+    reg.add(AUX_o9tm2l.Interface_bca2069, 13, "InterfaceAncestors");
+    reg.add(AUX_o9tm2l.InstanceMethodDeclaration_9dbf9b2b, 14, "InterfaceMethodImplementations");
+    reg.add(AUX_o9tm2l.VariableDeclaration_3c610994, 15, "OverridingFields");
+    reg.add(AUX_o9tm2l.InstanceMethodDeclaration_9dbf9b2b, 16, "OverridingMethods");
+    reg.add(AUX_o9tm2l.ParameterDeclaration_24d60da8, 17, "ParameterUsages");
+    reg.add(AUX_o9tm2l.ClassConcept_e2711824, 18, "StraightDerivedClasses");
+  }
+
+  private static final class AUX_o9tm2l {
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ConstructorDeclaration_9dbf9ae8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept VariableDeclaration_3c610994 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept ParameterDeclaration_24d60da8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
   }
 }

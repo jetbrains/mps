@@ -34,7 +34,7 @@ public class ConvertAnonymousWithTypeParameters_Test extends BaseTransformationT
 
   @Test
   public void test_TypeParametersTest() throws Throwable {
-    new ConvertAnonymousWithTypeParameters_Test.TestBody(this).test_TypeParametersTest();
+    new TestBody(this).test_TypeParametersTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

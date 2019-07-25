@@ -21,7 +21,7 @@ public class AddNextPlaceholderFromOutsideOfTheText_Test extends BaseTransformat
 
   @Test
   public void test_AddNextPlaceholderFromOutsideOfTheText() throws Throwable {
-    new AddNextPlaceholderFromOutsideOfTheText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class Del_InNameBegginingWithInitializer_Test extends BaseTransformationT
 
   @Test
   public void test_Del_InNameBegginingWithInitializer() throws Throwable {
-    new Del_InNameBegginingWithInitializer_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

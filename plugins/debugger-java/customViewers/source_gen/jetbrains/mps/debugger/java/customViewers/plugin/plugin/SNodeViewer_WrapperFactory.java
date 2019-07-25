@@ -24,7 +24,7 @@ public class SNodeViewer_WrapperFactory extends ValueWrapperFactory {
   public SNodeViewer_WrapperFactory() {
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new SNodeViewer_WrapperFactory.SNodeViewerWrapper(value, threadReference);
+    return new SNodeViewerWrapper(value, threadReference);
   }
   @Override
   public boolean canWrapValue(@NotNull final IValueProxy proxy) {

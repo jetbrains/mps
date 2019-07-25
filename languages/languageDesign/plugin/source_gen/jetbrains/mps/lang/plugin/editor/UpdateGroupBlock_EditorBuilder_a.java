@@ -50,7 +50,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new UpdateGroupBlock_EditorBuilder_a.updateFunctionSingleRoleHandler_uu5ska_a0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x120b44a69d3L, 0x120b44c6c5bL, "updateFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new updateFunctionSingleRoleHandler_uu5ska_a0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x120b44a69d3L, 0x120b44c6c5bL, "updateFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class updateFunctionSingleRoleHandler_uu5ska_a0 extends SingleRoleCellProvider {
@@ -111,7 +111,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new UpdateGroupBlock_EditorBuilder_a.enumerateFunctionSingleRoleHandler_uu5ska_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x120b44a69d3L, 0x120b44ca781L, "enumerateFunction"), getEditorContext());
+    SingleRoleCellProvider provider = new enumerateFunctionSingleRoleHandler_uu5ska_c0(myNode, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x120b44a69d3L, 0x120b44ca781L, "enumerateFunction"), getEditorContext());
     return provider.createCell();
   }
   private static class enumerateFunctionSingleRoleHandler_uu5ska_c0 extends SingleRoleCellProvider {

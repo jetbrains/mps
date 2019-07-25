@@ -21,7 +21,7 @@ public class LabelWithBrackets_AddText_Test extends BaseTransformationTest {
 
   @Test
   public void test_LabelWithBrackets_AddText() throws Throwable {
-    new LabelWithBrackets_AddText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

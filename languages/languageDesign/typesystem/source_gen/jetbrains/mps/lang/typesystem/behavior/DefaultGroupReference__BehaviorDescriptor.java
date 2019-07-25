@@ -4,7 +4,6 @@ package jetbrains.mps.lang.typesystem.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class DefaultGroupReference__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x12541e5f229acee2L, "jetbrains.mps.lang.typesystem.structure.DefaultGroupReference");
+  private static final SAbstractConcept CONCEPT = AUX_i7vlvb.DefaultGroupReference_dd0de95d;
 
   public static final SMethod<String> createGeneratedNodeId_id6nAedb8XAuf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("createGeneratedNodeId").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6nAedb8XAuf").build();
 
@@ -76,5 +77,9 @@ public final class DefaultGroupReference__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_i7vlvb {
+    /*package*/ static final SConcept DefaultGroupReference_dd0de95d = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x12541e5f229acee2L, "jetbrains.mps.lang.typesystem.structure.DefaultGroupReference");
   }
 }

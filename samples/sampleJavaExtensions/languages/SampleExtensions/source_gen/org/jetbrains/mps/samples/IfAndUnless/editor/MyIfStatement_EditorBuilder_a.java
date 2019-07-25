@@ -72,7 +72,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MyIfStatement_EditorBuilder_a.conditionSingleRoleHandler_a1fgw3_b0(myNode, MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccaL, 0xd403d58ad448ccdL, "condition"), getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_a1fgw3_b0(myNode, MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccaL, 0xd403d58ad448ccdL, "condition"), getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_a1fgw3_b0 extends SingleRoleCellProvider {
@@ -130,7 +130,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new MyIfStatement_EditorBuilder_a.bodySingleRoleHandler_a1fgw3_c0(myNode, MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccaL, 0xd403d58ad448cceL, "body"), getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_a1fgw3_c0(myNode, MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccaL, 0xd403d58ad448cceL, "body"), getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_a1fgw3_c0 extends SingleRoleCellProvider {
@@ -211,7 +211,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new MyIfStatement_EditorBuilder_a.alternativeSingleRoleHandler_a1fgw3_i0(myNode, MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccaL, 0xd403d58ad457e4dL, "alternative"), getEditorContext());
+    SingleRoleCellProvider provider = new alternativeSingleRoleHandler_a1fgw3_i0(myNode, MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccaL, 0xd403d58ad457e4dL, "alternative"), getEditorContext());
     return provider.createCell();
   }
   private static class alternativeSingleRoleHandler_a1fgw3_i0 extends SingleRoleCellProvider {

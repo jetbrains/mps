@@ -10,10 +10,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.text.TextUnit;
 import jetbrains.mps.text.impl.BufferLayoutBuilder;
 import jetbrains.mps.text.impl.RegularTextUnit;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TextGenAspectDescriptor extends TextGenAspectBase {
   private final LanguageConceptSwitch myIndex = new LanguageConceptSwitch();
@@ -36,7 +37,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public void breakdownToUnits(@NotNull TextGenModelOutline outline) {
     for (SNode root : outline.getModel().getRootNodes()) {
-      if (root.getConcept().equals(MetaAdapterFactory.getConcept(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x33ec18d5113abcd9L, "jetbrains.mps.samples.attribute.structure.HandlerAsRoot"))) {
+      if (root.getConcept().equals(AUX_t8hmqt.HandlerAsRoot_3311a7db)) {
         String fname = getFileName_HandlerAsRoot(root);
         String ext = getFileExtension_HandlerAsRoot(root);
         outline.registerTextUnit(createTextUnit0((ext == null ? fname : (fname + '.' + ext)), root));
@@ -61,5 +62,9 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     rv.setBufferLayout(lb.create());
     rv.addContextObject("ctx", Auxiliary.contextObjectInstance_ctx(node));
     return rv;
+  }
+
+  private static final class AUX_t8hmqt {
+    /*package*/ static final SConcept HandlerAsRoot_3311a7db = MetaAdapterFactory.getConcept(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x33ec18d5113abcd9L, "jetbrains.mps.samples.attribute.structure.HandlerAsRoot");
   }
 }

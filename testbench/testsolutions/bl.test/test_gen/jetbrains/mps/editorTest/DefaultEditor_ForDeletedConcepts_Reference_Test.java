@@ -21,7 +21,7 @@ public class DefaultEditor_ForDeletedConcepts_Reference_Test extends BaseTransfo
 
   @Test
   public void test_DefaultEditor_ForDeletedConcepts_Reference() throws Throwable {
-    new DefaultEditor_ForDeletedConcepts_Reference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

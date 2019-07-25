@@ -18,6 +18,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestSubstitute_IncludeSameMenuTwice_SubstituteMenu extends SubstituteMenuBase {
@@ -25,8 +26,8 @@ public class TestSubstitute_IncludeSameMenuTwice_SubstituteMenu extends Substitu
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new TestSubstitute_IncludeSameMenuTwice_SubstituteMenu.SMP_Include_n50j7p_a());
-    result.add(new TestSubstitute_IncludeSameMenuTwice_SubstituteMenu.SMP_Include_n50j7p_b());
+    result.add(new SMP_Include_n50j7p_a());
+    result.add(new SMP_Include_n50j7p_b());
     return result;
   }
 
@@ -64,7 +65,7 @@ public class TestSubstitute_IncludeSameMenuTwice_SubstituteMenu extends Substitu
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToInclude");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeSameMenuTwice");
+      return AUX_n50j7p.TestSubstitute_IncludeSameMenuTwice_6b78c77e;
     }
   }
   public class SMP_Include_n50j7p_b extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -88,7 +89,11 @@ public class TestSubstitute_IncludeSameMenuTwice_SubstituteMenu extends Substitu
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToInclude");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeSameMenuTwice");
+      return AUX_n50j7p.TestSubstitute_IncludeSameMenuTwice_6b78c77e;
     }
+  }
+
+  private static final class AUX_n50j7p {
+    /*package*/ static final SConcept TestSubstitute_IncludeSameMenuTwice_6b78c77e = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeSameMenuTwice");
   }
 }

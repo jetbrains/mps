@@ -32,7 +32,7 @@ public class ConceptFunctioParameterTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_ConceptFunctioParameterTest() throws Throwable {
-    new ConceptFunctioParameterTest_Test.TestBody(this).test_ConceptFunctioParameterTest();
+    new TestBody(this).test_ConceptFunctioParameterTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

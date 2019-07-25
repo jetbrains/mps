@@ -46,7 +46,7 @@ public class IncludeDefaultAndNullMenu_TransformationMenu extends Transformation
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new IncludeDefaultAndNullMenu_TransformationMenu.TMP_Action_e98cup_a0());
+      result.add(new TMP_Action_e98cup_a0());
     }
     return result;
   }
@@ -54,7 +54,7 @@ public class IncludeDefaultAndNullMenu_TransformationMenu extends Transformation
   private class TMP_Action_e98cup_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      IncludeDefaultAndNullMenu_TransformationMenu.TMP_Action_e98cup_a0.Item item = new IncludeDefaultAndNullMenu_TransformationMenu.TMP_Action_e98cup_a0.Item(context);
+      TMP_Action_e98cup_a0.Item item = new TMP_Action_e98cup_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

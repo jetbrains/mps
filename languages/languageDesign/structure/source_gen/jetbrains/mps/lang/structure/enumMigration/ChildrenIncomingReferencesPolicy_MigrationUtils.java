@@ -33,5 +33,5 @@ public class ChildrenIncomingReferencesPolicy_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_51mu69_a0a0a = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2cb1ba0af1eb0951L, 0x2cb1ba0af1eb0952L, 0x2cb1ba0af1eb0953L, 0x2cb1ba0af1eb0956L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_51mu69_a0a0a = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2cb1ba0af1eb0951L, 0x2cb1ba0af1eb0952L, 0x2cb1ba0af1eb0953L, 0x2cb1ba0af1eb0956L);
 }

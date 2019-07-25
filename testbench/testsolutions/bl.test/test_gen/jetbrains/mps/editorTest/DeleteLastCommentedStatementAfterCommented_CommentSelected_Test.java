@@ -21,7 +21,7 @@ public class DeleteLastCommentedStatementAfterCommented_CommentSelected_Test ext
 
   @Test
   public void test_DeleteLastCommentedStatementAfterCommented_CommentSelected() throws Throwable {
-    new DeleteLastCommentedStatementAfterCommented_CommentSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

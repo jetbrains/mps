@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ClassifierType_ParameterDeclarationQuery implements ParametersInformation<SNode> {
   public ClassifierType_ParameterDeclarationQuery() {
@@ -26,7 +27,7 @@ public class ClassifierType_ParameterDeclarationQuery implements ParametersInfor
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     if (ListSequence.fromList(SLinkOperations.getChildren(parameterObject, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isNotEmpty()) {
       SNode argument = editorContext.getSelectedNode();
-      while (argument != null && !((SNodeOperations.isInstanceOf(argument, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")) && ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))).contains(SNodeOperations.cast(argument, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")))))) {
+      while (argument != null && !((SNodeOperations.isInstanceOf(argument, AUX_xh6qnt.Type_4199e276) && ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))).contains(SNodeOperations.cast(argument, AUX_xh6qnt.Type_4199e276))))) {
         argument = SNodeOperations.getParent(argument);
       }
       for (SNode param : SLinkOperations.getChildren(parameterObject, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))) {
@@ -43,5 +44,9 @@ public class ClassifierType_ParameterDeclarationQuery implements ParametersInfor
   }
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
     return false;
+  }
+
+  private static final class AUX_xh6qnt {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

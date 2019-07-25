@@ -26,7 +26,7 @@ public class PropertyIsAvailaibleInMPSTestCase_Test extends BaseTransformationTe
 
   @Test
   public void test_test1() throws Throwable {
-    new PropertyIsAvailaibleInMPSTestCase_Test.TestBody(this).test_test1();
+    new TestBody(this).test_test1();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

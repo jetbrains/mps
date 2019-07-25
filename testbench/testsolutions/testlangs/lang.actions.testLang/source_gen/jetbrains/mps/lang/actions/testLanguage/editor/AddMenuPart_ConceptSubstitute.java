@@ -28,7 +28,7 @@ public class AddMenuPart_ConceptSubstitute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new AddMenuPart_ConceptSubstitute.SMP_Group_1nroa3_a());
+    result.add(new SMP_Group_1nroa3_a());
     return result;
   }
 
@@ -64,7 +64,7 @@ public class AddMenuPart_ConceptSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new AddMenuPart_ConceptSubstitute.SMP_Group_1nroa3_a.SMP_Concepts_1nroa3_a0(), MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_1nroa3_a.SMP_Concepts_1nroa3_a0(), AUX_1nroa3.ActionTestChild1_98b2a179));
     }
     public class SMP_Concepts_1nroa3_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
@@ -75,7 +75,7 @@ public class AddMenuPart_ConceptSubstitute extends SubstituteMenuBase {
         tmpVar = tmpVar && _context.getEditorContext() != null;
         tmpVar = tmpVar && _context.getModel() != null;
 
-        return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c99ba4dd5ff2533L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1SubConcept"));
+        return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_1nroa3.ActionTestChild1SubConcept_d404453a);
       }
 
       @NotNull
@@ -106,5 +106,10 @@ public class AddMenuPart_ConceptSubstitute extends SubstituteMenuBase {
         }.createItems(_context);
       }
     }
+  }
+
+  private static final class AUX_1nroa3 {
+    /*package*/ static final SConcept ActionTestChild1_98b2a179 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1");
+    /*package*/ static final SConcept ActionTestChild1SubConcept_d404453a = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c99ba4dd5ff2533L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1SubConcept");
   }
 }

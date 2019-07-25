@@ -263,7 +263,7 @@
       <node id="613652663728243975" at="102,54,108,8" concept="4" />
       <node id="5120591054616050486" at="250,0,256,6" concept="9" />
       <node id="2891782949125146575" at="69,0,76,0" concept="8" trace="commitVm#(Lcom/sun/jdi/VirtualMachine;)V" />
-      <node id="613652663728244183" at="110,98,117,8" concept="4" />
+      <node id="613652663728244183" at="110,82,117,8" concept="4" />
       <node id="7672976942235813806" at="322,0,329,0" concept="8" trace="startEvaluation#(Lcom/sun/jdi/ThreadReference;)V" />
       <node id="613652663728232459" at="92,23,100,8" concept="4" />
       <node id="613652663728232399" at="102,0,110,0" concept="8" trace="resume#(Ljetbrains/mps/debugger/java/runtime/engine/events/Context;)V" />
@@ -452,7 +452,7 @@
         <var name="vm" id="2891782949125146578" />
       </scope>
       <scope id="2891782949125146947" at="82,122,89,7" />
-      <scope id="613652663728232410" at="110,98,117,8" />
+      <scope id="613652663728232410" at="110,82,117,8" />
       <scope id="7672976942235813806" at="322,0,329,0">
         <var name="threadReference" id="7672976942235813810" />
       </scope>

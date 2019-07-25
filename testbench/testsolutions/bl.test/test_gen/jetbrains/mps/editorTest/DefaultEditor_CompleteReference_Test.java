@@ -23,7 +23,7 @@ public class DefaultEditor_CompleteReference_Test extends BaseTransformationTest
 
   @Test
   public void test_DefaultEditor_CompleteReference() throws Throwable {
-    new DefaultEditor_CompleteReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

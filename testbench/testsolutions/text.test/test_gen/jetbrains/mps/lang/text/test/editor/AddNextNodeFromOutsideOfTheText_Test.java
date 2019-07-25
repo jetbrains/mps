@@ -21,7 +21,7 @@ public class AddNextNodeFromOutsideOfTheText_Test extends BaseTransformationTest
 
   @Test
   public void test_AddNextNodeFromOutsideOfTheText() throws Throwable {
-    new AddNextNodeFromOutsideOfTheText_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class TestSideTransform_SimpleNode_CustomLeftAction_Test extends BaseTran
 
   @Test
   public void test_TestSideTransform_SimpleNode_CustomLeftAction() throws Throwable {
-    new TestSideTransform_SimpleNode_CustomLeftAction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

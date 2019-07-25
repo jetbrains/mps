@@ -18,6 +18,7 @@ import java.util.Iterator;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public indexedTuple_assignableTo_indexedTuple_InequationReplacementRule() {
@@ -74,9 +75,13 @@ public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule ex
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
+    return AUX_o46vwk.IndexedTupleType_dd9476bd;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
+    return AUX_o46vwk.IndexedTupleType_dd9476bd;
+  }
+
+  private static final class AUX_o46vwk {
+    /*package*/ static final SConcept IndexedTupleType_dd9476bd = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
   }
 }

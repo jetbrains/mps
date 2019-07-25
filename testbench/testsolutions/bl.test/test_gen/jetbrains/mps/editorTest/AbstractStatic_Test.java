@@ -21,7 +21,7 @@ public class AbstractStatic_Test extends BaseTransformationTest {
 
   @Test
   public void test_AbstractStatic() throws Throwable {
-    new AbstractStatic_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

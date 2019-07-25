@@ -21,8 +21,8 @@
       <node id="3743352646564481257" at="28,0,29,0" concept="6" trace="getAvailableFeatures_id1A4kJjlZ$rL" />
       <node id="3743352646564481257" at="29,0,30,0" concept="6" trace="getRequiredFeatures_id7L5lpRJHK_w" />
       <node id="3743352646564481257" at="31,0,32,0" concept="6" trace="BH_METHODS" />
-      <node id="3743352646564482065" at="36,107,37,442" concept="5" />
-      <node id="4740302442485121011" at="39,106,40,255" concept="5" />
+      <node id="3743352646564482065" at="36,107,37,170" concept="5" />
+      <node id="4740302442485121011" at="39,106,40,119" concept="5" />
       <node id="3743352646564481257" at="47,114,48,21" concept="1" />
       <node id="3743352646564481257" at="52,114,53,49" concept="4" />
       <node id="3743352646564481257" at="54,26,55,56" concept="9" />
@@ -34,6 +34,9 @@
       <node id="3743352646564481257" at="74,14,75,58" concept="9" />
       <node id="3743352646564481257" at="81,48,82,22" concept="5" />
       <node id="3743352646564481257" at="87,40,88,19" concept="5" />
+      <node id="3743352646564481257" at="92,0,93,0" concept="6" trace="TransformationLocation_WithFeatures_e1d341b0" />
+      <node id="3743352646564481257" at="93,0,94,0" concept="6" trace="TransformationFeature_Optional_2bda9d7e" />
+      <node id="3743352646564481257" at="94,0,95,0" concept="6" trace="TransformationFeature_Required_2bdc0d99" />
       <node id="3743352646564481257" at="33,0,35,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3743352646564481257" at="43,0,45,0" concept="0" trace="TransformationLocation_WithFeatures__BehaviorDescriptor#()V" />
       <node id="3743352646564481257" at="36,0,39,0" concept="7" trace="getAvailableFeatures_id1A4kJjlZ$rL#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/Collection;" />
@@ -49,8 +52,8 @@
       <node id="3743352646564481257" at="51,0,66,0" concept="3" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <scope id="3743352646564481257" at="33,63,33,63" />
       <scope id="3743352646564481257" at="43,73,43,73" />
-      <scope id="3743352646564481275" at="36,107,37,442" />
-      <scope id="4740302442485120251" at="39,106,40,255" />
+      <scope id="3743352646564481275" at="36,107,37,170" />
+      <scope id="4740302442485120251" at="39,106,40,119" />
       <scope id="3743352646564481257" at="47,114,48,21" />
       <scope id="3743352646564481257" at="54,26,55,56" />
       <scope id="3743352646564481257" at="58,13,59,85" />
@@ -93,7 +96,8 @@
         <var name="node" id="3743352646564481257" />
         <var name="parameters" id="3743352646564481257" />
       </scope>
-      <unit id="3743352646564481257" at="25,0,91,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.behavior.TransformationLocation_WithFeatures__BehaviorDescriptor" />
+      <unit id="3743352646564481257" at="91,0,96,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.behavior.TransformationLocation_WithFeatures__BehaviorDescriptor$AUX_i665e" />
+      <unit id="3743352646564481257" at="25,0,97,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.behavior.TransformationLocation_WithFeatures__BehaviorDescriptor" />
     </file>
   </root>
 </debug-info>

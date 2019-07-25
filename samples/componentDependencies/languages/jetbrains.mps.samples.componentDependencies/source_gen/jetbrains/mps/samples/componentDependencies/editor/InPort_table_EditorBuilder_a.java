@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class InPort_table_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -37,7 +38,7 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
   private EditorCell createModelAccess_0() {
     ModelAccessor modelAccessor = new ModelAccessor() {
       public String getText() {
-        return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myNode, MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component"), false, false), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myNode, AUX_uq6poz.Component_5ebb22db, false, false), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       }
       public void setText(String text) {
       }
@@ -53,5 +54,9 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
     setCellContext(editorCell);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_uq6poz {
+    /*package*/ static final SConcept Component_5ebb22db = MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component");
   }
 }

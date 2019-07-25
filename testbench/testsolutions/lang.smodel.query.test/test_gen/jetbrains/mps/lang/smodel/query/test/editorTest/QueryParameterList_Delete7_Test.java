@@ -22,7 +22,7 @@ public class QueryParameterList_Delete7_Test extends BaseTransformationTest {
 
   @Test
   public void test_QueryParameterList_Delete7() throws Throwable {
-    new QueryParameterList_Delete7_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

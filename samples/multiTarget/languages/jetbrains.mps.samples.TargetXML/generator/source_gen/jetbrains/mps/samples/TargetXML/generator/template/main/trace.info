@@ -16,10 +16,10 @@
       <node id="7957904439566608163" at="35,88,36,184" concept="1" />
       <node id="7957904439566608912" at="38,88,39,94" concept="1" />
       <node id="7957904439566610495" at="41,88,42,190" concept="1" />
-      <node id="7957904439566606640" at="81,14,82,210" concept="0" />
-      <node id="7957904439566608153" at="82,210,83,207" concept="0" />
-      <node id="7957904439566608588" at="83,207,84,210" concept="0" />
-      <node id="7957904439566610170" at="84,210,85,203" concept="0" />
+      <node id="7957904439566606640" at="81,14,82,193" concept="0" />
+      <node id="7957904439566608153" at="82,193,83,190" concept="0" />
+      <node id="7957904439566608588" at="83,190,84,193" concept="0" />
+      <node id="7957904439566610170" at="84,193,85,186" concept="0" />
       <node id="7957904439566606640" at="106,15,107,66" concept="1" />
       <node id="7957904439566608153" at="108,15,109,66" concept="1" />
       <node id="7957904439566608588" at="110,15,111,66" concept="1" />
@@ -54,9 +54,9 @@
     <file name="QueriesGenerated.java">
       <node id="7957904439566603934" at="44,88,45,175" concept="1" />
       <node id="7957904439566604687" at="47,104,48,191" concept="1" />
-      <node id="7957904439566604680" at="52,14,53,75" concept="0" />
+      <node id="7957904439566604680" at="52,14,53,58" concept="0" />
       <node id="7957904439566604680" at="72,15,73,87" concept="1" />
-      <node id="7957904439566603924" at="85,203,86,213" concept="0" />
+      <node id="7957904439566603924" at="85,186,86,196" concept="0" />
       <node id="7957904439566603924" at="114,15,115,66" concept="1" />
       <node id="7957904439566603927" at="44,0,47,0" concept="2" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="7957904439566604680" at="47,0,50,0" concept="2" trace="sourceNodesQuery_1_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />

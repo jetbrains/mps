@@ -9,15 +9,16 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CellModel_Component_KeyMap extends KeyMapImpl {
   public CellModel_Component_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new CellModel_Component_KeyMap.CellModel_Component_KeyMap_Action0();
+    action = new CellModel_Component_KeyMap_Action0();
     this.putAction("ctrl+alt", "VK_N", action);
   }
   public static class CellModel_Component_KeyMap_Action0 extends KeyMapActionImpl {
@@ -36,7 +37,7 @@ public class CellModel_Component_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_sg4nrv.CellModel_Component_58bccf85))) {
         return false;
       }
       return true;
@@ -51,5 +52,9 @@ public class CellModel_Component_KeyMap extends KeyMapImpl {
     public String getKeyStroke() {
       return "ctrl alt N";
     }
+  }
+
+  private static final class AUX_sg4nrv {
+    /*package*/ static final SConcept CellModel_Component_58bccf85 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component");
   }
 }

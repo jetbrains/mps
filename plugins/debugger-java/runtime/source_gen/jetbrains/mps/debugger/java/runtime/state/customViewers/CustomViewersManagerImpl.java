@@ -46,8 +46,8 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
   private final ProjectManager myProjectManager;
   private final Map<String, ValueWrapperFactory> myFactories = MapSequence.fromMap(new HashMap<String, ValueWrapperFactory>());
   private final Map<DebugSession, Map<Long, String>> myObjectIdToFactory = MapSequence.fromMap(new HashMap<DebugSession, Map<Long, String>>());
-  private final DebugSessionManagerComponent.DebugSessionAdapter myDebugSessionListener = new CustomViewersManagerImpl.MyDebugSessionAdapter();
-  private final ProjectManagerListener myProjectManagerListener = new CustomViewersManagerImpl.MyProjectManagerAdapter();
+  private final DebugSessionManagerComponent.DebugSessionAdapter myDebugSessionListener = new MyDebugSessionAdapter();
+  private final ProjectManagerListener myProjectManagerListener = new MyProjectManagerAdapter();
   public CustomViewersManagerImpl(ProjectManager projectManager) {
     myProjectManager = projectManager;
   }

@@ -75,9 +75,9 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_a0());
-      result.add(new ML_SideTransforms_Expression_Contribution.TMP_Action_7vmljf_b0());
-      result.add(new ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_c0());
+      result.add(new TMP_Group_7vmljf_a0());
+      result.add(new TMP_Action_7vmljf_b0());
+      result.add(new TMP_Group_7vmljf_c0());
     }
     return result;
   }
@@ -104,12 +104,12 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a());
     }
     private class TMP_Action_7vmljf_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a.Item item = new ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a.Item(context);
+        TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a.Item item = new TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -144,7 +144,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, "jetbrains.mps.baseLanguage.math.structure.MatrixElementAccessExpression"), null);
+          SNode result = SNodeFactoryOperations.createNewNode(AUX_7vmljf.MatrixElementAccessExpression_65027ece, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), result);
           SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433cL, "expression"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(result, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433dL, "rowIndex")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -177,7 +177,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
   private class TMP_Action_7vmljf_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      ML_SideTransforms_Expression_Contribution.TMP_Action_7vmljf_b0.Item item = new ML_SideTransforms_Expression_Contribution.TMP_Action_7vmljf_b0.Item(context);
+      TMP_Action_7vmljf_b0.Item item = new TMP_Action_7vmljf_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -242,7 +242,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
   public class TMP_Group_7vmljf_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType")) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, "jetbrains.mps.baseLanguage.math.structure.VectorType"));
+      return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), AUX_7vmljf.MatrixType_c2d2403c) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), AUX_7vmljf.VectorType_c2d2403b);
     }
 
     @NotNull
@@ -258,21 +258,21 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a());
     }
     private class TMP_Param_7vmljf_a2a extends ParameterizedMenuPart<SConcept, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-        return new ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0(parameter).createItems(context);
+        return new TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0(parameter).createItems(context);
       }
 
       @Nullable
       @Override
       protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
         List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-        for (SConcept a : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e647ad7dL, "jetbrains.mps.baseLanguage.math.structure.MatrixExponentialOperation"), _context.getModel()))) {
+        for (SConcept a : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_7vmljf.MatrixExponentialOperation_6311e3b1, _context.getModel()))) {
           if (!(a.isAbstract())) {
             ListSequence.fromList(result).addElement(a);
           }
@@ -298,7 +298,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0.Item item = new ML_SideTransforms_Expression_Contribution.TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0.Item(context);
+          TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0.Item item = new TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -383,5 +383,12 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
     quotedNode_4 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506fL, "Expression"), null, null, false);
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052b2cdd3L, 0x12052b722e7L, "exponent"), quotedNode_4);
     return quotedNode_2;
+  }
+
+  private static final class AUX_7vmljf {
+    /*package*/ static final SConcept MatrixElementAccessExpression_65027ece = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, "jetbrains.mps.baseLanguage.math.structure.MatrixElementAccessExpression");
+    /*package*/ static final SConcept MatrixType_c2d2403c = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
+    /*package*/ static final SConcept VectorType_c2d2403b = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, "jetbrains.mps.baseLanguage.math.structure.VectorType");
+    /*package*/ static final SConcept MatrixExponentialOperation_6311e3b1 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e647ad7dL, "jetbrains.mps.baseLanguage.math.structure.MatrixExponentialOperation");
   }
 }

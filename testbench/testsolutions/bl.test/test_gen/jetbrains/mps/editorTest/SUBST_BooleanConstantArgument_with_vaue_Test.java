@@ -21,7 +21,7 @@ public class SUBST_BooleanConstantArgument_with_vaue_Test extends BaseTransforma
 
   @Test
   public void test_SUBST_BooleanConstantArgument_with_vaue() throws Throwable {
-    new SUBST_BooleanConstantArgument_with_vaue_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

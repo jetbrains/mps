@@ -21,7 +21,7 @@ public class DefaultEditor_Test extends BaseTransformationTest {
 
   @Test
   public void test_DefaultEditor() throws Throwable {
-    new DefaultEditor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class MoveFromOneCatchToAnother_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveFromOneCatchToAnother() throws Throwable {
-    new MoveFromOneCatchToAnother_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

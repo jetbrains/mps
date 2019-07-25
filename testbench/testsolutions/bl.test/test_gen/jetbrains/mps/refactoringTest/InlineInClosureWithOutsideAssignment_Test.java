@@ -35,7 +35,7 @@ public class InlineInClosureWithOutsideAssignment_Test extends BaseTransformatio
 
   @Test
   public void test_InlineInClosureWithOutsideAssingmentTest() throws Throwable {
-    new InlineInClosureWithOutsideAssignment_Test.TestBody(this).test_InlineInClosureWithOutsideAssingmentTest();
+    new TestBody(this).test_InlineInClosureWithOutsideAssingmentTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

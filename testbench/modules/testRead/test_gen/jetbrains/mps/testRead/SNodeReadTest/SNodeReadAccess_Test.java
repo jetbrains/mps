@@ -46,63 +46,63 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
 
   @Test
   public void test_checkContract() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_checkContract();
+    new TestBody(this).test_checkContract();
   }
   @Test
   public void test_addChild() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_addChild();
+    new TestBody(this).test_addChild();
   }
   @Test
   public void test_getChildren() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_getChildren();
+    new TestBody(this).test_getChildren();
   }
   @Test
   public void test_getProperty() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_getProperty();
+    new TestBody(this).test_getProperty();
   }
   @Test
   public void test_getReference() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_getReference();
+    new TestBody(this).test_getReference();
   }
   @Test
   public void test_getReferenceTarget() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_getReferenceTarget();
+    new TestBody(this).test_getReferenceTarget();
   }
   @Test
   public void test_getUserObject() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_getUserObject();
+    new TestBody(this).test_getUserObject();
   }
   @Test
   public void test_hasProperty() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_hasProperty();
+    new TestBody(this).test_hasProperty();
   }
   @Test
   public void test_insertChildBefore() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_insertChildBefore();
+    new TestBody(this).test_insertChildBefore();
   }
   @Test
   public void test_putUserObject() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_putUserObject();
+    new TestBody(this).test_putUserObject();
   }
   @Test
   public void test_removeChild() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_removeChild();
+    new TestBody(this).test_removeChild();
   }
   @Test
   public void test_setProperty() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_setProperty();
+    new TestBody(this).test_setProperty();
   }
   @Test
   public void test_setReference() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_setReference();
+    new TestBody(this).test_setReference();
   }
   @Test
   public void test_setReferenceTarget() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_setReferenceTarget();
+    new TestBody(this).test_setReferenceTarget();
   }
   @Test
   public void test_parameterLessMethods() throws Throwable {
-    new SNodeReadAccess_Test.TestBody(this).test_parameterLessMethods();
+    new TestBody(this).test_parameterLessMethods();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

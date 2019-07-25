@@ -48,7 +48,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
   }
 
   private EditorCell createDiagramConnector_0() {
-    final ConnectorCell editorCell = new Relationship_diagram_EditorBuilder_a.ConnectorCellImpl_nydcps_a(getEditorContext(), myNode);
+    final ConnectorCell editorCell = new ConnectorCellImpl_nydcps_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramConnector_nydcps_a");
     editorCell.setBig(true);
     setCellContext(editorCell);

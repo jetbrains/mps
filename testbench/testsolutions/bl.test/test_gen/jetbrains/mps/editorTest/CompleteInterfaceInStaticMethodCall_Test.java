@@ -23,7 +23,7 @@ public class CompleteInterfaceInStaticMethodCall_Test extends BaseTransformation
 
   @Test
   public void test_CompleteInterfaceInStaticMethodCall() throws Throwable {
-    new CompleteInterfaceInStaticMethodCall_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

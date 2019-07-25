@@ -24,7 +24,7 @@ public class ShowCompletion_CamelCasePatternAtStartAmbiguity_Test extends BaseTr
 
   @Test
   public void test_ShowCompletion_CamelCasePatternAtStartAmbiguity() throws Throwable {
-    new ShowCompletion_CamelCasePatternAtStartAmbiguity_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

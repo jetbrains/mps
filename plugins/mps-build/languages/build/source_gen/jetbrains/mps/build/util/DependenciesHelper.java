@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.extapi.model.TransientSModel;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DependenciesHelper {
   private final Map<SNode, String> locationMap;
@@ -111,15 +112,15 @@ public class DependenciesHelper {
   }
 
   public SNode getArtifact(String id) {
-    return SNodeOperations.as(idToArtifactMap.get(id), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
+    return SNodeOperations.as(idToArtifactMap.get(id), AUX_xhchm3.BuildLayout_Node_b7bb997a);
   }
 
   public SNode getArtifact(SNode id) {
-    return SNodeOperations.as(idToArtifactMap.get(getOriginalNode(id)), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
+    return SNodeOperations.as(idToArtifactMap.get(getOriginalNode(id)), AUX_xhchm3.BuildLayout_Node_b7bb997a);
   }
 
   public SNode getArtifact(LocalSourcePathArtifact id) {
-    return SNodeOperations.as(idToArtifactMap.get(id), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
+    return SNodeOperations.as(idToArtifactMap.get(id), AUX_xhchm3.BuildLayout_Node_b7bb997a);
   }
 
   public void putArtifact(String id, SNode artifact) {
@@ -159,7 +160,7 @@ public class DependenciesHelper {
    * keep distinct locations for project B and C).
    */
   private boolean isFromTransformedModel(SNode n) {
-    SNode ancestorProject = SNodeOperations.getNodeAncestor(n, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
+    SNode ancestorProject = SNodeOperations.getNodeAncestor(n, AUX_xhchm3.BuildProject_808bb057, false, false);
     // ancestorProject could be null for a layout node from external layout root 
     return ancestorProject == myProject || (SNodeOperations.getModel(n) == SNodeOperations.getModel(myProject) && SNodeOperations.getModel(n) instanceof TransientSModel);
   }
@@ -188,5 +189,10 @@ public class DependenciesHelper {
     }
 
     return originalNode;
+  }
+
+  private static final class AUX_xhchm3 {
+    /*package*/ static final SConcept BuildLayout_Node_b7bb997a = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

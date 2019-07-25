@@ -88,8 +88,8 @@
       <node id="7548520285724754937" at="205,9,206,20" concept="8" />
       <node id="7548520285724783601" at="207,44,208,49" concept="8" />
       <node id="8614586468289982228" at="209,14,210,91" concept="9" />
-      <node id="8614586468290007309" at="210,91,211,196" concept="7" />
-      <node id="8614586468289987424" at="211,196,212,173" concept="7" />
+      <node id="8614586468290007309" at="210,91,211,89" concept="7" />
+      <node id="8614586468289987424" at="211,89,212,173" concept="7" />
       <node id="8614586468290098779" at="216,82,217,41" concept="8" />
       <node id="8614586468290144899" at="221,9,222,20" concept="8" />
       <node id="337414615155775258" at="226,42,227,109" concept="9" />
@@ -171,6 +171,7 @@
       <node id="8614586468289987427" at="377,164,378,24" concept="8" />
       <node id="4278380732218820440" at="380,52,381,44" concept="8" />
       <node id="1240470842553275434" at="383,55,384,43" concept="8" />
+      <node id="1240470842553275009" at="388,0,389,0" concept="11" trace="StaticMethodDeclaration_9cd8c445" />
       <node id="1240470842553275009" at="63,0,65,0" concept="1" trace="Java_Command#()V" />
       <node id="1240470842553275661" at="260,10,262,5" concept="0" />
       <node id="1240470842553275011" at="65,71,68,5" concept="5" />
@@ -505,10 +506,11 @@
       <scope id="1240470842553275437" at="183,0,226,0">
         <var name="node" id="1240470842553275454" />
       </scope>
+      <unit id="1240470842553275009" at="387,0,390,0" name="jetbrains.mps.baseLanguage.execution.api.Java_Command$AUX_kk96hj" />
       <unit id="1240470842553275052" at="109,374,116,5" name="jetbrains.mps.baseLanguage.execution.api.Java_Command$1" />
       <unit id="1240470842553275414" at="295,15,303,5" name="jetbrains.mps.baseLanguage.execution.api.Java_Command$3" />
       <unit id="345735828122134592" at="153,50,164,5" name="jetbrains.mps.baseLanguage.execution.api.Java_Command$2" />
-      <unit id="1240470842553275009" at="54,0,387,0" name="jetbrains.mps.baseLanguage.execution.api.Java_Command" />
+      <unit id="1240470842553275009" at="54,0,391,0" name="jetbrains.mps.baseLanguage.execution.api.Java_Command" />
     </file>
   </root>
   <root nodeRef="r:fc6b4266-fe93-4e02-bc36-aebff4c903c3(jetbrains.mps.baseLanguage.execution.api)/1240470842553519759">
@@ -819,13 +821,13 @@
       <node id="7500974686090462458" at="54,50,55,66" concept="7" />
       <node id="7500974686090462458" at="56,9,57,102" concept="9" />
       <node id="7500974686090462458" at="57,102,58,84" concept="9" />
-      <node id="7500974686090462458" at="58,84,59,80" concept="2" />
+      <node id="7500974686090462458" at="58,84,59,48" concept="2" />
       <node id="7500974686090462458" at="61,42,62,26" concept="2" />
       <node id="7500974686090462458" at="64,5,65,17" concept="8" />
       <node id="7500974686090462458" at="68,48,69,36" concept="8" />
       <node id="7500974686090462458" at="72,58,73,37" concept="2" />
       <node id="7500974686090462492" at="77,0,78,0" concept="3" trace="myJavaParameters" />
-      <node id="7500974686090462458" at="80,61,81,100" concept="7" />
+      <node id="7500974686090462458" at="80,61,81,36" concept="7" />
       <node id="7500974686090462492" at="82,37,83,58" concept="2" />
       <node id="7500974686090462458" at="84,7,85,19" concept="8" />
       <node id="7500974686090462505" at="88,59,89,24" concept="2" />
@@ -838,7 +840,7 @@
       <node id="7500974686090462458" at="60,45,63,7" concept="5" />
       <node id="7500974686090462458" at="68,0,71,0" concept="6" trace="getJavaParameters#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;" />
       <node id="7500974686090462458" at="72,0,75,0" concept="6" trace="setJavaParameters#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)V" />
-      <node id="7500974686090462492" at="81,100,84,7" concept="5" />
+      <node id="7500974686090462492" at="81,36,84,7" concept="5" />
       <node id="7500974686090462458" at="88,0,91,0" concept="1" trace="JavaRunParameters_Configuration#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="7500974686090462458" at="92,0,95,0" concept="6" trace="createCloneTemplate#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters_Configuration;" />
       <node id="7500974686090462458" at="95,0,98,0" concept="6" trace="getEditor#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters_Configuration_Editor;" />
@@ -868,7 +870,7 @@
       <scope id="7500974686090462458" at="26,0,29,0">
         <var name="context" id="7500974686090462458" />
       </scope>
-      <scope id="7500974686090462458" at="56,9,59,80" />
+      <scope id="7500974686090462458" at="56,9,59,48" />
       <scope id="7500974686090462458" at="60,0,63,7">
         <var name="ex" id="7500974686090462458" />
       </scope>

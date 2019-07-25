@@ -32,31 +32,31 @@ public class ClassifierNameUniqueness_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTheNestedTypeCannotHideCheck2654404125187272997() throws Throwable {
-    new ClassifierNameUniqueness_Test.TestBody(this).test_NodeTheNestedTypeCannotHideCheck2654404125187272997();
+    new TestBody(this).test_NodeTheNestedTypeCannotHideCheck2654404125187272997();
   }
   @Test
   public void test_NodeDuplicatedNameOfNestedCheck2654404125187273794() throws Throwable {
-    new ClassifierNameUniqueness_Test.TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187273794();
+    new TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187273794();
   }
   @Test
   public void test_NodeDuplicatedNameOfNestedCheck2654404125187284431() throws Throwable {
-    new ClassifierNameUniqueness_Test.TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187284431();
+    new TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187284431();
   }
   @Test
   public void test_NodeDuplicatedNameOfNestedCheck2654404125187284693() throws Throwable {
-    new ClassifierNameUniqueness_Test.TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187284693();
+    new TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187284693();
   }
   @Test
   public void test_NodeDuplicatedNameOfNestedCheck2654404125187284994() throws Throwable {
-    new ClassifierNameUniqueness_Test.TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187284994();
+    new TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187284994();
   }
   @Test
   public void test_NodeDuplicatedNameOfNestedCheck2654404125187285270() throws Throwable {
-    new ClassifierNameUniqueness_Test.TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187285270();
+    new TestBody(this).test_NodeDuplicatedNameOfNestedCheck2654404125187285270();
   }
   @Test
   public void test_ErrorMessagesCheck2654404125187259971() throws Throwable {
-    new ClassifierNameUniqueness_Test.TestBody(this).test_ErrorMessagesCheck2654404125187259971();
+    new TestBody(this).test_ErrorMessagesCheck2654404125187259971();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

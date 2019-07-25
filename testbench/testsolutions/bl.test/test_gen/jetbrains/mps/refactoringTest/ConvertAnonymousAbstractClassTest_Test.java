@@ -34,7 +34,7 @@ public class ConvertAnonymousAbstractClassTest_Test extends BaseTransformationTe
 
   @Test
   public void test_AbstractClassTest() throws Throwable {
-    new ConvertAnonymousAbstractClassTest_Test.TestBody(this).test_AbstractClassTest();
+    new TestBody(this).test_AbstractClassTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

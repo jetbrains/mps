@@ -29,6 +29,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BreakpointableNodeItem_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -99,7 +100,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new BreakpointableNodeItem_EditorBuilder_a.conceptsToCreateBreakpointListHandler_4n0rw6_b1a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new conceptsToCreateBreakpointListHandler_4n0rw6_b1a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_conceptsToCreateBreakpoint");
     editorCell.setSRole(handler.getElementSRole());
@@ -122,7 +123,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
       return MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x5058b4b262ffd5e0L, "conceptsToCreateBreakpoint");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5058b4b262ffd5deL, "jetbrains.mps.debugger.api.lang.structure.ConceptDeclarationReference");
+      return AUX_lep23c.ConceptDeclarationReference_39179ae6;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -184,7 +185,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BreakpointableNodeItem_EditorBuilder_a.isApplicableBreakpointSingleRoleHandler_4n0rw6_b1b0(myNode, MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x2b1681328a5d11f6L, "isApplicableBreakpoint"), getEditorContext());
+    SingleRoleCellProvider provider = new isApplicableBreakpointSingleRoleHandler_4n0rw6_b1b0(myNode, MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x2b1681328a5d11f6L, "isApplicableBreakpoint"), getEditorContext());
     return provider.createCell();
   }
   private static class isApplicableBreakpointSingleRoleHandler_4n0rw6_b1b0 extends SingleRoleCellProvider {
@@ -259,7 +260,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BreakpointableNodeItem_EditorBuilder_a.createBreakpointSingleRoleHandler_4n0rw6_b3a(myNode, MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x2bd07aa080dfb938L, "createBreakpoint"), getEditorContext());
+    SingleRoleCellProvider provider = new createBreakpointSingleRoleHandler_4n0rw6_b3a(myNode, MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x2bd07aa080dfb938L, "createBreakpoint"), getEditorContext());
     return provider.createCell();
   }
   private static class createBreakpointSingleRoleHandler_4n0rw6_b3a extends SingleRoleCellProvider {
@@ -318,5 +319,9 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
     editorCell.setCellId("Constant_4n0rw6_e0");
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_lep23c {
+    /*package*/ static final SConcept ConceptDeclarationReference_39179ae6 = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5058b4b262ffd5deL, "jetbrains.mps.debugger.api.lang.structure.ConceptDeclarationReference");
   }
 }

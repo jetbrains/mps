@@ -22,7 +22,7 @@ public class ComplexTransformTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_ComplexTransformTest() throws Throwable {
-    new ComplexTransformTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

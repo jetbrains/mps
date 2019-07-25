@@ -24,7 +24,7 @@ public class TestSubstitute_Subconcepts_Test extends BaseTransformationTest {
 
   @Test
   public void test_TestSubstitute_Subconcepts() throws Throwable {
-    new TestSubstitute_Subconcepts_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

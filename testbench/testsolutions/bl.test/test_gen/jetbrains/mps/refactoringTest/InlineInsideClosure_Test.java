@@ -35,7 +35,7 @@ public class InlineInsideClosure_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineInsideClosureTest() throws Throwable {
-    new InlineInsideClosure_Test.TestBody(this).test_InlineInsideClosureTest();
+    new TestBody(this).test_InlineInsideClosureTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

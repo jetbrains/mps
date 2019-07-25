@@ -64,9 +64,9 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_a1());
-      result.add(new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_b1());
-      result.add(new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_c1());
+      result.add(new TMP_Group_52qbsp_a1());
+      result.add(new TMP_Group_52qbsp_b1());
+      result.add(new TMP_Group_52qbsp_c1());
     }
     return result;
   }
@@ -90,12 +90,12 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_a1.TMP_Action_52qbsp_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_52qbsp_a1.TMP_Action_52qbsp_a0b());
     }
     private class TMP_Action_52qbsp_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_a1.TMP_Action_52qbsp_a0b.Item item = new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_a1.TMP_Action_52qbsp_a0b.Item(context);
+        TMP_Group_52qbsp_a1.TMP_Action_52qbsp_a0b.Item item = new TMP_Group_52qbsp_a1.TMP_Action_52qbsp_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -173,12 +173,12 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_b1.TMP_Action_52qbsp_a1b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_52qbsp_b1.TMP_Action_52qbsp_a1b());
     }
     private class TMP_Action_52qbsp_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_b1.TMP_Action_52qbsp_a1b.Item item = new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_b1.TMP_Action_52qbsp_a1b.Item(context);
+        TMP_Group_52qbsp_b1.TMP_Action_52qbsp_a1b.Item item = new TMP_Group_52qbsp_b1.TMP_Action_52qbsp_a1b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -256,12 +256,12 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_c1.TMP_Action_52qbsp_a2b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_52qbsp_c1.TMP_Action_52qbsp_a2b());
     }
     private class TMP_Action_52qbsp_a2b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_c1.TMP_Action_52qbsp_a2b.Item item = new ClassConceptModifiersExtendsAndImplements_ext_5.TMP_Group_52qbsp_c1.TMP_Action_52qbsp_a2b.Item(context);
+        TMP_Group_52qbsp_c1.TMP_Action_52qbsp_a2b.Item item = new TMP_Group_52qbsp_c1.TMP_Action_52qbsp_a2b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

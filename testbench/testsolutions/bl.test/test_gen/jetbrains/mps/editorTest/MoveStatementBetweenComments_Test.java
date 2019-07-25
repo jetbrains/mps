@@ -21,7 +21,7 @@ public class MoveStatementBetweenComments_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveStatementBetweenComments() throws Throwable {
-    new MoveStatementBetweenComments_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

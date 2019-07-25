@@ -19,7 +19,7 @@ public class ConcatingSequence<U> extends Sequence<U> {
   }
   @Override
   public Iterator<U> iterator() {
-    return new ConcatingSequence.ConcatingIterator();
+    return new ConcatingIterator();
   }
   private class ConcatingIterator implements Iterator<U> {
     private U next;

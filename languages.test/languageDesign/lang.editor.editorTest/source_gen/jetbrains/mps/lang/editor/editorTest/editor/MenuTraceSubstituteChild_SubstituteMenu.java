@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
@@ -33,6 +32,7 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
@@ -59,11 +59,11 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Concepts_fxbim_a(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")));
-    result.add(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Include_fxbim_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Param_fxbim_c(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new MenuTraceSubstituteChild_SubstituteMenu.SMP_ReferenceScope_fxbim_d(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_fxbim_a(), AUX_fxbim.MenuTraceSubstituteChild_13c43b88));
+    result.add(new SMP_Include_fxbim_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_fxbim_c(), AUX_fxbim.MenuTraceSubstituteChild_13c43b88));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_fxbim_d(), AUX_fxbim.MenuTraceSubstituteChild_13c43b88));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_fxbim.MenuTraceSubstituteChild_13c43b88) {
 
       @NotNull
       @Override
@@ -76,11 +76,11 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")));
-    result.add(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Subconcepts_fxbim_f());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Action_fxbim_g(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")));
-    result.add(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Group_fxbim_h());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Wrap_fxbim_i(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")));
+    }, AUX_fxbim.MenuTraceSubstituteChild_13c43b88));
+    result.add(new SMP_Subconcepts_fxbim_f());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_fxbim_g(), AUX_fxbim.MenuTraceSubstituteChild_13c43b88));
+    result.add(new SMP_Group_fxbim_h());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_fxbim_i(), AUX_fxbim.MenuTraceSubstituteChild_13c43b88));
     return result;
   }
 
@@ -99,7 +99,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
 
   public class SMP_Concepts_fxbim_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(SubstituteMenuContext _context) {
-      return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xcac9bf54312e4b4L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteSubChild1"));
+      return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_fxbim.MenuTraceSubstituteSubChild1_1ae707f2);
     }
 
     @NotNull
@@ -151,14 +151,14 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.editorTest.editor.MenuTraceSubstituteChild_NamedSubstituteMenu");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild");
+      return AUX_fxbim.MenuTraceSubstituteChild_13c43b88;
     }
   }
   private class SMP_Param_fxbim_c extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-      return new MenuTraceSubstituteChild_SubstituteMenu.SMP_Param_fxbim_c.SMP_Action_fxbim_a2(parameter).createItems(context);
+      return new SMP_Param_fxbim_c.SMP_Action_fxbim_a2(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -185,7 +185,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        MenuTraceSubstituteChild_SubstituteMenu.SMP_Param_fxbim_c.SMP_Action_fxbim_a2.Item item = new MenuTraceSubstituteChild_SubstituteMenu.SMP_Param_fxbim_c.SMP_Action_fxbim_a2.Item(_context);
+        SMP_Param_fxbim_c.SMP_Action_fxbim_a2.Item item = new SMP_Param_fxbim_c.SMP_Action_fxbim_a2.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -209,7 +209,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild"), context);
+          super(AUX_fxbim.MenuTraceSubstituteChild_13c43b88, context);
           _context = context;
         }
 
@@ -229,7 +229,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_fxbim.MenuTraceSubstituteChild_13c43b88, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -254,7 +254,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_fxbim_d() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild"), MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, 0xcac9bf54313b229L, "nodeToReference"));
+      super((SAbstractConcept) AUX_fxbim.MenuTraceSubstituteChild_13c43b88, MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, 0xcac9bf54313b229L, "nodeToReference"));
     }
     @NotNull
     @Override
@@ -271,14 +271,14 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
   }
   public class SMP_Subconcepts_fxbim_f extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")).stream().filter(new Predicate<SAbstractConcept>() {
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_fxbim.MenuTraceSubstituteChild_13c43b88).stream().filter(new Predicate<SAbstractConcept>() {
         public boolean test(SAbstractConcept concept) {
           return filterConcept(_context, concept);
         }
       }).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-      return Objects.equals(concept, MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xcac9bf543140230L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteSubChild2"));
+      return Objects.equals(concept, AUX_fxbim.MenuTraceSubstituteSubChild2_4048bfbd);
     }
     @NotNull
     @Override
@@ -302,7 +302,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      MenuTraceSubstituteChild_SubstituteMenu.SMP_Action_fxbim_g.Item item = new MenuTraceSubstituteChild_SubstituteMenu.SMP_Action_fxbim_g.Item(_context);
+      SMP_Action_fxbim_g.Item item = new SMP_Action_fxbim_g.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -325,7 +325,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild"), context);
+        super(AUX_fxbim.MenuTraceSubstituteChild_13c43b88, context);
         _context = context;
       }
 
@@ -365,14 +365,14 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new MenuTraceSubstituteChild_SubstituteMenu.SMP_Group_fxbim_h.SMP_Action_fxbim_a7(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fxbim_h.SMP_Action_fxbim_a7(), AUX_fxbim.MenuTraceSubstituteChild_13c43b88));
     }
     private class SMP_Action_fxbim_a7 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        MenuTraceSubstituteChild_SubstituteMenu.SMP_Group_fxbim_h.SMP_Action_fxbim_a7.Item item = new MenuTraceSubstituteChild_SubstituteMenu.SMP_Group_fxbim_h.SMP_Action_fxbim_a7.Item(_context);
+        SMP_Group_fxbim_h.SMP_Action_fxbim_a7.Item item = new SMP_Group_fxbim_h.SMP_Action_fxbim_a7.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -395,7 +395,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild"), context);
+          super(AUX_fxbim.MenuTraceSubstituteChild_13c43b88, context);
           _context = context;
         }
 
@@ -444,7 +444,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild");
+          return AUX_fxbim.MenuTraceSubstituteChild_13c43b88;
         }
         @Nullable
         @Override
@@ -482,7 +482,13 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.editorTest.editor.MenuTraceSubstituteChild_NamedSubstituteMenu");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild");
+      return AUX_fxbim.MenuTraceSubstituteChild_13c43b88;
     }
+  }
+
+  private static final class AUX_fxbim {
+    /*package*/ static final SConcept MenuTraceSubstituteChild_13c43b88 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild");
+    /*package*/ static final SConcept MenuTraceSubstituteSubChild1_1ae707f2 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xcac9bf54312e4b4L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteSubChild1");
+    /*package*/ static final SConcept MenuTraceSubstituteSubChild2_4048bfbd = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xcac9bf543140230L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteSubChild2");
   }
 }

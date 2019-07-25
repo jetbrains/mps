@@ -126,9 +126,9 @@ public class Template_reduce_EnumDeclaration_indentityValueSequence extends Temp
     rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
     return rv;
   }
-  private static SNodePointer propertyMacro_snxsfp_c0a0c0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553079430");
-  private static SNodePointer propertyMacro_snxsfp_c0a0c0a0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553097766");
-  private static SNodePointer propertyMacro_snxsfp_c0a0c0a0c0i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553048691");
-  private static SNodePointer propertyMacro_snxsfp_c0a0c0a0c0j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553103724");
-  private static SNodePointer propertyMacro_snxsfp_c0a0c0a0c0k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553049722");
+  private static final SNodePointer propertyMacro_snxsfp_c0a0c0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553079430");
+  private static final SNodePointer propertyMacro_snxsfp_c0a0c0a0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553097766");
+  private static final SNodePointer propertyMacro_snxsfp_c0a0c0a0c0i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553048691");
+  private static final SNodePointer propertyMacro_snxsfp_c0a0c0a0c0j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553103724");
+  private static final SNodePointer propertyMacro_snxsfp_c0a0c0a0c0k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553049722");
 }

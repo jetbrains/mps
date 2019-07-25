@@ -9,16 +9,17 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class create_JarManifestName extends KeyMapImpl {
   public create_JarManifestName() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new create_JarManifestName.create_JarManifestName_Action0();
+    action = new create_JarManifestName_Action0();
     this.putAction("any", "letter", action);
   }
   public static class create_JarManifestName_Action0 extends KeyMapActionImpl {
@@ -37,7 +38,7 @@ public class create_JarManifestName extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_v9e76h.BuildLayout_JarManifest_bd0e9b46))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -55,5 +56,9 @@ public class create_JarManifestName extends KeyMapImpl {
     public String getKeyStroke() {
       return " letter";
     }
+  }
+
+  private static final class AUX_v9e76h {
+    /*package*/ static final SConcept BuildLayout_JarManifest_bd0e9b46 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest");
   }
 }

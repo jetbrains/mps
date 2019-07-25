@@ -29,5 +29,5 @@ public class OrangeTaste_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_82ftuk_a0a0a = EnumerationLiteralsIndex.build(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae786bbbcL, 0x34c8853ae786bbbdL, 0x34c8853ae786bbbeL, 0x34c8853ae786bbc1L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_82ftuk_a0a0a = EnumerationLiteralsIndex.build(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae786bbbcL, 0x34c8853ae786bbbdL, 0x34c8853ae786bbbeL, 0x34c8853ae786bbc1L);
 }

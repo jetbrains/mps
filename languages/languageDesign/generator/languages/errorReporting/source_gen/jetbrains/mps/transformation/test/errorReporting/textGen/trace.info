@@ -9,7 +9,8 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TextGenAspectDescriptor.java">
-      <unit at="15,0,49,0" name="jetbrains.mps.transformation.test.errorReporting.textGen.TextGenAspectDescriptor" />
+      <unit at="50,0,53,0" name="jetbrains.mps.transformation.test.errorReporting.textGen.TextGenAspectDescriptor$AUX_t8hmqt" />
+      <unit at="16,0,54,0" name="jetbrains.mps.transformation.test.errorReporting.textGen.TextGenAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:e99b0478-397a-402b-a078-57c984a0eca3(jetbrains.mps.transformation.test.errorReporting.textGen)/7287346816896128678">
@@ -28,26 +29,26 @@
       <unit id="7287346816896128678" at="9,0,18,0" name="jetbrains.mps.transformation.test.errorReporting.textGen.ErrorReportingRoot_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="7287346816896128678" at="25,52,26,48" concept="5" />
-      <node id="7287346816896128678" at="34,212,35,60" concept="4" />
-      <node id="7287346816896128678" at="35,60,36,63" concept="4" />
-      <node id="7287346816896128678" at="36,63,37,84" concept="1" />
-      <node id="7287346816896128678" at="37,84,38,17" concept="0" />
-      <node id="7287346816896128678" at="42,68,43,26" concept="5" />
-      <node id="7287346816896128678" at="45,73,46,16" concept="5" />
-      <node id="7287346816896128678" at="42,0,45,0" concept="6" trace="getFileName_ErrorReportingRoot#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="7287346816896128678" at="45,0,48,0" concept="6" trace="getFileExtension_ErrorReportingRoot#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="7287346816896128678" at="33,58,39,7" concept="2" />
-      <scope id="7287346816896128678" at="25,52,26,48" />
-      <scope id="7287346816896128678" at="42,68,43,26" />
-      <scope id="7287346816896128678" at="45,73,46,16" />
-      <scope id="7287346816896128678" at="42,0,45,0">
+      <node id="7287346816896128678" at="26,52,27,48" concept="5" />
+      <node id="7287346816896128678" at="35,77,36,60" concept="4" />
+      <node id="7287346816896128678" at="36,60,37,63" concept="4" />
+      <node id="7287346816896128678" at="37,63,38,84" concept="1" />
+      <node id="7287346816896128678" at="38,84,39,17" concept="0" />
+      <node id="7287346816896128678" at="43,68,44,26" concept="5" />
+      <node id="7287346816896128678" at="46,73,47,16" concept="5" />
+      <node id="7287346816896128678" at="43,0,46,0" concept="6" trace="getFileName_ErrorReportingRoot#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="7287346816896128678" at="46,0,49,0" concept="6" trace="getFileExtension_ErrorReportingRoot#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="7287346816896128678" at="34,58,40,7" concept="2" />
+      <scope id="7287346816896128678" at="26,52,27,48" />
+      <scope id="7287346816896128678" at="43,68,44,26" />
+      <scope id="7287346816896128678" at="46,73,47,16" />
+      <scope id="7287346816896128678" at="43,0,46,0">
         <var name="node" id="7287346816896128678" />
       </scope>
-      <scope id="7287346816896128678" at="45,0,48,0">
+      <scope id="7287346816896128678" at="46,0,49,0">
         <var name="node" id="7287346816896128678" />
       </scope>
-      <scope id="7287346816896128678" at="34,212,38,17">
+      <scope id="7287346816896128678" at="35,77,39,17">
         <var name="ext" id="7287346816896128678" />
         <var name="fname" id="7287346816896128678" />
       </scope>

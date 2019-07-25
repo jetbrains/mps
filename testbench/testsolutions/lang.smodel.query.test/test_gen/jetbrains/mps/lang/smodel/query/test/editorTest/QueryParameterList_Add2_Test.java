@@ -21,7 +21,7 @@ public class QueryParameterList_Add2_Test extends BaseTransformationTest {
 
   @Test
   public void test_QueryParameterList_Add2() throws Throwable {
-    new QueryParameterList_Add2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

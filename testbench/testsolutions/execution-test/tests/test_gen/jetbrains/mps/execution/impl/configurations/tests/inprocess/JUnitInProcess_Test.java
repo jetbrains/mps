@@ -43,11 +43,11 @@ public class JUnitInProcess_Test extends BaseTransformationTest {
 
   @Test
   public void test_startSimpleTestCase() throws Throwable {
-    new JUnitInProcess_Test.TestBody(this).test_startSimpleTestCase();
+    new TestBody(this).test_startSimpleTestCase();
   }
   @Test
   public void test_startFailedTestCase() throws Throwable {
-    new JUnitInProcess_Test.TestBody(this).test_startFailedTestCase();
+    new TestBody(this).test_startFailedTestCase();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

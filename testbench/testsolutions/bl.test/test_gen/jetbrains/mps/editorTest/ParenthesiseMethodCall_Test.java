@@ -21,7 +21,7 @@ public class ParenthesiseMethodCall_Test extends BaseTransformationTest {
 
   @Test
   public void test_ParenthesiseMethodCall() throws Throwable {
-    new ParenthesiseMethodCall_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class RootEndWithLineSelectionFromLastCell_Test extends BaseTransformatio
 
   @Test
   public void test_RootEndWithLineSelectionFromLastCell() throws Throwable {
-    new RootEndWithLineSelectionFromLastCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

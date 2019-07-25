@@ -12,10 +12,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -34,7 +35,7 @@ public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends Abst
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2198294affa4d593L, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteAttribute"))) == null;
+    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_9lmdw.TwoStepDeleteAttribute_65321a03)) == null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -42,7 +43,7 @@ public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends Abst
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
-      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new TwoStepDeleteDefaultChild_AddAttribute_Intention.IntentionImplementation());
+      myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
     }
     return myCachedExecutable;
   }
@@ -55,11 +56,15 @@ public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends Abst
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2198294affa4d593L, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteAttribute")), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2198294affa4d593L, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteAttribute"));
+      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(AUX_9lmdw.TwoStepDeleteAttribute_65321a03), AUX_9lmdw.TwoStepDeleteAttribute_65321a03);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return TwoStepDeleteDefaultChild_AddAttribute_Intention.this;
     }
+  }
+
+  private static final class AUX_9lmdw {
+    /*package*/ static final SConcept TwoStepDeleteAttribute_65321a03 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2198294affa4d593L, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteAttribute");
   }
 }

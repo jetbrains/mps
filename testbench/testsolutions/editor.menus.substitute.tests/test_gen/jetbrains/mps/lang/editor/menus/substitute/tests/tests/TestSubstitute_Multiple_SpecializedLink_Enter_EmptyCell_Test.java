@@ -21,7 +21,7 @@ public class TestSubstitute_Multiple_SpecializedLink_Enter_EmptyCell_Test extend
 
   @Test
   public void test_TestSubstitute_Multiple_SpecializedLink_Enter_EmptyCell() throws Throwable {
-    new TestSubstitute_Multiple_SpecializedLink_Enter_EmptyCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

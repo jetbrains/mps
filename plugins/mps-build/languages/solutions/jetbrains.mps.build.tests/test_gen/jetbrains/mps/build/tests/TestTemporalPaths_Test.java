@@ -31,27 +31,27 @@ public class TestTemporalPaths_Test extends BaseTransformationTest {
 
   @Test
   public void test_topLevelJar() throws Throwable {
-    new TestTemporalPaths_Test.TestBody(this).test_topLevelJar();
+    new TestBody(this).test_topLevelJar();
   }
   @Test
   public void test_topLevelFolder() throws Throwable {
-    new TestTemporalPaths_Test.TestBody(this).test_topLevelFolder();
+    new TestBody(this).test_topLevelFolder();
   }
   @Test
   public void test_topInternalFolder() throws Throwable {
-    new TestTemporalPaths_Test.TestBody(this).test_topInternalFolder();
+    new TestBody(this).test_topInternalFolder();
   }
   @Test
   public void test_jarInFolder() throws Throwable {
-    new TestTemporalPaths_Test.TestBody(this).test_jarInFolder();
+    new TestBody(this).test_jarInFolder();
   }
   @Test
   public void test_folderInJar() throws Throwable {
-    new TestTemporalPaths_Test.TestBody(this).test_folderInJar();
+    new TestBody(this).test_folderInJar();
   }
   @Test
   public void test_duplicatedNames() throws Throwable {
-    new TestTemporalPaths_Test.TestBody(this).test_duplicatedNames();
+    new TestBody(this).test_duplicatedNames();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

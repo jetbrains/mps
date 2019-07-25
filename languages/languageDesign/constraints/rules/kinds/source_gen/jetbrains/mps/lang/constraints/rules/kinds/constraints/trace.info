@@ -14,44 +14,43 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,29,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.ConstraintsAspectDescriptor" />
     </file>
-    <file name="GeneratedRulesConstraintsAspect.java">
-      <unit at="11,0,19,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.GeneratedRulesConstraintsAspect" />
-    </file>
   </root>
   <root nodeRef="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)/4575984242822668305">
     <file name="RuleKind_Constraints.java">
-      <node id="4575984242822668305" at="19,33,20,169" concept="9" />
-      <node id="4575984242822668305" at="27,126,28,62" concept="4" />
-      <node id="4575984242822668305" at="28,62,29,0" concept="6" />
-      <node id="4575984242822668305" at="30,55,31,70" concept="1" />
-      <node id="4575984242822668305" at="32,9,33,0" concept="6" />
-      <node id="4575984242822668305" at="33,0,34,22" concept="5" />
-      <node id="4575984242822668554" at="38,57,39,214" concept="5" />
-      <node id="4575984242822668305" at="41,0,42,0" concept="7" trace="canBeRootBreakingPoint" />
-      <node id="4575984242822668305" at="19,0,22,0" concept="0" trace="RuleKind_Constraints#()V" />
-      <node id="4575984242822668305" at="29,0,32,9" concept="2" />
-      <node id="4575984242822668305" at="38,0,41,0" concept="8" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="4575984242822668305" at="26,0,36,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="4575984242822668305" at="24,98,36,6" concept="5" />
-      <node id="4575984242822668305" at="23,0,38,0" concept="3" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="4575984242822668305" at="19,33,20,169" />
-      <scope id="4575984242822668305" at="30,55,31,70" />
-      <scope id="4575984242822668307" at="38,57,39,214" />
-      <scope id="4575984242822668305" at="19,0,22,0" />
-      <scope id="4575984242822668305" at="38,0,41,0">
+      <node id="4575984242822668305" at="20,33,21,40" concept="9" />
+      <node id="4575984242822668305" at="28,126,29,62" concept="4" />
+      <node id="4575984242822668305" at="29,62,30,0" concept="6" />
+      <node id="4575984242822668305" at="31,55,32,70" concept="1" />
+      <node id="4575984242822668305" at="33,9,34,0" concept="6" />
+      <node id="4575984242822668305" at="34,0,35,22" concept="5" />
+      <node id="4575984242822668554" at="39,57,40,214" concept="5" />
+      <node id="4575984242822668305" at="42,0,43,0" concept="7" trace="canBeRootBreakingPoint" />
+      <node id="4575984242822668305" at="45,0,46,0" concept="7" trace="RuleKind_5b9bbff4" />
+      <node id="4575984242822668305" at="20,0,23,0" concept="0" trace="RuleKind_Constraints#()V" />
+      <node id="4575984242822668305" at="30,0,33,9" concept="2" />
+      <node id="4575984242822668305" at="39,0,42,0" concept="8" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="4575984242822668305" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="4575984242822668305" at="25,98,37,6" concept="5" />
+      <node id="4575984242822668305" at="24,0,39,0" concept="3" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="4575984242822668305" at="20,33,21,40" />
+      <scope id="4575984242822668305" at="31,55,32,70" />
+      <scope id="4575984242822668307" at="39,57,40,214" />
+      <scope id="4575984242822668305" at="20,0,23,0" />
+      <scope id="4575984242822668305" at="39,0,42,0">
         <var name="model" id="4575984242822668305" />
       </scope>
-      <scope id="4575984242822668305" at="27,126,34,22">
+      <scope id="4575984242822668305" at="28,126,35,22">
         <var name="result" id="4575984242822668305" />
       </scope>
-      <scope id="4575984242822668305" at="26,0,36,0">
+      <scope id="4575984242822668305" at="27,0,37,0">
         <var name="checkingNodeContext" id="4575984242822668305" />
         <var name="context" id="4575984242822668305" />
       </scope>
-      <scope id="4575984242822668305" at="24,98,36,6" />
-      <scope id="4575984242822668305" at="23,0,38,0" />
-      <unit id="4575984242822668305" at="25,15,36,5" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.RuleKind_Constraints$1" />
-      <unit id="4575984242822668305" at="18,0,43,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.RuleKind_Constraints" />
+      <scope id="4575984242822668305" at="25,98,37,6" />
+      <scope id="4575984242822668305" at="24,0,39,0" />
+      <unit id="4575984242822668305" at="44,0,47,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.RuleKind_Constraints$AUX_yjuemr" />
+      <unit id="4575984242822668305" at="26,15,37,5" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.RuleKind_Constraints$1" />
+      <unit id="4575984242822668305" at="19,0,48,0" name="jetbrains.mps.lang.constraints.rules.kinds.constraints.RuleKind_Constraints" />
     </file>
   </root>
 </debug-info>

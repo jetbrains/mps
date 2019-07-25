@@ -22,7 +22,7 @@ public class DeleteLineHorizontalMultipleCollection_Test extends BaseTransformat
 
   @Test
   public void test_DeleteLineHorizontalMultipleCollection() throws Throwable {
-    new DeleteLineHorizontalMultipleCollection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

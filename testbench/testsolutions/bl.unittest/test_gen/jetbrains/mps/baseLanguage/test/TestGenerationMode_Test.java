@@ -28,7 +28,7 @@ public class TestGenerationMode_Test extends BaseTransformationTest {
 
   @Test
   public void test_GenerationMode() throws Throwable {
-    new TestGenerationMode_Test.TestBody(this).test_GenerationMode();
+    new TestBody(this).test_GenerationMode();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

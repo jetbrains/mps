@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class variableDeclarationInitializer extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -64,7 +65,7 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new variableDeclarationInitializer.TMP_Group_9r06s2_a0());
+      result.add(new TMP_Group_9r06s2_a0());
     }
     return result;
   }
@@ -88,12 +89,12 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new variableDeclarationInitializer.TMP_Group_9r06s2_a0.TMP_Action_9r06s2_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_9r06s2_a0.TMP_Action_9r06s2_a0a());
     }
     private class TMP_Action_9r06s2_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        variableDeclarationInitializer.TMP_Group_9r06s2_a0.TMP_Action_9r06s2_a0a.Item item = new variableDeclarationInitializer.TMP_Group_9r06s2_a0.TMP_Action_9r06s2_a0a.Item(context);
+        TMP_Group_9r06s2_a0.TMP_Action_9r06s2_a0a.Item item = new TMP_Group_9r06s2_a0.TMP_Action_9r06s2_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -128,7 +129,7 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), null);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_9r06s2.Expression_4199e28d, null);
           SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), result);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -156,5 +157,9 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_9r06s2 {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

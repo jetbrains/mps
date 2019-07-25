@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TextCommentLinePart_ApplySideTransforms extends TransformationMenuBase {
@@ -49,10 +50,10 @@ public class TextCommentLinePart_ApplySideTransforms extends TransformationMenuB
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TextCommentLinePart_ApplySideTransforms.TMP_Include_v87s8j_a0());
+      result.add(new TMP_Include_v87s8j_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TextCommentLinePart_ApplySideTransforms.TMP_Include_v87s8j_a1());
+      result.add(new TMP_Include_v87s8j_a1());
     }
     return result;
   }
@@ -91,7 +92,7 @@ public class TextCommentLinePart_ApplySideTransforms extends TransformationMenuB
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_v87s8j.TextCommentLinePart_b468bde4);
     }
 
     @Nullable
@@ -99,5 +100,9 @@ public class TextCommentLinePart_ApplySideTransforms extends TransformationMenuB
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.LEFT_SIDE_TRANSFORM;
     }
+  }
+
+  private static final class AUX_v87s8j {
+    /*package*/ static final SConcept TextCommentLinePart_b468bde4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 }

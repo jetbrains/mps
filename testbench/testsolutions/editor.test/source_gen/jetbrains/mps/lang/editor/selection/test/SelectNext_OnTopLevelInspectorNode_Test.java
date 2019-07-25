@@ -21,7 +21,7 @@ public class SelectNext_OnTopLevelInspectorNode_Test extends BaseTransformationT
 
   @Test
   public void test_SelectNext_OnTopLevelInspectorNode() throws Throwable {
-    new SelectNext_OnTopLevelInspectorNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

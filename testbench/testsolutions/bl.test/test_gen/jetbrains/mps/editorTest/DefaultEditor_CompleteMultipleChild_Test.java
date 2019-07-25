@@ -23,7 +23,7 @@ public class DefaultEditor_CompleteMultipleChild_Test extends BaseTransformation
 
   @Test
   public void test_DefaultEditor_CompleteMultipleChild() throws Throwable {
-    new DefaultEditor_CompleteMultipleChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -50,7 +50,7 @@ public class ChangeGroupMessages {
     myGutter.removeMessages(ourOwner);
     ListSequence.fromList(myLayout.getChangeGroups()).visitAll(new IVisitor<ChangeGroup>() {
       public void visit(ChangeGroup cg) {
-        myGutter.add(new ChangeGroupMessages.MyChangeGroupMessage(cg));
+        myGutter.add(new MyChangeGroupMessage(cg));
       }
     });
   }

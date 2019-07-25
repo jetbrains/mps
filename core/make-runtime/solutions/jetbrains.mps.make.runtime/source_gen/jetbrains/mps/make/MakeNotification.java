@@ -5,8 +5,8 @@ package jetbrains.mps.make;
 import java.util.EventObject;
 
 public class MakeNotification extends EventObject {
-  private MakeNotification.Kind kind;
-  public MakeNotification(IMakeService source, MakeNotification.Kind kind) {
+  private Kind kind;
+  public MakeNotification(IMakeService source, Kind kind) {
     super(source);
     this.kind = kind;
   }
@@ -14,7 +14,7 @@ public class MakeNotification extends EventObject {
   public IMakeService getSource() {
     return (IMakeService) super.getSource();
   }
-  public MakeNotification.Kind getKind() {
+  public Kind getKind() {
     return kind;
   }
   public enum Kind {

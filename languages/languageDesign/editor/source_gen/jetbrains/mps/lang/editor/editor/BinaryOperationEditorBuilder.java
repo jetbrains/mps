@@ -52,13 +52,13 @@ public class BinaryOperationEditorBuilder {
     return SLinkOperations.getTarget(myLeft, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target"));
   }
 
-  private SNode createAliasActionMap(BinaryOperationEditorBuilder.BuilderResult result) {
+  private SNode createAliasActionMap(BuilderResult result) {
     SNode aliasActionMap = _quotation_createNode_d1zfxg_a0a0n(SLinkOperations.getTarget(myLeft, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")), createLinkAccess(myLeft), SLinkOperations.getTarget(myRight, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")), createLinkAccess(myRight), SPropertyOperations.getString(getConcept(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "_AliasCell_Actions", getConcept());
     ListSequence.fromList(result.myActionMaps).addElement(aliasActionMap);
     return aliasActionMap;
   }
 
-  private SNode createArgumentActionMap(BinaryOperationEditorBuilder.BuilderResult result, boolean isLeft) {
+  private SNode createArgumentActionMap(BuilderResult result, boolean isLeft) {
     SNode current = getCurrent(isLeft);
     SNode opposite = getOpposite(isLeft);
     SNode argumentActionMap = _quotation_createNode_d1zfxg_a0c0p(SLinkOperations.getTarget(current, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")), createLinkAccess(current), createLinkAccess(current), SLinkOperations.getTarget(current, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")), SLinkOperations.getTarget(current, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")), createLinkAccess(opposite), Integer.parseInt((isLeft ? "0" : "-1")), getCellSelection(isLeft), "replace " + SPropertyOperations.getString(getConcept(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " with " + SPropertyOperations.getString(opposite, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")) + " argument", SPropertyOperations.getString(getConcept(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "_" + SPropertyOperations.getString(current, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")) + "_ArgumentActions", getConcept());
@@ -82,15 +82,15 @@ public class BinaryOperationEditorBuilder {
     return _quotation_createNode_d1zfxg_a0a32(link);
   }
 
-  private SNode createNodeFactory(BinaryOperationEditorBuilder.BuilderResult result) {
+  private SNode createNodeFactory(BuilderResult result) {
     SNode nodeFactories = _quotation_createNode_d1zfxg_a0a0z(SPropertyOperations.getString(getConcept(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "_Factories", getConcept(), createLinkAccess(myLeft), getConcept(), createLinkAccess(myLeft), createLinkAccess(myRight), getConcept(), createLinkAccess(myRight), getConcept());
     result.myNodeFactories = nodeFactories;
     return nodeFactories;
   }
 
   @NotNull
-  public BinaryOperationEditorBuilder.BuilderResult buildEditor() {
-    BinaryOperationEditorBuilder.BuilderResult result = new BinaryOperationEditorBuilder.BuilderResult();
+  public BuilderResult buildEditor() {
+    BuilderResult result = new BuilderResult();
 
     result.setAliasCell(_quotation_createNode_d1zfxg_a0c0bb(getTargetConcept(), createAliasActionMap(result)));
     result.setMainCell(_quotation_createNode_d1zfxg_a0d0bb(myLeft, createArgumentActionMap(result, true), result.getAliasCell(), myRight, createArgumentActionMap(result, false)));

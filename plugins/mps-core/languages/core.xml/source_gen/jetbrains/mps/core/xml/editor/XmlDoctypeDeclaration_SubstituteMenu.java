@@ -14,19 +14,20 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlDoctypeDeclaration_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new XmlDoctypeDeclaration_SubstituteMenu.SMP_Group_bnzz5o_a());
+    result.add(new SMP_Group_bnzz5o_a());
     return result;
   }
 
@@ -46,9 +47,9 @@ public class XmlDoctypeDeclaration_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_bnzz5o_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      List<SNode> descendants = SNodeOperations.getNodeDescendants(_context.getParentNode(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration"), false, new SAbstractConcept[]{});
-      if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration"))) {
-        ListSequence.fromList(descendants).removeElement(SNodeOperations.cast(_context.getCurrentTargetNode(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration")));
+      List<SNode> descendants = SNodeOperations.getNodeDescendants(_context.getParentNode(), AUX_bnzz5o.XmlDoctypeDeclaration_3005602b, false, new SAbstractConcept[]{});
+      if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), AUX_bnzz5o.XmlDoctypeDeclaration_3005602b)) {
+        ListSequence.fromList(descendants).removeElement(SNodeOperations.cast(_context.getCurrentTargetNode(), AUX_bnzz5o.XmlDoctypeDeclaration_3005602b));
       }
       return ListSequence.fromList(descendants).isEmpty();
     }
@@ -66,7 +67,7 @@ public class XmlDoctypeDeclaration_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration")) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_bnzz5o.XmlDoctypeDeclaration_3005602b) {
 
         @NotNull
         @Override
@@ -79,7 +80,11 @@ public class XmlDoctypeDeclaration_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration")));
+      }, AUX_bnzz5o.XmlDoctypeDeclaration_3005602b));
     }
+  }
+
+  private static final class AUX_bnzz5o {
+    /*package*/ static final SConcept XmlDoctypeDeclaration_3005602b = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration");
   }
 }

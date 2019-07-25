@@ -38,7 +38,7 @@ public class ModuleSymbolicSuite extends BaseMpsRunner implements EnvironmentAwa
     String[] tests = getAnnotatedTests(klass);
     String[] classes = getAnnotatedClassNames(klass);
     for (int i = 0; i < tests.length && i < classes.length; i++) {
-      myRunners.add(new ModuleSymbolicSuite.DelegatingRunner(classes[i], (tests[i].length() > 0 ? tests[i].split(",") : null)));
+      myRunners.add(new DelegatingRunner(classes[i], (tests[i].length() > 0 ? tests[i].split(",") : null)));
     }
     this.myModuleRef = getAnnotatedModule(klass);
   }
@@ -74,7 +74,7 @@ public class ModuleSymbolicSuite extends BaseMpsRunner implements EnvironmentAwa
         SModuleReference mr = PersistenceFacade.getInstance().createModuleReference(myModuleRef);
         SModule mod = mr.resolve(repo);
         for (Runner child : myRunners) {
-          ((ModuleSymbolicSuite.DelegatingRunner) child).init(mod, myBuilder);
+          ((DelegatingRunner) child).init(mod, myBuilder);
         }
       }
     });
@@ -82,7 +82,7 @@ public class ModuleSymbolicSuite extends BaseMpsRunner implements EnvironmentAwa
   }
 
   private static String getAnnotatedModule(Class<?> klass) throws InitializationError {
-    ModuleSymbolicSuite.ModuleReference mrefAnn = klass.getAnnotation(ModuleSymbolicSuite.ModuleReference.class);
+    ModuleReference mrefAnn = klass.getAnnotation(ModuleReference.class);
     if (mrefAnn == null) {
       throw new InitializationError(String.format("class '%s' must have a ModuleReference annotation", klass.getName()));
     }
@@ -90,7 +90,7 @@ public class ModuleSymbolicSuite extends BaseMpsRunner implements EnvironmentAwa
   }
 
   private static String[] getAnnotatedClassNames(Class<?> klass) throws InitializationError {
-    ModuleSymbolicSuite.ModuleClassSymbols symAnn = klass.getAnnotation(ModuleSymbolicSuite.ModuleClassSymbols.class);
+    ModuleClassSymbols symAnn = klass.getAnnotation(ModuleClassSymbols.class);
     if (symAnn == null) {
       throw new InitializationError(String.format("class '%s' must have a ModuleClassSymbols annotation", klass.getName()));
     }
@@ -98,7 +98,7 @@ public class ModuleSymbolicSuite extends BaseMpsRunner implements EnvironmentAwa
   }
 
   private static String[] getAnnotatedTests(Class<?> klass) throws InitializationError {
-    ModuleSymbolicSuite.ModuleClassSymbols symAnn = klass.getAnnotation(ModuleSymbolicSuite.ModuleClassSymbols.class);
+    ModuleClassSymbols symAnn = klass.getAnnotation(ModuleClassSymbols.class);
     if (symAnn == null) {
       throw new InitializationError(String.format("class '%s' must have a ModuleClassSymbols annotation", klass.getName()));
     }

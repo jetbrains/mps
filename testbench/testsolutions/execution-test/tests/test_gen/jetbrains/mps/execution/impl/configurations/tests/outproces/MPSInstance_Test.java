@@ -33,7 +33,7 @@ public class MPSInstance_Test extends BaseTransformationTest {
 
   @Test
   public void test_simpleConfigurationIsRunnable() throws Throwable {
-    new MPSInstance_Test.TestBody(this).test_simpleConfigurationIsRunnable();
+    new TestBody(this).test_simpleConfigurationIsRunnable();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

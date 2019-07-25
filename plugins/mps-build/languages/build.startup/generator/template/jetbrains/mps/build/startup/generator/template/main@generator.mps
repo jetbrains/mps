@@ -4,9 +4,9 @@
   <languages>
     <use id="d5033cee-f632-44b6-b308-89d4fbde34ff" name="jetbrains.mps.build.startup" version="-1" />
     <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="-1" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="-1" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="-1" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -2083,6 +2083,13 @@
       <property role="2DPR8u" value="IF NOT DEFINED PROGRAMFILES(X86) GOTO skip64bitJDK" />
     </node>
     <node concept="2DRAP_" id="6dUp_XECL2K" role="2DRAPQ" />
+    <node concept="2DRAP_" id="2XRBtU2epmd" role="2DRAPQ">
+      <property role="2DPR8u" value="IF EXIST &quot;%IDE_HOME%\jbr&quot; SET JDK=%IDE_HOME%\jbr" />
+    </node>
+    <node concept="2DRAP_" id="2XRBtU2epme" role="2DRAPQ">
+      <property role="2DPR8u" value="IF NOT &quot;%JDK%&quot; == &quot;&quot; GOTO check" />
+    </node>
+    <node concept="2DRAP_" id="2XRBtU2epmf" role="2DRAPQ" />
     <node concept="2DRAP_" id="4eWOtEm0ohb" role="2DRAPQ">
       <property role="2DPR8u" value="IF EXIST &quot;%IDE_HOME%\jre64&quot; SET JDK=%IDE_HOME%\jre64" />
     </node>
@@ -2248,9 +2255,21 @@
       <property role="2DPR8u" value="IF EXIST &quot;%JRE%\jre&quot; SET JRE=%JDK%\jre" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm1ciI" role="2DRAPQ">
-      <property role="2DPR8u" value="IF EXIST &quot;%JRE%\lib\amd64&quot; SET BITS=64" />
+      <property role="2DPR8u" value="IF EXIST &quot;%JRE%\lib\amd64&quot; (" />
     </node>
-    <node concept="2DRAP_" id="1w81suLSqse" role="2DRAPQ" />
+    <node concept="2DRAP_" id="2XRBtU2et_1" role="2DRAPQ">
+      <property role="2DPR8u" value="  SET BITS=64" />
+    </node>
+    <node concept="2DRAP_" id="1w81suLSqse" role="2DRAPQ">
+      <property role="2DPR8u" value=") ELSE (" />
+    </node>
+    <node concept="2DRAP_" id="2XRBtU2euU1" role="2DRAPQ">
+      <property role="2DPR8u" value="  IF EXIST &quot;%JRE%\lib\jrt-fs.jar&quot; SET BITS=64" />
+    </node>
+    <node concept="2DRAP_" id="2XRBtU2evEo" role="2DRAPQ">
+      <property role="2DPR8u" value=")" />
+    </node>
+    <node concept="2DRAP_" id="2XRBtU2esOG" role="2DRAPQ" />
     <node concept="2DRAP_" id="4eWOtElZXuB" role="2DRAPQ">
       <property role="2DPR8u" value=":: ---------------------------------------------------------------------" />
     </node>
@@ -3158,7 +3177,7 @@
       <property role="2DPR8u" value="# Locate a JDK installation directory which will be used to run the IDE." />
     </node>
     <node concept="2DRAP_" id="hoHCGht6S6" role="2DRAPQ">
-      <property role="2DPR8u" value="# Try (in order): MPS_JDK, mps.jdk, ../jre, JDK_HOME, JAVA_HOME, &quot;java&quot; in PATH." />
+      <property role="2DPR8u" value="# Try (in order): MPS_JDK, mps.jdk, ./jbr, ../jre, JDK_HOME, JAVA_HOME, &quot;java&quot; in PATH." />
       <node concept="17Uvod" id="BsOHnjlBFg" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3500,6 +3519,12 @@
     </node>
     <node concept="2DRAP_" id="BsOHnjlPsF" role="2DRAPQ">
       <property role="2DPR8u" value="  fi" />
+    </node>
+    <node concept="2DRAP_" id="2XRBtU2o0ri" role="2DRAPQ">
+      <property role="2DPR8u" value="elif [ -x &quot;$IDE_HOME/jbr/bin/java&quot; ] &amp;&amp; &quot;$IDE_HOME/jbr/bin/java&quot; -version &gt; /dev/null 2&gt;&amp;1 ; then" />
+    </node>
+    <node concept="2DRAP_" id="2XRBtU2o0rj" role="2DRAPQ">
+      <property role="2DPR8u" value="  JDK=&quot;$IDE_HOME/jbr&quot;" />
     </node>
     <node concept="2DRAP_" id="1SWE651AwEZ" role="2DRAPQ">
       <property role="2DPR8u" value="elif [ -x &quot;$IDE_HOME/jre/jre/bin/java&quot; ] &amp;&amp; &quot;$IDE_HOME/jre/jre/bin/java&quot; -version &gt; /dev/null 2&gt;&amp;1 ; then" />

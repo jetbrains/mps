@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +38,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BuildSource_JavaDependencyExternalJar_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -63,7 +64,7 @@ public class BuildSource_JavaDependencyExternalJar_TransformationMenu extends Tr
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJar"))) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(AUX_b1qp4t.BuildSource_JavaDependencyExternalJar_b3b332a0)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -79,7 +80,7 @@ public class BuildSource_JavaDependencyExternalJar_TransformationMenu extends Tr
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new BuildSource_JavaDependencyExternalJar_TransformationMenu.TMP_Group_b1qp4t_a1());
+      result.add(new TMP_Group_b1qp4t_a1());
     }
     return result;
   }
@@ -103,12 +104,12 @@ public class BuildSource_JavaDependencyExternalJar_TransformationMenu extends Tr
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new BuildSource_JavaDependencyExternalJar_TransformationMenu.TMP_Group_b1qp4t_a1.TMP_Action_b1qp4t_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_b1qp4t_a1.TMP_Action_b1qp4t_a0b());
     }
     private class TMP_Action_b1qp4t_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        BuildSource_JavaDependencyExternalJar_TransformationMenu.TMP_Group_b1qp4t_a1.TMP_Action_b1qp4t_a0b.Item item = new BuildSource_JavaDependencyExternalJar_TransformationMenu.TMP_Group_b1qp4t_a1.TMP_Action_b1qp4t_a0b.Item(context);
+        TMP_Group_b1qp4t_a1.TMP_Action_b1qp4t_a0b.Item item = new TMP_Group_b1qp4t_a1.TMP_Action_b1qp4t_a0b.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -166,5 +167,9 @@ public class BuildSource_JavaDependencyExternalJar_TransformationMenu extends Tr
       }
 
     }
+  }
+
+  private static final class AUX_b1qp4t {
+    /*package*/ static final SConcept BuildSource_JavaDependencyExternalJar_b3b332a0 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJar");
   }
 }

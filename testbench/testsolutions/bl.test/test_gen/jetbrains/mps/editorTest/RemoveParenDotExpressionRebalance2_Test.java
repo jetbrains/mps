@@ -21,7 +21,7 @@ public class RemoveParenDotExpressionRebalance2_Test extends BaseTransformationT
 
   @Test
   public void test_RemoveParenDotExpressionRebalance2() throws Throwable {
-    new RemoveParenDotExpressionRebalance2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -20,8 +20,8 @@ import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -40,6 +40,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class assert_ extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -65,7 +66,7 @@ public class assert_ extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new assert_.TMP_Group_tor4do_a0());
+      result.add(new TMP_Group_tor4do_a0());
     }
     return result;
   }
@@ -74,7 +75,7 @@ public class assert_ extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode targetExppression = PrecedenceUtil.getTargetForRightTransform(_context.getNode());
-      return targetExppression != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetExppression), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement")) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetExppression), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message")) == null;
+      return targetExppression != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetExppression), AUX_tor4do.AssertStatement_6f73e3bb) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetExppression), AUX_tor4do.AssertStatement_6f73e3bb), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message")) == null;
     }
 
     @NotNull
@@ -90,12 +91,12 @@ public class assert_ extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new assert_.TMP_Group_tor4do_a0.TMP_Action_tor4do_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_tor4do_a0.TMP_Action_tor4do_a0a());
     }
     private class TMP_Action_tor4do_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        assert_.TMP_Group_tor4do_a0.TMP_Action_tor4do_a0a.Item item = new assert_.TMP_Group_tor4do_a0.TMP_Action_tor4do_a0a.Item(context);
+        TMP_Group_tor4do_a0.TMP_Action_tor4do_a0a.Item item = new TMP_Group_tor4do_a0.TMP_Action_tor4do_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -131,7 +132,7 @@ public class assert_ extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode targetExpression = PrecedenceUtil.getTargetForRightTransform(_context.getNode());
-          SNode assertion = SNodeOperations.cast(SNodeOperations.getParent(targetExpression), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement"));
+          SNode assertion = SNodeOperations.cast(SNodeOperations.getParent(targetExpression), AUX_tor4do.AssertStatement_6f73e3bb);
           SNodeFactoryOperations.setNewChild(assertion, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message"), null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(assertion, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -155,5 +156,9 @@ public class assert_ extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_tor4do {
+    /*package*/ static final SConcept AssertStatement_6f73e3bb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement");
   }
 }

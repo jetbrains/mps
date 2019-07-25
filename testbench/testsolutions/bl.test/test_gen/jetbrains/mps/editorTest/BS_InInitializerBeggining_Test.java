@@ -22,7 +22,7 @@ public class BS_InInitializerBeggining_Test extends BaseTransformationTest {
 
   @Test
   public void test_BS_InInitializerBeggining() throws Throwable {
-    new BS_InInitializerBeggining_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

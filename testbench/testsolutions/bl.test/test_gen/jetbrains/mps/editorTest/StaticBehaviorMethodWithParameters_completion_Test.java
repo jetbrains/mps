@@ -21,7 +21,7 @@ public class StaticBehaviorMethodWithParameters_completion_Test extends BaseTran
 
   @Test
   public void test_StaticBehaviorMethodWithParameters_completion() throws Throwable {
-    new StaticBehaviorMethodWithParameters_completion_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -36,7 +36,7 @@ public class ChangeParametersOrder_Test extends BaseTransformationTest {
 
   @Test
   public void test_ChangeParametersOrder() throws Throwable {
-    new ChangeParametersOrder_Test.TestBody(this).test_ChangeParametersOrder();
+    new TestBody(this).test_ChangeParametersOrder();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

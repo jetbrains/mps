@@ -21,7 +21,7 @@ public class BackspaceToUnwrapArrayTypeInFieldDeclaration_Test extends BaseTrans
 
   @Test
   public void test_BackspaceToUnwrapArrayTypeInFieldDeclaration() throws Throwable {
-    new BackspaceToUnwrapArrayTypeInFieldDeclaration_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

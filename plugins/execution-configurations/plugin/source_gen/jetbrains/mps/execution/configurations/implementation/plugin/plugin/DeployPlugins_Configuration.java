@@ -40,7 +40,7 @@ import com.intellij.execution.BeforeRunTask;
 public class DeployPlugins_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(DeployPlugins_Configuration.class);
   @NotNull
-  private DeployPlugins_Configuration.MyState myState = new DeployPlugins_Configuration.MyState();
+  private MyState myState = new MyState();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
 
   @Override
@@ -106,7 +106,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (DeployPlugins_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -142,7 +142,7 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      DeployPlugins_Configuration.MyState state = new DeployPlugins_Configuration.MyState();
+      MyState state = new MyState();
       state.mySkipModulesLoading = mySkipModulesLoading;
       state.myRestartCurrentInstance = myRestartCurrentInstance;
       return state;

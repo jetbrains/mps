@@ -33,6 +33,7 @@ import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class EvaluatorConcept_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -123,7 +124,7 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new EvaluatorConcept_EditorBuilder_a.contextNodeSingleRoleHandler_6rl195_c0b0a(myNode, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23615L, "contextNode"), getEditorContext());
+    SingleRoleCellProvider provider = new contextNodeSingleRoleHandler_6rl195_c0b0a(myNode, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23615L, "contextNode"), getEditorContext());
     return provider.createCell();
   }
   private static class contextNodeSingleRoleHandler_6rl195_c0b0a extends SingleRoleCellProvider {
@@ -199,7 +200,7 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new EvaluatorConcept_EditorBuilder_a.thisNodeSingleRoleHandler_6rl195_c1b0a(myNode, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode"), getEditorContext());
+    SingleRoleCellProvider provider = new thisNodeSingleRoleHandler_6rl195_c1b0a(myNode, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode"), getEditorContext());
     return provider.createCell();
   }
   private static class thisNodeSingleRoleHandler_6rl195_c1b0a extends SingleRoleCellProvider {
@@ -284,7 +285,7 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new EvaluatorConcept_EditorBuilder_a.variablesListHandler_6rl195_a2c1a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new variablesListHandler_6rl195_a2c1a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_variables");
     Style style = new StyleImpl();
@@ -310,7 +311,7 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
       return MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariable");
+      return AUX_jzihk5.LowLevelVariable_59d4c761;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -363,7 +364,7 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new EvaluatorConcept_EditorBuilder_a.evaluatedStatementsSingleRoleHandler_6rl195_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x10093bb8b0669700L, "evaluatedStatements"), getEditorContext());
+    SingleRoleCellProvider provider = new evaluatedStatementsSingleRoleHandler_6rl195_c0(myNode, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x10093bb8b0669700L, "evaluatedStatements"), getEditorContext());
     return provider.createCell();
   }
   private static class evaluatedStatementsSingleRoleHandler_6rl195_c0 extends SingleRoleCellProvider {
@@ -424,5 +425,9 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
     protected String getNoTargetText() {
       return "<no evaluatedStatements>";
     }
+  }
+
+  private static final class AUX_jzihk5 {
+    /*package*/ static final SConcept LowLevelVariable_59d4c761 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariable");
   }
 }

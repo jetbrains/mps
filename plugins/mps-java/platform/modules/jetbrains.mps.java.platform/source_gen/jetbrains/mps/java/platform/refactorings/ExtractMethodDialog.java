@@ -16,8 +16,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import javax.swing.JComponent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -55,6 +55,8 @@ import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodMatch;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ExtractMethodDialog extends RefactoringDialog {
   private final MPSProject myMPSProject;
@@ -65,7 +67,7 @@ public class ExtractMethodDialog extends RefactoringDialog {
   private JTextField myNameField;
   private JCheckBox myDeclareStaticCheckBox;
   private VisibilityPanel myVisibilityPanel;
-  private ExtractMethodDialog.ChooseContainerPanel myChooseContainerPanel;
+  private ChooseContainerPanel myChooseContainerPanel;
   private ExtractMethodRefactoringParameters myParameters;
   private EditorContext myContext;
   private ExtractMethodRefactoring myRefactoring;
@@ -132,7 +134,7 @@ public class ExtractMethodDialog extends RefactoringDialog {
     }
     SNode overrides = this.myParameters.getOverridingMethodClass();
     if (overrides != null && !(this.myExtractIntoOuterContainer)) {
-      if ((overrides == SNodeOperations.getNodeAncestor(this.myParameters.getContainerMethod(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false))) {
+      if ((overrides == SNodeOperations.getNodeAncestor(this.myParameters.getContainerMethod(), AUX_7gs285.Classifier_4b7e553, false, false))) {
         buff.append("Such method already exists.\n");
       } else {
         buff.append("Method overrides method from class ").append(SPropertyOperations.getString(overrides, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))).append("\n");
@@ -194,7 +196,7 @@ public class ExtractMethodDialog extends RefactoringDialog {
     c.weightx = 1;
     c.weighty = 0;
     c.gridwidth = 2;
-    myChooseContainerPanel = new ExtractMethodDialog.ChooseContainerPanel();
+    myChooseContainerPanel = new ChooseContainerPanel();
     myChooseContainerPanel.setBorder(this.createBorder("Choose container"));
     myPanel.add(myChooseContainerPanel, c);
 
@@ -313,7 +315,7 @@ public class ExtractMethodDialog extends RefactoringDialog {
       }
     });
 
-    final ChooseNodeDialog dialog = new ChooseNodeDialog(myMPSProject, new InstanceOfCondition(new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c8f444674L, "jetbrains.mps.baseLanguage.structure.IStaticContainerForMethods")}), models, "Choose class");
+    final ChooseNodeDialog dialog = new ChooseNodeDialog(myMPSProject, new InstanceOfCondition(new SAbstractConcept[]{AUX_7gs285.ClassConcept_e2711824, AUX_7gs285.IStaticContainerForMethods_bde97a4c}), models, "Choose class");
     dialog.show();
 
     myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -382,7 +384,7 @@ public class ExtractMethodDialog extends RefactoringDialog {
         }
       });
       if ((results[0] != null)) {
-        new ExtractMethodDialog.MyMethodDuplicatesProcessor(myContext, results[0]).process(ExtractMethodDialog.this.myRefactoring.getMatches(), myProject);
+        new MyMethodDuplicatesProcessor(myContext, results[0]).process(ExtractMethodDialog.this.myRefactoring.getMatches(), myProject);
       }
     }
     super.doRefactoringAction();
@@ -432,13 +434,13 @@ public class ExtractMethodDialog extends RefactoringDialog {
           myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
               if (ExtractMethodDialog.this.myStaticTarget != null) {
-                if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
+                if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, AUX_7gs285.ClassConcept_e2711824)) {
                   myChooseContainerButton.setIcon(IconResourceBundle_ExtractMethodIcons.getInstance().getResource("CLASS"));
-                } else if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"))) {
+                } else if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, AUX_7gs285.ConceptBehavior_68ebe6cd)) {
                   myChooseContainerButton.setIcon(IconResourceBundle_ExtractMethodIcons.getInstance().getResource("INTERFACE"));
                 }
-                if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
-                  myChooseContainerButton.setText(SPropertyOperations.getString((SNodeOperations.cast(ExtractMethodDialog.this.myStaticTarget, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+                if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, AUX_7gs285.INamedConcept_8cd7e247)) {
+                  myChooseContainerButton.setText(SPropertyOperations.getString((SNodeOperations.cast(ExtractMethodDialog.this.myStaticTarget, AUX_7gs285.INamedConcept_8cd7e247)), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
                 }
 
               }
@@ -462,5 +464,13 @@ public class ExtractMethodDialog extends RefactoringDialog {
       add(myChooseContainerButton, c);
 
     }
+  }
+
+  private static final class AUX_7gs285 {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SInterfaceConcept IStaticContainerForMethods_bde97a4c = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c8f444674L, "jetbrains.mps.baseLanguage.structure.IStaticContainerForMethods");
+    /*package*/ static final SConcept ConceptBehavior_68ebe6cd = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

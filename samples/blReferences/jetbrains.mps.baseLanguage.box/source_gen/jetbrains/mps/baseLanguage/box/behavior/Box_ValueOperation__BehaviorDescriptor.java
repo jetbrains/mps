@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.box.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,9 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class Box_ValueOperation__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x1c5b433b3a0b47c4L, 0xbed8d496b01eb018L, 0x7cd580cc400b35fcL, "jetbrains.mps.baseLanguage.box.structure.Box_ValueOperation");
+  private static final SAbstractConcept CONCEPT = AUX_35e3ph.Box_ValueOperation_f605583a;
 
   public static final SMethod<Boolean> lvalue_id1653mnvAgvW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvW").build();
 
@@ -76,5 +77,9 @@ public final class Box_ValueOperation__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_35e3ph {
+    /*package*/ static final SConcept Box_ValueOperation_f605583a = MetaAdapterFactory.getConcept(0x1c5b433b3a0b47c4L, 0xbed8d496b01eb018L, 0x7cd580cc400b35fcL, "jetbrains.mps.baseLanguage.box.structure.Box_ValueOperation");
   }
 }

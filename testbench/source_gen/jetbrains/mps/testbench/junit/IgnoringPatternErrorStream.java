@@ -56,7 +56,7 @@ public class IgnoringPatternErrorStream implements Output {
     System.err.flush();
     myOldStream = System.err;
     myByteArrayOutputStream = new ByteArrayOutputStream();
-    myErrorCachingStream = new PrintStream(new IgnoringPatternErrorStream.CompositeStream(myOldStream, new PrintStream(myByteArrayOutputStream)));
+    myErrorCachingStream = new PrintStream(new CompositeStream(myOldStream, new PrintStream(myByteArrayOutputStream)));
     System.setErr(myErrorCachingStream);
   }
 

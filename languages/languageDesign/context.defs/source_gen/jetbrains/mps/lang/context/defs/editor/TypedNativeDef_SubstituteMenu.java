@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -39,15 +38,17 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TypedNativeDef_SubstituteMenu.SMP_Action_m53iyy_a(), MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TypedNativeDef_SubstituteMenu.SMP_Wrap_m53iyy_b(), MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_m53iyy_a(), AUX_m53iyy.TypedNativeDef_d5ecd370));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_m53iyy_b(), AUX_m53iyy.TypedNativeDef_d5ecd370));
     return result;
   }
 
@@ -69,7 +70,7 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      TypedNativeDef_SubstituteMenu.SMP_Action_m53iyy_a.Item item = new TypedNativeDef_SubstituteMenu.SMP_Action_m53iyy_a.Item(_context);
+      SMP_Action_m53iyy_a.Item item = new SMP_Action_m53iyy_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -92,7 +93,7 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef"), context);
+        super(AUX_m53iyy.TypedNativeDef_d5ecd370, context);
         _context = context;
       }
 
@@ -145,7 +146,7 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef");
+          return AUX_m53iyy.TypedNativeDef_d5ecd370;
         }
         @Nullable
         @Override
@@ -178,21 +179,26 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+      return AUX_m53iyy.Type_4199e276;
     }
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0a(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_m53iyy.TypedNativeDef_d5ecd370, null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name").getType().toString(p0));
     return n1;
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_m53iyy.TypedNativeDef_d5ecd370, null, null, false);
     if (node0 != null) {
-      n1.addChild(MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"))));
+      n1.addChild(MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type"), SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, AUX_m53iyy.Type_4199e276)));
     }
     return n1;
+  }
+
+  private static final class AUX_m53iyy {
+    /*package*/ static final SConcept TypedNativeDef_d5ecd370 = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef");
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

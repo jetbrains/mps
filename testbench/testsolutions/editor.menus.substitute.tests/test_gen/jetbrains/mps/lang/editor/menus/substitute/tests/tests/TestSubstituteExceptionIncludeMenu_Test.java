@@ -25,7 +25,7 @@ public class TestSubstituteExceptionIncludeMenu_Test extends BaseTransformationT
 
   @Test
   public void test_TestSubstituteExceptionIncludeMenu() throws Throwable {
-    new TestSubstituteExceptionIncludeMenu_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

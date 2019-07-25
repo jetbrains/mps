@@ -34,7 +34,7 @@ public class InlineWithVoidTypeAndBug_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineWithVoidTypeAndBug() throws Throwable {
-    new InlineWithVoidTypeAndBug_Test.TestBody(this).test_InlineWithVoidTypeAndBug();
+    new TestBody(this).test_InlineWithVoidTypeAndBug();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

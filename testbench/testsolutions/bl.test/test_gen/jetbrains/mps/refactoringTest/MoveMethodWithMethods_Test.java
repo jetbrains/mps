@@ -34,7 +34,7 @@ public class MoveMethodWithMethods_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveMethodWithMethods() throws Throwable {
-    new MoveMethodWithMethods_Test.TestBody(this).test_MoveMethodWithMethods();
+    new TestBody(this).test_MoveMethodWithMethods();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

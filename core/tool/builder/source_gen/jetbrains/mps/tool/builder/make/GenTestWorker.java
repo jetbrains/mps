@@ -50,11 +50,11 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 
 public class GenTestWorker extends BaseGeneratorWorker {
-  private final GenTestWorker.MyMessageHandler myMessageHandler = new GenTestWorker.MyMessageHandler();
+  private final MyMessageHandler myMessageHandler = new MyMessageHandler();
   private boolean myTestFailed = false;
   private Map<String, String> path2tmp = MapSequence.fromMap(new HashMap<String, String>());
   private String tmpPath;
-  private GenTestWorker.MyReporter myReporter = new GenTestWorker.MyReporter();
+  private MyReporter myReporter = new MyReporter();
 
   public GenTestWorker(Script whatToDo) {
     super(whatToDo);

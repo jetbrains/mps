@@ -13,6 +13,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * This describes a group of related dispatch methods, i.e. which dispatch to each other
@@ -23,7 +24,7 @@ public class DispatchGroupDescriptor {
   private Iterable<SNode> otherParamTypes;
   public DispatchGroupDescriptor(SNode pattern) {
     methodName = SPropertyOperations.getString(pattern, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
-    isStatic = SNodeOperations.isInstanceOf(pattern, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
+    isStatic = SNodeOperations.isInstanceOf(pattern, AUX_kjd86i.StaticMethodDeclaration_9cd8c445);
     otherParamTypes = ListSequence.fromList(SLinkOperations.getChildren(pattern, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).skip(1).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"));
@@ -75,17 +76,17 @@ public class DispatchGroupDescriptor {
   private boolean typesEqual(SNode typ1, SNode typ2) {
     {
       final SNode cls = typ1;
-      if (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
+      if (SNodeOperations.isInstanceOf(cls, AUX_kjd86i.ClassifierType_42700403)) {
         {
           final SNode cls2 = typ2;
-          if (SNodeOperations.isInstanceOf(cls2, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
+          if (SNodeOperations.isInstanceOf(cls2, AUX_kjd86i.ClassifierType_42700403)) {
             return SLinkOperations.getTarget(cls, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")) == SLinkOperations.getTarget(cls2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
           }
         }
         return false;
       }
     }
-    if (SNodeOperations.isInstanceOf(typ2, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
+    if (SNodeOperations.isInstanceOf(typ2, AUX_kjd86i.ClassifierType_42700403)) {
       return false;
     }
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(typ1).equals(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(typ2));
@@ -93,10 +94,15 @@ public class DispatchGroupDescriptor {
   private int typeHashCode(SNode typ) {
     {
       final SNode cls = typ;
-      if (SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"))) {
+      if (SNodeOperations.isInstanceOf(cls, AUX_kjd86i.ClassifierType_42700403)) {
         return SLinkOperations.getTarget(cls, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")).hashCode();
       }
     }
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(typ).hashCode();
+  }
+
+  private static final class AUX_kjd86i {
+    /*package*/ static final SConcept StaticMethodDeclaration_9cd8c445 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

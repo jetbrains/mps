@@ -30,11 +30,11 @@ public class ReadAction_Test extends BaseTransformationTest {
 
   @Test
   public void test_ReadAction() throws Throwable {
-    new ReadAction_Test.TestBody(this).test_ReadAction();
+    new TestBody(this).test_ReadAction();
   }
   @Test
   public void test_ErrorMessagesCheck1216549241562() throws Throwable {
-    new ReadAction_Test.TestBody(this).test_ErrorMessagesCheck1216549241562();
+    new TestBody(this).test_ErrorMessagesCheck1216549241562();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

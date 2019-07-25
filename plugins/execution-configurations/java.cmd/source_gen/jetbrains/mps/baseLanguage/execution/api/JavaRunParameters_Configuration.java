@@ -21,7 +21,7 @@ import com.intellij.openapi.project.Project;
 public class JavaRunParameters_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(JavaRunParameters_Configuration.class);
   @NotNull
-  private JavaRunParameters_Configuration.MyState myState = new JavaRunParameters_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -56,7 +56,7 @@ public class JavaRunParameters_Configuration implements IPersistentConfiguration
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (JavaRunParameters_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -78,7 +78,7 @@ public class JavaRunParameters_Configuration implements IPersistentConfiguration
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      JavaRunParameters_Configuration.MyState state = new JavaRunParameters_Configuration.MyState();
+      MyState state = new MyState();
       if (myJavaParameters != null) {
         state.myJavaParameters = myJavaParameters.clone();
       }

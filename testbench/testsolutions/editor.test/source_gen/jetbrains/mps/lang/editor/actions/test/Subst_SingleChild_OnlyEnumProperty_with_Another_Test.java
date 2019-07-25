@@ -21,7 +21,7 @@ public class Subst_SingleChild_OnlyEnumProperty_with_Another_Test extends BaseTr
 
   @Test
   public void test_Subst_SingleChild_OnlyEnumProperty_with_Another() throws Throwable {
-    new Subst_SingleChild_OnlyEnumProperty_with_Another_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

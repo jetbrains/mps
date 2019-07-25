@@ -23,7 +23,7 @@ public class DefaultEditor_CompleteSmartReference_Test extends BaseTransformatio
 
   @Test
   public void test_DefaultEditor_CompleteSmartReference() throws Throwable {
-    new DefaultEditor_CompleteSmartReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

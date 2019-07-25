@@ -25,7 +25,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("1172253951374", new QueriesGenerated.RRC(i++));
+    rrcMethods.put("1172253951374", new RRC(i++));
   }
   @Override
   @NotNull

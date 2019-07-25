@@ -23,7 +23,7 @@ public class Subst_SingleChildDefaultConcreteDefEditor_AddNewChildByCompl_Test e
 
   @Test
   public void test_Subst_SingleChildDefaultConcreteDefEditor_AddNewChildByCompl() throws Throwable {
-    new Subst_SingleChildDefaultConcreteDefEditor_AddNewChildByCompl_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -36,7 +36,7 @@ public class ChangeSignatureOfStaticMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_ChangeSignatureOfStaticMethod() throws Throwable {
-    new ChangeSignatureOfStaticMethod_Test.TestBody(this).test_ChangeSignatureOfStaticMethod();
+    new TestBody(this).test_ChangeSignatureOfStaticMethod();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

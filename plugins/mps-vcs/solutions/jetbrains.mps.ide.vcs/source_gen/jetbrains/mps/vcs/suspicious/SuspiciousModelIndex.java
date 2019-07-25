@@ -45,7 +45,7 @@ import jetbrains.mps.vcs.MPSVcsManager;
 public class SuspiciousModelIndex implements ApplicationComponent {
   private final ProjectManager myProjectManager;
   private PlatformActivityTracker myPlatformWatcher;
-  private SuspiciousModelIndex.MyTaskQueue myTaskQueue;
+  private MyTaskQueue myTaskQueue;
   private ReloadManagerComponent myReloadManager;
   private Platform myMPSPlatform;
 
@@ -75,7 +75,7 @@ public class SuspiciousModelIndex implements ApplicationComponent {
   @Override
   public void initComponent() {
     myPlatformWatcher.activate();
-    myTaskQueue = new SuspiciousModelIndex.MyTaskQueue();
+    myTaskQueue = new MyTaskQueue();
     myTaskQueue.start(500, TimeUnit.MILLISECONDS);
     SuspiciousModelHandler.setHandler(new SuspiciousModelHandler() {
       @Override

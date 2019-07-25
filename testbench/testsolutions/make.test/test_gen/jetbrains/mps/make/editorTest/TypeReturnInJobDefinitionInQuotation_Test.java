@@ -21,7 +21,7 @@ public class TypeReturnInJobDefinitionInQuotation_Test extends BaseTransformatio
 
   @Test
   public void test_TypeReturnInJobDefinitionInQuotation() throws Throwable {
-    new TypeReturnInJobDefinitionInQuotation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

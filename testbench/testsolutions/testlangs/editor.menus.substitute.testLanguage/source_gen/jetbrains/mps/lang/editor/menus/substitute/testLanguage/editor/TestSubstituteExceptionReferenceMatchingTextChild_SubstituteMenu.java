@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
@@ -24,14 +24,15 @@ import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu.SMP_ReferenceScope_tafz9j_a(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu.SMP_Action_tafz9j_b(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tafz9j_a(), AUX_tafz9j.TestSubstituteExceptionReferenceMatchingTextChild_542a5eb2));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_tafz9j_b(), AUX_tafz9j.TestSubstituteExceptionReferenceMatchingTextChild_542a5eb2));
     return result;
   }
 
@@ -52,7 +53,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
 
     public SMP_ReferenceScope_tafz9j_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild"), MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, 0x63457d5cb582a92aL, "reference"));
+      super((SAbstractConcept) AUX_tafz9j.TestSubstituteExceptionReferenceMatchingTextChild_542a5eb2, MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, 0x63457d5cb582a92aL, "reference"));
     }
     @NotNull
     @Override
@@ -69,7 +70,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu.SMP_ReferenceScope_tafz9j_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new SMP_ReferenceScope_tafz9j_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;
@@ -102,7 +103,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu.SMP_Action_tafz9j_b.Item item = new TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu.SMP_Action_tafz9j_b.Item(_context);
+      SMP_Action_tafz9j_b.Item item = new SMP_Action_tafz9j_b.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -125,7 +126,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild"), context);
+        super(AUX_tafz9j.TestSubstituteExceptionReferenceMatchingTextChild_542a5eb2, context);
         _context = context;
       }
 
@@ -149,5 +150,9 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
         return "action";
       }
     }
+  }
+
+  private static final class AUX_tafz9j {
+    /*package*/ static final SConcept TestSubstituteExceptionReferenceMatchingTextChild_542a5eb2 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild");
   }
 }

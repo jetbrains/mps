@@ -78,7 +78,7 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MappingType_EditorBuilder_a.keyTypeSingleRoleHandler_6trdjm_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e3925L, "keyType"), getEditorContext());
+    SingleRoleCellProvider provider = new keyTypeSingleRoleHandler_6trdjm_c0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e3925L, "keyType"), getEditorContext());
     return provider.createCell();
   }
   private static class keyTypeSingleRoleHandler_6trdjm_c0 extends SingleRoleCellProvider {
@@ -142,7 +142,7 @@ import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleShee
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new MappingType_EditorBuilder_a.valueTypeSingleRoleHandler_6trdjm_e0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e4f44L, "valueType"), getEditorContext());
+    SingleRoleCellProvider provider = new valueTypeSingleRoleHandler_6trdjm_e0(myNode, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e4f44L, "valueType"), getEditorContext());
     return provider.createCell();
   }
   private static class valueTypeSingleRoleHandler_6trdjm_e0 extends SingleRoleCellProvider {

@@ -17,13 +17,13 @@
     <file name="SharedStyles_StyleSheet.java">
       <node id="1203541368202" at="21,83,22,69" concept="3" />
       <node id="1203541368202" at="22,69,23,88" concept="3" />
-      <node id="1203541368202" at="23,88,24,107" concept="1" />
+      <node id="1203541368202" at="23,88,24,83" concept="1" />
       <node id="1203541385314" at="31,83,32,69" concept="3" />
       <node id="1203541385314" at="32,69,33,88" concept="3" />
-      <node id="1203541385314" at="33,88,34,107" concept="1" />
+      <node id="1203541385314" at="33,88,34,83" concept="1" />
       <node id="1221170124867" at="41,93,42,69" concept="3" />
       <node id="1221170124867" at="42,69,43,88" concept="3" />
-      <node id="1221170124867" at="43,88,44,117" concept="1" />
+      <node id="1221170124867" at="43,88,44,93" concept="1" />
       <node id="1203541368202" at="48,82,49,33" concept="6" />
       <node id="1203541368203" at="53,59,54,109" concept="1" />
       <node id="1203541368204" at="54,109,55,61" concept="1" />
@@ -47,15 +47,15 @@
       <scope id="1221170124867" at="71,92,72,33" />
       <scope id="1203541368202" at="53,59,55,61" />
       <scope id="1221170124867" at="76,59,78,61" />
-      <scope id="1203541368202" at="21,83,24,107">
+      <scope id="1203541368202" at="21,83,24,83">
         <var name="editorContext" id="1203541368202" />
         <var name="node" id="1203541368202" />
       </scope>
-      <scope id="1203541385314" at="31,83,34,107">
+      <scope id="1203541385314" at="31,83,34,83">
         <var name="editorContext" id="1203541385314" />
         <var name="node" id="1203541385314" />
       </scope>
-      <scope id="1221170124867" at="41,93,44,117">
+      <scope id="1221170124867" at="41,93,44,93">
         <var name="editorContext" id="1221170124867" />
         <var name="node" id="1221170124867" />
       </scope>

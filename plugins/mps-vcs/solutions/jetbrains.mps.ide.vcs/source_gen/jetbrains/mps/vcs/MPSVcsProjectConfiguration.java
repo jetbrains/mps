@@ -17,16 +17,16 @@ import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 @State(name = "MPSVcsConfiguration", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
 public class MPSVcsProjectConfiguration extends AbstractProjectComponent implements PersistentStateComponent<MPSVcsProjectConfiguration.MyState> {
-  private MPSVcsProjectConfiguration.MyState myState = new MPSVcsProjectConfiguration.MyState();
+  private MyState myState = new MyState();
   protected MPSVcsProjectConfiguration(Project project) {
     super(project);
   }
   @Override
-  public MPSVcsProjectConfiguration.MyState getState() {
+  public MyState getState() {
     return myState;
   }
   @Override
-  public void loadState(MPSVcsProjectConfiguration.MyState state) {
+  public void loadState(MyState state) {
     myState = state;
   }
   public boolean isIgnoreGeneratedFiles() {

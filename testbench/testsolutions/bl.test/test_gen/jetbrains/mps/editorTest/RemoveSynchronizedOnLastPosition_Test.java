@@ -21,7 +21,7 @@ public class RemoveSynchronizedOnLastPosition_Test extends BaseTransformationTes
 
   @Test
   public void test_RemoveSynchronizedOnLastPosition() throws Throwable {
-    new RemoveSynchronizedOnLastPosition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

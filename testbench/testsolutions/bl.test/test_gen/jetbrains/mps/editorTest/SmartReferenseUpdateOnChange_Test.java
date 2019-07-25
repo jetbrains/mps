@@ -27,7 +27,7 @@ public class SmartReferenseUpdateOnChange_Test extends BaseTransformationTest {
 
   @Test
   public void test_SmartReferenseUpdateOnChange() throws Throwable {
-    new SmartReferenseUpdateOnChange_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

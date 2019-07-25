@@ -21,7 +21,7 @@ public class CrossLanguageImport_Test extends BaseTransformationTest {
 
   @Test
   public void test_CrossLanguageImport() throws Throwable {
-    new CrossLanguageImport_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

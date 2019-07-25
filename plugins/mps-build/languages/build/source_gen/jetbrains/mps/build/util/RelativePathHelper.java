@@ -29,7 +29,7 @@ public class RelativePathHelper {
     return normalizePath(fullPath, false).startsWith(myBasePath);
   }
 
-  public String makeRelative(String fullPath) throws RelativePathHelper.PathException {
+  public String makeRelative(String fullPath) throws PathException {
     if ((fullPath == null || fullPath.length() == 0)) {
       return "";
     }
@@ -48,7 +48,7 @@ public class RelativePathHelper {
       }
       // XXX why not return normalized, but exception? 
       if (commonLength == 0) {
-        throw new RelativePathHelper.PathException(String.format("No common path element found for '%s' and '%s'", myBasePath, normalized));
+        throw new PathException(String.format("No common path element found for '%s' and '%s'", myBasePath, normalized));
       }
       if (base.length == target.length && target.length == commonLength) {
         // though there's a check, above, that covers equal paths scenario, we may face normalizedPath that is the same as base path but technically not 
@@ -72,11 +72,11 @@ public class RelativePathHelper {
 
       return relative.toString();
     } catch (Exception ex) {
-      throw new RelativePathHelper.PathException(ex, ex.getMessage());
+      throw new PathException(ex, ex.getMessage());
     }
   }
 
-  public String makeAbsolute(String shortPath) throws RelativePathHelper.PathException {
+  public String makeAbsolute(String shortPath) throws PathException {
     if ((shortPath == null || shortPath.length() == 0)) {
       return myBasePath;
     }
@@ -90,7 +90,7 @@ public class RelativePathHelper {
       File res = new File(myBasePath, shortPath);
       return normalizePath(res.getCanonicalPath(), false);
     } catch (Exception ex) {
-      throw new RelativePathHelper.PathException(ex, ex.getMessage());
+      throw new PathException(ex, ex.getMessage());
     }
   }
 

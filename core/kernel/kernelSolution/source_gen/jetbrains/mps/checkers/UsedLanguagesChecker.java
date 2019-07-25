@@ -5,8 +5,8 @@ package jetbrains.mps.checkers;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -28,7 +28,7 @@ import jetbrains.mps.errors.item.FlavouredItem;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
-  private final SConcept C = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo");
+  private final SConcept C = AUX_bqsn7v.SideTransformInfo_88337662;
   private final SContainmentLink L = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
 
   @Override
@@ -71,7 +71,7 @@ public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements
       boolean notYetReported = reported.add(language);
       parentReportedSetChanged |= notYetReported;
       if (!(imported.contains(language)) && notYetReported) {
-        component.addError(new LanguageNotImportedReportItem(node, new UsedLanguagesChecker.LangImportQFixProvider(node.getReference())));
+        component.addError(new LanguageNotImportedReportItem(node, new LangImportQFixProvider(node.getReference())));
       }
       findMissing(component, node.getChildren(), (parentReportedSetChanged ? reported : parentReported), imported);
     }
@@ -107,5 +107,9 @@ public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements
     public boolean isAlive(SRepository repository) {
       return myNode.resolve(repository) != null;
     }
+  }
+
+  private static final class AUX_bqsn7v {
+    /*package*/ static final SConcept SideTransformInfo_88337662 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo");
   }
 }

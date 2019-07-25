@@ -21,7 +21,7 @@ public class LT_PlusExpressionRArgument_with_Assignment_Test extends BaseTransfo
 
   @Test
   public void test_LT_PlusExpressionRArgument_with_Assignment() throws Throwable {
-    new LT_PlusExpressionRArgument_with_Assignment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

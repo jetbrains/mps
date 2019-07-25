@@ -21,7 +21,7 @@ public class StyleSheet_StyleSheet {
   public static void apply_Builder(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StyleSheet_StyleSheet.BuilderStyleClass(editorContext, node).apply(style, editorCell);
+    new BuilderStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -31,7 +31,7 @@ public class StyleSheet_StyleSheet {
   public static void apply_Parameter(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StyleSheet_StyleSheet.ParameterStyleClass(editorContext, node).apply(style, editorCell);
+    new ParameterStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class BuilderStyleClass extends AbstractStyleClass {

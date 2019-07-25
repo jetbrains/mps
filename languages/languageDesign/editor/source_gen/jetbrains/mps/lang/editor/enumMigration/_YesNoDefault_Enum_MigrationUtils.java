@@ -33,5 +33,5 @@ public class _YesNoDefault_Enum_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_e03rot_a0a0a = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc5f30fc26L, 0xfc5f30fc27L, 0xfc5f30fc28L, 0xfc5f30fc29L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_e03rot_a0a0a = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc5f30fc26L, 0xfc5f30fc27L, 0xfc5f30fc28L, 0xfc5f30fc29L);
 }

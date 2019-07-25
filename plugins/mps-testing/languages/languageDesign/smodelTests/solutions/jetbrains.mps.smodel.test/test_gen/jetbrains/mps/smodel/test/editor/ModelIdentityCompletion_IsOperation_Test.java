@@ -21,7 +21,7 @@ public class ModelIdentityCompletion_IsOperation_Test extends BaseTransformation
 
   @Test
   public void test_ModelIdentityCompletion_IsOperation() throws Throwable {
-    new ModelIdentityCompletion_IsOperation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

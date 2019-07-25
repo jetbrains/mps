@@ -32,27 +32,27 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeSupertypeMayNotSpecifyCheck6923385624927497212() throws Throwable {
-    new WildCardsInTheClassDefinition_Test.TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624927497212();
+    new TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624927497212();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170692700619() throws Throwable {
-    new WildCardsInTheClassDefinition_Test.TestBody(this).test_ErrorMessagesCheck8187342170692700619();
+    new TestBody(this).test_ErrorMessagesCheck8187342170692700619();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170692700629() throws Throwable {
-    new WildCardsInTheClassDefinition_Test.TestBody(this).test_ErrorMessagesCheck8187342170692700629();
+    new TestBody(this).test_ErrorMessagesCheck8187342170692700629();
   }
   @Test
   public void test_NodeSupertypeMayNotSpecifyCheck6923385624928818605() throws Throwable {
-    new WildCardsInTheClassDefinition_Test.TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624928818605();
+    new TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624928818605();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170694398489() throws Throwable {
-    new WildCardsInTheClassDefinition_Test.TestBody(this).test_ErrorMessagesCheck8187342170694398489();
+    new TestBody(this).test_ErrorMessagesCheck8187342170694398489();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170692842210() throws Throwable {
-    new WildCardsInTheClassDefinition_Test.TestBody(this).test_ErrorMessagesCheck8187342170692842210();
+    new TestBody(this).test_ErrorMessagesCheck8187342170692842210();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

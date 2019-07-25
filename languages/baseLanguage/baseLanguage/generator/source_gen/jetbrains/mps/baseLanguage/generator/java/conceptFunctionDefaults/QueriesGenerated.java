@@ -43,7 +43,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("1199879576742", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116964d747L, "methodName"), "getXYZ"));
+    pvqMethods.put("1199879576742", new PVQ(i++, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116964d747L, "methodName"), "getXYZ"));
   }
   @NotNull
   @Override
@@ -73,7 +73,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("1199879109300", new QueriesGenerated.IfMC(i++));
+    imcMethods.put("1199879109300", new IfMC(i++));
   }
   @NotNull
   @Override
@@ -101,8 +101,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("1143148725352", new QueriesGenerated.RTQ(0, "_parameter_"));
-    rtqMethods.put("1199971770628", new QueriesGenerated.RTQ(1, "_parameter_"));
+    rtqMethods.put("1143148725352", new RTQ(0, "_parameter_"));
+    rtqMethods.put("1199971770628", new RTQ(1, "_parameter_"));
   }
   @NotNull
   @Override

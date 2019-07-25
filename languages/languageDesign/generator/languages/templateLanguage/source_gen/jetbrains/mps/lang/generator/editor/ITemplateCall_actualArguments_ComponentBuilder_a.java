@@ -33,6 +33,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.generator.editor.Styles_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ITemplateCall_actualArguments_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -88,7 +89,7 @@ import jetbrains.mps.lang.generator.editor.Styles_StyleSheet.RightParenStyleClas
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new ITemplateCall_actualArguments_ComponentBuilder_a.actualArgumentListHandler_1xd1xh_b0a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new actualArgumentListHandler_1xd1xh_b0a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("ITCA_refNodeList_actualArgument");
     Style style = new StyleImpl();
@@ -117,7 +118,7 @@ import jetbrains.mps.lang.generator.editor.Styles_StyleSheet.RightParenStyleClas
       return MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+      return AUX_fw9y2.Expression_4199e28d;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -188,5 +189,9 @@ import jetbrains.mps.lang.generator.editor.Styles_StyleSheet.RightParenStyleClas
     }
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class AUX_fw9y2 {
+    /*package*/ static final SConcept Expression_4199e28d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

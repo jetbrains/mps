@@ -24,7 +24,7 @@ public class TestSubstitute_DefaultSpecialReference_Test extends BaseTransformat
 
   @Test
   public void test_TestSubstitute_DefaultSpecialReference() throws Throwable {
-    new TestSubstitute_DefaultSpecialReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

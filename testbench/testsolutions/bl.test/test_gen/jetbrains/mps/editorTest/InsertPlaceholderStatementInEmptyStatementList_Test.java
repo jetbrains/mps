@@ -21,7 +21,7 @@ public class InsertPlaceholderStatementInEmptyStatementList_Test extends BaseTra
 
   @Test
   public void test_InsertPlaceholderStatementInEmptyStatementList() throws Throwable {
-    new InsertPlaceholderStatementInEmptyStatementList_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

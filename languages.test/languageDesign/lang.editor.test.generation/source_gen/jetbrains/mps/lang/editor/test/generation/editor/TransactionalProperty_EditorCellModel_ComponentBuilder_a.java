@@ -53,6 +53,7 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Propert
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_PropertyValues;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TransactionalProperty_EditorCellModel_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -101,10 +102,10 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
       }
       TestTargetActionMap.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.addKeyMap(new TestTargetKeymap());
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest"), "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
-      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_generic_cellMenu_vfuuik_a0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_generic_cellMenu_vfuuik_b0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_customReplace_cellMenu_vfuuik_c0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_customReplace_cellMenu_vfuuik_d0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_component_cellMenu_vfuuik_e0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_generic_cellMenu_vfuuik_f0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_theProperty_postfixCellMenu_vfuuik_g0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.TransactionalProperty_theProperty_cellMenu_vfuuik_h0a0(), new TransactionalProperty_EditorCellModel_ComponentBuilder_a.ReplaceWith_Constant_cellMenu_vfuuik_i0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_284mcz.AbstractCellTest_7af30824, "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
+      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new TransactionalProperty_generic_cellMenu_vfuuik_a0a0(), new TransactionalProperty_generic_cellMenu_vfuuik_b0a0(), new TransactionalProperty_customReplace_cellMenu_vfuuik_c0a0(), new TransactionalProperty_customReplace_cellMenu_vfuuik_d0a0(), new TransactionalProperty_component_cellMenu_vfuuik_e0a0(), new TransactionalProperty_generic_cellMenu_vfuuik_f0a0(), new TransactionalProperty_theProperty_postfixCellMenu_vfuuik_g0a0(), new TransactionalProperty_theProperty_cellMenu_vfuuik_h0a0(), new ReplaceWith_Constant_cellMenu_vfuuik_i0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_284mcz.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -334,11 +335,17 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
     public ReplaceWith_Constant_cellMenu_vfuuik_i0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde8953186ee02L, "jetbrains.mps.lang.editor.test.generation.structure.Constant");
+      return AUX_284mcz.Constant_10c4525a;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
       return new EditorMenuDescriptorBase("replace node (custom node concept: " + "Constant" + ")", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079449174"));
     }
+  }
+
+  private static final class AUX_284mcz {
+    /*package*/ static final SConcept AbstractCellTest_7af30824 = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept Constant_10c4525a = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde8953186ee02L, "jetbrains.mps.lang.editor.test.generation.structure.Constant");
   }
 }

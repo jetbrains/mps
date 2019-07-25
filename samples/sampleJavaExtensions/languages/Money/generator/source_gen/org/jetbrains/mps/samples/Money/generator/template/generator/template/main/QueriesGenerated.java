@@ -96,12 +96,12 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("5447719361346553352", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("5447719361346553531", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("2864272256649711187", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("2864272256651347928", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("2864272256651353591", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("2864272256651360963", new QueriesGenerated.RRC(i++));
+    rrcMethods.put("5447719361346553352", new RRC(i++));
+    rrcMethods.put("5447719361346553531", new RRC(i++));
+    rrcMethods.put("2864272256649711187", new RRC(i++));
+    rrcMethods.put("2864272256651347928", new RRC(i++));
+    rrcMethods.put("2864272256651353591", new RRC(i++));
+    rrcMethods.put("2864272256651360963", new RRC(i++));
   }
   @Override
   @NotNull
@@ -140,18 +140,18 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("5447719361346558522", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5447719361346558513", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5447719361346558533", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("5447719361346558490", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256649727827", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256649728152", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256651350066", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256651350076", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256651359470", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256651359480", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256651363162", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("2864272256651363172", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("5447719361346558522", new SNQ(i++));
+    snqMethods.put("5447719361346558513", new SNQ(i++));
+    snqMethods.put("5447719361346558533", new SNQ(i++));
+    snqMethods.put("5447719361346558490", new SNQ(i++));
+    snqMethods.put("2864272256649727827", new SNQ(i++));
+    snqMethods.put("2864272256649728152", new SNQ(i++));
+    snqMethods.put("2864272256651350066", new SNQ(i++));
+    snqMethods.put("2864272256651350076", new SNQ(i++));
+    snqMethods.put("2864272256651359470", new SNQ(i++));
+    snqMethods.put("2864272256651359480", new SNQ(i++));
+    snqMethods.put("2864272256651363162", new SNQ(i++));
+    snqMethods.put("2864272256651363172", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -202,9 +202,9 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("5447719361346518798", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "1"));
-    pvqMethods.put("5447719361346518811", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
-    pvqMethods.put("1790427706118386795", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("5447719361346518798", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value"), "1"));
+    pvqMethods.put("5447719361346518811", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("1790427706118386795", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
   }
   @NotNull
   @Override

@@ -21,15 +21,17 @@ import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TestCollector {
   public TestCollector() {
   }
   protected boolean collectTests(SModel model, List<SNode> into) {
     boolean any = false;
-    any |= new TestCollector.TestCaseCollector().collectTests(model, into);
-    any |= new TestCollector.JUnit3TestCollector().collectTests(model, into);
-    any |= new TestCollector.JUnit4TestCollector().collectTests(model, into);
+    any |= new TestCaseCollector().collectTests(model, into);
+    any |= new JUnit3TestCollector().collectTests(model, into);
+    any |= new JUnit4TestCollector().collectTests(model, into);
     return any;
   }
   public static class TestCaseCollector extends TestCollector {
@@ -41,9 +43,9 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
       List<SNode> nodes;
       final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1c(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"));
 
-      nodes = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase"))).where(new IWhereFilter<SNode>() {
+      nodes = ListSequence.fromList(SModelOperations.roots(model, AUX_rpw6il.ITestCase_8c8c490a)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode itc) {
-          return !(SPropertyOperations.getBoolean(SNodeOperations.as(itc, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) && !(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(itc, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).any(new IWhereFilter<SNode>() {
+          return !(SPropertyOperations.getBoolean(SNodeOperations.as(itc, AUX_rpw6il.ClassConcept_e2711824), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) && !(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(itc, AUX_rpw6il.ClassConcept_e2711824), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode cann) {
               return SLinkOperations.getTarget(cann, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation")) == ignoreAnn;
             }
@@ -78,7 +80,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
       final SNode testAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1d(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"));
       final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a3a1d(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"));
 
-      nodes = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))).where(new IWhereFilter<SNode>() {
+      nodes = ListSequence.fromList(SModelOperations.roots(model, AUX_rpw6il.ClassConcept_e2711824)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode cls) {
           return !(SPropertyOperations.getBoolean(cls, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) && !(ListSequence.fromList(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode cann) {
@@ -98,7 +100,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
       ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode tc) {
           SNode tref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, "jetbrains.mps.testbench.suite.structure.JUnit4TestCaseRef"));
-          SLinkOperations.setTarget(tref, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass"), SNodeOperations.cast(tc, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")));
+          SLinkOperations.setTarget(tref, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass"), SNodeOperations.cast(tc, AUX_rpw6il.ClassConcept_e2711824));
           ListSequence.fromList(into).addElement(tref);
           any.value = true;
         }
@@ -129,9 +131,9 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
       List<SNode> nodes;
       final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1e(), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation"));
 
-      nodes = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))).where(new IWhereFilter<SNode>() {
+      nodes = ListSequence.fromList(SModelOperations.roots(model, AUX_rpw6il.ClassConcept_e2711824)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode cls) {
-          return !(SNodeOperations.isInstanceOf(cls, MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase"))) && !(SPropertyOperations.getBoolean(cls, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) && !(ListSequence.fromList(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).any(new IWhereFilter<SNode>() {
+          return !(SNodeOperations.isInstanceOf(cls, AUX_rpw6il.ITestCase_8c8c490a)) && !(SPropertyOperations.getBoolean(cls, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"))) && !(ListSequence.fromList(SLinkOperations.getChildren(cls, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode cann) {
               return SLinkOperations.getTarget(cann, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation")) == ignoreAnn;
             }
@@ -141,7 +143,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
       ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode tc) {
           SNode tref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef"));
-          SLinkOperations.setTarget(tref, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass"), SNodeOperations.cast(tc, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")));
+          SLinkOperations.setTarget(tref, MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass"), SNodeOperations.cast(tc, AUX_rpw6il.ClassConcept_e2711824));
           ListSequence.fromList(into).addElement(tref);
           any.value = true;
         }
@@ -162,5 +164,10 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
       quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)"), facade.createNodeId("~TestCase")));
       return quotedNode_1;
     }
+  }
+
+  private static final class AUX_rpw6il {
+    /*package*/ static final SInterfaceConcept ITestCase_8c8c490a = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

@@ -34,7 +34,7 @@ public class InlineWithoutDeclarationDeletion_Test extends BaseTransformationTes
 
   @Test
   public void test_inlineWithoutDeclarationDeletion() throws Throwable {
-    new InlineWithoutDeclarationDeletion_Test.TestBody(this).test_inlineWithoutDeclarationDeletion();
+    new TestBody(this).test_inlineWithoutDeclarationDeletion();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -9,16 +9,17 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class _Quotation_createModel extends KeyMapImpl {
   public _Quotation_createModel() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new _Quotation_createModel._Quotation_createModel_Action0();
+    action = new _Quotation_createModel_Action0();
     this.putAction("any", "[", action);
   }
   public static class _Quotation_createModel_Action0 extends KeyMapActionImpl {
@@ -38,7 +39,7 @@ public class _Quotation_createModel extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_shsrvh.Quotation_25f29ad1))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -56,5 +57,9 @@ public class _Quotation_createModel extends KeyMapImpl {
     public String getKeyStroke() {
       return " [";
     }
+  }
+
+  private static final class AUX_shsrvh {
+    /*package*/ static final SConcept Quotation_25f29ad1 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
   }
 }

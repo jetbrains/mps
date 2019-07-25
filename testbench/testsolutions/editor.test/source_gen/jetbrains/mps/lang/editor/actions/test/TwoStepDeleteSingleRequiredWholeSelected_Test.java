@@ -26,7 +26,7 @@ public class TwoStepDeleteSingleRequiredWholeSelected_Test extends BaseTransform
 
   @Test
   public void test_TwoStepDeleteSingleRequiredWholeSelected() throws Throwable {
-    new TwoStepDeleteSingleRequiredWholeSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -29,7 +29,7 @@ public class InlineWithNoSourcesAttached_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineWithNoSourcesAttached() throws Throwable {
-    new InlineWithNoSourcesAttached_Test.TestBody(this).test_InlineWithNoSourcesAttached();
+    new TestBody(this).test_InlineWithNoSourcesAttached();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

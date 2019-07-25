@@ -26,19 +26,19 @@ import jetbrains.mps.kernel.model.SModelUtil;
   /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> CONCEPTS_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
     @Override
     public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
-      return new Datasets.ConceptsDataSet(ownerCache);
+      return new ConceptsDataSet(ownerCache);
     }
   };
   /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> PROPDECL_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
     @Override
     public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
-      return new Datasets.PropertyDeclarationsDataSet(ownerCache);
+      return new PropertyDeclarationsDataSet(ownerCache);
     }
   };
   /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> LINKDECL_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
     @Override
     public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
-      return new Datasets.LinkDeclarationsDataSet(ownerCache);
+      return new LinkDeclarationsDataSet(ownerCache);
     }
   };
   /*package*/ Datasets() {

@@ -7,7 +7,6 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -16,6 +15,8 @@ import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import java.util.Objects;
 import java.awt.Color;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestStyle_Customization implements EditorMenuItemCustomizer {
 
@@ -24,7 +25,7 @@ public class TestStyle_Customization implements EditorMenuItemCustomizer {
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    TestStyle_Customization.TestStyle_CustomizationSpecific customizer = new TestStyle_Customization.TestStyle_CustomizationSpecific();
+    TestStyle_CustomizationSpecific customizer = new TestStyle_CustomizationSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -32,7 +33,7 @@ public class TestStyle_Customization implements EditorMenuItemCustomizer {
 
   private static class TestStyle_CustomizationSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestStyle")) {
+      return new EditorMenuItemModifyingConceptContextMatcher(AUX_wdc4ax.TestCompletionCustomization_ParentTestStyle_1ae22c42) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
@@ -79,4 +80,7 @@ public class TestStyle_Customization implements EditorMenuItemCustomizer {
   }
 
 
+  private static final class AUX_wdc4ax {
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestStyle_1ae22c42 = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestStyle");
+  }
 }

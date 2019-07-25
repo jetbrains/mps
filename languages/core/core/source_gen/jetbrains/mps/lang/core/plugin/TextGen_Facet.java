@@ -66,9 +66,9 @@ public class TextGen_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.core.TextGen");
   public TextGen_Facet() {
-    ListSequence.fromList(targets).addElement(new TextGen_Facet.Target_configure());
-    ListSequence.fromList(targets).addElement(new TextGen_Facet.Target_textGen());
-    ListSequence.fromList(targets).addElement(new TextGen_Facet.Target_textGenToMemory());
+    ListSequence.fromList(targets).addElement(new Target_configure());
+    ListSequence.fromList(targets).addElement(new Target_textGen());
+    ListSequence.fromList(targets).addElement(new Target_textGenToMemory());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -86,7 +86,7 @@ public class TextGen_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new TextGen_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_configure implements ITargetEx {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.TextGen.configure");
@@ -443,8 +443,8 @@ public class TextGen_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 400;
     }
-    public static TextGen_Facet.Target_textGen.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, TextGen_Facet.Target_textGen.Parameters.class);
+    public static Target_textGen.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_textGen.Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<Boolean> {
       public Parameters() {
@@ -573,7 +573,7 @@ public class TextGen_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen");
         if (properties.hasProperties(name)) {
-          TextGen_Facet.Target_textGen.Parameters props = properties.properties(name, TextGen_Facet.Target_textGen.Parameters.class);
+          Target_textGen.Parameters props = properties.properties(name, Target_textGen.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.lang.core.TextGen.textGen.generateDebugInfo", String.valueOf(props.generateDebugInfo()));
         }
       }
@@ -582,7 +582,7 @@ public class TextGen_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen");
-          TextGen_Facet.Target_textGen.Parameters props = properties.properties(name, TextGen_Facet.Target_textGen.Parameters.class);
+          Target_textGen.Parameters props = properties.properties(name, Target_textGen.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.lang.core.TextGen.textGen.generateDebugInfo")) {
             props.generateDebugInfo(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.lang.core.TextGen.textGen.generateDebugInfo")));
           }

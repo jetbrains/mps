@@ -21,7 +21,7 @@ public class MoveFirstStatementThenMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveFirstStatementThenMethod() throws Throwable {
-    new MoveFirstStatementThenMethod_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

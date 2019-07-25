@@ -21,7 +21,7 @@ public class Uncomment_Method_Test extends BaseTransformationTest {
 
   @Test
   public void test_Uncomment_Method() throws Throwable {
-    new Uncomment_Method_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

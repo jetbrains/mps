@@ -23,7 +23,7 @@ public class MoveNode_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveNode() throws Throwable {
-    new MoveNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -31,19 +31,19 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck2908733373809544465() throws Throwable {
-    new NestedNewExpression_Test.TestBody(this).test_NodeErrorCheck2908733373809544465();
+    new TestBody(this).test_NodeErrorCheck2908733373809544465();
   }
   @Test
   public void test_NodeErrorCheck1628645464085513077() throws Throwable {
-    new NestedNewExpression_Test.TestBody(this).test_NodeErrorCheck1628645464085513077();
+    new TestBody(this).test_NodeErrorCheck1628645464085513077();
   }
   @Test
   public void test_NodeErrorCheck1628645464087305021() throws Throwable {
-    new NestedNewExpression_Test.TestBody(this).test_NodeErrorCheck1628645464087305021();
+    new TestBody(this).test_NodeErrorCheck1628645464087305021();
   }
   @Test
   public void test_ErrorMessagesCheck2908733373806471082() throws Throwable {
-    new NestedNewExpression_Test.TestBody(this).test_ErrorMessagesCheck2908733373806471082();
+    new TestBody(this).test_ErrorMessagesCheck2908733373806471082();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -20,6 +20,7 @@ import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuT
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class expressionRTAfterAnonymous extends TransformationMenuBase {
@@ -46,7 +47,7 @@ public class expressionRTAfterAnonymous extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new expressionRTAfterAnonymous.TMP_Include_4j11o5_a0());
+      result.add(new TMP_Include_4j11o5_a0());
     }
     return result;
   }
@@ -67,8 +68,12 @@ public class expressionRTAfterAnonymous extends TransformationMenuBase {
     @Nullable
     @Override
     protected SNode getNode(TransformationMenuContext _context) {
-      return SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"), false, false);
+      return SNodeOperations.getNodeAncestor(_context.getNode(), AUX_4j11o5.GenericNewExpression_dee38023, false, false);
     }
 
+  }
+
+  private static final class AUX_4j11o5 {
+    /*package*/ static final SConcept GenericNewExpression_dee38023 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
   }
 }

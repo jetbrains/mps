@@ -55,7 +55,7 @@ import java.util.Stack;
       return null;
     }
     SignatureReader reader = new SignatureReader(signature);
-    final TypeUtil.TypeBuilderVisitor builder = new TypeUtil.TypeBuilderVisitor();
+    final TypeBuilderVisitor builder = new TypeBuilderVisitor();
     reader.accept(new SignatureVisitorAdapter() {
       @Override
       public SignatureVisitor visitReturnType() {
@@ -69,17 +69,17 @@ import java.util.Stack;
       return Collections.emptyList();
     }
     SignatureReader reader = new SignatureReader(signature);
-    final List<TypeUtil.TypeBuilderVisitor> visitors = new ArrayList<TypeUtil.TypeBuilderVisitor>();
+    final List<TypeBuilderVisitor> visitors = new ArrayList<TypeBuilderVisitor>();
     reader.accept(new SignatureVisitorAdapter() {
       @Override
       public SignatureVisitor visitParameterType() {
-        TypeUtil.TypeBuilderVisitor v = new TypeUtil.TypeBuilderVisitor();
+        TypeBuilderVisitor v = new TypeBuilderVisitor();
         visitors.add(v);
         return v;
       }
     });
     List<ASMType> types = new ArrayList<ASMType>(visitors.size());
-    for (TypeUtil.TypeBuilderVisitor v : visitors) {
+    for (TypeBuilderVisitor v : visitors) {
       types.add(v.getResult());
     }
     return types;
@@ -92,8 +92,8 @@ import java.util.Stack;
     SignatureReader reader = new SignatureReader(signature);
     reader.accept(new SignatureVisitorAdapter() {
       private String name = null;
-      private TypeUtil.TypeBuilderVisitor classBoundVisitor = new TypeUtil.TypeBuilderVisitor();
-      private List<TypeUtil.TypeBuilderVisitor> interfaceBoundVisitors = new ArrayList<TypeUtil.TypeBuilderVisitor>();
+      private TypeBuilderVisitor classBoundVisitor = new TypeBuilderVisitor();
+      private List<TypeBuilderVisitor> interfaceBoundVisitors = new ArrayList<TypeBuilderVisitor>();
       @Override
       public void visitFormalTypeParameter(String name) {
         if (this.name != null) {
@@ -103,12 +103,12 @@ import java.util.Stack;
       }
       @Override
       public SignatureVisitor visitClassBound() {
-        classBoundVisitor = new TypeUtil.TypeBuilderVisitor();
+        classBoundVisitor = new TypeBuilderVisitor();
         return classBoundVisitor;
       }
       @Override
       public SignatureVisitor visitInterfaceBound() {
-        TypeUtil.TypeBuilderVisitor visitor = new TypeUtil.TypeBuilderVisitor();
+        TypeBuilderVisitor visitor = new TypeBuilderVisitor();
         interfaceBoundVisitors.add(visitor);
         return visitor;
       }
@@ -128,7 +128,7 @@ import java.util.Stack;
       }
       private void flush() {
         List<ASMType> interfaceBounds = new ArrayList<ASMType>(interfaceBoundVisitors.size());
-        for (TypeUtil.TypeBuilderVisitor v : interfaceBoundVisitors) {
+        for (TypeBuilderVisitor v : interfaceBoundVisitors) {
           interfaceBounds.add(v.getResult());
         }
         ASMType formalType = null;
@@ -154,17 +154,17 @@ import java.util.Stack;
       return Collections.emptyList();
     }
     SignatureReader reader = new SignatureReader(signature);
-    final List<TypeUtil.TypeBuilderVisitor> visitors = new ArrayList<TypeUtil.TypeBuilderVisitor>();
+    final List<TypeBuilderVisitor> visitors = new ArrayList<TypeBuilderVisitor>();
     reader.accept(new SignatureVisitorAdapter() {
       @Override
       public SignatureVisitor visitExceptionType() {
-        TypeUtil.TypeBuilderVisitor v = new TypeUtil.TypeBuilderVisitor();
+        TypeBuilderVisitor v = new TypeBuilderVisitor();
         visitors.add(v);
         return v;
       }
     });
     final List<ASMType> types = new ArrayList<ASMType>(visitors.size());
-    for (TypeUtil.TypeBuilderVisitor v : visitors) {
+    for (TypeBuilderVisitor v : visitors) {
       types.add(v.getResult());
     }
     return types;
@@ -173,7 +173,7 @@ import java.util.Stack;
     if (signature == null) {
       return null;
     }
-    final TypeUtil.TypeBuilderVisitor builder = new TypeUtil.TypeBuilderVisitor();
+    final TypeBuilderVisitor builder = new TypeBuilderVisitor();
     SignatureReader reader = new SignatureReader(signature);
     reader.acceptType(builder);
     return builder.getResult();
@@ -182,7 +182,7 @@ import java.util.Stack;
     private ASMType myResult;
     private Stack<ASMType> myTypes = new Stack<ASMType>();
     private char myWildcard;
-    private TypeUtil.TypeBuilderVisitor myArrayVisitor = null;
+    private TypeBuilderVisitor myArrayVisitor = null;
     public TypeBuilderVisitor() {
     }
     protected void setResult(ASMType type) {
@@ -267,7 +267,7 @@ import java.util.Stack;
     }
     @Override
     public SignatureVisitor visitArrayType() {
-      return myArrayVisitor = new TypeUtil.TypeBuilderVisitor();
+      return myArrayVisitor = new TypeBuilderVisitor();
     }
     @Override
     public void visitClassType(String name) {

@@ -27,7 +27,7 @@ public class ContextAssistant_InitiallyCollapsedVisibility_Test extends BaseTran
 
   @Test
   public void test_ContextAssistant_InitiallyCollapsedVisibility() throws Throwable {
-    new ContextAssistant_InitiallyCollapsedVisibility_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

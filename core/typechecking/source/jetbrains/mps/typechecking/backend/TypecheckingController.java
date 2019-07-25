@@ -72,7 +72,13 @@ public abstract class TypecheckingController implements TypecheckingQueries {
   public boolean isStrongSubtype(SNode typeA, SNode typeB) {
     return getQueries(typeA, typeB, null).isStrongSubtype(typeA, typeB);
   }
-  
+
+  @NotNull
+  @Override
+  public Collection<SNode> getImmediateSupertypes(@NotNull SNode type) {
+    return getQueries(type, null, null).getImmediateSupertypes(type);
+  }
+
   @Nullable
   @Override
   public SNode coerceType(SNode type, @NotNull SConcept typeConcept) {

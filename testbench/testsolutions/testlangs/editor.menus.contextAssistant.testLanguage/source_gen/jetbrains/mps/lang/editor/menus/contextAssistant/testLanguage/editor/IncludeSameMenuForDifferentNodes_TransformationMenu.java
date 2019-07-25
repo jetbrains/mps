@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IncludeSameMenuForDifferentNodes_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.CONTEXT_ASSISTANT);
@@ -50,8 +51,8 @@ public class IncludeSameMenuForDifferentNodes_TransformationMenu extends Transfo
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new IncludeSameMenuForDifferentNodes_TransformationMenu.TMP_Include_ytfyjd_a0());
-      result.add(new IncludeSameMenuForDifferentNodes_TransformationMenu.TMP_Include_ytfyjd_b0());
+      result.add(new TMP_Include_ytfyjd_a0());
+      result.add(new TMP_Include_ytfyjd_b0());
     }
     return result;
   }
@@ -75,7 +76,7 @@ public class IncludeSameMenuForDifferentNodes_TransformationMenu extends Transfo
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getInterfaceConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a7e879L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ISameMenuApplicable"), "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuToInclude");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_ytfyjd.ISameMenuApplicable_73f2d50d, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuToInclude");
     }
     @Nullable
     @Override
@@ -103,13 +104,17 @@ public class IncludeSameMenuForDifferentNodes_TransformationMenu extends Transfo
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getInterfaceConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a7e879L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ISameMenuApplicable"), "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuToInclude");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_ytfyjd.ISameMenuApplicable_73f2d50d, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.MenuToInclude");
     }
     @Nullable
     @Override
     protected SNode getNode(TransformationMenuContext _context) {
-      return SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getInterfaceConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a7e879L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ISameMenuApplicable"));
+      return SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_ytfyjd.ISameMenuApplicable_73f2d50d);
     }
 
+  }
+
+  private static final class AUX_ytfyjd {
+    /*package*/ static final SInterfaceConcept ISameMenuApplicable_73f2d50d = MetaAdapterFactory.getInterfaceConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a7e879L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ISameMenuApplicable");
   }
 }

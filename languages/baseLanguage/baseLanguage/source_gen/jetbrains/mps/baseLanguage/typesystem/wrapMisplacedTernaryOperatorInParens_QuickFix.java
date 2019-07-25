@@ -6,8 +6,9 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class wrapMisplacedTernaryOperatorInParens_QuickFix extends QuickFix_Runtime {
   public wrapMisplacedTernaryOperatorInParens_QuickFix() {
@@ -17,7 +18,11 @@ public class wrapMisplacedTernaryOperatorInParens_QuickFix extends QuickFix_Runt
     return "Wrap Misplaced Ternary Operator with Parens";
   }
   public void execute(SNode node) {
-    SNode parens = SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
+    SNode parens = SNodeFactoryOperations.replaceWithNewChild(node, AUX_p0odrm.ParenthesizedExpression_a4b89678);
     SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), node);
+  }
+
+  private static final class AUX_p0odrm {
+    /*package*/ static final SConcept ParenthesizedExpression_a4b89678 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 }

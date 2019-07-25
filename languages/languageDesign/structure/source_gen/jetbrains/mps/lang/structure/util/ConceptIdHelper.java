@@ -8,12 +8,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodeId;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * Generates unique ids. Ids differ from ids of any other entity in the scope of uniqueness.
@@ -22,7 +23,7 @@ import jetbrains.mps.smodel.SNodeId;
 public class ConceptIdHelper {
   public static long generateConceptId(@Nullable SModel m, @Nullable final SNode c) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
-    while (ListSequence.fromList(SModelOperations.roots(m, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SModelOperations.roots(m, AUX_huw3go.AbstractConceptDeclaration_ec74828f)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it != c && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId")), result.value + "");
       }
@@ -34,7 +35,7 @@ public class ConceptIdHelper {
 
   public static long generateDatatypeId(@Nullable SModel m, @Nullable final SNode c) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
-    while (ListSequence.fromList(SModelOperations.roots(m, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration"))).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SModelOperations.roots(m, AUX_huw3go.DataTypeDeclaration_9e6b98ac)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it != c && Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId")), result.value + "");
       }
@@ -114,5 +115,10 @@ public class ConceptIdHelper {
   }
   private static <T> T as_huw3go_a0a3a01(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_huw3go {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept DataTypeDeclaration_9e6b98ac = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
   }
 }

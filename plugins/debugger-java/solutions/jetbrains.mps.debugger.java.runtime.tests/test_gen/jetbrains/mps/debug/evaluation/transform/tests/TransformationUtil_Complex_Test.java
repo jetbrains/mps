@@ -34,143 +34,143 @@ public class TransformationUtil_Complex_Test extends BaseTransformationTest {
 
   @Test
   public void test_localIntVariableDeclaration() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localIntVariableDeclaration();
+    new TestBody(this).test_localIntVariableDeclaration();
   }
   @Test
   public void test_localBoxedIntVariableDeclaration() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localBoxedIntVariableDeclaration();
+    new TestBody(this).test_localBoxedIntVariableDeclaration();
   }
   @Test
   public void test_localBoxedIntVariableSecondDeclaration() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localBoxedIntVariableSecondDeclaration();
+    new TestBody(this).test_localBoxedIntVariableSecondDeclaration();
   }
   @Test
   public void test_localIntVariableAssignment() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localIntVariableAssignment();
+    new TestBody(this).test_localIntVariableAssignment();
   }
   @Test
   public void test_localBoxedIntVariableAssignment() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localBoxedIntVariableAssignment();
+    new TestBody(this).test_localBoxedIntVariableAssignment();
   }
   @Test
   public void test_localObjectVariableDeclaration() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localObjectVariableDeclaration();
+    new TestBody(this).test_localObjectVariableDeclaration();
   }
   @Test
   public void test_localObjectVariableAssignment() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localObjectVariableAssignment();
+    new TestBody(this).test_localObjectVariableAssignment();
   }
   @Test
   public void test_localUnBoxedIntVarAssignment() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localUnBoxedIntVarAssignment();
+    new TestBody(this).test_localUnBoxedIntVarAssignment();
   }
   @Test
   public void test_localUnBoxedIntVarDeclaration() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_localUnBoxedIntVarDeclaration();
+    new TestBody(this).test_localUnBoxedIntVarDeclaration();
   }
   @Test
   public void test_andAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_andAssignmentExpression();
+    new TestBody(this).test_andAssignmentExpression();
   }
   @Test
   public void test_divAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_divAssignmentExpression();
+    new TestBody(this).test_divAssignmentExpression();
   }
   @Test
   public void test_leftShiftAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_leftShiftAssignmentExpression();
+    new TestBody(this).test_leftShiftAssignmentExpression();
   }
   @Test
   public void test_minusAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_minusAssignmentExpression();
+    new TestBody(this).test_minusAssignmentExpression();
   }
   @Test
   public void test_mulAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_mulAssignmentExpression();
+    new TestBody(this).test_mulAssignmentExpression();
   }
   @Test
   public void test_orAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_orAssignmentExpression();
+    new TestBody(this).test_orAssignmentExpression();
   }
   @Test
   public void test_plusAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_plusAssignmentExpression();
+    new TestBody(this).test_plusAssignmentExpression();
   }
   @Test
   public void test_remAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_remAssignmentExpression();
+    new TestBody(this).test_remAssignmentExpression();
   }
   @Test
   public void test_rightShiftAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_rightShiftAssignmentExpression();
+    new TestBody(this).test_rightShiftAssignmentExpression();
   }
   @Test
   public void test_xorAssignmentExpression() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_xorAssignmentExpression();
+    new TestBody(this).test_xorAssignmentExpression();
   }
   @Test
   public void test_lowLevelVariableInForeach() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_lowLevelVariableInForeach();
+    new TestBody(this).test_lowLevelVariableInForeach();
   }
   @Test
   public void test_lowLevelIntVariableInForeach() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_lowLevelIntVariableInForeach();
+    new TestBody(this).test_lowLevelIntVariableInForeach();
   }
   @Test
   public void test_notNullString() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_notNullString();
+    new TestBody(this).test_notNullString();
   }
   @Test
   public void test_nodeReferenceCountViewer() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_nodeReferenceCountViewer();
+    new TestBody(this).test_nodeReferenceCountViewer();
   }
   @Test
   public void test_arrayInForeach() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_arrayInForeach();
+    new TestBody(this).test_arrayInForeach();
   }
   @Test
   public void test_newArrayOfString() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_newArrayOfString();
+    new TestBody(this).test_newArrayOfString();
   }
   @Test
   public void test_newEmptyArrayOfString() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_newEmptyArrayOfString();
+    new TestBody(this).test_newEmptyArrayOfString();
   }
   @Test
   public void test_newEmptyArrayOfInt() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_newEmptyArrayOfInt();
+    new TestBody(this).test_newEmptyArrayOfInt();
   }
   @Test
   public void test_optimizeToStringForString() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_optimizeToStringForString();
+    new TestBody(this).test_optimizeToStringForString();
   }
   @Test
   public void test_ternaryOperatorForString() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_ternaryOperatorForString();
+    new TestBody(this).test_ternaryOperatorForString();
   }
   @Test
   public void test_ternaryOperatorForStringIfTrue() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_ternaryOperatorForStringIfTrue();
+    new TestBody(this).test_ternaryOperatorForStringIfTrue();
   }
   @Test
   public void test_ternaryOperatorForStringCondition() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_ternaryOperatorForStringCondition();
+    new TestBody(this).test_ternaryOperatorForStringCondition();
   }
   @Test
   public void test_urlClassloaderCast() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_urlClassloaderCast();
+    new TestBody(this).test_urlClassloaderCast();
   }
   @Test
   public void test_primitiveCast() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_primitiveCast();
+    new TestBody(this).test_primitiveCast();
   }
   @Test
   public void test_objectCast() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_objectCast();
+    new TestBody(this).test_objectCast();
   }
   @Test
   public void test_arrayCast() throws Throwable {
-    new TransformationUtil_Complex_Test.TestBody(this).test_arrayCast();
+    new TestBody(this).test_arrayCast();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

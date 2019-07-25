@@ -14,6 +14,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SuppressErrorsMessage extends AbstractLeftEditorHighlighterMessage {
@@ -42,12 +43,16 @@ public class SuppressErrorsMessage extends AbstractLeftEditorHighlighterMessage 
   @Override
   public jetbrains.mps.openapi.editor.cells.EditorCell getCell(EditorComponent editor) {
     SNode node = getNode();
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation"))) {
-      EditorCell result = getOwnCell(editor, SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation")));
+    if (SNodeOperations.isInstanceOf(node, AUX_w7mqw3.SuppressErrorsAnnotation_4912d93)) {
+      EditorCell result = getOwnCell(editor, SNodeOperations.cast(node, AUX_w7mqw3.SuppressErrorsAnnotation_4912d93));
       if (result != null) {
         return result;
       }
     }
     return super.getCell(editor);
+  }
+
+  private static final class AUX_w7mqw3 {
+    /*package*/ static final SConcept SuppressErrorsAnnotation_4912d93 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
   }
 }

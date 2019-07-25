@@ -30,5 +30,5 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<PasteWrapper> getPasteWrappers() {
     return Arrays.asList(new PasteWrapper[]{new blExpression_PasteWrapper_0(), new blExpression_PasteWrapper_1(), new blExpression_PasteWrapper_2()});
   }
-  private static String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractPrintExpression"};
+  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractPrintExpression"};
 }

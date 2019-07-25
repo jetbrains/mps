@@ -63,7 +63,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IfFunction_EditorBuilder_a.logicalTestSingleRoleHandler_tonzor_b0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8d4298L, 0x102db8d7b0eL, "logicalTest"), getEditorContext());
+    SingleRoleCellProvider provider = new logicalTestSingleRoleHandler_tonzor_b0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8d4298L, 0x102db8d7b0eL, "logicalTest"), getEditorContext());
     return provider.createCell();
   }
   private static class logicalTestSingleRoleHandler_tonzor_b0 extends SingleRoleCellProvider {
@@ -127,7 +127,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new IfFunction_EditorBuilder_a.valueIfTrueSingleRoleHandler_tonzor_d0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8d4298L, 0x102db8e3288L, "valueIfTrue"), getEditorContext());
+    SingleRoleCellProvider provider = new valueIfTrueSingleRoleHandler_tonzor_d0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8d4298L, 0x102db8e3288L, "valueIfTrue"), getEditorContext());
     return provider.createCell();
   }
   private static class valueIfTrueSingleRoleHandler_tonzor_d0 extends SingleRoleCellProvider {
@@ -191,7 +191,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new IfFunction_EditorBuilder_a.valueIfFalseSingleRoleHandler_tonzor_f0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8d4298L, 0x102db8eb12fL, "valueIfFalse"), getEditorContext());
+    SingleRoleCellProvider provider = new valueIfFalseSingleRoleHandler_tonzor_f0(myNode, MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8d4298L, 0x102db8eb12fL, "valueIfFalse"), getEditorContext());
     return provider.createCell();
   }
   private static class valueIfFalseSingleRoleHandler_tonzor_f0 extends SingleRoleCellProvider {

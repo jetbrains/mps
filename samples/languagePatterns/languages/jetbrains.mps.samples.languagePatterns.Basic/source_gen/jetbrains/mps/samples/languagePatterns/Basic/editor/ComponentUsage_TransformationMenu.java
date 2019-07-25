@@ -49,7 +49,7 @@ public class ComponentUsage_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new ComponentUsage_TransformationMenu.TMP_Reference_z2yv9d_a0());
+      result.add(new TMP_Reference_z2yv9d_a0());
     }
     return result;
   }
@@ -75,7 +75,7 @@ public class ComponentUsage_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected ReferenceTransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull SReferenceLink referenceLink, final SNode targetNode) {
-      return new ComponentUsage_TransformationMenu.TMP_Reference_z2yv9d_a0.Item(referenceLink, targetNode, context);
+      return new TMP_Reference_z2yv9d_a0.Item(referenceLink, targetNode, context);
     }
     private class Item extends ReferenceTransformationMenuItem implements SubstituteCompletionActionItem {
       private final TransformationMenuContext _context;

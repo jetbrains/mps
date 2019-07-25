@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -25,6 +24,7 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -36,14 +36,16 @@ import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ActionParameter_SubstituteMenu.SMP_Param_z80bk2_a(), MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ActionParameter_SubstituteMenu.SMP_Param_z80bk2_b(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_z80bk2_a(), AUX_z80bk2.ActionParameter_3c60e96));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_z80bk2_b(), AUX_z80bk2.ActionDataParameterDeclaration_44247ef5));
     return result;
   }
 
@@ -64,7 +66,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(Tuples._3<SNode, String, String> parameter, SubstituteMenuContext context) {
-      return new ActionParameter_SubstituteMenu.SMP_Param_z80bk2_a.SMP_Action_z80bk2_a0(parameter).createItems(context);
+      return new SMP_Param_z80bk2_a.SMP_Action_z80bk2_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -91,7 +93,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        ActionParameter_SubstituteMenu.SMP_Param_z80bk2_a.SMP_Action_z80bk2_a0.Item item = new ActionParameter_SubstituteMenu.SMP_Param_z80bk2_a.SMP_Action_z80bk2_a0.Item(_context);
+        SMP_Param_z80bk2_a.SMP_Action_z80bk2_a0.Item item = new SMP_Param_z80bk2_a.SMP_Action_z80bk2_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -115,7 +117,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter"), context);
+          super(AUX_z80bk2.ActionParameter_3c60e96, context);
           _context = context;
         }
 
@@ -126,7 +128,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b812427fL, "jetbrains.mps.lang.plugin.structure.ActionParameterDeclaration"), null);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_z80bk2.ActionParameterDeclaration_59cee56e, null);
           SLinkOperations.setTarget(result, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), myParameterObject._0());
           SPropertyOperations.set(result, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), myParameterObject._1());
           return result;
@@ -138,7 +140,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_z80bk2.ActionParameter_3c60e96, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -163,7 +165,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new ActionParameter_SubstituteMenu.SMP_Param_z80bk2_b.SMP_Action_z80bk2_a1(parameter).createItems(context);
+      return new SMP_Param_z80bk2_b.SMP_Action_z80bk2_a1(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -179,7 +181,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return (Iterable<SNode>) ActionDataParameterDeclaration__BehaviorDescriptor.getDataKeys_id1BC2tkUXZ6F.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration")), _context.getModel());
+      return (Iterable<SNode>) ActionDataParameterDeclaration__BehaviorDescriptor.getDataKeys_id1BC2tkUXZ6F.invoke(SNodeOperations.asSConcept(AUX_z80bk2.ActionDataParameterDeclaration_44247ef5), _context.getModel());
     }
     private class SMP_Action_z80bk2_a1 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -190,7 +192,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        ActionParameter_SubstituteMenu.SMP_Param_z80bk2_b.SMP_Action_z80bk2_a1.Item item = new ActionParameter_SubstituteMenu.SMP_Param_z80bk2_b.SMP_Action_z80bk2_a1.Item(_context);
+        SMP_Param_z80bk2_b.SMP_Action_z80bk2_a1.Item item = new SMP_Param_z80bk2_b.SMP_Action_z80bk2_a1.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -214,7 +216,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration"), context);
+          super(AUX_z80bk2.ActionDataParameterDeclaration_44247ef5, context);
           _context = context;
         }
 
@@ -225,7 +227,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration"), null);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_z80bk2.ActionDataParameterDeclaration_44247ef5, null);
           SLinkOperations.setTarget(result, MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key"), myParameterObject);
           List<String> names = Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(ActionParameter__BehaviorDescriptor.getType_id112RIkggjzD.invoke(result));
           if (ListSequence.fromList(names).isNotEmpty()) {
@@ -240,7 +242,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_z80bk2.ActionDataParameterDeclaration_44247ef5, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -261,7 +263,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return (String) ActionDataParameterDeclaration__BehaviorDescriptor.getDescription_id2DsqYJxu5P.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration")), myParameterObject);
+          return (String) ActionDataParameterDeclaration__BehaviorDescriptor.getDescription_id2DsqYJxu5P.invoke(SNodeOperations.asSConcept(AUX_z80bk2.ActionDataParameterDeclaration_44247ef5), myParameterObject);
         }
       }
     }
@@ -284,5 +286,11 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10a2d94c0cdL, "SModelType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_z80bk2 {
+    /*package*/ static final SInterfaceConcept ActionParameter_3c60e96 = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter");
+    /*package*/ static final SConcept ActionDataParameterDeclaration_44247ef5 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
+    /*package*/ static final SConcept ActionParameterDeclaration_59cee56e = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b812427fL, "jetbrains.mps.lang.plugin.structure.ActionParameterDeclaration");
   }
 }

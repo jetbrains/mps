@@ -21,7 +21,7 @@ public class RemoveSynchronizedDelete_Test extends BaseTransformationTest {
 
   @Test
   public void test_RemoveSynchronizedDelete() throws Throwable {
-    new RemoveSynchronizedDelete_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -6,19 +6,20 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MappingLabelUtil {
   public MappingLabelUtil() {
   }
   public static SNode findOrCreateMappingLabelForName(SNode templateNode, String labelName) {
     SNode mappingLabel = null;
-    List<SNode> mappingConfigurations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(templateNode), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
+    List<SNode> mappingConfigurations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(templateNode), AUX_sm72f8.MappingConfiguration_587b13db);
     for (SNode mc : ListSequence.fromList(mappingConfigurations)) {
       for (SNode ml : ListSequence.fromList(SLinkOperations.getChildren(mc, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel")))) {
         if (labelName.equals(SPropertyOperations.getString(ml, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
@@ -30,7 +31,7 @@ public class MappingLabelUtil {
     // ---- 
     if (mappingLabel == null) {
       SNode mc;
-      List<SNode> localMCs = SModelOperations.roots(SNodeOperations.getModel(templateNode), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
+      List<SNode> localMCs = SModelOperations.roots(SNodeOperations.getModel(templateNode), AUX_sm72f8.MappingConfiguration_587b13db);
       if (ListSequence.fromList(localMCs).isNotEmpty()) {
         mc = ListSequence.fromList(localMCs).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -41,14 +42,19 @@ public class MappingLabelUtil {
           mc = ListSequence.fromList(localMCs).first();
         }
       } else {
-        mc = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(templateNode), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), null);
+        mc = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(templateNode), AUX_sm72f8.MappingConfiguration_587b13db, null);
         SPropertyOperations.assign(mc, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "MappingLabels");
       }
       // new mapping label 
-      SNode newLabel = SNodeFactoryOperations.addNewChild(mc, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel"), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, "jetbrains.mps.lang.generator.structure.MappingLabelDeclaration"));
+      SNode newLabel = SNodeFactoryOperations.addNewChild(mc, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel"), AUX_sm72f8.MappingLabelDeclaration_3fa7ebf3);
       SPropertyOperations.assign(newLabel, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), labelName);
       mappingLabel = newLabel;
     }
     return mappingLabel;
+  }
+
+  private static final class AUX_sm72f8 {
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept MappingLabelDeclaration_3fa7ebf3 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, "jetbrains.mps.lang.generator.structure.MappingLabelDeclaration");
   }
 }

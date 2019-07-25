@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="-atlxwtrrqhjgq20hnf6g4o1wtp1xeuu">
-  <files names="ConstraintsAspectDescriptor.java:CustomMemberDescriptor_Constraints.java:DSLDescriptor_Constraints.java:DefaultModifier_Constraints.java:GeneratedRulesConstraintsAspect.java:MemberModifier_Constraints.java:MethodInstance_Constraints.java:MultipleModifier_Constraints.java" />
+  <files names="ConstraintsAspectDescriptor.java:CustomMemberDescriptor_Constraints.java:DSLDescriptor_Constraints.java:DefaultModifier_Constraints.java:MemberModifier_Constraints.java:MethodInstance_Constraints.java:MultipleModifier_Constraints.java" />
 </product>
 

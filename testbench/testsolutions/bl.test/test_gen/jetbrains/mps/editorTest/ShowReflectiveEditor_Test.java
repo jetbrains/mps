@@ -25,7 +25,7 @@ public class ShowReflectiveEditor_Test extends BaseTransformationTest {
 
   @Test
   public void test_ShowReflectiveEditor() throws Throwable {
-    new ShowReflectiveEditor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

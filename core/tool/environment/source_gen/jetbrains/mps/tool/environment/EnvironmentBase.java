@@ -48,7 +48,7 @@ public abstract class EnvironmentBase implements Environment {
 
   protected void init(Platform mpsPlatform) {
     if (myInitialized) {
-      throw new EnvironmentBase.EnvironmentInitializedTwiceException();
+      throw new EnvironmentInitializedTwiceException();
     }
     myRootClassLoader = createRootClassLoader();
     initMacros(mpsPlatform.findComponent(PathMacros.class));
@@ -166,7 +166,7 @@ public abstract class EnvironmentBase implements Environment {
 
   protected final void checkInitialized() {
     if (!(myInitialized)) {
-      throw new EnvironmentBase.EnvironmentNotInitializedException();
+      throw new EnvironmentNotInitializedException();
     }
   }
 

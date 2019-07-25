@@ -10,6 +10,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Child_Referent_Parent {
   public void accessToChildNode_1(SNode ifStatement) {
@@ -29,8 +30,8 @@ public class Child_Referent_Parent {
   }
   public void accessToChildNode_4(SNode ifStatement) {
     SNode newCondition1 = SLinkOperations.setNewChild(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), null);
-    SNode newCondition2 = SLinkOperations.setNewChild(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression"));
-    SNode newCondition3 = SNodeOperations.replaceWithNewChild(newCondition1, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression"));
+    SNode newCondition2 = SLinkOperations.setNewChild(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), AUX_hyvkrh.EqualsExpression_9dbf9b09);
+    SNode newCondition3 = SNodeOperations.replaceWithNewChild(newCondition1, AUX_hyvkrh.NotExpression_8a1c1248);
   }
   public void accessToChildNode_5(SNode ifStatement) {
     SLinkOperations.setTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
@@ -50,29 +51,38 @@ public class Child_Referent_Parent {
     SNode parent_IfStatement = null;
     SNode mayBe_IfStatement = SNodeOperations.getParent(expression);
     while (mayBe_IfStatement != null) {
-      if (SNodeOperations.isInstanceOf(mayBe_IfStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"))) {
-        parent_IfStatement = SNodeOperations.cast(mayBe_IfStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+      if (SNodeOperations.isInstanceOf(mayBe_IfStatement, AUX_hyvkrh.IfStatement_9dbf9b10)) {
+        parent_IfStatement = SNodeOperations.cast(mayBe_IfStatement, AUX_hyvkrh.IfStatement_9dbf9b10);
         break;
       }
       mayBe_IfStatement = SNodeOperations.getParent(mayBe_IfStatement);
     }
   }
   public void accessToParentNode_2(SNode methodCall) {
-    SNode declaringClass = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(methodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    SNode declaringClass = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(methodCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"))), AUX_hyvkrh.ClassConcept_e2711824);
   }
   public void accessToParentNode_3(SNode node) {
     SNode root = SNodeOperations.getContainingRoot(node);
   }
   public void accessToAncestorNode_1(SNode expression) {
-    SNode parent_IfStatement = SNodeOperations.getNodeAncestor(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"), false, false);
+    SNode parent_IfStatement = SNodeOperations.getNodeAncestor(expression, AUX_hyvkrh.IfStatement_9dbf9b10, false, false);
   }
   public void accessToAncestorNode_2(SNode expression) {
-    SNode parent_If_or_WhileStatement = SNodeOperations.getNodeAncestorWhereConceptInList(expression, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement")}, false, false);
+    SNode parent_If_or_WhileStatement = SNodeOperations.getNodeAncestorWhereConceptInList(expression, new SAbstractConcept[]{AUX_hyvkrh.IfStatement_9dbf9b10, AUX_hyvkrh.WhileStatement_1f5f4332}, false, false);
   }
   public void accessToAncestorNodes_1(SNode expression) {
-    List<SNode> allAncestorStatements = SNodeOperations.getNodeAncestors(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), true);
+    List<SNode> allAncestorStatements = SNodeOperations.getNodeAncestors(expression, AUX_hyvkrh.Statement_9dbf9b0e, true);
   }
   public void accessToAncestorNodes_2(SNode expression) {
-    List<SNode> allAncestor_If_or_WhileStatements = SNodeOperations.getNodeAncestorsWhereConceptInList(expression, new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement")}, true);
+    List<SNode> allAncestor_If_or_WhileStatements = SNodeOperations.getNodeAncestorsWhereConceptInList(expression, new SAbstractConcept[]{AUX_hyvkrh.IfStatement_9dbf9b10, AUX_hyvkrh.WhileStatement_1f5f4332}, true);
+  }
+
+  private static final class AUX_hyvkrh {
+    /*package*/ static final SConcept EqualsExpression_9dbf9b09 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept NotExpression_8a1c1248 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SConcept IfStatement_9dbf9b10 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept WhileStatement_1f5f4332 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

@@ -44,8 +44,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("1228431342149", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1228431396510", new QueriesGenerated.RRC(i++));
+    rrcMethods.put("1228431342149", new RRC(i++));
+    rrcMethods.put("1228431396510", new RRC(i++));
   }
   @Override
   @NotNull
@@ -76,7 +76,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("1228431535919", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("1228431535919", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -105,7 +105,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("1228430808501", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "map_Document"));
+    pvqMethods.put("1228430808501", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "map_Document"));
   }
   @NotNull
   @Override

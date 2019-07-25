@@ -36,7 +36,7 @@ public class RemoveParameter_Test extends BaseTransformationTest {
 
   @Test
   public void test_RemoveParameter() throws Throwable {
-    new RemoveParameter_Test.TestBody(this).test_RemoveParameter();
+    new TestBody(this).test_RemoveParameter();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

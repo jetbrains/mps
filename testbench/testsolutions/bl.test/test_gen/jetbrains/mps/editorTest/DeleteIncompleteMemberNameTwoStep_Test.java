@@ -24,7 +24,7 @@ public class DeleteIncompleteMemberNameTwoStep_Test extends BaseTransformationTe
 
   @Test
   public void test_DeleteIncompleteMemberNameTwoStep() throws Throwable {
-    new DeleteIncompleteMemberNameTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -32,35 +32,35 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624929132045() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624929132045();
+    new TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624929132045();
   }
   @Test
   public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624928848231() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624928848231();
+    new TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624928848231();
   }
   @Test
   public void test_NodeThisTypeCantBeUsedInVariableCheck5450156852674012813() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck5450156852674012813();
+    new TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck5450156852674012813();
   }
   @Test
   public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624928692345() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624928692345();
+    new TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624928692345();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624928162737() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_NodeTypeSystemCheck6923385624928162737();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624928162737();
   }
   @Test
   public void test_NodeTypeSystemCheck6923385624927429026() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_NodeTypeSystemCheck6923385624927429026();
+    new TestBody(this).test_NodeTypeSystemCheck6923385624927429026();
   }
   @Test
   public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624928299118() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624928299118();
+    new TestBody(this).test_NodeThisTypeCantBeUsedInVariableCheck6923385624928299118();
   }
   @Test
   public void test_ErrorMessagesCheck6510041824235646887() throws Throwable {
-    new BoundedTypeOnIllegalPositions_Test.TestBody(this).test_ErrorMessagesCheck6510041824235646887();
+    new TestBody(this).test_ErrorMessagesCheck6510041824235646887();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

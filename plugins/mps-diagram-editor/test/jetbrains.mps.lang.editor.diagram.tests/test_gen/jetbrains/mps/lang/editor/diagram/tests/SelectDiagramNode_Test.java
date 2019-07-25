@@ -23,7 +23,7 @@ public class SelectDiagramNode_Test extends BaseTransformationTest {
 
   @Test
   public void test_SelectDiagramNode() throws Throwable {
-    new SelectDiagramNode_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

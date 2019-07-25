@@ -4,7 +4,6 @@ package constraints.rulesAndMessages.sandbox.constraints;
 
 import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
@@ -15,9 +14,11 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 import java.util.stream.Stream;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ParentConcept_ConstraintsFeedback extends BaseFeedbackDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, "constraints.rulesAndMessages.sandbox.structure.ParentConcept");
+  private static final SAbstractConcept CONCEPT = AUX_caap7h.ParentConcept_1f97f157;
 
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_caap7h_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ParentConcept_ConstraintRules.Rule_propIsTrue.ID_propIsTrue)) {
     @NotNull
@@ -37,5 +38,9 @@ public final class ParentConcept_ConstraintsFeedback extends BaseFeedbackDescrip
   @Override
   public Stream<FeedbackProvider> getDeclaredProviders() {
     return PROVIDERS.stream();
+  }
+
+  private static final class AUX_caap7h {
+    /*package*/ static final SConcept ParentConcept_1f97f157 = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, "constraints.rulesAndMessages.sandbox.structure.ParentConcept");
   }
 }

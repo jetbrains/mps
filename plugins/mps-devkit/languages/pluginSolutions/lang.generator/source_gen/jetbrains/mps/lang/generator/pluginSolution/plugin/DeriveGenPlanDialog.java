@@ -37,8 +37,8 @@ import java.awt.event.ActionEvent;
 
 /*package*/ class DeriveGenPlanDialog extends DialogWrapper {
   private final MPSProject myProject;
-  private DeriveGenPlanDialog.ExclusiveAlternativesPanel<Integer> myStepModuleKind;
-  private DeriveGenPlanDialog.ExclusiveAlternativesPanel<Integer> myStepGranularityKind;
+  private ExclusiveAlternativesPanel<Integer> myStepModuleKind;
+  private ExclusiveAlternativesPanel<Integer> myStepGranularityKind;
   private SModelReference mySampleModel;
   private ChooseByNamePanel myChoosePanel;
 
@@ -91,10 +91,10 @@ import java.awt.event.ActionEvent;
 
   @Nullable
   protected JComponent createCenterPanel() {
-    myStepModuleKind = new DeriveGenPlanDialog.ExclusiveAlternativesPanel("Specify transformation with");
+    myStepModuleKind = new ExclusiveAlternativesPanel("Specify transformation with");
     myStepModuleKind.addOption("Language", 1);
     myStepModuleKind.addOption("Generator", 2);
-    myStepGranularityKind = new DeriveGenPlanDialog.ExclusiveAlternativesPanel("Step granularity");
+    myStepGranularityKind = new ExclusiveAlternativesPanel("Step granularity");
     myStepGranularityKind.addOption("All transformation in a single step", 3);
     myStepGranularityKind.addOption("Single language/generator per step", 4);
     JPanel p = new JPanel(new GridLayout(1, 2));

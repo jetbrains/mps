@@ -23,6 +23,7 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class StyleParent_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -59,7 +60,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new StyleParent_EditorBuilder_a.childSingleRoleHandler_xizz2w_b0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5a79ee4e778a5efbL, 0x5a79ee4e778a5f1bL, "child"), getEditorContext());
+    SingleRoleCellProvider provider = new childSingleRoleHandler_xizz2w_b0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5a79ee4e778a5efbL, 0x5a79ee4e778a5f1bL, "child"), getEditorContext());
     return provider.createCell();
   }
   private static class childSingleRoleHandler_xizz2w_b0 extends SingleRoleCellProvider {
@@ -116,7 +117,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
       return "<no child>";
     }
     private boolean _StyleParameter_QueryFunction_xizz2w_a0b0() {
-      return SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5a79ee4e778a5efbL, "jetbrains.mps.lang.editor.editorTest.structure.StyleParent"));
+      return SNodeOperations.isInstanceOf(getNode(), AUX_jrmefa.StyleParent_7a6c91a7);
     }
+  }
+
+  private static final class AUX_jrmefa {
+    /*package*/ static final SConcept StyleParent_7a6c91a7 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5a79ee4e778a5efbL, "jetbrains.mps.lang.editor.editorTest.structure.StyleParent");
   }
 }

@@ -21,7 +21,7 @@ public class ChangeCollapseCondition_ManuallyExpandedCell_Test extends BaseTrans
 
   @Test
   public void test_ChangeCollapseCondition_ManuallyExpandedCell() throws Throwable {
-    new ChangeCollapseCondition_ManuallyExpandedCell_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

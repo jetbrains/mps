@@ -82,7 +82,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildProject_InspectorBuilder_a.scriptsDirSingleRoleHandler_vny568_a1a(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4291308148e8c6beL, "scriptsDir"), getEditorContext());
+    SingleRoleCellProvider provider = new scriptsDirSingleRoleHandler_vny568_a1a(myNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4291308148e8c6beL, "scriptsDir"), getEditorContext());
     return provider.createCell();
   }
   private static class scriptsDirSingleRoleHandler_vny568_a1a extends SingleRoleCellProvider {

@@ -88,10 +88,10 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("1423104411234609062", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1225441503868", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1423104411234586229", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("1423104411234594569", new QueriesGenerated.RRC(i++));
+    rrcMethods.put("1423104411234609062", new RRC(i++));
+    rrcMethods.put("1225441503868", new RRC(i++));
+    rrcMethods.put("1423104411234586229", new RRC(i++));
+    rrcMethods.put("1423104411234594569", new RRC(i++));
   }
   @Override
   @NotNull
@@ -126,22 +126,22 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("1423104411234616366", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234616376", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234585072", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234583776", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234592825", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234592835", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234601358", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234601368", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234630710", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1423104411234630720", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1225441503888", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1225441503928", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1225441503948", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("1225441503968", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("3353862535916068541", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("3353862535916067219", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("1423104411234616366", new SNQ(i++));
+    snqMethods.put("1423104411234616376", new SNQ(i++));
+    snqMethods.put("1423104411234585072", new SNQ(i++));
+    snqMethods.put("1423104411234583776", new SNQ(i++));
+    snqMethods.put("1423104411234592825", new SNQ(i++));
+    snqMethods.put("1423104411234592835", new SNQ(i++));
+    snqMethods.put("1423104411234601358", new SNQ(i++));
+    snqMethods.put("1423104411234601368", new SNQ(i++));
+    snqMethods.put("1423104411234630710", new SNQ(i++));
+    snqMethods.put("1423104411234630720", new SNQ(i++));
+    snqMethods.put("1225441503888", new SNQ(i++));
+    snqMethods.put("1225441503928", new SNQ(i++));
+    snqMethods.put("1225441503948", new SNQ(i++));
+    snqMethods.put("1225441503968", new SNQ(i++));
+    snqMethods.put("3353862535916068541", new SNQ(i++));
+    snqMethods.put("3353862535916067219", new SNQ(i++));
   }
   @NotNull
   @Override

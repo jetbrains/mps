@@ -8,7 +8,6 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
@@ -24,6 +23,9 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighlighterMessage {
   private static final String INDENT = "     ";
@@ -32,7 +34,7 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
   private Condition<EditorCell> myNameCellCondition;
 
   private static boolean isOverridden(SNode concept) {
-    return SNodeOperations.isInstanceOf(concept, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
+    return SNodeOperations.isInstanceOf(concept, AUX_j1u9qo.ConceptDeclaration_cb225da8);
   }
 
   public ConceptHasSubconceptsEditorMessage(final SNode node, List<SNode> overrides, EditorMessageOwner owner) {
@@ -63,7 +65,7 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
     return tooltip;
   }
   private static String getTextFromOverride(SNode override) {
-    return ((String) BHReflection.invoke0(override, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) BHReflection.invoke0(override, AUX_j1u9qo.INamedConcept_8cd7e247, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
   }
 
   @Override
@@ -87,5 +89,10 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
   @Override
   public AnAction getClickAction() {
     return ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.ide.actions.GoToConceptDescendants_Action"));
+  }
+
+  private static final class AUX_j1u9qo {
+    /*package*/ static final SConcept ConceptDeclaration_cb225da8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

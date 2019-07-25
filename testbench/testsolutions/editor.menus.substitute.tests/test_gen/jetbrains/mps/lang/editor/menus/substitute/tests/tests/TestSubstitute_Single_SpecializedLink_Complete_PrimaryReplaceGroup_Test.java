@@ -24,7 +24,7 @@ public class TestSubstitute_Single_SpecializedLink_Complete_PrimaryReplaceGroup_
 
   @Test
   public void test_TestSubstitute_Single_SpecializedLink_Complete_PrimaryReplaceGroup() throws Throwable {
-    new TestSubstitute_Single_SpecializedLink_Complete_PrimaryReplaceGroup_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -28,7 +28,7 @@ public class IteratingChecker<O, P, I extends IssueKindReportItem> implements IA
     Tuples._2<T, Integer> nextItem();
   }
 
-  public static abstract class AbstractIteratorWithProgress<T> implements IteratingChecker.IteratorWithProgress<T> {
+  public static abstract class AbstractIteratorWithProgress<T> implements IteratorWithProgress<T> {
     private int myRemainingSize;
     public AbstractIteratorWithProgress(int initialSize) {
       myRemainingSize = initialSize;
@@ -54,7 +54,7 @@ public class IteratingChecker<O, P, I extends IssueKindReportItem> implements IA
     }
   }
 
-  public static class CollectionIteratorWithProgress<T> extends IteratingChecker.AbstractIteratorWithProgress<T> implements IteratingChecker.IteratorWithProgress<T> {
+  public static class CollectionIteratorWithProgress<T> extends AbstractIteratorWithProgress<T> implements IteratorWithProgress<T> {
     private Iterator<T> myOrigin;
     public CollectionIteratorWithProgress(Collection<T> collection) {
       super(collection.size());
@@ -72,14 +72,14 @@ public class IteratingChecker<O, P, I extends IssueKindReportItem> implements IA
   }
 
   private IChecker<P, ? extends I> myOrigin;
-  private _FunctionTypes._return_P1_E0<? extends IteratingChecker.IteratorWithProgress<P>, ? super O> myIterate;
-  public IteratingChecker(IChecker<P, ? extends I> origin, _FunctionTypes._return_P1_E0<? extends IteratingChecker.IteratorWithProgress<P>, ? super O> iterate) {
+  private _FunctionTypes._return_P1_E0<? extends IteratorWithProgress<P>, ? super O> myIterate;
+  public IteratingChecker(IChecker<P, ? extends I> origin, _FunctionTypes._return_P1_E0<? extends IteratorWithProgress<P>, ? super O> iterate) {
     myOrigin = origin;
     myIterate = iterate;
   }
   @Override
   public void check(O toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor) {
-    IteratingChecker.IteratorWithProgress<P> iterator = myIterate.invoke(toCheck);
+    IteratorWithProgress<P> iterator = myIterate.invoke(toCheck);
     monitor.start("", iterator.remainingSize());
     while (iterator.hasNext() && !(monitor.isCanceled())) {
       Tuples._2<P, Integer> next = iterator.nextItem();

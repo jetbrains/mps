@@ -28,7 +28,7 @@ public class PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test exte
 
   @Test
   public void test_PluginActionMenuItemBase_InapplicableAction_CannotExecute() throws Throwable {
-    new PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class TypeSuperInterfaceConstruction_Test extends BaseTransformationTest 
 
   @Test
   public void test_TypeSuperInterfaceConstruction() throws Throwable {
-    new TypeSuperInterfaceConstruction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

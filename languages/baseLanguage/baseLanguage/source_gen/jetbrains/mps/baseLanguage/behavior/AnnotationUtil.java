@@ -17,6 +17,7 @@ import java.util.HashMap;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AnnotationUtil {
   public static void attachAnnotation(SNode target, final SNode targetAnnotation) {
@@ -68,16 +69,16 @@ public class AnnotationUtil {
   }
 
   public static boolean accept(SNode targetKinds, SNode hasAnnotation) {
-    if (SNodeOperations.isInstanceOf(targetKinds, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, "jetbrains.mps.baseLanguage.structure.ArrayLiteral"))) {
-      for (SNode expr : SLinkOperations.getChildren(SNodeOperations.cast(targetKinds, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, "jetbrains.mps.baseLanguage.structure.ArrayLiteral")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item"))) {
-        if (SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference")) && acceptKind(SNodeOperations.cast(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference")), hasAnnotation)) {
+    if (SNodeOperations.isInstanceOf(targetKinds, AUX_3nvpiw.ArrayLiteral_a35f9232)) {
+      for (SNode expr : SLinkOperations.getChildren(SNodeOperations.cast(targetKinds, AUX_3nvpiw.ArrayLiteral_a35f9232), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item"))) {
+        if (SNodeOperations.isInstanceOf(expr, AUX_3nvpiw.EnumConstantReference_78d9f72e) && acceptKind(SNodeOperations.cast(expr, AUX_3nvpiw.EnumConstantReference_78d9f72e), hasAnnotation)) {
           return true;
         }
       }
       return false;
 
-    } else if (SNodeOperations.isInstanceOf(targetKinds, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"))) {
-      return acceptKind(SNodeOperations.cast(targetKinds, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference")), hasAnnotation);
+    } else if (SNodeOperations.isInstanceOf(targetKinds, AUX_3nvpiw.EnumConstantReference_78d9f72e)) {
+      return acceptKind(SNodeOperations.cast(targetKinds, AUX_3nvpiw.EnumConstantReference_78d9f72e), hasAnnotation);
     } else {
       return false;
     }
@@ -160,5 +161,10 @@ public class AnnotationUtil {
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)"), facade.createNodeId("~ElementType.PACKAGE")));
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)"), facade.createNodeId("~ElementType")));
     return quotedNode_1;
+  }
+
+  private static final class AUX_3nvpiw {
+    /*package*/ static final SConcept ArrayLiteral_a35f9232 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, "jetbrains.mps.baseLanguage.structure.ArrayLiteral");
+    /*package*/ static final SConcept EnumConstantReference_78d9f72e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
   }
 }

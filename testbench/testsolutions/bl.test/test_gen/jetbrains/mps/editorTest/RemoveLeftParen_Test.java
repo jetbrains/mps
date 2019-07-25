@@ -21,7 +21,7 @@ public class RemoveLeftParen_Test extends BaseTransformationTest {
 
   @Test
   public void test_RemoveLeftParen() throws Throwable {
-    new RemoveLeftParen_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NodeUncommenter {
   @NotNull
@@ -74,8 +75,12 @@ public class NodeUncommenter {
   }
   private SContainmentLink getContainmentLink() {
     if (myContainmentLink == null) {
-      myContainmentLink = ((SContainmentLink) BHReflection.invoke0(myComment, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf")));
+      myContainmentLink = ((SContainmentLink) BHReflection.invoke0(myComment, AUX_kciqw8.ChildAttribute_96496d6c, SMethodTrimmedId.create("getLink", AUX_kciqw8.ChildAttribute_96496d6c, "BpxLfMirzf")));
     }
     return myContainmentLink;
+  }
+
+  private static final class AUX_kciqw8 {
+    /*package*/ static final SConcept ChildAttribute_96496d6c = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

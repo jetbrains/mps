@@ -10,7 +10,7 @@ public abstract class TransformatorBuilder {
   protected static final Object LOCK = new Object();
   public TransformatorBuilder() {
   }
-  public abstract TransformatorBuilder.Transformator build(SNode node, boolean insideTransformation);
+  public abstract Transformator build(SNode node, boolean insideTransformation);
   public abstract String getJniSignatureFromType(SNode type);
   public abstract SNode getProxyTypeFromType(SNode type);
   public abstract void init();

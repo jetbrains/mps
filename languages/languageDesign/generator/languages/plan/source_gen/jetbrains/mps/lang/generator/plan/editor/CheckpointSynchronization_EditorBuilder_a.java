@@ -55,7 +55,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CheckpointSynchronization_EditorBuilder_a.checkpointSingleRoleHandler_rojdai_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint"), getEditorContext());
+    SingleRoleCellProvider provider = new checkpointSingleRoleHandler_rojdai_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint"), getEditorContext());
     return provider.createCell();
   }
   private static class checkpointSingleRoleHandler_rojdai_b0 extends SingleRoleCellProvider {

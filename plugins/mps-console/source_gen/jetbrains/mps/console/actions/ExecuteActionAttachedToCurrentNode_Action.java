@@ -8,13 +8,14 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -30,7 +31,7 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((boolean) (Boolean) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), MetaAdapterFactory.getInterfaceConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7633e0214d3a5856L, "jetbrains.mps.console.base.structure.IActionHolder"), SMethodTrimmedId.create("canExecute", null, "2QdC0h7dh1h")));
+    return ((boolean) (Boolean) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), AUX_d76iky.IActionHolder_fc45f132, SMethodTrimmedId.create("canExecute", null, "2QdC0h7dh1h")));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -43,7 +44,7 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7633e0214d3a5856L, "jetbrains.mps.console.base.structure.IActionHolder")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_d76iky.IActionHolder_fc45f132))) {
         node = null;
       }
       if (node == null) {
@@ -63,9 +64,13 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
     final Wrappers._T<Runnable> action = new Wrappers._T<Runnable>();
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        action.value = ((Runnable) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), MetaAdapterFactory.getInterfaceConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7633e0214d3a5856L, "jetbrains.mps.console.base.structure.IActionHolder"), SMethodTrimmedId.create("execute", null, "7oNS25df64x"), event.getData(MPSCommonDataKeys.MPS_PROJECT)));
+        action.value = ((Runnable) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), AUX_d76iky.IActionHolder_fc45f132, SMethodTrimmedId.create("execute", null, "7oNS25df64x"), event.getData(MPSCommonDataKeys.MPS_PROJECT)));
       }
     });
     action.value.run();
+  }
+
+  private static final class AUX_d76iky {
+    /*package*/ static final SInterfaceConcept IActionHolder_fc45f132 = MetaAdapterFactory.getInterfaceConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7633e0214d3a5856L, "jetbrains.mps.console.base.structure.IActionHolder");
   }
 }

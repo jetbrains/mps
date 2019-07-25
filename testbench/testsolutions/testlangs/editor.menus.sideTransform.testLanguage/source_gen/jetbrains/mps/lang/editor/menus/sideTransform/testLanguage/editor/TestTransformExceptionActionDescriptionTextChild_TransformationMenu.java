@@ -55,7 +55,7 @@ public class TestTransformExceptionActionDescriptionTextChild_TransformationMenu
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TestTransformExceptionActionDescriptionTextChild_TransformationMenu.TMP_Action_u8he9g_a0());
+      result.add(new TMP_Action_u8he9g_a0());
     }
     return result;
   }
@@ -63,7 +63,7 @@ public class TestTransformExceptionActionDescriptionTextChild_TransformationMenu
   private class TMP_Action_u8he9g_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestTransformExceptionActionDescriptionTextChild_TransformationMenu.TMP_Action_u8he9g_a0.Item item = new TestTransformExceptionActionDescriptionTextChild_TransformationMenu.TMP_Action_u8he9g_a0.Item(context);
+      TMP_Action_u8he9g_a0.Item item = new TMP_Action_u8he9g_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

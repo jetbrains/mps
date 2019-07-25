@@ -76,7 +76,7 @@ import jetbrains.mps.nodeEditor.MPSColors;
     } else {
       editorCell = createConstant_1();
     }
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new CellModel_DiagramPort_EditorBuilder_a.CellModel_DiagramPort_generic_cellMenu_inwiug_a0a0(), new CellModel_DiagramPort_EditorBuilder_a.CellModel_DiagramPort_generic_cellMenu_inwiug_b0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new CellModel_DiagramPort_generic_cellMenu_inwiug_a0a0(), new CellModel_DiagramPort_generic_cellMenu_inwiug_b0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   private boolean nodeCondition_inwiug_a0a() {

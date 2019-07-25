@@ -42,12 +42,12 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
         }
       }
       Collection<? extends IssueKindReportItem> consumerResult = consumer.getResult();
-      final Map<IssueKindReportItem.PathObject, Collection<AggregatingChecker.MySuppressableError>> consumerResultMap = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<AggregatingChecker.MySuppressableError>>());
+      final Map<IssueKindReportItem.PathObject, Collection<MySuppressableError>> consumerResultMap = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<MySuppressableError>>());
       for (IssueKindReportItem reported : consumerResult) {
         if (MapSequence.fromMap(consumerResultMap).get(IssueKindReportItem.PATH_OBJECT.get(reported)) == null) {
-          MapSequence.fromMap(consumerResultMap).put(IssueKindReportItem.PATH_OBJECT.get(reported), ListSequence.fromList(new ArrayList<AggregatingChecker.MySuppressableError>()));
+          MapSequence.fromMap(consumerResultMap).put(IssueKindReportItem.PATH_OBJECT.get(reported), ListSequence.fromList(new ArrayList<MySuppressableError>()));
         }
-        MapSequence.fromMap(consumerResultMap).get(IssueKindReportItem.PATH_OBJECT.get(reported)).add(new AggregatingChecker.MySuppressableError(reported));
+        MapSequence.fromMap(consumerResultMap).get(IssueKindReportItem.PATH_OBJECT.get(reported)).add(new MySuppressableError(reported));
       }
       for (IChecker<O, ? extends IssueKindReportItem> origin : myOrigins) {
         ICheckingPostprocessor<? extends IssueKindReportItem> postprocessor = origin.getPostprocessor();
@@ -64,8 +64,8 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
           });
         }
       }
-      for (AggregatingChecker.MySuppressableError approved : Sequence.fromIterable(MapSequence.fromMap(consumerResultMap).values()).translate(new ITranslator2<Collection<AggregatingChecker.MySuppressableError>, AggregatingChecker.MySuppressableError>() {
-        public Iterable<AggregatingChecker.MySuppressableError> translate(Collection<AggregatingChecker.MySuppressableError> it) {
+      for (MySuppressableError approved : Sequence.fromIterable(MapSequence.fromMap(consumerResultMap).values()).translate(new ITranslator2<Collection<MySuppressableError>, MySuppressableError>() {
+        public Iterable<MySuppressableError> translate(Collection<MySuppressableError> it) {
           return it;
         }
       })) {

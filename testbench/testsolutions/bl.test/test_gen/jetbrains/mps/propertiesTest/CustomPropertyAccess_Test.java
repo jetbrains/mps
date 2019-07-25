@@ -30,7 +30,7 @@ public class CustomPropertyAccess_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck6799807267508922004() throws Throwable {
-    new CustomPropertyAccess_Test.TestBody(this).test_ErrorMessagesCheck6799807267508922004();
+    new TestBody(this).test_ErrorMessagesCheck6799807267508922004();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

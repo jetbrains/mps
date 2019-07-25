@@ -30,23 +30,23 @@ public class Collections_DataFlow_Test_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck1140733686815042652() throws Throwable {
-    new Collections_DataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck1140733686815042652();
+    new TestBody(this).test_ErrorMessagesCheck1140733686815042652();
   }
   @Test
   public void test_ErrorMessagesCheck1140733686815050004() throws Throwable {
-    new Collections_DataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck1140733686815050004();
+    new TestBody(this).test_ErrorMessagesCheck1140733686815050004();
   }
   @Test
   public void test_ErrorMessagesCheck1140733686815044380() throws Throwable {
-    new Collections_DataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck1140733686815044380();
+    new TestBody(this).test_ErrorMessagesCheck1140733686815044380();
   }
   @Test
   public void test_ErrorMessagesCheck1140733686815060469() throws Throwable {
-    new Collections_DataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck1140733686815060469();
+    new TestBody(this).test_ErrorMessagesCheck1140733686815060469();
   }
   @Test
   public void test_ErrorMessagesCheck1140733686815070800() throws Throwable {
-    new Collections_DataFlow_Test_Test.TestBody(this).test_ErrorMessagesCheck1140733686815070800();
+    new TestBody(this).test_ErrorMessagesCheck1140733686815070800();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

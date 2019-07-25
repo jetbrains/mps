@@ -16,7 +16,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052406553">
     <file name="ChangeMethodParametersForStatement_Test.java">
       <node id="1230052406553" at="36,52,37,25" concept="12" />
-      <node id="1230052406639" at="41,74,42,105" concept="2" />
+      <node id="1230052406639" at="41,74,42,65" concept="2" />
       <node id="1230052406553" at="47,52,48,19" concept="12" />
       <node id="1230052406554" at="51,76,52,35" concept="2" />
       <node id="1230052406581" at="52,35,53,35" concept="2" />
@@ -45,7 +45,7 @@
       <node id="1230052406642" at="53,35,73,7" concept="0" />
       <node id="1230052406639" at="51,0,75,0" concept="6" trace="test_changeMethodParametersForStatement#()V" />
       <scope id="1230052406553" at="36,52,37,25" />
-      <scope id="1230052406639" at="41,74,42,105" />
+      <scope id="1230052406639" at="41,74,42,65" />
       <scope id="1230052406553" at="47,52,48,19" />
       <scope id="1230052406553" at="36,0,39,0" />
       <scope id="1230052406553" at="47,0,50,0">
@@ -72,7 +72,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052406741">
     <file name="ConceptFunctioParameterTest_Test.java">
       <node id="1230052406741" at="29,45,30,25" concept="12" />
-      <node id="1230052406767" at="34,67,35,91" concept="2" />
+      <node id="1230052406767" at="34,67,35,58" concept="2" />
       <node id="1230052406741" at="40,52,41,19" concept="12" />
       <node id="1230052406742" at="44,69,45,35" concept="2" />
       <node id="1230052406770" at="45,35,46,640" concept="7" />
@@ -84,7 +84,7 @@
       <node id="1230052406767" at="33,0,37,0" concept="6" trace="test_ConceptFunctioParameterTest#()V" />
       <node id="1230052406767" at="44,0,49,0" concept="6" trace="test_ConceptFunctioParameterTest#()V" />
       <scope id="1230052406741" at="29,45,30,25" />
-      <scope id="1230052406767" at="34,67,35,91" />
+      <scope id="1230052406767" at="34,67,35,58" />
       <scope id="1230052406741" at="40,52,41,19" />
       <scope id="1230052406741" at="29,0,32,0" />
       <scope id="1230052406741" at="40,0,43,0">
@@ -102,7 +102,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052406933">
     <file name="ExtractFromAnonymous_Test.java">
       <node id="1230052406933" at="33,38,34,25" concept="12" />
-      <node id="1230052406934" at="38,60,39,77" concept="2" />
+      <node id="1230052406934" at="38,60,39,51" concept="2" />
       <node id="1230052406933" at="44,52,45,19" concept="12" />
       <node id="1230052406963" at="48,62,49,35" concept="2" />
       <node id="1230052406990" at="49,35,50,35" concept="2" />
@@ -121,7 +121,7 @@
       <node id="1230052406960" at="54,23,59,7" concept="0" />
       <node id="1230052406934" at="48,0,61,0" concept="6" trace="test_ExtractFromAnonymous#()V" />
       <scope id="1230052406933" at="33,38,34,25" />
-      <scope id="1230052406934" at="38,60,39,77" />
+      <scope id="1230052406934" at="38,60,39,51" />
       <scope id="1230052406933" at="44,52,45,19" />
       <scope id="1230052406933" at="33,0,36,0" />
       <scope id="1230052406933" at="44,0,47,0">
@@ -144,7 +144,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052407024">
     <file name="ExtractFromStatements_Test.java">
       <node id="1230052407024" at="33,39,34,25" concept="12" />
-      <node id="1230052407103" at="38,61,39,79" concept="2" />
+      <node id="1230052407103" at="38,61,39,52" concept="2" />
       <node id="1230052407024" at="44,52,45,19" concept="12" />
       <node id="1230052407025" at="48,63,49,35" concept="2" />
       <node id="1230052407060" at="49,35,50,35" concept="2" />
@@ -163,7 +163,7 @@
       <node id="1230052407131" at="54,23,59,7" concept="0" />
       <node id="1230052407103" at="48,0,61,0" concept="6" trace="test_extractFromStatements#()V" />
       <scope id="1230052407024" at="33,39,34,25" />
-      <scope id="1230052407103" at="38,61,39,79" />
+      <scope id="1230052407103" at="38,61,39,52" />
       <scope id="1230052407024" at="44,52,45,19" />
       <scope id="1230052407024" at="33,0,36,0" />
       <scope id="1230052407024" at="44,0,47,0">
@@ -186,7 +186,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052407134">
     <file name="ExtractMethodFromConstructor_Test.java">
       <node id="1230052407134" at="33,46,34,25" concept="12" />
-      <node id="1230052407164" at="38,68,39,93" concept="2" />
+      <node id="1230052407164" at="38,68,39,59" concept="2" />
       <node id="1230052407134" at="44,52,45,19" concept="12" />
       <node id="1230052407135" at="48,70,49,35" concept="2" />
       <node id="1230052407146" at="49,35,50,35" concept="2" />
@@ -205,7 +205,7 @@
       <node id="1230052407190" at="54,23,59,7" concept="0" />
       <node id="1230052407164" at="48,0,61,0" concept="6" trace="test_ExtractMethodFromConstructor#()V" />
       <scope id="1230052407134" at="33,46,34,25" />
-      <scope id="1230052407164" at="38,68,39,93" />
+      <scope id="1230052407164" at="38,68,39,59" />
       <scope id="1230052407134" at="44,52,45,19" />
       <scope id="1230052407134" at="33,0,36,0" />
       <scope id="1230052407134" at="44,0,47,0">
@@ -228,7 +228,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052444309">
     <file name="FindInputVariables_Test.java">
       <node id="1230052444309" at="31,36,32,25" concept="12" />
-      <node id="1230052444345" at="36,58,37,73" concept="2" />
+      <node id="1230052444345" at="36,58,37,49" concept="2" />
       <node id="1230052444309" at="42,52,43,19" concept="12" />
       <node id="1230052444310" at="46,60,47,35" concept="2" />
       <node id="1230052444348" at="47,35,48,908" concept="7" />
@@ -242,7 +242,7 @@
       <node id="1230052444345" at="35,0,39,0" concept="6" trace="test_inputVariablesTest#()V" />
       <node id="1230052444345" at="46,0,53,0" concept="6" trace="test_inputVariablesTest#()V" />
       <scope id="1230052444309" at="31,36,32,25" />
-      <scope id="1230052444345" at="36,58,37,73" />
+      <scope id="1230052444345" at="36,58,37,49" />
       <scope id="1230052444309" at="42,52,43,19" />
       <scope id="1230052444309" at="31,0,34,0" />
       <scope id="1230052444309" at="42,0,45,0">
@@ -261,10 +261,10 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052480263">
     <file name="BreakStatement_Test.java">
       <node id="1230052480263" at="29,32,30,25" concept="12" />
-      <node id="1230052480293" at="34,48,35,59" concept="2" />
-      <node id="1230052480302" at="38,48,39,59" concept="2" />
-      <node id="1230052480311" at="42,52,43,63" concept="2" />
-      <node id="1230052480320" at="46,56,47,67" concept="2" />
+      <node id="1230052480293" at="34,48,35,39" concept="2" />
+      <node id="1230052480302" at="38,48,39,39" concept="2" />
+      <node id="1230052480311" at="42,52,43,43" concept="2" />
+      <node id="1230052480320" at="46,56,47,47" concept="2" />
       <node id="1230052480263" at="52,52,53,19" concept="12" />
       <node id="1230052480264" at="56,50,57,35" concept="2" />
       <node id="1230052480296" at="57,35,58,359" concept="2" />
@@ -287,10 +287,10 @@
       <node id="1230052480311" at="64,0,68,0" concept="6" trace="test_oneContionue#()V" />
       <node id="1230052480320" at="68,0,72,0" concept="6" trace="test_breakAndContinue#()V" />
       <scope id="1230052480263" at="29,32,30,25" />
-      <scope id="1230052480293" at="34,48,35,59" />
-      <scope id="1230052480302" at="38,48,39,59" />
-      <scope id="1230052480311" at="42,52,43,63" />
-      <scope id="1230052480320" at="46,56,47,67" />
+      <scope id="1230052480293" at="34,48,35,39" />
+      <scope id="1230052480302" at="38,48,39,39" />
+      <scope id="1230052480311" at="42,52,43,43" />
+      <scope id="1230052480320" at="46,56,47,47" />
       <scope id="1230052480263" at="52,52,53,19" />
       <scope id="1230052480293" at="56,50,58,359" />
       <scope id="1230052480302" at="60,50,62,356" />
@@ -315,7 +315,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052480332">
     <file name="ExtractBreak_Test.java">
       <node id="1230052480332" at="34,30,35,25" concept="12" />
-      <node id="1230052480405" at="39,52,40,61" concept="2" />
+      <node id="1230052480405" at="39,52,40,43" concept="2" />
       <node id="1230052480332" at="45,52,46,19" concept="12" />
       <node id="1230052480333" at="49,54,50,35" concept="2" />
       <node id="1230052480361" at="50,35,51,35" concept="2" />
@@ -335,7 +335,7 @@
       <node id="1230052480435" at="56,23,61,7" concept="0" />
       <node id="1230052480405" at="49,0,63,0" concept="6" trace="test_ExtractBreak#()V" />
       <scope id="1230052480332" at="34,30,35,25" />
-      <scope id="1230052480405" at="39,52,40,61" />
+      <scope id="1230052480405" at="39,52,40,43" />
       <scope id="1230052480332" at="45,52,46,19" />
       <scope id="1230052480332" at="34,0,37,0" />
       <scope id="1230052480332" at="45,0,48,0">
@@ -358,7 +358,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052480438">
     <file name="ExtractContinue_Test.java">
       <node id="1230052480438" at="34,33,35,25" concept="12" />
-      <node id="1230052480494" at="39,55,40,67" concept="2" />
+      <node id="1230052480494" at="39,55,40,46" concept="2" />
       <node id="1230052480438" at="45,52,46,19" concept="12" />
       <node id="1230052480439" at="49,57,50,35" concept="2" />
       <node id="1230052480459" at="50,35,51,35" concept="2" />
@@ -378,7 +378,7 @@
       <node id="1230052480524" at="56,23,61,7" concept="0" />
       <node id="1230052480494" at="49,0,63,0" concept="6" trace="test_ExtractContinue#()V" />
       <scope id="1230052480438" at="34,33,35,25" />
-      <scope id="1230052480494" at="39,55,40,67" />
+      <scope id="1230052480494" at="39,55,40,46" />
       <scope id="1230052480438" at="45,52,46,19" />
       <scope id="1230052480438" at="34,0,37,0" />
       <scope id="1230052480438" at="45,0,48,0">
@@ -401,8 +401,8 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052509258">
     <file name="ExtractDefaultClassifierMethodDeclaration_Test.java">
       <node id="1230052509258" at="33,59,34,25" concept="12" />
-      <node id="1230052509344" at="38,57,39,95" concept="2" />
-      <node id="1230052509373" at="42,58,43,96" concept="2" />
+      <node id="1230052509344" at="38,57,39,48" concept="2" />
+      <node id="1230052509373" at="42,58,43,49" concept="2" />
       <node id="1230052509258" at="48,52,49,19" concept="12" />
       <node id="1230052509259" at="52,59,53,35" concept="2" />
       <node id="1230052509277" at="53,35,54,35" concept="2" />
@@ -435,8 +435,8 @@
       <node id="1230052509344" at="52,0,66,0" concept="6" trace="test_extractFromMethod#()V" />
       <node id="1230052509373" at="66,0,80,0" concept="6" trace="test_extractFromExecute#()V" />
       <scope id="1230052509258" at="33,59,34,25" />
-      <scope id="1230052509344" at="38,57,39,95" />
-      <scope id="1230052509373" at="42,58,43,96" />
+      <scope id="1230052509344" at="38,57,39,48" />
+      <scope id="1230052509373" at="42,58,43,49" />
       <scope id="1230052509258" at="48,52,49,19" />
       <scope id="1230052509258" at="33,0,36,0" />
       <scope id="1230052509258" at="48,0,51,0">
@@ -469,7 +469,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052551970">
     <file name="ExtractFromExpression_Test.java">
       <node id="1230052551970" at="33,39,34,25" concept="12" />
-      <node id="1230052552031" at="38,61,39,79" concept="2" />
+      <node id="1230052552031" at="38,61,39,52" concept="2" />
       <node id="1230052551970" at="44,52,45,19" concept="12" />
       <node id="1230052551971" at="48,63,49,35" concept="2" />
       <node id="1230052551996" at="49,35,50,35" concept="2" />
@@ -488,7 +488,7 @@
       <node id="1230052552057" at="54,23,59,7" concept="0" />
       <node id="1230052552031" at="48,0,61,0" concept="6" trace="test_extractFromExpression#()V" />
       <scope id="1230052551970" at="33,39,34,25" />
-      <scope id="1230052552031" at="38,61,39,79" />
+      <scope id="1230052552031" at="38,61,39,52" />
       <scope id="1230052551970" at="44,52,45,19" />
       <scope id="1230052551970" at="33,0,36,0" />
       <scope id="1230052551970" at="44,0,47,0">
@@ -511,7 +511,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052552060">
     <file name="ExtractFromExpressionWithoutReturn_Test.java">
       <node id="1230052552060" at="33,52,34,25" concept="12" />
-      <node id="1230052552101" at="38,74,39,105" concept="2" />
+      <node id="1230052552101" at="38,74,39,65" concept="2" />
       <node id="1230052552060" at="44,52,45,19" concept="12" />
       <node id="1230052552061" at="48,76,49,35" concept="2" />
       <node id="1230052552076" at="49,35,50,35" concept="2" />
@@ -530,7 +530,7 @@
       <node id="1230052552127" at="54,23,59,7" concept="0" />
       <node id="1230052552101" at="48,0,61,0" concept="6" trace="test_extractFromExpressionWithoutReturn#()V" />
       <scope id="1230052552060" at="33,52,34,25" />
-      <scope id="1230052552101" at="38,74,39,105" />
+      <scope id="1230052552101" at="38,74,39,65" />
       <scope id="1230052552060" at="44,52,45,19" />
       <scope id="1230052552060" at="33,0,36,0" />
       <scope id="1230052552060" at="44,0,47,0">
@@ -553,7 +553,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052641811">
     <file name="ExtractDifferentReturns_Test.java">
       <node id="1230052641811" at="34,41,35,25" concept="12" />
-      <node id="1230052641880" at="39,63,40,83" concept="2" />
+      <node id="1230052641880" at="39,63,40,54" concept="2" />
       <node id="1230052641811" at="45,52,46,19" concept="12" />
       <node id="1230052641812" at="49,65,50,35" concept="2" />
       <node id="1230052641841" at="50,35,51,35" concept="2" />
@@ -573,7 +573,7 @@
       <node id="1230052641910" at="56,23,61,7" concept="0" />
       <node id="1230052641880" at="49,0,63,0" concept="6" trace="test_extractDifferentReturns#()V" />
       <scope id="1230052641811" at="34,41,35,25" />
-      <scope id="1230052641880" at="39,63,40,83" />
+      <scope id="1230052641880" at="39,63,40,54" />
       <scope id="1230052641811" at="45,52,46,19" />
       <scope id="1230052641811" at="34,0,37,0" />
       <scope id="1230052641811" at="45,0,48,0">
@@ -596,7 +596,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052641913">
     <file name="ExtractFromStatementWithReturnValue_Test.java">
       <node id="1230052641913" at="33,53,34,25" concept="12" />
-      <node id="1230052642008" at="38,75,39,107" concept="2" />
+      <node id="1230052642008" at="38,75,39,66" concept="2" />
       <node id="1230052641913" at="44,52,45,19" concept="12" />
       <node id="1230052641914" at="48,77,49,35" concept="2" />
       <node id="1230052641949" at="49,35,50,35" concept="2" />
@@ -615,7 +615,7 @@
       <node id="1230052642036" at="54,23,59,7" concept="0" />
       <node id="1230052642008" at="48,0,61,0" concept="6" trace="test_extractFromStatementWithReturnValue#()V" />
       <scope id="1230052641913" at="33,53,34,25" />
-      <scope id="1230052642008" at="38,75,39,107" />
+      <scope id="1230052642008" at="38,75,39,66" />
       <scope id="1230052641913" at="44,52,45,19" />
       <scope id="1230052641913" at="33,0,36,0" />
       <scope id="1230052641913" at="44,0,47,0">
@@ -638,7 +638,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052642039">
     <file name="ExtractFromStatementsEndsWithReturn_Test.java">
       <node id="1230052642039" at="33,53,34,25" concept="12" />
-      <node id="1230052642071" at="38,75,39,107" concept="2" />
+      <node id="1230052642071" at="38,75,39,66" concept="2" />
       <node id="1230052642039" at="44,52,45,19" concept="12" />
       <node id="1230052642040" at="48,77,49,35" concept="2" />
       <node id="1230052642053" at="49,35,50,35" concept="2" />
@@ -657,7 +657,7 @@
       <node id="1230052642097" at="54,23,59,7" concept="0" />
       <node id="1230052642071" at="48,0,61,0" concept="6" trace="test_extractFromStatementsEndsWithReturn#()V" />
       <scope id="1230052642039" at="33,53,34,25" />
-      <scope id="1230052642071" at="38,75,39,107" />
+      <scope id="1230052642071" at="38,75,39,66" />
       <scope id="1230052642039" at="44,52,45,19" />
       <scope id="1230052642039" at="33,0,36,0" />
       <scope id="1230052642039" at="44,0,47,0">
@@ -680,7 +680,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052642100">
     <file name="MethodsWithoutReturnStatement_Test.java">
       <node id="1230052642100" at="33,47,34,25" concept="12" />
-      <node id="1230052642145" at="38,64,39,90" concept="2" />
+      <node id="1230052642145" at="38,64,39,55" concept="2" />
       <node id="1230052642100" at="44,52,45,19" concept="12" />
       <node id="1230052642101" at="48,66,49,35" concept="2" />
       <node id="1230052642118" at="49,35,50,35" concept="2" />
@@ -699,7 +699,7 @@
       <node id="1230052642171" at="54,23,59,7" concept="0" />
       <node id="1230052642145" at="48,0,61,0" concept="6" trace="test_checkReturnWithoutReturn#()V" />
       <scope id="1230052642100" at="33,47,34,25" />
-      <scope id="1230052642145" at="38,64,39,90" />
+      <scope id="1230052642145" at="38,64,39,55" />
       <scope id="1230052642100" at="44,52,45,19" />
       <scope id="1230052642100" at="33,0,36,0" />
       <scope id="1230052642100" at="44,0,47,0">
@@ -722,8 +722,8 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052642174">
     <file name="OneReturnStatement_Test.java">
       <node id="1230052642174" at="29,36,30,25" concept="12" />
-      <node id="1230052642234" at="34,58,35,73" concept="2" />
-      <node id="1230052642243" at="38,60,39,75" concept="2" />
+      <node id="1230052642234" at="34,58,35,49" concept="2" />
+      <node id="1230052642243" at="38,60,39,51" concept="2" />
       <node id="1230052642174" at="44,52,45,19" concept="12" />
       <node id="1230052642175" at="48,60,49,35" concept="2" />
       <node id="1230052642237" at="49,35,50,356" concept="2" />
@@ -738,8 +738,8 @@
       <node id="1230052642234" at="48,0,52,0" concept="6" trace="test_oneReturnStatement#()V" />
       <node id="1230052642243" at="52,0,56,0" concept="6" trace="test_returnAndOutVariable#()V" />
       <scope id="1230052642174" at="29,36,30,25" />
-      <scope id="1230052642234" at="34,58,35,73" />
-      <scope id="1230052642243" at="38,60,39,75" />
+      <scope id="1230052642234" at="34,58,35,49" />
+      <scope id="1230052642243" at="38,60,39,51" />
       <scope id="1230052642174" at="44,52,45,19" />
       <scope id="1230052642234" at="48,60,50,356" />
       <scope id="1230052642243" at="52,62,54,617" />
@@ -758,7 +758,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052642255">
     <file name="OneReturnTransformation_Test.java">
       <node id="1230052642255" at="33,41,34,25" concept="12" />
-      <node id="1230052642315" at="38,63,39,83" concept="2" />
+      <node id="1230052642315" at="38,63,39,54" concept="2" />
       <node id="1230052642255" at="44,52,45,19" concept="12" />
       <node id="1230052642256" at="48,65,49,35" concept="2" />
       <node id="1230052642278" at="49,35,50,35" concept="2" />
@@ -777,7 +777,7 @@
       <node id="1230052642341" at="54,23,59,7" concept="0" />
       <node id="1230052642315" at="48,0,61,0" concept="6" trace="test_oneReturnTransformation#()V" />
       <scope id="1230052642255" at="33,41,34,25" />
-      <scope id="1230052642315" at="38,63,39,83" />
+      <scope id="1230052642315" at="38,63,39,54" />
       <scope id="1230052642255" at="44,52,45,19" />
       <scope id="1230052642255" at="33,0,36,0" />
       <scope id="1230052642255" at="44,0,47,0">
@@ -800,9 +800,9 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052642344">
     <file name="ReturnStatement_Test.java">
       <node id="1230052642344" at="29,33,30,25" concept="12" />
-      <node id="1230052642421" at="34,52,35,64" concept="2" />
-      <node id="1230052642437" at="38,61,39,73" concept="2" />
-      <node id="1230052642446" at="42,55,43,67" concept="2" />
+      <node id="1230052642421" at="34,52,35,43" concept="2" />
+      <node id="1230052642437" at="38,61,39,52" concept="2" />
+      <node id="1230052642446" at="42,55,43,46" concept="2" />
       <node id="1230052642344" at="48,52,49,19" concept="12" />
       <node id="1230052642345" at="52,54,53,35" concept="2" />
       <node id="1230052642424" at="53,35,54,356" concept="2" />
@@ -822,9 +822,9 @@
       <node id="1230052642446" at="61,0,65,0" concept="6" trace="test_notAlwaysReturn#()V" />
       <node id="1230052642421" at="52,0,57,0" concept="6" trace="test_alwaysReturn#()V" />
       <scope id="1230052642344" at="29,33,30,25" />
-      <scope id="1230052642421" at="34,52,35,64" />
-      <scope id="1230052642437" at="38,61,39,73" />
-      <scope id="1230052642446" at="42,55,43,67" />
+      <scope id="1230052642421" at="34,52,35,43" />
+      <scope id="1230052642437" at="38,61,39,52" />
+      <scope id="1230052642446" at="42,55,43,46" />
       <scope id="1230052642344" at="48,52,49,19" />
       <scope id="1230052642437" at="57,63,59,364" />
       <scope id="1230052642446" at="61,57,63,364" />
@@ -846,7 +846,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052684456">
     <file name="ExtractFromIntention_Test.java">
       <node id="1230052684456" at="35,38,36,25" concept="12" />
-      <node id="1230052684457" at="40,57,41,74" concept="2" />
+      <node id="1230052684457" at="40,57,41,48" concept="2" />
       <node id="1230052684456" at="46,52,47,19" concept="12" />
       <node id="1230052684510" at="50,59,51,35" concept="2" />
       <node id="1230052684520" at="51,35,52,35" concept="2" />
@@ -871,7 +871,7 @@
       <node id="1230052684505" at="62,23,67,7" concept="0" />
       <node id="1230052684457" at="50,0,69,0" concept="6" trace="test_extractExpression#()V" />
       <scope id="1230052684456" at="35,38,36,25" />
-      <scope id="1230052684457" at="40,57,41,74" />
+      <scope id="1230052684457" at="40,57,41,48" />
       <scope id="1230052684456" at="46,52,47,19" />
       <scope id="1230052684456" at="35,0,38,0" />
       <scope id="1230052684456" at="46,0,49,0">
@@ -894,7 +894,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052684686">
     <file name="staticContainerClassTest_Test.java">
       <node id="1230052684686" at="35,42,36,25" concept="12" />
-      <node id="1230052684722" at="40,64,41,85" concept="2" />
+      <node id="1230052684722" at="40,64,41,55" concept="2" />
       <node id="1230052684686" at="46,52,47,19" concept="12" />
       <node id="1230052684687" at="50,66,51,35" concept="2" />
       <node id="1230052684697" at="51,35,52,35" concept="2" />
@@ -920,7 +920,7 @@
       <node id="1230052684776" at="63,23,68,7" concept="0" />
       <node id="1230052684722" at="50,0,70,0" concept="6" trace="test_staticContainerClassTest#()V" />
       <scope id="1230052684686" at="35,42,36,25" />
-      <scope id="1230052684722" at="40,64,41,85" />
+      <scope id="1230052684722" at="40,64,41,55" />
       <scope id="1230052684686" at="46,52,47,19" />
       <scope id="1230052684686" at="35,0,38,0" />
       <scope id="1230052684686" at="46,0,49,0">
@@ -944,7 +944,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052902925">
     <file name="AddThrowDeclaration_Test.java">
       <node id="1230052902925" at="36,37,37,25" concept="12" />
-      <node id="1230052902944" at="41,59,42,75" concept="2" />
+      <node id="1230052902944" at="41,59,42,50" concept="2" />
       <node id="1230052902925" at="47,52,48,19" concept="12" />
       <node id="1230052902926" at="51,61,52,35" concept="2" />
       <node id="1230052902935" at="52,35,53,35" concept="2" />
@@ -969,7 +969,7 @@
       <node id="1230052902961" at="66,0,73,0" concept="11" trace="_quotation_createNode_njbq9a_a0a3a3h#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1230052902944" at="51,0,64,0" concept="6" trace="test_AddThrowDeclaration#()V" />
       <scope id="1230052902925" at="36,37,37,25" />
-      <scope id="1230052902944" at="41,59,42,75" />
+      <scope id="1230052902944" at="41,59,42,50" />
       <scope id="1230052902925" at="47,52,48,19" />
       <scope id="1230052902925" at="36,0,39,0" />
       <scope id="1230052902925" at="47,0,50,0">
@@ -997,7 +997,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052902977">
     <file name="ChangeMethodName_Test.java">
       <node id="1230052902977" at="33,34,34,25" concept="12" />
-      <node id="1230052902995" at="38,56,39,69" concept="2" />
+      <node id="1230052902995" at="38,56,39,47" concept="2" />
       <node id="1230052902977" at="44,52,45,19" concept="12" />
       <node id="1230052902978" at="48,58,49,35" concept="2" />
       <node id="1230052902987" at="49,35,50,35" concept="2" />
@@ -1016,7 +1016,7 @@
       <node id="1230052903023" at="54,26,59,7" concept="0" />
       <node id="1230052902995" at="48,0,61,0" concept="6" trace="test_ChangeMethodName#()V" />
       <scope id="1230052902977" at="33,34,34,25" />
-      <scope id="1230052902995" at="38,56,39,69" />
+      <scope id="1230052902995" at="38,56,39,47" />
       <scope id="1230052902977" at="44,52,45,19" />
       <scope id="1230052902977" at="33,0,36,0" />
       <scope id="1230052902977" at="44,0,47,0">
@@ -1039,7 +1039,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052903026">
     <file name="ChangeReturningType_Test.java">
       <node id="1230052903026" at="33,37,34,25" concept="12" />
-      <node id="1230052903045" at="38,59,39,75" concept="2" />
+      <node id="1230052903045" at="38,59,39,50" concept="2" />
       <node id="1230052903026" at="44,52,45,19" concept="12" />
       <node id="1230052903027" at="48,61,49,35" concept="2" />
       <node id="1230052903036" at="49,35,50,35" concept="2" />
@@ -1058,7 +1058,7 @@
       <node id="1230052903075" at="54,26,59,7" concept="0" />
       <node id="1230052903045" at="48,0,61,0" concept="6" trace="test_ChangeReturningType#()V" />
       <scope id="1230052903026" at="33,37,34,25" />
-      <scope id="1230052903045" at="38,59,39,75" />
+      <scope id="1230052903045" at="38,59,39,50" />
       <scope id="1230052903026" at="44,52,45,19" />
       <scope id="1230052903026" at="33,0,36,0" />
       <scope id="1230052903026" at="44,0,47,0">
@@ -1081,7 +1081,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052903078">
     <file name="ChangeSignatureOfStaticMethod_Test.java">
       <node id="1230052903078" at="33,47,34,25" concept="12" />
-      <node id="1230052903138" at="38,69,39,95" concept="2" />
+      <node id="1230052903138" at="38,69,39,60" concept="2" />
       <node id="1230052903078" at="44,52,45,19" concept="12" />
       <node id="1230052903079" at="48,71,49,35" concept="2" />
       <node id="1230052903110" at="49,35,50,35" concept="2" />
@@ -1108,7 +1108,7 @@
       <node id="1230052903228" at="62,26,67,7" concept="0" />
       <node id="1230052903138" at="48,0,69,0" concept="6" trace="test_ChangeSignatureOfStaticMethod#()V" />
       <scope id="1230052903078" at="33,47,34,25" />
-      <scope id="1230052903138" at="38,69,39,95" />
+      <scope id="1230052903138" at="38,69,39,60" />
       <scope id="1230052903078" at="44,52,45,19" />
       <scope id="1230052903078" at="33,0,36,0" />
       <scope id="1230052903078" at="44,0,47,0">
@@ -1134,7 +1134,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052943763">
     <file name="AddParameter_Test.java">
       <node id="1230052943763" at="35,30,36,25" concept="12" />
-      <node id="1230052943783" at="40,52,41,61" concept="2" />
+      <node id="1230052943783" at="40,52,41,43" concept="2" />
       <node id="1230052943763" at="46,52,47,19" concept="12" />
       <node id="1230052943764" at="50,54,51,35" concept="2" />
       <node id="1230052943773" at="51,35,52,35" concept="2" />
@@ -1162,7 +1162,7 @@
       <node id="1230052943800" at="65,0,75,0" concept="11" trace="_quotation_createNode_pqwgtw_a0a3a3h#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1230052943783" at="50,0,63,0" concept="6" trace="test_AddParameter#()V" />
       <scope id="1230052943763" at="35,30,36,25" />
-      <scope id="1230052943783" at="40,52,41,61" />
+      <scope id="1230052943783" at="40,52,41,43" />
       <scope id="1230052943763" at="46,52,47,19" />
       <scope id="1230052943763" at="35,0,38,0" />
       <scope id="1230052943763" at="46,0,49,0">
@@ -1191,7 +1191,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052943817">
     <file name="ChangeParameterName_Test.java">
       <node id="1230052943817" at="34,37,35,25" concept="12" />
-      <node id="1230052943847" at="39,59,40,75" concept="2" />
+      <node id="1230052943847" at="39,59,40,50" concept="2" />
       <node id="1230052943817" at="45,52,46,19" concept="12" />
       <node id="1230052943818" at="49,61,50,35" concept="2" />
       <node id="1230052943833" at="50,35,51,35" concept="2" />
@@ -1210,7 +1210,7 @@
       <node id="1230052943880" at="55,26,60,7" concept="0" />
       <node id="1230052943847" at="49,0,62,0" concept="6" trace="test_ChangeParameterName#()V" />
       <scope id="1230052943817" at="34,37,35,25" />
-      <scope id="1230052943847" at="39,59,40,75" />
+      <scope id="1230052943847" at="39,59,40,50" />
       <scope id="1230052943817" at="45,52,46,19" />
       <scope id="1230052943817" at="34,0,37,0" />
       <scope id="1230052943817" at="45,0,48,0">
@@ -1233,7 +1233,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052943883">
     <file name="ChangeParameterType_Test.java">
       <node id="1230052943883" at="35,37,36,25" concept="12" />
-      <node id="1230052943909" at="40,59,41,75" concept="2" />
+      <node id="1230052943909" at="40,59,41,50" concept="2" />
       <node id="1230052943883" at="46,52,47,19" concept="12" />
       <node id="1230052943884" at="50,61,51,35" concept="2" />
       <node id="1230052943897" at="51,35,52,35" concept="2" />
@@ -1257,7 +1257,7 @@
       <node id="1230052943920" at="65,0,71,0" concept="11" trace="_quotation_createNode_69x5rj_a0d0d7#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1230052943909" at="50,0,63,0" concept="6" trace="test_ChangeParameterType#()V" />
       <scope id="1230052943883" at="35,37,36,25" />
-      <scope id="1230052943909" at="40,59,41,75" />
+      <scope id="1230052943909" at="40,59,41,50" />
       <scope id="1230052943883" at="46,52,47,19" />
       <scope id="1230052943883" at="35,0,38,0" />
       <scope id="1230052943883" at="46,0,49,0">
@@ -1285,7 +1285,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052943946">
     <file name="ChangeParametersOrder_Test.java">
       <node id="1230052943946" at="33,39,34,25" concept="12" />
-      <node id="1230052943993" at="38,61,39,79" concept="2" />
+      <node id="1230052943993" at="38,61,39,52" concept="2" />
       <node id="1230052943946" at="44,52,45,19" concept="12" />
       <node id="1230052943947" at="48,63,49,35" concept="2" />
       <node id="1230052943971" at="49,35,50,35" concept="2" />
@@ -1311,7 +1311,7 @@
       <node id="1230052944078" at="61,26,66,7" concept="0" />
       <node id="1230052943993" at="48,0,68,0" concept="6" trace="test_ChangeParametersOrder#()V" />
       <scope id="1230052943946" at="33,39,34,25" />
-      <scope id="1230052943993" at="38,61,39,79" />
+      <scope id="1230052943993" at="38,61,39,52" />
       <scope id="1230052943946" at="44,52,45,19" />
       <scope id="1230052943946" at="33,0,36,0" />
       <scope id="1230052943946" at="44,0,47,0">
@@ -1337,7 +1337,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052944081">
     <file name="RemoveParameter_Test.java">
       <node id="1230052944081" at="33,33,34,25" concept="12" />
-      <node id="1230052944101" at="38,55,39,67" concept="2" />
+      <node id="1230052944101" at="38,55,39,46" concept="2" />
       <node id="1230052944081" at="44,52,45,19" concept="12" />
       <node id="1230052944082" at="48,57,49,35" concept="2" />
       <node id="1230052944093" at="49,35,50,35" concept="2" />
@@ -1356,7 +1356,7 @@
       <node id="1230052944129" at="54,26,59,7" concept="0" />
       <node id="1230052944101" at="48,0,61,0" concept="6" trace="test_RemoveParameter#()V" />
       <scope id="1230052944081" at="33,33,34,25" />
-      <scope id="1230052944101" at="38,55,39,67" />
+      <scope id="1230052944101" at="38,55,39,46" />
       <scope id="1230052944081" at="44,52,45,19" />
       <scope id="1230052944081" at="33,0,36,0" />
       <scope id="1230052944081" at="44,0,47,0">
@@ -1379,7 +1379,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052944132">
     <file name="TwoParametersWithSameType_Test.java">
       <node id="1230052944132" at="34,43,35,25" concept="12" />
-      <node id="1230052944162" at="39,65,40,87" concept="2" />
+      <node id="1230052944162" at="39,65,40,56" concept="2" />
       <node id="1230052944132" at="45,52,46,19" concept="12" />
       <node id="1230052944133" at="49,67,50,35" concept="2" />
       <node id="1230052944148" at="50,35,51,35" concept="2" />
@@ -1399,7 +1399,7 @@
       <node id="1230052944208" at="56,26,61,7" concept="0" />
       <node id="1230052944162" at="49,0,63,0" concept="6" trace="test_TwoParametersWithSameType#()V" />
       <scope id="1230052944132" at="34,43,35,25" />
-      <scope id="1230052944162" at="39,65,40,87" />
+      <scope id="1230052944162" at="39,65,40,56" />
       <scope id="1230052944132" at="45,52,46,19" />
       <scope id="1230052944132" at="34,0,37,0" />
       <scope id="1230052944132" at="45,0,48,0">
@@ -1422,7 +1422,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052989007">
     <file name="DeclarationVariablesInMethod_Test.java">
       <node id="1230052989007" at="31,46,32,25" concept="12" />
-      <node id="1230052989065" at="36,68,37,93" concept="2" />
+      <node id="1230052989065" at="36,68,37,59" concept="2" />
       <node id="1230052989007" at="42,52,43,19" concept="12" />
       <node id="1230052989008" at="46,70,47,35" concept="2" />
       <node id="1230052989035" at="47,35,48,35" concept="2" />
@@ -1439,7 +1439,7 @@
       <node id="1230052989078" at="50,23,55,7" concept="0" />
       <node id="1230052989065" at="46,0,57,0" concept="6" trace="test_DeclarationVariablesInMethod#()V" />
       <scope id="1230052989007" at="31,46,32,25" />
-      <scope id="1230052989065" at="36,68,37,93" />
+      <scope id="1230052989065" at="36,68,37,59" />
       <scope id="1230052989007" at="42,52,43,19" />
       <scope id="1230052989007" at="31,0,34,0" />
       <scope id="1230052989007" at="42,0,45,0">
@@ -1461,7 +1461,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052989081">
     <file name="InlineFromAnotherClass_Test.java">
       <node id="1230052989081" at="31,40,32,25" concept="12" />
-      <node id="1230052989156" at="36,62,37,81" concept="2" />
+      <node id="1230052989156" at="36,62,37,53" concept="2" />
       <node id="1230052989081" at="42,52,43,19" concept="12" />
       <node id="1230052989082" at="46,64,47,35" concept="2" />
       <node id="1230052989119" at="47,35,48,35" concept="2" />
@@ -1478,7 +1478,7 @@
       <node id="1230052989169" at="50,23,55,7" concept="0" />
       <node id="1230052989156" at="46,0,57,0" concept="6" trace="test_InlineFromAnotherClass#()V" />
       <scope id="1230052989081" at="31,40,32,25" />
-      <scope id="1230052989156" at="36,62,37,81" />
+      <scope id="1230052989156" at="36,62,37,53" />
       <scope id="1230052989081" at="42,52,43,19" />
       <scope id="1230052989081" at="31,0,34,0" />
       <scope id="1230052989081" at="42,0,45,0">
@@ -1500,7 +1500,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052989172">
     <file name="InlineFromExpression_Test.java">
       <node id="1230052989172" at="31,38,32,25" concept="12" />
-      <node id="1230052989266" at="36,60,37,77" concept="2" />
+      <node id="1230052989266" at="36,60,37,51" concept="2" />
       <node id="1230052989172" at="42,52,43,19" concept="12" />
       <node id="1230052989173" at="46,62,47,35" concept="2" />
       <node id="1230052989215" at="47,35,48,35" concept="2" />
@@ -1517,7 +1517,7 @@
       <node id="1230052989279" at="50,23,55,7" concept="0" />
       <node id="1230052989266" at="46,0,57,0" concept="6" trace="test_InlineFromExpression#()V" />
       <scope id="1230052989172" at="31,38,32,25" />
-      <scope id="1230052989266" at="36,60,37,77" />
+      <scope id="1230052989266" at="36,60,37,51" />
       <scope id="1230052989172" at="42,52,43,19" />
       <scope id="1230052989172" at="31,0,34,0" />
       <scope id="1230052989172" at="42,0,45,0">
@@ -1539,7 +1539,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052989282">
     <file name="InlineRecursiveMethod_Test.java">
       <node id="1230052989282" at="26,39,27,25" concept="12" />
-      <node id="1230052989295" at="31,61,32,79" concept="2" />
+      <node id="1230052989295" at="31,61,32,52" concept="2" />
       <node id="1230052989282" at="37,52,38,19" concept="12" />
       <node id="1230052989283" at="41,63,42,35" concept="2" />
       <node id="1230052989298" at="42,35,43,326" concept="2" />
@@ -1550,7 +1550,7 @@
       <node id="1230052989295" at="30,0,34,0" concept="6" trace="test_InlineRecursiveMethod#()V" />
       <node id="1230052989295" at="41,0,45,0" concept="6" trace="test_InlineRecursiveMethod#()V" />
       <scope id="1230052989282" at="26,39,27,25" />
-      <scope id="1230052989295" at="31,61,32,79" />
+      <scope id="1230052989295" at="31,61,32,52" />
       <scope id="1230052989282" at="37,52,38,19" />
       <scope id="1230052989295" at="41,63,43,326" />
       <scope id="1230052989282" at="26,0,29,0" />
@@ -1566,7 +1566,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052989306">
     <file name="InlineWithNoSourcesAttached_Test.java">
       <node id="1230052989306" at="26,45,27,25" concept="12" />
-      <node id="1230052989322" at="31,67,32,91" concept="2" />
+      <node id="1230052989322" at="31,67,32,58" concept="2" />
       <node id="1230052989306" at="37,52,38,19" concept="12" />
       <node id="1230052989307" at="41,69,42,35" concept="2" />
       <node id="1230052989325" at="42,35,43,329" concept="2" />
@@ -1577,7 +1577,7 @@
       <node id="1230052989322" at="30,0,34,0" concept="6" trace="test_InlineWithNoSourcesAttached#()V" />
       <node id="1230052989322" at="41,0,45,0" concept="6" trace="test_InlineWithNoSourcesAttached#()V" />
       <scope id="1230052989306" at="26,45,27,25" />
-      <scope id="1230052989322" at="31,67,32,91" />
+      <scope id="1230052989322" at="31,67,32,58" />
       <scope id="1230052989306" at="37,52,38,19" />
       <scope id="1230052989322" at="41,69,43,329" />
       <scope id="1230052989306" at="26,0,29,0" />
@@ -1593,7 +1593,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052989334">
     <file name="SimpleInlineWithOneReturn_Test.java">
       <node id="1230052989334" at="31,43,32,25" concept="12" />
-      <node id="1230052989378" at="36,65,37,87" concept="2" />
+      <node id="1230052989378" at="36,65,37,56" concept="2" />
       <node id="1230052989334" at="42,52,43,19" concept="12" />
       <node id="1230052989335" at="46,67,47,35" concept="2" />
       <node id="1230052989358" at="47,35,48,35" concept="2" />
@@ -1610,7 +1610,7 @@
       <node id="1230052989391" at="50,23,55,7" concept="0" />
       <node id="1230052989378" at="46,0,57,0" concept="6" trace="test_SimpleInlineWithOneReturn#()V" />
       <scope id="1230052989334" at="31,43,32,25" />
-      <scope id="1230052989378" at="36,65,37,87" />
+      <scope id="1230052989378" at="36,65,37,56" />
       <scope id="1230052989334" at="42,52,43,19" />
       <scope id="1230052989334" at="31,0,34,0" />
       <scope id="1230052989334" at="42,0,45,0">
@@ -1632,7 +1632,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053040715">
     <file name="InlineFromBehavior_Test.java">
       <node id="1230053040715" at="31,36,32,25" concept="12" />
-      <node id="1230053040751" at="36,58,37,73" concept="2" />
+      <node id="1230053040751" at="36,58,37,49" concept="2" />
       <node id="1230053040715" at="42,52,43,19" concept="12" />
       <node id="1230053040716" at="46,60,47,35" concept="2" />
       <node id="1230053040735" at="47,35,48,35" concept="2" />
@@ -1649,7 +1649,7 @@
       <node id="1230053040764" at="50,23,55,7" concept="0" />
       <node id="1230053040751" at="46,0,57,0" concept="6" trace="test_InlineFromBehavior#()V" />
       <scope id="1230053040715" at="31,36,32,25" />
-      <scope id="1230053040751" at="36,58,37,73" />
+      <scope id="1230053040751" at="36,58,37,49" />
       <scope id="1230053040715" at="42,52,43,19" />
       <scope id="1230053040715" at="31,0,34,0" />
       <scope id="1230053040715" at="42,0,45,0">
@@ -1671,7 +1671,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053040767">
     <file name="InlineFromBehaviorWithMethods_Test.java">
       <node id="1230053040767" at="31,47,32,25" concept="12" />
-      <node id="1230053040872" at="36,69,37,95" concept="2" />
+      <node id="1230053040872" at="36,69,37,60" concept="2" />
       <node id="1230053040767" at="42,52,43,19" concept="12" />
       <node id="1230053040768" at="46,71,47,35" concept="2" />
       <node id="1230053040816" at="47,35,48,35" concept="2" />
@@ -1690,7 +1690,7 @@
       <node id="1230053040885" at="52,23,57,7" concept="0" />
       <node id="1230053040872" at="46,0,59,0" concept="6" trace="test_InlineFromBehaviorWithMethods#()V" />
       <scope id="1230053040767" at="31,47,32,25" />
-      <scope id="1230053040872" at="36,69,37,95" />
+      <scope id="1230053040872" at="36,69,37,60" />
       <scope id="1230053040767" at="42,52,43,19" />
       <scope id="1230053040767" at="31,0,34,0" />
       <scope id="1230053040767" at="42,0,45,0">
@@ -1712,7 +1712,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053040888">
     <file name="InlineInBehaviorWithThis_Test.java">
       <node id="1230053040888" at="31,42,32,25" concept="12" />
-      <node id="1230053040922" at="36,64,37,85" concept="2" />
+      <node id="1230053040922" at="36,64,37,55" concept="2" />
       <node id="1230053040888" at="42,52,43,19" concept="12" />
       <node id="1230053040889" at="46,66,47,35" concept="2" />
       <node id="1230053040907" at="47,35,48,35" concept="2" />
@@ -1729,7 +1729,7 @@
       <node id="1230053040935" at="50,23,55,7" concept="0" />
       <node id="1230053040922" at="46,0,57,0" concept="6" trace="test_InlineInBehaviorWithThis#()V" />
       <scope id="1230053040888" at="31,42,32,25" />
-      <scope id="1230053040922" at="36,64,37,85" />
+      <scope id="1230053040922" at="36,64,37,55" />
       <scope id="1230053040888" at="42,52,43,19" />
       <scope id="1230053040888" at="31,0,34,0" />
       <scope id="1230053040888" at="42,0,45,0">
@@ -1751,7 +1751,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053073153">
     <file name="InlineMethodThatChangesParameters_Test.java">
       <node id="1230053073153" at="31,51,32,25" concept="12" />
-      <node id="1230053073230" at="36,73,37,103" concept="2" />
+      <node id="1230053073230" at="36,73,37,64" concept="2" />
       <node id="1230053073153" at="42,52,43,19" concept="12" />
       <node id="1230053073154" at="46,75,47,35" concept="2" />
       <node id="1230053073190" at="47,35,48,35" concept="2" />
@@ -1768,7 +1768,7 @@
       <node id="1230053073243" at="50,23,55,7" concept="0" />
       <node id="1230053073230" at="46,0,57,0" concept="6" trace="test_InlineMethodThatChangesParameters#()V" />
       <scope id="1230053073153" at="31,51,32,25" />
-      <scope id="1230053073230" at="36,73,37,103" />
+      <scope id="1230053073230" at="36,73,37,64" />
       <scope id="1230053073153" at="42,52,43,19" />
       <scope id="1230053073153" at="31,0,34,0" />
       <scope id="1230053073153" at="42,0,45,0">
@@ -1790,7 +1790,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053073246">
     <file name="InlineModelWithConstants_Test.java">
       <node id="1230053073246" at="31,42,32,25" concept="12" />
-      <node id="1230053073320" at="36,64,37,85" concept="2" />
+      <node id="1230053073320" at="36,64,37,55" concept="2" />
       <node id="1230053073246" at="42,52,43,19" concept="12" />
       <node id="1230053073247" at="46,66,47,35" concept="2" />
       <node id="1230053073284" at="47,35,48,35" concept="2" />
@@ -1807,7 +1807,7 @@
       <node id="1230053073333" at="50,23,55,7" concept="0" />
       <node id="1230053073320" at="46,0,57,0" concept="6" trace="test_InlineModelWithConstants#()V" />
       <scope id="1230053073246" at="31,42,32,25" />
-      <scope id="1230053073320" at="36,64,37,85" />
+      <scope id="1230053073320" at="36,64,37,55" />
       <scope id="1230053073246" at="42,52,43,19" />
       <scope id="1230053073246" at="31,0,34,0" />
       <scope id="1230053073246" at="42,0,45,0">
@@ -1829,7 +1829,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053073336">
     <file name="OneReturnWithNotVariableParameters_Test.java">
       <node id="1230053073336" at="31,52,32,25" concept="12" />
-      <node id="1230053073419" at="36,74,37,105" concept="2" />
+      <node id="1230053073419" at="36,74,37,65" concept="2" />
       <node id="1230053073336" at="42,52,43,19" concept="12" />
       <node id="1230053073337" at="46,76,47,35" concept="2" />
       <node id="1230053073377" at="47,35,48,35" concept="2" />
@@ -1846,7 +1846,7 @@
       <node id="1230053073432" at="50,23,55,7" concept="0" />
       <node id="1230053073419" at="46,0,57,0" concept="6" trace="test_OneReturnWithNotVariableParameters#()V" />
       <scope id="1230053073336" at="31,52,32,25" />
-      <scope id="1230053073419" at="36,74,37,105" />
+      <scope id="1230053073419" at="36,74,37,65" />
       <scope id="1230053073336" at="42,52,43,19" />
       <scope id="1230053073336" at="31,0,34,0" />
       <scope id="1230053073336" at="42,0,45,0">
@@ -1868,7 +1868,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053073435">
     <file name="OneReturnWithParameteres_Test.java">
       <node id="1230053073435" at="31,42,32,25" concept="12" />
-      <node id="1230053073498" at="36,64,37,85" concept="2" />
+      <node id="1230053073498" at="36,64,37,55" concept="2" />
       <node id="1230053073435" at="42,52,43,19" concept="12" />
       <node id="1230053073436" at="46,66,47,35" concept="2" />
       <node id="1230053073468" at="47,35,48,35" concept="2" />
@@ -1885,7 +1885,7 @@
       <node id="1230053073511" at="50,23,55,7" concept="0" />
       <node id="1230053073498" at="46,0,57,0" concept="6" trace="test_OneReturnWithParameteres#()V" />
       <scope id="1230053073435" at="31,42,32,25" />
-      <scope id="1230053073498" at="36,64,37,85" />
+      <scope id="1230053073498" at="36,64,37,55" />
       <scope id="1230053073435" at="42,52,43,19" />
       <scope id="1230053073435" at="31,0,34,0" />
       <scope id="1230053073435" at="42,0,45,0">
@@ -1907,7 +1907,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053114801">
     <file name="CheckStaticVisibility_Test.java">
       <node id="1230053114801" at="26,39,27,25" concept="12" />
-      <node id="1230053114842" at="31,61,32,79" concept="2" />
+      <node id="1230053114842" at="31,61,32,52" concept="2" />
       <node id="1230053114801" at="37,52,38,19" concept="12" />
       <node id="1230053114802" at="41,63,42,35" concept="2" />
       <node id="1230053114815" at="42,35,43,35" concept="2" />
@@ -1923,7 +1923,7 @@
       <node id="1230053114842" at="30,0,34,0" concept="6" trace="test_CheckStaticVisibility#()V" />
       <node id="1230053114842" at="41,0,50,0" concept="6" trace="test_CheckStaticVisibility#()V" />
       <scope id="1230053114801" at="26,39,27,25" />
-      <scope id="1230053114842" at="31,61,32,79" />
+      <scope id="1230053114842" at="31,61,32,52" />
       <scope id="1230053114801" at="37,52,38,19" />
       <scope id="1230053114801" at="26,0,29,0" />
       <scope id="1230053114801" at="37,0,40,0">
@@ -1941,7 +1941,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053114873">
     <file name="CheckVisibility_Test.java">
       <node id="1230053114873" at="26,33,27,25" concept="12" />
-      <node id="1230053114946" at="31,55,32,67" concept="2" />
+      <node id="1230053114946" at="31,55,32,46" concept="2" />
       <node id="1230053114873" at="37,52,38,19" concept="12" />
       <node id="1230053114874" at="41,57,42,35" concept="2" />
       <node id="1230053114900" at="42,35,43,35" concept="2" />
@@ -1958,7 +1958,7 @@
       <node id="1230053114946" at="30,0,34,0" concept="6" trace="test_CheckVisibility#()V" />
       <node id="1230053114946" at="41,0,51,0" concept="6" trace="test_CheckVisibility#()V" />
       <scope id="1230053114873" at="26,33,27,25" />
-      <scope id="1230053114946" at="31,55,32,67" />
+      <scope id="1230053114946" at="31,55,32,46" />
       <scope id="1230053114873" at="37,52,38,19" />
       <scope id="1230053114873" at="26,0,29,0" />
       <scope id="1230053114873" at="37,0,40,0">
@@ -1976,7 +1976,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053187317">
     <file name="CheckInlineCanBePerformed_Test.java">
       <node id="1230053187317" at="26,43,27,25" concept="12" />
-      <node id="1230053187445" at="31,65,32,87" concept="2" />
+      <node id="1230053187445" at="31,65,32,56" concept="2" />
       <node id="1230053187317" at="37,52,38,19" concept="12" />
       <node id="1230053187318" at="41,67,42,35" concept="2" />
       <node id="1230053187448" at="42,35,43,321" concept="2" />
@@ -1996,7 +1996,7 @@
       <node id="1230053187445" at="30,0,34,0" concept="6" trace="test_CheckInlineCanBePerformed#()V" />
       <node id="1230053187445" at="41,0,54,0" concept="6" trace="test_CheckInlineCanBePerformed#()V" />
       <scope id="1230053187317" at="26,43,27,25" />
-      <scope id="1230053187445" at="31,65,32,87" />
+      <scope id="1230053187445" at="31,65,32,56" />
       <scope id="1230053187317" at="37,52,38,19" />
       <scope id="1230053187317" at="26,0,29,0" />
       <scope id="1230053187317" at="37,0,40,0">
@@ -2012,7 +2012,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053187488">
     <file name="CheckInlineWithThrow_Test.java">
       <node id="1230053187488" at="26,38,27,25" concept="12" />
-      <node id="1230053187522" at="31,60,32,77" concept="2" />
+      <node id="1230053187522" at="31,60,32,51" concept="2" />
       <node id="1230053187488" at="37,52,38,19" concept="12" />
       <node id="1230053187489" at="41,62,42,35" concept="2" />
       <node id="1230053187525" at="42,35,43,321" concept="2" />
@@ -2023,7 +2023,7 @@
       <node id="1230053187522" at="30,0,34,0" concept="6" trace="test_CheckInlineWithThrow#()V" />
       <node id="1230053187522" at="41,0,45,0" concept="6" trace="test_CheckInlineWithThrow#()V" />
       <scope id="1230053187488" at="26,38,27,25" />
-      <scope id="1230053187522" at="31,60,32,77" />
+      <scope id="1230053187522" at="31,60,32,51" />
       <scope id="1230053187488" at="37,52,38,19" />
       <scope id="1230053187522" at="41,62,43,321" />
       <scope id="1230053187488" at="26,0,29,0" />
@@ -2039,7 +2039,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053187531">
     <file name="InlineManyReturns_Test.java">
       <node id="1230053187531" at="31,35,32,25" concept="12" />
-      <node id="1230053187631" at="36,57,37,71" concept="2" />
+      <node id="1230053187631" at="36,57,37,48" concept="2" />
       <node id="1230053187531" at="42,52,43,19" concept="12" />
       <node id="1230053187532" at="46,59,47,35" concept="2" />
       <node id="1230053187573" at="47,35,48,35" concept="2" />
@@ -2056,7 +2056,7 @@
       <node id="1230053187644" at="50,23,55,7" concept="0" />
       <node id="1230053187631" at="46,0,57,0" concept="6" trace="test_InlineManyReturns#()V" />
       <scope id="1230053187531" at="31,35,32,25" />
-      <scope id="1230053187631" at="36,57,37,71" />
+      <scope id="1230053187631" at="36,57,37,48" />
       <scope id="1230053187531" at="42,52,43,19" />
       <scope id="1230053187531" at="31,0,34,0" />
       <scope id="1230053187531" at="42,0,45,0">
@@ -2078,7 +2078,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053187647">
     <file name="InlineMethodWithReturnAtTheEnd_Test.java">
       <node id="1230053187647" at="31,48,32,25" concept="12" />
-      <node id="1230053187736" at="36,70,37,97" concept="2" />
+      <node id="1230053187736" at="36,70,37,61" concept="2" />
       <node id="1230053187647" at="42,52,43,19" concept="12" />
       <node id="1230053187648" at="46,72,47,35" concept="2" />
       <node id="1230053187688" at="47,35,48,35" concept="2" />
@@ -2095,7 +2095,7 @@
       <node id="1230053187749" at="50,23,55,7" concept="0" />
       <node id="1230053187736" at="46,0,57,0" concept="6" trace="test_InlineMethodWithReturnAtTheEnd#()V" />
       <scope id="1230053187647" at="31,48,32,25" />
-      <scope id="1230053187736" at="36,70,37,97" />
+      <scope id="1230053187736" at="36,70,37,61" />
       <scope id="1230053187647" at="42,52,43,19" />
       <scope id="1230053187647" at="31,0,34,0" />
       <scope id="1230053187647" at="42,0,45,0">
@@ -2117,7 +2117,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053187752">
     <file name="InlineMethodWithVoidType_Test.java">
       <node id="1230053187752" at="31,42,32,25" concept="12" />
-      <node id="1230053187828" at="36,64,37,85" concept="2" />
+      <node id="1230053187828" at="36,64,37,55" concept="2" />
       <node id="1230053187752" at="42,52,43,19" concept="12" />
       <node id="1230053187753" at="46,66,47,35" concept="2" />
       <node id="1230053187788" at="47,35,48,35" concept="2" />
@@ -2134,7 +2134,7 @@
       <node id="1230053187841" at="50,23,55,7" concept="0" />
       <node id="1230053187828" at="46,0,57,0" concept="6" trace="test_InlineMethodWithVoidType#()V" />
       <scope id="1230053187752" at="31,42,32,25" />
-      <scope id="1230053187828" at="36,64,37,85" />
+      <scope id="1230053187828" at="36,64,37,55" />
       <scope id="1230053187752" at="42,52,43,19" />
       <scope id="1230053187752" at="31,0,34,0" />
       <scope id="1230053187752" at="42,0,45,0">
@@ -2156,7 +2156,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053187844">
     <file name="InlineWithVoidTypeAndBug_Test.java">
       <node id="1230053187844" at="31,42,32,25" concept="12" />
-      <node id="1230053187884" at="36,64,37,85" concept="2" />
+      <node id="1230053187884" at="36,64,37,55" concept="2" />
       <node id="1230053187844" at="42,52,43,19" concept="12" />
       <node id="1230053187845" at="46,66,47,35" concept="2" />
       <node id="1230053187866" at="47,35,48,35" concept="2" />
@@ -2173,7 +2173,7 @@
       <node id="1230053187897" at="50,23,55,7" concept="0" />
       <node id="1230053187884" at="46,0,57,0" concept="6" trace="test_InlineWithVoidTypeAndBug#()V" />
       <scope id="1230053187844" at="31,42,32,25" />
-      <scope id="1230053187884" at="36,64,37,85" />
+      <scope id="1230053187884" at="36,64,37,55" />
       <scope id="1230053187844" at="42,52,43,19" />
       <scope id="1230053187844" at="31,0,34,0" />
       <scope id="1230053187844" at="42,0,45,0">
@@ -2195,7 +2195,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053187900">
     <file name="InlineWithoutReturnStatement_Test.java">
       <node id="1230053187900" at="31,46,32,25" concept="12" />
-      <node id="1230053187901" at="36,68,37,93" concept="2" />
+      <node id="1230053187901" at="36,68,37,59" concept="2" />
       <node id="1230053187900" at="42,52,43,19" concept="12" />
       <node id="1230053187917" at="46,70,47,35" concept="2" />
       <node id="1230053187938" at="47,35,48,35" concept="2" />
@@ -2212,7 +2212,7 @@
       <node id="1230053187914" at="50,23,55,7" concept="0" />
       <node id="1230053187901" at="46,0,57,0" concept="6" trace="test_InlineWithoutReturnStatement#()V" />
       <scope id="1230053187900" at="31,46,32,25" />
-      <scope id="1230053187901" at="36,68,37,93" />
+      <scope id="1230053187901" at="36,68,37,59" />
       <scope id="1230053187900" at="42,52,43,19" />
       <scope id="1230053187900" at="31,0,34,0" />
       <scope id="1230053187900" at="42,0,45,0">
@@ -2234,7 +2234,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053223832">
     <file name="InlineStaticFromAnotherClass_Test.java">
       <node id="1230053223832" at="31,46,32,25" concept="12" />
-      <node id="1230053223867" at="36,68,37,93" concept="2" />
+      <node id="1230053223867" at="36,68,37,59" concept="2" />
       <node id="1230053223832" at="42,52,43,19" concept="12" />
       <node id="1230053223833" at="46,70,47,35" concept="2" />
       <node id="1230053223846" at="47,35,48,35" concept="2" />
@@ -2252,7 +2252,7 @@
       <node id="1230053223880" at="51,23,56,7" concept="0" />
       <node id="1230053223867" at="46,0,58,0" concept="6" trace="test_InlineStaticFromAnotherClass#()V" />
       <scope id="1230053223832" at="31,46,32,25" />
-      <scope id="1230053223867" at="36,68,37,93" />
+      <scope id="1230053223867" at="36,68,37,59" />
       <scope id="1230053223832" at="42,52,43,19" />
       <scope id="1230053223832" at="31,0,34,0" />
       <scope id="1230053223832" at="42,0,45,0">
@@ -2274,7 +2274,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053223883">
     <file name="StaticMethod_Test.java">
       <node id="1230053223883" at="31,30,32,25" concept="12" />
-      <node id="1230053223936" at="36,52,37,61" concept="2" />
+      <node id="1230053223936" at="36,52,37,43" concept="2" />
       <node id="1230053223883" at="42,52,43,19" concept="12" />
       <node id="1230053223884" at="46,54,47,35" concept="2" />
       <node id="1230053223910" at="47,35,48,35" concept="2" />
@@ -2291,7 +2291,7 @@
       <node id="1230053223949" at="50,23,55,7" concept="0" />
       <node id="1230053223936" at="46,0,57,0" concept="6" trace="test_StaticMethod#()V" />
       <scope id="1230053223883" at="31,30,32,25" />
-      <scope id="1230053223936" at="36,52,37,61" />
+      <scope id="1230053223936" at="36,52,37,43" />
       <scope id="1230053223883" at="42,52,43,19" />
       <scope id="1230053223883" at="31,0,34,0" />
       <scope id="1230053223883" at="42,0,45,0">
@@ -2313,8 +2313,8 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053266365">
     <file name="InlineFromConceptFunction_Test.java">
       <node id="1230053266365" at="33,43,34,25" concept="12" />
-      <node id="1230053266388" at="38,49,39,71" concept="2" />
-      <node id="1230053266404" at="42,49,43,71" concept="2" />
+      <node id="1230053266388" at="38,49,39,40" concept="2" />
+      <node id="1230053266404" at="42,49,43,40" concept="2" />
       <node id="1230053266365" at="48,52,49,19" concept="12" />
       <node id="1230053266366" at="52,51,53,35" concept="2" />
       <node id="1230053266380" at="53,35,54,35" concept="2" />
@@ -2341,8 +2341,8 @@
       <node id="1230053266388" at="52,0,63,0" concept="6" trace="test_deinition#()V" />
       <node id="1230053266404" at="63,0,74,0" concept="6" trace="test_reference#()V" />
       <scope id="1230053266365" at="33,43,34,25" />
-      <scope id="1230053266388" at="38,49,39,71" />
-      <scope id="1230053266404" at="42,49,43,71" />
+      <scope id="1230053266388" at="38,49,39,40" />
+      <scope id="1230053266404" at="42,49,43,40" />
       <scope id="1230053266365" at="48,52,49,19" />
       <scope id="1230053266365" at="33,0,36,0" />
       <scope id="1230053266365" at="48,0,51,0">
@@ -2373,7 +2373,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053266420">
     <file name="InlineLocalVariableReferenceWithoutDeclarationDeleting_Test.java">
       <node id="1230053266420" at="31,72,32,25" concept="12" />
-      <node id="1230053266421" at="36,94,37,145" concept="2" />
+      <node id="1230053266421" at="36,94,37,85" concept="2" />
       <node id="1230053266420" at="42,52,43,19" concept="12" />
       <node id="1230053266436" at="46,96,47,35" concept="2" />
       <node id="1230053266457" at="47,35,48,35" concept="2" />
@@ -2390,7 +2390,7 @@
       <node id="1230053266433" at="50,26,55,7" concept="0" />
       <node id="1230053266421" at="46,0,57,0" concept="6" trace="test_InlineLocalVariableReferenceWithoutDeclarationDeleting#()V" />
       <scope id="1230053266420" at="31,72,32,25" />
-      <scope id="1230053266421" at="36,94,37,145" />
+      <scope id="1230053266421" at="36,94,37,85" />
       <scope id="1230053266420" at="42,52,43,19" />
       <scope id="1230053266420" at="31,0,34,0" />
       <scope id="1230053266420" at="42,0,45,0">
@@ -2412,7 +2412,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053266477">
     <file name="InlineLocalVariableReferense_Test.java">
       <node id="1230053266477" at="31,46,32,25" concept="12" />
-      <node id="1230053266511" at="36,68,37,93" concept="2" />
+      <node id="1230053266511" at="36,68,37,59" concept="2" />
       <node id="1230053266477" at="42,52,43,19" concept="12" />
       <node id="1230053266478" at="46,70,47,35" concept="2" />
       <node id="1230053266497" at="47,35,48,35" concept="2" />
@@ -2429,7 +2429,7 @@
       <node id="1230053266523" at="50,26,55,7" concept="0" />
       <node id="1230053266511" at="46,0,57,0" concept="6" trace="test_InlineLocalVariableReferense#()V" />
       <scope id="1230053266477" at="31,46,32,25" />
-      <scope id="1230053266511" at="36,68,37,93" />
+      <scope id="1230053266511" at="36,68,37,59" />
       <scope id="1230053266477" at="42,52,43,19" />
       <scope id="1230053266477" at="31,0,34,0" />
       <scope id="1230053266477" at="42,0,45,0">
@@ -2451,7 +2451,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053266526">
     <file name="InlineReferenceWithAssignment_Test.java">
       <node id="1230053266526" at="31,47,32,25" concept="12" />
-      <node id="1230053266527" at="36,69,37,95" concept="2" />
+      <node id="1230053266527" at="36,69,37,60" concept="2" />
       <node id="1230053266526" at="42,52,43,19" concept="12" />
       <node id="1230053266542" at="46,71,47,35" concept="2" />
       <node id="1230053266566" at="47,35,48,35" concept="2" />
@@ -2468,7 +2468,7 @@
       <node id="1230053266539" at="50,26,55,7" concept="0" />
       <node id="1230053266527" at="46,0,57,0" concept="6" trace="test_InlineReferenceWithAssignment#()V" />
       <scope id="1230053266526" at="31,47,32,25" />
-      <scope id="1230053266527" at="36,69,37,95" />
+      <scope id="1230053266527" at="36,69,37,60" />
       <scope id="1230053266526" at="42,52,43,19" />
       <scope id="1230053266526" at="31,0,34,0" />
       <scope id="1230053266526" at="42,0,45,0">
@@ -2490,7 +2490,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053266582">
     <file name="InlineWithoutDeclarationDeletion_Test.java">
       <node id="1230053266582" at="31,50,32,25" concept="12" />
-      <node id="1230053266623" at="36,72,37,101" concept="2" />
+      <node id="1230053266623" at="36,72,37,63" concept="2" />
       <node id="1230053266582" at="42,52,43,19" concept="12" />
       <node id="1230053266583" at="46,74,47,35" concept="2" />
       <node id="1230053266604" at="47,35,48,35" concept="2" />
@@ -2507,7 +2507,7 @@
       <node id="1230053266635" at="50,26,55,7" concept="0" />
       <node id="1230053266623" at="46,0,57,0" concept="6" trace="test_inlineWithoutDeclarationDeletion#()V" />
       <scope id="1230053266582" at="31,50,32,25" />
-      <scope id="1230053266623" at="36,72,37,101" />
+      <scope id="1230053266623" at="36,72,37,63" />
       <scope id="1230053266582" at="42,52,43,19" />
       <scope id="1230053266582" at="31,0,34,0" />
       <scope id="1230053266582" at="42,0,45,0">
@@ -2529,7 +2529,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053266638">
     <file name="SimpleInlineVariable_Test.java">
       <node id="1230053266638" at="31,38,32,25" concept="12" />
-      <node id="1230053266639" at="36,60,37,77" concept="2" />
+      <node id="1230053266639" at="36,60,37,51" concept="2" />
       <node id="1230053266638" at="42,52,43,19" concept="12" />
       <node id="1230053266654" at="46,62,47,35" concept="2" />
       <node id="1230053266673" at="47,35,48,35" concept="2" />
@@ -2546,7 +2546,7 @@
       <node id="1230053266651" at="50,26,55,7" concept="0" />
       <node id="1230053266639" at="46,0,57,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="1230053266638" at="31,38,32,25" />
-      <scope id="1230053266639" at="36,60,37,77" />
+      <scope id="1230053266639" at="36,60,37,51" />
       <scope id="1230053266638" at="42,52,43,19" />
       <scope id="1230053266638" at="31,0,34,0" />
       <scope id="1230053266638" at="42,0,45,0">
@@ -2568,7 +2568,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053302505">
     <file name="MoveMethodWithFields_Test.java">
       <node id="1230053302505" at="31,38,32,25" concept="12" />
-      <node id="1230053302506" at="36,60,37,77" concept="2" />
+      <node id="1230053302506" at="36,60,37,51" concept="2" />
       <node id="1230053302505" at="42,52,43,19" concept="12" />
       <node id="1230053302525" at="46,62,47,35" concept="2" />
       <node id="1230053302541" at="47,35,48,35" concept="2" />
@@ -2587,7 +2587,7 @@
       <node id="1230053302520" at="52,26,57,7" concept="0" />
       <node id="1230053302506" at="46,0,59,0" concept="6" trace="test_MoveMethodWithFields#()V" />
       <scope id="1230053302505" at="31,38,32,25" />
-      <scope id="1230053302506" at="36,60,37,77" />
+      <scope id="1230053302506" at="36,60,37,51" />
       <scope id="1230053302505" at="42,52,43,19" />
       <scope id="1230053302505" at="31,0,34,0" />
       <scope id="1230053302505" at="42,0,45,0">
@@ -2609,7 +2609,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053302564">
     <file name="MoveMethodWithMethods_Test.java">
       <node id="1230053302564" at="31,39,32,25" concept="12" />
-      <node id="1230053302565" at="36,61,37,79" concept="2" />
+      <node id="1230053302565" at="36,61,37,52" concept="2" />
       <node id="1230053302564" at="42,52,43,19" concept="12" />
       <node id="1230053302584" at="46,63,47,35" concept="2" />
       <node id="1230053302601" at="47,35,48,35" concept="2" />
@@ -2628,7 +2628,7 @@
       <node id="1230053302579" at="52,26,57,7" concept="0" />
       <node id="1230053302565" at="46,0,59,0" concept="6" trace="test_MoveMethodWithMethods#()V" />
       <scope id="1230053302564" at="31,39,32,25" />
-      <scope id="1230053302565" at="36,61,37,79" />
+      <scope id="1230053302565" at="36,61,37,52" />
       <scope id="1230053302564" at="42,52,43,19" />
       <scope id="1230053302564" at="31,0,34,0" />
       <scope id="1230053302564" at="42,0,45,0">
@@ -2650,7 +2650,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053302625">
     <file name="MoveMethodWithUssages_Test.java">
       <node id="1230053302625" at="31,39,32,25" concept="12" />
-      <node id="1230053302626" at="36,45,37,63" concept="2" />
+      <node id="1230053302626" at="36,45,37,36" concept="2" />
       <node id="1230053302625" at="42,52,43,19" concept="12" />
       <node id="1230053302653" at="46,47,47,35" concept="2" />
       <node id="1230053302662" at="47,35,48,35" concept="2" />
@@ -2670,7 +2670,7 @@
       <node id="1230053302648" at="53,279,58,7" concept="0" />
       <node id="1230053302626" at="46,0,60,0" concept="6" trace="test_check#()V" />
       <scope id="1230053302625" at="31,39,32,25" />
-      <scope id="1230053302626" at="36,45,37,63" />
+      <scope id="1230053302626" at="36,45,37,36" />
       <scope id="1230053302625" at="42,52,43,19" />
       <scope id="1230053302625" at="31,0,34,0" />
       <scope id="1230053302625" at="42,0,45,0">
@@ -2692,7 +2692,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230053302691">
     <file name="SimpleMoveMethod_Test.java">
       <node id="1230053302691" at="31,34,32,25" concept="12" />
-      <node id="1230053302692" at="36,45,37,58" concept="2" />
+      <node id="1230053302692" at="36,45,37,36" concept="2" />
       <node id="1230053302691" at="42,52,43,19" concept="12" />
       <node id="1230053302711" at="46,47,47,35" concept="2" />
       <node id="1230053302720" at="47,35,48,35" concept="2" />
@@ -2711,7 +2711,7 @@
       <node id="1230053302706" at="52,26,57,7" concept="0" />
       <node id="1230053302692" at="46,0,59,0" concept="6" trace="test_check#()V" />
       <scope id="1230053302691" at="31,34,32,25" />
-      <scope id="1230053302692" at="36,45,37,58" />
+      <scope id="1230053302692" at="36,45,37,36" />
       <scope id="1230053302691" at="42,52,43,19" />
       <scope id="1230053302691" at="31,0,34,0" />
       <scope id="1230053302691" at="42,0,45,0">
@@ -2733,7 +2733,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230057984816">
     <file name="InlineMethodInTest_Test.java">
       <node id="1230057984816" at="31,36,32,25" concept="12" />
-      <node id="1230057984846" at="36,56,37,71" concept="2" />
+      <node id="1230057984846" at="36,56,37,47" concept="2" />
       <node id="1230057984816" at="42,52,43,19" concept="12" />
       <node id="1230057984817" at="46,58,47,35" concept="2" />
       <node id="1230057984833" at="47,35,48,35" concept="2" />
@@ -2750,7 +2750,7 @@
       <node id="1230057984859" at="50,23,55,7" concept="0" />
       <node id="1230057984846" at="46,0,57,0" concept="6" trace="test_InlineMethodTest#()V" />
       <scope id="1230057984816" at="31,36,32,25" />
-      <scope id="1230057984846" at="36,56,37,71" />
+      <scope id="1230057984846" at="36,56,37,47" />
       <scope id="1230057984816" at="42,52,43,19" />
       <scope id="1230057984816" at="31,0,34,0" />
       <scope id="1230057984816" at="42,0,45,0">
@@ -2772,7 +2772,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1300615610528534002">
     <file name="FindForMethodWithIVariableLikeNodes_Test.java">
       <node id="1300615610528534002" at="34,53,35,25" concept="12" />
-      <node id="1300615610528534093" at="39,79,40,111" concept="2" />
+      <node id="1300615610528534093" at="39,79,40,70" concept="2" />
       <node id="1300615610528534002" at="45,52,46,19" concept="12" />
       <node id="1300615610528534003" at="49,81,50,41" concept="2" />
       <node id="1300615610528534193" at="50,41,51,41" concept="2" />
@@ -2794,7 +2794,7 @@
       <node id="1300615610528534141" at="59,7,64,7" concept="0" />
       <node id="1300615610528534093" at="49,0,66,0" concept="6" trace="test_FindForMethodWithIVariableLikeNodesTest#()V" />
       <scope id="1300615610528534002" at="34,53,35,25" />
-      <scope id="1300615610528534093" at="39,79,40,111" />
+      <scope id="1300615610528534093" at="39,79,40,70" />
       <scope id="1300615610528534002" at="45,52,46,19" />
       <scope id="1300615610528534126" at="56,73,58,42">
         <var name="matchRef" id="1300615610528534128" />
@@ -2824,7 +2824,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1998477585418803771">
     <file name="SimpleFindForExtractWithReturn_Test.java">
       <node id="1998477585418803771" at="34,48,35,25" concept="12" />
-      <node id="1998477585418805710" at="39,74,40,101" concept="2" />
+      <node id="1998477585418805710" at="39,74,40,65" concept="2" />
       <node id="1998477585418803771" at="45,52,46,19" concept="12" />
       <node id="1998477585418805538" at="49,76,50,41" concept="2" />
       <node id="1998477585418805601" at="50,41,51,41" concept="2" />
@@ -2846,7 +2846,7 @@
       <node id="1998477585418805750" at="59,7,64,7" concept="0" />
       <node id="1998477585418805710" at="49,0,66,0" concept="6" trace="test_SimpleFindForExtractWithReturnTest#()V" />
       <scope id="1998477585418803771" at="34,48,35,25" />
-      <scope id="1998477585418805710" at="39,74,40,101" />
+      <scope id="1998477585418805710" at="39,74,40,65" />
       <scope id="1998477585418803771" at="45,52,46,19" />
       <scope id="1998477585418805743" at="56,73,58,42">
         <var name="matchRef" id="8155843501977582852" />
@@ -2876,7 +2876,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/2004738378939035560">
     <file name="ExtractMethodWithUnusedAssignments_Test.java">
       <node id="2004738378939035560" at="33,52,34,25" concept="12" />
-      <node id="2004738378939038667" at="38,78,39,109" concept="2" />
+      <node id="2004738378939038667" at="38,78,39,69" concept="2" />
       <node id="2004738378939035560" at="44,52,45,19" concept="12" />
       <node id="2004738378939038442" at="48,80,49,41" concept="2" />
       <node id="2004738378939038435" at="49,41,50,41" concept="2" />
@@ -2897,7 +2897,7 @@
       <node id="2004738378939038837" at="54,23,59,7" concept="0" />
       <node id="2004738378939038667" at="48,0,63,0" concept="6" trace="test_ExtractMethodWithUnusedAssignmentsTest#()V" />
       <scope id="2004738378939035560" at="33,52,34,25" />
-      <scope id="2004738378939038667" at="38,78,39,109" />
+      <scope id="2004738378939038667" at="38,78,39,69" />
       <scope id="2004738378939035560" at="44,52,45,19" />
       <scope id="2004738378939035560" at="33,0,36,0" />
       <scope id="2004738378939035560" at="44,0,47,0">
@@ -2920,7 +2920,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/2163048091639854868">
     <file name="IntroduceConstantFromAnonimousClass_Test.java">
       <node id="2163048091639854868" at="32,53,33,25" concept="12" />
-      <node id="2163048091639855068" at="37,79,38,111" concept="2" />
+      <node id="2163048091639855068" at="37,79,38,70" concept="2" />
       <node id="2163048091639854868" at="43,52,44,19" concept="12" />
       <node id="2163048091639854957" at="47,81,48,41" concept="2" />
       <node id="2163048091639855005" at="48,41,49,41" concept="2" />
@@ -2941,7 +2941,7 @@
       <node id="2163048091639855096" at="55,34,60,7" concept="0" />
       <node id="2163048091639855068" at="47,0,62,0" concept="6" trace="test_IntroduceConstantFromAnonimousClassTest#()V" />
       <scope id="2163048091639854868" at="32,53,33,25" />
-      <scope id="2163048091639855068" at="37,79,38,111" />
+      <scope id="2163048091639855068" at="37,79,38,70" />
       <scope id="2163048091639854868" at="43,52,44,19" />
       <scope id="2163048091639854868" at="32,0,35,0" />
       <scope id="2163048091639854868" at="43,0,46,0">
@@ -2963,7 +2963,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/2230400082817266597">
     <file name="ConvertAnonymousWithTypeVariablesTest_Test.java">
       <node id="2230400082817266597" at="31,55,32,25" concept="12" />
-      <node id="2230400082817279740" at="36,57,37,91" concept="2" />
+      <node id="2230400082817279740" at="36,57,37,48" concept="2" />
       <node id="2230400082817266597" at="42,52,43,19" concept="12" />
       <node id="2230400082817266598" at="46,59,47,41" concept="2" />
       <node id="2230400082817266608" at="47,41,48,41" concept="2" />
@@ -2980,7 +2980,7 @@
       <node id="637963823611492216" at="50,317,55,7" concept="0" />
       <node id="2230400082817279740" at="46,0,57,0" concept="6" trace="test_TypeVariablesTest#()V" />
       <scope id="2230400082817266597" at="31,55,32,25" />
-      <scope id="2230400082817279740" at="36,57,37,91" />
+      <scope id="2230400082817279740" at="36,57,37,48" />
       <scope id="2230400082817266597" at="42,52,43,19" />
       <scope id="2230400082817266597" at="31,0,34,0" />
       <scope id="2230400082817266597" at="42,0,45,0">
@@ -3000,7 +3000,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/2230400082818031588">
     <file name="ConvertAnonymousToStaticTest_Test.java">
       <node id="2230400082818031588" at="31,46,32,25" concept="12" />
-      <node id="2230400082818041866" at="36,52,37,77" concept="2" />
+      <node id="2230400082818041866" at="36,52,37,43" concept="2" />
       <node id="2230400082818031588" at="42,52,43,19" concept="12" />
       <node id="2230400082818031589" at="46,54,47,41" concept="2" />
       <node id="2230400082818031597" at="47,41,48,41" concept="2" />
@@ -3017,7 +3017,7 @@
       <node id="637963823611492192" at="50,319,55,7" concept="0" />
       <node id="2230400082818041866" at="46,0,57,0" concept="6" trace="test_ToStaticTest#()V" />
       <scope id="2230400082818031588" at="31,46,32,25" />
-      <scope id="2230400082818041866" at="36,52,37,77" />
+      <scope id="2230400082818041866" at="36,52,37,43" />
       <scope id="2230400082818031588" at="42,52,43,19" />
       <scope id="2230400082818031588" at="31,0,34,0" />
       <scope id="2230400082818031588" at="42,0,45,0">
@@ -3037,7 +3037,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3014415391767789119">
     <file name="SimpleMoveStaticMethod_Test.java">
       <node id="3014415391767789119" at="29,40,30,25" concept="12" />
-      <node id="3014415391767789218" at="34,62,35,81" concept="2" />
+      <node id="3014415391767789218" at="34,62,35,53" concept="2" />
       <node id="3014415391767789119" at="40,52,41,19" concept="12" />
       <node id="3014415391767789120" at="44,64,45,41" concept="2" />
       <node id="3014415391767789149" at="45,41,46,41" concept="2" />
@@ -3054,7 +3054,7 @@
       <node id="3014415391767789218" at="33,0,37,0" concept="6" trace="test_SimpleMoveStaticMethod#()V" />
       <node id="3014415391767789218" at="44,0,54,0" concept="6" trace="test_SimpleMoveStaticMethod#()V" />
       <scope id="3014415391767789119" at="29,40,30,25" />
-      <scope id="3014415391767789218" at="34,62,35,81" />
+      <scope id="3014415391767789218" at="34,62,35,53" />
       <scope id="3014415391767789119" at="40,52,41,19" />
       <scope id="3014415391767789119" at="29,0,32,0" />
       <scope id="3014415391767789119" at="40,0,43,0">
@@ -3073,7 +3073,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/30987049746108520">
     <file name="VariableDeclarationInitializer_Test.java">
       <node id="30987049746108520" at="31,48,32,25" concept="12" />
-      <node id="30987049746108578" at="36,68,37,95" concept="2" />
+      <node id="30987049746108578" at="36,68,37,59" concept="2" />
       <node id="30987049746108520" at="42,52,43,19" concept="12" />
       <node id="30987049746108521" at="46,70,47,39" concept="2" />
       <node id="30987049746108548" at="47,39,48,39" concept="2" />
@@ -3090,7 +3090,7 @@
       <node id="30987049746108591" at="50,23,55,7" concept="0" />
       <node id="30987049746108578" at="46,0,57,0" concept="6" trace="test_DeclarationVariablesInMethod#()V" />
       <scope id="30987049746108520" at="31,48,32,25" />
-      <scope id="30987049746108578" at="36,68,37,95" />
+      <scope id="30987049746108578" at="36,68,37,59" />
       <scope id="30987049746108520" at="42,52,43,19" />
       <scope id="30987049746108520" at="31,0,34,0" />
       <scope id="30987049746108520" at="42,0,45,0">
@@ -3112,7 +3112,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/30987049746113412">
     <file name="OperandOfDotExpression_Test.java">
       <node id="30987049746113412" at="31,40,32,25" concept="12" />
-      <node id="30987049746113470" at="36,68,37,87" concept="2" />
+      <node id="30987049746113470" at="36,68,37,59" concept="2" />
       <node id="30987049746113412" at="42,52,43,19" concept="12" />
       <node id="30987049746113413" at="46,70,47,39" concept="2" />
       <node id="30987049746113440" at="47,39,48,39" concept="2" />
@@ -3129,7 +3129,7 @@
       <node id="30987049746113483" at="50,23,55,7" concept="0" />
       <node id="30987049746113470" at="46,0,57,0" concept="6" trace="test_DeclarationVariablesInMethod#()V" />
       <scope id="30987049746113412" at="31,40,32,25" />
-      <scope id="30987049746113470" at="36,68,37,87" />
+      <scope id="30987049746113470" at="36,68,37,59" />
       <scope id="30987049746113412" at="42,52,43,19" />
       <scope id="30987049746113412" at="31,0,34,0" />
       <scope id="30987049746113412" at="42,0,45,0">
@@ -3151,7 +3151,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3109730807963541425">
     <file name="IntroduceVariableFromAnonimousClass_Test.java">
       <node id="3109730807963541425" at="31,53,32,25" concept="12" />
-      <node id="3109730807963545055" at="36,79,37,111" concept="2" />
+      <node id="3109730807963545055" at="36,79,37,70" concept="2" />
       <node id="3109730807963541425" at="42,52,43,19" concept="12" />
       <node id="3109730807963543192" at="46,81,47,41" concept="2" />
       <node id="3109730807963543200" at="47,41,48,41" concept="2" />
@@ -3172,7 +3172,7 @@
       <node id="3109730807963545092" at="54,34,59,7" concept="0" />
       <node id="3109730807963545055" at="46,0,61,0" concept="6" trace="test_IntroduceVariableFromAnonimousClassTest#()V" />
       <scope id="3109730807963541425" at="31,53,32,25" />
-      <scope id="3109730807963545055" at="36,79,37,111" />
+      <scope id="3109730807963545055" at="36,79,37,70" />
       <scope id="3109730807963541425" at="42,52,43,19" />
       <scope id="3109730807963541425" at="31,0,34,0" />
       <scope id="3109730807963541425" at="42,0,45,0">
@@ -3194,7 +3194,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3109730807963748196">
     <file name="ConvertAnonymousWithLocalVariables_Test.java">
       <node id="3109730807963748196" at="31,52,32,25" concept="12" />
-      <node id="3109730807963748292" at="36,57,37,88" concept="2" />
+      <node id="3109730807963748292" at="36,57,37,48" concept="2" />
       <node id="3109730807963748196" at="42,52,43,19" concept="12" />
       <node id="3109730807963748197" at="46,59,47,41" concept="2" />
       <node id="3109730807963748238" at="47,41,48,41" concept="2" />
@@ -3210,7 +3210,7 @@
       <node id="3109730807963748302" at="49,322,54,7" concept="0" />
       <node id="3109730807963748292" at="46,0,56,0" concept="6" trace="test_AbstractClassTest#()V" />
       <scope id="3109730807963748196" at="31,52,32,25" />
-      <scope id="3109730807963748292" at="36,57,37,88" />
+      <scope id="3109730807963748292" at="36,57,37,48" />
       <scope id="3109730807963748196" at="42,52,43,19" />
       <scope id="3109730807963748196" at="31,0,34,0" />
       <scope id="3109730807963748196" at="42,0,45,0">
@@ -3230,7 +3230,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3145818413496050321">
     <file name="ConvertAnonymousWithLocalVariablesTest_Test.java">
       <node id="3145818413496050321" at="31,56,32,25" concept="12" />
-      <node id="3145818413496514603" at="36,62,37,97" concept="2" />
+      <node id="3145818413496514603" at="36,62,37,53" concept="2" />
       <node id="3145818413496050321" at="42,52,43,19" concept="12" />
       <node id="3145818413496050426" at="46,64,47,41" concept="2" />
       <node id="3145818413496050433" at="47,41,48,41" concept="2" />
@@ -3247,7 +3247,7 @@
       <node id="637963823611492202" at="50,318,55,7" concept="0" />
       <node id="3145818413496514603" at="46,0,57,0" concept="6" trace="test_WithLocalVariablesTest#()V" />
       <scope id="3145818413496050321" at="31,56,32,25" />
-      <scope id="3145818413496514603" at="36,62,37,97" />
+      <scope id="3145818413496514603" at="36,62,37,53" />
       <scope id="3145818413496050321" at="42,52,43,19" />
       <scope id="3145818413496050321" at="31,0,34,0" />
       <scope id="3145818413496050321" at="42,0,45,0">
@@ -3267,7 +3267,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3145818413497245718">
     <file name="ConvertAnonymousAbstractClassWithConstructorTest_Test.java">
       <node id="3145818413497245718" at="31,66,32,25" concept="12" />
-      <node id="3145818413497708745" at="36,72,37,117" concept="2" />
+      <node id="3145818413497708745" at="36,72,37,63" concept="2" />
       <node id="3145818413497245718" at="42,52,43,19" concept="12" />
       <node id="3145818413497245832" at="46,74,47,41" concept="2" />
       <node id="3145818413497245858" at="47,41,48,41" concept="2" />
@@ -3284,7 +3284,7 @@
       <node id="637963823611492172" at="50,318,55,7" concept="0" />
       <node id="3145818413497708745" at="46,0,57,0" concept="6" trace="test_AbstractClassWithConstructorTest#()V" />
       <scope id="3145818413497245718" at="31,66,32,25" />
-      <scope id="3145818413497708745" at="36,72,37,117" />
+      <scope id="3145818413497708745" at="36,72,37,63" />
       <scope id="3145818413497245718" at="42,52,43,19" />
       <scope id="3145818413497245718" at="31,0,34,0" />
       <scope id="3145818413497245718" at="42,0,45,0">
@@ -3304,7 +3304,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3269652460099718077">
     <file name="InlineAssignment_Test.java">
       <node id="3269652460099718077" at="31,34,32,25" concept="12" />
-      <node id="3269652460099718078" at="36,65,37,78" concept="2" />
+      <node id="3269652460099718078" at="36,65,37,56" concept="2" />
       <node id="3269652460099718077" at="42,52,43,19" concept="12" />
       <node id="3269652460099718093" at="46,67,47,41" concept="2" />
       <node id="3269652460099718117" at="47,41,48,41" concept="2" />
@@ -3321,7 +3321,7 @@
       <node id="3269652460099718090" at="50,26,55,7" concept="0" />
       <node id="3269652460099718078" at="46,0,57,0" concept="6" trace="test_InlineAssingmentInClosure#()V" />
       <scope id="3269652460099718077" at="31,34,32,25" />
-      <scope id="3269652460099718078" at="36,65,37,78" />
+      <scope id="3269652460099718078" at="36,65,37,56" />
       <scope id="3269652460099718077" at="42,52,43,19" />
       <scope id="3269652460099718077" at="31,0,34,0" />
       <scope id="3269652460099718077" at="42,0,45,0">
@@ -3343,7 +3343,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3925159399320841060">
     <file name="ChangeSigantureOfInterface_Test.java">
       <node id="3925159399320841060" at="33,44,34,25" concept="12" />
-      <node id="418758558327028827" at="38,66,39,89" concept="2" />
+      <node id="418758558327028827" at="38,66,39,57" concept="2" />
       <node id="3925159399320841060" at="44,52,45,19" concept="12" />
       <node id="418758558327012739" at="48,68,49,40" concept="2" />
       <node id="418758558327019466" at="49,40,50,40" concept="2" />
@@ -3363,7 +3363,7 @@
       <node id="418758558327166218" at="55,26,60,7" concept="0" />
       <node id="418758558327028827" at="48,0,62,0" concept="6" trace="test_ChangeSigantureOfInterface#()V" />
       <scope id="3925159399320841060" at="33,44,34,25" />
-      <scope id="418758558327028827" at="38,66,39,89" />
+      <scope id="418758558327028827" at="38,66,39,57" />
       <scope id="3925159399320841060" at="44,52,45,19" />
       <scope id="3925159399320841060" at="33,0,36,0" />
       <scope id="3925159399320841060" at="44,0,47,0">
@@ -3386,7 +3386,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/4038232163186978773">
     <file name="IntroduceFinalLocalVariable_Test.java">
       <node id="4038232163186978773" at="31,45,32,25" concept="12" />
-      <node id="4038232163186978816" at="36,67,37,91" concept="2" />
+      <node id="4038232163186978816" at="36,67,37,58" concept="2" />
       <node id="4038232163186978773" at="42,52,43,19" concept="12" />
       <node id="4038232163186978774" at="46,69,47,41" concept="2" />
       <node id="4038232163186978789" at="47,41,48,41" concept="2" />
@@ -3406,7 +3406,7 @@
       <node id="4038232163186978844" at="53,34,58,7" concept="0" />
       <node id="4038232163186978816" at="46,0,60,0" concept="6" trace="test_IntroduceFinalLocalVariable#()V" />
       <scope id="4038232163186978773" at="31,45,32,25" />
-      <scope id="4038232163186978816" at="36,67,37,91" />
+      <scope id="4038232163186978816" at="36,67,37,58" />
       <scope id="4038232163186978773" at="42,52,43,19" />
       <scope id="4038232163186978773" at="31,0,34,0" />
       <scope id="4038232163186978773" at="42,0,45,0">
@@ -3428,7 +3428,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/4038232163187008743">
     <file name="IntroduceFinalField_Test.java">
       <node id="4038232163187008743" at="33,37,34,25" concept="12" />
-      <node id="4038232163187008791" at="38,59,39,75" concept="2" />
+      <node id="4038232163187008791" at="38,59,39,50" concept="2" />
       <node id="4038232163187008743" at="44,52,45,19" concept="12" />
       <node id="4038232163187008744" at="48,61,49,41" concept="2" />
       <node id="4038232163187008759" at="49,41,50,41" concept="2" />
@@ -3450,7 +3450,7 @@
       <node id="4038232163187008819" at="57,34,62,7" concept="0" />
       <node id="4038232163187008791" at="48,0,64,0" concept="6" trace="test_IntroduceFinalField#()V" />
       <scope id="4038232163187008743" at="33,37,34,25" />
-      <scope id="4038232163187008791" at="38,59,39,75" />
+      <scope id="4038232163187008791" at="38,59,39,50" />
       <scope id="4038232163187008743" at="44,52,45,19" />
       <scope id="4038232163187008743" at="33,0,36,0" />
       <scope id="4038232163187008743" at="44,0,47,0">
@@ -3472,7 +3472,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/4412735672778824686">
     <file name="InlineMethodWithUnusedParameters_Test.java">
       <node id="4412735672778824686" at="31,50,32,25" concept="12" />
-      <node id="4412735672778826644" at="36,72,37,101" concept="2" />
+      <node id="4412735672778826644" at="36,72,37,63" concept="2" />
       <node id="4412735672778824686" at="42,52,43,19" concept="12" />
       <node id="4412735672778826495" at="46,74,47,41" concept="2" />
       <node id="4412735672778826537" at="47,41,48,41" concept="2" />
@@ -3489,7 +3489,7 @@
       <node id="4412735672778826662" at="50,23,55,7" concept="0" />
       <node id="4412735672778826644" at="46,0,57,0" concept="6" trace="test_InlineMethodWithUnusedParameters#()V" />
       <scope id="4412735672778824686" at="31,50,32,25" />
-      <scope id="4412735672778826644" at="36,72,37,101" />
+      <scope id="4412735672778826644" at="36,72,37,63" />
       <scope id="4412735672778824686" at="42,52,43,19" />
       <scope id="4412735672778824686" at="31,0,34,0" />
       <scope id="4412735672778824686" at="42,0,45,0">
@@ -3511,7 +3511,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/4412735672780105517">
     <file name="InlineMethodWithConceptFunctionParameters_Test.java">
       <node id="4412735672780105517" at="31,59,32,25" concept="12" />
-      <node id="4412735672780107327" at="36,81,37,119" concept="2" />
+      <node id="4412735672780107327" at="36,81,37,72" concept="2" />
       <node id="4412735672780105517" at="42,52,43,19" concept="12" />
       <node id="4412735672780107330" at="46,83,47,41" concept="2" />
       <node id="4412735672780109161" at="47,41,48,41" concept="2" />
@@ -3529,7 +3529,7 @@
       <node id="4412735672780116671" at="51,23,56,7" concept="0" />
       <node id="4412735672780107327" at="46,0,58,0" concept="6" trace="test_InlineMethodWithConceptFunctionParameters#()V" />
       <scope id="4412735672780105517" at="31,59,32,25" />
-      <scope id="4412735672780107327" at="36,81,37,119" />
+      <scope id="4412735672780107327" at="36,81,37,72" />
       <scope id="4412735672780105517" at="42,52,43,19" />
       <scope id="4412735672780105517" at="31,0,34,0" />
       <scope id="4412735672780105517" at="42,0,45,0">
@@ -3551,7 +3551,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/5142438244427169026">
     <file name="MoveMethodWithParameters_Test.java">
       <node id="5142438244427169026" at="31,42,32,25" concept="12" />
-      <node id="5142438244427184232" at="36,45,37,66" concept="2" />
+      <node id="5142438244427184232" at="36,45,37,36" concept="2" />
       <node id="5142438244427169026" at="42,52,43,19" concept="12" />
       <node id="5142438244427169027" at="46,47,47,41" concept="2" />
       <node id="5142438244427184189" at="47,41,48,41" concept="2" />
@@ -3571,7 +3571,7 @@
       <node id="5142438244427184254" at="53,285,58,7" concept="0" />
       <node id="5142438244427184232" at="46,0,60,0" concept="6" trace="test_check#()V" />
       <scope id="5142438244427169026" at="31,42,32,25" />
-      <scope id="5142438244427184232" at="36,45,37,66" />
+      <scope id="5142438244427184232" at="36,45,37,36" />
       <scope id="5142438244427169026" at="42,52,43,19" />
       <scope id="5142438244427169026" at="31,0,34,0" />
       <scope id="5142438244427169026" at="42,0,45,0">
@@ -3592,58 +3592,60 @@
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/5161277940733600913">
     <file name="ExtractMethodFromClosure_Test.java">
-      <node id="5161277940733600913" at="34,42,35,25" concept="12" />
-      <node id="5161277940733601053" at="39,64,40,85" concept="2" />
-      <node id="5161277940733600913" at="45,52,46,19" concept="12" />
-      <node id="5161277940733600914" at="49,66,50,41" concept="2" />
-      <node id="5161277940733600960" at="50,41,51,41" concept="2" />
-      <node id="5161277940733601056" at="51,41,52,675" concept="7" />
-      <node id="5161277940733601064" at="52,675,53,28" concept="2" />
-      <node id="5604183372188209867" at="53,28,54,87" concept="7" />
-      <node id="5604183372188209884" at="54,87,55,87" concept="7" />
-      <node id="5604183372188209916" at="56,215,57,72" concept="2" />
-      <node id="5604183372188209934" at="57,72,58,72" concept="2" />
-      <node id="5161277940733601069" at="59,7,60,84" concept="7" />
-      <node id="5161277940733601074" at="60,84,61,23" concept="2" />
-      <node id="5161277940733601078" at="62,7,63,340" concept="7" />
-      <node id="5161277940733601078" at="63,340,64,339" concept="7" />
-      <node id="5161277940733601078" at="64,339,65,160" concept="2" />
-      <node id="5161277940733600913" at="29,0,31,0" concept="10" trace="ourParamCache" />
-      <node id="5161277940733600913" at="31,0,33,0" concept="3" trace="myWithCommandRule" />
-      <node id="5161277940733600913" at="34,0,37,0" concept="1" trace="ExtractMethodFromClosure_Test#()V" />
-      <node id="5161277940733600913" at="45,0,48,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="5161277940733601053" at="38,0,42,0" concept="6" trace="test_ExtractMethodFromClosure#()V" />
-      <node id="5604183372188209899" at="55,87,59,7" concept="5" />
-      <node id="5161277940733601078" at="61,23,66,7" concept="0" />
-      <node id="5161277940733601053" at="49,0,68,0" concept="6" trace="test_ExtractMethodFromClosure#()V" />
-      <scope id="5161277940733600913" at="34,42,35,25" />
-      <scope id="5161277940733601053" at="39,64,40,85" />
-      <scope id="5161277940733600913" at="45,52,46,19" />
-      <scope id="5604183372188209900" at="56,215,58,72" />
-      <scope id="5161277940733600913" at="34,0,37,0" />
-      <scope id="5161277940733600913" at="45,0,48,0">
+      <node id="5161277940733600913" at="35,42,36,25" concept="12" />
+      <node id="5161277940733601053" at="40,64,41,55" concept="2" />
+      <node id="5161277940733600913" at="46,52,47,19" concept="12" />
+      <node id="5161277940733600914" at="50,66,51,41" concept="2" />
+      <node id="5161277940733600960" at="51,41,52,41" concept="2" />
+      <node id="5161277940733601056" at="52,41,53,675" concept="7" />
+      <node id="5161277940733601064" at="53,675,54,28" concept="2" />
+      <node id="5604183372188209867" at="54,28,55,87" concept="7" />
+      <node id="5604183372188209884" at="55,87,56,87" concept="7" />
+      <node id="5604183372188209916" at="57,108,58,72" concept="2" />
+      <node id="5604183372188209934" at="58,72,59,72" concept="2" />
+      <node id="5161277940733601069" at="60,7,61,84" concept="7" />
+      <node id="5161277940733601074" at="61,84,62,23" concept="2" />
+      <node id="5161277940733601078" at="63,7,64,340" concept="7" />
+      <node id="5161277940733601078" at="64,340,65,339" concept="7" />
+      <node id="5161277940733601078" at="65,339,66,160" concept="2" />
+      <node id="5161277940733600913" at="74,0,75,0" concept="10" trace="LocalVariableDeclaration_d47683f3" />
+      <node id="5161277940733600913" at="30,0,32,0" concept="10" trace="ourParamCache" />
+      <node id="5161277940733600913" at="32,0,34,0" concept="3" trace="myWithCommandRule" />
+      <node id="5161277940733600913" at="35,0,38,0" concept="1" trace="ExtractMethodFromClosure_Test#()V" />
+      <node id="5161277940733600913" at="46,0,49,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5161277940733601053" at="39,0,43,0" concept="6" trace="test_ExtractMethodFromClosure#()V" />
+      <node id="5604183372188209899" at="56,87,60,7" concept="5" />
+      <node id="5161277940733601078" at="62,23,67,7" concept="0" />
+      <node id="5161277940733601053" at="50,0,69,0" concept="6" trace="test_ExtractMethodFromClosure#()V" />
+      <scope id="5161277940733600913" at="35,42,36,25" />
+      <scope id="5161277940733601053" at="40,64,41,55" />
+      <scope id="5161277940733600913" at="46,52,47,19" />
+      <scope id="5604183372188209900" at="57,108,59,72" />
+      <scope id="5161277940733600913" at="35,0,38,0" />
+      <scope id="5161277940733600913" at="46,0,49,0">
         <var name="owner" id="5161277940733600913" />
       </scope>
-      <scope id="5161277940733601078" at="62,7,65,160">
+      <scope id="5161277940733601078" at="63,7,66,160">
         <var name="nodesAfter" id="5161277940733601078" />
         <var name="nodesBefore" id="5161277940733601078" />
       </scope>
-      <scope id="5161277940733601053" at="38,0,42,0" />
-      <scope id="5161277940733601053" at="49,66,66,7">
+      <scope id="5161277940733601053" at="39,0,43,0" />
+      <scope id="5161277940733601053" at="50,66,67,7">
         <var name="p0" id="5604183372188209868" />
         <var name="p1" id="5604183372188209885" />
         <var name="params" id="5161277940733601057" />
         <var name="ref" id="5161277940733601070" />
       </scope>
-      <scope id="5161277940733601053" at="49,0,68,0" />
-      <unit id="5161277940733600913" at="43,0,71,0" name="jetbrains.mps.refactoringTest.ExtractMethodFromClosure_Test$TestBody" />
-      <unit id="5161277940733600913" at="27,0,72,0" name="jetbrains.mps.refactoringTest.ExtractMethodFromClosure_Test" />
+      <scope id="5161277940733601053" at="50,0,69,0" />
+      <unit id="5161277940733600913" at="73,0,76,0" name="jetbrains.mps.refactoringTest.ExtractMethodFromClosure_Test$AUX_wnqj8h" />
+      <unit id="5161277940733600913" at="44,0,72,0" name="jetbrains.mps.refactoringTest.ExtractMethodFromClosure_Test$TestBody" />
+      <unit id="5161277940733600913" at="28,0,77,0" name="jetbrains.mps.refactoringTest.ExtractMethodFromClosure_Test" />
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/5907083257159818727">
     <file name="ConvertAnonymousGenGenericFields_Test.java">
       <node id="5907083257159818727" at="31,50,32,25" concept="12" />
-      <node id="5907083257159871973" at="36,58,37,87" concept="2" />
+      <node id="5907083257159871973" at="36,58,37,49" concept="2" />
       <node id="5907083257159818727" at="42,52,43,19" concept="12" />
       <node id="5907083257159818799" at="46,60,47,41" concept="2" />
       <node id="5907083257159818958" at="47,41,48,41" concept="2" />
@@ -3659,7 +3661,7 @@
       <node id="5907083257159871983" at="49,320,54,7" concept="0" />
       <node id="5907083257159871973" at="46,0,56,0" concept="6" trace="test_TypeParametersTest#()V" />
       <scope id="5907083257159818727" at="31,50,32,25" />
-      <scope id="5907083257159871973" at="36,58,37,87" />
+      <scope id="5907083257159871973" at="36,58,37,49" />
       <scope id="5907083257159818727" at="42,52,43,19" />
       <scope id="5907083257159818727" at="31,0,34,0" />
       <scope id="5907083257159818727" at="42,0,45,0">
@@ -3679,7 +3681,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6195342755328023609">
     <file name="ExtractAddingNewDeclaration_Test.java">
       <node id="6195342755328023609" at="33,45,34,25" concept="12" />
-      <node id="6195342755328023704" at="38,67,39,91" concept="2" />
+      <node id="6195342755328023704" at="38,67,39,58" concept="2" />
       <node id="6195342755328023609" at="44,52,45,19" concept="12" />
       <node id="6195342755328023610" at="48,69,49,41" concept="2" />
       <node id="6195342755328023636" at="49,41,50,41" concept="2" />
@@ -3698,7 +3700,7 @@
       <node id="6195342755328023730" at="54,23,59,7" concept="0" />
       <node id="6195342755328023704" at="48,0,61,0" concept="6" trace="test_ExtractAddingNewDeclaration#()V" />
       <scope id="6195342755328023609" at="33,45,34,25" />
-      <scope id="6195342755328023704" at="38,67,39,91" />
+      <scope id="6195342755328023704" at="38,67,39,58" />
       <scope id="6195342755328023609" at="44,52,45,19" />
       <scope id="6195342755328023609" at="33,0,36,0" />
       <scope id="6195342755328023609" at="44,0,47,0">
@@ -3721,7 +3723,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6195342755328044201">
     <file name="FindForMethodWithOutputVariable_Test.java">
       <node id="6195342755328044201" at="34,49,35,25" concept="12" />
-      <node id="6195342755328044297" at="39,75,40,103" concept="2" />
+      <node id="6195342755328044297" at="39,75,40,66" concept="2" />
       <node id="6195342755328044201" at="45,52,46,19" concept="12" />
       <node id="6195342755328044202" at="49,77,50,41" concept="2" />
       <node id="6195342755328044393" at="50,41,51,41" concept="2" />
@@ -3743,7 +3745,7 @@
       <node id="6195342755328044344" at="59,7,64,7" concept="0" />
       <node id="6195342755328044297" at="49,0,66,0" concept="6" trace="test_FindForMethodWithOutputVariableTest#()V" />
       <scope id="6195342755328044201" at="34,49,35,25" />
-      <scope id="6195342755328044297" at="39,75,40,103" />
+      <scope id="6195342755328044297" at="39,75,40,66" />
       <scope id="6195342755328044201" at="45,52,46,19" />
       <scope id="6195342755328044329" at="56,73,58,42">
         <var name="matchRef" id="6195342755328044331" />
@@ -3773,7 +3775,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6207813756273751657">
     <file name="MoveMethodWithFieldInTarget_Test.java">
       <node id="6207813756273751657" at="31,45,32,25" concept="12" />
-      <node id="6207813756273751658" at="36,61,37,85" concept="2" />
+      <node id="6207813756273751658" at="36,61,37,52" concept="2" />
       <node id="6207813756273751657" at="42,52,43,19" concept="12" />
       <node id="6207813756273751677" at="46,63,47,41" concept="2" />
       <node id="8924724747233088286" at="47,41,48,41" concept="2" />
@@ -3790,7 +3792,7 @@
       <node id="6207813756273751672" at="50,26,55,7" concept="0" />
       <node id="6207813756273751658" at="46,0,57,0" concept="6" trace="test_MoveMethodWithFields2#()V" />
       <scope id="6207813756273751657" at="31,45,32,25" />
-      <scope id="6207813756273751658" at="36,61,37,85" />
+      <scope id="6207813756273751658" at="36,61,37,52" />
       <scope id="6207813756273751657" at="42,52,43,19" />
       <scope id="6207813756273751657" at="31,0,34,0" />
       <scope id="6207813756273751657" at="42,0,45,0">
@@ -3812,7 +3814,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6351584993764365770">
     <file name="InlineAssignmentInClosure_Test.java">
       <node id="6351584993764365770" at="31,43,32,25" concept="12" />
-      <node id="6351584993764365829" at="36,65,37,87" concept="2" />
+      <node id="6351584993764365829" at="36,65,37,56" concept="2" />
       <node id="6351584993764365770" at="42,52,43,19" concept="12" />
       <node id="6351584993764365771" at="46,67,47,41" concept="2" />
       <node id="6351584993764365805" at="47,41,48,41" concept="2" />
@@ -3829,7 +3831,7 @@
       <node id="6351584993764365841" at="50,26,55,7" concept="0" />
       <node id="6351584993764365829" at="46,0,57,0" concept="6" trace="test_InlineAssingmentInClosure#()V" />
       <scope id="6351584993764365770" at="31,43,32,25" />
-      <scope id="6351584993764365829" at="36,65,37,87" />
+      <scope id="6351584993764365829" at="36,65,37,56" />
       <scope id="6351584993764365770" at="42,52,43,19" />
       <scope id="6351584993764365770" at="31,0,34,0" />
       <scope id="6351584993764365770" at="42,0,45,0">
@@ -3851,7 +3853,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/668606183334155391">
     <file name="InlineFromAnotherBehavior_Test.java">
       <node id="668606183334155391" at="31,43,32,25" concept="12" />
-      <node id="668606183334155425" at="36,64,37,86" concept="2" />
+      <node id="668606183334155425" at="36,64,37,55" concept="2" />
       <node id="668606183334155391" at="42,52,43,19" concept="12" />
       <node id="668606183334155392" at="46,66,47,40" concept="2" />
       <node id="668606183334155410" at="47,40,48,40" concept="2" />
@@ -3868,7 +3870,7 @@
       <node id="668606183334155438" at="50,23,55,7" concept="0" />
       <node id="668606183334155425" at="46,0,57,0" concept="6" trace="test_InlineInBehaviorWithThis#()V" />
       <scope id="668606183334155391" at="31,43,32,25" />
-      <scope id="668606183334155425" at="36,64,37,86" />
+      <scope id="668606183334155425" at="36,64,37,55" />
       <scope id="668606183334155391" at="42,52,43,19" />
       <scope id="668606183334155391" at="31,0,34,0" />
       <scope id="668606183334155391" at="42,0,45,0">
@@ -3890,7 +3892,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6791439617122300870">
     <file name="ConvertAnonymousInterfaceTest_Test.java">
       <node id="6791439617122300870" at="31,47,32,25" concept="12" />
-      <node id="6791439617122315497" at="36,53,37,79" concept="2" />
+      <node id="6791439617122315497" at="36,53,37,44" concept="2" />
       <node id="6791439617122300870" at="42,52,43,19" concept="12" />
       <node id="6791439617122308113" at="46,55,47,41" concept="2" />
       <node id="6791439617122308116" at="47,41,48,41" concept="2" />
@@ -3907,7 +3909,7 @@
       <node id="6791439617122315507" at="50,313,55,7" concept="0" />
       <node id="6791439617122315497" at="46,0,57,0" concept="6" trace="test_InterfaceTest#()V" />
       <scope id="6791439617122300870" at="31,47,32,25" />
-      <scope id="6791439617122315497" at="36,53,37,79" />
+      <scope id="6791439617122315497" at="36,53,37,44" />
       <scope id="6791439617122300870" at="42,52,43,19" />
       <scope id="6791439617122300870" at="31,0,34,0" />
       <scope id="6791439617122300870" at="42,0,45,0">
@@ -3927,7 +3929,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6791439617122628436">
     <file name="ConvertAnonymousAbstractClassTest_Test.java">
       <node id="6791439617122628436" at="31,51,32,25" concept="12" />
-      <node id="6791439617122640167" at="36,57,37,87" concept="2" />
+      <node id="6791439617122640167" at="36,57,37,48" concept="2" />
       <node id="6791439617122628436" at="42,52,43,19" concept="12" />
       <node id="6791439617122628437" at="46,59,47,41" concept="2" />
       <node id="6791439617122628452" at="47,41,48,41" concept="2" />
@@ -3944,7 +3946,7 @@
       <node id="6791439617122640193" at="50,320,55,7" concept="0" />
       <node id="6791439617122640167" at="46,0,57,0" concept="6" trace="test_AbstractClassTest#()V" />
       <scope id="6791439617122628436" at="31,51,32,25" />
-      <scope id="6791439617122640167" at="36,57,37,87" />
+      <scope id="6791439617122640167" at="36,57,37,48" />
       <scope id="6791439617122628436" at="42,52,43,19" />
       <scope id="6791439617122628436" at="31,0,34,0" />
       <scope id="6791439617122628436" at="42,0,45,0">
@@ -3964,7 +3966,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169066808584">
     <file name="InlineVariableBinaryInBinary_Test.java">
       <node id="6923327169066808584" at="31,46,32,25" concept="12" />
-      <node id="6923327169066808585" at="36,60,37,85" concept="2" />
+      <node id="6923327169066808585" at="36,60,37,51" concept="2" />
       <node id="6923327169066808584" at="42,52,43,19" concept="12" />
       <node id="6923327169066808600" at="46,62,47,41" concept="2" />
       <node id="6923327169066808619" at="47,41,48,41" concept="2" />
@@ -3981,7 +3983,7 @@
       <node id="6923327169066808597" at="50,26,55,7" concept="0" />
       <node id="6923327169066808585" at="46,0,57,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169066808584" at="31,46,32,25" />
-      <scope id="6923327169066808585" at="36,60,37,85" />
+      <scope id="6923327169066808585" at="36,60,37,51" />
       <scope id="6923327169066808584" at="42,52,43,19" />
       <scope id="6923327169066808584" at="31,0,34,0" />
       <scope id="6923327169066808584" at="42,0,45,0">
@@ -4003,7 +4005,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169066891894">
     <file name="InlineVariableBinaryInCast_Test.java">
       <node id="6923327169066891894" at="31,44,32,25" concept="12" />
-      <node id="6923327169066891895" at="36,60,37,83" concept="2" />
+      <node id="6923327169066891895" at="36,60,37,51" concept="2" />
       <node id="6923327169066891894" at="42,52,43,19" concept="12" />
       <node id="6923327169066891910" at="46,62,47,41" concept="2" />
       <node id="6923327169066891931" at="47,41,48,41" concept="2" />
@@ -4020,7 +4022,7 @@
       <node id="6923327169066891907" at="50,26,55,7" concept="0" />
       <node id="6923327169066891895" at="46,0,57,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169066891894" at="31,44,32,25" />
-      <scope id="6923327169066891895" at="36,60,37,83" />
+      <scope id="6923327169066891895" at="36,60,37,51" />
       <scope id="6923327169066891894" at="42,52,43,19" />
       <scope id="6923327169066891894" at="31,0,34,0" />
       <scope id="6923327169066891894" at="42,0,45,0">
@@ -4042,7 +4044,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169066897727">
     <file name="InlineVariableBinaryInCastOnDeclaration_Test.java">
       <node id="6923327169066897727" at="31,57,32,25" concept="12" />
-      <node id="6923327169066897728" at="36,60,37,96" concept="2" />
+      <node id="6923327169066897728" at="36,60,37,51" concept="2" />
       <node id="6923327169066897727" at="42,52,43,19" concept="12" />
       <node id="6923327169066897743" at="46,62,47,41" concept="2" />
       <node id="6923327169066897768" at="47,41,48,41" concept="2" />
@@ -4059,7 +4061,7 @@
       <node id="6923327169066897740" at="50,26,55,7" concept="0" />
       <node id="6923327169066897728" at="46,0,57,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169066897727" at="31,57,32,25" />
-      <scope id="6923327169066897728" at="36,60,37,96" />
+      <scope id="6923327169066897728" at="36,60,37,51" />
       <scope id="6923327169066897727" at="42,52,43,19" />
       <scope id="6923327169066897727" at="31,0,34,0" />
       <scope id="6923327169066897727" at="42,0,45,0">
@@ -4081,7 +4083,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169066955742">
     <file name="InlineVariableBinaryInBinaryOnDeclaration_Test.java">
       <node id="6923327169066955742" at="31,59,32,25" concept="12" />
-      <node id="6923327169066955743" at="36,60,37,98" concept="2" />
+      <node id="6923327169066955743" at="36,60,37,51" concept="2" />
       <node id="6923327169066955742" at="42,52,43,19" concept="12" />
       <node id="6923327169066955758" at="46,62,47,41" concept="2" />
       <node id="6923327169066955779" at="47,41,48,41" concept="2" />
@@ -4098,7 +4100,7 @@
       <node id="6923327169066955755" at="50,26,55,7" concept="0" />
       <node id="6923327169066955743" at="46,0,57,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169066955742" at="31,59,32,25" />
-      <scope id="6923327169066955743" at="36,60,37,98" />
+      <scope id="6923327169066955743" at="36,60,37,51" />
       <scope id="6923327169066955742" at="42,52,43,19" />
       <scope id="6923327169066955742" at="31,0,34,0" />
       <scope id="6923327169066955742" at="42,0,45,0">
@@ -4120,7 +4122,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169066964256">
     <file name="InlineFieldOperationBinary_Test.java">
       <node id="6923327169066964256" at="31,44,32,25" concept="12" />
-      <node id="6923327169066964257" at="36,60,37,83" concept="2" />
+      <node id="6923327169066964257" at="36,60,37,51" concept="2" />
       <node id="6923327169066964256" at="42,52,43,19" concept="12" />
       <node id="6923327169066964272" at="46,62,47,41" concept="2" />
       <node id="2359164386490345017" at="47,41,48,41" concept="2" />
@@ -4136,7 +4138,7 @@
       <node id="6923327169066964269" at="49,331,54,7" concept="0" />
       <node id="6923327169066964257" at="46,0,56,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169066964256" at="31,44,32,25" />
-      <scope id="6923327169066964257" at="36,60,37,83" />
+      <scope id="6923327169066964257" at="36,60,37,51" />
       <scope id="6923327169066964256" at="42,52,43,19" />
       <scope id="6923327169066964256" at="31,0,34,0" />
       <scope id="6923327169066964256" at="42,0,45,0">
@@ -4156,7 +4158,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169066983460">
     <file name="InlineFieldOperationBinaryOnDeclaration_Test.java">
       <node id="6923327169066983460" at="31,57,32,25" concept="12" />
-      <node id="6923327169066983461" at="36,60,37,96" concept="2" />
+      <node id="6923327169066983461" at="36,60,37,51" concept="2" />
       <node id="6923327169066983460" at="42,52,43,19" concept="12" />
       <node id="6923327169066983476" at="46,62,47,41" concept="2" />
       <node id="2359164386490351829" at="47,41,48,41" concept="2" />
@@ -4172,7 +4174,7 @@
       <node id="6923327169066983473" at="49,337,54,7" concept="0" />
       <node id="6923327169066983461" at="46,0,56,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169066983460" at="31,57,32,25" />
-      <scope id="6923327169066983461" at="36,60,37,96" />
+      <scope id="6923327169066983461" at="36,60,37,51" />
       <scope id="6923327169066983460" at="42,52,43,19" />
       <scope id="6923327169066983460" at="31,0,34,0" />
       <scope id="6923327169066983460" at="42,0,45,0">
@@ -4192,7 +4194,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169066992495">
     <file name="InlineFieldBinary_Test.java">
       <node id="6923327169066992495" at="31,35,32,25" concept="12" />
-      <node id="6923327169066992496" at="36,60,37,74" concept="2" />
+      <node id="6923327169066992496" at="36,60,37,51" concept="2" />
       <node id="6923327169066992495" at="42,52,43,19" concept="12" />
       <node id="6923327169066992511" at="46,62,47,41" concept="2" />
       <node id="2359164386490299722" at="47,41,48,41" concept="2" />
@@ -4208,7 +4210,7 @@
       <node id="6923327169066992508" at="49,329,54,7" concept="0" />
       <node id="6923327169066992496" at="46,0,56,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169066992495" at="31,35,32,25" />
-      <scope id="6923327169066992496" at="36,60,37,74" />
+      <scope id="6923327169066992496" at="36,60,37,51" />
       <scope id="6923327169066992495" at="42,52,43,19" />
       <scope id="6923327169066992495" at="31,0,34,0" />
       <scope id="6923327169066992495" at="42,0,45,0">
@@ -4228,7 +4230,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169067001394">
     <file name="InlineFieldBinaryOnDeclaration_Test.java">
       <node id="6923327169067001394" at="31,48,32,25" concept="12" />
-      <node id="6923327169067001395" at="36,60,37,87" concept="2" />
+      <node id="6923327169067001395" at="36,60,37,51" concept="2" />
       <node id="6923327169067001394" at="42,52,43,19" concept="12" />
       <node id="6923327169067001410" at="46,62,47,41" concept="2" />
       <node id="2359164386490339792" at="47,41,48,41" concept="2" />
@@ -4244,7 +4246,7 @@
       <node id="6923327169067001407" at="49,328,54,7" concept="0" />
       <node id="6923327169067001395" at="46,0,56,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169067001394" at="31,48,32,25" />
-      <scope id="6923327169067001395" at="36,60,37,87" />
+      <scope id="6923327169067001395" at="36,60,37,51" />
       <scope id="6923327169067001394" at="42,52,43,19" />
       <scope id="6923327169067001394" at="31,0,34,0" />
       <scope id="6923327169067001394" at="42,0,45,0">
@@ -4264,7 +4266,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6923327169067008005">
     <file name="InlineVariableBinaryInTernary_Test.java">
       <node id="6923327169067008005" at="31,47,32,25" concept="12" />
-      <node id="6923327169067008006" at="36,60,37,86" concept="2" />
+      <node id="6923327169067008006" at="36,60,37,51" concept="2" />
       <node id="6923327169067008005" at="42,52,43,19" concept="12" />
       <node id="6923327169067008021" at="46,62,47,41" concept="2" />
       <node id="6923327169067008046" at="47,41,48,41" concept="2" />
@@ -4281,7 +4283,7 @@
       <node id="6923327169067008018" at="50,26,55,7" concept="0" />
       <node id="6923327169067008006" at="46,0,57,0" concept="6" trace="test_simpleInlineVariable#()V" />
       <scope id="6923327169067008005" at="31,47,32,25" />
-      <scope id="6923327169067008006" at="36,60,37,86" />
+      <scope id="6923327169067008006" at="36,60,37,51" />
       <scope id="6923327169067008005" at="42,52,43,19" />
       <scope id="6923327169067008005" at="31,0,34,0" />
       <scope id="6923327169067008005" at="42,0,45,0">
@@ -4303,7 +4305,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6974242407276765599">
     <file name="IntroduceVariableFromWildcards_Test.java">
       <node id="6974242407276765599" at="31,48,32,25" concept="12" />
-      <node id="6974242407276777307" at="36,74,37,101" concept="2" />
+      <node id="6974242407276777307" at="36,74,37,65" concept="2" />
       <node id="6974242407276765599" at="42,52,43,19" concept="12" />
       <node id="6974242407276767366" at="46,76,47,41" concept="2" />
       <node id="6974242407276777253" at="47,41,48,41" concept="2" />
@@ -4331,7 +4333,7 @@
       <node id="6974242407276777336" at="61,34,66,7" concept="0" />
       <node id="6974242407276777307" at="46,0,68,0" concept="6" trace="test_IntroduceVariableFromWildcardsTest#()V" />
       <scope id="6974242407276765599" at="31,48,32,25" />
-      <scope id="6974242407276777307" at="36,74,37,101" />
+      <scope id="6974242407276777307" at="36,74,37,65" />
       <scope id="6974242407276765599" at="42,52,43,19" />
       <scope id="6974242407276765599" at="31,0,34,0" />
       <scope id="6974242407276765599" at="42,0,45,0">
@@ -4353,7 +4355,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7093131866560585661">
     <file name="InlineInsideClosure_Test.java">
       <node id="7093131866560585661" at="32,37,33,25" concept="12" />
-      <node id="7093131866560585733" at="37,63,38,79" concept="2" />
+      <node id="7093131866560585733" at="37,63,38,54" concept="2" />
       <node id="7093131866560585661" at="43,52,44,19" concept="12" />
       <node id="7093131866560585662" at="47,65,48,41" concept="2" />
       <node id="7093131866560585699" at="48,41,49,41" concept="2" />
@@ -4370,7 +4372,7 @@
       <node id="7093131866560585746" at="51,26,56,7" concept="0" />
       <node id="7093131866560585733" at="47,0,58,0" concept="6" trace="test_InlineInsideClosureTest#()V" />
       <scope id="7093131866560585661" at="32,37,33,25" />
-      <scope id="7093131866560585733" at="37,63,38,79" />
+      <scope id="7093131866560585733" at="37,63,38,54" />
       <scope id="7093131866560585661" at="43,52,44,19" />
       <scope id="7093131866560585661" at="32,0,35,0" />
       <scope id="7093131866560585661" at="43,0,46,0">
@@ -4392,7 +4394,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7093131866560585771">
     <file name="InlineInClosureWithOutsideAssignment_Test.java">
       <node id="7093131866560585771" at="32,54,33,25" concept="12" />
-      <node id="7093131866560585851" at="37,80,38,113" concept="2" />
+      <node id="7093131866560585851" at="37,80,38,71" concept="2" />
       <node id="7093131866560585771" at="43,52,44,19" concept="12" />
       <node id="7093131866560585772" at="47,82,48,41" concept="2" />
       <node id="7093131866560585816" at="48,41,49,41" concept="2" />
@@ -4409,7 +4411,7 @@
       <node id="7093131866560585864" at="51,26,56,7" concept="0" />
       <node id="7093131866560585851" at="47,0,58,0" concept="6" trace="test_InlineInClosureWithOutsideAssingmentTest#()V" />
       <scope id="7093131866560585771" at="32,54,33,25" />
-      <scope id="7093131866560585851" at="37,80,38,113" />
+      <scope id="7093131866560585851" at="37,80,38,71" />
       <scope id="7093131866560585771" at="43,52,44,19" />
       <scope id="7093131866560585771" at="32,0,35,0" />
       <scope id="7093131866560585771" at="43,0,46,0">
@@ -4431,7 +4433,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7475692990584612119">
     <file name="ExtractWithFieldReference_Test.java">
       <node id="7475692990584612119" at="33,43,34,25" concept="12" />
-      <node id="7475692990584612196" at="38,61,39,83" concept="2" />
+      <node id="7475692990584612196" at="38,61,39,52" concept="2" />
       <node id="7475692990584612119" at="44,52,45,19" concept="12" />
       <node id="7475692990584612120" at="48,63,49,41" concept="2" />
       <node id="7475692990584612155" at="49,41,50,41" concept="2" />
@@ -4450,7 +4452,7 @@
       <node id="7475692990584612223" at="54,23,59,7" concept="0" />
       <node id="7475692990584612196" at="48,0,61,0" concept="6" trace="test_extractFromStatements#()V" />
       <scope id="7475692990584612119" at="33,43,34,25" />
-      <scope id="7475692990584612196" at="38,61,39,83" />
+      <scope id="7475692990584612196" at="38,61,39,52" />
       <scope id="7475692990584612119" at="44,52,45,19" />
       <scope id="7475692990584612119" at="33,0,36,0" />
       <scope id="7475692990584612119" at="44,0,47,0">
@@ -4473,7 +4475,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7475692990584681432">
     <file name="ExtractWithStaticFieldReference_Test.java">
       <node id="7475692990584681432" at="33,49,34,25" concept="12" />
-      <node id="7475692990584681479" at="38,61,39,89" concept="2" />
+      <node id="7475692990584681479" at="38,61,39,52" concept="2" />
       <node id="7475692990584681432" at="44,52,45,19" concept="12" />
       <node id="7475692990584681433" at="48,63,49,41" concept="2" />
       <node id="7475692990584681453" at="49,41,50,41" concept="2" />
@@ -4492,7 +4494,7 @@
       <node id="7475692990584681504" at="54,23,59,7" concept="0" />
       <node id="7475692990584681479" at="48,0,61,0" concept="6" trace="test_extractFromStatements#()V" />
       <scope id="7475692990584681432" at="33,49,34,25" />
-      <scope id="7475692990584681479" at="38,61,39,89" />
+      <scope id="7475692990584681479" at="38,61,39,52" />
       <scope id="7475692990584681432" at="44,52,45,19" />
       <scope id="7475692990584681432" at="33,0,36,0" />
       <scope id="7475692990584681432" at="44,0,47,0">
@@ -4515,7 +4517,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7568753874916167799">
     <file name="SimpleFindAndMoveForIntroduceLocalVar_Test.java">
       <node id="7568753874916167799" at="31,55,32,25" concept="12" />
-      <node id="7568753874916167933" at="36,81,37,115" concept="2" />
+      <node id="7568753874916167933" at="36,81,37,72" concept="2" />
       <node id="7568753874916167799" at="42,52,43,19" concept="12" />
       <node id="7568753874916167815" at="46,83,47,41" concept="2" />
       <node id="7568753874916167870" at="47,41,48,41" concept="2" />
@@ -4535,7 +4537,7 @@
       <node id="7568753874916167980" at="53,34,58,7" concept="0" />
       <node id="7568753874916167933" at="46,0,60,0" concept="6" trace="test_SimpleFindAndMoveForIntroduceLocalVarTest#()V" />
       <scope id="7568753874916167799" at="31,55,32,25" />
-      <scope id="7568753874916167933" at="36,81,37,115" />
+      <scope id="7568753874916167933" at="36,81,37,72" />
       <scope id="7568753874916167799" at="42,52,43,19" />
       <scope id="7568753874916167799" at="31,0,34,0" />
       <scope id="7568753874916167799" at="42,0,45,0">
@@ -4557,7 +4559,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7568753874916187325">
     <file name="SimpleFindForIntroduceConstant_Test.java">
       <node id="7568753874916187325" at="32,48,33,25" concept="12" />
-      <node id="7568753874916187418" at="37,74,38,101" concept="2" />
+      <node id="7568753874916187418" at="37,74,38,65" concept="2" />
       <node id="7568753874916187325" at="43,52,44,19" concept="12" />
       <node id="7568753874916187326" at="47,76,48,41" concept="2" />
       <node id="7568753874916187364" at="48,41,49,41" concept="2" />
@@ -4578,7 +4580,7 @@
       <node id="7568753874916187455" at="55,34,60,7" concept="0" />
       <node id="7568753874916187418" at="47,0,62,0" concept="6" trace="test_SimpleFindForIntroduceConstantTest#()V" />
       <scope id="7568753874916187325" at="32,48,33,25" />
-      <scope id="7568753874916187418" at="37,74,38,101" />
+      <scope id="7568753874916187418" at="37,74,38,65" />
       <scope id="7568753874916187325" at="43,52,44,19" />
       <scope id="7568753874916187325" at="32,0,35,0" />
       <scope id="7568753874916187325" at="43,0,46,0">
@@ -4600,7 +4602,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7568753874916226562">
     <file name="SimpleFindForIntroduceLocalVariable_Test.java">
       <node id="7568753874916226562" at="31,53,32,25" concept="12" />
-      <node id="7568753874916226583" at="36,86,37,118" concept="2" />
+      <node id="7568753874916226583" at="36,86,37,77" concept="2" />
       <node id="7568753874916226562" at="42,52,43,19" concept="12" />
       <node id="7568753874916226563" at="46,88,47,41" concept="2" />
       <node id="7568753874916226633" at="47,41,48,41" concept="2" />
@@ -4620,7 +4622,7 @@
       <node id="7568753874916226620" at="53,34,58,7" concept="0" />
       <node id="7568753874916226583" at="46,0,60,0" concept="6" trace="test_SimpleFindAndMoveForIntroduceLocalVariableTest#()V" />
       <scope id="7568753874916226562" at="31,53,32,25" />
-      <scope id="7568753874916226583" at="36,86,37,118" />
+      <scope id="7568753874916226583" at="36,86,37,77" />
       <scope id="7568753874916226562" at="42,52,43,19" />
       <scope id="7568753874916226562" at="31,0,34,0" />
       <scope id="7568753874916226562" at="42,0,45,0">
@@ -4642,7 +4644,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7568753874916244224">
     <file name="FindAndMoveFromIfForIntroduceLocalVar_Test.java">
       <node id="7568753874916244224" at="31,55,32,25" concept="12" />
-      <node id="7568753874916244267" at="36,81,37,115" concept="2" />
+      <node id="7568753874916244267" at="36,81,37,72" concept="2" />
       <node id="7568753874916244224" at="42,52,43,19" concept="12" />
       <node id="7568753874916244225" at="46,83,47,41" concept="2" />
       <node id="7568753874916244315" at="47,41,48,41" concept="2" />
@@ -4662,7 +4664,7 @@
       <node id="7568753874916244304" at="53,34,58,7" concept="0" />
       <node id="7568753874916244267" at="46,0,60,0" concept="6" trace="test_SimpleFindAndMoveForIntroduceLocalVarTest#()V" />
       <scope id="7568753874916244224" at="31,55,32,25" />
-      <scope id="7568753874916244267" at="36,81,37,115" />
+      <scope id="7568753874916244267" at="36,81,37,72" />
       <scope id="7568753874916244224" at="42,52,43,19" />
       <scope id="7568753874916244224" at="31,0,34,0" />
       <scope id="7568753874916244224" at="42,0,45,0">
@@ -4684,7 +4686,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/7793057097608406463">
     <file name="SimpleFindForExtractFromManyStatements_Test.java">
       <node id="7793057097608406463" at="34,56,35,25" concept="12" />
-      <node id="7793057097608416373" at="39,82,40,117" concept="2" />
+      <node id="7793057097608416373" at="39,82,40,73" concept="2" />
       <node id="7793057097608406463" at="45,52,46,19" concept="12" />
       <node id="7793057097608406464" at="49,84,50,41" concept="2" />
       <node id="7793057097608416301" at="50,41,51,41" concept="2" />
@@ -4706,7 +4708,7 @@
       <node id="7793057097608416413" at="59,7,64,7" concept="0" />
       <node id="7793057097608416373" at="49,0,66,0" concept="6" trace="test_SimpleFindForExtractFromManyStatementsTest#()V" />
       <scope id="7793057097608406463" at="34,56,35,25" />
-      <scope id="7793057097608416373" at="39,82,40,117" />
+      <scope id="7793057097608416373" at="39,82,40,73" />
       <scope id="7793057097608406463" at="45,52,46,19" />
       <scope id="7793057097608416406" at="56,73,58,42">
         <var name="matchRef" id="8155843501977582822" />
@@ -4736,7 +4738,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8155843501976326915">
     <file name="ExtractMethodWithOutputVaryableFromStatement_Test.java">
       <node id="8155843501976326915" at="33,62,34,25" concept="12" />
-      <node id="8155843501976328851" at="38,88,39,129" concept="2" />
+      <node id="8155843501976328851" at="38,88,39,79" concept="2" />
       <node id="8155843501976326915" at="44,52,45,19" concept="12" />
       <node id="8155843501976328682" at="48,90,49,41" concept="2" />
       <node id="8155843501976328705" at="49,41,50,41" concept="2" />
@@ -4755,7 +4757,7 @@
       <node id="8155843501976328877" at="54,23,59,7" concept="0" />
       <node id="8155843501976328851" at="48,0,61,0" concept="6" trace="test_ExtractMethodWithOutputVaryableFromStatementTest#()V" />
       <scope id="8155843501976326915" at="33,62,34,25" />
-      <scope id="8155843501976328851" at="38,88,39,129" />
+      <scope id="8155843501976328851" at="38,88,39,79" />
       <scope id="8155843501976326915" at="44,52,45,19" />
       <scope id="8155843501976326915" at="33,0,36,0" />
       <scope id="8155843501976326915" at="44,0,47,0">
@@ -4778,7 +4780,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8155843501977546256">
     <file name="ReplaceOutputVaryable_Test.java">
       <node id="8155843501977546256" at="34,39,35,25" concept="12" />
-      <node id="8155843501977560935" at="39,65,40,83" concept="2" />
+      <node id="8155843501977560935" at="39,65,40,56" concept="2" />
       <node id="8155843501977546256" at="45,52,46,19" concept="12" />
       <node id="8155843501977551480" at="49,67,50,41" concept="2" />
       <node id="8155843501977560834" at="50,41,51,41" concept="2" />
@@ -4800,7 +4802,7 @@
       <node id="8155843501977560975" at="59,7,64,7" concept="0" />
       <node id="8155843501977560935" at="49,0,66,0" concept="6" trace="test_ReplaceOutputVaryableTest#()V" />
       <scope id="8155843501977546256" at="34,39,35,25" />
-      <scope id="8155843501977560935" at="39,65,40,83" />
+      <scope id="8155843501977560935" at="39,65,40,56" />
       <scope id="8155843501977546256" at="45,52,46,19" />
       <scope id="8155843501977560968" at="56,73,58,42">
         <var name="matchRef" id="8155843501977582330" />
@@ -4830,7 +4832,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8155843501978460076">
     <file name="ExtractMethodWithOutputVaryableFromExpression_Test.java">
       <node id="8155843501978460076" at="33,63,34,25" concept="12" />
-      <node id="8155843501978461957" at="38,88,39,130" concept="2" />
+      <node id="8155843501978461957" at="38,88,39,79" concept="2" />
       <node id="8155843501978460076" at="44,52,45,19" concept="12" />
       <node id="8155843501978461843" at="48,90,49,41" concept="2" />
       <node id="8155843501978461870" at="49,41,50,41" concept="2" />
@@ -4849,7 +4851,7 @@
       <node id="8155843501978461983" at="54,23,59,7" concept="0" />
       <node id="8155843501978461957" at="48,0,61,0" concept="6" trace="test_ExtractMethodWithOutputVaryableFromStatementTest#()V" />
       <scope id="8155843501978460076" at="33,63,34,25" />
-      <scope id="8155843501978461957" at="38,88,39,130" />
+      <scope id="8155843501978461957" at="38,88,39,79" />
       <scope id="8155843501978460076" at="44,52,45,19" />
       <scope id="8155843501978460076" at="33,0,36,0" />
       <scope id="8155843501978460076" at="44,0,47,0">
@@ -4872,7 +4874,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8495840634674645158">
     <file name="MoveStaticFieldSimpleTest_Test.java">
       <node id="8495840634674645158" at="31,43,32,25" concept="12" />
-      <node id="8495840634674645236" at="36,50,37,72" concept="2" />
+      <node id="8495840634674645236" at="36,50,37,41" concept="2" />
       <node id="8495840634674645158" at="42,52,43,19" concept="12" />
       <node id="8495840634674645159" at="46,52,47,41" concept="2" />
       <node id="8495840634674645188" at="47,41,48,41" concept="2" />
@@ -4891,7 +4893,7 @@
       <node id="8495840634675216166" at="52,34,57,7" concept="0" />
       <node id="8495840634674645236" at="46,0,59,0" concept="6" trace="test_SimpleTest#()V" />
       <scope id="8495840634674645158" at="31,43,32,25" />
-      <scope id="8495840634674645236" at="36,50,37,72" />
+      <scope id="8495840634674645236" at="36,50,37,41" />
       <scope id="8495840634674645158" at="42,52,43,19" />
       <scope id="8495840634674645158" at="31,0,34,0" />
       <scope id="8495840634674645158" at="42,0,45,0">
@@ -4913,7 +4915,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8495840634675243977">
     <file name="MoveStaticFieldWithUsageTest_Test.java">
       <node id="8495840634675243977" at="31,46,32,25" concept="12" />
-      <node id="8495840634675285753" at="36,49,37,74" concept="2" />
+      <node id="8495840634675285753" at="36,49,37,40" concept="2" />
       <node id="8495840634675243977" at="42,52,43,19" concept="12" />
       <node id="8495840634675243978" at="46,51,47,41" concept="2" />
       <node id="8495840634675645395" at="47,41,48,41" concept="2" />
@@ -4933,7 +4935,7 @@
       <node id="8495840634675285767" at="53,297,58,7" concept="0" />
       <node id="8495840634675285753" at="46,0,60,0" concept="6" trace="test_UsageTest#()V" />
       <scope id="8495840634675243977" at="31,46,32,25" />
-      <scope id="8495840634675285753" at="36,49,37,74" />
+      <scope id="8495840634675285753" at="36,49,37,40" />
       <scope id="8495840634675243977" at="42,52,43,19" />
       <scope id="8495840634675243977" at="31,0,34,0" />
       <scope id="8495840634675243977" at="42,0,45,0">
@@ -4955,7 +4957,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8556882668095192252">
     <file name="SimpleFindForExtractFromExpression_Test.java">
       <node id="8556882668095192252" at="34,52,35,25" concept="12" />
-      <node id="8556882668095202192" at="39,78,40,109" concept="2" />
+      <node id="8556882668095202192" at="39,78,40,69" concept="2" />
       <node id="8556882668095192252" at="45,52,46,19" concept="12" />
       <node id="8556882668095192253" at="49,80,50,41" concept="2" />
       <node id="8556882668095202132" at="50,41,51,41" concept="2" />
@@ -4977,7 +4979,7 @@
       <node id="8556882668095202220" at="59,7,64,7" concept="0" />
       <node id="8556882668095202192" at="49,0,66,0" concept="6" trace="test_SimpleFindForExtractFromExpressionTest#()V" />
       <scope id="8556882668095192252" at="34,52,35,25" />
-      <scope id="8556882668095202192" at="39,78,40,109" />
+      <scope id="8556882668095202192" at="39,78,40,69" />
       <scope id="8556882668095192252" at="45,52,46,19" />
       <scope id="8556882668095202235" at="56,73,58,42">
         <var name="matchRef" id="8155843501977582806" />
@@ -5007,7 +5009,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8556882668095222061">
     <file name="SimpleFindForExtractFromStatement_Test.java">
       <node id="8556882668095222061" at="34,51,35,25" concept="12" />
-      <node id="8556882668095222213" at="39,77,40,107" concept="2" />
+      <node id="8556882668095222213" at="39,77,40,68" concept="2" />
       <node id="8556882668095222061" at="45,52,46,19" concept="12" />
       <node id="8556882668095222065" at="49,79,50,41" concept="2" />
       <node id="8556882668095222149" at="50,41,51,41" concept="2" />
@@ -5029,7 +5031,7 @@
       <node id="8556882668095222253" at="59,7,64,7" concept="0" />
       <node id="8556882668095222213" at="49,0,66,0" concept="6" trace="test_SimpleFindForExtractFromStatementTest#()V" />
       <scope id="8556882668095222061" at="34,51,35,25" />
-      <scope id="8556882668095222213" at="39,77,40,107" />
+      <scope id="8556882668095222213" at="39,77,40,68" />
       <scope id="8556882668095222061" at="45,52,46,19" />
       <scope id="8556882668095222246" at="56,73,58,42">
         <var name="matchRef" id="8155843501977582837" />
@@ -5059,7 +5061,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8823815475437525602">
     <file name="ExtractMethodWithThrows_Test.java">
       <node id="8823815475437525602" at="33,41,34,25" concept="12" />
-      <node id="8823815475437525729" at="38,67,39,87" concept="2" />
+      <node id="8823815475437525729" at="38,67,39,58" concept="2" />
       <node id="8823815475437525602" at="44,52,45,19" concept="12" />
       <node id="8823815475437525603" at="48,69,49,41" concept="2" />
       <node id="8823815475437525651" at="49,41,50,41" concept="2" />
@@ -5078,7 +5080,7 @@
       <node id="8823815475437525754" at="54,23,59,7" concept="0" />
       <node id="8823815475437525729" at="48,0,61,0" concept="6" trace="test_ExtractMethodWithThrowsTest#()V" />
       <scope id="8823815475437525602" at="33,41,34,25" />
-      <scope id="8823815475437525729" at="38,67,39,87" />
+      <scope id="8823815475437525729" at="38,67,39,58" />
       <scope id="8823815475437525602" at="44,52,45,19" />
       <scope id="8823815475437525602" at="33,0,36,0" />
       <scope id="8823815475437525602" at="44,0,47,0">
@@ -5101,7 +5103,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/9118878263582083310">
     <file name="InlineAssignmentWithClosures_Test.java">
       <node id="9118878263582083310" at="31,46,32,25" concept="12" />
-      <node id="9118878263582085165" at="36,68,37,93" concept="2" />
+      <node id="9118878263582085165" at="36,68,37,59" concept="2" />
       <node id="9118878263582083310" at="42,52,43,19" concept="12" />
       <node id="9118878263582085077" at="46,70,47,41" concept="2" />
       <node id="9118878263582085119" at="47,41,48,41" concept="2" />
@@ -5118,7 +5120,7 @@
       <node id="9118878263582085177" at="50,26,55,7" concept="0" />
       <node id="9118878263582085165" at="46,0,57,0" concept="6" trace="test_InlineAssingmentWithClosures#()V" />
       <scope id="9118878263582083310" at="31,46,32,25" />
-      <scope id="9118878263582085165" at="36,68,37,93" />
+      <scope id="9118878263582085165" at="36,68,37,59" />
       <scope id="9118878263582083310" at="42,52,43,19" />
       <scope id="9118878263582083310" at="31,0,34,0" />
       <scope id="9118878263582083310" at="42,0,45,0">
@@ -5140,7 +5142,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/9160497614871931685">
     <file name="ConvertAnonymousWithTypeParameters_Test.java">
       <node id="9160497614871931685" at="31,52,32,25" concept="12" />
-      <node id="9160497614872188985" at="36,58,37,89" concept="2" />
+      <node id="9160497614872188985" at="36,58,37,49" concept="2" />
       <node id="9160497614871931685" at="42,52,43,19" concept="12" />
       <node id="9160497614872088317" at="46,60,47,41" concept="2" />
       <node id="9160497614872003746" at="47,41,48,41" concept="2" />
@@ -5156,7 +5158,7 @@
       <node id="9160497614872189001" at="49,320,54,7" concept="0" />
       <node id="9160497614872188985" at="46,0,56,0" concept="6" trace="test_TypeParametersTest#()V" />
       <scope id="9160497614871931685" at="31,52,32,25" />
-      <scope id="9160497614872188985" at="36,58,37,89" />
+      <scope id="9160497614872188985" at="36,58,37,49" />
       <scope id="9160497614871931685" at="42,52,43,19" />
       <scope id="9160497614871931685" at="31,0,34,0" />
       <scope id="9160497614871931685" at="42,0,45,0">
@@ -5176,7 +5178,7 @@
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/995475547969867885">
     <file name="ConvertAnonymousWithParameterReference_Test.java">
       <node id="995475547969867885" at="31,56,32,25" concept="12" />
-      <node id="995475547969868020" at="36,66,37,101" concept="2" />
+      <node id="995475547969868020" at="36,66,37,57" concept="2" />
       <node id="995475547969867885" at="42,52,43,19" concept="12" />
       <node id="995475547969867889" at="46,68,47,40" concept="2" />
       <node id="995475547969867939" at="47,40,48,40" concept="2" />
@@ -5192,7 +5194,7 @@
       <node id="995475547969868030" at="49,321,54,7" concept="0" />
       <node id="995475547969868020" at="46,0,56,0" concept="6" trace="test_WithParameterReferenceTest#()V" />
       <scope id="995475547969867885" at="31,56,32,25" />
-      <scope id="995475547969868020" at="36,66,37,101" />
+      <scope id="995475547969868020" at="36,66,37,57" />
       <scope id="995475547969867885" at="42,52,43,19" />
       <scope id="995475547969867885" at="31,0,34,0" />
       <scope id="995475547969867885" at="42,0,45,0">

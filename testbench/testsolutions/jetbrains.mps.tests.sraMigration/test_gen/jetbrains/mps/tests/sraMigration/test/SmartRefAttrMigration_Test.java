@@ -15,10 +15,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.io.File;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -29,6 +29,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
@@ -80,7 +81,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_OneCustom = resolveCD(ref_explicitAttr_OneCustom);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneCustom, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"))));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneCustom, new IAttributeDescriptor.NodeAttribute(AUX_m5qb0v.SmartReferenceAttribute_500a3d52)));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0b0(resolveLD(ref_explicitAttr_OneCustom_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -93,7 +94,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_OneOfTwo = resolveCD(ref_explicitAttr_OneOfTwo);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneOfTwo, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"))));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneOfTwo, new IAttributeDescriptor.NodeAttribute(AUX_m5qb0v.SmartReferenceAttribute_500a3d52)));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0c0(resolveLD(ref_explicitAttr_OneOfTwo_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -106,7 +107,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_OneNoReq = resolveCD(ref_explicitAttr_OneNoReq);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneNoReq, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"))));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneNoReq, new IAttributeDescriptor.NodeAttribute(AUX_m5qb0v.SmartReferenceAttribute_500a3d52)));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0d0(resolveLD(ref_explicitAttr_OneNoReq_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -119,7 +120,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_Specialized = resolveCD(ref_explicitAttr_Specialized);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_Specialized, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"))));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_Specialized, new IAttributeDescriptor.NodeAttribute(AUX_m5qb0v.SmartReferenceAttribute_500a3d52)));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0e0(resolveLD(ref_explicitAttr_Specialized_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -133,7 +134,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode explicitMenu_Direct = findGeneratedSMN(modelref_editor, ref_explicitMenu_Direct);
         Assert.assertNotNull(explicitMenu_Direct);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_Direct, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_Direct, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), AUX_m5qb0v.SubstituteMenuPart_ReferenceScope_b872824a);
 
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac473451e5L, "matchingTextFunction")));
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x1006e157e5b21db8L, "visibleMatchingTextFunction")));
@@ -154,7 +155,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode explicitMenu_Super = findGeneratedSMN(modelref_editor, ref_explicitMenu_Super);
         Assert.assertNotNull(explicitMenu_Super);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_Super, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_Super, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), AUX_m5qb0v.SubstituteMenuPart_ReferenceScope_b872824a);
 
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac473451e5L, "matchingTextFunction")));
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x1006e157e5b21db8L, "visibleMatchingTextFunction")));
@@ -167,7 +168,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode explicitMenu_HasVisible = findGeneratedSMN(modelref_editor, ref_explicitMenu_HasVisible);
         Assert.assertNotNull(explicitMenu_HasVisible);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_HasVisible, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_HasVisible, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), AUX_m5qb0v.SubstituteMenuPart_ReferenceScope_b872824a);
 
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac473451e5L, "matchingTextFunction")));
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x1006e157e5b21db8L, "visibleMatchingTextFunction")));
@@ -180,7 +181,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode explicitMenu_SCAUsage = findGeneratedSMN(modelref_editor, ref_explicitMenu_SCAUsage);
         Assert.assertNotNull(explicitMenu_SCAUsage);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_SCAUsage, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_SCAUsage, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), AUX_m5qb0v.SubstituteMenuPart_ReferenceScope_b872824a);
 
         Assert.assertNotNull(menuPart);
 
@@ -200,7 +201,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode explicitMenu_SCAUsage_Ext = findGeneratedSMN(modelref_editor, ref_explicitMenu_SCAUsage_Ext);
         Assert.assertNotNull(explicitMenu_SCAUsage_Ext);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_SCAUsage_Ext, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_SCAUsage_Ext, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"))).first(), AUX_m5qb0v.SubstituteMenuPart_ReferenceScope_b872824a);
 
         Assert.assertNotNull(menuPart);
 
@@ -220,7 +221,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode refCell = resolveCMRef(ref_explicitCellMenu_RefCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), AUX_m5qb0v.CellMenuPart_ReferentPrimary_d0247e1c);
         Assert.assertNotNull(menuPart);
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText")));
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText")));
@@ -233,7 +234,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode refCell = resolveCMRef(ref_explicitCellMenu_ExplicitReferentPrimary_RefCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), AUX_m5qb0v.CellMenuPart_ReferentPrimary_d0247e1c);
         Assert.assertNotNull(menuPart);
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText")));
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText")));
@@ -259,7 +260,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode refCell = resolveCMRef(ref_explicitCellMenu_RefPresentation_Custom_RefCell);
         SNode rpCell = resolveCMRP(ref_explicitCellMenu_RefPresentation_Custom_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), AUX_m5qb0v.CellMenuPart_ReferentPrimary_d0247e1c);
         Assert.assertNotNull(menuPart);
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText")));
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText")));
@@ -274,7 +275,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
         SNode refCell = resolveCMRef(ref_explicitCellMenu_HasVisible_RefCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), AUX_m5qb0v.CellMenuPart_ReferentPrimary_d0247e1c);
         Assert.assertNotNull(menuPart);
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText")));
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText")));
@@ -288,7 +289,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode refCell = resolveCMRef(ref_explicitCellMenu_HasVisible_RefPresentation_RefCell);
         SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasVisible_RefPresentation_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), AUX_m5qb0v.CellMenuPart_ReferentPrimary_d0247e1c);
         Assert.assertNotNull(menuPart);
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText")));
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText")));
@@ -304,7 +305,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode refCell = resolveCMRef(ref_explicitCellMenu_HasInEditor_RefPresentation_RefCell);
         SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasInEditor_RefPresentation_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), AUX_m5qb0v.CellMenuPart_ReferentPrimary_d0247e1c);
         Assert.assertNotNull(menuPart);
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText")));
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText")));
@@ -320,7 +321,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode refCell = resolveCMRef(ref_explicitCellMenu_HasInEditor_RefPresentation_Custom_RefCell);
         SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasInEditor_RefPresentation_Custom_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
+        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"))).getElement(0), AUX_m5qb0v.CellMenuPart_ReferentPrimary_d0247e1c);
         Assert.assertNotNull(menuPart);
         Assert.assertNotNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText")));
         Assert.assertNull(SLinkOperations.getTarget(menuPart, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText")));
@@ -368,9 +369,9 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   private SNode findGeneratedSMN(SModelReference modelRef, SNodeReference conceptRef) {
     final SNode concept = resolveCD(conceptRef);
     SModel model = modelRef.resolve(project.getRepository());
-    return ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named"))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(model, AUX_m5qb0v.SubstituteMenu_Named_2042e193)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute"))) != null) && SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration")) == concept;
+        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_m5qb0v.GeneratedSubstituteMenuAttribute_7274169f)) != null) && SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration")) == concept;
       }
     }).first();
   }
@@ -378,7 +379,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   private SNode findSMD(SModelReference modelRef, SNodeReference conceptRef) {
     final SNode concept = resolveCD(conceptRef);
     SModel model = modelRef.resolve(project.getRepository());
-    return ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default"))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(model, AUX_m5qb0v.SubstituteMenu_Default_1af84ce)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration")) == concept;
       }
@@ -498,5 +499,14 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu"), (SNode) parameter_1);
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference"), quotedNode_3);
     return quotedNode_2;
+  }
+
+  private static final class AUX_m5qb0v {
+    /*package*/ static final SConcept SmartReferenceAttribute_500a3d52 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute");
+    /*package*/ static final SConcept SubstituteMenuPart_ReferenceScope_b872824a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope");
+    /*package*/ static final SConcept CellMenuPart_ReferentPrimary_d0247e1c = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary");
+    /*package*/ static final SConcept SubstituteMenu_Named_2042e193 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
+    /*package*/ static final SConcept GeneratedSubstituteMenuAttribute_7274169f = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute");
+    /*package*/ static final SConcept SubstituteMenu_Default_1af84ce = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
   }
 }

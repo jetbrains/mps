@@ -24,7 +24,7 @@ public class BackspaceDotExpressionTwoStep_Test extends BaseTransformationTest {
 
   @Test
   public void test_BackspaceDotExpressionTwoStep() throws Throwable {
-    new BackspaceDotExpressionTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -18,9 +18,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ErrorReportUtil {
   private static final Logger LOG = LogManager.getLogger(ErrorReportUtil.class);
@@ -53,11 +54,11 @@ public class ErrorReportUtil {
       public Iterable<SNode> translate(SNode ancestor) {
         Iterable<SNode> possibleSuppressors = ListSequence.fromList(AttributeOperations.getAttributeList(ancestor, new IAttributeDescriptor.AllAttributes())).union(Sequence.fromIterable(Sequence.<SNode>singleton(ancestor)));
 
-        Iterable<SNode> activeSuppressors = Sequence.fromIterable(SNodeOperations.ofConcept(possibleSuppressors, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors"))).where(new IWhereFilter<SNode>() {
+        Iterable<SNode> activeSuppressors = Sequence.fromIterable(SNodeOperations.ofConcept(possibleSuppressors, AUX_k4hfov.ISuppressErrors_96ee6c6d)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode attr) {
             boolean res = false;
             try {
-              res = ((boolean) (Boolean) BHReflection.invoke0(attr, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors"), SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
+              res = ((boolean) (Boolean) BHReflection.invoke0(attr, AUX_k4hfov.ISuppressErrors_96ee6c6d, SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
             } catch (Throwable t) {
               if (LOG.isEnabledFor(Level.ERROR)) {
                 LOG.error("Exception while invoking suppress() on node " + node, t);
@@ -71,4 +72,7 @@ public class ErrorReportUtil {
     });
   }
 
+  private static final class AUX_k4hfov {
+    /*package*/ static final SInterfaceConcept ISuppressErrors_96ee6c6d = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
+  }
 }

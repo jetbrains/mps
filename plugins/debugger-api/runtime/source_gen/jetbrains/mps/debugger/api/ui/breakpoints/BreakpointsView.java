@@ -17,7 +17,7 @@ import javax.swing.JComponent;
 public abstract class BreakpointsView implements DataProvider {
   private List<IBreakpoint> myBreakpointsList;
   protected final BreakpointManagerComponent myBreakpointsManager;
-  private final List<BreakpointsView.BreakpointSelectionListener> mySelectionListeners = new ArrayList<BreakpointsView.BreakpointSelectionListener>();
+  private final List<BreakpointSelectionListener> mySelectionListeners = new ArrayList<BreakpointSelectionListener>();
   public BreakpointsView(BreakpointManagerComponent breakpointsManager) {
     myBreakpointsManager = breakpointsManager;
     updateBreakpoints();
@@ -41,14 +41,14 @@ public abstract class BreakpointsView implements DataProvider {
     });
     return bpList;
   }
-  public void addBreakpointSelectionListener(@NotNull BreakpointsView.BreakpointSelectionListener l) {
+  public void addBreakpointSelectionListener(@NotNull BreakpointSelectionListener l) {
     mySelectionListeners.add(l);
   }
-  public void removeBreakpointSelectionListener(@NotNull BreakpointsView.BreakpointSelectionListener l) {
+  public void removeBreakpointSelectionListener(@NotNull BreakpointSelectionListener l) {
     mySelectionListeners.remove(l);
   }
   protected void fireBreakpointSelected(@Nullable IBreakpoint breakpoint) {
-    for (BreakpointsView.BreakpointSelectionListener l : mySelectionListeners) {
+    for (BreakpointSelectionListener l : mySelectionListeners) {
       l.breakpointSelected(breakpoint);
     }
   }

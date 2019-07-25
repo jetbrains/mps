@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 
 public class MoveNodeDialog extends ModelOrNodeChooserDialog {
   private final SNode myNodeToMove;
-  private MoveNodeDialog.NodeFilter myNodeFilter;
+  private NodeFilter myNodeFilter;
   private SNode mySelectedObject;
 
   public MoveNodeDialog(@NotNull MPSProject project, SNode node) {
@@ -46,7 +46,7 @@ public class MoveNodeDialog extends ModelOrNodeChooserDialog {
       super.doRefactoringAction();
     }
   }
-  public void setFilter(MoveNodeDialog.NodeFilter filter) {
+  public void setFilter(NodeFilter filter) {
     myNodeFilter = filter;
   }
   @Nullable
@@ -75,7 +75,7 @@ public class MoveNodeDialog extends ModelOrNodeChooserDialog {
     return dialog.mySelectedObject;
   }
 
-  public static SNode getSelectedObject(@NotNull MPSProject project, SNode node, MoveNodeDialog.NodeFilter filter) {
+  public static SNode getSelectedObject(@NotNull MPSProject project, SNode node, NodeFilter filter) {
     MoveNodeDialog dialog = new MoveNodeDialog(project, node);
     dialog.setFilter(filter);
     dialog.show();

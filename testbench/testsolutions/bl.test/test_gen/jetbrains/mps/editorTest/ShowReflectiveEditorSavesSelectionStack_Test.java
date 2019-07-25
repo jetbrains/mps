@@ -21,7 +21,7 @@ public class ShowReflectiveEditorSavesSelectionStack_Test extends BaseTransforma
 
   @Test
   public void test_ShowReflectiveEditorSavesSelectionStack() throws Throwable {
-    new ShowReflectiveEditorSavesSelectionStack_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

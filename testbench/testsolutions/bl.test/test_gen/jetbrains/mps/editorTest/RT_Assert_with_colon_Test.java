@@ -21,7 +21,7 @@ public class RT_Assert_with_colon_Test extends BaseTransformationTest {
 
   @Test
   public void test_RT_Assert_with_colon() throws Throwable {
-    new RT_Assert_with_colon_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

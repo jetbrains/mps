@@ -21,7 +21,7 @@ public class TypeReturnInJobDefinition_Test extends BaseTransformationTest {
 
   @Test
   public void test_TypeReturnInJobDefinition() throws Throwable {
-    new TypeReturnInJobDefinition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

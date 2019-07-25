@@ -25,8 +25,9 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestSubstituteSpecialChild_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE, MenuLocations.CONTEXT_ASSISTANT);
@@ -52,10 +53,10 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TestSubstituteSpecialChild_TransformationMenu.TMP_IncludeSM_5hy664_a0());
+      result.add(new TMP_IncludeSM_5hy664_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new TestSubstituteSpecialChild_TransformationMenu.TMP_Action_5hy664_a1());
+      result.add(new TMP_Action_5hy664_a1());
     }
     return result;
   }
@@ -79,7 +80,7 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
   private class TMP_Action_5hy664_a1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TestSubstituteSpecialChild_TransformationMenu.TMP_Action_5hy664_a1.Item item = new TestSubstituteSpecialChild_TransformationMenu.TMP_Action_5hy664_a1.Item(context);
+      TMP_Action_5hy664_a1.Item item = new TMP_Action_5hy664_a1.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -109,7 +110,7 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute"))) != null)) {
+        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(AUX_5hy664.TestSubstituteSpecialChildAttribute_3f0d2794)) != null)) {
           return "Remove Attribute ";
         } else {
           return "Add Attribute";
@@ -118,10 +119,10 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
 
       @Override
       public void execute(@NotNull String pattern) {
-        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute"))) != null)) {
-          SNodeOperations.deleteNode(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute"))));
+        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(AUX_5hy664.TestSubstituteSpecialChildAttribute_3f0d2794)) != null)) {
+          SNodeOperations.deleteNode(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(AUX_5hy664.TestSubstituteSpecialChildAttribute_3f0d2794)));
         } else {
-          AttributeOperations.createAndSetAttrbiute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute")), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute"));
+          AttributeOperations.createAndSetAttrbiute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(AUX_5hy664.TestSubstituteSpecialChildAttribute_3f0d2794), AUX_5hy664.TestSubstituteSpecialChildAttribute_3f0d2794);
         }
       }
 
@@ -135,5 +136,9 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
 
     }
 
+  }
+
+  private static final class AUX_5hy664 {
+    /*package*/ static final SConcept TestSubstituteSpecialChildAttribute_3f0d2794 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute");
   }
 }

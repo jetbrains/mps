@@ -23,7 +23,7 @@ public class StaticMethodCall_LeftTransform_Test extends BaseTransformationTest 
 
   @Test
   public void test_StaticMethodCall_LeftTransform() throws Throwable {
-    new StaticMethodCall_LeftTransform_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

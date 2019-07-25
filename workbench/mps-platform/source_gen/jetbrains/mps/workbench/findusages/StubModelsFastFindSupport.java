@@ -25,11 +25,11 @@ import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.util.containers.MultiMap;
 import java.util.function.Function;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
 import jetbrains.mps.findUsages.NodeUsageFinder;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.findUsages.FindUsagesUtil;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -49,6 +49,7 @@ import com.intellij.psi.impl.cache.impl.id.IdIndex;
 import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import java.util.Collections;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class StubModelsFastFindSupport implements ApplicationComponent, FindUsagesParticipant {
   private static final Logger LOG = LogManager.getLogger(StubModelsFastFindSupport.class);
@@ -91,7 +92,7 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
     });
     for (SNode node : SetSequence.fromSet(nodes)) {
       SNode snode = ((SNode) node);
-      if (!(SNodeOperations.isInstanceOf(snode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration")))) {
+      if (!(SNodeOperations.isInstanceOf(snode, AUX_umo835.TypeVariableDeclaration_de3da816))) {
         continue;
       }
       candidates.putValue(SNodeOperations.getModel(snode), node);
@@ -216,5 +217,9 @@ public class StubModelsFastFindSupport implements ApplicationComponent, FindUsag
       }
     }
     return result;
+  }
+
+  private static final class AUX_umo835 {
+    /*package*/ static final SConcept TypeVariableDeclaration_de3da816 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
   }
 }

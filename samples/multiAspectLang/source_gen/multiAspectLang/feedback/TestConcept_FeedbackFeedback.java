@@ -4,7 +4,6 @@ package multiAspectLang.feedback;
 
 import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
 import jetbrains.mps.core.aspects.feedback.messages.MissingPropertyContext;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
@@ -15,24 +14,26 @@ import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
 import jetbrains.mps.core.aspects.feedback.messages.MissingChildContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblemId;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.messages.RefOutOfScopeContext;
 import jetbrains.mps.core.aspects.feedback.messages.RefOutOfScopeProblemId;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 import java.util.stream.Stream;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
+  private static final SAbstractConcept CONCEPT = AUX_pavl6x.TestConcept_e187f53f;
 
-  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a = new BaseMessageProvider<MissingPropertyContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_PROPERTY)) {
+  private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a = new BaseMessageProvider<MissingPropertyContext>(new MissingFeatureInConceptProblemId(AUX_pavl6x.TestConcept_e187f53f, PredefinedStructureProblemKind.MISSING_PROPERTY)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
       return new MessageProvider.StringMsg("The property '" + context.getProperty() + "' does not belong to the concept 'TestConcept', please do smth");
     }
   };
-  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotInConcept_pavl6x_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept"), PredefinedStructureProblemKind.MISSING_CHILD)) {
+  private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotDefinedInConcept_pavl6x_b = new BaseMessageProvider<MissingChildContext>(new MissingFeatureInConceptProblemId(AUX_pavl6x.TestConcept_e187f53f, PredefinedStructureProblemKind.MISSING_CHILD)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(MissingChildContext context) {
@@ -54,7 +55,7 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a, MSGPROVIDER_WhenChildIsNotInConcept_pavl6x_b, MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_c, MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_d));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_pavl6x_a, MSGPROVIDER_WhenChildIsNotDefinedInConcept_pavl6x_b, MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_c, MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_d));
 
   public TestConcept_FeedbackFeedback() {
     super(CONCEPT);
@@ -64,5 +65,9 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
   @Override
   public Stream<FeedbackProvider> getDeclaredProviders() {
     return PROVIDERS.stream();
+  }
+
+  private static final class AUX_pavl6x {
+    /*package*/ static final SConcept TestConcept_e187f53f = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "multiAspectLang.structure.TestConcept");
   }
 }

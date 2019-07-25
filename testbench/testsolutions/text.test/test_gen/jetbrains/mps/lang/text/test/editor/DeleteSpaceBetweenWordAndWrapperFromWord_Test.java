@@ -22,7 +22,7 @@ public class DeleteSpaceBetweenWordAndWrapperFromWord_Test extends BaseTransform
 
   @Test
   public void test_DeleteSpaceBetweenWordAndWrapperFromWord() throws Throwable {
-    new DeleteSpaceBetweenWordAndWrapperFromWord_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

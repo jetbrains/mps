@@ -22,7 +22,7 @@ public class Comment_DeleteSingleRoleWholeComment_Test extends BaseTransformatio
 
   @Test
   public void test_Comment_DeleteSingleRoleWholeComment() throws Throwable {
-    new Comment_DeleteSingleRoleWholeComment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

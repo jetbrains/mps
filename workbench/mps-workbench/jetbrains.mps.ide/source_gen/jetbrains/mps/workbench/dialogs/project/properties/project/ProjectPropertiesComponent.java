@@ -41,14 +41,14 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   private final StandaloneMPSProject myProject;
   private final ProjectProperties myProperties = new ProjectProperties();
   private final ProjectPrefsExtraPanel[] myExtraPanels;
-  private final ProjectPropertiesComponent.MakeServiceGroup myMakeGroup;
+  private final MakeServiceGroup myMakeGroup;
 
   public ProjectPropertiesComponent(Project project, ProjectPrefsExtraPanel[] extraPanels) {
     super(true);
     myProject = (StandaloneMPSProject) project.getComponent(MPSProject.class);
     myExtraPanels = (extraPanels != null ? extraPanels : new ProjectPrefsExtraPanel[0]);
     myProperties.loadFrom(myProject);
-    myMakeGroup = new ProjectPropertiesComponent.MakeServiceGroup(project);
+    myMakeGroup = new MakeServiceGroup(project);
     init();
   }
   public ProjectPropertiesComponent(Project project) {
@@ -63,7 +63,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   }
 
   private JComponent createProjectModulesList() {
-    final JBList list = new JBList(new ProjectPropertiesComponent.PathsListModel());
+    final JBList list = new JBList(new PathsListModel());
 
     list.setCellRenderer(new PathRenderer());
     list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -90,18 +90,18 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
         }
 
         ModulePath path = new ModulePath(file.getPath(), null);
-        for (ModulePath p : ((ProjectPropertiesComponent.PathsListModel) list.getModel()).getPaths()) {
+        for (ModulePath p : ((PathsListModel) list.getModel()).getPaths()) {
           if (p.getPath().equals(path.getPath())) {
             list.setSelectedValue(p, true);
             return;
           }
         }
-        ((ProjectPropertiesComponent.PathsListModel) list.getModel()).addPath(path);
+        ((PathsListModel) list.getModel()).addPath(path);
       }
     }).setRemoveAction(new AnActionButtonRunnable() {
       @Override
       public void run(AnActionButton button) {
-        ((ProjectPropertiesComponent.PathsListModel) list.getModel()).removePath(list.getSelectedValue());
+        ((PathsListModel) list.getModel()).removePath(list.getSelectedValue());
       }
     }).disableUpAction().disableDownAction();
     decorator.setPreferredSize(new Dimension(500, 150));

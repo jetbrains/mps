@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -29,9 +28,12 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
   public ClassLikeMembers_Contribution() {
@@ -41,9 +43,9 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_a(), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_b(), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance")));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_c(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_hyz1k2_a(), AUX_hyz1k2.MethodInstance_799dc109));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_hyz1k2_b(), AUX_hyz1k2.PropertyInstance_6694ed53));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_hyz1k2_c(), AUX_hyz1k2.ClassifierMember_849b47d7));
     return result;
   }
 
@@ -64,7 +66,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_a.SMP_Action_hyz1k2_a0(parameter).createItems(context);
+      return new SMP_Param_hyz1k2_a.SMP_Action_hyz1k2_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -80,7 +82,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SNodeOperations.ofConcept(SubstituteUtil.getMembers2Substitute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor"), _context.getParentNode()), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor"));
+      return SNodeOperations.ofConcept(SubstituteUtil.getMembers2Substitute(AUX_hyz1k2.MethodDescriptor_799dc131, _context.getParentNode()), AUX_hyz1k2.MethodDescriptor_799dc131);
     }
     private class SMP_Action_hyz1k2_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -91,7 +93,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        ClassLikeMembers_Contribution.SMP_Param_hyz1k2_a.SMP_Action_hyz1k2_a0.Item item = new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_a.SMP_Action_hyz1k2_a0.Item(_context);
+        SMP_Param_hyz1k2_a.SMP_Action_hyz1k2_a0.Item item = new SMP_Param_hyz1k2_a.SMP_Action_hyz1k2_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -115,7 +117,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance"), context);
+          super(AUX_hyz1k2.MethodInstance_799dc109, context);
           _context = context;
         }
 
@@ -126,7 +128,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))).visitAll(new IVisitor<SNode>() {
+          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), AUX_hyz1k2.ClassConcept_e2711824))).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
               SNodeOperations.deleteNode(it);
             }
@@ -140,7 +142,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_hyz1k2.MethodInstance_799dc109, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -168,7 +170,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_b.SMP_Action_hyz1k2_a1(parameter).createItems(context);
+      return new SMP_Param_hyz1k2_b.SMP_Action_hyz1k2_a1(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -184,7 +186,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SNodeOperations.ofConcept(SubstituteUtil.getMembers2Substitute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor"), _context.getParentNode()), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor"));
+      return SNodeOperations.ofConcept(SubstituteUtil.getMembers2Substitute(AUX_hyz1k2.PropertyDescriptor_735f6131, _context.getParentNode()), AUX_hyz1k2.PropertyDescriptor_735f6131);
     }
     private class SMP_Action_hyz1k2_a1 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -195,7 +197,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        ClassLikeMembers_Contribution.SMP_Param_hyz1k2_b.SMP_Action_hyz1k2_a1.Item item = new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_b.SMP_Action_hyz1k2_a1.Item(_context);
+        SMP_Param_hyz1k2_b.SMP_Action_hyz1k2_a1.Item item = new SMP_Param_hyz1k2_b.SMP_Action_hyz1k2_a1.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -219,7 +221,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance"), context);
+          super(AUX_hyz1k2.PropertyInstance_6694ed53, context);
           _context = context;
         }
 
@@ -230,7 +232,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))).visitAll(new IVisitor<SNode>() {
+          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), AUX_hyz1k2.ClassConcept_e2711824))).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
               SNodeOperations.deleteNode(it);
             }
@@ -244,7 +246,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_hyz1k2.PropertyInstance_6694ed53, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -272,7 +274,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_c.SMP_Action_hyz1k2_a2(parameter).createItems(context);
+      return new SMP_Param_hyz1k2_c.SMP_Action_hyz1k2_a2(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -288,7 +290,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SNodeOperations.ofConcept(SubstituteUtil.getMembers2Substitute(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor"), _context.getParentNode()), MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor"));
+      return SNodeOperations.ofConcept(SubstituteUtil.getMembers2Substitute(AUX_hyz1k2.CustomMemberDescriptor_739898b0, _context.getParentNode()), AUX_hyz1k2.CustomMemberDescriptor_739898b0);
     }
     private class SMP_Action_hyz1k2_a2 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -299,7 +301,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        ClassLikeMembers_Contribution.SMP_Param_hyz1k2_c.SMP_Action_hyz1k2_a2.Item item = new ClassLikeMembers_Contribution.SMP_Param_hyz1k2_c.SMP_Action_hyz1k2_a2.Item(_context);
+        SMP_Param_hyz1k2_c.SMP_Action_hyz1k2_a2.Item item = new SMP_Param_hyz1k2_c.SMP_Action_hyz1k2_a2.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -323,7 +325,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), context);
+          super(AUX_hyz1k2.ClassifierMember_849b47d7, context);
           _context = context;
         }
 
@@ -334,7 +336,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")))).visitAll(new IVisitor<SNode>() {
+          Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(myParameterObject, SNodeOperations.cast(_context.getParentNode(), AUX_hyz1k2.ClassConcept_e2711824))).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
               SNodeOperations.deleteNode(it);
             }
@@ -348,7 +350,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_hyz1k2.ClassifierMember_849b47d7, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -374,5 +376,15 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_hyz1k2 {
+    /*package*/ static final SConcept MethodInstance_799dc109 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance");
+    /*package*/ static final SConcept PropertyInstance_6694ed53 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance");
+    /*package*/ static final SInterfaceConcept ClassifierMember_849b47d7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept MethodDescriptor_799dc131 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept PropertyDescriptor_735f6131 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor");
+    /*package*/ static final SConcept CustomMemberDescriptor_739898b0 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor");
   }
 }

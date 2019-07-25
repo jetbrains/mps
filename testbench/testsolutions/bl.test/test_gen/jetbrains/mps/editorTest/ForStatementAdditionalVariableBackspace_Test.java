@@ -21,7 +21,7 @@ public class ForStatementAdditionalVariableBackspace_Test extends BaseTransforma
 
   @Test
   public void test_ForStatementAdditionalVariableBackspace() throws Throwable {
-    new ForStatementAdditionalVariableBackspace_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

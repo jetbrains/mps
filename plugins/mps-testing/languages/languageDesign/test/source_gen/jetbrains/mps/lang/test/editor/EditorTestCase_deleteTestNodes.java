@@ -11,6 +11,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditorTestCase_deleteTestNodes {
 
@@ -21,7 +22,7 @@ public class EditorTestCase_deleteTestNodes {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode selectedNode = editorContext.getSelectedNode();
-        SNode testNode = SNodeOperations.getNodeAncestor(selectedNode, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode"), false, false);
+        SNode testNode = SNodeOperations.getNodeAncestor(selectedNode, AUX_47la4y.TestNode_e633d16, false, false);
         SNodeOperations.deleteNode(testNode);
       }
       @Override
@@ -30,7 +31,7 @@ public class EditorTestCase_deleteTestNodes {
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         SNode selectedNode = editorContext.getSelectedNode();
-        SNode testNode = SNodeOperations.getNodeAncestor(selectedNode, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode"), false, false);
+        SNode testNode = SNodeOperations.getNodeAncestor(selectedNode, AUX_47la4y.TestNode_e633d16, false, false);
         return SNodeOperations.hasRole(testNode, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643585L, "testNodeResult")) || SNodeOperations.hasRole(testNode, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore"));
       }
 
@@ -70,5 +71,9 @@ public class EditorTestCase_deleteTestNodes {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class AUX_47la4y {
+    /*package*/ static final SConcept TestNode_e633d16 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
   }
 }

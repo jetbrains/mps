@@ -21,7 +21,7 @@ public class LT_AssignmentRValue_with_PlusAssignment_Test extends BaseTransforma
 
   @Test
   public void test_LT_AssignmentRValue_with_PlusAssignment() throws Throwable {
-    new LT_AssignmentRValue_with_PlusAssignment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

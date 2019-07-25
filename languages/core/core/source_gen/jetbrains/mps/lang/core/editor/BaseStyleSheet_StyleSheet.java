@@ -18,7 +18,7 @@ public class BaseStyleSheet_StyleSheet {
   public static void apply_Comment(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new BaseStyleSheet_StyleSheet.CommentStyleClass(editorContext, node).apply(style, editorCell);
+    new CommentStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class CommentStyleClass extends AbstractStyleClass {

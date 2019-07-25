@@ -34,7 +34,7 @@ public class InlineWithoutReturnStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineWithoutReturnStatement() throws Throwable {
-    new InlineWithoutReturnStatement_Test.TestBody(this).test_InlineWithoutReturnStatement();
+    new TestBody(this).test_InlineWithoutReturnStatement();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

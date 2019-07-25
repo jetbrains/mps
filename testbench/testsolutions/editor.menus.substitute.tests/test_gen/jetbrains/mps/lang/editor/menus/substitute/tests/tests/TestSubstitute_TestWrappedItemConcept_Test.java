@@ -25,7 +25,7 @@ public class TestSubstitute_TestWrappedItemConcept_Test extends BaseTransformati
 
   @Test
   public void test_TestSubstitute_TestWrappedItemConcept() throws Throwable {
-    new TestSubstitute_TestWrappedItemConcept_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

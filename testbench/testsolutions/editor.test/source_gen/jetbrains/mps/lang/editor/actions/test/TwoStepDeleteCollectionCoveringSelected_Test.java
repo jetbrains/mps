@@ -22,7 +22,7 @@ public class TwoStepDeleteCollectionCoveringSelected_Test extends BaseTransforma
 
   @Test
   public void test_TwoStepDeleteCollectionCoveringSelected() throws Throwable {
-    new TwoStepDeleteCollectionCoveringSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -132,7 +132,7 @@ public abstract class BaseMpsBeforeTaskProvider<T extends BaseMpsBeforeTaskProvi
     return "configure";
   }
 
-  public static abstract class BaseMpsBeforeRunTask<T extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask> extends BeforeRunTask<T> {
+  public static abstract class BaseMpsBeforeRunTask<T extends BaseMpsBeforeRunTask> extends BeforeRunTask<T> {
     public BaseMpsBeforeRunTask(@NotNull Key<T> providerId) {
       super(providerId);
       setEnabled(true);

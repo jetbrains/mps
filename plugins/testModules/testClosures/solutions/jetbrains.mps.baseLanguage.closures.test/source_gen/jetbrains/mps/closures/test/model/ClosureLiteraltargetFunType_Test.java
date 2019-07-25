@@ -39,11 +39,11 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
 
   @Test
   public void test_throwsOrder() throws Throwable {
-    new ClosureLiteraltargetFunType_Test.TestBody(this).test_throwsOrder();
+    new TestBody(this).test_throwsOrder();
   }
   @Test
   public void test_NodeErrorCheck3981396688773519576() throws Throwable {
-    new ClosureLiteraltargetFunType_Test.TestBody(this).test_NodeErrorCheck3981396688773519576();
+    new TestBody(this).test_NodeErrorCheck3981396688773519576();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

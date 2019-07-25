@@ -124,7 +124,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     ref.setSession(refactoringSession);
     ref.setTaskExecutor(new _FunctionTypes._void_P1_E0<Runnable>() {
       public void invoke(Runnable task) {
-        MigrationExecutorImpl.RefactoringSessionTaskQueue.getInstance(refactoringSession).putTask(task);
+        RefactoringSessionTaskQueue.getInstance(refactoringSession).putTask(task);
       }
     });
     ref.setRefactoringProcessor(new _FunctionTypes._void_P4_E0<RefactoringUI, RefactoringParticipant.PersistentRefactoringParticipant, Iterable<SNode>, Map<SNode, SNode>>() {
@@ -133,7 +133,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
       }
     });
     ref.execute(module);
-    MigrationExecutorImpl.RefactoringSessionTaskQueue.getInstance(refactoringSession).runAll();
+    RefactoringSessionTaskQueue.getInstance(refactoringSession).runAll();
     refactoringSession.performAllRegistered();
 
     int toVersion = rLog.getFromVersion() + 1;
@@ -153,10 +153,10 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   private static class RefactoringSessionTaskQueue {
     private static final String myId = "refactoringSession.migrationAssistant.taskQueue";
     private List<Runnable> myTasks = ListSequence.fromList(new ArrayList<Runnable>());
-    public static MigrationExecutorImpl.RefactoringSessionTaskQueue getInstance(RefactoringSession session) {
-      MigrationExecutorImpl.RefactoringSessionTaskQueue result = ((MigrationExecutorImpl.RefactoringSessionTaskQueue) session.getObject(myId));
+    public static RefactoringSessionTaskQueue getInstance(RefactoringSession session) {
+      RefactoringSessionTaskQueue result = ((RefactoringSessionTaskQueue) session.getObject(myId));
       if (result == null) {
-        result = new MigrationExecutorImpl.RefactoringSessionTaskQueue();
+        result = new RefactoringSessionTaskQueue();
         session.putObject(myId, result);
       }
       return result;

@@ -17,6 +17,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public anonymousClassExtendsItsClassifier_SubtypingRule() {
@@ -30,7 +31,7 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
         {
           SNode matchingNode_q6q799_a1a = SLinkOperations.getTarget(classifierType, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
           if (matchingNode_q6q799_a1a != null) {
-            matches_q6q799_a1a = matchingNode_q6q799_a1a.getConcept().isSubConceptOf(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"));
+            matches_q6q799_a1a = matchingNode_q6q799_a1a.getConcept().isSubConceptOf(AUX_r0kks7.AnonymousClass_e4a73f97);
           }
         }
         if (matches_q6q799_a1a) {
@@ -41,7 +42,7 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
     return result;
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    return AUX_r0kks7.ClassifierType_42700403;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -62,5 +63,10 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
       }
     }
     return quotedNode_3;
+  }
+
+  private static final class AUX_r0kks7 {
+    /*package*/ static final SConcept AnonymousClass_e4a73f97 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassifierType_42700403 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

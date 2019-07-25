@@ -168,7 +168,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
     return (SLinkOperations.getTarget(myNode, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression")) != null);
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new FileIcon_EditorBuilder_a.iconExpressionSingleRoleHandler_tl1n57_a1a(myNode, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression"), getEditorContext());
+    SingleRoleCellProvider provider = new iconExpressionSingleRoleHandler_tl1n57_a1a(myNode, MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression"), getEditorContext());
     return provider.createCell();
   }
   private static class iconExpressionSingleRoleHandler_tl1n57_a1a extends SingleRoleCellProvider {

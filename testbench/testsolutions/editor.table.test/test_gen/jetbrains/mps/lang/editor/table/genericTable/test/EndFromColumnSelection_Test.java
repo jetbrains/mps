@@ -21,7 +21,7 @@ public class EndFromColumnSelection_Test extends BaseTransformationTest {
 
   @Test
   public void test_EndFromColumnSelection() throws Throwable {
-    new EndFromColumnSelection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

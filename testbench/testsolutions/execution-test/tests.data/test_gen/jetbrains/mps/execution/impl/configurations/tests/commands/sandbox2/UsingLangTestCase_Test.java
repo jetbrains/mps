@@ -27,7 +27,7 @@ public class UsingLangTestCase_Test extends BaseTransformationTest {
 
   @Test
   public void test_asdf() throws Throwable {
-    new UsingLangTestCase_Test.TestBody(this).test_asdf();
+    new TestBody(this).test_asdf();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

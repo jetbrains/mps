@@ -182,7 +182,7 @@
       <zipfileset file="${basedir}/bin/win/runnerw.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/win/WinProcessListHelper.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/win/append.bat" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
-      <zipfileset dir="${build.tmp}/deps/jbrsdk-windows-x64.tar.gz" prefix="MPS ${mpsBootstrapCore.version}/jre" />
+      <zipfileset dir="${build.tmp}/deps/jbrsdk-windows-x64.tar.gz/jbrsdk" prefix="MPS ${mpsBootstrapCore.version}/jbr" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip_f755" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip" />
     </zip>

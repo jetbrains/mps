@@ -23,6 +23,7 @@ import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactor
 import java.util.List;
 import junit.framework.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class ExtractMethodFromClosure_Test extends BaseTransformationTest {
@@ -37,7 +38,7 @@ public class ExtractMethodFromClosure_Test extends BaseTransformationTest {
 
   @Test
   public void test_ExtractMethodFromClosure() throws Throwable {
-    new ExtractMethodFromClosure_Test.TestBody(this).test_ExtractMethodFromClosure();
+    new TestBody(this).test_ExtractMethodFromClosure();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -53,7 +54,7 @@ public class ExtractMethodFromClosure_Test extends BaseTransformationTest {
       params.setName("foo");
       MethodParameter p0 = ListSequence.fromList(params.getParameters()).getElement(0);
       MethodParameter p1 = ListSequence.fromList(params.getParameters()).getElement(1);
-      if (SNodeOperations.isInstanceOf(p0.getDeclaration(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"))) {
+      if (SNodeOperations.isInstanceOf(p0.getDeclaration(), AUX_wnqj8h.LocalVariableDeclaration_d47683f3)) {
         ListSequence.fromList(params.getParameters()).setElement(0, p1);
         ListSequence.fromList(params.getParameters()).setElement(1, p0);
       }
@@ -67,5 +68,9 @@ public class ExtractMethodFromClosure_Test extends BaseTransformationTest {
     }
 
 
+  }
+
+  private static final class AUX_wnqj8h {
+    /*package*/ static final SConcept LocalVariableDeclaration_d47683f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 }

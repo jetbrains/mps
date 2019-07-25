@@ -36,7 +36,7 @@ public class ExtractFromExpressionWithoutReturn_Test extends BaseTransformationT
 
   @Test
   public void test_extractFromExpressionWithoutReturn() throws Throwable {
-    new ExtractFromExpressionWithoutReturn_Test.TestBody(this).test_extractFromExpressionWithoutReturn();
+    new TestBody(this).test_extractFromExpressionWithoutReturn();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

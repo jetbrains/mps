@@ -9,16 +9,16 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class GoToDeclarationHandlerRegistry {
-  private static List<GoToDeclarationHandlerRegistry.GoToDeclarationHandler> ourHandlers = ListSequence.fromList(new ArrayList<GoToDeclarationHandlerRegistry.GoToDeclarationHandler>());
+  private static List<GoToDeclarationHandler> ourHandlers = ListSequence.fromList(new ArrayList<GoToDeclarationHandler>());
 
-  public static void addHandler(GoToDeclarationHandlerRegistry.GoToDeclarationHandler h) {
+  public static void addHandler(GoToDeclarationHandler h) {
     ListSequence.fromList(ourHandlers).addElement(h);
   }
-  public static void removeHandler(GoToDeclarationHandlerRegistry.GoToDeclarationHandler h) {
+  public static void removeHandler(GoToDeclarationHandler h) {
     ListSequence.fromList(ourHandlers).removeElement(h);
   }
   public static boolean canNavigateAny(MPSProject p, SNode node) {
-    for (GoToDeclarationHandlerRegistry.GoToDeclarationHandler np : ListSequence.fromList(ourHandlers)) {
+    for (GoToDeclarationHandler np : ListSequence.fromList(ourHandlers)) {
       if (np.canNavigate(p, node)) {
         return true;
       }
@@ -27,7 +27,7 @@ public abstract class GoToDeclarationHandlerRegistry {
   }
   public static boolean navigateAll(MPSProject p, SNode node) {
     boolean navigated = false;
-    for (GoToDeclarationHandlerRegistry.GoToDeclarationHandler np : ListSequence.fromList(ourHandlers)) {
+    for (GoToDeclarationHandler np : ListSequence.fromList(ourHandlers)) {
       if (np.canNavigate(p, node)) {
         navigated = np.navigate(p, node);
       }

@@ -28,7 +28,7 @@ public class FontFamilyStyleClassItemWarningTest_Test extends BaseTransformation
 
   @Test
   public void test_NodeWarningCheck1715298588355862323() throws Throwable {
-    new FontFamilyStyleClassItemWarningTest_Test.TestBody(this).test_NodeWarningCheck1715298588355862323();
+    new TestBody(this).test_NodeWarningCheck1715298588355862323();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

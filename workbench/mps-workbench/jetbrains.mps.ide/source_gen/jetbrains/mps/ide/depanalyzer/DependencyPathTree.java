@@ -39,7 +39,7 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
   public void revealDependencies(Iterable<DepLink> node) {
     ListSequence.fromList(myAllDependencies).addSequence(Sequence.fromIterable(node));
   }
-  private void buildTree(DepLink depNode, Map<Dependency, DependencyPathTree.LinkFrom> visited) {
+  private void buildTree(DepLink depNode, Map<Dependency, LinkFrom> visited) {
     List<DepLink> dependencyPath = ListSequence.fromList(new LinkedList<DepLink>());
     // unwind up to source of depdendency path, effectively reversing it, top (source of dep) -> bottom (target of dep) 
     while (depNode != null) {
@@ -47,14 +47,14 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
       depNode = depNode.parent();
     }
 
-    DependencyPathTree.LinkFrom parent = null;
+    LinkFrom parent = null;
     while (ListSequence.fromList(dependencyPath).isNotEmpty()) {
       DepLink n = ListSequence.fromList(dependencyPath).removeElementAt(0);
       Dependency key = n.getRoleModuleKey();
-      DependencyPathTree.LinkFrom e = MapSequence.fromMap(visited).get(key);
+      LinkFrom e = MapSequence.fromMap(visited).get(key);
       if (e == null || e.parent != parent) {
         // we didn't yet see that dep link anywhere, or have seen it under another branch 
-        DependencyPathTree.LinkFrom f = new DependencyPathTree.LinkFrom(n, parent, myProject);
+        LinkFrom f = new LinkFrom(n, parent, myProject);
         MapSequence.fromMap(visited).put(key, f);
         parent = f;
       } else {
@@ -69,13 +69,13 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
   @Override
   protected MPSTreeNode rebuild() {
     MPSTreeNode result = new TextTreeNode((ListSequence.fromList(myAllDependencies).isEmpty() ? "No Dependencies Selected" : "Found Dependencies:"));
-    Map<Dependency, DependencyPathTree.LinkFrom> deps = MapSequence.fromMap(new HashMap<Dependency, DependencyPathTree.LinkFrom>());
+    Map<Dependency, LinkFrom> deps = MapSequence.fromMap(new HashMap<Dependency, LinkFrom>());
     // merge dependency paths by role and module 
     for (DepLink dep : ListSequence.fromList(myAllDependencies)) {
       buildTree(dep, deps);
     }
     // attach roots of merged paths to top node 
-    for (DependencyPathTree.LinkFrom lf : Sequence.fromIterable(MapSequence.fromMap(deps).values())) {
+    for (LinkFrom lf : Sequence.fromIterable(MapSequence.fromMap(deps).values())) {
       if (lf.parent == null) {
         result.add(lf.node);
       }
@@ -102,9 +102,9 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
   }
   public static class LinkFrom {
     /*package*/ DepLink link;
-    /*package*/ DependencyPathTree.LinkFrom parent;
+    /*package*/ LinkFrom parent;
     /*package*/ DependencyTreeNode node;
-    public LinkFrom(DepLink link, DependencyPathTree.LinkFrom from, Project project) {
+    public LinkFrom(DepLink link, LinkFrom from, Project project) {
       this.link = link;
       this.parent = from;
       node = new DependencyTreeNode(project, link);

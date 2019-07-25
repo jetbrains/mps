@@ -31,39 +31,39 @@ public class OverridingInference_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck6572489169071449300() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck6572489169071449300();
+    new TestBody(this).test_NodeErrorCheck6572489169071449300();
   }
   @Test
   public void test_NodeErrorCheck6572489169071450944() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck6572489169071450944();
+    new TestBody(this).test_NodeErrorCheck6572489169071450944();
   }
   @Test
   public void test_NodeErrorCheck6560794580689901218() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck6560794580689901218();
+    new TestBody(this).test_NodeErrorCheck6560794580689901218();
   }
   @Test
   public void test_NodeErrorCheck6560794580689901568() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck6560794580689901568();
+    new TestBody(this).test_NodeErrorCheck6560794580689901568();
   }
   @Test
   public void test_NodeErrorCheck1870027727456331649() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck1870027727456331649();
+    new TestBody(this).test_NodeErrorCheck1870027727456331649();
   }
   @Test
   public void test_NodeErrorCheck1870027727456349628() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck1870027727456349628();
+    new TestBody(this).test_NodeErrorCheck1870027727456349628();
   }
   @Test
   public void test_NodeErrorCheck1870027727456331667() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck1870027727456331667();
+    new TestBody(this).test_NodeErrorCheck1870027727456331667();
   }
   @Test
   public void test_NodeErrorCheck1042936571392548556() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_NodeErrorCheck1042936571392548556();
+    new TestBody(this).test_NodeErrorCheck1042936571392548556();
   }
   @Test
   public void test_ErrorMessagesCheck4113274076525493263() throws Throwable {
-    new OverridingInference_Test.TestBody(this).test_ErrorMessagesCheck4113274076525493263();
+    new TestBody(this).test_ErrorMessagesCheck4113274076525493263();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

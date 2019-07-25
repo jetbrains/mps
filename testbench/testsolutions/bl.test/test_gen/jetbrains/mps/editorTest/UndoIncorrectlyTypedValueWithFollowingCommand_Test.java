@@ -21,7 +21,7 @@ public class UndoIncorrectlyTypedValueWithFollowingCommand_Test extends BaseTran
 
   @Test
   public void test_UndoIncorrectlyTypedValueWithFollowingCommand() throws Throwable {
-    new UndoIncorrectlyTypedValueWithFollowingCommand_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

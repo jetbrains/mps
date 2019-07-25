@@ -87,7 +87,7 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     }
 
     myEnvironment.flushAllEvents();
-    final MakeSession session = new MakeSession(project, new BaseGeneratorWorker.MyMessageHandler(), true);
+    final MakeSession session = new MakeSession(project, new MyMessageHandler(), true);
     JavaCompileFacetInitializer jcfi = new JavaCompileFacetInitializer().skipCompilation(mySkipCompilation).setJavaCompileOptions(myJavaCompilerOptions);
     IScriptController controller = new IScriptController.Stub2(session, jcfi);
     Future<IResult> res = new BuildMakeService().make(session, resources, null, controller, new EmptyProgressMonitor());

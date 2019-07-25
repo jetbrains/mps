@@ -26,15 +26,16 @@ import com.intellij.util.xmlb.annotations.Tag;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import com.intellij.ui.content.Content;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @State(name = "ConsoleHistory", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
 public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStateComponent<ConsoleTool.MyState> {
 
-  private ConsoleTool.MyState loadedState;
+  private MyState loadedState;
   private List<BaseConsoleTab> myTabs = ListSequence.fromList(new ArrayList<BaseConsoleTab>());
   private MPSProject myProject;
 
@@ -72,7 +73,7 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
     initTabs();
   }
 
-  public BaseConsoleTab addConsoleTab(@Nullable ConsoleTool.TabState tabState, @Nullable Icon icon, boolean openTool) {
+  public BaseConsoleTab addConsoleTab(@Nullable TabState tabState, @Nullable Icon icon, boolean openTool) {
     String title = check_xg3v07_a0a0t(tabState);
     Element history = check_xg3v07_a0b0t(check_xg3v07_a0a1a91(check_xg3v07_a0a0b0t(check_xg3v07_a0a0a1a91(tabState))));
     if (icon == null) {
@@ -104,7 +105,7 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
 
   private void initTabs() {
     if (loadedState != null) {
-      for (ConsoleTool.TabState tabState : ListSequence.fromList(loadedState.tabs)) {
+      for (TabState tabState : ListSequence.fromList(loadedState.tabs)) {
         BaseConsoleTab tab = addConsoleTab(tabState, null, false);
         getContentManager().getContent(tab).setPinned(true);
       }
@@ -132,20 +133,20 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
   public static class MyState {
     public static final String VERSION = "3.2";
     public String version = VERSION;
-    public ArrayList<ConsoleTool.TabState> tabs = new ArrayList<ConsoleTool.TabState>();
+    public ArrayList<TabState> tabs = new ArrayList<TabState>();
   }
 
-  public void loadState(ConsoleTool.MyState state) {
-    if (Objects.equals(state.version, ConsoleTool.MyState.VERSION)) {
+  public void loadState(MyState state) {
+    if (Objects.equals(state.version, MyState.VERSION)) {
       loadedState = state;
     }
   }
 
   public void executeCommand(final SNode command) {
-    final ConsoleTool.TabState tabState = new ConsoleTool.TabState();
+    final TabState tabState = new TabState();
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        tabState.title = ((String) BHReflection.invoke0(command, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+        tabState.title = ((String) BHReflection.invoke0(command, AUX_xg3v07.BaseConcept_bc2351f, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
       }
     });
     tabState.isHistoryTab = true;
@@ -165,13 +166,13 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
   }
 
   @Nullable
-  public ConsoleTool.MyState getState() {
-    ConsoleTool.MyState result = new ConsoleTool.MyState();
+  public MyState getState() {
+    MyState result = new MyState();
     for (BaseConsoleTab tab : ListSequence.fromList(myTabs)) {
       if (!(getContentManager().getContent(tab).isPinned())) {
         break;
       }
-      ConsoleTool.TabState tabState = new ConsoleTool.TabState();
+      TabState tabState = new TabState();
       tabState.historyXml = new Element("tab").addContent(tab.saveHistory());
       tabState.title = tab.getTitle();
       tabState.isHistoryTab = !(tab instanceof DialogConsoleTab);
@@ -183,7 +184,7 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
     return result;
   }
 
-  private static String check_xg3v07_a0a0t(ConsoleTool.TabState checkedDotOperand) {
+  private static String check_xg3v07_a0a0t(TabState checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.title;
     }
@@ -207,13 +208,13 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
     }
     return null;
   }
-  private static Element check_xg3v07_a0a0a1a91(ConsoleTool.TabState checkedDotOperand) {
+  private static Element check_xg3v07_a0a0a1a91(TabState checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.historyXml;
     }
     return null;
   }
-  private static boolean check_xg3v07_a5a91(ConsoleTool.TabState checkedDotOperand) {
+  private static boolean check_xg3v07_a5a91(TabState checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.isHistoryTab;
     }
@@ -236,5 +237,9 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
   }
   private static <T> T as_xg3v07_a0b0jb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_xg3v07 {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

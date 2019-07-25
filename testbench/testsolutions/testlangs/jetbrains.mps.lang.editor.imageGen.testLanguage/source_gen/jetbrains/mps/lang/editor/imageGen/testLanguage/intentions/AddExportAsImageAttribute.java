@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.imageGen.testLanguage.intentions;
 
 import jetbrains.mps.editor.intentions.IntentionsFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -12,11 +11,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collection;
 import jetbrains.mps.editor.intentions.NodeTransformer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.editor.intentions.BaseNodeTransformer;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddExportAsImageAttribute extends IntentionsFactory {
   public AddExportAsImageAttribute() {
@@ -35,7 +37,7 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
   }
 
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    return AUX_nt4hw.INamedConcept_8cd7e247;
   }
 
   public SNodePointer getDeclarationNode() {
@@ -60,14 +62,14 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
 
 
   public void execute(SNode node, EditorContext editorContext) {
-    if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage"))) == null) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")));
+    if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nt4hw.ExportAsImage_c3fbbbd8)) == null) {
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nt4hw.ExportAsImage_c3fbbbd8), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")));
     } else {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")), null);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nt4hw.ExportAsImage_c3fbbbd8), null);
     }
   }
   public String description(SNode node, EditorContext editorContext) {
-    return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage"))) == null ? "Add" : "Remove")) + " export as image annotation";
+    return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_nt4hw.ExportAsImage_c3fbbbd8)) == null ? "Add" : "Remove")) + " export as image annotation";
   }
 
   public Collection<NodeTransformer> getTreeTransformers(SNode node, SNode child, EditorContext editorContext) {
@@ -81,5 +83,10 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
       }
     });
     return result;
+  }
+
+  private static final class AUX_nt4hw {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ExportAsImage_c3fbbbd8 = MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage");
   }
 }

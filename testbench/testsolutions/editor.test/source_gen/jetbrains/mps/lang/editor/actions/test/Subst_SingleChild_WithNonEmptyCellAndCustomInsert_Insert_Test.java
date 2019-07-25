@@ -21,7 +21,7 @@ public class Subst_SingleChild_WithNonEmptyCellAndCustomInsert_Insert_Test exten
 
   @Test
   public void test_Subst_SingleChild_WithNonEmptyCellAndCustomInsert_Insert() throws Throwable {
-    new Subst_SingleChild_WithNonEmptyCellAndCustomInsert_Insert_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class ChangingTypeToArrayTypeInIncompleteMemberDeclaration5_Test extends 
 
   @Test
   public void test_ChangingTypeToArrayTypeInIncompleteMemberDeclaration5() throws Throwable {
-    new ChangingTypeToArrayTypeInIncompleteMemberDeclaration5_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

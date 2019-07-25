@@ -22,7 +22,7 @@ public class DefaultEditor_DelOnChild1ReplaceItWithLinkTarget_Test extends BaseT
 
   @Test
   public void test_DefaultEditor_DelOnChild1ReplaceItWithLinkTarget() throws Throwable {
-    new DefaultEditor_DelOnChild1ReplaceItWithLinkTarget_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

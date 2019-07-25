@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DefaultMethodRenderer extends DefaultNodeRenderer {
@@ -17,8 +18,8 @@ public class DefaultMethodRenderer extends DefaultNodeRenderer {
   @Override
   protected String getElementText(final NodeNavigatable element) {
     SNode labelNode = getLabelNode(element);
-    if (SNodeOperations.isInstanceOf(labelNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration"))) {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(labelNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"))) {
+    if (SNodeOperations.isInstanceOf(labelNode, AUX_n5y6xu.EnumConstantDeclaration_b06144d8)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(labelNode), AUX_n5y6xu.EnumClass_acf68fc0)) {
         return "Enum constant '" + labelNode.getName() + "' in " + SNodeOperations.getParent(labelNode).getPresentation();
       }
     }
@@ -29,5 +30,10 @@ public class DefaultMethodRenderer extends DefaultNodeRenderer {
   protected SNode getLabelNode(NodeNavigatable element) {
     SNode node = element.getNodePointer().resolve(myRepository);
     return SNodeOperations.getParent(node);
+  }
+
+  private static final class AUX_n5y6xu {
+    /*package*/ static final SConcept EnumClass_acf68fc0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept EnumConstantDeclaration_b06144d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
   }
 }

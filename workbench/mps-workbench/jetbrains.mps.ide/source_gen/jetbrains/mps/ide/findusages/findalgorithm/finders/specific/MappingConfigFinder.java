@@ -17,11 +17,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.util.CollectionUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MappingConfigFinder extends BaseFinder implements IFinder {
   private Generator myGenerator;
@@ -41,12 +42,12 @@ public class MappingConfigFinder extends BaseFinder implements IFinder {
     Iterable<SModel> ownTemplateModels = myGenerator.getOwnTemplateModels();
     Iterable<SNode> mappingConfigs = Sequence.fromIterable(ownTemplateModels).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
+        return SModelOperations.roots(it, AUX_6lkjxn.MappingConfiguration_587b13db);
       }
     });
     List<SNode> nodesToCheck = new ArrayList<SNode>();
     for (SNode mappingConfig : mappingConfigs) {
-      for (SNode rule : SNodeOperations.ofConcept(SNodeOperations.getChildren(mappingConfig), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule"))) {
+      for (SNode rule : SNodeOperations.ofConcept(SNodeOperations.getChildren(mappingConfig), AUX_6lkjxn.BaseMappingRule_6fbb9a69)) {
         nodesToCheck.add(rule);
         collectChildrenThatMayHaveReferenceOnTemplate(rule, nodesToCheck);
       }
@@ -66,11 +67,17 @@ public class MappingConfigFinder extends BaseFinder implements IFinder {
   private void collectChildrenThatMayHaveReferenceOnTemplate(SNode parent, List<SNode> result) {
     List<SNode> children = jetbrains.mps.util.SNodeOperations.getChildren(parent, false);
     for (SNode child : children) {
-      if (SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"))) {
+      if (SNodeOperations.isInstanceOf(child, AUX_6lkjxn.ConceptFunction_e08795a5)) {
         continue;
       }
       result.add(child);
       collectChildrenThatMayHaveReferenceOnTemplate(child, result);
     }
+  }
+
+  private static final class AUX_6lkjxn {
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept BaseMappingRule_6fbb9a69 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
+    /*package*/ static final SConcept ConceptFunction_e08795a5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
   }
 }

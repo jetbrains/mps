@@ -26,7 +26,7 @@ public class DeleteCommentedClassifierMemberTwoStep_Test extends BaseTransformat
 
   @Test
   public void test_DeleteCommentedClassifierMemberTwoStep() throws Throwable {
-    new DeleteCommentedClassifierMemberTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

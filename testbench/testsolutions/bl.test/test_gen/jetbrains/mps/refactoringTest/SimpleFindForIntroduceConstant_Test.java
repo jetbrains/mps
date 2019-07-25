@@ -35,7 +35,7 @@ public class SimpleFindForIntroduceConstant_Test extends BaseTransformationTest 
 
   @Test
   public void test_SimpleFindForIntroduceConstantTest() throws Throwable {
-    new SimpleFindForIntroduceConstant_Test.TestBody(this).test_SimpleFindForIntroduceConstantTest();
+    new TestBody(this).test_SimpleFindForIntroduceConstantTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

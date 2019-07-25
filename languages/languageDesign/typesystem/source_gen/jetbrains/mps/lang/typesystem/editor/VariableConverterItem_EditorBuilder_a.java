@@ -62,7 +62,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new VariableConverterItem_EditorBuilder_a.applicableBlockSingleRoleHandler_knkyai_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e073a595aL, 0x11e0740e3bfL, "applicableBlock"), getEditorContext());
+    SingleRoleCellProvider provider = new applicableBlockSingleRoleHandler_knkyai_b0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e073a595aL, 0x11e0740e3bfL, "applicableBlock"), getEditorContext());
     return provider.createCell();
   }
   private static class applicableBlockSingleRoleHandler_knkyai_b0 extends SingleRoleCellProvider {
@@ -132,7 +132,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new VariableConverterItem_EditorBuilder_a.convertBlockSingleRoleHandler_knkyai_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e073a595aL, 0x11e0740d217L, "convertBlock"), getEditorContext());
+    SingleRoleCellProvider provider = new convertBlockSingleRoleHandler_knkyai_e0(myNode, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e073a595aL, 0x11e0740d217L, "convertBlock"), getEditorContext());
     return provider.createCell();
   }
   private static class convertBlockSingleRoleHandler_knkyai_e0 extends SingleRoleCellProvider {

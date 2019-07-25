@@ -32,27 +32,27 @@ public class UnusedVariableDeclaration_Test extends BaseTransformationTest {
 
   @Test
   public void test_UnusedVariableDeclaration() throws Throwable {
-    new UnusedVariableDeclaration_Test.TestBody(this).test_UnusedVariableDeclaration();
+    new TestBody(this).test_UnusedVariableDeclaration();
   }
   @Test
   public void test_ErrorMessagesCheck5684597377559856228() throws Throwable {
-    new UnusedVariableDeclaration_Test.TestBody(this).test_ErrorMessagesCheck5684597377559856228();
+    new TestBody(this).test_ErrorMessagesCheck5684597377559856228();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck5924873649943649973() throws Throwable {
-    new UnusedVariableDeclaration_Test.TestBody(this).test_NodeUnusedLocalVariableCheck5924873649943649973();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck5924873649943649973();
   }
   @Test
   public void test_NodeUnusedVariableWarningCheck5924873649943649975() throws Throwable {
-    new UnusedVariableDeclaration_Test.TestBody(this).test_NodeUnusedVariableWarningCheck5924873649943649975();
+    new TestBody(this).test_NodeUnusedVariableWarningCheck5924873649943649975();
   }
   @Test
   public void test_NodeUnusedVariableWarningCheck6923385624927360820() throws Throwable {
-    new UnusedVariableDeclaration_Test.TestBody(this).test_NodeUnusedVariableWarningCheck6923385624927360820();
+    new TestBody(this).test_NodeUnusedVariableWarningCheck6923385624927360820();
   }
   @Test
   public void test_NodeUnusedVariableWarningCheck6923385624929638863() throws Throwable {
-    new UnusedVariableDeclaration_Test.TestBody(this).test_NodeUnusedVariableWarningCheck6923385624929638863();
+    new TestBody(this).test_NodeUnusedVariableWarningCheck6923385624929638863();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -36,35 +36,35 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
 
   @Test
   public void test_childContainingLinks() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_childContainingLinks();
+    new TestBody(this).test_childContainingLinks();
   }
   @Test
   public void test_childContaininLinksForSpecializedChildren() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_childContaininLinksForSpecializedChildren();
+    new TestBody(this).test_childContaininLinksForSpecializedChildren();
   }
   @Test
   public void test_childContainingRoles() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_childContainingRoles();
+    new TestBody(this).test_childContainingRoles();
   }
   @Test
   public void test_unspecifiedChildren() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_unspecifiedChildren();
+    new TestBody(this).test_unspecifiedChildren();
   }
   @Test
   public void test_childOperationsOnNull() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_childOperationsOnNull();
+    new TestBody(this).test_childOperationsOnNull();
   }
   @Test
   public void test_childrenByLinkDeclaration() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_childrenByLinkDeclaration();
+    new TestBody(this).test_childrenByLinkDeclaration();
   }
   @Test
   public void test_childrenByLinkDeclarationSpecialized() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_childrenByLinkDeclarationSpecialized();
+    new TestBody(this).test_childrenByLinkDeclarationSpecialized();
   }
   @Test
   public void test_childrenByLinkDeclarationOnNull() throws Throwable {
-    new SNodeGetChildrenOperation_Test.TestBody(this).test_childrenByLinkDeclarationOnNull();
+    new TestBody(this).test_childrenByLinkDeclarationOnNull();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

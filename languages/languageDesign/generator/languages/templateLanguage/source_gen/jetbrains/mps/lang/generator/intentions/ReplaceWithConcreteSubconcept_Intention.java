@@ -53,7 +53,7 @@ public final class ReplaceWithConcreteSubconcept_Intention extends AbstractInten
     List<SConcept> paramList = parameter(node, context);
     if (paramList != null) {
       for (SConcept param : paramList) {
-        ListSequence.fromList(list).addElement(new ReplaceWithConcreteSubconcept_Intention.IntentionImplementation(param));
+        ListSequence.fromList(list).addElement(new IntentionImplementation(param));
       }
     }
     return list;

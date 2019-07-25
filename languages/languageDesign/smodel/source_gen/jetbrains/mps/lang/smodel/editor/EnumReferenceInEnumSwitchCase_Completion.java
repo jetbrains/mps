@@ -20,8 +20,8 @@ import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
@@ -37,6 +37,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenuBase {
   public EnumReferenceInEnumSwitchCase_Completion() {
@@ -65,7 +66,7 @@ public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenu
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new EnumReferenceInEnumSwitchCase_Completion.TMP_Group_snd94j_a0());
+      result.add(new TMP_Group_snd94j_a0());
     }
     return result;
   }
@@ -78,12 +79,12 @@ public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenu
       super.initialize(_context);
       enumSwitchCase = new Computable<SNode>() {
         public SNode compute() {
-          return SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase"));
+          return SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), AUX_snd94j.EnumSwitchCase_7e988dfb);
         }
       }.compute();
       enumSwitchExpression = new Computable<SNode>() {
         public SNode compute() {
-          return SNodeOperations.as(SNodeOperations.getParent(enumSwitchCase), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression"));
+          return SNodeOperations.as(SNodeOperations.getParent(enumSwitchCase), AUX_snd94j.EnumSwitchExpression_7e988de2);
         }
       }.compute();
     }
@@ -105,12 +106,12 @@ public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenu
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new EnumReferenceInEnumSwitchCase_Completion.TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a());
     }
     private class TMP_Action_snd94j_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        EnumReferenceInEnumSwitchCase_Completion.TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a.Item item = new EnumReferenceInEnumSwitchCase_Completion.TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a.Item(context);
+        TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a.Item item = new TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -168,5 +169,10 @@ public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenu
       }
 
     }
+  }
+
+  private static final class AUX_snd94j {
+    /*package*/ static final SConcept EnumSwitchCase_7e988dfb = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase");
+    /*package*/ static final SConcept EnumSwitchExpression_7e988de2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
   }
 }

@@ -6,14 +6,15 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SingleLineCommentActions {
 
@@ -28,23 +29,23 @@ public class SingleLineCommentActions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode selectedNode = editorContext.getSelectedNode();
         SNode selectedPart;
-        if (SNodeOperations.isInstanceOf(selectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"))) {
-          selectedPart = SNodeOperations.cast(selectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"));
-        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(selectedNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"))) {
+        if (SNodeOperations.isInstanceOf(selectedNode, AUX_5swql9.CommentPart_36a4c8f5)) {
+          selectedPart = SNodeOperations.cast(selectedNode, AUX_5swql9.CommentPart_36a4c8f5);
+        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(selectedNode), AUX_5swql9.CommentPart_36a4c8f5)) {
           //  commented statement comes in selection 
-          selectedPart = SNodeOperations.cast(SNodeOperations.getParent(selectedNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"));
+          selectedPart = SNodeOperations.cast(SNodeOperations.getParent(selectedNode), AUX_5swql9.CommentPart_36a4c8f5);
         } else {
           return;
         }
 
         if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).last() == selectedPart) {
-          if (SNodeOperations.isInstanceOf(selectedPart, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"))) {
+          if (SNodeOperations.isInstanceOf(selectedPart, AUX_5swql9.TextCommentPart_36a4c8f7)) {
             SingleLineCommentUtil.divideSingleLineCommentText((SNode) selectedPart, editorContext);
           } else {
-            SNodeOperations.insertNextSiblingChild(node, SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), null));
+            SNodeOperations.insertNextSiblingChild(node, SNodeFactoryOperations.createNewNode(AUX_5swql9.Statement_9dbf9b0e, null));
           }
         } else {
-          SNodeOperations.insertNextSiblingChild(selectedPart, SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"), null));
+          SNodeOperations.insertNextSiblingChild(selectedPart, SNodeFactoryOperations.createNewNode(AUX_5swql9.CommentPart_36a4c8f5, null));
         }
       }
 
@@ -84,5 +85,11 @@ public class SingleLineCommentActions {
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
     }
+  }
+
+  private static final class AUX_5swql9 {
+    /*package*/ static final SConcept CommentPart_36a4c8f5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
+    /*package*/ static final SConcept TextCommentPart_36a4c8f7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

@@ -32,9 +32,9 @@ public abstract class EvaluationUi extends JPanel {
   @NotNull
   protected final DebugSession myDebugSession;
   protected final EvaluationTree myTree;
-  private EvaluationUi.IErrorTextListener myErrorListener;
+  private IErrorTextListener myErrorListener;
   private final boolean myAutoUpdate;
-  private final SessionChangeAdapter mySessionChangeAdapter = new EvaluationUi.MySessionChangeAdapter();
+  private final SessionChangeAdapter mySessionChangeAdapter = new MySessionChangeAdapter();
   public EvaluationUi(@NotNull DebugSession session, boolean autoUpdate) {
     super(new BorderLayout());
     myDebugSession = session;
@@ -111,7 +111,7 @@ public abstract class EvaluationUi extends JPanel {
       myErrorListener.updateErrorText(text);
     }
   }
-  public void setErrorTextListener(EvaluationUi.IErrorTextListener listener) {
+  public void setErrorTextListener(IErrorTextListener listener) {
     myErrorListener = listener;
   }
   public interface IErrorTextListener {

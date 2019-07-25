@@ -21,7 +21,7 @@ public class TypeColumnInDecisionTable_Test extends BaseTransformationTest {
 
   @Test
   public void test_TypeColumnInDecisionTable() throws Throwable {
-    new TypeColumnInDecisionTable_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

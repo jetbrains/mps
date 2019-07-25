@@ -8,11 +8,12 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ExceptionChooserDialog extends StubsClassChooserDialog {
   private final Project myProject;
@@ -24,15 +25,19 @@ public class ExceptionChooserDialog extends StubsClassChooserDialog {
   protected boolean isValid(SNode node) {
     final SNode throwableClassifier = new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable").resolve(myProject.getRepository());
     SNode base = node;
-    while (base != null && SNodeOperations.isInstanceOf(base, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")) && !((Objects.equals(base, throwableClassifier)))) {
-      base = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(base, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
+    while (base != null && SNodeOperations.isInstanceOf(base, AUX_lt001m.ClassConcept_e2711824) && !((Objects.equals(base, throwableClassifier)))) {
+      base = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(base, AUX_lt001m.ClassConcept_e2711824), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
     }
-    return (base != null) && SNodeOperations.isInstanceOf(base, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    return (base != null) && SNodeOperations.isInstanceOf(base, AUX_lt001m.ClassConcept_e2711824);
   }
   @Nullable
   @NonNls
   @Override
   protected String getDimensionServiceKey() {
     return ExceptionChooserDialog.class.getName();
+  }
+
+  private static final class AUX_lt001m {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

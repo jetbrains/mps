@@ -93,7 +93,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new SubstituteMenuPart_Parameterized_EditorBuilder_a.parameterTypeSingleRoleHandler_vxtpdv_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType"), getEditorContext());
+    SingleRoleCellProvider provider = new parameterTypeSingleRoleHandler_vxtpdv_b1a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType"), getEditorContext());
     return provider.createCell();
   }
   private static class parameterTypeSingleRoleHandler_vxtpdv_b1a extends SingleRoleCellProvider {
@@ -171,7 +171,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new SubstituteMenuPart_Parameterized_EditorBuilder_a.parameterQuerySingleRoleHandler_vxtpdv_a3b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, 0x742ef6b4d0cca0cdL, "parameterQuery"), getEditorContext());
+    SingleRoleCellProvider provider = new parameterQuerySingleRoleHandler_vxtpdv_a3b0(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, 0x742ef6b4d0cca0cdL, "parameterQuery"), getEditorContext());
     return provider.createCell();
   }
   private static class parameterQuerySingleRoleHandler_vxtpdv_a3b0 extends SingleRoleCellProvider {
@@ -260,7 +260,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new SubstituteMenuPart_Parameterized_EditorBuilder_a.partSingleRoleHandler_vxtpdv_a2a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, 0x742ef6b4d0cca0c7L, "part"), getEditorContext());
+    SingleRoleCellProvider provider = new partSingleRoleHandler_vxtpdv_a2a(myNode, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, 0x742ef6b4d0cca0c7L, "part"), getEditorContext());
     return provider.createCell();
   }
   private static class partSingleRoleHandler_vxtpdv_a2a extends SingleRoleCellProvider {

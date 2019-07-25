@@ -32,23 +32,23 @@ public class MethodParametersTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_MethodParametersTest() throws Throwable {
-    new MethodParametersTest_Test.TestBody(this).test_MethodParametersTest();
+    new TestBody(this).test_MethodParametersTest();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624927544278() throws Throwable {
-    new MethodParametersTest_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6923385624927544278();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6923385624927544278();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929086232() throws Throwable {
-    new MethodParametersTest_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929086232();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929086232();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526512877601() throws Throwable {
-    new MethodParametersTest_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526512877601();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526512877601();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199442() throws Throwable {
-    new MethodParametersTest_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199442();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199442();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

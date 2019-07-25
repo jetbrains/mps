@@ -18,8 +18,8 @@ public interface RecursiveParticipant<InitialDataObject, FinalDataObject, Initia
 
   class RecursiveParticipantApplied<I, F, IP, FP> extends RefactoringParticipant.ParticipantApplied<I, F, IP, FP, IP, FP> {
     private Iterable<RefactoringParticipant.ParticipantApplied> myParents;
-    public static <I, F, IP, FP> RecursiveParticipant.RecursiveParticipantApplied<I, F, IP, FP> create(RefactoringParticipant<I, F, IP, FP> participant, List<IP> oldNodes, Iterable<RefactoringParticipant.ParticipantApplied> parents) {
-      return new RecursiveParticipant.RecursiveParticipantApplied<I, F, IP, FP>(participant, oldNodes, parents);
+    public static <I, F, IP, FP> RecursiveParticipantApplied<I, F, IP, FP> create(RefactoringParticipant<I, F, IP, FP> participant, List<IP> oldNodes, Iterable<RefactoringParticipant.ParticipantApplied> parents) {
+      return new RecursiveParticipantApplied<I, F, IP, FP>(participant, oldNodes, parents);
     }
     private RecursiveParticipantApplied(RefactoringParticipant<I, F, IP, FP> participant, List<IP> oldNodes, Iterable<RefactoringParticipant.ParticipantApplied> parents) {
       super(new RefactoringParticipant.CollectingParticipantStateFactory<IP, FP>(), participant, oldNodes);

@@ -23,7 +23,7 @@ public class AnonymousCreator3_Test extends BaseTransformationTest {
 
   @Test
   public void test_AnonymousCreator3() throws Throwable {
-    new AnonymousCreator3_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

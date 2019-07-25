@@ -21,7 +21,7 @@ public class MissingTypeFocus4_Test extends BaseTransformationTest {
 
   @Test
   public void test_MissingTypeFocus4() throws Throwable {
-    new MissingTypeFocus4_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -18,5 +18,5 @@ import java.util.regex.Matcher;
       }
     }
   }
-  private static Pattern REGEXP_m02t0c_a0a0b0b = Pattern.compile("(\\d+)", 0);
+  private static final Pattern REGEXP_m02t0c_a0a0b0b = Pattern.compile("(\\d+)", 0);
 }

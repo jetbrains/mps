@@ -15,17 +15,18 @@ import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public CheckNoCyclesInDefs_NonTypesystemRule() {
@@ -34,7 +35,7 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
     final Set<SNode> visited = SetSequence.fromSet(new HashSet<SNode>());
     final Set<SNode> visiting = SetSequence.fromSet(new HashSet<SNode>());
     final Deque<SNode> stack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
-    List<SNode> allDefs = SNodeOperations.getNodeDescendants(root, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule"), false, new SAbstractConcept[]{});
+    List<SNode> allDefs = SNodeOperations.getNodeDescendants(root, AUX_17au3i.DefForRule_93a8658c, false, new SAbstractConcept[]{});
     while (ListSequence.fromList(allDefs).isNotEmpty()) {
       DequeSequence.fromDequeNew(stack).addFirstElement(ListSequence.fromList(allDefs).first());
       while (DequeSequence.fromDequeNew(stack).isNotEmpty()) {
@@ -46,10 +47,10 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
           continue;
         }
         SetSequence.fromSet(visiting).addElement(def);
-        Iterable<SNode> implicitDeps = SNodeOperations.getNodeDescendants(def, MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference"), false, new SAbstractConcept[]{});
+        Iterable<SNode> implicitDeps = SNodeOperations.getNodeDescendants(def, AUX_17au3i.TypedDefReference_5ea34bf3, false, new SAbstractConcept[]{});
         Sequence.fromIterable(implicitDeps).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule"));
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration")), AUX_17au3i.DefForRule_93a8658c);
           }
         }).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
@@ -57,7 +58,7 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            SNode depDef = SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule"));
+            SNode depDef = SNodeOperations.cast(it, AUX_17au3i.DefForRule_93a8658c);
             if (SetSequence.fromSet(visiting).contains(depDef)) {
               {
                 MessageTarget errorTarget = new NodeMessageTarget();
@@ -79,12 +80,18 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesConstraintsRoot");
+    return AUX_17au3i.RulesConstraintsRoot_9de962df;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_17au3i {
+    /*package*/ static final SConcept DefForRule_93a8658c = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule");
+    /*package*/ static final SConcept TypedDefReference_5ea34bf3 = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference");
+    /*package*/ static final SConcept RulesConstraintsRoot_9de962df = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesConstraintsRoot");
   }
 }

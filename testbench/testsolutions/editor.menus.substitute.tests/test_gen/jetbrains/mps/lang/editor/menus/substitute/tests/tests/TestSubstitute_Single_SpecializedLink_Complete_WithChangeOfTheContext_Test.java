@@ -24,7 +24,7 @@ public class TestSubstitute_Single_SpecializedLink_Complete_WithChangeOfTheConte
 
   @Test
   public void test_TestSubstitute_Single_SpecializedLink_Complete_WithChangeOfTheContext() throws Throwable {
-    new TestSubstitute_Single_SpecializedLink_Complete_WithChangeOfTheContext_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

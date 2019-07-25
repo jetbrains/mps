@@ -21,7 +21,7 @@ public class AddParensToDotExpression2_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddParensToDotExpression2() throws Throwable {
-    new AddParensToDotExpression2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

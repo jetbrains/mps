@@ -27,6 +27,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptExtractStaticMethod_CallExpression = createDescriptorForExtractStaticMethod_CallExpression();
   /*package*/ final ConceptDescriptor myConceptExtractToConstantExpression = createDescriptorForExtractToConstantExpression();
   /*package*/ final ConceptDescriptor myConceptExtractToConstantRefExpression = createDescriptorForExtractToConstantRefExpression();
+  /*package*/ final ConceptDescriptor myConceptExtractToSingleConstantExpression = createDescriptorForExtractToSingleConstantExpression();
   /*package*/ final ConceptDescriptor myConceptInternalAnonymousClass = createDescriptorForInternalAnonymousClass();
   /*package*/ final ConceptDescriptor myConceptInternalAnonymousClassCreator = createDescriptorForInternalAnonymousClassCreator();
   /*package*/ final ConceptDescriptor myConceptInternalClassCreator = createDescriptorForInternalClassCreator();
@@ -58,7 +59,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptConstantValue, myConceptExtractStatementListExpression, myConceptExtractStatementListInnerExpression, myConceptExtractStaticInnerClassConcept, myConceptExtractStaticInnerClassCreator, myConceptExtractStaticInnerClassExpression, myConceptExtractStaticMethodExpression, myConceptExtractStaticMethod_CallExpression, myConceptExtractToConstantExpression, myConceptExtractToConstantRefExpression, myConceptInternalAnonymousClass, myConceptInternalAnonymousClassCreator, myConceptInternalClassCreator, myConceptInternalClassExpression, myConceptInternalClassifierType, myConceptInternalNewExpression, myConceptInternalPartialFieldReference, myConceptInternalPartialInstanceMethodCall, myConceptInternalStaticFieldReference, myConceptInternalStaticMethodCall, myConceptInternalSuperMethodCallOperation, myConceptInternalThisExpression, myConceptInternalTypedStaticFieldReference, myConceptInternalVariableReference, myConceptTypeHintExpression, myConceptWeakClassReference);
+    return Arrays.asList(myConceptConstantValue, myConceptExtractStatementListExpression, myConceptExtractStatementListInnerExpression, myConceptExtractStaticInnerClassConcept, myConceptExtractStaticInnerClassCreator, myConceptExtractStaticInnerClassExpression, myConceptExtractStaticMethodExpression, myConceptExtractStaticMethod_CallExpression, myConceptExtractToConstantExpression, myConceptExtractToConstantRefExpression, myConceptExtractToSingleConstantExpression, myConceptInternalAnonymousClass, myConceptInternalAnonymousClassCreator, myConceptInternalClassCreator, myConceptInternalClassExpression, myConceptInternalClassifierType, myConceptInternalNewExpression, myConceptInternalPartialFieldReference, myConceptInternalPartialInstanceMethodCall, myConceptInternalStaticFieldReference, myConceptInternalStaticMethodCall, myConceptInternalSuperMethodCallOperation, myConceptInternalThisExpression, myConceptInternalTypedStaticFieldReference, myConceptInternalVariableReference, myConceptTypeHintExpression, myConceptWeakClassReference);
   }
 
   @Override
@@ -85,6 +86,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptExtractToConstantExpression;
       case LanguageConceptSwitch.ExtractToConstantRefExpression:
         return myConceptExtractToConstantRefExpression;
+      case LanguageConceptSwitch.ExtractToSingleConstantExpression:
+        return myConceptExtractToSingleConstantExpression;
       case LanguageConceptSwitch.InternalAnonymousClass:
         return myConceptInternalAnonymousClass;
       case LanguageConceptSwitch.InternalAnonymousClassCreator:
@@ -241,6 +244,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.associate("original", 0x162724dabcdc672L).target(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1204d897032L).optional(false).origin("99767819676010098").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForExtractToSingleConstantExpression() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguageInternal", "ExtractToSingleConstantExpression", 0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x4460846a234a2626L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    b.origin("r:00000000-0000-4000-0000-011c895903ac(jetbrains.mps.baseLanguageInternal.structure)/4927083583736784422");
+    b.version(2);
+    b.property("uniqueFieldName", 0x4460846a234a9e33L).type(PrimitiveTypeId.STRING).origin("4927083583736815155").done();
+    b.aggregate("expression", 0x4460846a234ab020L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("4927083583736819744").done();
+    b.alias("extract to single constant");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInternalAnonymousClass() {

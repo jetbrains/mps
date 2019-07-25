@@ -21,7 +21,7 @@ public class RemoveEvent_Test extends BaseTransformationTest {
 
   @Test
   public void test_RemoveEvent() throws Throwable {
-    new RemoveEvent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

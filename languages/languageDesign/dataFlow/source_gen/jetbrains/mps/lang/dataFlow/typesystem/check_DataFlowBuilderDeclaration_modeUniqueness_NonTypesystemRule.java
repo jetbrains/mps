@@ -43,7 +43,7 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
     Map<SNode, List<SNode>> duplicatingDeclarations = MapSequence.fromMap(new HashMap<SNode, List<SNode>>());
     SModel dataFlowModel = SModuleOperations.getAspect(containingLanguage, "dataFlow");
     if (dataFlowModel != null) {
-      List<SNode> roots = SModelOperations.roots(dataFlowModel, MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration"));
+      List<SNode> roots = SModelOperations.roots(dataFlowModel, AUX_46aqev.DataFlowBuilderDeclaration_7bad810d);
       for (SNode root : ListSequence.fromList(roots)) {
         if (root == builder || SLinkOperations.getTarget(root, MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration")) != SLinkOperations.getTarget(builder, MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration"))) {
           continue;
@@ -85,7 +85,7 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
+    return AUX_46aqev.DataFlowBuilderDeclaration_7bad810d;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -95,5 +95,9 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
   }
   private static <T> T as_46aqev_a0a0a1(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class AUX_46aqev {
+    /*package*/ static final SConcept DataFlowBuilderDeclaration_7bad810d = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
   }
 }

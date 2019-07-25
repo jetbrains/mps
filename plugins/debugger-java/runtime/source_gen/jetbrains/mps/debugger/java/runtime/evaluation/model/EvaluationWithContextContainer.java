@@ -62,6 +62,8 @@ import com.intellij.ide.plugins.IdeaPluginDescriptorImpl;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EvaluationWithContextContainer extends EvaluationContainer {
   private static final Logger LOG = LogManager.getLogger(EvaluationWithContextContainer.class);
@@ -106,18 +108,18 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
   }
   private void tryToImport(final SNode evaluatorNode, List<SNodeReference> nodesToImport) {
-    BaseLanguagesImportHelper helper = new EvaluationWithContextContainer.MyBaseLanguagesImportHelper(evaluatorNode);
-    helper.tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, MetaAdapterFactory.getInterfaceConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7f4a99699cea367bL, "jetbrains.mps.debugger.java.evaluation.structure.IEvaluatorConcept"), SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))), nodesToImport);
+    BaseLanguagesImportHelper helper = new MyBaseLanguagesImportHelper(evaluatorNode);
+    helper.tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, AUX_v5yv3u.IEvaluatorConcept_af2d65f6, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))), nodesToImport);
   }
   @Override
   protected SNode createEvaluatorNode() {
-    SNode evaluatorConcept = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept"), null);
+    SNode evaluatorConcept = SNodeFactoryOperations.createNewNode(AUX_v5yv3u.EvaluatorConcept_59d4c760, null);
     SPropertyOperations.set(evaluatorConcept, MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c79bL, "isShowContext"), myIsInWatch);
     return evaluatorConcept;
   }
   private void createVars() {
     // 2 uses. setUpNode() is invoked within command; updateState runs new command itself 
-    fillVariables(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept")));
+    fillVariables(SNodeOperations.cast(getNode(), AUX_v5yv3u.EvaluatorConcept_59d4c760));
   }
   private void fillVariables(SNode evaluatorConcept) {
     try {
@@ -195,7 +197,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       return null;
     }
     SNode classifierType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setTarget(classifierType, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SNodeOperations.cast(unit, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")));
+    SLinkOperations.setTarget(classifierType, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SNodeOperations.cast(unit, AUX_v5yv3u.Classifier_4b7e553));
     return classifierType;
   }
   public SNode findUnit(final String unitName) {
@@ -205,9 +207,9 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     // first, try @java_stub model 
     final String qualifiedModelName = modelFqNameFromUnitName(unitName);
     for (SModel stub : repoFacade.getModelsByName(new SModelName(new JavaPackageNameStub(qualifiedModelName).asModelId().getModelName()))) {
-      SNode node = ListSequence.fromList(SModelOperations.nodes(stub, MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept"))).findFirst(new IWhereFilter<SNode>() {
+      SNode node = ListSequence.fromList(SModelOperations.nodes(stub, AUX_v5yv3u.UnitConcept_228d6873)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(((String) BHReflection.invoke0(it, MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept"), SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))), unitName) && SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+          return Objects.equals(((String) BHReflection.invoke0(it, AUX_v5yv3u.UnitConcept_228d6873, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))), unitName) && SNodeOperations.isInstanceOf(it, AUX_v5yv3u.Classifier_4b7e553);
         }
       });
       if (node != null) {
@@ -226,13 +228,13 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       }
     }));
     FindUsagesFacade findUsages = FindUsagesFacade.getInstance();
-    SAbstractConcept concept = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
+    SAbstractConcept concept = AUX_v5yv3u.UnitConcept_228d6873;
     Set<SNode> instances = findUsages.findInstances(scope, Collections.singleton(concept), false, new EmptyProgressMonitor());
     return SNodeOperations.cast(SetSequence.fromSet(instances).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept")), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept"), SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))).equals(unitName);
+        return SNodeOperations.isInstanceOf(it, AUX_v5yv3u.Classifier_4b7e553) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, AUX_v5yv3u.UnitConcept_228d6873), AUX_v5yv3u.UnitConcept_228d6873, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))).equals(unitName);
       }
-    }), MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept"));
+    }), AUX_v5yv3u.UnitConcept_228d6873);
   }
 
   private boolean needUpdateVariables() {
@@ -284,7 +286,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       if (matchingVar == null) {
         matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables"))).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode variable) {
-            return Objects.equals(SPropertyOperations.getString(variable, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+            return Objects.equals(SPropertyOperations.getString(variable, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), AUX_v5yv3u.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
           }
         });
       }
@@ -296,5 +298,13 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       SLinkOperations.setTarget(newVariableReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration"), variable);
       return newVariableReference;
     }
+  }
+
+  private static final class AUX_v5yv3u {
+    /*package*/ static final SInterfaceConcept IEvaluatorConcept_af2d65f6 = MetaAdapterFactory.getInterfaceConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7f4a99699cea367bL, "jetbrains.mps.debugger.java.evaluation.structure.IEvaluatorConcept");
+    /*package*/ static final SConcept EvaluatorConcept_59d4c760 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept UnitConcept_228d6873 = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

@@ -66,6 +66,7 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_CustomChildConcept;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_Item;
 import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class MenuTraceChildCellMenu_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -102,7 +103,7 @@ import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellM
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "constant cell");
     editorCell.setCellId("Constant_i2boga_a0");
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new MenuTraceChildCellMenu_EditorBuilder_a.MenuTraceChildCellMenu_customReplace_cellMenu_i2boga_a0a0(), new MenuTraceChildCellMenu_EditorBuilder_a.ReplaceWith_MenuTraceChildCellMenu_cellMenu_i2boga_b0a0(), new MenuTraceChildCellMenu_EditorBuilder_a.MenuTraceChildCellMenu_generic_cellMenu_i2boga_c0a0(), new MenuTraceChildCellMenu_EditorBuilder_a.MenuTraceChildCellMenu_generic_cellMenu_i2boga_d0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new MenuTraceChildCellMenu_customReplace_cellMenu_i2boga_a0a0(), new ReplaceWith_MenuTraceChildCellMenu_cellMenu_i2boga_b0a0(), new MenuTraceChildCellMenu_generic_cellMenu_i2boga_c0a0(), new MenuTraceChildCellMenu_generic_cellMenu_i2boga_d0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class MenuTraceChildCellMenu_customReplace_cellMenu_i2boga_a0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
@@ -130,7 +131,7 @@ import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellM
     public ReplaceWith_MenuTraceChildCellMenu_cellMenu_i2boga_b0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x13376377600dd75eL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceChildCellMenu");
+      return AUX_z3cfpw.MenuTraceChildCellMenu_df1e5b9f;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -193,9 +194,9 @@ import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellM
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
       editorCell.setCellId("property_name");
-      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new MenuTraceChildCellMenu_EditorBuilder_a.MenuTraceChildCellMenu_name_postfixCellMenu_i2boga_a0b0(), new MenuTraceChildCellMenu_EditorBuilder_a.MenuTraceChildCellMenu_name_cellMenu_i2boga_b0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new MenuTraceChildCellMenu_name_postfixCellMenu_i2boga_a0b0(), new MenuTraceChildCellMenu_name_cellMenu_i2boga_b0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_z3cfpw.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -280,7 +281,7 @@ import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellM
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new MenuTraceChildCellMenu_EditorBuilder_a.childSingleRoleHandler_i2boga_e0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x13376377600dd75eL, 0x133763776010fa10L, "child"), getEditorContext());
+    SingleRoleCellProvider provider = new childSingleRoleHandler_i2boga_e0(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x13376377600dd75eL, 0x133763776010fa10L, "child"), getEditorContext());
     return provider.createCell();
   }
   private static class childSingleRoleHandler_i2boga_e0 extends SingleRoleCellProvider {
@@ -310,7 +311,7 @@ import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellM
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x13376377600dd75eL, 0x133763776010fa10L, "child"), MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776010fa0dL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceGrandChildCellMenu")), new SubstituteInfoPartExt[]{new MenuTraceChildCellMenu_EditorBuilder_a.childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_a0e0(), new MenuTraceChildCellMenu_EditorBuilder_a.childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_b0e0(), new MenuTraceChildCellMenu_EditorBuilder_a.childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_c0e0(), new MenuTraceChildCellMenu_EditorBuilder_a.childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_d0e0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x13376377600dd75eL, 0x133763776010fa10L, "child"), AUX_z3cfpw.MenuTraceGrandChildCellMenu_e3bc2d7b), new SubstituteInfoPartExt[]{new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_a0e0(), new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_b0e0(), new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_c0e0(), new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_d0e0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x13376377600dd75eL, 0x133763776010fa10L, "child"));
@@ -411,5 +412,11 @@ import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellM
         return new EditorMenuDescriptorBase("primary replace child menu", new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803703050"));
       }
     }
+  }
+
+  private static final class AUX_z3cfpw {
+    /*package*/ static final SConcept MenuTraceChildCellMenu_df1e5b9f = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x13376377600dd75eL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceChildCellMenu");
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept MenuTraceGrandChildCellMenu_e3bc2d7b = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776010fa0dL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceGrandChildCellMenu");
   }
 }

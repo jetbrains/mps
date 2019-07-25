@@ -4,21 +4,27 @@ package jetbrains.mps.lang.structure.actions;
 
 import jetbrains.mps.openapi.actions.descriptor.PastePostProcessor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.util.ConceptIdSetter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class StructureIds_PastePostProcessor_5 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
+    return AUX_kuurpz.EnumerationMemberDeclaration_dd035f4c;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
-    SNode e = SNodeOperations.as(SNodeOperations.getContainingRoot(pastedNode), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
+    SNode e = SNodeOperations.as(SNodeOperations.getContainingRoot(pastedNode), AUX_kuurpz.EnumerationDeclartaion_dd035f36);
     if (e != null) {
       ConceptIdSetter.processEnumMember(pastedNode, e);
     }
+  }
+
+  private static final class AUX_kuurpz {
+    /*package*/ static final SConcept EnumerationMemberDeclaration_dd035f4c = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
+    /*package*/ static final SConcept EnumerationDeclartaion_dd035f36 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
   }
 }

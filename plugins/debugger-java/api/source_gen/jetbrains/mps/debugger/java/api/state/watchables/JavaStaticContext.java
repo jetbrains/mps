@@ -15,11 +15,11 @@ import com.sun.jdi.Field;
 
 public class JavaStaticContext extends JavaWatchable implements IWatchable {
   private final ReferenceType myStaticType;
-  private final JavaStaticContext.StaticContextValue myValue;
+  private final StaticContextValue myValue;
   public JavaStaticContext(ReferenceType staticType, ThreadReference threadReference) {
     super(threadReference);
     myStaticType = staticType;
-    myValue = new JavaStaticContext.StaticContextValue();
+    myValue = new StaticContextValue();
   }
   @Override
   public String getName() {

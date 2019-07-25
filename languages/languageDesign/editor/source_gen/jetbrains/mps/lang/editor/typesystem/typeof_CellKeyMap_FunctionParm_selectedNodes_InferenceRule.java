@@ -9,9 +9,10 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_CellKeyMap_FunctionParm_selectedNodes_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_CellKeyMap_FunctionParm_selectedNodes_InferenceRule() {
@@ -24,7 +25,7 @@ public class typeof_CellKeyMap_FunctionParm_selectedNodes_InferenceRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee25L, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNodes");
+    return AUX_wy1ixd.CellKeyMap_FunctionParm_selectedNodes_5874388b;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,5 +38,9 @@ public class typeof_CellKeyMap_FunctionParm_selectedNodes_InferenceRule extends 
     SNode quotedNode_1 = null;
     quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10aae26be32L, "SNodeListType"), null, null, false);
     return quotedNode_1;
+  }
+
+  private static final class AUX_wy1ixd {
+    /*package*/ static final SConcept CellKeyMap_FunctionParm_selectedNodes_5874388b = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee25L, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNodes");
   }
 }

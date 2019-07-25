@@ -23,7 +23,7 @@ public class TestSubstituteExceptionActionIcon_Test extends BaseTransformationTe
 
   @Test
   public void test_TestSubstituteExceptionActionIcon() throws Throwable {
-    new TestSubstituteExceptionActionIcon_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

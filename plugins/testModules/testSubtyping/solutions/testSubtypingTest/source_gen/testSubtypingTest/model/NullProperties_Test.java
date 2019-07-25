@@ -31,31 +31,31 @@ public class NullProperties_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck8681827087508331151() throws Throwable {
-    new NullProperties_Test.TestBody(this).test_NodeErrorCheck8681827087508331151();
+    new TestBody(this).test_NodeErrorCheck8681827087508331151();
   }
   @Test
   public void test_NodeErrorCheck8681827087508331336() throws Throwable {
-    new NullProperties_Test.TestBody(this).test_NodeErrorCheck8681827087508331336();
+    new TestBody(this).test_NodeErrorCheck8681827087508331336();
   }
   @Test
   public void test_ErrorMessagesCheck706089536802542545() throws Throwable {
-    new NullProperties_Test.TestBody(this).test_ErrorMessagesCheck706089536802542545();
+    new TestBody(this).test_ErrorMessagesCheck706089536802542545();
   }
   @Test
   public void test_NodeErrorCheck3029960565848077192() throws Throwable {
-    new NullProperties_Test.TestBody(this).test_NodeErrorCheck3029960565848077192();
+    new TestBody(this).test_NodeErrorCheck3029960565848077192();
   }
   @Test
   public void test_NodeErrorCheck3029960565848077546() throws Throwable {
-    new NullProperties_Test.TestBody(this).test_NodeErrorCheck3029960565848077546();
+    new TestBody(this).test_NodeErrorCheck3029960565848077546();
   }
   @Test
   public void test_ErrorMessagesCheck706089536802542565() throws Throwable {
-    new NullProperties_Test.TestBody(this).test_ErrorMessagesCheck706089536802542565();
+    new TestBody(this).test_ErrorMessagesCheck706089536802542565();
   }
   @Test
   public void test_ErrorMessagesCheck706089536802542585() throws Throwable {
-    new NullProperties_Test.TestBody(this).test_ErrorMessagesCheck706089536802542585();
+    new TestBody(this).test_ErrorMessagesCheck706089536802542585();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

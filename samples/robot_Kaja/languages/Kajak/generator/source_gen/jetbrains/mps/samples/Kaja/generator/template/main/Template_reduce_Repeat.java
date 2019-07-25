@@ -192,9 +192,9 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase implements T
     rv[9] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a6981b2c5L, "iteration");
     return rv;
   }
-  private static SNodePointer propertyMacro_9c7i7b_c0a0c0b0b0b0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "859008965969411037");
-  private static SNodePointer copySrcMacro_9c7i7b_b0a0c0b0b0c0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039939724");
-  private static SNodePointer propertyMacro_9c7i7b_c0a0c0a0b0b0b0d0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039660460");
-  private static SNodePointer templateNode_9c7i7b_c0a0a1a2a1a3a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363070570");
-  private static SNodePointer templateNode_9c7i7b_c0a0a1a1a1a4a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363077196");
+  private static final SNodePointer propertyMacro_9c7i7b_c0a0c0b0b0b0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "859008965969411037");
+  private static final SNodePointer copySrcMacro_9c7i7b_b0a0c0b0b0c0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039939724");
+  private static final SNodePointer propertyMacro_9c7i7b_c0a0c0a0b0b0b0d0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039660460");
+  private static final SNodePointer templateNode_9c7i7b_c0a0a1a2a1a3a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363070570");
+  private static final SNodePointer templateNode_9c7i7b_c0a0a1a1a1a4a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363077196");
 }

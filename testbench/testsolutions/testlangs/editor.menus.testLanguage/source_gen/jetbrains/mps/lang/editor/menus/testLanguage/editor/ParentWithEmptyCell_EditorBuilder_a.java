@@ -24,6 +24,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class ParentWithEmptyCell_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -63,7 +64,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ParentWithEmptyCell_EditorBuilder_a.childSingleRoleHandler_4mcdi_b0(myNode, MetaAdapterFactory.getContainmentLink(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18c2L, 0x7cc9c0c2af1b18faL, "child"), getEditorContext());
+    SingleRoleCellProvider provider = new childSingleRoleHandler_4mcdi_b0(myNode, MetaAdapterFactory.getContainmentLink(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18c2L, 0x7cc9c0c2af1b18faL, "child"), getEditorContext());
     return provider.createCell();
   }
   private static class childSingleRoleHandler_4mcdi_b0 extends SingleRoleCellProvider {
@@ -119,10 +120,14 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
     private EditorCell createConstant_1() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<empty cell with menu>");
       editorCell.setCellId("Constant_4mcdi_a1a");
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18c2L, "jetbrains.mps.lang.editor.menus.testLanguage.structure.ParentWithEmptyCell"), "jetbrains.mps.lang.editor.menus.testLanguage.editor.MenuForEmptyCell"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_ut68vs.ParentWithEmptyCell_d9327f3, "jetbrains.mps.lang.editor.menus.testLanguage.editor.MenuForEmptyCell"));
       editorCell.setDefaultText("");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
     }
+  }
+
+  private static final class AUX_ut68vs {
+    /*package*/ static final SConcept ParentWithEmptyCell_d9327f3 = MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18c2L, "jetbrains.mps.lang.editor.menus.testLanguage.structure.ParentWithEmptyCell");
   }
 }

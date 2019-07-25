@@ -32,23 +32,23 @@ public class PackageProtectedField_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeFieldIsNeverUsedCheck7938578788783522703() throws Throwable {
-    new PackageProtectedField_Test.TestBody(this).test_NodeFieldIsNeverUsedCheck7938578788783522703();
+    new TestBody(this).test_NodeFieldIsNeverUsedCheck7938578788783522703();
   }
   @Test
   public void test_NodeFieldIsAssignedButNeverCheck7938578788783522709() throws Throwable {
-    new PackageProtectedField_Test.TestBody(this).test_NodeFieldIsAssignedButNeverCheck7938578788783522709();
+    new TestBody(this).test_NodeFieldIsAssignedButNeverCheck7938578788783522709();
   }
   @Test
   public void test_NodeFieldIsNeverAssignedCheck7938578788783522715() throws Throwable {
-    new PackageProtectedField_Test.TestBody(this).test_NodeFieldIsNeverAssignedCheck7938578788783522715();
+    new TestBody(this).test_NodeFieldIsNeverAssignedCheck7938578788783522715();
   }
   @Test
   public void test_ErrorMessagesCheck7938578788783522719() throws Throwable {
-    new PackageProtectedField_Test.TestBody(this).test_ErrorMessagesCheck7938578788783522719();
+    new TestBody(this).test_ErrorMessagesCheck7938578788783522719();
   }
   @Test
   public void test_NodeWarningCheck7938578788783522729() throws Throwable {
-    new PackageProtectedField_Test.TestBody(this).test_NodeWarningCheck7938578788783522729();
+    new TestBody(this).test_NodeWarningCheck7938578788783522729();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

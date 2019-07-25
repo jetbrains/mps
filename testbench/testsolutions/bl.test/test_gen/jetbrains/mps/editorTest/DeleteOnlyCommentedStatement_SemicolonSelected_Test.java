@@ -22,7 +22,7 @@ public class DeleteOnlyCommentedStatement_SemicolonSelected_Test extends BaseTra
 
   @Test
   public void test_DeleteOnlyCommentedStatement_SemicolonSelected() throws Throwable {
-    new DeleteOnlyCommentedStatement_SemicolonSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

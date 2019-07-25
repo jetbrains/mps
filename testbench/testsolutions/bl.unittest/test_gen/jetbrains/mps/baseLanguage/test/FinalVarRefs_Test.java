@@ -32,35 +32,35 @@ public class FinalVarRefs_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck4705425356438246964() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_ErrorMessagesCheck4705425356438246964();
+    new TestBody(this).test_ErrorMessagesCheck4705425356438246964();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedCheck6923385624929711095() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedCheck6923385624929711095();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedCheck6923385624929711095();
   }
   @Test
   public void test_NodeErrorCheck8129007564265886454() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_NodeErrorCheck8129007564265886454();
+    new TestBody(this).test_NodeErrorCheck8129007564265886454();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck6923385624928162026() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624928162026();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624928162026();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck6923385624929647060() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624929647060();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624929647060();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck6923385624929358438() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624929358438();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624929358438();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927750488() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927750488();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927750488();
   }
   @Test
   public void test_NodeCannotAssignValueToFinalCheck6923385624927704204() throws Throwable {
-    new FinalVarRefs_Test.TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624927704204();
+    new TestBody(this).test_NodeCannotAssignValueToFinalCheck6923385624927704204();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

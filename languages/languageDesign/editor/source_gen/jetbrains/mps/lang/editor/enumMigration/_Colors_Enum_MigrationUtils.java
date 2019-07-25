@@ -93,5 +93,5 @@ public class _Colors_Enum_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_fc3uyg_a0a0a = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc609b3d55L, 0xfc609b3d56L, 0xfc609b3d57L, 0xfc609b3d58L, 0xfc609b3d59L, 0xfc609b3d5aL, 0xfc609b3d5bL, 0x100656b782aL, 0xfc609b3d5cL, 0x100656bb6ddL, 0xfc609b3d5dL, 0xfc609b3d5eL, 0x11b375eefccL, 0x100653ae118L, 0xfc6fdd4165L, 0xfc6fdd4166L, 0xfc6fdd4167L, 0x11abf9b4043L, 0x633fb1d6ccc28638L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_fc3uyg_a0a0a = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc609b3d55L, 0xfc609b3d56L, 0xfc609b3d57L, 0xfc609b3d58L, 0xfc609b3d59L, 0xfc609b3d5aL, 0xfc609b3d5bL, 0x100656b782aL, 0xfc609b3d5cL, 0x100656bb6ddL, 0xfc609b3d5dL, 0xfc609b3d5eL, 0x11b375eefccL, 0x100653ae118L, 0xfc6fdd4165L, 0xfc6fdd4166L, 0xfc6fdd4167L, 0x11abf9b4043L, 0x633fb1d6ccc28638L);
 }

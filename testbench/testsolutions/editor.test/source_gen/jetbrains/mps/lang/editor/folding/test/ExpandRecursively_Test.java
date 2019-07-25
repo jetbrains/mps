@@ -21,7 +21,7 @@ public class ExpandRecursively_Test extends BaseTransformationTest {
 
   @Test
   public void test_ExpandRecursively() throws Throwable {
-    new ExpandRecursively_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

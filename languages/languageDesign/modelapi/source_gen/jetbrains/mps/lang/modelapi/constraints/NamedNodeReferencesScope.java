@@ -12,6 +12,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class NamedNodeReferencesScope {
@@ -34,8 +35,8 @@ public final class NamedNodeReferencesScope {
     while (Sequence.fromIterable(queue).isNotEmpty()) {
       List<SNode> newQueue = ListSequence.fromList(new ArrayList<SNode>());
       for (SNode elem : Sequence.fromIterable(queue)) {
-        if (SNodeOperations.isInstanceOf(elem, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
-          ListSequence.fromList(candidates).addElement(SNodeOperations.cast(elem, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")));
+        if (SNodeOperations.isInstanceOf(elem, AUX_77xgzc.INamedConcept_8cd7e247)) {
+          ListSequence.fromList(candidates).addElement(SNodeOperations.cast(elem, AUX_77xgzc.INamedConcept_8cd7e247));
         } else {
           ListSequence.fromList(newQueue).addSequence(ListSequence.fromList(SNodeOperations.getChildren(elem)));
         }
@@ -44,5 +45,9 @@ public final class NamedNodeReferencesScope {
     }
 
     return candidates;
+  }
+
+  private static final class AUX_77xgzc {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

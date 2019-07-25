@@ -21,7 +21,7 @@ public class ParenthesiseComplexExpression_Test extends BaseTransformationTest {
 
   @Test
   public void test_ParenthesiseComplexExpression() throws Throwable {
-    new ParenthesiseComplexExpression_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

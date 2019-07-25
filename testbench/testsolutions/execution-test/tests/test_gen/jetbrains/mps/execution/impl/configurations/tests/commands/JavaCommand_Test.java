@@ -18,10 +18,10 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.Main;
 import jetbrains.mps.smodel.SNodePointer;
 import com.intellij.execution.process.ProcessHandler;
@@ -29,6 +29,7 @@ import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import jetbrains.mps.execution.impl.configurations.util.ProcessRunnerForConfigurationTests;
 import java.util.Collections;
 import java.util.regex.Pattern;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 @MPSLaunch
 public class JavaCommand_Test extends BaseTransformationTest {
@@ -43,7 +44,7 @@ public class JavaCommand_Test extends BaseTransformationTest {
 
   @Test
   public void test_startJavaByNode() throws Throwable {
-    new JavaCommand_Test.TestBody(this).test_startJavaByNode();
+    new TestBody(this).test_startJavaByNode();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -57,7 +58,7 @@ public class JavaCommand_Test extends BaseTransformationTest {
       myProject.getModelAccess().runReadAction(new Runnable() {
         public void run() {
           SModel model = PersistenceFacade.getInstance().createModelReference("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)").resolve(myProject.getRepository());
-          SNode mainNode = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))).findFirst(new IWhereFilter<SNode>() {
+          SNode mainNode = ListSequence.fromList(SModelOperations.roots(model, AUX_849b2c.INamedConcept_8cd7e247)).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), Main.class.getSimpleName());
             }
@@ -72,5 +73,9 @@ public class JavaCommand_Test extends BaseTransformationTest {
     }
 
 
+  }
+
+  private static final class AUX_849b2c {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

@@ -24,7 +24,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -36,6 +35,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class tryCatch_CatchClause extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -61,7 +62,7 @@ public class tryCatch_CatchClause extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new tryCatch_CatchClause.TMP_Action_ooxjat_a0());
+      result.add(new TMP_Action_ooxjat_a0());
     }
     return result;
   }
@@ -69,7 +70,7 @@ public class tryCatch_CatchClause extends TransformationMenuBase {
   private class TMP_Action_ooxjat_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      tryCatch_CatchClause.TMP_Action_ooxjat_a0.Item item = new tryCatch_CatchClause.TMP_Action_ooxjat_a0.Item(context);
+      TMP_Action_ooxjat_a0.Item item = new TMP_Action_ooxjat_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -104,7 +105,7 @@ public class tryCatch_CatchClause extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode catchClause = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause"), null);
+        SNode catchClause = SNodeFactoryOperations.createNewNode(AUX_ooxjat.CatchClause_870e8b84, null);
         SNodeOperations.insertNextSiblingChild(_context.getNode(), catchClause);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), catchClause, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -127,5 +128,9 @@ public class tryCatch_CatchClause extends TransformationMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_ooxjat {
+    /*package*/ static final SConcept CatchClause_870e8b84 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
   }
 }

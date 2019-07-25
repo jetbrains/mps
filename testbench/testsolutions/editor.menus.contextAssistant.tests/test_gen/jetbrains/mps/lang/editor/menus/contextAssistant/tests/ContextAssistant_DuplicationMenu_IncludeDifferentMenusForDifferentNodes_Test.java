@@ -25,7 +25,7 @@ public class ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentN
 
   @Test
   public void test_ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes() throws Throwable {
-    new ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

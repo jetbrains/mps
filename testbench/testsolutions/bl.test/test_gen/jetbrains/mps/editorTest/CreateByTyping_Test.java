@@ -21,7 +21,7 @@ public class CreateByTyping_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreateByTyping() throws Throwable {
-    new CreateByTyping_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

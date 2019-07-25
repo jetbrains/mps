@@ -32,35 +32,35 @@ public class WrappedType_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTypeCheck1470921783545306146() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_NodeTypeCheck1470921783545306146();
+    new TestBody(this).test_NodeTypeCheck1470921783545306146();
   }
   @Test
   public void test_NodeTypeCheck1470921783545306158() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_NodeTypeCheck1470921783545306158();
+    new TestBody(this).test_NodeTypeCheck1470921783545306158();
   }
   @Test
   public void test_NodeTypeCheck3904815702877839590() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_NodeTypeCheck3904815702877839590();
+    new TestBody(this).test_NodeTypeCheck3904815702877839590();
   }
   @Test
   public void test_NodeTypeCheck3904815702877839445() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_NodeTypeCheck3904815702877839445();
+    new TestBody(this).test_NodeTypeCheck3904815702877839445();
   }
   @Test
   public void test_NodeTypeCheck1470921783545282539() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_NodeTypeCheck1470921783545282539();
+    new TestBody(this).test_NodeTypeCheck1470921783545282539();
   }
   @Test
   public void test_NodeErrorCheck1252378774017462261() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_NodeErrorCheck1252378774017462261();
+    new TestBody(this).test_NodeErrorCheck1252378774017462261();
   }
   @Test
   public void test_NodeErrorCheck1470921783545305313() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_NodeErrorCheck1470921783545305313();
+    new TestBody(this).test_NodeErrorCheck1470921783545305313();
   }
   @Test
   public void test_ErrorMessagesCheck1252378774017462295() throws Throwable {
-    new WrappedType_Test.TestBody(this).test_ErrorMessagesCheck1252378774017462295();
+    new TestBody(this).test_ErrorMessagesCheck1252378774017462295();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

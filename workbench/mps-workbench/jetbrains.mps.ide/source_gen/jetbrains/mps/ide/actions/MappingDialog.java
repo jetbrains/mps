@@ -26,9 +26,10 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.icons.MPSIcons;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import javax.swing.JOptionPane;
 import javax.swing.Icon;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MappingDialog extends DialogWrapper {
   private JPanel myMainComponent = new JPanel(new BorderLayout());
@@ -91,7 +92,7 @@ public class MappingDialog extends DialogWrapper {
             MPSTreeNode modelTreeNode = newTreeNode(iconManager.getIconFor(md), md.toString(), md.getName().getValue());
             generatorTreeNode.add(modelTreeNode);
             SModel model = md;
-            for (SNode node : SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"))) {
+            for (SNode node : SModelOperations.roots(model, AUX_v9iuh7.MappingConfiguration_587b13db)) {
               MPSTreeNode mcTreeNode = newTreeNode(iconManager.getIconFor(node), node.getNodeId().toString(), node.getPresentation());
               mcTreeNode.setUserObject(node);
               modelTreeNode.add(mcTreeNode);
@@ -147,5 +148,9 @@ public class MappingDialog extends DialogWrapper {
     n.setText(text);
     n.setIcon(icon);
     return n;
+  }
+
+  private static final class AUX_v9iuh7 {
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 }

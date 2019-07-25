@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -29,13 +28,14 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new LogicalOperator_SubstituteMenu.SMP_Param_vciz2d_a(), MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_vciz2d_a(), AUX_vciz2d.LogicalOperator_689b9df9));
     return result;
   }
 
@@ -56,7 +56,7 @@ public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SConcept parameter, SubstituteMenuContext context) {
-      return new LogicalOperator_SubstituteMenu.SMP_Param_vciz2d_a.SMP_Action_vciz2d_a0(parameter).createItems(context);
+      return new SMP_Param_vciz2d_a.SMP_Action_vciz2d_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -72,7 +72,7 @@ public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator"), _context.getModel())).where(new IWhereFilter<SConcept>() {
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(AUX_vciz2d.LogicalOperator_689b9df9, _context.getModel())).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return !(it.isAbstract());
         }
@@ -87,7 +87,7 @@ public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        LogicalOperator_SubstituteMenu.SMP_Param_vciz2d_a.SMP_Action_vciz2d_a0.Item item = new LogicalOperator_SubstituteMenu.SMP_Param_vciz2d_a.SMP_Action_vciz2d_a0.Item(_context);
+        SMP_Param_vciz2d_a.SMP_Action_vciz2d_a0.Item item = new SMP_Param_vciz2d_a.SMP_Action_vciz2d_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -111,7 +111,7 @@ public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator"), context);
+          super(AUX_vciz2d.LogicalOperator_689b9df9, context);
           _context = context;
         }
 
@@ -132,7 +132,7 @@ public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_vciz2d.LogicalOperator_689b9df9, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -155,5 +155,9 @@ public class LogicalOperator_SubstituteMenu extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_vciz2d {
+    /*package*/ static final SConcept LogicalOperator_689b9df9 = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator");
   }
 }

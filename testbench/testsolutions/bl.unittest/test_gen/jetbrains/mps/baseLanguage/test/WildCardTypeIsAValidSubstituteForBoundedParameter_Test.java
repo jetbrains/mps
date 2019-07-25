@@ -32,51 +32,51 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
 
   @Test
   public void test_NodeWarningCheck595838485961914360() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeWarningCheck595838485961914360();
+    new TestBody(this).test_NodeWarningCheck595838485961914360();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526513022166() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526513022166();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526513022166();
   }
   @Test
   public void test_NodeErrorCheck595838485955120512() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeErrorCheck595838485955120512();
+    new TestBody(this).test_NodeErrorCheck595838485955120512();
   }
   @Test
   public void test_NodeWarningCheck595838485961915035() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeWarningCheck595838485961915035();
+    new TestBody(this).test_NodeWarningCheck595838485961915035();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526513024148() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526513024148();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526513024148();
   }
   @Test
   public void test_NodeWarningCheck595838485961916732() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeWarningCheck595838485961916732();
+    new TestBody(this).test_NodeWarningCheck595838485961916732();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526513023159() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526513023159();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526513023159();
   }
   @Test
   public void test_NodeWarningCheck595838485961917399() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeWarningCheck595838485961917399();
+    new TestBody(this).test_NodeWarningCheck595838485961917399();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526513026116() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526513026116();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526513026116();
   }
   @Test
   public void test_NodeWarningCheck595838485961918062() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeWarningCheck595838485961918062();
+    new TestBody(this).test_NodeWarningCheck595838485961918062();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526513027103() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526513027103();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526513027103();
   }
   @Test
   public void test_ErrorMessagesCheck595838485955141760() throws Throwable {
-    new WildCardTypeIsAValidSubstituteForBoundedParameter_Test.TestBody(this).test_ErrorMessagesCheck595838485955141760();
+    new TestBody(this).test_ErrorMessagesCheck595838485955141760();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

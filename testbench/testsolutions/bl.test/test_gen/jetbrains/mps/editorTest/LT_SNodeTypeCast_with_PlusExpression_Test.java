@@ -21,7 +21,7 @@ public class LT_SNodeTypeCast_with_PlusExpression_Test extends BaseTransformatio
 
   @Test
   public void test_LT_SNodeTypeCast_with_PlusExpression() throws Throwable {
-    new LT_SNodeTypeCast_with_PlusExpression_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

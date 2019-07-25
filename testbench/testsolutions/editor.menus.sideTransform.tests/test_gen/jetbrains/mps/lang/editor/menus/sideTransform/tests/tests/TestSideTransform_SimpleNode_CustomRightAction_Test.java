@@ -21,7 +21,7 @@ public class TestSideTransform_SimpleNode_CustomRightAction_Test extends BaseTra
 
   @Test
   public void test_TestSideTransform_SimpleNode_CustomRightAction() throws Throwable {
-    new TestSideTransform_SimpleNode_CustomRightAction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

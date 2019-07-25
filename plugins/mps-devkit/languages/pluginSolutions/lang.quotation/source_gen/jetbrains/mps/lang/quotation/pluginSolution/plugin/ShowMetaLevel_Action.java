@@ -10,7 +10,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.awt.Component;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import org.jetbrains.annotations.NotNull;
@@ -18,6 +17,8 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import javax.swing.SwingUtilities;
 import javax.swing.JOptionPane;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ShowMetaLevel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -44,7 +45,7 @@ public class ShowMetaLevel_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept")))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, AUX_faz4x5.BaseConcept_bc2351f))) {
         node = null;
       }
       if (node == null) {
@@ -72,5 +73,9 @@ public class ShowMetaLevel_Action extends BaseAction {
         JOptionPane.showMessageDialog(event.getData(PlatformDataKeys.CONTEXT_COMPONENT), metaLevel.value);
       }
     });
+  }
+
+  private static final class AUX_faz4x5 {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

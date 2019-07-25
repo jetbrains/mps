@@ -10,7 +10,8 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TextGenAspectDescriptor.java">
-      <unit at="15,0,51,0" name="jetbrains.mps.build.startup.textGen.TextGenAspectDescriptor" />
+      <unit at="52,0,55,0" name="jetbrains.mps.build.startup.textGen.TextGenAspectDescriptor$AUX_t8hmqt" />
+      <unit at="16,0,56,0" name="jetbrains.mps.build.startup.textGen.TextGenAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:920bc876-6f94-40e8-b2db-7e978827efe9(jetbrains.mps.build.startup.textGen)/1731640411964623579">
@@ -32,26 +33,26 @@
       <unit id="1731640411964623579" at="12,0,21,0" name="jetbrains.mps.build.startup.textGen.TextFile_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="1731640411964623579" at="25,42,26,38" concept="6" />
-      <node id="1731640411964623579" at="36,181,37,50" concept="5" />
-      <node id="1731640411964623579" at="37,50,38,53" concept="5" />
-      <node id="1731640411964623579" at="38,53,39,84" concept="1" />
-      <node id="1731640411964623579" at="39,84,40,17" concept="0" />
-      <node id="1731640411964623579" at="44,58,45,26" concept="6" />
-      <node id="1731640411964623579" at="47,63,48,16" concept="6" />
-      <node id="1731640411964623579" at="44,0,47,0" concept="7" trace="getFileName_TextFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1731640411964623579" at="47,0,50,0" concept="7" trace="getFileExtension_TextFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1731640411964623579" at="35,58,41,7" concept="3" />
-      <scope id="1731640411964623579" at="25,42,26,38" />
-      <scope id="1731640411964623579" at="44,58,45,26" />
-      <scope id="1731640411964623579" at="47,63,48,16" />
-      <scope id="1731640411964623579" at="44,0,47,0">
+      <node id="1731640411964623579" at="26,42,27,38" concept="6" />
+      <node id="1731640411964623579" at="37,67,38,50" concept="5" />
+      <node id="1731640411964623579" at="38,50,39,53" concept="5" />
+      <node id="1731640411964623579" at="39,53,40,84" concept="1" />
+      <node id="1731640411964623579" at="40,84,41,17" concept="0" />
+      <node id="1731640411964623579" at="45,58,46,26" concept="6" />
+      <node id="1731640411964623579" at="48,63,49,16" concept="6" />
+      <node id="1731640411964623579" at="45,0,48,0" concept="7" trace="getFileName_TextFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1731640411964623579" at="48,0,51,0" concept="7" trace="getFileExtension_TextFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1731640411964623579" at="36,58,42,7" concept="3" />
+      <scope id="1731640411964623579" at="26,42,27,38" />
+      <scope id="1731640411964623579" at="45,58,46,26" />
+      <scope id="1731640411964623579" at="48,63,49,16" />
+      <scope id="1731640411964623579" at="45,0,48,0">
         <var name="node" id="1731640411964623579" />
       </scope>
-      <scope id="1731640411964623579" at="47,0,50,0">
+      <scope id="1731640411964623579" at="48,0,51,0">
         <var name="node" id="1731640411964623579" />
       </scope>
-      <scope id="1731640411964623579" at="36,181,40,17">
+      <scope id="1731640411964623579" at="37,67,41,17">
         <var name="ext" id="1731640411964623579" />
         <var name="fname" id="1731640411964623579" />
       </scope>
@@ -59,8 +60,8 @@
   </root>
   <root nodeRef="r:920bc876-6f94-40e8-b2db-7e978827efe9(jetbrains.mps.build.startup.textGen)/1731640411964672366">
     <file name="TextGenAspectDescriptor.java">
-      <node id="1731640411964672366" at="27,42,28,38" concept="6" />
-      <scope id="1731640411964672366" at="27,42,28,38" />
+      <node id="1731640411964672366" at="28,42,29,38" concept="6" />
+      <scope id="1731640411964672366" at="28,42,29,38" />
     </file>
     <file name="TextLine_TextGen.java">
       <node id="1731640411964672366" at="13,54,14,55" concept="5" />

@@ -73,7 +73,7 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
   }
   @Override
   public IBreakpointPropertiesUi<JavaBreakpoint> createPropertiesEditor(@NotNull final JavaBreakpointKind kind) {
-    return new JavaBreakpointsProvider.MyIBreakpointPropertiesUi();
+    return new MyIBreakpointPropertiesUi();
   }
   @Override
   @Nullable
@@ -161,19 +161,19 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
     private JavaBreakpoint myBreakpoint;
     private final JPanel myMainPanel;
     private final JCheckBox myLogMessageButton;
-    private final JRadioButton[] myButtons = new JRadioButton[JavaBreakpointsProvider.MyIBreakpointPropertiesUi.SuspendPolicy.values().length];
+    private final JRadioButton[] myButtons = new JRadioButton[MyIBreakpointPropertiesUi.SuspendPolicy.values().length];
     public MyIBreakpointPropertiesUi() {
       JPanel suspendPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
       suspendPanel.setBorder(new TitledBorder("Suspend policy"));
       ButtonGroup group = new ButtonGroup();
-      for (JavaBreakpointsProvider.MyIBreakpointPropertiesUi.SuspendPolicy policy : JavaBreakpointsProvider.MyIBreakpointPropertiesUi.SuspendPolicy.values()) {
+      for (MyIBreakpointPropertiesUi.SuspendPolicy policy : MyIBreakpointPropertiesUi.SuspendPolicy.values()) {
         JRadioButton button = new JRadioButton(policy.getName());
         myButtons[policy.ordinal()] = button;
         button.setActionCommand(policy.name());
         button.addActionListener(new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
-            JavaBreakpointsProvider.MyIBreakpointPropertiesUi.SuspendPolicy suspendPolicy = JavaBreakpointsProvider.MyIBreakpointPropertiesUi.SuspendPolicy.valueOf(e.getActionCommand());
+            MyIBreakpointPropertiesUi.SuspendPolicy suspendPolicy = MyIBreakpointPropertiesUi.SuspendPolicy.valueOf(e.getActionCommand());
             if (suspendPolicy != null) {
               myBreakpoint.setSuspendPolicy(suspendPolicy.myValue);
             }
@@ -200,7 +200,7 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
     public void setBreakpoint(JavaBreakpoint breakpoint) {
       myBreakpoint = breakpoint;
       int suspendPolicy = breakpoint.getSuspendPolicy();
-      for (JavaBreakpointsProvider.MyIBreakpointPropertiesUi.SuspendPolicy policy : JavaBreakpointsProvider.MyIBreakpointPropertiesUi.SuspendPolicy.values()) {
+      for (MyIBreakpointPropertiesUi.SuspendPolicy policy : MyIBreakpointPropertiesUi.SuspendPolicy.values()) {
         if (policy.myValue == suspendPolicy) {
           myButtons[policy.ordinal()].setSelected(true);
         }

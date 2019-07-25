@@ -21,7 +21,7 @@ public class DefaultEditor_AddPropertyAttribute_Test extends BaseTransformationT
 
   @Test
   public void test_DefaultEditor_AddPropertyAttribute() throws Throwable {
-    new DefaultEditor_AddPropertyAttribute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class JavaModulesClosure {
   private Set<SNode> modules = new LinkedHashSet<SNode>();
@@ -35,8 +36,8 @@ public class JavaModulesClosure {
   }
   private void moduleClosure(SNode module, boolean reexportOnly) {
     for (SNode dep : SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x263ae7d4319896abL, "dependencies"))) {
-      if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyModule"))) {
-        SNode moduleDep = SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyModule"));
+      if (SNodeOperations.isInstanceOf(dep, AUX_m3umrv.BuildSource_JavaDependencyModule_2c9c4c19)) {
+        SNode moduleDep = SNodeOperations.cast(dep, AUX_m3umrv.BuildSource_JavaDependencyModule_2c9c4c19);
         if (reexportOnly && !(SPropertyOperations.getBoolean(moduleDep, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, 0x64bd442e1cfb0eaaL, "reexport")))) {
           continue;
         }
@@ -51,8 +52,8 @@ public class JavaModulesClosure {
           modules.remove(depModule);
           modules.add(depModule);
         }
-      } else if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary"))) {
-        SNode libraryDep = SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary"));
+      } else if (SNodeOperations.isInstanceOf(dep, AUX_m3umrv.BuildSource_JavaDependencyLibrary_68e36fb1)) {
+        SNode libraryDep = SNodeOperations.cast(dep, AUX_m3umrv.BuildSource_JavaDependencyLibrary_68e36fb1);
         if (reexportOnly && !(SPropertyOperations.getBoolean(libraryDep, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport")))) {
           continue;
         }
@@ -61,22 +62,22 @@ public class JavaModulesClosure {
         if (SLinkOperations.getTarget(libraryDep, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x454b730dd9079dcfL, "library")) != null) {
           libraries.add(SLinkOperations.getTarget(libraryDep, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x454b730dd9079dcfL, "library")));
         }
-      } else if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyJar"))) {
-        SNode jarDep = SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyJar"));
+      } else if (SNodeOperations.isInstanceOf(dep, AUX_m3umrv.BuildSource_JavaDependencyJar_d2f93558)) {
+        SNode jarDep = SNodeOperations.cast(dep, AUX_m3umrv.BuildSource_JavaDependencyJar_d2f93558);
         if (reexportOnly && !(SPropertyOperations.getBoolean(jarDep, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x715eee405bff376dL, "reexport")))) {
           continue;
         }
 
         jars.add(SLinkOperations.getTarget(jarDep, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar")));
-      } else if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJar"))) {
-        SNode jarDep = SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJar"));
+      } else if (SNodeOperations.isInstanceOf(dep, AUX_m3umrv.BuildSource_JavaDependencyExternalJar_b3b332a0)) {
+        SNode jarDep = SNodeOperations.cast(dep, AUX_m3umrv.BuildSource_JavaDependencyExternalJar_b3b332a0);
         if (reexportOnly && !(SPropertyOperations.getBoolean(jarDep, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, 0x5f32ae3ef3778cd6L, "reexport")))) {
           continue;
         }
 
         externalJars.add(SLinkOperations.getTarget(SLinkOperations.getTarget(jarDep, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, 0x4ddcec86afb2f72aL, "extJar")), MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar")));
-      } else if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJarInFolder"))) {
-        SNode jarInFolder = SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJarInFolder"));
+      } else if (SNodeOperations.isInstanceOf(dep, AUX_m3umrv.BuildSource_JavaDependencyExternalJarInFolder_1f2b4cb7)) {
+        SNode jarInFolder = SNodeOperations.cast(dep, AUX_m3umrv.BuildSource_JavaDependencyExternalJarInFolder_1f2b4cb7);
         if (reexportOnly && !(SPropertyOperations.getBoolean(jarInFolder, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, 0x4c1fa58d9932900L, "reexport")))) {
           continue;
         }
@@ -115,5 +116,13 @@ public class JavaModulesClosure {
   }
   public SNode getInitial() {
     return initial;
+  }
+
+  private static final class AUX_m3umrv {
+    /*package*/ static final SConcept BuildSource_JavaDependencyModule_2c9c4c19 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyModule");
+    /*package*/ static final SConcept BuildSource_JavaDependencyLibrary_68e36fb1 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary");
+    /*package*/ static final SConcept BuildSource_JavaDependencyJar_d2f93558 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyJar");
+    /*package*/ static final SConcept BuildSource_JavaDependencyExternalJar_b3b332a0 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJar");
+    /*package*/ static final SConcept BuildSource_JavaDependencyExternalJarInFolder_1f2b4cb7 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJarInFolder");
   }
 }

@@ -55,7 +55,7 @@ import jetbrains.mps.lang.editor.table.runtime.EditorCell_Table;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new DecisionTable_EditorBuilder_a.expectedTypeSingleRoleHandler_h1ymql_a0(myNode, MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1582L, "expectedType"), getEditorContext());
+    SingleRoleCellProvider provider = new expectedTypeSingleRoleHandler_h1ymql_a0(myNode, MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1582L, "expectedType"), getEditorContext());
     return provider.createCell();
   }
   private static class expectedTypeSingleRoleHandler_h1ymql_a0 extends SingleRoleCellProvider {
@@ -116,7 +116,7 @@ import jetbrains.mps.lang.editor.table.runtime.EditorCell_Table;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new DecisionTable_EditorBuilder_a.defaultValueSingleRoleHandler_h1ymql_c0(myNode, MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1583L, "defaultValue"), getEditorContext());
+    SingleRoleCellProvider provider = new defaultValueSingleRoleHandler_h1ymql_c0(myNode, MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1583L, "defaultValue"), getEditorContext());
     return provider.createCell();
   }
   private static class defaultValueSingleRoleHandler_h1ymql_c0 extends SingleRoleCellProvider {

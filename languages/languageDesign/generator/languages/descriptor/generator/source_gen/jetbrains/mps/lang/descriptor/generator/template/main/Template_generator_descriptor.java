@@ -74,6 +74,6 @@ public class Template_generator_descriptor extends TemplateDeclarationBase imple
     rv[0] = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x3663ebbd1bf10683L, 0x6907f3fa7dfc783cL, "generator");
     return rv;
   }
-  private static SNodePointer template_s14ods_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000709565");
-  private static SNodePointer insertMacro_s14ods_b0a0a1a3a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000796496");
+  private static final SNodePointer template_s14ods_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000709565");
+  private static final SNodePointer insertMacro_s14ods_b0a0a1a3a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000796496");
 }

@@ -21,7 +21,7 @@ public class MoveToDummyBlock_Test extends BaseTransformationTest {
 
   @Test
   public void test_MoveToDummyBlock() throws Throwable {
-    new MoveToDummyBlock_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

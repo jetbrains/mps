@@ -22,7 +22,7 @@ public class SidedeleteAtStartOfIf_Test extends BaseTransformationTest {
 
   @Test
   public void test_SidedeleteAtStartOfIf() throws Throwable {
-    new SidedeleteAtStartOfIf_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

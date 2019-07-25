@@ -38,7 +38,7 @@ public class AntTaskExecutionUtil {
   public static void migrate(final Project project) throws Exception {
     MigrationRegistry m = ProjectHelper.toIdeaProject(project).getComponent(MigrationRegistry.class);
 
-    MigrationSession session = new AntTaskExecutionUtil.MyMigrationSession(project);
+    MigrationSession session = new MyMigrationSession(project);
     ProgressMonitorAdapter progress = new ProgressMonitorAdapter(new EmptyProgressIndicator());
 
     final Properties properties = new Properties();

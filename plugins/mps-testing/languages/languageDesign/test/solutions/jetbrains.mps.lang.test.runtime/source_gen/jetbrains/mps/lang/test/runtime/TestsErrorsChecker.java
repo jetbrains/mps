@@ -25,8 +25,9 @@ import jetbrains.mps.checkers.TargetConceptChecker;
 import jetbrains.mps.project.validation.StructureChecker;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.checkers.ErrorReportUtil;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * 
@@ -40,7 +41,7 @@ public class TestsErrorsChecker {
   /**
    * contains cached warnings and errors for the current root
    */
-  private TestsErrorsChecker.ModelErrorsHolder<NodeReportItem> ourModelErrorsHolder = new TestsErrorsChecker.ModelErrorsHolder<NodeReportItem>();
+  private ModelErrorsHolder<NodeReportItem> ourModelErrorsHolder = new ModelErrorsHolder<NodeReportItem>();
 
   @Deprecated
   public TestsErrorsChecker(SNode root) {
@@ -109,7 +110,7 @@ public class TestsErrorsChecker {
         SNodeReference node = NodeReportItem.FLAVOUR_NODE.tryToGet(it);
         return node == null || Sequence.fromIterable(ErrorReportUtil.getActiveSuppressors(node.resolve(repository), it)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode suppressor) {
-            return !(SNodeOperations.isInstanceOf(suppressor, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation")));
+            return !(SNodeOperations.isInstanceOf(suppressor, AUX_sb89w.AbstractTestNodeAnnotation_2d7c3bf0));
           }
         }).isEmpty();
       }
@@ -127,5 +128,9 @@ public class TestsErrorsChecker {
     public void set(Set<T> errors) {
       myCachedErrors = SetSequence.fromSetWithValues(new HashSet<T>(), errors);
     }
+  }
+
+  private static final class AUX_sb89w {
+    /*package*/ static final SConcept AbstractTestNodeAnnotation_2d7c3bf0 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
   }
 }

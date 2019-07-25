@@ -58,10 +58,10 @@ public class Generate_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.core.Generate");
   public Generate_Facet() {
-    ListSequence.fromList(targets).addElement(new Generate_Facet.Target_checkParameters());
-    ListSequence.fromList(targets).addElement(new Generate_Facet.Target_configure());
-    ListSequence.fromList(targets).addElement(new Generate_Facet.Target_preloadModels());
-    ListSequence.fromList(targets).addElement(new Generate_Facet.Target_generate());
+    ListSequence.fromList(targets).addElement(new Target_checkParameters());
+    ListSequence.fromList(targets).addElement(new Target_configure());
+    ListSequence.fromList(targets).addElement(new Target_preloadModels());
+    ListSequence.fromList(targets).addElement(new Target_generate());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -79,7 +79,7 @@ public class Generate_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Generate_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_checkParameters implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.Generate.checkParameters");
@@ -253,8 +253,8 @@ public class Generate_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 10;
     }
-    public static Generate_Facet.Target_configure.Variables vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Generate_Facet.Target_configure.Variables.class);
+    public static Target_configure.Variables vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_configure.Variables.class);
     }
     public static class Variables extends MultiTuple._5<Boolean, GenerationOptions.OptionsBuilder, DefaultGenerationParametersProvider, TransientModelsProvider, ModelGenerationPlan> {
       public Variables() {
@@ -404,10 +404,10 @@ public class Generate_Facet extends IFacet.Stub {
                 }
               });
 
-              if (Generate_Facet.Target_configure.vars(pa.global()).customPlan() == null) {
+              if (Target_configure.vars(pa.global()).customPlan() == null) {
                 mpsProject.getModelAccess().runReadAction(new Runnable() {
                   public void run() {
-                    GenPlanExtractor planExtractor = new GenPlanExtractor(mpsProject.getRepository(), Generate_Facet.Target_configure.vars(pa.global()).generationOptions(), monitor.getSession().getMessageHandler());
+                    GenPlanExtractor planExtractor = new GenPlanExtractor(mpsProject.getRepository(), Target_configure.vars(pa.global()).generationOptions(), monitor.getSession().getMessageHandler());
                     for (MResource res : Sequence.fromIterable(input)) {
                       for (SModel m : Sequence.fromIterable(res.models())) {
                         planExtractor.configurePlanFor(m);
@@ -423,13 +423,13 @@ public class Generate_Facet extends IFacet.Stub {
               progressMonitor.start("Generating", 110);
               try {
                 // in fact, transientsModuleRepo == mpsProject.getRepository, but I keep them separate to stress different lock scope 
-                final SRepository transientsModuleRepo = Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().getRepository();
+                final SRepository transientsModuleRepo = Target_configure.vars(pa.global()).transientModelsProvider().getRepository();
 
                 // XXX write is to tmm.createModule() and tmm.initCheckpointModule, although the moment transients live in a separate repository, we may 
                 // write-lock transients repository only, and read-lock the one with source models. 
                 final List<GeneratorTask> tasks = new ModelAccessHelper(transientsModuleRepo).runWriteAction(new Computable<List<GeneratorTask>>() {
                   public List<GeneratorTask> compute() {
-                    Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().initCheckpointModule();
+                    Target_configure.vars(pa.global()).transientModelsProvider().initCheckpointModule();
 
                     GeneratorTask.Factory<GeneratorTask> factory = new GeneratorTask.Factory<GeneratorTask>() {
                       public GeneratorTask create(SModel model) {
@@ -438,12 +438,12 @@ public class Generate_Facet extends IFacet.Stub {
                     };
                     ArrayList<GeneratorTask> rv = new ArrayList<GeneratorTask>();
                     for (MResource res : input) {
-                      final TransientModelsModule tm = Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().createModule(res.module().getModuleName());
+                      final TransientModelsModule tm = Target_configure.vars(pa.global()).transientModelsProvider().createModule(res.module().getModuleName());
                       DefaultTaskBuilder<GeneratorTask> tb = new DefaultTaskBuilder<GeneratorTask>(factory);
                       tb.addAll(Sequence.fromIterable(res.models()).toListSequence());
                       List<GeneratorTask> tasks = tb.getResult();
                       for (GeneratorTask t : tasks) {
-                        Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().associate(t, tm);
+                        Target_configure.vars(pa.global()).transientModelsProvider().associate(t, tm);
                       }
                       rv.addAll(tasks);
                     }
@@ -455,8 +455,8 @@ public class Generate_Facet extends IFacet.Stub {
 
                 projectRepo.getModelAccess().runReadAction(new Runnable() {
                   public void run() {
-                    GenerationFacade genFacade = new GenerationFacade(projectRepo, Generate_Facet.Target_configure.vars(pa.global()).generationOptions().create());
-                    genFacade.transients(Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider()).messages(mh).taskHandler(taskHandler);
+                    GenerationFacade genFacade = new GenerationFacade(projectRepo, Target_configure.vars(pa.global()).generationOptions().create());
+                    genFacade.transients(Target_configure.vars(pa.global()).transientModelsProvider()).messages(mh).taskHandler(taskHandler);
                     genFacade.process(progressMonitor.subTask(100), tasks);
                   }
                 });
@@ -464,7 +464,7 @@ public class Generate_Facet extends IFacet.Stub {
 
                 transientsModuleRepo.getModelAccess().runWriteAction(new Runnable() {
                   public void run() {
-                    Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().publishAll();
+                    Target_configure.vars(pa.global()).transientModelsProvider().publishAll();
                   }
                 });
 
@@ -480,13 +480,13 @@ public class Generate_Facet extends IFacet.Stub {
                 progressMonitor.done();
               }
 
-              if (!(Generate_Facet.Target_configure.vars(pa.global()).saveTransient())) {
+              if (!(Target_configure.vars(pa.global()).saveTransient())) {
                 _output_fi61u2_a0d = Sequence.fromIterable(_output_fi61u2_a0d).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new CleanupActivityResource() {
                   public String describe() {
                     return "Drop transient models";
                   }
                   public void run() {
-                    Generate_Facet.Target_configure.vars(pa.global()).transientModelsProvider().removeAllTransient();
+                    Target_configure.vars(pa.global()).transientModelsProvider().removeAllTransient();
                   }
                 })));
               }
@@ -550,7 +550,7 @@ public class Generate_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.Generate.configure");
         if (properties.hasProperties(name)) {
-          Generate_Facet.Target_configure.Variables props = properties.properties(name, Generate_Facet.Target_configure.Variables.class);
+          Target_configure.Variables props = properties.properties(name, Target_configure.Variables.class);
           MapSequence.fromMap(store).put("jetbrains.mps.lang.core.Generate.configure.saveTransient", String.valueOf(props.saveTransient()));
           MapSequence.fromMap(store).put("jetbrains.mps.lang.core.Generate.configure.generationOptions", null);
           MapSequence.fromMap(store).put("jetbrains.mps.lang.core.Generate.configure.parametersProvider", null);
@@ -563,7 +563,7 @@ public class Generate_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.core.Generate.configure");
-          Generate_Facet.Target_configure.Variables props = properties.properties(name, Generate_Facet.Target_configure.Variables.class);
+          Target_configure.Variables props = properties.properties(name, Target_configure.Variables.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.lang.core.Generate.configure.saveTransient")) {
             props.saveTransient(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.lang.core.Generate.configure.saveTransient")));
           }

@@ -21,7 +21,7 @@ public class PasteStatementManyTimes_Test extends BaseTransformationTest {
 
   @Test
   public void test_PasteStatementManyTimes() throws Throwable {
-    new PasteStatementManyTimes_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

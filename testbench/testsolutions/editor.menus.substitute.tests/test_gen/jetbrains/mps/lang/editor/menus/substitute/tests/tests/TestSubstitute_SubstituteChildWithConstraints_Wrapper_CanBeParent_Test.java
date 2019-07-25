@@ -24,7 +24,7 @@ public class TestSubstitute_SubstituteChildWithConstraints_Wrapper_CanBeParent_T
 
   @Test
   public void test_TestSubstitute_SubstituteChildWithConstraints_Wrapper_CanBeParent() throws Throwable {
-    new TestSubstitute_SubstituteChildWithConstraints_Wrapper_CanBeParent_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

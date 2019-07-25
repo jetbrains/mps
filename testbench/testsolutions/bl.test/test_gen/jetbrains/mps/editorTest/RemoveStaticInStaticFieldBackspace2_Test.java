@@ -21,7 +21,7 @@ public class RemoveStaticInStaticFieldBackspace2_Test extends BaseTransformation
 
   @Test
   public void test_RemoveStaticInStaticFieldBackspace2() throws Throwable {
-    new RemoveStaticInStaticFieldBackspace2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

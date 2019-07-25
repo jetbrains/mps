@@ -14,12 +14,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CorrectLanguageVersion_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -45,7 +46,7 @@ public class CorrectLanguageVersion_Action extends BaseAction {
       return false;
     }
 
-    List<SNode> migrations = SModelOperations.roots(mig, MetaAdapterFactory.getInterfaceConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L, "jetbrains.mps.lang.migration.structure.IMigrationUnit"));
+    List<SNode> migrations = SModelOperations.roots(mig, AUX_vsqebj.IMigrationUnit_128da2b8);
     if (ListSequence.fromList(migrations).isEmpty()) {
       return false;
     }
@@ -73,7 +74,7 @@ public class CorrectLanguageVersion_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     Language lang = (Language) ((SModule) MapSequence.fromMap(_params).get("module"));
-    List<SNode> migrarions = SModelOperations.roots(SModuleOperations.getAspect(lang, "migration"), MetaAdapterFactory.getInterfaceConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L, "jetbrains.mps.lang.migration.structure.IMigrationUnit"));
+    List<SNode> migrarions = SModelOperations.roots(SModuleOperations.getAspect(lang, "migration"), AUX_vsqebj.IMigrationUnit_128da2b8);
     lang.setLanguageVersion(CorrectLanguageVersion_Action.this.getLastScriptVersion(migrarions, _params) + 1);
   }
   private int getLastScriptVersion(List<SNode> migrations, final Map<String, Object> _params) {
@@ -82,5 +83,9 @@ public class CorrectLanguageVersion_Action extends BaseAction {
         return (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it);
       }
     }, false).first());
+  }
+
+  private static final class AUX_vsqebj {
+    /*package*/ static final SInterfaceConcept IMigrationUnit_128da2b8 = MetaAdapterFactory.getInterfaceConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L, "jetbrains.mps.lang.migration.structure.IMigrationUnit");
   }
 }

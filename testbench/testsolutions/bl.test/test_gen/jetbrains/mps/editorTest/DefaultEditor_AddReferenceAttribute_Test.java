@@ -21,7 +21,7 @@ public class DefaultEditor_AddReferenceAttribute_Test extends BaseTransformation
 
   @Test
   public void test_DefaultEditor_AddReferenceAttribute() throws Throwable {
-    new DefaultEditor_AddReferenceAttribute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

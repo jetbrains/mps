@@ -21,7 +21,7 @@ public class Uncomment_Visibility_Test extends BaseTransformationTest {
 
   @Test
   public void test_Uncomment_Visibility() throws Throwable {
-    new Uncomment_Visibility_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

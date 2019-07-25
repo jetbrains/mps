@@ -51,10 +51,10 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint
   private final BreakpointManagerComponent myBreakpointsManagerComponent;
   private final BreakpointProvidersManager myProvidersManager;
   private final BreakpointCreatorsManager myDebugInfoManager;
-  private final BreakpointsUiComponent.MyBreakpointManagerListener myBreakpointManagerListener = new BreakpointsUiComponent.MyBreakpointManagerListener();
-  private final BreakpointsUiComponent.MyBreakpointListener myBreakpointListener = new BreakpointsUiComponent.MyBreakpointListener();
-  private final SessionChangeListener myChangeListener = new BreakpointsUiComponent.MySessionChangeAdapter();
-  private final DebugSessionManagerComponent.DebugSessionListener myDebugSessionListener = new BreakpointsUiComponent.MyDebugSessionAdapter();
+  private final MyBreakpointManagerListener myBreakpointManagerListener = new MyBreakpointManagerListener();
+  private final MyBreakpointListener myBreakpointListener = new MyBreakpointListener();
+  private final SessionChangeListener myChangeListener = new MySessionChangeAdapter();
+  private final DebugSessionManagerComponent.DebugSessionListener myDebugSessionListener = new MyDebugSessionAdapter();
   public BreakpointsUiComponent(MPSProject project, BreakpointManagerComponent breakpointsManagerComponent, BreakpointCreatorsManager debugInfoManager, BreakpointProvidersManager providersManager, FileEditorManager fileEditorManager) {
     super(project.getProject(), fileEditorManager);
     myMPSProject = project;
@@ -72,7 +72,7 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint
     super.init();
     ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
       public void run() {
-        myBreakpointsManagerComponent.setBreakpointsIO(new BreakpointsUiComponent.MyBreakpointsIO());
+        myBreakpointsManagerComponent.setBreakpointsIO(new MyBreakpointsIO());
       }
     });
     DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);

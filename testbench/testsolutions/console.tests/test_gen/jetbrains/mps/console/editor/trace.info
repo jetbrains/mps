@@ -8,7 +8,7 @@
   <root nodeRef="r:917991a1-3dab-4b0d-a9f3-7ff4a725c921(jetbrains.mps.console.editor@tests)/1157549163016427193">
     <file name="CommandSelectAllTest_Test.java">
       <node id="1157549163016427193" at="18,38,19,25" concept="4" />
-      <node id="1157549163016427193" at="23,60,24,62" concept="1" />
+      <node id="1157549163016427193" at="23,60,24,36" concept="1" />
       <node id="1157549163016427193" at="29,52,30,19" concept="4" />
       <node id="1157549163016427193" at="34,51,35,72" concept="1" />
       <node id="1157549163016438937" at="35,72,36,72" concept="1" />
@@ -18,7 +18,7 @@
       <node id="1157549163016427193" at="22,0,26,0" concept="2" trace="test_CommandSelectAllTest#()V" />
       <node id="1157549163016427193" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1157549163016427193" at="18,38,19,25" />
-      <scope id="1157549163016427193" at="23,60,24,62" />
+      <scope id="1157549163016427193" at="23,60,24,36" />
       <scope id="1157549163016427193" at="29,52,30,19" />
       <scope id="1157549163016427193" at="34,51,36,72" />
       <scope id="1157549163016427193" at="18,0,21,0" />
@@ -34,7 +34,7 @@
   <root nodeRef="r:917991a1-3dab-4b0d-a9f3-7ff4a725c921(jetbrains.mps.console.editor@tests)/1207671029799816308">
     <file name="EmptyConsoleSelectAllTest_Test.java">
       <node id="1207671029799816308" at="18,43,19,25" concept="4" />
-      <node id="1207671029799816308" at="23,65,24,67" concept="1" />
+      <node id="1207671029799816308" at="23,65,24,36" concept="1" />
       <node id="1207671029799816308" at="29,52,30,19" concept="4" />
       <node id="1207671029799816308" at="34,51,35,72" concept="1" />
       <node id="1207671029799816328" at="35,72,36,72" concept="1" />
@@ -44,7 +44,7 @@
       <node id="1207671029799816308" at="22,0,26,0" concept="2" trace="test_EmptyConsoleSelectAllTest#()V" />
       <node id="1207671029799816308" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1207671029799816308" at="18,43,19,25" />
-      <scope id="1207671029799816308" at="23,65,24,67" />
+      <scope id="1207671029799816308" at="23,65,24,36" />
       <scope id="1207671029799816308" at="29,52,30,19" />
       <scope id="1207671029799816308" at="34,51,36,72" />
       <scope id="1207671029799816308" at="18,0,21,0" />
@@ -60,7 +60,7 @@
   <root nodeRef="r:917991a1-3dab-4b0d-a9f3-7ff4a725c921(jetbrains.mps.console.editor@tests)/1207671029800077884">
     <file name="EmptyConsoleCommentTest_Test.java">
       <node id="1207671029800077884" at="18,41,19,25" concept="4" />
-      <node id="1207671029800077884" at="23,63,24,65" concept="1" />
+      <node id="1207671029800077884" at="23,63,24,36" concept="1" />
       <node id="1207671029800077884" at="29,52,30,19" concept="4" />
       <node id="1207671029800077884" at="34,51,35,72" concept="1" />
       <node id="1207671029800077896" at="35,72,36,70" concept="1" />
@@ -70,7 +70,7 @@
       <node id="1207671029800077884" at="22,0,26,0" concept="2" trace="test_EmptyConsoleCommentTest#()V" />
       <node id="1207671029800077884" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1207671029800077884" at="18,41,19,25" />
-      <scope id="1207671029800077884" at="23,63,24,65" />
+      <scope id="1207671029800077884" at="23,63,24,36" />
       <scope id="1207671029800077884" at="29,52,30,19" />
       <scope id="1207671029800077884" at="34,51,36,70" />
       <scope id="1207671029800077884" at="18,0,21,0" />

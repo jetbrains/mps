@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import java.util.Arrays;
@@ -27,8 +26,10 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
   public EasyInferAndCheckingEntry_Contribution() {
@@ -38,7 +39,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new EasyInferAndCheckingEntry_Contribution.SMP_Group_myynyp_a());
+    result.add(new SMP_Group_myynyp_a());
     return result;
   }
 
@@ -58,11 +59,11 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
   public class SMP_Group_myynyp_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule"), false, false) != null)) {
+      if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_myynyp.InferenceRule_fc876475, false, false) != null)) {
         return true;
       }
 
-      SNode method = SNodeOperations.getNodeAncestor(_context.getParentNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), false, false);
+      SNode method = SNodeOperations.getNodeAncestor(_context.getParentNode(), AUX_myynyp.BaseMethodDeclaration_9dbf9acb, false, false);
       if ((method != null) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12DPy8.invoke(method, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1196177069451"))) {
         return true;
       }
@@ -82,13 +83,13 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new EasyInferAndCheckingEntry_Contribution.SMP_Group_myynyp_a.SMP_Param_myynyp_a0(), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_myynyp_a.SMP_Param_myynyp_a0(), AUX_myynyp.CreateLessThanInequationStatement_cc593dbc));
     }
     private class SMP_Param_myynyp_a0 extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-        return new EasyInferAndCheckingEntry_Contribution.SMP_Group_myynyp_a.SMP_Param_myynyp_a0.SMP_Action_myynyp_a0a(parameter).createItems(context);
+        return new SMP_Group_myynyp_a.SMP_Param_myynyp_a0.SMP_Action_myynyp_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -115,7 +116,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          EasyInferAndCheckingEntry_Contribution.SMP_Group_myynyp_a.SMP_Param_myynyp_a0.SMP_Action_myynyp_a0a.Item item = new EasyInferAndCheckingEntry_Contribution.SMP_Group_myynyp_a.SMP_Param_myynyp_a0.SMP_Action_myynyp_a0a.Item(_context);
+          SMP_Group_myynyp_a.SMP_Param_myynyp_a0.SMP_Action_myynyp_a0a.Item item = new SMP_Group_myynyp_a.SMP_Param_myynyp_a0.SMP_Action_myynyp_a0a.Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -139,7 +140,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement"), context);
+            super(AUX_myynyp.CreateLessThanInequationStatement_cc593dbc, context);
             _context = context;
           }
 
@@ -150,7 +151,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode rule = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement"), null);
+            SNode rule = SNodeFactoryOperations.createNewNode(AUX_myynyp.CreateLessThanInequationStatement_cc593dbc, null);
             if (myParameterObject.equals("check typeof")) {
               SPropertyOperations.assign(rule, MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly"), true);
             }
@@ -163,7 +164,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement"), getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, AUX_myynyp.CreateLessThanInequationStatement_cc593dbc, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -184,5 +185,11 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_myynyp {
+    /*package*/ static final SConcept InferenceRule_fc876475 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept CreateLessThanInequationStatement_cc593dbc = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
   }
 }

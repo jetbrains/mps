@@ -21,7 +21,7 @@ public class MethodCall_TypeSecondParameter_Test extends BaseTransformationTest 
 
   @Test
   public void test_MethodCall_TypeSecondParameter() throws Throwable {
-    new MethodCall_TypeSecondParameter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

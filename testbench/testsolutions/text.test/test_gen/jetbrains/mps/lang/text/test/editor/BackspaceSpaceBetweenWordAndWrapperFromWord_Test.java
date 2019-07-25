@@ -22,7 +22,7 @@ public class BackspaceSpaceBetweenWordAndWrapperFromWord_Test extends BaseTransf
 
   @Test
   public void test_BackspaceSpaceBetweenWordAndWrapperFromWord() throws Throwable {
-    new BackspaceSpaceBetweenWordAndWrapperFromWord_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

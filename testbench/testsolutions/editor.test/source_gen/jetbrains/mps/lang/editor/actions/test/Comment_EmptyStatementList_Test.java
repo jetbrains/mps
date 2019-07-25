@@ -21,7 +21,7 @@ public class Comment_EmptyStatementList_Test extends BaseTransformationTest {
 
   @Test
   public void test_Comment_EmptyStatementList() throws Throwable {
-    new Comment_EmptyStatementList_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

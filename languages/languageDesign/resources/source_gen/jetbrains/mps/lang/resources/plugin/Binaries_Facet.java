@@ -28,7 +28,6 @@ import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.resources.behavior.Resource__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -42,12 +41,14 @@ import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
 import jetbrains.mps.make.script.IPropertiesPool;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Binaries_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.lang.resources.Binaries");
   public Binaries_Facet() {
-    ListSequence.fromList(targets).addElement(new Binaries_Facet.Target_copyBinaries());
+    ListSequence.fromList(targets).addElement(new Target_copyBinaries());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -65,7 +66,7 @@ public class Binaries_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Binaries_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_copyBinaries implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.resources.Binaries.copyBinaries");
@@ -103,7 +104,7 @@ public class Binaries_Facet extends IFacet.Stub {
 
                     for (SModel model : Sequence.fromIterable(models)) {
                       final IFile outputDir = Target_make.vars(pa.global()).pathToFile().invoke(SModelOperations.getOutputLocation(model).getPath());
-                      Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL, "jetbrains.mps.lang.resources.structure.Resource"))).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
+                      Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, AUX_rhbawb.Resource_a9e20c38)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
                         public Iterable<Tuples._2<IFile, byte[]>> translate(SNode it) {
                           return (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir);
                         }
@@ -203,5 +204,9 @@ public class Binaries_Facet extends IFacet.Stub {
       } catch (RuntimeException re) {
       }
     }
+  }
+
+  private static final class AUX_rhbawb {
+    /*package*/ static final SInterfaceConcept Resource_a9e20c38 = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL, "jetbrains.mps.lang.resources.structure.Resource");
   }
 }

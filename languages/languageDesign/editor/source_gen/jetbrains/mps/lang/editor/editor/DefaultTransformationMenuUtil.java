@@ -9,6 +9,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.smodel.LanguageAspect;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DefaultTransformationMenuUtil {
@@ -16,9 +17,14 @@ public class DefaultTransformationMenuUtil {
     return Sequence.fromIterable(SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(concept, LanguageAspect.EDITOR), SNodeOperations.asSConcept(menuConcept))).first();
   }
   public static SNode findDefaultTransformationMenuForConcept(@NotNull SNode concept) {
-    return ((SNode) findDefaultMenuForConcept(concept, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default")));
+    return ((SNode) findDefaultMenuForConcept(concept, AUX_m5rcnp.TransformationMenu_Default_bfde92b));
   }
   public static SNode findDefaultSubstituteMenuForConcept(@NotNull SNode concept) {
-    return ((SNode) findDefaultMenuForConcept(concept, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default")));
+    return ((SNode) findDefaultMenuForConcept(concept, AUX_m5rcnp.SubstituteMenu_Default_1af84ce));
+  }
+
+  private static final class AUX_m5rcnp {
+    /*package*/ static final SConcept TransformationMenu_Default_bfde92b = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
+    /*package*/ static final SConcept SubstituteMenu_Default_1af84ce = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
   }
 }

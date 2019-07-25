@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.GlobalScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
@@ -22,6 +21,8 @@ import java.util.Set;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeBySeveralConceptChooser extends NodeChooser {
   @NotNull
@@ -35,7 +36,7 @@ public class NodeBySeveralConceptChooser extends NodeChooser {
   public NodeBySeveralConceptChooser(List<NodesDescriptor> targets) {
     ListSequence.fromList(myTargetConcepts).addSequence(ListSequence.fromList(targets).select(new ISelector<NodesDescriptor, NodesDescriptor>() {
       public NodesDescriptor select(NodesDescriptor it) {
-        return new NodesDescriptor((it.concept() == null ? MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept") : it.concept()), it.filter());
+        return new NodesDescriptor((it.concept() == null ? AUX_g3j9jv.BaseConcept_bc2351f : it.concept()), it.filter());
       }
     }));
 
@@ -60,5 +61,9 @@ public class NodeBySeveralConceptChooser extends NodeChooser {
         }
       }
     }).toListSequence());
+  }
+
+  private static final class AUX_g3j9jv {
+    /*package*/ static final SConcept BaseConcept_bc2351f = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

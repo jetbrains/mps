@@ -8,10 +8,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MenuScopes {
   public static Scope getNamedMenus(SNode contextNode, SContainmentLink link, int position, SAbstractConcept concept) {
@@ -19,7 +21,7 @@ public class MenuScopes {
 
     // Uses the scope of allowed concepts (for default menus) to restrict the set of named menus to those 
     // reference allowed concepts. 
-    final Scope allowedConcepts = Scope.getScope(contextNode, link, position, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    final Scope allowedConcepts = Scope.getScope(contextNode, link, position, AUX_ct8znj.AbstractConceptDeclaration_ec74828f);
     if (allowedConcepts == null) {
       return new EmptyScope();
     }
@@ -27,9 +29,13 @@ public class MenuScopes {
     return new FilteringScope(allNamedMenus) {
       @Override
       public boolean isExcluded(SNode node) {
-        return !(allowedConcepts.contains(SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c46L, "jetbrains.mps.lang.editor.structure.IMenu_Named")), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"))));
+        return !(allowedConcepts.contains(SLinkOperations.getTarget(SNodeOperations.cast(node, AUX_ct8znj.IMenu_Named_aecb2502), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"))));
       }
     };
   }
 
+  private static final class AUX_ct8znj {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IMenu_Named_aecb2502 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c46L, "jetbrains.mps.lang.editor.structure.IMenu_Named");
+  }
 }

@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NonNls;
 
 public class MoveNodesDialog extends ModelOrNodeChooserDialog {
   private SModel myModel;
-  private MoveNodesDialog.ModelFilter myFilter;
+  private ModelFilter myFilter;
   protected NodeLocation mySelectedObject;
   public MoveNodesDialog(@NotNull MPSProject project, SModel model) {
     super(project);
@@ -38,7 +38,7 @@ public class MoveNodesDialog extends ModelOrNodeChooserDialog {
     Disposer.register(getDisposable(), myChooser);
     return centerPanel;
   }
-  public void setFilter(MoveNodesDialog.ModelFilter filter) {
+  public void setFilter(ModelFilter filter) {
     myFilter = filter;
   }
   @Nullable
@@ -52,7 +52,7 @@ public class MoveNodesDialog extends ModelOrNodeChooserDialog {
     dialog.show();
     return dialog.mySelectedObject;
   }
-  public static NodeLocation getSelectedObject(@NotNull MPSProject project, SModel model, MoveNodesDialog.ModelFilter filter) {
+  public static NodeLocation getSelectedObject(@NotNull MPSProject project, SModel model, ModelFilter filter) {
     MoveNodesDialog dialog = new MoveNodesDialog(project, model);
     dialog.setFilter(filter);
     dialog.show();

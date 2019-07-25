@@ -10,13 +10,13 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -26,13 +26,14 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CellActionMapImportSelectorByActionId_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new CellActionMapImportSelectorByActionId_SubstituteMenu.SMP_Param_qe8s2c_a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_qe8s2c_a(), AUX_qe8s2c.CellActionMapImportSelectorByActionId_13afdfa1));
     return result;
   }
 
@@ -53,7 +54,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SEnumerationLiteral parameter, SubstituteMenuContext context) {
-      return new CellActionMapImportSelectorByActionId_SubstituteMenu.SMP_Param_qe8s2c_a.SMP_Action_qe8s2c_a0(parameter).createItems(context);
+      return new SMP_Param_qe8s2c_a.SMP_Action_qe8s2c_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -80,7 +81,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        CellActionMapImportSelectorByActionId_SubstituteMenu.SMP_Param_qe8s2c_a.SMP_Action_qe8s2c_a0.Item item = new CellActionMapImportSelectorByActionId_SubstituteMenu.SMP_Param_qe8s2c_a.SMP_Action_qe8s2c_a0.Item(_context);
+        SMP_Param_qe8s2c_a.SMP_Action_qe8s2c_a0.Item item = new SMP_Param_qe8s2c_a.SMP_Action_qe8s2c_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -104,7 +105,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId"), context);
+          super(AUX_qe8s2c.CellActionMapImportSelectorByActionId_13afdfa1, context);
           _context = context;
         }
 
@@ -115,7 +116,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId"), null);
+          SNode result = SNodeFactoryOperations.createNewNode(AUX_qe8s2c.CellActionMapImportSelectorByActionId_13afdfa1, null);
           SPropertyOperations.assignEnum(result, MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId"), SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"), SEnumOperations.getMemberName0(myParameterObject)));
 
           return result;
@@ -127,7 +128,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_qe8s2c.CellActionMapImportSelectorByActionId_13afdfa1, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -147,5 +148,9 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
       }
     }
 
+  }
+
+  private static final class AUX_qe8s2c {
+    /*package*/ static final SConcept CellActionMapImportSelectorByActionId_13afdfa1 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId");
   }
 }

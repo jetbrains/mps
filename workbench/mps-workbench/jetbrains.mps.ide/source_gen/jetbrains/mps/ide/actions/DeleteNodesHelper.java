@@ -34,12 +34,13 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewItem;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DeleteNodesHelper {
   private static final Logger LOG = LogManager.getLogger(DeleteNodesHelper.class);
@@ -144,7 +145,7 @@ public class DeleteNodesHelper {
                   return;
                 }
 
-                if (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) {
+                if (SNodeOperations.isInstanceOf(it, AUX_6odbu.AbstractConceptDeclaration_ec74828f)) {
                   SearchResults<SNode> instances = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
                   SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults()));
                 }
@@ -199,5 +200,9 @@ public class DeleteNodesHelper {
         });
       }
     });
+  }
+
+  private static final class AUX_6odbu {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

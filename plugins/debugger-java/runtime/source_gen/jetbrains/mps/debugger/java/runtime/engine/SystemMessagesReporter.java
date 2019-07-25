@@ -14,7 +14,7 @@ import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 public class SystemMessagesReporter {
   private String myName;
   private volatile ProcessHandler myProcessHandler;
-  private final SystemMessagesReporter.MyDebugProcessAdapter myDebugProcessListener = new SystemMessagesReporter.MyDebugProcessAdapter();
+  private final MyDebugProcessAdapter myDebugProcessListener = new MyDebugProcessAdapter();
   private final List<Pair<String, Key>> myPostponedMessages = new ArrayList<Pair<String, Key>>();
   public SystemMessagesReporter(DebugProcessMulticaster multicaster) {
     multicaster.addListener(myDebugProcessListener);

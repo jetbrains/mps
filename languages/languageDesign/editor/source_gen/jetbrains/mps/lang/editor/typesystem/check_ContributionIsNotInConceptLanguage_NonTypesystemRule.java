@@ -13,9 +13,10 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_ContributionIsNotInConceptLanguage_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ContributionIsNotInConceptLanguage_NonTypesystemRule() {
@@ -35,7 +36,7 @@ public class check_ContributionIsNotInConceptLanguage_NonTypesystemRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a5d62L, "jetbrains.mps.lang.editor.structure.IMenu_Contribution");
+    return AUX_vbn2nq.IMenu_Contribution_b582d47e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,5 +55,9 @@ public class check_ContributionIsNotInConceptLanguage_NonTypesystemRule extends 
       return SModelOperations.getModuleStub(checkedDotOperand);
     }
     return null;
+  }
+
+  private static final class AUX_vbn2nq {
+    /*package*/ static final SInterfaceConcept IMenu_Contribution_b582d47e = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a5d62L, "jetbrains.mps.lang.editor.structure.IMenu_Contribution");
   }
 }

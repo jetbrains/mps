@@ -22,7 +22,7 @@ public class SimpleRedoTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_SimpleRedoTest() throws Throwable {
-    new SimpleRedoTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

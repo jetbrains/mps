@@ -25,7 +25,7 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
     super(p);
     myEventsProcessor = eventsProcessor;
     myEventsProcessor.setDebuggableFramesSelector(getDebuggableFramesSelector());
-    eventsProcessor.addDebugProcessListener(new DebugSession.MyDebugProcessAdapter());
+    eventsProcessor.addDebugProcessListener(new MyDebugProcessAdapter());
   }
   @Override
   protected JavaUiStateImpl createUiState() {

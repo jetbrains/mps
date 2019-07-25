@@ -20,6 +20,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ClassifierOverridingMethods_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ClassifierOverridingMethods_NonTypesystemRule() {
@@ -30,13 +31,13 @@ public class check_ClassifierOverridingMethods_NonTypesystemRule extends Abstrac
       Set<SNode> baseMethods = finder.getBaseMethods(overridingMethod);
       for (SNode baseMethod : SetSequence.fromSet(baseMethods)) {
         SNode returnType = SLinkOperations.getTarget(baseMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"));
-        SNode baseContainer = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+        SNode baseContainer = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), AUX_lwwgv6.Classifier_4b7e553);
         SNode overridingMethodParent = SNodeOperations.getParent(overridingMethod);
         SNode resolvedReturnType;
-        if (SNodeOperations.isInstanceOf(overridingMethodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-          resolvedReturnType = Classifier__BehaviorDescriptor.getWithResolvedTypevars_id2RtWPFZ0VAJ.invoke(SNodeOperations.cast(overridingMethodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), returnType, baseContainer, overridingMethod, baseMethod);
-        } else if (SNodeOperations.isInstanceOf(overridingMethodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration"))) {
-          SNode enumClass = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(overridingMethodParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass"));
+        if (SNodeOperations.isInstanceOf(overridingMethodParent, AUX_lwwgv6.Classifier_4b7e553)) {
+          resolvedReturnType = Classifier__BehaviorDescriptor.getWithResolvedTypevars_id2RtWPFZ0VAJ.invoke(SNodeOperations.cast(overridingMethodParent, AUX_lwwgv6.Classifier_4b7e553), returnType, baseContainer, overridingMethod, baseMethod);
+        } else if (SNodeOperations.isInstanceOf(overridingMethodParent, AUX_lwwgv6.EnumConstantDeclaration_b06144d8)) {
+          SNode enumClass = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(overridingMethodParent, AUX_lwwgv6.EnumConstantDeclaration_b06144d8)), AUX_lwwgv6.EnumClass_acf68fc0);
           SNode dummy = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"));
           SLinkOperations.setTarget(dummy, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier"), enumClass);
           resolvedReturnType = Classifier__BehaviorDescriptor.getWithResolvedTypevars_id2RtWPFZ0VAJ.invoke(dummy, returnType, baseContainer, overridingMethod, baseMethod);
@@ -59,12 +60,18 @@ public class check_ClassifierOverridingMethods_NonTypesystemRule extends Abstrac
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    return AUX_lwwgv6.Classifier_4b7e553;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_lwwgv6 {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept EnumConstantDeclaration_b06144d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept EnumClass_acf68fc0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
   }
 }

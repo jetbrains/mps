@@ -13,7 +13,7 @@
   <root nodeRef="r:7bf33aca-3b5f-450a-baea-d52813bdb88b(jetbrains.mps.lang.editor.imageGen.generator.template.main@generator)/3245637733310290136">
     <file name="QueriesGenerated.java">
       <node id="3245637733310315980" at="28,83,29,194" concept="1" />
-      <node id="3245637733310315479" at="45,14,46,75" concept="0" />
+      <node id="3245637733310315479" at="45,14,46,58" concept="0" />
       <node id="3245637733310315479" at="65,15,66,58" concept="1" />
       <node id="3245637733310315908" at="28,0,31,0" concept="2" trace="rule_Condition_0_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <scope id="3245637733310315909" at="28,83,29,194" />
@@ -29,10 +29,10 @@
       <node id="3245637733310319058" at="34,88,35,246" concept="1" />
       <node id="1380214350863108414" at="37,88,38,186" concept="1" />
       <node id="1380214350863109998" at="40,88,41,192" concept="1" />
-      <node id="3245637733310317295" at="74,14,75,213" concept="0" />
-      <node id="3245637733310318545" at="75,213,76,201" concept="0" />
-      <node id="1380214350863106264" at="76,201,77,204" concept="0" />
-      <node id="1380214350863109719" at="77,204,78,210" concept="0" />
+      <node id="3245637733310317295" at="74,14,75,196" concept="0" />
+      <node id="3245637733310318545" at="75,196,76,184" concept="0" />
+      <node id="1380214350863106264" at="76,184,77,187" concept="0" />
+      <node id="1380214350863109719" at="77,187,78,193" concept="0" />
       <node id="3245637733310317295" at="98,15,99,66" concept="1" />
       <node id="3245637733310318545" at="100,15,101,66" concept="1" />
       <node id="1380214350863106264" at="102,15,103,66" concept="1" />

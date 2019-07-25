@@ -126,7 +126,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new Weaving_MappingRule_InspectorBuilder_a.anchorQuerySingleRoleHandler_gkr2rl_a2e0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, 0xe2b8adb3abb51f8L, "anchorQuery"), getEditorContext());
+    SingleRoleCellProvider provider = new anchorQuerySingleRoleHandler_gkr2rl_a2e0(myNode, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, 0xe2b8adb3abb51f8L, "anchorQuery"), getEditorContext());
     return provider.createCell();
   }
   private static class anchorQuerySingleRoleHandler_gkr2rl_a2e0 extends SingleRoleCellProvider {

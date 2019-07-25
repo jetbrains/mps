@@ -24,6 +24,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class BuildStringNotEmpty_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -56,7 +57,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new BuildStringNotEmpty_EditorBuilder_a.partsListHandler_vy9fh5_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new partsListHandler_vy9fh5_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_parts");
     forbid_Insert.setCellActions(editorCell, myNode, getEditorContext());
@@ -80,7 +81,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
       return MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart");
+      return AUX_el1f8l.BuildStringPart_a64ab0ca;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -118,5 +119,9 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
       editorCell.setCellId("Error_vy9fh5_a0a");
       return editorCell;
     }
+  }
+
+  private static final class AUX_el1f8l {
+    /*package*/ static final SConcept BuildStringPart_a64ab0ca = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart");
   }
 }

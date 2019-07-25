@@ -49,7 +49,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
 /*package*/ class TestMigrationSession extends MigrationSession.MigrationSessionBase {
-  private TestMigrationSession.MyMigrationManager myManager = new TestMigrationSession.MyMigrationManager();
+  private MyMigrationManager myManager = new MyMigrationManager();
   private MigrationTestConfigDialog.Result mySettings;
   private MPSProject myProject;
 
@@ -249,9 +249,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     return ListSequence.fromList(mySettings.pMigrations).select(new ISelector<MigrationTestConfigDialog.Result.PMigration, ProjectMigration>() {
       public ProjectMigration select(MigrationTestConfigDialog.Result.PMigration pmig) {
         if (pmig.isCleanup) {
-          return (ProjectMigration) new TestMigrationSession.MyCleanupProjectMigration("cleanup: " + pmig.id, pmig.hasOptions, pmig.error);
+          return (ProjectMigration) new MyCleanupProjectMigration("cleanup: " + pmig.id, pmig.hasOptions, pmig.error);
         } else {
-          return (ProjectMigration) new TestMigrationSession.MyProjectMigration("project: " + pmig.id, pmig.hasOptions, pmig.error);
+          return (ProjectMigration) new MyProjectMigration("project: " + pmig.id, pmig.hasOptions, pmig.error);
         }
       }
     }).toListSequence();
@@ -260,7 +260,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
   private List<MigrationScript> createLanguageMigs() {
     return ListSequence.fromList(mySettings.lMigrations).select(new ISelector<MigrationTestConfigDialog.Result.LMigration, MigrationScript>() {
       public MigrationScript select(MigrationTestConfigDialog.Result.LMigration lmig) {
-        return (MigrationScript) new TestMigrationSession.MyModuleMigration(lmig.language, lmig.version, lmig.error);
+        return (MigrationScript) new MyModuleMigration(lmig.language, lmig.version, lmig.error);
       }
     }).toListSequence();
   }
@@ -282,7 +282,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     public MigrationScriptReference getReference() {
       // todo this is suspicious 
       // todo name is used as id here 
-      final TestMigrationSession.MyModuleMigration _this = this;
+      final MyModuleMigration _this = this;
       return new MigrationScriptReference(myLang, 0) {
         @Override
         public MigrationScript resolve(Project p, boolean silent) {
@@ -344,7 +344,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     }
   }
 
-  private class MyCleanupProjectMigration extends TestMigrationSession.MyProjectMigration implements CleanupProjectMigration, ProjectMigrationWithOptions {
+  private class MyCleanupProjectMigration extends MyProjectMigration implements CleanupProjectMigration, ProjectMigrationWithOptions {
     public MyCleanupProjectMigration(String id, boolean options, boolean error) {
       super(id, options, error);
     }

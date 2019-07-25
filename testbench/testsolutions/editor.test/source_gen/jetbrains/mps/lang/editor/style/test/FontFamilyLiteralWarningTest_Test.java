@@ -28,7 +28,7 @@ public class FontFamilyLiteralWarningTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeWarningCheck1715298588355941914() throws Throwable {
-    new FontFamilyLiteralWarningTest_Test.TestBody(this).test_NodeWarningCheck1715298588355941914();
+    new TestBody(this).test_NodeWarningCheck1715298588355941914();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

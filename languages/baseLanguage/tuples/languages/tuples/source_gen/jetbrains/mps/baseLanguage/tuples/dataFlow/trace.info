@@ -5,6 +5,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="DataFlowAspectDescriptorImpl.java">
       <unit at="15,0,34,0" name="jetbrains.mps.baseLanguage.tuples.dataFlow.DataFlowAspectDescriptorImpl" />
@@ -12,28 +13,31 @@
   </root>
   <root nodeRef="r:584f574a-ff70-48d8-8e32-f847d7f18b78(jetbrains.mps.baseLanguage.tuples.dataFlow)/1238856234517">
     <file name="IndexedTupleLiteral_DataFlow.java">
-      <node id="1238857003685" at="15,199,16,470" concept="1" />
-      <node id="1238856255659" at="19,199,20,49" concept="1" />
-      <node id="1238856622098" at="14,401,17,7" concept="2" />
-      <node id="1238856238067" at="18,12,21,7" concept="2" />
-      <node id="1238856613788" at="18,10,22,5" concept="0" />
-      <node id="1238856504663" at="13,60,22,5" concept="3" />
-      <node id="1238856234517" at="13,0,24,0" concept="4" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-      <scope id="1238856622101" at="15,199,16,470" />
-      <scope id="1238856238071" at="19,199,20,49" />
-      <scope id="1238856504664" at="14,401,17,7" />
-      <scope id="1238856622098" at="14,401,17,7">
+      <node id="1238857003685" at="16,199,17,363" concept="1" />
+      <node id="1238856255659" at="20,199,21,49" concept="1" />
+      <node id="1238856234517" at="27,0,28,0" concept="5" trace="VariableReference_24d60dac" />
+      <node id="1238856234517" at="28,0,29,0" concept="5" trace="BaseAssignmentExpression_8ed0d6ee" />
+      <node id="1238856622098" at="15,293,18,7" concept="2" />
+      <node id="1238856238067" at="19,12,22,7" concept="2" />
+      <node id="1238856613788" at="19,10,23,5" concept="0" />
+      <node id="1238856504663" at="14,60,23,5" concept="3" />
+      <node id="1238856234517" at="14,0,25,0" concept="4" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1238856622101" at="16,199,17,363" />
+      <scope id="1238856238071" at="20,199,21,49" />
+      <scope id="1238856504664" at="15,293,18,7" />
+      <scope id="1238856622098" at="15,293,18,7">
         <var name="mbr" id="1238856622099" />
       </scope>
-      <scope id="1238856238067" at="18,12,21,7">
+      <scope id="1238856238067" at="19,12,22,7">
         <var name="mbr" id="1238856238069" />
       </scope>
-      <scope id="1238856613789" at="18,12,21,7" />
-      <scope id="1238856234519" at="13,60,22,5" />
-      <scope id="1238856234517" at="13,0,24,0">
+      <scope id="1238856613789" at="19,12,22,7" />
+      <scope id="1238856234519" at="14,60,23,5" />
+      <scope id="1238856234517" at="14,0,25,0">
         <var name="_context" id="1238856234517" />
       </scope>
-      <unit id="1238856234517" at="12,0,25,0" name="jetbrains.mps.baseLanguage.tuples.dataFlow.IndexedTupleLiteral_DataFlow" />
+      <unit id="1238856234517" at="26,0,30,0" name="jetbrains.mps.baseLanguage.tuples.dataFlow.IndexedTupleLiteral_DataFlow$AUX_gopq5b" />
+      <unit id="1238856234517" at="13,0,31,0" name="jetbrains.mps.baseLanguage.tuples.dataFlow.IndexedTupleLiteral_DataFlow" />
     </file>
   </root>
   <root nodeRef="r:584f574a-ff70-48d8-8e32-f847d7f18b78(jetbrains.mps.baseLanguage.tuples.dataFlow)/1239580025007">

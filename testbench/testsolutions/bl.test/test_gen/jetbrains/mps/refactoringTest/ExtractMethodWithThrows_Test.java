@@ -36,7 +36,7 @@ public class ExtractMethodWithThrows_Test extends BaseTransformationTest {
 
   @Test
   public void test_ExtractMethodWithThrowsTest() throws Throwable {
-    new ExtractMethodWithThrows_Test.TestBody(this).test_ExtractMethodWithThrowsTest();
+    new TestBody(this).test_ExtractMethodWithThrowsTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

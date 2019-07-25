@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -21,14 +20,16 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SingleLineComment_SubstituteMenu.SMP_Action_eygiu2_a(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_eygiu2_a(), AUX_eygiu2.SingleLineComment_36a4c8f4));
     return result;
   }
 
@@ -50,7 +51,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SingleLineComment_SubstituteMenu.SMP_Action_eygiu2_a.Item item = new SingleLineComment_SubstituteMenu.SMP_Action_eygiu2_a.Item(_context);
+      SMP_Action_eygiu2_a.Item item = new SMP_Action_eygiu2_a.Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -73,7 +74,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"), context);
+        super(AUX_eygiu2.SingleLineComment_36a4c8f4, context);
         _context = context;
       }
 
@@ -87,7 +88,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
         if ((SNodeOperations.getNextSibling(_context.getCurrentTargetNode()) == null)) {
           SNodeOperations.insertNextSiblingChild(_context.getCurrentTargetNode(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")));
         }
-        return SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"), _context.getCurrentTargetNode());
+        return SNodeFactoryOperations.createNewNode(AUX_eygiu2.SingleLineComment_36a4c8f4, _context.getCurrentTargetNode());
       }
 
       @Override
@@ -100,5 +101,9 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
         return "//";
       }
     }
+  }
+
+  private static final class AUX_eygiu2 {
+    /*package*/ static final SConcept SingleLineComment_36a4c8f4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
   }
 }

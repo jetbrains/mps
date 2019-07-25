@@ -21,7 +21,7 @@ public class DeleteOnlyCommentedStatement_CommentSelected_Test extends BaseTrans
 
   @Test
   public void test_DeleteOnlyCommentedStatement_CommentSelected() throws Throwable {
-    new DeleteOnlyCommentedStatement_CommentSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

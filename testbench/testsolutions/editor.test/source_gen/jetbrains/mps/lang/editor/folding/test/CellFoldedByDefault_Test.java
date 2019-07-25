@@ -21,7 +21,7 @@ public class CellFoldedByDefault_Test extends BaseTransformationTest {
 
   @Test
   public void test_CellFoldedByDefault() throws Throwable {
-    new CellFoldedByDefault_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

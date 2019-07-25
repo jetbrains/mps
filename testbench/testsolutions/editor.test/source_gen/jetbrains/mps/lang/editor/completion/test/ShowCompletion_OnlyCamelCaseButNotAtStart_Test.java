@@ -24,7 +24,7 @@ public class ShowCompletion_OnlyCamelCaseButNotAtStart_Test extends BaseTransfor
 
   @Test
   public void test_ShowCompletion_OnlyCamelCaseButNotAtStart() throws Throwable {
-    new ShowCompletion_OnlyCamelCaseButNotAtStart_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

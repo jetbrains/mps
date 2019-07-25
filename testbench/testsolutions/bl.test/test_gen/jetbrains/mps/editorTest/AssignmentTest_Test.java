@@ -21,7 +21,7 @@ public class AssignmentTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_AssignmentTest() throws Throwable {
-    new AssignmentTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

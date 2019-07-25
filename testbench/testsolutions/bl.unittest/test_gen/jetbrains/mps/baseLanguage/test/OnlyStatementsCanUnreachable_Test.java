@@ -32,15 +32,15 @@ public class OnlyStatementsCanUnreachable_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305743236() throws Throwable {
-    new OnlyStatementsCanUnreachable_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305743236();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305743236();
   }
   @Test
   public void test_NodeUnreachableNodeErrorCheck2156906680117409679() throws Throwable {
-    new OnlyStatementsCanUnreachable_Test.TestBody(this).test_NodeUnreachableNodeErrorCheck2156906680117409679();
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck2156906680117409679();
   }
   @Test
   public void test_ErrorMessagesCheck1216231238662() throws Throwable {
-    new OnlyStatementsCanUnreachable_Test.TestBody(this).test_ErrorMessagesCheck1216231238662();
+    new TestBody(this).test_ErrorMessagesCheck1216231238662();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

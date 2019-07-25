@@ -16,11 +16,12 @@ import jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet.operat
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.classifiers.behavior.BaseClassifierType__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CheckProperitesOperation_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -61,10 +62,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
   }
   private SNode _StyleParameter_QueryFunction_ti2jjv_a0a0() {
     {
-      SNode coercedNode_ti2jjv_a0a0a0 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(getNode())), MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType"));
+      SNode coercedNode_ti2jjv_a0a0a0 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(getNode())), AUX_qzxlbn.PersistentConfigurationType_9ba047e0);
       if (coercedNode_ti2jjv_a0a0a0 != null) {
         for (SNode member : ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_ti2jjv_a0a0a0, getNode()))) {
-          if (SNodeOperations.isInstanceOf(member, MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910125L, "jetbrains.mps.execution.settings.structure.CheckProperties_Function"))) {
+          if (SNodeOperations.isInstanceOf(member, AUX_qzxlbn.CheckProperties_Function_9ba05021)) {
             return member;
           }
         }
@@ -73,5 +74,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
         return null;
       }
     }
+  }
+
+  private static final class AUX_qzxlbn {
+    /*package*/ static final SConcept PersistentConfigurationType_9ba047e0 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
+    /*package*/ static final SConcept CheckProperties_Function_9ba05021 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910125L, "jetbrains.mps.execution.settings.structure.CheckProperties_Function");
   }
 }

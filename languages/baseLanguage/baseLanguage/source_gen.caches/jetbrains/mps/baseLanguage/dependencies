@@ -8,7 +8,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.actions.ActionAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.BehaviorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.constraints.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.DataFlowAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.findUsages.FindUsagesDescriptor" />
@@ -20,8 +19,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.structure.StructureAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.TextGenAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.typesystem.TypesystemDescriptor" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor" />

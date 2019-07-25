@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
   private final SProperty myRemarkStatement_value = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
@@ -28,13 +29,13 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
   public UpdateResult update(EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     SNode node = editorComponent.getEditedNode();
-    for (SNode remark : SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement"), false, new SAbstractConcept[]{})) {
-      if (((boolean) (Boolean) BHReflection.invoke0(remark, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement"), SMethodTrimmedId.create("isTodo", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement"), "hEwITPs")))) {
+    for (SNode remark : SNodeOperations.getNodeDescendants(node, AUX_2py4u5.RemarkStatement_3e86530f, false, new SAbstractConcept[]{})) {
+      if (((boolean) (Boolean) BHReflection.invoke0(remark, AUX_2py4u5.RemarkStatement_3e86530f, SMethodTrimmedId.create("isTodo", AUX_2py4u5.RemarkStatement_3e86530f, "hEwITPs")))) {
         SetSequence.fromSet(messages).addElement(new ToDoMessage(remark, SPropertyOperations.getString(remark, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value")), this));
       }
     }
-    for (SNode textCommentPart : SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"), false, new SAbstractConcept[]{})) {
-      if (((boolean) (Boolean) BHReflection.invoke0(textCommentPart, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart"), SMethodTrimmedId.create("isToDo", null, "6hHyb3YSGHZ")))) {
+    for (SNode textCommentPart : SNodeOperations.getNodeDescendants(node, AUX_2py4u5.TextCommentPart_36a4c8f7, false, new SAbstractConcept[]{})) {
+      if (((boolean) (Boolean) BHReflection.invoke0(textCommentPart, AUX_2py4u5.CommentPart_36a4c8f5, SMethodTrimmedId.create("isToDo", null, "6hHyb3YSGHZ")))) {
         SetSequence.fromSet(messages).addElement(new ToDoMessage(textCommentPart, SPropertyOperations.getString(textCommentPart, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text")), this));
       }
     }
@@ -44,12 +45,18 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
   @Override
   protected boolean needsUpdateAfterPropertyEvent(SModelPropertyEvent propertyEvent) {
     SNode node = propertyEvent.getNode();
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement"))) {
+    if (SNodeOperations.isInstanceOf(node, AUX_2py4u5.RemarkStatement_3e86530f)) {
       return myRemarkStatement_value.equals(propertyEvent.getProperty());
     }
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"))) {
+    if (SNodeOperations.isInstanceOf(node, AUX_2py4u5.TextCommentPart_36a4c8f7)) {
       return myTextCommentPart_text.equals(propertyEvent.getProperty());
     }
     return false;
+  }
+
+  private static final class AUX_2py4u5 {
+    /*package*/ static final SConcept RemarkStatement_3e86530f = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement");
+    /*package*/ static final SConcept CommentPart_36a4c8f5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
+    /*package*/ static final SConcept TextCommentPart_36a4c8f7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
   }
 }

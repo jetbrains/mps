@@ -24,7 +24,7 @@ public class TestSubstitute_BooleanDefaultProperty_Test extends BaseTransformati
 
   @Test
   public void test_TestSubstitute_BooleanDefaultProperty() throws Throwable {
-    new TestSubstitute_BooleanDefaultProperty_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

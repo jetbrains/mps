@@ -5,8 +5,8 @@ package jetbrains.mps.lang.text.editor;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -14,6 +14,7 @@ import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class TextDeleteStrategyFactory {
   private TextDeleteStrategyFactory() {
@@ -29,33 +30,33 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
   }
 
   /*package*/ static TextStrategy createDeleteStrategy(SNode currentNode, EditorContext editorContext, boolean isForward) {
-    SNode neighbour = SNodeOperations.as(((isForward ? SNodeOperations.getNextSibling(currentNode) : SNodeOperations.getPrevSibling(currentNode))), MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement"));
-    if (SNodeOperations.isInstanceOf(currentNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")) && (neighbour != null)) {
-      if (SNodeOperations.isInstanceOf(neighbour, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"))) {
-        return new TextDeleteStrategyFactory.GlueNeighbourWordStrategy(SNodeOperations.cast(currentNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), SNodeOperations.cast(neighbour, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), editorContext, isForward);
-      } else if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(currentNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")))) {
-        return new TextDeleteStrategyFactory.DeleteEmptyWordStrategy(SNodeOperations.cast(currentNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), neighbour, editorContext, isForward);
+    SNode neighbour = SNodeOperations.as(((isForward ? SNodeOperations.getNextSibling(currentNode) : SNodeOperations.getPrevSibling(currentNode))), AUX_gm20un.TextElement_f8e99b54);
+    if (SNodeOperations.isInstanceOf(currentNode, AUX_gm20un.Word_f8e99bb0) && (neighbour != null)) {
+      if (SNodeOperations.isInstanceOf(neighbour, AUX_gm20un.Word_f8e99bb0)) {
+        return new GlueNeighbourWordStrategy(SNodeOperations.cast(currentNode, AUX_gm20un.Word_f8e99bb0), SNodeOperations.cast(neighbour, AUX_gm20un.Word_f8e99bb0), editorContext, isForward);
+      } else if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(currentNode, AUX_gm20un.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")))) {
+        return new DeleteEmptyWordStrategy(SNodeOperations.cast(currentNode, AUX_gm20un.Word_f8e99bb0), neighbour, editorContext, isForward);
       }
     }
     if ((neighbour != null)) {
-      if (SNodeOperations.isInstanceOf(neighbour, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"))) {
-        return new TextDeleteStrategyFactory.SelectNeighbourWordStrategy(SNodeOperations.cast(neighbour, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), editorContext, isForward);
+      if (SNodeOperations.isInstanceOf(neighbour, AUX_gm20un.Word_f8e99bb0)) {
+        return new SelectNeighbourWordStrategy(SNodeOperations.cast(neighbour, AUX_gm20un.Word_f8e99bb0), editorContext, isForward);
       } else {
-        return new TextDeleteStrategyFactory.RemoveNeighbourStrategy(neighbour, editorContext, isForward);
+        return new RemoveNeighbourStrategy(neighbour, editorContext, isForward);
       }
     } else {
-      SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentNode), MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      SNode neighbourLine = SNodeOperations.cast(((isForward ? SNodeOperations.getNextSibling(currentLine) : SNodeOperations.getPrevSibling(currentLine))), MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+      SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentNode), AUX_gm20un.Line_c0b9df3f);
+      SNode neighbourLine = SNodeOperations.cast(((isForward ? SNodeOperations.getNextSibling(currentLine) : SNodeOperations.getPrevSibling(currentLine))), AUX_gm20un.Line_c0b9df3f);
       if ((neighbourLine != null)) {
-        return new TextDeleteStrategyFactory.RemoveLineStrategy(currentNode, currentLine, neighbourLine, editorContext, isForward);
+        return new RemoveLineStrategy(currentNode, currentLine, neighbourLine, editorContext, isForward);
       } else {
-        return new TextDeleteStrategyFactory.RemoveWholeTextStrategy(SNodeOperations.getParent(currentLine), editorContext, isForward);
+        return new RemoveWholeTextStrategy(SNodeOperations.getParent(currentLine), editorContext, isForward);
       }
     }
 
   }
 
-  private static class GlueNeighbourWordStrategy extends TextDeleteStrategyFactory.TextDeleteStrategy {
+  private static class GlueNeighbourWordStrategy extends TextDeleteStrategy {
     private SNode myCurrentWord;
     private SNode myNeighbour;
     private String myCurrentWordValue;
@@ -103,7 +104,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
       }
     }
   }
-  private static class DeleteEmptyWordStrategy extends TextDeleteStrategyFactory.TextDeleteStrategy {
+  private static class DeleteEmptyWordStrategy extends TextDeleteStrategy {
     private SNode myCurrentWord;
     private SNode myNeighbour;
 
@@ -123,7 +124,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
       }
     }
   }
-  private static class RemoveNeighbourStrategy extends TextDeleteStrategyFactory.TextDeleteStrategy {
+  private static class RemoveNeighbourStrategy extends TextDeleteStrategy {
     private SNode myNeighbour;
 
     private RemoveNeighbourStrategy(SNode neighbour, EditorContext editorContext, boolean isForward) {
@@ -139,7 +140,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
       }
     }
   }
-  private static class SelectNeighbourWordStrategy extends TextDeleteStrategyFactory.TextDeleteStrategy {
+  private static class SelectNeighbourWordStrategy extends TextDeleteStrategy {
     private SNode myNeighbour;
 
     private SelectNeighbourWordStrategy(SNode neighbour, EditorContext editorContext, boolean isForward) {
@@ -156,7 +157,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
       }
     }
   }
-  private static class RemoveWholeTextStrategy extends TextDeleteStrategyFactory.TextDeleteStrategy {
+  private static class RemoveWholeTextStrategy extends TextDeleteStrategy {
     private SNode myCommentText;
 
     /*package*/ RemoveWholeTextStrategy(SNode text, EditorContext editorContext, boolean isForward) {
@@ -172,7 +173,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
       }
     }
   }
-  private static class RemoveLineStrategy extends TextDeleteStrategyFactory.TextDeleteStrategy {
+  private static class RemoveLineStrategy extends TextDeleteStrategy {
     private SNode myNeighbourLine;
     private SNode myCurrentLine;
     private SNode myCurrentNode;
@@ -204,12 +205,18 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
         });
       }
       SNodeOperations.deleteNode(myNeighbourLine);
-      if (SNodeOperations.isInstanceOf(edgeElement, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")) && SNodeOperations.isInstanceOf(myCurrentNode, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"))) {
+      if (SNodeOperations.isInstanceOf(edgeElement, AUX_gm20un.Word_f8e99bb0) && SNodeOperations.isInstanceOf(myCurrentNode, AUX_gm20un.Word_f8e99bb0)) {
         TextDeleteStrategyFactory.createDeleteStrategy(myCurrentNode, myEditorContext, myIsForward).execute();
       }
     }
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
+  }
+
+  private static final class AUX_gm20un {
+    /*package*/ static final SConcept TextElement_f8e99b54 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Word_f8e99bb0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Line_c0b9df3f = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 }

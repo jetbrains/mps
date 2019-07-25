@@ -27,12 +27,12 @@ import org.jetbrains.annotations.NotNull;
 public class ModelCheckerBuilder {
   private static final Logger LOG = LogManager.getLogger(ModelCheckerBuilder.class);
 
-  private final ModelCheckerBuilder.ModelExtractor myModelExtractor;
-  public ModelCheckerBuilder(ModelCheckerBuilder.ModelExtractor modelExtractor) {
+  private final ModelExtractor myModelExtractor;
+  public ModelCheckerBuilder(ModelExtractor modelExtractor) {
     myModelExtractor = modelExtractor;
   }
   public ModelCheckerBuilder(boolean checkStubs) {
-    this(new ModelCheckerBuilder.ModelsExtractorImpl().includeStubs(checkStubs));
+    this(new ModelsExtractorImpl().includeStubs(checkStubs));
   }
 
   public static abstract class ModelExtractor {
@@ -52,14 +52,14 @@ public class ModelCheckerBuilder {
     public abstract boolean includeModel(SModel model);
   }
 
-  public static class ModelsExtractorImpl extends ModelCheckerBuilder.ModelExtractor {
+  public static class ModelsExtractorImpl extends ModelExtractor {
     private boolean myIncludeStubs = false;
     private boolean myIncludeGenerators = true;
-    public ModelCheckerBuilder.ModelsExtractorImpl excludeGenerators() {
+    public ModelsExtractorImpl excludeGenerators() {
       myIncludeGenerators = false;
       return this;
     }
-    public ModelCheckerBuilder.ModelsExtractorImpl includeStubs(boolean checkStubs) {
+    public ModelsExtractorImpl includeStubs(boolean checkStubs) {
       myIncludeStubs = checkStubs;
       return this;
     }
@@ -77,13 +77,13 @@ public class ModelCheckerBuilder {
   }
 
   public static class ItemsToCheck {
-    public static ModelCheckerBuilder.ItemsToCheck forSingleModule(SModule module) {
-      ModelCheckerBuilder.ItemsToCheck result = new ModelCheckerBuilder.ItemsToCheck();
+    public static ItemsToCheck forSingleModule(SModule module) {
+      ItemsToCheck result = new ItemsToCheck();
       ListSequence.fromList(result.modules).addElement(module);
       return result;
     }
-    public static ModelCheckerBuilder.ItemsToCheck forSingleModel(SModel model) {
-      ModelCheckerBuilder.ItemsToCheck result = new ModelCheckerBuilder.ItemsToCheck();
+    public static ItemsToCheck forSingleModel(SModel model) {
+      ItemsToCheck result = new ItemsToCheck();
       ListSequence.fromList(result.models).addElement(model);
       return result;
     }
@@ -91,7 +91,7 @@ public class ModelCheckerBuilder {
     public List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
   }
 
-  public IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> createChecker(final List<? extends IChecker<?, ? extends IssueKindReportItem>> specificCheckers) {
+  public IAbstractChecker<ItemsToCheck, IssueKindReportItem> createChecker(final List<? extends IChecker<?, ? extends IssueKindReportItem>> specificCheckers) {
     List<IChecker<SModel, ? extends IssueKindReportItem>> modelCheckers = ListSequence.fromList(new ArrayList<IChecker<SModel, ? extends IssueKindReportItem>>());
     List<IChecker<SModule, ? extends IssueKindReportItem>> moduleCheckers = ListSequence.fromList(new ArrayList<IChecker<SModule, ? extends IssueKindReportItem>>());
 
@@ -115,9 +115,9 @@ public class ModelCheckerBuilder {
     return createChecker(modelCheckers, moduleCheckers);
   }
 
-  private IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> createChecker(final List<IChecker<SModel, ? extends IssueKindReportItem>> specificModelCheckers, final List<IChecker<SModule, ? extends IssueKindReportItem>> specificModuleCheckers) {
-    return new IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem>() {
-      public void check(ModelCheckerBuilder.ItemsToCheck itemsToCheck, SRepository repository, Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
+  private IAbstractChecker<ItemsToCheck, IssueKindReportItem> createChecker(final List<IChecker<SModel, ? extends IssueKindReportItem>> specificModelCheckers, final List<IChecker<SModule, ? extends IssueKindReportItem>> specificModuleCheckers) {
+    return new IAbstractChecker<ItemsToCheck, IssueKindReportItem>() {
+      public void check(ItemsToCheck itemsToCheck, SRepository repository, Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
         List<SModule> modules = ListSequence.fromList(itemsToCheck.modules).translate(new ITranslator2<SModule, SModule>() {
           public Iterable<SModule> translate(SModule it) {
             return myModelExtractor.getSubModules(it);

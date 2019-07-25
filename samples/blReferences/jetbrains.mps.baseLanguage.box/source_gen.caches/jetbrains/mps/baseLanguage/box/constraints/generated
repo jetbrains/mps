@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product version="3" modelHash="-3h7nogs4f2h1uvsnqlsjy8ep3eooo45">
-  <files names="Box_ValueOperation_Constraints.java:ConstraintsAspectDescriptor.java:GeneratedRulesConstraintsAspect.java" />
+  <files names="Box_ValueOperation_Constraints.java:ConstraintsAspectDescriptor.java" />
 </product>
 

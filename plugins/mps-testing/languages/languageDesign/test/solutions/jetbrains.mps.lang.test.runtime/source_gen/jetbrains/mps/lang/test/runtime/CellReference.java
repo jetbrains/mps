@@ -5,8 +5,8 @@ package jetbrains.mps.lang.test.runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import jetbrains.mps.lang.test.behavior.AnonymousCellAnnotation__BehaviorDescriptor;
@@ -19,6 +19,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CellReference {
   private SNode myNode;
@@ -26,7 +27,7 @@ public class CellReference {
   private Map<SNode, SNode> myMap;
   public CellReference(SNode node, SNode annotation, Map<SNode, SNode> map) {
     myNode = node;
-    myAnnotation = SNodeOperations.cast(annotation, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation"));
+    myAnnotation = SNodeOperations.cast(annotation, AUX_kow1ys.AnonymousCellAnnotation_4623621a);
     myMap = map;
   }
 
@@ -69,5 +70,9 @@ public class CellReference {
     } else {
       Assert.fail("Selection of unsupported type: " + selection.getClass());
     }
+  }
+
+  private static final class AUX_kow1ys {
+    /*package*/ static final SConcept AnonymousCellAnnotation_4623621a = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
   }
 }

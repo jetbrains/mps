@@ -11,7 +11,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/175447375139954965">
     <file name="ChangeCollapseCondition_ManuallyExpandedCell_Test.java">
       <node id="175447375139954965" at="18,62,19,25" concept="7" />
-      <node id="175447375139954965" at="23,84,24,86" concept="1" />
+      <node id="175447375139954965" at="23,84,24,36" concept="1" />
       <node id="175447375139954965" at="29,52,30,19" concept="7" />
       <node id="175447375139954965" at="34,51,35,70" concept="1" />
       <node id="175447375139955550" at="35,70,36,69" concept="1" />
@@ -30,7 +30,7 @@
       <node id="175447375139954965" at="22,0,26,0" concept="3" trace="test_ChangeCollapseCondition_ManuallyExpandedCell#()V" />
       <node id="175447375139954965" at="33,0,47,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="175447375139954965" at="18,62,19,25" />
-      <scope id="175447375139954965" at="23,84,24,86" />
+      <scope id="175447375139954965" at="23,84,24,36" />
       <scope id="175447375139954965" at="29,52,30,19" />
       <scope id="175447375139954965" at="18,0,21,0" />
       <scope id="175447375139954965" at="29,0,32,0">
@@ -46,7 +46,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/175447375140054073">
     <file name="ManuallyExpandedCell_UnrelatedModelChange_Test.java">
       <node id="175447375140054073" at="18,59,19,25" concept="7" />
-      <node id="175447375140054073" at="23,81,24,83" concept="1" />
+      <node id="175447375140054073" at="23,81,24,36" concept="1" />
       <node id="175447375140054073" at="29,52,30,19" concept="7" />
       <node id="175447375140054073" at="34,51,35,70" concept="1" />
       <node id="175447375140054078" at="35,70,36,69" concept="1" />
@@ -64,7 +64,7 @@
       <node id="175447375140054073" at="22,0,26,0" concept="3" trace="test_ManuallyExpandedCell_UnrelatedModelChange#()V" />
       <node id="175447375140054073" at="33,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="175447375140054073" at="18,59,19,25" />
-      <scope id="175447375140054073" at="23,81,24,83" />
+      <scope id="175447375140054073" at="23,81,24,36" />
       <scope id="175447375140054073" at="29,52,30,19" />
       <scope id="175447375140054073" at="18,0,21,0" />
       <scope id="175447375140054073" at="29,0,32,0">
@@ -80,7 +80,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168925550258">
     <file name="InitiallyCollapsedSwingComponent_Test.java">
       <node id="3824034168925550258" at="22,50,23,25" concept="7" />
-      <node id="3824034168925550258" at="27,72,28,74" concept="1" />
+      <node id="3824034168925550258" at="27,72,28,36" concept="1" />
       <node id="3824034168925550258" at="33,52,34,19" concept="7" />
       <node id="3824034168925550258" at="38,51,39,53" concept="1" />
       <node id="3824034168925550260" at="39,53,40,111" concept="4" />
@@ -93,7 +93,7 @@
       <node id="3824034168925550258" at="26,0,30,0" concept="3" trace="test_InitiallyCollapsedSwingComponent#()V" />
       <node id="3824034168925550258" at="37,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168925550258" at="22,50,23,25" />
-      <scope id="3824034168925550258" at="27,72,28,74" />
+      <scope id="3824034168925550258" at="27,72,28,36" />
       <scope id="3824034168925550258" at="33,52,34,19" />
       <scope id="3824034168925550276" at="42,81,43,60" />
       <scope id="3824034168925550258" at="22,0,25,0" />
@@ -115,7 +115,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168925550286">
     <file name="InitiallyExpandedSwingComponent_Test.java">
       <node id="3824034168925550286" at="22,49,23,25" concept="7" />
-      <node id="3824034168925550286" at="27,71,28,73" concept="1" />
+      <node id="3824034168925550286" at="27,71,28,36" concept="1" />
       <node id="3824034168925550286" at="33,52,34,19" concept="7" />
       <node id="3824034168925550286" at="38,51,39,53" concept="1" />
       <node id="3824034168925550288" at="39,53,40,111" concept="4" />
@@ -128,7 +128,7 @@
       <node id="3824034168925550286" at="26,0,30,0" concept="3" trace="test_InitiallyExpandedSwingComponent#()V" />
       <node id="3824034168925550286" at="37,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168925550286" at="22,49,23,25" />
-      <scope id="3824034168925550286" at="27,71,28,73" />
+      <scope id="3824034168925550286" at="27,71,28,36" />
       <scope id="3824034168925550286" at="33,52,34,19" />
       <scope id="3824034168925550304" at="42,81,43,59" />
       <scope id="3824034168925550286" at="22,0,25,0" />
@@ -150,7 +150,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168925667327">
     <file name="CollapseInnerSwingComponent_Test.java">
       <node id="3824034168925667327" at="22,45,23,25" concept="7" />
-      <node id="3824034168925667327" at="27,67,28,69" concept="1" />
+      <node id="3824034168925667327" at="27,67,28,36" concept="1" />
       <node id="3824034168925667327" at="33,52,34,19" concept="7" />
       <node id="3824034168925667327" at="38,51,39,72" concept="1" />
       <node id="3824034168925667329" at="39,72,40,71" concept="1" />
@@ -165,7 +165,7 @@
       <node id="3824034168925667327" at="26,0,30,0" concept="3" trace="test_CollapseInnerSwingComponent#()V" />
       <node id="3824034168925667327" at="37,0,48,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168925667327" at="22,45,23,25" />
-      <scope id="3824034168925667327" at="27,67,28,69" />
+      <scope id="3824034168925667327" at="27,67,28,36" />
       <scope id="3824034168925667327" at="33,52,34,19" />
       <scope id="3824034168925667347" at="44,81,45,60" />
       <scope id="3824034168925667327" at="22,0,25,0" />
@@ -187,7 +187,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168925697451">
     <file name="ExpandInnerSwingComponent_Test.java">
       <node id="3824034168925697451" at="22,43,23,25" concept="7" />
-      <node id="3824034168925697451" at="27,65,28,67" concept="1" />
+      <node id="3824034168925697451" at="27,65,28,36" concept="1" />
       <node id="3824034168925697451" at="33,52,34,19" concept="7" />
       <node id="3824034168925697451" at="38,51,39,72" concept="1" />
       <node id="3824034168925697453" at="39,72,40,69" concept="1" />
@@ -205,7 +205,7 @@
       <node id="3824034168925697451" at="26,0,30,0" concept="3" trace="test_ExpandInnerSwingComponent#()V" />
       <node id="3824034168925697451" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168925697451" at="22,43,23,25" />
-      <scope id="3824034168925697451" at="27,65,28,67" />
+      <scope id="3824034168925697451" at="27,65,28,36" />
       <scope id="3824034168925697451" at="33,52,34,19" />
       <scope id="3824034168925697471" at="47,81,48,59" />
       <scope id="3824034168925697451" at="22,0,25,0" />
@@ -227,7 +227,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168927641168">
     <file name="InitiallyIndirectlyCollapsedInnerSwingComponent_Test.java">
       <node id="3824034168927641168" at="22,65,23,25" concept="7" />
-      <node id="3824034168927641168" at="27,87,28,89" concept="1" />
+      <node id="3824034168927641168" at="27,87,28,36" concept="1" />
       <node id="3824034168927641168" at="33,52,34,19" concept="7" />
       <node id="3824034168927641168" at="38,51,39,53" concept="1" />
       <node id="3824034168927641170" at="39,53,40,111" concept="4" />
@@ -240,7 +240,7 @@
       <node id="3824034168927641168" at="26,0,30,0" concept="3" trace="test_InitiallyIndirectlyCollapsedInnerSwingComponent#()V" />
       <node id="3824034168927641168" at="37,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168927641168" at="22,65,23,25" />
-      <scope id="3824034168927641168" at="27,87,28,89" />
+      <scope id="3824034168927641168" at="27,87,28,36" />
       <scope id="3824034168927641168" at="33,52,34,19" />
       <scope id="3824034168927641186" at="42,81,43,60" />
       <scope id="3824034168927641168" at="22,0,25,0" />
@@ -262,7 +262,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168927675742">
     <file name="ExpandInnerSwingComponentInSubtree_Test.java">
       <node id="3824034168927675742" at="22,52,23,25" concept="7" />
-      <node id="3824034168927675742" at="27,74,28,76" concept="1" />
+      <node id="3824034168927675742" at="27,74,28,36" concept="1" />
       <node id="3824034168927675742" at="33,52,34,19" concept="7" />
       <node id="3824034168927675742" at="38,51,39,72" concept="1" />
       <node id="3824034168927675744" at="39,72,40,69" concept="1" />
@@ -276,7 +276,7 @@
       <node id="3824034168927675742" at="26,0,30,0" concept="3" trace="test_ExpandInnerSwingComponentInSubtree#()V" />
       <node id="3824034168927675742" at="37,0,47,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168927675742" at="22,52,23,25" />
-      <scope id="3824034168927675742" at="27,74,28,76" />
+      <scope id="3824034168927675742" at="27,74,28,36" />
       <scope id="3824034168927675742" at="33,52,34,19" />
       <scope id="3824034168927675770" at="43,81,44,59" />
       <scope id="3824034168927675742" at="22,0,25,0" />
@@ -298,7 +298,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168927715579">
     <file name="InitiallyVisibleSwingComponentInFoldedCell_Test.java">
       <node id="3824034168927715579" at="22,60,23,25" concept="7" />
-      <node id="3824034168927715579" at="27,82,28,84" concept="1" />
+      <node id="3824034168927715579" at="27,82,28,36" concept="1" />
       <node id="3824034168927715579" at="33,52,34,19" concept="7" />
       <node id="3824034168927715579" at="38,51,39,53" concept="1" />
       <node id="3824034168927715581" at="39,53,40,111" concept="4" />
@@ -311,7 +311,7 @@
       <node id="3824034168927715579" at="26,0,30,0" concept="3" trace="test_InitiallyVisibleSwingComponentInFoldedCell#()V" />
       <node id="3824034168927715579" at="37,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168927715579" at="22,60,23,25" />
-      <scope id="3824034168927715579" at="27,82,28,84" />
+      <scope id="3824034168927715579" at="27,82,28,36" />
       <scope id="3824034168927715579" at="33,52,34,19" />
       <scope id="3824034168927715597" at="42,81,43,59" />
       <scope id="3824034168927715579" at="22,0,25,0" />
@@ -333,7 +333,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168928317070">
     <file name="InitiallyInvisibleSwingComponentInFoldedCell_Test.java">
       <node id="3824034168928317070" at="22,62,23,25" concept="7" />
-      <node id="3824034168928317070" at="27,84,28,86" concept="1" />
+      <node id="3824034168928317070" at="27,84,28,36" concept="1" />
       <node id="3824034168928317070" at="33,52,34,19" concept="7" />
       <node id="3824034168928317070" at="38,51,39,53" concept="1" />
       <node id="3824034168928317072" at="39,53,40,111" concept="4" />
@@ -346,7 +346,7 @@
       <node id="3824034168928317070" at="26,0,30,0" concept="3" trace="test_InitiallyInvisibleSwingComponentInFoldedCell#()V" />
       <node id="3824034168928317070" at="37,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168928317070" at="22,62,23,25" />
-      <scope id="3824034168928317070" at="27,84,28,86" />
+      <scope id="3824034168928317070" at="27,84,28,36" />
       <scope id="3824034168928317070" at="33,52,34,19" />
       <scope id="3824034168928317088" at="42,81,43,60" />
       <scope id="3824034168928317070" at="22,0,25,0" />
@@ -368,7 +368,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168928532821">
     <file name="HideSwingComponentInFoldedCell_Test.java">
       <node id="3824034168928532821" at="22,48,23,25" concept="7" />
-      <node id="3824034168928532821" at="27,70,28,72" concept="1" />
+      <node id="3824034168928532821" at="27,70,28,36" concept="1" />
       <node id="3824034168928532821" at="33,52,34,19" concept="7" />
       <node id="3824034168928532821" at="38,51,39,53" concept="1" />
       <node id="3824034168928593749" at="39,53,40,71" concept="1" />
@@ -383,7 +383,7 @@
       <node id="3824034168928532821" at="26,0,30,0" concept="3" trace="test_HideSwingComponentInFoldedCell#()V" />
       <node id="3824034168928532821" at="37,0,48,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168928532821" at="22,48,23,25" />
-      <scope id="3824034168928532821" at="27,70,28,72" />
+      <scope id="3824034168928532821" at="27,70,28,36" />
       <scope id="3824034168928532821" at="33,52,34,19" />
       <scope id="3824034168928532839" at="44,81,45,60" />
       <scope id="3824034168928532821" at="22,0,25,0" />
@@ -405,7 +405,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/3824034168928626869">
     <file name="ShowSwingComponentInFoldedCell_Test.java">
       <node id="3824034168928626869" at="22,48,23,25" concept="7" />
-      <node id="3824034168928626869" at="27,70,28,72" concept="1" />
+      <node id="3824034168928626869" at="27,70,28,36" concept="1" />
       <node id="3824034168928626869" at="33,52,34,19" concept="7" />
       <node id="3824034168928626869" at="38,51,39,53" concept="1" />
       <node id="3824034168928626873" at="39,53,40,71" concept="1" />
@@ -419,7 +419,7 @@
       <node id="3824034168928626869" at="26,0,30,0" concept="3" trace="test_ShowSwingComponentInFoldedCell#()V" />
       <node id="3824034168928626869" at="37,0,47,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3824034168928626869" at="22,48,23,25" />
-      <scope id="3824034168928626869" at="27,70,28,72" />
+      <scope id="3824034168928626869" at="27,70,28,36" />
       <scope id="3824034168928626869" at="33,52,34,19" />
       <scope id="3824034168928626891" at="43,81,44,59" />
       <scope id="3824034168928626869" at="22,0,25,0" />
@@ -441,7 +441,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/5489671301386136089">
     <file name="CollapseSwingComponent_Test.java">
       <node id="5489671301386136089" at="22,40,23,25" concept="7" />
-      <node id="5489671301386136089" at="27,62,28,64" concept="1" />
+      <node id="5489671301386136089" at="27,62,28,36" concept="1" />
       <node id="5489671301386136089" at="33,52,34,19" concept="7" />
       <node id="5489671301386136089" at="38,51,39,72" concept="1" />
       <node id="5489671301386311429" at="39,72,40,71" concept="1" />
@@ -455,7 +455,7 @@
       <node id="5489671301386136089" at="26,0,30,0" concept="3" trace="test_CollapseSwingComponent#()V" />
       <node id="5489671301386136089" at="37,0,47,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="5489671301386136089" at="22,40,23,25" />
-      <scope id="5489671301386136089" at="27,62,28,64" />
+      <scope id="5489671301386136089" at="27,62,28,36" />
       <scope id="5489671301386136089" at="33,52,34,19" />
       <scope id="5489671301386353618" at="43,81,44,60" />
       <scope id="5489671301386136089" at="22,0,25,0" />
@@ -477,7 +477,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/5489671301386425532">
     <file name="ExpandSwingComponent_Test.java">
       <node id="5489671301386425532" at="22,38,23,25" concept="7" />
-      <node id="5489671301386425532" at="27,60,28,62" concept="1" />
+      <node id="5489671301386425532" at="27,60,28,36" concept="1" />
       <node id="5489671301386425532" at="33,52,34,19" concept="7" />
       <node id="5489671301386425532" at="38,51,39,72" concept="1" />
       <node id="5489671301386428482" at="39,72,40,69" concept="1" />
@@ -491,7 +491,7 @@
       <node id="5489671301386425532" at="26,0,30,0" concept="3" trace="test_ExpandSwingComponent#()V" />
       <node id="5489671301386425532" at="37,0,47,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="5489671301386425532" at="22,38,23,25" />
-      <scope id="5489671301386425532" at="27,60,28,62" />
+      <scope id="5489671301386425532" at="27,60,28,36" />
       <scope id="5489671301386425532" at="33,52,34,19" />
       <scope id="5489671301386425555" at="43,81,44,59" />
       <scope id="5489671301386425532" at="22,0,25,0" />
@@ -513,7 +513,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/5489671301386766611">
     <file name="InitiallyCollapsedInnerSwingComponent_Test.java">
       <node id="5489671301386766611" at="22,55,23,25" concept="7" />
-      <node id="5489671301386766611" at="27,77,28,79" concept="1" />
+      <node id="5489671301386766611" at="27,77,28,36" concept="1" />
       <node id="5489671301386766611" at="33,52,34,19" concept="7" />
       <node id="5489671301386766611" at="38,51,39,53" concept="1" />
       <node id="5489671301386766619" at="39,53,40,111" concept="4" />
@@ -526,7 +526,7 @@
       <node id="5489671301386766611" at="26,0,30,0" concept="3" trace="test_InitiallyCollapsedInnerSwingComponent#()V" />
       <node id="5489671301386766611" at="37,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="5489671301386766611" at="22,55,23,25" />
-      <scope id="5489671301386766611" at="27,77,28,79" />
+      <scope id="5489671301386766611" at="27,77,28,36" />
       <scope id="5489671301386766611" at="33,52,34,19" />
       <scope id="5489671301386766635" at="42,81,43,60" />
       <scope id="5489671301386766611" at="22,0,25,0" />
@@ -548,7 +548,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/5489671301386958426">
     <file name="InitiallyExpandedInnerSwingComponent_Test.java">
       <node id="5489671301386958426" at="22,54,23,25" concept="7" />
-      <node id="5489671301386958426" at="27,76,28,78" concept="1" />
+      <node id="5489671301386958426" at="27,76,28,36" concept="1" />
       <node id="5489671301386958426" at="33,52,34,19" concept="7" />
       <node id="5489671301386958426" at="38,51,39,53" concept="1" />
       <node id="5489671301386958432" at="39,53,40,111" concept="4" />
@@ -561,7 +561,7 @@
       <node id="5489671301386958426" at="26,0,30,0" concept="3" trace="test_InitiallyExpandedInnerSwingComponent#()V" />
       <node id="5489671301386958426" at="37,0,46,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="5489671301386958426" at="22,54,23,25" />
-      <scope id="5489671301386958426" at="27,76,28,78" />
+      <scope id="5489671301386958426" at="27,76,28,36" />
       <scope id="5489671301386958426" at="33,52,34,19" />
       <scope id="5489671301386958448" at="42,81,43,59" />
       <scope id="5489671301386958426" at="22,0,25,0" />
@@ -583,7 +583,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/6240706158489921622">
     <file name="CellFoldedByDefault_Test.java">
       <node id="6240706158489921622" at="18,37,19,25" concept="7" />
-      <node id="6240706158489921622" at="23,59,24,61" concept="1" />
+      <node id="6240706158489921622" at="23,59,24,36" concept="1" />
       <node id="6240706158489921622" at="29,52,30,19" concept="7" />
       <node id="6240706158489921622" at="34,51,35,72" concept="1" />
       <node id="6240706158490135510" at="35,72,36,69" concept="1" />
@@ -598,7 +598,7 @@
       <node id="6240706158489921622" at="22,0,26,0" concept="3" trace="test_CellFoldedByDefault#()V" />
       <node id="6240706158489921622" at="33,0,43,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6240706158489921622" at="18,37,19,25" />
-      <scope id="6240706158489921622" at="23,59,24,61" />
+      <scope id="6240706158489921622" at="23,59,24,36" />
       <scope id="6240706158489921622" at="29,52,30,19" />
       <scope id="6240706158489921622" at="18,0,21,0" />
       <scope id="6240706158489921622" at="29,0,32,0">
@@ -614,7 +614,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/7429553584211898787">
     <file name="CollapseRecursively_Test.java">
       <node id="7429553584211898787" at="18,37,19,25" concept="7" />
-      <node id="7429553584211898787" at="23,59,24,61" concept="1" />
+      <node id="7429553584211898787" at="23,59,24,36" concept="1" />
       <node id="7429553584211898787" at="29,52,30,19" concept="7" />
       <node id="7429553584211898787" at="34,51,35,72" concept="1" />
       <node id="7429553584211922806" at="35,72,36,82" concept="1" />
@@ -624,7 +624,7 @@
       <node id="7429553584211898787" at="22,0,26,0" concept="3" trace="test_CollapseRecursively#()V" />
       <node id="7429553584211898787" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="7429553584211898787" at="18,37,19,25" />
-      <scope id="7429553584211898787" at="23,59,24,61" />
+      <scope id="7429553584211898787" at="23,59,24,36" />
       <scope id="7429553584211898787" at="29,52,30,19" />
       <scope id="7429553584211898787" at="34,51,36,82" />
       <scope id="7429553584211898787" at="18,0,21,0" />
@@ -640,7 +640,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/8594145232740493171">
     <file name="ExpandRecursively_Test.java">
       <node id="8594145232740493171" at="18,35,19,25" concept="7" />
-      <node id="8594145232740493171" at="23,57,24,59" concept="1" />
+      <node id="8594145232740493171" at="23,57,24,36" concept="1" />
       <node id="8594145232740493171" at="29,52,30,19" concept="7" />
       <node id="8594145232740493171" at="34,51,35,72" concept="1" />
       <node id="8594145232740493189" at="35,72,36,80" concept="1" />
@@ -654,7 +654,7 @@
       <node id="8594145232740493171" at="22,0,26,0" concept="3" trace="test_ExpandRecursively#()V" />
       <node id="8594145232740493171" at="33,0,42,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8594145232740493171" at="18,35,19,25" />
-      <scope id="8594145232740493171" at="23,57,24,59" />
+      <scope id="8594145232740493171" at="23,57,24,36" />
       <scope id="8594145232740493171" at="29,52,30,19" />
       <scope id="8594145232740493171" at="18,0,21,0" />
       <scope id="8594145232740493171" at="29,0,32,0">
@@ -670,7 +670,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/866632705892191817">
     <file name="CellConditionallyCollapsed_Test.java">
       <node id="866632705892191817" at="18,44,19,25" concept="7" />
-      <node id="866632705892191817" at="23,66,24,68" concept="1" />
+      <node id="866632705892191817" at="23,66,24,36" concept="1" />
       <node id="866632705892191817" at="29,52,30,19" concept="7" />
       <node id="866632705892191817" at="34,51,35,70" concept="1" />
       <node id="866632705892345591" at="35,70,36,69" concept="1" />
@@ -683,7 +683,7 @@
       <node id="866632705892191817" at="22,0,26,0" concept="3" trace="test_CellConditionallyCollapsed#()V" />
       <node id="866632705892191817" at="33,0,41,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="866632705892191817" at="18,44,19,25" />
-      <scope id="866632705892191817" at="23,66,24,68" />
+      <scope id="866632705892191817" at="23,66,24,36" />
       <scope id="866632705892191817" at="29,52,30,19" />
       <scope id="866632705892191817" at="18,0,21,0" />
       <scope id="866632705892191817" at="29,0,32,0">
@@ -699,7 +699,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/866632705892345818">
     <file name="CellConditionallyUncollapsed_Test.java">
       <node id="866632705892345818" at="18,46,19,25" concept="7" />
-      <node id="866632705892345818" at="23,68,24,70" concept="1" />
+      <node id="866632705892345818" at="23,68,24,36" concept="1" />
       <node id="866632705892345818" at="29,52,30,19" concept="7" />
       <node id="866632705892345818" at="34,51,35,70" concept="1" />
       <node id="866632705892345825" at="35,70,36,69" concept="1" />
@@ -712,7 +712,7 @@
       <node id="866632705892345818" at="22,0,26,0" concept="3" trace="test_CellConditionallyUncollapsed#()V" />
       <node id="866632705892345818" at="33,0,41,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="866632705892345818" at="18,46,19,25" />
-      <scope id="866632705892345818" at="23,68,24,70" />
+      <scope id="866632705892345818" at="23,68,24,36" />
       <scope id="866632705892345818" at="29,52,30,19" />
       <scope id="866632705892345818" at="18,0,21,0" />
       <scope id="866632705892345818" at="29,0,32,0">
@@ -728,7 +728,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/866632705892346111">
     <file name="ChangeCollapseCondition_ExpandCell_Test.java">
       <node id="866632705892346111" at="18,52,19,25" concept="7" />
-      <node id="866632705892346111" at="23,74,24,76" concept="1" />
+      <node id="866632705892346111" at="23,74,24,36" concept="1" />
       <node id="866632705892346111" at="29,52,30,19" concept="7" />
       <node id="866632705892346111" at="34,51,35,70" concept="1" />
       <node id="866632705892346896" at="35,70,36,26" concept="1" />
@@ -748,7 +748,7 @@
       <node id="866632705892346111" at="22,0,26,0" concept="3" trace="test_ChangeCollapseCondition_ExpandCell#()V" />
       <node id="866632705892346111" at="33,0,48,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="866632705892346111" at="18,52,19,25" />
-      <scope id="866632705892346111" at="23,74,24,76" />
+      <scope id="866632705892346111" at="23,74,24,36" />
       <scope id="866632705892346111" at="29,52,30,19" />
       <scope id="866632705892346111" at="18,0,21,0" />
       <scope id="866632705892346111" at="29,0,32,0">
@@ -764,7 +764,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/8741431550096045522">
     <file name="CollapseRecursivelyCheckChildren_Test.java">
       <node id="8741431550096045522" at="18,50,19,25" concept="7" />
-      <node id="8741431550096045522" at="23,72,24,74" concept="1" />
+      <node id="8741431550096045522" at="23,72,24,36" concept="1" />
       <node id="8741431550096045522" at="29,52,30,19" concept="7" />
       <node id="8741431550096045522" at="34,51,35,72" concept="1" />
       <node id="8741431550096045539" at="35,72,36,82" concept="1" />
@@ -781,7 +781,7 @@
       <node id="8741431550096045522" at="22,0,26,0" concept="3" trace="test_CollapseRecursivelyCheckChildren#()V" />
       <node id="8741431550096045522" at="33,0,45,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8741431550096045522" at="18,50,19,25" />
-      <scope id="8741431550096045522" at="23,72,24,74" />
+      <scope id="8741431550096045522" at="23,72,24,36" />
       <scope id="8741431550096045522" at="29,52,30,19" />
       <scope id="8741431550096045522" at="18,0,21,0" />
       <scope id="8741431550096045522" at="29,0,32,0">
@@ -797,7 +797,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/8741431550096049955">
     <file name="ExpandRecursivelyCheckSibling_Test.java">
       <node id="8741431550096049955" at="18,47,19,25" concept="7" />
-      <node id="8741431550096049955" at="23,69,24,71" concept="1" />
+      <node id="8741431550096049955" at="23,69,24,36" concept="1" />
       <node id="8741431550096049955" at="29,52,30,19" concept="7" />
       <node id="8741431550096049955" at="34,51,35,72" concept="1" />
       <node id="8741431550096049965" at="35,72,36,80" concept="1" />
@@ -819,7 +819,7 @@
       <node id="8741431550096049955" at="22,0,26,0" concept="3" trace="test_ExpandRecursivelyCheckSibling#()V" />
       <node id="8741431550096049955" at="33,0,50,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8741431550096049955" at="18,47,19,25" />
-      <scope id="8741431550096049955" at="23,69,24,71" />
+      <scope id="8741431550096049955" at="23,69,24,36" />
       <scope id="8741431550096049955" at="29,52,30,19" />
       <scope id="8741431550096049955" at="18,0,21,0" />
       <scope id="8741431550096049955" at="29,0,32,0">
@@ -835,7 +835,7 @@
   <root nodeRef="r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)/8741431550096053306">
     <file name="CollapseRecursivelyCheckSibling_Test.java">
       <node id="8741431550096053306" at="18,49,19,25" concept="7" />
-      <node id="8741431550096053306" at="23,71,24,73" concept="1" />
+      <node id="8741431550096053306" at="23,71,24,36" concept="1" />
       <node id="8741431550096053306" at="29,52,30,19" concept="7" />
       <node id="8741431550096053306" at="34,51,35,72" concept="1" />
       <node id="8741431550096053324" at="35,72,36,82" concept="1" />
@@ -849,7 +849,7 @@
       <node id="8741431550096053306" at="22,0,26,0" concept="3" trace="test_CollapseRecursivelyCheckSibling#()V" />
       <node id="8741431550096053306" at="33,0,42,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8741431550096053306" at="18,49,19,25" />
-      <scope id="8741431550096053306" at="23,71,24,73" />
+      <scope id="8741431550096053306" at="23,71,24,36" />
       <scope id="8741431550096053306" at="29,52,30,19" />
       <scope id="8741431550096053306" at="18,0,21,0" />
       <scope id="8741431550096053306" at="29,0,32,0">

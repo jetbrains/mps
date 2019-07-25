@@ -21,7 +21,7 @@ public class NamedNodeReferenceEditor_CompleteRoot_Test extends BaseTransformati
 
   @Test
   public void test_NamedNodeReferenceEditor_CompleteRoot() throws Throwable {
-    new NamedNodeReferenceEditor_CompleteRoot_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

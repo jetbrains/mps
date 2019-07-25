@@ -29,7 +29,7 @@ public class BaseConcept_comment_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), BaseConcept_comment_Actions.AUX_hg1nqy.BaseCommentAttribute_id4452961908202556907);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_hg1nqy.BaseCommentAttribute_f7206635);
       }
 
     };
@@ -47,7 +47,7 @@ public class BaseConcept_comment_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), BaseConcept_comment_Actions.AUX_hg1nqy.BaseCommentAttribute_id4452961908202556907);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), AUX_hg1nqy.BaseCommentAttribute_f7206635);
       }
 
     };
@@ -91,7 +91,8 @@ public class BaseConcept_comment_Actions {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
   }
-  public static final class AUX_hg1nqy {
-    /*package*/ static final SConcept BaseCommentAttribute_id4452961908202556907 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+
+  private static final class AUX_hg1nqy {
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 }

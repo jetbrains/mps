@@ -8,10 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
@@ -26,6 +26,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DebugMappingsBuilder {
   private final SRepository myRepo;
@@ -39,22 +40,22 @@ public class DebugMappingsBuilder {
   }
 
   public SNode build(@NotNull SModel checkpointModel, GeneratorMappings mappings) {
-    SNode rv = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings"));
+    SNode rv = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.GeneratorDebug_Mappings_e410d2cc);
     ArrayList<String> availableLabels = new ArrayList<String>(mappings.getAvailableLabels());
     Collections.sort(availableLabels);
     for (String label : availableLabels) {
-      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry"));
+      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.GeneratorDebug_LabelEntry_e41d020c);
       SPropertyOperations.assign(labelEntry, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label"), label);
       ListSequence.fromList(SLinkOperations.getChildren(rv, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels"))).addElement(labelEntry);
       List<SNode> keys = mappings.getSortedMappingKeys(label);
       for (SNode keyInputNode : keys) {
-        SNode entry = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry"));
+        SNode entry = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.GeneratorDebug_NodeMapEntry_e41d0224);
         ListSequence.fromList(SLinkOperations.getChildren(labelEntry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810ebL, "entries"))).addElement(entry);
         assert keyInputNode != null;
         SLinkOperations.setNewChild(entry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode"), null);
-        SNode inputNodeIdentity = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, "jetbrains.mps.lang.generator.structure.TrivialNodeId"));
-        SNode inputNodeConceptIdentity = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"));
-        BHReflection.invoke0(inputNodeConceptIdentity, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"), SMethodTrimmedId.create("setConcept", MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"), "5ZE7FBYYR6j"), keyInputNode.getConcept());
+        SNode inputNodeIdentity = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.TrivialNodeId_b6cbf460);
+        SNode inputNodeConceptIdentity = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.ConceptId_51d9f118);
+        BHReflection.invoke0(inputNodeConceptIdentity, AUX_nih7tt.ConceptId_51d9f118, SMethodTrimmedId.create("setConcept", AUX_nih7tt.ConceptId_51d9f118, "5ZE7FBYYR6j"), keyInputNode.getConcept());
         SLinkOperations.setTarget(inputNodeIdentity, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt"), inputNodeConceptIdentity);
         // keyInputNode comes from one of transient models, and we need to replace it with a 'stable' version, exposed in a CP (or initial) model 
         // XXX what if keyInputNode IS from CP model, wouldn't that give us wrong origin (the one from previous trace)? 
@@ -88,21 +89,21 @@ public class DebugMappingsBuilder {
           c = Collections.emptyList();
         }
         for (SNode n : CollectionSequence.fromCollection(c)) {
-          SNode r = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef"));
+          SNode r = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.GeneratorDebug_NodeRef_e41d0244);
           SLinkOperations.setTarget(r, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, 0x35a02f6bfc9806d3L, "node"), substituteOutputNode(checkpointModel, n));
           ListSequence.fromList(SLinkOperations.getChildren(entry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806d5L, "outputNode"))).addElement(r);
         }
       }
     }
     for (String label : mappings.getConditionalRootLabels()) {
-      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry"));
+      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.GeneratorDebug_LabelEntry_e41d020c);
       SPropertyOperations.assign(labelEntry, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label"), label);
       ListSequence.fromList(SLinkOperations.getChildren(rv, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels"))).addElement(labelEntry);
       for (SNode cr : mappings.getConditionalRoots(label)) {
-        SNode entry = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry"));
+        SNode entry = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.GeneratorDebug_NodeMapEntry_e41d0224);
         SPropertyOperations.assign(entry, MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x511a0d44c7f45537L, "isNewRoot"), true);
         ListSequence.fromList(SLinkOperations.getChildren(labelEntry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810ebL, "entries"))).addElement(entry);
-        SNode r = SModelOperations.createNewNode(checkpointModel, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef"));
+        SNode r = SModelOperations.createNewNode(checkpointModel, null, AUX_nih7tt.GeneratorDebug_NodeRef_e41d0244);
         SLinkOperations.setTarget(r, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, 0x35a02f6bfc9806d3L, "node"), substituteOutputNode(checkpointModel, cr));
         ListSequence.fromList(SLinkOperations.getChildren(entry, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806d5L, "outputNode"))).addElement(r);
       }
@@ -134,5 +135,14 @@ public class DebugMappingsBuilder {
     // CP models may be exposed as transients; we need to keep references to CP models 
     // Need better condition than just model attribute, though. 
     return CrossModelEnvironment.isCheckpointModel(m);
+  }
+
+  private static final class AUX_nih7tt {
+    /*package*/ static final SConcept GeneratorDebug_Mappings_e410d2cc = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings");
+    /*package*/ static final SConcept GeneratorDebug_LabelEntry_e41d020c = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry");
+    /*package*/ static final SConcept GeneratorDebug_NodeMapEntry_e41d0224 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry");
+    /*package*/ static final SConcept TrivialNodeId_b6cbf460 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, "jetbrains.mps.lang.generator.structure.TrivialNodeId");
+    /*package*/ static final SConcept ConceptId_51d9f118 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept GeneratorDebug_NodeRef_e41d0244 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef");
   }
 }

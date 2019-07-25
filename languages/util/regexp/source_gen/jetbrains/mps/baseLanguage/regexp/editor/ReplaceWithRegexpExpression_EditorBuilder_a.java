@@ -68,7 +68,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ReplaceWithRegexpExpression_EditorBuilder_a.regexpSingleRoleHandler_4kcpi0_b0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp"), getEditorContext());
+    SingleRoleCellProvider provider = new regexpSingleRoleHandler_4kcpi0_b0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp"), getEditorContext());
     return provider.createCell();
   }
   private static class regexpSingleRoleHandler_4kcpi0_b0 extends SingleRoleCellProvider {
@@ -132,7 +132,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new ReplaceWithRegexpExpression_EditorBuilder_a.exprSingleRoleHandler_4kcpi0_d0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, 0x1117ef5b26bL, "expr"), getEditorContext());
+    SingleRoleCellProvider provider = new exprSingleRoleHandler_4kcpi0_d0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, 0x1117ef5b26bL, "expr"), getEditorContext());
     return provider.createCell();
   }
   private static class exprSingleRoleHandler_4kcpi0_d0 extends SingleRoleCellProvider {
@@ -208,7 +208,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new ReplaceWithRegexpExpression_EditorBuilder_a.replaceBlockSingleRoleHandler_4kcpi0_g0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, 0x1117ef94e0cL, "replaceBlock"), getEditorContext());
+    SingleRoleCellProvider provider = new replaceBlockSingleRoleHandler_4kcpi0_g0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, 0x1117ef94e0cL, "replaceBlock"), getEditorContext());
     return provider.createCell();
   }
   private static class replaceBlockSingleRoleHandler_4kcpi0_g0 extends SingleRoleCellProvider {

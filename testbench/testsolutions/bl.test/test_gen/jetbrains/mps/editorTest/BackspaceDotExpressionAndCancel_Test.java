@@ -24,7 +24,7 @@ public class BackspaceDotExpressionAndCancel_Test extends BaseTransformationTest
 
   @Test
   public void test_BackspaceDotExpressionAndCancel() throws Throwable {
-    new BackspaceDotExpressionAndCancel_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

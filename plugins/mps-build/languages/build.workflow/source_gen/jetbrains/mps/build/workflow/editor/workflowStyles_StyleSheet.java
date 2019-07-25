@@ -21,7 +21,7 @@ public class workflowStyles_StyleSheet {
   public static void apply_keyword(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new workflowStyles_StyleSheet.keywordStyleClass(editorContext, node).apply(style, editorCell);
+    new keywordStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class keywordStyleClass extends AbstractStyleClass {

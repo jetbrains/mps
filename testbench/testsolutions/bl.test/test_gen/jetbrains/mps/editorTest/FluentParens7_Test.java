@@ -21,7 +21,7 @@ public class FluentParens7_Test extends BaseTransformationTest {
 
   @Test
   public void test_FluentParens7() throws Throwable {
-    new FluentParens7_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

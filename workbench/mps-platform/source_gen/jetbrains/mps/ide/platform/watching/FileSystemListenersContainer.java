@@ -24,7 +24,7 @@ import java.util.Collections;
  */
 public class FileSystemListenersContainer {
   private final ReadWriteLock myLock = new ReentrantReadWriteLock();
-  private final FileSystemListenersContainer.Node myRootNode = new FileSystemListenersContainer.Node(null, null);
+  private final Node myRootNode = new Node(null, null);
   private final ConcurrentMap<FileSystemListener, String> myListener2Path = new ConcurrentHashMap<FileSystemListener, String>();
 
   /*package*/ static class ListenersForPath {
@@ -49,7 +49,7 @@ public class FileSystemListenersContainer {
       return;
     }
 
-    FileSystemListenersContainer.Node currentNode = myRootNode;
+    Node currentNode = myRootNode;
 
     myLock.writeLock().lock();
     try {
@@ -71,7 +71,7 @@ public class FileSystemListenersContainer {
       return;
     }
 
-    FileSystemListenersContainer.Node currentNode = myRootNode;
+    Node currentNode = myRootNode;
     myLock.writeLock().lock();
     try {
       for (String s : normalizeAndSplit(path)) {
@@ -91,9 +91,9 @@ public class FileSystemListenersContainer {
   }
 
   @NotNull
-  public FileSystemListenersContainer.ListenersForPath getListenersForPath(String eventPath) {
-    FileSystemListenersContainer.Node currentNode = myRootNode;
-    FileSystemListenersContainer.ListenersForPath result = new FileSystemListenersContainer.ListenersForPath();
+  public ListenersForPath getListenersForPath(String eventPath) {
+    Node currentNode = myRootNode;
+    ListenersForPath result = new ListenersForPath();
     myLock.readLock().lock();
     try {
       for (String s : normalizeAndSplit(eventPath)) {
@@ -114,9 +114,9 @@ public class FileSystemListenersContainer {
     return result;
   }
 
-  private void traverseChildrenOfPath(String eventPath, @NotNull List<FileSystemListener> result, @NotNull FileSystemListenersContainer.Node eventPathNode) {
-    List<FileSystemListenersContainer.Node> children = eventPathNode.getChildren();
-    for (FileSystemListenersContainer.Node child : ListSequence.fromList(children)) {
+  private void traverseChildrenOfPath(String eventPath, @NotNull List<FileSystemListener> result, @NotNull Node eventPathNode) {
+    List<Node> children = eventPathNode.getChildren();
+    for (Node child : ListSequence.fromList(children)) {
       child.addListenersTo(result);
       traverseChildrenOfPath(eventPath, result, child);
     }
@@ -135,31 +135,31 @@ public class FileSystemListenersContainer {
     @Nullable
     private List<FileSystemListener> myListeners;
     private final String myPathPart;
-    private final List<FileSystemListenersContainer.Node> myChildren = new ArrayList<FileSystemListenersContainer.Node>(4);
+    private final List<Node> myChildren = new ArrayList<Node>(4);
     @Nullable
-    private final FileSystemListenersContainer.Node myParent;
+    private final Node myParent;
 
-    /*package*/ Node(String pathPart, @Nullable FileSystemListenersContainer.Node parent) {
+    /*package*/ Node(String pathPart, @Nullable Node parent) {
       myParent = parent;
       myPathPart = pathPart;
     }
 
     @NotNull
-    /*package*/ List<FileSystemListenersContainer.Node> getChildren() {
+    /*package*/ List<Node> getChildren() {
       if (myChildren == null) {
         return Collections.emptyList();
       }
       return Collections.unmodifiableList(myChildren);
     }
 
-    /*package*/ FileSystemListenersContainer.Node child(String part, boolean create) {
+    /*package*/ Node child(String part, boolean create) {
       // we keep children list sorted and use binary search 
       int index = childIndex(part);
       if (index >= 0) {
         return myChildren.get(index);
       }
       if (create) {
-        FileSystemListenersContainer.Node child = new FileSystemListenersContainer.Node(part, this);
+        Node child = new Node(part, this);
         myChildren.add(-index - 1, child);
         return child;
       }
@@ -184,7 +184,7 @@ public class FileSystemListenersContainer {
       int high = myChildren.size() - 1;
       while (low <= high) {
         int mid = (low + high) >>> 1;
-        FileSystemListenersContainer.Node c = myChildren.get(mid);
+        Node c = myChildren.get(mid);
         int cmp = pathPart.compareTo(c.myPathPart);
         if (cmp < 0) {
           high = mid - 1;

@@ -102,8 +102,8 @@ public class VersionUtil {
     public String text;
     public int version;
   }
-  private VersionUtil.ParseResult parse(String src, boolean hasmodel) {
-    VersionUtil.ParseResult res = parseWithoutCheck(src, hasmodel);
+  private ParseResult parse(String src, boolean hasmodel) {
+    ParseResult res = parseWithoutCheck(src, hasmodel);
     // check integrity except concepts and attribute roles 
     if (hasmodel) {
       // && !AttributeOperations.isOldAttributeRole(res.text)) { // todo: ? remove this persistence? 
@@ -114,8 +114,8 @@ public class VersionUtil {
     }
     return res;
   }
-  private static VersionUtil.ParseResult parseWithoutCheck(String src, boolean hasmodel) {
-    VersionUtil.ParseResult res = new VersionUtil.ParseResult();
+  private static ParseResult parseWithoutCheck(String src, boolean hasmodel) {
+    ParseResult res = new ParseResult();
     char[] chars = src.toCharArray();
     int i0 = -1;
     int i1 = chars.length;
@@ -154,7 +154,7 @@ public class VersionUtil {
   }
   public SReference readLink(SNode node, String rawRole, String rawTarget, String resolveInfo) {
     String role = readRole(rawRole);
-    VersionUtil.ParseResult target = parse(rawTarget, true);
+    ParseResult target = parse(rawTarget, true);
     SModelReference modelRef = getSModelReference(target.modelID);
     if (modelRef == null) {
       LOG.error("couldn't create reference '" + role + "' : import for index [" + target.modelID + "] not found");

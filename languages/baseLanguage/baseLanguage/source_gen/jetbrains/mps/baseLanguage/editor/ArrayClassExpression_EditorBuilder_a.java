@@ -56,7 +56,7 @@ import jetbrains.mps.editor.runtime.style.FocusPolicy;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ArrayClassExpression_EditorBuilder_a.arrayTypeSingleRoleHandler_t6tyx6_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType"), getEditorContext());
+    SingleRoleCellProvider provider = new arrayTypeSingleRoleHandler_t6tyx6_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType"), getEditorContext());
     return provider.createCell();
   }
   private static class arrayTypeSingleRoleHandler_t6tyx6_a0 extends SingleRoleCellProvider {

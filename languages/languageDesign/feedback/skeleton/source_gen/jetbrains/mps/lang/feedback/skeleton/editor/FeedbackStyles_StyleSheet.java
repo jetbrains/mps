@@ -20,7 +20,7 @@ public class FeedbackStyles_StyleSheet {
   public static void apply_FeedbackTitle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new FeedbackStyles_StyleSheet.FeedbackTitleStyleClass(editorContext, node).apply(style, editorCell);
+    new FeedbackTitleStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class FeedbackTitleStyleClass extends AbstractStyleClass {

@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InstanceMethodDeclaration_ApplySideTransforms extends TransformationMenuBase {
@@ -49,10 +50,10 @@ public class InstanceMethodDeclaration_ApplySideTransforms extends Transformatio
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new InstanceMethodDeclaration_ApplySideTransforms.TMP_Include_ckc614_a0());
+      result.add(new TMP_Include_ckc614_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new InstanceMethodDeclaration_ApplySideTransforms.TMP_Include_ckc614_a1());
+      result.add(new TMP_Include_ckc614_a1());
     }
     return result;
   }
@@ -91,7 +92,7 @@ public class InstanceMethodDeclaration_ApplySideTransforms extends Transformatio
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_ckc614.InstanceMethodDeclaration_9dbf9b2b);
     }
 
     @Nullable
@@ -99,5 +100,9 @@ public class InstanceMethodDeclaration_ApplySideTransforms extends Transformatio
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.RIGHT_SIDE_TRANSFORM;
     }
+  }
+
+  private static final class AUX_ckc614 {
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 }

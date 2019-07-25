@@ -32,15 +32,15 @@ public class UnexpectedReturnInAnonymousClass_Test extends BaseTransformationTes
 
   @Test
   public void test_UnexpectedReturnInAnonymousClass() throws Throwable {
-    new UnexpectedReturnInAnonymousClass_Test.TestBody(this).test_UnexpectedReturnInAnonymousClass();
+    new TestBody(this).test_UnexpectedReturnInAnonymousClass();
   }
   @Test
   public void test_NodeReturnExpectedErrorCheck6923385624929494145() throws Throwable {
-    new UnexpectedReturnInAnonymousClass_Test.TestBody(this).test_NodeReturnExpectedErrorCheck6923385624929494145();
+    new TestBody(this).test_NodeReturnExpectedErrorCheck6923385624929494145();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199496() throws Throwable {
-    new UnexpectedReturnInAnonymousClass_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199496();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199496();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

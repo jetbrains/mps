@@ -21,7 +21,7 @@ public class DeleteCommentedConditionBeforeUsual_Test extends BaseTransformation
 
   @Test
   public void test_DeleteCommentedConditionBeforeUsual() throws Throwable {
-    new DeleteCommentedConditionBeforeUsual_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

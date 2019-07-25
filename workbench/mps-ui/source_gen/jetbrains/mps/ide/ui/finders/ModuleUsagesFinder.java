@@ -111,13 +111,13 @@ public class ModuleUsagesFinder extends BaseFinder implements IFinder {
         steps += 3;
       }
       subTask.start("Looking up uses in models", steps);
-      ModuleUsagesFinder.ModuleUseInModel f = new ModuleUsagesFinder.ModuleUseInModel(searchedModule, callback);
+      ModuleUseInModel f = new ModuleUseInModel(searchedModule, callback);
       f.collectImports(myModels2Visit, subTask.subTask(1, SubProgressKind.IGNORED));
       if (myIncludeNodes) {
         f.collectNodes(myModels2Visit, subTask.subTask(3, SubProgressKind.IGNORED));
       }
       if (searchedDevkit != null) {
-        ModuleUsagesFinder.DevKitUseInModel f2 = new ModuleUsagesFinder.DevKitUseInModel(searchedDevkit, callback);
+        DevKitUseInModel f2 = new DevKitUseInModel(searchedDevkit, callback);
         f2.collect(myModels2Visit, subTask.subTask(1, SubProgressKind.IGNORED));
       }
     }

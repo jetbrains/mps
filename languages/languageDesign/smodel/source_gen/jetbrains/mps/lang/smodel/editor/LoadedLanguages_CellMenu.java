@@ -16,15 +16,16 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LoadedLanguages_CellMenu extends AbstractCellMenuComponent {
   public LoadedLanguages_CellMenu() {
-    super(new SubstituteInfoPartExt[]{new LoadedLanguages_CellMenu.LanguageIdentity_null_cellMenu_lbhw0l_a0()});
+    super(new SubstituteInfoPartExt[]{new LanguageIdentity_null_cellMenu_lbhw0l_a0()});
   }
   public static class LanguageIdentity_null_cellMenu_lbhw0l_a0 extends AbstractCellMenuPart_ReplaceChild_Group {
     public LanguageIdentity_null_cellMenu_lbhw0l_a0() {
@@ -45,7 +46,7 @@ public class LoadedLanguages_CellMenu extends AbstractCellMenuComponent {
       return this.customCreateChildNode_impl((SLanguage) parameterObject, node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, model, operationContext, editorContext);
     }
     public SNode customCreateChildNode_impl(SLanguage parameterObject, SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNode lid = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId"));
+      SNode lid = SModelOperations.createNewNode(model, null, AUX_lbhw0l.LanguageId_f5e2e6b);
       LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, parameterObject);
       return lid;
     }
@@ -57,5 +58,9 @@ public class LoadedLanguages_CellMenu extends AbstractCellMenuComponent {
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
       return new EditorMenuDescriptorBase("replace child (group of custom actions) with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "6590130501507369933"));
     }
+  }
+
+  private static final class AUX_lbhw0l {
+    /*package*/ static final SConcept LanguageId_f5e2e6b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
   }
 }

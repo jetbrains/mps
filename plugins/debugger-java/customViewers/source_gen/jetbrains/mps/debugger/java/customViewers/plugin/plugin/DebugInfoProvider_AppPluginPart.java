@@ -17,12 +17,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debug.api.Debuggers;
 import jetbrains.mps.debug.api.DebuggerNotPresentException;
 import org.apache.log4j.Level;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
   private static final Logger LOG = LogManager.getLogger(DebugInfoProvider_AppPluginPart.class);
@@ -48,7 +49,7 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       BreakpointCreator creator = new BreakpointCreator(null, null);
       creator.canCreate(new _FunctionTypes._return_P2_E0<Boolean, SAbstractConcept, SNode>() {
         public Boolean invoke(SAbstractConcept concept, SNode debuggableNode) {
-          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), AUX_xj3d25.Statement_9dbf9b0e)) {
             return true;
           }
           return false;
@@ -75,10 +76,10 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       BreakpointCreator creator = new BreakpointCreator(null, null);
       creator.canCreate(new _FunctionTypes._return_P2_E0<Boolean, SAbstractConcept, SNode>() {
         public Boolean invoke(SAbstractConcept concept, SNode debuggableNode) {
-          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"))) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), AUX_xj3d25.FieldDeclaration_e2711ac6)) {
             return true;
           }
-          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"))) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), AUX_xj3d25.StaticFieldDeclaration_9649293d)) {
             return true;
           }
           return false;
@@ -116,5 +117,11 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       manager.removeCreator(creator);
     }
     SetSequence.fromSet(DebugInfoProvider_AppPluginPart.this.myCreators).clear();
+  }
+
+  private static final class AUX_xj3d25 {
+    /*package*/ static final SConcept Statement_9dbf9b0e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept FieldDeclaration_e2711ac6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration_9649293d = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 }

@@ -22,7 +22,7 @@ public class IfStatementUnwrap3_Test extends BaseTransformationTest {
 
   @Test
   public void test_IfStatementUnwrap3() throws Throwable {
-    new IfStatementUnwrap3_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

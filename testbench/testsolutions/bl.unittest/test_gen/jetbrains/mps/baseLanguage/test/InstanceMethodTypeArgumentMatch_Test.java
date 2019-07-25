@@ -32,163 +32,163 @@ public class InstanceMethodTypeArgumentMatch_Test extends BaseTransformationTest
 
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927501558() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927501558();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927501558();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526512839185() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526512839185();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526512839185();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927021579() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927021579();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927021579();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526512847809() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526512847809();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526512847809();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927441074() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927441074();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624927441074();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526512856434() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526512856434();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526512856434();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929572892() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929572892();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929572892();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526512865058() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526512865058();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526512865058();
   }
   @Test
   public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929362829() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929362829();
+    new TestBody(this).test_NodeVariableInitializerIsRedundantWarningCheck6923385624929362829();
   }
   @Test
   public void test_NodeUnusedLocalVariableCheck215889526512873683() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeUnusedLocalVariableCheck215889526512873683();
+    new TestBody(this).test_NodeUnusedLocalVariableCheck215889526512873683();
   }
   @Test
   public void test_NodeIncorrectNumberOfTypeCheck6923385624927009930() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeIncorrectNumberOfTypeCheck6923385624927009930();
+    new TestBody(this).test_NodeIncorrectNumberOfTypeCheck6923385624927009930();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929166530() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929166530();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929166530();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929708692() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929708692();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929708692();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927049150() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927049150();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927049150();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928378725() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928378725();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928378725();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927611666() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927611666();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927611666();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929723190() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929723190();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929723190();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929895287() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929895287();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929895287();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927258655() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927258655();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927258655();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929700991() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929700991();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929700991();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928822960() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928822960();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928822960();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927647367() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927647367();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927647367();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927575360() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927575360();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927575360();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929215028() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929215028();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929215028();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927277632() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927277632();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927277632();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928923997() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928923997();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928923997();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928928918() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928928918();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928928918();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927080539() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927080539();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927080539();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927748937() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927748937();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927748937();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928028310() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928028310();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928028310();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928777915() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928777915();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928777915();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929577261() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929577261();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929577261();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928383085() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928383085();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928383085();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928303471() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928303471();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928303471();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624928966307() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928966307();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624928966307();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624929162156() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929162156();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624929162156();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927120256() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927120256();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927120256();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927908709() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927908709();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927908709();
   }
   @Test
   public void test_NodeTheTypeIsNotValidSubstituteCheck6923385624927944514() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927944514();
+    new TestBody(this).test_NodeTheTypeIsNotValidSubstituteCheck6923385624927944514();
   }
   @Test
   public void test_ErrorMessagesCheck4817790028255000239() throws Throwable {
-    new InstanceMethodTypeArgumentMatch_Test.TestBody(this).test_ErrorMessagesCheck4817790028255000239();
+    new TestBody(this).test_ErrorMessagesCheck4817790028255000239();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

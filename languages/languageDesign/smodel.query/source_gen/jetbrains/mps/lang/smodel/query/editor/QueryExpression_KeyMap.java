@@ -9,18 +9,19 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.query.behavior.QueryExpression__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class QueryExpression_KeyMap extends KeyMapImpl {
   public QueryExpression_KeyMap() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new QueryExpression_KeyMap.QueryExpression_KeyMap_Action0();
+    action = new QueryExpression_KeyMap_Action0();
     this.putAction("any", "<", action);
   }
   public static class QueryExpression_KeyMap_Action0 extends KeyMapActionImpl {
@@ -39,7 +40,7 @@ public class QueryExpression_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, AUX_a8jwha.QueryExpression_58f52cd1))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -57,5 +58,9 @@ public class QueryExpression_KeyMap extends KeyMapImpl {
     public String getKeyStroke() {
       return " <";
     }
+  }
+
+  private static final class AUX_a8jwha {
+    /*package*/ static final SConcept QueryExpression_58f52cd1 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
   }
 }

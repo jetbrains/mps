@@ -78,7 +78,7 @@ public class MergeModelsPanel extends JPanel {
     }
   };
 
-  private MergeModelsPanel.MergeModelsTree myMergeTree;
+  private MergeModelsTree myMergeTree;
   private JBSplitter myPanel = new JBSplitter(true, 0.25f);
   private MergeRootsPane myMergeRootsPane = null;
   private final JComponent myNoRootPanel = new JLabel("Select root to merge", SwingConstants.CENTER);
@@ -151,11 +151,11 @@ public class MergeModelsPanel extends JPanel {
 
   protected void init() {
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
-    myMergeTree = new MergeModelsPanel.MergeModelsTree(myProjectRepository);
+    myMergeTree = new MergeModelsTree(myProjectRepository);
     myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myMergeTree));
     myPanel.setSecondComponent(myNoRootPanel);
 
-    myGoToNeighbourRootActions = new MergeModelsPanel.MyGoToNeighbourRootActions();
+    myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();
     myGoToNeighbourRootActions.previous().registerCustomShortcutSet(GoToNeighbourRootActions.PREV_ROOT_SHORTCUT, this);
     myGoToNeighbourRootActions.next().registerCustomShortcutSet(GoToNeighbourRootActions.NEXT_ROOT_SHORTCUT, this);
 

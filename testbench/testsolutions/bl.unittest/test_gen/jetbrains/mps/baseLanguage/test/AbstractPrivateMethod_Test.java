@@ -31,11 +31,11 @@ public class AbstractPrivateMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck2834737865485399118() throws Throwable {
-    new AbstractPrivateMethod_Test.TestBody(this).test_NodeErrorCheck2834737865485399118();
+    new TestBody(this).test_NodeErrorCheck2834737865485399118();
   }
   @Test
   public void test_ErrorMessagesCheck284804022098937155() throws Throwable {
-    new AbstractPrivateMethod_Test.TestBody(this).test_ErrorMessagesCheck284804022098937155();
+    new TestBody(this).test_ErrorMessagesCheck284804022098937155();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

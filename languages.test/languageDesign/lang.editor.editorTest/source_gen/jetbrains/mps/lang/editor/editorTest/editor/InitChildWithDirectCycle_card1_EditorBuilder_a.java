@@ -97,7 +97,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new InitChildWithDirectCycle_card1_EditorBuilder_a.subChildSingleRoleHandler_pd23j_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x1b00debf2d3601a5L, 0x1b00debf2d3601a9L, "subChild"), getEditorContext());
+    SingleRoleCellProvider provider = new subChildSingleRoleHandler_pd23j_c2a(myNode, MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x1b00debf2d3601a5L, 0x1b00debf2d3601a9L, "subChild"), getEditorContext());
     return provider.createCell();
   }
   private static class subChildSingleRoleHandler_pd23j_c2a extends SingleRoleCellProvider {

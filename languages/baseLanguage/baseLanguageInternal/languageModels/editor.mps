@@ -2,11 +2,11 @@
 <model ref="r:00000000-0000-4000-0000-011c895903aa(jetbrains.mps.baseLanguageInternal.editor)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -2137,6 +2137,34 @@
       </node>
     </node>
     <node concept="382kZG" id="47y0FrqhJoW" role="lGtFl" />
+  </node>
+  <node concept="24kQdi" id="4hwx6CziEZK">
+    <ref role="1XX52x" to="tp68:4hwx6CziyoA" resolve="ExtractToSingleConstantExpression" />
+    <node concept="3EZMnI" id="4hwx6CziF0g" role="2wV5jI">
+      <node concept="3F0ifn" id="4hwx6CziF0h" role="3EZMnx">
+        <property role="3F0ifm" value="extract" />
+        <ref role="1k5W1q" node="hO5y1ec" resolve="InternalName" />
+      </node>
+      <node concept="3F0ifn" id="4hwx6CziF0i" role="3EZMnx">
+        <property role="3F0ifm" value="(" />
+        <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="3F1sOY" id="4hwx6CziF0j" role="3EZMnx">
+        <ref role="1NtTu8" to="tp68:4hwx6CziF0w" resolve="expression" />
+      </node>
+      <node concept="3F0ifn" id="4hwx6CziF0k" role="3EZMnx">
+        <property role="3F0ifm" value="to single constant" />
+        <ref role="1k5W1q" node="hO5y1ec" resolve="InternalName" />
+      </node>
+      <node concept="3F0A7n" id="4hwx6CziF0l" role="3EZMnx">
+        <ref role="1NtTu8" to="tp68:4hwx6CziDSN" resolve="uniqueFieldName" />
+      </node>
+      <node concept="3F0ifn" id="4hwx6CziF0m" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
+      </node>
+      <node concept="l2Vlx" id="4hwx6CziF0n" role="2iSdaV" />
+    </node>
   </node>
 </model>
 

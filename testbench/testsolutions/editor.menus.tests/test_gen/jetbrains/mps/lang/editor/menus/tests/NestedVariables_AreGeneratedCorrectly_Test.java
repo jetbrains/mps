@@ -27,7 +27,7 @@ public class NestedVariables_AreGeneratedCorrectly_Test extends BaseTransformati
 
   @Test
   public void test_NestedVariables_AreGeneratedCorrectly() throws Throwable {
-    new NestedVariables_AreGeneratedCorrectly_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

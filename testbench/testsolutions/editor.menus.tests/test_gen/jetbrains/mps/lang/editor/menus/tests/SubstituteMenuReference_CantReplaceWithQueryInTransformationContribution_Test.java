@@ -22,7 +22,7 @@ public class SubstituteMenuReference_CantReplaceWithQueryInTransformationContrib
 
   @Test
   public void test_SubstituteMenuReference_CantReplaceWithQueryInTransformationContribution() throws Throwable {
-    new SubstituteMenuReference_CantReplaceWithQueryInTransformationContribution_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

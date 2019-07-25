@@ -39,6 +39,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Conversation_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -88,7 +89,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute"));
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), AUX_f7qxvu.PropertyAttribute_d001db89);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -110,7 +111,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new Conversation_EditorBuilder_a.participantsListHandler_h5gehg_d0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new participantsListHandler_h5gehg_d0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_participants");
     Style style = new StyleImpl();
@@ -136,7 +137,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
       return MetaAdapterFactory.getContainmentLink(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f6fbL, 0x71d6f475fc93f721L, "participants");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f707L, "jetbrains.mps.samples.customizedDebugger.Highlevel.structure.Participant");
+      return AUX_f7qxvu.Participant_df4123ca;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -192,7 +193,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
     return editorCell;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new Conversation_EditorBuilder_a.smallTalkListHandler_h5gehg_f0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new smallTalkListHandler_h5gehg_f0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_smallTalk");
     editorCell.setSRole(handler.getElementSRole());
@@ -215,7 +216,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
       return MetaAdapterFactory.getContainmentLink(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f6fbL, 0x71d6f475fc93f723L, "smallTalk");
     }
     public SAbstractConcept getChildSConcept() {
-      return MetaAdapterFactory.getConcept(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f713L, "jetbrains.mps.samples.customizedDebugger.Highlevel.structure.Message");
+      return AUX_f7qxvu.Message_df412676;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -248,5 +249,11 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
         }
       }
     }
+  }
+
+  private static final class AUX_f7qxvu {
+    /*package*/ static final SConcept PropertyAttribute_d001db89 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept Participant_df4123ca = MetaAdapterFactory.getConcept(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f707L, "jetbrains.mps.samples.customizedDebugger.Highlevel.structure.Participant");
+    /*package*/ static final SConcept Message_df412676 = MetaAdapterFactory.getConcept(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f713L, "jetbrains.mps.samples.customizedDebugger.Highlevel.structure.Message");
   }
 }

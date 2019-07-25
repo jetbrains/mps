@@ -24,7 +24,7 @@ public class TwoStepDeleteSingleOptional_Test extends BaseTransformationTest {
 
   @Test
   public void test_TwoStepDeleteSingleOptional() throws Throwable {
-    new TwoStepDeleteSingleOptional_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

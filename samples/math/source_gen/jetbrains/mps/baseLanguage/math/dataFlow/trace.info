@@ -3,6 +3,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="DataFlowAspectDescriptorImpl.java">
       <unit at="15,0,60,0" name="jetbrains.mps.baseLanguage.math.dataFlow.DataFlowAspectDescriptorImpl" />
@@ -46,15 +47,17 @@
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1236595058300">
     <file name="MathSymbolFromToIndex_DataFlow.java">
-      <node id="1236595061381" at="13,60,14,154" concept="0" />
-      <node id="1236595367597" at="14,154,15,208" concept="0" />
-      <node id="1236595372169" at="15,208,16,408" concept="0" />
-      <node id="1236595058300" at="13,0,18,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-      <scope id="1236595058302" at="13,60,16,408" />
-      <scope id="1236595058300" at="13,0,18,0">
+      <node id="1236595061381" at="14,60,15,154" concept="0" />
+      <node id="1236595367597" at="15,154,16,208" concept="0" />
+      <node id="1236595372169" at="16,208,17,295" concept="0" />
+      <node id="1236595058300" at="21,0,22,0" concept="3" trace="MathSymbol_4d8d6fdb" />
+      <node id="1236595058300" at="14,0,19,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1236595058302" at="14,60,17,295" />
+      <scope id="1236595058300" at="14,0,19,0">
         <var name="_context" id="1236595058300" />
       </scope>
-      <unit id="1236595058300" at="12,0,19,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolFromToIndex_DataFlow" />
+      <unit id="1236595058300" at="20,0,23,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolFromToIndex_DataFlow$AUX_r48jnp" />
+      <unit id="1236595058300" at="13,0,24,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolFromToIndex_DataFlow" />
     </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1237104084169">

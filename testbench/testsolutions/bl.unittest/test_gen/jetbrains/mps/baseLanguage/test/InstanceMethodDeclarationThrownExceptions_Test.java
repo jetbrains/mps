@@ -32,31 +32,31 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
 
   @Test
   public void test_NodeUnnamedErrorCheck143797558343291602() throws Throwable {
-    new InstanceMethodDeclarationThrownExceptions_Test.TestBody(this).test_NodeUnnamedErrorCheck143797558343291602();
+    new TestBody(this).test_NodeUnnamedErrorCheck143797558343291602();
   }
   @Test
   public void test_ErrorMessagesCheck3983029200623373599() throws Throwable {
-    new InstanceMethodDeclarationThrownExceptions_Test.TestBody(this).test_ErrorMessagesCheck3983029200623373599();
+    new TestBody(this).test_ErrorMessagesCheck3983029200623373599();
   }
   @Test
   public void test_NodeUnnamedErrorCheck143797558343290023() throws Throwable {
-    new InstanceMethodDeclarationThrownExceptions_Test.TestBody(this).test_NodeUnnamedErrorCheck143797558343290023();
+    new TestBody(this).test_NodeUnnamedErrorCheck143797558343290023();
   }
   @Test
   public void test_ErrorMessagesCheck3983029200623379445() throws Throwable {
-    new InstanceMethodDeclarationThrownExceptions_Test.TestBody(this).test_ErrorMessagesCheck3983029200623379445();
+    new TestBody(this).test_ErrorMessagesCheck3983029200623379445();
   }
   @Test
   public void test_ErrorMessagesCheck3983029200623468570() throws Throwable {
-    new InstanceMethodDeclarationThrownExceptions_Test.TestBody(this).test_ErrorMessagesCheck3983029200623468570();
+    new TestBody(this).test_ErrorMessagesCheck3983029200623468570();
   }
   @Test
   public void test_NodeOverridenMethodDoesNotCheck143797558343280410() throws Throwable {
-    new InstanceMethodDeclarationThrownExceptions_Test.TestBody(this).test_NodeOverridenMethodDoesNotCheck143797558343280410();
+    new TestBody(this).test_NodeOverridenMethodDoesNotCheck143797558343280410();
   }
   @Test
   public void test_NodeOverridenMethodDoesNotCheck143797558343288436() throws Throwable {
-    new InstanceMethodDeclarationThrownExceptions_Test.TestBody(this).test_NodeOverridenMethodDoesNotCheck143797558343288436();
+    new TestBody(this).test_NodeOverridenMethodDoesNotCheck143797558343288436();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

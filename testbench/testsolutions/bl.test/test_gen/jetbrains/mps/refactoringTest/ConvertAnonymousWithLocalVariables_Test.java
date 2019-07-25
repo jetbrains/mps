@@ -34,7 +34,7 @@ public class ConvertAnonymousWithLocalVariables_Test extends BaseTransformationT
 
   @Test
   public void test_AbstractClassTest() throws Throwable {
-    new ConvertAnonymousWithLocalVariables_Test.TestBody(this).test_AbstractClassTest();
+    new TestBody(this).test_AbstractClassTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

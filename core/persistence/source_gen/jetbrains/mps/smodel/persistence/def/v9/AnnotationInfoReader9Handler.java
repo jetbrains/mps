@@ -15,18 +15,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent>> {
-  private AnnotationInfoReader9Handler.ModelElementHandler modelHandler = new AnnotationInfoReader9Handler.ModelElementHandler();
-  private AnnotationInfoReader9Handler.RegistryElementHandler registryHandler = new AnnotationInfoReader9Handler.RegistryElementHandler();
-  private AnnotationInfoReader9Handler.Registry_languageElementHandler registry_languageHandler = new AnnotationInfoReader9Handler.Registry_languageElementHandler();
-  private AnnotationInfoReader9Handler.Registry_conceptElementHandler registry_conceptHandler = new AnnotationInfoReader9Handler.Registry_conceptElementHandler();
-  private AnnotationInfoReader9Handler.Registry_propertyElementHandler registry_propertyHandler = new AnnotationInfoReader9Handler.Registry_propertyElementHandler();
-  private AnnotationInfoReader9Handler.Registry_associationElementHandler registry_associationHandler = new AnnotationInfoReader9Handler.Registry_associationElementHandler();
-  private AnnotationInfoReader9Handler.NodeElementHandler nodeHandler = new AnnotationInfoReader9Handler.NodeElementHandler();
-  private AnnotationInfoReader9Handler.PropertyElementHandler propertyHandler = new AnnotationInfoReader9Handler.PropertyElementHandler();
-  private AnnotationInfoReader9Handler.ReferenceElementHandler referenceHandler = new AnnotationInfoReader9Handler.ReferenceElementHandler();
-  private AnnotationInfoReader9Handler.DefaultElementHandler defaultHandler = new AnnotationInfoReader9Handler.DefaultElementHandler();
-  private Stack<AnnotationInfoReader9Handler.ElementHandler> myHandlersStack = new Stack<AnnotationInfoReader9Handler.ElementHandler>();
-  private Stack<AnnotationInfoReader9Handler.ChildHandler> myChildHandlersStack = new Stack<AnnotationInfoReader9Handler.ChildHandler>();
+  private ModelElementHandler modelHandler = new ModelElementHandler();
+  private RegistryElementHandler registryHandler = new RegistryElementHandler();
+  private Registry_languageElementHandler registry_languageHandler = new Registry_languageElementHandler();
+  private Registry_conceptElementHandler registry_conceptHandler = new Registry_conceptElementHandler();
+  private Registry_propertyElementHandler registry_propertyHandler = new Registry_propertyElementHandler();
+  private Registry_associationElementHandler registry_associationHandler = new Registry_associationElementHandler();
+  private NodeElementHandler nodeHandler = new NodeElementHandler();
+  private PropertyElementHandler propertyHandler = new PropertyElementHandler();
+  private ReferenceElementHandler referenceHandler = new ReferenceElementHandler();
+  private DefaultElementHandler defaultHandler = new DefaultElementHandler();
+  private Stack<ElementHandler> myHandlersStack = new Stack<ElementHandler>();
+  private Stack<ChildHandler> myChildHandlersStack = new Stack<ChildHandler>();
   private Stack<Object> myValues = new Stack<Object>();
   private Locator myLocator;
   private List<LineContent> myResult;
@@ -45,20 +45,20 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
   @Override
   public void characters(char[] array, int start, int len) throws SAXException {
     globalHandleText(myValues.firstElement(), new String(array, start, len));
-    AnnotationInfoReader9Handler.ElementHandler current = (myHandlersStack.empty() ? (AnnotationInfoReader9Handler.ElementHandler) null : myHandlersStack.peek());
+    ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current != null) {
       current.handleText(myValues.peek(), new String(array, start, len));
     }
   }
   @Override
   public void endElement(String uri, String localName, String qName) throws SAXException {
-    AnnotationInfoReader9Handler.ElementHandler current = myHandlersStack.pop();
+    ElementHandler current = myHandlersStack.pop();
     Object childValue = myValues.pop();
     current.validate(childValue);
     if (myChildHandlersStack.empty()) {
       myResult = (List<LineContent>) childValue;
     } else {
-      AnnotationInfoReader9Handler.ChildHandler ch = myChildHandlersStack.pop();
+      ChildHandler ch = myChildHandlersStack.pop();
       if (ch != null) {
         ch.apply(myValues.peek(), childValue);
       }
@@ -66,7 +66,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
   }
   @Override
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-    AnnotationInfoReader9Handler.ElementHandler current = (myHandlersStack.empty() ? (AnnotationInfoReader9Handler.ElementHandler) null : myHandlersStack.peek());
+    ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
       // root 
       current = modelHandler;
@@ -112,7 +112,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
     }
     protected void handleAttribute(Object resultObject, String name, String value) throws SAXException {
     }
-    protected AnnotationInfoReader9Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       throw new SAXParseException("unknown tag: " + tagName, null);
     }
     protected void handleText(Object resultObject, String value) throws SAXException {
@@ -130,7 +130,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
     protected void validate(Object resultObject) throws SAXException {
     }
   }
-  public class ModelElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class ModelElementHandler extends ElementHandler {
     public ModelElementHandler() {
     }
     @Override
@@ -139,13 +139,13 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return my_accumulatorField.getLineToContentMap();
     }
     @Override
-    protected AnnotationInfoReader9Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("registry".equals(tagName)) {
         myChildHandlersStack.push(null);
         return registryHandler;
       }
       if ("node".equals(tagName)) {
-        myChildHandlersStack.push(new AnnotationInfoReader9Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_4287403191275410481(resultObject, value);
@@ -161,11 +161,11 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       my_accumulatorField.popNode(myLocator);
     }
   }
-  public class RegistryElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class RegistryElementHandler extends ElementHandler {
     public RegistryElementHandler() {
     }
     @Override
-    protected AnnotationInfoReader9Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("language".equals(tagName)) {
         myChildHandlersStack.push(null);
         return registry_languageHandler;
@@ -173,7 +173,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return super.createChild(resultObject, tagName, attrs);
     }
   }
-  public class Registry_languageElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class Registry_languageElementHandler extends ElementHandler {
     public Registry_languageElementHandler() {
       setRequiredAttributes("id", "name");
     }
@@ -183,7 +183,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return null;
     }
     @Override
-    protected AnnotationInfoReader9Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("concept".equals(tagName)) {
         myChildHandlersStack.push(null);
         return registry_conceptHandler;
@@ -191,7 +191,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return super.createChild(resultObject, tagName, attrs);
     }
   }
-  public class Registry_conceptElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class Registry_conceptElementHandler extends ElementHandler {
     public Registry_conceptElementHandler() {
       setRequiredAttributes("id", "name", "index", "flags");
     }
@@ -201,7 +201,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return null;
     }
     @Override
-    protected AnnotationInfoReader9Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("property".equals(tagName)) {
         myChildHandlersStack.push(null);
         return registry_propertyHandler;
@@ -214,7 +214,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return defaultHandler;
     }
   }
-  public class Registry_propertyElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class Registry_propertyElementHandler extends ElementHandler {
     public Registry_propertyElementHandler() {
       setRequiredAttributes("id", "name", "index");
     }
@@ -224,7 +224,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return null;
     }
   }
-  public class Registry_associationElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class Registry_associationElementHandler extends ElementHandler {
     public Registry_associationElementHandler() {
       setRequiredAttributes("id", "name", "index");
     }
@@ -234,7 +234,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return null;
     }
   }
-  public class NodeElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class NodeElementHandler extends ElementHandler {
     public NodeElementHandler() {
       setRequiredAttributes("id");
     }
@@ -252,9 +252,9 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       super.handleAttribute(resultObject, name, value);
     }
     @Override
-    protected AnnotationInfoReader9Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       if ("property".equals(tagName)) {
-        myChildHandlersStack.push(new AnnotationInfoReader9Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_7167172773708891038(resultObject, value);
@@ -263,7 +263,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
         return propertyHandler;
       }
       if ("ref".equals(tagName)) {
-        myChildHandlersStack.push(new AnnotationInfoReader9Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_7167172773708891052(resultObject, value);
@@ -272,7 +272,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
         return referenceHandler;
       }
       if ("node".equals(tagName)) {
-        myChildHandlersStack.push(new AnnotationInfoReader9Handler.ChildHandler() {
+        myChildHandlersStack.push(new ChildHandler() {
           @Override
           public void apply(Object resultObject, Object value) throws SAXException {
             handleChild_7167172773708891066(resultObject, value);
@@ -299,7 +299,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       my_accumulatorField.popNode(myLocator);
     }
   }
-  public class PropertyElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class PropertyElementHandler extends ElementHandler {
     public PropertyElementHandler() {
       setRequiredAttributes("role");
     }
@@ -308,7 +308,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return my_readHelperParam.readProperty(attrs.getValue("role"));
     }
   }
-  public class ReferenceElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class ReferenceElementHandler extends ElementHandler {
     public ReferenceElementHandler() {
       setRequiredAttributes("role");
     }
@@ -317,9 +317,9 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       return my_readHelperParam.readAssociation(attrs.getValue("role"));
     }
   }
-  public class DefaultElementHandler extends AnnotationInfoReader9Handler.ElementHandler {
+  public class DefaultElementHandler extends ElementHandler {
     @Override
-    protected AnnotationInfoReader9Handler.ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       return this;
     }
     @Override

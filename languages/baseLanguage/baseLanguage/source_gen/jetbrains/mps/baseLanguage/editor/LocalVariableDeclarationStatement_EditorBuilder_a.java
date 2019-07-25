@@ -52,7 +52,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new LocalVariableDeclarationStatement_EditorBuilder_a.localVariableDeclarationSingleRoleHandler_y9czm0_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), getEditorContext());
+    SingleRoleCellProvider provider = new localVariableDeclarationSingleRoleHandler_y9czm0_a0(myNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), getEditorContext());
     return provider.createCell();
   }
   private static class localVariableDeclarationSingleRoleHandler_y9czm0_a0 extends SingleRoleCellProvider {

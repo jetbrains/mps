@@ -26,7 +26,7 @@ public class Worker__Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.make.tests.Worker_");
   public Worker__Facet() {
-    ListSequence.fromList(targets).addElement(new Worker__Facet.Target_work());
+    ListSequence.fromList(targets).addElement(new Target_work());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -44,7 +44,7 @@ public class Worker__Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Worker__Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_work implements ITargetEx {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.make.tests.Worker_.work");

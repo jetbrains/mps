@@ -10,11 +10,12 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.lang.pattern.migration.PropertyPatternVariableMigration;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigratePropertyPatternVariables extends MigrationScriptBase {
   public String getCaption() {
@@ -40,7 +41,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
       new PropertyPatternVariableMigration<SNode>() {
         @Override
         protected Iterable<SNode> getUsagesToMigrate() {
-          return CommandUtil.instances(CommandUtil.selectScope(null, context), MetaAdapterFactory.getConcept(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d042b6L, "jetbrains.mps.lang.pattern.testLang.structure.PropertyValue"), false);
+          return CommandUtil.instances(CommandUtil.selectScope(null, context), AUX_mymgc3.PropertyValue_ca836ff1, false);
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
@@ -64,4 +65,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, "jetbrains.mps.lang.pattern.testLang"), 0);
   }
 
+  private static final class AUX_mymgc3 {
+    /*package*/ static final SConcept PropertyValue_ca836ff1 = MetaAdapterFactory.getConcept(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d042b6L, "jetbrains.mps.lang.pattern.testLang.structure.PropertyValue");
+  }
 }

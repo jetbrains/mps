@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
@@ -25,14 +25,15 @@ import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu.SMP_ReferenceScope_cdi6pw_a(), MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc091L, "constraints.test.structure.TestRefConstraints_SubReference_HandlerSuperHandler")));
-    result.add(new TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu.SMP_Subconcepts_cdi6pw_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_cdi6pw_a(), AUX_cdi6pw.TestRefConstraints_SubReference_HandlerSuperHandler_6663a6a9));
+    result.add(new SMP_Subconcepts_cdi6pw_b());
     return result;
   }
 
@@ -53,7 +54,7 @@ public class TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu 
 
     public SMP_ReferenceScope_cdi6pw_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc091L, "constraints.test.structure.TestRefConstraints_SubReference_HandlerSuperHandler"), MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"));
+      super((SAbstractConcept) AUX_cdi6pw.TestRefConstraints_SubReference_HandlerSuperHandler_6663a6a9, MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target"));
     }
     @NotNull
     @Override
@@ -70,7 +71,7 @@ public class TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu 
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu.SMP_ReferenceScope_cdi6pw_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new SMP_ReferenceScope_cdi6pw_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;
@@ -100,7 +101,7 @@ public class TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu 
   }
   public class SMP_Subconcepts_cdi6pw_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc091L, "constraints.test.structure.TestRefConstraints_SubReference_HandlerSuperHandler"));
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_cdi6pw.TestRefConstraints_SubReference_HandlerSuperHandler_6663a6a9);
     }
     @NotNull
     @Override
@@ -118,5 +119,9 @@ public class TestRefConstraints_SubReference_HandlerSuperHandler_SubstituteMenu 
     protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
+  }
+
+  private static final class AUX_cdi6pw {
+    /*package*/ static final SConcept TestRefConstraints_SubReference_HandlerSuperHandler_6663a6a9 = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc091L, "constraints.test.structure.TestRefConstraints_SubReference_HandlerSuperHandler");
   }
 }

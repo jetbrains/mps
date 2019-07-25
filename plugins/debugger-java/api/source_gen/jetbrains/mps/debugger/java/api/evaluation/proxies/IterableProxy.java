@@ -18,7 +18,7 @@ public class IterableProxy<T extends IValueProxy> implements Iterable<T> {
   public Iterator<T> iterator() {
     try {
       IObjectValueProxy iteratorProxy = (IObjectValueProxy) myValueProxy.invokeMethod("iterator", "()Ljava/util/Iterator;", myThreadReference);
-      return new IterableProxy.MyIterator(iteratorProxy);
+      return new MyIterator(iteratorProxy);
     } catch (EvaluationException e) {
       throw new EvaluationRuntimeException(e);
     }

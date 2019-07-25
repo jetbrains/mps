@@ -18,7 +18,7 @@ public class EditorTestUtil {
     }
     return editorComponent;
   }
-  public static void runWithTwoStepDeletion(EditorTestUtil.EditorTestRunnable runnable, boolean twoStepDeletion) throws Exception {
+  public static void runWithTwoStepDeletion(EditorTestRunnable runnable, boolean twoStepDeletion) throws Exception {
     boolean twoStepDeletionSettings = EditorSettings.getInstance().isUseTwoStepDeletion();
     EditorSettings.getInstance().setUseTwoStepDeletion(twoStepDeletion);
     try {
@@ -27,7 +27,7 @@ public class EditorTestUtil {
       EditorSettings.getInstance().setUseTwoStepDeletion(twoStepDeletionSettings);
     }
   }
-  public static void runWithCompletionStyling(EditorTestUtil.EditorTestRunnable runnable, boolean completionStyling) throws Exception {
+  public static void runWithCompletionStyling(EditorTestRunnable runnable, boolean completionStyling) throws Exception {
     boolean completionStylingSettings = EditorSettings.getInstance().isCompletionStyling();
     EditorSettings.getInstance().setCompletionStyling(completionStyling);
     try {

@@ -26,7 +26,7 @@ public class DeleteLocalVariableDeclarationFromNameTwoStep_Test extends BaseTran
 
   @Test
   public void test_DeleteLocalVariableDeclarationFromNameTwoStep() throws Throwable {
-    new DeleteLocalVariableDeclarationFromNameTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

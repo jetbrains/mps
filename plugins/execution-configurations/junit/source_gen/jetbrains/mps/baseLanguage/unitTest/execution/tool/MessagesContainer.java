@@ -12,7 +12,7 @@ import java.util.List;
   /**
    * places a new message after parsing the text event
    * 
-   * @throws MessagesContainer.EventIsNotAcceptedException iff #accepts is not true for the given event
+   * @throws EventIsNotAcceptedException iff #accepts is not true for the given event
    */
   @NotNull
   TestMessage addMessage(@NotNull TextTestEvent textEvent);

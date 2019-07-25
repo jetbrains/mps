@@ -36,13 +36,13 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 public class FeatureForestMapSupport extends AbstractProjectComponent {
   private final FeatureForestMap<ModelChange> myMap;
   private final CurrentDifferenceRegistry myCurrentDifferenceRegistry;
-  private final FeatureForestMapSupport.MyListener myListener;
+  private final MyListener myListener;
 
   public FeatureForestMapSupport(Project project, MPSProject mpsProject, CurrentDifferenceRegistry currentDifferenceRegistry) {
     super(project);
     myCurrentDifferenceRegistry = currentDifferenceRegistry;
     myMap = new FeatureForestMap<ModelChange>(mpsProject.getRepository());
-    myListener = new FeatureForestMapSupport.MyListener(mpsProject.getRepository(), myMap);
+    myListener = new MyListener(mpsProject.getRepository(), myMap);
   }
   @Override
   public void initComponent() {

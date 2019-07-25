@@ -21,7 +21,7 @@ public class RT_AssertInstanceMethodCallOperation_with_colon_Test extends BaseTr
 
   @Test
   public void test_RT_AssertInstanceMethodCallOperation_with_colon() throws Throwable {
-    new RT_AssertInstanceMethodCallOperation_with_colon_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

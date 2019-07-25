@@ -10,11 +10,12 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import java.util.Collections;
 import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class OverrideConceptsChecker extends BaseEventProcessingEditorChecker {
   private static final int MAX_ITEMS_TO_SHOW = 5;
@@ -29,11 +30,11 @@ public final class OverrideConceptsChecker extends BaseEventProcessingEditorChec
   @Override
   public UpdateResult update(EditorComponent component, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     SNode rootNode = component.getEditedNode();
-    if (!(SNodeOperations.isInstanceOf(rootNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
+    if (!(SNodeOperations.isInstanceOf(rootNode, AUX_nxs4en.AbstractConceptDeclaration_ec74828f))) {
       return new UpdateResult.Completed(false, emptyListEditorMessage());
     }
 
-    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), cancellable);
+    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, AUX_nxs4en.AbstractConceptDeclaration_ec74828f), cancellable);
     if (cancellable.isCancelled()) {
       return new UpdateResult.Cancelled();
     }
@@ -48,5 +49,9 @@ public final class OverrideConceptsChecker extends BaseEventProcessingEditorChec
   private List<EditorMessage> calculateEditorMessages(SNode concept, Cancellable cancellable) {
     EditorMessage msg = new DescendantsLookup(cancellable, new GlobalScope(myProject), concept, this, MAX_ITEMS_TO_SHOW).calcMessage();
     return (msg == null ? Collections.<EditorMessage>emptyList() : Collections.singletonList(msg));
+  }
+
+  private static final class AUX_nxs4en {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

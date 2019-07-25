@@ -21,7 +21,7 @@ public class InsertPlaceholderIntoEmptyMultipleCollection_Test extends BaseTrans
 
   @Test
   public void test_InsertPlaceholderIntoEmptyMultipleCollection() throws Throwable {
-    new InsertPlaceholderIntoEmptyMultipleCollection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -10,19 +10,20 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RequiredPlugins {
   private final Set<SNode> myDependencies = SetSequence.fromSet(new HashSet<SNode>());
   private final List<SNode> myPlugins = ListSequence.fromList(new ArrayList<SNode>());
 
   public RequiredPlugins(SNode project) {
-    ListSequence.fromList(myPlugins).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(project, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin"), false, new SAbstractConcept[]{})));
+    ListSequence.fromList(myPlugins).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(project, AUX_vsfkhc.BuildMps_IdeaPlugin_d1bb7c62, false, new SAbstractConcept[]{})));
   }
 
   public RequiredPlugins(Iterable<SNode> initialPlugins) {
@@ -74,5 +75,9 @@ public class RequiredPlugins {
 
   public Iterable<SNode> getDependencyInsideCurrent() {
     return myPlugins;
+  }
+
+  private static final class AUX_vsfkhc {
+    /*package*/ static final SConcept BuildMps_IdeaPlugin_d1bb7c62 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
   }
 }

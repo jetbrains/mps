@@ -21,7 +21,7 @@ public class SharedStyles_StyleSheet {
   public static void apply_ReferenceDecorated(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new SharedStyles_StyleSheet.ReferenceDecoratedStyleClass(editorContext, node).apply(style, editorCell);
+    new ReferenceDecoratedStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -31,7 +31,7 @@ public class SharedStyles_StyleSheet {
   public static void apply_ReferenceOnConcept(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new SharedStyles_StyleSheet.ReferenceOnConceptStyleClass(editorContext, node).apply(style, editorCell);
+    new ReferenceOnConceptStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -41,7 +41,7 @@ public class SharedStyles_StyleSheet {
   public static void apply_ReferenceOnConceptualFeature(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new SharedStyles_StyleSheet.ReferenceOnConceptualFeatureStyleClass(editorContext, node).apply(style, editorCell);
+    new ReferenceOnConceptualFeatureStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class ReferenceDecoratedStyleClass extends AbstractStyleClass {

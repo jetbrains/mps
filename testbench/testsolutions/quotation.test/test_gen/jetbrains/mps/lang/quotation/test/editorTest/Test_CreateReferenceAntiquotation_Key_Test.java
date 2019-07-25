@@ -21,7 +21,7 @@ public class Test_CreateReferenceAntiquotation_Key_Test extends BaseTransformati
 
   @Test
   public void test_Test_CreateReferenceAntiquotation_Key() throws Throwable {
-    new Test_CreateReferenceAntiquotation_Key_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

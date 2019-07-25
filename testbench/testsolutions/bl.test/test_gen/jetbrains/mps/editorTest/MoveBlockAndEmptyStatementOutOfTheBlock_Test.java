@@ -21,7 +21,7 @@ public class MoveBlockAndEmptyStatementOutOfTheBlock_Test extends BaseTransforma
 
   @Test
   public void test_MoveBlockAndEmptyStatementOutOfTheBlock() throws Throwable {
-    new MoveBlockAndEmptyStatementOutOfTheBlock_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

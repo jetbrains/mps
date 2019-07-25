@@ -21,7 +21,7 @@ public class AddingParameterWithEnter_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddingParameterWithEnter() throws Throwable {
-    new AddingParameterWithEnter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -7,9 +7,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommentMultipleNodesAction extends AbstractCellAction {
   @NotNull
@@ -24,9 +25,9 @@ public class CommentMultipleNodesAction extends AbstractCellAction {
       myCanExecute = false;
       return;
     }
-    myNeedToCommentOut = !(SNodeOperations.isInstanceOf(Sequence.fromIterable(myNodes).first(), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute")));
+    myNeedToCommentOut = !(SNodeOperations.isInstanceOf(Sequence.fromIterable(myNodes).first(), AUX_ssrw6k.BaseCommentAttribute_f7206635));
     for (SNode node : Sequence.fromIterable(myNodes)) {
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute")) && myNeedToCommentOut || !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"))) && !(myNeedToCommentOut)) {
+      if (SNodeOperations.isInstanceOf(node, AUX_ssrw6k.BaseCommentAttribute_f7206635) && myNeedToCommentOut || !(SNodeOperations.isInstanceOf(node, AUX_ssrw6k.BaseCommentAttribute_f7206635)) && !(myNeedToCommentOut)) {
         myCanExecute = false;
         return;
       }
@@ -53,8 +54,8 @@ public class CommentMultipleNodesAction extends AbstractCellAction {
           lastNodeToSelect = commentedNode;
         }
       } else {
-        assert SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
-        SNode uncommentedNode = CommentUtil.uncomment(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute")));
+        assert SNodeOperations.isInstanceOf(node, AUX_ssrw6k.BaseCommentAttribute_f7206635);
+        SNode uncommentedNode = CommentUtil.uncomment(SNodeOperations.cast(node, AUX_ssrw6k.BaseCommentAttribute_f7206635));
         if (counter == 0) {
           firstNodeToSelect = uncommentedNode;
         }
@@ -71,4 +72,7 @@ public class CommentMultipleNodesAction extends AbstractCellAction {
     context.getSelectionManager().setSelection(new NodeRangeSelection(context.getEditorComponent(), firstNodeToSelect, lastNodeToSelect));
   }
 
+  private static final class AUX_ssrw6k {
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+  }
 }

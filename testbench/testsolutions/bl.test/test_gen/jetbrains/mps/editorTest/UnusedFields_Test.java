@@ -31,115 +31,115 @@ public class UnusedFields_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck8129007564264183307() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeErrorCheck8129007564264183307();
+    new TestBody(this).test_NodeErrorCheck8129007564264183307();
   }
   @Test
   public void test_NodeErrorCheck8129007564264201539() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeErrorCheck8129007564264201539();
+    new TestBody(this).test_NodeErrorCheck8129007564264201539();
   }
   @Test
   public void test_NodeErrorCheck8129007564264258408() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeErrorCheck8129007564264258408();
+    new TestBody(this).test_NodeErrorCheck8129007564264258408();
   }
   @Test
   public void test_NodeErrorCheck8129007564264741195() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeErrorCheck8129007564264741195();
+    new TestBody(this).test_NodeErrorCheck8129007564264741195();
   }
   @Test
   public void test_NodeErrorCheck8129007564264258940() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeErrorCheck8129007564264258940();
+    new TestBody(this).test_NodeErrorCheck8129007564264258940();
   }
   @Test
   public void test_NodeErrorCheck8129007564264259403() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeErrorCheck8129007564264259403();
+    new TestBody(this).test_NodeErrorCheck8129007564264259403();
   }
   @Test
   public void test_NodeErrorCheck8129007564264259935() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeErrorCheck8129007564264259935();
+    new TestBody(this).test_NodeErrorCheck8129007564264259935();
   }
   @Test
   public void test_ErrorMessagesCheck8129007564264174973() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_ErrorMessagesCheck8129007564264174973();
+    new TestBody(this).test_ErrorMessagesCheck8129007564264174973();
   }
   @Test
   public void test_ErrorMessagesCheck8129007564264202932() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_ErrorMessagesCheck8129007564264202932();
+    new TestBody(this).test_ErrorMessagesCheck8129007564264202932();
   }
   @Test
   public void test_NodeWarningCheck8129007564264204542() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264204542();
+    new TestBody(this).test_NodeWarningCheck8129007564264204542();
   }
   @Test
   public void test_NodeWarningCheck8129007564264206968() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264206968();
+    new TestBody(this).test_NodeWarningCheck8129007564264206968();
   }
   @Test
   public void test_NodeWarningCheck5303038120596588890() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck5303038120596588890();
+    new TestBody(this).test_NodeWarningCheck5303038120596588890();
   }
   @Test
   public void test_ErrorMessagesCheck8129007564264207116() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_ErrorMessagesCheck8129007564264207116();
+    new TestBody(this).test_ErrorMessagesCheck8129007564264207116();
   }
   @Test
   public void test_NodeWarningCheck8129007564264207668() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264207668();
+    new TestBody(this).test_NodeWarningCheck8129007564264207668();
   }
   @Test
   public void test_NodeWarningCheck8129007564264355259() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264355259();
+    new TestBody(this).test_NodeWarningCheck8129007564264355259();
   }
   @Test
   public void test_NodeWarningCheck8129007564264752913() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264752913();
+    new TestBody(this).test_NodeWarningCheck8129007564264752913();
   }
   @Test
   public void test_NodeWarningCheck8129007564264233837() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264233837();
+    new TestBody(this).test_NodeWarningCheck8129007564264233837();
   }
   @Test
   public void test_NodeWarningCheck8129007564264928589() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264928589();
+    new TestBody(this).test_NodeWarningCheck8129007564264928589();
   }
   @Test
   public void test_NodeWarningCheck8129007564264930520() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264930520();
+    new TestBody(this).test_NodeWarningCheck8129007564264930520();
   }
   @Test
   public void test_NodeWarningCheck8129007564264242225() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264242225();
+    new TestBody(this).test_NodeWarningCheck8129007564264242225();
   }
   @Test
   public void test_NodeWarningCheck8129007564264253108() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264253108();
+    new TestBody(this).test_NodeWarningCheck8129007564264253108();
   }
   @Test
   public void test_ErrorMessagesCheck8129007564264253493() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_ErrorMessagesCheck8129007564264253493();
+    new TestBody(this).test_ErrorMessagesCheck8129007564264253493();
   }
   @Test
   public void test_NodeWarningCheck8129007564264256239() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264256239();
+    new TestBody(this).test_NodeWarningCheck8129007564264256239();
   }
   @Test
   public void test_NodeWarningCheck8129007564264268731() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck8129007564264268731();
+    new TestBody(this).test_NodeWarningCheck8129007564264268731();
   }
   @Test
   public void test_ErrorMessagesCheck1855868101957045111() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_ErrorMessagesCheck1855868101957045111();
+    new TestBody(this).test_ErrorMessagesCheck1855868101957045111();
   }
   @Test
   public void test_NodeWarningCheck1855868101957102635() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck1855868101957102635();
+    new TestBody(this).test_NodeWarningCheck1855868101957102635();
   }
   @Test
   public void test_NodeWarningCheck1855868101957107421() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck1855868101957107421();
+    new TestBody(this).test_NodeWarningCheck1855868101957107421();
   }
   @Test
   public void test_NodeWarningCheck1855868101957111173() throws Throwable {
-    new UnusedFields_Test.TestBody(this).test_NodeWarningCheck1855868101957111173();
+    new TestBody(this).test_NodeWarningCheck1855868101957111173();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

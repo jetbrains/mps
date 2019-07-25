@@ -22,7 +22,7 @@ public class TwoStepDeleteChildWithAttributeAttributeSelected_Test extends BaseT
 
   @Test
   public void test_TwoStepDeleteChildWithAttributeAttributeSelected() throws Throwable {
-    new TwoStepDeleteChildWithAttributeAttributeSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

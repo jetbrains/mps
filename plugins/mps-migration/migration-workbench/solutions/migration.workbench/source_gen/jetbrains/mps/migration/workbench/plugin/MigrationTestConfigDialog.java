@@ -34,7 +34,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
   private Project myProject;
   private JComponent myComponent;
   private JCheckBox myPreErrorCB;
-  private MigrationTestConfigDialog.Result myResult = new MigrationTestConfigDialog.Result();
+  private Result myResult = new Result();
 
   public MigrationTestConfigDialog(Project project) {
     super(project);
@@ -106,9 +106,9 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     panel.setBorder(IdeBorderFactory.createTitledBorder("Pre-check"));
     panel.setLayout(new VerticalFlowLayout());
 
-    JRadioButton rb1 = new JRadioButton(new MigrationTestConfigDialog.MyPreErrRadioAction("none", 0));
-    JRadioButton rb2 = new JRadioButton(new MigrationTestConfigDialog.MyPreErrRadioAction("broken ref - recoverable", 1));
-    JRadioButton rb3 = new JRadioButton(new MigrationTestConfigDialog.MyPreErrRadioAction("missing migration - non-recoverable", 2));
+    JRadioButton rb1 = new JRadioButton(new MyPreErrRadioAction("none", 0));
+    JRadioButton rb2 = new JRadioButton(new MyPreErrRadioAction("broken ref - recoverable", 1));
+    JRadioButton rb3 = new JRadioButton(new MyPreErrRadioAction("missing migration - non-recoverable", 2));
     ButtonGroup bg = new ButtonGroup();
     bg.add(rb1);
     bg.add(rb2);
@@ -131,11 +131,11 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     panel.setBorder(IdeBorderFactory.createTitledBorder("Project step"));
     panel.setLayout(new VerticalFlowLayout());
 
-    ListSequence.fromList(myResult.pMigrations).addElement(new MigrationTestConfigDialog.Result.PMigration("migration1", false, false));
-    ListSequence.fromList(myResult.pMigrations).addElement(new MigrationTestConfigDialog.Result.PMigration("migration2", false, false));
-    ListSequence.fromList(myResult.pMigrations).addElement(new MigrationTestConfigDialog.Result.PMigration("migration3", false, false));
+    ListSequence.fromList(myResult.pMigrations).addElement(new Result.PMigration("migration1", false, false));
+    ListSequence.fromList(myResult.pMigrations).addElement(new Result.PMigration("migration2", false, false));
+    ListSequence.fromList(myResult.pMigrations).addElement(new Result.PMigration("migration3", false, false));
 
-    JTable table = new JTable(new MigrationTestConfigDialog.PMigTableModel());
+    JTable table = new JTable(new PMigTableModel());
     table.setPreferredScrollableViewportSize(new Dimension(400, 100));
     table.setFillsViewportHeight(true);
     JScrollPane scrollPane = new JScrollPane(table);
@@ -149,11 +149,11 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     panel.setBorder(IdeBorderFactory.createTitledBorder("Language Step"));
     panel.setLayout(new VerticalFlowLayout());
 
-    ListSequence.fromList(myResult.lMigrations).addElement(new MigrationTestConfigDialog.Result.LMigration(MetaAdapterFactory.getLanguage(1, 1, "Language1"), 0, false, new boolean[]{true, true, true}));
-    ListSequence.fromList(myResult.lMigrations).addElement(new MigrationTestConfigDialog.Result.LMigration(MetaAdapterFactory.getLanguage(1, 1, "Language1"), 1, false, new boolean[]{true, true, true}));
-    ListSequence.fromList(myResult.lMigrations).addElement(new MigrationTestConfigDialog.Result.LMigration(MetaAdapterFactory.getLanguage(2, 2, "Language2"), 0, false, new boolean[]{true, true, true}));
+    ListSequence.fromList(myResult.lMigrations).addElement(new Result.LMigration(MetaAdapterFactory.getLanguage(1, 1, "Language1"), 0, false, new boolean[]{true, true, true}));
+    ListSequence.fromList(myResult.lMigrations).addElement(new Result.LMigration(MetaAdapterFactory.getLanguage(1, 1, "Language1"), 1, false, new boolean[]{true, true, true}));
+    ListSequence.fromList(myResult.lMigrations).addElement(new Result.LMigration(MetaAdapterFactory.getLanguage(2, 2, "Language2"), 0, false, new boolean[]{true, true, true}));
 
-    JTable table = new JTable(new MigrationTestConfigDialog.LMigTableModel());
+    JTable table = new JTable(new LMigTableModel());
     table.setPreferredScrollableViewportSize(new Dimension(400, 100));
     table.setFillsViewportHeight(true);
     JScrollPane scrollPane = new JScrollPane(table);
@@ -167,8 +167,8 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     panel.setBorder(IdeBorderFactory.createTitledBorder("Post-check (not implemented)"));
     panel.setLayout(new VerticalFlowLayout());
 
-    JRadioButton rb1 = new JRadioButton(new MigrationTestConfigDialog.MyPostErrRadioAction("none", 0));
-    JRadioButton rb2 = new JRadioButton(new MigrationTestConfigDialog.MyPostErrRadioAction("not migrated code", 1));
+    JRadioButton rb1 = new JRadioButton(new MyPostErrRadioAction("none", 0));
+    JRadioButton rb2 = new JRadioButton(new MyPostErrRadioAction("not migrated code", 1));
     ButtonGroup bg = new ButtonGroup();
     bg.add(rb1);
     bg.add(rb2);
@@ -184,7 +184,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     return panel;
   }
 
-  public MigrationTestConfigDialog.Result getResult() {
+  public Result getResult() {
     return myResult;
   }
 
@@ -193,8 +193,8 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     public int preError;
     public int hasMissingMigrations;
     public int postError;
-    public List<MigrationTestConfigDialog.Result.PMigration> pMigrations = ListSequence.fromList(new ArrayList<MigrationTestConfigDialog.Result.PMigration>());
-    public List<MigrationTestConfigDialog.Result.LMigration> lMigrations = ListSequence.fromList(new ArrayList<MigrationTestConfigDialog.Result.LMigration>());
+    public List<Result.PMigration> pMigrations = ListSequence.fromList(new ArrayList<Result.PMigration>());
+    public List<Result.LMigration> lMigrations = ListSequence.fromList(new ArrayList<Result.LMigration>());
 
     public static class PMigration {
       public String id;
@@ -263,7 +263,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     }
 
     public Object getValueAt(int row, int col) {
-      MigrationTestConfigDialog.Result.PMigration migration = ListSequence.fromList(myResult.pMigrations).getElement(row);
+      Result.PMigration migration = ListSequence.fromList(myResult.pMigrations).getElement(row);
       if (col == 0) {
         return migration.id;
       }
@@ -285,7 +285,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     }
 
     public void setValueAt(Object value, int row, int col) {
-      MigrationTestConfigDialog.Result.PMigration migration = ListSequence.fromList(myResult.pMigrations).getElement(row);
+      Result.PMigration migration = ListSequence.fromList(myResult.pMigrations).getElement(row);
       if (col == 0) {
         migration.id = ((String) value);
         fireTableCellUpdated(row, col);
@@ -321,7 +321,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     }
 
     public Object getValueAt(int row, int col) {
-      MigrationTestConfigDialog.Result.LMigration migration = ListSequence.fromList(myResult.lMigrations).getElement(row);
+      Result.LMigration migration = ListSequence.fromList(myResult.lMigrations).getElement(row);
       if (col == 0) {
         return migration.language;
       }
@@ -349,7 +349,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     }
 
     public void setValueAt(Object value, int row, int col) {
-      MigrationTestConfigDialog.Result.LMigration migration = ListSequence.fromList(myResult.lMigrations).getElement(row);
+      Result.LMigration migration = ListSequence.fromList(myResult.lMigrations).getElement(row);
       if (col == 0) {
         throw new IllegalArgumentException();
       }

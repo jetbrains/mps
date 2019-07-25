@@ -21,7 +21,7 @@ public class SettingTextToNodeAfterApplingAction_Test extends BaseTransformation
 
   @Test
   public void test_SettingTextToNodeAfterApplingAction() throws Throwable {
-    new SettingTextToNodeAfterApplingAction_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

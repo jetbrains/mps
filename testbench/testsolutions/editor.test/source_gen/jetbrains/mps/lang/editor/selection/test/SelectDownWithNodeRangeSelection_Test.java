@@ -21,7 +21,7 @@ public class SelectDownWithNodeRangeSelection_Test extends BaseTransformationTes
 
   @Test
   public void test_SelectDownWithNodeRangeSelection() throws Throwable {
-    new SelectDownWithNodeRangeSelection_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

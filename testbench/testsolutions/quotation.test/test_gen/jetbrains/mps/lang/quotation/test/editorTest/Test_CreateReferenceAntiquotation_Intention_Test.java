@@ -22,7 +22,7 @@ public class Test_CreateReferenceAntiquotation_Intention_Test extends BaseTransf
 
   @Test
   public void test_Test_CreateReferenceAntiquotation_Intention() throws Throwable {
-    new Test_CreateReferenceAntiquotation_Intention_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

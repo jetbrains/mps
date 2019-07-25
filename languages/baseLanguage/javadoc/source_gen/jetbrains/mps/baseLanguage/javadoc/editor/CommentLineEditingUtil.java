@@ -5,19 +5,20 @@ package jetbrains.mps.baseLanguage.javadoc.editor;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CommentLineEditingUtil {
   public static void insertLine(EditorContext editorContext) {
     SNode selectedNode = editorContext.getSelectedNode();
-    SNode commentLinePart = SNodeOperations.as(selectedNode, MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"));
+    SNode commentLinePart = SNodeOperations.as(selectedNode, AUX_li0kz.TextCommentLinePart_b468bde4);
     if (commentLinePart == null) {
       return;
     }
     SNode nextLine;
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(selectedNode)), MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag"))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(selectedNode)), AUX_li0kz.DeprecatedBlockDocTag_7c8f64d8)) {
       nextLine = SNodeOperations.insertNextSiblingChild(SNodeOperations.getParent(SNodeOperations.getParent(selectedNode)), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x44ac82392ce5c6b0L, "jetbrains.mps.baseLanguage.javadoc.structure.EmptyBlockDocTag")));
     } else {
       EditorCell_Label editorCell = ((EditorCell_Label) editorContext.getSelectedCell());
@@ -26,5 +27,10 @@ public class CommentLineEditingUtil {
     }
     editorContext.selectWRTFocusPolicy(nextLine);
     ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(0);
+  }
+
+  private static final class AUX_li0kz {
+    /*package*/ static final SConcept TextCommentLinePart_b468bde4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept DeprecatedBlockDocTag_7c8f64d8 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
   }
 }

@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.findUsages;
 
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -14,9 +13,11 @@ import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ImplementingClasses_Finder extends GeneratedFinder {
   public ImplementingClasses_Finder() {
@@ -31,7 +32,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    return AUX_cdivqn.Interface_bca2069;
   }
 
   @Override
@@ -48,7 +49,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                   SNode nodeParam = (SNode) searchResult.getObject();
                   new _FunctionTypes._void_P1_E0<SNode>() {
                     public void invoke(SNode interfaceNode) {
-                      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
+                      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), AUX_cdivqn.ClassConcept_e2711824)) {
                         // class implements interface case 
                         if (SNodeOperations.hasRole(interfaceNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface"))) {
                           callback.onUsageFound(createSingleResult(SNodeOperations.getParent(interfaceNode)));
@@ -66,7 +67,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                             }
                           }, new SearchQuery(SNodeOperations.getParent(interfaceNode), scope), FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder"));
                         }
-                      } else if (SNodeOperations.isInstanceOf(interfaceNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"))) {
+                      } else if (SNodeOperations.isInstanceOf(interfaceNode, AUX_cdivqn.AnonymousClass_e4a73f97)) {
                         // anonymous class case 
                         callback.onUsageFound(createSingleResult(interfaceNode));
                       }
@@ -92,5 +93,11 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
   @Override
   public SNodeReference getDeclarationNode() {
     return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1200310248824");
+  }
+
+  private static final class AUX_cdivqn {
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass_e4a73f97 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 }

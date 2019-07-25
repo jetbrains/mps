@@ -12,6 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class containerIterator_subtrypeOf_containerIterator_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public containerIterator_subtrypeOf_containerIterator_InequationReplacementRule() {
@@ -40,9 +41,13 @@ public class containerIterator_subtrypeOf_containerIterator_InequationReplacemen
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120bec64a7eL, "jetbrains.mps.baseLanguage.collections.structure.ContainerIteratorType");
+    return AUX_61l082.ContainerIteratorType_8f11d4ae;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120bec64a7eL, "jetbrains.mps.baseLanguage.collections.structure.ContainerIteratorType");
+    return AUX_61l082.ContainerIteratorType_8f11d4ae;
+  }
+
+  private static final class AUX_61l082 {
+    /*package*/ static final SConcept ContainerIteratorType_8f11d4ae = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120bec64a7eL, "jetbrains.mps.baseLanguage.collections.structure.ContainerIteratorType");
   }
 }

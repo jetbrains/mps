@@ -36,7 +36,7 @@ public class ExtractWithStaticFieldReference_Test extends BaseTransformationTest
 
   @Test
   public void test_extractFromStatements() throws Throwable {
-    new ExtractWithStaticFieldReference_Test.TestBody(this).test_extractFromStatements();
+    new TestBody(this).test_extractFromStatements();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

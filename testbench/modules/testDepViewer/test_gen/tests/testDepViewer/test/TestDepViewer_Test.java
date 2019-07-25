@@ -32,23 +32,23 @@ public class TestDepViewer_Test extends BaseTransformationTest {
 
   @Test
   public void test_testPrecondition() throws Throwable {
-    new TestDepViewer_Test.TestBody(this).test_testPrecondition();
+    new TestBody(this).test_testPrecondition();
   }
   @Test
   public void test_testModel1DependsOnSomething() throws Throwable {
-    new TestDepViewer_Test.TestBody(this).test_testModel1DependsOnSomething();
+    new TestBody(this).test_testModel1DependsOnSomething();
   }
   @Test
   public void test_testModel3DoesntDependOnAnything() throws Throwable {
-    new TestDepViewer_Test.TestBody(this).test_testModel3DoesntDependOnAnything();
+    new TestBody(this).test_testModel3DoesntDependOnAnything();
   }
   @Test
   public void test_testModel1DependsOnModel2() throws Throwable {
-    new TestDepViewer_Test.TestBody(this).test_testModel1DependsOnModel2();
+    new TestBody(this).test_testModel1DependsOnModel2();
   }
   @Test
   public void test_testModel1DoesntDependOnModel3() throws Throwable {
-    new TestDepViewer_Test.TestBody(this).test_testModel1DoesntDependOnModel3();
+    new TestBody(this).test_testModel1DoesntDependOnModel3();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -22,7 +22,7 @@ import org.apache.log4j.Level;
 public class MpsStartupSettings_Configuration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(MpsStartupSettings_Configuration.class);
   @NotNull
-  private MpsStartupSettings_Configuration.MyState myState = new MpsStartupSettings_Configuration.MyState();
+  private MyState myState = new MyState();
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -78,7 +78,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
     try {
       // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
       // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (MpsStartupSettings_Configuration.MyState) myState.clone();
+      clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
@@ -114,7 +114,7 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-      MpsStartupSettings_Configuration.MyState state = new MpsStartupSettings_Configuration.MyState();
+      MyState state = new MyState();
       state.myVmOptions = myVmOptions;
       state.myJrePath = myJrePath;
       state.mySettingsPath = mySettingsPath;

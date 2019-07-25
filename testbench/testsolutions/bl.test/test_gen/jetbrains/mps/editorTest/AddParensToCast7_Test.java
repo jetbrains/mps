@@ -21,7 +21,7 @@ public class AddParensToCast7_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddParensToCast7() throws Throwable {
-    new AddParensToCast7_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

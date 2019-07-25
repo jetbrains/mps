@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class BehaviorDialogsPersistentOptions_PreferencesComponent extends BaseProjectPrefsComponent {
   @Tag(value = "state")
-  private BehaviorDialogsPersistentOptions_PreferencesComponent.MyState myState = new BehaviorDialogsPersistentOptions_PreferencesComponent.MyState();
+  private MyState myState = new MyState();
   public BehaviorDialogsPersistentOptions_PreferencesComponent(Project project) {
     super(project);
   }
@@ -34,7 +34,7 @@ public class BehaviorDialogsPersistentOptions_PreferencesComponent extends BaseP
     }
     return XmlSerializer.serialize(this.myState);
   }
-  public BehaviorDialogsPersistentOptions_PreferencesComponent.MyState getStateObject() {
+  public MyState getStateObject() {
     return this.myState;
   }
   public List<BasePrefsPage> createPages() {

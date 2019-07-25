@@ -32,27 +32,27 @@ public class ConstraintsInheritence_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeUnknownRuleCheck5816870305080793796() throws Throwable {
-    new ConstraintsInheritence_Test.TestBody(this).test_NodeUnknownRuleCheck5816870305080793796();
+    new TestBody(this).test_NodeUnknownRuleCheck5816870305080793796();
   }
   @Test
   public void test_NodeUnknownRuleCheck5816870305080793812() throws Throwable {
-    new ConstraintsInheritence_Test.TestBody(this).test_NodeUnknownRuleCheck5816870305080793812();
+    new TestBody(this).test_NodeUnknownRuleCheck5816870305080793812();
   }
   @Test
   public void test_ErrorMessagesCheck5816870305080792275() throws Throwable {
-    new ConstraintsInheritence_Test.TestBody(this).test_ErrorMessagesCheck5816870305080792275();
+    new TestBody(this).test_ErrorMessagesCheck5816870305080792275();
   }
   @Test
   public void test_NodeUnknownRuleCheck5816870305080793804() throws Throwable {
-    new ConstraintsInheritence_Test.TestBody(this).test_NodeUnknownRuleCheck5816870305080793804();
+    new TestBody(this).test_NodeUnknownRuleCheck5816870305080793804();
   }
   @Test
   public void test_NodeUnknownRuleCheck5816870305080793825() throws Throwable {
-    new ConstraintsInheritence_Test.TestBody(this).test_NodeUnknownRuleCheck5816870305080793825();
+    new TestBody(this).test_NodeUnknownRuleCheck5816870305080793825();
   }
   @Test
   public void test_NodeUnknownRuleCheck5816870305080793833() throws Throwable {
-    new ConstraintsInheritence_Test.TestBody(this).test_NodeUnknownRuleCheck5816870305080793833();
+    new TestBody(this).test_NodeUnknownRuleCheck5816870305080793833();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

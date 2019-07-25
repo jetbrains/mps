@@ -24,7 +24,7 @@ public class TestSubstitute_DefaultReference_Test extends BaseTransformationTest
 
   @Test
   public void test_TestSubstitute_DefaultReference() throws Throwable {
-    new TestSubstitute_DefaultReference_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

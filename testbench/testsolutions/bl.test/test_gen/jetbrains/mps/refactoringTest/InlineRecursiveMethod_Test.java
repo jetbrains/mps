@@ -29,7 +29,7 @@ public class InlineRecursiveMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_InlineRecursiveMethod() throws Throwable {
-    new InlineRecursiveMethod_Test.TestBody(this).test_InlineRecursiveMethod();
+    new TestBody(this).test_InlineRecursiveMethod();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

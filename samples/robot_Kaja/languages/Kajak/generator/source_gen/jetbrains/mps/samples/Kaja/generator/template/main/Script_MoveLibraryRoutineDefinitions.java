@@ -29,5 +29,5 @@ public class Script_MoveLibraryRoutineDefinitions implements TemplateMappingScri
   public void apply(SModel model, ITemplateGenerator generator) {
     QueriesGenerated.mappingScript_CodeBlock_24(new MappingScriptContext(model, getScriptNode(), generator));
   }
-  private static SNodePointer mappingScriptNode = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4394627182935101790");
+  private static final SNodePointer mappingScriptNode = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4394627182935101790");
 }

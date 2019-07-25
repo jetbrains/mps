@@ -21,7 +21,7 @@ public class AddParensToTernary3_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddParensToTernary3() throws Throwable {
-    new AddParensToTernary3_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

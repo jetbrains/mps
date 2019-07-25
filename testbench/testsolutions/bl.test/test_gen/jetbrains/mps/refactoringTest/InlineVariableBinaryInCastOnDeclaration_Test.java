@@ -34,7 +34,7 @@ public class InlineVariableBinaryInCastOnDeclaration_Test extends BaseTransforma
 
   @Test
   public void test_simpleInlineVariable() throws Throwable {
-    new InlineVariableBinaryInCastOnDeclaration_Test.TestBody(this).test_simpleInlineVariable();
+    new TestBody(this).test_simpleInlineVariable();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

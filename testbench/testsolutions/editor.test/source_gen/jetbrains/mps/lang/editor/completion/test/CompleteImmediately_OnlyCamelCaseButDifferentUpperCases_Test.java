@@ -21,7 +21,7 @@ public class CompleteImmediately_OnlyCamelCaseButDifferentUpperCases_Test extend
 
   @Test
   public void test_CompleteImmediately_OnlyCamelCaseButDifferentUpperCases() throws Throwable {
-    new CompleteImmediately_OnlyCamelCaseButDifferentUpperCases_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

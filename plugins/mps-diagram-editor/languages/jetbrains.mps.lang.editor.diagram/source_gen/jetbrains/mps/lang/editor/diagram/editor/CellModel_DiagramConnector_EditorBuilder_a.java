@@ -100,7 +100,7 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.RightParenStyleClass;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new CellModel_DiagramConnector_EditorBuilder_a.inputSingleRoleHandler_rubh59_e0(myNode, MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x58940e88f3ef74c9L, 0x10efa534a50ae17fL, "input"), getEditorContext());
+    SingleRoleCellProvider provider = new inputSingleRoleHandler_rubh59_e0(myNode, MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x58940e88f3ef74c9L, 0x10efa534a50ae17fL, "input"), getEditorContext());
     return provider.createCell();
   }
   private static class inputSingleRoleHandler_rubh59_e0 extends SingleRoleCellProvider {
@@ -161,7 +161,7 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.RightParenStyleClass;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new CellModel_DiagramConnector_EditorBuilder_a.outputSingleRoleHandler_rubh59_g0(myNode, MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x58940e88f3ef74c9L, 0x10efa534a50ae185L, "output"), getEditorContext());
+    SingleRoleCellProvider provider = new outputSingleRoleHandler_rubh59_g0(myNode, MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x58940e88f3ef74c9L, 0x10efa534a50ae185L, "output"), getEditorContext());
     return provider.createCell();
   }
   private static class outputSingleRoleHandler_rubh59_g0 extends SingleRoleCellProvider {

@@ -22,6 +22,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ final class DescendantsLookup {
   private final Cancellable myCancellable;
@@ -67,8 +68,8 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
         SNode nodeParam = (SNode) searchResult.getObject();
         new _FunctionTypes._void_P1_E0<SNode>() {
           public void invoke(SNode res) {
-            if (SNodeOperations.isInstanceOf(res, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))) {
-              SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")));
+            if (SNodeOperations.isInstanceOf(res, AUX_bxsweg.AbstractConceptDeclaration_ec74828f)) {
+              SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, AUX_bxsweg.AbstractConceptDeclaration_ec74828f));
               if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
                 monitor.cancel();
               }
@@ -78,5 +79,9 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
       }
     }, new SearchQuery(myConcept, myScope), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.ConceptDescendants_Finder"));
     return result;
+  }
+
+  private static final class AUX_bxsweg {
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

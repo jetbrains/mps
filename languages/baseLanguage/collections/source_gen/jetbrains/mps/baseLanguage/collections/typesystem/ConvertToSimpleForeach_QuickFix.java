@@ -6,6 +6,7 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConvertToSimpleForeach_QuickFix extends QuickFix_Runtime {
@@ -16,6 +17,10 @@ public class ConvertToSimpleForeach_QuickFix extends QuickFix_Runtime {
     return "Convert to Simple Foreach Statement";
   }
   public void execute(SNode node) {
-    SNodeFactoryOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement"));
+    SNodeFactoryOperations.replaceWithNewChild(node, AUX_ooyrku.ForEachStatement_a2950921);
+  }
+
+  private static final class AUX_ooyrku {
+    /*package*/ static final SConcept ForEachStatement_a2950921 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
   }
 }

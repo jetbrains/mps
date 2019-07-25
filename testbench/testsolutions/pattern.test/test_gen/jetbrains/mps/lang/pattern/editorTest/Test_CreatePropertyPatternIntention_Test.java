@@ -22,7 +22,7 @@ public class Test_CreatePropertyPatternIntention_Test extends BaseTransformation
 
   @Test
   public void test_Test_CreatePropertyPatternIntention() throws Throwable {
-    new Test_CreatePropertyPatternIntention_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

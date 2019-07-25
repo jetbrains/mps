@@ -4,7 +4,6 @@ package jetbrains.mps.lang.migration.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -17,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
@@ -26,9 +26,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MoveConcept__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, "jetbrains.mps.lang.migration.structure.MoveConcept");
+  private static final SAbstractConcept CONCEPT = AUX_uhenws.MoveConcept_c2b72190;
 
   public static final SMethod<Boolean> shouldKeepOldNode_id1NHZk5hi$oq = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldKeepOldNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1NHZk5hi$oq").build();
   public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doDeprecateOldNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1NHZk5hiKRu").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
@@ -42,11 +43,11 @@ public final class MoveConcept__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static void doDeprecateOldNode_id1NHZk5hiKRu(@NotNull SNode __thisNode__, SRepository repository) {
-    SNode from = SNodeOperations.cast(MoveNodeSpecialization__BehaviorDescriptor.getFrom_id1NHZk5hj1Zl.invoke(__thisNode__, repository), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    SNode from = SNodeOperations.cast(MoveNodeSpecialization__BehaviorDescriptor.getFrom_id1NHZk5hj1Zl.invoke(__thisNode__, repository), AUX_uhenws.AbstractConceptDeclaration_ec74828f);
     SLinkOperations.setTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode"), NodeReferenceUtil.makeDirect(from));
-    SNode to = SNodeOperations.cast(MoveNodeSpecialization__BehaviorDescriptor.getTo_id1NHZk5hj1ls.invoke(__thisNode__, repository), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    SNode to = SNodeOperations.cast(MoveNodeSpecialization__BehaviorDescriptor.getTo_id1NHZk5hj1ls.invoke(__thisNode__, repository), AUX_uhenws.AbstractConceptDeclaration_ec74828f);
     SPropertyOperations.plusAssignStringProp(from, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "_old");
-    AttributeOperations.setAttribute(SNodeOperations.cast(from, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation")), createDeprecatedNodeAnnotation_t3xq9p_a0e0b("The concept was moved to language \"" + SNodeOperations.getModel(SNodeOperations.cast(to, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"))).getModule().getModuleName() + "\""));
+    AttributeOperations.setAttribute(SNodeOperations.cast(from, AUX_uhenws.AbstractConceptDeclaration_ec74828f), new IAttributeDescriptor.NodeAttribute(AUX_uhenws.DeprecatedNodeAnnotation_3819b71a), createDeprecatedNodeAnnotation_t3xq9p_a0e0b("The concept was moved to language \"" + SNodeOperations.getModel(SNodeOperations.cast(to, AUX_uhenws.AbstractConceptDeclaration_ec74828f)).getModule().getModuleName() + "\""));
   }
 
   /*package*/ MoveConcept__BehaviorDescriptor() {
@@ -99,8 +100,14 @@ public final class MoveConcept__BehaviorDescriptor extends BaseBHDescriptor {
   }
   private static SNode createDeprecatedNodeAnnotation_t3xq9p_a0e0b(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_uhenws.DeprecatedNodeAnnotation_3819b71a, null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment"), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment").getType().toString(p0));
     return n1;
+  }
+
+  private static final class AUX_uhenws {
+    /*package*/ static final SConcept MoveConcept_c2b72190 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, "jetbrains.mps.lang.migration.structure.MoveConcept");
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept DeprecatedNodeAnnotation_3819b71a = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation");
   }
 }

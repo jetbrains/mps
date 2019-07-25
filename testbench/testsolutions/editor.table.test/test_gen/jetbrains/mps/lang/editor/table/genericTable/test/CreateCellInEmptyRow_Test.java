@@ -21,7 +21,7 @@ public class CreateCellInEmptyRow_Test extends BaseTransformationTest {
 
   @Test
   public void test_CreateCellInEmptyRow() throws Throwable {
-    new CreateCellInEmptyRow_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

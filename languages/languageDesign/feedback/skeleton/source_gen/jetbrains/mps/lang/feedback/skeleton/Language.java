@@ -6,10 +6,8 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
-import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
-import jetbrains.mps.lang.feedback.skeleton.constraints.GeneratedRulesConstraintsAspect;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
@@ -41,16 +39,11 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
+    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("c72da2b9-7cce-4447-8389-f407dc1158b7"), "jetbrains.mps.lang.structure"));
   }
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-    if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
-      return aspectClass.cast(FeedbackAspect.combine());
-    }
-    if (aspectClass.isAssignableFrom(RulesConstraintsAspect.class)) {
-      return aspectClass.cast(new GeneratedRulesConstraintsAspect());
-    }
 
 
     // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 

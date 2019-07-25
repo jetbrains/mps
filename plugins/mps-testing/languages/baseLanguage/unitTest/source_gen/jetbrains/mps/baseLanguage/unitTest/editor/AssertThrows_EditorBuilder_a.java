@@ -67,7 +67,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new AssertThrows_EditorBuilder_a.statementSingleRoleHandler_f24gzg_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e4cee82cL, 0x110e4d1571eL, "statement"), getEditorContext());
+    SingleRoleCellProvider provider = new statementSingleRoleHandler_f24gzg_b0(myNode, MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e4cee82cL, 0x110e4d1571eL, "statement"), getEditorContext());
     return provider.createCell();
   }
   private static class statementSingleRoleHandler_f24gzg_b0 extends SingleRoleCellProvider {
@@ -131,7 +131,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new AssertThrows_EditorBuilder_a.exceptionTypeSingleRoleHandler_f24gzg_d0(myNode, MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e4cee82cL, 0x110e4d906cfL, "exceptionType"), getEditorContext());
+    SingleRoleCellProvider provider = new exceptionTypeSingleRoleHandler_f24gzg_d0(myNode, MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e4cee82cL, 0x110e4d906cfL, "exceptionType"), getEditorContext());
     return provider.createCell();
   }
   private static class exceptionTypeSingleRoleHandler_f24gzg_d0 extends SingleRoleCellProvider {
@@ -186,7 +186,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     }
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new AssertThrows_EditorBuilder_a.messageSingleRoleHandler_f24gzg_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5250918L, 0x110e52557daL, "message"), getEditorContext());
+    SingleRoleCellProvider provider = new messageSingleRoleHandler_f24gzg_e0(myNode, MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5250918L, 0x110e52557daL, "message"), getEditorContext());
     return provider.createCell();
   }
   private static class messageSingleRoleHandler_f24gzg_e0 extends SingleRoleCellProvider {

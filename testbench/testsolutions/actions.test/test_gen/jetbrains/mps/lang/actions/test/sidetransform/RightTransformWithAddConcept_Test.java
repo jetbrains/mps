@@ -21,7 +21,7 @@ public class RightTransformWithAddConcept_Test extends BaseTransformationTest {
 
   @Test
   public void test_RightTransformWithAddConcept() throws Throwable {
-    new RightTransformWithAddConcept_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

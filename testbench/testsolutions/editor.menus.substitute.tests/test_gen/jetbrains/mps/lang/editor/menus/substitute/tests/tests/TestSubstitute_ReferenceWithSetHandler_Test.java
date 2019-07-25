@@ -24,7 +24,7 @@ public class TestSubstitute_ReferenceWithSetHandler_Test extends BaseTransformat
 
   @Test
   public void test_TestSubstitute_ReferenceWithSetHandler() throws Throwable {
-    new TestSubstitute_ReferenceWithSetHandler_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

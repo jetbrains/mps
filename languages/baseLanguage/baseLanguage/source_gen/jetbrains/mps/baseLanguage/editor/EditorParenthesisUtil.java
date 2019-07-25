@@ -5,20 +5,22 @@ package jetbrains.mps.baseLanguage.editor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.ParenthesisUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.baseLanguage.behavior.IBinaryLike__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class EditorParenthesisUtil {
   public EditorParenthesisUtil() {
   }
 
   public static void moveParenthesisToTheRightOrLeft(SNode expr, EditorContext context, boolean toRight) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), AUX_gqzh1.BinaryOperation_7c4c55f3))) {
       return;
     }
     SNode binOp = ParenthesisUtil.getBinOp(expr, toRight);
@@ -44,7 +46,7 @@ public class EditorParenthesisUtil {
       SLinkOperations.setTarget(binOp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), leaf);
     }
     if (sideSubtree != leaf) {
-      SNode leafParentOperation = SNodeOperations.cast(sideSubtree, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
+      SNode leafParentOperation = SNodeOperations.cast(sideSubtree, AUX_gqzh1.BinaryOperation_7c4c55f3);
       SNode exprParent = SNodeOperations.getParent(expr);
       SNodeOperations.replaceWithAnother(expr, sideSubtree);
       if (toRight) {
@@ -52,11 +54,11 @@ public class EditorParenthesisUtil {
       } else {
         SLinkOperations.setTarget(leafParentOperation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), expr);
       }
-      if (SNodeOperations.isInstanceOf(exprParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
-        ParenthesisUtil.checkOperationWRTPriority(SNodeOperations.cast(exprParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")));
+      if (SNodeOperations.isInstanceOf(exprParent, AUX_gqzh1.BinaryOperation_7c4c55f3)) {
+        ParenthesisUtil.checkOperationWRTPriority(SNodeOperations.cast(exprParent, AUX_gqzh1.BinaryOperation_7c4c55f3));
       }
     }
-    SNode binOpCheck = (SNodeOperations.isInstanceOf(SNodeOperations.getParent(binOp), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")) ? SNodeOperations.cast(SNodeOperations.getParent(binOp), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")) : binOp);
+    SNode binOpCheck = (SNodeOperations.isInstanceOf(SNodeOperations.getParent(binOp), AUX_gqzh1.BinaryOperation_7c4c55f3) ? SNodeOperations.cast(SNodeOperations.getParent(binOp), AUX_gqzh1.BinaryOperation_7c4c55f3) : binOp);
     ParenthesisUtil.checkOperationWRTPriority(binOpCheck);
     selectNode(context, expr, toRight);
   }
@@ -71,11 +73,11 @@ public class EditorParenthesisUtil {
     }
   }
   public static void moveParenthesisToTheLeftOrRightInside(SNode expr, EditorContext context, boolean toRight) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(expr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(expr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression")), AUX_gqzh1.BinaryOperation_7c4c55f3))) {
       return;
     }
     SNode sidemost = findRightmostOrLeftmostLeafExpression(SLinkOperations.getTarget(expr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression")), !(toRight));
-    SNode binOp = SNodeOperations.cast(SNodeOperations.getParent(sidemost), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
+    SNode binOp = SNodeOperations.cast(SNodeOperations.getParent(sidemost), AUX_gqzh1.BinaryOperation_7c4c55f3);
     SNode sideExpr = (toRight ? SLinkOperations.getTarget(binOp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")) : SLinkOperations.getTarget(binOp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
     SNodeOperations.deleteNode(sideExpr);
     SNodeOperations.replaceWithAnother(binOp, sideExpr);
@@ -89,11 +91,11 @@ public class EditorParenthesisUtil {
     selectNode(context, expr, !(toRight));
   }
   public static SNode findRightmostOrLeftmostLeafExpression(SNode root, boolean rightmost) {
-    if (!(SNodeOperations.isInstanceOf(root, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")))) {
+    if (!(SNodeOperations.isInstanceOf(root, AUX_gqzh1.IBinaryLike_686fe61a))) {
       return root;
     }
 
-    SNode parRoot = SNodeOperations.cast(root, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"));
+    SNode parRoot = SNodeOperations.cast(root, AUX_gqzh1.IBinaryLike_686fe61a);
     if (rightmost && IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(parRoot) != null) {
       return findRightmostOrLeftmostLeafExpression(IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(parRoot), rightmost);
     }
@@ -103,4 +105,8 @@ public class EditorParenthesisUtil {
     return root;
   }
 
+  private static final class AUX_gqzh1 {
+    /*package*/ static final SConcept BinaryOperation_7c4c55f3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SInterfaceConcept IBinaryLike_686fe61a = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike");
+  }
 }

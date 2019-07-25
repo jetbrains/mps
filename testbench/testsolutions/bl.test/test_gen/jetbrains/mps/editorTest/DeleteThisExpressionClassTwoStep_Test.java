@@ -22,7 +22,7 @@ public class DeleteThisExpressionClassTwoStep_Test extends BaseTransformationTes
 
   @Test
   public void test_DeleteThisExpressionClassTwoStep() throws Throwable {
-    new DeleteThisExpressionClassTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

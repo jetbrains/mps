@@ -25,6 +25,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MetadataUtil {
   private final SModel myMetadataModel;
@@ -52,7 +53,7 @@ public class MetadataUtil {
   private void createModelRoot(SModel origin) {
     SModelBase modelBase = (SModelBase) origin;
     SNodeId nodeId = PersistenceFacade.getInstance().createNodeId("~root");
-    SNode root = SModelOperations.createNewNode(myMetadataModel, nodeId, MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, "jetbrains.mps.ide.vcs.modelmetadata.structure.Model"));
+    SNode root = SModelOperations.createNewNode(myMetadataModel, nodeId, AUX_ca1g54.Model_7ddad893);
     SPropertyOperations.assign(root, MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, 0x7439be589a4e11e6L, "longname"), SModelOperations.getModelName(origin));
     if (origin instanceof GeneratableSModel) {
       SPropertyOperations.assign(root, MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, 0x7439be589a4e11f4L, "donotgenerate"), check_ca1g54_a0a0e0i(((GeneratableSModel) origin)));
@@ -81,7 +82,7 @@ public class MetadataUtil {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     final String langIdentity = pf.asString(lang);
     // IMPORTANT! model.new node set custom node id. See createModuleRefNode, below, for explanation why we need custom id 
-    SNode rv = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + langIdentity), MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, "jetbrains.mps.ide.vcs.modelmetadata.structure.LanguageDependency"));
+    SNode rv = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + langIdentity), AUX_ca1g54.LanguageDependency_d1ade1c6);
     // XXX it's bad to cast to implementation class, but it's MPS internal code and this is fastest approach 
     // (although the right way is to extract part of smodel language related to metadata handling, like LanguageIdentity 
     // into separate language and re-use it here). 
@@ -99,7 +100,7 @@ public class MetadataUtil {
     // The purpose of custom node id here is to have identical IDs for the same imports in different models 
     // That's why don't we rely on automatic node id. This doesn't help, however, in case of duplicated imports! 
     // SNodeId.Foreign.ID_PREFIX dependency is not mandatory, in fact. There's code, above, that uses hardcoded values anyway ("~root") 
-    SNode node = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + moduleIdentity), MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L, "jetbrains.mps.ide.vcs.modelmetadata.structure.ModuleReference"));
+    SNode node = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + moduleIdentity), AUX_ca1g54.ModuleReference_95def83f);
     SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L, 0x39c8ca3b79aaafe2L, "stringValue"), moduleIdentity);
     return node;
   }
@@ -111,7 +112,7 @@ public class MetadataUtil {
   private SNode createModelRefNode(SModelReference modelReference) {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     final String modelIdentity = pf.asString(modelReference);
-    SNode node = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + modelIdentity), MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafdeL, "jetbrains.mps.ide.vcs.modelmetadata.structure.ModelReference"));
+    SNode node = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + modelIdentity), AUX_ca1g54.ModelReference_95def83c);
     SPropertyOperations.assign(node, MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafdeL, 0x39c8ca3b79aaafdfL, "stringValue"), modelIdentity);
     return node;
   }
@@ -126,7 +127,7 @@ public class MetadataUtil {
     }
 
     final SModelBase modelBase = (SModelBase) model;
-    SNode root = ListSequence.fromList(SModelOperations.roots(metadataModel, MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, "jetbrains.mps.ide.vcs.modelmetadata.structure.Model"))).first();
+    SNode root = ListSequence.fromList(SModelOperations.roots(metadataModel, AUX_ca1g54.Model_7ddad893)).first();
     if (model instanceof GeneratableSModel) {
       ((GeneratableSModel) model).setDoNotGenerate(SPropertyOperations.getBoolean(root, MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, 0x7439be589a4e11f4L, "donotgenerate")));
     }
@@ -206,5 +207,12 @@ public class MetadataUtil {
       return checkedDotOperand.isDoNotGenerate();
     }
     return false;
+  }
+
+  private static final class AUX_ca1g54 {
+    /*package*/ static final SConcept Model_7ddad893 = MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, "jetbrains.mps.ide.vcs.modelmetadata.structure.Model");
+    /*package*/ static final SConcept LanguageDependency_d1ade1c6 = MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, "jetbrains.mps.ide.vcs.modelmetadata.structure.LanguageDependency");
+    /*package*/ static final SConcept ModuleReference_95def83f = MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L, "jetbrains.mps.ide.vcs.modelmetadata.structure.ModuleReference");
+    /*package*/ static final SConcept ModelReference_95def83c = MetaAdapterFactory.getConcept(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafdeL, "jetbrains.mps.ide.vcs.modelmetadata.structure.ModelReference");
   }
 }

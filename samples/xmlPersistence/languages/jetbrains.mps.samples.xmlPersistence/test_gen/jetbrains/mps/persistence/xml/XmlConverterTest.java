@@ -77,8 +77,8 @@ public class XmlConverterTest implements EnvironmentAware {
 
   private void testXml(String resource) throws IOException, ModelSaveException {
     final XmlModelPersistence persistence = new XmlModelPersistence();
-    final StreamDataSource source = new XmlConverterTest.MyDataSource(resource);
-    final XmlConverterTest.StringBuilderDataSource dataSourceToCheck = new XmlConverterTest.StringBuilderDataSource();
+    final StreamDataSource source = new MyDataSource(resource);
+    final StringBuilderDataSource dataSourceToCheck = new StringBuilderDataSource();
     final SModelReference reference = new SModelReference(new ModuleReference("mockModule", ModuleId.regular()), SModelId.generate(), "xmlfile");
     myProject.getModelAccess().runReadAction(new Runnable() {
       @Override

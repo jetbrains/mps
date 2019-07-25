@@ -10,13 +10,13 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -26,13 +26,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMenu.SMP_Param_nrkshw_a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_nrkshw_a(), AUX_nrkshw.TransformationLocation_SideTransform_PlaceInCellHolder_ae4aeac));
     return result;
   }
 
@@ -53,7 +54,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SEnumerationLiteral parameter, SubstituteMenuContext context) {
-      return new TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMenu.SMP_Param_nrkshw_a.SMP_Action_nrkshw_a0(parameter).createItems(context);
+      return new SMP_Param_nrkshw_a.SMP_Action_nrkshw_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -80,7 +81,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMenu.SMP_Param_nrkshw_a.SMP_Action_nrkshw_a0.Item item = new TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMenu.SMP_Param_nrkshw_a.SMP_Action_nrkshw_a0.Item(_context);
+        SMP_Param_nrkshw_a.SMP_Action_nrkshw_a0.Item item = new SMP_Param_nrkshw_a.SMP_Action_nrkshw_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -104,7 +105,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder"), context);
+          super(AUX_nrkshw.TransformationLocation_SideTransform_PlaceInCellHolder_ae4aeac, context);
           _context = context;
         }
 
@@ -126,7 +127,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_nrkshw.TransformationLocation_SideTransform_PlaceInCellHolder_ae4aeac, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -146,5 +147,9 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
       }
     }
 
+  }
+
+  private static final class AUX_nrkshw {
+    /*package*/ static final SConcept TransformationLocation_SideTransform_PlaceInCellHolder_ae4aeac = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder");
   }
 }

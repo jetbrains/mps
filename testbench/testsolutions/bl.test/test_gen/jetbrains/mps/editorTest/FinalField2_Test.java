@@ -21,7 +21,7 @@ public class FinalField2_Test extends BaseTransformationTest {
 
   @Test
   public void test_FinalField2() throws Throwable {
-    new FinalField2_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

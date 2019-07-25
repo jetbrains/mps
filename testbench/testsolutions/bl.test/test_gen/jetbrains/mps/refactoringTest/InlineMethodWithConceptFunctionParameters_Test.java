@@ -34,7 +34,7 @@ public class InlineMethodWithConceptFunctionParameters_Test extends BaseTransfor
 
   @Test
   public void test_InlineMethodWithConceptFunctionParameters() throws Throwable {
-    new InlineMethodWithConceptFunctionParameters_Test.TestBody(this).test_InlineMethodWithConceptFunctionParameters();
+    new TestBody(this).test_InlineMethodWithConceptFunctionParameters();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

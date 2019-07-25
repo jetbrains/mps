@@ -23,7 +23,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import java.util.Objects;
 import java.util.Arrays;
@@ -34,6 +33,8 @@ import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLooku
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EmptyLine_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.CONTEXT_ASSISTANT);
@@ -59,11 +60,11 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new EmptyLine_TransformationMenu.TMP_Action_supj5f_a0());
-      result.add(new EmptyLine_TransformationMenu.TMP_Action_supj5f_b0());
-      result.add(new EmptyLine_TransformationMenu.TMP_Group_supj5f_c0());
-      result.add(new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0());
-      result.add(new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_e0());
+      result.add(new TMP_Action_supj5f_a0());
+      result.add(new TMP_Action_supj5f_b0());
+      result.add(new TMP_Group_supj5f_c0());
+      result.add(new TMP_SubMenu_supj5f_d0());
+      result.add(new TMP_SubMenu_supj5f_e0());
     }
     return result;
   }
@@ -71,7 +72,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_supj5f_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      EmptyLine_TransformationMenu.TMP_Action_supj5f_a0.Item item = new EmptyLine_TransformationMenu.TMP_Action_supj5f_a0.Item(context);
+      TMP_Action_supj5f_a0.Item item = new TMP_Action_supj5f_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -106,7 +107,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45762L, "jetbrains.mps.samples.Kaja.structure.Step"), null));
+        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_supj5f.Step_a5f03fcb, null));
       }
 
 
@@ -123,7 +124,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_supj5f_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      EmptyLine_TransformationMenu.TMP_Action_supj5f_b0.Item item = new EmptyLine_TransformationMenu.TMP_Action_supj5f_b0.Item(context);
+      TMP_Action_supj5f_b0.Item item = new TMP_Action_supj5f_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -158,7 +159,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9f8bL, "jetbrains.mps.samples.Kaja.structure.LeftTurn"), null));
+        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_supj5f.LeftTurn_64fb688c, null));
       }
 
 
@@ -175,7 +176,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_supj5f_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return Objects.equals(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList"), false, false)), SNodeOperations.getContainingRoot(_context.getNode()));
+      return Objects.equals(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), AUX_supj5f.CommandList_68ab082b, false, false)), SNodeOperations.getContainingRoot(_context.getNode()));
     }
 
     @NotNull
@@ -191,12 +192,12 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new EmptyLine_TransformationMenu.TMP_Group_supj5f_c0.TMP_Action_supj5f_a2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_supj5f_c0.TMP_Action_supj5f_a2a());
     }
     private class TMP_Action_supj5f_a2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        EmptyLine_TransformationMenu.TMP_Group_supj5f_c0.TMP_Action_supj5f_a2a.Item item = new EmptyLine_TransformationMenu.TMP_Group_supj5f_c0.TMP_Action_supj5f_a2a.Item(context);
+        TMP_Group_supj5f_c0.TMP_Action_supj5f_a2a.Item item = new TMP_Group_supj5f_c0.TMP_Action_supj5f_a2a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -231,7 +232,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition"), null));
+          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_supj5f.RoutineDefinition_6674bc6d, null));
           _context.getEditorContext().selectWRTFocusPolicy(inserted);
         }
 
@@ -274,12 +275,12 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_a3a(), new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_b3a(), new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_c3a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_a3a(), new TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_b3a(), new TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_c3a());
     }
     private class TMP_Action_supj5f_a3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_a3a.Item item = new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_a3a.Item(context);
+        TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_a3a.Item item = new TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_a3a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -314,7 +315,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, "jetbrains.mps.samples.Kaja.structure.Repeat"), null));
+          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_supj5f.Repeat_65145e2b, null));
           _context.getEditorContext().selectWRTFocusPolicy(inserted);
 
         }
@@ -333,7 +334,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
     private class TMP_Action_supj5f_b3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_b3a.Item item = new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_b3a.Item(context);
+        TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_b3a.Item item = new TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_b3a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -368,7 +369,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While"), null));
+          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_supj5f.While_65179009, null));
           _context.getEditorContext().selectWRTFocusPolicy(inserted);
         }
 
@@ -386,7 +387,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
     private class TMP_Action_supj5f_c3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_c3a.Item item = new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_c3a.Item(context);
+        TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_c3a.Item item = new TMP_SubMenu_supj5f_d0.TMP_Action_supj5f_c3a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -421,7 +422,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, "jetbrains.mps.samples.Kaja.structure.IfStatement"), null));
+          SNode inserted = SNodeOperations.insertPrevSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(AUX_supj5f.IfStatement_64fb6928, null));
           _context.getEditorContext().selectWRTFocusPolicy(inserted);
         }
 
@@ -464,7 +465,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new EmptyLine_TransformationMenu.TMP_SubMenu_supj5f_e0.TMP_Include_supj5f_a4a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_supj5f_e0.TMP_Include_supj5f_a4a());
     }
     public class TMP_Include_supj5f_a4a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull
@@ -485,9 +486,20 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
         final SNode node = _context.getNode();
         final EditorContext editorContext = _context.getEditorContext();
 
-        return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ee0a16L, "jetbrains.mps.samples.Kaja.structure.EmptyLine"), "jetbrains.mps.samples.Kaja.editor.OtherCommands");
+        return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_supj5f.EmptyLine_66ad0b30, "jetbrains.mps.samples.Kaja.editor.OtherCommands");
       }
 
     }
+  }
+
+  private static final class AUX_supj5f {
+    /*package*/ static final SConcept Step_a5f03fcb = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45762L, "jetbrains.mps.samples.Kaja.structure.Step");
+    /*package*/ static final SConcept LeftTurn_64fb688c = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9f8bL, "jetbrains.mps.samples.Kaja.structure.LeftTurn");
+    /*package*/ static final SConcept CommandList_68ab082b = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList");
+    /*package*/ static final SConcept RoutineDefinition_6674bc6d = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
+    /*package*/ static final SConcept Repeat_65145e2b = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, "jetbrains.mps.samples.Kaja.structure.Repeat");
+    /*package*/ static final SConcept While_65179009 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, "jetbrains.mps.samples.Kaja.structure.While");
+    /*package*/ static final SConcept IfStatement_64fb6928 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, "jetbrains.mps.samples.Kaja.structure.IfStatement");
+    /*package*/ static final SConcept EmptyLine_66ad0b30 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ee0a16L, "jetbrains.mps.samples.Kaja.structure.EmptyLine");
   }
 }

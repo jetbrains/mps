@@ -37,7 +37,7 @@ public class FindForMethodWithIVariableLikeNodes_Test extends BaseTransformation
 
   @Test
   public void test_FindForMethodWithIVariableLikeNodesTest() throws Throwable {
-    new FindForMethodWithIVariableLikeNodes_Test.TestBody(this).test_FindForMethodWithIVariableLikeNodesTest();
+    new TestBody(this).test_FindForMethodWithIVariableLikeNodesTest();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

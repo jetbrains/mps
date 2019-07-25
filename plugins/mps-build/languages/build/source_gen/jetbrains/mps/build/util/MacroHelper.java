@@ -18,6 +18,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.concurrent.ConcurrentMap;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class MacroHelper {
   private final Collection<SNode> availableMacros = new ArrayList<SNode>();
@@ -29,8 +30,8 @@ public final class MacroHelper {
   private final Set<String> usedExports = new HashSet<String>();
   private final Set<String> usedPrefixes = new HashSet<String>();
   private final SNode project;
-  private final MacroHelper.MacroContext context;
-  private MacroHelper(SNode project, MacroHelper.MacroContext context) {
+  private final MacroContext context;
+  private MacroHelper(SNode project, MacroContext context) {
     this.project = project;
     this.context = context;
   }
@@ -41,7 +42,7 @@ public final class MacroHelper {
       }
       add(m, null, ((boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(m) ? SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "." + SPropertyOperations.getString(m, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) : null));
     }
-    for (SNode dep : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"))) {
+    for (SNode dep : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), AUX_dkgfnh.BuildProjectDependency_6a704312)) {
       SNode depProject = SLinkOperations.getTarget(dep, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script"));
       MacroHelper depHelper = context.getMacros(depProject);
       if (depHelper == null) {
@@ -67,7 +68,7 @@ public final class MacroHelper {
     }
   }
   private void add(SNode macro, String importName, String exportName) {
-    SNode macroProject = SNodeOperations.as(SNodeOperations.getContainingRoot(macro), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+    SNode macroProject = SNodeOperations.as(SNodeOperations.getContainingRoot(macro), AUX_dkgfnh.BuildProject_808bb057);
     if (macroProject == null) {
       context.reportProblem("macro is defined outside of the project", macro);
       return;
@@ -95,7 +96,7 @@ public final class MacroHelper {
     return availableMacros;
   }
   public Iterable<SNode> getVarsContainers() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies")), AUX_dkgfnh.BuildProjectDependency_6a704312)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return depPrefixes.containsKey(it);
       }
@@ -142,7 +143,7 @@ public final class MacroHelper {
       this.existingMacros = GenerationUtil.<SNode,MacroHelper>getSessionMap(project, genContext, "macroHelpers");
     }
     public MacroHelper getMacros(SNode dep) {
-      dep = SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+      dep = SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), AUX_dkgfnh.BuildProject_808bb057);
       if (dep == null) {
         return null;
       }
@@ -166,13 +167,19 @@ public final class MacroHelper {
       }
     }
     public SNode getOriginalMacro(SNode macro) {
-      return SNodeOperations.as(DependenciesHelper.getOriginalNode(macro, genContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro"));
+      return SNodeOperations.as(DependenciesHelper.getOriginalNode(macro, genContext), AUX_dkgfnh.BuildMacro_808bb078);
     }
     public SNode getOriginalDep(SNode dep) {
-      return SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"));
+      return SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), AUX_dkgfnh.BuildProjectDependency_6a704312);
     }
     public void reportProblem(String message, SNode node) {
       genContext.showErrorMessage(node, message);
     }
+  }
+
+  private static final class AUX_dkgfnh {
+    /*package*/ static final SConcept BuildProjectDependency_6a704312 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMacro_808bb078 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro");
   }
 }

@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.SNodePointer;
 
 public class ExternalIdMenu extends AbstractCellMenuComponent {
   public ExternalIdMenu() {
-    super(new SubstituteInfoPartExt[]{new ExternalIdMenu.XmlExternalId_generic_cellMenu_kwmulu_a0()});
+    super(new SubstituteInfoPartExt[]{new XmlExternalId_generic_cellMenu_kwmulu_a0()});
   }
   public static class XmlExternalId_generic_cellMenu_kwmulu_a0 extends AbstractCellMenuPart_Generic_Group {
     public XmlExternalId_generic_cellMenu_kwmulu_a0() {

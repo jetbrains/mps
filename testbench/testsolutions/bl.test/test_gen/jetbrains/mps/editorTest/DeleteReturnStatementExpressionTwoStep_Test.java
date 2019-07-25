@@ -24,7 +24,7 @@ public class DeleteReturnStatementExpressionTwoStep_Test extends BaseTransformat
 
   @Test
   public void test_DeleteReturnStatementExpressionTwoStep() throws Throwable {
-    new DeleteReturnStatementExpressionTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

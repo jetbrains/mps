@@ -17,7 +17,7 @@ import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
 public abstract class AbstractDebugSession<State extends AbstractUiState> {
   protected ProcessHandler myProcessHandler;
   private final List<SessionChangeListener> myListeners = new ArrayList<SessionChangeListener>();
-  protected AbstractDebugSession.ExecutionState myExecutionState = AbstractDebugSession.ExecutionState.WaitingAttach;
+  protected ExecutionState myExecutionState = ExecutionState.WaitingAttach;
   protected final AtomicReference<State> myUiState = new AtomicReference<State>(createUiState());
   protected final IDebuggableFramesSelector myDebuggableFramesSelector;
   protected final Project myProject;
@@ -47,13 +47,13 @@ public abstract class AbstractDebugSession<State extends AbstractUiState> {
     }
   }
   public boolean isPaused() {
-    return myExecutionState.equals(AbstractDebugSession.ExecutionState.Paused);
+    return myExecutionState.equals(ExecutionState.Paused);
   }
   public boolean isRunning() {
-    return myExecutionState.equals(AbstractDebugSession.ExecutionState.Running);
+    return myExecutionState.equals(ExecutionState.Running);
   }
   public boolean isStopped() {
-    return myExecutionState.equals(AbstractDebugSession.ExecutionState.Stopped);
+    return myExecutionState.equals(ExecutionState.Stopped);
   }
   public boolean isStepEnabled() {
     return isPaused() && getUiState().isPausedOnBreakpoint();
@@ -110,7 +110,7 @@ public abstract class AbstractDebugSession<State extends AbstractUiState> {
   public boolean canShowEvaluationDialog() {
     return false;
   }
-  public AbstractDebugSession.ExecutionState getExecutionState() {
+  public ExecutionState getExecutionState() {
     return myExecutionState;
   }
   @Nullable

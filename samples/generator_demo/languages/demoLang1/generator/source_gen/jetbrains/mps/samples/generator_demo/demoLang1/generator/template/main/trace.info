@@ -15,9 +15,9 @@
     <file name="QueriesGenerated.java">
       <node id="1228430836949" at="38,88,39,175" concept="1" />
       <node id="1228431537843" at="41,92,42,185" concept="1" />
-      <node id="1228431535919" at="78,14,79,67" concept="0" />
+      <node id="1228431535919" at="78,14,79,50" concept="0" />
       <node id="1228431535919" at="98,15,99,59" concept="1" />
-      <node id="1228430808501" at="107,14,108,197" concept="0" />
+      <node id="1228430808501" at="107,14,108,180" concept="0" />
       <node id="1228430808501" at="128,15,129,66" concept="1" />
       <node id="1228430808502" at="38,0,41,0" concept="2" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="1228431535919" at="41,0,44,0" concept="2" trace="sourceNodeQuery_1_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -37,8 +37,8 @@
     <file name="QueriesGenerated.java">
       <node id="1228431355684" at="32,83,33,192" concept="1" />
       <node id="1228431396516" at="35,83,36,191" concept="1" />
-      <node id="1228431342149" at="46,14,47,67" concept="0" />
-      <node id="1228431396510" at="47,67,48,67" concept="0" />
+      <node id="1228431342149" at="46,14,47,50" concept="0" />
+      <node id="1228431396510" at="47,50,48,50" concept="0" />
       <node id="1228431342149" at="67,15,68,58" concept="1" />
       <node id="1228431396510" at="69,15,70,58" concept="1" />
       <node id="1228431352276" at="32,0,35,0" concept="2" trace="rule_Condition_2_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />

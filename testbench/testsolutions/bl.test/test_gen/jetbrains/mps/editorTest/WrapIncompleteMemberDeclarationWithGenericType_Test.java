@@ -21,7 +21,7 @@ public class WrapIncompleteMemberDeclarationWithGenericType_Test extends BaseTra
 
   @Test
   public void test_WrapIncompleteMemberDeclarationWithGenericType() throws Throwable {
-    new WrapIncompleteMemberDeclarationWithGenericType_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

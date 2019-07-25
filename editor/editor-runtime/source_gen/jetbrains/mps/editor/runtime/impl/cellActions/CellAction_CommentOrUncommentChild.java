@@ -10,9 +10,10 @@ import java.util.Objects;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellAction_CommentOrUncommentChild extends CellAction_CommentOrUncomment {
   private final SNode myNode;
@@ -49,11 +50,16 @@ public class CellAction_CommentOrUncommentChild extends CellAction_CommentOrUnco
     SNode currentNode = editorContext.getSelectedNode();
     while (currentNode != null) {
       if (Objects.equals(SNodeOperations.getParent(currentNode), myNode)) {
-        SContainmentLink link = (SNodeOperations.isInstanceOf(currentNode, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute")) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(currentNode, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute")), MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), SMethodTrimmedId.create("getLink", MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute"), "BpxLfMirzf"))) : currentNode.getContainmentLink());
+        SContainmentLink link = (SNodeOperations.isInstanceOf(currentNode, AUX_z6u0tk.BaseCommentAttribute_f7206635) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(currentNode, AUX_z6u0tk.BaseCommentAttribute_f7206635), AUX_z6u0tk.ChildAttribute_96496d6c, SMethodTrimmedId.create("getLink", AUX_z6u0tk.ChildAttribute_96496d6c, "BpxLfMirzf"))) : currentNode.getContainmentLink());
         return (Objects.equals(link, myLink) ? currentNode : null);
       }
       currentNode = SNodeOperations.getParent(currentNode);
     }
     return null;
+  }
+
+  private static final class AUX_z6u0tk {
+    /*package*/ static final SConcept BaseCommentAttribute_f7206635 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept ChildAttribute_96496d6c = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

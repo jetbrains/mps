@@ -23,7 +23,7 @@ public class TestSubstitute_SmartReferenceWithoutExplicitMenuSubconcept_Test ext
 
   @Test
   public void test_TestSubstitute_SmartReferenceWithoutExplicitMenuSubconcept() throws Throwable {
-    new TestSubstitute_SmartReferenceWithoutExplicitMenuSubconcept_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -25,7 +25,7 @@ public class ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_ThenRe
 
   @Test
   public void test_ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_ThenReflectiveEditor() throws Throwable {
-    new ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_ThenReflectiveEditor_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

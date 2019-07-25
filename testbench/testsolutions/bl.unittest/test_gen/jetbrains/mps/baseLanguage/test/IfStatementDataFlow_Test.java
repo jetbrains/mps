@@ -32,15 +32,15 @@ public class IfStatementDataFlow_Test extends BaseTransformationTest {
 
   @Test
   public void test_IfStatementDataFlow() throws Throwable {
-    new IfStatementDataFlow_Test.TestBody(this).test_IfStatementDataFlow();
+    new TestBody(this).test_IfStatementDataFlow();
   }
   @Test
   public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928604755() throws Throwable {
-    new IfStatementDataFlow_Test.TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928604755();
+    new TestBody(this).test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928604755();
   }
   @Test
   public void test_ErrorMessagesCheck2501421320959199532() throws Throwable {
-    new IfStatementDataFlow_Test.TestBody(this).test_ErrorMessagesCheck2501421320959199532();
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199532();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

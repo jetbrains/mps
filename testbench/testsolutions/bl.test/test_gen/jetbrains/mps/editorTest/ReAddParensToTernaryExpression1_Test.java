@@ -21,7 +21,7 @@ public class ReAddParensToTernaryExpression1_Test extends BaseTransformationTest
 
   @Test
   public void test_ReAddParensToTernaryExpression1() throws Throwable {
-    new ReAddParensToTernaryExpression1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

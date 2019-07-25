@@ -21,7 +21,7 @@ public class LT_PostfixIncrementExpression_with_PrefixIncrement_Test extends Bas
 
   @Test
   public void test_LT_PostfixIncrementExpression_with_PrefixIncrement() throws Throwable {
-    new LT_PostfixIncrementExpression_with_PrefixIncrement_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

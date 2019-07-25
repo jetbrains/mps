@@ -21,7 +21,7 @@ public class AddNotTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_AddNotTest() throws Throwable {
-    new AddNotTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

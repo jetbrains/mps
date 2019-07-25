@@ -21,7 +21,7 @@ public class serrLiveTemplate_Test extends BaseTransformationTest {
 
   @Test
   public void test_serrLiveTemplate() throws Throwable {
-    new serrLiveTemplate_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

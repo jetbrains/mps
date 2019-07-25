@@ -29,7 +29,7 @@ public class NonexistentDefaultMenu_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeDefaultTransformationCheck2153278993334499810() throws Throwable {
-    new NonexistentDefaultMenu_Test.TestBody(this).test_NodeDefaultTransformationCheck2153278993334499810();
+    new TestBody(this).test_NodeDefaultTransformationCheck2153278993334499810();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

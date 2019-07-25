@@ -34,7 +34,7 @@ public class LinkDecoratorTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_LinkDecoratorTest() throws Throwable {
-    new LinkDecoratorTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

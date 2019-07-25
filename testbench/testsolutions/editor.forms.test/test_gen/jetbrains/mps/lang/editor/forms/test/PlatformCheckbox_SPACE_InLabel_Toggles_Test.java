@@ -23,7 +23,7 @@ public class PlatformCheckbox_SPACE_InLabel_Toggles_Test extends BaseTransformat
 
   @Test
   public void test_PlatformCheckbox_SPACE_InLabel_Toggles() throws Throwable {
-    new PlatformCheckbox_SPACE_InLabel_Toggles_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

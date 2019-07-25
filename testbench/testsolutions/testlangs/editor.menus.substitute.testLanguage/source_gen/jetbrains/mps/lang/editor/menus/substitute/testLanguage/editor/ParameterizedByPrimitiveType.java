@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -23,13 +22,15 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new ParameterizedByPrimitiveType.SMP_Param_ud82js_a(), MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x75a761fb50351afbL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestConceptForMenuParameterizedByPrimitiveType")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_ud82js_a(), AUX_ud82js.TestConceptForMenuParameterizedByPrimitiveType_d863f527));
     return result;
   }
 
@@ -50,7 +51,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(Integer parameter, SubstituteMenuContext context) {
-      return new ParameterizedByPrimitiveType.SMP_Param_ud82js_a.SMP_Action_ud82js_a0(parameter).createItems(context);
+      return new SMP_Param_ud82js_a.SMP_Action_ud82js_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -77,7 +78,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        ParameterizedByPrimitiveType.SMP_Param_ud82js_a.SMP_Action_ud82js_a0.Item item = new ParameterizedByPrimitiveType.SMP_Param_ud82js_a.SMP_Action_ud82js_a0.Item(_context);
+        SMP_Param_ud82js_a.SMP_Action_ud82js_a0.Item item = new SMP_Param_ud82js_a.SMP_Action_ud82js_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -101,7 +102,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x75a761fb50351afbL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestConceptForMenuParameterizedByPrimitiveType"), context);
+          super(AUX_ud82js.TestConceptForMenuParameterizedByPrimitiveType_d863f527, context);
           _context = context;
         }
 
@@ -126,7 +127,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x75a761fb50351afbL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestConceptForMenuParameterizedByPrimitiveType"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_ud82js.TestConceptForMenuParameterizedByPrimitiveType_d863f527, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -146,5 +147,9 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_ud82js {
+    /*package*/ static final SConcept TestConceptForMenuParameterizedByPrimitiveType_d863f527 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x75a761fb50351afbL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestConceptForMenuParameterizedByPrimitiveType");
   }
 }

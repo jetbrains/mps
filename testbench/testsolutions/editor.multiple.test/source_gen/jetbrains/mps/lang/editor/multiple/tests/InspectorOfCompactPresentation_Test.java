@@ -25,7 +25,7 @@ public class InspectorOfCompactPresentation_Test extends BaseTransformationTest 
 
   @Test
   public void test_InspectorOfCompactPresentation() throws Throwable {
-    new InspectorOfCompactPresentation_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

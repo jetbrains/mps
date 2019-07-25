@@ -25,5 +25,5 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
     return Collections.<NodeFactory>emptyList();
   }
 
-  private static String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"Parameter"};
+  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"Parameter"};
 }

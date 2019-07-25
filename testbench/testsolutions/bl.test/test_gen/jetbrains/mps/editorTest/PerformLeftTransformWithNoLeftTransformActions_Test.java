@@ -21,7 +21,7 @@ public class PerformLeftTransformWithNoLeftTransformActions_Test extends BaseTra
 
   @Test
   public void test_PerformLeftTransformWithNoLeftTransformActions() throws Throwable {
-    new PerformLeftTransformWithNoLeftTransformActions_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

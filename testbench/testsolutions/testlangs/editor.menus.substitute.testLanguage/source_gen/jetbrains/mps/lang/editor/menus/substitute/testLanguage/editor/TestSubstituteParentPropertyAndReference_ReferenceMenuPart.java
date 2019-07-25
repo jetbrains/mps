@@ -51,7 +51,7 @@ public class TestSubstituteParentPropertyAndReference_ReferenceMenuPart extends 
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TestSubstituteParentPropertyAndReference_ReferenceMenuPart.TMP_Reference_17vnwe_a0());
+      result.add(new TMP_Reference_17vnwe_a0());
     }
     return result;
   }
@@ -77,7 +77,7 @@ public class TestSubstituteParentPropertyAndReference_ReferenceMenuPart extends 
     @NotNull
     @Override
     protected ReferenceTransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull SReferenceLink referenceLink, final SNode targetNode) {
-      return new TestSubstituteParentPropertyAndReference_ReferenceMenuPart.TMP_Reference_17vnwe_a0.Item(referenceLink, targetNode, context);
+      return new TMP_Reference_17vnwe_a0.Item(referenceLink, targetNode, context);
     }
     private class Item extends ReferenceTransformationMenuItem implements SubstituteCompletionActionItem {
       private final TransformationMenuContext _context;

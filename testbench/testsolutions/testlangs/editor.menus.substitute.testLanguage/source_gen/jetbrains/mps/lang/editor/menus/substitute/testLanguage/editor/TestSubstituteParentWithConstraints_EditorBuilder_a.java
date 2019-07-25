@@ -117,7 +117,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new TestSubstituteParentWithConstraints_EditorBuilder_a.childCanBeParentSingleRoleHandler_yhoiih_c2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2cc6e9cL, "childCanBeParent"), getEditorContext());
+    SingleRoleCellProvider provider = new childCanBeParentSingleRoleHandler_yhoiih_c2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2cc6e9cL, "childCanBeParent"), getEditorContext());
     return provider.createCell();
   }
   private static class childCanBeParentSingleRoleHandler_yhoiih_c2a extends SingleRoleCellProvider {
@@ -201,7 +201,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new TestSubstituteParentWithConstraints_EditorBuilder_a.childCanBeAncestorSingleRoleHandler_yhoiih_g2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2ced771L, "childCanBeAncestor"), getEditorContext());
+    SingleRoleCellProvider provider = new childCanBeAncestorSingleRoleHandler_yhoiih_g2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2ced771L, "childCanBeAncestor"), getEditorContext());
     return provider.createCell();
   }
   private static class childCanBeAncestorSingleRoleHandler_yhoiih_g2a extends SingleRoleCellProvider {
@@ -285,7 +285,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new TestSubstituteParentWithConstraints_EditorBuilder_a.childCanBeChildSingleRoleHandler_yhoiih_k2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d0d666L, "childCanBeChild"), getEditorContext());
+    SingleRoleCellProvider provider = new childCanBeChildSingleRoleHandler_yhoiih_k2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d0d666L, "childCanBeChild"), getEditorContext());
     return provider.createCell();
   }
   private static class childCanBeChildSingleRoleHandler_yhoiih_k2a extends SingleRoleCellProvider {
@@ -369,7 +369,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new TestSubstituteParentWithConstraints_EditorBuilder_a.childWrapperCanBeParentSingleRoleHandler_yhoiih_o2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d23240L, "childWrapperCanBeParent"), getEditorContext());
+    SingleRoleCellProvider provider = new childWrapperCanBeParentSingleRoleHandler_yhoiih_o2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d23240L, "childWrapperCanBeParent"), getEditorContext());
     return provider.createCell();
   }
   private static class childWrapperCanBeParentSingleRoleHandler_yhoiih_o2a extends SingleRoleCellProvider {
@@ -453,7 +453,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new TestSubstituteParentWithConstraints_EditorBuilder_a.childWrapperCanBeAncestorSingleRoleHandler_yhoiih_s2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d41c81L, "childWrapperCanBeAncestor"), getEditorContext());
+    SingleRoleCellProvider provider = new childWrapperCanBeAncestorSingleRoleHandler_yhoiih_s2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d41c81L, "childWrapperCanBeAncestor"), getEditorContext());
     return provider.createCell();
   }
   private static class childWrapperCanBeAncestorSingleRoleHandler_yhoiih_s2a extends SingleRoleCellProvider {
@@ -537,7 +537,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_5() {
-    SingleRoleCellProvider provider = new TestSubstituteParentWithConstraints_EditorBuilder_a.childWrapperCanBeChildSingleRoleHandler_yhoiih_w2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d41c87L, "childWrapperCanBeChild"), getEditorContext());
+    SingleRoleCellProvider provider = new childWrapperCanBeChildSingleRoleHandler_yhoiih_w2a(myNode, MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d41c87L, "childWrapperCanBeChild"), getEditorContext());
     return provider.createCell();
   }
   private static class childWrapperCanBeChildSingleRoleHandler_yhoiih_w2a extends SingleRoleCellProvider {

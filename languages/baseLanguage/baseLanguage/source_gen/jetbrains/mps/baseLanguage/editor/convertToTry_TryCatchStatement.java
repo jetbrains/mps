@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class convertToTry_TryCatchStatement extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -64,7 +65,7 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new convertToTry_TryCatchStatement.TMP_Group_4jnsla_a0());
+      result.add(new TMP_Group_4jnsla_a0());
     }
     return result;
   }
@@ -88,12 +89,12 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new convertToTry_TryCatchStatement.TMP_Group_4jnsla_a0.TMP_Action_4jnsla_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_4jnsla_a0.TMP_Action_4jnsla_a0a());
     }
     private class TMP_Action_4jnsla_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        convertToTry_TryCatchStatement.TMP_Group_4jnsla_a0.TMP_Action_4jnsla_a0a.Item item = new convertToTry_TryCatchStatement.TMP_Group_4jnsla_a0.TMP_Action_4jnsla_a0a.Item(context);
+        TMP_Group_4jnsla_a0.TMP_Action_4jnsla_a0a.Item item = new TMP_Group_4jnsla_a0.TMP_Action_4jnsla_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -128,7 +129,7 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement"), null);
+          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_4jnsla.TryStatement_d214e8c2, null);
           SNode body = SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body"));
           SLinkOperations.setTarget(tryStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body"), body);
           for (SNode catchClause : SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause"))) {
@@ -158,5 +159,9 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_4jnsla {
+    /*package*/ static final SConcept TryStatement_d214e8c2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
   }
 }

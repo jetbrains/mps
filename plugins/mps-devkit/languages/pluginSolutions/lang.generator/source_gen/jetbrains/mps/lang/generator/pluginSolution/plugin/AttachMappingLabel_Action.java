@@ -31,6 +31,8 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import com.intellij.openapi.application.ApplicationManager;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AttachMappingLabel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -55,30 +57,30 @@ public class AttachMappingLabel_Action extends BaseAction {
       return false;
     }
     //  not inside macro 
-    if (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, "jetbrains.mps.lang.generator.structure.AbstractMacro"), false, false) != null) {
+    if (SNodeOperations.getNodeAncestor(node, AUX_4ltpk5.AbstractMacro_9c69ee36, false, false) != null) {
       return false;
     }
     //  in root template - ok 
-    if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) != null) {
+    if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(AUX_4ltpk5.RootTemplateAnnotation_423b5b1a)) != null) {
       return true;
     }
     //  in in-line template - ok 
-    if (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence"), false, false) != null) {
+    if (SNodeOperations.getNodeAncestor(node, AUX_4ltpk5.InlineTemplate_RuleConsequence_6e1e9f65, false, false) != null) {
       return true;
     }
     //  in in-line template with context 
-    if (SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence"), false, false) != null) {
+    if (SNodeOperations.getNodeAncestor(node, AUX_4ltpk5.InlineTemplateWithContext_RuleConsequence_cd06d77c, false, false) != null) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null;
+          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_4ltpk5.TemplateFragment_1973fd34)) != null;
         }
       }) != null;
     }
     //  in template fragment - ok 
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration"))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), AUX_4ltpk5.TemplateDeclaration_6074fd22)) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null;
+          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(AUX_4ltpk5.TemplateFragment_1973fd34)) != null;
         }
       }) != null;
     }
@@ -122,11 +124,11 @@ public class AttachMappingLabel_Action extends BaseAction {
       Iterable<SModel> ownTemplateModels = ((Generator) module).getOwnTemplateModels();
       mappings = Sequence.fromIterable(ownTemplateModels).translate(new ITranslator2<SModel, SNode>() {
         public Iterable<SNode> translate(SModel it) {
-          return SModelOperations.roots(it, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
+          return SModelOperations.roots(it, AUX_4ltpk5.MappingConfiguration_587b13db);
         }
       });
     } else {
-      mappings = SModelOperations.roots(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
+      mappings = SModelOperations.roots(SNodeOperations.getModel(node), AUX_4ltpk5.MappingConfiguration_587b13db);
     }
     final List<String> existingLabels = Sequence.fromIterable(mappings).translate(new ITranslator2<SNode, String>() {
       public Iterable<String> translate(final SNode it) {
@@ -194,5 +196,15 @@ __switch__:
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
+  }
+
+  private static final class AUX_4ltpk5 {
+    /*package*/ static final SInterfaceConcept AbstractMacro_9c69ee36 = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, "jetbrains.mps.lang.generator.structure.AbstractMacro");
+    /*package*/ static final SConcept RootTemplateAnnotation_423b5b1a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept InlineTemplate_RuleConsequence_6e1e9f65 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
+    /*package*/ static final SConcept TemplateFragment_1973fd34 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence_cd06d77c = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+    /*package*/ static final SConcept TemplateDeclaration_6074fd22 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept MappingConfiguration_587b13db = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 }

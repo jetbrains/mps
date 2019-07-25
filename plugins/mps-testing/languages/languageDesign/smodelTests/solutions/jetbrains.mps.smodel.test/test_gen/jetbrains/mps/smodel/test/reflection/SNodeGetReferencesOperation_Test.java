@@ -39,35 +39,35 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
 
   @Test
   public void test_size() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_size();
+    new TestBody(this).test_size();
   }
   @Test
   public void test_target() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_target();
+    new TestBody(this).test_target();
   }
   @Test
   public void test_linkDeclaration() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_linkDeclaration();
+    new TestBody(this).test_linkDeclaration();
   }
   @Test
   public void test_roles() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_roles();
+    new TestBody(this).test_roles();
   }
   @Test
   public void test_resolveInfo() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_resolveInfo();
+    new TestBody(this).test_resolveInfo();
   }
   @Test
   public void test_unspecifiedReferences() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_unspecifiedReferences();
+    new TestBody(this).test_unspecifiedReferences();
   }
   @Test
   public void test_unresolvedReference() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_unresolvedReference();
+    new TestBody(this).test_unresolvedReference();
   }
   @Test
   public void test_forNull() throws Throwable {
-    new SNodeGetReferencesOperation_Test.TestBody(this).test_forNull();
+    new TestBody(this).test_forNull();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

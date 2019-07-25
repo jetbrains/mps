@@ -22,7 +22,7 @@ public class Del_InInitializerEnding_Test extends BaseTransformationTest {
 
   @Test
   public void test_Del_InInitializerEnding() throws Throwable {
-    new Del_InInitializerEnding_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

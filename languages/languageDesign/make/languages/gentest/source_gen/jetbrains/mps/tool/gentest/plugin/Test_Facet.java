@@ -28,8 +28,8 @@ public class Test_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.tool.gentest.Test");
   public Test_Facet() {
-    ListSequence.fromList(targets).addElement(new Test_Facet.Target_collectTest());
-    ListSequence.fromList(targets).addElement(new Test_Facet.Target_runTests());
+    ListSequence.fromList(targets).addElement(new Target_collectTest());
+    ListSequence.fromList(targets).addElement(new Target_runTests());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -47,7 +47,7 @@ public class Test_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new Test_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_collectTest implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.tool.gentest.Test.collectTest");

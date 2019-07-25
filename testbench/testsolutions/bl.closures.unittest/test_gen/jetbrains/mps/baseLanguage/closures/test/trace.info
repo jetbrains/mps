@@ -11,8 +11,8 @@
   <root nodeRef="r:3d6db45f-d7e0-45ba-9835-ff824ffe21a1(jetbrains.mps.baseLanguage.closures.test@tests)/1227886714745">
     <file name="ClosureDataFlow_Test.java">
       <node id="1227886714745" at="27,33,28,25" concept="7" />
-      <node id="1227886714778" at="32,55,33,67" concept="1" />
-      <node id="2501421320959199348" at="36,77,37,89" concept="1" />
+      <node id="1227886714778" at="32,55,33,46" concept="1" />
+      <node id="2501421320959199348" at="36,77,37,68" concept="1" />
       <node id="1227886714745" at="42,52,43,19" concept="7" />
       <node id="1227886714746" at="46,57,47,35" concept="1" />
       <node id="2501421320959199349" at="47,35,48,54" concept="5" />
@@ -29,8 +29,8 @@
       <node id="1227886714778" at="46,0,51,0" concept="3" trace="test_ClosureDataFlow#()V" />
       <node id="2501421320959199348" at="52,0,57,0" concept="3" trace="test_ErrorMessagesCheck2501421320959199348#()V" />
       <scope id="1227886714745" at="27,33,28,25" />
-      <scope id="1227886714778" at="32,55,33,67" />
-      <scope id="2501421320959199348" at="36,77,37,89" />
+      <scope id="1227886714778" at="32,55,33,46" />
+      <scope id="2501421320959199348" at="36,77,37,68" />
       <scope id="1227886714745" at="42,52,43,19" />
       <scope id="1227886714745" at="27,0,30,0" />
       <scope id="1227886714745" at="42,0,45,0">
@@ -52,8 +52,8 @@
   <root nodeRef="r:3d6db45f-d7e0-45ba-9835-ff824ffe21a1(jetbrains.mps.baseLanguage.closures.test@tests)/1227886714783">
     <file name="ClosureLiteralDataFlow_Test.java">
       <node id="1227886714783" at="27,40,28,25" concept="7" />
-      <node id="1227886714803" at="32,62,33,81" concept="1" />
-      <node id="2501421320959199366" at="36,77,37,96" concept="1" />
+      <node id="1227886714803" at="32,62,33,53" concept="1" />
+      <node id="2501421320959199366" at="36,77,37,68" concept="1" />
       <node id="1227886714783" at="42,52,43,19" concept="7" />
       <node id="1227886714784" at="46,64,47,35" concept="1" />
       <node id="2501421320959199367" at="47,35,48,54" concept="5" />
@@ -70,8 +70,8 @@
       <node id="1227886714803" at="46,0,51,0" concept="3" trace="test_ClosureLiteralDataFlow#()V" />
       <node id="2501421320959199366" at="52,0,57,0" concept="3" trace="test_ErrorMessagesCheck2501421320959199366#()V" />
       <scope id="1227886714783" at="27,40,28,25" />
-      <scope id="1227886714803" at="32,62,33,81" />
-      <scope id="2501421320959199366" at="36,77,37,96" />
+      <scope id="1227886714803" at="32,62,33,53" />
+      <scope id="2501421320959199366" at="36,77,37,68" />
       <scope id="1227886714783" at="42,52,43,19" />
       <scope id="1227886714783" at="27,0,30,0" />
       <scope id="1227886714783" at="42,0,45,0">

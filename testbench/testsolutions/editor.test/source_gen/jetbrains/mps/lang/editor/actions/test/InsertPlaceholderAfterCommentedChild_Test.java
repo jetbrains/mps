@@ -21,7 +21,7 @@ public class InsertPlaceholderAfterCommentedChild_Test extends BaseTransformatio
 
   @Test
   public void test_InsertPlaceholderAfterCommentedChild() throws Throwable {
-    new InsertPlaceholderAfterCommentedChild_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

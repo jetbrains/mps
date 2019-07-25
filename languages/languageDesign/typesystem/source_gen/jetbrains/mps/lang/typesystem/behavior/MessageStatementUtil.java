@@ -14,6 +14,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.IBinaryLike__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MessageStatementUtil {
   public static final int MIN_LENGTH = 3;
@@ -34,13 +36,13 @@ public class MessageStatementUtil {
   }
 
   private static Iterable<SNode> stringDescendants(SNode expr) {
-    if (SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"))) {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral")));
+    if (SNodeOperations.isInstanceOf(expr, AUX_czrwz9.StringLiteral_aa5a8cf6)) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(expr, AUX_czrwz9.StringLiteral_aa5a8cf6));
     }
-    if (SNodeOperations.isInstanceOf(expr, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))) {
-      return Sequence.fromIterable(stringDescendants(IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(expr, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))))).concat(Sequence.fromIterable(stringDescendants(IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(expr, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))))));
+    if (SNodeOperations.isInstanceOf(expr, AUX_czrwz9.IBinaryLike_686fe61a)) {
+      return Sequence.fromIterable(stringDescendants(IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(expr, AUX_czrwz9.IBinaryLike_686fe61a)))).concat(Sequence.fromIterable(stringDescendants(IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(expr, AUX_czrwz9.IBinaryLike_686fe61a)))));
     }
-    return SNodeOperations.getNodeDescendants(expr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"), true, new SAbstractConcept[]{});
+    return SNodeOperations.getNodeDescendants(expr, AUX_czrwz9.StringLiteral_aa5a8cf6, true, new SAbstractConcept[]{});
   }
 
   private static String convertToCamelCaseNameString(String nameString) {
@@ -74,4 +76,8 @@ public class MessageStatementUtil {
     return res;
   }
 
+  private static final class AUX_czrwz9 {
+    /*package*/ static final SConcept StringLiteral_aa5a8cf6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SInterfaceConcept IBinaryLike_686fe61a = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike");
+  }
 }

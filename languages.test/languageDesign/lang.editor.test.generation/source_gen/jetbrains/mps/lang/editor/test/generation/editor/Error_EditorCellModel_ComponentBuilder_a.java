@@ -16,7 +16,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
@@ -39,6 +38,8 @@ import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class Error_EditorCellModel_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -81,8 +82,8 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
     }
     TestTargetActionMap.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new TestTargetKeymap());
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest"), "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new Error_EditorCellModel_ComponentBuilder_a.Error_generic_cellMenu_x93f0h_a0a0(), new Error_EditorCellModel_ComponentBuilder_a.Error_generic_cellMenu_x93f0h_b0a0(), new Error_EditorCellModel_ComponentBuilder_a.Error_customReplace_cellMenu_x93f0h_c0a0(), new Error_EditorCellModel_ComponentBuilder_a.Error_customReplace_cellMenu_x93f0h_d0a0(), new Error_EditorCellModel_ComponentBuilder_a.Error_component_cellMenu_x93f0h_e0a0(), new Error_EditorCellModel_ComponentBuilder_a.Error_generic_cellMenu_x93f0h_f0a0(), new Error_EditorCellModel_ComponentBuilder_a.ReplaceWith_Error_cellMenu_x93f0h_g0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), AUX_6xrqdq.AbstractCellTest_7af30824, "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new Error_generic_cellMenu_x93f0h_a0a0(), new Error_generic_cellMenu_x93f0h_b0a0(), new Error_customReplace_cellMenu_x93f0h_c0a0(), new Error_customReplace_cellMenu_x93f0h_d0a0(), new Error_component_cellMenu_x93f0h_e0a0(), new Error_generic_cellMenu_x93f0h_f0a0(), new ReplaceWith_Error_cellMenu_x93f0h_g0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   private boolean nodeCondition_x93f0h_a0a_0() {
@@ -247,11 +248,16 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
     public ReplaceWith_Error_cellMenu_x93f0h_g0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a5a543L, "jetbrains.mps.lang.editor.test.generation.structure.Error");
+      return AUX_6xrqdq.Error_7aa03d73;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
       return new EditorMenuDescriptorBase("replace node (custom node concept: " + "Error" + ")", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079260198"));
     }
+  }
+
+  private static final class AUX_6xrqdq {
+    /*package*/ static final SConcept AbstractCellTest_7af30824 = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest");
+    /*package*/ static final SConcept Error_7aa03d73 = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a5a543L, "jetbrains.mps.lang.editor.test.generation.structure.Error");
   }
 }

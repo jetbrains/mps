@@ -23,7 +23,7 @@ public class CompletionStartsWithTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_CompletionStartsWithTest() throws Throwable {
-    new CompletionStartsWithTest_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

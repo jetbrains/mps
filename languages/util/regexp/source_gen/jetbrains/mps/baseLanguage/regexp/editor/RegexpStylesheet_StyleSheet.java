@@ -20,7 +20,7 @@ public class RegexpStylesheet_StyleSheet {
   public static void apply_RegexpBrace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RegexpStylesheet_StyleSheet.RegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
+    new RegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -30,7 +30,7 @@ public class RegexpStylesheet_StyleSheet {
   public static void apply_LeftRegexpBrace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RegexpStylesheet_StyleSheet.LeftRegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
+    new LeftRegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -40,7 +40,7 @@ public class RegexpStylesheet_StyleSheet {
   public static void apply_RightRegexpBrace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RegexpStylesheet_StyleSheet.RightRegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
+    new RightRegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class RegexpBraceStyleClass extends AbstractStyleClass {

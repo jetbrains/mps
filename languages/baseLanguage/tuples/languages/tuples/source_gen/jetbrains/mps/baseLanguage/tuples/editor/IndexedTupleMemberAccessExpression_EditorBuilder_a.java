@@ -55,7 +55,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrack
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new IndexedTupleMemberAccessExpression_EditorBuilder_a.tupleSingleRoleHandler_pessfj_a0(myNode, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple"), getEditorContext());
+    SingleRoleCellProvider provider = new tupleSingleRoleHandler_pessfj_a0(myNode, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple"), getEditorContext());
     return provider.createCell();
   }
   private static class tupleSingleRoleHandler_pessfj_a0 extends SingleRoleCellProvider {
@@ -119,7 +119,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBrack
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new IndexedTupleMemberAccessExpression_EditorBuilder_a.indexSingleRoleHandler_pessfj_c0(myNode, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ae5facL, "index"), getEditorContext());
+    SingleRoleCellProvider provider = new indexSingleRoleHandler_pessfj_c0(myNode, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ae5facL, "index"), getEditorContext());
     return provider.createCell();
   }
   private static class indexSingleRoleHandler_pessfj_c0 extends SingleRoleCellProvider {

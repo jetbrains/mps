@@ -13,6 +13,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_VarVariableDeclaration_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_VarVariableDeclaration_InferenceRule() {
@@ -28,7 +29,7 @@ public class typeof_VarVariableDeclaration_InferenceRule extends AbstractInferen
       final SNode _concreteInitializerType = typeCheckingContext.getRepresentative(initializerType_typevar_8425555512443936489);
       typeCheckingContext.whenConcrete(_concreteInitializerType, new Runnable() {
         public void run() {
-          SNode concreteInitializerType = SNodeOperations.cast(typeCheckingContext.getExpandedNode(_concreteInitializerType), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"));
+          SNode concreteInitializerType = SNodeOperations.cast(typeCheckingContext.getExpandedNode(_concreteInitializerType), AUX_lwie4t.Type_4199e276);
           concreteInitializerType = ClassifierTypeUtil.copyTypeRecursively(ClassifierTypeUtil.getTypeCoercedToClassifierType(concreteInitializerType));
           {
             SNode _nodeToCheck_1029348928467 = varVariableDeclaration;
@@ -40,12 +41,17 @@ public class typeof_VarVariableDeclaration_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L, "jetbrains.mps.baseLanguage.varVariable.structure.VarVariableDeclaration");
+    return AUX_lwie4t.VarVariableDeclaration_a40678b3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return true;
+  }
+
+  private static final class AUX_lwie4t {
+    /*package*/ static final SConcept Type_4199e276 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept VarVariableDeclaration_a40678b3 = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L, "jetbrains.mps.baseLanguage.varVariable.structure.VarVariableDeclaration");
   }
 }

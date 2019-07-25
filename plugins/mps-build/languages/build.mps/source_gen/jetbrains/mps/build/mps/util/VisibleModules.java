@@ -34,6 +34,8 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class VisibleModules {
   private List<SNode> myModules = new ArrayList<SNode>();
@@ -63,7 +65,7 @@ public final class VisibleModules {
       }
       seen.add(project.getNodeId());
       for (SNode dep : SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies"))) {
-        SNode projectDependency = SNodeOperations.as(dep, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency"));
+        SNode projectDependency = SNodeOperations.as(dep, AUX_xuwpka.BuildProjectDependency_6a704312);
         if (projectDependency == null) {
           continue;
         }
@@ -77,7 +79,7 @@ public final class VisibleModules {
           QueueSequence.fromQueue(queue).addLastElement(depproj);
         }
       }
-      for (SNode newModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(project, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule"), false, new SAbstractConcept[]{}))) {
+      for (SNode newModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(project, AUX_xuwpka.BuildMps_AbstractModule_ebf3f6db, false, new SAbstractConcept[]{}))) {
         checkId(newModule, project);
         checkName(newModule, project);
         ListSequence.fromList(myModules).addElement(newModule);
@@ -93,7 +95,7 @@ public final class VisibleModules {
       }
     });
     if (existing != null) {
-      report("There are two modules visible from the project [" + myProject + "] with the id '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'. The first module is '" + SPropertyOperations.getString(existing, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'[" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(existing), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "]" + " from the model " + SNodeOperations.getModel(existing) + ", the second module is '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'[" + project + "]" + " from the model " + SNodeOperations.getModel(newModule), existing);
+      report("There are two modules visible from the project [" + myProject + "] with the id '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'. The first module is '" + SPropertyOperations.getString(existing, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'[" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(existing), AUX_xuwpka.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "]" + " from the model " + SNodeOperations.getModel(existing) + ", the second module is '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'[" + project + "]" + " from the model " + SNodeOperations.getModel(newModule), existing);
     }
   }
 
@@ -104,23 +106,23 @@ public final class VisibleModules {
       }
     });
     if (existing != null) {
-      report("There are two modules visible from the project [" + myProject + "] with the name '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'. The first module is '" + SPropertyOperations.getString(existing, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(existing), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "], the second module is '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + project + "]", existing);
+      report("There are two modules visible from the project [" + myProject + "] with the name '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'. The first module is '" + SPropertyOperations.getString(existing, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(existing), AUX_xuwpka.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "], the second module is '" + SPropertyOperations.getString(newModule, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + project + "]", existing);
     }
   }
 
   private void fillByIdAndByNameMaps() {
     for (SNode module : myModules) {
-      SNode currProj = SNodeOperations.getNodeAncestor(module, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
+      SNode currProj = SNodeOperations.getNodeAncestor(module, AUX_xuwpka.BuildProject_808bb057, false, false);
       if (myId2Module.containsKey(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")))) {
         SNode other = myId2Module.get(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")));
-        SNode otherProj = SNodeOperations.getNodeAncestor(other, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
+        SNode otherProj = SNodeOperations.getNodeAncestor(other, AUX_xuwpka.BuildProject_808bb057, false, false);
         report("There are two visible modules with the id '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'. The first module is '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'[" + currProj + "] from the model " + SNodeOperations.getModel(module) + ", the second module is '" + SPropertyOperations.getString(other, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'[" + otherProj + "] from the model " + SNodeOperations.getModel(other), module);
       }
       myId2Module.put(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")), module);
       if (myName2Module.containsKey(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
         SNode other = myName2Module.get(SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
         if (Objects.equals(SNodeOperations.getConcept(module), SNodeOperations.getConcept(other))) {
-          SNode otherProj = SNodeOperations.getNodeAncestor(other, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false);
+          SNode otherProj = SNodeOperations.getNodeAncestor(other, AUX_xuwpka.BuildProject_808bb057, false, false);
           report("There are two visible modules with the name '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'. The first module is '" + SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + currProj + "]" + ", the second module is '" + SPropertyOperations.getString(other, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid")) + "'[" + otherProj + "]", other);
         }
       }
@@ -137,7 +139,7 @@ public final class VisibleModules {
     // solutions and generators, so that I can find by SLanguageId object 
     // i.e. take SLanguageId from SModuleReference from module descriptor, and use it as a map key instead of string 
     ModuleId langModuleId = ModuleId.regular(MetaIdHelper.getLanguage(language).getIdValue());
-    return SNodeOperations.as(resolveById(langModuleId.toString()), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
+    return SNodeOperations.as(resolveById(langModuleId.toString()), AUX_xuwpka.BuildMps_Language_41959b14);
   }
 
   public SNode resolve(SModuleReference moduleRef) {
@@ -145,11 +147,11 @@ public final class VisibleModules {
   }
 
   public SNode resolveLanguage(SModuleReference moduleRef) {
-    return SNodeOperations.as(resolve(moduleRef), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
+    return SNodeOperations.as(resolve(moduleRef), AUX_xuwpka.BuildMps_Language_41959b14);
   }
 
   public SNode resolveGenerator(SModuleReference moduleRef) {
-    return SNodeOperations.as(resolve(moduleRef), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator"));
+    return SNodeOperations.as(resolve(moduleRef), AUX_xuwpka.BuildMps_Generator_bcabe904);
   }
 
   /**
@@ -180,5 +182,14 @@ public final class VisibleModules {
       return checkedDotOperand.getModelName();
     }
     return null;
+  }
+
+  private static final class AUX_xuwpka {
+    /*package*/ static final SConcept BuildProjectDependency_6a704312 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
+    /*package*/ static final SConcept BuildMps_AbstractModule_ebf3f6db = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept BuildProject_808bb057 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_Language_41959b14 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
+    /*package*/ static final SConcept BuildMps_Generator_bcabe904 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
   }
 }

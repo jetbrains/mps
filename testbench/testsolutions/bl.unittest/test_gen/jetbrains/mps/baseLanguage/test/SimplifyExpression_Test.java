@@ -32,159 +32,159 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeTheConditionIsAlwaysCheck8245314650934534145() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck8245314650934534145();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8245314650934534145();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck8626468694781659666() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8626468694781659666();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8626468694781659666();
   }
   @Test
   public void test_NodeWarningCheck4477106456906133459() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeWarningCheck4477106456906133459();
+    new TestBody(this).test_NodeWarningCheck4477106456906133459();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck8245314650934533632() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck8245314650934533632();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8245314650934533632();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck8245314650934533563() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck8245314650934533563();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8245314650934533563();
   }
   @Test
   public void test_NodeTheTernaryOperatorConditionCheck8245314650934576457() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheTernaryOperatorConditionCheck8245314650934576457();
+    new TestBody(this).test_NodeTheTernaryOperatorConditionCheck8245314650934576457();
   }
   @Test
   public void test_NodeTheTernaryOperatorConditionCheck8245314650934580399() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheTernaryOperatorConditionCheck8245314650934580399();
+    new TestBody(this).test_NodeTheTernaryOperatorConditionCheck8245314650934580399();
   }
   @Test
   public void test_NodeWarningCheck4477106456906157513() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeWarningCheck4477106456906157513();
+    new TestBody(this).test_NodeWarningCheck4477106456906157513();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck8245314650934554098() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8245314650934554098();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8245314650934554098();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456913936588() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456913936588();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456913936588();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck2857825852308765476() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck2857825852308765476();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck2857825852308765476();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck8626468694779692282() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8626468694779692282();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8626468694779692282();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck8626468694779705042() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8626468694779705042();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8626468694779705042();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456914053028() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456914053028();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456914053028();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456906125988() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456906125988();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456906125988();
   }
   @Test
   public void test_NodeTheNotLogicalExpressionCheck8626468694778147706() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheNotLogicalExpressionCheck8626468694778147706();
+    new TestBody(this).test_NodeTheNotLogicalExpressionCheck8626468694778147706();
   }
   @Test
   public void test_NodeTheNotLogicalExpressionCheck8626468694778663594() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheNotLogicalExpressionCheck8626468694778663594();
+    new TestBody(this).test_NodeTheNotLogicalExpressionCheck8626468694778663594();
   }
   @Test
   public void test_ErrorMessagesCheck2857825852308723301() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_ErrorMessagesCheck2857825852308723301();
+    new TestBody(this).test_ErrorMessagesCheck2857825852308723301();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456910957951() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456910957951();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456910957951();
   }
   @Test
   public void test_NodeTheNotLogicalExpressionCheck4477106456913804782() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheNotLogicalExpressionCheck4477106456913804782();
+    new TestBody(this).test_NodeTheNotLogicalExpressionCheck4477106456913804782();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456910420974() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456910420974();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456910420974();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456911678890() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911678890();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911678890();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456911590715() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911590715();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911590715();
   }
   @Test
   public void test_NodeTheNotLogicalExpressionCheck4477106456913803784() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheNotLogicalExpressionCheck4477106456913803784();
+    new TestBody(this).test_NodeTheNotLogicalExpressionCheck4477106456913803784();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456911594718() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911594718();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911594718();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck4477106456911698964() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911698964();
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck4477106456911698964();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691281476793() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281476793();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281476793();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691281479396() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281479396();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281479396();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691281476816() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281476816();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281476816();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691281476829() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281476829();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281476829();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691276100939() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691276100939();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691276100939();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck875204272651629221() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck875204272651629221();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck875204272651629221();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691281975567() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281975567();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281975567();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691282430650() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691282430650();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691282430650();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck875204272651629086() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck875204272651629086();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck875204272651629086();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691281975597() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281975597();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691281975597();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck2403546691278265076() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691278265076();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2403546691278265076();
   }
   @Test
   public void test_NodeTheConditionIsAlwaysCheck875204272651628917() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_NodeTheConditionIsAlwaysCheck875204272651628917();
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck875204272651628917();
   }
   @Test
   public void test_ErrorMessagesCheck4477106456910414383() throws Throwable {
-    new SimplifyExpression_Test.TestBody(this).test_ErrorMessagesCheck4477106456910414383();
+    new TestBody(this).test_ErrorMessagesCheck4477106456910414383();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

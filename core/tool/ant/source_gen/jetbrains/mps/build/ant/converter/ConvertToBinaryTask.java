@@ -35,7 +35,7 @@ public class ConvertToBinaryTask extends Copy {
     mapper.add(first);
     mapper.add(new IdentityMapper());
     add(mapper);
-    fileUtils = new ConvertToBinaryTask.FileUtilsEx(fileUtils);
+    fileUtils = new FileUtilsEx(fileUtils);
   }
 
   public void setMpsHome(File mpsHome) {

@@ -7,6 +7,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NamingUtil {
   public static String getDescriptorName(SNode aspect) {
@@ -14,6 +15,10 @@ public class NamingUtil {
   }
 
   public static SNode getAspectDescriptor(SNode generator) {
-    return SNodeOperations.getNodeAncestor(generator, MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, "jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor"), false, false);
+    return SNodeOperations.getNodeAncestor(generator, AUX_afbd5x.SimpleLanguageAspectDescriptor_fcfbfa89, false, false);
+  }
+
+  private static final class AUX_afbd5x {
+    /*package*/ static final SConcept SimpleLanguageAspectDescriptor_fcfbfa89 = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, "jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor");
   }
 }

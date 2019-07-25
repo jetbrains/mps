@@ -21,7 +21,7 @@ public class BinaryExpressionSubstitutions3_Test extends BaseTransformationTest 
 
   @Test
   public void test_BinaryExpressionSubstitutions3() throws Throwable {
-    new BinaryExpressionSubstitutions3_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

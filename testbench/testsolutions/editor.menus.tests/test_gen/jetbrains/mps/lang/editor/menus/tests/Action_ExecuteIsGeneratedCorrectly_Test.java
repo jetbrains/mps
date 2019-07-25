@@ -28,7 +28,7 @@ public class Action_ExecuteIsGeneratedCorrectly_Test extends BaseTransformationT
 
   @Test
   public void test_Action_ExecuteIsGeneratedCorrectly() throws Throwable {
-    new Action_ExecuteIsGeneratedCorrectly_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

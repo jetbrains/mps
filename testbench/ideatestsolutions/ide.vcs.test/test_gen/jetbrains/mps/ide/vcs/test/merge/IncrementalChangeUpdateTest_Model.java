@@ -33,6 +33,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * These tests check that incremental changes building works well with VCS (commit, reset, rollback) 
@@ -146,7 +147,7 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
   }
   private static SNode createClassConcept_2jv4hj_a0a1a5() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_2jv4hj.ClassConcept_e2711824, null, null, false);
     n1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "NewRoot");
     return n1;
   }
@@ -161,5 +162,9 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
       return checkedDotOperand.getModelChanges();
     }
     return null;
+  }
+
+  private static final class AUX_2jv4hj {
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

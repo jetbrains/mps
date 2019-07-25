@@ -20,7 +20,7 @@ public class MessageStyles_StyleSheet {
   public static void apply_MessageMacro(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new MessageStyles_StyleSheet.MessageMacroStyleClass(editorContext, node).apply(style, editorCell);
+    new MessageMacroStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -30,7 +30,7 @@ public class MessageStyles_StyleSheet {
   public static void apply_MessageLiteral(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new MessageStyles_StyleSheet.MessageLiteralStyleClass(editorContext, node).apply(style, editorCell);
+    new MessageLiteralStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class MessageMacroStyleClass extends AbstractStyleClass {

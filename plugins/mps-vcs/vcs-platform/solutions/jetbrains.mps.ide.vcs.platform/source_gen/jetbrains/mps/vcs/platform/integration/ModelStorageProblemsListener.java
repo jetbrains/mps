@@ -273,9 +273,9 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
           return PersistenceUtil.saveModel(inMemory, FileUtil.getExtension(modelFile.getName()));
         }
       });
-      MergeDriverBackupUtil.writeContentsToFile(modelData.getBytes(FileUtil.DEFAULT_CHARSET), modelFile.getName(), tmp, ModelStorageProblemsListener.DiskMemoryConflictVersion.MEMORY.getSuffix());
+      MergeDriverBackupUtil.writeContentsToFile(modelData.getBytes(FileUtil.DEFAULT_CHARSET), modelFile.getName(), tmp, DiskMemoryConflictVersion.MEMORY.getSuffix());
       if (modelFile.exists()) {
-        com.intellij.openapi.util.io.FileUtil.copy(new File(modelFile.getPath()), new File(tmp.getAbsolutePath(), modelFile.getName() + "." + ModelStorageProblemsListener.DiskMemoryConflictVersion.FILE_SYSTEM.getSuffix()));
+        com.intellij.openapi.util.io.FileUtil.copy(new File(modelFile.getPath()), new File(tmp.getAbsolutePath(), modelFile.getName() + "." + DiskMemoryConflictVersion.FILE_SYSTEM.getSuffix()));
       }
       File zipfile = MergeBackupUtil.chooseZipFileForModelFile(modelFile.getName());
       zipfile.getParentFile().mkdirs();

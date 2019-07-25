@@ -30,7 +30,7 @@ public class ListWithConceptFunction_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck1222443330005() throws Throwable {
-    new ListWithConceptFunction_Test.TestBody(this).test_ErrorMessagesCheck1222443330005();
+    new TestBody(this).test_ErrorMessagesCheck1222443330005();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

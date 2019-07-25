@@ -21,7 +21,7 @@ public class SpaceCompletion1_Test extends BaseTransformationTest {
 
   @Test
   public void test_SpaceCompletion1() throws Throwable {
-    new SpaceCompletion1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

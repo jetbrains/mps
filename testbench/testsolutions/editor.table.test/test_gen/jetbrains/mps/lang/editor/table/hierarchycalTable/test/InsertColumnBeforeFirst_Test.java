@@ -21,7 +21,7 @@ public class InsertColumnBeforeFirst_Test extends BaseTransformationTest {
 
   @Test
   public void test_InsertColumnBeforeFirst() throws Throwable {
-    new InsertColumnBeforeFirst_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

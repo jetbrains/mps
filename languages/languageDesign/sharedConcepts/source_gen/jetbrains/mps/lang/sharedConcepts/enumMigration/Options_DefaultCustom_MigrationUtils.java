@@ -29,5 +29,5 @@ public class Options_DefaultCustom_MigrationUtils {
         return null;
     }
   }
-  private static EnumerationLiteralsIndex enumSwitchIndex_uytbh4_a0a0a = EnumerationLiteralsIndex.build(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e811b985dL, 0x10e811b985eL, 0x10e811e894dL);
+  private static final EnumerationLiteralsIndex enumSwitchIndex_uytbh4_a0a0a = EnumerationLiteralsIndex.build(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e811b985dL, 0x10e811b985eL, 0x10e811e894dL);
 }

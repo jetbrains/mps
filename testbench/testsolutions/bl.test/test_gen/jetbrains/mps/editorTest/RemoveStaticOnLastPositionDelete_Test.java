@@ -21,7 +21,7 @@ public class RemoveStaticOnLastPositionDelete_Test extends BaseTransformationTes
 
   @Test
   public void test_RemoveStaticOnLastPositionDelete() throws Throwable {
-    new RemoveStaticOnLastPositionDelete_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

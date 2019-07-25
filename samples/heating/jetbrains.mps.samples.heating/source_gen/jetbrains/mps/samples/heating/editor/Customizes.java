@@ -39,6 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Customizes extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.SUBSTITUTE);
@@ -64,10 +65,10 @@ public class Customizes extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new Customizes.TMP_Group_3ero0o_a0());
+      result.add(new TMP_Group_3ero0o_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new Customizes.TMP_Group_3ero0o_a0());
+      result.add(new TMP_Group_3ero0o_a0());
     }
     return result;
   }
@@ -91,12 +92,12 @@ public class Customizes extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new Customizes.TMP_Group_3ero0o_a0.TMP_Action_3ero0o_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_3ero0o_a0.TMP_Action_3ero0o_a0a());
     }
     private class TMP_Action_3ero0o_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Customizes.TMP_Group_3ero0o_a0.TMP_Action_3ero0o_a0a.Item item = new Customizes.TMP_Group_3ero0o_a0.TMP_Action_3ero0o_a0a.Item(context);
+        TMP_Group_3ero0o_a0.TMP_Action_3ero0o_a0a.Item item = new TMP_Group_3ero0o_a0.TMP_Action_3ero0o_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -131,7 +132,7 @@ public class Customizes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode ref = SNodeFactoryOperations.createNewNode(MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference"), null);
+          SNode ref = SNodeFactoryOperations.createNewNode(AUX_3ero0o.DailyPlanReference_3ef981ae, null);
           SLinkOperations.setTarget(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes"), ref);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ref, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -155,5 +156,9 @@ public class Customizes extends TransformationMenuBase {
       }
 
     }
+  }
+
+  private static final class AUX_3ero0o {
+    /*package*/ static final SConcept DailyPlanReference_3ef981ae = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference");
   }
 }

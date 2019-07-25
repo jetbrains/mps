@@ -82,6 +82,12 @@ public abstract class TypecheckingFacade extends TypecheckingSessionHandler impl
     return controller().isStrongSubtype(typeA, typeB);
   }
 
+  @NotNull
+  @Override
+  public Collection<SNode> getImmediateSupertypes(@NotNull SNode type) {
+    return controller().getImmediateSupertypes(type);
+  }
+
   @Override
   public SNode coerceType(SNode type, @NotNull SConcept typeConcept) {
     if (type == null) return null;

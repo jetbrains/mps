@@ -21,7 +21,7 @@ public class ConditionalPresentation_removeQuery_RefNodeList_compact_Test extend
 
   @Test
   public void test_ConditionalPresentation_removeQuery_RefNodeList_compact() throws Throwable {
-    new ConditionalPresentation_removeQuery_RefNodeList_compact_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

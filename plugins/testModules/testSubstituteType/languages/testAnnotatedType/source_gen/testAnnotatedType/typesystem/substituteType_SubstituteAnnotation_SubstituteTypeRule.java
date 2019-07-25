@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import testAnnotatedType.behavior.PrimType__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class substituteType_SubstituteAnnotation_SubstituteTypeRule extends AbstractSubstituteType_Runtime implements SubstituteType_Runtime {
   public substituteType_SubstituteAnnotation_SubstituteTypeRule() {
@@ -23,16 +24,21 @@ public class substituteType_SubstituteAnnotation_SubstituteTypeRule extends Abst
     return new TypeSubstitution(originalType, new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
         if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(substituteAnnotation, MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1c4L, "condition")))) {
-          return PrimType__BehaviorDescriptor.substituteWith_id1hDKT6wB3pH.invoke(SNodeOperations.cast(SNodeOperations.getParent(substituteAnnotation), MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL, "testAnnotatedType.structure.PrimType")), SLinkOperations.getTarget(substituteAnnotation, MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1baL, "substitute")));
+          return PrimType__BehaviorDescriptor.substituteWith_id1hDKT6wB3pH.invoke(SNodeOperations.cast(SNodeOperations.getParent(substituteAnnotation), AUX_s64ca5.PrimType_23bd5893), SLinkOperations.getTarget(substituteAnnotation, MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1baL, "substitute")));
         }
         return null;
       }
     }.invoke(), "r:d9c7d7eb-2b42-4829-a0ae-81b54923bc48(testAnnotatedType.typesystem)", "7323318266641350941");
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation");
+    return AUX_s64ca5.SubstituteAnnotation_23973f8e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
+  }
+
+  private static final class AUX_s64ca5 {
+    /*package*/ static final SConcept PrimType_23bd5893 = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL, "testAnnotatedType.structure.PrimType");
+    /*package*/ static final SConcept SubstituteAnnotation_23973f8e = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation");
   }
 }

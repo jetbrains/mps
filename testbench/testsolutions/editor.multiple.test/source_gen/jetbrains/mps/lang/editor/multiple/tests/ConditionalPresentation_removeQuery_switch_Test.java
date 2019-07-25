@@ -21,7 +21,7 @@ public class ConditionalPresentation_removeQuery_switch_Test extends BaseTransfo
 
   @Test
   public void test_ConditionalPresentation_removeQuery_switch() throws Throwable {
-    new ConditionalPresentation_removeQuery_switch_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

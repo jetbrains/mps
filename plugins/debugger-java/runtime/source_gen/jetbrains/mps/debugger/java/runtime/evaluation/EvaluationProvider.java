@@ -37,7 +37,7 @@ public class EvaluationProvider implements IEvaluationProvider {
   @Nullable
   private SModuleReference myContainerModuleRef;
   private final List<IEvaluationContainer> myWatches = new ArrayList<IEvaluationContainer>();
-  private final List<EvaluationProvider.IWatchListener> myWatchListeners = new ArrayList<EvaluationProvider.IWatchListener>();
+  private final List<IWatchListener> myWatchListeners = new ArrayList<IWatchListener>();
 
   public EvaluationProvider(@NotNull DebugSession debugSession) {
     myDebugSession = debugSession;
@@ -197,8 +197,8 @@ public class EvaluationProvider implements IEvaluationProvider {
     return watchesCopy;
   }
 
-  private List<EvaluationProvider.IWatchListener> getListeners() {
-    List<EvaluationProvider.IWatchListener> listeners = new ArrayList<EvaluationProvider.IWatchListener>();
+  private List<IWatchListener> getListeners() {
+    List<IWatchListener> listeners = new ArrayList<IWatchListener>();
     synchronized (myWatchListeners) {
       listeners.addAll(myWatchListeners);
     }
@@ -206,30 +206,30 @@ public class EvaluationProvider implements IEvaluationProvider {
   }
 
   private void fireWatchAdded(IEvaluationContainer model) {
-    for (EvaluationProvider.IWatchListener listener : getListeners()) {
+    for (IWatchListener listener : getListeners()) {
       listener.watchAdded(model);
     }
   }
 
   private void fireWatchUpdated(IEvaluationContainer model) {
-    for (EvaluationProvider.IWatchListener listener : getListeners()) {
+    for (IWatchListener listener : getListeners()) {
       listener.watchUpdated(model);
     }
   }
 
   private void fireWatchRemoved(IEvaluationContainer model) {
-    for (EvaluationProvider.IWatchListener listener : getListeners()) {
+    for (IWatchListener listener : getListeners()) {
       listener.watchRemoved(model);
     }
   }
 
-  public void addWatchListener(@NotNull EvaluationProvider.IWatchListener listener) {
+  public void addWatchListener(@NotNull IWatchListener listener) {
     synchronized (myWatchListeners) {
       myWatchListeners.add(listener);
     }
   }
 
-  public void removeWatchListener(@NotNull EvaluationProvider.IWatchListener listener) {
+  public void removeWatchListener(@NotNull IWatchListener listener) {
     synchronized (myWatchListeners) {
       myWatchListeners.remove(listener);
     }
@@ -239,7 +239,7 @@ public class EvaluationProvider implements IEvaluationProvider {
     void watchUpdated(IEvaluationContainer model);
     void watchRemoved(IEvaluationContainer model);
   }
-  public static class WatchAdapter implements EvaluationProvider.IWatchListener {
+  public static class WatchAdapter implements IWatchListener {
     public WatchAdapter() {
     }
     @Override

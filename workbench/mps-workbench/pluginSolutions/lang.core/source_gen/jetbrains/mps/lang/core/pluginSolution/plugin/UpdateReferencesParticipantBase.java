@@ -55,46 +55,46 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
       super("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP");
     }
     public MoveNodeRefactoringParticipant<?, ?> get() {
-      return new UpdateReferencesParticipantBase.UpdateReferencesParticipant();
+      return new UpdateReferencesParticipant();
     }
   }
 
   public static class UpdateReferencesParticipant extends UpdateReferencesParticipantBase<Void> {
-    public MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<UpdateReferencesParticipantBase.NodeData<Void>, UpdateReferencesParticipantBase.NodeData<Void>> getDataCollector() {
-      final UpdateReferencesParticipantBase.MyMoveNodeRefactoringDataCollector dataCollector = new UpdateReferencesParticipantBase.MyMoveNodeRefactoringDataCollector();
-      return new MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<UpdateReferencesParticipantBase.NodeData<Void>, UpdateReferencesParticipantBase.NodeData<Void>>() {
-        public UpdateReferencesParticipantBase.NodeData<Void> beforeMove(SNode nodeToMove) {
+    public MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<NodeData<Void>, NodeData<Void>> getDataCollector() {
+      final MyMoveNodeRefactoringDataCollector dataCollector = new MyMoveNodeRefactoringDataCollector();
+      return new MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<NodeData<Void>, NodeData<Void>>() {
+        public NodeData<Void> beforeMove(SNode nodeToMove) {
           return new NodeData<Void>(dataCollector.beforeMove(nodeToMove), ((Void) null));
         }
-        public UpdateReferencesParticipantBase.NodeData<Void> afterMove(SNode movedNode) {
+        public NodeData<Void> afterMove(SNode movedNode) {
           return new NodeData<Void>(dataCollector.afterMove(movedNode), ((Void) null));
         }
       };
     }
-    public SNode serializeInitialState(UpdateReferencesParticipantBase.NodeData<Void> initialState) {
+    public SNode serializeInitialState(NodeData<Void> initialState) {
       return NodeReferenceUtil.makeReflection(initialState.baseData().reference(), initialState.baseData().name());
     }
-    public SNode serializeFinalState(UpdateReferencesParticipantBase.NodeData<Void> finalState) {
+    public SNode serializeFinalState(NodeData<Void> finalState) {
       return NodeReferenceUtil.makeReflection(finalState.baseData().reference(), finalState.baseData().name());
     }
-    public UpdateReferencesParticipantBase.NodeData<Void> deserializeFinalState(SNode serialized) {
+    public NodeData<Void> deserializeFinalState(SNode serialized) {
       return new NodeData<Void>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(serialized), SPropertyOperations.getString(serialized, MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName"))), ((Void) null));
     }
-    public UpdateReferencesParticipantBase.NodeData<Void> deserializeInitialState(SNode serialized) {
+    public NodeData<Void> deserializeInitialState(SNode serialized) {
       return new NodeData<Void>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(serialized), SPropertyOperations.getString(serialized, MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName"))), ((Void) null));
     }
-    private boolean isOverridingParticipant(UpdateReferencesParticipantBase.UpdateReferencesParticipant it) {
+    private boolean isOverridingParticipant(UpdateReferencesParticipant it) {
       return this.getClass().isAssignableFrom(it.getClass()) && !(Objects.equals(this.getClass(), it.getClass()));
     }
     @Override
     protected boolean shouldUpdateReference(final List<RefactoringParticipant.Option> selectedOptions, final SRepository repository, final SNode containingNode, final SReferenceLink role, final SNode movingNode, final RefactoringSession refactoringSession) {
       // check other references participants 
-      if (Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).ofType(UpdateReferencesParticipantBase.UpdateReferencesParticipant.class).where(new IWhereFilter<UpdateReferencesParticipantBase.UpdateReferencesParticipant>() {
-        public boolean accept(UpdateReferencesParticipantBase.UpdateReferencesParticipant it) {
+      if (Sequence.fromIterable(new ExtensionPoint<MoveNodeRefactoringParticipant<?, ?>>("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP").getObjects()).ofType(UpdateReferencesParticipant.class).where(new IWhereFilter<UpdateReferencesParticipant>() {
+        public boolean accept(UpdateReferencesParticipant it) {
           return isOverridingParticipant(it);
         }
-      }).any(new IWhereFilter<UpdateReferencesParticipantBase.UpdateReferencesParticipant>() {
-        public boolean accept(UpdateReferencesParticipantBase.UpdateReferencesParticipant it) {
+      }).any(new IWhereFilter<UpdateReferencesParticipant>() {
+        public boolean accept(UpdateReferencesParticipant it) {
           return it.shouldUpdateReference(selectedOptions, repository, containingNode, role, movingNode, refactoringSession);
         }
       })) {
@@ -125,20 +125,20 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
     }
   }
 
-  public static class NodeData<T> extends MultiTuple._2<UpdateReferencesParticipantBase.NamedNodeReference, T> {
+  public static class NodeData<T> extends MultiTuple._2<NamedNodeReference, T> {
     public NodeData() {
       super();
     }
-    public NodeData(UpdateReferencesParticipantBase.NamedNodeReference baseData, T other) {
+    public NodeData(NamedNodeReference baseData, T other) {
       super(baseData, other);
     }
-    public UpdateReferencesParticipantBase.NamedNodeReference baseData(UpdateReferencesParticipantBase.NamedNodeReference value) {
+    public NamedNodeReference baseData(NamedNodeReference value) {
       return super._0(value);
     }
     public T other(T value) {
       return super._1(value);
     }
-    public UpdateReferencesParticipantBase.NamedNodeReference baseData() {
+    public NamedNodeReference baseData() {
       return super._0();
     }
     public T other() {
@@ -152,31 +152,31 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
   }
   public static final RefactoringParticipant.Option OPTION = new RefactoringParticipant.Option("moveNode.options.updateReferencesParticipant", "Update references");
 
-  public static class MyMoveNodeRefactoringDataCollector implements MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<UpdateReferencesParticipantBase.NamedNodeReference, UpdateReferencesParticipantBase.NamedNodeReference> {
-    public UpdateReferencesParticipantBase.NamedNodeReference beforeMove(SNode nodeToMove) {
+  public static class MyMoveNodeRefactoringDataCollector implements MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<NamedNodeReference, NamedNodeReference> {
+    public NamedNodeReference beforeMove(SNode nodeToMove) {
       return new NamedNodeReference(SNodeOperations.getPointer(nodeToMove), NodeReferenceUtil.getNodePresentation(nodeToMove));
     }
-    public UpdateReferencesParticipantBase.NamedNodeReference afterMove(SNode movedNode) {
+    public NamedNodeReference afterMove(SNode movedNode) {
       return new NamedNodeReference(SNodeOperations.getPointer(movedNode), NodeReferenceUtil.getNodePresentation(movedNode));
     }
   }
 
 
-  public List<RefactoringParticipant.Option> getAvailableOptions(UpdateReferencesParticipantBase.NodeData<T> initialState, SRepository repository) {
+  public List<RefactoringParticipant.Option> getAvailableOptions(NodeData<T> initialState, SRepository repository) {
     return ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Option>(), OPTION);
   }
 
-  public List<List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>> getChanges(List<UpdateReferencesParticipantBase.NodeData<T>> initialStates, final SRepository repository, final List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor) {
+  public List<List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>> getChanges(List<NodeData<T>> initialStates, final SRepository repository, final List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor) {
     if (!(ListSequence.fromList(selectedOptions).contains(OPTION))) {
-      return ListSequence.fromList(initialStates).select(new ISelector<UpdateReferencesParticipantBase.NodeData<T>, List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>>() {
-        public List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>> select(UpdateReferencesParticipantBase.NodeData<T> it) {
-          return (List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>) Collections.<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>emptyList();
+      return ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>>() {
+        public List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>> select(NodeData<T> it) {
+          return (List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>) Collections.<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>emptyList();
         }
       }).toListSequence();
     }
     Collection<SReference> usages;
-    List<SNode> movedNodes = ListSequence.fromList(initialStates).select(new ISelector<UpdateReferencesParticipantBase.NodeData<T>, SNode>() {
-      public SNode select(UpdateReferencesParticipantBase.NodeData<T> it) {
+    List<SNode> movedNodes = ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, SNode>() {
+      public SNode select(NodeData<T> it) {
         return it.baseData().reference().resolve(repository);
       }
     }).toListSequence();
@@ -196,8 +196,8 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
         progressMonitor.start("References in current project", Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context))).count());
         usages = CollectionSequence.fromCollection(new ArrayList<SReference>());
         for (SReference ref : Sequence.fromIterable(CommandUtil.references(CommandUtil.selectScope(null, context)))) {
-          if (ListSequence.fromList(initialStates).select(new ISelector<UpdateReferencesParticipantBase.NodeData<T>, SNodeReference>() {
-            public SNodeReference select(UpdateReferencesParticipantBase.NodeData<T> it) {
+          if (ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, SNodeReference>() {
+            public SNodeReference select(NodeData<T> it) {
               return it.baseData().reference();
             }
           }).contains(ref.getTargetNodeReference())) {
@@ -210,21 +210,21 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
         }
       }
     }
-    final Map<SNodeReference, List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>> result = MapSequence.fromMap(new HashMap<SNodeReference, List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>>());
+    final Map<SNodeReference, List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>> result = MapSequence.fromMap(new HashMap<SNodeReference, List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>>());
     for (SReference ref : CollectionSequence.fromCollection(usages)) {
       final SNodeReference containingNode = ref.getSourceNode().getReference();
       @Nullable final SNode movingNode = ref.getTargetNode();
       final SReferenceLink role = ref.getLink();
       final String resolveInfo = SLinkOperations.getResolveInfo(ref);
       final SearchResults searchResults = new SearchResults(SetSequence.fromSetAndArray(new HashSet<SNode>(), ref.getTargetNode()), ListSequence.fromListAndArray(new ArrayList<SearchResult<SNode>>(), new SearchResult<SNode>(ref.getSourceNode(), "reference")));
-      RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>> change = new MoveNodeRefactoringParticipant.ChangeBase<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>() {
-        public MoveNodeRefactoringParticipant<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>> getParticipant() {
+      RefactoringParticipant.Change<NodeData<T>, NodeData<T>> change = new MoveNodeRefactoringParticipant.ChangeBase<NodeData<T>, NodeData<T>>() {
+        public MoveNodeRefactoringParticipant<NodeData<T>, NodeData<T>> getParticipant() {
           return UpdateReferencesParticipantBase.this;
         }
         public SearchResults getSearchResults() {
           return searchResults;
         }
-        public void confirm(final UpdateReferencesParticipantBase.NodeData<T> finalState, final SRepository repository, final RefactoringSession refactoringSession) {
+        public void confirm(final NodeData<T> finalState, final SRepository repository, final RefactoringSession refactoringSession) {
           refactoringSession.registerChange(new Runnable() {
             public void run() {
               if (shouldUpdateReference(selectedOptions, repository, containingNode.resolve(repository), role, movingNode, refactoringSession)) {
@@ -238,12 +238,12 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
         }
       };
       if (MapSequence.fromMap(result).get(ref.getTargetNodeReference()) == null) {
-        MapSequence.fromMap(result).put(ref.getTargetNodeReference(), ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>()));
+        MapSequence.fromMap(result).put(ref.getTargetNodeReference(), ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>()));
       }
       ListSequence.fromList(MapSequence.fromMap(result).get(ref.getTargetNodeReference())).addElement(change);
     }
-    return ListSequence.fromList(initialStates).select(new ISelector<UpdateReferencesParticipantBase.NodeData<T>, List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>>>() {
-      public List<RefactoringParticipant.Change<UpdateReferencesParticipantBase.NodeData<T>, UpdateReferencesParticipantBase.NodeData<T>>> select(UpdateReferencesParticipantBase.NodeData<T> initialState) {
+    return ListSequence.fromList(initialStates).select(new ISelector<NodeData<T>, List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>>>() {
+      public List<RefactoringParticipant.Change<NodeData<T>, NodeData<T>>> select(NodeData<T> initialState) {
         return MapSequence.fromMap(result).get(initialState.baseData().reference());
       }
     }).toListSequence();
@@ -259,15 +259,15 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
     }
     return true;
   }
-  protected void doUpdateReference(final List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, UpdateReferencesParticipantBase.NodeData<T> newTarget, final String resolveInfo) {
+  protected void doUpdateReference(final List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, NodeData<T> newTarget, final String resolveInfo) {
     doUpdateReference(repository, containingNode, role, newTarget, resolveInfo);
   }
   @Deprecated
   @ToRemove(version = 3.5)
-  protected void doUpdateReference(SRepository repository, final SNode containingNode, final SReferenceLink role, UpdateReferencesParticipantBase.NodeData<T> newTarget, final String resolveInfo) {
+  protected void doUpdateReference(SRepository repository, final SNode containingNode, final SReferenceLink role, NodeData<T> newTarget, final String resolveInfo) {
     containingNode.setReference(role, jetbrains.mps.smodel.SReference.create(role, containingNode, newTarget.baseData().reference().getModelReference(), newTarget.baseData().reference().getNodeId(), resolveInfo));
   }
-  protected void doUpdateModelImport(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, UpdateReferencesParticipantBase.NodeData<T> newTarget) {
+  protected void doUpdateModelImport(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, NodeData<T> newTarget) {
     UpdateModelImports.addModelImport(containingNode.getModel(), newTarget.baseData().reference().getModelReference().resolve(repository));
   }
 }

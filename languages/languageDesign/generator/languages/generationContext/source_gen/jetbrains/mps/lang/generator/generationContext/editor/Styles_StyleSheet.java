@@ -23,7 +23,7 @@ public class Styles_StyleSheet {
   public static void apply_genContext_operation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.genContext_operationStyleClass(editorContext, node).apply(style, editorCell);
+    new genContext_operationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -33,7 +33,7 @@ public class Styles_StyleSheet {
   public static void apply_deprecated(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Styles_StyleSheet.deprecatedStyleClass(editorContext, node).apply(style, editorCell);
+    new deprecatedStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class genContext_operationStyleClass extends AbstractStyleClass {

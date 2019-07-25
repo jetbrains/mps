@@ -102,7 +102,7 @@ public final class NodesMatcher {
     ArrayList<NodeDifference> ret = new ArrayList<NodeDifference>(myFirst.size());
     Iterator<SNode> iteratorA = myFirst.iterator();
     Iterator<SNode> iteratorB = mySecond.iterator();
-    NodesMatcher.MatcherImpl mi = new NodesMatcher.MatcherImpl(nodeMap);
+    MatcherImpl mi = new MatcherImpl(nodeMap);
     while (iteratorA.hasNext() && iteratorB.hasNext()) {
       mi.match(iteratorA.next(), iteratorB.next());
     }
@@ -191,7 +191,7 @@ public final class NodesMatcher {
    */
   @Deprecated
   public NodeDifference match(SNode a, SNode b) {
-    NodesMatcher.MatcherImpl mi = new NodesMatcher.MatcherImpl(myMap);
+    MatcherImpl mi = new MatcherImpl(myMap);
     mi.match(a, b);
     return (mi.myDifferences.isEmpty() ? null : ((NodeDifference) mi.myDifferences.get(0)));
   }

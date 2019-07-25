@@ -9,7 +9,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/1758932278023383298">
     <file name="UndoChangesOfTransactionalPropertyCell_Test.java">
       <node id="1758932278023383298" at="18,56,19,25" concept="5" />
-      <node id="1758932278023383298" at="23,78,24,80" concept="1" />
+      <node id="1758932278023383298" at="23,78,24,36" concept="1" />
       <node id="1758932278023383298" at="29,52,30,19" concept="5" />
       <node id="1758932278023383298" at="34,51,35,72" concept="1" />
       <node id="1758932278023383304" at="35,72,36,27" concept="1" />
@@ -21,7 +21,7 @@
       <node id="1758932278023383298" at="22,0,26,0" concept="2" trace="test_UndoChangesOfTransactionalPropertyCell#()V" />
       <node id="1758932278023383298" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1758932278023383298" at="18,56,19,25" />
-      <scope id="1758932278023383298" at="23,78,24,80" />
+      <scope id="1758932278023383298" at="23,78,24,36" />
       <scope id="1758932278023383298" at="29,52,30,19" />
       <scope id="1758932278023383298" at="18,0,21,0" />
       <scope id="1758932278023383298" at="29,0,32,0">
@@ -37,7 +37,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/1758932278025063584">
     <file name="UndoInvalidTypingInTransactionalPropertyCell_Test.java">
       <node id="1758932278025063584" at="18,62,19,25" concept="5" />
-      <node id="1758932278025063584" at="23,84,24,86" concept="1" />
+      <node id="1758932278025063584" at="23,84,24,36" concept="1" />
       <node id="1758932278025063584" at="29,52,30,19" concept="5" />
       <node id="1758932278025063584" at="34,51,35,72" concept="1" />
       <node id="1758932278025066371" at="35,72,36,25" concept="1" />
@@ -48,7 +48,7 @@
       <node id="1758932278025063584" at="22,0,26,0" concept="2" trace="test_UndoInvalidTypingInTransactionalPropertyCell#()V" />
       <node id="1758932278025063584" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1758932278025063584" at="18,62,19,25" />
-      <scope id="1758932278025063584" at="23,84,24,86" />
+      <scope id="1758932278025063584" at="23,84,24,36" />
       <scope id="1758932278025063584" at="29,52,30,19" />
       <scope id="1758932278025063584" at="18,0,21,0" />
       <scope id="1758932278025063584" at="29,0,32,0">
@@ -64,7 +64,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/1758932278025075920">
     <file name="UndoCommitedInvalidTypingInTransactionalPropertyCell_Test.java">
       <node id="1758932278025075920" at="18,70,19,25" concept="5" />
-      <node id="1758932278025075920" at="23,92,24,94" concept="1" />
+      <node id="1758932278025075920" at="23,92,24,36" concept="1" />
       <node id="1758932278025075920" at="29,52,30,19" concept="5" />
       <node id="1758932278025075920" at="34,51,35,72" concept="1" />
       <node id="1758932278025075926" at="35,72,36,25" concept="1" />
@@ -78,7 +78,7 @@
       <node id="1758932278025075920" at="22,0,26,0" concept="2" trace="test_UndoCommitedInvalidTypingInTransactionalPropertyCell#()V" />
       <node id="1758932278025075920" at="33,0,42,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1758932278025075920" at="18,70,19,25" />
-      <scope id="1758932278025075920" at="23,92,24,94" />
+      <scope id="1758932278025075920" at="23,92,24,36" />
       <scope id="1758932278025075920" at="29,52,30,19" />
       <scope id="1758932278025075920" at="18,0,21,0" />
       <scope id="1758932278025075920" at="29,0,32,0">
@@ -94,7 +94,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/2786154196593910688">
     <file name="RedoInvalidTypingInTransactionalPropertyCell_Test.java">
       <node id="2786154196593910688" at="18,62,19,25" concept="5" />
-      <node id="2786154196593910688" at="23,84,24,86" concept="1" />
+      <node id="2786154196593910688" at="23,84,24,36" concept="1" />
       <node id="2786154196593910688" at="29,52,30,19" concept="5" />
       <node id="2786154196593910688" at="34,51,35,72" concept="1" />
       <node id="2786154196593910694" at="35,72,36,25" concept="1" />
@@ -113,7 +113,7 @@
       <node id="2786154196593910688" at="22,0,26,0" concept="2" trace="test_RedoInvalidTypingInTransactionalPropertyCell#()V" />
       <node id="2786154196593910688" at="33,0,47,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2786154196593910688" at="18,62,19,25" />
-      <scope id="2786154196593910688" at="23,84,24,86" />
+      <scope id="2786154196593910688" at="23,84,24,36" />
       <scope id="2786154196593910688" at="29,52,30,19" />
       <scope id="2786154196593910688" at="18,0,21,0" />
       <scope id="2786154196593910688" at="29,0,32,0">
@@ -129,7 +129,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/2786154196593923925">
     <file name="RedoChangesOfTransactionalPropertyCell_Test.java">
       <node id="2786154196593923925" at="18,56,19,25" concept="5" />
-      <node id="2786154196593923925" at="23,78,24,80" concept="1" />
+      <node id="2786154196593923925" at="23,78,24,36" concept="1" />
       <node id="2786154196593923925" at="29,52,30,19" concept="5" />
       <node id="2786154196593923925" at="34,51,35,72" concept="1" />
       <node id="2786154196593923931" at="35,72,36,27" concept="1" />
@@ -142,7 +142,7 @@
       <node id="2786154196593923925" at="22,0,26,0" concept="2" trace="test_RedoChangesOfTransactionalPropertyCell#()V" />
       <node id="2786154196593923925" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2786154196593923925" at="18,56,19,25" />
-      <scope id="2786154196593923925" at="23,78,24,80" />
+      <scope id="2786154196593923925" at="23,78,24,36" />
       <scope id="2786154196593923925" at="29,52,30,19" />
       <scope id="2786154196593923925" at="18,0,21,0" />
       <scope id="2786154196593923925" at="29,0,32,0">
@@ -158,7 +158,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/2786154196593934307">
     <file name="RedoCommitedInvalidTypingInTransactionalPropertyCell_Test.java">
       <node id="2786154196593934307" at="18,70,19,25" concept="5" />
-      <node id="2786154196593934307" at="23,92,24,94" concept="1" />
+      <node id="2786154196593934307" at="23,92,24,36" concept="1" />
       <node id="2786154196593934307" at="29,52,30,19" concept="5" />
       <node id="2786154196593934307" at="34,51,35,72" concept="1" />
       <node id="2786154196593934313" at="35,72,36,25" concept="1" />
@@ -177,7 +177,7 @@
       <node id="2786154196593934307" at="22,0,26,0" concept="2" trace="test_RedoCommitedInvalidTypingInTransactionalPropertyCell#()V" />
       <node id="2786154196593934307" at="33,0,47,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2786154196593934307" at="18,70,19,25" />
-      <scope id="2786154196593934307" at="23,92,24,94" />
+      <scope id="2786154196593934307" at="23,92,24,36" />
       <scope id="2786154196593934307" at="29,52,30,19" />
       <scope id="2786154196593934307" at="18,0,21,0" />
       <scope id="2786154196593934307" at="29,0,32,0">
@@ -193,7 +193,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/5379654361813488285">
     <file name="UndoTypingInTransactionalPropertyCell_Test.java">
       <node id="5379654361813488285" at="18,55,19,25" concept="5" />
-      <node id="5379654361813488285" at="23,77,24,79" concept="1" />
+      <node id="5379654361813488285" at="23,77,24,36" concept="1" />
       <node id="5379654361813488285" at="29,52,30,19" concept="5" />
       <node id="5379654361813488285" at="34,51,35,72" concept="1" />
       <node id="1758932278023191788" at="35,72,36,27" concept="1" />
@@ -204,7 +204,7 @@
       <node id="5379654361813488285" at="22,0,26,0" concept="2" trace="test_UndoTypingInTransactionalPropertyCell#()V" />
       <node id="5379654361813488285" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5379654361813488285" at="18,55,19,25" />
-      <scope id="5379654361813488285" at="23,77,24,79" />
+      <scope id="5379654361813488285" at="23,77,24,36" />
       <scope id="5379654361813488285" at="29,52,30,19" />
       <scope id="5379654361813488285" at="18,0,21,0" />
       <scope id="5379654361813488285" at="29,0,32,0">
@@ -220,7 +220,7 @@
   <root nodeRef="r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)/5931285799429786231">
     <file name="RedoTypingInTransactionalPropertyCell_Test.java">
       <node id="5931285799429786231" at="18,55,19,25" concept="5" />
-      <node id="5931285799429786231" at="23,77,24,79" concept="1" />
+      <node id="5931285799429786231" at="23,77,24,36" concept="1" />
       <node id="5931285799429786231" at="29,52,30,19" concept="5" />
       <node id="5931285799429786231" at="34,51,35,72" concept="1" />
       <node id="5931285799429786237" at="35,72,36,27" concept="1" />
@@ -233,7 +233,7 @@
       <node id="5931285799429786231" at="22,0,26,0" concept="2" trace="test_RedoTypingInTransactionalPropertyCell#()V" />
       <node id="5931285799429786231" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5931285799429786231" at="18,55,19,25" />
-      <scope id="5931285799429786231" at="23,77,24,79" />
+      <scope id="5931285799429786231" at="23,77,24,36" />
       <scope id="5931285799429786231" at="29,52,30,19" />
       <scope id="5931285799429786231" at="18,0,21,0" />
       <scope id="5931285799429786231" at="29,0,32,0">

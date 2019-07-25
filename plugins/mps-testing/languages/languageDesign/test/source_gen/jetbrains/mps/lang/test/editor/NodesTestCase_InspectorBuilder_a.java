@@ -99,7 +99,7 @@ import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ModelAccess_58c6e4_0");
     editorCell.setDefaultText(" ");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new NodesTestCase_InspectorBuilder_a.NodesTestCase_generic_cellMenu_58c6e4_a0b0a(), new NodesTestCase_InspectorBuilder_a.NodesTestCase_generic_cellMenu_58c6e4_b0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new NodesTestCase_generic_cellMenu_58c6e4_a0b0a(), new NodesTestCase_generic_cellMenu_58c6e4_b0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class NodesTestCase_generic_cellMenu_58c6e4_a0b0a extends AbstractCellMenuPart_Generic_Item {
@@ -192,7 +192,7 @@ import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ModelAccess_58c6e4_1");
     editorCell.setDefaultText(" ");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new NodesTestCase_InspectorBuilder_a.NodesTestCase_generic_cellMenu_58c6e4_a0b1a(), new NodesTestCase_InspectorBuilder_a.NodesTestCase_generic_cellMenu_58c6e4_b0b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new NodesTestCase_generic_cellMenu_58c6e4_a0b1a(), new NodesTestCase_generic_cellMenu_58c6e4_b0b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class NodesTestCase_generic_cellMenu_58c6e4_a0b1a extends AbstractCellMenuPart_Generic_Item {

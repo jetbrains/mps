@@ -31,7 +31,7 @@ public class ArrayWrapperFactory extends ValueWrapperFactory {
     return "[" + EvaluationUtils.JAVA_LANG_OBJECT;
   }
   public ValueWrapper createValueWrapper(IValueProxy value, ThreadReference threadReference) {
-    return new ArrayWrapperFactory.JavaArrayValue((IArrayValueProxy) value, threadReference);
+    return new JavaArrayValue((IArrayValueProxy) value, threadReference);
   }
   @Override
   public String getName() {
@@ -59,7 +59,7 @@ public class ArrayWrapperFactory extends ValueWrapperFactory {
             len = MAX_ARRAY_VALUES;
           }
           for (int i = 0; i < len; i++) {
-            watchables.add(new ArrayWrapperFactory.JavaArrayItemWatchable(arrayRef, i, myThreadReference));
+            watchables.add(new JavaArrayItemWatchable(arrayRef, i, myThreadReference));
           }
         }
       }

@@ -26,7 +26,7 @@ public class DeleteBinaryOperationSymbolTwoStep_Test extends BaseTransformationT
 
   @Test
   public void test_DeleteBinaryOperationSymbolTwoStep() throws Throwable {
-    new DeleteBinaryOperationSymbolTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

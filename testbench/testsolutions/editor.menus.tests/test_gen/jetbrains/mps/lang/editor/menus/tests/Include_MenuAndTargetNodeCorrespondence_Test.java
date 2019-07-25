@@ -27,6 +27,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransformationTest {
@@ -41,15 +42,15 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
 
   @Test
   public void test_targetNodeForMenuShouldReturnMenuConcept() throws Throwable {
-    new Include_MenuAndTargetNodeCorrespondence_Test.TestBody(this).test_targetNodeForMenuShouldReturnMenuConcept();
+    new TestBody(this).test_targetNodeForMenuShouldReturnMenuConcept();
   }
   @Test
   public void test_MatchingMenuForCurrentNode6903010549536714073() throws Throwable {
-    new Include_MenuAndTargetNodeCorrespondence_Test.TestBody(this).test_MatchingMenuForCurrentNode6903010549536714073();
+    new TestBody(this).test_MatchingMenuForCurrentNode6903010549536714073();
   }
   @Test
   public void test_NonMatchingMenuForCurrentNode6903010549536714075() throws Throwable {
-    new Include_MenuAndTargetNodeCorrespondence_Test.TestBody(this).test_NonMatchingMenuForCurrentNode6903010549536714075();
+    new TestBody(this).test_NonMatchingMenuForCurrentNode6903010549536714075();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -81,9 +82,13 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
 
     private static SNode createSNodeType_sxmjox_a0a0a0c0d9() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"), null, null, false);
+      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_sxmjox.SNodeType_dcb080ab, null, null, false);
       n1.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), SReference.create(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), n1, facade.createModelReference("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)"), facade.createNodeId("2705676212746996052")));
       return n1;
     }
+  }
+
+  private static final class AUX_sxmjox {
+    /*package*/ static final SConcept SNodeType_dcb080ab = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 }

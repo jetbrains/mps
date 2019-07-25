@@ -14,6 +14,7 @@ import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class structure_StyleSheet {
@@ -25,7 +26,7 @@ public class structure_StyleSheet {
   public static void apply_AnnotationNode(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new structure_StyleSheet.AnnotationNodeStyleClass(editorContext, node).apply(style, editorCell);
+    new AnnotationNodeStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -35,7 +36,7 @@ public class structure_StyleSheet {
   public static void apply_Keyword(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new structure_StyleSheet.KeywordStyleClass(editorContext, node).apply(style, editorCell);
+    new KeywordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -45,7 +46,7 @@ public class structure_StyleSheet {
   public static void apply_GrayOut(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new structure_StyleSheet.GrayOutStyleClass(editorContext, node).apply(style, editorCell);
+    new GrayOutStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -55,7 +56,7 @@ public class structure_StyleSheet {
   public static void apply_EnumMemberMigrated(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new structure_StyleSheet.EnumMemberMigratedStyleClass(editorContext, node).apply(style, editorCell);
+    new EnumMemberMigratedStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -65,7 +66,7 @@ public class structure_StyleSheet {
   public static void apply_EnumMigrated(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new structure_StyleSheet.EnumMigratedStyleClass(editorContext, node).apply(style, editorCell);
+    new EnumMigratedStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class AnnotationNodeStyleClass extends AbstractStyleClass {
@@ -117,7 +118,7 @@ public class structure_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_170rll_a0d() {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(getNode())), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(getNode())), AUX_t29mx9.EnumMigrationInfo_a4b5d8d1);
     }
   }
   public static class EnumMigratedStyleClass extends AbstractStyleClass {
@@ -133,7 +134,11 @@ public class structure_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_170rll_a0e() {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(getNode()), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(getNode()), AUX_t29mx9.EnumMigrationInfo_a4b5d8d1);
     }
+  }
+
+  private static final class AUX_t29mx9 {
+    /*package*/ static final SConcept EnumMigrationInfo_a4b5d8d1 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
   }
 }

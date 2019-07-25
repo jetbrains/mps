@@ -4084,25 +4084,25 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903b3(jetbrains.mps.closures.test@tests)/2619154382620884837">
     <file name="mps8150.java">
-      <node id="2619154382620884890" at="15,46,16,23" concept="13" />
+      <node id="2619154382620884890" at="15,38,16,23" concept="13" />
       <node id="2619154382620884901" at="18,9,19,18" concept="13" />
-      <node id="2619154382620906366" at="23,46,24,23" concept="13" />
-      <node id="2619154382620906373" at="26,8,27,34" concept="6" />
-      <node id="2619154382620906399" at="27,34,28,18" concept="13" />
+      <node id="2619154382620906366" at="23,38,24,23" concept="13" />
+      <node id="2619154382620906373" at="26,8,27,26" concept="6" />
+      <node id="2619154382620906399" at="27,26,28,18" concept="13" />
       <node id="2619154382620884839" at="8,0,10,0" concept="3" trace="mps8150#()V" />
       <node id="2619154382620884847" at="11,0,13,0" concept="3" trace="Bar#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)V" />
       <node id="2619154382620884858" at="32,0,34,0" concept="3" trace="Qux#()V" />
       <node id="2619154382620884885" at="15,0,18,0" concept="11" trace="invoke#()Ljetbrains/mps/closures/test/mps8150/Qux;" />
       <node id="2619154382620906364" at="23,0,26,0" concept="11" trace="invoke#()Ljetbrains/mps/closures/test/mps8150/Qux;" />
-      <node id="2619154382620884879" at="13,46,18,9" concept="6" />
-      <node id="2619154382620903400" at="21,46,26,8" concept="12" />
+      <node id="2619154382620884879" at="13,38,18,9" concept="6" />
+      <node id="2619154382620903400" at="21,38,26,8" concept="12" />
       <node id="2619154382620884872" at="13,0,21,0" concept="16" trace="foo#()Ljetbrains/mps/closures/test/mps8150/Qux;" />
       <node id="2619154382620903389" at="21,0,30,0" concept="16" trace="baz#()Ljetbrains/mps/closures/test/mps8150/Qux;" />
       <scope id="2619154382620884842" at="8,20,8,20" />
-      <scope id="2619154382620884850" at="11,74,11,74" />
+      <scope id="2619154382620884850" at="11,66,11,66" />
       <scope id="2619154382620884861" at="32,18,32,18" />
-      <scope id="2619154382620884886" at="15,46,16,23" />
-      <scope id="2619154382620906365" at="23,46,24,23" />
+      <scope id="2619154382620884886" at="15,38,16,23" />
+      <scope id="2619154382620906365" at="23,38,24,23" />
       <scope id="2619154382620884839" at="8,0,10,0" />
       <scope id="2619154382620884847" at="11,0,13,0">
         <var name="t" id="2619154382620884865" />
@@ -4110,14 +4110,14 @@
       <scope id="2619154382620884858" at="32,0,34,0" />
       <scope id="2619154382620884885" at="15,0,18,0" />
       <scope id="2619154382620906364" at="23,0,26,0" />
-      <scope id="2619154382620884875" at="13,46,19,18" />
-      <scope id="2619154382620903392" at="21,46,28,18">
+      <scope id="2619154382620884875" at="13,38,19,18" />
+      <scope id="2619154382620903392" at="21,38,28,18">
         <var name="k" id="2619154382620903401" />
       </scope>
       <scope id="2619154382620884872" at="13,0,21,0" />
       <scope id="2619154382620903389" at="21,0,30,0" />
-      <unit id="2619154382620884885" at="14,35,18,7" name="jetbrains.mps.closures.test.mps8150$Bar$1" />
-      <unit id="2619154382620906364" at="22,75,26,7" name="jetbrains.mps.closures.test.mps8150$Bar$2" />
+      <unit id="2619154382620884885" at="14,27,18,7" name="jetbrains.mps.closures.test.mps8150$Bar$1" />
+      <unit id="2619154382620906364" at="22,67,26,7" name="jetbrains.mps.closures.test.mps8150$Bar$2" />
       <unit id="2619154382620884856" at="31,0,35,0" name="jetbrains.mps.closures.test.mps8150$Qux" />
       <unit id="2619154382620884845" at="10,0,31,0" name="jetbrains.mps.closures.test.mps8150$Bar" />
       <unit id="2619154382620884837" at="7,0,36,0" name="jetbrains.mps.closures.test.mps8150" />
@@ -4365,12 +4365,12 @@
       <node id="7026901688661322618" at="8,0,10,0" concept="3" trace="MPS7448#()V" />
       <node id="7026901688661322622" at="21,0,23,0" concept="16" trace="xyzAbc#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)V" />
       <node id="7026901688661322633" at="24,0,26,0" concept="3" trace="Aaa#()V" />
-      <node id="7026901688661325616" at="12,45,15,9" concept="10" />
+      <node id="7026901688661325616" at="12,37,15,9" concept="10" />
       <node id="7026901688661325611" at="12,0,19,0" concept="11" trace="invoke#(Ljetbrains/mps/closures/test/MPS7448/Aaa;)Ljava/lang/Integer;" />
       <node id="7026901688661325608" at="10,22,19,7" concept="6" />
       <node id="7026901688661325604" at="10,0,21,0" concept="11" trace="test#()V" />
       <scope id="7026901688661322621" at="8,20,8,20" />
-      <scope id="7026901688661322625" at="21,104,21,104" />
+      <scope id="7026901688661322625" at="21,96,21,96" />
       <scope id="7026901688661322636" at="24,18,24,18" />
       <scope id="7026901688661325618" at="13,21,14,39" />
       <scope id="7026901688661322618" at="8,0,10,0" />
@@ -4378,7 +4378,7 @@
         <var name="code" id="7026901688661322626" />
       </scope>
       <scope id="7026901688661322633" at="24,0,26,0" />
-      <scope id="7026901688661325612" at="12,45,17,19" />
+      <scope id="7026901688661325612" at="12,37,17,19" />
       <scope id="7026901688661325611" at="12,0,19,0">
         <var name="aa" id="7026901688661325611" />
       </scope>
@@ -4391,7 +4391,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903b3(jetbrains.mps.closures.test@tests)/7179096584831896774">
     <file name="MPS7440.java">
-      <node id="7179096584831949146" at="12,46,13,17" concept="13" />
+      <node id="7179096584831949146" at="12,38,13,17" concept="13" />
       <node id="7179096584831896776" at="8,0,10,0" concept="3" trace="MPS7440#()V" />
       <node id="7179096584831896784" at="18,0,20,0" concept="3" trace="XyzUtil#()V" />
       <node id="7179096584831896800" at="20,0,22,0" concept="16" trace="withAbc#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
@@ -4401,9 +4401,9 @@
       <node id="7179096584831896822" at="10,0,17,0" concept="11" trace="test#()V" />
       <scope id="7179096584831896779" at="8,20,8,20" />
       <scope id="7179096584831896787" at="18,22,18,22" />
-      <scope id="7179096584831896803" at="20,83,20,83" />
+      <scope id="7179096584831896803" at="20,75,20,75" />
       <scope id="7179096584831896795" at="24,18,24,18" />
-      <scope id="7179096584831896830" at="12,46,13,17" />
+      <scope id="7179096584831896830" at="12,38,13,17" />
       <scope id="7179096584831896776" at="8,0,10,0" />
       <scope id="7179096584831896784" at="18,0,20,0" />
       <scope id="7179096584831896800" at="20,0,22,0">
@@ -4415,7 +4415,7 @@
       </scope>
       <scope id="7179096584831896825" at="10,22,15,8" />
       <scope id="7179096584831896822" at="10,0,17,0" />
-      <unit id="7179096584831896829" at="11,96,15,5" name="jetbrains.mps.closures.test.MPS7440$1" />
+      <unit id="7179096584831896829" at="11,80,15,5" name="jetbrains.mps.closures.test.MPS7440$1" />
       <unit id="7179096584831896790" at="23,0,27,0" name="jetbrains.mps.closures.test.MPS7440$Abc" />
       <unit id="7179096584831896782" at="17,0,23,0" name="jetbrains.mps.closures.test.MPS7440$XyzUtil" />
       <unit id="7179096584831896774" at="7,0,28,0" name="jetbrains.mps.closures.test.MPS7440" />
@@ -4430,7 +4430,7 @@
       <node id="7312086843227556470" at="9,24,13,6" concept="12" />
       <node id="7312086843227556445" at="9,0,15,0" concept="11" trace="method#()V" />
       <scope id="7312086843227482252" at="7,20,7,20" />
-      <scope id="7312086843227556480" at="11,48,11,48" />
+      <scope id="7312086843227556480" at="11,40,11,40" />
       <scope id="7312086843227556467" at="19,24,19,24" />
       <scope id="7312086843227556453" at="16,0,17,0">
         <var name="t" id="7312086843227556458" />
@@ -4444,7 +4444,7 @@
         <var name="i" id="7312086843227556471" />
       </scope>
       <scope id="7312086843227556445" at="9,0,15,0" />
-      <unit id="7312086843227556479" at="10,52,13,5" name="jetbrains.mps.closures.test.MPS9324$1" />
+      <unit id="7312086843227556479" at="10,36,13,5" name="jetbrains.mps.closures.test.MPS9324$1" />
       <unit id="7312086843227556451" at="15,0,18,0" name="jetbrains.mps.closures.test.MPS9324$Predicate" />
       <unit id="7312086843227556462" at="18,0,22,0" name="jetbrains.mps.closures.test.MPS9324$Parameter" />
       <unit id="7312086843227482247" at="6,0,23,0" name="jetbrains.mps.closures.test.MPS9324" />
@@ -4511,7 +4511,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903b3(jetbrains.mps.closures.test@tests)/8662331813148184763">
     <file name="MPS_18030.java">
-      <node id="8662331813148184771" at="13,22,14,30" concept="6" />
+      <node id="8662331813148184771" at="13,22,14,20" concept="6" />
       <node id="8662331813148184783" at="18,29,19,14" concept="17" />
       <node id="8662331813148184808" at="19,14,20,52" concept="12" />
       <node id="8662331813148184784" at="20,52,21,51" concept="12" />
@@ -4525,7 +4525,7 @@
       <node id="8662331813148184788" at="21,51,27,17" concept="6" />
       <node id="8662331813148184779" at="18,0,31,0" concept="3" trace="Subclass#(I)V" />
       <scope id="8662331813148184767" at="10,22,10,22" />
-      <scope id="8662331813148184770" at="13,22,14,30" />
+      <scope id="8662331813148184770" at="13,22,14,20" />
       <scope id="8662331813148184764" at="10,0,12,0" />
       <scope id="8662331813148184791" at="23,33,25,30" />
       <scope id="8662331813148184769" at="13,0,16,0" />

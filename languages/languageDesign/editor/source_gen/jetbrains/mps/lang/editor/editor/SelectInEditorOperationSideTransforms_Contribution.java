@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Objects;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -42,6 +42,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SelectInEditorOperationSideTransforms_Contribution extends TransformationMenuBase {
   public SelectInEditorOperationSideTransforms_Contribution() {
@@ -70,8 +71,8 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_a0());
-      result.add(new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_b0());
+      result.add(new TMP_Group_weywl8_a0());
+      result.add(new TMP_Group_weywl8_b0());
     }
     return result;
   }
@@ -79,7 +80,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
   public class TMP_Group_weywl8_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation")) && Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0e947adeL, "editorContext"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_weywl8.SelectInEditorOperation_190f23c3) && Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0e947adeL, "editorContext"));
     }
 
     @NotNull
@@ -95,12 +96,12 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")), new ConstraintsFilteringTransformationMenuPartDecorator(new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a(), AUX_weywl8.AbstractCellSelector_2ccdb5fd), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a(), AUX_weywl8.AbstractCellSelector_2ccdb5fd));
     }
     private class TMP_Action_weywl8_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a.Item item = new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a.Item(context);
+        TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a.Item item = new TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -135,7 +136,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation"));
+          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_weywl8.SelectInEditorOperation_190f23c3);
           SLinkOperations.setTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -144,7 +145,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
+          return AUX_weywl8.AbstractCellSelector_2ccdb5fd;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -159,7 +160,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
+          SAbstractConcept outputConcept = AUX_weywl8.AbstractCellSelector_2ccdb5fd;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -171,7 +172,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     private class TMP_Action_weywl8_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a.Item item = new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a.Item(context);
+        TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a.Item item = new TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -206,7 +207,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation"));
+          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_weywl8.SelectInEditorOperation_190f23c3);
           SLinkOperations.setTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -215,7 +216,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
+          return AUX_weywl8.AbstractCellSelector_2ccdb5fd;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -230,7 +231,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
+          SAbstractConcept outputConcept = AUX_weywl8.AbstractCellSelector_2ccdb5fd;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -243,7 +244,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
   public class TMP_Group_weywl8_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation")) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation")), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd")) == null && Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart"));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), AUX_weywl8.SelectInEditorOperation_190f23c3) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_weywl8.SelectInEditorOperation_190f23c3), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd")) == null && Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart"));
     }
 
     @NotNull
@@ -259,12 +260,12 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a(), new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a(), new TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a());
     }
     private class TMP_Action_weywl8_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a.Item item = new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a.Item(context);
+        TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a.Item item = new TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -299,7 +300,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation"));
+          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_weywl8.SelectInEditorOperation_190f23c3);
           SLinkOperations.setTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -330,7 +331,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     private class TMP_Action_weywl8_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a.Item item = new SelectInEditorOperationSideTransforms_Contribution.TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a.Item(context);
+        TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a.Item item = new TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -365,7 +366,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation"));
+          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), AUX_weywl8.SelectInEditorOperation_190f23c3);
           SLinkOperations.setTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd")), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -393,5 +394,10 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
       }
 
     }
+  }
+
+  private static final class AUX_weywl8 {
+    /*package*/ static final SConcept SelectInEditorOperation_190f23c3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation");
+    /*package*/ static final SConcept AbstractCellSelector_2ccdb5fd = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
   }
 }

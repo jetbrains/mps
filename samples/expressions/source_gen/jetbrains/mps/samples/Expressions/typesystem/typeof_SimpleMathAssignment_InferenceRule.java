@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_SimpleMathAssignment_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_SimpleMathAssignment_InferenceRule() {
@@ -34,12 +35,16 @@ public class typeof_SimpleMathAssignment_InferenceRule extends AbstractInference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, "jetbrains.mps.samples.Expressions.structure.SimpleMathAssignment");
+    return AUX_yvidg5.SimpleMathAssignment_6b1bf359;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_yvidg5 {
+    /*package*/ static final SConcept SimpleMathAssignment_6b1bf359 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, "jetbrains.mps.samples.Expressions.structure.SimpleMathAssignment");
   }
 }

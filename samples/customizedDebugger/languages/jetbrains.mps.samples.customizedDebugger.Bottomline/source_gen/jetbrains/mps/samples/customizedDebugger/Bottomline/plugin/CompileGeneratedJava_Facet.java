@@ -50,8 +50,8 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava");
   public CompileGeneratedJava_Facet() {
-    ListSequence.fromList(targets).addElement(new CompileGeneratedJava_Facet.Target_compile());
-    ListSequence.fromList(targets).addElement(new CompileGeneratedJava_Facet.Target_auxCompile());
+    ListSequence.fromList(targets).addElement(new Target_compile());
+    ListSequence.fromList(targets).addElement(new Target_auxCompile());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -69,7 +69,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new CompileGeneratedJava_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_compile implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile");
@@ -181,8 +181,8 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 300;
     }
-    public static CompileGeneratedJava_Facet.Target_compile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, CompileGeneratedJava_Facet.Target_compile.Parameters.class);
+    public static Target_compile.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_compile.Parameters.class);
     }
     public static class Parameters extends MultiTuple._3<Boolean, Boolean, JavaCompilerOptions> {
       public Parameters() {
@@ -224,7 +224,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
           progressMonitor.start("", IntStream.of(1000).sum());
           switch (0) {
             case 0:
-              if (Boolean.TRUE.equals(CompileGeneratedJava_Facet.Target_compile.vars(pa.global()).skipCompilation())) {
+              if (Boolean.TRUE.equals(Target_compile.vars(pa.global()).skipCompilation())) {
                 _output_widgfz_a0b = Sequence.fromIterable(_output_widgfz_a0b).concat(Sequence.fromIterable(input));
                 return new IResult.SUCCESS(_output_widgfz_a0b);
               }
@@ -340,8 +340,8 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 100;
     }
-    public static CompileGeneratedJava_Facet.Target_auxCompile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, CompileGeneratedJava_Facet.Target_auxCompile.Parameters.class);
+    public static Target_auxCompile.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Target_auxCompile.Parameters.class);
     }
     public static class Parameters extends MultiTuple._2<Project, Boolean> {
       public Parameters() {
@@ -371,7 +371,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile");
         if (properties.hasProperties(name)) {
-          CompileGeneratedJava_Facet.Target_compile.Parameters props = properties.properties(name, CompileGeneratedJava_Facet.Target_compile.Parameters.class);
+          Target_compile.Parameters props = properties.properties(name, Target_compile.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile.compiledAnything", String.valueOf(props.compiledAnything()));
           MapSequence.fromMap(store).put("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile.skipCompilation", String.valueOf(props.skipCompilation()));
           MapSequence.fromMap(store).put("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile.options", null);
@@ -380,7 +380,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.auxCompile");
         if (properties.hasProperties(name)) {
-          CompileGeneratedJava_Facet.Target_auxCompile.Parameters props = properties.properties(name, CompileGeneratedJava_Facet.Target_auxCompile.Parameters.class);
+          Target_auxCompile.Parameters props = properties.properties(name, Target_auxCompile.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.auxCompile.project", null);
           MapSequence.fromMap(store).put("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.auxCompile.skipAuxCompile", String.valueOf(props.skipAuxCompile()));
         }
@@ -390,7 +390,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
       try {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile");
-          CompileGeneratedJava_Facet.Target_compile.Parameters props = properties.properties(name, CompileGeneratedJava_Facet.Target_compile.Parameters.class);
+          Target_compile.Parameters props = properties.properties(name, Target_compile.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile.compiledAnything")) {
             props.compiledAnything(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.compile.compiledAnything")));
           }
@@ -403,7 +403,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
         }
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.auxCompile");
-          CompileGeneratedJava_Facet.Target_auxCompile.Parameters props = properties.properties(name, CompileGeneratedJava_Facet.Target_auxCompile.Parameters.class);
+          Target_auxCompile.Parameters props = properties.properties(name, Target_auxCompile.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava.auxCompile.project")) {
             props.project(null);
           }

@@ -15,8 +15,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewTool;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ShowClassInHierarchy_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -79,16 +80,23 @@ public class ShowClassInHierarchy_Action extends BaseAction {
   }
   private SNode getContextClassifier(final Map<String, Object> _params) {
     SNode refNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
-    if (SNodeOperations.isInstanceOf(refNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-      return SNodeOperations.cast(refNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    if (SNodeOperations.isInstanceOf(refNode, AUX_m2kmz4.Classifier_4b7e553)) {
+      return SNodeOperations.cast(refNode, AUX_m2kmz4.Classifier_4b7e553);
     }
-    if (SNodeOperations.isInstanceOf(refNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"))) {
-      SNode classifier = SNodeOperations.getNodeAncestor(refNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
+    if (SNodeOperations.isInstanceOf(refNode, AUX_m2kmz4.ConstructorDeclaration_9dbf9ae8)) {
+      SNode classifier = SNodeOperations.getNodeAncestor(refNode, AUX_m2kmz4.Classifier_4b7e553, false, false);
       if (classifier != null) {
         return classifier;
       }
     }
-    SNode outerClass = SNodeOperations.cast(SNodeOperations.getNodeAncestorWhereConceptInList(((SNode) MapSequence.fromMap(_params).get("node")), new SAbstractConcept[]{MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface")}, true, false), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    SNode outerClass = SNodeOperations.cast(SNodeOperations.getNodeAncestorWhereConceptInList(((SNode) MapSequence.fromMap(_params).get("node")), new SAbstractConcept[]{AUX_m2kmz4.ClassConcept_e2711824, AUX_m2kmz4.Interface_bca2069}, true, false), AUX_m2kmz4.Classifier_4b7e553);
     return outerClass;
+  }
+
+  private static final class AUX_m2kmz4 {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ConstructorDeclaration_9dbf9ae8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept ClassConcept_e2711824 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface_bca2069 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

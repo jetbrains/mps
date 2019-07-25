@@ -7,11 +7,12 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingConceptContextMatcher;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChildWithPriority_Customization implements EditorMenuItemCustomizer {
 
@@ -20,7 +21,7 @@ public class ChildWithPriority_Customization implements EditorMenuItemCustomizer
     if (context.get(CompletionMenuItemCustomizationContext.COMPLETION_ITEM_INFORMATION) == null) {
       return;
     }
-    ChildWithPriority_Customization.ChildWithPriority_CustomizationSpecific customizer = new ChildWithPriority_Customization.ChildWithPriority_CustomizationSpecific();
+    ChildWithPriority_CustomizationSpecific customizer = new ChildWithPriority_CustomizationSpecific();
     if (customizer.matches(context)) {
       customizer.customize(customization, context);
     }
@@ -29,7 +30,7 @@ public class ChildWithPriority_Customization implements EditorMenuItemCustomizer
   private static class ChildWithPriority_CustomizationSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979993L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildWithPriority")).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(AUX_d33jal.TestCompletionCustomization_ChildWithPriority_5aa6ea2c).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -57,4 +58,7 @@ public class ChildWithPriority_Customization implements EditorMenuItemCustomizer
   }
 
 
+  private static final class AUX_d33jal {
+    /*package*/ static final SConcept TestCompletionCustomization_ChildWithPriority_5aa6ea2c = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979993L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildWithPriority");
+  }
 }

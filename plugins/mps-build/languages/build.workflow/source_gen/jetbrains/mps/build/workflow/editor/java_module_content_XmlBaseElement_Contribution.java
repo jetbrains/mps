@@ -13,7 +13,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -26,8 +25,10 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class java_module_content_XmlBaseElement_Contribution extends SubstituteMenuBase {
   public java_module_content_XmlBaseElement_Contribution() {
@@ -37,7 +38,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new java_module_content_XmlBaseElement_Contribution.SMP_Group_fc12n3_a());
+    result.add(new SMP_Group_fc12n3_a());
     return result;
   }
 
@@ -57,7 +58,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
   public class SMP_Group_fc12n3_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule")) || SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet")) || SNodeOperations.isInstanceOf(_context.getParentNode(), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath"));
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_fc12n3.BwfJavaModule_2d8d648b) || SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_fc12n3.BwfFileSet_426f53f7) || SNodeOperations.isInstanceOf(_context.getParentNode(), AUX_fc12n3.BwfJavaClassPath_ebd3ee4d);
     }
     @NotNull
     @Override
@@ -73,13 +74,13 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new java_module_content_XmlBaseElement_Contribution.SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0(), MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement")));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0(), AUX_fc12n3.XmlElement_6047438c));
     }
     private class SMP_Param_fc12n3_a0 extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-        return new java_module_content_XmlBaseElement_Contribution.SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a(parameter).createItems(context);
+        return new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -106,7 +107,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          java_module_content_XmlBaseElement_Contribution.SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a.Item item = new java_module_content_XmlBaseElement_Contribution.SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a.Item(_context);
+          SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a.Item item = new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a.Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -130,7 +131,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"), context);
+            super(AUX_fc12n3.XmlElement_6047438c, context);
             _context = context;
           }
 
@@ -141,7 +142,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode res = SModelOperations.createNewNode(_context.getModel(), null, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"));
+            SNode res = SModelOperations.createNewNode(_context.getModel(), null, AUX_fc12n3.XmlElement_6047438c);
             SPropertyOperations.assign(res, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName"), myParameterObject);
             SPropertyOperations.assign(res, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation"), true);
             return res;
@@ -153,7 +154,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"), getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, AUX_fc12n3.XmlElement_6047438c, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -174,5 +175,12 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
       }
 
     }
+  }
+
+  private static final class AUX_fc12n3 {
+    /*package*/ static final SConcept BwfJavaClassPath_ebd3ee4d = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath");
+    /*package*/ static final SConcept BwfJavaModule_2d8d648b = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
+    /*package*/ static final SConcept BwfFileSet_426f53f7 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet");
+    /*package*/ static final SConcept XmlElement_6047438c = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
   }
 }

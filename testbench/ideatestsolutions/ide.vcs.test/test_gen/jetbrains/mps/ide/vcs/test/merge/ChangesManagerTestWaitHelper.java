@@ -24,7 +24,7 @@ public class ChangesManagerTestWaitHelper {
   private Project myProject;
 
   private Runnable myAfterReloadTask;
-  private ChangesManagerTestWaitHelper.MyReloadListener myReloadListener = new ChangesManagerTestWaitHelper.MyReloadListener();
+  private MyReloadListener myReloadListener = new MyReloadListener();
   private final ReloadManager myReloadManager;
 
   public ChangesManagerTestWaitHelper(Project p, ReloadManager reloadManager) {
@@ -90,7 +90,7 @@ public class ChangesManagerTestWaitHelper {
   public void waitForDiffRegistry() {
     waitForSomething(new Runnable() {
       public void run() {
-        CurrentDifferenceRegistry.getInstance(myProject).getCommandQueue().addTask(new ChangesManagerTestWaitHelper.WaitForChangesManagerTask());
+        CurrentDifferenceRegistry.getInstance(myProject).getCommandQueue().addTask(new WaitForChangesManagerTask());
       }
     }, -1);
   }

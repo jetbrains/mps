@@ -32,43 +32,43 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
 
   @Test
   public void test_enumMemberPresentation() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberPresentation();
+    new TestBody(this).test_enumMemberPresentation();
   }
   @Test
   public void test_enumMemberName() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberName();
+    new TestBody(this).test_enumMemberName();
   }
   @Test
   public void test_enumMemberIdentity() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberIdentity();
+    new TestBody(this).test_enumMemberIdentity();
   }
   @Test
   public void test_enumMemberFromName() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberFromName();
+    new TestBody(this).test_enumMemberFromName();
   }
   @Test
   public void test_enumMemberFromPresentation() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMemberFromPresentation();
+    new TestBody(this).test_enumMemberFromPresentation();
   }
   @Test
   public void test_enumMethodsNullArgument_WODefault() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMethodsNullArgument_WODefault();
+    new TestBody(this).test_enumMethodsNullArgument_WODefault();
   }
   @Test
   public void test_enumMethodsNullArgument_WithDefault() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumMethodsNullArgument_WithDefault();
+    new TestBody(this).test_enumMethodsNullArgument_WithDefault();
   }
   @Test
   public void test_enumProperties_initial() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumProperties_initial();
+    new TestBody(this).test_enumProperties_initial();
   }
   @Test
   public void test_enumProperties_setfirst() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumProperties_setfirst();
+    new TestBody(this).test_enumProperties_setfirst();
   }
   @Test
   public void test_enumProperties_remove() throws Throwable {
-    new EnumerationDatatypes_Test.TestBody(this).test_enumProperties_remove();
+    new TestBody(this).test_enumProperties_remove();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -32,7 +32,7 @@ public class SimpleMoveStaticMethod_Test extends BaseTransformationTest {
 
   @Test
   public void test_SimpleMoveStaticMethod() throws Throwable {
-    new SimpleMoveStaticMethod_Test.TestBody(this).test_SimpleMoveStaticMethod();
+    new TestBody(this).test_SimpleMoveStaticMethod();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

@@ -38,7 +38,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
     } catch (JDOMException e) {
       e.printStackTrace();
       return null;
-    } catch (JavaDependenciesMerger.MergeException e) {
+    } catch (MergeException e) {
       e.printStackTrace();
       return null;
     }
@@ -49,7 +49,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
   private static void saveDependencies(ModelDependencies deps, OutputStream out) throws IOException {
     JDOMUtil.writeDocument(new Document(deps.toXml()), out);
   }
-  private static void copyDependencies(ModelDependencies from, ModelDependencies to) throws JavaDependenciesMerger.MergeException {
+  private static void copyDependencies(ModelDependencies from, ModelDependencies to) throws MergeException {
     for (RootDependencies fromRootDep : Sequence.fromIterable(from.getDependencies())) {
       RootDependencies toRootDep = to.getDependency(fromRootDep.getClassName());
       if (toRootDep == null) {
@@ -59,9 +59,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
       }
     }
   }
-  private static RootDependencies mergeRootDependencies(RootDependencies rd1, RootDependencies rd2) throws JavaDependenciesMerger.MergeException {
+  private static RootDependencies mergeRootDependencies(RootDependencies rd1, RootDependencies rd2) throws MergeException {
     if (!(Objects.equals(rd1.getClassName(), rd2.getClassName()))) {
-      throw new JavaDependenciesMerger.MergeException("Different class names: " + rd1.getClassName() + " and " + rd2.getClassName());
+      throw new MergeException("Different class names: " + rd1.getClassName() + " and " + rd2.getClassName());
     }
     Set<String> dependNodes = rd1.getDependencies();
     SetSequence.fromSet(dependNodes).addSequence(SetSequence.fromSet(rd2.getDependencies()));

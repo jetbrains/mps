@@ -5,13 +5,14 @@ package jetbrains.mps.baseLanguage.collections.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMigrationScript {
   public MigrationToUpdateAllConstants_MigrationScript() {
@@ -27,7 +28,7 @@ public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMig
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12031a066ecL, "jetbrains.mps.baseLanguage.collections.structure.AllConstant");
+        return AUX_483j2l.AllConstant_c1aedcb3;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -40,7 +41,7 @@ public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMig
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithNewChild(node, MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12031a066ecL, "jetbrains.mps.baseLanguage.collections.structure.AllConstant"));
+        SNodeOperations.replaceWithNewChild(node, AUX_483j2l.AllConstant_c1aedcb3);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -53,5 +54,9 @@ public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMig
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c8959032d(jetbrains.mps.baseLanguage.collections.scripts)/3600688056589376389");
+  }
+
+  private static final class AUX_483j2l {
+    /*package*/ static final SConcept AllConstant_c1aedcb3 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12031a066ecL, "jetbrains.mps.baseLanguage.collections.structure.AllConstant");
   }
 }

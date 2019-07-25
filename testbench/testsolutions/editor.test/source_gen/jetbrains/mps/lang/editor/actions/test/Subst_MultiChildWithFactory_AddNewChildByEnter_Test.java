@@ -21,7 +21,7 @@ public class Subst_MultiChildWithFactory_AddNewChildByEnter_Test extends BaseTra
 
   @Test
   public void test_Subst_MultiChildWithFactory_AddNewChildByEnter() throws Throwable {
-    new Subst_MultiChildWithFactory_AddNewChildByEnter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

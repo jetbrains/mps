@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
@@ -49,10 +50,10 @@ public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new InferenceRule_ApplySideTransforms.TMP_Include_7w3sg1_a0());
+      result.add(new TMP_Include_7w3sg1_a0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new InferenceRule_ApplySideTransforms.TMP_Include_7w3sg1_a1());
+      result.add(new TMP_Include_7w3sg1_a1());
     }
     return result;
   }
@@ -76,7 +77,7 @@ public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule"), "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_7w3sg1.InferenceRule_fc876475, "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
     }
 
   }
@@ -99,7 +100,7 @@ public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule"), "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), AUX_7w3sg1.InferenceRule_fc876475, "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
     }
 
     @Nullable
@@ -107,5 +108,9 @@ public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
     protected String getLocation(TransformationMenuContext _context) {
       return MenuLocations.LEFT_SIDE_TRANSFORM;
     }
+  }
+
+  private static final class AUX_7w3sg1 {
+    /*package*/ static final SConcept InferenceRule_fc876475 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
   }
 }

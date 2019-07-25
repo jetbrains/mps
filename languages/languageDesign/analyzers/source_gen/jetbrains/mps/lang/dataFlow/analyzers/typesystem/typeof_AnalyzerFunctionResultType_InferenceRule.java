@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_AnalyzerFunctionResultType_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_AnalyzerFunctionResultType_InferenceRule() {
@@ -20,16 +21,21 @@ public class typeof_AnalyzerFunctionResultType_InferenceRule extends AbstractInf
     {
       SNode _nodeToCheck_1029348928467 = resultType;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "430844094082159326", 0, null);
-      typeCheckingContext.createEquation((SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(resultType, MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer"), false, false), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType")), (SNode) resultType, _info_12389875345);
+      typeCheckingContext.createEquation((SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(resultType, AUX_5plvkc.Analyzer_a97ba59e, false, false), MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType")), (SNode) resultType, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x7f5b799a00c52fa7L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunctionResultType");
+    return AUX_5plvkc.AnalyzerFunctionResultType_3f89a41b;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class AUX_5plvkc {
+    /*package*/ static final SConcept Analyzer_a97ba59e = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
+    /*package*/ static final SConcept AnalyzerFunctionResultType_3f89a41b = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x7f5b799a00c52fa7L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunctionResultType");
   }
 }

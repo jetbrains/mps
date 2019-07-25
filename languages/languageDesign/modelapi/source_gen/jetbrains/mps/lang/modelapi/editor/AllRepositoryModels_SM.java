@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -28,13 +27,15 @@ import jetbrains.mps.lang.modelapi.behavior.ModelPointer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AllRepositoryModels_SM extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new AllRepositoryModels_SM.SMP_Param_vzoe42_a(), MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer")));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_vzoe42_a(), AUX_vzoe42.ModelPointer_a7ab22d2));
     return result;
   }
 
@@ -55,7 +56,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SModel parameter, SubstituteMenuContext context) {
-      return new AllRepositoryModels_SM.SMP_Param_vzoe42_a.SMP_Action_vzoe42_a0(parameter).createItems(context);
+      return new SMP_Param_vzoe42_a.SMP_Action_vzoe42_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -86,7 +87,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        AllRepositoryModels_SM.SMP_Param_vzoe42_a.SMP_Action_vzoe42_a0.Item item = new AllRepositoryModels_SM.SMP_Param_vzoe42_a.SMP_Action_vzoe42_a0.Item(_context);
+        SMP_Param_vzoe42_a.SMP_Action_vzoe42_a0.Item item = new SMP_Param_vzoe42_a.SMP_Action_vzoe42_a0.Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -110,7 +111,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer"), context);
+          super(AUX_vzoe42.ModelPointer_a7ab22d2, context);
           _context = context;
         }
 
@@ -121,7 +122,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          return (SNode) ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer")), _context.getModel(), myParameterObject);
+          return (SNode) ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(AUX_vzoe42.ModelPointer_a7ab22d2), _context.getModel(), myParameterObject);
         }
 
         @Override
@@ -130,7 +131,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer"), getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, AUX_vzoe42.ModelPointer_a7ab22d2, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -150,5 +151,9 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_vzoe42 {
+    /*package*/ static final SConcept ModelPointer_a7ab22d2 = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
   }
 }

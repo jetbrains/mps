@@ -21,7 +21,7 @@ public class PressingBackspaseInFirstPosition_Test extends BaseTransformationTes
 
   @Test
   public void test_PressingBackspaseInFirstPosition() throws Throwable {
-    new PressingBackspaseInFirstPosition_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

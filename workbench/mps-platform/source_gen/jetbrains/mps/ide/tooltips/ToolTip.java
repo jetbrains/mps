@@ -27,7 +27,7 @@ public class ToolTip {
   public static final Color BACKGROUND_COLOR = HintUtil.INFORMATION_COLOR;
   private static final int X_OFFSET = 13;
   private static final int Y_OFFSET = 3;
-  private ToolTip.MyDialog myDialog;
+  private MyDialog myDialog;
   private ToolTipData myHintInformation;
   private boolean myRigthAligned;
   /*package*/ ToolTip(boolean rightAligned) {
@@ -36,7 +36,7 @@ public class ToolTip {
   /*package*/ void show(Frame owner, Point location, ToolTipData hintInformation) {
     myHintInformation = hintInformation;
     location = new Point(location.x + ((myRigthAligned ? -X_OFFSET : X_OFFSET)), location.y + Y_OFFSET);
-    myDialog = new ToolTip.MyDialog(owner, location, myRigthAligned, hintInformation);
+    myDialog = new MyDialog(owner, location, myRigthAligned, hintInformation);
     myDialog.setVisible(true);
   }
   /*package*/ void hide() {

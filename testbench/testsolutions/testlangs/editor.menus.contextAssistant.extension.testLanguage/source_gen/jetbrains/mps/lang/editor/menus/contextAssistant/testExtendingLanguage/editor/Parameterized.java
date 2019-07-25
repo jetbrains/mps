@@ -52,7 +52,7 @@ public class Parameterized extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ACTIONS_TOOL).contains(_context.getMenuLocation())) {
-      result.add(new Parameterized.TMP_Param_3h2zbg_a0());
+      result.add(new TMP_Param_3h2zbg_a0());
     }
     return result;
   }
@@ -62,7 +62,7 @@ public class Parameterized extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(Integer parameter, TransformationMenuContext context) {
-      return new Parameterized.TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a(parameter).createItems(context);
+      return new TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -89,7 +89,7 @@ public class Parameterized extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Parameterized.TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a.Item item = new Parameterized.TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a.Item(context);
+        TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a.Item item = new TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

@@ -119,5 +119,5 @@ public class Template_reduce_ConceptCaseBody_Hack1 extends TemplateDeclarationBa
     rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
     return rv;
   }
-  private static SNodePointer copySrcListMacro_rlzbfv_b0a0a1a1a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804946055157");
+  private static final SNodePointer copySrcListMacro_rlzbfv_b0a0a1a1a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804946055157");
 }

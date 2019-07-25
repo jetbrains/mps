@@ -11,9 +11,10 @@ import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ interface NamerFactory {
   @NotNull
@@ -30,8 +31,8 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
             public String compute() {
               SNode resolved = SPointerOperations.resolveNode(ptr, repo);
               if (resolved != null) {
-                if (SNodeOperations.isInstanceOf(resolved, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
-                  return ((String) BHReflection.invoke0(SNodeOperations.cast(resolved, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+                if (SNodeOperations.isInstanceOf(resolved, AUX_nid5o1.INamedConcept_8cd7e247)) {
+                  return ((String) BHReflection.invoke0(SNodeOperations.cast(resolved, AUX_nid5o1.INamedConcept_8cd7e247), AUX_nid5o1.INamedConcept_8cd7e247, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
                 }
                 return ((SNode) resolved).getName();
               }
@@ -43,4 +44,8 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
       };
     }
   };
+
+  final class AUX_nid5o1 {
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+  }
 }

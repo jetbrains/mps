@@ -25,6 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
@@ -50,7 +51,7 @@ public class TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart extends T
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart.TMP_Reference_t3kxv_a0());
+      result.add(new TMP_Reference_t3kxv_a0());
     }
     return result;
   }
@@ -76,7 +77,7 @@ public class TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart extends T
     @NotNull
     @Override
     protected ReferenceTransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull SReferenceLink referenceLink, final SNode targetNode) {
-      return new TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart.TMP_Reference_t3kxv_a0.Item(referenceLink, targetNode, context);
+      return new TMP_Reference_t3kxv_a0.Item(referenceLink, targetNode, context);
     }
     private class Item extends ReferenceTransformationMenuItem implements SubstituteCompletionActionItem {
       private final TransformationMenuContext _context;
@@ -102,7 +103,11 @@ public class TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart extends T
     @Nullable
     @Override
     protected SAbstractConcept getTargetConcept(TransformationMenuContext context) {
-      return MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x6723ebbaa4956096L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildToReferenceSubconcept");
+      return AUX_t3kxv.TestSubstituteChildToReferenceSubconcept_2d223c3d;
     }
+  }
+
+  private static final class AUX_t3kxv {
+    /*package*/ static final SConcept TestSubstituteChildToReferenceSubconcept_2d223c3d = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x6723ebbaa4956096L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildToReferenceSubconcept");
   }
 }

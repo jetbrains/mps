@@ -28,19 +28,19 @@ import java.util.concurrent.TimeoutException;
 
 public class MakeTask extends Task.Backgroundable implements Future<IResult> {
   private final CountDownLatch myLatch = new CountDownLatch(1);
-  private final AtomicReference<MakeTask.TaskState> myState = new AtomicReference<MakeTask.TaskState>(MakeTask.TaskState.NOT_STARTED);
+  private final AtomicReference<TaskState> myState = new AtomicReference<TaskState>(TaskState.NOT_STARTED);
   private final CoreMakeTask coreTask;
   private boolean isCanceled = false;
   public MakeTask(@Nullable Project project, @NotNull String title, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh, PerformInBackgroundOption bgoption) {
     super(project, title, true, bgoption);
     // XXX might be nice to pass CoreMakeTask here, instead of long list of arguments to construct one. 
     // however not it's too much of refactoring for WorkbenchMakeTask 
-    coreTask = new MakeTask.WorkbenchMakeTask(title, makeSeq, ctl, mh);
+    coreTask = new WorkbenchMakeTask(title, makeSeq, ctl, mh);
   }
 
   @Override
   public void run(@NotNull final ProgressIndicator pi) {
-    if (myState.compareAndSet(MakeTask.TaskState.NOT_STARTED, MakeTask.TaskState.RUNNING)) {
+    if (myState.compareAndSet(TaskState.NOT_STARTED, TaskState.RUNNING)) {
       if (ThreadUtils.isInEDT()) {
         coreTask.run(new ProgressMonitorAdapter(pi));
       } else {
@@ -87,18 +87,18 @@ public class MakeTask extends Task.Backgroundable implements Future<IResult> {
 
   @Override
   public boolean isCancelled() {
-    return myState.get() == MakeTask.TaskState.CANCELLED;
+    return myState.get() == TaskState.CANCELLED;
   }
 
   @Override
   public boolean isDone() {
-    return myState.get() != MakeTask.TaskState.NOT_STARTED && myState.get() != MakeTask.TaskState.RUNNING;
+    return myState.get() != TaskState.NOT_STARTED && myState.get() != TaskState.RUNNING;
   }
 
   @Override
   public IResult get() throws InterruptedException, ExecutionException {
     myLatch.await();
-    if (myState.get() == MakeTask.TaskState.CANCELLED) {
+    if (myState.get() == TaskState.CANCELLED) {
       throw new CancellationException();
     }
     return coreTask.getResult();
@@ -107,7 +107,7 @@ public class MakeTask extends Task.Backgroundable implements Future<IResult> {
   @Override
   public IResult get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
     myLatch.await(timeout, unit);
-    if (myState.get() == MakeTask.TaskState.CANCELLED) {
+    if (myState.get() == TaskState.CANCELLED) {
       throw new CancellationException();
     }
     return coreTask.getResult();
@@ -129,10 +129,10 @@ public class MakeTask extends Task.Backgroundable implements Future<IResult> {
 
     @Override
     protected void reconcile() {
-      MakeTask.this.myState.set(MakeTask.TaskState.DONE);
+      MakeTask.this.myState.set(TaskState.DONE);
       try {
         if (isCanceled || coreTask.getResult() == null) {
-          MakeTask.this.myState.set(MakeTask.TaskState.CANCELLED);
+          MakeTask.this.myState.set(TaskState.CANCELLED);
         }
         super.reconcile();
       } finally {
@@ -144,7 +144,7 @@ public class MakeTask extends Task.Backgroundable implements Future<IResult> {
     @Override
     protected void doRun(ProgressMonitor monitor) {
       super.doRun(monitor);
-      MakeTask.this.myState.set(MakeTask.TaskState.INDETERMINATE);
+      MakeTask.this.myState.set(TaskState.INDETERMINATE);
     }
 
     @Override

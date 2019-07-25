@@ -10,13 +10,14 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import java.util.Collections;
 import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class OverrideConceptMethodsChecker extends BaseEventProcessingEditorChecker {
   /**
@@ -34,15 +35,15 @@ public final class OverrideConceptMethodsChecker extends BaseEventProcessingEdit
   @Override
   public UpdateResult update(EditorComponent component, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     SNode rootNode = component.getEditedNode();
-    if (!(SNodeOperations.isInstanceOf(rootNode, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior")))) {
+    if (!(SNodeOperations.isInstanceOf(rootNode, AUX_vnedan.ConceptBehavior_68ebe6cd))) {
       return new UpdateResult.Completed(false, emptyListEditorMessage());
     }
 
-    List<SNode> descendants = SNodeOperations.getNodeDescendants(rootNode, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), false, new SAbstractConcept[]{});
+    List<SNode> descendants = SNodeOperations.getNodeDescendants(rootNode, AUX_vnedan.ConceptMethodDeclaration_6c80ca4f, false, new SAbstractConcept[]{});
     if (ListSequence.fromList(descendants).isEmpty()) {
       return new UpdateResult.Completed(false, emptyListEditorMessage());
     }
-    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior")), cancellable);
+    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, AUX_vnedan.ConceptBehavior_68ebe6cd), cancellable);
     if (cancellable.isCancelled()) {
       return new UpdateResult.Cancelled();
     }
@@ -61,5 +62,10 @@ public final class OverrideConceptMethodsChecker extends BaseEventProcessingEdit
     }
     List<EditorMessage> descendants = new DescendantsMethodsLookup(cancellable, new GlobalScope(myProject), behavior, this, MAX_ITEMS_TO_SHOW).calcMessages();
     return ListSequence.fromList(ancestors).union(ListSequence.fromList(descendants)).toListSequence();
+  }
+
+  private static final class AUX_vnedan {
+    /*package*/ static final SConcept ConceptBehavior_68ebe6cd = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptMethodDeclaration_6c80ca4f = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

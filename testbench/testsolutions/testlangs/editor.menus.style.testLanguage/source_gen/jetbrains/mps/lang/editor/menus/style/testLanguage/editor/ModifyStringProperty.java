@@ -57,8 +57,8 @@ public class ModifyStringProperty extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new ModifyStringProperty.TMP_Action_9khjr4_a0());
-      result.add(new ModifyStringProperty.TMP_Action_9khjr4_b0());
+      result.add(new TMP_Action_9khjr4_a0());
+      result.add(new TMP_Action_9khjr4_b0());
     }
     return result;
   }
@@ -66,7 +66,7 @@ public class ModifyStringProperty extends TransformationMenuBase {
   private class TMP_Action_9khjr4_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      ModifyStringProperty.TMP_Action_9khjr4_a0.Item item = new ModifyStringProperty.TMP_Action_9khjr4_a0.Item(context);
+      TMP_Action_9khjr4_a0.Item item = new TMP_Action_9khjr4_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -126,7 +126,7 @@ public class ModifyStringProperty extends TransformationMenuBase {
   private class TMP_Action_9khjr4_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      ModifyStringProperty.TMP_Action_9khjr4_b0.Item item = new ModifyStringProperty.TMP_Action_9khjr4_b0.Item(context);
+      TMP_Action_9khjr4_b0.Item item = new TMP_Action_9khjr4_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

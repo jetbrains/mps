@@ -24,10 +24,10 @@ import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -38,6 +38,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MoneyMethods_Contribution extends TransformationMenuBase {
   public MoneyMethods_Contribution() {
@@ -66,9 +67,9 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new MoneyMethods_Contribution.TMP_Action_tctb8u_a0());
-      result.add(new MoneyMethods_Contribution.TMP_Action_tctb8u_b0());
-      result.add(new MoneyMethods_Contribution.TMP_Action_tctb8u_c0());
+      result.add(new TMP_Action_tctb8u_a0());
+      result.add(new TMP_Action_tctb8u_b0());
+      result.add(new TMP_Action_tctb8u_c0());
     }
     return result;
   }
@@ -76,7 +77,7 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
   private class TMP_Action_tctb8u_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      MoneyMethods_Contribution.TMP_Action_tctb8u_a0.Item item = new MoneyMethods_Contribution.TMP_Action_tctb8u_a0.Item(context);
+      TMP_Action_tctb8u_a0.Item item = new TMP_Action_tctb8u_a0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -111,8 +112,8 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144b05194dL, "jetbrains.mps.baseLanguage.money.structure.MoneyType"))) {
-          SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740c6f9bL, "jetbrains.mps.baseLanguage.money.structure.MoneyGetCurrencyMethodCall"), null);
+        if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), AUX_tctb8u.MoneyType_8e7aabb5)) {
+          SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_tctb8u.MoneyGetCurrencyMethodCall_fad46234, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), mgcmc);
           SLinkOperations.setTarget(mgcmc, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mgcmc, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -147,7 +148,7 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
   private class TMP_Action_tctb8u_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      MoneyMethods_Contribution.TMP_Action_tctb8u_b0.Item item = new MoneyMethods_Contribution.TMP_Action_tctb8u_b0.Item(context);
+      TMP_Action_tctb8u_b0.Item item = new TMP_Action_tctb8u_b0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -182,8 +183,8 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144b05194dL, "jetbrains.mps.baseLanguage.money.structure.MoneyType"))) {
-          SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11483863450L, "jetbrains.mps.baseLanguage.money.structure.MoneyIsZeroMethodCall"), null);
+        if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), AUX_tctb8u.MoneyType_8e7aabb5)) {
+          SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_tctb8u.MoneyIsZeroMethodCall_11816f87, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), mgcmc);
           SLinkOperations.setTarget(mgcmc, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mgcmc, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -218,7 +219,7 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
   private class TMP_Action_tctb8u_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      MoneyMethods_Contribution.TMP_Action_tctb8u_c0.Item item = new MoneyMethods_Contribution.TMP_Action_tctb8u_c0.Item(context);
+      TMP_Action_tctb8u_c0.Item item = new TMP_Action_tctb8u_c0.Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -253,8 +254,8 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144b05194dL, "jetbrains.mps.baseLanguage.money.structure.MoneyType"))) {
-          SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b5d60L, "jetbrains.mps.baseLanguage.money.structure.MoneyGetAmountMethodCall"), null);
+        if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), AUX_tctb8u.MoneyType_8e7aabb5)) {
+          SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), AUX_tctb8u.MoneyGetAmountMethodCall_f949c893, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), mgcmc);
           SLinkOperations.setTarget(mgcmc, MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance"), _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mgcmc, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -285,5 +286,12 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
       }
     }
 
+  }
+
+  private static final class AUX_tctb8u {
+    /*package*/ static final SConcept MoneyGetCurrencyMethodCall_fad46234 = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740c6f9bL, "jetbrains.mps.baseLanguage.money.structure.MoneyGetCurrencyMethodCall");
+    /*package*/ static final SConcept MoneyType_8e7aabb5 = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144b05194dL, "jetbrains.mps.baseLanguage.money.structure.MoneyType");
+    /*package*/ static final SConcept MoneyIsZeroMethodCall_11816f87 = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11483863450L, "jetbrains.mps.baseLanguage.money.structure.MoneyIsZeroMethodCall");
+    /*package*/ static final SConcept MoneyGetAmountMethodCall_f949c893 = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b5d60L, "jetbrains.mps.baseLanguage.money.structure.MoneyGetAmountMethodCall");
   }
 }

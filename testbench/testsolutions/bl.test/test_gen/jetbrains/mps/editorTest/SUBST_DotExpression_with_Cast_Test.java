@@ -23,7 +23,7 @@ public class SUBST_DotExpression_with_Cast_Test extends BaseTransformationTest {
 
   @Test
   public void test_SUBST_DotExpression_with_Cast() throws Throwable {
-    new SUBST_DotExpression_with_Cast_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -31,19 +31,19 @@ public class CaseInsensitiveDuplicatedClassifierName_Test extends BaseTransforma
 
   @Test
   public void test_NodeErrorCheck1005490780657563849() throws Throwable {
-    new CaseInsensitiveDuplicatedClassifierName_Test.TestBody(this).test_NodeErrorCheck1005490780657563849();
+    new TestBody(this).test_NodeErrorCheck1005490780657563849();
   }
   @Test
   public void test_NodeErrorCheck1005490780657563829() throws Throwable {
-    new CaseInsensitiveDuplicatedClassifierName_Test.TestBody(this).test_NodeErrorCheck1005490780657563829();
+    new TestBody(this).test_NodeErrorCheck1005490780657563829();
   }
   @Test
   public void test_NodeWarningCheck1005490780657563809() throws Throwable {
-    new CaseInsensitiveDuplicatedClassifierName_Test.TestBody(this).test_NodeWarningCheck1005490780657563809();
+    new TestBody(this).test_NodeWarningCheck1005490780657563809();
   }
   @Test
   public void test_ErrorMessagesCheck1005490780655151764() throws Throwable {
-    new CaseInsensitiveDuplicatedClassifierName_Test.TestBody(this).test_ErrorMessagesCheck1005490780655151764();
+    new TestBody(this).test_ErrorMessagesCheck1005490780655151764();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

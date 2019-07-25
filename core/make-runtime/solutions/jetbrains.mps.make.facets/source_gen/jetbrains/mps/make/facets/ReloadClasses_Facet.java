@@ -31,7 +31,7 @@ public class ReloadClasses_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.make.facets.ReloadClasses");
   public ReloadClasses_Facet() {
-    ListSequence.fromList(targets).addElement(new ReloadClasses_Facet.Target_reloadClasses());
+    ListSequence.fromList(targets).addElement(new Target_reloadClasses());
   }
   public Iterable<ITarget> targets() {
     return targets;
@@ -49,7 +49,7 @@ public class ReloadClasses_Facet extends IFacet.Stub {
     return this.name;
   }
   public IPropertiesPersistence propertiesPersistence() {
-    return new ReloadClasses_Facet.TargetProperties();
+    return new TargetProperties();
   }
   public static class Target_reloadClasses implements ITargetEx2 {
     private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.ReloadClasses.reloadClasses");

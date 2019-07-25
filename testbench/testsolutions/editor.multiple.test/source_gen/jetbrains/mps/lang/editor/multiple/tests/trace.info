@@ -10,7 +10,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/1947450138886989116">
     <file name="ConditionalPresentation_addQuery_RefNode_default_Test.java">
       <node id="1947450138886989116" at="18,66,19,25" concept="6" />
-      <node id="1947450138886989116" at="23,88,24,90" concept="1" />
+      <node id="1947450138886989116" at="23,88,24,36" concept="1" />
       <node id="1947450138886989116" at="29,52,30,19" concept="6" />
       <node id="1947450138886989116" at="34,51,35,72" concept="1" />
       <node id="1947450138886989118" at="35,72,36,37" concept="1" />
@@ -20,7 +20,7 @@
       <node id="1947450138886989116" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_RefNode_default#()V" />
       <node id="1947450138886989116" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1947450138886989116" at="18,66,19,25" />
-      <scope id="1947450138886989116" at="23,88,24,90" />
+      <scope id="1947450138886989116" at="23,88,24,36" />
       <scope id="1947450138886989116" at="29,52,30,19" />
       <scope id="1947450138886989116" at="34,51,36,37" />
       <scope id="1947450138886989116" at="18,0,21,0" />
@@ -36,7 +36,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/1947450138886989214">
     <file name="ConditionalPresentation_addQuery_RefNode_rich_Test.java">
       <node id="1947450138886989214" at="18,63,19,25" concept="6" />
-      <node id="1947450138886989214" at="23,85,24,87" concept="1" />
+      <node id="1947450138886989214" at="23,85,24,36" concept="1" />
       <node id="1947450138886989214" at="29,52,30,19" concept="6" />
       <node id="1947450138886989214" at="34,51,35,72" concept="1" />
       <node id="1947450138886989216" at="35,72,36,29" concept="1" />
@@ -46,7 +46,7 @@
       <node id="1947450138886989214" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_RefNode_rich#()V" />
       <node id="1947450138886989214" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1947450138886989214" at="18,63,19,25" />
-      <scope id="1947450138886989214" at="23,85,24,87" />
+      <scope id="1947450138886989214" at="23,85,24,36" />
       <scope id="1947450138886989214" at="29,52,30,19" />
       <scope id="1947450138886989214" at="34,51,36,29" />
       <scope id="1947450138886989214" at="18,0,21,0" />
@@ -62,7 +62,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/1947450138886989480">
     <file name="ConditionalPresentation_addQuery_RefNode_switch_Test.java">
       <node id="1947450138886989480" at="18,65,19,25" concept="6" />
-      <node id="1947450138886989480" at="23,87,24,89" concept="1" />
+      <node id="1947450138886989480" at="23,87,24,36" concept="1" />
       <node id="1947450138886989480" at="29,52,30,19" concept="6" />
       <node id="1947450138886989480" at="34,51,35,72" concept="1" />
       <node id="1947450138886989485" at="35,72,36,25" concept="1" />
@@ -75,7 +75,7 @@
       <node id="1947450138886989480" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_RefNode_switch#()V" />
       <node id="1947450138886989480" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1947450138886989480" at="18,65,19,25" />
-      <scope id="1947450138886989480" at="23,87,24,89" />
+      <scope id="1947450138886989480" at="23,87,24,36" />
       <scope id="1947450138886989480" at="29,52,30,19" />
       <scope id="1947450138886989480" at="18,0,21,0" />
       <scope id="1947450138886989480" at="29,0,32,0">
@@ -91,7 +91,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/1947450138886994476">
     <file name="ConditionalPresentation_removeQuery_RefNode_compact_Test.java">
       <node id="1947450138886994476" at="18,69,19,25" concept="6" />
-      <node id="1947450138886994476" at="23,91,24,93" concept="1" />
+      <node id="1947450138886994476" at="23,91,24,36" concept="1" />
       <node id="1947450138886994476" at="29,52,30,19" concept="6" />
       <node id="1947450138886994476" at="34,51,35,72" concept="1" />
       <node id="1947450138886994478" at="35,72,36,30" concept="1" />
@@ -101,7 +101,7 @@
       <node id="1947450138886994476" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_removeQuery_RefNode_compact#()V" />
       <node id="1947450138886994476" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1947450138886994476" at="18,69,19,25" />
-      <scope id="1947450138886994476" at="23,91,24,93" />
+      <scope id="1947450138886994476" at="23,91,24,36" />
       <scope id="1947450138886994476" at="29,52,30,19" />
       <scope id="1947450138886994476" at="34,51,36,30" />
       <scope id="1947450138886994476" at="18,0,21,0" />
@@ -117,7 +117,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/1947450138886994765">
     <file name="ConditionalPresentation_removeQuery_RefNode_switch_Test.java">
       <node id="1947450138886994765" at="18,68,19,25" concept="6" />
-      <node id="1947450138886994765" at="23,90,24,92" concept="1" />
+      <node id="1947450138886994765" at="23,90,24,36" concept="1" />
       <node id="1947450138886994765" at="29,52,30,19" concept="6" />
       <node id="1947450138886994765" at="34,51,35,72" concept="1" />
       <node id="1947450138886994767" at="35,72,36,26" concept="1" />
@@ -130,7 +130,7 @@
       <node id="1947450138886994765" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_removeQuery_RefNode_switch#()V" />
       <node id="1947450138886994765" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="1947450138886994765" at="18,68,19,25" />
-      <scope id="1947450138886994765" at="23,90,24,92" />
+      <scope id="1947450138886994765" at="23,90,24,36" />
       <scope id="1947450138886994765" at="29,52,30,19" />
       <scope id="1947450138886994765" at="18,0,21,0" />
       <scope id="1947450138886994765" at="29,0,32,0">
@@ -146,7 +146,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/2112659629360583083">
     <file name="InspectorOfCompactPresentation_Test.java">
       <node id="2112659629360583083" at="22,48,23,25" concept="6" />
-      <node id="2112659629360583083" at="27,70,28,72" concept="1" />
+      <node id="2112659629360583083" at="27,70,28,36" concept="1" />
       <node id="2112659629360583083" at="33,52,34,19" concept="6" />
       <node id="2112659629360583083" at="38,51,39,72" concept="1" />
       <node id="2112659629360597721" at="39,72,40,69" concept="1" />
@@ -158,7 +158,7 @@
       <node id="2112659629360583083" at="26,0,30,0" concept="2" trace="test_InspectorOfCompactPresentation#()V" />
       <node id="2112659629360583083" at="37,0,44,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2112659629360583083" at="22,48,23,25" />
-      <scope id="2112659629360583083" at="27,70,28,72" />
+      <scope id="2112659629360583083" at="27,70,28,36" />
       <scope id="2112659629360583083" at="33,52,34,19" />
       <scope id="2112659629360583083" at="22,0,25,0" />
       <scope id="2112659629360583083" at="33,0,36,0">
@@ -176,7 +176,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/2112659629360602494">
     <file name="InspectorOfRichPresentation_Test.java">
       <node id="2112659629360602494" at="22,45,23,25" concept="6" />
-      <node id="2112659629360602494" at="27,67,28,69" concept="1" />
+      <node id="2112659629360602494" at="27,67,28,36" concept="1" />
       <node id="2112659629360602494" at="33,52,34,19" concept="6" />
       <node id="2112659629360602494" at="38,51,39,72" concept="1" />
       <node id="2112659629360602496" at="39,72,40,69" concept="1" />
@@ -188,7 +188,7 @@
       <node id="2112659629360602494" at="26,0,30,0" concept="2" trace="test_InspectorOfRichPresentation#()V" />
       <node id="2112659629360602494" at="37,0,44,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2112659629360602494" at="22,45,23,25" />
-      <scope id="2112659629360602494" at="27,67,28,69" />
+      <scope id="2112659629360602494" at="27,67,28,36" />
       <scope id="2112659629360602494" at="33,52,34,19" />
       <scope id="2112659629360602494" at="22,0,25,0" />
       <scope id="2112659629360602494" at="33,0,36,0">
@@ -206,7 +206,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/2112659629360603418">
     <file name="InspectorOfDefaultPresentation_Test.java">
       <node id="2112659629360603418" at="22,48,23,25" concept="6" />
-      <node id="2112659629360603418" at="27,70,28,72" concept="1" />
+      <node id="2112659629360603418" at="27,70,28,36" concept="1" />
       <node id="2112659629360603418" at="33,52,34,19" concept="6" />
       <node id="2112659629360603418" at="38,51,39,72" concept="1" />
       <node id="2112659629360603420" at="39,72,40,69" concept="1" />
@@ -218,7 +218,7 @@
       <node id="2112659629360603418" at="26,0,30,0" concept="2" trace="test_InspectorOfDefaultPresentation#()V" />
       <node id="2112659629360603418" at="37,0,44,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2112659629360603418" at="22,48,23,25" />
-      <scope id="2112659629360603418" at="27,70,28,72" />
+      <scope id="2112659629360603418" at="27,70,28,36" />
       <scope id="2112659629360603418" at="33,52,34,19" />
       <scope id="2112659629360603418" at="22,0,25,0" />
       <scope id="2112659629360603418" at="33,0,36,0">
@@ -236,7 +236,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/2112659629360604431">
     <file name="InspectorOfCompactPresentation_pushHints_Test.java">
       <node id="2112659629360604431" at="23,58,24,25" concept="6" />
-      <node id="2112659629360604431" at="28,80,29,82" concept="1" />
+      <node id="2112659629360604431" at="28,80,29,36" concept="1" />
       <node id="2112659629360604431" at="34,52,35,19" concept="6" />
       <node id="2112659629360604431" at="39,51,40,53" concept="1" />
       <node id="2112659629360607142" at="40,53,41,0" concept="4" />
@@ -258,7 +258,7 @@
       <node id="8041297453111219303" at="45,155,55,9" concept="1" />
       <node id="2112659629360604431" at="38,0,59,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2112659629360604431" at="23,58,24,25" />
-      <scope id="2112659629360604431" at="28,80,29,82" />
+      <scope id="2112659629360604431" at="28,80,29,36" />
       <scope id="2112659629360604431" at="34,52,35,19" />
       <scope id="2112659629360713218" at="49,31,50,47" />
       <scope id="2112659629360604431" at="23,0,26,0" />
@@ -283,7 +283,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/2601164129533059968">
     <file name="UnsupportedPresentation_Test.java">
       <node id="2601164129533059968" at="18,41,19,25" concept="6" />
-      <node id="2601164129533059968" at="23,63,24,65" concept="1" />
+      <node id="2601164129533059968" at="23,63,24,36" concept="1" />
       <node id="2601164129533059968" at="29,52,30,19" concept="6" />
       <node id="2601164129533059968" at="34,51,35,72" concept="1" />
       <node id="2601164129533059976" at="35,72,36,24" concept="1" />
@@ -293,7 +293,7 @@
       <node id="2601164129533059968" at="22,0,26,0" concept="2" trace="test_UnsupportedPresentation#()V" />
       <node id="2601164129533059968" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2601164129533059968" at="18,41,19,25" />
-      <scope id="2601164129533059968" at="23,63,24,65" />
+      <scope id="2601164129533059968" at="23,63,24,36" />
       <scope id="2601164129533059968" at="29,52,30,19" />
       <scope id="2601164129533059968" at="34,51,36,24" />
       <scope id="2601164129533059968" at="18,0,21,0" />
@@ -309,7 +309,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/554589055677209880">
     <file name="ConditionalPresentation_addQuery_RefNodeList_default_Test.java">
       <node id="554589055677209880" at="18,70,19,25" concept="6" />
-      <node id="554589055677209880" at="23,92,24,94" concept="1" />
+      <node id="554589055677209880" at="23,92,24,36" concept="1" />
       <node id="554589055677209880" at="29,52,30,19" concept="6" />
       <node id="554589055677209880" at="34,51,35,70" concept="1" />
       <node id="554589055677209888" at="35,70,36,37" concept="1" />
@@ -319,7 +319,7 @@
       <node id="554589055677209880" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_RefNodeList_default#()V" />
       <node id="554589055677209880" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="554589055677209880" at="18,70,19,25" />
-      <scope id="554589055677209880" at="23,92,24,94" />
+      <scope id="554589055677209880" at="23,92,24,36" />
       <scope id="554589055677209880" at="29,52,30,19" />
       <scope id="554589055677209880" at="34,51,36,37" />
       <scope id="554589055677209880" at="18,0,21,0" />
@@ -335,7 +335,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/554589055677210829">
     <file name="ConditionalPresentation_addQuery_RefNodeList_switch_Test.java">
       <node id="554589055677210829" at="18,69,19,25" concept="6" />
-      <node id="554589055677210829" at="23,91,24,93" concept="1" />
+      <node id="554589055677210829" at="23,91,24,36" concept="1" />
       <node id="554589055677210829" at="29,52,30,19" concept="6" />
       <node id="554589055677210829" at="34,51,35,70" concept="1" />
       <node id="554589055677210834" at="35,70,36,25" concept="1" />
@@ -348,7 +348,7 @@
       <node id="554589055677210829" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_RefNodeList_switch#()V" />
       <node id="554589055677210829" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="554589055677210829" at="18,69,19,25" />
-      <scope id="554589055677210829" at="23,91,24,93" />
+      <scope id="554589055677210829" at="23,91,24,36" />
       <scope id="554589055677210829" at="29,52,30,19" />
       <scope id="554589055677210829" at="18,0,21,0" />
       <scope id="554589055677210829" at="29,0,32,0">
@@ -364,7 +364,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/554589055677397793">
     <file name="ConditionalPresentation_removeQuery_RefNodeList_compact_Test.java">
       <node id="554589055677397793" at="18,73,19,25" concept="6" />
-      <node id="554589055677397793" at="23,95,24,97" concept="1" />
+      <node id="554589055677397793" at="23,95,24,36" concept="1" />
       <node id="554589055677397793" at="29,52,30,19" concept="6" />
       <node id="554589055677397793" at="34,51,35,70" concept="1" />
       <node id="554589055677397795" at="35,70,36,30" concept="1" />
@@ -374,7 +374,7 @@
       <node id="554589055677397793" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_removeQuery_RefNodeList_compact#()V" />
       <node id="554589055677397793" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="554589055677397793" at="18,73,19,25" />
-      <scope id="554589055677397793" at="23,95,24,97" />
+      <scope id="554589055677397793" at="23,95,24,36" />
       <scope id="554589055677397793" at="29,52,30,19" />
       <scope id="554589055677397793" at="34,51,36,30" />
       <scope id="554589055677397793" at="18,0,21,0" />
@@ -390,7 +390,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/554589055677398009">
     <file name="ConditionalPresentation_removeQuery_RefNodeList_switch_Test.java">
       <node id="554589055677398009" at="18,72,19,25" concept="6" />
-      <node id="554589055677398009" at="23,94,24,96" concept="1" />
+      <node id="554589055677398009" at="23,94,24,36" concept="1" />
       <node id="554589055677398009" at="29,52,30,19" concept="6" />
       <node id="554589055677398009" at="34,51,35,70" concept="1" />
       <node id="554589055677398011" at="35,70,36,26" concept="1" />
@@ -403,7 +403,7 @@
       <node id="554589055677398009" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_removeQuery_RefNodeList_switch#()V" />
       <node id="554589055677398009" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="554589055677398009" at="18,72,19,25" />
-      <scope id="554589055677398009" at="23,94,24,96" />
+      <scope id="554589055677398009" at="23,94,24,36" />
       <scope id="554589055677398009" at="29,52,30,19" />
       <scope id="554589055677398009" at="18,0,21,0" />
       <scope id="554589055677398009" at="29,0,32,0">
@@ -419,7 +419,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/5613016763942508875">
     <file name="ConditionalPresentation_addQuery_RefNodeList_rich_Test.java">
       <node id="5613016763942508875" at="18,67,19,25" concept="6" />
-      <node id="5613016763942508875" at="23,89,24,91" concept="1" />
+      <node id="5613016763942508875" at="23,89,24,36" concept="1" />
       <node id="5613016763942508875" at="29,52,30,19" concept="6" />
       <node id="5613016763942508875" at="34,51,35,70" concept="1" />
       <node id="5613016763942508880" at="35,70,36,29" concept="1" />
@@ -429,7 +429,7 @@
       <node id="5613016763942508875" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_RefNodeList_rich#()V" />
       <node id="5613016763942508875" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5613016763942508875" at="18,67,19,25" />
-      <scope id="5613016763942508875" at="23,89,24,91" />
+      <scope id="5613016763942508875" at="23,89,24,36" />
       <scope id="5613016763942508875" at="29,52,30,19" />
       <scope id="5613016763942508875" at="34,51,36,29" />
       <scope id="5613016763942508875" at="18,0,21,0" />
@@ -445,7 +445,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/5861024100074454462">
     <file name="EditorSpecifiedBy_add_context_hints_RefNode_Test.java">
       <node id="5861024100074454462" at="18,61,19,25" concept="6" />
-      <node id="5861024100074454462" at="23,83,24,85" concept="1" />
+      <node id="5861024100074454462" at="23,83,24,36" concept="1" />
       <node id="5861024100074454462" at="29,52,30,19" concept="6" />
       <node id="5861024100074454462" at="34,51,35,72" concept="1" />
       <node id="5861024100074454470" at="35,72,36,24" concept="1" />
@@ -455,7 +455,7 @@
       <node id="5861024100074454462" at="22,0,26,0" concept="2" trace="test_EditorSpecifiedBy_add_context_hints_RefNode#()V" />
       <node id="5861024100074454462" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5861024100074454462" at="18,61,19,25" />
-      <scope id="5861024100074454462" at="23,83,24,85" />
+      <scope id="5861024100074454462" at="23,83,24,36" />
       <scope id="5861024100074454462" at="29,52,30,19" />
       <scope id="5861024100074454462" at="34,51,36,24" />
       <scope id="5861024100074454462" at="18,0,21,0" />
@@ -471,7 +471,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/5861024100074455062">
     <file name="EditorSpecifiedBy_add_remove_context_hints_RefNode_Test.java">
       <node id="5861024100074455062" at="18,68,19,25" concept="6" />
-      <node id="5861024100074455062" at="23,90,24,92" concept="1" />
+      <node id="5861024100074455062" at="23,90,24,36" concept="1" />
       <node id="5861024100074455062" at="29,52,30,19" concept="6" />
       <node id="5861024100074455062" at="34,51,35,72" concept="1" />
       <node id="5861024100074455070" at="35,72,36,24" concept="1" />
@@ -481,7 +481,7 @@
       <node id="5861024100074455062" at="22,0,26,0" concept="2" trace="test_EditorSpecifiedBy_add_remove_context_hints_RefNode#()V" />
       <node id="5861024100074455062" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5861024100074455062" at="18,68,19,25" />
-      <scope id="5861024100074455062" at="23,90,24,92" />
+      <scope id="5861024100074455062" at="23,90,24,36" />
       <scope id="5861024100074455062" at="29,52,30,19" />
       <scope id="5861024100074455062" at="34,51,36,24" />
       <scope id="5861024100074455062" at="18,0,21,0" />
@@ -497,7 +497,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/5950344441601491241">
     <file name="EditorSpecifiedBy_add_context_hints_Test.java">
       <node id="5950344441601491241" at="18,53,19,25" concept="6" />
-      <node id="5950344441601491241" at="23,75,24,77" concept="1" />
+      <node id="5950344441601491241" at="23,75,24,36" concept="1" />
       <node id="5950344441601491241" at="29,52,30,19" concept="6" />
       <node id="5950344441601491241" at="34,51,35,72" concept="1" />
       <node id="5950344441601663779" at="35,72,36,24" concept="1" />
@@ -507,7 +507,7 @@
       <node id="5950344441601491241" at="22,0,26,0" concept="2" trace="test_EditorSpecifiedBy_add_context_hints#()V" />
       <node id="5950344441601491241" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5950344441601491241" at="18,53,19,25" />
-      <scope id="5950344441601491241" at="23,75,24,77" />
+      <scope id="5950344441601491241" at="23,75,24,36" />
       <scope id="5950344441601491241" at="29,52,30,19" />
       <scope id="5950344441601491241" at="34,51,36,24" />
       <scope id="5950344441601491241" at="18,0,21,0" />
@@ -523,7 +523,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/5950344441601668447">
     <file name="DefaultEditor_Test.java">
       <node id="5950344441601668447" at="18,31,19,25" concept="6" />
-      <node id="5950344441601668447" at="23,53,24,55" concept="1" />
+      <node id="5950344441601668447" at="23,53,24,36" concept="1" />
       <node id="5950344441601668447" at="29,52,30,19" concept="6" />
       <node id="5950344441601668447" at="34,51,35,72" concept="1" />
       <node id="5950344441601668455" at="35,72,36,24" concept="1" />
@@ -533,7 +533,7 @@
       <node id="5950344441601668447" at="22,0,26,0" concept="2" trace="test_DefaultEditor#()V" />
       <node id="5950344441601668447" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5950344441601668447" at="18,31,19,25" />
-      <scope id="5950344441601668447" at="23,53,24,55" />
+      <scope id="5950344441601668447" at="23,53,24,36" />
       <scope id="5950344441601668447" at="29,52,30,19" />
       <scope id="5950344441601668447" at="34,51,36,24" />
       <scope id="5950344441601668447" at="18,0,21,0" />
@@ -549,7 +549,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/5950344441601676487">
     <file name="EditorSpecifiedBy_add_remove_context_hints_Test.java">
       <node id="5950344441601676487" at="18,60,19,25" concept="6" />
-      <node id="5950344441601676487" at="23,82,24,84" concept="1" />
+      <node id="5950344441601676487" at="23,82,24,36" concept="1" />
       <node id="5950344441601676487" at="29,52,30,19" concept="6" />
       <node id="5950344441601676487" at="34,51,35,72" concept="1" />
       <node id="5950344441601676492" at="35,72,36,29" concept="1" />
@@ -559,7 +559,7 @@
       <node id="5950344441601676487" at="22,0,26,0" concept="2" trace="test_EditorSpecifiedBy_add_remove_context_hints#()V" />
       <node id="5950344441601676487" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="5950344441601676487" at="18,60,19,25" />
-      <scope id="5950344441601676487" at="23,82,24,84" />
+      <scope id="5950344441601676487" at="23,82,24,36" />
       <scope id="5950344441601676487" at="29,52,30,19" />
       <scope id="5950344441601676487" at="34,51,36,29" />
       <scope id="5950344441601676487" at="18,0,21,0" />
@@ -575,7 +575,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/6355695904178436203">
     <file name="MostSpecificEditor_Test.java">
       <node id="6355695904178436203" at="18,36,19,25" concept="6" />
-      <node id="6355695904178436203" at="23,58,24,60" concept="1" />
+      <node id="6355695904178436203" at="23,58,24,36" concept="1" />
       <node id="6355695904178436203" at="29,52,30,19" concept="6" />
       <node id="6355695904178436203" at="34,51,35,72" concept="1" />
       <node id="6355695904178440220" at="35,72,36,37" concept="1" />
@@ -585,7 +585,7 @@
       <node id="6355695904178436203" at="22,0,26,0" concept="2" trace="test_MostSpecificEditor#()V" />
       <node id="6355695904178436203" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6355695904178436203" at="18,36,19,25" />
-      <scope id="6355695904178436203" at="23,58,24,60" />
+      <scope id="6355695904178436203" at="23,58,24,36" />
       <scope id="6355695904178436203" at="29,52,30,19" />
       <scope id="6355695904178436203" at="34,51,36,37" />
       <scope id="6355695904178436203" at="18,0,21,0" />
@@ -601,7 +601,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/7279578193769046188">
     <file name="EditorSpecifiedBy_add_context_hints_RefNodeList_Test.java">
       <node id="7279578193769046188" at="18,65,19,25" concept="6" />
-      <node id="7279578193769046188" at="23,87,24,89" concept="1" />
+      <node id="7279578193769046188" at="23,87,24,36" concept="1" />
       <node id="7279578193769046188" at="29,52,30,19" concept="6" />
       <node id="7279578193769046188" at="34,51,35,72" concept="1" />
       <node id="5613016763942494752" at="35,72,36,24" concept="1" />
@@ -611,7 +611,7 @@
       <node id="7279578193769046188" at="22,0,26,0" concept="2" trace="test_EditorSpecifiedBy_add_context_hints_RefNodeList#()V" />
       <node id="7279578193769046188" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7279578193769046188" at="18,65,19,25" />
-      <scope id="7279578193769046188" at="23,87,24,89" />
+      <scope id="7279578193769046188" at="23,87,24,36" />
       <scope id="7279578193769046188" at="29,52,30,19" />
       <scope id="7279578193769046188" at="34,51,36,24" />
       <scope id="7279578193769046188" at="18,0,21,0" />
@@ -627,7 +627,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/7279578193769147476">
     <file name="EditorSpecifiedBy_add_remove_context_hints_RefNodeList_Test.java">
       <node id="7279578193769147476" at="18,72,19,25" concept="6" />
-      <node id="7279578193769147476" at="23,94,24,96" concept="1" />
+      <node id="7279578193769147476" at="23,94,24,36" concept="1" />
       <node id="7279578193769147476" at="29,52,30,19" concept="6" />
       <node id="7279578193769147476" at="34,51,35,72" concept="1" />
       <node id="5613016763942494883" at="35,72,36,24" concept="1" />
@@ -637,7 +637,7 @@
       <node id="7279578193769147476" at="22,0,26,0" concept="2" trace="test_EditorSpecifiedBy_add_remove_context_hints_RefNodeList#()V" />
       <node id="7279578193769147476" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7279578193769147476" at="18,72,19,25" />
-      <scope id="7279578193769147476" at="23,94,24,96" />
+      <scope id="7279578193769147476" at="23,94,24,36" />
       <scope id="7279578193769147476" at="29,52,30,19" />
       <scope id="7279578193769147476" at="34,51,36,24" />
       <scope id="7279578193769147476" at="18,0,21,0" />
@@ -653,7 +653,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/7636045212390392321">
     <file name="ConditionalPresentation_addQuery_default_Test.java">
       <node id="7636045212390392321" at="18,58,19,25" concept="6" />
-      <node id="7636045212390392321" at="23,80,24,82" concept="1" />
+      <node id="7636045212390392321" at="23,80,24,36" concept="1" />
       <node id="7636045212390392321" at="29,52,30,19" concept="6" />
       <node id="7636045212390392321" at="34,51,35,72" concept="1" />
       <node id="7636045212390401434" at="35,72,36,37" concept="1" />
@@ -663,7 +663,7 @@
       <node id="7636045212390392321" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_default#()V" />
       <node id="7636045212390392321" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7636045212390392321" at="18,58,19,25" />
-      <scope id="7636045212390392321" at="23,80,24,82" />
+      <scope id="7636045212390392321" at="23,80,24,36" />
       <scope id="7636045212390392321" at="29,52,30,19" />
       <scope id="7636045212390392321" at="34,51,36,37" />
       <scope id="7636045212390392321" at="18,0,21,0" />
@@ -679,7 +679,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/7636045212390401481">
     <file name="ConditionalPresentation_addQuery_rich_Test.java">
       <node id="7636045212390401481" at="18,55,19,25" concept="6" />
-      <node id="7636045212390401481" at="23,77,24,79" concept="1" />
+      <node id="7636045212390401481" at="23,77,24,36" concept="1" />
       <node id="7636045212390401481" at="29,52,30,19" concept="6" />
       <node id="7636045212390401481" at="34,51,35,72" concept="1" />
       <node id="7636045212390401766" at="35,72,36,29" concept="1" />
@@ -689,7 +689,7 @@
       <node id="7636045212390401481" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_rich#()V" />
       <node id="7636045212390401481" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7636045212390401481" at="18,55,19,25" />
-      <scope id="7636045212390401481" at="23,77,24,79" />
+      <scope id="7636045212390401481" at="23,77,24,36" />
       <scope id="7636045212390401481" at="29,52,30,19" />
       <scope id="7636045212390401481" at="34,51,36,29" />
       <scope id="7636045212390401481" at="18,0,21,0" />
@@ -705,7 +705,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/7636045212390410965">
     <file name="ConditionalPresentation_removeQuery_compact_Test.java">
       <node id="7636045212390410965" at="18,61,19,25" concept="6" />
-      <node id="7636045212390410965" at="23,83,24,85" concept="1" />
+      <node id="7636045212390410965" at="23,83,24,36" concept="1" />
       <node id="7636045212390410965" at="29,52,30,19" concept="6" />
       <node id="7636045212390410965" at="34,51,35,72" concept="1" />
       <node id="7636045212390410973" at="35,72,36,30" concept="1" />
@@ -715,7 +715,7 @@
       <node id="7636045212390410965" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_removeQuery_compact#()V" />
       <node id="7636045212390410965" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7636045212390410965" at="18,61,19,25" />
-      <scope id="7636045212390410965" at="23,83,24,85" />
+      <scope id="7636045212390410965" at="23,83,24,36" />
       <scope id="7636045212390410965" at="29,52,30,19" />
       <scope id="7636045212390410965" at="34,51,36,30" />
       <scope id="7636045212390410965" at="18,0,21,0" />
@@ -731,7 +731,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/7636045212390416608">
     <file name="ConditionalPresentation_addQuery_switch_Test.java">
       <node id="7636045212390416608" at="18,57,19,25" concept="6" />
-      <node id="7636045212390416608" at="23,79,24,81" concept="1" />
+      <node id="7636045212390416608" at="23,79,24,36" concept="1" />
       <node id="7636045212390416608" at="29,52,30,19" concept="6" />
       <node id="7636045212390416608" at="34,51,35,72" concept="1" />
       <node id="7636045212390416999" at="35,72,36,25" concept="1" />
@@ -744,7 +744,7 @@
       <node id="7636045212390416608" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_addQuery_switch#()V" />
       <node id="7636045212390416608" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7636045212390416608" at="18,57,19,25" />
-      <scope id="7636045212390416608" at="23,79,24,81" />
+      <scope id="7636045212390416608" at="23,79,24,36" />
       <scope id="7636045212390416608" at="29,52,30,19" />
       <scope id="7636045212390416608" at="18,0,21,0" />
       <scope id="7636045212390416608" at="29,0,32,0">
@@ -760,7 +760,7 @@
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/7636045212393364917">
     <file name="ConditionalPresentation_removeQuery_switch_Test.java">
       <node id="7636045212393364917" at="18,60,19,25" concept="6" />
-      <node id="7636045212393364917" at="23,82,24,84" concept="1" />
+      <node id="7636045212393364917" at="23,82,24,36" concept="1" />
       <node id="7636045212393364917" at="29,52,30,19" concept="6" />
       <node id="7636045212393364917" at="34,51,35,72" concept="1" />
       <node id="7636045212393365029" at="35,72,36,26" concept="1" />
@@ -773,7 +773,7 @@
       <node id="7636045212393364917" at="22,0,26,0" concept="2" trace="test_ConditionalPresentation_removeQuery_switch#()V" />
       <node id="7636045212393364917" at="33,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7636045212393364917" at="18,60,19,25" />
-      <scope id="7636045212393364917" at="23,82,24,84" />
+      <scope id="7636045212393364917" at="23,82,24,36" />
       <scope id="7636045212393364917" at="29,52,30,19" />
       <scope id="7636045212393364917" at="18,0,21,0" />
       <scope id="7636045212393364917" at="29,0,32,0">

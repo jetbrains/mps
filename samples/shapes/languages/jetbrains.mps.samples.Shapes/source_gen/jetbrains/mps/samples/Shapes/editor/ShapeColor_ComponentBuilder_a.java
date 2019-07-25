@@ -53,7 +53,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new ShapeColor_ComponentBuilder_a.colorRefSingleRoleHandler_mblc8h_b0(myNode, MetaAdapterFactory.getContainmentLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc161L, 0x3a2b0182df24928cL, "colorRef"), getEditorContext());
+    SingleRoleCellProvider provider = new colorRefSingleRoleHandler_mblc8h_b0(myNode, MetaAdapterFactory.getContainmentLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc161L, 0x3a2b0182df24928cL, "colorRef"), getEditorContext());
     return provider.createCell();
   }
   private static class colorRefSingleRoleHandler_mblc8h_b0 extends SingleRoleCellProvider {

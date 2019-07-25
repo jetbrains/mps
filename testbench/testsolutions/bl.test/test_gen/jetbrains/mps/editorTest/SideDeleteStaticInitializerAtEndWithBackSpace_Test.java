@@ -22,7 +22,7 @@ public class SideDeleteStaticInitializerAtEndWithBackSpace_Test extends BaseTran
 
   @Test
   public void test_SideDeleteStaticInitializerAtEndWithBackSpace() throws Throwable {
-    new SideDeleteStaticInitializerAtEndWithBackSpace_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

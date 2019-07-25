@@ -9,14 +9,16 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Iterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ExtractMethodRefactoringParameters extends MethodModel {
   private ExtractMethodRefactoringAnalyzer myAnalyzer;
@@ -59,15 +61,15 @@ public class ExtractMethodRefactoringParameters extends MethodModel {
     final String name = this.getName();
     final SNode classifier = this.myAnalyzer.getClassifier();
     if (classifier != null) {
-      Iterable<SNode> methods = Sequence.fromIterable(SNodeOperations.ofConcept(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), SMethodTrimmedId.create("getThisType", null, "2RtWPFZ12w7"))), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType"), SMethodTrimmedId.create("getMembers", MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType"), "6r77ob2V1Fr"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"))).where(new IWhereFilter<SNode>() {
+      Iterable<SNode> methods = Sequence.fromIterable(SNodeOperations.ofConcept(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, AUX_7amayc.Classifier_4b7e553, SMethodTrimmedId.create("getThisType", null, "2RtWPFZ12w7"))), AUX_7amayc.IClassifierType_4ce3f333, SMethodTrimmedId.create("getMembers", AUX_7amayc.IClassifierType_4ce3f333, "6r77ob2V1Fr"))), AUX_7amayc.InstanceMethodDeclaration_9dbf9b2b)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), name) && ((boolean) (Boolean) BHReflection.invoke0(it, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), SMethodTrimmedId.create("isVisible", null, "70J2WaK_oVl"), classifier, classifier));
+          return Objects.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), name) && ((boolean) (Boolean) BHReflection.invoke0(it, AUX_7amayc.ClassifierMember_849b47d7, SMethodTrimmedId.create("isVisible", null, "70J2WaK_oVl"), classifier, classifier));
         }
       });
       for (SNode method : methods) {
         boolean good = this.isParametersMatch(method);
         if (good) {
-          return SNodeOperations.getNodeAncestor(method, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
+          return SNodeOperations.getNodeAncestor(method, AUX_7amayc.Classifier_4b7e553, false, false);
         }
       }
     }
@@ -106,5 +108,12 @@ public class ExtractMethodRefactoringParameters extends MethodModel {
     String result = this.myVisibility.getName() + " " + super.getMethodText();
     return result;
 
+  }
+
+  private static final class AUX_7amayc {
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept IClassifierType_4ce3f333 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType");
+    /*package*/ static final SConcept InstanceMethodDeclaration_9dbf9b2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SInterfaceConcept ClassifierMember_849b47d7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }
 }

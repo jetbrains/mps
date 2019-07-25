@@ -51,7 +51,7 @@ public class ParameterizedByPrimitiveType extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), "test location").contains(_context.getMenuLocation())) {
-      result.add(new ParameterizedByPrimitiveType.TMP_Param_ud82js_a0());
+      result.add(new TMP_Param_ud82js_a0());
     }
     return result;
   }
@@ -61,7 +61,7 @@ public class ParameterizedByPrimitiveType extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(Integer parameter, TransformationMenuContext context) {
-      return new ParameterizedByPrimitiveType.TMP_Param_ud82js_a0.TMP_Action_ud82js_a0a(parameter).createItems(context);
+      return new TMP_Param_ud82js_a0.TMP_Action_ud82js_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -132,7 +132,7 @@ __switch__:
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        ParameterizedByPrimitiveType.TMP_Param_ud82js_a0.TMP_Action_ud82js_a0a.Item item = new ParameterizedByPrimitiveType.TMP_Param_ud82js_a0.TMP_Action_ud82js_a0a.Item(context);
+        TMP_Param_ud82js_a0.TMP_Action_ud82js_a0a.Item item = new TMP_Param_ud82js_a0.TMP_Action_ud82js_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

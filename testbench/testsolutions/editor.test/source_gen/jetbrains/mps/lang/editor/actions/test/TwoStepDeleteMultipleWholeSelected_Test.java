@@ -22,7 +22,7 @@ public class TwoStepDeleteMultipleWholeSelected_Test extends BaseTransformationT
 
   @Test
   public void test_TwoStepDeleteMultipleWholeSelected() throws Throwable {
-    new TwoStepDeleteMultipleWholeSelected_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -21,7 +21,7 @@ public class TestCreateComparableEquationStatementStrong_Test extends BaseTransf
 
   @Test
   public void test_TestCreateComparableEquationStatementStrong() throws Throwable {
-    new TestCreateComparableEquationStatementStrong_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

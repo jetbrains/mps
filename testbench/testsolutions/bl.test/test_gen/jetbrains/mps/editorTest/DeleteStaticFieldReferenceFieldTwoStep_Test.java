@@ -22,7 +22,7 @@ public class DeleteStaticFieldReferenceFieldTwoStep_Test extends BaseTransformat
 
   @Test
   public void test_DeleteStaticFieldReferenceFieldTwoStep() throws Throwable {
-    new DeleteStaticFieldReferenceFieldTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

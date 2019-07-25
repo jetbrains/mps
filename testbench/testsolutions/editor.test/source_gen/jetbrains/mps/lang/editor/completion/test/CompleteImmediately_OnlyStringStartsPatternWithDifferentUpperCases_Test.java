@@ -21,7 +21,7 @@ public class CompleteImmediately_OnlyStringStartsPatternWithDifferentUpperCases_
 
   @Test
   public void test_CompleteImmediately_OnlyStringStartsPatternWithDifferentUpperCases() throws Throwable {
-    new CompleteImmediately_OnlyStringStartsPatternWithDifferentUpperCases_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

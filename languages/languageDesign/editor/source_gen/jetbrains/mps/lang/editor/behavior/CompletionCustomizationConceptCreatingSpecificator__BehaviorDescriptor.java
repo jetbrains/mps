@@ -4,7 +4,6 @@ package jetbrains.mps.lang.editor.behavior;
 
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
@@ -20,9 +19,10 @@ import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CompletionCustomizationConceptCreatingSpecificator__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02feL, "jetbrains.mps.lang.editor.structure.CompletionCustomizationConceptCreatingSpecificator");
+  private static final SAbstractConcept CONCEPT = AUX_eswky1.CompletionCustomizationConceptCreatingSpecificator_2a160660;
 
   public static final SMethod<Boolean> isCreating_id7U0pk79eiW7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCreating").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7U0pk79eiW7").build();
   public static final SMethod<List<SConcept>> getAdditionalParameters_idETPn3v9Kre = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalParameters").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("ETPn3v9Kre").build();
@@ -36,7 +36,7 @@ public final class CompletionCustomizationConceptCreatingSpecificator__BehaviorD
     return true;
   }
   /*package*/ static List<SConcept> getAdditionalParameters_idETPn3v9Kre(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e4c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ParentNode"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df270475L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ContainmentLink"), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26faf0L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_CurrentChild"));
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), AUX_eswky1.ConceptFunctionParameterCustomize_ParentNode_21af520f, AUX_eswky1.ConceptFunctionParameterCustomize_ContainmentLink_21bc84b4, AUX_eswky1.ConceptFunctionParameterCustomize_CurrentChild_21b1b1d9);
   }
 
   /*package*/ CompletionCustomizationConceptCreatingSpecificator__BehaviorDescriptor() {
@@ -85,5 +85,12 @@ public final class CompletionCustomizationConceptCreatingSpecificator__BehaviorD
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class AUX_eswky1 {
+    /*package*/ static final SConcept CompletionCustomizationConceptCreatingSpecificator_2a160660 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02feL, "jetbrains.mps.lang.editor.structure.CompletionCustomizationConceptCreatingSpecificator");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_ParentNode_21af520f = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e4c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ParentNode");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_ContainmentLink_21bc84b4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df270475L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ContainmentLink");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_CurrentChild_21b1b1d9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26faf0L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_CurrentChild");
   }
 }

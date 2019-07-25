@@ -8,15 +8,15 @@ import jetbrains.mps.make.script.IJob;
 import jetbrains.mps.internal.make.runtime.util.DefaultHName;
 
 public interface ITarget {
-  ITarget.Name getName();
+  Name getName();
   boolean requiresInput();
   boolean producesOutput();
   Iterable<Class<? extends IResource>> expectedInput();
   Iterable<Class<? extends IResource>> expectedOutput();
-  Iterable<ITarget.Name> before();
-  Iterable<ITarget.Name> notBefore();
-  Iterable<ITarget.Name> after();
-  Iterable<ITarget.Name> notAfter();
+  Iterable<Name> before();
+  Iterable<Name> notBefore();
+  Iterable<Name> after();
+  Iterable<Name> notAfter();
   IConfig createConfig();
   <T> T createParameters(Class<T> varCls);
   <T> T createParameters(Class<T> varCls, T copyFrom);

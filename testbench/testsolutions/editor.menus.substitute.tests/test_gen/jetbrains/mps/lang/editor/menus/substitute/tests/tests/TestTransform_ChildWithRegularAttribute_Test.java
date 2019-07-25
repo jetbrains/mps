@@ -23,7 +23,7 @@ public class TestTransform_ChildWithRegularAttribute_Test extends BaseTransforma
 
   @Test
   public void test_TestTransform_ChildWithRegularAttribute() throws Throwable {
-    new TestTransform_ChildWithRegularAttribute_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

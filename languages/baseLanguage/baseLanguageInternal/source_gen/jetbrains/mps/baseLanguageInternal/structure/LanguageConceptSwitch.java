@@ -19,22 +19,23 @@ public final class LanguageConceptSwitch {
   public static final int ExtractStaticMethod_CallExpression = 7;
   public static final int ExtractToConstantExpression = 8;
   public static final int ExtractToConstantRefExpression = 9;
-  public static final int InternalAnonymousClass = 10;
-  public static final int InternalAnonymousClassCreator = 11;
-  public static final int InternalClassCreator = 12;
-  public static final int InternalClassExpression = 13;
-  public static final int InternalClassifierType = 14;
-  public static final int InternalNewExpression = 15;
-  public static final int InternalPartialFieldReference = 16;
-  public static final int InternalPartialInstanceMethodCall = 17;
-  public static final int InternalStaticFieldReference = 18;
-  public static final int InternalStaticMethodCall = 19;
-  public static final int InternalSuperMethodCallOperation = 20;
-  public static final int InternalThisExpression = 21;
-  public static final int InternalTypedStaticFieldReference = 22;
-  public static final int InternalVariableReference = 23;
-  public static final int TypeHintExpression = 24;
-  public static final int WeakClassReference = 25;
+  public static final int ExtractToSingleConstantExpression = 10;
+  public static final int InternalAnonymousClass = 11;
+  public static final int InternalAnonymousClassCreator = 12;
+  public static final int InternalClassCreator = 13;
+  public static final int InternalClassExpression = 14;
+  public static final int InternalClassifierType = 15;
+  public static final int InternalNewExpression = 16;
+  public static final int InternalPartialFieldReference = 17;
+  public static final int InternalPartialInstanceMethodCall = 18;
+  public static final int InternalStaticFieldReference = 19;
+  public static final int InternalStaticMethodCall = 20;
+  public static final int InternalSuperMethodCallOperation = 21;
+  public static final int InternalThisExpression = 22;
+  public static final int InternalTypedStaticFieldReference = 23;
+  public static final int InternalVariableReference = 24;
+  public static final int TypeHintExpression = 25;
+  public static final int WeakClassReference = 26;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L);
@@ -48,6 +49,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x31c3f88088ed999aL, ExtractStaticMethod_CallExpression);
     builder.put(0x1204d897032L, ExtractToConstantExpression);
     builder.put(0x162724dabcdc671L, ExtractToConstantRefExpression);
+    builder.put(0x4460846a234a2626L, ExtractToSingleConstantExpression);
     builder.put(0x2f7b79225e746809L, InternalAnonymousClass);
     builder.put(0x2f7b79225e746808L, InternalAnonymousClassCreator);
     builder.put(0xf46f1c42ee50930L, InternalClassCreator);

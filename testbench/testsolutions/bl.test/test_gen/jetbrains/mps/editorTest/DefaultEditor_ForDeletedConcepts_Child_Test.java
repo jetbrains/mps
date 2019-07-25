@@ -21,7 +21,7 @@ public class DefaultEditor_ForDeletedConcepts_Child_Test extends BaseTransformat
 
   @Test
   public void test_DefaultEditor_ForDeletedConcepts_Child() throws Throwable {
-    new DefaultEditor_ForDeletedConcepts_Child_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

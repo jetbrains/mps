@@ -21,7 +21,7 @@ public class CutMethodWithoutComment_Test extends BaseTransformationTest {
 
   @Test
   public void test_CutMethodWithoutComment() throws Throwable {
-    new CutMethodWithoutComment_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

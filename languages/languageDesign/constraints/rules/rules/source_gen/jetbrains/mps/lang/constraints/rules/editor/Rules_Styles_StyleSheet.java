@@ -24,7 +24,7 @@ public class Rules_Styles_StyleSheet {
   public static void apply_ContextReference(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Rules_Styles_StyleSheet.ContextReferenceStyleClass(editorContext, node).apply(style, editorCell);
+    new ContextReferenceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -34,7 +34,7 @@ public class Rules_Styles_StyleSheet {
   public static void apply_RuleStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Rules_Styles_StyleSheet.RuleStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new RuleStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -44,7 +44,7 @@ public class Rules_Styles_StyleSheet {
   public static void apply_DefStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Rules_Styles_StyleSheet.DefStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new DefStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -54,7 +54,7 @@ public class Rules_Styles_StyleSheet {
   public static void apply_TypeOfDefStyle(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Rules_Styles_StyleSheet.TypeOfDefStyleStyleClass(editorContext, node).apply(style, editorCell);
+    new TypeOfDefStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -64,7 +64,7 @@ public class Rules_Styles_StyleSheet {
   public static void apply_WhenHint(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Rules_Styles_StyleSheet.WhenHintStyleClass(editorContext, node).apply(style, editorCell);
+    new WhenHintStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -74,7 +74,7 @@ public class Rules_Styles_StyleSheet {
   public static void apply_AndDefsAreDefinedHint(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Rules_Styles_StyleSheet.AndDefsAreDefinedHintStyleClass(editorContext, node).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -84,7 +84,7 @@ public class Rules_Styles_StyleSheet {
   public static void apply_Hint(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new Rules_Styles_StyleSheet.HintStyleClass(editorContext, node).apply(style, editorCell);
+    new HintStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class ContextReferenceStyleClass extends AbstractStyleClass {

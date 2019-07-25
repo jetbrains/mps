@@ -26,6 +26,7 @@ import jetbrains.mps.generator.impl.query.PropertyValueQuery;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
 public class QueriesGenerated extends QueryProviderBase {
@@ -56,8 +57,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("3825148134790541502", new QueriesGenerated.RRC(i++));
-    rrcMethods.put("3839101718930944351", new QueriesGenerated.RRC(i++));
+    rrcMethods.put("3825148134790541502", new RRC(i++));
+    rrcMethods.put("3839101718930944351", new RRC(i++));
   }
   @Override
   @NotNull
@@ -88,10 +89,10 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("3825148134790623842", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("3825148134790624258", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("6900020712828382856", new QueriesGenerated.SNQ(i++));
-    snqMethods.put("329149528625646610", new QueriesGenerated.SNQ(i++));
+    snqMethods.put("3825148134790623842", new SNQ(i++));
+    snqMethods.put("3825148134790624258", new SNQ(i++));
+    snqMethods.put("6900020712828382856", new SNQ(i++));
+    snqMethods.put("329149528625646610", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -126,7 +127,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
     int i = 0;
-    pvqMethods.put("3825148134790538267", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "date"));
+    pvqMethods.put("3825148134790538267", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "date"));
   }
   @NotNull
   @Override
@@ -155,12 +156,16 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private static SNode createDateType_x583g4_b0a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x4b7c56eb93474ed1L, 0xa5d9938a850b9e1dL, 0x3515a7f64b6fe2d2L, "jetbrains.mps.baseLanguage.date.structure.DateType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_x583g4.DateType_b3b6ab2a, null, null, false);
     return n1;
   }
   private static SNode createDateType_x583g4_b0a0a2() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(0x4b7c56eb93474ed1L, 0xa5d9938a850b9e1dL, 0x3515a7f64b6fe2d2L, "jetbrains.mps.baseLanguage.date.structure.DateType"), null, null, false);
+    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(AUX_x583g4.DateType_b3b6ab2a, null, null, false);
     return n1;
+  }
+
+  private static final class AUX_x583g4 {
+    /*package*/ static final SConcept DateType_b3b6ab2a = MetaAdapterFactory.getConcept(0x4b7c56eb93474ed1L, 0xa5d9938a850b9e1dL, 0x3515a7f64b6fe2d2L, "jetbrains.mps.baseLanguage.date.structure.DateType");
   }
 }

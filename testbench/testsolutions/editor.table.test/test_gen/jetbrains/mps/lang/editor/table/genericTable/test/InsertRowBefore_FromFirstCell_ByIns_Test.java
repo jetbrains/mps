@@ -21,7 +21,7 @@ public class InsertRowBefore_FromFirstCell_ByIns_Test extends BaseTransformation
 
   @Test
   public void test_InsertRowBefore_FromFirstCell_ByIns() throws Throwable {
-    new InsertRowBefore_FromFirstCell_ByIns_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

@@ -26,7 +26,7 @@ public class DeleteTryCatchStatementCatchClauseTwoStep_Test extends BaseTransfor
 
   @Test
   public void test_DeleteTryCatchStatementCatchClauseTwoStep() throws Throwable {
-    new DeleteTryCatchStatementCatchClauseTwoStep_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

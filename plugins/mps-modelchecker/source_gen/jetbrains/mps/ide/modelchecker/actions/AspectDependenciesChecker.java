@@ -20,7 +20,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.errors.item.ReferenceReportItem;
@@ -34,6 +33,8 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AspectDependenciesChecker extends SpecificChecker {
   public static final IssueKindReportItem.CheckerCategory WRONG_ASPECT_DEPENDENCIES = new IssueKindReportItem.CheckerCategory(IssueKindReportItem.KindLevel.MANUAL, "wrong aspect dependencies");
@@ -70,7 +71,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       }
       // Check for unresolved references 
       for (final SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro"), ref.getLink())) != null)) {
+        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(AUX_c62c0q.ReferenceMacro_62f8c34e, ref.getLink())) != null)) {
           continue;
         }
         SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
@@ -157,8 +158,8 @@ public class AspectDependenciesChecker extends SpecificChecker {
       }
       if (moduleFqName.equals("MPS.Classpath")) {
         SNode refTargetRoot = reference.getTargetNode().getContainingRoot();
-        if (SNodeOperations.isInstanceOf(refTargetRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
-          String cName = SPropertyOperations.getString(SNodeOperations.cast(refTargetRoot, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        if (SNodeOperations.isInstanceOf(refTargetRoot, AUX_c62c0q.Classifier_4b7e553)) {
+          String cName = SPropertyOperations.getString(SNodeOperations.cast(refTargetRoot, AUX_c62c0q.Classifier_4b7e553), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
           String modelName = model.getModelName();
           if (findInModule(coreModule, modelName, cName)) {
             return CORE;
@@ -191,7 +192,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       if (d.getModelName().equals(modelName)) {
         for (SNode _n : d.getRootNodes()) {
           SNode n = (SNode) _n;
-          if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")) && SPropertyOperations.getString(SNodeOperations.cast(n, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(rootName)) {
+          if (SNodeOperations.isInstanceOf(n, AUX_c62c0q.Classifier_4b7e553) && SPropertyOperations.getString(SNodeOperations.cast(n, AUX_c62c0q.Classifier_4b7e553), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(rootName)) {
             return true;
           }
         }
@@ -210,5 +211,10 @@ public class AspectDependenciesChecker extends SpecificChecker {
       default:
     }
     return "unknown";
+  }
+
+  private static final class AUX_c62c0q {
+    /*package*/ static final SConcept ReferenceMacro_62f8c34e = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
+    /*package*/ static final SConcept Classifier_4b7e553 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

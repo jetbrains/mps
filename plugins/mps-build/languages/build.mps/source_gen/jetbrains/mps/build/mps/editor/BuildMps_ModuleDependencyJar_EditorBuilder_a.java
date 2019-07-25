@@ -70,7 +70,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new BuildMps_ModuleDependencyJar_EditorBuilder_a.pathSingleRoleHandler_z29e2a_b0(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path"), getEditorContext());
+    SingleRoleCellProvider provider = new pathSingleRoleHandler_z29e2a_b0(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path"), getEditorContext());
     return provider.createCell();
   }
   private static class pathSingleRoleHandler_z29e2a_b0 extends SingleRoleCellProvider {
@@ -144,7 +144,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new BuildMps_ModuleDependencyJar_EditorBuilder_a.customLocationSingleRoleHandler_z29e2a_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation"), getEditorContext());
+    SingleRoleCellProvider provider = new customLocationSingleRoleHandler_z29e2a_b2a(myNode, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation"), getEditorContext());
     return provider.createCell();
   }
   private static class customLocationSingleRoleHandler_z29e2a_b2a extends SingleRoleCellProvider {

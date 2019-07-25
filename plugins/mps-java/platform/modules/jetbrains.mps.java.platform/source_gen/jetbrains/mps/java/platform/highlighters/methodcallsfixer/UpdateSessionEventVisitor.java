@@ -12,6 +12,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelReplacedEvent;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
  * Updates {@link jetbrains.mps.java.platform.highlighters.methodcallsfixer.MethodCallsUpdateSession } according to visited events.
@@ -37,16 +39,16 @@ import jetbrains.mps.smodel.event.SModelReplacedEvent;
   public void visitReferenceEvent(SModelReferenceEvent event) {
     SReference reference = event.getReference();
     SNode sourceNode = reference.getSourceNode();
-    if (SNodeOperations.isInstanceOf(sourceNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall")) && MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration").equals(reference.getLink())) {
-      SNode methodCall = SNodeOperations.cast(sourceNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"));
+    if (SNodeOperations.isInstanceOf(sourceNode, AUX_m5xdfk.IMethodCall_ee2c776b) && MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration").equals(reference.getLink())) {
+      SNode methodCall = SNodeOperations.cast(sourceNode, AUX_m5xdfk.IMethodCall_ee2c776b);
       mySession.methodCallChanged(methodCall);
     }
   }
   @Override
   public void visitPropertyEvent(SModelPropertyEvent event) {
     SNode node = event.getNode();
-    SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")) && MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name").getName().equals(event.getPropertyName())) {
+    SNodeOperations.isInstanceOf(node, AUX_m5xdfk.BaseMethodDeclaration_9dbf9acb);
+    if (SNodeOperations.isInstanceOf(node, AUX_m5xdfk.BaseMethodDeclaration_9dbf9acb) && MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name").getName().equals(event.getPropertyName())) {
       mySession.methodDeclarationNameChanged(node);
       mySession.methodDeclarationSignatureChanged(node);
     }
@@ -54,5 +56,10 @@ import jetbrains.mps.smodel.event.SModelReplacedEvent;
   @Override
   public void visitReplacedEvent(SModelReplacedEvent event) {
     throw new IllegalArgumentException("SModelReplacedEvent should have been handled by the caller");
+  }
+
+  private static final class AUX_m5xdfk {
+    /*package*/ static final SInterfaceConcept IMethodCall_ee2c776b = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept BaseMethodDeclaration_9dbf9acb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

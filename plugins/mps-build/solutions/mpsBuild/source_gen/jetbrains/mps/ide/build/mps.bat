@@ -48,6 +48,9 @@ IF NOT "%JDK%" == "" (
 :: Do not use our own 64 bit JDK for 32 bit Windwos
 IF NOT DEFINED PROGRAMFILES(X86) GOTO skip64bitJDK
 
+IF EXIST "%IDE_HOME%\jbr" SET JDK=%IDE_HOME%\jbr
+IF NOT "%JDK%" == "" GOTO check
+
 IF EXIST "%IDE_HOME%\jre64" SET JDK=%IDE_HOME%\jre64
 IF NOT "%JDK%" == "" GOTO check
 
@@ -72,7 +75,11 @@ IF NOT EXIST "%JAVA_EXE%" (
 
 SET JRE=%JDK%
 IF EXIST "%JRE%\jre" SET JRE=%JDK%\jre
-IF EXIST "%JRE%\lib\amd64" SET BITS=64
+IF EXIST "%JRE%\lib\amd64" (
+  SET BITS=64
+) ELSE (
+  IF EXIST "%JRE%\lib\jrt-fs.jar" SET BITS=64
+)
 
 :: ---------------------------------------------------------------------
 :: Collect JVM options and properties.

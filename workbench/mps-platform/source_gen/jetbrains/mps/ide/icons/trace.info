@@ -88,7 +88,7 @@
       <node id="1315815304215974118" at="83,56,84,35" concept="8" />
       <node id="1315815304215974120" at="85,5,86,0" concept="10" />
       <node id="1315815304215974121" at="86,0,87,25" concept="7" />
-      <node id="1315815304215974133" at="88,255,89,46" concept="2" />
+      <node id="1315815304215974133" at="88,146,89,46" concept="2" />
       <node id="1315815304215974140" at="91,27,92,62" concept="2" />
       <node id="1315815304215974166" at="95,54,96,42" concept="8" />
       <node id="1315815304215974163" at="97,14,98,42" concept="8" />
@@ -117,7 +117,7 @@
       <node id="1315815304215981421" at="157,90,158,70" concept="2" />
       <node id="1315815304215981428" at="159,5,160,36" concept="7" />
       <node id="1315815304215981434" at="160,36,161,32" concept="2" />
-      <node id="1315815304215981440" at="161,32,162,286" concept="2" />
+      <node id="1315815304215981440" at="161,32,162,180" concept="2" />
       <node id="1315815304215981462" at="164,43,165,38" concept="8" />
       <node id="1315815304215981470" at="168,38,169,26" concept="8" />
       <node id="1315815304215981482" at="172,56,173,94" concept="7" />
@@ -142,6 +142,8 @@
       <node id="1315815304216192775" at="218,7,219,18" concept="8" />
       <node id="1315815304216192827" at="220,5,221,51" concept="2" />
       <node id="1315815304216192833" at="221,51,222,16" concept="8" />
+      <node id="1315815304215925444" at="226,0,227,0" concept="11" trace="ConceptDeclaration_cb225da8" />
+      <node id="1315815304215925444" at="227,0,228,0" concept="11" trace="BaseConcept_bc2351f" />
       <node id="1315815304215974161" at="97,12,99,7" concept="0" />
       <node id="6478603752171481302" at="51,0,54,0" concept="1" trace="BaseIconManager#(Ljetbrains/mps/smodel/language/ConceptRegistry;)V" />
       <node id="1315815304215972093" at="67,76,70,5" concept="5" />
@@ -180,7 +182,7 @@
       <node id="1315815304215994099" at="184,39,191,5" concept="14" />
       <node id="1315815304216002059" at="195,0,202,0" concept="6" trace="getIconForExactConcept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/smodel/runtime/IconResource;" />
       <node id="1315815304215981477" at="171,24,179,5" concept="5" />
-      <node id="1315815304215981449" at="162,286,171,24" concept="7" />
+      <node id="1315815304215981449" at="162,180,171,24" concept="7" />
       <node id="1315815304215994089" at="183,0,194,0" concept="6" trace="getIconForConceptNoCache#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/smodel/runtime/IconResource;" />
       <node id="1315815304215978059" at="128,0,143,0" concept="6" trace="getIconFor#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljavax/swing/Icon;" />
       <node id="1315815304215972042" at="61,0,77,0" concept="6" trace="getIconFor#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljavax/swing/Icon;" />
@@ -193,7 +195,7 @@
       <scope id="1315815304215972106" at="72,23,73,44" />
       <scope id="8335510736429864124" at="78,71,79,139" />
       <scope id="1315815304215974117" at="83,56,84,35" />
-      <scope id="1315815304215974132" at="88,255,89,46" />
+      <scope id="1315815304215974132" at="88,146,89,46" />
       <scope id="1315815304215974139" at="91,27,92,62" />
       <scope id="1315815304215974165" at="95,54,96,42" />
       <scope id="1315815304215974162" at="97,14,98,42" />
@@ -304,9 +306,10 @@
         <var name="mainIcon" id="1315815304215981382" />
         <var name="node" id="1315815304215981384" />
       </scope>
-      <unit id="1315815304215981460" at="163,311,167,5" name="jetbrains.mps.ide.icons.BaseIconManager$1" />
+      <unit id="1315815304215981460" at="163,205,167,5" name="jetbrains.mps.ide.icons.BaseIconManager$1" />
       <unit id="1315815304215981468" at="167,17,171,5" name="jetbrains.mps.ide.icons.BaseIconManager$2" />
-      <unit id="1315815304215925444" at="45,0,225,0" name="jetbrains.mps.ide.icons.BaseIconManager" />
+      <unit id="1315815304215925444" at="225,0,229,0" name="jetbrains.mps.ide.icons.BaseIconManager$AUX_cuhaqp" />
+      <unit id="1315815304215925444" at="45,0,230,0" name="jetbrains.mps.ide.icons.BaseIconManager" />
     </file>
   </root>
   <root nodeRef="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/4459225238462083668">

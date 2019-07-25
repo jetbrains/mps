@@ -4,7 +4,6 @@ package constraints.rulesAndMessages.sandbox.constraints;
 
 import jetbrains.mps.core.aspects.feedback.api.BaseFeedbackDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackProvider;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
@@ -15,9 +14,11 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 import java.util.stream.Stream;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ChildConcept_ConstraintsFeedback extends BaseFeedbackDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rulesAndMessages.sandbox.structure.ChildConcept");
+  private static final SAbstractConcept CONCEPT = AUX_v9r23o.ChildConcept_3eda7ad4;
 
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_v9r23o_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ChildConcept_ConstraintRules.Rule_toleranceNotTooHigh.ID_toleranceNotTooHigh)) {
     @NotNull
@@ -44,5 +45,9 @@ public final class ChildConcept_ConstraintsFeedback extends BaseFeedbackDescript
   @Override
   public Stream<FeedbackProvider> getDeclaredProviders() {
     return PROVIDERS.stream();
+  }
+
+  private static final class AUX_v9r23o {
+    /*package*/ static final SConcept ChildConcept_3eda7ad4 = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rulesAndMessages.sandbox.structure.ChildConcept");
   }
 }

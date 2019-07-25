@@ -31,15 +31,15 @@ public class DuplicitRoutineNameTest_Test extends BaseTransformationTest {
 
   @Test
   public void test_NodeErrorCheck8240600211257314592() throws Throwable {
-    new DuplicitRoutineNameTest_Test.TestBody(this).test_NodeErrorCheck8240600211257314592();
+    new TestBody(this).test_NodeErrorCheck8240600211257314592();
   }
   @Test
   public void test_NodeErrorCheck8240600211257423129() throws Throwable {
-    new DuplicitRoutineNameTest_Test.TestBody(this).test_NodeErrorCheck8240600211257423129();
+    new TestBody(this).test_NodeErrorCheck8240600211257423129();
   }
   @Test
   public void test_ErrorMessagesCheck8240600211257296170() throws Throwable {
-    new DuplicitRoutineNameTest_Test.TestBody(this).test_ErrorMessagesCheck8240600211257296170();
+    new TestBody(this).test_ErrorMessagesCheck8240600211257296170();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

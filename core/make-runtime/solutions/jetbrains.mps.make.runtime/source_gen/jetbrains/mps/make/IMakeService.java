@@ -48,7 +48,7 @@ public interface IMakeService {
       Component = service;
     }
     public static boolean isSessionActive() {
-      return IMakeService.INSTANCE.hasMakeService() && Component.isSessionActive();
+      return INSTANCE.hasMakeService() && Component.isSessionActive();
     }
     public static boolean hasMakeService() {
       return Component != null;

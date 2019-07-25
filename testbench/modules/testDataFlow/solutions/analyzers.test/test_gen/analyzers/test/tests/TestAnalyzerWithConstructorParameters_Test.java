@@ -31,15 +31,15 @@ public class TestAnalyzerWithConstructorParameters_Test extends BaseTransformati
 
   @Test
   public void test_NodeErrorCheck8332528989793491523() throws Throwable {
-    new TestAnalyzerWithConstructorParameters_Test.TestBody(this).test_NodeErrorCheck8332528989793491523();
+    new TestBody(this).test_NodeErrorCheck8332528989793491523();
   }
   @Test
   public void test_NodeErrorCheck8332528989793494654() throws Throwable {
-    new TestAnalyzerWithConstructorParameters_Test.TestBody(this).test_NodeErrorCheck8332528989793494654();
+    new TestBody(this).test_NodeErrorCheck8332528989793494654();
   }
   @Test
   public void test_ErrorMessagesCheck8332528989793494697() throws Throwable {
-    new TestAnalyzerWithConstructorParameters_Test.TestBody(this).test_ErrorMessagesCheck8332528989793494697();
+    new TestBody(this).test_ErrorMessagesCheck8332528989793494697();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

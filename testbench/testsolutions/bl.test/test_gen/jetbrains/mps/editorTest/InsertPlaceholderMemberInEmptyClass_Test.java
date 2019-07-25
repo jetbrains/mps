@@ -21,7 +21,7 @@ public class InsertPlaceholderMemberInEmptyClass_Test extends BaseTransformation
 
   @Test
   public void test_InsertPlaceholderMemberInEmptyClass() throws Throwable {
-    new InsertPlaceholderMemberInEmptyClass_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

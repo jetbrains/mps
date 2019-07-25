@@ -36,7 +36,7 @@ public class ExtractAddingNewDeclaration_Test extends BaseTransformationTest {
 
   @Test
   public void test_ExtractAddingNewDeclaration() throws Throwable {
-    new ExtractAddingNewDeclaration_Test.TestBody(this).test_ExtractAddingNewDeclaration();
+    new TestBody(this).test_ExtractAddingNewDeclaration();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

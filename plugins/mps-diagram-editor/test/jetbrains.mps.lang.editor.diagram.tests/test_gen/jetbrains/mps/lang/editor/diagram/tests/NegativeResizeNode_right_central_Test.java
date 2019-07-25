@@ -23,7 +23,7 @@ public class NegativeResizeNode_right_central_Test extends BaseTransformationTes
 
   @Test
   public void test_NegativeResizeNode_right_central() throws Throwable {
-    new NegativeResizeNode_right_central_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

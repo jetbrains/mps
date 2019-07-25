@@ -52,7 +52,7 @@ public class RequestManager implements IRequestManager {
   private final Map<Requestor, Set<EventRequest>> myRequestorToBelongedRequests = new HashMap<Requestor, Set<EventRequest>>();
   private EventRequestManager myEventRequestManager;
   private EventsProcessor myDebugEventsProcessor;
-  private final RequestManager.MyDebugProcessListener myDebugProcessListener = new RequestManager.MyDebugProcessListener();
+  private final MyDebugProcessListener myDebugProcessListener = new MyDebugProcessListener();
   private final Map<Requestor, String> myInvalidRequestsAndWarnings = new HashMap<Requestor, String>();
   private final List<_FunctionTypes._void_P0_E0> myWarningsListeners = ListSequence.fromList(new ArrayList<_FunctionTypes._void_P0_E0>());
   public RequestManager(EventsProcessor processor) {

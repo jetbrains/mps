@@ -121,8 +121,8 @@ public class ConflictingModelsUtil {
     return false;
   }
 
-  public static ConflictingModelsUtil.ModelConflictResolver getModelConflictResolverTask(Project project, MergeProvider provider, com.intellij.openapi.vcs.merge.MergeSession session, List<? extends VirtualFile> conflictedFiles) {
-    return new ConflictingModelsUtil.ModelConflictResolver(project, provider, session, conflictedFiles);
+  public static ModelConflictResolver getModelConflictResolverTask(Project project, MergeProvider provider, com.intellij.openapi.vcs.merge.MergeSession session, List<? extends VirtualFile> conflictedFiles) {
+    return new ModelConflictResolver(project, provider, session, conflictedFiles);
   }
 
   public static class ModelConflictResolver extends Task.Modal {

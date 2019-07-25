@@ -11,7 +11,7 @@ public class IterableArrayProxy<T extends IValueProxy> implements Iterable<T> {
   }
   @Override
   public Iterator<T> iterator() {
-    return new IterableArrayProxy.MyIterator();
+    return new MyIterator();
   }
   private class MyIterator implements Iterator<T> {
     private int myIndex = 0;

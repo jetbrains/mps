@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
@@ -26,19 +25,22 @@ import jetbrains.mps.workbench.choose.NodePointerNavigationItem;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.navigation.ItemPresentation;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MemberContainerStructureModel implements StructureViewModel {
-  private final MemberContainerStructureModel.Presentation container;
-  private final MemberContainerStructureModel.Presentation[] members;
+  private final Presentation container;
+  private final Presentation[] members;
   private final MPSProject myProject;
 
   public MemberContainerStructureModel(MPSProject project, SNode memberContainer) {
-    container = new MemberContainerStructureModel.Presentation(memberContainer);
-    members = ListSequence.fromList(((List<SNode>) BHReflection.invoke0(memberContainer, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer"), SMethodTrimmedId.create("getMembers", null, "hEwJjl2")))).select(new ISelector<SNode, MemberContainerStructureModel.Presentation>() {
-      public MemberContainerStructureModel.Presentation select(SNode it) {
-        return new MemberContainerStructureModel.Presentation(it);
+    container = new Presentation(memberContainer);
+    members = ListSequence.fromList(((List<SNode>) BHReflection.invoke0(memberContainer, AUX_ev8qou.IMemberContainer_166f7222, SMethodTrimmedId.create("getMembers", null, "hEwJjl2")))).select(new ISelector<SNode, Presentation>() {
+      public Presentation select(SNode it) {
+        return new Presentation(it);
       }
-    }).toGenericArray(MemberContainerStructureModel.Presentation.class);
+    }).toGenericArray(Presentation.class);
     myProject = project;
   }
 
@@ -63,11 +65,11 @@ public class MemberContainerStructureModel implements StructureViewModel {
   @NotNull
   @Override
   public StructureViewTreeElement getRoot() {
-    return new MemberContainerStructureModel.Element(new MemberContainerStructureModel.Presentation()) {
+    return new Element(new Presentation()) {
       @NotNull
       @Override
       public TreeElement[] getChildren() {
-        return new TreeElement[]{new MemberContainerStructureModel.Element(container, members)};
+        return new TreeElement[]{new Element(container, members)};
       }
     };
   }
@@ -111,9 +113,9 @@ public class MemberContainerStructureModel implements StructureViewModel {
 
     /*package*/ Presentation(SNode n) {
       super(n);
-      if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, "jetbrains.mps.baseLanguage.structure.InstanceInitializer"))) {
+      if (SNodeOperations.isInstanceOf(n, AUX_ev8qou.InstanceInitializer_4eff9fd3)) {
         alternativePresentation = "class initializer";
-      } else if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"))) {
+      } else if (SNodeOperations.isInstanceOf(n, AUX_ev8qou.StaticInitializer_425a0e95)) {
         alternativePresentation = "static class initializer";
       }
     }
@@ -163,7 +165,7 @@ public class MemberContainerStructureModel implements StructureViewModel {
       }
       TreeElement[] rv = new TreeElement[myChildren.length];
       for (int i = 0; i < myChildren.length; i++) {
-        rv[i] = new MemberContainerStructureModel.Element(myChildren[i]);
+        rv[i] = new Element(myChildren[i]);
       }
       return rv;
     }
@@ -180,5 +182,11 @@ public class MemberContainerStructureModel implements StructureViewModel {
     public boolean canNavigateToSource() {
       return true;
     }
+  }
+
+  private static final class AUX_ev8qou {
+    /*package*/ static final SInterfaceConcept IMemberContainer_166f7222 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
+    /*package*/ static final SConcept InstanceInitializer_4eff9fd3 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, "jetbrains.mps.baseLanguage.structure.InstanceInitializer");
+    /*package*/ static final SConcept StaticInitializer_425a0e95 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
   }
 }

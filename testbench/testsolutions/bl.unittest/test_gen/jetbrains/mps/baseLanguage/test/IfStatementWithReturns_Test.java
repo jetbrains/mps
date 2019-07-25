@@ -30,7 +30,7 @@ public class IfStatementWithReturns_Test extends BaseTransformationTest {
 
   @Test
   public void test_ErrorMessagesCheck1220013512724() throws Throwable {
-    new IfStatementWithReturns_Test.TestBody(this).test_ErrorMessagesCheck1220013512724();
+    new TestBody(this).test_ErrorMessagesCheck1220013512724();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {

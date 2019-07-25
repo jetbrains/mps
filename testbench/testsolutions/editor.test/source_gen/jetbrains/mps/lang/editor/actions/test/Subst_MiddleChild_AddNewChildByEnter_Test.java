@@ -21,7 +21,7 @@ public class Subst_MiddleChild_AddNewChildByEnter_Test extends BaseTransformatio
 
   @Test
   public void test_Subst_MiddleChild_AddNewChildByEnter() throws Throwable {
-    new Subst_MiddleChild_AddNewChildByEnter_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

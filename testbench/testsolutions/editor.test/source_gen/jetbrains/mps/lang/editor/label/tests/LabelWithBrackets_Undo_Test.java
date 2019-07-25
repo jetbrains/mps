@@ -21,7 +21,7 @@ public class LabelWithBrackets_Undo_Test extends BaseTransformationTest {
 
   @Test
   public void test_LabelWithBrackets_Undo() throws Throwable {
-    new LabelWithBrackets_Undo_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

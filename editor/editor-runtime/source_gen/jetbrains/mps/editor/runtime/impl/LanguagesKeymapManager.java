@@ -24,7 +24,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -32,11 +31,14 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.apache.log4j.Level;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class LanguagesKeymapManager implements ApplicationComponent {
   private static final Logger LOG = LogManager.getLogger(LanguagesKeymapManager.class);
   private final Map<SLanguageId, List<KeyMap>> myLanguagesToKeyMaps = MapSequence.fromMap(new HashMap<SLanguageId, List<KeyMap>>());
-  private final LanguagesKeymapManager.LanguageLoadListener myListener = new LanguagesKeymapManager.LanguageLoadListener();
+  private final LanguageLoadListener myListener = new LanguageLoadListener();
   private final LanguageRegistry myLanguageRegistry;
 
   public LanguagesKeymapManager(MPSCoreComponents coreComponents) {
@@ -87,14 +89,14 @@ public class LanguagesKeymapManager implements ApplicationComponent {
     if (editorModel == null) {
       return Collections.<KeyMap>emptyList();
     }
-    List<SNode> declarations = SModelOperations.roots(editorModel, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration"));
+    List<SNode> declarations = SModelOperations.roots(editorModel, AUX_k8zi8a.CellKeyMapDeclaration_61c54839);
     if (ListSequence.fromList(declarations).isEmpty()) {
       return Collections.<KeyMap>emptyList();
     }
     List<KeyMap> keyMaps = ListSequence.fromList(new ArrayList<KeyMap>());
     for (SNode keyMapDeclaration : ListSequence.fromList(declarations)) {
       try {
-        Class<KeyMap> keyMapClass = (Class<KeyMap>) languageRuntime.getClass().getClassLoader().loadClass(((String) BHReflection.invoke0(keyMapDeclaration, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"), SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
+        Class<KeyMap> keyMapClass = (Class<KeyMap>) languageRuntime.getClass().getClassLoader().loadClass(((String) BHReflection.invoke0(keyMapDeclaration, AUX_k8zi8a.INamedConcept_8cd7e247, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
         KeyMap keyMap = keyMapClass.newInstance();
         if (keyMap.isApplicableToEveryModel()) {
           ListSequence.fromList(keyMaps).addElement(keyMap);
@@ -136,5 +138,10 @@ public class LanguagesKeymapManager implements ApplicationComponent {
         unregisterLanguageKeyMaps(lr);
       }
     }
+  }
+
+  private static final class AUX_k8zi8a {
+    /*package*/ static final SConcept CellKeyMapDeclaration_61c54839 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept_8cd7e247 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

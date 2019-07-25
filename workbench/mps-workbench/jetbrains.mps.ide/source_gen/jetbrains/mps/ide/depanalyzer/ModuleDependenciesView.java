@@ -39,11 +39,11 @@ public class ModuleDependenciesView extends JPanel implements DataProvider {
     myLeftTree = new DependencyTree(mpsProject);
     myRightTree = new DependencyPathTree(mpsProject);
 
-    ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool), new ModuleDependenciesView.MyToggleAction("Show Runtime Dependencies", MPSIcons.General.Runtime, false, new _FunctionTypes._void_P1_E0<Boolean>() {
+    ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool), new MyToggleAction("Show Runtime Dependencies", MPSIcons.General.Runtime, false, new _FunctionTypes._void_P1_E0<Boolean>() {
       public void invoke(Boolean b) {
         setShowRuntime(b);
       }
-    }), new ModuleDependenciesView.MyToggleAction("Show Used Languages", MPSIcons.Nodes.Language, true, new _FunctionTypes._void_P1_E0<Boolean>() {
+    }), new MyToggleAction("Show Used Languages", MPSIcons.Nodes.Language, true, new _FunctionTypes._void_P1_E0<Boolean>() {
       public void invoke(Boolean b) {
         setShowUsedLanguages(b);
       }

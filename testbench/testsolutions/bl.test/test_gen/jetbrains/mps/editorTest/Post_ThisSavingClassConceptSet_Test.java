@@ -21,7 +21,7 @@ public class Post_ThisSavingClassConceptSet_Test extends BaseTransformationTest 
 
   @Test
   public void test_Post_ThisSavingClassConceptSet() throws Throwable {
-    new Post_ThisSavingClassConceptSet_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

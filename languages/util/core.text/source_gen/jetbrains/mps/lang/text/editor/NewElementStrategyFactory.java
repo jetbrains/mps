@@ -5,8 +5,8 @@ package jetbrains.mps.lang.text.editor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -14,6 +14,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class NewElementStrategyFactory {
 
@@ -21,17 +22,17 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
   }
 
   /*package*/ static TextStrategy createNewLineStrategy(SNode node, EditorContext editorContext, boolean selectNewLine, boolean isFirstPosition) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"))) {
-      return new NewElementStrategyFactory.AddNewLineAndSplitWordStrategy(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), editorContext, selectNewLine);
+    if (SNodeOperations.isInstanceOf(node, AUX_h2az65.Word_f8e99bb0)) {
+      return new AddNewLineAndSplitWordStrategy(SNodeOperations.cast(node, AUX_h2az65.Word_f8e99bb0), editorContext, selectNewLine);
     } else {
-      return new NewElementStrategyFactory.AddNewLineStrategy(node, editorContext, selectNewLine, isFirstPosition);
+      return new AddNewLineStrategy(node, editorContext, selectNewLine, isFirstPosition);
     }
   }
   /*package*/ static TextStrategy createNewElementStrategy(SNode node, EditorContext editorContext, boolean isFirstPosition) {
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"))) {
-      return new NewElementStrategyFactory.SplitWordStrategy(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), editorContext, !(isFirstPosition));
+    if (SNodeOperations.isInstanceOf(node, AUX_h2az65.Word_f8e99bb0)) {
+      return new SplitWordStrategy(SNodeOperations.cast(node, AUX_h2az65.Word_f8e99bb0), editorContext, !(isFirstPosition));
     } else {
-      return new NewElementStrategyFactory.AddNewWordStrategy(node, editorContext, !(isFirstPosition));
+      return new AddNewWordStrategy(node, editorContext, !(isFirstPosition));
     }
   }
 
@@ -48,13 +49,13 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
     }
     @Override
     /*package*/ void execute() {
-      SNode currentLine = SNodeOperations.cast(SNodeOperations.getParent(myElement), MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      SNode currentSibling = SNodeOperations.cast(SNodeOperations.getNextSibling(myElement), MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement"));
+      SNode currentLine = SNodeOperations.cast(SNodeOperations.getParent(myElement), AUX_h2az65.Line_c0b9df3f);
+      SNode currentSibling = SNodeOperations.cast(SNodeOperations.getNextSibling(myElement), AUX_h2az65.TextElement_f8e99b54);
       SNode newElement = createNewElement();
       SNode newLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
       ListSequence.fromList(SLinkOperations.getChildren(newLine, MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements"))).addElement(newElement);
       while (currentSibling != null) {
-        SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement"));
+        SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), AUX_h2az65.TextElement_f8e99b54);
         ListSequence.fromList(SLinkOperations.getChildren(newLine, MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements"))).addElement(currentSibling);
         currentSibling = next;
       }
@@ -72,16 +73,16 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
       }
     }
   }
-  private static class AddNewLineAndSplitWordStrategy extends NewElementStrategyFactory.AddNewLineStrategy {
-    private final NewElementStrategyFactory.WordSplitter mySplitter;
+  private static class AddNewLineAndSplitWordStrategy extends AddNewLineStrategy {
+    private final WordSplitter mySplitter;
 
     private AddNewLineAndSplitWordStrategy(SNode word, EditorContext editorContext, boolean selectNewLine) {
       super(word, editorContext, selectNewLine, false);
-      mySplitter = new NewElementStrategyFactory.WordSplitter(word, editorContext);
+      mySplitter = new WordSplitter(word, editorContext);
     }
     @Override
     /*package*/ void execute() {
-      SPropertyOperations.assign(SNodeOperations.cast(myElement, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getLeftText());
+      SPropertyOperations.assign(SNodeOperations.cast(myElement, AUX_h2az65.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getLeftText());
       super.execute();
     }
 
@@ -121,19 +122,19 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
     }
   }
-  private static class SplitWordStrategy extends NewElementStrategyFactory.AddNewWordStrategy {
+  private static class SplitWordStrategy extends AddNewWordStrategy {
 
-    private final NewElementStrategyFactory.WordSplitter mySplitter;
+    private final WordSplitter mySplitter;
     /*package*/ SplitWordStrategy(SNode word, EditorContext editorContext, boolean addNext) {
       super(word, editorContext, addNext);
-      mySplitter = new NewElementStrategyFactory.WordSplitter(word, editorContext);
+      mySplitter = new WordSplitter(word, editorContext);
     }
     @Override
     /*package*/ void execute() {
       if (myAddNext) {
-        SPropertyOperations.assign(SNodeOperations.cast(myElement, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getLeftText());
+        SPropertyOperations.assign(SNodeOperations.cast(myElement, AUX_h2az65.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getLeftText());
       } else {
-        SPropertyOperations.assign(SNodeOperations.cast(myElement, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getRightText());
+        SPropertyOperations.assign(SNodeOperations.cast(myElement, AUX_h2az65.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getRightText());
       }
       super.execute();
     }
@@ -191,5 +192,11 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
     private static boolean isEmptyString(String str) {
       return str == null || str.length() == 0;
     }
+  }
+
+  private static final class AUX_h2az65 {
+    /*package*/ static final SConcept Word_f8e99bb0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Line_c0b9df3f = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept TextElement_f8e99b54 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
   }
 }

@@ -8,7 +8,7 @@
   <root nodeRef="r:a5382851-1d9f-41aa-80d5-23778a1655eb(jetbrains.mps.lang.plugin.tests.editorTest@tests)/2787214354594070649">
     <file name="Test_CompleteActionParameterDeclaration_Test.java">
       <node id="2787214354594070649" at="18,57,19,25" concept="4" />
-      <node id="2787214354594070649" at="23,79,24,81" concept="1" />
+      <node id="2787214354594070649" at="23,79,24,36" concept="1" />
       <node id="2787214354594070649" at="29,52,30,19" concept="4" />
       <node id="2787214354594070649" at="34,51,35,72" concept="1" />
       <node id="2787214354594073109" at="35,72,36,28" concept="1" />
@@ -18,7 +18,7 @@
       <node id="2787214354594070649" at="22,0,26,0" concept="2" trace="test_Test_CompleteActionParameterDeclaration#()V" />
       <node id="2787214354594070649" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2787214354594070649" at="18,57,19,25" />
-      <scope id="2787214354594070649" at="23,79,24,81" />
+      <scope id="2787214354594070649" at="23,79,24,36" />
       <scope id="2787214354594070649" at="29,52,30,19" />
       <scope id="2787214354594070649" at="34,51,36,28" />
       <scope id="2787214354594070649" at="18,0,21,0" />
@@ -34,7 +34,7 @@
   <root nodeRef="r:a5382851-1d9f-41aa-80d5-23778a1655eb(jetbrains.mps.lang.plugin.tests.editorTest@tests)/2787214354594073117">
     <file name="Test_CompleteActionConstructorParameterDeclaration_Test.java">
       <node id="2787214354594073117" at="18,68,19,25" concept="4" />
-      <node id="2787214354594073117" at="23,90,24,92" concept="1" />
+      <node id="2787214354594073117" at="23,90,24,36" concept="1" />
       <node id="2787214354594073117" at="29,52,30,19" concept="4" />
       <node id="2787214354594073117" at="34,51,35,72" concept="1" />
       <node id="2787214354594073139" at="35,72,36,29" concept="1" />
@@ -44,7 +44,7 @@
       <node id="2787214354594073117" at="22,0,26,0" concept="2" trace="test_Test_CompleteActionConstructorParameterDeclaration#()V" />
       <node id="2787214354594073117" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2787214354594073117" at="18,68,19,25" />
-      <scope id="2787214354594073117" at="23,90,24,92" />
+      <scope id="2787214354594073117" at="23,90,24,36" />
       <scope id="2787214354594073117" at="29,52,30,19" />
       <scope id="2787214354594073117" at="34,51,36,29" />
       <scope id="2787214354594073117" at="18,0,21,0" />
@@ -60,7 +60,7 @@
   <root nodeRef="r:a5382851-1d9f-41aa-80d5-23778a1655eb(jetbrains.mps.lang.plugin.tests.editorTest@tests)/2787214354594289215">
     <file name="Test_CompleteActionDataParameterDeclaration_Test.java">
       <node id="2787214354594289215" at="18,61,19,25" concept="4" />
-      <node id="2787214354594289215" at="23,83,24,85" concept="1" />
+      <node id="2787214354594289215" at="23,83,24,36" concept="1" />
       <node id="2787214354594289215" at="29,52,30,19" concept="4" />
       <node id="2787214354594289215" at="34,51,35,72" concept="1" />
       <node id="2787214354594289237" at="35,72,36,29" concept="1" />
@@ -70,7 +70,7 @@
       <node id="2787214354594289215" at="22,0,26,0" concept="2" trace="test_Test_CompleteActionDataParameterDeclaration#()V" />
       <node id="2787214354594289215" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2787214354594289215" at="18,61,19,25" />
-      <scope id="2787214354594289215" at="23,83,24,85" />
+      <scope id="2787214354594289215" at="23,83,24,36" />
       <scope id="2787214354594289215" at="29,52,30,19" />
       <scope id="2787214354594289215" at="34,51,36,29" />
       <scope id="2787214354594289215" at="18,0,21,0" />

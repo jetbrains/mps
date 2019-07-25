@@ -21,7 +21,7 @@ public class ConstraintsReferenceInheritence_Handler1_Test extends BaseTransform
 
   @Test
   public void test_ConstraintsReferenceInheritence_Handler1() throws Throwable {
-    new ConstraintsReferenceInheritence_Handler1_Test.TestBody(this).testMethod();
+    new TestBody(this).testMethod();
   }
 
   /*package*/ static class TestBody extends BaseEditorTestBody {

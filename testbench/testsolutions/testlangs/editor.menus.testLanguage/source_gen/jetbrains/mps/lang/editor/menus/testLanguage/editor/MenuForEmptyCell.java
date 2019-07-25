@@ -42,7 +42,7 @@ public class MenuForEmptyCell extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), "test location").contains(_context.getMenuLocation())) {
-      result.add(new MenuForEmptyCell.TMP_IncludeSM_xeuo9e_a0());
+      result.add(new TMP_IncludeSM_xeuo9e_a0());
     }
     return result;
   }

@@ -49,6 +49,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -74,7 +75,7 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0());
+      result.add(new TMP_Group_zaql19_a0());
     }
     return result;
   }
@@ -102,12 +103,12 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0.TMP_Action_zaql19_a0a(), new CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_zaql19_a0.TMP_Action_zaql19_a0a(), new TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a());
     }
     private class TMP_Action_zaql19_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0.TMP_Action_zaql19_a0a.Item item = new CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0.TMP_Action_zaql19_a0a.Item(context);
+        TMP_Group_zaql19_a0.TMP_Action_zaql19_a0a.Item item = new TMP_Group_zaql19_a0.TMP_Action_zaql19_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -142,7 +143,7 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull final String pattern) {
-          SNode childLink = SNodeFactoryOperations.addNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration"), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration"));
+          SNode childLink = SNodeFactoryOperations.addNewChild(_context.getNode(), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration"), AUX_zaql19.LinkDeclaration_ce818bfc);
           SPropertyOperations.setEnum(childLink, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), 0xfc6f4e95b9L, "aggregation");
           SelectionUtil.selectCell(_context.getEditorContext(), childLink, "role");
           EditorCell selectedCell = _context.getEditorContext().getSelectedCell();
@@ -186,15 +187,15 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-        return new CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a.TMP_Action_zaql19_a1a0(parameter).createItems(context);
+        return new TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a.TMP_Action_zaql19_a1a0(parameter).createItems(context);
       }
 
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
+        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), AUX_zaql19.AbstractConceptDeclaration_ec74828f).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SNodeOperations.as(it, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+            return SNodeOperations.as(it, AUX_zaql19.AbstractConceptDeclaration_ec74828f);
           }
         }).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -221,7 +222,7 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a.TMP_Action_zaql19_a1a0.Item item = new CreateFirstDeclaration_ext_2.TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a.TMP_Action_zaql19_a1a0.Item(context);
+          TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a.TMP_Action_zaql19_a1a0.Item item = new TMP_Group_zaql19_a0.TMP_Param_zaql19_b0a.TMP_Action_zaql19_a1a0.Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -286,5 +287,10 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
 
       }
     }
+  }
+
+  private static final class AUX_zaql19 {
+    /*package*/ static final SConcept LinkDeclaration_ce818bfc = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration_ec74828f = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }
