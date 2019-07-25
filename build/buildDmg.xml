@@ -25,7 +25,7 @@
     <move file="${jdk.tar.gz}" tofile="${build.tmp}/${build.code}-jdk.tar.gz"/>
     <move file="${info.plist}" tofile="${build.tmp}/${build.code}-Info.plist"/>
 
-    <!-- create -macos.dmg -->
+    <!-- create -macos-no-jdk.dmg -->
     <ftp server="${mac.host}" action="send" binary="true" userid="${mac.user}" password="${mac.password}">
       <fileset file="${build.tmp}/${build.code}.png"/>
       <fileset file="${build.tmp}/${build.code}.zip"/>
@@ -48,9 +48,9 @@
         <include name="${build.code}.dmg"/>
       </fileset>
     </ftp>
-    <move file="${build.tmp}/${build.code}.dmg" tofile="${build.layout}/${build.code}-macos.dmg"/>
+    <move file="${build.tmp}/${build.code}.dmg" tofile="${build.layout}/${build.code}-macos-no-jdk.dmg"/>
 
-    <!-- create -macos-jdk-bundled.dmg -->
+    <!-- create -macos.dmg -->
     <ftp server="${mac.host}" action="send" binary="true" userid="${mac.user}" password="${mac.password}">
       <fileset file="${build.tmp}/${build.code}-jdk.tar.gz"/>
       <fileset file="${build.tmp}/${build.code}-Info.plist"/>
@@ -66,7 +66,7 @@
         <include name="${build.code}.dmg"/>
       </fileset>
     </ftp>
-    <move file="${build.tmp}/${build.code}.dmg" tofile="${build.layout}/${build.code}-macos-jdk-bundled.dmg"/>
+    <move file="${build.tmp}/${build.code}.dmg" tofile="${build.layout}/${build.code}-macos.dmg"/>
 
     <!-- clean-up -->
     <ftp server="${mac.host}" action="delete" userid="${mac.user}" password="${mac.password}">
