@@ -1424,11 +1424,7 @@ public class QueriesGenerated extends QueryProviderBase {
         if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents")), AUX_x583g4.ElementListContents_539e70fa))) {
           return Collections.emptyList();
         }
-        return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents")), AUX_x583g4.ElementListContents_539e70fa), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference"))).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode el) {
-            return SNodeOperations.isInstanceOf(el, AUX_x583g4.GroupAnchor_57defea);
-          }
-        });
+        return SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents")), AUX_x583g4.ElementListContents_539e70fa), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference")), AUX_x583g4.GroupAnchor_57defea);
       }
     });
   }
@@ -1456,15 +1452,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f17ec8aL, "modifier"));
   }
   public static Iterable<SNode> sourceNodesQuery_63_7(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa722L, "actionGroups")), MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71fL, 0x498be7ea73fa720L, "group"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, AUX_x583g4.InterfaceGroup_e29d436b);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(it, AUX_x583g4.InterfaceGroup_e29d436b);
-      }
-    }).sort(new ISelector<SNode, String>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa722L, "actionGroups")), MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71fL, 0x498be7ea73fa720L, "group")), AUX_x583g4.InterfaceGroup_e29d436b)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return (String) ActionGroupDeclaration__BehaviorDescriptor.getGeneratedName_idhEwJa82.invoke(it);
       }
