@@ -34002,6 +34002,11 @@
           <ref role="3bR37D" node="2ucthr8W_1x" resolve="jetbrains.mps.java.core" />
         </node>
       </node>
+      <node concept="1SiIV0" id="7BHSl5vsJMS" role="3bR37C">
+        <node concept="3bR9La" id="7BHSl5vsJMT" role="1SiIV1">
+          <ref role="3bR37D" node="1TaHNgiIbJ$" resolve="jetbrains.mps.ide.editor" />
+        </node>
+      </node>
     </node>
     <node concept="m$_wf" id="6WtY9M1bDO_" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.java" />
