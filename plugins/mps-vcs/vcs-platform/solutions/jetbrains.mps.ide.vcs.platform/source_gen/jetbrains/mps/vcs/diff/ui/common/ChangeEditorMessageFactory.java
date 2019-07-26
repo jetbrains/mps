@@ -33,12 +33,12 @@ public class ChangeEditorMessageFactory {
     } else if (change instanceof SetPropertyChange) {
       SetPropertyChange chng = (SetPropertyChange) change;
       SNode node = editedModel.getNode(chng.getAffectedNodeId(!(isOldEditor)));
-      PropertyMessageTarget target = new PropertyMessageTarget(chng.getPropertyName());
+      PropertyMessageTarget target = new PropertyMessageTarget(chng.getProperty());
       return ListSequence.fromListAndArray(new LinkedList<ChangeEditorMessage>(), new ChangeEditorMessage(node, target, owner, change, conflictChecker, highlighted));
     } else if (change instanceof SetReferenceChange) {
       SetReferenceChange chng = (SetReferenceChange) change;
       SNode node = editedModel.getNode(chng.getAffectedNodeId(!(isOldEditor)));
-      ReferenceMessageTarget target = new ReferenceMessageTarget(chng.getRole());
+      ReferenceMessageTarget target = new ReferenceMessageTarget(chng.getRoleLink());
       return ListSequence.fromListAndArray(new LinkedList<ChangeEditorMessage>(), new ChangeEditorMessage(node, target, owner, change, conflictChecker, highlighted));
     } else if (change instanceof NodeGroupChange) {
       NodeGroupChange chng = (NodeGroupChange) change;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,13 +40,13 @@ public interface NodeReportItem extends NodeFlavouredItem, ReportItem, IssueKind
     MessageTarget messageTarget = null;
     if (conceptFeature instanceof SContainmentLink) {
       //todo: we use ReferenceMessageTarget for containment links as well as for references
-      messageTarget = new ReferenceMessageTarget(((SContainmentLink) conceptFeature).getRoleName());
+      messageTarget = new ReferenceMessageTarget((SContainmentLink) conceptFeature);
     }
     if (conceptFeature instanceof SReferenceLink) {
-      messageTarget = new ReferenceMessageTarget(((SReferenceLink) conceptFeature).getRoleName());
+      messageTarget = new ReferenceMessageTarget((SReferenceLink) conceptFeature);
     }
     if (conceptFeature instanceof SProperty) {
-      messageTarget = new PropertyMessageTarget(conceptFeature.getName());
+      messageTarget = new PropertyMessageTarget((SProperty) conceptFeature);
     }
     if (messageTarget == null) {
       messageTarget = new NodeMessageTarget();

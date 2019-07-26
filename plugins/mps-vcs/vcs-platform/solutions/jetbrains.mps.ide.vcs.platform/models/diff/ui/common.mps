@@ -18344,10 +18344,10 @@
                   </node>
                   <node concept="2ShNRf" id="nthHoO03V4" role="33vP2m">
                     <node concept="1pGfFk" id="nthHoO03V5" role="2ShVmc">
-                      <ref role="37wK5l" to="zavc:~PropertyMessageTarget.&lt;init&gt;(java.lang.String)" resolve="PropertyMessageTarget" />
+                      <ref role="37wK5l" to="zavc:~PropertyMessageTarget.&lt;init&gt;(org.jetbrains.mps.openapi.language.SProperty)" resolve="PropertyMessageTarget" />
                       <node concept="2OqwBi" id="nthHoO03V6" role="37wK5m">
-                        <node concept="liA8E" id="nthHoO03V7" role="2OqNvi">
-                          <ref role="37wK5l" to="btf5:2nH2HpRnsoR" resolve="getPropertyName" />
+                        <node concept="liA8E" id="6SmLGGQS02W" role="2OqNvi">
+                          <ref role="37wK5l" to="btf5:42UviMIicV_" resolve="getProperty" />
                         </node>
                         <node concept="37vLTw" id="nthHoO03V8" role="2Oq$k0">
                           <ref role="3cqZAo" node="nthHoO03UK" resolve="chng" />
@@ -18448,10 +18448,10 @@
                   </node>
                   <node concept="2ShNRf" id="nthHoO06DE" role="33vP2m">
                     <node concept="1pGfFk" id="nthHoO06DF" role="2ShVmc">
-                      <ref role="37wK5l" to="zavc:~ReferenceMessageTarget.&lt;init&gt;(java.lang.String)" resolve="ReferenceMessageTarget" />
+                      <ref role="37wK5l" to="zavc:~ReferenceMessageTarget.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractLink)" resolve="ReferenceMessageTarget" />
                       <node concept="2OqwBi" id="nthHoO06DG" role="37wK5m">
-                        <node concept="liA8E" id="nthHoO06DH" role="2OqNvi">
-                          <ref role="37wK5l" to="btf5:4TJPS00dNDU" resolve="getRole" />
+                        <node concept="liA8E" id="6SmLGGQS1Uz" role="2OqNvi">
+                          <ref role="37wK5l" to="btf5:42UviMIiTxr" resolve="getRoleLink" />
                         </node>
                         <node concept="37vLTw" id="nthHoO06DI" role="2Oq$k0">
                           <ref role="3cqZAo" node="nthHoO06Dm" resolve="chng" />
