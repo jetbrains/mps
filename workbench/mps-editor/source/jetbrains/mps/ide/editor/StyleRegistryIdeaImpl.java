@@ -28,6 +28,7 @@ import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.nodeEditor.MPSColors;
+import jetbrains.mps.nodeEditor.MPSDarculaColors;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.util.Pair;
@@ -42,14 +43,12 @@ import java.util.Map;
 public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColorsListener {
   private static final Logger LOG = LogManager.getLogger(StyleRegistryIdeaImpl.class);
 
-  private final static int brightnessTH = 125;
-  private final static int colorTH = 500;
   private final static int colorIterationSteps = 5;
   private final static int colorIterationDelta = 50;
 
-  private EditorColorsManager myColorsManager;
+  private final EditorColorsManager myColorsManager;
   private final Map<String, String> myIDEAStylesMapping = new HashMap<>();
-  private final Map<Pair<Color, Color>, Color> myColorsMapping = new HashMap<>();
+  private final Map<Pair<Color, Color>, Color> my2DarkColorsMapping = new HashMap<>();
 
   public StyleRegistryIdeaImpl(EditorColorsManager colorsManager) {
     myColorsManager = colorsManager;
@@ -94,8 +93,8 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
 
     final Color original = color;
     Pair<Color, Color> colorPair = new Pair<>(original, bg);
-    if (myColorsMapping.containsKey(colorPair)) {
-      return myColorsMapping.get(colorPair);
+    if (my2DarkColorsMapping.containsKey(colorPair)) {
+      return my2DarkColorsMapping.get(colorPair);
     }
 
     if ((Math.abs(color.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) * (Math.abs(bg.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) < 0) {
@@ -118,7 +117,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
       counter++;
     }
 
-    myColorsMapping.put(colorPair, color);
+    my2DarkColorsMapping.put(colorPair, color);
     return color;
   }
 
@@ -201,25 +200,22 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
     }
   }
 
+  @Deprecated
   private void fillColorMappings() {
     final Color bg = getEditorBackground();
     // todo we need to remove this colors since user must provide JBColor all by himself or even better use some color scheme
-//    myColorsMapping.put(new Pair<>(Color.LIGHT_BLUE, bg), new Color(104, 151, 186));
-//    myColorsMapping.put(new Pair<>(Color.DARK_BLUE, bg), new Color(204, 120, 50));
-//    myColorsMapping.put(new Pair<>(Color.DARK_GREEN, bg), new Color(98, 151, 85));
-//    myColorsMapping.put(new Pair<>(Color.DARK_MAGENTA, bg), new Color(152, 118, 170));
-//    myColorsMapping.put(new Pair<>(Color.PINK, bg), new Color(90, 100, 126));
-    myColorsMapping.put(new Pair<>(Color.ORANGE, bg), new Color(255, 198, 109));
-    myColorsMapping.put(new Pair<>(Color.YELLOW, bg), new Color(0, 99, 0));
-    myColorsMapping.put(new Pair<>(Color.GREEN, bg), new Color(0, 128, 0));
-    myColorsMapping.put(new Pair<>(Color.MAGENTA, bg), new Color(174, 138, 190));
-    myColorsMapping.put(new Pair<>(Color.CYAN, bg), new Color(32, 153, 157));
-    myColorsMapping.put(new Pair<>(Color.BLUE, bg), new Color(40, 123, 222));
-//    myColorsMapping.put(new Pair<>(Color.LIGHT_GRAY, bg), new Color(96, 96, 96));
-//    myColorsMapping.put(new Pair<>(Color.GRAY, bg), MPSColors.GRAY);
-//    myColorsMapping.put(new Pair<>(Color.DARK_GRAY, bg), MPSColors.LIGHT_GRAY);
-    myColorsMapping.put(new Pair<>(Color.WHITE, bg), getEditorBackground());
-    myColorsMapping.put(new Pair<>(Color.BLACK, bg), getEditorForeground());
+    my2DarkColorsMapping.put(new Pair<>(Color.PINK, bg), MPSDarculaColors.PINK);
+    my2DarkColorsMapping.put(new Pair<>(Color.ORANGE, bg), MPSDarculaColors.ORANGE);
+    my2DarkColorsMapping.put(new Pair<>(Color.YELLOW, bg), MPSDarculaColors.YELLOW);
+    my2DarkColorsMapping.put(new Pair<>(Color.GREEN, bg), MPSDarculaColors.GREEN);
+    my2DarkColorsMapping.put(new Pair<>(Color.MAGENTA, bg), MPSDarculaColors.DARK_MAGENTA);
+    my2DarkColorsMapping.put(new Pair<>(Color.CYAN, bg), MPSDarculaColors.CYAN);
+    my2DarkColorsMapping.put(new Pair<>(Color.BLUE, bg), MPSDarculaColors.BLUE);
+    my2DarkColorsMapping.put(new Pair<>(Color.LIGHT_GRAY, bg), MPSDarculaColors.LIGHT_GRAY);
+    my2DarkColorsMapping.put(new Pair<>(Color.GRAY, bg), MPSDarculaColors.GRAY);
+    my2DarkColorsMapping.put(new Pair<>(Color.DARK_GRAY, bg), MPSDarculaColors.DARK_GRAY);
+    my2DarkColorsMapping.put(new Pair<>(Color.WHITE, bg), getEditorBackground());
+    my2DarkColorsMapping.put(new Pair<>(Color.BLACK, bg), getEditorForeground());
   }
 
   private void addIdeaMappingsExt(String mpsKey, String ideaKey) throws StyleRegistryMappingKeyException {

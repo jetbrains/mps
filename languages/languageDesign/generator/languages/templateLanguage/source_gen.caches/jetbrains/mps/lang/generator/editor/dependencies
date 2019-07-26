@@ -2992,6 +2992,7 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.Styles_StyleSheet.ParenthesisStyleClass" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.Styles_StyleSheet.mappingRuleDeclarationStyleClass" />
+    <classNode dependClassName="jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClass" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.MPSFonts" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />

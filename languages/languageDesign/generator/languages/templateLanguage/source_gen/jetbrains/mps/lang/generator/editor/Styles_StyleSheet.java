@@ -11,6 +11,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.MPSFonts;
+import jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClass;
 
 public class Styles_StyleSheet {
   /**
@@ -203,7 +204,7 @@ public class Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
+      new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
     }
 
@@ -227,7 +228,7 @@ public class Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
+      new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
     }
 
@@ -239,8 +240,8 @@ public class Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
+      new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD_ITALIC);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
       style.set(StyleAttributes.EDITABLE, true);
       style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     }
