@@ -64,7 +64,6 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
     List<SubstituteAction> actions = new ArrayList<>(parameterObjects.size());
     for (final Object parameterObject : parameterObjects) {
       actions.add(new AbstractNodeSubstituteAction(null, parameterObject, node) {
-
         @Override
         public String getMatchingText(String pattern, boolean referent_presentation, boolean visible) {
           return AbstractCellMenuPart_ReplaceNode_Group.this.getMatchingText(parameterObject);
@@ -104,6 +103,11 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
             return Optional.empty();
           }
 
+        }
+
+        @Override
+        public boolean isReferentPresentation() {
+          return true;
         }
       });
     }
