@@ -87,7 +87,7 @@
     <fail message=".dmg build failed">
       <condition>
         <not>
-          <available file="${build.layout}/${build.code}-macos-jdk-bundled.dmg"/>
+          <available file="${build.layout}/${build.code}-macos.dmg"/>
         </not>
       </condition>
     </fail>
