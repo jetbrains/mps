@@ -21,7 +21,7 @@ public class check_InstanceOfAbstract_NonTypesystemRule extends AbstractNonTypes
   public void applyRule(final SNode baseConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.getConcept(baseConcept).isAbstract()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseConcept, "Abstract concept instance detected. Use one of sub-concepts instead. Concept: " + SNodeOperations.getConcept(baseConcept).getName(), "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "7283836008113027554", null, errorTarget);
       }
     }

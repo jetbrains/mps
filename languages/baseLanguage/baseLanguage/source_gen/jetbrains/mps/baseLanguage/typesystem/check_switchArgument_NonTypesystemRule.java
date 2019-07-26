@@ -33,7 +33,7 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
     if (SNodeOperations.isInstanceOf(argType, AUX_geu3h9.PrimitiveType_53355efd)) {
       if (!((SNodeOperations.isInstanceOf(argType, AUX_geu3h9.IntegerType_603aa60a) || SNodeOperations.isInstanceOf(argType, AUX_geu3h9.CharType_638a765e) || SNodeOperations.isInstanceOf(argType, AUX_geu3h9.ByteType_64f858f8) || SNodeOperations.isInstanceOf(argType, AUX_geu3h9.ShortType_35a0773c)))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Primitive argument of switch should be byte, short, char or int", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "9035995549588681125", null, errorTarget);
         }
       }
@@ -54,7 +54,7 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
       return;
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Argument of switch should be enum of primitive", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3306910260423168223", null, errorTarget);
     }
   }

@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,15 +28,13 @@ public class check_GenericLValueExpression_NonTypesystemRule extends AbstractNon
     List<SNode> valueRefs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(glv, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression")), AUX_66cs6g.ValueRef_e564cec2, false, new SAbstractConcept[]{});
     if (ListSequence.fromList(valueRefs).count() == 0) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new ReferenceMessageTarget("assignValueExression");
+        final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression"));
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(glv, "value is not used in assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3140757037547068229", null, errorTarget);
       }
     }
     if (ListSequence.fromList(valueRefs).count() > 1) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new ReferenceMessageTarget("assignValueExression");
+        final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression"));
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(glv, "value should be used exactly once in assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3140757037547070636", null, errorTarget);
       }
     }

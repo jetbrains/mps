@@ -28,7 +28,7 @@ public class check_ConceptFunctionParameter_NonTypesystemRule extends AbstractNo
     SNode conceptFunction = SNodeOperations.getNodeAncestor(parameter, AUX_m89c2h.ConceptFunction_e08795a5, false, false, true);
     if (SNodeOperations.isInstanceOf(conceptFunction, AUX_m89c2h.Closure_b90a2b6c)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "concept function parameter can not be used in closure", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197313614703", null, errorTarget);
       }
     } else {
@@ -40,7 +40,7 @@ public class check_ConceptFunctionParameter_NonTypesystemRule extends AbstractNo
       });
       if (Sequence.fromIterable(seq).isEmpty() && (boolean) ConceptFunctionParameter__BehaviorDescriptor.needConceptFunction_idhZKliUO.invoke(parameter)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "not applicable in this context", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197313958459", null, errorTarget);
         }
       }

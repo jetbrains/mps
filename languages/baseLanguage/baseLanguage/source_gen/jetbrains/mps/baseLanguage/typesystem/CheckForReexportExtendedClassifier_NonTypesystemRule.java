@@ -62,7 +62,7 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
       }
       if (deps.contains(classifierModule) && !(depsReexport.contains(classifierModule))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifier, "Usages of this classifier outside of '" + module.getModuleName() + "' module requires setting 'Export' flag for the dependency on '" + classifierModule.getModuleName() + "' module", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "9721774220123915", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.PutReexportForExtendedClassifier_QuickFix", false);

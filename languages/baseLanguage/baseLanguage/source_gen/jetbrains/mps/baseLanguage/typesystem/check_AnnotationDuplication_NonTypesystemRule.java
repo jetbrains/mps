@@ -40,7 +40,7 @@ public class check_AnnotationDuplication_NonTypesystemRule extends AbstractNonTy
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Duplicate annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "543866787085723337", null, errorTarget);
         }
       }

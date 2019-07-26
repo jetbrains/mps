@@ -19,7 +19,7 @@ public class check_LeftParen_NonTypesystemRule extends AbstractNonTypesystemRule
   }
   public void applyRule(final SNode leftParen, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(leftParen, "Unmatched left paren", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7251340091294126597", null, errorTarget);
     }
   }

@@ -23,13 +23,13 @@ public class check_BoundTypeinBoundType_NonTypesystemRule extends AbstractNonTyp
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(nodeToCheck, AUX_669de.UpperBoundType_4aa8ec1c) && !((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(SLinkOperations.getTarget(SNodeOperations.cast(nodeToCheck, AUX_669de.UpperBoundType_4aa8ec1c), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound"))))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Invalid use of bound type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265525790", null, errorTarget);
       }
     }
     if (SNodeOperations.isInstanceOf(nodeToCheck, AUX_669de.LowerBoundType_4938b49f) && !((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(SLinkOperations.getTarget(SNodeOperations.cast(nodeToCheck, AUX_669de.LowerBoundType_4938b49f), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound"))))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Invalid use of bound type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265527030", null, errorTarget);
       }
     }

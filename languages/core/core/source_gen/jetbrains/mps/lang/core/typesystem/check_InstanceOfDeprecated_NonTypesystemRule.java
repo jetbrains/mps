@@ -28,7 +28,7 @@ public class check_InstanceOfDeprecated_NonTypesystemRule extends AbstractNonTyp
 
     if (conceptPres.isDeprecated()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, "The node '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node) + "' is an instance of deprecated concept", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "8524227390952646895", null, errorTarget);
       }
     }

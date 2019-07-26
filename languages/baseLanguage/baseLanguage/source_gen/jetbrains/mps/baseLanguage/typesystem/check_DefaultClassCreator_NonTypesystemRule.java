@@ -31,7 +31,7 @@ public class check_DefaultClassCreator_NonTypesystemRule extends AbstractNonType
       }
     }) != null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(classCreator, "Non-default no-arg constructor is available", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5542703911566518616", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForDefaultClassCreator_QuickFix", true);

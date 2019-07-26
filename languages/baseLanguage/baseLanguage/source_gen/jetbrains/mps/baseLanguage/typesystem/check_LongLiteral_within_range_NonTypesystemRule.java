@@ -27,7 +27,7 @@ public class check_LongLiteral_within_range_NonTypesystemRule extends AbstractNo
       Long.parseLong(value.replaceFirst("(-?\\d+)(l|L)", "$1"));
     } catch (NumberFormatException e) {
       if (!(false)) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(longLiteral, "Value out of range", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7411612096156022242", null, errorTarget);
       }
     }

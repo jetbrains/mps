@@ -36,7 +36,7 @@ public class check_TypeVariableDeclarationDuplicateName_NonTypesystemRule extend
     if (duplicateName) {
       String msg = "Duplicate type parameter " + SPropertyOperations.getString(typeVariableDeclaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeVariableDeclaration, msg, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2970924421776837790", null, errorTarget);
       }
     }

@@ -22,7 +22,7 @@ public class check_NotExpression_NeedsParens_NonTypesystemRule extends AbstractN
   public void applyRule(final SNode notExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (PrecedenceUtil.needsParensAroundNotExpression(notExpression)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(notExpression, "Parentheses needed arround the negated expression.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1608369703312446290", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddMissingParensToNotExpression_QuickFix", false);

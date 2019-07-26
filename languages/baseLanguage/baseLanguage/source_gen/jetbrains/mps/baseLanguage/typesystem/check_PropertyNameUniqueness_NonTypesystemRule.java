@@ -44,7 +44,7 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
     });
     if ((duplicate != null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "Duplicate property name with " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(duplicate, AUX_5f44vd.Classifier_4b7e553, false, false)) + "." + SPropertyOperations.getString(duplicate, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915365475", null, errorTarget);
       }
     }
@@ -58,7 +58,7 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
     });
     if ((dupMethod != null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "The property getter is hiding a method of the same name: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(dupMethod, AUX_5f44vd.Classifier_4b7e553, false, false)) + "." + SPropertyOperations.getString(dupMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "()", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915474315", null, errorTarget);
       }
     }
@@ -71,7 +71,7 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
       });
       if ((dupMethod != null)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "The property setter is hiding a method of the same name: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(dupMethod, AUX_5f44vd.Classifier_4b7e553, false, false)) + "." + SPropertyOperations.getString(dupMethod, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "(" + BaseMethodDeclaration__BehaviorDescriptor.getErasureSignature_id2t8d$bukubq.invoke(dupMethod) + ")", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915680442", null, errorTarget);
         }
       }

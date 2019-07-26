@@ -25,14 +25,14 @@ public class check_InstanceOf_NonTypesystemRule extends AbstractNonTypesystemRul
     SNode classifierType = SLinkOperations.getTarget(instanceOfExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType"));
     if ((classifierType != null)) {
       if (!((boolean) Type__BehaviorDescriptor.isReifiable_id2soW6EObTNQ.invoke(classifierType))) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifierType, "parameterized type in instanceof is not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8918460683225653154", null, errorTarget);
       }
     }
     SNode foundRoot = PrecedenceUtil.findDesiredInstanceOfExpressionRoot(instanceOfExpression);
     if ((foundRoot != null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceOfExpression, "Invalid operator precedences for the instanceOf operator", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2643065713351096827", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixInstanceOfExpressionPrecedences_QuickFix", true);

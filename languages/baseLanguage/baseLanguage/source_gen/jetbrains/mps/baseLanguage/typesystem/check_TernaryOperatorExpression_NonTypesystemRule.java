@@ -24,7 +24,7 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
   public void applyRule(final SNode ternaryOperatorExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ternaryOperatorExpression), AUX_r4e9e1.BinaryOperation_7c4c55f3)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ternaryOperatorExpression, "A ternary operator must be wrapped in parenthesis when being an operand of binary operations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "818296778583740232", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.wrapMisplacedTernaryOperatorInParens_QuickFix", false);
@@ -34,7 +34,7 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
     }
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ternaryOperatorExpression), AUX_r4e9e1.TernaryOperatorExpression_580beb3a) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(ternaryOperatorExpression), AUX_r4e9e1.TernaryOperatorExpression_580beb3a), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition")), ternaryOperatorExpression)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ternaryOperatorExpression, "A ternary operator must be wrapped in parenthesis when being a condition of a ternary operations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "818296778607035886", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.wrapMisplacedTernaryOperatorInParens_QuickFix", false);

@@ -20,7 +20,7 @@ public class check_LocalPropertyReferenceNotUsedInUnaryNumericOperations_NonType
   }
   public void applyRule(final SNode localPropertyReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((SNodeOperations.getNodeAncestorWhereConceptInList(localPropertyReference, new SAbstractConcept[]{AUX_6jjntk.PrefixDecrementExpression_af717f9d, AUX_6jjntk.PrefixIncrementExpression_aa33aae6, AUX_6jjntk.PostfixDecrementExpression_228f2e16, AUX_6jjntk.PostfixIncrementExpression_2075721d}, false, false) == null))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localPropertyReference, "variable expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6880273274252479801", null, errorTarget);
     }
   }

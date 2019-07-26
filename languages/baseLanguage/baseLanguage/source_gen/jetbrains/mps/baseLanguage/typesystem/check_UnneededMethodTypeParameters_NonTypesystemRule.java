@@ -37,7 +37,7 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
         });
         if (unused) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(typeVarDeclaration, "Type variable is not needed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7430872850866111925", null, errorTarget);
           }
         }

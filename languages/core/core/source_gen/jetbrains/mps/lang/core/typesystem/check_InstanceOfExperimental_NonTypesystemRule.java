@@ -28,7 +28,7 @@ public class check_InstanceOfExperimental_NonTypesystemRule extends AbstractNonT
 
     if (conceptPresentation.isExperimental()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "The node '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node) + "' is an instance of concept marked with API.Experimental attribute", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "7881641160411827657", null, errorTarget);
       }
     }

@@ -26,7 +26,7 @@ public class check_PropertyAssignedToItself_NonTypesystemRule extends AbstractNo
     SNode rDeclaration = RulesFunctions_BaseLanguage.getProperty(SLinkOperations.getTarget(assignmentExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue")));
     if (lDeclaration != null && lDeclaration == rDeclaration) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(assignmentExpression, "Property is assigned to itself", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6880273274260570853", null, errorTarget);
       }
     }

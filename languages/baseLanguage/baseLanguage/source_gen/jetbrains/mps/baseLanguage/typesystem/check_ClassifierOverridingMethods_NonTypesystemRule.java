@@ -43,7 +43,7 @@ public class check_ClassifierOverridingMethods_NonTypesystemRule extends Abstrac
           resolvedReturnType = Classifier__BehaviorDescriptor.getWithResolvedTypevars_id2RtWPFZ0VAJ.invoke(dummy, returnType, baseContainer, overridingMethod, baseMethod);
         } else {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(overridingMethodParent, "This node is not supposed to override methods", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6207253590661761584", null, errorTarget);
           }
           return;
@@ -51,7 +51,7 @@ public class check_ClassifierOverridingMethods_NonTypesystemRule extends Abstrac
 
         if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(overridingMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), resolvedReturnType))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(overridingMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), "The method's return type is incompatible with the base method ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2792291462223216211", null, errorTarget);
           }
           break;

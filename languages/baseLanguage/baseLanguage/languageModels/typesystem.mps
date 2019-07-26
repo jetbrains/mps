@@ -49,7 +49,6 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="vl5q" ref="52b81ac7-93fd-4e9e-b972-4995882da6d4/java:jetbrains.mps.references(jetbrains.mps.baseLanguage.references.runtime/)" />
     <import index="lhc4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.annotations(MPS.OpenAPI/)" />
-    <import index="yg2w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.containers(MPS.Core/)" />
     <import index="25x5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.text(JDK/)" />
     <import index="5h2r" ref="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
@@ -43455,16 +43454,11 @@
               </node>
             </node>
             <node concept="2PjuBw" id="5t1QwMgLGtN" role="2OEWyd">
-              <node concept="2OqwBi" id="4L5lkpK9eXW" role="2Pjzse">
-                <node concept="2OqwBi" id="4L5lkpK9ewK" role="2Oq$k0">
-                  <node concept="2GrUjf" id="4L5lkpK9eoN" role="2Oq$k0">
-                    <ref role="2Gs0qQ" node="5t1QwMgLyav" resolve="ref" />
-                  </node>
-                  <node concept="CsP83" id="4L5lkpK9eHa" role="2OqNvi" />
+              <node concept="2OqwBi" id="4L5lkpK9ewK" role="2Pjzse">
+                <node concept="2GrUjf" id="4L5lkpK9eoN" role="2Oq$k0">
+                  <ref role="2Gs0qQ" node="5t1QwMgLyav" resolve="ref" />
                 </node>
-                <node concept="liA8E" id="4L5lkpK9fu5" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SNamedElement.getName()" resolve="getName" />
-                </node>
+                <node concept="CsP83" id="4L5lkpK9eHa" role="2OqNvi" />
               </node>
             </node>
           </node>

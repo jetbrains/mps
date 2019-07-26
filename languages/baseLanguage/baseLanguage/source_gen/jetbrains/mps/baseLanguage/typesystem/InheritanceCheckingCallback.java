@@ -153,7 +153,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
       @Override
       public void report(final TypeCheckingContext typeCheckingContext) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "Cyclic inheritance involving '" + myClassifier + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408091596", null, errorTarget);
         }
       }
@@ -241,7 +241,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
       @Override
       public void report(final TypeCheckingContext typeCheckingContext) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "The classifier '" + SPropertyOperations.getString(myClassifier, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "' inherits unrelated defaults for '" + SPropertyOperations.getString(baseMethod1, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "' from types '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), AUX_xbgqro.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "' and '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), AUX_xbgqro.INamedConcept_8cd7e247), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408159407", null, errorTarget);
         }
       }

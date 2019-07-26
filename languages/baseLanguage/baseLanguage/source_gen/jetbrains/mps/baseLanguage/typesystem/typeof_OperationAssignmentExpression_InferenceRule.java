@@ -43,7 +43,7 @@ public class typeof_OperationAssignmentExpression_InferenceRule extends Abstract
                   }
                 } else {
                   {
-                    MessageTarget errorTarget = new NodeMessageTarget();
+                    final MessageTarget errorTarget = new NodeMessageTarget();
                     IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(operation, "operation is not applicable to these operands", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437238", null, errorTarget);
                   }
                 }

@@ -25,7 +25,7 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
       SNode referent = constructorInvocation.getReferenceTarget("constructorDeclaration");
       if (SNodeOperations.isInstanceOf(referent, AUX_exn1j.ConstructorDeclaration_9dbf9ae8)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "no reference to constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241543946857", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetConstructorDeclaration_QuickFix", true);
@@ -36,7 +36,7 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
         }
       } else {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "no reference to constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241543921898", null, errorTarget);
         }
       }

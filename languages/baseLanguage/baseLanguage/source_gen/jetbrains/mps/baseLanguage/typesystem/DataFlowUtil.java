@@ -52,7 +52,7 @@ public class DataFlowUtil {
       Program program = DataFlow.buildProgram(statementList);
       if (tooComplex(program)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(SNodeOperations.getParent(statementList), "This node is too complex too analyze by data flow algorithm", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6067900799350600197", null, errorTarget);
         }
         return;
@@ -88,7 +88,7 @@ public class DataFlowUtil {
           nodeToSelect = SLinkOperations.getTarget(SNodeOperations.cast(nodeToSelect, AUX_t46j31.LocalVariableDeclarationStatement_d47683f4), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"));
         }
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToSelect, "Return expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223640343628", null, errorTarget);
         }
       }
@@ -105,7 +105,7 @@ public class DataFlowUtil {
     Set<SNode> unreachable = DataFlow.getUnreachableNodes(program);
     for (SNode n : unreachable) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(n, "Unreachable node ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169", null, errorTarget);
       }
       return;
@@ -127,7 +127,7 @@ public class DataFlowUtil {
         SNode refAncestor = SNodeOperations.getNodeAncestor(read, AUX_t46j31.IControlFlowInterrupter_85caca0a, false, false);
         if (ILocalReference__BehaviorDescriptor.getDeclaration_id2P5W1FWMYZ5.invoke(localReference) != null && (refAncestor == null || SNodeOperations.getNodeAncestor(ILocalReference__BehaviorDescriptor.getDeclaration_id2P5W1FWMYZ5.invoke(localReference), AUX_t46j31.IControlFlowInterrupter_85caca0a, false, false) == refAncestor)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(read, "Variable '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(ILocalReference__BehaviorDescriptor.getDeclaration_id2P5W1FWMYZ5.invoke(localReference)) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1529050434900907669", null, errorTarget);
           }
         }
@@ -147,7 +147,7 @@ public class DataFlowUtil {
           if ((SNodeOperations.isInstanceOf(declaration, AUX_t46j31.LocalVariableDeclaration_d47683f3)) || (SNodeOperations.isInstanceOf(declaration, AUX_t46j31.ParameterDeclaration_24d60da8))) {
             if (SNodeOperations.getNodeAncestor(assignment, AUX_t46j31.IControlFlowInterrupter_85caca0a, false, false) == null || declaration != null && SNodeOperations.getNodeAncestor(declaration, AUX_t46j31.IControlFlowInterrupter_85caca0a, false, false) != null) {
               {
-                MessageTarget errorTarget = new NodeMessageTarget();
+                final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(assignment, "Unused assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930", null, errorTarget);
                 {
                   BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", false);
@@ -162,7 +162,7 @@ public class DataFlowUtil {
         SNode variableAssignment = SNodeOperations.cast(write, AUX_t46j31.IVariableAssignment_f69cb07c);
         if ((boolean) IVariableAssignment__BehaviorDescriptor.isCanBeUnused_idhNVeX73.invoke(variableAssignment)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused parameter", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067", null, errorTarget);
           }
         }
@@ -178,7 +178,7 @@ public class DataFlowUtil {
               continue;
             }
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(decl, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")), "Variable '" + SPropertyOperations.getString(decl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "' initializer is redundant", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668", null, errorTarget);
               {
                 BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", false);
@@ -187,7 +187,7 @@ public class DataFlowUtil {
             }
           } else {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278681706", null, errorTarget);
               {
                 BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", false);
@@ -210,7 +210,7 @@ public class DataFlowUtil {
       if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(var), AUX_t46j31.CatchClause_870e8b84)) && SNodeOperations.getNodeAncestor(var, AUX_t46j31.Quotation_25f29ad1, false, false) == null) {
         if ((!(SNodeOperations.isInstanceOf(var, AUX_t46j31.LocalVariableDeclaration_d47683f3)) || SLinkOperations.getTarget(SNodeOperations.cast(var, AUX_t46j31.LocalVariableDeclaration_d47683f3), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")) == null) && !(SetSequence.fromSet(usedVariables).contains(var))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424", null, errorTarget);
           }
         }

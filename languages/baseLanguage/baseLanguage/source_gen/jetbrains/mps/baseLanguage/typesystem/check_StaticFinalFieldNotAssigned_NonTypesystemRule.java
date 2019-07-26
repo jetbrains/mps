@@ -31,7 +31,7 @@ public class check_StaticFinalFieldNotAssigned_NonTypesystemRule extends Abstrac
 
     if (CheckingUtil.isAssigned(variableReference) && (SNodeOperations.getNodeAncestor(variableReference, AUX_3szm45.StaticInitializer_425a0e95, false, false) == null || (SLinkOperations.getTarget(declaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")) != null))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot assign a value to a final variable '" + SPropertyOperations.getString(declaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "775398157036223996", null, errorTarget);
       }
     }

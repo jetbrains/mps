@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.IErrorReporter;
@@ -41,8 +40,7 @@ public class check_DynamicReference_NonTypesystemRule extends AbstractNonTypesys
       }
 
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new ReferenceMessageTarget(SLinkOperations.getRefLink(ref).getName());
+        final MessageTarget errorTarget = new ReferenceMessageTarget(SLinkOperations.getRefLink(ref));
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Dynamic reference", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6287546302289294798", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.makeReferenceStatic_QuickFix", true);

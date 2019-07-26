@@ -37,7 +37,7 @@ public class check_AbstractMethodsInClass_NonTypesystemRule extends AbstractNonT
             if (matches_qfxa59_a0a1a0a) {
               if ((matchedNode_qfxa59_a0b0a0 != null) && !(SPropertyOperations.getBoolean(matchedNode_qfxa59_a0b0a0, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass")))) {
                 {
-                  MessageTarget errorTarget = new NodeMessageTarget();
+                  final MessageTarget errorTarget = new NodeMessageTarget();
                   IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "abstract method in a non-abstract class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "840197573389262456", null, errorTarget);
                 }
               }
@@ -47,7 +47,7 @@ public class check_AbstractMethodsInClass_NonTypesystemRule extends AbstractNonT
       } else {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(method), AUX_stcy1y.EnumConstantDeclaration_b06144d8)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "abstract methods not allowed in enum constants", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1962660292854020345", null, errorTarget);
           }
         }

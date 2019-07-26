@@ -66,7 +66,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
           warning = checkingResult._0();
           nodeToWarn = checkingResult._1();
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(nodeToWarn, warning, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3451033204592343684", null, errorTarget);
           }
         }
@@ -77,7 +77,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
         warning = checkingResult._0();
         nodeToWarn = checkingResult._1();
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(nodeToWarn, warning, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4235809288654203516", null, errorTarget);
         }
         continue;
@@ -89,7 +89,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
         warning = checkingResult._0();
         nodeToWarn = checkingResult._1();
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(nodeToWarn, warning, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4235809288654205433", null, errorTarget);
         }
         continue;
@@ -103,7 +103,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
           warning = checkingResult._0();
           nodeToWarn = checkingResult._1();
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(nodeToWarn, warning, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4235809288654207287", null, errorTarget);
           }
           continue;

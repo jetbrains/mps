@@ -30,7 +30,7 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
       for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(componentType, AUX_8v684v.ClassifierType_42700403), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))) {
         if (!(SNodeOperations.isInstanceOf(p, AUX_8v684v.WildCardType_457cddf9))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8918460683225653230", null, errorTarget);
           }
           return;
@@ -38,12 +38,12 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
       }
     } else if (SNodeOperations.isInstanceOf(componentType, AUX_8v684v.TypeVariableReference_3815fc3) || SNodeOperations.isInstanceOf(componentType, AUX_8v684v.AbstractContainerType_2c5ce5d1)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8918460683225653209", null, errorTarget);
       }
     } else if (SNodeOperations.isInstanceOf(componentType, AUX_8v684v.SequenceType_dd24a0b9) && (SLinkOperations.getTarget(SNodeOperations.cast(componentType, AUX_8v684v.SequenceType_dd24a0b9), MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType")) != null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6709363801298065263", null, errorTarget);
       }
     } else {
@@ -57,7 +57,7 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
       SetSequence.fromSet(bannedArrayTypes).addElement(AUX_8v684v.SortedSetType_fc87f5a5);
       if (SetSequence.fromSet(bannedArrayTypes).contains(SNodeOperations.getConcept(componentType))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6709363801295662800", null, errorTarget);
         }
       }

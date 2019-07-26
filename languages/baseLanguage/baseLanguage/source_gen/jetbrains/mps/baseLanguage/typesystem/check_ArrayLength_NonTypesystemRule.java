@@ -46,7 +46,7 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
 
     if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(operand), AUX_ub7d2l.ArrayType_67000423)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(fieldRefOperation, "should be length operation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2364881513287750350", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", true);

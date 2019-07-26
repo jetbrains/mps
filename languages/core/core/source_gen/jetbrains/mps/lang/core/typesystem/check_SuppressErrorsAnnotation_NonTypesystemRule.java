@@ -26,7 +26,7 @@ public class check_SuppressErrorsAnnotation_NonTypesystemRule extends AbstractNo
       FlavouredItem.ReportItemPredicate.deserialize((serializedPredicate == null ? "" : serializedPredicate));
     } catch (IllegalArgumentException e) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(suppressErrorsAnnotation, "invalid suppressing predicate", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "3813199577742754157", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.DoNotSuppressError_QuickFix", false);

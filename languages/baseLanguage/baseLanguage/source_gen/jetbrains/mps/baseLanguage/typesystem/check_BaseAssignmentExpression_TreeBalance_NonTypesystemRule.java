@@ -22,7 +22,7 @@ public class check_BaseAssignmentExpression_TreeBalance_NonTypesystemRule extend
   public void applyRule(final SNode baseAssignmentExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseAssignmentExpression), AUX_veuhi7.BinaryOperation_7c4c55f3)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseAssignmentExpression, "Unbalanced assignment expression", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8526811989163701544", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RebalanceBaseAssignmentExpression_QuickFix", true);

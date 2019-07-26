@@ -22,7 +22,7 @@ public class check_NonStaticClassInInterface_NonTypesystemRule extends AbstractN
   public void applyRule(final SNode innerClass, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(innerClass)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(innerClass), AUX_n97qqh.Interface_bca2069)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(innerClass, "Interfaces can't have non-static inner classes", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3511256318310404938", null, errorTarget);
       }
     }

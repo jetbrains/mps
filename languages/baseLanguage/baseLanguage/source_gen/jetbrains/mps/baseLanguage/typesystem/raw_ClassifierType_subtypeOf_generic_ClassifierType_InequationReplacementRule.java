@@ -31,7 +31,7 @@ public class raw_ClassifierType_subtypeOf_generic_ClassifierType_InequationRepla
     if (SNodeOperations.getModel(subtype) != null) {
       // it's strange to report an error for typesystem node as it will be never shown 
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(subtype, "Unchecked conversion", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2796241438627654736", null, errorTarget);
         HUtil.addAdditionalRuleIdsFromInfo(_reporter_2309309498, equationInfo);
       }

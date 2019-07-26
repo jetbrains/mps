@@ -52,7 +52,7 @@ public class CheckExtendedClassIsImported_NonTypesystemRule extends AbstractNonT
       assert classifierModule != null;
       if (!(deps.contains(classifierModule))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifierType, "The definition of some ancestor of " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(extendedClassifier) + " classifier is not visible from this module", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8421390612612470765", null, errorTarget);
         }
 

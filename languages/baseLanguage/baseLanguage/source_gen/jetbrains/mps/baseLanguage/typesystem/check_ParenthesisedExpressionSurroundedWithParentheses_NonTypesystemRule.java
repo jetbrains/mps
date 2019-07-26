@@ -28,7 +28,7 @@ public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesyste
         currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), AUX_1w5bsq.ParenthesizedExpression_a4b89678);
       }
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(currentParent, "Unnecessary parentheses", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534035809828", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnnecessaryParentheses_QuickFix", false);

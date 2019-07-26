@@ -28,7 +28,7 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
       SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(statementList);
       if (firstStatement != constructorInvocation) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "Call to '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(constructorInvocation) + "' must be first statement in constructor body", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3133930811460325358", null, errorTarget);
         }
       }

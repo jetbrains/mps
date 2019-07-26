@@ -22,7 +22,7 @@ public class check_UnknownNew_NonTypesystemRule extends AbstractNonTypesystemRul
   public void applyRule(final SNode unkNew, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (IYetUnresolved__BehaviorDescriptor.evaluateSubst_id73E7sj5sxxG.invoke(unkNew) != null) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(unkNew, "Resolved constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8504030010050787969", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ResolvedUnknownNode_QuickFix", true);
@@ -34,7 +34,7 @@ public class check_UnknownNew_NonTypesystemRule extends AbstractNonTypesystemRul
     }
 
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(unkNew, "Unresolved class name or constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6396739326936528633", null, errorTarget);
     }
   }

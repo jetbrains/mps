@@ -24,7 +24,7 @@ public class checkUnnecessaryInstanceof_NonTypesystemRule extends AbstractNonTyp
     SNode expressionType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(instanceOfExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression")));
     if (TypecheckingFacade.getFromContext().isSubtype(expressionType, classifierType)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(instanceOfExpression, "unnecessary instanceof", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3545977178604772302", null, errorTarget);
       }
     }

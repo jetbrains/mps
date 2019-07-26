@@ -31,7 +31,7 @@ public class check_ExpressionStatement_NonTypesystemRule extends AbstractNonType
 
     SNode statementListContainer = SNodeOperations.getNodeAncestor(expressionStatement, AUX_tm7l6h.IStatementListContainer_5e186851, false, false);
     if (!(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(IStatementListContainer__BehaviorDescriptor.getStatementList_id28aPEVv_31A.invoke(statementListContainer)) == expressionStatement && (boolean) IStatementListContainer__BehaviorDescriptor.isPassLastExpressionValue_id28aPEVv$IZv.invoke(statementListContainer))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expressionStatement, "Not a legal statement, the expression value should be used or returned", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766", null, errorTarget);
     }
   }

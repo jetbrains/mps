@@ -48,7 +48,7 @@ public class typeof_UnaryMinus_InferenceRule extends AbstractInferenceRule_Runti
             }
           } else {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(minus, "- can't be applied to these operands.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3860149536565525553", null, errorTarget);
             }
           }

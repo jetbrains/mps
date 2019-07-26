@@ -28,14 +28,14 @@ public class check_Type_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
         if (SNodeOperations.isInstanceOf(wrapper, AUX_qh3k76.ClassConcept_e2711824)) {
           if (SNodeOperations.hasRole(SNodeOperations.getParent(type), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface")) || SNodeOperations.hasRole(SNodeOperations.getParent(type), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass"))) {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(type, "A supertype may not specify any wildcard", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689317931", null, errorTarget);
             }
           }
         } else if (SNodeOperations.isInstanceOf(wrapper, AUX_qh3k76.Interface_bca2069)) {
           if (SNodeOperations.hasRole(SNodeOperations.getParent(type), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface"))) {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(type, "A supertype may not specify any wildcard", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689338001", null, errorTarget);
             }
           }

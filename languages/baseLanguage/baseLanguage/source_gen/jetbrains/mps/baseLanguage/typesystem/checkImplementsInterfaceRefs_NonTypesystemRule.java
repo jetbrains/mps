@@ -52,7 +52,7 @@ public class checkImplementsInterfaceRefs_NonTypesystemRule extends AbstractNonT
         if (Sequence.fromIterable(duplicates).count() > 1) {
           for (SNode dup : Sequence.fromIterable(duplicates)) {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dup, "Duplicate entry '" + SPropertyOperations.getString(singleIntfc, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3031388763760861714", null, errorTarget);
             }
           }

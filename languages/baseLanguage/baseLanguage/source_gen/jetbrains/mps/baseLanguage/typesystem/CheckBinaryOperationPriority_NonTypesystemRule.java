@@ -32,7 +32,7 @@ public class CheckBinaryOperationPriority_NonTypesystemRule extends AbstractNonT
       }
       if (ParenthesisUtil.isBadPriority(binaryOperation, parent, isRigth)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(binaryOperation, "Bad priority of operations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6778605776626937239", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.BinaryExpressionPriority_QuickFix", true);

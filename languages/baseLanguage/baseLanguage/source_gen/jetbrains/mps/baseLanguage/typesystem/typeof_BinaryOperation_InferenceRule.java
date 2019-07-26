@@ -48,7 +48,7 @@ public class typeof_BinaryOperation_InferenceRule extends AbstractInferenceRule_
                   }
                 } else {
                   {
-                    MessageTarget errorTarget = new NodeMessageTarget();
+                    final MessageTarget errorTarget = new NodeMessageTarget();
                     IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(operation, "Operator '" + SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation)) + "' cannot be applied to '" + typeCheckingContext.getExpandedNode(leftType) + "', '" + typeCheckingContext.getExpandedNode(rightType) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571120", null, errorTarget);
                   }
                 }

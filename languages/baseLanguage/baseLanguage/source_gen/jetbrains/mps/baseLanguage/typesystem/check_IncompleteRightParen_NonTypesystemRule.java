@@ -19,7 +19,7 @@ public class check_IncompleteRightParen_NonTypesystemRule extends AbstractNonTyp
   }
   public void applyRule(final SNode incompleteRightParen, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(incompleteRightParen, "Unmatched right paren", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2329139813954049743", null, errorTarget);
     }
   }

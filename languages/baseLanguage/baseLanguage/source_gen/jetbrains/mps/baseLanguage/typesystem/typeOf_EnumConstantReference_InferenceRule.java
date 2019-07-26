@@ -21,7 +21,7 @@ public class typeOf_EnumConstantReference_InferenceRule extends AbstractInferenc
   }
   public void applyRule(final SNode enumConstantRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((SLinkOperations.getTarget(enumConstantRef, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration")) != null))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstantRef, "no constant declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176905227742", null, errorTarget);
     }
     {

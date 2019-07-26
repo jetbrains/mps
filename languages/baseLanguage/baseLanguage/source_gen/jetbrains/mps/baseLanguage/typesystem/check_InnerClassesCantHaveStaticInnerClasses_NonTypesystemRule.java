@@ -25,7 +25,7 @@ public class check_InnerClassesCantHaveStaticInnerClasses_NonTypesystemRule exte
       SNode classifier = SNodeOperations.cast(SNodeOperations.getParent(classConcept), AUX_aur4s2.Classifier_4b7e553);
       if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classifier) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classConcept, "Inner classes can't have static declarations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6935810692634700346", null, errorTarget);
         }
       }

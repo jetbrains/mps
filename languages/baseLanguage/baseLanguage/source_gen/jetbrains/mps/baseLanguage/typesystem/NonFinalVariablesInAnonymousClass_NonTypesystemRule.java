@@ -29,7 +29,7 @@ public class NonFinalVariablesInAnonymousClass_NonTypesystemRule extends Abstrac
         if (!((boolean) VariableReference__BehaviorDescriptor.isVariableDefinedInThisMethod_idhPiSGi6.invoke(variableReference))) {
           if ((SNodeOperations.getNodeAncestor(variableReference, AUX_sgoepk.IFinalWrapper_5b57f6bb, false, false) == null)) {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Variable must be final", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1239123004897", null, errorTarget);
               {
                 BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeVariableFinal_QuickFix", false);

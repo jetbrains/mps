@@ -46,7 +46,7 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
 
     if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(operand), AUX_84yqbr.ArrayType_67000423)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceMethodCallOperation, "should be clone operation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8824315269745705247", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", true);
