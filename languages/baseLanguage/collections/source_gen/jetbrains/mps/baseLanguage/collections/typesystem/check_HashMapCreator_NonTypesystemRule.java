@@ -24,7 +24,7 @@ public class check_HashMapCreator_NonTypesystemRule extends AbstractNonTypesyste
   public void applyRule(final SNode hmc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode dtype = TypeDerivable__BehaviorDescriptor.deriveType_idhEwIVPz.invoke(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(hmc)), AUX_ln5984.TypeDerivable_db8fd96c), SNodeOperations.as(SNodeOperations.getParent(hmc), AUX_ln5984.Expression_4199e28d));
     if (!((dtype == null) || SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(dtype)), AUX_ln5984.MapType_a7cf7955))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(hmc, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121264603", null, errorTarget);
     }
   }

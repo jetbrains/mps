@@ -30,7 +30,7 @@ public class check_SLinkListAccess_NonTypesystemRule extends AbstractNonTypesyst
     SNode inputNodeConcept = RulesUtil.get_inputNodeConcept(op, false);
     List<SNode> declaredLinks = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(inputNodeConcept);
     if (!(ListSequence.fromList(declaredLinks).contains(linkDecl))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "access to link '" + SPropertyOperations.getString(linkDecl, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")) + "' is not expected here", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1226070777621", null, errorTarget);
     }
   }

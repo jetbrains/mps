@@ -30,7 +30,7 @@ public class check_BwfTaskLibrary_NonTypesystemRule extends AbstractNonTypesyste
         SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
         if (targetNode != null && !(SetSequence.fromSet(libsSet).contains(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(targetNode.getContainingRoot(), AUX_iz99j.BwfTaskLibrary_91f5a8b5)))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(n, "broken reference, target is not imported", "r:aa7cee44-7e41-4ff3-b944-4eb707b62ad6(jetbrains.mps.build.workflow.typesystem)", "1117643560963219163", null, errorTarget);
           }
         }

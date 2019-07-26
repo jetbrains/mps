@@ -21,7 +21,7 @@ public class check_RunConfiguration_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode runConfiguration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((RunConfiguration__BehaviorDescriptor.getExecutor_id3gs394eDyIj.invoke(runConfiguration) == null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(runConfiguration, "Run configuration should define an executor", "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "2535050848643223624", null, errorTarget);
       }
     }

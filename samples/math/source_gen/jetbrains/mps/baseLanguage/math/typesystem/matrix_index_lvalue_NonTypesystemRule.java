@@ -24,7 +24,7 @@ public class matrix_index_lvalue_NonTypesystemRule extends AbstractNonTypesystem
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(me), AUX_x1bbqp.BaseAssignmentExpression_8ed0d6ee)) {
       if (!((boolean) Expression__BehaviorDescriptor.lvalue_id1653mnvAgpj.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(me, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433cL, "expression"))))))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(me, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433cL, "expression")), "Unexpected in left part of assignment", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "964810815943264793", null, errorTarget);
         }
       }

@@ -25,14 +25,14 @@ public class check_TemplateFragment_NonTypesystemRule extends AbstractNonTypesys
     SNode fragmentNode = SNodeOperations.getParent(tf);
     if (Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(fragmentNode, new IAttributeDescriptor.AllAttributes()), AUX_bsbqmy.TemplateFragment_1973fd34)).count() > 1) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, "More than one template fragment for a node. Are there node attributes with template macros?", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3852116826972485480", null, errorTarget);
       }
     }
     if (SNodeOperations.isAttribute(fragmentNode) && (AttributeOperations.getAttribute(SNodeOperations.getParent(fragmentNode), new IAttributeDescriptor.NodeAttribute(AUX_bsbqmy.TemplateFragment_1973fd34)) != null)) {
       // https://youtrack.jetbrains.com/issue/MPS-20691 
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(fragmentNode, "Node Attribute is a template fragment, and its attributed node is a template fragment as well. Generator doesn't support such templates", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3852116826972491939", null, errorTarget);
       }
     }

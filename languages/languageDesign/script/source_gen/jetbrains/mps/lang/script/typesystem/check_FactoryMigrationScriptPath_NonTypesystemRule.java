@@ -27,7 +27,7 @@ public class check_FactoryMigrationScriptPath_NonTypesystemRule extends Abstract
     SNode returnType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(part, MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x24105a807c757c2dL, 0x24105a807c757c2fL, "factoryMethod")));
     if (!(TypecheckingFacade.getFromContext().isSubtype(returnType, _quotation_createNode_5hdosv_b0a0b0b()))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(part, "Factory method should return subtype of Iterable<AbstractMigrationRefactoring> (now \"" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(returnType) + "\")", "r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)", "2598676492883176352", null, errorTarget);
       }
     }

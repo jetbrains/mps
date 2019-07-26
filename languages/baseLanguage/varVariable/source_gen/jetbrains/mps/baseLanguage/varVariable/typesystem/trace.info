@@ -96,8 +96,8 @@
       </scope>
     </file>
     <file name="check_VarVariableDeclaration_NonTypesystemRule.java">
-      <node id="8067700594454596069" at="22,188,23,58" concept="5" />
-      <node id="8067700594454596069" at="23,58,24,263" concept="5" />
+      <node id="8067700594454596069" at="22,188,23,64" concept="5" />
+      <node id="8067700594454596069" at="23,64,24,263" concept="5" />
       <node id="8067700594454594112" at="27,50,28,54" concept="6" />
       <node id="8067700594454594112" at="30,68,31,102" concept="6" />
       <node id="8067700594454594112" at="33,30,34,17" concept="6" />

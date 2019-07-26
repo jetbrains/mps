@@ -40,13 +40,13 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
             SNode mt = SNodeOperations.cast(typeCheckingContext.getExpandedNode(t), AUX_mtviz2.MatrixType_c2d2403c);
             if (SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows")) != 0 && SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns")) != 0 && SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows")) != SPropertyOperations.getInteger(mt, MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns"))) {
               {
-                MessageTarget errorTarget = new NodeMessageTarget();
+                final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "Inverse operation is undefined for non-square matrices", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7388416617632229476", null, errorTarget);
               }
             }
           } else {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "Inverse operation is defined for matrices only", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749171", null, errorTarget);
             }
           }

@@ -52,7 +52,7 @@ public class check_StringSwitchStatement_NonTypesystemRule extends AbstractNonTy
     }
 
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Argument of string switch should be string", "r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)", "400642802550421743", null, errorTarget);
     }
   }

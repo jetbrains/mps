@@ -25,7 +25,7 @@ public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRu
     if (SNodeOperations.isInstanceOf(args, AUX_j7zsho.CustomArgumentClause_6b8a6f02)) {
       if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, AUX_j7zsho.CustomArgumentClause_6b8a6f02), MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter"))).count() != ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element"))).count()) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(customConstructorUsage, "Wrong number of arguments", "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "960932673514559399", null, errorTarget);
         }
       }

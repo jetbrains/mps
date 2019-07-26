@@ -22,7 +22,7 @@ public class check_NodeReference_NonTypesystemRule extends AbstractNonTypesystem
   public void applyRule(final SNode nodeReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNodeReference ref = AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(nodeReference);
     if (!(ref != null)) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeReference, "Invalid node reference", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "112372100253050975", null, errorTarget);
     }
   }

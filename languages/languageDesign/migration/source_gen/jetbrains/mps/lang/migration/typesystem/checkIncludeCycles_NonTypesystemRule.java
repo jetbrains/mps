@@ -23,7 +23,7 @@ public class checkIncludeCycles_NonTypesystemRule extends AbstractNonTypesystemR
     if (SNodeOperations.hasRole(includeMigrationPart, MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part"))) {
       if (MigrationsCheckUtil.hasIncludeCycles(SNodeOperations.cast(SNodeOperations.getParent(includeMigrationPart), AUX_i71a00.PureMigrationScript_45927c66))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(includeMigrationPart, "Cycle between migration scripts", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "2905662307328488101", null, errorTarget);
         }
       }

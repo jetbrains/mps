@@ -33,7 +33,7 @@ public class check_CallPrivateFunction_NonTypesystemRule extends AbstractNonType
     }
     if (!(b)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(privateFunctionCall, "wrong number of parameters", "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "1234529496730", null, errorTarget);
       }
     }

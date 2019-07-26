@@ -31,7 +31,7 @@ public class check_EditorCellModel_emptyCell_NonTypesystemRule extends AbstractN
       public void visit(SNode it) {
         if (!((boolean) EditorCellModel__BehaviorDescriptor.canBeUsedAsEmptyCell_id6RO52Mcgrfa.invoke(it))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "Using this cell as empty may prevent user from adding child node", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7539455902806115580", null, errorTarget);
           }
         }

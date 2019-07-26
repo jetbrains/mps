@@ -13,7 +13,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
@@ -30,8 +29,7 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
     SNode containerJar = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(n), AUX_b28qe6.BuildLayout_Folder_b7bb9958)), AUX_b28qe6.BuildLayout_Jar_b7d4ec38);
     if ((containerJar != null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(containerJar, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children")), AUX_b28qe6.BuildLayout_CompileOutputOf_4c8096fb)).isNotEmpty()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new ReferenceMessageTarget("classpathEntries");
+        final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries"));
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(n, "Module descriptor inside a jar with compiled classes doesn't specify classpath", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "8488591998065913053", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.SetModuleJarClasspathEntry_QuickFix", false);

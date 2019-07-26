@@ -24,7 +24,7 @@ public class check_IOperationContextUsages_NonTypesystemRule extends AbstractNon
     if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(conceptFunction), AUX_h2lzov.ConceptConstraints_2e5b5de5)) {
       for (SNode param : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(conceptFunction, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body")), AUX_h2lzov.ConceptFunctionParameter_operationContext_90a078a3, false, new SAbstractConcept[]{}))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(param, "operationContext is deprecated", "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "8401916545537389027", null, errorTarget);
         }
       }

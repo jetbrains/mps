@@ -56,7 +56,7 @@ public class typeof_PowExpression_InferenceRule extends AbstractInferenceRule_Ru
             }
           } else {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expression, "Power base must be complex or big decimal number", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238340713242", null, errorTarget);
             }
           }

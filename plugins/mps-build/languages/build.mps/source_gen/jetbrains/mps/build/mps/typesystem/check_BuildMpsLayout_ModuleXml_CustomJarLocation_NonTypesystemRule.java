@@ -46,7 +46,7 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
       return;
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(jarLoc, String.format("Module %s doesn't depend on jar %s, mapping doesn't make sense.", SPropertyOperations.getString(module, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), expectedPath), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "1241280061047101276", null, errorTarget);
     }
   }

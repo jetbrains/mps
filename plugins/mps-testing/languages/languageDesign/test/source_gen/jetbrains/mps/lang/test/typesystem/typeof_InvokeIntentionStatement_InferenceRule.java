@@ -11,10 +11,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -25,8 +25,7 @@ public class typeof_InvokeIntentionStatement_InferenceRule extends AbstractInfer
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(statement, MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d72af5892L, 0x11d72afec1bL, "intention")), AUX_sce0xb.ParameterizedIntentionDeclaration_2ac6f11a)) {
       if ((SLinkOperations.getTarget(statement, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d72af5892L, 0x7bf9131d2468ca92L, "parameter")) == null)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
-          errorTarget = new ReferenceMessageTarget("parameter");
+          final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d72af5892L, 0x7bf9131d2468ca92L, "parameter"));
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(statement, "Missing parameter value for parameterized intention", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "4804472818036379967", null, errorTarget);
         }
         return;
@@ -52,7 +51,7 @@ public class typeof_InvokeIntentionStatement_InferenceRule extends AbstractInfer
       // Not a parameterized intention - should not have a parameter 
       if ((SLinkOperations.getTarget(statement, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d72af5892L, 0x7bf9131d2468ca92L, "parameter")) != null)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(statement, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d72af5892L, 0x7bf9131d2468ca92L, "parameter")), "Parameter value specified for a non-parameterized intention", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "4804472818036406369", null, errorTarget);
         }
       }

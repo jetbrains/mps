@@ -39,7 +39,7 @@ public class check_all_ports_NonTypesystemRule extends AbstractNonTypesystemRule
     }
     if (!(result)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(block, "all ports must be connected", "r:ad8f2b18-3038-4a9d-ad27-aa5680bf8421(jetbrains.mps.testHybridEditor.typesystem)", "884514646183091769", null, errorTarget);
       }
     }

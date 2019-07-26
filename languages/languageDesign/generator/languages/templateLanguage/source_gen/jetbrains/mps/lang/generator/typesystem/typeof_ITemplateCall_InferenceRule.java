@@ -28,7 +28,7 @@ public class typeof_ITemplateCall_InferenceRule extends AbstractInferenceRule_Ru
       List<SNode> actualArguments = SLinkOperations.getChildren(iTemplateCall, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"));
       if (ListSequence.fromList(parameterDeclarations).count() != ListSequence.fromList(actualArguments).count()) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iTemplateCall, "wrong number of parameters", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1722980698497666339", null, errorTarget);
         }
       } else {

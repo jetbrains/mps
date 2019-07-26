@@ -342,8 +342,8 @@
     <file name="requiredArgsForCommandBuilderExpression_NonTypesystemRule.java">
       <node id="7947003018421199285" at="28,118,29,218" concept="6" />
       <node id="7947003018421244224" at="31,43,32,210" concept="7" />
-      <node id="7947003018421368856" at="35,11,36,64" concept="6" />
-      <node id="7947003018421368856" at="36,64,37,447" concept="6" />
+      <node id="7947003018421368856" at="35,11,36,70" concept="6" />
+      <node id="7947003018421368856" at="36,70,37,447" concept="6" />
       <node id="7947003018421129634" at="43,50,44,56" concept="7" />
       <node id="7947003018421129634" at="46,68,47,102" concept="7" />
       <node id="7947003018421129634" at="49,30,50,17" concept="7" />

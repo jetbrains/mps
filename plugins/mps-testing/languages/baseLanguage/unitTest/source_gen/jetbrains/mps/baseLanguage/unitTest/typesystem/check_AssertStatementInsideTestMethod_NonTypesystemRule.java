@@ -22,7 +22,7 @@ public class check_AssertStatementInsideTestMethod_NonTypesystemRule extends Abs
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, AUX_jeg2tm.IStatementListContainer_5e186851, false, false), AUX_jeg2tm.TestMethod_13cf7466)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "This is a usual Java assert statement. For testing with JUnit use assert constructions from jetbrains.mps.baseLanguage.unitTest", "r:2b2539c5-00c8-487d-9567-ecc2b9274c7b(jetbrains.mps.baseLanguage.unitTest.typesystem)", "8396091035812119723", null, errorTarget);
       }
     }

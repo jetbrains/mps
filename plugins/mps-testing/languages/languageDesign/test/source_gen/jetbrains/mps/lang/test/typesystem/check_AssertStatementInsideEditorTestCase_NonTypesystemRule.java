@@ -29,7 +29,7 @@ public class check_AssertStatementInsideEditorTestCase_NonTypesystemRule extends
     }
     if (SNodeOperations.isInstanceOf(parent, AUX_gkenzs.EditorTestCase_77c60a8e) && Objects.equals(current.getContainmentLink(), MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314cad13L, "code"))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "This is a usual Java assert statement. For testing with JUnit use assert constructions from jetbrains.mps.baseLanguage.unitTest", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "8396091035812119723", null, errorTarget);
       }
     }

@@ -24,11 +24,11 @@ public class check_CellModel_RefNodeList_InferenceRule extends AbstractInference
   public void applyRule(final SNode refNodeList, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode lnk = SLinkOperations.getTarget(refNodeList, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
     if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(lnk, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass")), 0xfc6f4e95b9L))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(refNodeList, "aggregation link expected", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1180295464579", null, errorTarget);
     }
     if (!(!((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(lnk)))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(refNodeList, "multiple cardinality expected", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1180295464588", null, errorTarget);
     }
   }

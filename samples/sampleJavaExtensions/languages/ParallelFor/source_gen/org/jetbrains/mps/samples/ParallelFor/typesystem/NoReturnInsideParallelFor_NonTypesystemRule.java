@@ -31,7 +31,7 @@ public class NoReturnInsideParallelFor_NonTypesystemRule extends AbstractNonType
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Cannot return from within a parallel for loop using a return statement. Use continue instead", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4697196167065890748", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("org.jetbrains.mps.samples.ParallelFor.typesystem.TurnReturnToContinue_QuickFix", false);

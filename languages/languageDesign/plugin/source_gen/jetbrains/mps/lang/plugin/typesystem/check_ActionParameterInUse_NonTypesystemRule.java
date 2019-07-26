@@ -30,7 +30,7 @@ public class check_ActionParameterInUse_NonTypesystemRule extends AbstractNonTyp
     });
     if (!(inUse)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(actionParameter, "Action parameter is not in use", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "4197537290462900101", null, errorTarget);
       }
     }

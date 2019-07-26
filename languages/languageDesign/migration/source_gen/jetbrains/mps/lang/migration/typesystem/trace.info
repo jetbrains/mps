@@ -29,8 +29,8 @@
     </file>
     <file name="check_NodeReference_NonTypesystemRule.java">
       <node id="112372100253048936" at="22,126,23,120" concept="7" />
-      <node id="112372100253050975" at="24,25,25,58" concept="7" />
-      <node id="112372100253050975" at="25,58,26,245" concept="7" />
+      <node id="112372100253050975" at="24,25,25,64" concept="7" />
+      <node id="112372100253050975" at="25,64,26,245" concept="7" />
       <node id="2864063292004339060" at="29,50,30,55" concept="8" />
       <node id="2864063292004339060" at="32,68,33,102" concept="8" />
       <node id="2864063292004339060" at="35,30,36,17" concept="8" />
@@ -77,8 +77,8 @@
       </scope>
     </file>
     <file name="checkIncludeCycles_NonTypesystemRule.java">
-      <node id="2905662307328488101" at="25,9,26,62" concept="7" />
-      <node id="2905662307328488101" at="26,62,27,266" concept="7" />
+      <node id="2905662307328488101" at="25,9,26,68" concept="7" />
+      <node id="2905662307328488101" at="26,68,27,266" concept="7" />
       <node id="2905662307328193166" at="32,50,33,52" concept="8" />
       <node id="2905662307328193166" at="35,68,36,102" concept="8" />
       <node id="2905662307328193166" at="38,30,39,17" concept="8" />
@@ -215,8 +215,8 @@
   <root nodeRef="r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)/3334914821927698025">
     <file name="MigrationScriptVersions_NonTypesystemRule.java">
       <node id="1987432259747734722" at="27,127,28,142" concept="7" />
-      <node id="1987432259747751432" at="31,9,32,62" concept="7" />
-      <node id="1987432259747751432" at="32,62,33,229" concept="7" />
+      <node id="1987432259747751432" at="31,9,32,68" concept="7" />
+      <node id="1987432259747751432" at="32,68,33,229" concept="7" />
       <node id="3334914821927698025" at="38,50,39,46" concept="8" />
       <node id="3334914821927698025" at="41,68,42,102" concept="8" />
       <node id="3334914821927698025" at="44,30,45,17" concept="8" />
@@ -369,8 +369,8 @@
     </file>
     <file name="check_ProducesData_NonTypesystemRule.java">
       <node id="5310388462668448722" at="25,128,26,296" concept="7" />
-      <node id="5310388462668349111" at="28,623,29,60" concept="7" />
-      <node id="5310388462668349111" at="29,60,30,331" concept="7" />
+      <node id="5310388462668349111" at="28,623,29,66" concept="7" />
+      <node id="5310388462668349111" at="29,66,30,331" concept="7" />
       <node id="5310388462668409361" at="31,7,32,0" concept="9" />
       <node id="5310388462668328179" at="35,50,36,47" concept="8" />
       <node id="5310388462668328179" at="38,68,39,102" concept="8" />
@@ -627,8 +627,8 @@
     </file>
     <file name="check_InstancesExpression_nonExact_NonTypesystemRule.java">
       <node id="8417162567091079685" at="24,132,25,143" concept="7" />
-      <node id="8113079483879675730" at="29,11,30,64" concept="7" />
-      <node id="8113079483879675730" at="30,64,31,257" concept="7" />
+      <node id="8113079483879675730" at="29,11,30,70" concept="7" />
+      <node id="8113079483879675730" at="30,70,31,257" concept="7" />
       <node id="677787792397711024" at="37,50,38,51" concept="8" />
       <node id="677787792397711024" at="40,68,41,102" concept="8" />
       <node id="677787792397711024" at="43,30,44,17" concept="8" />
@@ -693,8 +693,8 @@
       <node id="6807933448471600726" at="38,5,39,59" concept="7" />
       <node id="6807933448471600726" at="39,59,40,205" concept="7" />
       <node id="6807933448471600726" at="40,205,41,309" concept="3" />
-      <node id="6807933448472915817" at="43,208,44,58" concept="7" />
-      <node id="6807933448472915817" at="44,58,45,260" concept="7" />
+      <node id="6807933448472915817" at="43,208,44,64" concept="7" />
+      <node id="6807933448472915817" at="44,64,45,260" concept="7" />
       <node id="6807933448471383799" at="48,50,49,49" concept="8" />
       <node id="6807933448471383799" at="51,68,52,102" concept="8" />
       <node id="6807933448471383799" at="54,30,55,17" concept="8" />
@@ -789,8 +789,8 @@
     </file>
     <file name="check_RequiredAnnotationDataDeclaration_NonTypesystemRule.java">
       <node id="6807933448472407821" at="26,182,27,17" concept="2" />
-      <node id="6807933448472413406" at="29,270,30,60" concept="7" />
-      <node id="6807933448472413406" at="30,60,31,563" concept="7" />
+      <node id="6807933448472413406" at="29,270,30,66" concept="7" />
+      <node id="6807933448472413406" at="30,66,31,563" concept="7" />
       <node id="6807933448472371283" at="35,50,36,65" concept="8" />
       <node id="6807933448472371283" at="38,68,39,102" concept="8" />
       <node id="6807933448472371283" at="41,30,42,17" concept="8" />
@@ -964,8 +964,8 @@
   </root>
   <root nodeRef="r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)/730486742183676577">
     <file name="MigrationScriptCycles_NonTypesystemRule.java">
-      <node id="730486742184890144" at="22,65,23,58" concept="7" />
-      <node id="730486742184890144" at="23,58,24,268" concept="7" />
+      <node id="730486742184890144" at="22,65,23,64" concept="7" />
+      <node id="730486742184890144" at="23,64,24,268" concept="7" />
       <node id="730486742183676577" at="27,50,28,47" concept="8" />
       <node id="730486742183676577" at="30,68,31,102" concept="8" />
       <node id="730486742183676577" at="33,30,34,17" concept="8" />

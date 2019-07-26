@@ -37,7 +37,7 @@ public class typeof_CellMenuPart_ReplaceChild_currentChild_InferenceRule extends
       return;
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "couldn't define concept of child node", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1179782438058", null, errorTarget);
     }
     {

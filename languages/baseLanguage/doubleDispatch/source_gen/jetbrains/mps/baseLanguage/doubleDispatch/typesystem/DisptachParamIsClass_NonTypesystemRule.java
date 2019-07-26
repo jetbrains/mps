@@ -35,7 +35,7 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isEmpty()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "Dispatch method must have at least one parameter", "r:7a94bb66-9653-4830-af67-903eb2cfbd29(jetbrains.mps.baseLanguage.doubleDispatch.typesystem)", "2323553266854878723", null, errorTarget);
       }
       return;
@@ -47,7 +47,7 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
 
     if (!(SNodeOperations.isInstanceOf(paramType, AUX_lk2er8.ClassifierType_42700403)) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(paramType, AUX_lk2er8.ClassifierType_42700403), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), AUX_lk2er8.ClassConcept_e2711824))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(paramType, "Dispatch parameter must have class type", "r:7a94bb66-9653-4830-af67-903eb2cfbd29(jetbrains.mps.baseLanguage.doubleDispatch.typesystem)", "2323553266855237975", null, errorTarget);
       }
       return;

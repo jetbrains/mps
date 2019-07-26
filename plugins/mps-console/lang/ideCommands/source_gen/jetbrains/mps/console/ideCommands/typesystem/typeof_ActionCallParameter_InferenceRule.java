@@ -44,7 +44,7 @@ public class typeof_ActionCallParameter_InferenceRule extends AbstractInferenceR
       }
     } else {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(actionCallParameter, "Only DataKey<...> type is allowed", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074159", null, errorTarget);
       }
     }

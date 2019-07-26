@@ -26,7 +26,7 @@ public class typeof_SNodeCreator_InferenceRule extends AbstractInferenceRule_Run
     if (createdType != null) {
       if (SLinkOperations.getTarget(createdType, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept")) == null) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(createdType, "concrete node type is expected", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1181944909006", null, errorTarget);
         }
         return;

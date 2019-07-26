@@ -34,7 +34,7 @@ public class check_CellModel_Diagram_NonTypesystemRule extends AbstractNonTypesy
       }
     })) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(nonSynchronizeableCellModel, "Usage of this cell in the editor will prevent diagram cell from being incrementally synchronized", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "4052492221165343667", null, errorTarget);
       }
     }

@@ -25,7 +25,7 @@ public class check_BuildLayout_Jar_NonTypesystemRule extends AbstractNonTypesyst
     String approxName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(jarArchive, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName")), null);
     if (!(approxName.endsWith("}")) && !(approxName.toLowerCase().endsWith(BuildLayout_Jar__BehaviorDescriptor.getExpectedExtension_id62K_yvYRytT.invoke(jarArchive)))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(jarArchive, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName")), "should end with `" + BuildLayout_Jar__BehaviorDescriptor.getExpectedExtension_id62K_yvYRytT.invoke(jarArchive) + "'", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "1979010778009333641", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", false);

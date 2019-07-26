@@ -23,8 +23,8 @@
       </scope>
     </file>
     <file name="check_NotesConfiguration_NonTypesystemRule.java">
-      <node id="8908453262579960025" at="25,7,26,60" concept="5" />
-      <node id="8908453262579960025" at="26,60,27,289" concept="5" />
+      <node id="8908453262579960025" at="25,7,26,66" concept="5" />
+      <node id="8908453262579960025" at="26,66,27,289" concept="5" />
       <node id="8908453262579948273" at="31,50,32,50" concept="6" />
       <node id="8908453262579948273" at="34,68,35,102" concept="6" />
       <node id="8908453262579948273" at="37,30,38,17" concept="6" />

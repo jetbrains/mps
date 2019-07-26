@@ -20,7 +20,7 @@ public class check_op_inside_refMacro_NonTypesystemRule extends AbstractNonTypes
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((SNodeOperations.getNodeAncestor(op, AUX_9v88l0.ReferenceMacro_62f8c34e, false, false) != null))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "such an operation may be used only inside ref.macro", "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1221220343089", null, errorTarget);
     }
   }

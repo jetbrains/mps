@@ -26,8 +26,8 @@
     <file name="check_BwfTaskLibrary_NonTypesystemRule.java">
       <node id="3350985893289708283" at="26,116,27,106" concept="6" />
       <node id="1117643560963218991" at="29,48,30,70" concept="6" />
-      <node id="1117643560963219163" at="32,11,33,64" concept="6" />
-      <node id="1117643560963219163" at="33,64,34,258" concept="6" />
+      <node id="1117643560963219163" at="32,11,33,70" concept="6" />
+      <node id="1117643560963219163" at="33,70,34,258" concept="6" />
       <node id="1117643560963218862" at="40,50,41,45" concept="7" />
       <node id="1117643560963218862" at="43,68,44,102" concept="7" />
       <node id="1117643560963218862" at="46,30,47,17" concept="7" />

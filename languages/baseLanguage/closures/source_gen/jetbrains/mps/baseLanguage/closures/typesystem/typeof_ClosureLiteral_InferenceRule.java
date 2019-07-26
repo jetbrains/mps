@@ -289,7 +289,7 @@ with_allThrows:
     }
     if (returnsValue && yieldsValue) {
       if (!(false)) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(closure, "closure must either return or yield value", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1221579075859", null, errorTarget);
       }
     } else

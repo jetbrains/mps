@@ -30,7 +30,7 @@ public class NoBreakInsideParallelFor_NonTypesystemRule extends AbstractNonTypes
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Hush! Can't break from within a concurrently run branch of the computation.", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4697196167065941903", null, errorTarget);
         }
       }

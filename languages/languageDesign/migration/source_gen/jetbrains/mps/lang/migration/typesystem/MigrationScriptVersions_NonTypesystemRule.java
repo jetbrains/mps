@@ -29,7 +29,7 @@ public class MigrationScriptVersions_NonTypesystemRule extends AbstractNonTypesy
     CollectionSequence.fromCollection(MapSequence.fromMap(errors).get(iMigrationUnit)).visitAll(new IVisitor<String>() {
       public void visit(String it) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMigrationUnit, it, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "1987432259747751432", null, errorTarget);
         }
       }

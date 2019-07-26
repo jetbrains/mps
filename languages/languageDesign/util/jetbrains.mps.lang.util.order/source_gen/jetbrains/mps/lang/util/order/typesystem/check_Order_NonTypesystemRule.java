@@ -27,7 +27,7 @@ public class check_Order_NonTypesystemRule extends AbstractNonTypesystemRule_Run
       return;
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(order, "order does not contain current entity", "r:f788c62b-42b4-4d31-be80-806bf92fccaf(jetbrains.mps.lang.util.order.typesystem)", "1499919975383986350", null, errorTarget);
     }
   }

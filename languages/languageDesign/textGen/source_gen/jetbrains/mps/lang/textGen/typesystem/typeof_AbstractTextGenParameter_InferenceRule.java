@@ -22,7 +22,7 @@ public class typeof_AbstractTextGenParameter_InferenceRule extends AbstractInfer
     SNode textGen = SNodeOperations.getNodeAncestor(parameter, AUX_l0wvna.AbstractTextGenDeclaration_a362e3b0, false, false);
     if ((textGen == null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "not applicable in this context", "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "1236687971019", null, errorTarget);
       }
     }

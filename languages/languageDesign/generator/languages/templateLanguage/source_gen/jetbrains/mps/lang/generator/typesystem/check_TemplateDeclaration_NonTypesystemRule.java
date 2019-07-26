@@ -26,7 +26,7 @@ public class check_TemplateDeclaration_NonTypesystemRule extends AbstractNonType
   public void applyRule(final SNode td, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SLinkOperations.getTarget(td, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode")) != null) && ListSequence.fromList(SNodeOperations.getNodeDescendants(td, AUX_jyzgi6.TemplateFragment_1973fd34, false, new SAbstractConcept[]{})).isEmpty() && ListSequence.fromList(SNodeOperations.getNodeDescendants(td, AUX_jyzgi6.IStubForAnotherConcept_e2a5283f, false, new SAbstractConcept[]{})).isEmpty()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(td, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode")), "No template fragments found", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7952422520064723850", null, errorTarget);
       }
     }
@@ -44,13 +44,13 @@ public class check_TemplateDeclaration_NonTypesystemRule extends AbstractNonType
       } else {
         if (commonParent != SNodeOperations.getParent(fragmentParent)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, String.format("Template Fragments shall reside under same parent node"), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4888628500252455567", null, errorTarget);
           }
         }
         if (!(Objects.equals(commonAggregationLink, fragmentParent.getContainmentLink()))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, String.format("Template Fragments shall use same same containment link"), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4888628500252455578", null, errorTarget);
           }
         }

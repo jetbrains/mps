@@ -109,8 +109,8 @@
       </scope>
     </file>
     <file name="indexedTuple_assignableTo_indexedTuple_InequationReplacementRule.java">
-      <node id="1238854492399" at="27,414,28,58" concept="6" />
-      <node id="1238854492399" at="28,58,29,271" concept="6" />
+      <node id="1238854492399" at="27,414,28,64" concept="6" />
+      <node id="1238854492399" at="28,64,29,271" concept="6" />
       <node id="1238854492399" at="29,271,30,77" concept="2" />
       <node id="816097550963326356" at="32,5,33,232" concept="6" />
       <node id="816097550963326361" at="33,232,34,234" concept="6" />
@@ -227,8 +227,8 @@
       </scope>
     </file>
     <file name="typeof_IndexedTupleMemberAccessExpression_InferenceRule.java">
-      <node id="1238859427576" at="30,247,31,58" concept="6" />
-      <node id="1238859427576" at="31,58,32,254" concept="6" />
+      <node id="1238859427576" at="30,247,31,64" concept="6" />
+      <node id="1238859427576" at="31,64,32,254" concept="6" />
       <node id="1238857999186" at="34,5,35,194" concept="6" />
       <node id="1238857999186" at="35,194,36,204" concept="6" />
       <node id="1238857999186" at="36,204,37,308" concept="2" />
@@ -236,14 +236,14 @@
       <node id="1238864106020" at="41,299,42,95" concept="6" />
       <node id="1238864005360" at="43,9,44,326" concept="6" />
       <node id="2608583337446215898" at="47,15,48,185" concept="6" />
-      <node id="1238864218062" at="50,267,51,72" concept="6" />
-      <node id="1238864218062" at="51,72,52,251" concept="6" />
+      <node id="1238864218062" at="50,267,51,78" concept="6" />
+      <node id="1238864218062" at="51,78,52,251" concept="6" />
       <node id="1238864556764" at="54,264,55,228" concept="6" />
       <node id="1238864299354" at="56,21,57,61" concept="6" />
       <node id="1238864299354" at="57,61,58,220" concept="6" />
       <node id="1238864299354" at="58,220,59,308" concept="2" />
-      <node id="2608583337446226139" at="63,19,64,72" concept="6" />
-      <node id="2608583337446226139" at="64,72,65,255" concept="6" />
+      <node id="2608583337446226139" at="63,19,64,78" concept="6" />
+      <node id="2608583337446226139" at="64,78,65,255" concept="6" />
       <node id="3007795516647558637" at="71,9,72,0" concept="9" />
       <node id="1238857867840" at="76,50,77,66" concept="7" />
       <node id="1238857867840" at="79,68,80,102" concept="7" />
@@ -349,8 +349,8 @@
     </file>
     <file name="typeof_NamedTupleLiteral_InferenceRule.java">
       <node id="2912004279740801484" at="38,52,39,209" concept="7" />
-      <node id="1239579091243" at="41,10,42,58" concept="6" />
-      <node id="1239579091243" at="42,58,43,242" concept="6" />
+      <node id="1239579091243" at="41,10,42,64" concept="6" />
+      <node id="1239579091243" at="42,64,43,242" concept="6" />
       <node id="5117625608859683570" at="44,5,45,0" concept="9" />
       <node id="5117625608860210200" at="45,0,46,184" concept="6" />
       <node id="5117625608860220647" at="47,26,48,13" concept="7" />
@@ -486,8 +486,8 @@
       </scope>
     </file>
     <file name="namedTuple_assignableTo_namedTuple_InequationReplacementRule.java">
-      <node id="1239968591797" at="29,408,30,60" concept="6" />
-      <node id="1239968591797" at="30,60,31,277" concept="6" />
+      <node id="1239968591797" at="29,408,30,66" concept="6" />
+      <node id="1239968591797" at="30,66,31,277" concept="6" />
       <node id="1239968591797" at="31,277,32,79" concept="2" />
       <node id="816097550963331577" at="34,7,35,229" concept="6" />
       <node id="816097550963331582" at="35,229,36,231" concept="6" />
@@ -499,8 +499,8 @@
       <node id="816097550963331585" at="43,79,44,215" concept="6" />
       <node id="816097550963331585" at="44,215,45,68" concept="2" />
       <node id="816097550963331585" at="45,68,46,121" concept="2" />
-      <node id="2213502935616215826" at="51,445,52,60" concept="6" />
-      <node id="2213502935616215826" at="52,60,53,253" concept="6" />
+      <node id="2213502935616215826" at="51,445,52,66" concept="6" />
+      <node id="2213502935616215826" at="52,66,53,253" concept="6" />
       <node id="2213502935616215826" at="53,253,54,79" concept="2" />
       <node id="1239579497085" at="58,207,59,35" concept="6" />
       <node id="1239968591797" at="61,408,62,32" concept="2" />
@@ -922,8 +922,8 @@
     <file name="check_NamedTupleType_NonTypesystemRule.java">
       <node id="1239881381603" at="24,65,25,18" concept="7" />
       <node id="1239881381603" at="26,5,27,17" concept="7" />
-      <node id="1239881405754" at="30,757,31,58" concept="6" />
-      <node id="1239881405754" at="31,58,32,242" concept="6" />
+      <node id="1239881405754" at="30,757,31,64" concept="6" />
+      <node id="1239881405754" at="31,64,32,242" concept="6" />
       <node id="1239881381603" at="35,50,36,46" concept="7" />
       <node id="1239881381603" at="38,68,39,102" concept="7" />
       <node id="1239881381603" at="41,30,42,17" concept="7" />
@@ -1281,12 +1281,12 @@
     </file>
     <file name="check_NamedTupleDeclaration_extends_NonTypesystemRule.java">
       <node id="7367153454745473466" at="28,332,29,418" concept="6" />
-      <node id="7367153454745473434" at="30,66,31,60" concept="6" />
-      <node id="7367153454745473434" at="31,60,32,402" concept="6" />
+      <node id="7367153454745473434" at="30,66,31,66" concept="6" />
+      <node id="7367153454745473434" at="31,66,32,402" concept="6" />
       <node id="7367153454745473502" at="37,56,38,179" concept="7" />
       <node id="7367153454745473528" at="41,44,42,320" concept="7" />
-      <node id="7367153454745473486" at="44,17,45,64" concept="6" />
-      <node id="7367153454745473486" at="45,64,46,249" concept="6" />
+      <node id="7367153454745473486" at="44,17,45,70" concept="6" />
+      <node id="7367153454745473486" at="45,70,46,249" concept="6" />
       <node id="7367153454745440810" at="52,50,53,53" concept="7" />
       <node id="7367153454745440810" at="55,68,56,102" concept="7" />
       <node id="7367153454745440810" at="58,30,59,17" concept="7" />
@@ -1361,8 +1361,8 @@
     <file name="check_TupleComponentIsInScope_NonTypesystemRule.java">
       <node id="2912004279740806095" at="27,51,28,174" concept="7" />
       <node id="8197465398807016936" at="31,199,32,195" concept="6" />
-      <node id="8197465398807016917" at="33,79,34,60" concept="6" />
-      <node id="8197465398807016917" at="34,60,35,252" concept="6" />
+      <node id="8197465398807016917" at="33,79,34,66" concept="6" />
+      <node id="8197465398807016917" at="34,66,35,252" concept="6" />
       <node id="8197465398807013607" at="39,50,40,49" concept="7" />
       <node id="8197465398807013607" at="42,68,43,102" concept="7" />
       <node id="8197465398807013607" at="45,30,46,17" concept="7" />

@@ -9,13 +9,12 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ConceptB_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
@@ -36,8 +35,7 @@ public class check_ConceptB_NonTypesystemRule extends AbstractNonTypesystemRule_
         matches_umd1d4_a0a = matchingPattern_umd1d4_a0a.match(matchedNode_umd1d4_a0);
         if (matches_umd1d4_a0a) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
-            errorTarget = new PropertyMessageTarget("conceptBProp");
+            final MessageTarget errorTarget = new PropertyMessageTarget(MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L, 0x7aa4e26e6874caa5L, "conceptBProp"));
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(matchedNode_umd1d4_a0, "error from ConceptB", "r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520441", null, errorTarget);
           }
         }

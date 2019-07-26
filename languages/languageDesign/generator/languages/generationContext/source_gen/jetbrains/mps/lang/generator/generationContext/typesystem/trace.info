@@ -132,8 +132,8 @@
     <file name="check_GenerationContextOp_Base_NonTypesystemRule.java">
       <node id="7376433222636454073" at="23,115,24,36" concept="7" />
       <node id="1225121875077" at="24,36,25,309" concept="5" />
-      <node id="1216860931285" at="26,98,27,58" concept="5" />
-      <node id="1216860931285" at="27,58,28,252" concept="5" />
+      <node id="1216860931285" at="26,98,27,64" concept="5" />
+      <node id="1216860931285" at="27,64,28,252" concept="5" />
       <node id="1216860931280" at="31,50,32,56" concept="6" />
       <node id="1216860931280" at="34,68,35,102" concept="6" />
       <node id="1216860931280" at="37,30,38,17" concept="6" />
@@ -650,8 +650,8 @@
       </scope>
     </file>
     <file name="check_op_inside_refMacro_NonTypesystemRule.java">
-      <node id="1221220343089" at="22,109,23,58" concept="5" />
-      <node id="1221220343089" at="23,58,24,276" concept="5" />
+      <node id="1221220343089" at="22,109,23,64" concept="5" />
+      <node id="1221220343089" at="23,64,24,276" concept="5" />
       <node id="1221220308822" at="27,50,28,93" concept="6" />
       <node id="1221220308822" at="30,68,31,102" concept="6" />
       <node id="1221220308822" at="33,30,34,17" concept="6" />
@@ -1738,8 +1738,8 @@
       <node id="6851978633175412625" at="26,180,27,13" concept="6" />
       <node id="6851978633175575020" at="28,5,29,133" concept="7" />
       <node id="6851978633175416458" at="29,133,30,233" concept="5" />
-      <node id="6851978633175408976" at="31,113,32,58" concept="5" />
-      <node id="6851978633175408976" at="32,58,33,408" concept="5" />
+      <node id="6851978633175408976" at="31,113,32,64" concept="5" />
+      <node id="6851978633175408976" at="32,64,33,408" concept="5" />
       <node id="6851978633175404723" at="36,50,37,68" concept="6" />
       <node id="6851978633175404723" at="39,68,40,102" concept="6" />
       <node id="6851978633175404723" at="42,30,43,17" concept="6" />

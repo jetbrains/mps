@@ -31,7 +31,7 @@ public class check_TupleComponentIsInScope_NonTypesystemRule extends AbstractNon
     for (SNode ref : SLinkOperations.getChildren(namedTupleLiteral, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef"))) {
       SNode tupleComponent = SLinkOperations.getTarget(ref, MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration"));
       if (!(ListSequence.fromList(tupleComponents).contains(tupleComponent))) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ref, "tuple component is out of scope", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "8197465398807016917", null, errorTarget);
       }
     }

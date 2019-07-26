@@ -28,7 +28,7 @@ public class check_OrderConstraints_NonTypesystemRule extends AbstractNonTypesys
       return;
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(c, "order does not contain current tab", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1499919975383986350", null, errorTarget);
     }
   }

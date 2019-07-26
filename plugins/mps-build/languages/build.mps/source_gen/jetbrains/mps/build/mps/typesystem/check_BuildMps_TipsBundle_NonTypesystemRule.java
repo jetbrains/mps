@@ -25,7 +25,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
     if (isNotEmptyString(SPropertyOperations.getString(buildMps_TipsBundle, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
       if (!(SPropertyOperations.getString(buildMps_TipsBundle, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).endsWith(".jar"))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(buildMps_TipsBundle, "should end with .jar", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "5730480978702381242", null, errorTarget);
         }
       }
@@ -36,7 +36,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
       }
     })) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(buildMps_TipsBundle, "tips of should not be under jar", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6437930869738284975", null, errorTarget);
       }
 

@@ -26,7 +26,7 @@ public class check_ExtractStaticMethodCall_NonTypesystemRule extends AbstractNon
     List<SNode> available = ExtractStaticMethod_CallExpression__BehaviorDescriptor.getMethods_id55buE1DVoKQ.invoke(SNodeOperations.asSConcept(AUX_egtcn9.ExtractStaticMethod_CallExpression_54f8b8c4), callStatic);
     if (!(ListSequence.fromList(available).contains(SLinkOperations.getTarget(callStatic, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"))))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(callStatic, "This method can't be called from the current context", "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "8881995820265138588", null, errorTarget);
       }
     }

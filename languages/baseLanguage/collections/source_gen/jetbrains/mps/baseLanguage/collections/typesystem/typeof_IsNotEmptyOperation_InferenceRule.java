@@ -40,7 +40,7 @@ public class typeof_IsNotEmptyOperation_InferenceRule extends AbstractInferenceR
           }
         } else {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "not expected here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1178725705680", null, errorTarget);
           }
         }

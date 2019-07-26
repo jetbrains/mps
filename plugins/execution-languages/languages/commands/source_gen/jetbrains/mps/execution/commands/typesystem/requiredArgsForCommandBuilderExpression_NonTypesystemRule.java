@@ -33,7 +33,7 @@ public class requiredArgsForCommandBuilderExpression_NonTypesystemRule extends A
           }
         }))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(commandBuilderExpression, "The required argument '" + SPropertyOperations.getString(argDeclaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "' is not set", "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "7947003018421368856", null, errorTarget);
           }
         }

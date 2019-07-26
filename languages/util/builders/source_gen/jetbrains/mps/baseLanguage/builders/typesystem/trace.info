@@ -131,8 +131,8 @@
       </scope>
     </file>
     <file name="typeof_SimpleBuilder_InferenceRule.java">
-      <node id="4315270135340741370" at="25,7,26,60" concept="6" />
-      <node id="4315270135340741370" at="26,60,27,253" concept="6" />
+      <node id="4315270135340741370" at="25,7,26,66" concept="6" />
+      <node id="4315270135340741370" at="26,66,27,253" concept="6" />
       <node id="4315270135340745007" at="28,7,29,13" concept="7" />
       <node id="4315270135340745008" at="30,5,31,0" concept="8" />
       <node id="4315270135340745084" at="33,7,34,252" concept="6" />
@@ -296,10 +296,10 @@
       </scope>
     </file>
     <file name="check_SimpleBuilderDeclaration_NonTypesystemRule.java">
-      <node id="5613258673505634497" at="25,9,26,62" concept="6" />
-      <node id="5613258673505634497" at="26,62,27,432" concept="6" />
-      <node id="5613258673505634588" at="32,9,33,62" concept="6" />
-      <node id="5613258673505634588" at="33,62,34,258" concept="6" />
+      <node id="5613258673505634497" at="25,9,26,68" concept="6" />
+      <node id="5613258673505634497" at="26,68,27,432" concept="6" />
+      <node id="5613258673505634588" at="32,9,33,68" concept="6" />
+      <node id="5613258673505634588" at="33,68,34,258" concept="6" />
       <node id="5613258673505634348" at="39,50,40,56" concept="7" />
       <node id="5613258673505634348" at="42,68,43,102" concept="7" />
       <node id="5613258673505634348" at="45,30,46,17" concept="7" />

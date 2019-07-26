@@ -26,7 +26,7 @@ public class check_TemplateDeclarationReference_NonTypesystemRule extends Abstra
       SNode content = SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(tdr), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode"));
       if (ListSequence.fromList(SNodeOperations.getNodeDescendants(content, AUX_rs3wne.TemplateFragment_1973fd34, false, new SAbstractConcept[]{})).isEmpty()) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tdr, "No template fragments found in referenced template declaration", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7952422520064747058", null, errorTarget);
         }
       }

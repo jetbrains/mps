@@ -23,7 +23,7 @@ public class check_ReturnStatement_NonTypesystemRule extends AbstractNonTypesyst
     // http://www.javac.info 
     if (false && (SNodeOperations.getNodeAncestor(returnStatement, AUX_bltgml.ClosureLiteral_6eeca0d3, false, false) != null)) {
       if (!(false)) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(returnStatement, "return is not allowed within closure literal", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1200829870877", null, errorTarget);
       }
     }

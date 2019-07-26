@@ -26,8 +26,8 @@
     </file>
     <file name="check_ParentScope_NonTypesystemRule.java">
       <node id="8077936094962911286" at="22,117,23,32" concept="7" />
-      <node id="8077936094962911290" at="25,7,26,60" concept="5" />
-      <node id="8077936094962911290" at="26,60,27,242" concept="5" />
+      <node id="8077936094962911290" at="25,7,26,66" concept="5" />
+      <node id="8077936094962911290" at="26,66,27,242" concept="5" />
       <node id="8077936094962911283" at="31,50,32,43" concept="6" />
       <node id="8077936094962911283" at="34,68,35,102" concept="6" />
       <node id="8077936094962911283" at="37,30,38,17" concept="6" />
@@ -134,8 +134,8 @@
     </file>
     <file name="check_ComeFromExpression_NonTypesystemRule.java">
       <node id="8077936094962944996" at="22,117,23,32" concept="7" />
-      <node id="8077936094962945000" at="25,7,26,60" concept="5" />
-      <node id="8077936094962945000" at="26,60,27,242" concept="5" />
+      <node id="8077936094962945000" at="25,7,26,66" concept="5" />
+      <node id="8077936094962945000" at="26,66,27,242" concept="5" />
       <node id="8077936094962944993" at="31,50,32,50" concept="6" />
       <node id="8077936094962944993" at="34,68,35,102" concept="6" />
       <node id="8077936094962944993" at="37,30,38,17" concept="6" />
@@ -241,11 +241,11 @@
     </file>
     <file name="check_CompositeWithParentScopeExpression_NonTypesystemRule.java">
       <node id="8077936094962969210" at="26,117,27,32" concept="7" />
-      <node id="8077936094962969214" at="29,7,30,60" concept="5" />
-      <node id="8077936094962969214" at="30,60,31,242" concept="5" />
+      <node id="8077936094962969214" at="29,7,30,66" concept="5" />
+      <node id="8077936094962969214" at="30,66,31,242" concept="5" />
       <node id="8077936094962969249" at="33,5,34,69" concept="5" />
-      <node id="8077936094962969415" at="36,7,37,60" concept="5" />
-      <node id="8077936094962969415" at="37,60,38,280" concept="5" />
+      <node id="8077936094962969415" at="36,7,37,66" concept="5" />
+      <node id="8077936094962969415" at="37,66,38,280" concept="5" />
       <node id="8077936094962969207" at="42,50,43,66" concept="6" />
       <node id="8077936094962969207" at="45,68,46,102" concept="6" />
       <node id="8077936094962969207" at="48,30,49,17" concept="6" />

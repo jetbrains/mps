@@ -42,7 +42,7 @@ public class check_TransformationFeaturesAreAvailable_NonTypesystemRule extends 
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "this feature is not allowed here", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6239791100561285509", null, errorTarget);
           }
         }

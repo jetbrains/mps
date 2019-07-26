@@ -49,7 +49,7 @@ public class typeof_ArithmSymbol_InferenceRule extends AbstractInferenceRule_Run
               s = "Summand's ";
             }
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(symbol, s + "type should be subtype of numeral type or matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133341", null, errorTarget);
             }
           }

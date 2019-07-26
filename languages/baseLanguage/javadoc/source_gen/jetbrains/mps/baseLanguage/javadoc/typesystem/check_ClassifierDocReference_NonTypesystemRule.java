@@ -26,7 +26,7 @@ public class check_ClassifierDocReference_NonTypesystemRule extends AbstractNonT
     SNode clazz = SLinkOperations.getTarget(classifierDocReference, MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, 0x1ec532ec2531d2e5L, "classifier"));
     if (!(VisibilityUtil.isVisible(classifierDocReference, SNodeOperations.as(clazz, AUX_rywffj.IVisible_84badc76)))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(classifierDocReference, "Symbol " + SPropertyOperations.getString(clazz, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538863877", null, errorTarget);
       }
     }

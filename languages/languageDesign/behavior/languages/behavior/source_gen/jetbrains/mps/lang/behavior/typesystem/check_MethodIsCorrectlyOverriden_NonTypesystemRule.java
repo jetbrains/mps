@@ -22,7 +22,7 @@ public class check_MethodIsCorrectlyOverriden_NonTypesystemRule extends Abstract
   public void applyRule(final SNode method, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((boolean) ConceptMethodDeclaration__BehaviorDescriptor.isCorrectlyOverriden_idhQYykEj.invoke(method))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "Method signature doesn't match signature in the base concept", "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1227262769261", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.FixMethodSignature_QuickFix", false);

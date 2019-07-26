@@ -28,7 +28,7 @@ public class check_DefaultMethodIsNotAbstract_NonTypesystemRule extends Abstract
     SNode method = SNodeOperations.cast(parent, AUX_61np89.InstanceMethodDeclaration_9dbf9b2b);
     if (SPropertyOperations.getBoolean(method, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "The 'abstract' and 'default' modifiers are not allowed together", "r:0396c9ff-0a4d-4e54-9678-835fc58468cd(jetbrains.mps.baseLanguage.jdk8.typesystem)", "1557757632988466920", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveAbstractModifier_QuickFix", false);

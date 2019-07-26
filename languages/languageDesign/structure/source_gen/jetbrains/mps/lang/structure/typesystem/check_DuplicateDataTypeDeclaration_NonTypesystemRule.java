@@ -39,7 +39,7 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
       }
     })) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dataTypeDeclaration, "Duplicated name of DataTypeDeclaration " + name + " in model", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1005490780661498260", null, errorTarget);
       }
     }

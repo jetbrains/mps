@@ -30,7 +30,7 @@ public class check_BuildMps_GeneratorOptions_NonTypesystemRule extends AbstractN
         }
       }).isNotEmpty()) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(genOpts, "Generation options are expected to be specified at most once per project", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "4297162197627237167", null, errorTarget);
         }
       }

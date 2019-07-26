@@ -33,7 +33,7 @@ public class check_DefaultMethodDeclarationV8_NonTypesystemRule extends Abstract
     JavaCompilerOptionsComponent.JavaVersion sourceJavaVersion = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion();
     if (sourceJavaVersion.compareTo(JavaCompilerOptionsComponent.JavaVersion.VERSION_1_8) < 0) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(modifier, "Default methods are allowed only at source level 1.8 or above. Current java language level:" + sourceJavaVersion.getCompilerVersion(), "r:0396c9ff-0a4d-4e54-9678-835fc58468cd(jetbrains.mps.baseLanguage.jdk8.typesystem)", "7197377355157103256", null, errorTarget);
       }
     }

@@ -74,7 +74,7 @@ public class typeof_InvokeFunctionExpression_InferenceRule extends AbstractInfer
             }
           } catch (RuntimeException ex) {
             if (!(false)) {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(invoke, ex.getMessage(), "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "8679288141369466397", null, errorTarget);
             }
           }

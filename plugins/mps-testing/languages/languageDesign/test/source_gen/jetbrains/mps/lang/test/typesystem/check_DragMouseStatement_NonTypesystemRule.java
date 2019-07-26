@@ -21,7 +21,7 @@ public class check_DragMouseStatement_NonTypesystemRule extends AbstractNonTypes
   public void applyRule(final SNode dragMouseStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (DragMouseStatement__BehaviorDescriptor.getPressMouseStatement_id3CVcUJxN49_.invoke(dragMouseStatement) == null) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dragMouseStatement, "Drag Mouse statement should be located inside Press Mouse statement", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "4196004291146540914", null, errorTarget);
       }
     }

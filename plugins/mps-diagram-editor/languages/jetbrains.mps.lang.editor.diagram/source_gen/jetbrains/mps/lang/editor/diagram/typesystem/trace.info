@@ -147,43 +147,42 @@
   </root>
   <root nodeRef="r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)/1491555030356781789">
     <file name="CheckAbstractFigureParameter_exists_NonTypesystemRule.java">
-      <node id="1491555030356827125" at="24,7,25,60" concept="6" />
-      <node id="1491555030356827125" at="25,60,26,56" concept="2" />
-      <node id="1491555030356827125" at="26,56,27,287" concept="6" />
-      <node id="1491555030356781789" at="31,50,32,54" concept="7" />
-      <node id="1491555030356781789" at="34,68,35,102" concept="7" />
-      <node id="1491555030356781789" at="37,30,38,17" concept="7" />
-      <node id="1491555030356781789" at="42,0,43,0" concept="9" trace="FigureParameterMapping_e994a522" />
-      <node id="1491555030356781789" at="20,0,22,0" concept="1" trace="CheckAbstractFigureParameter_exists_NonTypesystemRule#()V" />
-      <node id="1491555030356781789" at="31,0,34,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1491555030356781789" at="34,0,37,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="1491555030356781789" at="37,0,40,0" concept="5" trace="overrides#()Z" />
-      <node id="1491555030356827125" at="23,112,28,7" concept="0" />
-      <node id="1491555030356822978" at="22,117,29,5" concept="4" />
-      <node id="1491555030356781789" at="22,0,31,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="1491555030356781789" at="20,66,20,66" />
-      <scope id="1491555030356781789" at="31,50,32,54" />
-      <scope id="1491555030356781789" at="34,68,35,102" />
-      <scope id="1491555030356781789" at="37,30,38,17" />
-      <scope id="1491555030356781789" at="20,0,22,0" />
-      <scope id="1491555030356827125" at="24,7,27,287">
+      <node id="1491555030356827125" at="23,7,24,182" concept="6" />
+      <node id="1491555030356827125" at="24,182,25,287" concept="6" />
+      <node id="1491555030356781789" at="29,50,30,54" concept="7" />
+      <node id="1491555030356781789" at="32,68,33,102" concept="7" />
+      <node id="1491555030356781789" at="35,30,36,17" concept="7" />
+      <node id="1491555030356781789" at="40,0,41,0" concept="9" trace="FigureParameterMapping_e994a522" />
+      <node id="1491555030356781789" at="19,0,21,0" concept="1" trace="CheckAbstractFigureParameter_exists_NonTypesystemRule#()V" />
+      <node id="1491555030356781789" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1491555030356781789" at="32,0,35,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1491555030356781789" at="35,0,38,0" concept="5" trace="overrides#()Z" />
+      <node id="1491555030356827125" at="22,112,26,7" concept="0" />
+      <node id="1491555030356822978" at="21,117,27,5" concept="4" />
+      <node id="1491555030356781789" at="21,0,29,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1491555030356781789" at="19,66,19,66" />
+      <scope id="1491555030356781789" at="29,50,30,54" />
+      <scope id="1491555030356781789" at="32,68,33,102" />
+      <scope id="1491555030356781789" at="35,30,36,17" />
+      <scope id="1491555030356781789" at="19,0,21,0" />
+      <scope id="1491555030356827125" at="23,7,25,287">
         <var name="_reporter_2309309498" id="1491555030356827125" />
         <var name="errorTarget" id="1491555030356827125" />
       </scope>
-      <scope id="1491555030356781789" at="31,0,34,0" />
-      <scope id="1491555030356781789" at="34,0,37,0">
+      <scope id="1491555030356781789" at="29,0,32,0" />
+      <scope id="1491555030356781789" at="32,0,35,0">
         <var name="argument" id="1491555030356781789" />
       </scope>
-      <scope id="1491555030356781789" at="37,0,40,0" />
-      <scope id="1491555030356822981" at="23,112,28,7" />
-      <scope id="1491555030356781790" at="22,117,29,5" />
-      <scope id="1491555030356781789" at="22,0,31,0">
+      <scope id="1491555030356781789" at="35,0,38,0" />
+      <scope id="1491555030356822981" at="22,112,26,7" />
+      <scope id="1491555030356781790" at="21,117,27,5" />
+      <scope id="1491555030356781789" at="21,0,29,0">
         <var name="node" id="1491555030356781789" />
         <var name="status" id="1491555030356781789" />
         <var name="typeCheckingContext" id="1491555030356781789" />
       </scope>
-      <unit id="1491555030356781789" at="41,0,44,0" name="jetbrains.mps.lang.editor.diagram.typesystem.CheckAbstractFigureParameter_exists_NonTypesystemRule$AUX_hp6mh5" />
-      <unit id="1491555030356781789" at="19,0,45,0" name="jetbrains.mps.lang.editor.diagram.typesystem.CheckAbstractFigureParameter_exists_NonTypesystemRule" />
+      <unit id="1491555030356781789" at="39,0,42,0" name="jetbrains.mps.lang.editor.diagram.typesystem.CheckAbstractFigureParameter_exists_NonTypesystemRule$AUX_hp6mh5" />
+      <unit id="1491555030356781789" at="18,0,43,0" name="jetbrains.mps.lang.editor.diagram.typesystem.CheckAbstractFigureParameter_exists_NonTypesystemRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="1491555030356781789" at="71,5,72,112" concept="6" />
@@ -493,14 +492,14 @@
       <node id="6377978676692179609" at="30,304,31,13" concept="7" />
       <node id="4115105161237196335" at="32,5,33,0" concept="8" />
       <node id="4088443785018408166" at="33,0,34,76" concept="6" />
-      <node id="4088443785018451028" at="37,9,38,62" concept="6" />
-      <node id="4088443785018451028" at="38,62,39,275" concept="6" />
-      <node id="4115105161237224614" at="42,9,43,62" concept="6" />
-      <node id="4115105161237224614" at="43,62,44,435" concept="6" />
+      <node id="4088443785018451028" at="37,9,38,68" concept="6" />
+      <node id="4088443785018451028" at="38,68,39,275" concept="6" />
+      <node id="4115105161237224614" at="42,9,43,68" concept="6" />
+      <node id="4115105161237224614" at="43,68,44,435" concept="6" />
       <node id="4088443785018452625" at="46,14,47,211" concept="2" />
       <node id="4115105161237199070" at="49,5,50,0" concept="8" />
-      <node id="4115105161237164068" at="52,7,53,60" concept="6" />
-      <node id="4115105161237164068" at="53,60,54,259" concept="6" />
+      <node id="4115105161237164068" at="52,7,53,66" concept="6" />
+      <node id="4115105161237164068" at="53,66,54,259" concept="6" />
       <node id="4088443785018266987" at="58,50,59,53" concept="7" />
       <node id="4088443785018266987" at="61,68,62,102" concept="7" />
       <node id="4088443785018266987" at="64,30,65,17" concept="7" />
@@ -572,8 +571,8 @@
       </scope>
     </file>
     <file name="check_Palette_NonTypesystemRule.java">
-      <node id="6194248980637216508" at="21,5,22,58" concept="6" />
-      <node id="6194248980637216508" at="22,58,23,288" concept="6" />
+      <node id="6194248980637216508" at="21,5,22,64" concept="6" />
+      <node id="6194248980637216508" at="22,64,23,288" concept="6" />
       <node id="6194248980637216119" at="26,50,27,39" concept="7" />
       <node id="6194248980637216119" at="29,68,30,102" concept="7" />
       <node id="6194248980637216119" at="32,30,33,17" concept="7" />
@@ -622,8 +621,8 @@
       <node id="6663698541542218836" at="27,120,28,120" concept="2" />
       <node id="4052492221165279614" at="29,5,30,0" concept="8" />
       <node id="4052492221165306925" at="32,39,33,149" concept="7" />
-      <node id="4052492221165343667" at="36,7,37,60" concept="6" />
-      <node id="4052492221165343667" at="37,60,38,339" concept="6" />
+      <node id="4052492221165343667" at="36,7,37,66" concept="6" />
+      <node id="4052492221165343667" at="37,66,38,339" concept="6" />
       <node id="7200199917722151577" at="42,50,43,49" concept="7" />
       <node id="7200199917722151577" at="45,68,46,102" concept="7" />
       <node id="7200199917722151577" at="48,30,49,17" concept="7" />
@@ -685,59 +684,58 @@
       </scope>
     </file>
     <file name="check_AbstractDiagramCreation_NonTypesystemRule.java">
-      <node id="8570854907291359968" at="26,7,27,60" concept="6" />
-      <node id="8570854907291359968" at="27,60,28,461" concept="6" />
+      <node id="8570854907291359968" at="26,7,27,66" concept="6" />
+      <node id="8570854907291359968" at="27,66,28,461" concept="6" />
       <node id="1301388602725859229" at="30,12,31,627" concept="6" />
-      <node id="1301388602725875172" at="33,9,34,62" concept="6" />
-      <node id="1301388602725875172" at="34,62,35,62" concept="2" />
-      <node id="1301388602725875172" at="35,62,36,483" concept="6" />
-      <node id="8570854907291318065" at="41,50,42,54" concept="7" />
-      <node id="8570854907291318065" at="44,68,45,102" concept="7" />
-      <node id="8570854907291318065" at="47,30,48,17" concept="7" />
-      <node id="8570854907291318065" at="52,0,53,0" concept="9" trace="DotExpression_97ed08d8" />
-      <node id="8570854907291318065" at="53,0,54,0" concept="9" trace="SLinkListAccess_937d34e" />
-      <node id="8570854907291318065" at="54,0,55,0" concept="9" trace="AbstractDiagramCreation_cd3b795" />
+      <node id="1301388602725875172" at="33,9,34,203" concept="6" />
+      <node id="1301388602725875172" at="34,203,35,483" concept="6" />
+      <node id="8570854907291318065" at="40,50,41,54" concept="7" />
+      <node id="8570854907291318065" at="43,68,44,102" concept="7" />
+      <node id="8570854907291318065" at="46,30,47,17" concept="7" />
+      <node id="8570854907291318065" at="51,0,52,0" concept="9" trace="DotExpression_97ed08d8" />
+      <node id="8570854907291318065" at="52,0,53,0" concept="9" trace="SLinkListAccess_937d34e" />
+      <node id="8570854907291318065" at="53,0,54,0" concept="9" trace="AbstractDiagramCreation_cd3b795" />
       <node id="8570854907291318065" at="22,0,24,0" concept="1" trace="check_AbstractDiagramCreation_NonTypesystemRule#()V" />
-      <node id="8570854907291318065" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="8570854907291318065" at="44,0,47,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="8570854907291318065" at="47,0,50,0" concept="5" trace="overrides#()Z" />
+      <node id="8570854907291318065" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="8570854907291318065" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="8570854907291318065" at="46,0,49,0" concept="5" trace="overrides#()Z" />
       <node id="8570854907291359968" at="25,725,29,7" concept="0" />
-      <node id="1301388602725875172" at="32,822,37,9" concept="0" />
-      <node id="1301388602725859776" at="31,627,38,7" concept="4" />
-      <node id="1301388602725844909" at="30,10,39,5" concept="0" />
-      <node id="8570854907291318239" at="24,136,39,5" concept="4" />
-      <node id="8570854907291318065" at="24,0,41,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="1301388602725875172" at="32,822,36,9" concept="0" />
+      <node id="1301388602725859776" at="31,627,37,7" concept="4" />
+      <node id="1301388602725844909" at="30,10,38,5" concept="0" />
+      <node id="8570854907291318239" at="24,136,38,5" concept="4" />
+      <node id="8570854907291318065" at="24,0,40,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="8570854907291318065" at="22,60,22,60" />
-      <scope id="8570854907291318065" at="41,50,42,54" />
-      <scope id="8570854907291318065" at="44,68,45,102" />
-      <scope id="8570854907291318065" at="47,30,48,17" />
+      <scope id="8570854907291318065" at="40,50,41,54" />
+      <scope id="8570854907291318065" at="43,68,44,102" />
+      <scope id="8570854907291318065" at="46,30,47,17" />
       <scope id="8570854907291318065" at="22,0,24,0" />
       <scope id="8570854907291359968" at="26,7,28,461">
         <var name="_reporter_2309309498" id="8570854907291359968" />
         <var name="errorTarget" id="8570854907291359968" />
       </scope>
-      <scope id="1301388602725875172" at="33,9,36,483">
+      <scope id="1301388602725875172" at="33,9,35,483">
         <var name="_reporter_2309309498" id="1301388602725875172" />
         <var name="errorTarget" id="1301388602725875172" />
       </scope>
-      <scope id="8570854907291318065" at="41,0,44,0" />
-      <scope id="8570854907291318065" at="44,0,47,0">
+      <scope id="8570854907291318065" at="40,0,43,0" />
+      <scope id="8570854907291318065" at="43,0,46,0">
         <var name="argument" id="8570854907291318065" />
       </scope>
-      <scope id="8570854907291318065" at="47,0,50,0" />
+      <scope id="8570854907291318065" at="46,0,49,0" />
       <scope id="8570854907291318240" at="25,725,29,7" />
-      <scope id="1301388602725859779" at="32,822,37,9" />
-      <scope id="1301388602725844910" at="30,12,38,7">
+      <scope id="1301388602725859779" at="32,822,36,9" />
+      <scope id="1301388602725844910" at="30,12,37,7">
         <var name="containmentLink" id="1301388602725859230" />
       </scope>
-      <scope id="8570854907291318066" at="24,136,39,5" />
-      <scope id="8570854907291318065" at="24,0,41,0">
+      <scope id="8570854907291318066" at="24,136,38,5" />
+      <scope id="8570854907291318065" at="24,0,40,0">
         <var name="abstractDiagramCreation" id="8570854907291318065" />
         <var name="status" id="8570854907291318065" />
         <var name="typeCheckingContext" id="8570854907291318065" />
       </scope>
-      <unit id="8570854907291318065" at="51,0,56,0" name="jetbrains.mps.lang.editor.diagram.typesystem.check_AbstractDiagramCreation_NonTypesystemRule$AUX_tlxj3a" />
-      <unit id="8570854907291318065" at="21,0,57,0" name="jetbrains.mps.lang.editor.diagram.typesystem.check_AbstractDiagramCreation_NonTypesystemRule" />
+      <unit id="8570854907291318065" at="50,0,55,0" name="jetbrains.mps.lang.editor.diagram.typesystem.check_AbstractDiagramCreation_NonTypesystemRule$AUX_tlxj3a" />
+      <unit id="8570854907291318065" at="21,0,56,0" name="jetbrains.mps.lang.editor.diagram.typesystem.check_AbstractDiagramCreation_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)/8570854907291434599">

@@ -27,14 +27,14 @@ public class check_CompositeWithParentScopeExpression_NonTypesystemRule extends 
     // todo: do right stuff! =( 
     if (!(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, AUX_f3933j.ConceptMethodDeclaration_6c80ca4f, false, false), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals("getScope"))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expr, "Should be in getScope method", "r:c2d05fc3-fe25-4093-95ce-8e3356e61084(jetbrains.mps.lang.scopes.typesystem)", "8077936094962969214", null, errorTarget);
       }
     }
     SNode type = TypecheckingFacade.getFromContext().getTypeOf(expr);
     if (!((TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0a3a1()) || TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0a3a1_0()) || TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_f3933j_b0a0a0d0b())))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expr, "Parameter should be subtype of Scope or node<> or sequence<node<>>", "r:c2d05fc3-fe25-4093-95ce-8e3356e61084(jetbrains.mps.lang.scopes.typesystem)", "8077936094962969415", null, errorTarget);
       }
     }

@@ -38,7 +38,7 @@ public class check_CellModel_Component_EditorComponentIsInExtendedLanguage_NonTy
     Language ecLanguage = as_5bg4jt_a0a5a1(check_5bg4jt_a0a5a1(SLinkOperations.getTarget(cmc, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent")).getModel()), Language.class);
     if (!(SetSequence.fromSet(extendedLanguages).contains(ecLanguage))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cmc, "language " + ecLanguage.getModuleName() + " of editor component " + SPropertyOperations.getString(SLinkOperations.getTarget(cmc, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " is not extended by " + language.getModuleName(), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1235136520823", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.AddExtendedLanguage_QuickFix", false);

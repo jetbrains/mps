@@ -23,7 +23,7 @@ public class check_ComeFromExpression_NonTypesystemRule extends AbstractNonTypes
     // todo: do right stuff! =( 
     if (!(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, AUX_trclag.ConceptMethodDeclaration_6c80ca4f, false, false), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals("getScope"))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expr, "Should be in getScope method", "r:c2d05fc3-fe25-4093-95ce-8e3356e61084(jetbrains.mps.lang.scopes.typesystem)", "8077936094962945000", null, errorTarget);
       }
     }

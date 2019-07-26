@@ -22,7 +22,7 @@ public class check_FigureParameterAttributeMethod_NonTypesystemRule extends Abst
   public void applyRule(final SNode methodAttribute, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(Utils.isSupportedParameterType(FigureParameter__BehaviorDescriptor.getParameterType_idiZqVFYvBew.invoke(methodAttribute), SNodeOperations.getNode("67b3c41d-58b3-4756-b971-30bf8a9d63e6/java:jetbrains.jetpad.model.property(jetbrains.jetpad/)", "~Property")))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodAttribute, "Unsupported attributed method return type, jetbrains.jetpad.model.property.Property expected.", "r:e599f0dc-4c53-470d-be67-94ae885c5aab(jetbrains.mps.lang.editor.figures.typesystem)", "9176911587996078226", null, errorTarget);
       }
     }

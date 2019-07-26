@@ -25,7 +25,7 @@ public class checkITestCase_And_TestInfo_NonTypesystemRule extends AbstractNonTy
   public void applyRule(final SNode iTestCase, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(iTestCase) && ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(iTestCase), AUX_zc9r63.TestInfo_c0c4a9c7)).isEmpty()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(iTestCase, "TestInfo root pointing the the test project should be created in the model to properly code in all environments", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "1558359368029368278", null, errorTarget);
       }
     }

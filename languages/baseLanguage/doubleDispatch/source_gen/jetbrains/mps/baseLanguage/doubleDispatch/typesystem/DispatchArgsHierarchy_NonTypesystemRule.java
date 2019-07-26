@@ -49,7 +49,7 @@ public class DispatchArgsHierarchy_NonTypesystemRule extends AbstractNonTypesyst
         String msg = err.getMessage();
         for (SNode m : Sequence.fromIterable(err.getMethods())) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ListSequence.fromList(SLinkOperations.getChildren(m, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).first(), msg, "r:7a94bb66-9653-4830-af67-903eb2cfbd29(jetbrains.mps.baseLanguage.doubleDispatch.typesystem)", "7139749370073616981", null, errorTarget);
           }
         }

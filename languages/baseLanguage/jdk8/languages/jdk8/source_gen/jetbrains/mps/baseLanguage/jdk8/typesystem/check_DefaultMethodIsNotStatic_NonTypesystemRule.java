@@ -25,7 +25,7 @@ public class check_DefaultMethodIsNotStatic_NonTypesystemRule extends AbstractNo
     SNode member = SNodeOperations.getParent(modifier);
     if ((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(SNodeOperations.cast(member, AUX_s8p6n3.ClassifierMember_849b47d7))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SNodeOperations.getParent(modifier), "The 'default' modifier is not allowed in static context", "r:0396c9ff-0a4d-4e54-9678-835fc58468cd(jetbrains.mps.baseLanguage.jdk8.typesystem)", "7197377355156785735", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveDefaultModifier_QuickFix", false);

@@ -1180,8 +1180,8 @@
     </file>
     <file name="check_ExtractStaticMethodCall_NonTypesystemRule.java">
       <node id="8881995820265138612" at="25,123,26,211" concept="6" />
-      <node id="8881995820265138588" at="28,7,29,60" concept="6" />
-      <node id="8881995820265138588" at="29,60,30,281" concept="6" />
+      <node id="8881995820265138588" at="28,7,29,66" concept="6" />
+      <node id="8881995820265138588" at="29,66,30,281" concept="6" />
       <node id="8881995820265138570" at="34,50,35,66" concept="7" />
       <node id="8881995820265138570" at="37,68,38,102" concept="7" />
       <node id="8881995820265138570" at="40,30,41,17" concept="7" />

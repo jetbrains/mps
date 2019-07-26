@@ -38,7 +38,7 @@ public class check_LightQuotationNode_NonTypesystemRule extends AbstractNonTypes
         }
       }))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "required link is not initialized `" + SPropertyOperations.getString(link, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")) + "'", "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709514544", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
@@ -61,7 +61,7 @@ public class check_LightQuotationNode_NonTypesystemRule extends AbstractNonTypes
       if (ListSequence.fromList(linkInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(linkInitializers)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(initializer, "multiple initializers for single cardinality role `" + SPropertyOperations.getString(link, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")) + "'", "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "7354609333702154518", null, errorTarget);
           }
         }
@@ -76,7 +76,7 @@ public class check_LightQuotationNode_NonTypesystemRule extends AbstractNonTypes
       if (ListSequence.fromList(linkInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(linkInitializers)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(initializer, "multiple reference initializers for role `" + SPropertyOperations.getString(reference, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")) + "'", "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "7354609333702599920", null, errorTarget);
           }
         }
@@ -91,7 +91,7 @@ public class check_LightQuotationNode_NonTypesystemRule extends AbstractNonTypes
       if (ListSequence.fromList(propInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(propInitializers)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(initializer, "multiple property initializers for role `" + SPropertyOperations.getString(property, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "'", "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "7354609333703010321", null, errorTarget);
           }
         }

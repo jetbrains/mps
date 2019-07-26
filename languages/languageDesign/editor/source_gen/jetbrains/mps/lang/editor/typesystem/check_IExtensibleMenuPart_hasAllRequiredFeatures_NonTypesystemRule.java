@@ -29,7 +29,7 @@ public class check_IExtensibleMenuPart_hasAllRequiredFeatures_NonTypesystemRule 
 
     if (Sequence.fromIterable(missingFeatures).isNotEmpty()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(part, "Missing feature(s): " + IterableUtils.join(Sequence.fromIterable(missingFeatures).select(new ISelector<SConcept, String>() {
           public String select(SConcept it) {
             return it.getConceptAlias() + " (" + it.getName() + ")";

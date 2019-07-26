@@ -76,8 +76,8 @@
       </scope>
     </file>
     <file name="check_FigureParameterAttributeField_NonTypesystemRule.java">
-      <node id="6568183682644076223" at="24,7,25,60" concept="5" />
-      <node id="6568183682644076223" at="25,60,26,317" concept="5" />
+      <node id="6568183682644076223" at="24,7,25,66" concept="5" />
+      <node id="6568183682644076223" at="25,66,26,317" concept="5" />
       <node id="6568183682644034418" at="30,50,31,61" concept="6" />
       <node id="6568183682644034418" at="33,68,34,102" concept="6" />
       <node id="6568183682644034418" at="36,30,37,17" concept="6" />
@@ -124,8 +124,8 @@
       </scope>
     </file>
     <file name="check_FigureParameterAttribute_NonTypesystemRule.java">
-      <node id="9026300686792786362" at="25,7,26,60" concept="5" />
-      <node id="9026300686792786362" at="26,60,27,374" concept="5" />
+      <node id="9026300686792786362" at="25,7,26,66" concept="5" />
+      <node id="9026300686792786362" at="26,66,27,374" concept="5" />
       <node id="9026300686792780079" at="31,50,32,56" concept="6" />
       <node id="9026300686792780079" at="34,68,35,102" concept="6" />
       <node id="9026300686792780079" at="37,30,38,17" concept="6" />
@@ -173,8 +173,8 @@
       </scope>
     </file>
     <file name="check_FigureParameterAttributeMethod_NonTypesystemRule.java">
-      <node id="9176911587996078226" at="24,7,25,60" concept="5" />
-      <node id="9176911587996078226" at="25,60,26,326" concept="5" />
+      <node id="9176911587996078226" at="24,7,25,66" concept="5" />
+      <node id="9176911587996078226" at="25,66,26,326" concept="5" />
       <node id="9176911587995977871" at="30,50,31,62" concept="6" />
       <node id="9176911587995977871" at="33,68,34,102" concept="6" />
       <node id="9176911587995977871" at="36,30,37,17" concept="6" />
@@ -221,8 +221,8 @@
       </scope>
     </file>
     <file name="check_FigureParameterAttributeViewProperty_NonTypesystemRule.java">
-      <node id="9176911587996551958" at="24,7,25,60" concept="5" />
-      <node id="9176911587996551958" at="25,60,26,351" concept="5" />
+      <node id="9176911587996551958" at="24,7,25,66" concept="5" />
+      <node id="9176911587996551958" at="25,66,26,351" concept="5" />
       <node id="9176911587996519805" at="30,50,31,67" concept="6" />
       <node id="9176911587996519805" at="33,68,34,102" concept="6" />
       <node id="9176911587996519805" at="36,30,37,17" concept="6" />
@@ -290,8 +290,8 @@
       </scope>
     </file>
     <file name="check_ExternalViewFigureParameter_NonTypesystemRule.java">
-      <node id="9176911587997288594" at="24,7,25,60" concept="5" />
-      <node id="9176911587997288594" at="25,60,26,347" concept="5" />
+      <node id="9176911587997288594" at="24,7,25,66" concept="5" />
+      <node id="9176911587997288594" at="25,66,26,347" concept="5" />
       <node id="9176911587997288581" at="30,50,31,59" concept="6" />
       <node id="9176911587997288581" at="33,68,34,102" concept="6" />
       <node id="9176911587997288581" at="36,30,37,17" concept="6" />

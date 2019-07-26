@@ -35,14 +35,14 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
         }
       })) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(mpsTips, "Duplicate names of Tips & Tricks", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "7323166234199735666", null, errorTarget);
         }
       }
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(mpsTips, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a201d7bcL, 0x71731b16a2289997L, "imports"))).isEmpty()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(mpsTips, "No tips & tricks imported", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6437930869738031200", null, errorTarget);
       }
     }
@@ -52,7 +52,7 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
       }
     }))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(mpsTips, "Tips should be packaged to build layout", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6929652819252847712", null, errorTarget);
       }
     }

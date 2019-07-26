@@ -46,7 +46,7 @@ public class check_CallActionDuplicatedParameters_NonTypesystemRule extends Abst
       if (Sequence.fromIterable(group).count() > 1) {
         for (SNode other : Sequence.fromIterable(group).tail(Sequence.fromIterable(group).count() - 1)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(other, "Duplicated parameter: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(Sequence.fromIterable(group).first())), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074233", null, errorTarget);
           }
         }

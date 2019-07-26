@@ -28,7 +28,7 @@ public class check_BaseDocCommentDuplication_NonTypesystemRule extends AbstractN
       }
     })) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseDocComment, "Duplicate comment", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "174203568773667750", null, errorTarget);
       }
     }

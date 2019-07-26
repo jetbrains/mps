@@ -29,7 +29,7 @@ public class check_BuildSource_JavaLibrary_NonTypesystemRule extends AbstractNon
       }
     }))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(jl, "java library cannot be used in project without java plugin", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "6647099934206924827", null, errorTarget);
       }
     }

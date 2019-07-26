@@ -23,7 +23,7 @@ public class check_FigureParameterAttribute_NonTypesystemRule extends AbstractNo
   public void applyRule(final SNode figureParameterAttribute, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(figureParameterAttribute), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), AUX_wn5k74.PublicVisibility_63d95354))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(figureParameterAttribute), "Non-public member specified as @FigureParemter", "r:e599f0dc-4c53-470d-be67-94ae885c5aab(jetbrains.mps.lang.editor.figures.typesystem)", "9026300686792786362", null, errorTarget);
       }
     }

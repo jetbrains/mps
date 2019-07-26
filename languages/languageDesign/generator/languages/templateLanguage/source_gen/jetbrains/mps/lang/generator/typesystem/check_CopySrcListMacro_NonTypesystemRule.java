@@ -30,7 +30,7 @@ public class check_CopySrcListMacro_NonTypesystemRule extends AbstractNonTypesys
     if (l != null && l.isValid()) {
       if (!(l.isMultiple())) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(macro, String.format("Node under %s macro should have multiple cardinality (role: %s)", SConceptOperations.conceptAlias(SNodeOperations.getConcept(macro)), l.getName()), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6636694971610576886", null, errorTarget);
         }
       }

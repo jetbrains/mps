@@ -27,7 +27,7 @@ public class check_ParameterInitializer_NonTypesystemRule extends AbstractNonTyp
         return !(check_5fnl8h_a0a0a0a0a0b(SLinkOperations.getTarget(SNodeOperations.cast(it, AUX_5fnl8h.ParameterInitializer_5a1ff165), MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, 0x4027f9073ff5cf18L, "parameter")), parameterInitializer));
       }
     }))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameterInitializer, "duplicate reference to parameter", "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "610507601221455862", null, errorTarget);
     }
   }

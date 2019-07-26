@@ -34,13 +34,13 @@ public class check_SequenceOperation_NonTypesystemRule extends AbstractNonTypesy
           return TypecheckingFacade.getFromContext().isStrongSubtype(opType, it);
         }
       }))) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(so, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809122235508", null, errorTarget);
       }
 
     } else {
       if (!((TypecheckingFacade.getFromContext().strongCoerceType(opType, AUX_sc67jl.SequenceType_dd24a0b9) != null))) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(so, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809122243464", null, errorTarget);
       }
     }

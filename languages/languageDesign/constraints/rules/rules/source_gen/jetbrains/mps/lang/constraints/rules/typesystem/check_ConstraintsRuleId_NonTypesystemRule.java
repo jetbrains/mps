@@ -29,7 +29,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (isEmptyString(SPropertyOperations.getString(rule, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Rule id is not defined", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "1587916991969781666", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
@@ -44,7 +44,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
         }
       })) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Duplicate rule id", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "5424895381998262898", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
@@ -54,7 +54,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
         }
       } else if (!(Objects.equals(SPropertyOperations.getString(rule, MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId")), ConceptIdHelper.getNodeIdString(rule)))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, "Node id and rule id differ", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2819660830273583910", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);

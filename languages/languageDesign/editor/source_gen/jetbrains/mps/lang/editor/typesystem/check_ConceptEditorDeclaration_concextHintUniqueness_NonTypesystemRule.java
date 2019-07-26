@@ -13,7 +13,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import java.util.Set;
@@ -49,8 +48,7 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
 
     if (ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).isEmpty() && containingLanguage != SNodeOperations.getModel(SLinkOperations.getTarget(editorDeclaration, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration"))).getModule()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new ReferenceMessageTarget("conceptDeclaration");
+        final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration"));
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorDeclaration, "Default editor for the concept cannot be defined in the editor aspect of the language extending concept's language", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6246554009627050246", null, errorTarget);
       }
       return;
@@ -98,8 +96,7 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
     if (CollectionSequence.fromCollection(duplicatingEditorDeclarations).isNotEmpty()) {
       for (SNode duplicatingEditorDecl : CollectionSequence.fromCollection(duplicatingEditorDeclarations)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
-          errorTarget = new ReferenceMessageTarget("conceptDeclaration");
+          final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration"));
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorDeclaration, "Duplicate editor declaration. Editor for same set of context hints (" + ((ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).isEmpty() ? "<default>" : ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).select(new ISelector<SNode, String>() {
             public String select(SNode it) {
               return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));

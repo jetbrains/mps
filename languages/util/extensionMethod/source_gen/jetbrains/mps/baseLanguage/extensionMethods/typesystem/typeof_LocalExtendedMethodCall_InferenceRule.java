@@ -52,7 +52,7 @@ public class typeof_LocalExtendedMethodCall_InferenceRule extends AbstractInfere
       exclass = SNodeOperations.getNodeAncestor(lexmcall, AUX_8kfrad.Classifier_4b7e553, false, false);
     }
     if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(exclass, mclass))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(lexmcall, "invalid operand type", "r:d9557470-9267-4b7b-ab45-4dc4cc5d697c(jetbrains.mps.baseLanguage.extensionMethods.typesystem)", "9033423951287536023", null, errorTarget);
     }
     if (exclass == null) {

@@ -38,7 +38,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
       }
     })) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(enumerationDataTypeDeclaration, "Member identifiers could be derived from internal values, since they are specified for all enumeration members", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809585273479", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.EnableDeriveFromInternalValues_QuickFix", false);
@@ -56,7 +56,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
           }
         }).isNotEmpty()) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(member, "Duplicate value of a presentation value", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809584866838", null, errorTarget);
           }
         }
@@ -68,7 +68,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
           }
         }).isNotEmpty()) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Duplicate value of an internal value", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809584872588", null, errorTarget);
           }
         }
@@ -77,7 +77,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
         final String memberValidId = EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(member);
         if (memberValidId == null) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "A derived identifier is null", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809585113262", null, errorTarget);
           }
         } else {
@@ -88,7 +88,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
           }).isNotEmpty()) {
             String msg = (deriveFromExternal ? "presentation value" : (deriveFromInternal ? "internal value" : "java identifier"));
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Cannot derive unique member identifier from the " + msg + ". Duplicate derived value of an identifier - " + memberValidId + ". You may consider using a different strategy for 'member identifier'", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809583290065", null, errorTarget);
             }
           }

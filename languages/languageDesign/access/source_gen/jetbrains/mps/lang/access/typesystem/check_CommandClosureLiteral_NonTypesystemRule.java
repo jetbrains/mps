@@ -24,7 +24,7 @@ public class check_CommandClosureLiteral_NonTypesystemRule extends AbstractNonTy
     for (SNode rs : SNodeOperations.getNodeDescendants(commandClosureLiteral, AUX_kc5ybx.ReturnStatement_d4768417, false, new SAbstractConcept[]{AUX_kc5ybx.IMethodLike_583347ed})) {
       if ((SLinkOperations.getTarget(rs, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression")) != null)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rs, "return statement not allowed here", "r:aad06b20-0a6a-42d7-81b8-671529c6126a(jetbrains.mps.lang.access.typesystem)", "5842059399448775938", null, errorTarget);
         }
       }

@@ -19,7 +19,7 @@ public class check_Palette_NonTypesystemRule extends AbstractNonTypesystemRule_R
   }
   public void applyRule(final SNode palette, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(palette, "Palette is the experimental feature. Use it at your own discretion.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "6194248980637216508", null, errorTarget);
     }
   }

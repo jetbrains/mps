@@ -27,7 +27,7 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
         return !(check_z5utj9_a0a0a0a0a0b(SPropertyOperations.getString(SNodeOperations.cast(it, AUX_z5utj9.QueryParameter_1d6de979), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), queryParameter));
       }
     }))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(queryParameter, "duplicate query parameter", "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "4622937352052515417", null, errorTarget);
     }
   }

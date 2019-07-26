@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -30,8 +29,7 @@ public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_
     for (SNode ti : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(textIcon), AUX_wiaqiw.TextIcon_d7600c94))) {
       if (SetSequence.fromSet(usedIds).contains(SPropertyOperations.getString(ti, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId")))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
-          errorTarget = new PropertyMessageTarget("iconId");
+          final MessageTarget errorTarget = new PropertyMessageTarget(MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId"));
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ti, "duplicate ID", "r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)", "1860120738943515427", null, errorTarget);
         }
         break;

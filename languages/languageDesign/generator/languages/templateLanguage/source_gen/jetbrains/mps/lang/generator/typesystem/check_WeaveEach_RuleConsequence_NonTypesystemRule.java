@@ -24,7 +24,7 @@ public class check_WeaveEach_RuleConsequence_NonTypesystemRule extends AbstractN
     SNode template = ((SLinkOperations.getTarget(weaveEach, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fcbaec2L, "template")) == null) ? SLinkOperations.getTarget(SLinkOperations.getTarget(weaveEach, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall")), MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template")) : SLinkOperations.getTarget(weaveEach, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fcbaec2L, "template")));
     if ((template == null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(weaveEach, "No template", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "546192990993044375", null, errorTarget);
       }
     } else {
@@ -37,7 +37,7 @@ public class check_WeaveEach_RuleConsequence_NonTypesystemRule extends AbstractN
       SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.cast(NT, AUX_v5xztf.SNodeType_dcb080ab), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"));
       if (!(MetaAdapterByDeclaration.getConcept(nodeConcept).isSubConceptOf(MetaAdapterByDeclaration.getConcept(templateApplicableConcept)))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(weaveEach, "template is not applicable to " + NT, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "546192990993046908", null, errorTarget);
         }
       }

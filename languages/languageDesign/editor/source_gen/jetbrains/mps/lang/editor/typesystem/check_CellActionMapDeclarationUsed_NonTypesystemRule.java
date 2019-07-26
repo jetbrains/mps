@@ -38,7 +38,7 @@ public class check_CellActionMapDeclarationUsed_NonTypesystemRule extends Abstra
       }
     }) == null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(cellActionMapDeclaration, "Action map unused in its containing model", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264223022226", null, errorTarget);
       }
     }

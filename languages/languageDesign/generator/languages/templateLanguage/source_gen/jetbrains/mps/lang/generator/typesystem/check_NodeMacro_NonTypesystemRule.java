@@ -22,7 +22,7 @@ public class check_NodeMacro_NonTypesystemRule extends AbstractNonTypesystemRule
     if (SNodeOperations.isAttribute(macro) && SNodeOperations.getNodeAncestor(macro, AUX_z41c5v.TemplateDeclaration_6074fd22, false, false) != null) {
       if (QueriesUtil.getEnclosing_TemplateFragment(SNodeOperations.getParent(macro)) == null) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(macro, "Macro is outside a Template Fragment", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1226346325150", null, errorTarget);
         }
       }

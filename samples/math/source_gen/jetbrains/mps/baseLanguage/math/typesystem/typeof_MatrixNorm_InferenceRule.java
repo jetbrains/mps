@@ -36,7 +36,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
         public void run() {
           if (!(SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(mT), AUX_8pyikg.MatrixOrVectorType_23ad3ce7))) {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(norm, "Expression should have matrix or vector type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835032977", null, errorTarget);
             }
           } else {

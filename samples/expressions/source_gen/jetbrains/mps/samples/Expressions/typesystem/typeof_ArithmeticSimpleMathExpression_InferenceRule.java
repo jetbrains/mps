@@ -62,7 +62,7 @@ public class typeof_ArithmeticSimpleMathExpression_InferenceRule extends Abstrac
                   }
                 } else {
                   {
-                    MessageTarget errorTarget = new NodeMessageTarget();
+                    final MessageTarget errorTarget = new NodeMessageTarget();
                     IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expression, "Operator '" + SPropertyOperations.getString(expression, MetaAdapterFactory.getProperty(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8289497L, 0x1cc69153b82894eaL, "operator")) + "' cannot be applied to '" + typeCheckingContext.getExpandedNode(leftType) + "', '" + typeCheckingContext.getExpandedNode(rightType) + "'", "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "1387988544209571120", null, errorTarget);
                   }
                 }

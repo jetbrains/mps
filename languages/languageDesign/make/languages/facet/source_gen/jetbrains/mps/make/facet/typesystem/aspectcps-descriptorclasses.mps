@@ -939,6 +939,7 @@
                 <node concept="3cpWs8" id="3D" role="3cqZAp">
                   <node concept="3cpWsn" id="3G" role="3cpWs9">
                     <property role="TrG5h" value="errorTarget" />
+                    <property role="3TUv4t" value="true" />
                     <node concept="3uibUv" id="3H" role="1tU5fm">
                       <ref role="3uigEE" to="zavc:~MessageTarget" resolve="MessageTarget" />
                     </node>

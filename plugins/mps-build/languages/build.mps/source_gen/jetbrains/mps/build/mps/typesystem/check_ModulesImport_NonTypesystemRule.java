@@ -37,7 +37,7 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
     String workingDir = BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(buildProject, Context.defaultContext());
     if ((workingDir == null || workingDir.length() == 0)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(buildProject, "working directory is unavailable", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "2531699772406302731", null, errorTarget);
       }
       return;
@@ -53,12 +53,12 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
         }
         if (msg.getKind() == MessageKind.ERROR) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(location, msg.getText(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "7141285424006551198", null, errorTarget);
           }
         } else if (msg.getKind() == MessageKind.WARNING) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(location, msg.getText(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "2799875068636550272", null, errorTarget);
           }
         }

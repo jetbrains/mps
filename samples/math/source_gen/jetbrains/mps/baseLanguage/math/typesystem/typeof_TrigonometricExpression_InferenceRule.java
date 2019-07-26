@@ -46,7 +46,7 @@ public class typeof_TrigonometricExpression_InferenceRule extends AbstractInfere
             }
           } else {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expression, "Trigonometric functions are defined for subtypes of complex", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499429", null, errorTarget);
             }
           }

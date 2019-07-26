@@ -21,7 +21,7 @@ public class check_BuildStringNotEmpty_NonTypesystemRule extends AbstractNonType
   public void applyRule(final SNode str, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (isEmptyString(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(str, null))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(str, "string is empty", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "841011766566102235", null, errorTarget);
       }
     }

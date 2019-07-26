@@ -17,7 +17,6 @@ import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.build.mps.behavior.BuildMps_AbstractModule__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -46,8 +45,7 @@ public class check_BuildSolutionRunnerAspect_NonTypesystemRule extends AbstractN
     SModule module = moduleReference.resolve(repo);
     if (module == null) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new ReferenceMessageTarget("solution");
+        final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution"));
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(buildSolutionRunner, "Cannot find solution " + SPropertyOperations.getString(solution, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "r:6869e2b7-2b2d-443c-a462-ce5a9004892e(jetbrains.mps.build.mps.runner.typesystem)", "6452630887099532660", null, errorTarget);
       }
       return;
@@ -73,8 +71,7 @@ public class check_BuildSolutionRunnerAspect_NonTypesystemRule extends AbstractN
       }
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
-      errorTarget = new ReferenceMessageTarget("solution");
+      final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution"));
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(buildSolutionRunner, "Cannot find public static void " + className + "." + methodName + "(...) in " + SPropertyOperations.getString(solution, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "r:6869e2b7-2b2d-443c-a462-ce5a9004892e(jetbrains.mps.build.mps.runner.typesystem)", "7415565752189086936", null, errorTarget);
     }
   }

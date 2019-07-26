@@ -29,7 +29,7 @@ public class check_NodePointer_NonTypesystemRule extends AbstractNonTypesystemRu
     SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(nodePointer, repo);
     if (target == null) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodePointer, "target node not found in repository", "r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "3138462966838136628", null, errorTarget);
       }
     }

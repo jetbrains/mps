@@ -33,7 +33,7 @@ public class check_KeyMapKeystrokeRemRepl_NonTypesystemRule extends AbstractNonT
       }
     })) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(keyMapKeystroke, "Adding 'remove' modificator for action is redundant if there is other action with 'replace all' modificator", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5097592589863133346", null, errorTarget);
       }
     }

@@ -45,7 +45,7 @@ public class check_QueryDuplicatedParameters_NonTypesystemRule extends AbstractN
       if (Sequence.fromIterable(group).count() > 1) {
         for (SNode other : Sequence.fromIterable(group).tail(Sequence.fromIterable(group).count() - 1)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(other, "Duplicated parameter: " + SConceptOperations.conceptAlias(SNodeOperations.getConcept(Sequence.fromIterable(group).first())), "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "2284201910212797905", null, errorTarget);
           }
         }

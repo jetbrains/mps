@@ -821,8 +821,8 @@
       </scope>
     </file>
     <file name="check_IOperationContextUsages_NonTypesystemRule.java">
-      <node id="8401916545537389027" at="26,9,27,62" concept="6" />
-      <node id="8401916545537389027" at="27,62,28,252" concept="6" />
+      <node id="8401916545537389027" at="26,9,27,68" concept="6" />
+      <node id="8401916545537389027" at="27,68,28,252" concept="6" />
       <node id="8401916545537388999" at="33,50,34,47" concept="7" />
       <node id="8401916545537388999" at="36,68,37,102" concept="7" />
       <node id="8401916545537388999" at="39,30,40,17" concept="7" />
@@ -876,53 +876,52 @@
       </scope>
     </file>
     <file name="check_NodeReferentConstraint_noDuplications_NonTypesystemRule.java">
-      <node id="876880569411260473" at="27,135,28,401" concept="6" />
-      <node id="876880569411266053" at="28,401,29,0" concept="8" />
-      <node id="876880569411387473" at="32,9,33,62" concept="6" />
-      <node id="876880569411387473" at="33,62,34,69" concept="2" />
-      <node id="876880569411387473" at="34,69,35,610" concept="6" />
-      <node id="876880569411210655" at="40,50,41,54" concept="7" />
-      <node id="876880569411210655" at="43,68,44,102" concept="7" />
-      <node id="876880569411210655" at="46,30,47,17" concept="7" />
-      <node id="876880569411210655" at="51,0,52,0" concept="9" trace="ConceptConstraints_2e5b5de5" />
-      <node id="876880569411210655" at="52,0,53,0" concept="9" trace="NodeReferentConstraint_827fc615" />
-      <node id="876880569411210655" at="25,0,27,0" concept="1" trace="check_NodeReferentConstraint_noDuplications_NonTypesystemRule#()V" />
-      <node id="876880569411210655" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="876880569411210655" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="876880569411210655" at="46,0,49,0" concept="5" trace="overrides#()Z" />
-      <node id="876880569411387473" at="31,382,36,9" concept="0" />
-      <node id="876880569411319522" at="30,69,37,7" concept="4" />
-      <node id="876880569411319415" at="29,0,38,5" concept="3" />
-      <node id="876880569411210655" at="27,0,40,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="876880569411210655" at="25,74,25,74" />
-      <scope id="876880569411210655" at="40,50,41,54" />
-      <scope id="876880569411210655" at="43,68,44,102" />
-      <scope id="876880569411210655" at="46,30,47,17" />
-      <scope id="876880569411210655" at="25,0,27,0" />
-      <scope id="876880569411387473" at="32,9,35,610">
+      <node id="876880569411260473" at="26,135,27,401" concept="6" />
+      <node id="876880569411266053" at="27,401,28,0" concept="8" />
+      <node id="876880569411387473" at="31,9,32,200" concept="6" />
+      <node id="876880569411387473" at="32,200,33,610" concept="6" />
+      <node id="876880569411210655" at="38,50,39,54" concept="7" />
+      <node id="876880569411210655" at="41,68,42,102" concept="7" />
+      <node id="876880569411210655" at="44,30,45,17" concept="7" />
+      <node id="876880569411210655" at="49,0,50,0" concept="9" trace="ConceptConstraints_2e5b5de5" />
+      <node id="876880569411210655" at="50,0,51,0" concept="9" trace="NodeReferentConstraint_827fc615" />
+      <node id="876880569411210655" at="24,0,26,0" concept="1" trace="check_NodeReferentConstraint_noDuplications_NonTypesystemRule#()V" />
+      <node id="876880569411210655" at="38,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="876880569411210655" at="41,0,44,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="876880569411210655" at="44,0,47,0" concept="5" trace="overrides#()Z" />
+      <node id="876880569411387473" at="30,382,34,9" concept="0" />
+      <node id="876880569411319522" at="29,69,35,7" concept="4" />
+      <node id="876880569411319415" at="28,0,36,5" concept="3" />
+      <node id="876880569411210655" at="26,0,38,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="876880569411210655" at="24,74,24,74" />
+      <scope id="876880569411210655" at="38,50,39,54" />
+      <scope id="876880569411210655" at="41,68,42,102" />
+      <scope id="876880569411210655" at="44,30,45,17" />
+      <scope id="876880569411210655" at="24,0,26,0" />
+      <scope id="876880569411387473" at="31,9,33,610">
         <var name="_reporter_2309309498" id="876880569411387473" />
         <var name="errorTarget" id="876880569411387473" />
       </scope>
-      <scope id="876880569411210655" at="40,0,43,0" />
-      <scope id="876880569411210655" at="43,0,46,0">
+      <scope id="876880569411210655" at="38,0,41,0" />
+      <scope id="876880569411210655" at="41,0,44,0">
         <var name="argument" id="876880569411210655" />
       </scope>
-      <scope id="876880569411210655" at="46,0,49,0" />
-      <scope id="876880569411319524" at="31,382,36,9" />
-      <scope id="876880569411319421" at="30,69,37,7" />
-      <scope id="876880569411319415" at="29,0,38,5">
+      <scope id="876880569411210655" at="44,0,47,0" />
+      <scope id="876880569411319524" at="30,382,34,9" />
+      <scope id="876880569411319421" at="29,69,35,7" />
+      <scope id="876880569411319415" at="28,0,36,5">
         <var name="siblingConstraint" id="876880569411319417" />
       </scope>
-      <scope id="876880569411210656" at="27,135,38,5">
+      <scope id="876880569411210656" at="26,135,36,5">
         <var name="siblings" id="876880569411260476" />
       </scope>
-      <scope id="876880569411210655" at="27,0,40,0">
+      <scope id="876880569411210655" at="26,0,38,0">
         <var name="nodeReferentConstraint" id="876880569411210655" />
         <var name="status" id="876880569411210655" />
         <var name="typeCheckingContext" id="876880569411210655" />
       </scope>
-      <unit id="876880569411210655" at="50,0,54,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodeReferentConstraint_noDuplications_NonTypesystemRule$AUX_h3xtvf" />
-      <unit id="876880569411210655" at="24,0,55,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodeReferentConstraint_noDuplications_NonTypesystemRule" />
+      <unit id="876880569411210655" at="48,0,52,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodeReferentConstraint_noDuplications_NonTypesystemRule$AUX_h3xtvf" />
+      <unit id="876880569411210655" at="23,0,53,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodeReferentConstraint_noDuplications_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)/876880569411413658">
@@ -935,53 +934,52 @@
       </scope>
     </file>
     <file name="check_NodePropertyConstraint_noDuplications_NonTypesystemRule.java">
-      <node id="876880569411413660" at="27,135,28,401" concept="6" />
-      <node id="876880569411413677" at="28,401,29,0" concept="8" />
-      <node id="876880569411413691" at="32,9,33,62" concept="6" />
-      <node id="876880569411413691" at="33,62,34,73" concept="2" />
-      <node id="876880569411413691" at="34,73,35,618" concept="6" />
-      <node id="876880569411413658" at="40,50,41,54" concept="7" />
-      <node id="876880569411413658" at="43,68,44,102" concept="7" />
-      <node id="876880569411413658" at="46,30,47,17" concept="7" />
-      <node id="876880569411413658" at="51,0,52,0" concept="9" trace="ConceptConstraints_2e5b5de5" />
-      <node id="876880569411413658" at="52,0,53,0" concept="9" trace="NodePropertyConstraint_95960da6" />
-      <node id="876880569411413658" at="25,0,27,0" concept="1" trace="check_NodePropertyConstraint_noDuplications_NonTypesystemRule#()V" />
-      <node id="876880569411413658" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="876880569411413658" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="876880569411413658" at="46,0,49,0" concept="5" trace="overrides#()Z" />
-      <node id="876880569411413691" at="31,390,36,9" concept="0" />
-      <node id="876880569411413682" at="30,69,37,7" concept="4" />
-      <node id="876880569411413678" at="29,0,38,5" concept="3" />
-      <node id="876880569411413658" at="27,0,40,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="876880569411413658" at="25,74,25,74" />
-      <scope id="876880569411413658" at="40,50,41,54" />
-      <scope id="876880569411413658" at="43,68,44,102" />
-      <scope id="876880569411413658" at="46,30,47,17" />
-      <scope id="876880569411413658" at="25,0,27,0" />
-      <scope id="876880569411413691" at="32,9,35,618">
+      <node id="876880569411413660" at="26,135,27,401" concept="6" />
+      <node id="876880569411413677" at="27,401,28,0" concept="8" />
+      <node id="876880569411413691" at="31,9,32,204" concept="6" />
+      <node id="876880569411413691" at="32,204,33,618" concept="6" />
+      <node id="876880569411413658" at="38,50,39,54" concept="7" />
+      <node id="876880569411413658" at="41,68,42,102" concept="7" />
+      <node id="876880569411413658" at="44,30,45,17" concept="7" />
+      <node id="876880569411413658" at="49,0,50,0" concept="9" trace="ConceptConstraints_2e5b5de5" />
+      <node id="876880569411413658" at="50,0,51,0" concept="9" trace="NodePropertyConstraint_95960da6" />
+      <node id="876880569411413658" at="24,0,26,0" concept="1" trace="check_NodePropertyConstraint_noDuplications_NonTypesystemRule#()V" />
+      <node id="876880569411413658" at="38,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="876880569411413658" at="41,0,44,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="876880569411413658" at="44,0,47,0" concept="5" trace="overrides#()Z" />
+      <node id="876880569411413691" at="30,390,34,9" concept="0" />
+      <node id="876880569411413682" at="29,69,35,7" concept="4" />
+      <node id="876880569411413678" at="28,0,36,5" concept="3" />
+      <node id="876880569411413658" at="26,0,38,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="876880569411413658" at="24,74,24,74" />
+      <scope id="876880569411413658" at="38,50,39,54" />
+      <scope id="876880569411413658" at="41,68,42,102" />
+      <scope id="876880569411413658" at="44,30,45,17" />
+      <scope id="876880569411413658" at="24,0,26,0" />
+      <scope id="876880569411413691" at="31,9,33,618">
         <var name="_reporter_2309309498" id="876880569411413691" />
         <var name="errorTarget" id="876880569411413691" />
       </scope>
-      <scope id="876880569411413658" at="40,0,43,0" />
-      <scope id="876880569411413658" at="43,0,46,0">
+      <scope id="876880569411413658" at="38,0,41,0" />
+      <scope id="876880569411413658" at="41,0,44,0">
         <var name="argument" id="876880569411413658" />
       </scope>
-      <scope id="876880569411413658" at="46,0,49,0" />
-      <scope id="876880569411413690" at="31,390,36,9" />
-      <scope id="876880569411413681" at="30,69,37,7" />
-      <scope id="876880569411413678" at="29,0,38,5">
+      <scope id="876880569411413658" at="44,0,47,0" />
+      <scope id="876880569411413690" at="30,390,34,9" />
+      <scope id="876880569411413681" at="29,69,35,7" />
+      <scope id="876880569411413678" at="28,0,36,5">
         <var name="siblingConstraint" id="876880569411413679" />
       </scope>
-      <scope id="876880569411413659" at="27,135,38,5">
+      <scope id="876880569411413659" at="26,135,36,5">
         <var name="siblings" id="876880569411413661" />
       </scope>
-      <scope id="876880569411413658" at="27,0,40,0">
+      <scope id="876880569411413658" at="26,0,38,0">
         <var name="nodePropertyConstraint" id="876880569411413658" />
         <var name="status" id="876880569411413658" />
         <var name="typeCheckingContext" id="876880569411413658" />
       </scope>
-      <unit id="876880569411413658" at="50,0,54,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodePropertyConstraint_noDuplications_NonTypesystemRule$AUX_khfk4m" />
-      <unit id="876880569411413658" at="24,0,55,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodePropertyConstraint_noDuplications_NonTypesystemRule" />
+      <unit id="876880569411413658" at="48,0,52,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodePropertyConstraint_noDuplications_NonTypesystemRule$AUX_khfk4m" />
+      <unit id="876880569411413658" at="23,0,53,0" name="jetbrains.mps.lang.constraints.typesystem.check_NodePropertyConstraint_noDuplications_NonTypesystemRule" />
     </file>
   </root>
 </debug-info>

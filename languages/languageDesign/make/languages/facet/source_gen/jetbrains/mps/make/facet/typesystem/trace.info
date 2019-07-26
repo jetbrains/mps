@@ -429,8 +429,8 @@
   </root>
   <root nodeRef="r:e67eab7b-bc9a-4900-b958-c99ccf24a565(jetbrains.mps.make.facet.typesystem)/4902420589280075077">
     <file name="ResourceClassifierType_notIn_ResourceTypeDeclaration_NonTypesystemRule.java">
-      <node id="4902420589280088721" at="24,7,25,60" concept="5" />
-      <node id="4902420589280088721" at="25,60,26,236" concept="5" />
+      <node id="4902420589280088721" at="24,7,25,66" concept="5" />
+      <node id="4902420589280088721" at="25,66,26,236" concept="5" />
       <node id="4902420589280150914" at="27,9,28,180" concept="5" />
       <node id="4902420589280150914" at="28,180,29,71" concept="2" />
       <node id="4902420589280075077" at="34,50,35,54" concept="6" />

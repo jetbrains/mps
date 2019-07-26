@@ -27,7 +27,7 @@ public class check_RedundantSmartReferenceAttribute_NonTypesystemRule extends Ab
     if ((concept != null)) {
       if (SPropertyOperations.getBoolean(SNodeOperations.cast(SNodeOperations.getParent(attr), AUX_4dxhu3.ConceptDeclaration_cb225da8), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract"))) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(attr, "'smart reference' attribute used for abstract concept", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "3455926958821554247", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.fix_RedundantSmartReferenceAttribute_QuickFix", false);
@@ -38,7 +38,7 @@ public class check_RedundantSmartReferenceAttribute_NonTypesystemRule extends Ab
 
       if ((SLinkOperations.getTarget(attr, MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d66ac37L, "refPresentationTemplate")) == null) && SmartRefAttributeUtil.canBeAttributedImplicitly(concept)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(attr, "Trivial 'smart reference' attribute can be dropped", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "3455926958821552685", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.fix_RedundantSmartReferenceAttribute_QuickFix", false);

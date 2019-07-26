@@ -26,7 +26,7 @@ public class check_ProducesData_NonTypesystemRule extends AbstractNonTypesystemR
     Iterable<SNode> putDataDeclaration = SNodeOperations.ofConcept(SLinkOperations.getChildren(migrationScript, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member")), AUX_r9fi43.ProducedAnnotationDataDeclaration_a1ef0fcf);
     if (Sequence.fromIterable(putDataDeclaration).isNotEmpty()) {
       if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(MigrationScript__BehaviorDescriptor.getMethod_id6d7r2Fq2j7f.invoke(migrationScript, SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "5155329496662709030")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), AUX_r9fi43.PutDataExpression_eef082bb, false, new SAbstractConcept[]{AUX_r9fi43.BaseCommentAttribute_f7206635})).isNotEmpty())) {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(Sequence.fromIterable(putDataDeclaration).first(), "Migration script is declared to produce data but never uses putData()", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "5310388462668349111", null, errorTarget);
       }
 

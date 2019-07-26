@@ -19,7 +19,7 @@ public class check_outputport_NonTypesystemRule extends AbstractNonTypesystemRul
   }
   public void applyRule(final SNode outputPort, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(outputPort, "input port error", "r:ad8f2b18-3038-4a9d-ad27-aa5680bf8421(jetbrains.mps.testHybridEditor.typesystem)", "3804439703459446719", null, errorTarget);
     }
   }

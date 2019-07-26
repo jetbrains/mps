@@ -31,7 +31,7 @@ public class check_KajaDataflow_NonTypesystemRule extends AbstractNonTypesystemR
       Program program = DataFlow.buildProgram(commandList);
       if (program.size() > 400) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(SNodeOperations.getParent(commandList), "This node is too complex too analyze by data flow algorithm", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "6067900799350600197", null, errorTarget);
         }
         return;
@@ -45,12 +45,12 @@ public class check_KajaDataflow_NonTypesystemRule extends AbstractNonTypesystemR
         }
         if (SNodeOperations.isInstanceOf(source, AUX_cnowav.AbstractCommand_a5f03f89)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(source, "Unreachable command", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "1223640538234", null, errorTarget);
           }
         } else {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SNodeOperations.getParent(source), "Unreachable command", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "6630310702472189615", null, errorTarget);
           }
         }

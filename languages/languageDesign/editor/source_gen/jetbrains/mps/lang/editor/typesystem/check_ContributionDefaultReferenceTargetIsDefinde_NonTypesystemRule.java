@@ -24,7 +24,7 @@ public class check_ContributionDefaultReferenceTargetIsDefinde_NonTypesystemRule
     SNode menuReference = IMenu_Contribution__BehaviorDescriptor.getMenuReference_id1quYWAD2_PI.invoke(node);
     if (SNodeOperations.isInstanceOf(menuReference, AUX_lb1g0p.IMenuReference_Default_b5761929) && (SLinkOperations.getTarget(SNodeOperations.cast(menuReference, AUX_lb1g0p.IMenuReference_Default_b5761929), MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept")) == null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(menuReference, "Target concept should be defined", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "3011610118025607849", null, errorTarget);
       }
     }

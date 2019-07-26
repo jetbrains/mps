@@ -48,7 +48,7 @@ public class check_RequiredParametersArePassed_NonTypesystemRule extends Abstrac
     Iterable<SNode> missed = Sequence.fromIterable(requiredParameters).subtract(Sequence.fromIterable(passedParameters));
     if (Sequence.fromIterable(missed).isNotEmpty()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(callAction, "Parameter " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(Sequence.fromIterable(missed).first()) + " is required", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074319", null, errorTarget);
       }
     }

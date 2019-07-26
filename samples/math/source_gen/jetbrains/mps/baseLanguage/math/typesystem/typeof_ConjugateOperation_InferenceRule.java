@@ -49,13 +49,13 @@ public class typeof_ConjugateOperation_InferenceRule extends AbstractInferenceRu
             }
           } else {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(operation, "Operation defined for matrices/vectors only", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7388416617632229354", null, errorTarget);
             }
           }
           if (!(TypecheckingFacade.getFromContext().isSubtype(MathTypeUtil.qComplex, typeCheckingContext.getExpandedNode(t)))) {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(operation, "Usage of conjugation instead of transposition only makes sense for complex matrices", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7388416617632229387", null, errorTarget);
             }
           }

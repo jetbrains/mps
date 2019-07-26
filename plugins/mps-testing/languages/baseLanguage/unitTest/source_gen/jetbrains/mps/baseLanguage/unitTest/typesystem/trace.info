@@ -81,8 +81,8 @@
       </scope>
     </file>
     <file name="check_AssertStatementInsideTestMethod_NonTypesystemRule.java">
-      <node id="8396091035812119723" at="24,7,25,60" concept="5" />
-      <node id="8396091035812119723" at="25,60,26,346" concept="5" />
+      <node id="8396091035812119723" at="24,7,25,66" concept="5" />
+      <node id="8396091035812119723" at="25,66,26,346" concept="5" />
       <node id="8396091035812112107" at="30,50,31,47" concept="6" />
       <node id="8396091035812112107" at="33,68,34,102" concept="6" />
       <node id="8396091035812112107" at="36,30,37,17" concept="6" />
@@ -132,8 +132,8 @@
     </file>
     <file name="check_TestIsCompiledAndLoadedByMPS_NonTypesystemRule.java">
       <node id="8797237962361651658" at="24,121,25,76" concept="5" />
-      <node id="8797237962361641928" at="27,7,28,60" concept="5" />
-      <node id="8797237962361641928" at="28,60,29,288" concept="5" />
+      <node id="8797237962361641928" at="27,7,28,66" concept="5" />
+      <node id="8797237962361641928" at="28,66,29,288" concept="5" />
       <node id="8797237962358911312" at="33,50,34,41" concept="6" />
       <node id="8797237962358911312" at="36,68,37,102" concept="6" />
       <node id="8797237962358911312" at="39,30,40,17" concept="6" />

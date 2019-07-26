@@ -19,7 +19,7 @@ public class connector_NonTypesystemRule extends AbstractNonTypesystemRule_Runti
   }
   public void applyRule(final SNode connectorInstance, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(connectorInstance, "connector error", "r:ad8f2b18-3038-4a9d-ad27-aa5680bf8421(jetbrains.mps.testHybridEditor.typesystem)", "884514646186394469", null, errorTarget);
     }
   }

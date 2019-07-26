@@ -45,7 +45,7 @@ public class typeof_LinearSolveOperation_InferenceRule extends AbstractInference
                   }
                 } else {
                   {
-                    MessageTarget errorTarget = new NodeMessageTarget();
+                    final MessageTarget errorTarget = new NodeMessageTarget();
                     IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abdL, 0x13afebc2af508f96L, "matrix")), "Left side of the equation must have matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060240", null, errorTarget);
                   }
                 }
@@ -57,7 +57,7 @@ public class typeof_LinearSolveOperation_InferenceRule extends AbstractInference
                   }
                 } else {
                   {
-                    MessageTarget errorTarget = new NodeMessageTarget();
+                    final MessageTarget errorTarget = new NodeMessageTarget();
                     IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(op, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abdL, 0x13afebc2af508f97L, "vector")), "Right side of the equation must have matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "5359814223490060245", null, errorTarget);
                   }
                 }

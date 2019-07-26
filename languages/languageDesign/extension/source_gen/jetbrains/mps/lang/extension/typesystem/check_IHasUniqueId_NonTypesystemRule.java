@@ -27,7 +27,7 @@ public class check_IHasUniqueId_NonTypesystemRule extends AbstractNonTypesystemR
     for (SNode root : ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), AUX_er4b3n.IRootWithUniqueName_f02ff145))) {
       if (root != node) {
         if (!(!(Objects.equals(IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(root), IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(node))))) {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Duplicated name: " + SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "195736285282743922", null, errorTarget);
         }
       }

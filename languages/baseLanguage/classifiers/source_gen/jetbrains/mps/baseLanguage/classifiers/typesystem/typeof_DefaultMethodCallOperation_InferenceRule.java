@@ -71,7 +71,7 @@ public class typeof_DefaultMethodCallOperation_InferenceRule extends AbstractInf
 
     if (!(isNumberOfParamsOk)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Number of parameters doesn't match", "r:00000000-0000-4000-0000-011c89590371(jetbrains.mps.baseLanguage.classifiers.typesystem)", "1205854659855", null, errorTarget);
       }
     }

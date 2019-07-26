@@ -26,7 +26,7 @@ public class check_StaticFieldDocReference_NonTypesystemRule extends AbstractNon
     SNode field = SLinkOperations.getTarget(staticFieldDocReference, MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration"));
     if (!(VisibilityUtil.isVisible(staticFieldDocReference, SNodeOperations.as(field, AUX_848dfh.IVisible_84badc76)))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(staticFieldDocReference, "Symbol " + SPropertyOperations.getString(field, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538852235", null, errorTarget);
       }
     }

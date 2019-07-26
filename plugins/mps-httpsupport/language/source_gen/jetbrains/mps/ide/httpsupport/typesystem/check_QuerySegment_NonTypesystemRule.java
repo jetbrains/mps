@@ -21,7 +21,7 @@ public class check_QuerySegment_NonTypesystemRule extends AbstractNonTypesystemR
   public void applyRule(final SNode querySegment, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (isEmptyString(SPropertyOperations.getString(querySegment, MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L, 0x53d29f104face44fL, "segment")))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(querySegment, "Empty segmnet", "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "6040064942662332637", null, errorTarget);
       }
     }

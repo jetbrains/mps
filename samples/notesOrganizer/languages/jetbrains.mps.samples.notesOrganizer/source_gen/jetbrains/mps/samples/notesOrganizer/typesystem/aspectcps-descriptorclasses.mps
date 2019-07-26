@@ -404,6 +404,7 @@
                 <node concept="3cpWs8" id="1_" role="3cqZAp">
                   <node concept="3cpWsn" id="1B" role="3cpWs9">
                     <property role="TrG5h" value="errorTarget" />
+                    <property role="3TUv4t" value="true" />
                     <node concept="3uibUv" id="1C" role="1tU5fm">
                       <ref role="3uigEE" to="zavc:~MessageTarget" resolve="MessageTarget" />
                     </node>

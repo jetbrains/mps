@@ -30,7 +30,7 @@ public class check_BuildMpsLayout_TestModules_Options_NonTypesystemRule extends 
         return;
       } else {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(options, "Inappropriate value for 'haltonfailure' property", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "6593674873639642791", null, errorTarget);
         }
       }

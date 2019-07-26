@@ -28,7 +28,7 @@ public class check_DefaultMenu_isInConceptLanguage_NonTypesystemRule extends Abs
 
     if (containingLanguage != SNodeOperations.getModel(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"))).getModule()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Default menu for a concept can only be defined in the concept's language", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "286080166051400380", null, errorTarget);
       }
     }

@@ -23,7 +23,7 @@ public class check_NotesConfiguration_NonTypesystemRule extends AbstractNonTypes
   public void applyRule(final SNode notesConfiguration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(notesConfiguration), AUX_1fvqnz.NotesConfiguration_8c48f8b4)).count() > 1) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(notesConfiguration, "Only one notes configuration is allowed in a model", "r:06486389-aaa0-4ecf-844a-5856289c120b(jetbrains.mps.samples.notesOrganizer.typesystem)", "8908453262579960025", null, errorTarget);
       }
     }

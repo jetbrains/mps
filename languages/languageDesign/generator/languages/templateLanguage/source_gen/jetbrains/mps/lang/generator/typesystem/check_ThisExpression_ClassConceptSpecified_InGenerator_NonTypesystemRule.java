@@ -52,7 +52,7 @@ public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesyste
     }).isNotEmpty() || (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(expression, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept")), AUX_7usgeg.InlineTemplate_RuleConsequence_6e1e9f65, false, false) != null);
     if (expressionInTemplate && !(classifierInTemplate)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(expression, "Classifier is not specified for ThisExpression that is not within the same template with corresponding classifier. This may lead to incorrect code generated in some cases.", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6495695326613151358", null, errorTarget);
       }
     }

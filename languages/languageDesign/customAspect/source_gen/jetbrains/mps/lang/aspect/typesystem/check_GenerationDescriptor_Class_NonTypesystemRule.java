@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -26,8 +25,7 @@ public class check_GenerationDescriptor_Class_NonTypesystemRule extends Abstract
       return;
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
-      errorTarget = new ReferenceMessageTarget("implTemplate");
+      final MessageTarget errorTarget = new ReferenceMessageTarget(MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x5c2c36f4ea0d3b2fL, 0x5921e5e41155f7ddL, "implTemplate"));
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(c, "Template should have no property macro on the 'name' property", "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "6422667311313324286", null, errorTarget);
     }
   }

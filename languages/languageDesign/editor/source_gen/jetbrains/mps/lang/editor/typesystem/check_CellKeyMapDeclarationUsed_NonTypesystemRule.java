@@ -30,7 +30,7 @@ public class check_CellKeyMapDeclarationUsed_NonTypesystemRule extends AbstractN
       }
     }) == null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(cellKeyMapDeclaration, "Unused key map", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7942833282342538573", null, errorTarget);
       }
     }

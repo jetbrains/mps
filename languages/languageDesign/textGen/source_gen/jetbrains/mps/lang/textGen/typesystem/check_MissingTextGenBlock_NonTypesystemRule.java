@@ -26,7 +26,7 @@ public class check_MissingTextGenBlock_NonTypesystemRule extends AbstractNonType
         return;
       }
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tgDecl, "Missing text generator code block", "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "3741392693834267247", null, errorTarget);
       }
     }

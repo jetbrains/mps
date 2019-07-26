@@ -43,7 +43,7 @@ public class typeof_MatrixElementAccessExpression_InferenceRule extends Abstract
     }
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(mea, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433dL, "rowIndex")), AUX_atgspr.MatrixIndexWildcard_65028192) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(mea, MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433eL, "colIndex")), AUX_atgspr.MatrixIndexWildcard_65028192)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(mea, "Illegal expression", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "964810815943562072", null, errorTarget);
       }
     }

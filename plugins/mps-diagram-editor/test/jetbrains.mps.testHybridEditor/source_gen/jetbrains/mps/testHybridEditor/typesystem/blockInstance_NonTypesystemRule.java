@@ -21,7 +21,7 @@ public class blockInstance_NonTypesystemRule extends AbstractNonTypesystemRule_R
   public void applyRule(final SNode blockInstance, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.getIndexInParent(blockInstance) % 2 == 0) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(blockInstance, "block error", "r:ad8f2b18-3038-4a9d-ad27-aa5680bf8421(jetbrains.mps.testHybridEditor.typesystem)", "4883444763024798190", null, errorTarget);
       }
     }

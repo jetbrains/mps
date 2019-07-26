@@ -17,7 +17,6 @@ import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -50,8 +49,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
       if (CollectionSequence.fromCollection(members).count() > 1) {
         for (SNode member : CollectionSequence.fromCollection(members)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
-            errorTarget = new PropertyMessageTarget("name");
+            final MessageTarget errorTarget = new PropertyMessageTarget(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Duplicate member name", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1075010451651607869", null, errorTarget);
           }
         }
@@ -62,8 +60,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
       if (CollectionSequence.fromCollection(members).count() > 1) {
         for (SNode member : CollectionSequence.fromCollection(members)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
-            errorTarget = new PropertyMessageTarget("presentation");
+            final MessageTarget errorTarget = new PropertyMessageTarget(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation"));
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Duplicate member presentation", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1075010451651608067", null, errorTarget);
           }
         }

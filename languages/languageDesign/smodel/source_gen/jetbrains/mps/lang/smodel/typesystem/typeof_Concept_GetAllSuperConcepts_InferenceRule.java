@@ -56,7 +56,7 @@ public class typeof_Concept_GetAllSuperConcepts_InferenceRule extends AbstractIn
           }
           if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), AUX_ds5n1i.ConceptNodeType_842b4d80) || !(SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), AUX_ds5n1i.SConceptType_7fe2a457)) && !(SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), AUX_ds5n1i.SConceptTypeLiteral_83a436c5))) {
             {
-              MessageTarget errorTarget = new NodeMessageTarget();
+              final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(operation, "applicable only to concepts", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "6235208612540915881", null, errorTarget);
             }
           }

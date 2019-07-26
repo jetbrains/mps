@@ -93,45 +93,44 @@
       </scope>
     </file>
     <file name="check_GenerationDescriptor_Class_NonTypesystemRule.java">
-      <node id="6422667311313324270" at="25,413,26,13" concept="6" />
-      <node id="6422667311313324286" at="28,5,29,58" concept="5" />
-      <node id="6422667311313324286" at="29,58,30,63" concept="2" />
-      <node id="6422667311313324286" at="30,63,31,270" concept="5" />
-      <node id="6422667311313318807" at="34,50,35,58" concept="6" />
-      <node id="6422667311313318807" at="37,68,38,102" concept="6" />
-      <node id="6422667311313318807" at="40,30,41,17" concept="6" />
-      <node id="6422667311313318807" at="45,0,46,0" concept="7" trace="PropertyMacro_2929d3e5" />
-      <node id="6422667311313318807" at="46,0,47,0" concept="7" trace="GenerationDescriptor_Class_ff51ad7f" />
-      <node id="6422667311313318807" at="22,0,24,0" concept="1" trace="check_GenerationDescriptor_Class_NonTypesystemRule#()V" />
-      <node id="6422667311313324014" at="24,114,27,5" concept="3" />
-      <node id="6422667311313318807" at="34,0,37,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6422667311313318807" at="37,0,40,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="6422667311313318807" at="40,0,43,0" concept="4" trace="overrides#()Z" />
-      <node id="6422667311313324286" at="27,5,32,5" concept="0" />
-      <node id="6422667311313318807" at="24,0,34,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="6422667311313318807" at="22,63,22,63" />
-      <scope id="6422667311313324015" at="25,413,26,13" />
-      <scope id="6422667311313318807" at="34,50,35,58" />
-      <scope id="6422667311313318807" at="37,68,38,102" />
-      <scope id="6422667311313318807" at="40,30,41,17" />
-      <scope id="6422667311313318807" at="22,0,24,0" />
-      <scope id="6422667311313324286" at="28,5,31,270">
+      <node id="6422667311313324270" at="24,413,25,13" concept="6" />
+      <node id="6422667311313324286" at="27,5,28,204" concept="5" />
+      <node id="6422667311313324286" at="28,204,29,270" concept="5" />
+      <node id="6422667311313318807" at="32,50,33,58" concept="6" />
+      <node id="6422667311313318807" at="35,68,36,102" concept="6" />
+      <node id="6422667311313318807" at="38,30,39,17" concept="6" />
+      <node id="6422667311313318807" at="43,0,44,0" concept="7" trace="PropertyMacro_2929d3e5" />
+      <node id="6422667311313318807" at="44,0,45,0" concept="7" trace="GenerationDescriptor_Class_ff51ad7f" />
+      <node id="6422667311313318807" at="21,0,23,0" concept="1" trace="check_GenerationDescriptor_Class_NonTypesystemRule#()V" />
+      <node id="6422667311313324014" at="23,114,26,5" concept="3" />
+      <node id="6422667311313318807" at="32,0,35,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6422667311313318807" at="35,0,38,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6422667311313318807" at="38,0,41,0" concept="4" trace="overrides#()Z" />
+      <node id="6422667311313324286" at="26,5,30,5" concept="0" />
+      <node id="6422667311313318807" at="23,0,32,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="6422667311313318807" at="21,63,21,63" />
+      <scope id="6422667311313324015" at="24,413,25,13" />
+      <scope id="6422667311313318807" at="32,50,33,58" />
+      <scope id="6422667311313318807" at="35,68,36,102" />
+      <scope id="6422667311313318807" at="38,30,39,17" />
+      <scope id="6422667311313318807" at="21,0,23,0" />
+      <scope id="6422667311313324286" at="27,5,29,270">
         <var name="_reporter_2309309498" id="6422667311313324286" />
         <var name="errorTarget" id="6422667311313324286" />
       </scope>
-      <scope id="6422667311313318807" at="34,0,37,0" />
-      <scope id="6422667311313318807" at="37,0,40,0">
+      <scope id="6422667311313318807" at="32,0,35,0" />
+      <scope id="6422667311313318807" at="35,0,38,0">
         <var name="argument" id="6422667311313318807" />
       </scope>
-      <scope id="6422667311313318807" at="40,0,43,0" />
-      <scope id="6422667311313318808" at="24,114,32,5" />
-      <scope id="6422667311313318807" at="24,0,34,0">
+      <scope id="6422667311313318807" at="38,0,41,0" />
+      <scope id="6422667311313318808" at="23,114,30,5" />
+      <scope id="6422667311313318807" at="23,0,32,0">
         <var name="c" id="6422667311313318807" />
         <var name="status" id="6422667311313318807" />
         <var name="typeCheckingContext" id="6422667311313318807" />
       </scope>
-      <unit id="6422667311313318807" at="44,0,48,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$AUX_lyilt1" />
-      <unit id="6422667311313318807" at="21,0,49,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule" />
+      <unit id="6422667311313318807" at="42,0,46,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$AUX_lyilt1" />
+      <unit id="6422667311313318807" at="20,0,47,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule" />
     </file>
   </root>
 </debug-info>

@@ -29,7 +29,7 @@ public class IdeaPluginIsInLayout_NonTypesystemRule extends AbstractNonTypesyste
       }
     }
     {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(ideaPlugin, "The plugin is not found in the layout. It might cause problems for the dependencies of this plugin", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "3570488090016277840", null, errorTarget);
     }
   }

@@ -33,7 +33,7 @@ public class check_BuildSource_JavaOptions_NonTypesystemRule extends AbstractNon
         });
         if (!(hasIdeaHomeVar)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(opts, "define $idea_home macro to use IntelliJ compiler", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "703815700952141936", null, errorTarget);
           }
         }

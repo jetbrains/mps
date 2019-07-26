@@ -28,7 +28,7 @@ public class typeof_InvokeExpression_InferenceRule extends AbstractInferenceRule
   public void applyRule(final SNode invoke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode cl = SNodeOperations.getNodeAncestor(invoke, AUX_9tk0iy.ClosureLiteral_6eeca0d3, false, false);
     if (!((cl != null))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(invoke, "Must be within ClosureLiteral", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1199711581032", null, errorTarget);
     }
     List<SNode> ptypes = ListSequence.fromList(new ArrayList<SNode>());

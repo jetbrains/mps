@@ -29,7 +29,7 @@ public class checkCircularCustomization_NonTypesystemRule extends AbstractNonTyp
       plan = SLinkOperations.getTarget(SLinkOperations.getTarget(plan, MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes")), MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target"));
       if (Objects.equals(plan, dailyPlan)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dailyPlan, "There is a circular dependency in the plan customization scheme involving the current DailyPlan.", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "2161719505004141865", null, errorTarget);
         }
         return;

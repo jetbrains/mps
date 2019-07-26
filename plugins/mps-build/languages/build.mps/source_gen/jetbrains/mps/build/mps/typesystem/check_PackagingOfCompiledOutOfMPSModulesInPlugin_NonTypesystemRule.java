@@ -66,7 +66,7 @@ public class check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule 
         SNode module = SNodeOperations.cast(SLinkOperations.getTarget(layoutModule, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module")), AUX_eldgzt.BuildMps_Module_8d74323e);
         if (SPropertyOperations.getBoolean(module, MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile"))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(layoutModule, "The module " + msg, "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "4051861013017265330", null, errorTarget);
           }
         }
@@ -84,7 +84,7 @@ public class check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule 
       for (SNode element : ListSequence.fromList(pluginContent)) {
         if ((boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(element, notFineDeclaredPluginModule)) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(element, "The module '" + notFineDeclaredPluginModule + msg, "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6170485468608487833", null, errorTarget);
           }
         }

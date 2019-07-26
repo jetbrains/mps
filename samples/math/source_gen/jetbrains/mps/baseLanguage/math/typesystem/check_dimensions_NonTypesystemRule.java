@@ -39,7 +39,7 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
             if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"))), AUX_wq2nnf.MatrixType_c2d2403c) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"))), AUX_wq2nnf.MatrixType_c2d2403c)) {
               if (lc != 0 && rr != 0 && rr != lc) {
                 {
-                  MessageTarget errorTarget = new NodeMessageTarget();
+                  final MessageTarget errorTarget = new NodeMessageTarget();
                   IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(binaryOperation, "These matrices cannot be multiplied with each other", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6527203785516632809", null, errorTarget);
                 }
               }
@@ -56,7 +56,7 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
           if (matches_n3qbw2_b0a) {
             if (!(MathTypeUtil.checkAdditiveOperationDimensions(matchedNode_n3qbw2_a0))) {
               {
-                MessageTarget errorTarget = new NodeMessageTarget();
+                final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(binaryOperation, "Invalid dimensions", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6527203785516632993", null, errorTarget);
               }
             }
@@ -71,7 +71,7 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
             if (matches_n3qbw2_c0a) {
               if (!(MathTypeUtil.checkAdditiveOperationDimensions(matchedNode_n3qbw2_a0))) {
                 {
-                  MessageTarget errorTarget = new NodeMessageTarget();
+                  final MessageTarget errorTarget = new NodeMessageTarget();
                   IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(binaryOperation, "Invalid dimensions", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "6527203785516633003", null, errorTarget);
                 }
               }

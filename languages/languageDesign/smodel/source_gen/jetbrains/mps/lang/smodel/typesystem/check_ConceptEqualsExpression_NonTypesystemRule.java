@@ -30,7 +30,7 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
 
     if (!(SNodeOperations.isInstanceOf(right, AUX_7d5ybh.NullLiteral_5b038c9e)) && !(SNodeOperations.isInstanceOf(left, AUX_7d5ybh.NullLiteral_5b038c9e)) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a3a1()) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0d0b())) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(equalsExpression, "Concepts are compared using '=='", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7783579884694212461", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.smodel.typesystem.ConvertConceptEqualityToNPEEqualsExpression_QuickFix", false);
@@ -41,7 +41,7 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
     }
     if (!(SNodeOperations.isInstanceOf(right, AUX_7d5ybh.NullLiteral_5b038c9e)) && !(SNodeOperations.isInstanceOf(left, AUX_7d5ybh.NullLiteral_5b038c9e)) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a4a1()) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0e0b())) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(equalsExpression, "Links are compared using '=='", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7783579884694212075", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.smodel.typesystem.ConvertConceptEqualityToNPEEqualsExpression_QuickFix", false);

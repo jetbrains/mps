@@ -35,7 +35,7 @@ public class typeof_EditorOperation_InferenceRule extends AbstractInferenceRule_
     for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(editorOperation, MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f91012fL, "arguments"))).count(); i++) {
       if (i >= ListSequence.fromList(parameters).count()) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorOperation, "Incompatible number of parameters", "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477929", null, errorTarget);
         }
         return;
@@ -51,7 +51,7 @@ public class typeof_EditorOperation_InferenceRule extends AbstractInferenceRule_
     // all declared parameters present 
     if (ListSequence.fromList(SLinkOperations.getChildren(editorOperation, MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f91012fL, "arguments"))).count() < ListSequence.fromList(parameters).count()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorOperation, "Incompatible number of parameters", "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235639162", null, errorTarget);
       }
     }

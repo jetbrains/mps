@@ -36,7 +36,7 @@ public class check_Dependency_NonTypesystemRule extends AbstractNonTypesystemRul
         SetSequence.fromSet(visitedComponents).addElement(nextComponent);
         if (nextComponent == SLinkOperations.getTarget(dependency, MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to"))) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dependency, "Cyclic Dependnecy", "r:6c7cc4eb-60e9-407a-94da-5f4d6ac9650c(jetbrains.mps.samples.componentDependencies.typesystem)", "8153794773742437575", null, errorTarget);
           }
           return;

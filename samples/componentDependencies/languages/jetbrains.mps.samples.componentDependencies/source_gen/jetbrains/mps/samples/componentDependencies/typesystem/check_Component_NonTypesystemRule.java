@@ -36,7 +36,7 @@ public class check_Component_NonTypesystemRule extends AbstractNonTypesystemRule
         SetSequence.fromSet(visitedComponents).addElement(nextComponent);
         if (nextComponent == component) {
           {
-            MessageTarget errorTarget = new NodeMessageTarget();
+            final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(component, "Cyclic Dependnecy", "r:6c7cc4eb-60e9-407a-94da-5f4d6ac9650c(jetbrains.mps.samples.componentDependencies.typesystem)", "8153794773742347573", null, errorTarget);
           }
           return;

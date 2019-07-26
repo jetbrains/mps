@@ -30,7 +30,7 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
         return;
       }
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SNodeOperations.getNextSibling(command), "Consider using repeat to avoid repetition", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "1645404595817116829", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.Kaja.typesystem.RemoveRepetition_QuickFix", false);

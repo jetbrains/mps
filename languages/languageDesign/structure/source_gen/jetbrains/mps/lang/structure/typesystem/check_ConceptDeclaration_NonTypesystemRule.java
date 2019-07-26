@@ -48,7 +48,7 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
       }
     })) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(conceptDeclaration, "The concept is marked both as an InterfacePart and an ImplementationPart. It will be treated as InterfacePart ", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "6579840439426263826", null, errorTarget);
       }
     }
@@ -74,7 +74,7 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
       }).isNotEmpty();
       if (!(stubExists)) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptDeclaration, "Missing stub for a non-stub ImplementationWithStubPart concept", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5624281226435558417", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CreateMissingStub_QuickFix", false);

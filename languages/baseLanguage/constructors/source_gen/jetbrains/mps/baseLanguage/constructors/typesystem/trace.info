@@ -304,8 +304,8 @@
     </file>
     <file name="checkNumberOfArgs_NonTypesystemRule.java">
       <node id="960932673514559333" at="23,135,24,369" concept="6" />
-      <node id="960932673514559399" at="27,9,28,62" concept="6" />
-      <node id="960932673514559399" at="28,62,29,272" concept="6" />
+      <node id="960932673514559399" at="27,9,28,68" concept="6" />
+      <node id="960932673514559399" at="28,68,29,272" concept="6" />
       <node id="960932673514536096" at="34,50,35,54" concept="7" />
       <node id="960932673514536096" at="37,68,38,102" concept="7" />
       <node id="960932673514536096" at="40,30,41,17" concept="7" />

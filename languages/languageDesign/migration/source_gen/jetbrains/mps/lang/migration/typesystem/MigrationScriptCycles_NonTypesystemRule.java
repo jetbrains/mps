@@ -20,7 +20,7 @@ public class MigrationScriptCycles_NonTypesystemRule extends AbstractNonTypesyst
   }
   public void applyRule(final SNode migrationScript, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(!((MigrationsCheckUtil.hasCycles(migrationScript))))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(migrationScript, "Cyclic migration script dependency detected", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "730486742184890144", null, errorTarget);
     }
   }

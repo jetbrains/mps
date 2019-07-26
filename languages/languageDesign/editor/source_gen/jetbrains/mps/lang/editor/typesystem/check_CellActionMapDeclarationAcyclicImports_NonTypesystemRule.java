@@ -25,7 +25,7 @@ public class check_CellActionMapDeclarationAcyclicImports_NonTypesystemRule exte
     Sequence.fromIterable(CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id7pqJbakYMN2.invoke(cellActionMap)).visitAll(new IVisitor<ImportCycle>() {
       public void visit(ImportCycle cycle) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cycle.getFirstImport(), "Cycle in imports: " + cycle, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823", null, errorTarget);
         }
       }

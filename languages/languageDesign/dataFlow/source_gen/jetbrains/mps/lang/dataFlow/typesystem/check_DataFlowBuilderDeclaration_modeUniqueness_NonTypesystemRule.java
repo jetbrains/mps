@@ -70,7 +70,7 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
     if (SetSequence.fromSet(MapSequence.fromMap(duplicatingDeclarations).keySet()).isNotEmpty()) {
       for (SNode duplicatingDecl : SetSequence.fromSet(MapSequence.fromMap(duplicatingDeclarations).keySet())) {
         {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(builder, "Conflicting modes. Data flow builder" + ((ListSequence.fromList(MapSequence.fromMap(duplicatingDeclarations).get(duplicatingDecl)).isEmpty() ? "" : "  with modes (" + ListSequence.fromList(MapSequence.fromMap(duplicatingDeclarations).get(duplicatingDecl)).select(new ISelector<SNode, String>() {
             public String select(SNode it) {
               return SNodeOperations.getConcept(it).getName();

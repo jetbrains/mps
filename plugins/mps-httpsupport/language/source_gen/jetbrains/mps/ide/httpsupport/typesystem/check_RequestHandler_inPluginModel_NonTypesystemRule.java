@@ -26,7 +26,7 @@ public class check_RequestHandler_inPluginModel_NonTypesystemRule extends Abstra
 
     if (!(modelName.equals(correctName))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(requestHandler, "Request Handler instances must be in plugin model", "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "581054598747850724", null, errorTarget);
       }
     }

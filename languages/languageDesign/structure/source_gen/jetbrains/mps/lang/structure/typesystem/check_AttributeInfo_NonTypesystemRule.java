@@ -24,7 +24,7 @@ public class check_AttributeInfo_NonTypesystemRule extends AbstractNonTypesystem
   public void applyRule(final SNode conceptDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (AttributeDesignTimeOperations.isAttributeDeclaration(conceptDeclaration) && (AttributeOperations.getAttribute(conceptDeclaration, new IAttributeDescriptor.NodeAttribute(AUX_4i961f.AttributeInfo_b702cd25)) == null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptDeclaration, "Concrete attributes must be with attribute info", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "7588428831943042516", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.FixAttributeInfo_QuickFix", false);
@@ -34,7 +34,7 @@ public class check_AttributeInfo_NonTypesystemRule extends AbstractNonTypesystem
     }
     if (!(AttributeDesignTimeOperations.isAttributeDeclaration(conceptDeclaration)) && (AttributeOperations.getAttribute(conceptDeclaration, new IAttributeDescriptor.NodeAttribute(AUX_4i961f.AttributeInfo_b702cd25)) != null)) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptDeclaration, "Attribute info can be only used for concrete attributes", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "7588428831943655193", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.FixAttributeInfo_QuickFix", false);

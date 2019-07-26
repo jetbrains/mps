@@ -26,8 +26,8 @@
       </scope>
     </file>
     <file name="check_IHasUniqueId_NonTypesystemRule.java">
-      <node id="195736285282743922" at="29,181,30,62" concept="6" />
-      <node id="195736285282743922" at="30,62,31,387" concept="6" />
+      <node id="195736285282743922" at="29,181,30,68" concept="6" />
+      <node id="195736285282743922" at="30,68,31,387" concept="6" />
       <node id="195736285282741216" at="36,50,37,51" concept="7" />
       <node id="195736285282741216" at="39,68,40,102" concept="7" />
       <node id="195736285282741216" at="42,30,43,17" concept="7" />
@@ -79,8 +79,8 @@
       </scope>
     </file>
     <file name="check_ExtensionPointDeclaration_NonTypesystemRule.java">
-      <node id="2141245758541445226" at="26,442,27,58" concept="6" />
-      <node id="2141245758541445226" at="27,58,28,416" concept="6" />
+      <node id="2141245758541445226" at="26,442,27,64" concept="6" />
+      <node id="2141245758541445226" at="27,64,28,416" concept="6" />
       <node id="2141245758541445224" at="31,50,32,57" concept="7" />
       <node id="2141245758541445224" at="34,68,35,102" concept="7" />
       <node id="2141245758541445224" at="37,30,38,17" concept="7" />

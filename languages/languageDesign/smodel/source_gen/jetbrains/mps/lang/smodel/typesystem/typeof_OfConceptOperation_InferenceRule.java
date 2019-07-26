@@ -36,7 +36,7 @@ public class typeof_OfConceptOperation_InferenceRule extends AbstractInferenceRu
       }
     } else {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
+        final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ofConceptOperation, "OfConceptOperation should be child of DotExpression", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "6159542558115930305", null, errorTarget);
       }
     }

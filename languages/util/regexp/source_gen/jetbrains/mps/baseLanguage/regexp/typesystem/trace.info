@@ -622,8 +622,8 @@
       </scope>
     </file>
     <file name="check_LiteralReplacement_NonTypesystemRule.java">
-      <node id="3796137614137565931" at="23,7,24,60" concept="5" />
-      <node id="3796137614137565931" at="24,60,25,256" concept="5" />
+      <node id="3796137614137565931" at="23,7,24,66" concept="5" />
+      <node id="3796137614137565931" at="24,66,25,256" concept="5" />
       <node id="3796137614137565921" at="29,50,30,50" concept="6" />
       <node id="3796137614137565921" at="32,68,33,102" concept="6" />
       <node id="3796137614137565921" at="35,30,36,17" concept="6" />
@@ -785,8 +785,8 @@
       </scope>
     </file>
     <file name="check_StringLiteralRegexp_NonTypesystemRule.java">
-      <node id="8330008649152998035" at="23,7,24,60" concept="5" />
-      <node id="8330008649152998035" at="24,60,25,256" concept="5" />
+      <node id="8330008649152998035" at="23,7,24,66" concept="5" />
+      <node id="8330008649152998035" at="24,66,25,256" concept="5" />
       <node id="8330008649152995908" at="29,50,30,51" concept="6" />
       <node id="8330008649152995908" at="32,68,33,102" concept="6" />
       <node id="8330008649152995908" at="35,30,36,17" concept="6" />
