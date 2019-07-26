@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.plugin;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiDocumentManager;
@@ -25,9 +25,9 @@ import com.intellij.psi.PsiFile;
 
 public class PluginUtil {
   public static PsiElement getCurrentElement(AnActionEvent e) {
-    Editor editor = e.getData(DataKeys.EDITOR);
+    Editor editor = e.getData(CommonDataKeys.EDITOR);
     if (editor == null) return null;
-    Project project = e.getData(DataKeys.PROJECT);
+    Project project = e.getData(CommonDataKeys.PROJECT);
     assert project != null;
     PsiFile file = PsiDocumentManager.getInstance(project).getCachedPsiFile(editor.getDocument());
     if (file == null) return null;

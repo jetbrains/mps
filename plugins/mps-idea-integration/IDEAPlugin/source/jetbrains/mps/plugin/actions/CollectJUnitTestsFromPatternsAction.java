@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package jetbrains.mps.plugin.actions;
 import com.intellij.CommonBundle;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.Result;
@@ -61,12 +61,12 @@ public class CollectJUnitTestsFromPatternsAction extends AnAction {
     super.update(e);
     e.getPresentation().setVisible(false);
 
-    Editor editor = e.getData(DataKeys.EDITOR);
+    Editor editor = e.getData(CommonDataKeys.EDITOR);
     if (editor == null) {
       return;
     }
 
-    Project project = e.getData(DataKeys.PROJECT);
+    Project project = e.getData(CommonDataKeys.PROJECT);
     if (project == null) {
       return;
     }
@@ -86,12 +86,12 @@ public class CollectJUnitTestsFromPatternsAction extends AnAction {
 
   @Override
   public void actionPerformed(AnActionEvent e) {
-    Editor editor = e.getData(DataKeys.EDITOR);
+    Editor editor = e.getData(CommonDataKeys.EDITOR);
     if (editor == null) {
       return;
     }
 
-    final Project project = e.getData(DataKeys.PROJECT);
+    final Project project = e.getData(CommonDataKeys.PROJECT);
     if (project == null) {
       return;
     }

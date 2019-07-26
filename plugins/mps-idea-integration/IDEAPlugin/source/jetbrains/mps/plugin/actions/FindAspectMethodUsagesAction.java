@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,14 @@ package jetbrains.mps.plugin.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.*;
+import com.intellij.psi.PsiDocumentManager;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiJavaFile;
+import com.intellij.psi.PsiMethod;
 import jetbrains.mps.plugin.PluginUtil;
 import jetbrains.mps.plugin.ProjectHandler;
 
@@ -29,11 +33,11 @@ public class FindAspectMethodUsagesAction extends AnAction {
   public void update(AnActionEvent e) {
     super.update(e);
     e.getPresentation().setVisible(false);
-    Editor editor = e.getData(DataKeys.EDITOR);
+    Editor editor = e.getData(CommonDataKeys.EDITOR);
     if (editor == null) {
       return;
     }
-    Project project = e.getData(DataKeys.PROJECT);
+    Project project = e.getData(CommonDataKeys.PROJECT);
     int offset = editor.getCaretModel().getOffset();
     if (project == null) {
       return;
@@ -49,9 +53,9 @@ public class FindAspectMethodUsagesAction extends AnAction {
   }
 
   public void actionPerformed(AnActionEvent e) {
-    Project project = e.getData(DataKeys.PROJECT);
+    Project project = e.getData(CommonDataKeys.PROJECT);
     assert project != null;
-    Editor editor = e.getData(DataKeys.EDITOR);
+    Editor editor = e.getData(CommonDataKeys.EDITOR);
     assert editor != null;
     int offset = editor.getCaretModel().getOffset();
     PsiFile file = PsiDocumentManager.getInstance(project).getCachedPsiFile(editor.getDocument());

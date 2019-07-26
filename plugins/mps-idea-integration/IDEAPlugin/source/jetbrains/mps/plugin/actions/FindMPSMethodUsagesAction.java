@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package jetbrains.mps.plugin.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
@@ -38,7 +38,7 @@ public class FindMPSMethodUsagesAction extends AnAction {
   }
 
   public void actionPerformed(AnActionEvent anActionEvent) {
-    Project project = anActionEvent.getData(DataKeys.PROJECT);
+    Project project = anActionEvent.getData(CommonDataKeys.PROJECT);
     assert project != null;
     PsiElement element = PluginUtil.getCurrentElement(anActionEvent);
     PsiMethod method = PluginUtil.getAncestor(element, PsiMethod.class);
