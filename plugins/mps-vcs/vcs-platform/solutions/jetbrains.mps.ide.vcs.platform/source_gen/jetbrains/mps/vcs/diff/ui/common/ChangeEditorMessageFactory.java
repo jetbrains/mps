@@ -68,7 +68,7 @@ public class ChangeEditorMessageFactory {
       }
       if (beginIndex == endIndex) {
         // delete nodes 
-        return ListSequence.fromListAndArray(new LinkedList<ChangeEditorMessage>(), new ChangeEditorMessage(editedModel.getNode(parentId), new DeletedNodeMessageTarget(roleLink.getName(), beginIndex), owner, change, conflictChecker, highlighted));
+        return ListSequence.fromListAndArray(new LinkedList<ChangeEditorMessage>(), new ChangeEditorMessage(editedModel.getNode(parentId), new DeletedNodeMessageTarget(roleLink, beginIndex), owner, change, conflictChecker, highlighted));
       } else {
         List<ChangeEditorMessage> msgs = ListSequence.fromList(new LinkedList<ChangeEditorMessage>());
         for (int i = beginIndex; i < endIndex; i++) {

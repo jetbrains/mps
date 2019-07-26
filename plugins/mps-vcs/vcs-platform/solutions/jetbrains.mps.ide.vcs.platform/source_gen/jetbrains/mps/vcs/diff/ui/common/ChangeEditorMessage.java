@@ -13,10 +13,12 @@ import jetbrains.mps.errors.MessageStatus;
 import java.awt.Color;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.errors.messageTargets.MessageTargetEnum;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import java.awt.Rectangle;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
 import org.jetbrains.annotations.Nullable;
@@ -25,11 +27,9 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.messageTargets.CellFinder;
 import java.util.Objects;
-import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.cells.CellMessagesUtil;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -76,14 +76,20 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     return true;
   }
   private boolean isDirectCell(EditorCell cell) {
-    // Return true if and only if this cell should be painted, not only set in frame 
+    // Return true if and only if this cell represents complete change and shall get respective indication (i.e. filled background) be painted, not only set in frame 
+    // Otherwise, the cell receives rectangle frame only to indicate there's a change, although the cell doesn't represent the exact change itself. 
     if (cell == null) {
       return false;
     }
-    if (myMessageTarget.getTarget() == MessageTargetEnum.NODE) {
+    if (myMessageTarget instanceof NodeMessageTarget) {
       return getNode() == cell.getSNode();
     } else {
-      return !(cell instanceof EditorCell_Collection) && isNameCell(cell) == (myMessageTarget.getTarget() == MessageTargetEnum.PROPERTY && NAME_PROPERTY.equals(myMessageTarget.getRole()));
+      // cell with name of a node is often used as an 'indicative' cell for changes otherwise not visible in the editor 
+      // therefore, for cell with name we shall tell it is direct only when our target is 'name' property 
+      if (cell instanceof EditorCell_Collection) {
+        return false;
+      }
+      return isNameCell(cell) == (myMessageTarget instanceof PropertyMessageTarget && NAME_PROPERTY.equals(myMessageTarget.getRole()));
     }
   }
 
@@ -101,8 +107,12 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
       ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(graphics, getColor(), false);
       repaintConflictedMessages(graphics, cell);
     } else {
-      if (myMessageTarget.getTarget() == MessageTargetEnum.DELETED_CHILD) {
-        drawDeletedChild(graphics, cell);
+      if (myMessageTarget instanceof DeletedNodeMessageTarget) {
+        DeletedNodeMessageTarget dmt = ((DeletedNodeMessageTarget) myMessageTarget);
+        if (cell instanceof EditorCell_Collection && dmt.getLink().equals(cell.getSRole())) {
+          graphics.setColor(getColor());
+          drawDeletedChild(graphics, (EditorCell_Collection) cell, dmt.getNextChildIndex());
+        }
       } else {
         Rectangle bounds = (isIndirectRoot(editor) ? getFirstPseudoLineBounds(editor) : GeometryUtil.getBounds(cell));
         graphics.setColor(ChangeColors.get((isConflicted() ? ChangeType.CONFLICTED : ChangeType.CHANGE)));
@@ -129,8 +139,14 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   }
   @Override
   public boolean acceptCell(EditorCell cell, EditorComponent component) {
-    EditorCell superCell = super.getCell(component);
-    return isNameCell(cell) && !(isDirectCell(cell)) && superCell != null && cell.isBig() || super.acceptCell(cell, component);
+    if (super.acceptCell(cell, component)) {
+      return true;
+    }
+    if (cell.isBig() && isNameCell(cell) && !(isDirectCell(cell))) {
+      EditorCell superCell = super.getCell(component);
+      return superCell != null;
+    }
+    return false;
   }
   private static boolean isNameCell(EditorCell cell) {
     return Objects.equals(check_myu41h_a0a0r(check_myu41h_a0a0a71(check_myu41h_a0a0a0r(cell.getCellContext()))), NAME_PROPERTY);
@@ -140,46 +156,40 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     // "conflicted" red frame. In this case, we repaint conflicted red frame again 
     EditorCell_Collection parent = cell.getParent();
     if (parent != null && parent.getCellsCount() == 1) {
-      SimpleEditorMessage messageToRepaint = Sequence.fromIterable(((Iterable<ChangeEditorMessage>) CellMessagesUtil.getMessages(parent, ChangeEditorMessage.class))).findFirst(new IWhereFilter<ChangeEditorMessage>() {
+      ChangeEditorMessage messageToRepaint = Sequence.fromIterable(((Iterable<ChangeEditorMessage>) CellMessagesUtil.getMessages(parent, ChangeEditorMessage.class))).findFirst(new IWhereFilter<ChangeEditorMessage>() {
         public boolean accept(ChangeEditorMessage m) {
           return m.isConflicted();
         }
       });
       if (messageToRepaint != null) {
-        ((ChangeEditorMessage) messageToRepaint).paint(graphics, (EditorComponent) cell.getEditorComponent(), parent);
+        messageToRepaint.paint(graphics, (EditorComponent) cell.getEditorComponent(), parent);
       }
     }
   }
-  private void drawDeletedChild(Graphics graphics, EditorCell cell) {
-    if (myMessageTarget.getRole().equals(cell.getRole())) {
-      int index = ((DeletedNodeMessageTarget) myMessageTarget).getNextChildIndex();
-      if (index != -1) {
-        EditorCell_Collection collectionCell = (EditorCell_Collection) cell;
-
-        if (hasChildrenWithDifferentNode(cell)) {
-          EditorCell childCell = getChildCell(collectionCell, index);
-          if (isVertical(collectionCell)) {
-            drawHorizontalLine(graphics, collectionCell, childCell);
-          } else {
-            drawVerticalLineWithArrows(graphics, collectionCell, childCell);
-          }
+  private static void drawDeletedChild(Graphics graphics, EditorCell_Collection collectionCell, int index) {
+    if (index != -1) {
+      if (hasChildrenWithDifferentNode(collectionCell)) {
+        EditorCell childCell = getChildCell(collectionCell, index);
+        if (isVertical(collectionCell)) {
+          drawHorizontalLine(graphics, collectionCell, childCell);
         } else {
-          ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(graphics, getColor(), false);
+          drawVerticalLineWithArrows(graphics, collectionCell, childCell);
         }
+      } else {
+        ((jetbrains.mps.nodeEditor.cells.EditorCell) collectionCell).paintSelection(graphics, graphics.getColor(), false);
       }
     }
   }
-  private void drawHorizontalLine(Graphics graphics, EditorCell_Collection collectionCell, EditorCell childCell) {
+  private static void drawHorizontalLine(Graphics graphics, EditorCell_Collection collectionCell, EditorCell childCell) {
     int y;
     if (childCell != null) {
       y = childCell.getY();
     } else {
       y = collectionCell.lastCell().getBottom();
     }
-    graphics.setColor(getColor());
     graphics.drawLine(collectionCell.getX(), y, collectionCell.getRight(), y);
   }
-  private void drawVerticalLineWithArrows(Graphics graphics, EditorCell_Collection collectionCell, EditorCell cell) {
+  private static void drawVerticalLineWithArrows(Graphics graphics, EditorCell_Collection collectionCell, EditorCell cell) {
     int x;
     EditorCell childCell;
     if (cell != null) {
@@ -192,12 +202,11 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     int y1 = childCell.getY();
     int y2 = childCell.getBottom();
 
-    graphics.setColor(getColor());
     graphics.drawLine(x, y1, x, y2);
     graphics.fillPolygon(new int[]{x, x - 3, x + 3}, new int[]{y1 - 2, y1 - 5, y1 - 5}, 3);
     graphics.fillPolygon(new int[]{x, x - 3, x + 3}, new int[]{y2 + 2, y2 + 5, y2 + 5}, 3);
 
-    graphics.setColor(ColorAndGraphicsUtil.brightenColor(getColor(), 0.8f));
+    graphics.setColor(ColorAndGraphicsUtil.brightenColor(graphics.getColor(), 0.8f));
     graphics.drawPolygon(new int[]{x, x - 3, x + 3}, new int[]{y1 - 2, y1 - 5, y1 - 5}, 3);
     graphics.drawPolygon(new int[]{x, x - 3, x + 3}, new int[]{y2 + 2, y2 + 5, y2 + 5}, 3);
   }
@@ -308,7 +317,7 @@ __switch__:
   }
 
   public Bounds getBounds(jetbrains.mps.openapi.editor.EditorComponent editor) {
-    if (myMessageTarget.getTarget() != MessageTargetEnum.DELETED_CHILD) {
+    if (!(myMessageTarget instanceof DeletedNodeMessageTarget)) {
       if (isIndirectRoot(editor)) {
         Rectangle r = getFirstPseudoLineBounds(editor);
         return new Bounds(r.y, r.y + r.height);
@@ -316,14 +325,14 @@ __switch__:
         return getBoundsSuper(editor);
       }
     } else {
-      DeletedNodeMessageTarget cmt = ((DeletedNodeMessageTarget) myMessageTarget);
+      DeletedNodeMessageTarget dmt = ((DeletedNodeMessageTarget) myMessageTarget);
       EditorCell cell = getCellInBothWays(editor);
       if (cell == null) {
         return new Bounds(-1, -1);
       }
-      if (cmt.getRole().equals(cell.getRole())) {
+      if (dmt.getLink().equals(cell.getSRole())) {
         if (hasChildrenWithDifferentNode(cell)) {
-          return getBoundsForChild((EditorCell_Collection) cell, cmt.getNextChildIndex());
+          return getBoundsForChild((EditorCell_Collection) cell, dmt.getNextChildIndex());
         } else {
           return getBoundsSuper(editor);
         }

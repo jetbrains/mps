@@ -17,12 +17,14 @@ package jetbrains.mps.errors.messageTargets;
 
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractLink;
 
 /**
  * Cyril.Konopko, 18.02.2010
  */
-public class ReferenceMessageTarget implements MessageTarget {
+@Immutable
+public final class ReferenceMessageTarget implements MessageTarget {
   private final String myRoleName;
   private final SAbstractLink myRole;
 

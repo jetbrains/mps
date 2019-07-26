@@ -16,12 +16,14 @@
 package jetbrains.mps.errors.messageTargets;
 
 import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 /**
  * Cyril.Konopko, 18.02.2010
  */
-public class PropertyMessageTarget implements MessageTarget {
+@Immutable
+public final class PropertyMessageTarget implements MessageTarget {
   private final String myPropertyName;
   private final SProperty myProperty;
 
@@ -42,6 +44,9 @@ public class PropertyMessageTarget implements MessageTarget {
     return MessageTargetEnum.PROPERTY;
   }
 
+  /**
+   * FIXME once 2019.2 is out, replace with cast and SProperty accessor: {@code ((PropertyMessageTarget) mt).getProperty().getName()}
+   */
   @Override
   public String getRole() {
     return myPropertyName;
