@@ -15547,8 +15547,8 @@
       <node id="1227107414246" at="49,31,50,49" concept="2" />
       <node id="1227107421518" at="50,49,51,48" concept="2" />
       <node id="1227107391841" at="51,48,52,22" concept="8" />
-      <node id="1227107414246" at="54,41,55,106" concept="7" />
-      <node id="1227107414246" at="55,106,56,47" concept="2" />
+      <node id="1227107414246" at="54,41,55,101" concept="7" />
+      <node id="1227107414246" at="55,101,56,47" concept="2" />
       <node id="1227107414246" at="56,47,57,34" concept="2" />
       <node id="1227107414246" at="57,34,58,22" concept="8" />
       <node id="1227107391841" at="60,40,61,239" concept="7" />
@@ -15583,7 +15583,7 @@
       <node id="1227107391841" at="114,0,117,0" concept="6" trace="getNoTargetText#()Ljava/lang/String;" />
       <node id="1227107391841" at="30,0,34,0" concept="1" trace="PropertyNameTarget_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1227107391841" at="60,0,64,0" concept="6" trace="createRefNode_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1227107391841" at="68,0,72,0" concept="1" trace="propertyNameSingleRoleHandler_mqpyhp_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1227107391841" at="68,0,72,0" concept="1" trace="propertySpecSingleRoleHandler_mqpyhp_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1227107391841" at="35,0,40,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1227107391841" at="73,0,78,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1227107414246" at="54,0,60,0" concept="6" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -15645,7 +15645,7 @@
       </scope>
       <scope id="1227107391841" at="101,44,112,7" />
       <scope id="1227107391841" at="100,0,114,0" />
-      <unit id="1227107391841" at="64,0,118,0" name="jetbrains.mps.lang.typesystem.editor.PropertyNameTarget_EditorBuilder_a$propertyNameSingleRoleHandler_mqpyhp_b0" />
+      <unit id="1227107391841" at="64,0,118,0" name="jetbrains.mps.lang.typesystem.editor.PropertyNameTarget_EditorBuilder_a$propertySpecSingleRoleHandler_mqpyhp_b0" />
       <unit id="1227107391841" at="26,0,119,0" name="jetbrains.mps.lang.typesystem.editor.PropertyNameTarget_EditorBuilder_a" />
     </file>
   </root>

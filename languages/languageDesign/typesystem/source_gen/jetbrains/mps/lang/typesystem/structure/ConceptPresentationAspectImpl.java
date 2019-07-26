@@ -672,7 +672,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.PropertyNameTarget:
         if (props_PropertyNameTarget == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("property name");
+          cpb.rawPresentation("property");
           props_PropertyNameTarget = cpb.create();
         }
         return props_PropertyNameTarget;

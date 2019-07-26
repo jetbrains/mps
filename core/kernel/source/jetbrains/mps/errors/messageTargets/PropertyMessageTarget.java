@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,26 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SProperty;
+
 /**
  * Cyril.Konopko, 18.02.2010
  */
 public class PropertyMessageTarget implements MessageTarget {
-  private String myPropertyName;
+  private final String myPropertyName;
+  private final SProperty myProperty;
 
+  @Deprecated
+  @ToRemove(version = 2019.2)
   public PropertyMessageTarget(String propertyName) {
     myPropertyName = propertyName;
+    myProperty = null;
+  }
+
+  public PropertyMessageTarget(SProperty property) {
+    myPropertyName = property.getName();
+    myProperty = property;
   }
 
   @Override

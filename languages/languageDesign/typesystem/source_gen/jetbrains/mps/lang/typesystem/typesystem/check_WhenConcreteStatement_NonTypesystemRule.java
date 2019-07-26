@@ -19,7 +19,7 @@ public class check_WhenConcreteStatement_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode whenConcreteStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(RulesUtil.withinInferenceItem(whenConcreteStatement))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(whenConcreteStatement, "WHEN CONCRETE should be used only within inference rules", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1195223608203", null, errorTarget);
     }
   }

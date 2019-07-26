@@ -22,7 +22,7 @@ public class check_SupersedeConceptFunction_NonTypesystemRule extends AbstractNo
   public void applyRule(final SNode sce, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode infRule = SNodeOperations.getNodeAncestor(sce, AUX_pqsvjy.InferenceRule_fc876475, false, false);
     if (!((infRule != null) && (boolean) AbstractRule__BehaviorDescriptor.isAttributeRule_id6lCixFI9vx1.invoke(infRule))) {
-      MessageTarget errorTarget = new NodeMessageTarget();
+      final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(sce, "not applicable in this context", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "7307171874934109979", null, errorTarget);
     }
   }

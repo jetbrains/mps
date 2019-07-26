@@ -1201,8 +1201,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.typesystem.structure.MessageTarget", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a65783L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1227107274859");
     b.version(2);
-    b.aggregate("propertyName", 0x11db54c4ff3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1227107356659").done();
-    b.alias("property name");
+    b.aggregate("propertySpec", 0x11db54c4ff3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1227107356659").done();
+    b.alias("property");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPropertyPatternVariableReference() {

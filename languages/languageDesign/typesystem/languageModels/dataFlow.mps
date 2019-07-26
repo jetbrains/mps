@@ -904,7 +904,7 @@
           <node concept="2OqwBi" id="hQYPyjz" role="3Ah4Yx">
             <node concept="3__QtB" id="hQYPyj2" role="2Oq$k0" />
             <node concept="3TrEf2" id="hQYPzxe" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpd4:hQPj4ZN" resolve="propertyName" />
+              <ref role="3Tt5mk" to="tpd4:hQPj4ZN" resolve="propertySpec" />
             </node>
           </node>
         </node>

@@ -7408,7 +7408,7 @@
                       <node concept="liA8E" id="G9" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="Ga" role="37wK5m">
-                          <property role="Xl_RC" value="property name" />
+                          <property role="Xl_RC" value="property" />
                           <node concept="cd27G" id="Gc" role="lGtFl">
                             <node concept="3u3nmq" id="Gd" role="cd27D">
                               <property role="3u3nmv" value="1227107274859" />
@@ -35385,7 +35385,7 @@
                         <node concept="liA8E" id="3gX" role="2OqNvi">
                           <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.aggregate(java.lang.String,long)" resolve="aggregate" />
                           <node concept="Xl_RD" id="3gY" role="37wK5m">
-                            <property role="Xl_RC" value="propertyName" />
+                            <property role="Xl_RC" value="propertySpec" />
                           </node>
                           <node concept="1adDum" id="3gZ" role="37wK5m">
                             <property role="1adDun" value="0x11db54c4ff3L" />
@@ -35442,7 +35442,7 @@
             <node concept="liA8E" id="3h9" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="3ha" role="37wK5m">
-                <property role="Xl_RC" value="property name" />
+                <property role="Xl_RC" value="property" />
               </node>
             </node>
           </node>

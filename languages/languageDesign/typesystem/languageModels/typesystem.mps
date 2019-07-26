@@ -21,6 +21,7 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="tpdd" ref="r:00000000-0000-4000-0000-011c895902ad(jetbrains.mps.lang.typesystem.behavior)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
+    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tp2b" ref="r:00000000-0000-4000-0000-011c8959033f(jetbrains.mps.lang.pattern.behavior)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
@@ -2260,7 +2261,9 @@
       <node concept="1ZobV4" id="hQPjpm8" role="3cqZAp">
         <node concept="mw_s8" id="hQPjq0X" role="1ZfhKB">
           <node concept="2c44tf" id="hQPjq0Y" role="mwGJk">
-            <node concept="17QB3L" id="hQPjskJ" role="2c44tc" />
+            <node concept="3uibUv" id="458mKmKycz8" role="2c44tc">
+              <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
+            </node>
           </node>
         </node>
         <node concept="mw_s8" id="hQPjpmc" role="1ZfhK$">
@@ -2270,7 +2273,7 @@
                 <ref role="1YBMHb" node="hQPjmC_" resolve="target" />
               </node>
               <node concept="3TrEf2" id="hQPjoIX" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpd4:hQPj4ZN" resolve="propertyName" />
+                <ref role="3Tt5mk" to="tpd4:hQPj4ZN" resolve="propertySpec" />
               </node>
             </node>
           </node>
@@ -2289,7 +2292,9 @@
       <node concept="1ZobV4" id="hQPjJzm" role="3cqZAp">
         <node concept="mw_s8" id="hQPjKbG" role="1ZfhKB">
           <node concept="2c44tf" id="hQPjKbH" role="mwGJk">
-            <node concept="17QB3L" id="hQPjLDL" role="2c44tc" />
+            <node concept="3uibUv" id="2CzzCrtQgMT" role="2c44tc">
+              <ref role="3uigEE" to="c17a:~SAbstractLink" resolve="SAbstractLink" />
+            </node>
           </node>
         </node>
         <node concept="mw_s8" id="hQPjJzp" role="1ZfhK$">

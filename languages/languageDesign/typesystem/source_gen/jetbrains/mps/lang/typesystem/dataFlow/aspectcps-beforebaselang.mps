@@ -12160,7 +12160,7 @@
                       <property role="1adDun" value="0x11db54c4ff3L" />
                     </node>
                     <node concept="Xl_RD" id="16W" role="37wK5m">
-                      <property role="Xl_RC" value="propertyName" />
+                      <property role="Xl_RC" value="propertySpec" />
                     </node>
                   </node>
                   <node concept="cd27G" id="16J" role="lGtFl">

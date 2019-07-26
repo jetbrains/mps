@@ -2433,8 +2433,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1227107274859" at="88,0,89,0" concept="2" trace="props_PropertyNameTarget" />
       <node id="1227107274859" at="673,47,674,76" concept="5" />
-      <node id="1227107274859" at="674,76,675,47" concept="1" />
-      <node id="1227107274859" at="675,47,676,50" concept="1" />
+      <node id="1227107274859" at="674,76,675,42" concept="1" />
+      <node id="1227107274859" at="675,42,676,50" concept="1" />
       <node id="1227107274859" at="677,9,678,40" concept="6" />
       <node id="1227107274859" at="672,52,677,9" concept="3" />
       <scope id="1227107274859" at="673,47,676,50">
@@ -2455,8 +2455,8 @@
       <node id="1227107274859" at="1201,128,1202,110" concept="1" />
       <node id="1227107274859" at="1202,110,1203,17" concept="1" />
       <node id="1227107356659" at="1203,17,1204,189" concept="1" />
-      <node id="1227107274859" at="1204,189,1205,29" concept="1" />
-      <node id="1227107274859" at="1205,29,1206,22" concept="6" />
+      <node id="1227107274859" at="1204,189,1205,24" concept="1" />
+      <node id="1227107274859" at="1205,24,1206,22" concept="6" />
       <node id="1227107274859" at="1198,0,1208,0" concept="8" trace="createDescriptorForPropertyNameTarget#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1227107274859" at="317,52,318,43" />
       <scope id="1227107274859" at="1198,76,1206,22">

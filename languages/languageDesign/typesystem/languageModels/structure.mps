@@ -1381,13 +1381,13 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="PropertyNameTarget" />
-    <property role="34LRSv" value="property name" />
+    <property role="34LRSv" value="property" />
     <property role="3GE5qa" value="definition.statement.target" />
     <property role="EcuMT" value="1227107274859" />
     <ref role="1TJDcQ" node="hQOD_u3" resolve="MessageTarget" />
     <node concept="1TJgyj" id="hQPj4ZN" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="propertyName" />
+      <property role="20kJfa" value="propertySpec" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1227107356659" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />

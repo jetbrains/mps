@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,27 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractLink;
+
 /**
  * Cyril.Konopko, 18.02.2010
  */
 public class ReferenceMessageTarget implements MessageTarget {
-   private String myRole;
+  private final String myRoleName;
+  private final SAbstractLink myRole;
 
+  @Deprecated
+  @ToRemove(version = 2019.2)
   public ReferenceMessageTarget(String role) {
+    myRoleName = role;
+    myRole = null;
+  }
+
+  // despite the 'reference' in the name, class serves both aggregations and associations
+  public ReferenceMessageTarget(@NotNull SAbstractLink role) {
+    myRoleName = role.getName();
     myRole = role;
   }
 
@@ -32,7 +46,7 @@ public class ReferenceMessageTarget implements MessageTarget {
 
   @Override
   public String getRole() {
-    return myRole;
+    return myRoleName;
   }
 
   @Override

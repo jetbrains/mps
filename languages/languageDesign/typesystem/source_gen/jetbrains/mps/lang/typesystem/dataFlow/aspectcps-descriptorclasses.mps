@@ -7114,7 +7114,7 @@
                     </node>
                   </node>
                   <node concept="3TrEf2" id="D_" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tpd4:hQPj4ZN" resolve="propertyName" />
+                    <ref role="3Tt5mk" to="tpd4:hQPj4ZN" resolve="propertySpec" />
                     <node concept="cd27G" id="DF" role="lGtFl">
                       <node concept="3u3nmq" id="DG" role="cd27D">
                         <property role="3u3nmv" value="1227267389518" />

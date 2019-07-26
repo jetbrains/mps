@@ -39,7 +39,7 @@ public class check_VarRef_in_WhenConcreteStatement_NonTypesystemRule extends Abs
       }
       if (variableDeclaration != null && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(variableDeclaration, AUX_xlii8y.WhenConcreteStatement_76fb8bc3, false)).contains(ancestor))) {
         if (!(SPropertyOperations.getBoolean(variableDeclaration, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal")))) {
-          MessageTarget errorTarget = new NodeMessageTarget();
+          final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "variable is used inside WHEN CONCRETE block. should be declared final", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "9215127012916007489", null, errorTarget);
         }
       }

@@ -4035,10 +4035,10 @@
     <ref role="1XX52x" to="tpd4:hQPiL1F" resolve="PropertyNameTarget" />
     <node concept="3EZMnI" id="hQPji_n" role="2wV5jI">
       <node concept="3F0ifn" id="hQPjj3A" role="3EZMnx">
-        <property role="3F0ifm" value="property name" />
+        <property role="3F0ifm" value="property" />
       </node>
       <node concept="3F1sOY" id="hQPjkPe" role="3EZMnx">
-        <ref role="1NtTu8" to="tpd4:hQPj4ZN" resolve="propertyName" />
+        <ref role="1NtTu8" to="tpd4:hQPj4ZN" resolve="propertySpec" />
         <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
       </node>
       <node concept="2iRfu4" id="i2ICygX" role="2iSdaV" />
