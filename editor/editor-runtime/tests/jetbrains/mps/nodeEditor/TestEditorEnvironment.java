@@ -58,7 +58,7 @@ public class TestEditorEnvironment {
 
   private static class TestEditorComponent extends HeadlessEditorComponent {
     private TestEditorComponent() {
-      super(null, new MPSModuleRepository(null));
+      super(new MPSModuleRepository(null));
       // I could have used 'new SRepositoryRegistry()' instead of null, but don't see a point unless there's a need.
     }
     @Override

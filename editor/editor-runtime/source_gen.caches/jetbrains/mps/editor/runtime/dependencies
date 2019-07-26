@@ -120,6 +120,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepositoryContentAdapter" />
   </dependency>
   <dependency className="jetbrains.mps.editor.runtime.HeadlessEditorComponent">
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder" />

@@ -25,8 +25,9 @@ public class EditorResolver implements IResolver {
     if (resolveInfo == null) {
       return false;
     }
-    final HeadlessEditorComponent headlessEditor = new HeadlessEditorComponent(SNodeOperations.getContainingRoot(sourceNode), repository);
+    final HeadlessEditorComponent headlessEditor = new HeadlessEditorComponent(repository);
     try {
+      headlessEditor.editNode(SNodeOperations.getContainingRoot(sourceNode));
       return EditorBasedReferenceResolverUtils.resolveInEditor(headlessEditor, sourceNode, resolveInfo, reference.getRole());
     } finally {
       headlessEditor.dispose();

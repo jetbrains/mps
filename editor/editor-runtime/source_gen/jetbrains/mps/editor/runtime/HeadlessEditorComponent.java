@@ -4,8 +4,8 @@ package jetbrains.mps.editor.runtime;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 
 /**
@@ -19,9 +19,20 @@ import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
  */
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7398401354080376432", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class HeadlessEditorComponent extends EditorComponent {
+
+  /**
+   * Use {@link jetbrains.mps.editor.runtime.HeadlessEditorComponent#HeadlessEditorComponent(SRepository) } and {@link jetbrains.mps.nodeEditor.EditorComponent#editNode(SNode) } instead.
+   * 
+   * Using this constructor defeats the purpose of {@link jetbrains.mps.openapi.editor.EditorComponent#dispose() } in try-finally blocks, since it makes impossible to dispose on exceptions thrown from {@code editNode}
+   */
+  @Deprecated
   public HeadlessEditorComponent(SNode node, SRepository repository) {
     super(repository, new EditorConfigurationBuilder().withUI(false).build());
     editNode(node);
+  }
+
+  public HeadlessEditorComponent(SRepository repository) {
+    super(repository, new EditorConfigurationBuilder().withUI(false).build());
   }
 
   @Override
