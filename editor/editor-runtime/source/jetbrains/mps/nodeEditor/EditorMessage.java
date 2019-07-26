@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,6 @@ public interface EditorMessage extends SimpleEditorMessage {
   boolean isValid(EditorComponent editorComponent);
 
   EditorCell getCell(EditorComponent editorComponent);
-
-  EditorCell getCellForParentNodeInMainEditor(EditorComponent editor);
 
   boolean acceptCell(EditorCell cell, EditorComponent editor);
 

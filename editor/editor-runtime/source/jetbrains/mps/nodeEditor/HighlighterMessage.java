@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,11 +75,6 @@ public class HighlighterMessage extends EditorMessageWithTarget {
       return false;
     }
     return super.sameAs(message);
-  }
-
-  @Override
-  public EditorCell getCellForParentNodeInMainEditor(EditorComponent editor) {
-    return super.getCellForParentNodeInMainEditor(editor);
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,7 +98,7 @@ public class DefaultEditorMessage implements EditorMessage {
 
   @Override
   public int getStart(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
-    EditorCell editorCell = getCellInBothWays((EditorComponent) editorComponent);
+    EditorCell editorCell = getCellInBothWays(editorComponent);
     if (editorCell == null) {
       return -1;
     }
@@ -107,7 +107,7 @@ public class DefaultEditorMessage implements EditorMessage {
 
   @Override
   public int getHeight(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
-    EditorCell editorCell = getCellInBothWays((EditorComponent) editorComponent);
+    EditorCell editorCell = getCellInBothWays(editorComponent);
     if (editorCell == null) {
       return -1;
     }
@@ -122,7 +122,11 @@ public class DefaultEditorMessage implements EditorMessage {
     }
   }
 
-  protected EditorCell getCellInBothWays(final EditorComponent editor) {
+  protected EditorCell getCellInBothWays(final jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
+    if (false == editorComponent instanceof EditorComponent) {
+      return null;
+    }
+    EditorComponent editor = (EditorComponent) editorComponent;
     return new ModelAccessHelper(editor.getRepository()).runReadAction(() -> {
       EditorCell editorCell = getCell(editor);
       if (editorCell != null) {
@@ -145,25 +149,22 @@ public class DefaultEditorMessage implements EditorMessage {
     return editor.getBigValidCellForNode(getNode());
   }
 
-  @Override
-  public EditorCell getCellForParentNodeInMainEditor(final EditorComponent editor) {
-    return new ModelAccessHelper(editor.getRepository()).runReadAction(() -> {
-      if (getNode() == null) {
-        return null;
-      }
-      if (editor instanceof InspectorEditorComponent) {
-        return null;
-      }
-      SNode parent = getNode().getParent();
-      while (parent != null) {
-        EditorCell result = editor.getBigValidCellForNode(parent);
-        if (result != null) {
-          return result;
-        }
-        parent = parent.getParent();
-      }
+  protected EditorCell getCellForParentNodeInMainEditor(final EditorComponent editor) {
+    if (editor instanceof InspectorEditorComponent) {
       return null;
-    });
+    }
+    if (getNode() == null) {
+      return null;
+    }
+    SNode parent = getNode().getParent();
+    while (parent != null) {
+      EditorCell result = editor.getBigValidCellForNode(parent);
+      if (result != null) {
+        return result;
+      }
+      parent = parent.getParent();
+    }
+    return null;
   }
 
   @Override

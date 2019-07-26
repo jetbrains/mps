@@ -132,7 +132,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     EditorCell superCell = super.getCell(component);
     return isNameCell(cell) && !(isDirectCell(cell)) && superCell != null && cell.isBig() || super.acceptCell(cell, component);
   }
-  private boolean isNameCell(EditorCell cell) {
+  private static boolean isNameCell(EditorCell cell) {
     return Objects.equals(check_myu41h_a0a0r(check_myu41h_a0a0a71(check_myu41h_a0a0a0r(cell.getCellContext()))), NAME_PROPERTY);
   }
   private void repaintConflictedMessages(Graphics graphics, EditorCell cell) {
@@ -201,15 +201,21 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     graphics.drawPolygon(new int[]{x, x - 3, x + 3}, new int[]{y1 - 2, y1 - 5, y1 - 5}, 3);
     graphics.drawPolygon(new int[]{x, x - 3, x + 3}, new int[]{y2 + 2, y2 + 5, y2 + 5}, 3);
   }
-  private boolean isIndirectRoot(final EditorComponent editor) {
+
+  private boolean isIndirectRoot(final jetbrains.mps.openapi.editor.EditorComponent editor) {
+    // XXX [artem] no idea yet what does 'indirect root' mean 
+    if (editor instanceof InspectorEditorComponent) {
+      return false;
+    }
     ModelAccessHelper mah = new ModelAccessHelper(editor.getEditorContext().getRepository());
     return mah.runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
-        return !(editor instanceof InspectorEditorComponent) && !(isDirectCell(getCell(editor))) && check_myu41h_a0a0a0a0b0w(getNode(), ChangeEditorMessage.this) == null;
+        return check_myu41h_a0a0a0a0d0x(getNode(), ChangeEditorMessage.this) == null && !(isDirectCell(getCell((EditorComponent) editor)));
       }
     });
   }
-  private Rectangle getFirstPseudoLineBounds(EditorComponent editor) {
+
+  private Rectangle getFirstPseudoLineBounds(jetbrains.mps.openapi.editor.EditorComponent editor) {
     Iterable<EditorCell> leafCells = new _FunctionTypes._return_P1_E0<Iterable<EditorCell>, EditorCell>() {
       public Iterable<EditorCell> invoke(final EditorCell cell) {
         return new Iterable<EditorCell>() {
@@ -235,13 +241,13 @@ __switch__:
                       this.__CP__ = 6;
                       break;
                     case 7:
-                      this._7__yield_myu41h_a0a0a0a0a0a32_it = Sequence.fromIterable(invoke(_4_child)).iterator();
+                      this._7__yield_myu41h_a0a0a0a0a0a52_it = Sequence.fromIterable(invoke(_4_child)).iterator();
                     case 8:
-                      if (!(this._7__yield_myu41h_a0a0a0a0a0a32_it.hasNext())) {
+                      if (!(this._7__yield_myu41h_a0a0a0a0a0a52_it.hasNext())) {
                         this.__CP__ = 5;
                         break;
                       }
-                      this._7__yield_myu41h_a0a0a0a0a0a32 = this._7__yield_myu41h_a0a0a0a0a0a32_it.next();
+                      this._7__yield_myu41h_a0a0a0a0a0a52 = this._7__yield_myu41h_a0a0a0a0a0a52_it.next();
                       this.__CP__ = 9;
                       break;
                     case 2:
@@ -253,7 +259,7 @@ __switch__:
                       break;
                     case 10:
                       this.__CP__ = 8;
-                      this.yield(_7__yield_myu41h_a0a0a0a0a0a32);
+                      this.yield(_7__yield_myu41h_a0a0a0a0a0a52);
                       return true;
                     case 12:
                       this.__CP__ = 1;
@@ -282,8 +288,8 @@ __switch__:
               }
               private EditorCell _4_child;
               private Iterator<EditorCell> _4_child_it;
-              private EditorCell _7__yield_myu41h_a0a0a0a0a0a32;
-              private Iterator<EditorCell> _7__yield_myu41h_a0a0a0a0a0a32_it;
+              private EditorCell _7__yield_myu41h_a0a0a0a0a0a52;
+              private Iterator<EditorCell> _7__yield_myu41h_a0a0a0a0a0a52_it;
             };
           }
         };
@@ -300,7 +306,8 @@ __switch__:
       }
     }).toGenericArray(EditorCell.class));
   }
-  public Bounds getBounds(EditorComponent editor) {
+
+  public Bounds getBounds(jetbrains.mps.openapi.editor.EditorComponent editor) {
     if (myMessageTarget.getTarget() != MessageTargetEnum.DELETED_CHILD) {
       if (isIndirectRoot(editor)) {
         Rectangle r = getFirstPseudoLineBounds(editor);
@@ -310,10 +317,7 @@ __switch__:
       }
     } else {
       DeletedNodeMessageTarget cmt = ((DeletedNodeMessageTarget) myMessageTarget);
-      EditorCell cell = getCell(editor);
-      if (cell == null) {
-        cell = getCellForParentNodeInMainEditor(editor);
-      }
+      EditorCell cell = getCellInBothWays(editor);
       if (cell == null) {
         return new Bounds(-1, -1);
       }
@@ -329,6 +333,7 @@ __switch__:
       }
     }
   }
+
   private Bounds getBoundsForChild(EditorCell_Collection cell, int index) {
     EditorCell childCell = getChildCell(cell, index);
 
@@ -344,20 +349,30 @@ __switch__:
     }
     return new Bounds(minY, maxY);
   }
-  private Bounds getBoundsSuper(EditorComponent component) {
-    return new Bounds(super.getStart(component), super.getStart(component) + super.getHeight(component));
+
+  private Bounds getBoundsSuper(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
+    int y = -1;
+    int height = -1;
+    EditorCell cell = getCellInBothWays((EditorComponent) editorComponent);
+    if (cell != null) {
+      y = cell.getY();
+      height = cell.getHeight();
+    }
+    return new Bounds(y, y + height);
   }
   @Override
   public int getStart(jetbrains.mps.openapi.editor.EditorComponent component) {
-    return (int) getBounds(((EditorComponent) component)).start();
+    return (int) getBounds(component).start();
   }
   @Override
   public int getHeight(jetbrains.mps.openapi.editor.EditorComponent component) {
-    return getBounds(((EditorComponent) component)).length();
+    return getBounds(component).length();
   }
+
   public void setHighlighted(boolean highlighted) {
     myHighlighted = highlighted;
   }
+
   private static boolean hasChildrenWithDifferentNode(EditorCell cell) {
     if (cell instanceof EditorCell_Collection) {
       final EditorCell_Collection collectionCell = (EditorCell_Collection) cell;
@@ -416,7 +431,7 @@ __switch__:
     }
     return null;
   }
-  private static SNode check_myu41h_a0a0a0a0b0w(SNode checkedDotOperand, ChangeEditorMessage checkedDotThisExpression) {
+  private static SNode check_myu41h_a0a0a0a0d0x(SNode checkedDotOperand, ChangeEditorMessage checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getParent();
     }
