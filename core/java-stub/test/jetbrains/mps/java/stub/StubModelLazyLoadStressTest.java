@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,12 @@ import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.util.PathManager;
+import jetbrains.mps.vfs.iofs.jar.JarIoFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -34,7 +34,6 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
@@ -70,14 +69,11 @@ public class StubModelLazyLoadStressTest implements EnvironmentAware {
   @Test
   public void testParallelLoad() throws InterruptedException {
     final ModuleReference moduleRef = new ModuleReference("fake", ModuleId.regular());
-    SModelReference modelRef = new JavaPackageNameStub("java.util.regex").asModelReference(moduleRef);
+    SModelReference modelRef = new JavaPackageNameStub("gnu.trove").asModelReference(moduleRef);
     FolderSetDataSource dataSource = new FolderSetDataSource();
-    for (String path : CommonPaths.getJDKPath()) {
-      if (new File(path).isFile() && path.endsWith(".jar")) {
-        path += "!/java/util/regex/";
-      }
-      dataSource.addPath(IoFileSystem.INSTANCE.getFile(path), null);
-    }
+    // any har with JavaClassStubModelDescriptor would do. Used to be java.util, which uses dedicated model root (JDKStubsModelRoot) since Java 11
+    String path = PathManager.getLibPath() + "/trove4j.jar!/gnu/trove";
+    dataSource.addPath(JarIoFileSystem.getInstance().getFile(path), null);
     JavaClassStubModelDescriptor model = new JavaClassStubModelDescriptor(modelRef, dataSource) {
       @Override
       protected void fireModelStateChanged(ModelLoadingState oldState, ModelLoadingState newState) {
@@ -96,7 +92,7 @@ public class StubModelLazyLoadStressTest implements EnvironmentAware {
         setModuleReference(moduleRef);
       }
     });
-    SNodeId nodeId = new Foreign("~Pattern.compile(java.lang.String):java.util.regex.Pattern");
+    SNodeId nodeId = new Foreign("~THashMap.<init>()");
     FindNodeRunnable[] runners = new FindNodeRunnable[10];
     LatchCountAction latch = new LatchCountAction(new CountDownLatch(2));
     CyclicBarrier barrier = new CyclicBarrier(runners.length, latch);
