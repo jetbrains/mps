@@ -77,6 +77,7 @@
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="mk90" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -5089,16 +5090,6 @@
             </node>
           </node>
         </node>
-      </node>
-      <node concept="3Tm1VV" id="5BzO5O3s5i1" role="1B3o_S" />
-      <node concept="3cqZAl" id="5BzO5O3s5i0" role="3clF45" />
-    </node>
-    <node concept="2tJIrI" id="cbbchzfw5t" role="jymVt" />
-    <node concept="3clFb_" id="5BzO5O3s66l" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3clFbS" id="5BzO5O3s66o" role="3clF47">
         <node concept="3cpWs8" id="5gRb3dLohkU" role="3cqZAp">
           <node concept="3cpWsn" id="5gRb3dLohkV" role="3cpWs9">
             <property role="TrG5h" value="repoRegistry" />
@@ -5137,16 +5128,13 @@
           </node>
         </node>
       </node>
-      <node concept="3cqZAl" id="5BzO5O3s66n" role="3clF45" />
-      <node concept="3Tm1VV" id="5BzO5O3s66m" role="1B3o_S" />
-      <node concept="2AHcQZ" id="3tYsUK_RZ2L" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
+      <node concept="3Tm1VV" id="5BzO5O3s5i1" role="1B3o_S" />
+      <node concept="3cqZAl" id="5BzO5O3s5i0" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="cbbchzfwaW" role="jymVt" />
     <node concept="3clFb_" id="5BzO5O3s66p" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
+      <property role="TrG5h" value="dispose" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="5BzO5O3s66s" role="3clF47">
         <node concept="3cpWs8" id="5gRb3dLoj1V" role="3cqZAp">
@@ -5193,33 +5181,9 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="cbbchzfwgC" role="jymVt" />
-    <node concept="3clFb_" id="5BzO5O3s66t" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="17QB3L" id="6sqsxb$DoVQ" role="3clF45" />
-      <node concept="3Tm1VV" id="5BzO5O3s66u" role="1B3o_S" />
-      <node concept="2AHcQZ" id="5BzO5O3s66w" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="3clFbS" id="5BzO5O3s66y" role="3clF47">
-        <node concept="3clFbF" id="5BzO5O3s66z" role="3cqZAp">
-          <node concept="Xl_RD" id="5BzO5O3s66_" role="3clFbG">
-            <property role="Xl_RC" value="VCS manager" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="5BzO5O3s66x" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_RZ2K" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="3Tm1VV" id="5BzO5O3s5hY" role="1B3o_S" />
-    <node concept="3uibUv" id="5BzO5O3s66k" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
+    <node concept="3uibUv" id="5rIhWKNPqW8" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
   </node>
   <node concept="312cEu" id="68MS4n2I8HR">

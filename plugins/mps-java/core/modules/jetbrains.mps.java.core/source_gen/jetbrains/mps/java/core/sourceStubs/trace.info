@@ -510,58 +510,51 @@
   </root>
   <root nodeRef="r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/9207707776056494296">
     <file name="EmptyJavaSourceStubsFindUsages.java">
-      <node id="9207707776056494487" at="26,136,27,59" concept="12" />
-      <node id="9207707776056494489" at="27,59,28,63" concept="12" />
-      <node id="9207707776056494328" at="30,59,31,41" concept="4" />
-      <node id="9207707776056494491" at="35,141,36,65" concept="12" />
-      <node id="9207707776056494493" at="38,143,39,65" concept="12" />
-      <node id="9207707776056494372" at="41,31,42,67" concept="4" />
-      <node id="9207707776056494382" at="44,34,45,70" concept="4" />
-      <node id="9207707776056494394" at="49,36,50,57" concept="11" />
-      <node id="9207707776056494301" at="24,0,26,0" concept="2" trace="EmptyJavaSourceStubsFindUsages#()V" />
-      <node id="9207707776056494322" at="29,33,32,7" concept="8" />
-      <node id="9207707776056494338" at="35,0,38,0" concept="9" trace="findInstances#(Ljava/util/Collection;Ljava/util/Set;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/Consumer;)V" />
-      <node id="9207707776056494354" at="38,0,41,0" concept="9" trace="findModelUsages#(Ljava/util/Collection;Ljava/util/Set;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/Consumer;)V" />
-      <node id="9207707776056494370" at="41,0,44,0" concept="9" trace="initComponent#()V" />
-      <node id="9207707776056494380" at="44,0,47,0" concept="9" trace="disposeComponent#()V" />
-      <node id="9207707776056494319" at="28,63,33,5" concept="7" />
-      <node id="9207707776056494390" at="47,0,52,0" concept="9" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="9207707776056494305" at="26,0,35,0" concept="9" trace="findUsages#(Ljava/util/Collection;Ljava/util/Set;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/Consumer;)V" />
-      <scope id="9207707776056494303" at="24,43,24,43" />
-      <scope id="9207707776056494327" at="30,59,31,41" />
-      <scope id="9207707776056494351" at="35,141,36,65" />
-      <scope id="9207707776056494367" at="38,143,39,65" />
-      <scope id="9207707776056494371" at="41,31,42,67" />
-      <scope id="9207707776056494381" at="44,34,45,70" />
-      <scope id="9207707776056494393" at="49,36,50,57" />
-      <scope id="9207707776056494301" at="24,0,26,0" />
-      <scope id="9207707776056494321" at="29,33,32,7" />
-      <scope id="9207707776056494338" at="35,0,38,0">
+      <node id="9207707776056494372" at="23,43,24,67" concept="4" />
+      <node id="9207707776056494487" at="27,136,28,59" concept="12" />
+      <node id="9207707776056494489" at="28,59,29,63" concept="12" />
+      <node id="9207707776056494328" at="31,59,32,41" concept="4" />
+      <node id="9207707776056494491" at="37,141,38,65" concept="12" />
+      <node id="9207707776056494493" at="41,143,42,65" concept="12" />
+      <node id="9207707776056494382" at="46,25,47,70" concept="4" />
+      <node id="9207707776056494301" at="23,0,26,0" concept="2" trace="EmptyJavaSourceStubsFindUsages#()V" />
+      <node id="9207707776056494322" at="30,33,33,7" concept="8" />
+      <node id="9207707776056494338" at="37,0,40,0" concept="9" trace="findInstances#(Ljava/util/Collection;Ljava/util/Set;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/Consumer;)V" />
+      <node id="9207707776056494354" at="41,0,44,0" concept="9" trace="findModelUsages#(Ljava/util/Collection;Ljava/util/Set;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/Consumer;)V" />
+      <node id="9207707776056494380" at="45,0,49,0" concept="9" trace="dispose#()V" />
+      <node id="9207707776056494319" at="29,63,34,5" concept="7" />
+      <node id="9207707776056494305" at="27,0,36,0" concept="9" trace="findUsages#(Ljava/util/Collection;Ljava/util/Set;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/Consumer;)V" />
+      <scope id="9207707776056494303" at="23,43,24,67" />
+      <scope id="9207707776056494327" at="31,59,32,41" />
+      <scope id="9207707776056494351" at="37,141,38,65" />
+      <scope id="9207707776056494367" at="41,143,42,65" />
+      <scope id="9207707776056494381" at="46,25,47,70" />
+      <scope id="9207707776056494301" at="23,0,26,0" />
+      <scope id="9207707776056494321" at="30,33,33,7" />
+      <scope id="9207707776056494338" at="37,0,40,0">
         <var name="collection" id="9207707776056494339" />
         <var name="consumer" id="9207707776056494345" />
         <var name="consumer1" id="9207707776056494348" />
         <var name="set" id="9207707776056494342" />
       </scope>
-      <scope id="9207707776056494354" at="38,0,41,0">
+      <scope id="9207707776056494354" at="41,0,44,0">
         <var name="collection" id="9207707776056494355" />
         <var name="consumer" id="9207707776056494361" />
         <var name="consumer1" id="9207707776056494364" />
         <var name="set" id="9207707776056494358" />
       </scope>
-      <scope id="9207707776056494370" at="41,0,44,0" />
-      <scope id="9207707776056494380" at="44,0,47,0" />
-      <scope id="9207707776056494319" at="28,63,33,5">
+      <scope id="9207707776056494380" at="45,0,49,0" />
+      <scope id="9207707776056494319" at="29,63,34,5">
         <var name="model" id="9207707776056494332" />
       </scope>
-      <scope id="9207707776056494390" at="47,0,52,0" />
-      <scope id="9207707776056494318" at="26,136,33,5" />
-      <scope id="9207707776056494305" at="26,0,35,0">
+      <scope id="9207707776056494318" at="27,136,34,5" />
+      <scope id="9207707776056494305" at="27,0,36,0">
         <var name="consumer" id="9207707776056494312" />
         <var name="models" id="9207707776056494306" />
         <var name="processedConsumer" id="9207707776056494315" />
         <var name="set" id="9207707776056494309" />
       </scope>
-      <unit id="9207707776056494296" at="23,0,53,0" name="jetbrains.mps.java.core.sourceStubs.EmptyJavaSourceStubsFindUsages" />
+      <unit id="9207707776056494296" at="21,0,50,0" name="jetbrains.mps.java.core.sourceStubs.EmptyJavaSourceStubsFindUsages" />
     </file>
   </root>
 </debug-info>

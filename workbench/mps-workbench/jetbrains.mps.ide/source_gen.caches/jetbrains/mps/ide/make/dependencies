@@ -146,10 +146,9 @@
     <classNode dependClassName="jetbrains.mps.messages.MessageKind" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
-    <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
+    <classNode extendsClassName="com.intellij.openapi.Disposable" />
     <classNode extendsClassName="jetbrains.mps.make.IMakeService" />
     <classNode extendsClassName="jetbrains.mps.make.service.AbstractMakeService" />
   </dependency>

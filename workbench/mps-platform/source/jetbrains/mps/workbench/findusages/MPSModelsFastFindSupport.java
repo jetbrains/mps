@@ -15,13 +15,15 @@
  */
 package jetbrains.mps.workbench.findusages;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.findUsages.FindUsagesUtil;
 import jetbrains.mps.findUsages.NodeUsageFinder;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.PersistenceRegistry;
@@ -59,21 +61,18 @@ import java.util.Set;
 import java.util.function.Function;
 
 // FIXME why not ProjectComponent? Would help us to deal with dumb mode and use project's FS to get VirtualFile for an IFile
-public class MPSModelsFastFindSupport implements ApplicationComponent, FindUsagesParticipant {
-  @Override
-  public void initComponent() {
-    PersistenceRegistry.getInstance().addFindUsagesParticipant(this);
+public class MPSModelsFastFindSupport implements Disposable, FindUsagesParticipant {
+
+  private final MPSCoreComponents myCoreComponents;
+
+  public MPSModelsFastFindSupport(MPSCoreComponents coreComponents) {
+    myCoreComponents = coreComponents;
+    myCoreComponents.getPersistenceFacade().addFindUsagesParticipant(this);
   }
 
   @Override
-  public void disposeComponent() {
-    PersistenceRegistry.getInstance().removeFindUsagesParticipant(this);
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return MPSModelsFastFindSupport.class.getSimpleName();
+  public void dispose() {
+    myCoreComponents.getPersistenceFacade().removeFindUsagesParticipant(this);
   }
 
   @Override

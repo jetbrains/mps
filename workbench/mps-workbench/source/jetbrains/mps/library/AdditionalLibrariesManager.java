@@ -34,7 +34,7 @@ import java.util.Set;
   name = "AdditionalLibrariesManager",
   storages = @Storage("AdditionalLibrariesManager.xml")
 )
-public class AdditionalLibrariesManager extends BaseLibraryManager implements ApplicationComponent {
+public class AdditionalLibrariesManager extends BaseLibraryManager {
   private Map<String, Library> myCustomBuiltInLibraries = new HashMap<>();
 
   public AdditionalLibrariesManager(MPSCoreComponents coreComponents) {
@@ -58,11 +58,4 @@ public class AdditionalLibrariesManager extends BaseLibraryManager implements Ap
   public String toString() {
     return "AdditionalLibrariesManager";
   }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return AdditionalLibrariesManager.class.getSimpleName();
-  }
-
 }

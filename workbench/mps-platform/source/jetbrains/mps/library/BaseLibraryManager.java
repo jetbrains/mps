@@ -24,7 +24,6 @@ import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.MacroProcessor;
-import jetbrains.mps.vfs.util.PathAssert;
 import jetbrains.mps.vfs.util.PathAssert.PathAssertionException;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +34,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 
 public abstract class BaseLibraryManager implements PersistentStateComponent<LibraryState>, LibraryContributor {

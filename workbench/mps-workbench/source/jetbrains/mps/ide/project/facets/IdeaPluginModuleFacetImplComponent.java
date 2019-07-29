@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.project.facets;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.FacetsRegistry;
@@ -25,7 +26,7 @@ import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 
-public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacetComponent, ApplicationComponent {
+public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacetComponent, Disposable {
   private final MPSCoreComponents myCoreComponents;
   private final FacetFactory IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
     @Override
@@ -38,6 +39,7 @@ public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacet
 
   public IdeaPluginModuleFacetImplComponent(MPSCoreComponents coreComponents) {
     myCoreComponents = coreComponents;
+    setUpIdeaFacet();
   }
 
   private void setUpIdeaFacet() {
@@ -49,12 +51,7 @@ public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacet
   }
 
   @Override
-  public void initComponent() {
-    setUpIdeaFacet();
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     final FacetsRegistry facetsRegistry = myCoreComponents.getPlatform().findComponent(FacetsRegistry.class);
     facetsRegistry.removeFactory(IDEA_PLUGIN_FACET_FACTORY);
   }

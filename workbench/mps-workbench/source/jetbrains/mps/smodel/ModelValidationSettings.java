@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.smodel;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
@@ -33,12 +35,13 @@ import javax.swing.Icon;
   name = "ModelValidationSettings",
   storages = @Storage("mpsModelValidationSettings.xml")
 )
-public class ModelValidationSettings implements PersistentStateComponent<MyState>, ApplicationComponent, IModelValidationSettings {
+public class ModelValidationSettings implements PersistentStateComponent<MyState>, IModelValidationSettings, Disposable {
 
   private boolean myDisableCheckOpenAPI = true;
   private boolean myDisableTypeWasNotCalculated = true;
 
   public ModelValidationSettings(MPSCoreComponents coreComponents) {
+    ValidationSettings.getInstance().setModelValidationSettings(this);
   }
 
   void setDisableCheckOpenAPI(boolean disableCheckOpenAPI) {
@@ -69,19 +72,8 @@ public class ModelValidationSettings implements PersistentStateComponent<MyState
   }
 
   @Override
-  public void initComponent() {
-    ValidationSettings.getInstance().setModelValidationSettings(this);
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     ValidationSettings.getInstance().setModelValidationSettings(null);
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Model Validation Settings";
   }
 
   @Override

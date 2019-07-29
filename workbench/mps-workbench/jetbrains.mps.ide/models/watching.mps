@@ -33,6 +33,8 @@
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="4b2m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.messages(MPS.IDEA/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="z1c5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
@@ -75,6 +77,9 @@
       <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
         <child id="1081256993305" name="classType" index="2ZW6by" />
         <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
+      </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -1144,8 +1149,8 @@
   <node concept="312cEu" id="5T8zXYahxkr">
     <property role="TrG5h" value="WatchedRootsUpdater" />
     <node concept="3Tm1VV" id="5T8zXYahxks" role="1B3o_S" />
-    <node concept="3uibUv" id="5T8zXYahxkt" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
+    <node concept="3uibUv" id="2TJjT4dE9a_" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
     <node concept="312cEg" id="5T8zXYahxku" role="jymVt">
       <property role="TrG5h" value="myLibraryManager" />
@@ -1233,10 +1238,18 @@
     </node>
     <node concept="312cEg" id="5T8zXYahxlq" role="jymVt">
       <property role="TrG5h" value="myProjectManagerListener" />
-      <node concept="3uibUv" id="5T8zXYahxlr" role="1tU5fm">
-        <ref role="3uigEE" to="4nm9:~ProjectManagerAdapter" resolve="ProjectManagerAdapter" />
+      <node concept="3uibUv" id="2TJjT4dE0sG" role="1tU5fm">
+        <ref role="3uigEE" to="4nm9:~ProjectManagerListener" resolve="ProjectManagerListener" />
       </node>
       <node concept="3Tm6S6" id="5T8zXYahxls" role="1B3o_S" />
+    </node>
+    <node concept="312cEg" id="2TJjT4dDZcv" role="jymVt">
+      <property role="TrG5h" value="myConnection" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2TJjT4dDRkT" role="1B3o_S" />
+      <node concept="3uibUv" id="2TJjT4dDZ5u" role="1tU5fm">
+        <ref role="3uigEE" to="4b2m:~MessageBusConnection" resolve="MessageBusConnection" />
+      </node>
     </node>
     <node concept="2tJIrI" id="srfjDK60VC" role="jymVt" />
     <node concept="3clFbW" id="5T8zXYahxlt" role="jymVt">
@@ -1312,33 +1325,7 @@
             </node>
           </node>
         </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="srfjDK69jS" role="jymVt" />
-    <node concept="3clFb_" id="5T8zXYahxlV" role="jymVt">
-      <property role="TrG5h" value="getComponentName" />
-      <node concept="3Tm1VV" id="5T8zXYahxlW" role="1B3o_S" />
-      <node concept="17QB3L" id="srfjDK6fhh" role="3clF45" />
-      <node concept="3clFbS" id="5T8zXYahxlY" role="3clF47">
-        <node concept="3cpWs6" id="5T8zXYahxlZ" role="3cqZAp">
-          <node concept="Xl_RD" id="5T8zXYahxm0" role="3cqZAk">
-            <property role="Xl_RC" value="Watched Roots Updater" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="5T8zXYahxm1" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="5T8zXYahxm2" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="srfjDK6ciJ" role="jymVt" />
-    <node concept="3clFb_" id="5T8zXYahxm3" role="jymVt">
-      <property role="TrG5h" value="initComponent" />
-      <node concept="3Tm1VV" id="5T8zXYahxm4" role="1B3o_S" />
-      <node concept="3cqZAl" id="5T8zXYahxm5" role="3clF45" />
-      <node concept="3clFbS" id="5T8zXYahxm6" role="3clF47">
+        <node concept="3clFbH" id="2TJjT4dEd98" role="3cqZAp" />
         <node concept="3clFbF" id="5T8zXYahxmk" role="3cqZAp">
           <node concept="1rXfSq" id="5T8zXYahxml" role="3clFbG">
             <ref role="37wK5l" node="5T8zXYahxpK" resolve="processLibrariesChange" />
@@ -1353,8 +1340,8 @@
               <node concept="YeOm9" id="5T8zXYahxmv" role="2ShVmc">
                 <node concept="1Y3b0j" id="5T8zXYahxmw" role="YeSDq">
                   <property role="TrG5h" value="" />
-                  <ref role="1Y3XeK" to="4nm9:~ProjectManagerAdapter" resolve="ProjectManagerAdapter" />
-                  <ref role="37wK5l" to="4nm9:~ProjectManagerAdapter.&lt;init&gt;()" resolve="ProjectManagerAdapter" />
+                  <ref role="1Y3XeK" to="4nm9:~ProjectManagerListener" resolve="ProjectManagerListener" />
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3clFb_" id="5T8zXYahxmx" role="jymVt">
                     <property role="TrG5h" value="projectOpened" />
                     <node concept="3Tm1VV" id="5T8zXYahxmy" role="1B3o_S" />
@@ -1363,6 +1350,9 @@
                       <property role="TrG5h" value="project" />
                       <node concept="3uibUv" id="5T8zXYahxm_" role="1tU5fm">
                         <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+                      </node>
+                      <node concept="2AHcQZ" id="2TJjT4dE50e" role="2AJF6D">
+                        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="5T8zXYahxmA" role="3clF47">
@@ -1404,6 +1394,9 @@
                       <node concept="3uibUv" id="5T8zXYahxmS" role="1tU5fm">
                         <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
                       </node>
+                      <node concept="2AHcQZ" id="2TJjT4dE5k7" role="2AJF6D">
+                        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                      </node>
                     </node>
                     <node concept="3clFbS" id="5T8zXYahxmT" role="3clF47">
                       <node concept="3clFbF" id="5T8zXYahxmU" role="3cqZAp">
@@ -1441,22 +1434,44 @@
           </node>
         </node>
         <node concept="3clFbH" id="5T8zXYahXDn" role="3cqZAp" />
-        <node concept="3clFbF" id="5T8zXYahxn4" role="3cqZAp">
-          <node concept="2OqwBi" id="5T8zXYahxn5" role="3clFbG">
-            <node concept="37vLTw" id="5T8zXYahxn6" role="2Oq$k0">
-              <ref role="3cqZAo" node="5T8zXYahxln" resolve="myProjectManager" />
+        <node concept="3clFbF" id="2TJjT4dE0V7" role="3cqZAp">
+          <node concept="37vLTI" id="2TJjT4dE3kS" role="3clFbG">
+            <node concept="2OqwBi" id="2TJjT4dE3Tq" role="37vLTx">
+              <node concept="2OqwBi" id="2TJjT4dE3E7" role="2Oq$k0">
+                <node concept="2YIFZM" id="2TJjT4dE3y_" role="2Oq$k0">
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                  <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                </node>
+                <node concept="liA8E" id="2TJjT4dE3NT" role="2OqNvi">
+                  <ref role="37wK5l" to="1m72:~ComponentManager.getMessageBus()" resolve="getMessageBus" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2TJjT4dE42W" role="2OqNvi">
+                <ref role="37wK5l" to="4b2m:~MessageBus.connect()" resolve="connect" />
+              </node>
             </node>
-            <node concept="liA8E" id="5T8zXYahxn7" role="2OqNvi">
-              <ref role="37wK5l" to="4nm9:~ProjectManager.addProjectManagerListener(com.intellij.openapi.project.ProjectManagerListener)" resolve="addProjectManagerListener" />
-              <node concept="37vLTw" id="5T8zXYahxn8" role="37wK5m">
+            <node concept="37vLTw" id="2TJjT4dE0V5" role="37vLTJ">
+              <ref role="3cqZAo" node="2TJjT4dDZcv" resolve="myConnection" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2TJjT4dE5Qs" role="3cqZAp">
+          <node concept="2OqwBi" id="2TJjT4dE6gR" role="3clFbG">
+            <node concept="37vLTw" id="2TJjT4dE5Qq" role="2Oq$k0">
+              <ref role="3cqZAo" node="2TJjT4dDZcv" resolve="myConnection" />
+            </node>
+            <node concept="liA8E" id="2TJjT4dE6sO" role="2OqNvi">
+              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <node concept="10M0yZ" id="2TJjT4dE6P6" role="37wK5m">
+                <ref role="3cqZAo" to="4nm9:~ProjectManager.TOPIC" resolve="TOPIC" />
+                <ref role="1PxDUh" to="4nm9:~ProjectManager" resolve="ProjectManager" />
+              </node>
+              <node concept="37vLTw" id="2TJjT4dE6$4" role="37wK5m">
                 <ref role="3cqZAo" node="5T8zXYahxlq" resolve="myProjectManagerListener" />
               </node>
             </node>
           </node>
         </node>
-      </node>
-      <node concept="2AHcQZ" id="5T8zXYahxn9" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5T8zXYahxna" role="jymVt" />
@@ -2004,20 +2019,17 @@
     </node>
     <node concept="2tJIrI" id="61uE6zXlods" role="jymVt" />
     <node concept="3clFb_" id="5T8zXYahxt1" role="jymVt">
-      <property role="TrG5h" value="disposeComponent" />
+      <property role="TrG5h" value="dispose" />
       <node concept="3Tm1VV" id="5T8zXYahxt2" role="1B3o_S" />
       <node concept="3cqZAl" id="5T8zXYahxt3" role="3clF45" />
       <node concept="3clFbS" id="5T8zXYahxt4" role="3clF47">
-        <node concept="3clFbF" id="5T8zXYahxta" role="3cqZAp">
-          <node concept="2OqwBi" id="5T8zXYahxtb" role="3clFbG">
-            <node concept="37vLTw" id="5T8zXYahxtc" role="2Oq$k0">
-              <ref role="3cqZAo" node="5T8zXYahxln" resolve="myProjectManager" />
+        <node concept="3clFbF" id="2TJjT4dE7oz" role="3cqZAp">
+          <node concept="2OqwBi" id="2TJjT4dE7CL" role="3clFbG">
+            <node concept="37vLTw" id="2TJjT4dE7ox" role="2Oq$k0">
+              <ref role="3cqZAo" node="2TJjT4dDZcv" resolve="myConnection" />
             </node>
-            <node concept="liA8E" id="5T8zXYahxtd" role="2OqNvi">
-              <ref role="37wK5l" to="4nm9:~ProjectManager.removeProjectManagerListener(com.intellij.openapi.project.ProjectManagerListener)" resolve="removeProjectManagerListener" />
-              <node concept="37vLTw" id="5T8zXYahxte" role="37wK5m">
-                <ref role="3cqZAo" node="5T8zXYahxlq" resolve="myProjectManagerListener" />
-              </node>
+            <node concept="liA8E" id="2TJjT4dE7RB" role="2OqNvi">
+              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>

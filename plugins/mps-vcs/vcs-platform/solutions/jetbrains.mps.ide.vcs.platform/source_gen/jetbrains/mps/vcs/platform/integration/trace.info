@@ -819,35 +819,28 @@
   </root>
   <root nodeRef="r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/6477249786997134461">
     <file name="PluginVCSManager.java">
-      <node id="7770198149431677188" at="13,0,14,0" concept="6" trace="myResolver" />
-      <node id="6068367622361961308" at="14,0,15,0" concept="6" trace="myMPSComponents" />
-      <node id="219318228847907497" at="16,90,17,65" concept="5" />
-      <node id="6068367622361961312" at="17,65,18,37" concept="5" />
-      <node id="6068367622362174778" at="22,31,23,110" concept="10" />
-      <node id="7770198149431668959" at="23,110,24,47" concept="5" />
-      <node id="6068367622362181755" at="28,34,29,110" concept="10" />
-      <node id="7770198149431810382" at="29,110,30,50" concept="5" />
-      <node id="6477249786997137827" at="36,36,37,25" concept="11" />
-      <node id="6477249786997134463" at="16,0,20,0" concept="3" trace="PluginVCSManager#(Ljetbrains/mps/ide/MPSCoreComponents;Ljetbrains/mps/ide/platform/watching/ReloadManager;)V" />
-      <node id="6477249786997137813" at="21,0,26,0" concept="9" trace="initComponent#()V" />
-      <node id="6477249786997137817" at="27,0,32,0" concept="9" trace="disposeComponent#()V" />
-      <node id="6477249786997137821" at="33,0,39,0" concept="9" trace="getComponentName#()Ljava/lang/String;" />
-      <scope id="6477249786997137826" at="36,36,37,25" />
-      <scope id="6477249786997134466" at="16,90,18,37" />
-      <scope id="6477249786997137816" at="22,31,24,47">
-        <var name="repoRegistry" id="6068367622362174779" />
-      </scope>
-      <scope id="6477249786997137820" at="28,34,30,50">
+      <node id="7770198149431677188" at="11,0,12,0" concept="6" trace="myResolver" />
+      <node id="6068367622361961308" at="12,0,13,0" concept="6" trace="myMPSComponents" />
+      <node id="219318228847907497" at="14,90,15,65" concept="5" />
+      <node id="6068367622361961312" at="15,65,16,37" concept="5" />
+      <node id="6068367622362174778" at="16,37,17,110" concept="10" />
+      <node id="7770198149431668959" at="17,110,18,47" concept="5" />
+      <node id="6068367622362181755" at="22,25,23,110" concept="10" />
+      <node id="7770198149431810382" at="23,110,24,50" concept="5" />
+      <node id="6477249786997137817" at="21,0,26,0" concept="9" trace="dispose#()V" />
+      <node id="6477249786997134463" at="14,0,20,0" concept="3" trace="PluginVCSManager#(Ljetbrains/mps/ide/MPSCoreComponents;Ljetbrains/mps/ide/platform/watching/ReloadManager;)V" />
+      <scope id="6477249786997137820" at="22,25,24,50">
         <var name="repoRegistry" id="6068367622362181756" />
       </scope>
-      <scope id="6477249786997134463" at="16,0,20,0">
+      <scope id="6477249786997134466" at="14,90,18,47">
+        <var name="repoRegistry" id="6068367622362174779" />
+      </scope>
+      <scope id="6477249786997137817" at="21,0,26,0" />
+      <scope id="6477249786997134463" at="14,0,20,0">
         <var name="coreComponents" id="219318228847869447" />
         <var name="reloadManager" id="8274493178031060068" />
       </scope>
-      <scope id="6477249786997137813" at="21,0,26,0" />
-      <scope id="6477249786997137817" at="27,0,32,0" />
-      <scope id="6477249786997137821" at="33,0,39,0" />
-      <unit id="6477249786997134461" at="12,0,40,0" name="jetbrains.mps.vcs.platform.integration.PluginVCSManager" />
+      <unit id="6477249786997134461" at="10,0,27,0" name="jetbrains.mps.vcs.platform.integration.PluginVCSManager" />
     </file>
   </root>
   <root nodeRef="r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/7075964554776710007">

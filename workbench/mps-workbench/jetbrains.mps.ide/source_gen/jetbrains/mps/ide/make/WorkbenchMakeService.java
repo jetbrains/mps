@@ -4,7 +4,7 @@ package jetbrains.mps.ide.make;
 
 import jetbrains.mps.make.service.AbstractMakeService;
 import jetbrains.mps.make.IMakeService;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import java.util.concurrent.atomic.AtomicMarkableReference;
@@ -20,11 +20,10 @@ import java.util.ArrayList;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.make.MakeServiceComponent;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -60,8 +59,10 @@ import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
 
-public class WorkbenchMakeService extends AbstractMakeService implements IMakeService, ApplicationComponent {
+public class WorkbenchMakeService extends AbstractMakeService implements IMakeService, Disposable {
+
   private static Logger LOG = LogManager.getLogger(WorkbenchMakeService.class);
+
   private AtomicMarkableReference<MakeSession> currentSessionStickyMark = new AtomicMarkableReference<MakeSession>(null, false);
   private volatile AtomicReference<Future<IResult>> currentProcess = new AtomicReference<Future<IResult>>();
   private List<IMakeNotificationListener> listeners = Collections.synchronizedList(ListSequence.fromList(new ArrayList<IMakeNotificationListener>()));
@@ -69,25 +70,13 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
   public WorkbenchMakeService(MPSCoreComponents mpsComponents) {
     myPlatform = mpsComponents.getPlatform();
-  }
-
-  @Override
-  public void initComponent() {
     myPlatform.findComponent(MakeServiceComponent.class).install(this);
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     myPlatform.findComponent(MakeServiceComponent.class).uninstall(this);
   }
-
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Workbench Make Service";
-  }
-
 
   @Override
   public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller, @NotNull ProgressMonitor monitor) {

@@ -20,6 +20,7 @@ import com.intellij.ide.DataManager;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
@@ -46,11 +47,12 @@ import java.util.Set;
 
 import static com.intellij.notification.Notifications.SYSTEM_MESSAGES_GROUP_ID;
 
-public class WorkbenchPathMacros implements BaseComponent, PathMacrosProvider {
+public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
   private final MPSCoreComponents myCoreComponents;
   private final com.intellij.openapi.application.PathMacros myPathMacrosIdea;
   private final ProjectManagerListener myProjectsListener = new MyProjectManagerListener();
 
+  private final MessageBusConnection myConnection;
   private final NotificationListener myListener = (notification, event) -> {
     if (event.getEventType() != EventType.ACTIVATED) {
       return;
@@ -79,12 +81,9 @@ public class WorkbenchPathMacros implements BaseComponent, PathMacrosProvider {
   public WorkbenchPathMacros(MPSCoreComponents coreComponents, com.intellij.openapi.application.PathMacros ideaPathMacros) {
     myCoreComponents = coreComponents;
     myPathMacrosIdea = ideaPathMacros;
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Workbench path macros provider";
+    myConnection = ApplicationManager.getApplication().getMessageBus().connect();
+    myConnection.subscribe(ProjectManager.TOPIC, myProjectsListener);
+    getMPSCounterpart().addMacrosProvider(this);
   }
 
   private PathMacros getMPSCounterpart() {
@@ -92,15 +91,9 @@ public class WorkbenchPathMacros implements BaseComponent, PathMacrosProvider {
   }
 
   @Override
-  public void initComponent() {
-    MessageBusConnection connection = ApplicationManager.getApplication().getMessageBus().connect();
-    connection.subscribe(ProjectManager.TOPIC, myProjectsListener);
-    getMPSCounterpart().addMacrosProvider(this);
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     getMPSCounterpart().removeMacrosProvider(this);
+    myConnection.disconnect();
   }
 
   @Override

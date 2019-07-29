@@ -72,7 +72,7 @@ import java.util.stream.Collectors;
     name = "MPSIntentionsManager",
     storages = @Storage("intentions.xml")
 )
-public class IntentionsManager implements ApplicationComponent, PersistentStateComponent<IntentionsManager.MyState> {
+public class IntentionsManager implements PersistentStateComponent<IntentionsManager.MyState> {
   private static final Logger LOG = LogManager.getLogger(IntentionsManager.class);
 
   public static String getDescriptorClassName(SModuleReference langRef) {
@@ -437,21 +437,6 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
   }
 
   //-------------component methods-----------------
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Intention Manager";
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
 
   @Override
   public MyState getState() {

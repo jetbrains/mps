@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.typesystem.checking;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -23,7 +24,7 @@ import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
 import typesystemIntegration.languageChecker.RefScopeCheckerInEditor;
 
 // XXX this one could be ProjectComponent if needs to pass context down to checkers (e.g. TypesystemChecker)
-public class EditorCheckerComponent implements ApplicationComponent {
+public class EditorCheckerComponent implements Disposable {
   private final MPSCoreComponents myCoreComponents;
   private TypesystemChecker myTypesystemChecker;
   private NonTypesystemChecker myNonTypesystemChecker;
@@ -31,10 +32,6 @@ public class EditorCheckerComponent implements ApplicationComponent {
 
   public EditorCheckerComponent(MPSCoreComponents mpsCoreComponents) {
     myCoreComponents = mpsCoreComponents;
-  }
-
-  @Override
-  public void initComponent() {
     final CheckerRegistry registry = myCoreComponents.getPlatform().findComponent(CheckerRegistry.class);
     if (registry != null) {
       myRefScopeCheckerInEditor = new RefScopeCheckerInEditor(myCoreComponents.getPlatform());
@@ -46,7 +43,7 @@ public class EditorCheckerComponent implements ApplicationComponent {
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     final CheckerRegistry registry = myCoreComponents.getPlatform().findComponent(CheckerRegistry.class);
     if (registry != null) {
       registry.unregisterChecker(myNonTypesystemChecker);

@@ -44,6 +44,7 @@
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -6304,9 +6305,29 @@
     <property role="2bfB8j" value="true" />
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
+    <node concept="2tJIrI" id="2TJjT4dEik7" role="jymVt" />
+    <node concept="3clFbW" id="2TJjT4dEjSC" role="jymVt">
+      <node concept="3cqZAl" id="2TJjT4dEjSD" role="3clF45" />
+      <node concept="3Tm1VV" id="2TJjT4dEjSE" role="1B3o_S" />
+      <node concept="3clFbS" id="2TJjT4dEjSG" role="3clF47">
+        <node concept="3clFbF" id="4fSpAVATXjV" role="3cqZAp">
+          <node concept="2OqwBi" id="4fSpAVATXjW" role="3clFbG">
+            <node concept="2YIFZM" id="4fSpAVATYDi" role="2Oq$k0">
+              <ref role="1Pybhc" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
+              <ref role="37wK5l" to="pa15:~PersistenceRegistry.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="4fSpAVATXjY" role="2OqNvi">
+              <ref role="37wK5l" to="pa15:~PersistenceRegistry.addFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="addFindUsagesParticipant" />
+              <node concept="Xjq3P" id="4fSpAVATXjZ" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2TJjT4dEioq" role="jymVt" />
     <node concept="3Tm1VV" id="4fSpAVATXgm" role="1B3o_S" />
-    <node concept="3uibUv" id="4fSpAVATXgn" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
+    <node concept="3uibUv" id="2TJjT4dEi6D" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
     <node concept="3uibUv" id="4fSpAVATXgo" role="EKbjA">
       <ref role="3uigEE" to="dush:~FindUsagesParticipant" resolve="FindUsagesParticipant" />
@@ -6591,6 +6612,7 @@
       <node concept="3Tm1VV" id="4fSpAVATXhT" role="1B3o_S" />
       <node concept="3cqZAl" id="4fSpAVATXhU" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="2TJjT4dEiNj" role="jymVt" />
     <node concept="3clFb_" id="4fSpAVATXhV" role="jymVt">
       <property role="TrG5h" value="findInstances" />
       <property role="DiZV1" value="false" />
@@ -6804,6 +6826,7 @@
       <node concept="3Tm1VV" id="4fSpAVATXj0" role="1B3o_S" />
       <node concept="3cqZAl" id="4fSpAVATXj1" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="2TJjT4dEj0L" role="jymVt" />
     <node concept="3clFb_" id="4fSpAVATXj2" role="jymVt">
       <property role="TrG5h" value="findModelUsages" />
       <property role="DiZV1" value="false" />
@@ -6961,62 +6984,9 @@
       <node concept="3Tm1VV" id="4fSpAVATXjE" role="1B3o_S" />
       <node concept="3cqZAl" id="4fSpAVATXjF" role="3clF45" />
     </node>
-    <node concept="3clFb_" id="4fSpAVATXjG" role="jymVt">
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="4fSpAVATXjH" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="4fSpAVATXjI" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="3clFbS" id="4fSpAVATXjJ" role="3clF47">
-        <node concept="3cpWs6" id="4fSpAVATXjK" role="3cqZAp">
-          <node concept="2OqwBi" id="4fSpAVATXjL" role="3cqZAk">
-            <node concept="2OqwBi" id="4fSpAVATXjM" role="2Oq$k0">
-              <node concept="Xjq3P" id="4fSpAVATXjN" role="2Oq$k0" />
-              <node concept="liA8E" id="4fSpAVATXjO" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
-              </node>
-            </node>
-            <node concept="liA8E" id="4fSpAVATXjP" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Class.getSimpleName()" resolve="getSimpleName" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="4fSpAVATXjQ" role="1B3o_S" />
-      <node concept="3uibUv" id="4fSpAVATXjR" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="4fSpAVATXjS" role="jymVt">
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="4fSpAVATXjT" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="3clFbS" id="4fSpAVATXjU" role="3clF47">
-        <node concept="3clFbF" id="4fSpAVATXjV" role="3cqZAp">
-          <node concept="2OqwBi" id="4fSpAVATXjW" role="3clFbG">
-            <node concept="2YIFZM" id="4fSpAVATYDi" role="2Oq$k0">
-              <ref role="1Pybhc" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.getInstance()" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="4fSpAVATXjY" role="2OqNvi">
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.addFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="addFindUsagesParticipant" />
-              <node concept="Xjq3P" id="4fSpAVATXjZ" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="4fSpAVATXk0" role="1B3o_S" />
-      <node concept="3cqZAl" id="4fSpAVATXk1" role="3clF45" />
-    </node>
+    <node concept="2tJIrI" id="2TJjT4dEjF1" role="jymVt" />
     <node concept="3clFb_" id="4fSpAVATXk2" role="jymVt">
-      <property role="TrG5h" value="disposeComponent" />
+      <property role="TrG5h" value="dispose" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="2AHcQZ" id="4fSpAVATXk3" role="2AJF6D">

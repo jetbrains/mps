@@ -16,6 +16,7 @@
 package jetbrains.mps.plugins.applicationplugins;
 
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -35,7 +36,7 @@ import java.util.List;
  * Is a {@link BasePluginManager} which is responsible for loading application plugins {@link BaseApplicationPlugin};
  * Triggered from the superclass (#afterPluginsCreated)
  */
-public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements ApplicationComponent, ApplicationPluginHolder {
+public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements BaseComponent, ApplicationPluginHolder {
   private static final Logger LOG = LogManager.getLogger(ApplicationPluginManager.class);
 
   private final Platform myPlatform;

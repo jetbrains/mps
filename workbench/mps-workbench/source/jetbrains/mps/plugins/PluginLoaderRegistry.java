@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.plugins;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -78,7 +79,7 @@ import static java.util.stream.Collectors.toCollection;
  * It listens for class loading events, calculate the plugin contributors which need to be updated and notifies these managers.
  * <p>
  */
-public class PluginLoaderRegistry implements ApplicationComponent {
+public class PluginLoaderRegistry implements Disposable {
   private static final Logger LOG = Logger.getLogger(PluginLoaderRegistry.class);
 
   private final ClassLoaderManager myClassLoaderManager;
@@ -99,6 +100,9 @@ public class PluginLoaderRegistry implements ApplicationComponent {
     assert repo != null;
     myModelAccess = repo.getModelAccess();
     myMakeComponent = mpsPlatform.findComponent(MakeServiceComponent.class);
+
+    myClassLoaderManager.addListener(myClassesListener);
+    assert myCurrentContributors.isEmpty();
   }
 
   private static Set<PluginContributor> createPluginContributors(Collection<ReloadableModule> modules) {
@@ -246,19 +250,6 @@ public class PluginLoaderRegistry implements ApplicationComponent {
     }
     Collections.reverse(toUnloadContributors);
     return new LinkedHashSet<>(toUnloadContributors);
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return PluginLoaderRegistry.class.getName();
-  }
-
-  @Override
-  public void initComponent() {
-    myClassLoaderManager.addListener(myClassesListener);
-    assert myCurrentContributors.isEmpty();
   }
 
   private Set<PluginContributor> getContributorsFromExtPoint() {
@@ -507,7 +498,7 @@ public class PluginLoaderRegistry implements ApplicationComponent {
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     myClassLoaderManager.removeListener(myClassesListener);
   }
 

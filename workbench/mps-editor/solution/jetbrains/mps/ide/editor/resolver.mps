@@ -15,6 +15,7 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="wexy" ref="r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -24,6 +25,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -40,9 +42,6 @@
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -132,9 +131,10 @@
   <node concept="312cEu" id="1$3BPv3VVY2">
     <property role="TrG5h" value="EditorResolverComponent" />
     <node concept="3Tm1VV" id="1$3BPv3VVY3" role="1B3o_S" />
-    <node concept="3uibUv" id="1$3BPv3VVY8" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
+    <node concept="3uibUv" id="5rIhWKNS1Au" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
+    <node concept="2tJIrI" id="5rIhWKNT6Jo" role="jymVt" />
     <node concept="312cEg" id="1$3BPv3VW9M" role="jymVt">
       <property role="TrG5h" value="myResolver" />
       <node concept="3Tm6S6" id="1$3BPv3VW9N" role="1B3o_S" />
@@ -142,24 +142,11 @@
         <ref role="3uigEE" node="1$3BPv3VW9h" resolve="EditorResolver" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5rIhWKNT6hR" role="jymVt" />
     <node concept="3clFbW" id="1$3BPv3VVY4" role="jymVt">
       <node concept="3cqZAl" id="1$3BPv3VVY5" role="3clF45" />
       <node concept="3Tm1VV" id="1$3BPv3VVY6" role="1B3o_S" />
-      <node concept="3clFbS" id="1$3BPv3VVY7" role="3clF47" />
-      <node concept="37vLTG" id="3Mm10yrPj1W" role="3clF46">
-        <property role="TrG5h" value="coreComponents" />
-        <node concept="3uibUv" id="3Mm10yrPj1X" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-        </node>
-      </node>
-    </node>
-    <node concept="3clFb_" id="1$3BPv3VVYd" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="1$3BPv3VVYe" role="1B3o_S" />
-      <node concept="3cqZAl" id="1$3BPv3VVYf" role="3clF45" />
-      <node concept="3clFbS" id="1$3BPv3VVYg" role="3clF47">
+      <node concept="3clFbS" id="1$3BPv3VVY7" role="3clF47">
         <node concept="3clFbF" id="1$3BPv3VW9R" role="3cqZAp">
           <node concept="37vLTI" id="1$3BPv3VW9Z" role="3clFbG">
             <node concept="2ShNRf" id="1$3BPv3VWa2" role="37vLTx">
@@ -187,13 +174,17 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="3tYsUK_RU2i" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      <node concept="37vLTG" id="3Mm10yrPj1W" role="3clF46">
+        <property role="TrG5h" value="coreComponents" />
+        <node concept="3uibUv" id="3Mm10yrPj1X" role="1tU5fm">
+          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
+        </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5rIhWKNRZk4" role="jymVt" />
     <node concept="3clFb_" id="1$3BPv3VVYh" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
+      <property role="TrG5h" value="dispose" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="1$3BPv3VVYi" role="1B3o_S" />
       <node concept="3cqZAl" id="1$3BPv3VVYj" role="3clF45" />
@@ -222,29 +213,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3tYsUK_RU2h" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="1$3BPv3VVYl" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="1$3BPv3VVYm" role="1B3o_S" />
-      <node concept="17QB3L" id="1$3BPv3VVYt" role="3clF45" />
-      <node concept="2AHcQZ" id="1$3BPv3VVYo" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="1$3BPv3VVYp" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3clFbS" id="1$3BPv3VVYq" role="3clF47">
-        <node concept="3clFbF" id="1$3BPv3VVYr" role="3cqZAp">
-          <node concept="Xl_RD" id="1$3BPv3VVYu" role="3clFbG">
-            <property role="Xl_RC" value="MPS Editor-based Resolver Component" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_RU2g" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

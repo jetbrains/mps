@@ -34,12 +34,13 @@
     <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
   </dependency>
   <dependency className="jetbrains.mps.watching.WatchedRootsUpdater">
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.project.ProjectManager" />
-    <classNode dependClassName="com.intellij.openapi.project.ProjectManagerAdapter" />
+    <classNode dependClassName="com.intellij.openapi.project.ProjectManagerListener" />
     <classNode dependClassName="com.intellij.openapi.vfs.LocalFileSystem" />
+    <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.HashMap" />
@@ -54,7 +55,7 @@
     <classNode dependClassName="jetbrains.mps.library.Library" />
     <classNode dependClassName="jetbrains.mps.project.ProjectLibraryManager" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
+    <classNode extendsClassName="com.intellij.openapi.Disposable" />
   </dependency>
 </dependenciesRoot>
 

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.vfs;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -51,7 +52,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSystem, ApplicationComponent {
+public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSystem, Disposable {
   private static final Logger LOG = LogManager.getLogger(IdeaFileSystem.class);
 
   private final MPSCoreComponents myCoreComponents;
@@ -72,6 +73,7 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
     myCoreComponents = mpsCore;
     myListenersContainer = listenerContainer;
     myIdeaProtocol = ideaProtocolIdentity;
+    vfsManager().registerFS(getProtocol(), this);
   }
 
   protected final VFSManager vfsManager() {
@@ -157,19 +159,8 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
   }
 
   @Override
-  public void initComponent() {
-    vfsManager().registerFS(getProtocol(), this);
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     vfsManager().unregisterFS(getProtocol(), this);
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return this.getClass().getSimpleName();
   }
 
   @Nullable

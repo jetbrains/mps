@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.project.listener;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.project.ModelsAutoImportsManager;
@@ -23,29 +24,18 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Evgeny Gryaznov, Aug 26, 2010
  */
-public class AbstractModuleWorkbenchAdjuster implements ApplicationComponent {
+public class AbstractModuleWorkbenchAdjuster implements Disposable {
   private final MPSCoreComponents myCoreComponents;
   private TestsModelAutoImports myContributor;
 
   public AbstractModuleWorkbenchAdjuster(MPSCoreComponents coreComponents) {
     myCoreComponents = coreComponents;
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    // todo: why workbench adjuster?
-    return "Abstract Module Workbench Adjuster";
-  }
-
-  @Override
-  public void initComponent() {
     myContributor = new TestsModelAutoImports();
     myCoreComponents.getPlatform().findComponent(ModelsAutoImportsManager.class).register(myContributor);
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     myCoreComponents.getPlatform().findComponent(ModelsAutoImportsManager.class).unregister(myContributor);
     myContributor = null;
   }

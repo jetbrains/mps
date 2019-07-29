@@ -42,6 +42,8 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
   //all FSes should be registered before this one starts working
   public IdeaFileSystem(MPSCoreComponents mpsCore, FileSystemListenersContainer listenerContainer, JarIdeaFileSystem fs1, LocalIdeaFileSystem fs2, JrtIdeaFileSystem fs3) {
     super(mpsCore, listenerContainer);
+    myOldFileSystem = FileSystemExtPoint.getFS();
+    FileSystemExtPoint.setFS(this);
   }
 
   @NotNull
@@ -73,20 +75,8 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
     return virtualFile.getFileSystem() instanceof LocalFileSystem || virtualFile.getFileSystem() instanceof JarFileSystem;
   }
 
-  @NotNull
   @Override
-  public String getComponentName() {
-    return "IdeaFileSystemProvider";
-  }
-
-  @Override
-  public void initComponent() {
-    myOldFileSystem = FileSystemExtPoint.getFS();
-    FileSystemExtPoint.setFS(this);
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     if (myOldFileSystem != null) {
       FileSystemExtPoint.setFS(myOldFileSystem);
       myOldFileSystem = null;

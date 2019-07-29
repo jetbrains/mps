@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.generator;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
@@ -35,23 +36,13 @@ import javax.swing.Icon;
   name = "GenerationSettings",
   storages = @Storage("generationSettings.xml")
 )
-public class GenerationSettings implements PersistentStateComponent<MyState>, ApplicationComponent {
+public class GenerationSettings implements PersistentStateComponent<MyState>, Disposable {
 
   private final DefaultModifiableGenerationSettings myState = new DefaultModifiableGenerationSettings();
   private final MPSCoreComponents myCoreComponents;
 
   public GenerationSettings(MPSCoreComponents mpsCore) {
     myCoreComponents = mpsCore;
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "Generation Settings";
-  }
-
-  @Override
-  public void initComponent() {
     GenerationSettingsProvider settingsProvider = myCoreComponents.getPlatform().findComponent(GenerationSettingsProvider.class);
     if (settingsProvider != null) {
       settingsProvider.setGenerationSettings(getModifiableSettings());
@@ -59,7 +50,7 @@ public class GenerationSettings implements PersistentStateComponent<MyState>, Ap
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     // XXX what's the idea behind setGenerationSettings(null), anyone?
     GenerationSettingsProvider settingsProvider = myCoreComponents.getPlatform().findComponent(GenerationSettingsProvider.class);
     if (settingsProvider != null && getModifiableSettings() == settingsProvider.getGenerationSettings()) {

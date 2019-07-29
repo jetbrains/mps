@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule;
@@ -35,16 +36,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 @Internal
 @Immutable
-public final class DataSourceFactoryRuleRegistrar implements ApplicationComponent {
+public final class DataSourceFactoryRuleRegistrar implements Disposable {
   private final List<DataSourceFactoryRule> myRegisteredRules = new CopyOnWriteArrayList<>();
   private final MPSCoreComponents myCoreComponents;
 
   public DataSourceFactoryRuleRegistrar(MPSCoreComponents mpsCoreComponents) {
     myCoreComponents = mpsCoreComponents;
-  }
-
-  @Override
-  public void initComponent() {
     DataSourceFactoryRuleService dsRegistry = myCoreComponents.getPlatform().findComponent(DataSourceFactoryRuleService.class);
     for (DataSourceFactoryRuleProvider provider : DataSourceFactoryRuleProvider.EP_DATA_SOURCE_FACTORY.getExtensions()) {
       try {
@@ -61,7 +58,7 @@ public final class DataSourceFactoryRuleRegistrar implements ApplicationComponen
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     DataSourceFactoryRuleService dsRegistry = myCoreComponents.getPlatform().findComponent(DataSourceFactoryRuleService.class);
     myRegisteredRules.forEach(dsRegistry::unregister);
     myRegisteredRules.clear();

@@ -48,6 +48,7 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -3459,12 +3460,13 @@
     <node concept="3uibUv" id="9D0Ba05vmE" role="EKbjA">
       <ref role="3uigEE" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
     </node>
-    <node concept="3uibUv" id="9D0Ba05vmF" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
+    <node concept="3uibUv" id="5rIhWKNRst8" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
     <node concept="3uibUv" id="9D0Ba05vmJ" role="1zkMxy">
       <ref role="3uigEE" to="4rvk:1Z_kCIGSOD4" resolve="AbstractMakeService" />
     </node>
+    <node concept="2tJIrI" id="5rIhWKNSIUA" role="jymVt" />
     <node concept="Wx3nA" id="9D0Ba05uYm" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <node concept="2YIFZM" id="Hn0$MvbYKq" role="33vP2m">
@@ -3479,6 +3481,7 @@
       </node>
       <node concept="3Tm6S6" id="9D0Ba05uYn" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="5rIhWKNSExt" role="jymVt" />
     <node concept="312cEg" id="9D0Ba05vmg" role="jymVt">
       <property role="TrG5h" value="currentSessionStickyMark" />
       <node concept="3Tm6S6" id="9D0Ba05vmh" role="1B3o_S" />
@@ -3574,22 +3577,6 @@
             </node>
           </node>
         </node>
-      </node>
-      <node concept="37vLTG" id="1LibDRnMhj6" role="3clF46">
-        <property role="TrG5h" value="mpsComponents" />
-        <node concept="3uibUv" id="1LibDRnMhj5" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6ZzUxXZPQ1p" role="jymVt" />
-    <node concept="3clFb_" id="9D0Ba05vam" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="9D0Ba05van" role="1B3o_S" />
-      <node concept="3cqZAl" id="9D0Ba05vao" role="3clF45" />
-      <node concept="3clFbS" id="9D0Ba05vap" role="3clF47">
         <node concept="3clFbF" id="1LibDRnMxcS" role="3cqZAp">
           <node concept="2OqwBi" id="1LibDRnMy$D" role="3clFbG">
             <node concept="2OqwBi" id="1LibDRnMxFO" role="2Oq$k0">
@@ -3610,14 +3597,17 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="3tYsUK_SlqS" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      <node concept="37vLTG" id="1LibDRnMhj6" role="3clF46">
+        <property role="TrG5h" value="mpsComponents" />
+        <node concept="3uibUv" id="1LibDRnMhj5" role="1tU5fm">
+          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="6ZzUxXZQXlE" role="jymVt" />
     <node concept="3clFb_" id="9D0Ba05vaK" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
+      <property role="TrG5h" value="dispose" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="9D0Ba05vaL" role="1B3o_S" />
       <node concept="3cqZAl" id="9D0Ba05vaM" role="3clF45" />
@@ -3646,31 +3636,6 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="6ZzUxXZQTTL" role="jymVt" />
-    <node concept="3clFb_" id="9D0Ba05vba" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="9D0Ba05vbb" role="1B3o_S" />
-      <node concept="17QB3L" id="6ZzUxXZR1KH" role="3clF45" />
-      <node concept="2AHcQZ" id="9D0Ba05vbd" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="9D0Ba05vbe" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3clFbS" id="9D0Ba05vbf" role="3clF47">
-        <node concept="3clFbF" id="9D0Ba05vbg" role="3cqZAp">
-          <node concept="Xl_RD" id="9D0Ba05vbh" role="3clFbG">
-            <property role="Xl_RC" value="Workbench Make Service" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_SlqR" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6DhoVFdfVzM" role="jymVt" />
     <node concept="2tJIrI" id="6DhoVFdfVzN" role="jymVt" />
     <node concept="3clFb_" id="43l$qHE8U6I" role="jymVt">
       <property role="1EzhhJ" value="false" />

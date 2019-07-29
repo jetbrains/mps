@@ -36,6 +36,7 @@
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -123,7 +124,6 @@
       </concept>
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
-      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -344,13 +344,27 @@
     <node concept="3uibUv" id="3Cep5Ce5gQk" role="EKbjA">
       <ref role="3uigEE" to="5h2r:72Fa_thHKfr" resolve="ClassifierSuccessors.Finder" />
     </node>
-    <node concept="3uibUv" id="3Cep5Ce5gQl" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
+    <node concept="3uibUv" id="5rIhWKNQD1V" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
+    <node concept="2tJIrI" id="5rIhWKNScks" role="jymVt" />
     <node concept="3clFbW" id="3Cep5Ce5gQe" role="jymVt">
       <node concept="3Tm1VV" id="3Cep5Ce5gQf" role="1B3o_S" />
       <node concept="3cqZAl" id="3Cep5Ce5gQg" role="3clF45" />
-      <node concept="3clFbS" id="3Cep5Ce5gQh" role="3clF47" />
+      <node concept="3clFbS" id="3Cep5Ce5gQh" role="3clF47">
+        <node concept="3clFbF" id="3Cep5Ce5gQq" role="3cqZAp">
+          <node concept="2OqwBi" id="3Cep5Ce5gQr" role="3clFbG">
+            <node concept="2YIFZM" id="3Cep5Ce5gQs" role="2Oq$k0">
+              <ref role="37wK5l" to="5h2r:3ohKLrgUVZY" resolve="getInstance" />
+              <ref role="1Pybhc" to="5h2r:3ohKLrgURCX" resolve="ClassifierSuccessors" />
+            </node>
+            <node concept="liA8E" id="3Cep5Ce5gQt" role="2OqNvi">
+              <ref role="37wK5l" to="5h2r:72Fa_thHN9S" resolve="setFinder" />
+              <node concept="Xjq3P" id="3Cep5Ce5gQu" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="37vLTG" id="3Cep5Ce5gQi" role="3clF46">
         <property role="TrG5h" value="coreComponents" />
         <node concept="3uibUv" id="3Cep5Ce5gQj" role="1tU5fm">
@@ -827,35 +841,10 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="15yHJj8jaGh" role="jymVt" />
-    <node concept="3clFb_" id="3Cep5Ce5gQm" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3Cep5Ce5gQn" role="1B3o_S" />
-      <node concept="3cqZAl" id="3Cep5Ce5gQo" role="3clF45" />
-      <node concept="3clFbS" id="3Cep5Ce5gQp" role="3clF47">
-        <node concept="3clFbF" id="3Cep5Ce5gQq" role="3cqZAp">
-          <node concept="2OqwBi" id="3Cep5Ce5gQr" role="3clFbG">
-            <node concept="2YIFZM" id="3Cep5Ce5gQs" role="2Oq$k0">
-              <ref role="37wK5l" to="5h2r:3ohKLrgUVZY" resolve="getInstance" />
-              <ref role="1Pybhc" to="5h2r:3ohKLrgURCX" resolve="ClassifierSuccessors" />
-            </node>
-            <node concept="liA8E" id="3Cep5Ce5gQt" role="2OqNvi">
-              <ref role="37wK5l" to="5h2r:72Fa_thHN9S" resolve="setFinder" />
-              <node concept="Xjq3P" id="3Cep5Ce5gQu" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_S2Wc" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="15yHJj8jaGi" role="jymVt" />
     <node concept="3clFb_" id="3Cep5Ce5gQv" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
+      <property role="TrG5h" value="dispose" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3Cep5Ce5gQw" role="1B3o_S" />
       <node concept="3cqZAl" id="3Cep5Ce5gQx" role="3clF45" />
@@ -874,30 +863,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3tYsUK_S2Wd" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="15yHJj8jaGj" role="jymVt" />
-    <node concept="3clFb_" id="3Cep5Ce5gQC" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="17QB3L" id="6SwJoDZw1q" role="3clF45" />
-      <node concept="3Tm1VV" id="3Cep5Ce5gQD" role="1B3o_S" />
-      <node concept="2AHcQZ" id="3Cep5Ce5gQF" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="3Cep5Ce5gQG" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3clFbS" id="3Cep5Ce5gQH" role="3clF47">
-        <node concept="3clFbF" id="3Cep5Ce5gQI" role="3cqZAp">
-          <node concept="Xl_RD" id="3Cep5Ce5gQJ" role="3clFbG">
-            <property role="Xl_RC" value="Classifiers Successors Finder" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_S2Wg" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

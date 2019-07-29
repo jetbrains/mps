@@ -15,22 +15,19 @@
  */
 package jetbrains.mps.ide.actions.refactoring;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.actions.ExtensionDescriptor;
 import jetbrains.mps.smodel.language.ExtensionRegistry;
 import org.jetbrains.annotations.NotNull;
 
-public class MoveModelExtensionComponent implements ApplicationComponent {
+public class MoveModelExtensionComponent implements Disposable {
   private final ExtensionDescriptor myDescriptor = new ExtensionDescriptor();
   private final MPSCoreComponents myComponents;
 
   public MoveModelExtensionComponent(MPSCoreComponents coreComponents) {
     myComponents = coreComponents;
-  }
-
-  @Override
-  public void initComponent() {
     ExtensionRegistry extensionRegistry = myComponents.getPlatform().findComponent(ExtensionRegistry.class);
     if (extensionRegistry != null) {
       extensionRegistry.registerExtensionDescriptor(myDescriptor);
@@ -38,16 +35,10 @@ public class MoveModelExtensionComponent implements ApplicationComponent {
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     ExtensionRegistry extensionRegistry = myComponents.getPlatform().findComponent(ExtensionRegistry.class);
     if (extensionRegistry != null) {
       extensionRegistry.unregisterExtensionDescriptor(myDescriptor);
     }
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return getClass().getName();
   }
 }
