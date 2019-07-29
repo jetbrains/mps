@@ -48,23 +48,23 @@ public final class MPSColors extends JBColor {
   public static final Color orange = JBColor.orange;
   public static final Color ORANGE = orange;
 
-  public static final Color yellow = JBColor.yellow;
-  public static final Color YELLOW = yellow;
+//  public static final Color yellow = JBColor.yellow;
+//  public static final Color YELLOW = yellow;
 
   public static final Color green = JBColor.green;
   public static final Color GREEN = green;
 
-  public static final Color lightGray = JBColor.lightGray;
-  public static final Color LIGHT_GRAY = lightGray;
+//  public static final Color lightGray = JBColor.lightGray;
+//  public static final Color LIGHT_GRAY = lightGray;
 
-  public static final Color gray = JBColor.gray;
-  public static final Color GRAY = gray;
+//  public static final Color gray = JBColor.gray;
+//  public static final Color GRAY = gray;
 
-  public static final Color darkGray = JBColor.darkGray;
-  public static final Color DARK_GRAY = darkGray;
+//  public static final Color darkGray = JBColor.darkGray;
+//  public static final Color DARK_GRAY = darkGray;
 
-  public static final Color magenta = JBColor.magenta;
-  public static final Color MAGENTA = magenta;
+//  public static final Color magenta = JBColor.magenta;
+//  public static final Color MAGENTA = magenta;
 
   public static final Color cyan = JBColor.cyan;
   public static final Color CYAN = cyan;

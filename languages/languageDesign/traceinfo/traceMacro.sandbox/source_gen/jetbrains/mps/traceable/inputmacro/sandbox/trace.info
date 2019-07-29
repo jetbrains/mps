@@ -3,65 +3,34 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:6a753c4c-c72d-48f6-96df-dfb0fd647f0e(jetbrains.mps.traceable.inputmacro.sandbox)/1187962225387703184">
     <file name="Main.java">
-      <node id="4987566618810970072" at="9,0,10,0" concept="6" trace="B" />
-      <node id="1187962225387703197" at="24,42,25,28" concept="4" />
-      <node id="4987566618810974165" at="25,28,26,10" concept="4" />
-      <node id="4987566618811229475" at="26,10,27,24" concept="4" />
-      <node id="4987566618810978802" at="27,24,28,18" concept="4" />
-      <node id="4987566618812787071" at="28,18,29,18" concept="4" />
-      <node id="1187962225387708167" at="30,26,31,29" concept="1" />
-      <node id="4987566618810373737" at="32,5,33,19" concept="4" />
-      <node id="4987566618810381125" at="33,19,34,40" concept="4" />
-      <node id="7980748436587796570" at="35,31,36,34" concept="1" />
-      <node id="358518924931847357" at="40,35,41,13" concept="5" />
-      <node id="7286121986604785136" at="11,0,13,0" concept="7" trace="foo#()V" />
-      <node id="7286121986604800394" at="13,0,15,0" concept="3" trace="bar#()V" />
-      <node id="1187962225387703186" at="21,0,23,0" concept="0" trace="Main#()V" />
-      <node id="1187962225387708162" at="29,18,32,5" concept="2" />
-      <node id="7980748436587796565" at="34,40,37,5" concept="2" />
-      <node id="358518924931838672" at="39,0,43,0" concept="3" trace="compareTo#(Ljetbrains/mps/traceable/inputmacro/sandbox/Main/IIII;)I" />
-      <node id="1187962225387703190" at="24,0,39,0" concept="7" trace="main#([Ljava/lang/String;)V" />
-      <scope id="7286121986604785139" at="11,35,11,35" />
-      <scope id="7286121986604800397" at="13,28,13,28" />
-      <scope id="1187962225387703189" at="21,17,21,17" />
-      <scope id="1187962225387708165" at="30,26,31,29" />
-      <scope id="7980748436587796568" at="35,31,36,34" />
-      <scope id="358518924931838679" at="40,35,41,13" />
-      <scope id="7286121986604785136" at="11,0,13,0" />
-      <scope id="7286121986604800394" at="13,0,15,0" />
-      <scope id="1187962225387703186" at="21,0,23,0" />
-      <scope id="1187962225387708162" at="29,18,32,5">
+      <node id="1187962225387703197" at="9,42,10,28" concept="3" />
+      <node id="1187962225387708167" at="11,26,12,29" concept="1" />
+      <node id="7980748436587796570" at="14,31,15,34" concept="1" />
+      <node id="1187962225387703186" at="7,0,9,0" concept="0" trace="Main#()V" />
+      <node id="1187962225387708162" at="10,28,13,5" concept="2" />
+      <node id="7980748436587796565" at="13,5,16,5" concept="2" />
+      <node id="1187962225387703190" at="9,0,18,0" concept="4" trace="main#([Ljava/lang/String;)V" />
+      <scope id="1187962225387703189" at="7,17,7,17" />
+      <scope id="1187962225387708165" at="11,26,12,29" />
+      <scope id="7980748436587796568" at="14,31,15,34" />
+      <scope id="1187962225387703186" at="7,0,9,0" />
+      <scope id="1187962225387708162" at="10,28,13,5">
         <var name="it" id="1187962225387708163" />
       </scope>
-      <scope id="7980748436587796565" at="34,40,37,5">
+      <scope id="7980748436587796565" at="13,5,16,5">
         <var name="var_gen" id="7980748436587796566" />
       </scope>
-      <scope id="358518924931838672" at="39,0,43,0">
-        <var name="main" id="358518924931838676" />
-      </scope>
-      <scope id="1187962225387703196" at="24,42,37,5">
-        <var name="Main" id="4987566618811229476" />
-        <var name="a" id="4987566618810974166" />
+      <scope id="1187962225387703196" at="9,42,16,5">
         <var name="array" id="1187962225387703198" />
-        <var name="i" id="4987566618810978803" />
-        <var name="ma" id="4987566618810373738" />
-        <var name="mb" id="4987566618810381126" />
-        <var name="x" id="4987566618812787074" />
       </scope>
-      <scope id="1187962225387703190" at="24,0,39,0">
+      <scope id="1187962225387703190" at="9,0,18,0">
         <var name="args" id="1187962225387703191" />
       </scope>
-      <unit id="7286121986604825567" at="15,0,17,0" name="jetbrains.mps.traceable.inputmacro.sandbox.Main$AAA$Main1" />
-      <unit id="358518924931822089" at="19,0,21,0" name="jetbrains.mps.traceable.inputmacro.sandbox.Main$IIII" />
-      <unit id="4987566618810965580" at="8,0,18,0" name="jetbrains.mps.traceable.inputmacro.sandbox.Main$AAA" />
-      <unit id="1187962225387703184" at="7,0,44,0" name="jetbrains.mps.traceable.inputmacro.sandbox.Main" />
+      <unit id="1187962225387703184" at="6,0,19,0" name="jetbrains.mps.traceable.inputmacro.sandbox.Main" />
     </file>
   </root>
 </debug-info>
