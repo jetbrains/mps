@@ -117,8 +117,12 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     if (path == null) {
       return false;
     }
-    IFile file = FileSystem.getInstance().getFile(path);
-    if (!(file.exists())) {
+    try {
+      IFile file = FileSystem.getInstance().getFile(path);
+      if (!(file.exists())) {
+        return false;
+      }
+    } catch (PathFormatChecker.PathFormatException pfe) {
       return false;
     }
     try {
