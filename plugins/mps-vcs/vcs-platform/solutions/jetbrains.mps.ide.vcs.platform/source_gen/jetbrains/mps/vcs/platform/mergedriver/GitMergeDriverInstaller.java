@@ -164,7 +164,7 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
       public boolean accept(AbstractInstaller.State it) {
         return it != AbstractInstaller.State.INSTALLED;
       }
-    }).count() + " of " + NameUtil.formatNumericalString(ListSequence.fromList(statuses).count(), "repository");
+    }).count() + " out of " + NameUtil.formatNumericalString(ListSequence.fromList(statuses).count(), "repository");
   }
   @Override
   public String getAffectedVcsName() {

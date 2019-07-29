@@ -3389,7 +3389,7 @@
                 </node>
               </node>
               <node concept="Xl_RD" id="686lcMJxRpO" role="3uHU7w">
-                <property role="Xl_RC" value=" of " />
+                <property role="Xl_RC" value=" out of " />
               </node>
             </node>
           </node>
