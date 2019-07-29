@@ -47,6 +47,10 @@ public class MigrationScriptReference implements BaseScriptReference<MigrationSc
   public int hashCode() {
     return language.hashCode() + 31 * fromVersion;
   }
+  @Override
+  public String toString() {
+    return "Migration[" + language.getQualifiedName() + ";" + fromVersion + "]";
+  }
   public String serialize() {
     return MetaIdHelper.getLanguage(language).serialize() + "(" + language.getQualifiedName() + ")" + "/" + fromVersion;
   }
@@ -67,7 +71,7 @@ public class MigrationScriptReference implements BaseScriptReference<MigrationSc
         LOG.warn("Could not load migration descriptor for language " + language + ".");
       }
     }
-    MigrationScript script = check_dhbyxl_a0e0k(md, current);
+    MigrationScript script = check_dhbyxl_a0e0l(md, current);
     if (script == null && !(silent)) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("Could not load migration script for language " + language + ", version " + current + ".");
@@ -76,7 +80,7 @@ public class MigrationScriptReference implements BaseScriptReference<MigrationSc
     }
     return script;
   }
-  private static MigrationScript check_dhbyxl_a0e0k(MigrationAspectDescriptor checkedDotOperand, Integer current) {
+  private static MigrationScript check_dhbyxl_a0e0l(MigrationAspectDescriptor checkedDotOperand, Integer current) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getScript(current);
     }

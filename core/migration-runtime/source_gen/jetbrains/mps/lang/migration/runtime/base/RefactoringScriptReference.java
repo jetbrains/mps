@@ -64,6 +64,10 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
   public int hashCode() {
     return module.hashCode() + 31 * fromVersion;
   }
+  @Override
+  public String toString() {
+    return "Refactoring[" + module.getModuleName() + ";" + fromVersion + "]";
+  }
 
   @Override
   public RefactoringScript resolve(Project p, final boolean silent) {

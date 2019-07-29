@@ -60,4 +60,9 @@ public abstract class BaseProjectMigration implements ProjectMigration {
   public void applyToCreatedProject(Project p) {
     setExecuted(p);
   }
+
+  @Override
+  public String toString() {
+    return getDescription();
+  }
 }

@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import jetbrains.mps.migration.global.MigrationOptions;
+import jetbrains.mps.migration.global.ProjectMigration;
 
 public class AntTaskExecutionUtil {
   private static final Logger LOG = LogManager.getLogger(AntTaskExecutionUtil.class);
@@ -93,7 +94,22 @@ public class AntTaskExecutionUtil {
     public MyMigrationSession(Project project) {
       myProject = project;
       this.myChecker = new MigrationCheckerImpl(myProject, getMigrationRegistry());
-      this.myExecutor = new MigrationExecutorImpl(myProject);
+      this.myExecutor = new MigrationExecutorImpl(myProject) {
+        @Override
+        public void executeModuleMigration(ScriptApplied s) {
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("Apply " + s);
+          }
+          super.executeModuleMigration(s);
+        }
+        @Override
+        public void executeProjectMigration(ProjectMigration pm) {
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("Apply " + pm);
+          }
+          super.executeProjectMigration(pm);
+        }
+      };
       getRequiredSteps().add(MigrationSession.MigrationStepKind.RESAVE);
       getRequiredSteps().add(MigrationSession.MigrationStepKind.MIGRATE);
     }

@@ -49,4 +49,9 @@ public class ScriptApplied<T extends BaseScriptReference> {
   public int hashCode() {
     return 31 * myModule.hashCode() + myScriptRef.hashCode();
   }
+
+  @Override
+  public String toString() {
+    return myScriptRef + " to module " + myModule.getModuleName();
+  }
 }
