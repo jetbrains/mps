@@ -28,16 +28,15 @@ import com.intellij.util.io.InlineKeyDescriptor;
 import com.intellij.util.io.KeyDescriptor;
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
+import gnu.trove.TIntHashSet;
 import gnu.trove.TIntObjectHashMap;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
-import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.workbench.findusages.MPSModelsIndexer;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -59,6 +58,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntConsumer;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -76,15 +77,21 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
   /*package*/ static final ID<WordIndexEntry, ModelNodesData> NAME = ID.create("mps.propvalue");
 
   private final Map<FileType, IndexAwareModelFactory> myIndexAwareFileTypes = new HashMap<>();
+  private final Pattern myWordSplitPattern = getWordSplitPattern();
 
-  public static PropertyValueProcessor processor(String text, final Consumer<SNode> sink, MPSProject mpsProject) {
-    return new PropertyValueProcessor(mpsProject, sink, text);
+  private static Pattern getWordSplitPattern() {
+    return Pattern.compile("\\s+");
   }
 
-  @Deprecated
-  @ToRemove(version = 0)
-  public static void processValues(String text, final Consumer<SNode> sink, MPSProject mpsProject) {
-    processor(text, sink, mpsProject).run(new EmptyProgressMonitor());
+  public static PropertyValueProcessor processor(final String text, final Consumer<SNode> sink, MPSProject mpsProject) {
+    // FIXME what if there are 'ignored' words in the text? Does it prevent us from using index (there's would be respective WordIndexEntry
+    //       in the key set, while index doesn't keep hash values for 'ignored' words.
+    return new PropertyValueProcessor(mpsProject, sink, () -> {
+      final THashSet<WordIndexEntry> map = new THashSet<>();
+      IntConsumer cc = (int h) -> map.add(new WordIndexEntry(h));
+      new WordSplit(getWordSplitPattern()).processWords(text, cc);
+      return map;
+    });
   }
 
   public PropertyValueIndex() {
@@ -131,13 +138,18 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
   @NotNull
   @Override
   public DataIndexer<WordIndexEntry, ModelNodesData, FileContent> getIndexer() {
-    return new ValueIndexer(myIndexAwareFileTypes::get);
+    return new ValueIndexer(myIndexAwareFileTypes::get, myWordSplitPattern);
   }
 
   @NotNull
   @Override
   public KeyDescriptor<WordIndexEntry> getKeyDescriptor() {
-    return new InlineKeyDescriptor<WordIndexEntry>() {
+    return new InlineKeyDescriptor<>() {
+      @Override
+      protected boolean isCompactFormat() {
+        return true;
+      }
+
       @Override
       public WordIndexEntry fromInt(int n) {
         return new WordIndexEntry(n);
@@ -158,7 +170,7 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
 
   @Override
   public int getVersion() {
-    return 1;
+    return 2;
   }
 
   // There's no documentation whether DataIndexer#map() can be reused for different FileContent (perhaps, even in parallel?) or
@@ -168,10 +180,11 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
   private static class ValueIndexer implements DataIndexer<WordIndexEntry, ModelNodesData, FileContent> {
     private final Function<FileType, IndexAwareModelFactory> myFileFactory;
     private final Set<String> myIgnoredValues;
-    private final Pattern myWordSplit = Pattern.compile("\\s");
+    private final Pattern myWordSplit;
 
-    ValueIndexer(Function<FileType, IndexAwareModelFactory> fileFactory) {
+    ValueIndexer(Function<FileType, IndexAwareModelFactory> fileFactory, Pattern wordSplit) {
       myFileFactory = fileFactory;
+      myWordSplit = wordSplit;
       //
       // #map() is invoked multiple times from different threads.
       // collect ignored values only once
@@ -190,7 +203,7 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
         return Collections.emptyMap();
       }
       final byte[] content = inputData.getContent();
-      final PropertyValueCallback cb = new PropertyValueCallback(myIgnoredValues, myWordSplit);
+      final PropertyValueCallback cb = new PropertyValueCallback(myIgnoredValues, new WordSplit(myWordSplit));
       try {
         mf.index(new ByteArrayInputStream(content), cb);
       } catch (IOException ex) {
@@ -200,12 +213,45 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
     }
   }
 
+  // single-thread!
+  private static class WordSplit {
+    private final Pattern myWordSplit;
+    private final TIntHashSet mySeenHashes = new TIntHashSet(10);
+
+    /*package*/ WordSplit(Pattern wordSplit) {
+      myWordSplit = wordSplit;
+    }
+
+    // breaks given value into 'words' (according to pattern supplied), calculates hash values for n-grams, and then supply unique hash values to the consumer.
+    public void processWords(String value, IntConsumer cc) {
+      mySeenHashes.clear();
+      // FIXME likely, shall ensure unique int values coming into cc? Or is it an indication of better match (few same trigrams per value is better than
+      //       single unique). Need to figure out what does IDEA's index implementation think of this. For the time being, ensure uniqueness here.
+      IntConsumer uniqueValues = (int v) -> {
+        if (mySeenHashes.add(v)) {
+          cc.accept(v);
+        }
+      };
+      final Matcher matcher = myWordSplit.matcher(value);
+      int index = 0;
+      while (matcher.find()) {
+        if (index < matcher.start()) {
+          WordIndexEntry.forEachHash(value, index, matcher.start(), uniqueValues);
+        }
+        index = matcher.end();
+      }
+      if (index < value.length()) {
+        WordIndexEntry.forEachHash(value, index, value.length(), uniqueValues);
+      }
+    }
+  }
+
   private static class PropertyValueCallback implements IndexAwareModelFactory.Callback {
     private final TIntObjectHashMap<List<SNodeId>> myValues = new TIntObjectHashMap<>();
     private final Set<String> myIgnoredValues;
-    private final Pattern myWordSplit;
+    private final WordSplit myWordSplit;
 
-    /*package*/ PropertyValueCallback(Set<String> ignoredValues, Pattern wordSplit) {
+    /*package*/ PropertyValueCallback(Set<String> ignoredValues, WordSplit wordSplit) {
       myIgnoredValues = ignoredValues;
       myWordSplit = wordSplit;
     }
@@ -225,19 +271,19 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
       if (myIgnoredValues.contains(value)) {
         return;
       }
-      for(String word : myWordSplit.split(value, 0)) {
-        if (word.isEmpty()) {
-          continue;
-        }
-        int h = WordIndexEntry.calcWordHash(word, 0, word.length());
+      IntConsumer cc = (int h) -> {
         List<SNodeId> v = myValues.get(h);
         // I don't expect too many nodes to contain same (of course, from hash value standpoint) words
         // and I don't care about duplicates in SNodeId values, as new ModelNodesData cons would ensure unique values with set, here I care to do it fast.
         if (v == null) {
           myValues.put(h, v = new ArrayList<>(4));
         }
+        // FIXME else{} - what if we get same hash value for few 3-grams within the value? I'd end up with multiple identical 'node' elements in the list!
+        //       perhaps, shall deal with that in WordSplit! OTOH, what if multiple trigrams help to locate match better (of course, need to avoid 'node'
+        //       duplications here then).
         v.add(node);
-      }
+      };
+      myWordSplit.processWords(value, cc);
     }
 
     @Override

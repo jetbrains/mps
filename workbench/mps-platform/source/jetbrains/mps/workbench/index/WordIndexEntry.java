@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.workbench.index;
 
+import java.util.function.IntConsumer;
+
 /**
  * Pretty much the same as IdIndexEntry from IDEA, key to represent a search word.
  * At the moment, represents a hash of a single word (case-insensitive), in future, perhaps, we move to use n-grams instead.
@@ -26,10 +28,6 @@ package jetbrains.mps.workbench.index;
 public final class WordIndexEntry {
   private final int myWordHash;
 
-  public WordIndexEntry(CharSequence text, int from, int to) {
-    myWordHash = calcWordHash(text, from, to);
-  }
-
   public WordIndexEntry(int wordHash) {
     myWordHash = wordHash;
   }
@@ -39,14 +37,30 @@ public final class WordIndexEntry {
     return myWordHash;
   }
 
-  /*package*/ static int calcWordHash(CharSequence text, int from, int to) {
+  // ignores short sequences (needs 2+), doesn't care about duplicated hash values reported
+  /*package*/ static void forEachHash(CharSequence text, int from, int to, IntConsumer consumer) {
     assert from < to;
-    // copy of StringUtil.stringHashCodeInsensitive
-    int h = 0;
-    for (int i = from; i < to; i++) {
-      h = 31 * h + Character.toLowerCase(text.charAt(i));
+    if (to - from < 2) {
+      // ignore 1-letter words. 2-letter words are handled in a special way with trailing magic char to get a trigram
+      return;
     }
-    return h;
+    int h3, h2 = 0, h1 = 0;
+    int iter = 0;
+    for (int i = from; i < to; i++, iter++) {
+      final char c = Character.toLowerCase(text.charAt(i));
+      h3 = h2 + c;
+      h2 = h1 + c;
+      h1 = c;
+      if (iter >=2) {
+        consumer.accept(h3);
+      }
+    }
+    assert iter >= 2;
+    final int MAGIC_NON_CHAR = 17;
+    if (iter == 2) {
+      h3 = h2 + MAGIC_NON_CHAR;
+      consumer.accept(h3);
+    }
   }
 
   @Override

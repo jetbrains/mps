@@ -19,7 +19,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.FileBasedIndex.ValueProcessor;
-import gnu.trove.THashSet;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
@@ -31,7 +30,9 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * @author Artem Tikhomirov
@@ -40,23 +41,17 @@ import java.util.function.Consumer;
 public final class PropertyValueProcessor {
   private final MPSProject myProject;
   private final Consumer<SNode> mySink;
-  private final String myText;
+  private final Supplier<Set<WordIndexEntry>> myKeySupplier;
 
-  /*package*/ PropertyValueProcessor(@NotNull MPSProject mpsProject, @NotNull Consumer<SNode> sink, @NotNull String text) {
+  /*package*/ PropertyValueProcessor(@NotNull MPSProject mpsProject, @NotNull Consumer<SNode> sink, @NotNull Supplier<Set<WordIndexEntry>> keys) {
     myProject = mpsProject;
     mySink = sink;
-    myText = text;
+    myKeySupplier = keys;
   }
 
   public void run(@NotNull ProgressMonitor progressMonitor) {
     final ProjectScope scope = new ProjectScope(myProject);
-    THashSet<WordIndexEntry> keys = new THashSet<>();
-    for (String word : myText.split("\\s")) {
-      if (word.isEmpty()) {
-        continue;
-      }
-      keys.add(new WordIndexEntry(word, 0, word.length()));
-    }
+    Set<WordIndexEntry> keys = myKeySupplier.get();
     if (progressMonitor.isCanceled()) {
       return;
     }

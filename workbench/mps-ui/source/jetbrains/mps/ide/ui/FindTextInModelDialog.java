@@ -319,10 +319,9 @@ public class FindTextInModelDialog extends DialogWrapper {
       @Override
       public void done() {
         ApplicationManager.getApplication().invokeLater(() -> {
+          mySearchEntry.setInfoText(MessageFormat.format("{0} {0,choice, 0# matches|1# match|2# matches}", model.getRowCount()));
           if (model.getRowCount() == 0) {
             myResultsPreviewTable.getEmptyText().setText("Nothing found");
-          } else {
-            mySearchEntry.setInfoText(MessageFormat.format("{0} {0,choice, 0# matches|1# match|2# matches}", model.getRowCount()));
           }
         });
       }
