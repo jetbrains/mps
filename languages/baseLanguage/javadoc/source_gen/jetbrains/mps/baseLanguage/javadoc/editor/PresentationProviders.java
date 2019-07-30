@@ -5,7 +5,7 @@ package jetbrains.mps.baseLanguage.javadoc.editor;
 import jetbrains.mps.smodel.action.IReferentPresentationProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.javadoc.behavior.BaseDocReference__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -16,28 +16,28 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.as(SNodeOperations.getParent(targetNode), AUX_nxpo3o.Classifier_4b7e553)) + "#" + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), AUX_nxpo3o.Classifier_4b7e553)) + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_t5duq4_a0a0a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.as(SNodeOperations.getParent(targetNode), AUX_nxpo3o.Classifier_4b7e553)) + "#" + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "()";
+      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), AUX_nxpo3o.Classifier_4b7e553)) + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "()";
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_yqqfxo_a0a0a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetNode);
+      return (String) BaseDocReference__BehaviorDescriptor.getFQNameInContext_idM5aELaKhPF.invoke(sourceNode, targetNode);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_np8u6u_a0a0a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.as(SNodeOperations.getParent(targetNode), AUX_nxpo3o.Classifier_4b7e553)) + "#" + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), AUX_nxpo3o.Classifier_4b7e553)) + SPropertyOperations.getString(targetNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     }
   };
 

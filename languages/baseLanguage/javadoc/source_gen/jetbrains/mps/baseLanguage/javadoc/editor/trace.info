@@ -1732,10 +1732,10 @@
       <unit id="2217234381367188010" at="42,0,162,0" name="jetbrains.mps.baseLanguage.javadoc.editor.FieldDocReference_EditorBuilder_a" />
     </file>
     <file name="PresentationProviders.java">
-      <node id="1370556966541098644" at="18,89,19,328" concept="9" />
+      <node id="1370556966541098644" at="18,89,19,369" concept="9" />
       <node id="1370556966541098583" at="16,0,21,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1370556966541098583" at="15,0,22,0" concept="12" trace="PRESENTATION_mgmaof_a0a0a" />
-      <scope id="1370556966541098584" at="18,89,19,328" />
+      <scope id="1370556966541098584" at="18,89,19,369" />
       <scope id="1370556966541098583" at="16,0,21,0">
         <var name="sourceNode" id="1370556966541098583" />
         <var name="targetNode" id="1370556966541098583" />
@@ -2064,10 +2064,10 @@
       <unit id="2217234381367530197" at="42,0,161,0" name="jetbrains.mps.baseLanguage.javadoc.editor.MethodDocReference_EditorBuilder_a" />
     </file>
     <file name="PresentationProviders.java">
-      <node id="1370556966540459001" at="25,89,26,335" concept="9" />
+      <node id="1370556966540459001" at="25,89,26,376" concept="9" />
       <node id="1370556966540454764" at="23,0,28,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1370556966540454764" at="22,0,29,0" concept="12" trace="PRESENTATION_t5duq4_a0a0a" />
-      <scope id="1370556966540454765" at="25,89,26,335" />
+      <scope id="1370556966540454765" at="25,89,26,376" />
       <scope id="1370556966540454764" at="23,0,28,0">
         <var name="sourceNode" id="1370556966540454764" />
         <var name="targetNode" id="1370556966540454764" />
@@ -2230,10 +2230,10 @@
       <unit id="2217234381367530214" at="42,0,161,0" name="jetbrains.mps.baseLanguage.javadoc.editor.ClassifierDocReference_EditorBuilder_a" />
     </file>
     <file name="PresentationProviders.java">
-      <node id="1370556966541101069" at="32,89,33,95" concept="9" />
+      <node id="1370556966541101069" at="32,89,33,122" concept="9" />
       <node id="1370556966541101062" at="30,0,35,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1370556966541101062" at="29,0,36,0" concept="12" trace="PRESENTATION_yqqfxo_a0a0a" />
-      <scope id="1370556966541101063" at="32,89,33,95" />
+      <scope id="1370556966541101063" at="32,89,33,122" />
       <scope id="1370556966541101062" at="30,0,35,0">
         <var name="sourceNode" id="1370556966541101062" />
         <var name="targetNode" id="1370556966541101062" />
@@ -3395,10 +3395,10 @@
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/4021391592913766809">
     <file name="PresentationProviders.java">
-      <node id="1370556966541096112" at="39,89,40,328" concept="9" />
+      <node id="1370556966541096112" at="39,89,40,369" concept="9" />
       <node id="1370556966541096033" at="37,0,42,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1370556966541096033" at="36,0,43,0" concept="12" trace="PRESENTATION_np8u6u_a0a0a" />
-      <scope id="1370556966541096034" at="39,89,40,328" />
+      <scope id="1370556966541096034" at="39,89,40,369" />
       <scope id="1370556966541096033" at="37,0,42,0">
         <var name="sourceNode" id="1370556966541096033" />
         <var name="targetNode" id="1370556966541096033" />
