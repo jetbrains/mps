@@ -77,6 +77,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -128,7 +129,8 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return getSelectedSNode();
     }
     if (MPSDataKeys.NODES.is(dataId)) {
-      return getSelectedSNodes();
+      final List<SNode> selectedNodes = getSelectedSNodes();
+      return selectedNodes.isEmpty() ? null : selectedNodes;
     }
 
     if (MPSDataKeys.MODEL.is(dataId)) {
@@ -138,7 +140,8 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return getContextModel();
     }
     if (MPSDataKeys.MODELS.is(dataId)) {
-      return getSelectedModels();
+      final List<SModel> selectedModels = getSelectedModels();
+      return selectedModels.isEmpty() ? null : selectedModels;
     }
 
     if (MPSDataKeys.MODULE.is(dataId)) {
@@ -148,11 +151,13 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return getContextModule();
     }
     if (MPSDataKeys.MODULES.is(dataId)) {
-      return getSelectedModules();
+      final List<SModule> selectedModules = getSelectedModules();
+      return selectedModules.isEmpty() ? null : selectedModules;
     }
 
     if (MPSDataKeys.VIRTUAL_PACKAGES.is(dataId)) {
-      return getSelectedPackages();
+      final List<Pair<SModel, String>> rv = getSelectedPackages();
+      return rv.isEmpty() ? null : rv;
     }
 
     if (MPSDataKeys.NAMESPACE.is(dataId)) {
@@ -167,7 +172,8 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return getSelectedTreeNode(TreeNode.class);
     }
     if (MPSDataKeys.TREE_NODES.is(dataId)) {
-      return getSelectedTreeNodes(TreeNode.class);
+      final List<TreeNode> selectedTreeNodes = getSelectedTreeNodes(TreeNode.class);
+      return selectedTreeNodes.isEmpty() ? null : selectedTreeNodes;
     }
     if (MPSDataKeys.TREE_SELECTION_SIZE.is(dataId)) {
       return getSelectionSize();
@@ -265,9 +271,14 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return result.get(0);
   }
 
+  @NotNull
   public List<SNode> getSelectedSNodes() {
-    List<SNode> result = new ArrayList<>();
-    for (MPSTreeNodeEx node : getSelectedTreeNodes(MPSTreeNodeEx.class)) {
+    final List<MPSTreeNodeEx> selectedTreeNodes = getSelectedTreeNodes(MPSTreeNodeEx.class);
+    if (selectedTreeNodes.isEmpty()) {
+      return Collections.emptyList();
+    }
+    List<SNode> result = new ArrayList<>(selectedTreeNodes.size());
+    for (MPSTreeNodeEx node : selectedTreeNodes) {
       SNode snode = node.getSNode();
       if (snode == null) {
         continue;
@@ -277,14 +288,20 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return result;
   }
 
+  @NotNull
   public List<SModel> getSelectedModels() {
-    List<SModel> result = new ArrayList<>();
-    for (SModelTreeNode node : getSelectedTreeNodes(SModelTreeNode.class)) {
+    final List<SModelTreeNode> selectedTreeNodes = getSelectedTreeNodes(SModelTreeNode.class);
+    if(selectedTreeNodes.isEmpty()) {
+      return Collections.emptyList();
+    }
+    List<SModel> result = new ArrayList<>(selectedTreeNodes.size());
+    for (SModelTreeNode node : selectedTreeNodes) {
       result.add(node.getModel());
     }
     return result;
   }
 
+  @Nullable
   public SModel getSelectedModel() {
     SModelTreeNode selectedTreeNode = getSelectedTreeNode(SModelTreeNode.class);
     if (selectedTreeNode == null) {
@@ -293,6 +310,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return selectedTreeNode.getModel();
   }
 
+  @Nullable
   public SModel getContextModel() {
     MPSTreeNode treeNode = (MPSTreeNode) getSelectedTreeNode(TreeNode.class);
     while (treeNode != null && !(treeNode instanceof SModelTreeNode)) {
@@ -304,6 +322,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return ((SModelTreeNode) treeNode).getModel();
   }
 
+  @Nullable
   public SModule getSelectedModule() {
     ProjectModuleTreeNode selectedTreeNode = getSelectedTreeNode(ProjectModuleTreeNode.class);
     if (selectedTreeNode == null) {
@@ -312,6 +331,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return selectedTreeNode.getModule();
   }
 
+  @Nullable
   public SModule getContextModule() {
     MPSTreeNode treeNode = (MPSTreeNode) getSelectedTreeNode(TreeNode.class);
     while (treeNode != null && !(treeNode instanceof ProjectModuleTreeNode)) {
@@ -323,14 +343,20 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return ((ProjectModuleTreeNode) treeNode).getModule();
   }
 
+  @NotNull
   public List<SModule> getSelectedModules() {
-    List<SModule> result = new ArrayList<>();
-    for (ProjectModuleTreeNode node : getSelectedTreeNodes(ProjectModuleTreeNode.class)) {
+    final List<ProjectModuleTreeNode> selectedTreeNodes = getSelectedTreeNodes(ProjectModuleTreeNode.class);
+    if (selectedTreeNodes.isEmpty()) {
+      return Collections.emptyList();
+    }
+    List<SModule> result = new ArrayList<>(selectedTreeNodes.size());
+    for (ProjectModuleTreeNode node : selectedTreeNodes) {
       result.add(node.getModule());
     }
     return result;
   }
 
+  @NotNull
   public List<Pair<SModel, String>> getSelectedPackages() {
     List<Pair<SModel, String>> result = new ArrayList<>();
     TreePath[] paths = getTree().getSelectionPaths();
@@ -353,6 +379,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return selection == null ? 0 : selection.length;
   }
 
+  @Nullable
   private <T extends TreeNode> T getSelectedTreeNode(Class<T> nodeClass) {
     TreePath selectionPath = getTree().getSelectionPath();
     if (selectionPath == null) {
@@ -391,10 +418,11 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return ActionPlace.PROJECT_PANE;
   }
 
+  @NotNull
   public <T extends TreeNode> List<T> getSelectedTreeNodes(Class<T> nodeClass) {
     TreePath[] selectionPaths = getTree().getSelectionPaths();
     if (selectionPaths == null) {
-      return new ArrayList<>();
+      return Collections.emptyList();
     }
 
     List<T> selectedTreeNodes = new ArrayList<>(selectionPaths.length);
@@ -411,6 +439,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return selectedTreeNodes;
   }
 
+  @Nullable
   private VirtualFile[] getSelectedFiles() {
     List<VirtualFile> selectedFilesList = new LinkedList<>();
 
