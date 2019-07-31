@@ -41,10 +41,6 @@
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
-      <concept id="1078938745671" name="jetbrains.mps.lang.editor.structure.EditorComponentDeclaration" flags="ig" index="PKFIW" />
-      <concept id="1078939183254" name="jetbrains.mps.lang.editor.structure.CellModel_Component" flags="sg" stub="3162947552742194261" index="PMmxH">
-        <reference id="1078939183255" name="editorComponent" index="PMmxG" />
-      </concept>
       <concept id="1186402211651" name="jetbrains.mps.lang.editor.structure.StyleSheet" flags="ng" index="V5hpn">
         <child id="1186402402630" name="styleClass" index="V601i" />
       </concept>
@@ -83,7 +79,6 @@
       <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
         <property id="1215007802031" name="value" index="3$6WeP" />
       </concept>
-      <concept id="1215007883204" name="jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem" flags="ln" index="3$7fVu" />
       <concept id="1215007897487" name="jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem" flags="ln" index="3$7jql" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <property id="1214560368769" name="emptyNoTargetText" index="39s7Ar" />
@@ -268,9 +263,6 @@
         </node>
         <node concept="l2Vlx" id="2o8jHTOAWKj" role="2iSdaV" />
       </node>
-      <node concept="PMmxH" id="yXuRM1V$WT" role="3EZMnx">
-        <ref role="PMmxG" node="yXuRM1V$WP" resolve="isDefinedAlwaysConstant" />
-      </node>
     </node>
   </node>
   <node concept="24kQdi" id="hyoMxHEp1H">
@@ -320,9 +312,6 @@
         </node>
         <node concept="l2Vlx" id="2BXC8DkILFu" role="2iSdaV" />
       </node>
-      <node concept="PMmxH" id="yXuRM1V$Xb" role="3EZMnx">
-        <ref role="PMmxG" node="yXuRM1V$WP" resolve="isDefinedAlwaysConstant" />
-      </node>
     </node>
   </node>
   <node concept="3p36aQ" id="hyoMxHF54p">
@@ -370,9 +359,6 @@
       </node>
       <node concept="3F1sOY" id="6kKc3mjqf7l" role="3EZMnx">
         <ref role="1NtTu8" to="iwhd:4JP_D2W0fqM" resolve="type" />
-      </node>
-      <node concept="PMmxH" id="yXuRM1V$Xq" role="3EZMnx">
-        <ref role="PMmxG" node="yXuRM1V$WP" resolve="isDefinedAlwaysConstant" />
       </node>
     </node>
   </node>
@@ -473,18 +459,6 @@
       </node>
       <node concept="VechU" id="40CvJkJ_cFd" role="3F10Kt">
         <property role="Vb096" value="g1_eI4o/darkBlue" />
-      </node>
-    </node>
-  </node>
-  <node concept="PKFIW" id="yXuRM1V$WP">
-    <property role="TrG5h" value="isDefinedAlwaysConstant" />
-    <ref role="1XX52x" to="iwhd:19J4M2yrkaX" resolve="NativeDef" />
-    <node concept="3F0ifn" id="yXuRM1V$WQ" role="2wV5jI">
-      <property role="3F0ifm" value="(is defined always)" />
-      <ref role="1k5W1q" to="tpen:hNBbdO1" resolve="JavaDoc" />
-      <node concept="Vb9p2" id="3wfS_XoEeK_" role="3F10Kt" />
-      <node concept="3$7fVu" id="yXuRM1VEAW" role="3F10Kt">
-        <property role="3$6WeP" value="2" />
       </node>
     </node>
   </node>
