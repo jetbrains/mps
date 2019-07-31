@@ -11454,6 +11454,25 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="47U0A_sBIu1" role="3cqZAp">
+          <node concept="3clFbS" id="47U0A_sBIu3" role="3clFbx">
+            <node concept="3clFbF" id="47U0A_sBICA" role="3cqZAp">
+              <node concept="2OqwBi" id="47U0A_sBJxg" role="3clFbG">
+                <node concept="37vLTw" id="47U0A_sBIC$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="47U0A_sBKSo" role="2OqNvi">
+                  <node concept="Xl_RD" id="47U0A_sBKUu" role="25WWJ7">
+                    <property role="Xl_RC" value="-DNO_FS_ROOTS_ACCESS_CHECK=true" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="47U0A_sBIzZ" role="3clFbw">
+            <ref role="3cqZAo" node="40J2CKBsoFY" resolve="myNeedsMPS" />
+          </node>
+        </node>
       </node>
       <node concept="37vLTG" id="40J2CKBskDs" role="3clF46">
         <property role="TrG5h" value="executorClass" />

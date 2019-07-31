@@ -48,6 +48,9 @@ public final class TestParameters {
     myClassPath = (classPath == null ? ListSequence.fromList(new ArrayList<String>()) : classPath);
     myAdditionalJvmArgs = (jvmArgs == null ? ListSequence.fromList(new ArrayList<String>()) : jvmArgs);
     myNeedsMPS = mpsRequired;
+    if (myNeedsMPS) {
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("-DNO_FS_ROOTS_ACCESS_CHECK=true");
+    }
   }
 
   public Class<?> getExecutorClass() {
