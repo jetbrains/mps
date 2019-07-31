@@ -48,7 +48,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652298604"), AUX_9oew2a.LanguageId_f5e2e6b, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652298604"), AUX.LanguageId_f5e2e6b, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -59,7 +59,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5769081855527316890"), AUX_9oew2a.LanguageIdentityBySourceModule_da33a8ba, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5769081855527316890"), AUX.LanguageIdentityBySourceModule_da33a8ba, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -76,7 +76,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
   }
   private static final SNodePointer callMacro_9oew2a_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396");
 
-  private static final class AUX_9oew2a {
+  private static final class AUX {
     /*package*/ static final SConcept LanguageId_f5e2e6b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
     /*package*/ static final SConcept LanguageIdentityBySourceModule_da33a8ba = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, "jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule");
   }

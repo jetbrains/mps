@@ -45,7 +45,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7551657168185616464"), AUX_x5z8bg.DotExpression_97ed08d8, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7551657168185616464"), AUX.DotExpression_97ed08d8, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -165,7 +165,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
   private static final SNodePointer copySrcMacro_x5z8bg_b0a0c0d0b0b2a2e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4877343046905241409");
   private static final SNodePointer callMacro_x5z8bg_b0a0a1a4a1a1c0c4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4877343046905241422");
 
-  private static final class AUX_x5z8bg {
+  private static final class AUX {
     /*package*/ static final SConcept DotExpression_97ed08d8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 }

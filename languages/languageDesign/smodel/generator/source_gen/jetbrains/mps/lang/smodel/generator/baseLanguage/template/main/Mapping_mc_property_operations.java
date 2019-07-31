@@ -35,7 +35,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1195249229777"), AUX_1xpg9b.SPropertyAccess_5799f99, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1195249229777"), AUX.SPropertyAccess_5799f99, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -46,7 +46,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168977481907"), AUX_1xpg9b.EnumMemberReference_Old_4f1f431d, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168977481907"), AUX.EnumMemberReference_Old_4f1f431d, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -63,7 +63,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711083892"), AUX_1xpg9b.Property_SetOperation_edd2b245, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711083892"), AUX.Property_SetOperation_edd2b245, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -78,7 +78,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168978373589"), AUX_1xpg9b.Property_SetOperation_edd2b245, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168978373589"), AUX.Property_SetOperation_edd2b245, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -89,7 +89,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1215467451595"), AUX_1xpg9b.Property_RemoveOperation_f9609df4, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1215467451595"), AUX.Property_RemoveOperation_f9609df4, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -100,7 +100,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168978997189"), AUX_1xpg9b.Property_HasValue_Simple_3f6ddfed, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168978997189"), AUX.Property_HasValue_Simple_3f6ddfed, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -111,7 +111,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule6 extends ReductionRuleBase {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168979588320"), AUX_1xpg9b.Property_HasValue_Enum_d54e5cb, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168979588320"), AUX.Property_HasValue_Enum_d54e5cb, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -122,7 +122,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
   }
   private static final SNodePointer callMacro_1xpg9b_b0a0a2a1e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088913806");
 
-  private static final class AUX_1xpg9b {
+  private static final class AUX {
     /*package*/ static final SConcept SPropertyAccess_5799f99 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
     /*package*/ static final SConcept EnumMemberReference_Old_4f1f431d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, "jetbrains.mps.lang.smodel.structure.EnumMemberReference_Old");
     /*package*/ static final SConcept Property_SetOperation_edd2b245 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091d8a1d53L, "jetbrains.mps.lang.smodel.structure.Property_SetOperation");

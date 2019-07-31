@@ -46,7 +46,7 @@ public class Switch_switch_ILinkAccessQualifier_toSLink extends TemplateSwitchBa
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653082204"), AUX_xmgu17.PoundExpression_f3bc946f, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653082204"), AUX.PoundExpression_f3bc946f, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -59,7 +59,7 @@ public class Switch_switch_ILinkAccessQualifier_toSLink extends TemplateSwitchBa
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653082214"), AUX_xmgu17.LinkRefQualifier_24f70a94, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653082214"), AUX.LinkRefQualifier_24f70a94, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -77,7 +77,7 @@ public class Switch_switch_ILinkAccessQualifier_toSLink extends TemplateSwitchBa
   private static final SNodePointer copySrcMacro_xmgu17_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653082207");
   private static final SNodePointer callMacro_xmgu17_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145323");
 
-  private static final class AUX_xmgu17 {
+  private static final class AUX {
     /*package*/ static final SConcept PoundExpression_f3bc946f = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
     /*package*/ static final SConcept LinkRefQualifier_24f70a94 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11886c4bac0L, "jetbrains.mps.lang.smodel.structure.LinkRefQualifier");
   }

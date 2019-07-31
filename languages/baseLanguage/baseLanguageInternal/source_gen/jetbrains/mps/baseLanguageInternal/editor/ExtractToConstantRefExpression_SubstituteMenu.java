@@ -69,12 +69,12 @@ public class ExtractToConstantRefExpression_SubstituteMenu extends SubstituteMen
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguageInternal.editor.ExtractToConstantRefExpression_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return AUX_omedfq.ExtractToConstantRefExpression_86e65ed;
+      return AUX.ExtractToConstantRefExpression_86e65ed;
     }
   }
   public class SMP_Subconcepts_omedfq_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_omedfq.ExtractToConstantRefExpression_86e65ed);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX.ExtractToConstantRefExpression_86e65ed);
     }
     @NotNull
     @Override
@@ -94,7 +94,7 @@ public class ExtractToConstantRefExpression_SubstituteMenu extends SubstituteMen
     }
   }
 
-  private static final class AUX_omedfq {
+  private static final class AUX {
     /*package*/ static final SConcept ExtractToConstantRefExpression_86e65ed = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, "jetbrains.mps.baseLanguageInternal.structure.ExtractToConstantRefExpression");
   }
 }

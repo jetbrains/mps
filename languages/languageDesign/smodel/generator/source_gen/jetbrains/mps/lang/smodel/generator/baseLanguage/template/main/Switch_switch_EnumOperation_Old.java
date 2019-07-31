@@ -52,7 +52,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552951783"), AUX_vmdyp3.SEnum_MemberOperation_Old_2ff51e20, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552951783"), AUX.SEnum_MemberOperation_Old_2ff51e20, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -112,7 +112,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552952244"), AUX_vmdyp3.SEnum_MembersOperation_Old_2ff51e97, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552952244"), AUX.SEnum_MembersOperation_Old_2ff51e97, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -147,7 +147,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552952250"), AUX_vmdyp3.SEnum_MemberForNameOperation_Old_2ff519ff, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552952250"), AUX.SEnum_MemberForNameOperation_Old_2ff519ff, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -186,7 +186,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552952258"), AUX_vmdyp3.SEnum_MemberForValueOperation_Old_2ff51abf, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552952258"), AUX.SEnum_MemberForValueOperation_Old_2ff51abf, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -264,7 +264,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
   private static final SNodePointer copySrcMacro_vmdyp3_b0a0c0a1a3a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553298533");
   private static final SNodePointer callMacro_vmdyp3_b0a0a1a4a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553281070");
 
-  private static final class AUX_vmdyp3 {
+  private static final class AUX {
     /*package*/ static final SConcept SEnum_MemberOperation_Old_2ff51e20 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e691L, "jetbrains.mps.lang.smodel.structure.SEnum_MemberOperation_Old");
     /*package*/ static final SConcept SEnum_MembersOperation_Old_2ff51e97 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e6b4L, "jetbrains.mps.lang.smodel.structure.SEnum_MembersOperation_Old");
     /*package*/ static final SConcept SEnum_MemberForNameOperation_Old_2ff519ff = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e60cL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForNameOperation_Old");

@@ -46,7 +46,7 @@ public class Switch_switch_INodePointerArg extends TemplateSwitchBase implements
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008449"), AUX_230kvm.PoundExpression_f3bc946f, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008449"), AUX.PoundExpression_f3bc946f, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -59,7 +59,7 @@ public class Switch_switch_INodePointerArg extends TemplateSwitchBase implements
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008460"), AUX_230kvm.NodePointerArg_Identity_bd4b719d, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008460"), AUX.NodePointerArg_Identity_bd4b719d, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -77,7 +77,7 @@ public class Switch_switch_INodePointerArg extends TemplateSwitchBase implements
   private static final SNodePointer copySrcMacro_230kvm_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008453");
   private static final SNodePointer callMacro_230kvm_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222259361");
 
-  private static final class AUX_230kvm {
+  private static final class AUX {
     /*package*/ static final SConcept PoundExpression_f3bc946f = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
     /*package*/ static final SConcept NodePointerArg_Identity_bd4b719d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, "jetbrains.mps.lang.smodel.structure.NodePointerArg_Identity");
   }

@@ -69,12 +69,12 @@ public class ExtractStaticInnerClassCreator_SubstituteMenu extends SubstituteMen
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguageInternal.editor.ExtractStaticInnerClassCreator_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return AUX_qy246m.ExtractStaticInnerClassCreator_eec6b549;
+      return AUX.ExtractStaticInnerClassCreator_eec6b549;
     }
   }
   public class SMP_Subconcepts_qy246m_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_qy246m.ExtractStaticInnerClassCreator_eec6b549);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX.ExtractStaticInnerClassCreator_eec6b549);
     }
     @NotNull
     @Override
@@ -94,7 +94,7 @@ public class ExtractStaticInnerClassCreator_SubstituteMenu extends SubstituteMen
     }
   }
 
-  private static final class AUX_qy246m {
+  private static final class AUX {
     /*package*/ static final SConcept ExtractStaticInnerClassCreator_eec6b549 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassCreator");
   }
 }

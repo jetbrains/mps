@@ -24,7 +24,7 @@ public class SelectClass_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX_3xog6h.WeakClassReference_5f295b4b) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(AUX.WeakClassReference_5f295b4b) {
 
       @NotNull
       @Override
@@ -37,7 +37,7 @@ public class SelectClass_Contribution extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, AUX_3xog6h.WeakClassReference_5f295b4b));
+    }, AUX.WeakClassReference_5f295b4b));
     return result;
   }
 
@@ -54,7 +54,7 @@ public class SelectClass_Contribution extends SubstituteMenuBase {
   }
 
 
-  private static final class AUX_3xog6h {
+  private static final class AUX {
     /*package*/ static final SConcept WeakClassReference_5f295b4b = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x7a00a2a7a8b080daL, "jetbrains.mps.baseLanguageInternal.structure.WeakClassReference");
   }
 }

@@ -253,6 +253,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895903ac(jetbrains.mps.baseLanguageInternal.structure)/4927083583736784422");
     b.version(2);
     b.property("uniqueFieldName", 0x4460846a234a9e33L).type(PrimitiveTypeId.STRING).origin("4927083583736815155").done();
+    b.property("baseContainerName", 0x317d612869048b53L).type(PrimitiveTypeId.STRING).origin("3566113306135792467").done();
     b.aggregate("expression", 0x4460846a234ab020L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("4927083583736819744").done();
     b.alias("extract to single constant");
     return b.create();

@@ -39,7 +39,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206655176237"), AUX_y3pd1p.Concept_IsSuperConceptOfOperation_7fa2a7d6, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206655176237"), AUX.Concept_IsSuperConceptOfOperation_7fa2a7d6, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -102,7 +102,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653920356"), AUX_y3pd1p.Concept_IsSubConceptOfOperation_7faaf1d4, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653920356"), AUX.Concept_IsSubConceptOfOperation_7faaf1d4, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -165,7 +165,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1219264843254"), AUX_y3pd1p.Concept_IsExactlyOperation_2ce98afe, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1219264843254"), AUX.Concept_IsExactlyOperation_2ce98afe, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -228,7 +228,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1179350311514"), AUX_y3pd1p.Concept_GetDirectSuperConcepts_ccd978ae, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1179350311514"), AUX.Concept_GetDirectSuperConcepts_ccd978ae, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -268,7 +268,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1180457793772"), AUX_y3pd1p.Concept_GetAllSuperConcepts_d89dfa44, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1180457793772"), AUX.Concept_GetAllSuperConcepts_d89dfa44, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -308,7 +308,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1181954475988"), AUX_y3pd1p.Concept_GetAllSubConcepts_b0aac5c2, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1181954475988"), AUX.Concept_GetAllSubConcepts_b0aac5c2, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -348,7 +348,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule6 extends ReductionRuleBase {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1181951488348"), AUX_y3pd1p.Concept_NewInstance_b40b493d, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1181951488348"), AUX.Concept_NewInstance_b40b493d, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -359,7 +359,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule7 extends ReductionRuleBase {
     public ReductionRule7() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4778864149394758477"), AUX_y3pd1p.ConceptAliasOperation_2ac72139, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4778864149394758477"), AUX.ConceptAliasOperation_2ac72139, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -385,7 +385,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   }
   /*package*/ static final class ReductionRule8 extends ReductionRuleBase {
     public ReductionRule8() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6870613620391130778"), AUX_y3pd1p.ConceptShortDescriptionOperation_5c44f518, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6870613620391130778"), AUX.ConceptShortDescriptionOperation_5c44f518, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -427,7 +427,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   private static final SNodePointer copySrcMacro_y3pd1p_b0a0c0d0c0b01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4778864149394758481");
   private static final SNodePointer copySrcMacro_y3pd1p_b0a0c0d0c0b11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4778864149394780277");
 
-  private static final class AUX_y3pd1p {
+  private static final class AUX {
     /*package*/ static final SConcept Concept_IsSuperConceptOfOperation_7fa2a7d6 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf289d94L, "jetbrains.mps.lang.smodel.structure.Concept_IsSuperConceptOfOperation");
     /*package*/ static final SConcept Concept_IsSubConceptOfOperation_7faaf1d4 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf601180L, "jetbrains.mps.lang.smodel.structure.Concept_IsSubConceptOfOperation");
     /*package*/ static final SConcept Concept_IsExactlyOperation_2ce98afe = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f41acfb7L, "jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation");

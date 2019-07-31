@@ -50,7 +50,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640454"), AUX_yds1mf.Node_GetParentOperation_38c84293, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640454"), AUX.Node_GetParentOperation_38c84293, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -76,7 +76,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640465"), AUX_yds1mf.Node_GetAncestorOperation_2b423327, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640465"), AUX.Node_GetAncestorOperation_2b423327, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -91,7 +91,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640476"), AUX_yds1mf.Node_GetAncestorOperation_2b423327, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640476"), AUX.Node_GetAncestorOperation_2b423327, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -106,7 +106,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640486"), AUX_yds1mf.Node_GetAncestorOperation_2b423327, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640486"), AUX.Node_GetAncestorOperation_2b423327, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -121,7 +121,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640498"), AUX_yds1mf.Node_GetAncestorOperation_2b423327, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640498"), AUX.Node_GetAncestorOperation_2b423327, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -136,7 +136,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule5 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640509"), AUX_yds1mf.Node_GetAncestorsOperation_28ce8390, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640509"), AUX.Node_GetAncestorsOperation_28ce8390, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -151,7 +151,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule6 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640516"), AUX_yds1mf.Node_GetAncestorsOperation_28ce8390, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640516"), AUX.Node_GetAncestorsOperation_28ce8390, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -166,7 +166,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule7 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule7() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640524"), AUX_yds1mf.Node_GetDescendantsOperation_2f48d9cb, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640524"), AUX.Node_GetDescendantsOperation_2f48d9cb, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -181,7 +181,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule8 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule8() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640531"), AUX_yds1mf.Node_GetDescendantsOperation_2f48d9cb, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640531"), AUX.Node_GetDescendantsOperation_2f48d9cb, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -196,7 +196,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule9 extends ReductionRuleBase {
     public ReductionRule9() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640539"), AUX_yds1mf.Node_GetContainingRootOperation_8b33e7da, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640539"), AUX.Node_GetContainingRootOperation_8b33e7da, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -207,7 +207,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule10 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule10() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640541"), AUX_yds1mf.Node_GetChildrenOperation_5b48299f, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640541"), AUX.Node_GetChildrenOperation_5b48299f, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -222,7 +222,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule11 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule11() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640551"), AUX_yds1mf.Node_GetChildrenOperation_5b48299f, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640551"), AUX.Node_GetChildrenOperation_5b48299f, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -237,7 +237,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule12 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule12() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640561"), AUX_yds1mf.Node_GetChildrenAndChildAttributesOperation_2f154e14, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640561"), AUX.Node_GetChildrenAndChildAttributesOperation_2f154e14, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -252,7 +252,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule13 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule13() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640571"), AUX_yds1mf.Node_GetChildrenAndChildAttributesOperation_2f154e14, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640571"), AUX.Node_GetChildrenAndChildAttributesOperation_2f154e14, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -267,7 +267,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule14 extends ReductionRuleBase {
     public ReductionRule14() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640581"), AUX_yds1mf.Node_GetModelOperation_c77f6b9d, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640581"), AUX.Node_GetModelOperation_c77f6b9d, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -278,7 +278,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule15 extends ReductionRuleBase {
     public ReductionRule15() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640583"), AUX_yds1mf.Node_GetIndexInParentOperation_b32ad61f, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640583"), AUX.Node_GetIndexInParentOperation_b32ad61f, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -289,7 +289,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule16 extends ReductionRuleBase {
     public ReductionRule16() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640585"), AUX_yds1mf.Node_IsInstanceOfOperation_3a392115, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640585"), AUX.Node_IsInstanceOfOperation_3a392115, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -341,7 +341,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule17 extends ReductionRuleBase {
     public ReductionRule17() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640604"), AUX_yds1mf.Node_GetNextSiblingOperation_471af4f9, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640604"), AUX.Node_GetNextSiblingOperation_471af4f9, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -352,7 +352,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule18 extends ReductionRuleBase {
     public ReductionRule18() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640606"), AUX_yds1mf.Node_GetPrevSiblingOperation_21d8870e, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640606"), AUX.Node_GetPrevSiblingOperation_21d8870e, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -363,7 +363,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule19 extends ReductionRuleBase {
     public ReductionRule19() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640608"), AUX_yds1mf.Node_GetNextSiblingsOperation_42f9f094, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640608"), AUX.Node_GetNextSiblingsOperation_42f9f094, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -374,7 +374,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule20 extends ReductionRuleBase {
     public ReductionRule20() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640610"), AUX_yds1mf.Node_GetPrevSiblingsOperation_ac8b2e07, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640610"), AUX.Node_GetPrevSiblingsOperation_ac8b2e07, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -385,7 +385,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule21 extends ReductionRuleBase {
     public ReductionRule21() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640612"), AUX_yds1mf.Node_GetAllSiblingsOperation_d923f352, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640612"), AUX.Node_GetAllSiblingsOperation_d923f352, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -396,7 +396,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule22 extends ReductionRuleBase {
     public ReductionRule22() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640614"), AUX_yds1mf.Node_InsertNewNextSiblingOperation_13bc655b, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640614"), AUX.Node_InsertNewNextSiblingOperation_13bc655b, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -407,7 +407,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule23 extends ReductionRuleBase {
     public ReductionRule23() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640616"), AUX_yds1mf.Node_InsertNewPrevSiblingOperation_bd9d7cb4, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640616"), AUX.Node_InsertNewPrevSiblingOperation_bd9d7cb4, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -418,7 +418,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule24 extends ReductionRuleBase {
     public ReductionRule24() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640618"), AUX_yds1mf.Node_InsertNextSiblingOperation_5c4234c0, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640618"), AUX.Node_InsertNextSiblingOperation_5c4234c0, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -429,7 +429,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule25 extends ReductionRuleBase {
     public ReductionRule25() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640620"), AUX_yds1mf.Node_InsertPrevSiblingOperation_5dbf1f99, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640620"), AUX.Node_InsertPrevSiblingOperation_5dbf1f99, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -440,7 +440,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule26 extends ReductionRuleBase {
     public ReductionRule26() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640622"), AUX_yds1mf.Node_ReplaceWithNewOperation_44bd6995, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640622"), AUX.Node_ReplaceWithNewOperation_44bd6995, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -451,7 +451,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule27 extends ReductionRuleBase {
     public ReductionRule27() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640624"), AUX_yds1mf.Node_ReplaceWithAnotherOperation_c1ccdcee, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640624"), AUX.Node_ReplaceWithAnotherOperation_c1ccdcee, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -462,7 +462,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule28 extends ReductionRuleBase {
     public ReductionRule28() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640626"), AUX_yds1mf.Node_DeleteOperation_281fbd16, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640626"), AUX.Node_DeleteOperation_281fbd16, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -488,7 +488,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule29 extends ReductionRuleBase {
     public ReductionRule29() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640637"), AUX_yds1mf.Node_DetachOperation_cf2c2708, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640637"), AUX.Node_DetachOperation_cf2c2708, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -514,7 +514,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule30 extends ReductionRuleBase {
     public ReductionRule30() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640648"), AUX_yds1mf.Node_CopyOperation_f7b68321, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640648"), AUX.Node_CopyOperation_f7b68321, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -525,7 +525,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule31 extends ReductionRuleBase {
     public ReductionRule31() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640650"), AUX_yds1mf.Node_IsNotNullOperation_6d7ec1d, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640650"), AUX.Node_IsNotNullOperation_6d7ec1d, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -536,7 +536,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule32 extends ReductionRuleBase {
     public ReductionRule32() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640652"), AUX_yds1mf.Node_IsNullOperation_2152399b, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640652"), AUX.Node_IsNullOperation_2152399b, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -547,7 +547,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule33 extends ReductionRuleBase {
     public ReductionRule33() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640654"), AUX_yds1mf.Node_IsRoleOperation_c87db080, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640654"), AUX.Node_IsRoleOperation_c87db080, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -558,7 +558,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule34 extends ReductionRuleBase {
     public ReductionRule34() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640656"), AUX_yds1mf.Node_GetConceptOperation_86049b01, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640656"), AUX.Node_GetConceptOperation_86049b01, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -569,7 +569,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule35 extends ReductionRuleBase {
     public ReductionRule35() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640658"), AUX_yds1mf.Node_GetSConceptOperation_30e269a8, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640658"), AUX.Node_GetSConceptOperation_30e269a8, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -580,7 +580,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule36 extends ReductionRuleBase {
     public ReductionRule36() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640660"), AUX_yds1mf.Node_IsAttributeOperation_7f19a008, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640660"), AUX.Node_IsAttributeOperation_7f19a008, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -606,7 +606,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule37 extends ReductionRuleBase {
     public ReductionRule37() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640671"), AUX_yds1mf.Node_GetReferencesOperation_be400292, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640671"), AUX.Node_GetReferencesOperation_be400292, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -632,7 +632,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule38 extends ReductionRuleBase {
     public ReductionRule38() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640682"), AUX_yds1mf.Node_GetReferenceOperation_c33b2c2a, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640682"), AUX.Node_GetReferenceOperation_c33b2c2a, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -684,7 +684,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule39 extends ReductionRuleBase {
     public ReductionRule39() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640714"), AUX_yds1mf.Node_ContainingLinkOperation_f083dcb1, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640714"), AUX.Node_ContainingLinkOperation_f083dcb1, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -710,7 +710,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule40 extends ReductionRuleBase {
     public ReductionRule40() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640725"), AUX_yds1mf.Node_GetContainingRoleOperation_77235a94, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640725"), AUX.Node_GetContainingRoleOperation_77235a94, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -736,7 +736,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule41 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule41() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640736"), AUX_yds1mf.Node_PointerOperation_35122180, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386640736"), AUX.Node_PointerOperation_35122180, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -766,7 +766,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   }
   /*package*/ static final class ReductionRule42 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule42() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3661776679763905062"), AUX_yds1mf.Node_IsOperation_433dedd1, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3661776679763905062"), AUX.Node_IsOperation_433dedd1, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -825,7 +825,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
   private static final SNodePointer copySrcMacro_yds1mf_b0a0c0d0c0c94 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3661776679763994177");
   private static final SNodePointer callMacro_yds1mf_b0a0a1a4a2a2xb = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3661776679763994850");
 
-  private static final class AUX_yds1mf {
+  private static final class AUX {
     /*package*/ static final SConcept Node_GetParentOperation_38c84293 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109563e6169L, "jetbrains.mps.lang.smodel.structure.Node_GetParentOperation");
     /*package*/ static final SConcept Node_GetAncestorOperation_2b423327 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110bd4e0067L, "jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation");
     /*package*/ static final SConcept Node_GetAncestorsOperation_28ce8390 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1112390be59L, "jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation");

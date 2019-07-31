@@ -27,7 +27,7 @@ public class ExtractToConstantRefExpression_SmartReference extends SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ultiz_a(), AUX_ultiz.ExtractToConstantRefExpression_86e65ed));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ultiz_a(), AUX.ExtractToConstantRefExpression_86e65ed));
     return result;
   }
 
@@ -48,7 +48,7 @@ public class ExtractToConstantRefExpression_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_ultiz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) AUX_ultiz.ExtractToConstantRefExpression_86e65ed, MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, 0x162724dabcdc672L, "original"));
+      super((SAbstractConcept) AUX.ExtractToConstantRefExpression_86e65ed, MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, 0x162724dabcdc672L, "original"));
     }
     @NotNull
     @Override
@@ -94,7 +94,7 @@ public class ExtractToConstantRefExpression_SmartReference extends SubstituteMen
     }
   }
 
-  private static final class AUX_ultiz {
+  private static final class AUX {
     /*package*/ static final SConcept ExtractToConstantRefExpression_86e65ed = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, "jetbrains.mps.baseLanguageInternal.structure.ExtractToConstantRefExpression");
   }
 }

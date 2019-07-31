@@ -27,7 +27,7 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8bwl7t_a(), AUX_8bwl7t.ExtractStaticMethod_CallExpression_54f8b8c4));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8bwl7t_a(), AUX.ExtractStaticMethod_CallExpression_54f8b8c4));
     result.add(new SMP_Subconcepts_8bwl7t_b());
     return result;
   }
@@ -49,7 +49,7 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
 
     public SMP_ReferenceScope_8bwl7t_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) AUX_8bwl7t.ExtractStaticMethod_CallExpression_54f8b8c4, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
+      super((SAbstractConcept) AUX.ExtractStaticMethod_CallExpression_54f8b8c4, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     }
     @NotNull
     @Override
@@ -66,7 +66,7 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
   }
   public class SMP_Subconcepts_8bwl7t_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX_8bwl7t.ExtractStaticMethod_CallExpression_54f8b8c4);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(AUX.ExtractStaticMethod_CallExpression_54f8b8c4);
     }
     @NotNull
     @Override
@@ -86,7 +86,7 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
     }
   }
 
-  private static final class AUX_8bwl7t {
+  private static final class AUX {
     /*package*/ static final SConcept ExtractStaticMethod_CallExpression_54f8b8c4 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ed999aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethod_CallExpression");
   }
 }

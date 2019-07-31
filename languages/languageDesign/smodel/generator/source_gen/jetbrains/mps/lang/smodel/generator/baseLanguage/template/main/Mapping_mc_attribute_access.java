@@ -45,7 +45,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040691"), AUX_szb33j.AllAttributeQualifier_9e07b978, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040691"), AUX.AllAttributeQualifier_9e07b978, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -69,7 +69,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040016"), AUX_szb33j.NodeAttributeQualifier_9dfc6351, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040016"), AUX.NodeAttributeQualifier_9dfc6351, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -107,7 +107,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2069539807976704252"), AUX_szb33j.LinkAttributeQualifier_9dfc6353, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2069539807976704252"), AUX.LinkAttributeQualifier_9dfc6353, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -171,7 +171,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2400273019711865666"), AUX_szb33j.ChildAttributeQualifier_9986a10f, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2400273019711865666"), AUX.ChildAttributeQualifier_9986a10f, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -235,7 +235,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2069539807976667493"), AUX_szb33j.PropertyAttributeQualifier_9e07c459, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2069539807976667493"), AUX.PropertyAttributeQualifier_9e07c459, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -299,7 +299,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583038101"), AUX_szb33j.AttributeAccess_9dfa0679, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583038101"), AUX.AttributeAccess_9dfa0679, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -365,7 +365,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule6 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583065535"), AUX_szb33j.AssignmentExpression_24d60daa, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583065535"), AUX.AssignmentExpression_24d60daa, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -413,7 +413,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule7 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule7() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583065569"), AUX_szb33j.Link_SetTargetOperation_9ebef48b, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583065569"), AUX.Link_SetTargetOperation_9ebef48b, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -461,7 +461,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule8 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule8() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583065591"), AUX_szb33j.Link_SetNewChildOperation_511b437d, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583065591"), AUX.Link_SetNewChildOperation_511b437d, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -513,7 +513,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   }
   /*package*/ static final class ReductionRule9 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule9() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6960953357954106633"), AUX_szb33j.LinkList_AddNewChildOperation_62a4ad04, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6960953357954106633"), AUX.LinkList_AddNewChildOperation_62a4ad04, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -591,7 +591,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
   private static final SNodePointer copySrcMacro_szb33j_b0a0c0e0c0c31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3878331446150797057");
   private static final SNodePointer callMacro_szb33j_b0a0a1a5a2a2n = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145322");
 
-  private static final class AUX_szb33j {
+  private static final class AUX {
     /*package*/ static final SConcept AllAttributeQualifier_9e07b978 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c8b0L, "jetbrains.mps.lang.smodel.structure.AllAttributeQualifier");
     /*package*/ static final SConcept NodeAttributeQualifier_9dfc6351 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b5L, "jetbrains.mps.lang.smodel.structure.NodeAttributeQualifier");
     /*package*/ static final SConcept LinkAttributeQualifier_9dfc6353 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, "jetbrains.mps.lang.smodel.structure.LinkAttributeQualifier");

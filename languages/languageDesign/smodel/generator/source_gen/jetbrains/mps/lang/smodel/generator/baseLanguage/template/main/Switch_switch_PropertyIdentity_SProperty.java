@@ -47,7 +47,7 @@ public class Switch_switch_PropertyIdentity_SProperty extends TemplateSwitchBase
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557182"), AUX_g196mm.PropertyId_52150612, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557182"), AUX.PropertyId_52150612, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -57,7 +57,7 @@ public class Switch_switch_PropertyIdentity_SProperty extends TemplateSwitchBase
     }
   }
 
-  private static final class AUX_g196mm {
+  private static final class AUX {
     /*package*/ static final SConcept PropertyId_52150612 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId");
   }
 }

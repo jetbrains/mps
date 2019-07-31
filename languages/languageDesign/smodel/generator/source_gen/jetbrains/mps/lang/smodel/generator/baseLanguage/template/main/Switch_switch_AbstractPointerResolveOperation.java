@@ -48,7 +48,7 @@ public class Switch_switch_AbstractPointerResolveOperation extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485799756"), AUX_9t35nv.NodePointer_ResolveOperation_b3301032, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485799756"), AUX.NodePointer_ResolveOperation_b3301032, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -83,7 +83,7 @@ public class Switch_switch_AbstractPointerResolveOperation extends TemplateSwitc
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485813185"), AUX_9t35nv.ModelPointer_ResolveOperation_27dd5db0, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485813185"), AUX.ModelPointer_ResolveOperation_27dd5db0, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -121,7 +121,7 @@ public class Switch_switch_AbstractPointerResolveOperation extends TemplateSwitc
   private static final SNodePointer copySrcMacro_9t35nv_b0a0c0d0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485815599");
   private static final SNodePointer copySrcMacro_9t35nv_b0a0c0e0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485815607");
 
-  private static final class AUX_9t35nv {
+  private static final class AUX {
     /*package*/ static final SConcept NodePointer_ResolveOperation_b3301032 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32a2de94092b18f4L, "jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation");
     /*package*/ static final SConcept ModelPointer_ResolveOperation_27dd5db0 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x386b28659aca024aL, "jetbrains.mps.lang.smodel.structure.ModelPointer_ResolveOperation");
   }

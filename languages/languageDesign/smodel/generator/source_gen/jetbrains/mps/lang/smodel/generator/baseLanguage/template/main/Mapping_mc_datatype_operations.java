@@ -37,7 +37,7 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147266885"), AUX_tk1ivr.PropertySerializeExpression_bb0b32b8, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147266885"), AUX.PropertySerializeExpression_bb0b32b8, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -73,7 +73,7 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111391"), AUX_tk1ivr.PropertyDeserializeExpression_be214b33, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111391"), AUX.PropertyDeserializeExpression_be214b33, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -112,7 +112,7 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
   private static final SNodePointer switchMacroRef_tk1ivr_b0a0a0a2a1e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111394");
   private static final SNodePointer templateSwitchNode_tk1ivr_a0a0c0a1a2a1e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
 
-  private static final class AUX_tk1ivr {
+  private static final class AUX {
     /*package*/ static final SConcept PropertySerializeExpression_bb0b32b8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083baaeddeaL, "jetbrains.mps.lang.smodel.structure.PropertySerializeExpression");
     /*package*/ static final SConcept PropertyDeserializeExpression_be214b33 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083bab109deL, "jetbrains.mps.lang.smodel.structure.PropertyDeserializeExpression");
   }

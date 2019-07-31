@@ -28,7 +28,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_369k9v_a(), AUX_369k9v.ExtractStaticInnerClassCreator_eec6b549));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_369k9v_a(), AUX.ExtractStaticInnerClassCreator_eec6b549));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_369k9v_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) AUX_369k9v.ExtractStaticInnerClassCreator_eec6b549, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
+      super((SAbstractConcept) AUX.ExtractStaticInnerClassCreator_eec6b549, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     }
     @NotNull
     @Override
@@ -95,7 +95,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
     }
   }
 
-  private static final class AUX_369k9v {
+  private static final class AUX {
     /*package*/ static final SConcept ExtractStaticInnerClassCreator_eec6b549 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassCreator");
   }
 }
