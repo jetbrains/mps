@@ -157,15 +157,7 @@ public class ChangesTracking {
     }
   }
 
-  /*package*/ void scheduleFullUpdate(final boolean force) {
-    myQueue.addTask(new Runnable() {
-      public void run() {
-        update(force);
-      }
-    }, myModelDescriptor.getReference());
-  }
-
-  private void update(final boolean force) {
+  /*package*/ void update(final boolean force) {
     myQueue.assertSoftlyIsCommandThread();
 
     SRepository repo = ProjectHelper.fromIdeaProject(myProject).getRepository();
@@ -175,9 +167,6 @@ public class ChangesTracking {
       public void run() {
         synchronized (LOCK) {
           if (myDisposed) {
-            return;
-          }
-          if (!(myDifference.isEnabled())) {
             return;
           }
           if (!(isUnderVcs(myModelDescriptor))) {
@@ -360,7 +349,7 @@ public class ChangesTracking {
 
   @Nullable
   private SNode getOldNode(@NotNull SNodeId id) {
-    return check_5iuzi5_a0a54(check_5iuzi5_a0a0a54(myDifference.getChangeSet()), id);
+    return check_5iuzi5_a0a34(check_5iuzi5_a0a0a34(myDifference.getChangeSet()), id);
   }
 
   private void runUpdateTask(final _FunctionTypes._void_P0_E0 task, SNode currentNode, final SModelEvent event) {
@@ -449,7 +438,7 @@ public class ChangesTracking {
         FilePerRootDataSource ds = (FilePerRootDataSource) dataSource;
         Map<SNodeId, String> streamNames = FilePerRootFormatUtil.getStreamNames(myModelDescriptor.getRootNodes());
         for (SModelEvent event : ListSequence.fromList(events)) {
-          SNodeId rootId = check_5iuzi5_a0a0c0a7a2bc(event.getAffectedRoot());
+          SNodeId rootId = check_5iuzi5_a0a0c0a7a2zb(event.getAffectedRoot());
           if (rootId != null && streamNames.containsKey(rootId)) {
             SetSequence.fromSet(affectedFiles).addElement(ds.getFile(streamNames.get(rootId)));
           }
@@ -678,19 +667,19 @@ public class ChangesTracking {
       }, null, event);
     }
   }
-  private static SNode check_5iuzi5_a0a54(SModel checkedDotOperand, SNodeId id) {
+  private static SNode check_5iuzi5_a0a34(SModel checkedDotOperand, SNodeId id) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNode(id);
     }
     return null;
   }
-  private static SModel check_5iuzi5_a0a0a54(ChangeSet checkedDotOperand) {
+  private static SModel check_5iuzi5_a0a0a34(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getOldModel();
     }
     return null;
   }
-  private static SNodeId check_5iuzi5_a0a0c0a7a2bc(SNode checkedDotOperand) {
+  private static SNodeId check_5iuzi5_a0a0c0a7a2zb(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }

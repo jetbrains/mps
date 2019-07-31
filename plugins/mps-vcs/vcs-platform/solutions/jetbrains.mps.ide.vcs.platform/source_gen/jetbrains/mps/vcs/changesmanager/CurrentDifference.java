@@ -88,19 +88,11 @@ public class CurrentDifference {
     return myModelDescriptor;
   }
 
-  /*package*/ ChangesTracking getChangesTracker() {
-    return myTracking;
-  }
-
-  /*package*/ boolean isEnabled() {
-    return myEnabled;
-  }
-
   public void setEnabled(boolean enabled) {
     if (myEnabled != enabled) {
       myEnabled = enabled;
       if (enabled) {
-        myTracking.scheduleFullUpdate(true);
+        scheduleFullUpdate(true);
       } else {
         myCommandQueue.addTask(new Runnable() {
           public void run() {
@@ -108,6 +100,16 @@ public class CurrentDifference {
           }
         });
       }
+    }
+  }
+
+  /*package*/ void scheduleFullUpdate(final boolean force) {
+    if (myEnabled) {
+      myCommandQueue.addTask(new Runnable() {
+        public void run() {
+          myTracking.update(force);
+        }
+      }, myModelDescriptor.getReference());
     }
   }
 

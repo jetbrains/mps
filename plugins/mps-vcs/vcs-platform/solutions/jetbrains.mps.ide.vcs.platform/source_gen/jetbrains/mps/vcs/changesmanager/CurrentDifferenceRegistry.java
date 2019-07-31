@@ -16,15 +16,13 @@ import com.intellij.openapi.project.DumbService;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.vcs.FileStatusListener;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.ModelsEventsCollector;
@@ -88,15 +86,12 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
     return myMpsProject;
   }
 
-  /*package*/ void updateModel(@NotNull SModel model) {
+  /*package*/ void updateModelIfTracked(@NotNull SModelReference modelRef, boolean forceFull) {
     synchronized (myCurrentDifferences) {
-      SModelReference modelRef = model.getReference();
-      if (MapSequence.fromMap(myCurrentDifferences).containsKey(modelRef)) {
-        MapSequence.fromMap(myCurrentDifferences).get(modelRef).getChangesTracker().scheduleFullUpdate(false);
-        return;
+      CurrentDifference modelDiff = MapSequence.fromMap(myCurrentDifferences).get(modelRef);
+      if (modelDiff != null) {
+        modelDiff.scheduleFullUpdate(forceFull);
       }
-      CurrentDifference cd = new CurrentDifference(this, (EditableSModel) model);
-      MapSequence.fromMap(myCurrentDifferences).put(modelRef, cd);
     }
   }
 
@@ -111,21 +106,20 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
     }
 
     IFile iFile = fs.fromVirtualFile(file);
-    SModel modelDescriptor = SModelFileTracker.getInstance(myMpsProject.getRepository()).findModel(iFile);
-    if (modelDescriptor == null || !(modelDescriptor.isLoaded())) {
-      return;
+    SModelReference model = SModelFileTracker.getInstance(myMpsProject.getRepository()).modelFor(iFile);
+    if (model != null) {
+      updateModelIfTracked(model, false);
     }
-    //  FIXME updateModel and CurrentDifference shall use SModelReference 
-    updateModel(modelDescriptor);
   }
 
-  public void updateLoadedModels() {
-    for (SModel md : CollectionSequence.fromCollection(new ModuleRepositoryFacade(myMpsProject).getAllModels())) {
-      if (md instanceof EditableSModel && !(md.isReadOnly())) {
-        updateModel(md);
+  /*package*/ void updateLoadedModels() {
+    synchronized (myCurrentDifferences) {
+      for (CurrentDifference modelDiff : Sequence.fromIterable(MapSequence.fromMap(myCurrentDifferences).values())) {
+        modelDiff.scheduleFullUpdate(false);
       }
     }
   }
+
   private void disposeModelChangesManager(@NotNull SModelReference modelReference) {
     synchronized (myCurrentDifferences) {
       if (MapSequence.fromMap(myCurrentDifferences).containsKey(modelReference)) {
@@ -180,6 +174,7 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
       updateModel(vf);
     }
   }
+
   private class MyRepositoryListener extends SRepositoryContentAdapter {
     public MyRepositoryListener() {
     }
@@ -189,12 +184,16 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
       return !(module.isReadOnly());
     }
 
+    private boolean isIncluded(SModel model) {
+      return model instanceof EditableSModel;
+    }
+
     @Override
     protected void startListening(SModel model) {
-      if (model instanceof EditableSModel) {
+      if (isIncluded(model)) {
         // we care about modelReplaced event 
         model.addModelListener(this);
-        updateModel(model);
+        updateModelIfTracked(model.getReference(), false);
       }
     }
 
@@ -206,15 +205,10 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
 
     @Override
     public void modelReplaced(SModel model) {
-      if (!(model instanceof EditableSModel)) {
+      if (!(isIncluded(model))) {
         return;
       }
-      synchronized (myCurrentDifferences) {
-        CurrentDifference difference = MapSequence.fromMap(myCurrentDifferences).get(model.getReference());
-        if (difference != null) {
-          difference.getChangesTracker().scheduleFullUpdate(true);
-        }
-      }
+      updateModelIfTracked(model.getReference(), true);
     }
 
     @Override
