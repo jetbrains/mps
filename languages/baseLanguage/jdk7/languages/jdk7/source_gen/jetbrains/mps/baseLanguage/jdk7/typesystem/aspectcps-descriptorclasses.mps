@@ -164,6 +164,11 @@
         <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
       </concept>
     </language>
+    <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
+      <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
+        <reference id="7256306938026143658" name="target" index="2aWVGs" />
+      </concept>
+    </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
       <concept id="2990591960991114251" name="jetbrains.mps.lang.typesystem.structure.OriginalNodeId" flags="ng" index="6wLe0">
         <property id="2990591960991114264" name="nodeId" index="6wLej" />
@@ -204,10 +209,10 @@
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
+      <concept id="3661776679762942774" name="jetbrains.mps.lang.smodel.structure.Node_IsOperation" flags="ng" index="1QLmlb">
+        <child id="3661776679762942860" name="ref" index="1QLmnL" />
+      </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -1437,7 +1442,7 @@
         <node concept="3clFbJ" id="7r" role="3cqZAp">
           <node concept="2ZW3vV" id="7u" role="3clFbw">
             <node concept="3uibUv" id="7x" role="2ZW6by">
-              <ref role="3uigEE" to="d3ym:sPu" resolve="check_switchArgument_NonTypesystemRule" />
+              <ref role="3uigEE" to="d3ym:sQk" resolve="check_switchArgument_NonTypesystemRule" />
               <node concept="cd27G" id="7$" role="lGtFl">
                 <node concept="3u3nmq" id="7_" role="cd27D">
                   <property role="3u3nmv" value="400642802550421653" />
@@ -1818,25 +1823,24 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2qgKlT" id="9F" role="2OqNvi">
-                  <ref role="37wK5l" to="tpek:6dL7A1DpKo1" resolve="isDescendant" />
-                  <node concept="3B5_sB" id="a0" role="37wK5m">
-                    <ref role="3B5MYn" to="wyt6:~String" resolve="String" />
+                <node concept="1QLmlb" id="9F" role="2OqNvi">
+                  <node concept="ZC_QK" id="a0" role="1QLmnL">
+                    <ref role="2aWVGs" to="wyt6:~String" resolve="String" />
                     <node concept="cd27G" id="a2" role="lGtFl">
                       <node concept="3u3nmq" id="a3" role="cd27D">
-                        <property role="3u3nmv" value="400642802550421690" />
+                        <property role="3u3nmv" value="61840601206679722" />
                       </node>
                     </node>
                   </node>
                   <node concept="cd27G" id="a1" role="lGtFl">
                     <node concept="3u3nmq" id="a4" role="cd27D">
-                      <property role="3u3nmv" value="400642802550421689" />
+                      <property role="3u3nmv" value="61840601206678940" />
                     </node>
                   </node>
                 </node>
                 <node concept="cd27G" id="9G" role="lGtFl">
                   <node concept="3u3nmq" id="a5" role="cd27D">
-                    <property role="3u3nmv" value="400642802550421682" />
+                    <property role="3u3nmv" value="61840601206676837" />
                   </node>
                 </node>
               </node>
@@ -1965,25 +1969,24 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2qgKlT" id="a$" role="2OqNvi">
-                  <ref role="37wK5l" to="tpek:6dL7A1DpKo1" resolve="isDescendant" />
-                  <node concept="3B5_sB" id="aT" role="37wK5m">
-                    <ref role="3B5MYn" to="wyt6:~String" resolve="String" />
+                <node concept="1QLmlb" id="a$" role="2OqNvi">
+                  <node concept="ZC_QK" id="aT" role="1QLmnL">
+                    <ref role="2aWVGs" to="wyt6:~String" resolve="String" />
                     <node concept="cd27G" id="aV" role="lGtFl">
                       <node concept="3u3nmq" id="aW" role="cd27D">
-                        <property role="3u3nmv" value="400642802550421709" />
+                        <property role="3u3nmv" value="61840601206681962" />
                       </node>
                     </node>
                   </node>
                   <node concept="cd27G" id="aU" role="lGtFl">
                     <node concept="3u3nmq" id="aX" role="cd27D">
-                      <property role="3u3nmv" value="400642802550421708" />
+                      <property role="3u3nmv" value="61840601206681170" />
                     </node>
                   </node>
                 </node>
                 <node concept="cd27G" id="a_" role="lGtFl">
                   <node concept="3u3nmq" id="aY" role="cd27D">
-                    <property role="3u3nmv" value="400642802550421701" />
+                    <property role="3u3nmv" value="61840601206680688" />
                   </node>
                 </node>
               </node>
