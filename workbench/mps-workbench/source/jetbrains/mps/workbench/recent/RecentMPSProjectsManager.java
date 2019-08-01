@@ -15,25 +15,22 @@
  */
 package jetbrains.mps.workbench.recent;
 
+import com.intellij.ide.RecentProjectsManager;
 import com.intellij.ide.RecentProjectsManagerBase;
-import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.components.RoamingType;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.IdeFrame;
-import com.intellij.util.PathUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.SystemIndependent;
 
-import java.io.File;
+import java.util.Random;
 
 
-/*
- * TODO: Find way to add to platform com.intellij.ide.RecentProjectsManagerImpl and use it.
- * Currently it is not possible because @State.name cannot be changed and we don't want to loose recent user projects
+/**
+ * @deprecated Left to maintain recent projects list. {@link RecentProjectsManagerBase} is used instead.
  */
+@Deprecated
+@ToRemove(version = 2019.3)
 @State(
     name = "RecentMPSProjectsManager",
     storages = {
@@ -42,16 +39,30 @@ import java.io.File;
     }
 )
 public class RecentMPSProjectsManager extends RecentProjectsManagerBase {
-  @Nullable
   @Override
-  @SystemIndependent
-  protected String getProjectPath(@NotNull Project project) {
-    return PathUtil.toSystemIndependentName(project.getPresentableUrl());
+  public void loadState(@NotNull State state) {
+    // Load old state with name RecentMPSProjectsManager
+    // Will be called only once - next time state will be cleaned
+    super.loadState(state);
+    final State savedState = super.getState();
+
+    // Set this state to platform component
+    RecentProjectsManagerBase.getInstanceEx().loadState(savedState);
+    RecentProjectsManager.getInstance().updateLastProjectPath();
+
+    // Reset current component state to clean recentProjects.xml from old state
+    super.loadState(new State());
   }
 
   @Override
-  public Project doOpenProject(@NotNull @SystemIndependent String projectPath, @Nullable Project projectToClose, boolean forceOpenInNewFrame) {
-    File projectFile = new File(projectPath); // Use simplest way to check file existence, no need to go with IDEA VFS here.
-    return projectFile.exists() ? ProjectUtil.openProject(projectPath, projectToClose, forceOpenInNewFrame) : null;
+  public long getModificationCount() {
+    // Mark state as  changed
+    return new Random().nextLong();
+  }
+
+  @Override
+  public State getState() {
+    // Need to call inner variant to avoid setting of myState.pid = ""; to clear old state
+    return super.getStateInner();
   }
 }

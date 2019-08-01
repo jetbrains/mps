@@ -120,9 +120,8 @@
     <gotoRelatedProvider implementation="com.intellij.testIntegration.GotoTestRelatedProvider"/>
     -->
 
-    <!--MPS Patch: see comment in jetbrains.mps.workbench.recent.RecentMPSProjectsManager-->
     <applicationService serviceInterface="com.intellij.ide.RecentProjectsManager"
-                        serviceImplementation="jetbrains.mps.workbench.recent.RecentMPSProjectsManager"/>
+                        serviceImplementation="com.intellij.ide.RecentProjectsManagerBase"/>
 
     <!--
     <applicationService serviceInterface="com.intellij.util.descriptors.ConfigFileFactory"
