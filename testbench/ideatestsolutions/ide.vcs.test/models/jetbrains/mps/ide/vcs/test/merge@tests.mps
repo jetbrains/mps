@@ -9300,6 +9300,111 @@
         <ref role="2AI5Lk" to="rjhg:~Test" resolve="Test" />
       </node>
     </node>
+    <node concept="2tJIrI" id="47wKnyaJAl0" role="jymVt" />
+    <node concept="3clFb_" id="47wKnyaJr6b" role="jymVt">
+      <property role="TrG5h" value="addSameRoleChildren" />
+      <node concept="3cqZAl" id="47wKnyaJr6c" role="3clF45" />
+      <node concept="3Tm1VV" id="47wKnyaJr6d" role="1B3o_S" />
+      <node concept="3clFbS" id="47wKnyaJr6e" role="3clF47">
+        <node concept="3clFbF" id="47wKnyaJr6f" role="3cqZAp">
+          <node concept="1rXfSq" id="47wKnyaJr6g" role="3clFbG">
+            <ref role="37wK5l" node="7HgS$VkbLl$" resolve="testDiffCorrectness" />
+            <node concept="1bVj0M" id="47wKnyaJr6h" role="37wK5m">
+              <node concept="3clFbS" id="47wKnyaJr6i" role="1bW5cS">
+                <node concept="3clFbF" id="47wKnyaJr6j" role="3cqZAp">
+                  <node concept="2OqwBi" id="47wKnyaJXuq" role="3clFbG">
+                    <node concept="2OqwBi" id="47wKnyaJr6n" role="2Oq$k0">
+                      <node concept="3Tsc0h" id="47wKnyaJU_d" role="2OqNvi">
+                        <ref role="3TtcxE" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                      </node>
+                      <node concept="37vLTw" id="47wKnyaJr6p" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6pjhMZUUcPg" resolve="myRootNode" />
+                      </node>
+                    </node>
+                    <node concept="TSZUe" id="47wKnyaK0Lu" role="2OqNvi">
+                      <node concept="2c44tf" id="47wKnyaJr6l" role="25WWJ7">
+                        <node concept="3uibUv" id="47wKnyaKa7m" role="2c44tc">
+                          <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="47wKnyaK47p" role="3cqZAp">
+                  <node concept="2OqwBi" id="47wKnyaK47q" role="3clFbG">
+                    <node concept="2OqwBi" id="47wKnyaK47r" role="2Oq$k0">
+                      <node concept="3Tsc0h" id="47wKnyaK47s" role="2OqNvi">
+                        <ref role="3TtcxE" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                      </node>
+                      <node concept="37vLTw" id="47wKnyaK47t" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6pjhMZUUcPg" resolve="myRootNode" />
+                      </node>
+                    </node>
+                    <node concept="TSZUe" id="47wKnyaK47u" role="2OqNvi">
+                      <node concept="2c44tf" id="47wKnyaK47v" role="25WWJ7">
+                        <node concept="3uibUv" id="47wKnyaKbxu" role="2c44tc">
+                          <ref role="3uigEE" to="wyt6:~Readable" resolve="Readable" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="47wKnyaKcNF" role="3cqZAp">
+                  <node concept="2OqwBi" id="47wKnyaKcNG" role="3clFbG">
+                    <node concept="2OqwBi" id="47wKnyaKcNH" role="2Oq$k0">
+                      <node concept="3Tsc0h" id="47wKnyaKcNI" role="2OqNvi">
+                        <ref role="3TtcxE" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                      </node>
+                      <node concept="37vLTw" id="47wKnyaKcNJ" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6pjhMZUUcPg" resolve="myRootNode" />
+                      </node>
+                    </node>
+                    <node concept="TSZUe" id="47wKnyaKcNK" role="2OqNvi">
+                      <node concept="2c44tf" id="47wKnyaKcNL" role="25WWJ7">
+                        <node concept="3uibUv" id="47wKnyaKe3r" role="2c44tc">
+                          <ref role="3uigEE" to="wyt6:~Iterable" resolve="Iterable" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2ShNRf" id="47wKnyaJr6q" role="37wK5m">
+              <node concept="1pGfFk" id="47wKnyaJr6r" role="2ShVmc">
+                <ref role="37wK5l" to="btf5:4k3fuHGtdr9" resolve="NodeGroupChange" />
+                <node concept="1rXfSq" id="47wKnyaJr6s" role="37wK5m">
+                  <ref role="37wK5l" node="7HgS$Vkcdg0" resolve="createFakeChangeSet" />
+                </node>
+                <node concept="37vLTw" id="47wKnyaJr6t" role="37wK5m">
+                  <ref role="3cqZAo" node="6pjhMZUUTRH" resolve="myRootNodeId" />
+                </node>
+                <node concept="359W_D" id="47wKnyaJr6u" role="37wK5m">
+                  <ref role="359W_E" to="tpee:fz12cDA" resolve="ClassConcept" />
+                  <ref role="359W_F" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                </node>
+                <node concept="3cmrfG" id="47wKnyaJr6v" role="37wK5m">
+                  <property role="3cmrfH" value="0" />
+                </node>
+                <node concept="3cmrfG" id="47wKnyaJr6w" role="37wK5m">
+                  <property role="3cmrfH" value="0" />
+                </node>
+                <node concept="3cmrfG" id="47wKnyaJr6x" role="37wK5m">
+                  <property role="3cmrfH" value="0" />
+                </node>
+                <node concept="3cmrfG" id="47wKnyaJr6y" role="37wK5m">
+                  <property role="3cmrfH" value="3" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="47wKnyaJr6z" role="2AJF6D">
+        <ref role="2AI5Lk" to="rjhg:~Test" resolve="Test" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="47wKnyaJEMA" role="jymVt" />
     <node concept="3clFb_" id="7xe_tGspkjL" role="jymVt">
       <property role="TrG5h" value="addNodeAttribute" />
       <node concept="3cqZAl" id="7xe_tGspkjM" role="3clF45" />
@@ -10831,6 +10936,95 @@
         <ref role="2AI5Lk" to="rjhg:~Test" resolve="Test" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3IE0ikipbsO" role="jymVt" />
+    <node concept="3clFb_" id="3IE0ikipaQy" role="jymVt">
+      <property role="TrG5h" value="addSameRoleChildren" />
+      <node concept="3cqZAl" id="3IE0ikipaQz" role="3clF45" />
+      <node concept="3Tm1VV" id="3IE0ikipaQ$" role="1B3o_S" />
+      <node concept="3clFbS" id="3IE0ikipaQ_" role="3clF47">
+        <node concept="3clFbF" id="3IE0ikipaQA" role="3cqZAp">
+          <node concept="1rXfSq" id="3IE0ikipaQB" role="3clFbG">
+            <ref role="37wK5l" node="7HgS$VjNfhn" resolve="testChanges" />
+            <node concept="1bVj0M" id="3IE0ikipaQC" role="37wK5m">
+              <node concept="3clFbS" id="3IE0ikipaQD" role="1bW5cS">
+                <node concept="3cpWs8" id="3IE0ikipeQu" role="3cqZAp">
+                  <node concept="3cpWsn" id="3IE0ikipeQv" role="3cpWs9">
+                    <property role="TrG5h" value="testRoot" />
+                    <node concept="3Tqbb2" id="3IE0ikipezw" role="1tU5fm">
+                      <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+                    </node>
+                    <node concept="1rXfSq" id="3IE0ikipeQw" role="33vP2m">
+                      <ref role="37wK5l" node="523_aD7Wi7R" resolve="getTestRoot" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="3IE0ikipf2r" role="3cqZAp">
+                  <node concept="2OqwBi" id="3IE0ikipf2s" role="3clFbG">
+                    <node concept="2OqwBi" id="3IE0ikipf2t" role="2Oq$k0">
+                      <node concept="3Tsc0h" id="3IE0ikipf2u" role="2OqNvi">
+                        <ref role="3TtcxE" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                      </node>
+                      <node concept="37vLTw" id="3IE0ikipx4x" role="2Oq$k0">
+                        <ref role="3cqZAo" node="3IE0ikipeQv" resolve="testRoot" />
+                      </node>
+                    </node>
+                    <node concept="TSZUe" id="3IE0ikipf2w" role="2OqNvi">
+                      <node concept="2c44tf" id="3IE0ikipf2x" role="25WWJ7">
+                        <node concept="3uibUv" id="3IE0ikipf2y" role="2c44tc">
+                          <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="3IE0ikipf2z" role="3cqZAp">
+                  <node concept="2OqwBi" id="3IE0ikipf2$" role="3clFbG">
+                    <node concept="2OqwBi" id="3IE0ikipf2_" role="2Oq$k0">
+                      <node concept="3Tsc0h" id="3IE0ikipf2A" role="2OqNvi">
+                        <ref role="3TtcxE" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                      </node>
+                      <node concept="37vLTw" id="3IE0ikipxZW" role="2Oq$k0">
+                        <ref role="3cqZAo" node="3IE0ikipeQv" resolve="testRoot" />
+                      </node>
+                    </node>
+                    <node concept="TSZUe" id="3IE0ikipf2C" role="2OqNvi">
+                      <node concept="2c44tf" id="3IE0ikipf2D" role="25WWJ7">
+                        <node concept="3uibUv" id="3IE0ikipf2E" role="2c44tc">
+                          <ref role="3uigEE" to="wyt6:~Readable" resolve="Readable" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="3IE0ikipf2F" role="3cqZAp">
+                  <node concept="2OqwBi" id="3IE0ikipf2G" role="3clFbG">
+                    <node concept="2OqwBi" id="3IE0ikipf2H" role="2Oq$k0">
+                      <node concept="3Tsc0h" id="3IE0ikipf2I" role="2OqNvi">
+                        <ref role="3TtcxE" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                      </node>
+                      <node concept="37vLTw" id="3IE0ikipyVj" role="2Oq$k0">
+                        <ref role="3cqZAo" node="3IE0ikipeQv" resolve="testRoot" />
+                      </node>
+                    </node>
+                    <node concept="TSZUe" id="3IE0ikipf2K" role="2OqNvi">
+                      <node concept="2c44tf" id="3IE0ikipf2L" role="25WWJ7">
+                        <node concept="3uibUv" id="3IE0ikipf2M" role="2c44tc">
+                          <ref role="3uigEE" to="wyt6:~Iterable" resolve="Iterable" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3IE0ikipaQL" role="2AJF6D">
+        <ref role="2AI5Lk" to="rjhg:~Test" resolve="Test" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3IE0ikip9UG" role="jymVt" />
     <node concept="3clFb_" id="7xe_tGsoClq" role="jymVt">
       <property role="TrG5h" value="addNodeAttribute" />
       <node concept="3cqZAl" id="7xe_tGsoClr" role="3clF45" />
