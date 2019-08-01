@@ -27,12 +27,13 @@ import jetbrains.mps.ide.platform.watching.ReloadManager;
 import com.intellij.openapi.vcs.impl.projectlevelman.AllVcses;
 import org.junit.Assume;
 import com.intellij.openapi.vcs.VcsShowConfirmationOption;
+import com.intellij.openapi.vcs.ProjectLevelVcsManager;
+import com.intellij.openapi.vcs.impl.ProjectLevelVcsManagerImpl;
 import com.intellij.openapi.vcs.FileStatusManager;
 import org.junit.After;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.VcsConfiguration;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt;
@@ -91,7 +92,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   @AfterClass
   public static void tearDown() {
     ourEnabled = false;
-    // the right way to close project is Environment.closeProject(myProject), but at the momen PushEnvironmentRunnerBuilder does it with instance method only 
+    // the right way to close project is Environment.closeProject(myProject), but at the moment PushEnvironmentRunnerBuilder does it with instance method only 
     ourProject.dispose();
     ourProject = null;
   }
@@ -135,6 +136,13 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     setAutoaddPolicy(VcsShowConfirmationOption.Value.DO_NOTHING_SILENTLY);
 
     if (!(ChangesTestBase.ourEnabled)) {
+      // ProjectLevelVcsManager initializes VCS associated with project  lazily, and we may face ChangesTracking.isUnderVcs()==false (due to getVcsFor(vFile)==null) 
+      // which results in flaky first test in IncrementalChangeUpdateTest_Nodes (testAddRoot) 
+      final ProjectLevelVcsManager projectVcsManager = ProjectLevelVcsManager.getInstance(myIdeaProject);
+      if (projectVcsManager instanceof ProjectLevelVcsManagerImpl) {
+        ((ProjectLevelVcsManagerImpl) projectVcsManager).waitForInitialized();
+      }
+
       updateChangeListManager();
       FileStatusManager.getInstance(myIdeaProject).fileStatusesChanged();
       checkAndEnable();

@@ -119,6 +119,7 @@
     <classNode dependClassName="com.intellij.openapi.vcs.changes.Change" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManagerImpl" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.VcsDirtyScopeManager" />
+    <classNode dependClassName="com.intellij.openapi.vcs.impl.ProjectLevelVcsManagerImpl" />
     <classNode dependClassName="com.intellij.openapi.vcs.impl.projectlevelman.AllVcses" />
     <classNode dependClassName="com.intellij.openapi.vcs.rollback.RollbackEnvironment" />
     <classNode dependClassName="com.intellij.openapi.vcs.rollback.RollbackProgressListener" />

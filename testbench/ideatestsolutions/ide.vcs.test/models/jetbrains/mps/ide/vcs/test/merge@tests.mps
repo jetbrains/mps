@@ -73,6 +73,7 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="iyvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence.datasource(MPS.Core/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
+    <import index="j86o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.impl(MPS.IDEA/)" />
     <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -872,7 +873,7 @@
               <property role="3oM_SC" value="the" />
             </node>
             <node concept="3oM_SD" id="ATZLwXooi9" role="1PaTwD">
-              <property role="3oM_SC" value="momen" />
+              <property role="3oM_SC" value="moment" />
             </node>
             <node concept="3oM_SD" id="ATZLwXooia" role="1PaTwD">
               <property role="3oM_SC" value="PushEnvironmentRunnerBuilder" />
@@ -1428,6 +1429,133 @@
         <node concept="3clFbH" id="38WJxXowUEI" role="3cqZAp" />
         <node concept="3clFbJ" id="6hwF4wZO$fN" role="3cqZAp">
           <node concept="3clFbS" id="6hwF4wZO$fO" role="3clFbx">
+            <node concept="3SKdUt" id="5qjuzPokOJM" role="3cqZAp">
+              <node concept="1PaTwC" id="5qjuzPokOJN" role="3ndbpf">
+                <node concept="3oM_SD" id="5qjuzPokOQ4" role="1PaTwD">
+                  <property role="3oM_SC" value="ProjectLevelVcsManager" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOQe" role="1PaTwD">
+                  <property role="3oM_SC" value="initializes" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOQD" role="1PaTwD">
+                  <property role="3oM_SC" value="VCS" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokORC" role="1PaTwD">
+                  <property role="3oM_SC" value="associated" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokORZ" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOSf" role="1PaTwD">
+                  <property role="3oM_SC" value="project" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOQP" role="1PaTwD" />
+                <node concept="3oM_SD" id="5qjuzPokOSM" role="1PaTwD">
+                  <property role="3oM_SC" value="lazily," />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOTb" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOTt" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOTC" role="1PaTwD">
+                  <property role="3oM_SC" value="may" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPokOTW" role="1PaTwD">
+                  <property role="3oM_SC" value="face" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol0FH" role="1PaTwD">
+                  <property role="3oM_SC" value="ChangesTracking.isUnderVcs()==false" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol0G3" role="1PaTwD">
+                  <property role="3oM_SC" value="(due" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol3Mq" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol3MM" role="1PaTwD">
+                  <property role="3oM_SC" value="getVcsFor(vFile)==null)" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="5qjuzPol4rt" role="3cqZAp">
+              <node concept="1PaTwC" id="5qjuzPol4ru" role="3ndbpf">
+                <node concept="3oM_SD" id="5qjuzPol4y1" role="1PaTwD">
+                  <property role="3oM_SC" value="which" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol4yb" role="1PaTwD">
+                  <property role="3oM_SC" value="results" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol4yu" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol4yy" role="1PaTwD">
+                  <property role="3oM_SC" value="flaky" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol4yZ" role="1PaTwD">
+                  <property role="3oM_SC" value="first" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol4zd" role="1PaTwD">
+                  <property role="3oM_SC" value="test" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPol4zs" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPolewc" role="1PaTwD">
+                  <property role="3oM_SC" value="IncrementalChangeUpdateTest_Nodes" />
+                </node>
+                <node concept="3oM_SD" id="5qjuzPolew_" role="1PaTwD">
+                  <property role="3oM_SC" value="(testAddRoot)" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="5qjuzPoksob" role="3cqZAp">
+              <node concept="3cpWsn" id="5qjuzPoksoa" role="3cpWs9">
+                <property role="3TUv4t" value="true" />
+                <property role="TrG5h" value="projectVcsManager" />
+                <node concept="3uibUv" id="5qjuzPoksoc" role="1tU5fm">
+                  <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                </node>
+                <node concept="2YIFZM" id="5qjuzPokFqE" role="33vP2m">
+                  <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                  <node concept="37vLTw" id="5qjuzPokFqF" role="37wK5m">
+                    <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="5qjuzPoksof" role="3cqZAp">
+              <node concept="2ZW3vV" id="5qjuzPoksoi" role="3clFbw">
+                <node concept="37vLTw" id="5qjuzPoksog" role="2ZW6bz">
+                  <ref role="3cqZAo" node="5qjuzPoksoa" resolve="projectVcsManager" />
+                </node>
+                <node concept="3uibUv" id="5qjuzPokMzT" role="2ZW6by">
+                  <ref role="3uigEE" to="j86o:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="5qjuzPoksok" role="3clFbx">
+                <node concept="3clFbF" id="5qjuzPoksol" role="3cqZAp">
+                  <node concept="2OqwBi" id="5qjuzPoksom" role="3clFbG">
+                    <node concept="1eOMI4" id="5qjuzPoksoq" role="2Oq$k0">
+                      <node concept="10QFUN" id="5qjuzPokson" role="1eOMHV">
+                        <node concept="37vLTw" id="5qjuzPoksoo" role="10QFUP">
+                          <ref role="3cqZAo" node="5qjuzPoksoa" resolve="projectVcsManager" />
+                        </node>
+                        <node concept="3uibUv" id="5qjuzPoksop" role="10QFUM">
+                          <ref role="3uigEE" to="j86o:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="5qjuzPokOug" role="2OqNvi">
+                      <ref role="37wK5l" to="j86o:~ProjectLevelVcsManagerImpl.waitForInitialized()" resolve="waitForInitialized" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="5qjuzPoksji" role="3cqZAp" />
             <node concept="3clFbF" id="4g0Mut8AVgL" role="3cqZAp">
               <node concept="1rXfSq" id="4g0Mut8AVgJ" role="3clFbG">
                 <ref role="37wK5l" node="4g0Mut8_IuS" resolve="updateChangeListManager" />
