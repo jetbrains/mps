@@ -18138,6 +18138,11 @@
             <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
           </node>
         </node>
+        <node concept="1SiIV0" id="1DaKFKX94et" role="3bR37C">
+          <node concept="3bR9La" id="1DaKFKX94eu" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="1CtrbKI4wf5" role="2G$12L">
         <property role="BnDLt" value="true" />

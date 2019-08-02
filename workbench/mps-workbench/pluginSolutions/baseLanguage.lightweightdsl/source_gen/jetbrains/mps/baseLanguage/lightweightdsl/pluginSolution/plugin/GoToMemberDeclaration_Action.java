@@ -11,6 +11,9 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.MemberInstance__BehaviorDescriptor;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -52,9 +55,14 @@ public class GoToMemberDeclaration_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SNode methodDescriptor = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.MemberInstance$D8));
     // XXX we don't need node here, node-ptr would suffice 
-    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).shallSelect(true).open(SNodeOperations.getPointer(methodDescriptor));
+    SNodeReference ptr = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<SNodeReference>() {
+      public SNodeReference compute() {
+        SNode methodDescriptor = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.MemberInstance$D8));
+        return SNodeOperations.getPointer(methodDescriptor);
+      }
+    });
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).shallSelect(true).open(ptr);
   }
 
   private static final class CONCEPTS {
