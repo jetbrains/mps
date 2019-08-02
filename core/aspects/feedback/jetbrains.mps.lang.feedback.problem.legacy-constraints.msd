@@ -2,11 +2,11 @@
 <solution name="jetbrains.mps.lang.feedback.problem.legacy-constraints" uuid="aaaaf3e2-decf-4e97-bf80-9109eab759ee" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}/messages-for-legacy-constraints/classes" type="java_classes">
-      <sourceRoot location="." />
-    </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="mps-messages-for-legacy-constraints.jar" />
+    </modelRoot>
+    <modelRoot contentPath="${module}/messages-for-legacy-constraints/classes" type="java_classes">
+      <sourceRoot location="." />
     </modelRoot>
   </models>
   <facets>

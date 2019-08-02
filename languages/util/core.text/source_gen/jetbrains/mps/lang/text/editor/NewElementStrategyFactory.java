@@ -5,18 +5,18 @@ package jetbrains.mps.lang.text.editor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 /*package*/ class NewElementStrategyFactory {
 
@@ -24,15 +24,15 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   /*package*/ static TextStrategy createNewLineStrategy(SNode node, EditorContext editorContext, boolean selectNewLine, boolean isFirstPosition) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Word$AM)) {
-      return new AddNewLineAndSplitWordStrategy(SNodeOperations.cast(node, CONCEPTS.Word$AM), editorContext, selectNewLine);
+    if (SNodeOperations.isInstanceOf(node, AUX_h2az65.Word_f8e99bb0)) {
+      return new AddNewLineAndSplitWordStrategy(SNodeOperations.cast(node, AUX_h2az65.Word_f8e99bb0), editorContext, selectNewLine);
     } else {
       return new AddNewLineStrategy(node, editorContext, selectNewLine, isFirstPosition);
     }
   }
   /*package*/ static TextStrategy createNewElementStrategy(SNode node, EditorContext editorContext, boolean isFirstPosition) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Word$AM)) {
-      return new SplitWordStrategy(SNodeOperations.cast(node, CONCEPTS.Word$AM), editorContext, !(isFirstPosition));
+    if (SNodeOperations.isInstanceOf(node, AUX_h2az65.Word_f8e99bb0)) {
+      return new SplitWordStrategy(SNodeOperations.cast(node, AUX_h2az65.Word_f8e99bb0), editorContext, !(isFirstPosition));
     } else {
       return new AddNewWordStrategy(node, editorContext, !(isFirstPosition));
     }
@@ -51,19 +51,30 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     @Override
     /*package*/ void execute() {
-      SNode currentLine = SNodeOperations.cast(SNodeOperations.getParent(myElement), CONCEPTS.Line$w3);
-      SNode currentSibling = SNodeOperations.cast(SNodeOperations.getNextSibling(myElement), CONCEPTS.TextElement$Ue);
+      SNode currentLine = SNodeOperations.cast(SNodeOperations.getParent(myElement), AUX_h2az65.Line_c0b9df3f);
+      SNode lineContainer = TextStrategy.findLineContainer(currentLine);
+
+      SNode currentSibling = SNodeOperations.cast(SNodeOperations.getNextSibling(myElement), AUX_h2az65.TextElement_f8e99b54);
       SNode newElement = createNewElement();
-      SNode newLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(newElement);
-      while (currentSibling != null) {
-        SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), CONCEPTS.TextElement$Ue);
-        ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(currentSibling);
-        currentSibling = next;
-      }
-      SNodeOperations.insertNextSiblingChild(currentLine, newLine);
-      if (mySelectNewLine) {
-        SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newElement, SelectionManager.FIRST_CELL, 0);
+
+      //  
+      if (currentSibling != null || myIncludeCurrentElement || currentLine == lineContainer || isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(newElement, AUX_h2az65.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")))) {
+        SNode newLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+        ListSequence.fromList(SLinkOperations.getChildren(newLine, MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements"))).addElement(newElement);
+        while (currentSibling != null) {
+          SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), AUX_h2az65.TextElement_f8e99b54);
+          ListSequence.fromList(SLinkOperations.getChildren(newLine, MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements"))).addElement(currentSibling);
+          currentSibling = next;
+        }
+
+        TextStrategy.createNewLineContainer(lineContainer, newLine);
+        if (mySelectNewLine) {
+          SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newElement, SelectionManager.FIRST_CELL, 0);
+        }
+      } else {
+        //  
+        SAbstractConcept c = SNodeOperations.getContainingLink(lineContainer).getTargetConcept();
+        SNodeOperations.insertNextSiblingChild(lineContainer, SNodeFactoryOperations.createNewNode(c, null));
       }
     }
 
@@ -73,6 +84,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
       } else {
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
       }
+    }
+    private static boolean isNotEmptyString(String str) {
+      return str != null && str.length() > 0;
     }
   }
   private static class AddNewLineAndSplitWordStrategy extends AddNewLineStrategy {
@@ -84,7 +98,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     @Override
     /*package*/ void execute() {
-      SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$cK70, mySplitter.getLeftText());
+      SPropertyOperations.assign(SNodeOperations.cast(myElement, AUX_h2az65.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getLeftText());
       super.execute();
     }
 
@@ -134,9 +148,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     /*package*/ void execute() {
       if (myAddNext) {
-        SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$cK70, mySplitter.getLeftText());
+        SPropertyOperations.assign(SNodeOperations.cast(myElement, AUX_h2az65.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getLeftText());
       } else {
-        SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$cK70, mySplitter.getRightText());
+        SPropertyOperations.assign(SNodeOperations.cast(myElement, AUX_h2az65.Word_f8e99bb0), MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), mySplitter.getRightText());
       }
       super.execute();
     }
@@ -159,9 +173,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
     private int mySelectionEnd;
     /*package*/ WordSplitter(SNode word, EditorContext editorContext) {
       myWord = word;
-      myCurrentText = (SPropertyOperations.getString(myWord, PROPS.value$cK70) == null ? "" : SPropertyOperations.getString(myWord, PROPS.value$cK70));
+      myCurrentText = (SPropertyOperations.getString(myWord, MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")) == null ? "" : SPropertyOperations.getString(myWord, MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")));
       Selection selection = editorContext.getSelectionManager().getSelection();
-      String value = (SPropertyOperations.getString(myWord, PROPS.value$cK70) == null ? "" : SPropertyOperations.getString(myWord, PROPS.value$cK70));
+      String value = (SPropertyOperations.getString(myWord, MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")) == null ? "" : SPropertyOperations.getString(myWord, MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")));
       if (selection instanceof EditorCellLabelSelection) {
         mySelectionStart = ((EditorCellLabelSelection) selection).getSelectionStart();
         mySelectionEnd = ((EditorCellLabelSelection) selection).getSelectionEnd();
@@ -184,9 +198,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     /*package*/ SNode copyWord(String text) {
       SNode copy = SNodeOperations.copyNode(myWord);
-      SPropertyOperations.assign(copy, PROPS.value$cK70, text);
-      if (isEmptyString(SPropertyOperations.getString(copy, PROPS.value$cK70))) {
-        SPropertyOperations.assign(copy, PROPS.url$WUb8, null);
+      SPropertyOperations.assign(copy, MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), text);
+      if (isEmptyString(SPropertyOperations.getString(copy, MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value")))) {
+        SPropertyOperations.assign(copy, MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url"), null);
       }
       return copy;
     }
@@ -196,18 +210,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
-    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+  private static final class AUX_h2az65 {
+    /*package*/ static final SConcept Word_f8e99bb0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Line_c0b9df3f = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept TextElement_f8e99b54 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
   }
 }

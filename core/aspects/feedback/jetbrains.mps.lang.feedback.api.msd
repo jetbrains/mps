@@ -2,11 +2,11 @@
 <solution name="jetbrains.mps.lang.feedback.api" uuid="9e9ef4e2-decf-4e97-bf80-9109e8b759bb" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}/feedback-api/classes" type="java_classes">
-      <sourceRoot location="." />
-    </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="mps-feedback-api.jar" />
+    </modelRoot>
+    <modelRoot contentPath="${module}/feedback-api/classes" type="java_classes">
+      <sourceRoot location="." />
     </modelRoot>
   </models>
   <facets>
