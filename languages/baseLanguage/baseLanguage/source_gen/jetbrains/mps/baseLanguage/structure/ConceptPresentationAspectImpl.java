@@ -1935,6 +1935,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SingleLineComment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL);
           cpb.deprecateAggregation(0x57d533a7af16ff73L, "commentPart");
+          cpb.deprecateAggregation(0x12bc996bc5882f24L, "text");
           cpb.shortDesc("single-line comment");
           cpb.rawPresentation("//");
           props_SingleLineComment = cpb.create();
