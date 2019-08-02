@@ -44,8 +44,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
    * @return The Line contained in the container, can be null
    */
   public static SNode findLineInContainer(SNode lineContainer) {
-    List<SNode> lines = SNodeOperations.getNodeDescendants(lineContainer, CONCEPTS.Line$w3, true, new SAbstractConcept[]{});
-    //  
+    List<SNode> lines = SNodeOperations.getNodeDescendants(lineContainer, AUX_dx9tdc.Line_c0b9df3f, true, new SAbstractConcept[]{});
+    // todo set to 1 after removing the text child to SingleLineComment in BL 
     assert ListSequence.fromList(lines).count() <= 2;
     return ListSequence.fromList(lines).first();
   }
@@ -65,7 +65,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+  private static final class AUX_dx9tdc {
+    /*package*/ static final SConcept Line_c0b9df3f = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 }
