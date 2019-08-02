@@ -15,6 +15,7 @@ import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.process.ProcessHandler;
+import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
 import jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter;
@@ -49,7 +50,7 @@ public class MPSInstance_Configuration_RunProfileState extends DebuggerRunProfil
     Project project = myEnvironment.getProject();
     ProcessHandler process;
 
-    process = new Mps_Command().setVirtualMachineParameters_String(myRunConfiguration.getMpsSettings().getVmOptions()).setJrePath_String(myRunConfiguration.getMpsSettings().getJrePath()).setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myRunConfiguration.getMpsSettings().getExpandedSettingsPath());
+    process = new Mps_Command().setVirtualMachineParameters_String(myRunConfiguration.getMpsSettings().getVmOptions()).setJrePath_String(myRunConfiguration.getMpsSettings().getJrePath()).setProject_Project(ProjectHelper.fromIdeaProject(project)).setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myRunConfiguration.getMpsSettings().getExpandedSettingsPath());
     ConsoleView console = ConsoleCreator.createConsoleView(project, false);
     console.addMessageFilter(new StandaloneMPSStackTraceFilter(project));
     {

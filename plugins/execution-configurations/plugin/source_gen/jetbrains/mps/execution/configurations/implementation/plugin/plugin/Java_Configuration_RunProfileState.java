@@ -58,7 +58,7 @@ public class Java_Configuration_RunProfileState extends DebuggerRunProfileState 
       throw new ExecutionException("No node selected.");
     }
     {
-      ProcessHandler _processHandler = new Java_Command().setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myRunConfiguration.getRunParameters().getJavaParameters(), pointer, ProjectHelper.getProjectRepository(project));
+      ProcessHandler _processHandler = new Java_Command().setProject_Project(ProjectHelper.fromIdeaProject(project)).setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myRunConfiguration.getRunParameters().getJavaParameters(), pointer, ProjectHelper.getProjectRepository(project));
       final ConsoleView _consoleView = console;
       _consoleView.attachToProcess(_processHandler);
       return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {

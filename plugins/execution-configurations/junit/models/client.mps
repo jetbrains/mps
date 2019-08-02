@@ -63,6 +63,7 @@
     <import index="tken" ref="r:38bad86e-d92c-4ea7-ad52-a111dc6c2457(jetbrains.mps.build.mps.util)" />
     <import index="ddon" ref="r:58ba176b-8a52-400c-bf27-725996471cb9(jetbrains.mps.core.tool.environment.common)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
+    <import index="jtsr" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.project(MPS.OpenAPI/)" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
   </imports>
   <registry>
@@ -9371,6 +9372,12 @@
                   </node>
                 </node>
               </node>
+              <node concept="2LYoGL" id="3KU19GSx5eq" role="2LYoGw">
+                <ref role="2LYoGK" to="go48:3KU19GSx2Da" resolve="project" />
+                <node concept="2LYoG9" id="3KU19GSx64G" role="2LYoGN">
+                  <ref role="2LYoGb" node="3P4ieJEGEFZ" resolve="project" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -9854,6 +9861,12 @@
                       <ref role="3cqZAo" node="58KCQIwerzV" resolve="settings" />
                     </node>
                   </node>
+                </node>
+              </node>
+              <node concept="2LYoGL" id="3KU19GSx6dr" role="2LYoGw">
+                <ref role="2LYoGK" to="go48:3KU19GSx2Da" resolve="project" />
+                <node concept="2LYoG9" id="3KU19GSx6tx" role="2LYoGN">
+                  <ref role="2LYoGb" node="4qqte4NAlfE" resolve="project" />
                 </node>
               </node>
             </node>

@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.project.Project;
 import jetbrains.mps.execution.api.commands.CommandPart;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
@@ -61,6 +62,7 @@ public class Java_Command {
   private String myProgramParameter_String;
   private String myVirtualMachineParameter_String;
   private List<String> myClassPath_ListString = ListSequence.fromList(new ArrayList<String>());
+  private Project myProject_Project;
   private String myDebuggerSettings_String;
   private CommandPart myVirtualMachineParameter_ProcessBuilderCommandPart;
   public Java_Command() {
@@ -95,6 +97,12 @@ public class Java_Command {
     }
     return this;
   }
+  public Java_Command setProject_Project(Project project) {
+    if (project != null) {
+      myProject_Project = project;
+    }
+    return this;
+  }
   public Java_Command setDebuggerSettings_String(String debuggerSettings) {
     if (debuggerSettings != null) {
       myDebuggerSettings_String = debuggerSettings;
@@ -109,7 +117,7 @@ public class Java_Command {
   }
 
   public ProcessHandler createProcess(String className) throws ExecutionException {
-    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(className, ListSequence.fromList(myClassPath_ListString).select(new ISelector<String, File>() {
+    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(className, ListSequence.fromList(myClassPath_ListString).select(new ISelector<String, File>() {
       public File select(String it) {
         if (it.startsWith("\"") && it.endsWith("\"")) {
           return new File(it.substring(1, it.length() - 2));
@@ -119,14 +127,14 @@ public class Java_Command {
     }).toListSequence());
   }
   public ProcessHandler createProcess(String className, List<File> classPath) throws ExecutionException {
-    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myVirtualMachineParameter_String))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myProgramParameter_String)), className, classPath);
+    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myVirtualMachineParameter_String))).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myProgramParameter_String)), className, classPath);
   }
   public ProcessHandler createProcess(CommandPart programParameter, String className, List<File> classPath) throws ExecutionException {
     if ((className == null || className.length() == 0)) {
       throw new ExecutionException("Classname is empty");
     }
     File java = Java_Command.getJavaCommand(myJrePath_String);
-    new JDKVersionChecker(null).checkAndNotifyOldJDK(myJrePath_String);
+    new JDKVersionChecker(myProject_Project).checkAndNotifyOldJDK(myJrePath_String);
     // FIXME need better logic to decide when to use java -jar, and when directly java -classpath 
     // Now I just throw in some magic number I consider too big to get tired of looking at long CP 
     // XXX Besides, I'd like to test this, therefore would like to see this branch to trigger often (MPS JUnit 
@@ -171,10 +179,10 @@ public class Java_Command {
       throw new ExecutionException(errorText.value);
     }
 
-    return new Java_Command().setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setClassPath_ListString(cp.value).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(cn.value);
+    return new Java_Command().setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setClassPath_ListString(cp.value).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(cn.value);
   }
   public ProcessHandler createProcess(JavaRunParameters runParameters, SNodeReference nodePointer, SRepository repository) throws ExecutionException {
-    return new Java_Command().setJrePath_String(check_yvpt_a0a0a0e(runParameters)).setProgramParameter_String(check_yvpt_a3a0a0e(runParameters)).setVirtualMachineParameter_String(check_yvpt_a4a0a0e(runParameters)).setWorkingDirectory_File((isEmptyString(check_yvpt_a0a5a0a0e(runParameters)) ? null : new File(check_yvpt_a0a0f0a0a4(runParameters)))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(nodePointer, repository);
+    return new Java_Command().setJrePath_String(check_yvpt_a0a0a0e(runParameters)).setProgramParameter_String(check_yvpt_a3a0a0e(runParameters)).setVirtualMachineParameter_String(check_yvpt_a4a0a0e(runParameters)).setWorkingDirectory_File((isEmptyString(check_yvpt_a0a5a0a0e(runParameters)) ? null : new File(check_yvpt_a0a0f0a0a4(runParameters)))).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(nodePointer, repository);
   }
 
   public static IDebugger getDebugger() {
