@@ -9,6 +9,7 @@
     <import index="2u14" ref="r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5(jetbrains.mps.lang.feedback.problem.childAndProp.constraints)" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" />
     <import index="bb70" ref="r:47656d18-dbba-45c4-80e3-b6a073fd7710(jetbrains.mps.lang.feedback.problem.childAndProp.structure)" />
+    <import index="fudv" ref="r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -70,7 +71,7 @@
               <node concept="1AR3kn" id="6GnzfDRdASt" role="2OqNvi">
                 <node concept="1QN52j" id="6GnzfDRdB6W" role="1AR3km">
                   <node concept="ZC_QK" id="6GnzfDRdB6U" role="1QN54C">
-                    <ref role="2aWVGs" to="2u14:1mFJTG7e$j" resolve="FailingPropertyConstraints" />
+                    <ref role="2aWVGs" to="fudv:1mFJTG7e$j" resolve="FailingPropertyConstraints" />
                   </node>
                 </node>
               </node>

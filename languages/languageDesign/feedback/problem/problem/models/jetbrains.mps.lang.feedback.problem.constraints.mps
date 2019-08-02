@@ -78,7 +78,7 @@
     </language>
   </registry>
   <node concept="1M2fIO" id="1mFJTG6Kh9">
-    <ref role="1M2myG" to="sis7:1mFJTG6JRZ" resolve="ProblemKindRoot" />
+    <ref role="1M2myG" to="sis7:1mFJTG6JRZ" resolve="ProblemKind" />
     <node concept="2NXJUA" id="1mFJTG6KkL" role="2NY200">
       <node concept="3clFbS" id="1mFJTG6KkM" role="2VODD2">
         <node concept="3cpWs8" id="6X8eyFn9MU7" role="3cqZAp">
@@ -99,10 +99,10 @@
                   <ref role="3cqZAo" node="6X8eyFn9MU8" resolve="pointer" />
                 </node>
                 <node concept="1Xw6AR" id="3Y1amMreIkx" role="3uHU7w">
-                  <node concept="1dCxOl" id="6X8eyFn9NI_" role="1XwpL7">
-                    <property role="1XweGQ" value="r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5" />
-                    <node concept="1j_P7g" id="6X8eyFn9NIA" role="1j$8Uc">
-                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.childAndProp.constraints" />
+                  <node concept="1dCxOl" id="AuyzvqobNI" role="1XwpL7">
+                    <property role="1XweGQ" value="r:9006e6ce-991d-45e3-a20f-0deb45783955" />
+                    <node concept="1j_P7g" id="AuyzvqobNJ" role="1j$8Uc">
+                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.childAndProp.feedback" />
                     </node>
                   </node>
                 </node>
@@ -112,10 +112,10 @@
                   <ref role="3cqZAo" node="6X8eyFn9MU8" resolve="pointer" />
                 </node>
                 <node concept="1Xw6AR" id="6X8eyFn9NlG" role="3uHU7w">
-                  <node concept="1dCxOl" id="6X8eyFn9NN6" role="1XwpL7">
-                    <property role="1XweGQ" value="r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6" />
-                    <node concept="1j_P7g" id="6X8eyFn9NN7" role="1j$8Uc">
-                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.structural.constraints" />
+                  <node concept="1dCxOl" id="AuyzvqobUv" role="1XwpL7">
+                    <property role="1XweGQ" value="r:63ce0387-25e9-4762-bec1-dac3eb032399" />
+                    <node concept="1j_P7g" id="AuyzvqobUw" role="1j$8Uc">
+                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.structural.feedback" />
                     </node>
                   </node>
                 </node>
@@ -126,10 +126,10 @@
                 <ref role="3cqZAo" node="6X8eyFn9MU8" resolve="pointer" />
               </node>
               <node concept="1Xw6AR" id="1oq9tin0VIC" role="3uHU7w">
-                <node concept="1dCxOl" id="1oq9tin0VOG" role="1XwpL7">
-                  <property role="1XweGQ" value="r:bb0a30e0-9916-4d29-97fa-68ace0b06403" />
-                  <node concept="1j_P7g" id="1oq9tin0VOH" role="1j$8Uc">
-                    <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.scopes.constraints" />
+                <node concept="1dCxOl" id="Auyzvqoc0k" role="1XwpL7">
+                  <property role="1XweGQ" value="r:b9ce58c5-a751-4b14-8753-25d90bf90204" />
+                  <node concept="1j_P7g" id="Auyzvqoc0l" role="1j$8Uc">
+                    <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.scopes.feedback" />
                   </node>
                 </node>
               </node>

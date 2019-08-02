@@ -23,6 +23,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
@@ -38,6 +39,9 @@ public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.TypedDef$hM)) {
       return new NamedElementsScope(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.context$Oi3m), LINKS.defs$oW_n));
+    }
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.ContextConceptParameter$gx)) {
+      return Scope.getScope(SLinkOperations.getTarget(__thisNode__, LINKS.context$Oi3m), child, kind);
     }
     return null;
   }
@@ -90,6 +94,7 @@ public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept TypedDef$hM = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef");
+    /*package*/ static final SConcept ContextConceptParameter$gx = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc05b735L, "jetbrains.mps.lang.context.defs.structure.ContextConceptParameter");
   }
 
   private static final class LINKS {

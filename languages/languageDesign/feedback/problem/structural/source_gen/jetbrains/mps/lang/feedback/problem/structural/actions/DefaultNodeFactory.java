@@ -13,12 +13,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class DefaultNodeFactory {
   public static class NodeFactory_7716791493892398447 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)", "5724083730281438121"));
+      SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)", "5724083730281438121"));
     }
   }
   public static class NodeFactory_2554379189374330335 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)", "2554379189374330908"));
+      SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)", "2554379189374330908"));
     }
   }
 

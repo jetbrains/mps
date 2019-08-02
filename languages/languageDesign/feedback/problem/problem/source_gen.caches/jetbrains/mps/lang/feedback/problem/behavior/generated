@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="atn8ob7aey697vsizol0d6v2mrzz67b">
-  <files names="BehaviorAspectDescriptor.java:ProblemPointsToKindRoot__BehaviorDescriptor.java" />
+<product version="3" modelHash="bg9u5m4fduv8aca5wat38055un4vzn6">
+  <files names="BehaviorAspectDescriptor.java:ProblemKind__BehaviorDescriptor.java:ProblemPointsToKindRoot__BehaviorDescriptor.java" />
 </product>
 

@@ -8,6 +8,7 @@
   <imports>
     <import index="1wpt" ref="r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" />
+    <import index="qzsv" ref="r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)" />
     <import index="uj7v" ref="r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)" implicit="true" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
   </imports>
@@ -71,7 +72,7 @@
               <node concept="1AR3kn" id="6GnzfDRdASt" role="2OqNvi">
                 <node concept="1QN52j" id="6GnzfDRdB6W" role="1AR3km">
                   <node concept="ZC_QK" id="6GnzfDRh8ds" role="1QN54C">
-                    <ref role="2aWVGs" to="1wpt:4XK1Xd019ID" resolve="MissingProperty" />
+                    <ref role="2aWVGs" to="qzsv:4XK1Xd019ID" resolve="MissingProperty" />
                   </node>
                 </node>
               </node>
@@ -95,7 +96,7 @@
               <node concept="1AR3kn" id="2dMY_rcjEnB" role="2OqNvi">
                 <node concept="1QN52j" id="2dMY_rcjEnC" role="1AR3km">
                   <node concept="ZC_QK" id="2dMY_rcjFbP" role="1QN54C">
-                    <ref role="2aWVGs" to="1wpt:2dMY_rcjEws" resolve="MissingChild" />
+                    <ref role="2aWVGs" to="qzsv:2dMY_rcjEws" resolve="MissingChild" />
                   </node>
                 </node>
               </node>

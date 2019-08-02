@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class DefaultNodeFactory {
   public static class NodeFactory_1592627013225788522 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:bb0a30e0-9916-4d29-97fa-68ace0b06403(jetbrains.mps.lang.feedback.problem.scopes.constraints)", "24399255755876627"));
+      SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:b9ce58c5-a751-4b14-8753-25d90bf90204(jetbrains.mps.lang.feedback.problem.scopes.feedback)", "24399255755876627"));
     }
   }
 

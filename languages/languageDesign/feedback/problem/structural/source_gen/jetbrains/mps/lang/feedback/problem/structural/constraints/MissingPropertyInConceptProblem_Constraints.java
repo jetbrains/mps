@@ -46,7 +46,7 @@ public class MissingPropertyInConceptProblem_Constraints extends BaseConstraints
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
-            SNode concrete = SPointerOperations.resolveNode(new SNodePointer("r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6(jetbrains.mps.lang.feedback.problem.structural.constraints)", "5724083730281438121"), SNodeOperations.getModel(_context.getContextNode()).getRepository());
+            SNode concrete = SPointerOperations.resolveNode(new SNodePointer("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)", "5724083730281438121"), SNodeOperations.getModel(_context.getContextNode()).getRepository());
             return ListScope.forResolvableElements(Sequence.<SNode>singleton(concrete));
           }
         };

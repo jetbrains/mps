@@ -7,6 +7,7 @@
   </languages>
   <imports>
     <import index="ewrq" ref="r:bb0a30e0-9916-4d29-97fa-68ace0b06403(jetbrains.mps.lang.feedback.problem.scopes.constraints)" />
+    <import index="bea4" ref="r:b9ce58c5-a751-4b14-8753-25d90bf90204(jetbrains.mps.lang.feedback.problem.scopes.feedback)" />
     <import index="lk2x" ref="r:bc41db58-2589-400b-8121-4dd19c77316b(jetbrains.mps.lang.feedback.problem.scopes.structure)" implicit="true" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
   </imports>
@@ -70,7 +71,7 @@
               <node concept="1AR3kn" id="6GnzfDRdASt" role="2OqNvi">
                 <node concept="1QN52j" id="6GnzfDRdB6W" role="1AR3km">
                   <node concept="ZC_QK" id="1oq9tin0Zht" role="1QN54C">
-                    <ref role="2aWVGs" to="ewrq:1mFJTG7e$j" resolve="RefOutOfScope" />
+                    <ref role="2aWVGs" to="bea4:1mFJTG7e$j" resolve="RefOutOfScope" />
                   </node>
                 </node>
               </node>

@@ -10,8 +10,8 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="6xgk" ref="r:6e9ad488-5df2-49e4-8c01-8a7f3812adf7(jetbrains.mps.lang.scopes.runtime)" />
+    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" />
     <import index="qbpv" ref="r:63fc051d-731b-428a-af30-ceee8d76dfaa(jetbrains.mps.lang.constraints.rules.kinds.structure)" implicit="true" />
-    <import index="iwhd" ref="r:bd012d1c-91a4-4783-a33f-d2037e757f6d(jetbrains.mps.lang.context.defs.structure)" implicit="true" />
     <import index="ceie" ref="r:bd6fc1e2-c440-4914-8d32-b3c46da52d44(jetbrains.mps.lang.context.structure)" implicit="true" />
   </imports>
   <registry>
@@ -37,6 +37,9 @@
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
+      </concept>
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -134,6 +137,38 @@
                     </node>
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="Auyzvqp2yQ" role="3cqZAp">
+          <node concept="3clFbS" id="Auyzvqp2yS" role="3clFbx">
+            <node concept="3cpWs6" id="Auyzvqp3ty" role="3cqZAp">
+              <node concept="2YIFZM" id="Auyzvqp3VA" role="3cqZAk">
+                <ref role="37wK5l" to="o8zo:52_Geb4SiYg" resolve="getScope" />
+                <ref role="1Pybhc" to="o8zo:3fifI_xCtN$" resolve="Scope" />
+                <node concept="2OqwBi" id="Auyzvqp49O" role="37wK5m">
+                  <node concept="13iPFW" id="Auyzvqp3Zh" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="Auyzvqp4lk" role="2OqNvi">
+                    <ref role="3Tt5mk" to="qbpv:2zJEoOoN6sa" resolve="context" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="Auyzvqp4xT" role="37wK5m">
+                  <ref role="3cqZAo" node="2zJEoOoNo_K" resolve="child" />
+                </node>
+                <node concept="37vLTw" id="Auyzvqp4tP" role="37wK5m">
+                  <ref role="3cqZAo" node="2zJEoOoNo_I" resolve="kind" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="Auyzvqp2NM" role="3clFbw">
+            <node concept="37vLTw" id="Auyzvqp2$l" role="2Oq$k0">
+              <ref role="3cqZAo" node="2zJEoOoNo_I" resolve="kind" />
+            </node>
+            <node concept="2Zo12i" id="Auyzvqp3lO" role="2OqNvi">
+              <node concept="chp4Y" id="Auyzvqp3rl" role="2Zo12j">
+                <ref role="cht4Q" to="iwhd:4JP_D2W1rsP" resolve="ContextConceptParameter" />
               </node>
             </node>
           </node>

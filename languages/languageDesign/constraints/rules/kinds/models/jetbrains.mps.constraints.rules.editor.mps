@@ -49,8 +49,10 @@
         <property id="1215007802031" name="value" index="3$6WeP" />
       </concept>
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
-        <property id="1140017977771" name="readOnly" index="1Intyy" />
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
+      </concept>
+      <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
+        <property id="1130859485024" name="attractsFocus" index="1cu_pB" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
@@ -63,6 +65,7 @@
       <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ng" index="3F0Thp">
         <child id="1219418656006" name="styleItem" index="3F10Kt" />
       </concept>
+      <concept id="1073389882823" name="jetbrains.mps.lang.editor.structure.CellModel_RefNode" flags="sg" stub="730538219795960754" index="3F1sOY" />
       <concept id="1073390211982" name="jetbrains.mps.lang.editor.structure.CellModel_RefNodeList" flags="sg" stub="2794558372793454595" index="3F2HdR" />
       <concept id="1166049232041" name="jetbrains.mps.lang.editor.structure.AbstractComponent" flags="ng" index="1XWOmA">
         <reference id="1166049300910" name="conceptDeclaration" index="1XX52x" />
@@ -89,17 +92,12 @@
         <property role="3F0ifm" value="parametrized by concept" />
         <ref role="1k5W1q" node="2o8jHTOBKsJ" resolve="RuleKind" />
       </node>
-      <node concept="1iCGBv" id="6X8eyFnb3My" role="3EZMnx">
+      <node concept="1iCGBv" id="Auyzvqoqux" role="3EZMnx">
         <ref role="1NtTu8" to="qbpv:2zJEoOoN6sa" resolve="context" />
-        <node concept="1sVBvm" id="6X8eyFnb3MC" role="1sWHZn">
-          <node concept="1iCGBv" id="6X8eyFnbGDP" role="2wV5jI">
+        <node concept="1sVBvm" id="Auyzvqoquz" role="1sWHZn">
+          <node concept="3F1sOY" id="AuyzvqoqwQ" role="2wV5jI">
+            <property role="1cu_pB" value="gtguBGO/firstEditableCell" />
             <ref role="1NtTu8" to="ceie:6X8eyFnb3Nr" resolve="conceptParameter" />
-            <node concept="1sVBvm" id="6X8eyFnbGDR" role="1sWHZn">
-              <node concept="3F0A7n" id="6X8eyFnbGE1" role="2wV5jI">
-                <property role="1Intyy" value="true" />
-                <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-              </node>
-            </node>
           </node>
         </node>
       </node>

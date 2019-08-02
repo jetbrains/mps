@@ -8,8 +8,10 @@
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.scopes.actions.ActionAspectDescriptorImpl" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.scopes.constraints.ConstraintsAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.scopes.editor.EditorAspectDescriptorImpl" />
+    <classNode dependClassName="jetbrains.mps.lang.feedback.problem.scopes.migration.MigrationDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.scopes.structure.ConceptPresentationAspectImpl" />
     <classNode dependClassName="jetbrains.mps.lang.feedback.problem.scopes.structure.StructureAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />

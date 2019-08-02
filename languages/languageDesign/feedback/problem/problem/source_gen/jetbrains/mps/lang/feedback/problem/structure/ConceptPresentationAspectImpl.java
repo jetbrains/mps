@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_Problem;
-  private ConceptPresentation props_ProblemKindRoot;
+  private ConceptPresentation props_ProblemKind;
   private ConceptPresentation props_ProblemPointsToKindRoot;
 
   @Override
@@ -24,13 +24,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Problem = cpb.create();
         }
         return props_Problem;
-      case LanguageConceptSwitch.ProblemKindRoot:
-        if (props_ProblemKindRoot == null) {
+      case LanguageConceptSwitch.ProblemKind:
+        if (props_ProblemKind == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          props_ProblemKindRoot = cpb.create();
+          props_ProblemKind = cpb.create();
         }
-        return props_ProblemKindRoot;
+        return props_ProblemKind;
       case LanguageConceptSwitch.ProblemPointsToKindRoot:
         if (props_ProblemPointsToKindRoot == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -51,7 +51,7 @@ public class RefOutOfScopeProblem_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
-            SNode concrete = SPointerOperations.resolveNode(new SNodePointer("r:bb0a30e0-9916-4d29-97fa-68ace0b06403(jetbrains.mps.lang.feedback.problem.scopes.constraints)", "24399255755876627"), SNodeOperations.getModel(_context.getContextNode()).getRepository());
+            SNode concrete = SPointerOperations.resolveNode(new SNodePointer("r:b9ce58c5-a751-4b14-8753-25d90bf90204(jetbrains.mps.lang.feedback.problem.scopes.feedback)", "24399255755876627"), SNodeOperations.getModel(_context.getContextNode()).getRepository());
             return ListScope.forResolvableElements(Sequence.<SNode>singleton(concrete));
           }
         };
