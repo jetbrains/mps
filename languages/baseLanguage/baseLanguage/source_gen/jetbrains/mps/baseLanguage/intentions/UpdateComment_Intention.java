@@ -69,7 +69,7 @@ public final class UpdateComment_Intention extends AbstractIntentionDescriptor i
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentPart$_gGy)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode part) {
           if (SNodeOperations.isInstanceOf(part, CONCEPTS.TextCommentPart$lb)) {
-            SingleLineComment__BehaviorDescriptor.parseAndAddWords_id45vN3dBFprj.invoke(node, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw));
+            SingleLineComment__BehaviorDescriptor.parseAndAddWordsIntoLines_id45vN3dBFprj.invoke(node, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw));
           }
         }
       });

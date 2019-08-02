@@ -36,10 +36,11 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Gt7ANIVH8f").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> getCommentedNodes_id3$Sh7m_tmZE = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getCommentedNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3$Sh7m_tmZE").build();
-  public static final SMethod<Void> parseAndAddWords_id45vN3dBFprj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWords").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("45vN3dBFprj").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Void> parseAndAddWordsIntoLines_id45vN3dBFprj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWordsIntoLines").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("45vN3dBFprj").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Void> parseAndAddWords_id13gAna0o0W6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWords").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("13gAna0o0W6").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<Boolean> isTODOComment_idRbAU21$c$g = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTODOComment").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("RbAU21$c$g").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWords_id45vN3dBFprj, isTODOComment_idRbAU21$c$g);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, isTODOComment_idRbAU21$c$g);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNode l = SNodeFactoryOperations.setNewChild(__thisNode__, LINKS.line$32mp, null);
@@ -69,7 +70,8 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
     }
     return ListSequence.fromList(new ArrayList<SNode>());
   }
-  /*package*/ static void parseAndAddWords_id45vN3dBFprj(@NotNull SNode __thisNode__, String text) {
+  @Deprecated
+  /*package*/ static void parseAndAddWordsIntoLines_id45vN3dBFprj(@NotNull SNode __thisNode__, String text) {
     if ((text != null && text.length() > 0)) {
       String[] words = text.split(" ");
       SNode l;
@@ -85,6 +87,19 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
         SNode word = SNodeFactoryOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
         SPropertyOperations.assign(word, PROPS.value$cK70, w);
       }
+    }
+  }
+  /*package*/ static void parseAndAddWords_id13gAna0o0W6(@NotNull SNode __thisNode__, String text) {
+    String[] words = text.split(" ");
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.line$32mp) == null)) {
+      SLinkOperations.setTarget(__thisNode__, LINKS.line$32mp, SNodeFactoryOperations.createNewNode(CONCEPTS.Line$w3, null));
+    }
+    if (words.length > 0) {
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.line$32mp), LINKS.elements$eRew)).clear();
+    }
+    for (String w : words) {
+      SNode word = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(__thisNode__, LINKS.line$32mp), LINKS.elements$eRew, CONCEPTS.Word$AM);
+      SPropertyOperations.assign(word, PROPS.value$cK70, w);
     }
   }
   /*package*/ static boolean isTODOComment_idRbAU21$c$g(@NotNull SNode __thisNode__) {
@@ -125,9 +140,12 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
       case 2:
         return (T) ((Iterable<SNode>) getCommentedNodes_id3$Sh7m_tmZE(node));
       case 3:
-        parseAndAddWords_id45vN3dBFprj(node, (String) parameters[0]);
+        parseAndAddWordsIntoLines_id45vN3dBFprj(node, (String) parameters[0]);
         return null;
       case 4:
+        parseAndAddWords_id13gAna0o0W6(node, (String) parameters[0]);
+        return null;
+      case 5:
         return (T) ((Boolean) isTODOComment_idRbAU21$c$g(node));
       default:
         throw new BHMethodNotFoundException(this, method);
