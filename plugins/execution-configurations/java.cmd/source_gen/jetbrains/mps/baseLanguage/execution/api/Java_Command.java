@@ -38,7 +38,6 @@ import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import java.util.Objects;
 import java.util.Set;
 import jetbrains.mps.project.facets.JavaModuleOperations;
-import jetbrains.mps.reloading.CommonPaths;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.SystemProperties;
@@ -141,7 +140,7 @@ public class Java_Command {
     // with program arguments (and even if we do, e.g. enumerating all test methods from JUnit command, we can still 
     // address huge argument list with -f or piping input from file (i.e. runner would need to support arguments other than 
     // String[] args in main())) 
-    if (ListSequence.fromList(classPath).count() > 20) {
+    if (ListSequence.fromList(classPath).count() > 220) {
       // next is to deal with very long cp 
       try {
         JarManifestBuilder jmb = new JarManifestBuilder();
@@ -242,12 +241,7 @@ public class Java_Command {
   }
   public static List<String> getClasspath(Iterable<SModule> modules) {
     Set<String> classpath = JavaModuleOperations.collectExecuteClasspath(Sequence.fromIterable(modules).toListSequence().toGenericArray(SModule.class));
-    // Here used to be module/JDK/.getAdditionalJavaStubPaths, introduced in 6f53b9c0 with no explanation, 
-    // which replaced CommonPaths.getJDKPath() introduced with no explanation either in b4a00256. 
-    // As long as getAdditionalJavaStubPaths() are populated from CommonPaths.getJDKPath (see Solution) 
-    // I see no reason to go though global module to retrieve these. To be honest, I don't quite get the need 
-    // to remove java paths at all. 
-    classpath.removeAll(CommonPaths.getJDKPath());
+
     return new ArrayList<String>(classpath);
   }
   public static File getJavaCommand(@Nullable String javaHome) throws ExecutionException {

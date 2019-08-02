@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="covf79w3kv6fja58bqxcwfz01yd8p36">
+<product version="3" modelHash="-8uvbq55pkjkbnsqkexylip8g07iv86c">
   <files names="JDKVersionChecker.java:JarManifestBuilder.java:JavaConfigurationEditorComponent.java:JavaRunParameters.java:JavaRunParameters_Configuration.java:JavaRunParameters_Configuration_Editor.java:Java_Command.java:JvmArgs.java" />
 </product>
 
