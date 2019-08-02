@@ -53,7 +53,7 @@
       <modulePath path="${mps_home}/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/editorlang-runtime/jetbrains.mps.editorlang.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/typesystemIntegration/typesystemIntegration.msd" folder="core.aspects.editor" />
-      <modulePath path="${mps_home}/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="samples.constraintsRulesAndFeedback" />
+      <modulePath path="${mps_home}/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="constraintsRules" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest.extension/jetbrains.mps.lang.editor.editorTest.extension.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest/jetbrains.mps.lang.editor.editorTest.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.ide.tests/module.msd" folder="core.aspects.editor" />
@@ -417,7 +417,7 @@
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.sandbox/jetbrains.mps.baseLanguage.math.sandbox.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.tests/jetbrains.mps.baseLanguage.math.tests.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/pluginSolution/jetbrains.mps.baseLanguage.math.pluginSolution.msd" folder="samples.math" />
-      <modulePath path="${mps_home}/samples/messagesCustomization/messagesCustomization.mpl" folder="" />
+      <modulePath path="${mps_home}/samples/messagesCustomization/messagesCustomization.mpl" folder="samples.messages" />
       <modulePath path="${mps_home}/samples/migrations/languages/decl/decl.mpl" folder="samples.migrations.example1" />
       <modulePath path="${mps_home}/samples/migrations/languages/declarations/declarations.mpl" folder="samples.migrations.example2" />
       <modulePath path="${mps_home}/samples/migrations/languages/ref/ref.mpl" folder="samples.migrations.example1" />
