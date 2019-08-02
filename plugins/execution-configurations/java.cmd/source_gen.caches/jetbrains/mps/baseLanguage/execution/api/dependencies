@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.baseLanguage.execution.api.JDKVersionChecker">
+    <classNode dependClassName="com.intellij.notification.Notification" />
+    <classNode dependClassName="com.intellij.notification.NotificationType" />
+    <classNode dependClassName="com.intellij.notification.Notifications" />
+    <classNode dependClassName="com.intellij.util.concurrency.AppExecutorUtil" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="org.jetbrains.jps.model.java.JdkVersionDetector" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.project.Project" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.execution.api.JarManifestBuilder">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.io.FileOutputStream" />
@@ -88,6 +99,7 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.execution.api.JDKVersionChecker" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.execution.api.JarManifestBuilder" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.execution.api.JavaRunParameters" />
     <classNode dependClassName="jetbrains.mps.debug.api.Debuggers" />

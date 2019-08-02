@@ -126,6 +126,7 @@ public class Java_Command {
       throw new ExecutionException("Classname is empty");
     }
     File java = Java_Command.getJavaCommand(myJrePath_String);
+    new JDKVersionChecker(null).checkAndNotifyOldJDK(myJrePath_String);
     // FIXME need better logic to decide when to use java -jar, and when directly java -classpath 
     // Now I just throw in some magic number I consider too big to get tired of looking at long CP 
     // XXX Besides, I'd like to test this, therefore would like to see this branch to trigger often (MPS JUnit 
@@ -279,10 +280,11 @@ public class Java_Command {
     return homes;
   }
   public static String getJdkHome() {
-    List<String> homes = Java_Command.getJavaHomes();
-    for (String javaHome : homes) {
-      if (new File(Java_Command.getJavaCommandPath(javaHome)).exists()) {
-        return javaHome;
+    List<String> homePaths = Java_Command.getJavaHomes();
+    for (String homePath : homePaths) {
+      File homeDir = new File(Java_Command.getJavaCommandPath(homePath));
+      if (homeDir.exists()) {
+        return homePath;
       }
     }
     return null;
