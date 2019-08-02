@@ -2,6 +2,7 @@
 <debug-info version="2">
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="ActionAspectDescriptorImpl.java">
@@ -10,19 +11,24 @@
   </root>
   <root nodeRef="r:ce8f16f4-24c5-47e8-b357-561bf11455c0(jetbrains.mps.lang.feedback.problem.scopes.actions)/1592627013225788521">
     <file name="DefaultNodeFactory.java">
-      <node id="7716791493892398464" at="15,91,16,193" concept="0" />
-      <node id="1592627013225788521" at="21,0,22,0" concept="2" trace="kind$Wl20" />
-      <node id="1592627013225788522" at="15,0,18,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="1592627013225788522" at="15,91,16,193" />
-      <scope id="1592627013225788522" at="15,0,18,0">
+      <node id="7716791493892398464" at="17,91,18,193" concept="0" />
+      <node id="1054866243096622789" at="18,193,19,56" concept="2" />
+      <node id="1054866243096648198" at="19,56,20,172" concept="0" />
+      <node id="1054866243096655006" at="20,172,21,25" concept="0" />
+      <node id="1592627013225788521" at="26,0,27,0" concept="3" trace="kind$Wl20" />
+      <node id="1592627013225788522" at="17,0,23,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="1592627013225788522" at="17,91,21,25">
+        <var name="importer" id="1054866243096622790" />
+      </scope>
+      <scope id="1592627013225788522" at="17,0,23,0">
         <var name="enclosingNode" id="1592627013225788522" />
         <var name="model" id="1592627013225788522" />
         <var name="newNode" id="1592627013225788522" />
         <var name="sampleNode" id="1592627013225788522" />
       </scope>
-      <unit id="1592627013225788521" at="20,0,23,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory$LINKS" />
-      <unit id="1592627013225788522" at="14,0,19,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory$NodeFactory_1592627013225788522" />
-      <unit id="1592627013225788521" at="13,0,24,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory" />
+      <unit id="1592627013225788521" at="25,0,28,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory$LINKS" />
+      <unit id="1592627013225788522" at="16,0,24,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory$NodeFactory_1592627013225788522" />
+      <unit id="1592627013225788521" at="15,0,29,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory" />
     </file>
   </root>
 </debug-info>

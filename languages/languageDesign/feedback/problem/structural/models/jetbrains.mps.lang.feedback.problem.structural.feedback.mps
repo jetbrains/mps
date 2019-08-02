@@ -34,7 +34,7 @@
       </concept>
     </language>
     <language id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem">
-      <concept id="24399255755750911" name="jetbrains.mps.lang.feedback.problem.structure.ProblemKindRoot" flags="ng" index="1Gj5c1">
+      <concept id="24399255755750911" name="jetbrains.mps.lang.feedback.problem.structure.ProblemKind" flags="ng" index="1Gj5c1">
         <child id="24399255755751437" name="context" index="1GjqVN" />
       </concept>
     </language>
@@ -58,7 +58,7 @@
     <node concept="1GjLv3" id="2dMY_rcjEwt" role="1GjqVN">
       <node concept="1DMZdT" id="6X8eyFnbP1D" role="3QpnaF">
         <property role="TrG5h" value="node" />
-        <ref role="1DMZsr" node="AuyzvqoB2h" resolve="C" />
+        <ref role="1DMZsr" node="Auyzvqop9P" resolve="C" />
       </node>
       <node concept="3RXm0x" id="2dMY_rcjEww" role="3QpnaF">
         <property role="TrG5h" value="child" />

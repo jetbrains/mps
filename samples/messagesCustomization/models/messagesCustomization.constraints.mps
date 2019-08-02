@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(multiAspectLang.constraints)">
+<model ref="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messagesCustomization.constraints)">
   <persistence version="9" />
   <languages>
     <use id="ea3159bf-f48e-4720-bde2-86dba75f0d34" name="jetbrains.mps.lang.context.defs" version="0" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
-    <import index="pljn" ref="r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(multiAspectLang.structure)" />
+    <import index="pljn" ref="r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(messagesCustomization.structure)" />
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
@@ -93,7 +93,7 @@
         <reference id="1867733327984720094" name="concept" index="3Oh7Pe" />
         <child id="1867733327984720091" name="block" index="3Oh7Pb" />
       </concept>
-      <concept id="1867733327985055562" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlock" flags="ng" index="3OnDbq">
+      <concept id="1867733327985055562" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesBlock" flags="ng" index="3OnDbq">
         <reference id="1867733327985055564" name="kind" index="3OnDbs" />
         <child id="1867733327985055563" name="members" index="3OnDbr" />
       </concept>

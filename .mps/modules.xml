@@ -417,6 +417,7 @@
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.sandbox/jetbrains.mps.baseLanguage.math.sandbox.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.tests/jetbrains.mps.baseLanguage.math.tests.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/pluginSolution/jetbrains.mps.baseLanguage.math.pluginSolution.msd" folder="samples.math" />
+      <modulePath path="${mps_home}/samples/messagesCustomization/messagesCustomization.mpl" folder="" />
       <modulePath path="${mps_home}/samples/migrations/languages/decl/decl.mpl" folder="samples.migrations.example1" />
       <modulePath path="${mps_home}/samples/migrations/languages/declarations/declarations.mpl" folder="samples.migrations.example2" />
       <modulePath path="${mps_home}/samples/migrations/languages/ref/ref.mpl" folder="samples.migrations.example1" />
@@ -428,7 +429,6 @@
       <modulePath path="${mps_home}/samples/money/jetbrains.mps.baseLanguage.money.mpl" folder="samples.money" />
       <modulePath path="${mps_home}/samples/money/runtimeSolution/jetbrains.mps.baseLanguage.money.runtime.msd" folder="samples.money" />
       <modulePath path="${mps_home}/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/jetbrains.mps.baseLanguage.money.sandbox.msd" folder="samples.money" />
-      <modulePath path="${mps_home}/samples/multiAspectLang/multiAspectLang.mpl" folder="samples.constraintsRulesAndFeedback" />
       <modulePath path="${mps_home}/samples/multiTarget/languages/MultiTarget/MultiTarget.mpl" folder="samples.multiTarget" />
       <modulePath path="${mps_home}/samples/multiTarget/languages/MultiTarget/sandbox/MultiTarget.sandbox.msd" folder="samples.multiTarget" />
       <modulePath path="${mps_home}/samples/multiTarget/languages/jetbrains.mps.samples.TargetBL/jetbrains.mps.samples.TargetBL.mpl" folder="samples.multiTarget" />

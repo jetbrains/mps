@@ -7,6 +7,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.project.ModelImporter;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -14,6 +16,9 @@ public class DefaultNodeFactory {
   public static class NodeFactory_7716791493892398447 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)", "24399255755876627"));
+      ModelImporter importer = new ModelImporter(model);
+      importer.prepare(PersistenceFacade.getInstance().createModelReference("r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)"));
+      importer.execute();
     }
   }
 

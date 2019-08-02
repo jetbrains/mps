@@ -7,6 +7,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.project.ModelImporter;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -14,11 +16,17 @@ public class DefaultNodeFactory {
   public static class NodeFactory_7716791493892398447 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)", "5724083730281438121"));
+      ModelImporter importer = new ModelImporter(model);
+      importer.prepare(PersistenceFacade.getInstance().createModelReference("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)"));
+      importer.execute();
     }
   }
   public static class NodeFactory_2554379189374330335 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SLinkOperations.setPointer(newNode, LINKS.kind$Wl20, new SNodePointer("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)", "2554379189374330908"));
+      ModelImporter importer = new ModelImporter(model);
+      importer.prepare(PersistenceFacade.getInstance().createModelReference("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)"));
+      importer.execute();
     }
   }
 
