@@ -592,6 +592,7 @@
       <directory url="file://$PROJECT_DIR$/samples/math/solutions/pluginSolution/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/math/solutions/pluginSolution/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/math/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/messagesCustomization/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/migrations/languages/decl/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/migrations/languages/declarations/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/migrations/languages/ref/source_gen" includeSubdirectories="true" />
@@ -609,7 +610,6 @@
       <directory url="file://$PROJECT_DIR$/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/money/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/multiAspectLang/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/source_gen" includeSubdirectories="true" />
