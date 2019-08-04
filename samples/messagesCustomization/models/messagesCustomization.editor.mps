@@ -58,7 +58,7 @@
       <node concept="3EZMnI" id="1oq9tin1BFL" role="3EZMnx">
         <node concept="2iR$Sn" id="1oq9tin1BFM" role="2iSdaV" />
         <node concept="3F0ifn" id="1oq9tin1BFN" role="3EZMnx">
-          <property role="3F0ifm" value="concept" />
+          <property role="3F0ifm" value="test concept" />
           <node concept="3$7fVu" id="1oq9tin1BFO" role="3F10Kt">
             <property role="3$6WeP" value="0.5" />
           </node>

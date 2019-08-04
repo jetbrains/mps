@@ -143,9 +143,6 @@
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
-      <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz">
-        <reference id="6677504323281689839" name="conceptDeclaraton" index="3bZ5Sy" />
-      </concept>
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
       </concept>
@@ -184,17 +181,6 @@
     <ref role="3Oh7Pe" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
     <node concept="3OnDbq" id="1mFJTG0Yqf" role="3Oh7Pb">
       <ref role="3OnDbs" to="prp3:6X8eyFnbGDJ" resolve="CanBeRoot" />
-      <node concept="3QlHBw" id="40_QUL9zj3Z" role="3OnDbr">
-        <property role="TrG5h" value="concept" />
-        <node concept="3bZ5Sz" id="40_QUL9zj4W" role="3RXm0Z">
-          <ref role="3bZ5Sy" to="pljn:5ca4zTvKOOO" resolve="TestConcept" />
-        </node>
-        <node concept="2K0Yjh" id="40_QUL9zj43" role="2K0Fub">
-          <node concept="3QpRc$" id="40_QUL9zj53" role="2K0yoH">
-            <ref role="3QpVTF" to="prp3:6X8eyFnbMKc" resolve="concept" />
-          </node>
-        </node>
-      </node>
       <node concept="3QlHBw" id="6SnnA3pzN3z" role="3OnDbr">
         <property role="TrG5h" value="AModel" />
         <node concept="H_c77" id="2dMY_rc2ZIO" role="3RXm0Z" />
@@ -243,18 +229,6 @@
           </node>
         </node>
       </node>
-      <node concept="3QlHBw" id="yXuRM1UWCn" role="3OnDbr">
-        <property role="TrG5h" value="AModelName2" />
-        <node concept="17QB3L" id="yXuRM1UWCo" role="3RXm0Z" />
-        <node concept="2K0Yjh" id="yXuRM1UWCp" role="2K0Fub">
-          <node concept="2OqwBi" id="yXuRM1UWCq" role="2K0yoH">
-            <node concept="3QpRc$" id="yXuRM1UWCr" role="2Oq$k0">
-              <ref role="3QpVTF" node="6SnnA3pzN3z" resolve="AModel" />
-            </node>
-            <node concept="LkI2h" id="yXuRM1UWCs" role="2OqNvi" />
-          </node>
-        </node>
-      </node>
       <node concept="1DCEPf" id="6SnnA3pIuGB" role="3OnDbr">
         <node concept="3Qq5Rn" id="6SnnA3pIuGD" role="2j4cqI">
           <property role="EcuMT" value="7932913038699129641" />
@@ -278,8 +252,8 @@
               <property role="16N$OU" value="The name of the model '" />
             </node>
             <node concept="16Iohu" id="2mL_UKGpPAD" role="16I2mt">
-              <node concept="3QpRc$" id="2mL_UKGpPAJ" role="9Y7m$">
-                <ref role="3QpVTF" node="yXuRM1UWCn" resolve="AModelName2" />
+              <node concept="3QpRc$" id="6Xgid4BtbHN" role="9Y7m$">
+                <ref role="3QpVTF" node="2dMY_rcjs2O" resolve="AModelName" />
               </node>
             </node>
             <node concept="16N$OT" id="2mL_UKGe1B$" role="16I2mt">

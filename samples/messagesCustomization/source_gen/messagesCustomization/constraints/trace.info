@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,29,0" name="messagesCustomization.constraints.ConstraintsAspectDescriptor" />
+    </file>
+    <file name="GeneratedFeedbackAspectConstraints.java">
+      <unit at="10,0,17,0" name="messagesCustomization.constraints.GeneratedFeedbackAspectConstraints" />
+    </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="14,0,28,0" name="messagesCustomization.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
+  </root>
+  <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messagesCustomization.constraints)/24399255754237582">
+    <file name="TestConcept_ConstraintRules.java">
+      <node id="24399255754237582" at="29,0,30,0" concept="6" trace="CONCEPT" />
+      <node id="7932913038699129641" at="31,0,32,0" concept="6" trace="check_id7932913038699129641" />
+      <node id="2716118816015675669" at="32,0,33,0" concept="6" trace="check_id2716118816015675669" />
+      <node id="24399255754237582" at="34,0,35,0" concept="6" trace="RULES" />
+      <node id="24399255754237582" at="38,43,39,17" concept="5" />
+      <node id="7932913038696329443" at="49,34,50,20" concept="5" />
+      <node id="7932913038696329443" at="51,7,52,41" concept="5" />
+      <node id="7932913038696329443" at="55,72,56,40" concept="5" />
+      <node id="2554379189374271668" at="67,34,68,20" concept="5" />
+      <node id="2554379189374271668" at="69,7,70,101" concept="5" />
+      <node id="2554379189374274573" at="74,64,75,21" concept="5" />
+      <node id="2554379189374271668" at="76,7,77,146" concept="5" />
+      <node id="7932913038699129641" at="82,0,83,0" concept="6" trace="SOURCE_NODE_REF" />
+      <node id="7932913038699129641" at="83,0,84,0" concept="6" trace="ID_unnamed_6y4avc_c0" />
+      <node id="7932913038699129641" at="85,37,86,93" concept="8" />
+      <node id="7932913038699129641" at="90,61,91,81" concept="5" />
+      <node id="2554379189374271668" at="96,68,97,21" concept="5" />
+      <node id="7932913038699129641" at="98,7,99,18" concept="5" />
+      <node id="2716118816015675669" at="104,0,105,0" concept="6" trace="SOURCE_NODE_REF" />
+      <node id="2716118816015675669" at="105,0,106,0" concept="6" trace="ID_unnamed_6y4avc_a1" />
+      <node id="2716118816015675669" at="107,37,108,94" concept="8" />
+      <node id="2716118816015675669" at="112,63,113,88" concept="5" />
+      <node id="2716118816015675669" at="117,67,118,18" concept="5" />
+      <node id="24399255754237582" at="122,45,123,19" concept="8" />
+      <node id="24399255754237582" at="127,0,128,0" concept="6" trace="TestConcept$83" />
+      <node id="24399255754237582" at="131,0,132,0" concept="6" trace="link$1Bcs" />
+      <node id="7932913038696329443" at="48,70,51,7" concept="2" />
+      <node id="7932913038696329443" at="55,0,58,0" concept="7" trace="isDefined#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Z" />
+      <node id="2554379189374271668" at="66,70,69,7" concept="2" />
+      <node id="2554379189374274573" at="73,72,76,7" concept="2" />
+      <node id="7932913038699129641" at="85,0,88,0" concept="0" trace="Rule_unnamed_6y4avc_c0#()V" />
+      <node id="2554379189374271668" at="95,65,98,7" concept="2" />
+      <node id="2716118816015675669" at="107,0,110,0" concept="0" trace="Rule_unnamed_6y4avc_a1#()V" />
+      <node id="24399255754237582" at="122,0,125,0" concept="0" trace="TestConcept_ConstraintRules#()V" />
+      <node id="7932913038699129641" at="89,0,93,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Z" />
+      <node id="2716118816015675669" at="111,0,115,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="2716118816015675669" at="116,0,120,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="24399255754237582" at="36,0,41,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
+      <node id="2554379189374271668" at="73,0,79,0" concept="7" trace="isDefined#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Z" />
+      <node id="7932913038696329443" at="47,0,54,0" concept="7" trace="getValue#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2554379189374271668" at="65,0,72,0" concept="7" trace="getValue#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Ljava/lang/String;" />
+      <node id="7932913038699129641" at="94,0,101,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Z" />
+      <scope id="24399255754237582" at="38,43,39,17" />
+      <scope id="7932913038696329443" at="49,34,50,20" />
+      <scope id="7932913038696329443" at="55,72,56,40" />
+      <scope id="2554379189374271668" at="67,34,68,20" />
+      <scope id="2554379189374274573" at="74,64,75,21" />
+      <scope id="7932913038699129641" at="85,37,86,93" />
+      <scope id="7932913038699129641" at="90,61,91,81" />
+      <scope id="2554379189374271668" at="96,68,97,21" />
+      <scope id="2716118816015675669" at="107,37,108,94" />
+      <scope id="2716118816015675669" at="112,63,113,88" />
+      <scope id="2716118816015675669" at="117,67,118,18" />
+      <scope id="24399255754237582" at="122,45,123,19" />
+      <scope id="7932913038696329443" at="55,0,58,0">
+        <var name="context" id="7932913038696329443" />
+      </scope>
+      <scope id="7932913038699129641" at="85,0,88,0" />
+      <scope id="2716118816015675669" at="107,0,110,0" />
+      <scope id="24399255754237582" at="122,0,125,0" />
+      <scope id="7932913038696329443" at="48,70,52,41" />
+      <scope id="2554379189374271668" at="66,70,70,101" />
+      <scope id="2554379189374271668" at="73,72,77,146" />
+      <scope id="7932913038699129641" at="89,0,93,0">
+        <var name="context" id="7932913038699129641" />
+      </scope>
+      <scope id="7932913038699129641" at="95,65,99,18" />
+      <scope id="2716118816015675669" at="111,0,115,0">
+        <var name="context" id="2716118816015675669" />
+      </scope>
+      <scope id="2716118816015675669" at="116,0,120,0">
+        <var name="context" id="2716118816015675669" />
+      </scope>
+      <scope id="24399255754237582" at="36,0,41,0" />
+      <scope id="2554379189374271668" at="73,0,79,0">
+        <var name="context" id="2554379189374271668" />
+      </scope>
+      <scope id="7932913038696329443" at="47,0,54,0">
+        <var name="context" id="7932913038696329443" />
+      </scope>
+      <scope id="2554379189374271668" at="65,0,72,0">
+        <var name="context" id="2554379189374271668" />
+      </scope>
+      <scope id="7932913038699129641" at="94,0,101,0">
+        <var name="context" id="7932913038699129641" />
+      </scope>
+      <unit id="24399255754237582" at="126,0,129,0" name="messagesCustomization.constraints.TestConcept_ConstraintRules$CONCEPTS" />
+      <unit id="24399255754237582" at="130,0,133,0" name="messagesCustomization.constraints.TestConcept_ConstraintRules$LINKS" />
+      <unit id="7932913038696329443" at="42,0,59,0" name="messagesCustomization.constraints.TestConcept_ConstraintRules$Def_AModel7932913038696329443" />
+      <unit id="2716118816015675669" at="103,0,121,0" name="messagesCustomization.constraints.TestConcept_ConstraintRules$Rule_unnamed_6y4avc_a1" />
+      <unit id="2554379189374271668" at="60,0,80,0" name="messagesCustomization.constraints.TestConcept_ConstraintRules$Def_AModelName2554379189374271668" />
+      <unit id="7932913038699129641" at="81,0,102,0" name="messagesCustomization.constraints.TestConcept_ConstraintRules$Rule_unnamed_6y4avc_c0" />
+      <unit id="24399255754237582" at="28,0,134,0" name="messagesCustomization.constraints.TestConcept_ConstraintRules" />
+    </file>
+    <file name="TestConcept_ConstraintsFeedback.java">
+      <node id="24399255754237582" at="20,0,21,0" concept="6" trace="CONCEPT" />
+      <node id="7932913038699129639" at="25,77,26,183" concept="5" />
+      <node id="24399255754237582" at="30,0,31,0" concept="6" trace="PROVIDERS" />
+      <node id="24399255754237582" at="32,44,33,19" concept="8" />
+      <node id="24399255754237582" at="38,58,39,30" concept="5" />
+      <node id="24399255754237582" at="32,0,35,0" concept="0" trace="TestConcept_ConstraintsFeedback#()V" />
+      <node id="7932913038699129639" at="23,0,28,0" concept="3" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="24399255754237582" at="36,0,41,0" concept="3" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
+      <node id="7932913038699129639" at="22,0,29,0" concept="6" trace="MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_a" />
+      <scope id="7932913038699129639" at="25,77,26,183" />
+      <scope id="24399255754237582" at="32,44,33,19" />
+      <scope id="24399255754237582" at="38,58,39,30" />
+      <scope id="24399255754237582" at="32,0,35,0" />
+      <scope id="7932913038699129639" at="23,0,28,0">
+        <var name="context" id="7932913038699129639" />
+      </scope>
+      <scope id="24399255754237582" at="36,0,41,0" />
+      <unit id="7932913038699129639" at="22,109,28,3" name="messagesCustomization.constraints.TestConcept_ConstraintsFeedback$1" />
+      <unit id="24399255754237582" at="19,0,42,0" name="messagesCustomization.constraints.TestConcept_ConstraintsFeedback" />
+    </file>
+  </root>
+  <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messagesCustomization.constraints)/8918166317255507146">
+    <file name="TestConcept_Constraints.java">
+      <node id="8918166317255507146" at="29,36,30,35" concept="8" />
+      <node id="8918166317255507155" at="37,44,38,20" concept="5" />
+      <node id="8918166317255507155" at="45,63,46,57" concept="5" />
+      <node id="8918166317255516804" at="49,122,50,78" concept="4" />
+      <node id="8918166317255517087" at="50,78,51,103" concept="1" />
+      <node id="8918166317255507270" at="51,103,52,72" concept="5" />
+      <node id="8918166317255507146" at="56,6,57,131" concept="4" />
+      <node id="8918166317255507155" at="57,131,58,42" concept="1" />
+      <node id="8918166317255507146" at="58,42,59,22" concept="5" />
+      <node id="8918166317255507146" at="61,0,62,0" concept="6" trace="breakingNode_72100m_a0a0a0a0a1a0a0a0c" />
+      <node id="8918166317255507146" at="64,0,65,0" concept="6" trace="TestConcept$83" />
+      <node id="8918166317255507146" at="68,0,69,0" concept="6" trace="link$1Bcs" />
+      <node id="8918166317255507146" at="29,0,32,0" concept="0" trace="TestConcept_Constraints#()V" />
+      <node id="8918166317255507155" at="36,0,40,0" concept="3" trace="hasOwnScopeProvider#()Z" />
+      <node id="8918166317255507155" at="44,0,48,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="8918166317255507155" at="48,0,54,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="8918166317255507155" at="42,56,54,10" concept="5" />
+      <node id="8918166317255507155" at="40,0,56,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="8918166317255507155" at="34,90,56,6" concept="4" />
+      <node id="8918166317255507146" at="33,0,61,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="8918166317255507146" at="29,36,30,35" />
+      <scope id="8918166317255507155" at="37,44,38,20" />
+      <scope id="8918166317255507155" at="45,63,46,57" />
+      <scope id="8918166317255507146" at="29,0,32,0" />
+      <scope id="8918166317255507155" at="49,122,52,72">
+        <var name="seq" id="8918166317255516805" />
+      </scope>
+      <scope id="8918166317255507155" at="36,0,40,0" />
+      <scope id="8918166317255507155" at="44,0,48,0" />
+      <scope id="8918166317255507155" at="48,0,54,0">
+        <var name="_context" id="8918166317255507155" />
+        <var name="operationContext" id="8918166317255507155" />
+      </scope>
+      <scope id="8918166317255507155" at="42,56,54,10" />
+      <scope id="8918166317255507155" at="40,0,56,0" />
+      <scope id="8918166317255507146" at="34,90,59,22">
+        <var name="d0" id="8918166317255507155" />
+        <var name="references" id="8918166317255507146" />
+      </scope>
+      <scope id="8918166317255507146" at="33,0,61,0" />
+      <unit id="8918166317255507146" at="63,0,66,0" name="messagesCustomization.constraints.TestConcept_Constraints$CONCEPTS" />
+      <unit id="8918166317255507146" at="67,0,70,0" name="messagesCustomization.constraints.TestConcept_Constraints$LINKS" />
+      <unit id="8918166317255507155" at="43,19,54,9" name="messagesCustomization.constraints.TestConcept_Constraints$1$1" />
+      <unit id="8918166317255507155" at="35,48,56,5" name="messagesCustomization.constraints.TestConcept_Constraints$1" />
+      <unit id="8918166317255507146" at="28,0,71,0" name="messagesCustomization.constraints.TestConcept_Constraints" />
+    </file>
+  </root>
+</debug-info>
+

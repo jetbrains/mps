@@ -75,7 +75,7 @@
       </node>
       <node concept="16I2mz" id="5XPa2npPDZc" role="16N$OO">
         <node concept="16N$OT" id="2mL_UKGqpXJ" role="16I2mt">
-          <property role="16N$OU" value="The property '" />
+          <property role="16N$OU" value="Property '" />
         </node>
         <node concept="16Iohu" id="2mL_UKGqpXI" role="16I2mt">
           <node concept="3QpRc$" id="2mL_UKGqpXN" role="9Y7m$">
@@ -83,7 +83,7 @@
           </node>
         </node>
         <node concept="16N$OT" id="2dMY_rcipX2" role="16I2mt">
-          <property role="16N$OU" value="' does not belong to the concept 'TestConcept', please do smth" />
+          <property role="16N$OU" value="' does not belong to the concept 'TestConcept'" />
         </node>
       </node>
     </node>
@@ -93,7 +93,7 @@
       </node>
       <node concept="16I2mz" id="7J3GgfrRU50" role="16N$OO">
         <node concept="16N$OT" id="2mL_UKGqERK" role="16I2mt">
-          <property role="16N$OU" value="The child '" />
+          <property role="16N$OU" value="Child '" />
         </node>
         <node concept="16Iohu" id="2mL_UKGqERJ" role="16I2mt">
           <node concept="3QpRc$" id="2mL_UKGqERP" role="9Y7m$">
@@ -119,7 +119,7 @@
           </node>
         </node>
         <node concept="16N$OT" id="2mL_UKGqERZ" role="16I2mt">
-          <property role="16N$OU" value=", please do smth " />
+          <property role="16N$OU" value=" " />
         </node>
         <node concept="16N$OT" id="2dMY_rcih5J" role="16I2mt">
           <property role="16N$OU" value=" " />
@@ -133,7 +133,7 @@
     <node concept="3QByp$" id="1oq9tin1ty6" role="3QBEN7">
       <node concept="16I2mz" id="1oq9tin1ty8" role="16N$OO">
         <node concept="16N$OT" id="2mL_UKGqESd" role="16I2mt">
-          <property role="16N$OU" value="The reference is out of scope: here it goes: " />
+          <property role="16N$OU" value="Reference is out of scope: not found " />
         </node>
         <node concept="16N$OT" id="2mL_UKGqIpq" role="16I2mt">
           <property role="16N$OU" value="the link '" />
