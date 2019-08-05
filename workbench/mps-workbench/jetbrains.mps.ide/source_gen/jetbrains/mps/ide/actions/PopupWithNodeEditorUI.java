@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import java.util.List;
 import com.intellij.openapi.ui.ComboBox;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.ide.embeddableEditor.EmbeddableEditor;
+import jetbrains.mps.nodeEditor.UIEditorComponent;
 import javax.swing.JLabel;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.ui.popup.JBPopup;
@@ -61,7 +61,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * @see jetbrains.mps.ide.actions.ShowDefinition_Action 
  */
 public final class PopupWithNodeEditorUI implements Disposable {
-  private static final Dimension PANEL_SIZE = JBUI.size(600, 300);
+  private static final Dimension PANEL_SIZE = JBUI.size(700, 300);
 
   @NotNull
   private final JPanel myPanel;
@@ -72,7 +72,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
   @NotNull
   private final Project myProject;
   @NotNull
-  private final EmbeddableEditor myEditor;
+  private final UIEditorComponent myUIEditorComponent;
   @NotNull
   private final JLabel myLocationLabel = new JLabel("");
   @NotNull
@@ -85,7 +85,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
     myImplNodes = new ArrayList<ImplementationNode>();
     myNodeChooser = new ComboBox<ImplementationNode>(new CollectionComboBoxModel<ImplementationNode>(myImplNodes, null));
     myProject = project;
-    myEditor = new EmbeddableEditor(myProject, false);
+    myUIEditorComponent = new UIEditorComponent(project.getRepository(), null);
 
     configurePermanentUI();
     configureBehaviour();
@@ -93,7 +93,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
 
   private void configurePermanentUI() {
     myPanel.setLayout(new BorderLayout());
-    myPanel.add(myEditor, BorderLayout.CENTER);
+    myPanel.add(myUIEditorComponent, BorderLayout.CENTER);
 
     JPanel northPanel = new JPanel(new BorderLayout(2, 0));
     northPanel.setBorder(BorderFactory.createCompoundBorder(IdeBorderFactory.createBorder(SideBorder.BOTTOM), JBUI.Borders.emptyRight(5)));
@@ -160,9 +160,9 @@ public final class PopupWithNodeEditorUI implements Disposable {
         myLocationLabel.setText(node.myModuleName);
         myLocationLabel.setIcon(node.myModuleIcon);
         myCountLabel.setText((index + 1) + " of " + myImplNodes.size());
-        myEditor.editNode(node.myNode);
-        myEditor.setBackground(new JBColor(new Color(255, 255, 215), StyleRegistry.getInstance().getEditorBackground()));
-        myEditor.repaint();
+        myUIEditorComponent.editNode(node.myNode);
+        myUIEditorComponent.setBackground(new JBColor(new Color(255, 255, 225), StyleRegistry.getInstance().getEditorBackground()));
+        myUIEditorComponent.repaint();
         myNodeChooser.updateUI();
       }
     });
@@ -218,7 +218,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
       return;
     }
     isDisposed = true;
-    myEditor.disposeEditor();
+    myUIEditorComponent.dispose();
   }
 
   private class ImplementationNode {

@@ -15,6 +15,10 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.awt.Component;
+
 public class DummySubstituteChooserUi implements ISubstituteChooserUi {
   @Override
   public void refreshUi(boolean recalculateSize) {}
@@ -30,4 +34,10 @@ public class DummySubstituteChooserUi implements ISubstituteChooserUi {
 
   @Override
   public void updateLocation() {}
+
+  @Nullable
+  @Override
+  public Component getMainComponent() {
+    return null;
+  }
 }

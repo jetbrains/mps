@@ -39,6 +39,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
 import javax.swing.JList;
+import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -208,6 +209,29 @@ public class NodeSubstituteChooser implements KeyboardHandler {
         }
       }
     });
+  }
+
+  /**
+   * @return the component that contains every other component in this instance of {@link NodeSubstituteChooser}
+   */
+  @Nullable
+  public Component getMainComponent() {
+    return myUi.getMainComponent();
+  }
+
+  /**
+   * @param listener functional object to be called every time selection in the list of available actions changes
+   */
+  public void addSelectionChangeListener(@NotNull final ListSelectionListener listener) {
+    myList.addListSelectionListener(listener);
+  }
+
+  /**
+   * @param listener listener to remove
+   * @see NodeSubstituteChooser#addSelectionChangeListener(ListSelectionListener)
+   */
+  public void removeSelectionChangeListener(@NotNull final ListSelectionListener listener) {
+    myList.removeListSelectionListener(listener);
   }
 
   /**

@@ -27,6 +27,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.util.ModelComputeRunnable;
 import jetbrains.mps.util.WindowsUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -34,6 +35,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -167,6 +169,12 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
   public void updateLocation() {
     Point newLocation = calculateLocation(myPopup.getContent().getPreferredSize());
     myPopup.setLocation(newLocation);
+  }
+
+  @NotNull
+  @Override
+  public Component getMainComponent() {
+    return myPopup.getContent();
   }
 
   private Point calculateLocation(Dimension popupSize) {

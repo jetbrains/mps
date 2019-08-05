@@ -15,6 +15,10 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.awt.Component;
+
 interface ISubstituteChooserUi {
   void refreshUi(boolean recalculateSize);
 
@@ -25,4 +29,10 @@ interface ISubstituteChooserUi {
   void hide();
 
   void updateLocation();
+
+  /**
+   * @return The component that contains every other component in this instance of {@link NodeSubstituteChooser}. Might be null to allow dummy implementation.
+   */
+  @Nullable
+  Component getMainComponent();
 }
