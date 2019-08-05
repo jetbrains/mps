@@ -221,6 +221,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
     if (myIsVisible == visible) {
       return;
     }
+    myIsVisible = visible;
     boolean realUi = getEditorWindow() != null && getEditorWindow().isShowing() && !(RuntimeFlags.isTestMode());
     if (visible) {
       if (myContextCell == null || myNodeSubstituteInfo == null) {
@@ -255,7 +256,6 @@ public class NodeSubstituteChooser implements KeyboardHandler {
       myList = null;
     }
     setUserChoseItem(false);
-    myIsVisible = visible;
   }
 
   @NotNull
@@ -272,7 +272,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
     } else {
       TypecheckingSession typecheckingSession = myEditorComponent.getTypecheckingSession();
       if (typecheckingSession == null) return Collections.emptyList();
-      
+
       return TypecheckingFacade
                  .getFromContext()
                  .computeWithSession(typecheckingSession,

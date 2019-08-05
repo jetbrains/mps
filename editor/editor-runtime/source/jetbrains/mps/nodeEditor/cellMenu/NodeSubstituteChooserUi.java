@@ -121,10 +121,14 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
     myPopup = JBPopupFactory.getInstance().createComponentPopupBuilder(mainPanel, mainPanel)
                             .setResizable(true)
                             .setCancelKeyEnabled(false)
-                            .setCancelOnClickOutside(false)
+                            .setCancelOnClickOutside(true)
                             .setCancelOnOtherWindowOpen(false)
-                            .setCancelOnWindowDeactivation(false)
+                            .setCancelOnWindowDeactivation(true)
                             .setLocateWithinScreenBounds(false)
+                            .setCancelCallback(() -> {
+                              myNodeSubstituteChooser.setVisible(false);
+                              return true;
+                            })
                             .createPopup();
     myPopup.setMinimumSize(new Dimension(MY_MIN_CELL_WIDTH, 0));
 

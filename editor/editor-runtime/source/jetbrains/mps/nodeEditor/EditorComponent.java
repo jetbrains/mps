@@ -530,7 +530,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
       @Override
       public void focusLost(FocusEvent e) {
-        closeSubstituteChooser(e.getOppositeComponent());
         commitAllCellValues();
         deActivateCaretBlinker();
       }
