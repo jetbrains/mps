@@ -15,6 +15,8 @@
  */
 package jetbrains.mps;
 
+import jetbrains.mps.util.annotation.ToRemove;
+
 /**
  * Replacement for MPSCore#isMergeDriverMode and MPSCore#isTestMode as these flags has nothing to do with
  * component initialization that occurs in MPSCore class, nor with dependencies of mps core component.
@@ -25,9 +27,10 @@ package jetbrains.mps;
 public final class RuntimeFlags {
   private static TestMode ourTestMode = TestMode.NONE;
   private static Boolean ourInternalMode = null;
-  private static boolean ourUseInterpretedLanguages = true;
+  private static Boolean ourUseInterpretedLanguages = null;
   private static boolean ourMergeDriverMode = false;
   private static Boolean ourCastException = null;
+  private static Boolean ourManyGeneratorsPerLanguage = null;
 
   private RuntimeFlags() {
   }
@@ -38,7 +41,7 @@ public final class RuntimeFlags {
 
   // not lightweight test run ("in-process")
   public static boolean isTestMode() {
-    return ourTestMode.equals(TestMode.USUAL);
+    return ourTestMode == TestMode.USUAL;
   }
 
   public static void setTestMode(TestMode testMode) {
@@ -47,7 +50,7 @@ public final class RuntimeFlags {
 
   public static boolean isInternalMode() {
     if (ourInternalMode == null) {
-      ourInternalMode = "true".equals(System.getProperty("mps.internal"));
+      ourInternalMode = Boolean.getBoolean("mps.internal");
     }
     return ourInternalMode;
   }
@@ -71,12 +74,21 @@ public final class RuntimeFlags {
 
   /**
    * @return true if we would like to get rudimentary LanguageRuntime instance for non-deployed (source-only) language modules.
-   *         This is
+   *         These days, MPS doesn't need these, the option is left for compatibility in case there's legacy code that depends on presence
+   *         of LanguageRuntime instances for every language module.
    */
   public static boolean isUseInterpretedLanguages() {
+    if (ourUseInterpretedLanguages == null) {
+      ourUseInterpretedLanguages = Boolean.getBoolean("mps.useInterpretedLanguages");
+    }
     return ourUseInterpretedLanguages;
   }
 
+  /**
+   * @deprecated MPS runs without interpreted languages by default now, no reason to set this mode explicitly with {@code false} (the only use in MPS)
+   */
+  @Deprecated
+  @ToRemove(version = 2019.2)
   public static void setUseInterpretedLanguages(boolean useInterpretedLanguages) {
     ourUseInterpretedLanguages = useInterpretedLanguages;
   }
@@ -88,12 +100,15 @@ public final class RuntimeFlags {
    */
   public static boolean isExceptionOnBadCast() {
     if (ourCastException == null) {
-      ourCastException = !"true".equals(System.getProperty("mps.disableNodeCastExceptions"));
+      ourCastException = !Boolean.getBoolean("mps.disableNodeCastExceptions");
     }
     return ourCastException;
   }
 
   public static boolean manyGeneratorsPerLanguage() {
-    return isInternalMode() || Boolean.getBoolean("mps.manyGeneratorsPerLanguage");
+    if (ourManyGeneratorsPerLanguage == null) {
+      ourManyGeneratorsPerLanguage = isInternalMode() || Boolean.getBoolean("mps.manyGeneratorsPerLanguage");
+    }
+    return ourManyGeneratorsPerLanguage;
   }
 }
