@@ -46,8 +46,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_BuildMpsLayout_TestModuleGroup;
       case LanguageConceptSwitch.BuildMpsLayout_TestModules:
         if (props_BuildMpsLayout_TestModules == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL);
-          cpb.deprecateAggregation(0x6402cbb11c1307aeL, "haltonfailure");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           props_BuildMpsLayout_TestModules = cpb.create();
         }

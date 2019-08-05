@@ -79,13 +79,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_0_4(final PropertyMacroContext _context) {
     SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$BF);
     MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT) == null)) {
-      if ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.haltonfailure$JTP8) == null)) {
-        return "false";
-      }
-      return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.haltonfailure$JTP8), macroHelper);
-    }
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.haltonfailure$JTP8) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.haltonfailure$JTP8) == null)) {
       return "false";
     }
     return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.haltonfailure$JTP8), macroHelper);

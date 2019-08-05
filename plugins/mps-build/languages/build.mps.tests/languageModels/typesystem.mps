@@ -10,7 +10,6 @@
     <import index="vbkb" ref="r:08f2b659-8469-4592-93bf-a6edb46ec86d(jetbrains.mps.build.behavior)" />
     <import index="3ior" ref="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" />
     <import index="kdzh" ref="r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="2txq" ref="r:2c8fa2a8-11a0-4729-bd56-47f702d30278(jetbrains.mps.build.mps.behavior)" implicit="true" />
@@ -220,111 +219,6 @@
       <concept id="1227022179634" name="jetbrains.mps.baseLanguage.collections.structure.AddLastElementOperation" flags="nn" index="2Ke9KJ" />
     </language>
   </registry>
-  <node concept="18kY7G" id="1CnLp85qAeB">
-    <property role="TrG5h" value="check_BuildMpsLayout_TestModulesHaltOnFailure" />
-    <property role="3GE5qa" value="Project.Testing" />
-    <node concept="3clFbS" id="1CnLp85qAeC" role="18ibNy">
-      <node concept="3clFbJ" id="1CnLp85qwba" role="3cqZAp">
-        <node concept="3clFbS" id="1CnLp85qwbd" role="3clFbx">
-          <node concept="3cpWs8" id="7xxJYNIbUDY" role="3cqZAp">
-            <node concept="3cpWsn" id="7xxJYNIbUDZ" role="3cpWs9">
-              <property role="TrG5h" value="approxPresentation" />
-              <node concept="17QB3L" id="7xxJYNIbUDW" role="1tU5fm" />
-              <node concept="2OqwBi" id="7xxJYNIbUE0" role="33vP2m">
-                <node concept="2OqwBi" id="7xxJYNIbUE1" role="2Oq$k0">
-                  <node concept="1YBJjd" id="7xxJYNIbUE2" role="2Oq$k0">
-                    <ref role="1YBMHb" node="1CnLp85qAeE" resolve="node" />
-                  </node>
-                  <node concept="3TrEf2" id="7xxJYNIbUE3" role="2OqNvi">
-                    <ref role="3Tt5mk" to="5tjl:6g2MV4s4KuI" resolve="haltonfailure" />
-                  </node>
-                </node>
-                <node concept="2qgKlT" id="7xxJYNIbUE4" role="2OqNvi">
-                  <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                  <node concept="10Nm6u" id="7xxJYNIbUE5" role="37wK5m" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbJ" id="7xxJYNIbUYF" role="3cqZAp">
-            <node concept="3clFbS" id="7xxJYNIbUYI" role="3clFbx">
-              <node concept="3cpWs6" id="7xxJYNIbWIa" role="3cqZAp" />
-            </node>
-            <node concept="2OqwBi" id="7xxJYNIbVbY" role="3clFbw">
-              <node concept="37vLTw" id="7xxJYNIbV0N" role="2Oq$k0">
-                <ref role="3cqZAo" node="7xxJYNIbUDZ" resolve="approxPresentation" />
-              </node>
-              <node concept="liA8E" id="7xxJYNIbWCd" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
-                <node concept="Xl_RD" id="7xxJYNIbWD5" role="37wK5m">
-                  <property role="Xl_RC" value="${" />
-                </node>
-              </node>
-            </node>
-            <node concept="3eNFk2" id="7xxJYNIbWR$" role="3eNLev">
-              <node concept="2OqwBi" id="7xxJYNIbX5D" role="3eO9$A">
-                <node concept="37vLTw" id="7xxJYNIbWUu" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7xxJYNIbUDZ" resolve="approxPresentation" />
-                </node>
-                <node concept="liA8E" id="7xxJYNIbXvQ" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="Xl_RD" id="7xxJYNIbXBX" role="37wK5m">
-                    <property role="Xl_RC" value="true" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbS" id="7xxJYNIbWRA" role="3eOfB_">
-                <node concept="3cpWs6" id="7xxJYNIbXGa" role="3cqZAp" />
-              </node>
-            </node>
-            <node concept="3eNFk2" id="7xxJYNIbXGR" role="3eNLev">
-              <node concept="2OqwBi" id="7xxJYNIbXX4" role="3eO9$A">
-                <node concept="37vLTw" id="7xxJYNIbXLT" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7xxJYNIbUDZ" resolve="approxPresentation" />
-                </node>
-                <node concept="liA8E" id="7xxJYNIbYnh" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="Xl_RD" id="7xxJYNIbYvl" role="37wK5m">
-                    <property role="Xl_RC" value="false" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbS" id="7xxJYNIbXGT" role="3eOfB_">
-                <node concept="3cpWs6" id="7xxJYNIbYDO" role="3cqZAp" />
-              </node>
-            </node>
-            <node concept="9aQIb" id="7xxJYNIbYDU" role="9aQIa">
-              <node concept="3clFbS" id="7xxJYNIbYDV" role="9aQI4">
-                <node concept="2MkqsV" id="7xxJYNIbYJJ" role="3cqZAp">
-                  <node concept="Xl_RD" id="7xxJYNIbZ13" role="2MkJ7o">
-                    <property role="Xl_RC" value="Inappropriate value for 'haltonfailure' property" />
-                  </node>
-                  <node concept="1YBJjd" id="7xxJYNIbZ6S" role="2OEOjV">
-                    <ref role="1YBMHb" node="1CnLp85qAeE" resolve="node" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="2OqwBi" id="1CnLp85qxsB" role="3clFbw">
-          <node concept="2OqwBi" id="1CnLp85qwya" role="2Oq$k0">
-            <node concept="1YBJjd" id="7xxJYNIbOz_" role="2Oq$k0">
-              <ref role="1YBMHb" node="1CnLp85qAeE" resolve="node" />
-            </node>
-            <node concept="3TrEf2" id="1CnLp85qwXp" role="2OqNvi">
-              <ref role="3Tt5mk" to="5tjl:6g2MV4s4KuI" resolve="haltonfailure" />
-            </node>
-          </node>
-          <node concept="3x8VRR" id="7xxJYNIbOIH" role="2OqNvi" />
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="1CnLp85qAeE" role="1YuTPh">
-      <property role="TrG5h" value="node" />
-      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
-    </node>
-  </node>
   <node concept="18kY7G" id="5I1s5NvHqoQ">
     <property role="TrG5h" value="check_BuildMpsLayout_TestModules_Options" />
     <property role="3GE5qa" value="Project.Testing" />
