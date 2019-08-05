@@ -10,6 +10,7 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -31,7 +32,7 @@ public class NewGenerator_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((SModule) MapSequence.fromMap(_params).get("module")) != null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof Language && ((Language) ((SModule) MapSequence.fromMap(_params).get("module"))).getGenerators().isEmpty();
+    return ((SModule) MapSequence.fromMap(_params).get("module")) != null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof Language && (RuntimeFlags.manyGeneratorsPerLanguage() || ((Language) ((SModule) MapSequence.fromMap(_params).get("module"))).getGenerators().isEmpty());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

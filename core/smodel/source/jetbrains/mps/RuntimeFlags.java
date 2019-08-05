@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,10 @@ public final class RuntimeFlags {
     ourMergeDriverMode = mergeDriverMode;
   }
 
+  /**
+   * @return true if we would like to get rudimentary LanguageRuntime instance for non-deployed (source-only) language modules.
+   *         This is
+   */
   public static boolean isUseInterpretedLanguages() {
     return ourUseInterpretedLanguages;
   }
@@ -87,5 +91,9 @@ public final class RuntimeFlags {
       ourCastException = !"true".equals(System.getProperty("mps.disableNodeCastExceptions"));
     }
     return ourCastException;
+  }
+
+  public static boolean manyGeneratorsPerLanguage() {
+    return isInternalMode() || Boolean.getBoolean("mps.manyGeneratorsPerLanguage");
   }
 }

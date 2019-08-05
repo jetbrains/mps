@@ -47,6 +47,7 @@ import java.util.LinkedHashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -796,7 +797,7 @@ public final class ModuleChecker {
     LanguageDescriptor languageDescriptor = (LanguageDescriptor) myModuleDescriptor;
     String langName = languageDescriptor.getModuleReference().getModuleName();
 
-    if (languageDescriptor.getGenerators().size() > 1) {
+    if (languageDescriptor.getGenerators().size() > 1 && !(RuntimeFlags.manyGeneratorsPerLanguage())) {
       String msg = String.format("more than one generator for language `%s'", langName);
       myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), msg, SNodeOperations.getPointer(myModule)));
       // fall though 

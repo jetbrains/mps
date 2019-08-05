@@ -45,6 +45,7 @@
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
     <import index="lktc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:gnu.trove(MPS.Core/)" />
+    <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -23717,21 +23718,29 @@
         </node>
         <node concept="3clFbH" id="6tgFcyz9M5J" role="3cqZAp" />
         <node concept="3clFbJ" id="6tgFcyz8OAC" role="3cqZAp">
-          <node concept="3eOSWO" id="6tgFcyz9k67" role="3clFbw">
-            <node concept="3cmrfG" id="6tgFcyz9k6M" role="3uHU7w">
-              <property role="3cmrfH" value="1" />
-            </node>
-            <node concept="2OqwBi" id="6tgFcyz93ii" role="3uHU7B">
-              <node concept="liA8E" id="6tgFcyz9j5v" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
+          <node concept="1Wc70l" id="38ougpFoWqa" role="3clFbw">
+            <node concept="3fqX7Q" id="38ougpFoXwi" role="3uHU7w">
+              <node concept="2YIFZM" id="38ougpFoYpn" role="3fr31v">
+                <ref role="37wK5l" to="fyhk:~RuntimeFlags.manyGeneratorsPerLanguage()" resolve="manyGeneratorsPerLanguage" />
+                <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
               </node>
-              <node concept="2OqwBi" id="6tgFcyz8OI3" role="2Oq$k0">
-                <node concept="liA8E" id="6tgFcyz92uk" role="2OqNvi">
-                  <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getGenerators()" resolve="getGenerators" />
+            </node>
+            <node concept="3eOSWO" id="6tgFcyz9k67" role="3uHU7B">
+              <node concept="2OqwBi" id="6tgFcyz93ii" role="3uHU7B">
+                <node concept="liA8E" id="6tgFcyz9j5v" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
                 </node>
-                <node concept="37vLTw" id="6tgFcyz8OC_" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6tgFcyz7I6P" resolve="languageDescriptor" />
+                <node concept="2OqwBi" id="6tgFcyz8OI3" role="2Oq$k0">
+                  <node concept="liA8E" id="6tgFcyz92uk" role="2OqNvi">
+                    <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getGenerators()" resolve="getGenerators" />
+                  </node>
+                  <node concept="37vLTw" id="6tgFcyz8OC_" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6tgFcyz7I6P" resolve="languageDescriptor" />
+                  </node>
                 </node>
+              </node>
+              <node concept="3cmrfG" id="6tgFcyz9k6M" role="3uHU7w">
+                <property role="3cmrfH" value="1" />
               </node>
             </node>
           </node>

@@ -141,6 +141,7 @@
     <import index="b2d5" ref="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)" />
     <import index="k4i4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.findalgorithm.finders(MPS.Core/)" />
     <import index="zce0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.smodel.action(MPS.Editor/)" />
+    <import index="fyhl" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" implicit="true" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
   </imports>
@@ -3093,27 +3094,35 @@
                 </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="6TsFynOiTXe" role="3uHU7w">
-              <node concept="2OqwBi" id="6TsFynOiTX9" role="2Oq$k0">
-                <node concept="1eOMI4" id="6TsFynOiTX1" role="2Oq$k0">
-                  <node concept="10QFUN" id="6TsFynOiTX2" role="1eOMHV">
-                    <node concept="3uibUv" id="2FkpZfeFlqB" role="10QFUM">
-                      <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
-                    </node>
-                    <node concept="2OqwBi" id="6TsFynOiTX6" role="10QFUP">
-                      <node concept="2WthIp" id="6TsFynOiTX7" role="2Oq$k0" />
-                      <node concept="1DTwFV" id="6TsFynOiTX8" role="2OqNvi">
-                        <ref role="2WH_rO" node="30peylOO7Bs" resolve="module" />
+            <node concept="1eOMI4" id="38ougpFmt7c" role="3uHU7w">
+              <node concept="22lmx$" id="38ougpFmt79" role="1eOMHV">
+                <node concept="2YIFZM" id="38ougpFn4hL" role="3uHU7B">
+                  <ref role="37wK5l" to="fyhl:~RuntimeFlags.manyGeneratorsPerLanguage()" resolve="manyGeneratorsPerLanguage" />
+                  <ref role="1Pybhc" to="fyhl:~RuntimeFlags" resolve="RuntimeFlags" />
+                </node>
+                <node concept="2OqwBi" id="6TsFynOiTXe" role="3uHU7w">
+                  <node concept="2OqwBi" id="6TsFynOiTX9" role="2Oq$k0">
+                    <node concept="1eOMI4" id="6TsFynOiTX1" role="2Oq$k0">
+                      <node concept="10QFUN" id="6TsFynOiTX2" role="1eOMHV">
+                        <node concept="3uibUv" id="2FkpZfeFlqB" role="10QFUM">
+                          <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
+                        </node>
+                        <node concept="2OqwBi" id="6TsFynOiTX6" role="10QFUP">
+                          <node concept="2WthIp" id="6TsFynOiTX7" role="2Oq$k0" />
+                          <node concept="1DTwFV" id="6TsFynOiTX8" role="2OqNvi">
+                            <ref role="2WH_rO" node="30peylOO7Bs" resolve="module" />
+                          </node>
+                        </node>
                       </node>
                     </node>
+                    <node concept="liA8E" id="6TsFynOiTXd" role="2OqNvi">
+                      <ref role="37wK5l" to="w1kc:~Language.getGenerators()" resolve="getGenerators" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="6TsFynOiTXi" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~Collection.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
-                <node concept="liA8E" id="6TsFynOiTXd" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~Language.getGenerators()" resolve="getGenerators" />
-                </node>
-              </node>
-              <node concept="liA8E" id="6TsFynOiTXi" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~Collection.isEmpty()" resolve="isEmpty" />
               </node>
             </node>
           </node>
