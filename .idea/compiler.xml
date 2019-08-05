@@ -609,7 +609,6 @@
       <directory url="file://$PROJECT_DIR$/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/money/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/multiAspectLang/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiAspectLang/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/sandbox/test_gen" includeSubdirectories="true" />
