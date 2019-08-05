@@ -650,56 +650,64 @@
       </scope>
     </file>
     <file name="check_InstancesExpression_nonExact_NonTypesystemRule.java">
-      <node id="8417162567091079685" at="26,132,27,135" concept="7" />
-      <node id="8113079483879675730" at="31,11,32,70" concept="7" />
-      <node id="8113079483879675730" at="32,70,33,257" concept="7" />
-      <node id="677787792397711024" at="39,50,40,43" concept="8" />
-      <node id="677787792397711024" at="42,68,43,102" concept="8" />
-      <node id="677787792397711024" at="45,30,46,17" concept="8" />
-      <node id="677787792397711024" at="50,0,51,0" concept="10" trace="MigrationScript$u3" />
-      <node id="677787792397711024" at="51,0,52,0" concept="10" trace="MethodInstance$XT" />
-      <node id="677787792397711024" at="52,0,53,0" concept="10" trace="QueryParameterExact$8x" />
-      <node id="677787792397711024" at="53,0,54,0" concept="10" trace="InstancesExpression$OR" />
-      <node id="677787792397711024" at="57,0,58,0" concept="10" trace="decl$UAdi" />
-      <node id="677787792397711024" at="58,0,59,0" concept="10" trace="parameter$ew30" />
-      <node id="677787792397711024" at="59,0,60,0" concept="10" trace="parameter$o_k7" />
-      <node id="677787792397711024" at="24,0,26,0" concept="1" trace="check_InstancesExpression_nonExact_NonTypesystemRule#()V" />
-      <node id="677787792397711024" at="39,0,42,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="677787792397711024" at="42,0,45,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="677787792397711024" at="45,0,48,0" concept="6" trace="overrides#()Z" />
-      <node id="8113079483879675730" at="30,343,34,11" concept="0" />
-      <node id="8417162567091068087" at="29,225,35,9" concept="5" />
-      <node id="677787792397715192" at="28,37,36,7" concept="5" />
-      <node id="677787792397713633" at="27,135,37,5" concept="5" />
-      <node id="677787792397711024" at="26,0,39,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="677787792397711024" at="24,65,24,65" />
-      <scope id="677787792397711024" at="39,50,40,43" />
-      <scope id="677787792397711024" at="42,68,43,102" />
-      <scope id="677787792397711024" at="45,30,46,17" />
-      <scope id="677787792397711024" at="24,0,26,0" />
-      <scope id="8113079483879675730" at="31,11,33,257">
+      <node id="8417162567091079685" at="27,132,28,135" concept="7" />
+      <node id="2462552059668446317" at="30,225,31,64" concept="7" />
+      <node id="2462552059668444575" at="32,64,33,0" concept="9" />
+      <node id="8113079483879675730" at="36,11,37,70" concept="7" />
+      <node id="8113079483879675730" at="37,70,38,257" concept="7" />
+      <node id="677787792397711024" at="44,50,45,43" concept="8" />
+      <node id="677787792397711024" at="47,68,48,102" concept="8" />
+      <node id="677787792397711024" at="50,30,51,17" concept="8" />
+      <node id="677787792397711024" at="55,0,56,0" concept="10" trace="MigrationScript$u3" />
+      <node id="677787792397711024" at="56,0,57,0" concept="10" trace="YieldStatement$ER" />
+      <node id="677787792397711024" at="57,0,58,0" concept="10" trace="AnnotationDataDependency$s$" />
+      <node id="677787792397711024" at="58,0,59,0" concept="10" trace="MethodInstance$XT" />
+      <node id="677787792397711024" at="59,0,60,0" concept="10" trace="QueryParameterExact$8x" />
+      <node id="677787792397711024" at="60,0,61,0" concept="10" trace="InstancesExpression$OR" />
+      <node id="677787792397711024" at="64,0,65,0" concept="10" trace="decl$UAdi" />
+      <node id="677787792397711024" at="65,0,66,0" concept="10" trace="parameter$ew30" />
+      <node id="677787792397711024" at="66,0,67,0" concept="10" trace="parameter$o_k7" />
+      <node id="677787792397711024" at="25,0,27,0" concept="1" trace="check_InstancesExpression_nonExact_NonTypesystemRule#()V" />
+      <node id="2462552059668444574" at="31,64,34,9" concept="5" />
+      <node id="677787792397711024" at="44,0,47,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="677787792397711024" at="47,0,50,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="677787792397711024" at="50,0,53,0" concept="6" trace="overrides#()Z" />
+      <node id="8113079483879675730" at="35,357,39,11" concept="0" />
+      <node id="8417162567091068087" at="34,9,40,9" concept="5" />
+      <node id="677787792397715192" at="29,37,41,7" concept="5" />
+      <node id="677787792397713633" at="28,135,42,5" concept="5" />
+      <node id="677787792397711024" at="27,0,44,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="677787792397711024" at="25,65,25,65" />
+      <scope id="2462552059668444576" at="32,64,33,0" />
+      <scope id="677787792397711024" at="44,50,45,43" />
+      <scope id="677787792397711024" at="47,68,48,102" />
+      <scope id="677787792397711024" at="50,30,51,17" />
+      <scope id="677787792397711024" at="25,0,27,0" />
+      <scope id="8113079483879675730" at="36,11,38,257">
         <var name="_reporter_2309309498" id="8113079483879675730" />
         <var name="errorTarget" id="8113079483879675730" />
       </scope>
-      <scope id="677787792397711024" at="39,0,42,0" />
-      <scope id="677787792397711024" at="42,0,45,0">
+      <scope id="677787792397711024" at="44,0,47,0" />
+      <scope id="677787792397711024" at="47,0,50,0">
         <var name="argument" id="677787792397711024" />
       </scope>
-      <scope id="677787792397711024" at="45,0,48,0" />
-      <scope id="8417162567091068089" at="30,343,34,11" />
-      <scope id="677787792397715194" at="29,225,35,9" />
-      <scope id="677787792397713635" at="28,37,36,7" />
-      <scope id="677787792397711025" at="26,132,37,5">
+      <scope id="677787792397711024" at="50,0,53,0" />
+      <scope id="8417162567091068089" at="35,357,39,11" />
+      <scope id="677787792397715194" at="30,225,40,9">
+        <var name="statement" id="2462552059668446318" />
+      </scope>
+      <scope id="677787792397713635" at="29,37,41,7" />
+      <scope id="677787792397711025" at="27,132,42,5">
         <var name="enclosingMigration" id="8417162567091079686" />
       </scope>
-      <scope id="677787792397711024" at="26,0,39,0">
+      <scope id="677787792397711024" at="27,0,44,0">
         <var name="instancesExpression" id="677787792397711024" />
         <var name="status" id="677787792397711024" />
         <var name="typeCheckingContext" id="677787792397711024" />
       </scope>
-      <unit id="677787792397711024" at="56,0,61,0" name="jetbrains.mps.lang.migration.typesystem.check_InstancesExpression_nonExact_NonTypesystemRule$LINKS" />
-      <unit id="677787792397711024" at="49,0,55,0" name="jetbrains.mps.lang.migration.typesystem.check_InstancesExpression_nonExact_NonTypesystemRule$CONCEPTS" />
-      <unit id="677787792397711024" at="23,0,62,0" name="jetbrains.mps.lang.migration.typesystem.check_InstancesExpression_nonExact_NonTypesystemRule" />
+      <unit id="677787792397711024" at="63,0,68,0" name="jetbrains.mps.lang.migration.typesystem.check_InstancesExpression_nonExact_NonTypesystemRule$LINKS" />
+      <unit id="677787792397711024" at="54,0,62,0" name="jetbrains.mps.lang.migration.typesystem.check_InstancesExpression_nonExact_NonTypesystemRule$CONCEPTS" />
+      <unit id="677787792397711024" at="24,0,69,0" name="jetbrains.mps.lang.migration.typesystem.check_InstancesExpression_nonExact_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)/6807933448471383799">
