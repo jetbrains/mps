@@ -132,6 +132,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("haltonfailure", 0x5b81705cdfb323cdL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("6593674873639478221").done();
     b.aggregate("requiredPlugins", 0x5b81705cdf7bc31bL).target(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L).optional(true).ordered(true).multiple(true).origin("6593674873635848987").done();
+    b.aggregate("jvmArgs", 0x321879066b697c19L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("3609768169816292377").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRequiredPlugin() {

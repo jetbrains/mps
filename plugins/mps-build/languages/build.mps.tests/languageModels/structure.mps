@@ -149,6 +149,12 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="5I1s5NvuWco" resolve="RequiredPlugin" />
     </node>
+    <node concept="1TJgyj" id="38ougpFqnKp" role="1TKVEi">
+      <property role="IQ2ns" value="3609768169816292377" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="jvmArgs" />
+      <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
+    </node>
   </node>
 </model>
 
