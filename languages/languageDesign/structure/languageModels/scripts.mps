@@ -111,6 +111,9 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
@@ -149,6 +152,12 @@
       <concept id="7504436213544206332" name="jetbrains.mps.lang.smodel.structure.Node_ContainingLinkOperation" flags="nn" index="2NL2c5" />
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
+      <concept id="6407023681583036853" name="jetbrains.mps.lang.smodel.structure.NodeAttributeQualifier" flags="ng" index="3CFYIy">
+        <reference id="6407023681583036854" name="attributeConcept" index="3CFYIx" />
+      </concept>
+      <concept id="6407023681583031218" name="jetbrains.mps.lang.smodel.structure.AttributeAccess" flags="nn" index="3CFZ6_">
+        <child id="6407023681583036852" name="qualifier" index="3CFYIz" />
+      </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -163,6 +172,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -946,6 +963,74 @@
                 <node concept="_YI3z" id="2wdLO7KeBLB" role="2Oq$k0" />
               </node>
               <node concept="17RlXB" id="7WyTlS_Wtmz" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="_UgoZ" id="_bcZOagNNp">
+    <property role="TrG5h" value="EnumerationMigrationScipts" />
+    <property role="_Wzho" value="Enumeration Migration" />
+    <node concept="_XfAh" id="_bcZOagSfO" role="_YvDr">
+      <property role="_XH9r" value="Find Migrated Enumerations" />
+      <ref role="_XDHR" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <node concept="_ZGcI" id="_bcZOagSfQ" role="_XPhp">
+        <node concept="3clFbS" id="_bcZOagSfS" role="2VODD2">
+          <node concept="3SKdUt" id="_bcZOagZjX" role="3cqZAp">
+            <node concept="1PaTwC" id="_bcZOagZjY" role="3ndbpf">
+              <node concept="3oM_SD" id="_bcZOagZk0" role="1PaTwD">
+                <property role="3oM_SC" value="no-op" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="_Y34e" id="_bcZOagWGt" role="_XDHO">
+        <node concept="3clFbS" id="_bcZOagWGu" role="2VODD2">
+          <node concept="3clFbF" id="_bcZOagX6i" role="3cqZAp">
+            <node concept="2OqwBi" id="_bcZOagYlC" role="3clFbG">
+              <node concept="2OqwBi" id="_bcZOagXoz" role="2Oq$k0">
+                <node concept="_YI3z" id="_bcZOagX6h" role="2Oq$k0" />
+                <node concept="3CFZ6_" id="_bcZOagXHt" role="2OqNvi">
+                  <node concept="3CFYIy" id="_bcZOagYa3" role="3CFYIz">
+                    <ref role="3CFYIx" to="tpce:1ob16QTis9A" resolve="EnumMigrationInfo" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="_bcZOagYTa" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="_XfAh" id="_bcZOagZZX" role="_YvDr">
+      <property role="_XH9r" value="Find Migrated Enumeration Properties" />
+      <ref role="_XDHR" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+      <node concept="_ZGcI" id="_bcZOagZZY" role="_XPhp">
+        <node concept="3clFbS" id="_bcZOagZZZ" role="2VODD2">
+          <node concept="3SKdUt" id="_bcZOah000" role="3cqZAp">
+            <node concept="1PaTwC" id="_bcZOah001" role="3ndbpf">
+              <node concept="3oM_SD" id="_bcZOah002" role="1PaTwD">
+                <property role="3oM_SC" value="no-op" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="_Y34e" id="_bcZOah003" role="_XDHO">
+        <node concept="3clFbS" id="_bcZOah004" role="2VODD2">
+          <node concept="3clFbF" id="_bcZOah005" role="3cqZAp">
+            <node concept="2OqwBi" id="_bcZOah006" role="3clFbG">
+              <node concept="2OqwBi" id="_bcZOah007" role="2Oq$k0">
+                <node concept="_YI3z" id="_bcZOah008" role="2Oq$k0" />
+                <node concept="3CFZ6_" id="_bcZOah009" role="2OqNvi">
+                  <node concept="3CFYIy" id="_bcZOah4qZ" role="3CFYIz">
+                    <ref role="3CFYIx" to="tpce:5CkWgdpgEmF" resolve="EnumPropertyMigrationInfo" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="_bcZOah00b" role="2OqNvi" />
             </node>
           </node>
         </node>

@@ -71,6 +71,13 @@
     <import index="mte5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)" />
     <import index="crsq" ref="r:58b9acd8-db32-428c-ac80-a2787e2bcd96(jetbrains.mps.lang.core.pluginSolution.plugin)" />
     <import index="6f4m" ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)" />
+    <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
+    <import index="ngmm" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view(MPS.Platform/)" />
+    <import index="dweh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes(MPS.Core/)" />
+    <import index="9erk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model(MPS.Core/)" />
+    <import index="k4i4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.findalgorithm.finders(MPS.Core/)" />
+    <import index="z3o9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.holders(MPS.Core/)" />
+    <import index="sn11" ref="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="90d" ref="r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)" implicit="true" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" implicit="true" />
@@ -100,6 +107,11 @@
         <child id="1238857834412" name="index" index="1LF_Uc" />
       </concept>
     </language>
+    <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
+        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      </concept>
+    </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
       <concept id="1207145163717" name="jetbrains.mps.lang.plugin.structure.ElementListContents" flags="ng" index="ftmFs">
         <child id="1207145201301" name="reference" index="ftvYc" />
@@ -114,6 +126,7 @@
         <child id="1203083196627" name="updateBlock" index="tmbBb" />
         <child id="1203083461638" name="executeFunction" index="tncku" />
         <child id="1217413222820" name="parameter" index="1NuT2Z" />
+        <child id="8976425910813834639" name="icon" index="3Uehp1" />
       </concept>
       <concept id="1203082695294" name="jetbrains.mps.lang.plugin.structure.DoUpdateBlock" flags="in" index="tkhdA" />
       <concept id="1203082903663" name="jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_AnActionEvent" flags="nn" index="tl45R" />
@@ -133,6 +146,8 @@
       <concept id="1205681243813" name="jetbrains.mps.lang.plugin.structure.IsApplicableBlock" flags="in" index="2ScWuX" />
       <concept id="1203680534665" name="jetbrains.mps.lang.plugin.structure.GroupAnchor" flags="ng" index="10WQ6h" />
       <concept id="1206092561075" name="jetbrains.mps.lang.plugin.structure.ActionParameterReferenceOperation" flags="nn" index="3gHZIF" />
+      <concept id="5538333046911298739" name="jetbrains.mps.lang.plugin.structure.CustomCondition" flags="in" index="1oa70z" />
+      <concept id="5538333046911348647" name="jetbrains.mps.lang.plugin.structure.ParameterCondition_ConceptFunctionParameter" flags="nn" index="1oajcR" />
       <concept id="5538333046911348654" name="jetbrains.mps.lang.plugin.structure.RequiredCondition" flags="ng" index="1oajcY" />
       <concept id="1217252042208" name="jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration" flags="ng" index="1DS2jV">
         <reference id="1217252646389" name="key" index="1DUlNI" />
@@ -551,6 +566,7 @@
       <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
         <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
       </concept>
+      <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
         <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
@@ -562,6 +578,9 @@
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144100932627" name="jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion" flags="ng" index="1xIGOp" />
+      <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
+        <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
+      </concept>
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
         <child id="1180636770616" name="createdType" index="3zrR0E" />
       </concept>
@@ -11772,6 +11791,12 @@
       <node concept="tCFHf" id="5GUyf6oj7sp" role="ftvYc">
         <ref role="tCJdB" node="5GUyf6oiC6l" resolve="CreateReferenceConcept" />
       </node>
+      <node concept="tCFHf" id="_bcZOajpc0" role="ftvYc">
+        <ref role="tCJdB" node="_bcZOahhsW" resolve="DropEnumMigrationAttribute" />
+      </node>
+      <node concept="tCFHf" id="_bcZOa6V8N" role="ftvYc">
+        <ref role="tCJdB" node="_bcZOa55UT" resolve="DropEnumPropertyMigrationAttribute" />
+      </node>
     </node>
     <node concept="tT9cl" id="5GUyf6oj7sk" role="2f5YQi">
       <ref role="tU$_T" to="ekwn:5YEoTZrFokU" resolve="ActionsAsIntentions" />
@@ -14436,6 +14461,386 @@
     <node concept="3Tm1VV" id="3Qz3PJzhxB3" role="1B3o_S" />
     <node concept="3uibUv" id="3Qz3PJzhz06" role="EKbjA">
       <ref role="3uigEE" to="lfzw:1F5g4zQqSPt" resolve="MoveNodesAction" />
+    </node>
+  </node>
+  <node concept="sE7Ow" id="_bcZOa55UT">
+    <property role="3GE5qa" value="Actions" />
+    <property role="TrG5h" value="DropEnumPropertyMigrationAttribute" />
+    <property role="2uzpH1" value="Drop Enum Property Migration's Attribute" />
+    <node concept="tnohg" id="_bcZOa55UU" role="tncku">
+      <node concept="3clFbS" id="_bcZOa55UV" role="2VODD2">
+        <node concept="3cpWs8" id="_bcZOahTjj" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOahTjk" role="3cpWs9">
+            <property role="TrG5h" value="node" />
+            <node concept="3Tqbb2" id="_bcZOahSAQ" role="1tU5fm" />
+            <node concept="2OqwBi" id="_bcZOahTjn" role="33vP2m">
+              <node concept="2WthIp" id="_bcZOahTjo" role="2Oq$k0" />
+              <node concept="1DTwFV" id="_bcZOahTjp" role="2OqNvi">
+                <ref role="2WH_rO" node="_bcZOa6lWk" resolve="node" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="_bcZOa6s4h" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOa6s4i" role="3cpWs9">
+            <property role="TrG5h" value="migrationInfoAttribute" />
+            <node concept="3Tqbb2" id="_bcZOa6s4j" role="1tU5fm">
+              <ref role="ehGHo" to="tpce:5CkWgdpgEmF" resolve="EnumPropertyMigrationInfo" />
+            </node>
+            <node concept="2OqwBi" id="_bcZOa6u6Q" role="33vP2m">
+              <node concept="2OqwBi" id="_bcZOa6s4k" role="2Oq$k0">
+                <node concept="37vLTw" id="_bcZOahTjq" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_bcZOahTjk" resolve="node" />
+                </node>
+                <node concept="2Xjw5R" id="_bcZOa6s4m" role="2OqNvi">
+                  <node concept="1xMEDy" id="_bcZOa6s4n" role="1xVPHs">
+                    <node concept="chp4Y" id="_bcZOahYmA" role="ri$Ld">
+                      <ref role="cht4Q" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+                    </node>
+                  </node>
+                  <node concept="1xIGOp" id="_bcZOa6s4p" role="1xVPHs" />
+                </node>
+              </node>
+              <node concept="3CFZ6_" id="_bcZOa6uC1" role="2OqNvi">
+                <node concept="3CFYIy" id="_bcZOahZ_z" role="3CFYIz">
+                  <ref role="3CFYIx" to="tpce:5CkWgdpgEmF" resolve="EnumPropertyMigrationInfo" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="_bcZOa9Ib5" role="3cqZAp" />
+        <node concept="3cpWs8" id="_bcZOa6NB6" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOa6NB7" role="3cpWs9">
+            <property role="TrG5h" value="result" />
+            <node concept="10Oyi0" id="_bcZOa6NAO" role="1tU5fm" />
+            <node concept="2YIFZM" id="_bcZOa6NB8" role="33vP2m">
+              <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+              <ref role="37wK5l" to="jkm4:~Messages.showOkCancelDialog(java.lang.String,java.lang.String,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showOkCancelDialog" />
+              <node concept="Xl_RD" id="_bcZOa6NB9" role="37wK5m">
+                <property role="Xl_RC" value="&lt;html&gt;Enum Property migration's attribute is required for migration of projects that might depend on containing language. Consider keeping the attribute until the moment when all dependent projects should be migrated.&lt;/html&gt;" />
+              </node>
+              <node concept="Xl_RD" id="_bcZOa6NBa" role="37wK5m">
+                <property role="Xl_RC" value="Drop Enum Property Migration's Attribute" />
+              </node>
+              <node concept="Xl_RD" id="_bcZOa6NBb" role="37wK5m">
+                <property role="Xl_RC" value="Drop Attribute" />
+              </node>
+              <node concept="Xl_RD" id="_bcZOa6NBc" role="37wK5m">
+                <property role="Xl_RC" value="Cancel" />
+              </node>
+              <node concept="10Nm6u" id="_bcZOa6NBd" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="_bcZOa6NJh" role="3cqZAp" />
+        <node concept="3clFbJ" id="_bcZOa6NTt" role="3cqZAp">
+          <node concept="3clFbS" id="_bcZOa6NTv" role="3clFbx">
+            <node concept="3clFbF" id="_bcZOa6S8L" role="3cqZAp">
+              <node concept="2OqwBi" id="_bcZOa6SL7" role="3clFbG">
+                <node concept="37vLTw" id="_bcZOa6S8K" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_bcZOa6s4i" resolve="migrationInfoAttribute" />
+                </node>
+                <node concept="3YRAZt" id="_bcZOa6T3I" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="_bcZOa6Qto" role="3clFbw">
+            <node concept="10M0yZ" id="_bcZOa6RqM" role="3uHU7w">
+              <ref role="3cqZAo" to="jkm4:~Messages.OK" resolve="OK" />
+              <ref role="1PxDUh" to="jkm4:~Messages" resolve="Messages" />
+            </node>
+            <node concept="37vLTw" id="_bcZOa6NVR" role="3uHU7B">
+              <ref role="3cqZAo" node="_bcZOa6NB7" resolve="result" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1QGGSu" id="_bcZOa5Iw7" role="3Uehp1">
+      <node concept="10M0yZ" id="_bcZOa5I$_" role="3xaMm5">
+        <ref role="3cqZAo" to="l7us:~MPSIcons$Actions.MigrationBulb" resolve="MigrationBulb" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$Actions" resolve="MPSIcons.Actions" />
+      </node>
+    </node>
+    <node concept="1DS2jV" id="_bcZOa6lWk" role="1NuT2Z">
+      <property role="TrG5h" value="node" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.NODE" resolve="NODE" />
+      <node concept="1oajcY" id="_bcZOa6lWl" role="1oa70y" />
+    </node>
+    <node concept="2ScWuX" id="_bcZOahOMF" role="tmbBb">
+      <node concept="3clFbS" id="_bcZOahOMG" role="2VODD2">
+        <node concept="3cpWs8" id="_bcZOahOOm" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOahOOn" role="3cpWs9">
+            <property role="TrG5h" value="node" />
+            <node concept="3Tqbb2" id="_bcZOahOOo" role="1tU5fm" />
+            <node concept="2OqwBi" id="_bcZOahOOp" role="33vP2m">
+              <node concept="2WthIp" id="_bcZOahOOq" role="2Oq$k0" />
+              <node concept="1DTwFV" id="_bcZOahOOr" role="2OqNvi">
+                <ref role="2WH_rO" node="_bcZOa6lWk" resolve="node" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="_bcZOahOOs" role="3cqZAp">
+          <node concept="2OqwBi" id="_bcZOahOOt" role="3clFbG">
+            <node concept="2OqwBi" id="_bcZOahOOu" role="2Oq$k0">
+              <node concept="2OqwBi" id="_bcZOahOOv" role="2Oq$k0">
+                <node concept="2Xjw5R" id="_bcZOahOOw" role="2OqNvi">
+                  <node concept="1xMEDy" id="_bcZOahOOx" role="1xVPHs">
+                    <node concept="chp4Y" id="_bcZOahQ6c" role="ri$Ld">
+                      <ref role="cht4Q" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+                    </node>
+                  </node>
+                  <node concept="1xIGOp" id="_bcZOahOOz" role="1xVPHs" />
+                </node>
+                <node concept="37vLTw" id="_bcZOahOO$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_bcZOahOOn" resolve="node" />
+                </node>
+              </node>
+              <node concept="3CFZ6_" id="_bcZOahOO_" role="2OqNvi">
+                <node concept="3CFYIy" id="_bcZOahRnV" role="3CFYIz">
+                  <ref role="3CFYIx" to="tpce:5CkWgdpgEmF" resolve="EnumPropertyMigrationInfo" />
+                </node>
+              </node>
+            </node>
+            <node concept="3x8VRR" id="_bcZOahOOB" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="sE7Ow" id="_bcZOahhsW">
+    <property role="3GE5qa" value="Actions" />
+    <property role="TrG5h" value="DropEnumMigrationAttribute" />
+    <property role="2uzpH1" value="Drop Enumeration Migration's Attribute" />
+    <node concept="tnohg" id="_bcZOahhsX" role="tncku">
+      <node concept="3clFbS" id="_bcZOahhsY" role="2VODD2">
+        <node concept="3cpWs8" id="_bcZOahv3a" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOahv3b" role="3cpWs9">
+            <property role="TrG5h" value="node" />
+            <node concept="3Tqbb2" id="_bcZOahr5T" role="1tU5fm" />
+            <node concept="2OqwBi" id="_bcZOahv3e" role="33vP2m">
+              <node concept="2WthIp" id="_bcZOahv3f" role="2Oq$k0" />
+              <node concept="1DTwFV" id="_bcZOahv3g" role="2OqNvi">
+                <ref role="2WH_rO" node="_bcZOahht_" resolve="node" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7zhhUXVGAd5" role="3cqZAp">
+          <node concept="3cpWsn" id="7zhhUXVGAd6" role="3cpWs9">
+            <property role="TrG5h" value="enumm" />
+            <node concept="3Tqbb2" id="7zhhUXVGnAV" role="1tU5fm">
+              <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+            </node>
+            <node concept="2OqwBi" id="7zhhUXVGAd7" role="33vP2m">
+              <node concept="37vLTw" id="7zhhUXVGAd8" role="2Oq$k0">
+                <ref role="3cqZAo" node="_bcZOahv3b" resolve="node" />
+              </node>
+              <node concept="2Xjw5R" id="7zhhUXVGAd9" role="2OqNvi">
+                <node concept="1xMEDy" id="7zhhUXVGAda" role="1xVPHs">
+                  <node concept="chp4Y" id="7zhhUXVGAdb" role="ri$Ld">
+                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                  </node>
+                </node>
+                <node concept="1xIGOp" id="7zhhUXVGAdc" role="1xVPHs" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="_bcZOahhsZ" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOahht0" role="3cpWs9">
+            <property role="TrG5h" value="migrationInfoAttribute" />
+            <node concept="3Tqbb2" id="_bcZOahht1" role="1tU5fm">
+              <ref role="ehGHo" to="tpce:1ob16QTis9A" resolve="EnumMigrationInfo" />
+            </node>
+            <node concept="2OqwBi" id="_bcZOahht2" role="33vP2m">
+              <node concept="37vLTw" id="7zhhUXVGAdd" role="2Oq$k0">
+                <ref role="3cqZAo" node="7zhhUXVGAd6" resolve="enumm" />
+              </node>
+              <node concept="3CFZ6_" id="_bcZOahhtd" role="2OqNvi">
+                <node concept="3CFYIy" id="_bcZOahhte" role="3CFYIz">
+                  <ref role="3CFYIx" to="tpce:1ob16QTis9A" resolve="EnumMigrationInfo" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="_bcZOahhtf" role="3cqZAp" />
+        <node concept="3cpWs8" id="_bcZOahhtg" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOahhth" role="3cpWs9">
+            <property role="TrG5h" value="result" />
+            <node concept="10Oyi0" id="_bcZOahhti" role="1tU5fm" />
+            <node concept="2YIFZM" id="_bcZOahhtj" role="33vP2m">
+              <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+              <ref role="37wK5l" to="jkm4:~Messages.showOkCancelDialog(java.lang.String,java.lang.String,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showOkCancelDialog" />
+              <node concept="Xl_RD" id="_bcZOahhtk" role="37wK5m">
+                <property role="Xl_RC" value="&lt;html&gt;Enumeration migration's attribute is required for migration of projects that might depend on containing language or uses it. Consider keeping the attribute until the moment when all dependent projects should be migrated.&lt;/html&gt;" />
+              </node>
+              <node concept="Xl_RD" id="_bcZOahhtl" role="37wK5m">
+                <property role="Xl_RC" value="Drop Enumeration Migration's Attribute" />
+              </node>
+              <node concept="Xl_RD" id="_bcZOahhtm" role="37wK5m">
+                <property role="Xl_RC" value="Drop Attribute" />
+              </node>
+              <node concept="Xl_RD" id="_bcZOahhtn" role="37wK5m">
+                <property role="Xl_RC" value="Cancel" />
+              </node>
+              <node concept="10Nm6u" id="_bcZOahhto" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="_bcZOahhtp" role="3cqZAp" />
+        <node concept="3clFbJ" id="_bcZOahhtq" role="3cqZAp">
+          <node concept="3clFbS" id="_bcZOahhtr" role="3clFbx">
+            <node concept="2Gpval" id="7zhhUXVGARX" role="3cqZAp">
+              <node concept="2GrKxI" id="7zhhUXVGARZ" role="2Gsz3X">
+                <property role="TrG5h" value="member" />
+              </node>
+              <node concept="2OqwBi" id="7zhhUXVGBay" role="2GsD0m">
+                <node concept="37vLTw" id="7zhhUXVGASU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7zhhUXVGAd6" resolve="enumm" />
+                </node>
+                <node concept="3Tsc0h" id="7zhhUXVGB$W" role="2OqNvi">
+                  <ref role="3TtcxE" to="tpce:2TR3acGo7N1" resolve="members" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7zhhUXVGAS3" role="2LFqv$">
+                <node concept="3clFbF" id="7zhhUXVGBH5" role="3cqZAp">
+                  <node concept="37vLTI" id="7zhhUXVGDuW" role="3clFbG">
+                    <node concept="10Nm6u" id="7zhhUXVGDvU" role="37vLTx" />
+                    <node concept="2OqwBi" id="7zhhUXVGBHu" role="37vLTJ">
+                      <node concept="2GrUjf" id="7zhhUXVGBH4" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="7zhhUXVGARZ" resolve="member" />
+                      </node>
+                      <node concept="3TrEf2" id="7zhhUXVGC4R" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tpce:LU8F6G7H5v" resolve="oldMember" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="_bcZOahhts" role="3cqZAp">
+              <node concept="2OqwBi" id="_bcZOahhtt" role="3clFbG">
+                <node concept="37vLTw" id="_bcZOahhtu" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_bcZOahht0" resolve="migrationInfoAttribute" />
+                </node>
+                <node concept="3YRAZt" id="_bcZOahhtv" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="_bcZOahhtw" role="3clFbw">
+            <node concept="10M0yZ" id="_bcZOahhtx" role="3uHU7w">
+              <ref role="3cqZAo" to="jkm4:~Messages.OK" resolve="OK" />
+              <ref role="1PxDUh" to="jkm4:~Messages" resolve="Messages" />
+            </node>
+            <node concept="37vLTw" id="_bcZOahhty" role="3uHU7B">
+              <ref role="3cqZAo" node="_bcZOahhth" resolve="result" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1QGGSu" id="_bcZOahhtz" role="3Uehp1">
+      <node concept="10M0yZ" id="_bcZOahht$" role="3xaMm5">
+        <ref role="3cqZAo" to="l7us:~MPSIcons$Actions.MigrationBulb" resolve="MigrationBulb" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$Actions" resolve="MPSIcons.Actions" />
+      </node>
+    </node>
+    <node concept="1DS2jV" id="_bcZOahht_" role="1NuT2Z">
+      <property role="TrG5h" value="node" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.NODE" resolve="NODE" />
+      <node concept="1oajcY" id="_bcZOahhtA" role="1oa70y" />
+      <node concept="1oa70z" id="_bcZOahhtB" role="1oa70y">
+        <node concept="3clFbS" id="_bcZOahhtC" role="2VODD2">
+          <node concept="3cpWs8" id="_bcZOahhtD" role="3cqZAp">
+            <node concept="3cpWsn" id="_bcZOahhtE" role="3cpWs9">
+              <property role="TrG5h" value="node" />
+              <node concept="1oajcR" id="_bcZOahhtF" role="33vP2m" />
+              <node concept="3Tqbb2" id="_bcZOahhtG" role="1tU5fm" />
+            </node>
+          </node>
+          <node concept="3cpWs8" id="_bcZOahhtH" role="3cqZAp">
+            <node concept="3cpWsn" id="_bcZOahhtI" role="3cpWs9">
+              <property role="TrG5h" value="enumDecl" />
+              <node concept="3Tqbb2" id="_bcZOahhtJ" role="1tU5fm">
+                <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              </node>
+              <node concept="2OqwBi" id="_bcZOahhtK" role="33vP2m">
+                <node concept="37vLTw" id="_bcZOahhtL" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_bcZOahhtE" resolve="node" />
+                </node>
+                <node concept="2Xjw5R" id="_bcZOahhtM" role="2OqNvi">
+                  <node concept="1xMEDy" id="_bcZOahhtN" role="1xVPHs">
+                    <node concept="chp4Y" id="_bcZOahhtO" role="ri$Ld">
+                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                    </node>
+                  </node>
+                  <node concept="1xIGOp" id="_bcZOahhtP" role="1xVPHs" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="_bcZOahhtQ" role="3cqZAp">
+            <node concept="2OqwBi" id="_bcZOahhtR" role="3clFbG">
+              <node concept="2OqwBi" id="_bcZOahhtS" role="2Oq$k0">
+                <node concept="37vLTw" id="_bcZOahhtT" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_bcZOahhtI" resolve="enumDecl" />
+                </node>
+                <node concept="3CFZ6_" id="_bcZOahhtU" role="2OqNvi">
+                  <node concept="3CFYIy" id="_bcZOahhtV" role="3CFYIz">
+                    <ref role="3CFYIx" to="tpce:1ob16QTis9A" resolve="EnumMigrationInfo" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="_bcZOahhtW" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2ScWuX" id="_bcZOahkes" role="tmbBb">
+      <node concept="3clFbS" id="_bcZOahket" role="2VODD2">
+        <node concept="3cpWs8" id="_bcZOahq0u" role="3cqZAp">
+          <node concept="3cpWsn" id="_bcZOahq0v" role="3cpWs9">
+            <property role="TrG5h" value="node" />
+            <node concept="3Tqbb2" id="_bcZOahr44" role="1tU5fm" />
+            <node concept="2OqwBi" id="_bcZOahq0w" role="33vP2m">
+              <node concept="2WthIp" id="_bcZOahq0x" role="2Oq$k0" />
+              <node concept="1DTwFV" id="_bcZOahq0y" role="2OqNvi">
+                <ref role="2WH_rO" node="_bcZOahht_" resolve="node" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="_bcZOahkjh" role="3cqZAp">
+          <node concept="2OqwBi" id="_bcZOahkji" role="3clFbG">
+            <node concept="2OqwBi" id="_bcZOahkjj" role="2Oq$k0">
+              <node concept="2OqwBi" id="_bcZOahsen" role="2Oq$k0">
+                <node concept="2Xjw5R" id="_bcZOahseo" role="2OqNvi">
+                  <node concept="1xMEDy" id="_bcZOahsep" role="1xVPHs">
+                    <node concept="chp4Y" id="_bcZOahseq" role="ri$Ld">
+                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                    </node>
+                  </node>
+                  <node concept="1xIGOp" id="_bcZOahser" role="1xVPHs" />
+                </node>
+                <node concept="37vLTw" id="_bcZOahses" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_bcZOahq0v" resolve="node" />
+                </node>
+              </node>
+              <node concept="3CFZ6_" id="_bcZOahkjl" role="2OqNvi">
+                <node concept="3CFYIy" id="_bcZOahkjm" role="3CFYIz">
+                  <ref role="3CFYIx" to="tpce:1ob16QTis9A" resolve="EnumMigrationInfo" />
+                </node>
+              </node>
+            </node>
+            <node concept="3x8VRR" id="_bcZOahkjn" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>
