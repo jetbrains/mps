@@ -80,10 +80,12 @@ public class APICellAdapter {
     List<SubstituteAction> matchingActions =
         new ModelAccessHelper(cell.getContext().getRepository())
             .runReadAction(
-                () -> TypecheckingFacade
-                          .getFromContext()
-                          .runWithSession(((EditorComponent) cell.getEditorComponent()).getTypecheckingSession(),
-                                          () -> substituteInfoWithPatternMatchingFilter.getMatchingActions(pattern, strict)));
+                () -> {
+                  return TypecheckingFacade
+                            .getFromContext()
+                            .computeWithSession(((EditorComponent) cell.getEditorComponent()).getTypecheckingSession(),
+                                                (session) -> substituteInfoWithPatternMatchingFilter.getMatchingActions(pattern, strict));
+                });
     return substituteIfPossible(cell, canActivatePopup, pattern, matchingActions);
   }
 

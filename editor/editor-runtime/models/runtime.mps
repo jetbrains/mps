@@ -6954,8 +6954,8 @@
             <node concept="3cpWs8" id="4r5mV$u7W5x" role="3cqZAp">
               <node concept="3cpWsn" id="4r5mV$u7W5y" role="3cpWs9">
                 <property role="TrG5h" value="typecheckingSession" />
-                <node concept="3uibUv" id="4r5mV$u7V7g" role="1tU5fm">
-                  <ref role="3uigEE" to="ev0w:~TypecheckingSession" resolve="TypecheckingSession" />
+                <node concept="3uibUv" id="2Y_SODIEk9M" role="1tU5fm">
+                  <ref role="3uigEE" to="1ka:~TypecheckingSession" resolve="TypecheckingSession" />
                 </node>
                 <node concept="2OqwBi" id="4r5mV$u7W5z" role="33vP2m">
                   <node concept="37vLTw" id="4r5mV$u7W5$" role="2Oq$k0">
@@ -6999,7 +6999,7 @@
                     <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
                   </node>
                   <node concept="liA8E" id="4HQ6gVAN1pW" role="2OqNvi">
-                    <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runWithSession(jetbrains.mps.typechecking.backend.TypecheckingSession,java.util.function.Supplier)" resolve="runWithSession" />
+                    <ref role="37wK5l" to="1ka:~TypecheckingComputations.computeWithSession(jetbrains.mps.typechecking.TypecheckingSession,java.util.function.Supplier)" resolve="computeWithSession" />
                     <node concept="37vLTw" id="4r5mV$u7W5A" role="37wK5m">
                       <ref role="3cqZAo" node="4r5mV$u7W5y" resolve="typecheckingSession" />
                     </node>
@@ -7196,9 +7196,9 @@
                 </node>
               </node>
               <node concept="liA8E" id="4HQ6gVAMBSy" role="2OqNvi">
-                <ref role="37wK5l" to="ev0w:~TypecheckingSession.getQueries(java.lang.Class)" resolve="getQueries" />
+                <ref role="37wK5l" to="1ka:~TypecheckingSession.getQueries(java.lang.Class)" resolve="getQueries" />
                 <node concept="3VsKOn" id="4HQ6gVAMBSz" role="37wK5m">
-                  <ref role="3VsUkX" to="h83j:~LegacyTypecheckingProvider" resolve="LegacyTypecheckingProvider" />
+                  <ref role="3VsUkX" to="h83j:~LegacyTypecheckingQueries" resolve="LegacyTypecheckingQueries" />
                 </node>
               </node>
             </node>

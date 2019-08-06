@@ -43,7 +43,7 @@
     <classNode dependClassName="jetbrains.mps.smodel.event.SModelEvent" />
     <classNode dependClassName="jetbrains.mps.smodel.event.SModelReplacedEvent" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
-    <classNode dependClassName="jetbrains.mps.typechecking.backend.TypecheckingSession" />
+    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingSession" />
     <classNode dependClassName="jetbrains.mps.util.Cancellable" />
     <classNode dependClassName="jetbrains.mps.util.SNodeOperations" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

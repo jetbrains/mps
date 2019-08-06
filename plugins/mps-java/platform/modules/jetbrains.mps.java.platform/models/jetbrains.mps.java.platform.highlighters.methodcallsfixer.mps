@@ -803,8 +803,8 @@
             <node concept="3cpWs8" id="4r5mV$u92ph" role="3cqZAp">
               <node concept="3cpWsn" id="4r5mV$u92pi" role="3cpWs9">
                 <property role="TrG5h" value="typecheckingSession" />
-                <node concept="3uibUv" id="4r5mV$u91FC" role="1tU5fm">
-                  <ref role="3uigEE" to="ev0w:~TypecheckingSession" resolve="TypecheckingSession" />
+                <node concept="3uibUv" id="2Y_SODIFE8l" role="1tU5fm">
+                  <ref role="3uigEE" to="1ka:~TypecheckingSession" resolve="TypecheckingSession" />
                 </node>
                 <node concept="2OqwBi" id="4r5mV$u92pj" role="33vP2m">
                   <node concept="37vLTw" id="4r5mV$u92pk" role="2Oq$k0">
@@ -840,7 +840,7 @@
                   <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                 </node>
                 <node concept="liA8E" id="4HQ6gVALz$8" role="2OqNvi">
-                  <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runWithSession(jetbrains.mps.typechecking.backend.TypecheckingSession,java.lang.Runnable)" resolve="runWithSession" />
+                  <ref role="37wK5l" to="1ka:~TypecheckingComputations.runWithSession(jetbrains.mps.typechecking.TypecheckingSession,java.lang.Runnable)" resolve="runWithSession" />
                   <node concept="37vLTw" id="4r5mV$u92pm" role="37wK5m">
                     <ref role="3cqZAo" node="4r5mV$u92pi" resolve="typecheckingSession" />
                   </node>

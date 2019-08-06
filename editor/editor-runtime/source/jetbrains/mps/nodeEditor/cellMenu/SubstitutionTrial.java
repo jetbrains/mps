@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -167,8 +167,8 @@ public class SubstitutionTrial {
 
     private void runTrial(Consumer<SubstitutionAcceptable> trialHandler) {
       TypecheckingFacade.getFromContext().runIsolated(
-          Flags.forRoot(myTypecheckingRoot).incremental(),
-          () ->
+          TypecheckingSession.Flags.forRoot(myTypecheckingRoot).incremental(),
+          (session) ->
               trialHandler.accept(this));
     }
 
@@ -183,7 +183,7 @@ public class SubstitutionTrial {
       try {
         SNode type = ActionsUtil.isInstanceOfIType(substNodeCopy) ?
                      substNodeCopy :
-                     TypecheckingFacade.getFromContext().runIsolated(() ->
+                     TypecheckingFacade.getFromContext().computeIsolated((session) ->
                                                                          TypecheckingFacade.getFromContext().getTypeOf(substNodeCopy));
         // ensure only actions with "type" are processed to avoid having to typecheck thousands of variants
         if (type == null || TypesUtil.isVariable(type)) return false;

@@ -16,12 +16,10 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
-
-import java.util.List;
 
 /**
  * Handles a single default (basic) session.
@@ -31,7 +29,7 @@ import java.util.List;
 public class DefaultTypecheckingController extends TypecheckingController {
 
   private final Flags myDefaultFlags;
-  private TypecheckingSession myDefaultSession;
+  private TypecheckingSessionImpl myDefaultSession;
 
   public DefaultTypecheckingController(TypecheckingBackend typecheckingBackend, Flags defaultFlags) {
     super(typecheckingBackend);
@@ -47,7 +45,7 @@ public class DefaultTypecheckingController extends TypecheckingController {
   }
 
   @Override
-  protected void sessionReleased(@NotNull TypecheckingSession session) {
+  protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
     if (session == myDefaultSession) {
       session.dispose();
       this.myDefaultSession = null;
@@ -59,10 +57,10 @@ public class DefaultTypecheckingController extends TypecheckingController {
 
   @NotNull
   @Override
-  protected TypecheckingSession requestSession(@NotNull Flags flags) {
+  protected Handle requestSession(@NotNull Flags flags) {
     if (myDefaultSession == null) {
-      this.myDefaultSession = new TypecheckingSession(this, flags);
-      return myDefaultSession;
+      this.myDefaultSession = new TypecheckingSessionImpl(this, flags);
+      return myDefaultSession.new InternalHandle();
 
     } else {
       throw new IllegalStateException("Multiple sessions not supported");
@@ -74,7 +72,7 @@ public class DefaultTypecheckingController extends TypecheckingController {
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     // request new session on demand
     if (myDefaultSession == null) {
-      this.myDefaultSession = new TypecheckingSession(this, myDefaultFlags);
+      this.myDefaultSession = new TypecheckingSessionImpl(this, myDefaultFlags);
     }
     TypecheckingProvider provider = selectProvider(src, trg, trgConcept);
     return myDefaultSession.getQueries(provider);

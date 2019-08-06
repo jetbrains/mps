@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/mps-platform/community" />
       <excludeFolder url="file://$MODULE_DIR$/mps-platform/out" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="JB SDK 11" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

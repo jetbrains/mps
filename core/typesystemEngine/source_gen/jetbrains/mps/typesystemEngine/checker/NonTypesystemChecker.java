@@ -9,10 +9,9 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
-import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.util.Pair;
@@ -30,10 +29,10 @@ public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeRepor
   public Set<NodeReportItem> getErrors(SNode root, SRepository repository) {
     Set<NodeReportItem> errors = SetSequence.fromSet(new HashSet<NodeReportItem>());
 
-    TypecheckingSession session = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.forRoot(root).incremental());
+    TypecheckingSession.Handle handle = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.forRoot(root).incremental());
     try {
       // FIXME  assuming it's safe to access the underlying legacy provider 
-      LegacyTypecheckingQueries legacyTypecheckingQueries = session.getQueries(LegacyTypecheckingProvider.class);
+      LegacyTypecheckingQueries legacyTypecheckingQueries = handle.session().getQueries(LegacyTypecheckingQueries.class);
       TypeCheckingContext context = legacyTypecheckingQueries.getTypeCheckingContext();
       IncrementalTypechecking typesComponent = context.getBaseNodeTypesComponent();
 
@@ -54,7 +53,7 @@ public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeRepor
       }
 
     } finally {
-      session.release();
+      handle.release();
     }
 
     return errors;

@@ -15,23 +15,26 @@
  */
 package jetbrains.mps.typechecking.backend;
 
+import jetbrains.mps.typechecking.TypecheckingComputations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.function.Supplier;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * Provides an interface for manipulating typechecking sessions.
  *
  * The method {@link TypecheckingSessionHandler#requestNewSession(Flags)} can be called by clients wishing to
  * start a new typechecking session with specific features. The session will be managed by this component,
- * but the client is free to call {@link TypecheckingSession#release()} at any time to signal that the session
+ * but the client is free to call {@link TypecheckingSessionImpl#release()} at any time to signal that the session
  * is no longer required.
  *
  * @author Fedor Isakov
  */
-public abstract class TypecheckingSessionHandler {
+public abstract class TypecheckingSessionHandler implements TypecheckingComputations {
 
   /**
    * Requests that a new session is initiated with provided flags.
@@ -43,19 +46,19 @@ public abstract class TypecheckingSessionHandler {
    * See {@link TypecheckingFacade#getFromContext()} for the discussion of what context is.
    */
   @NotNull
-  public final TypecheckingSession requestNewSession(@NotNull Flags flags) {
+  public final Handle requestNewSession(@NotNull Flags flags) {
     return controller().requestSession(flags);
   }
 
-  /**
-   * Requests that the specified sharable session is reused within the code
-   * passed as {@code code}.
-   */
-  public final <T> T runWithSession(@NotNull TypecheckingSession withSession, Supplier<T> code) {
+  @Override
+  public final <T> T computeWithSession(@NotNull TypecheckingSession withSession, Function<TypecheckingSession, T> code) {
+    if (!(withSession instanceof TypecheckingSessionImpl)) {
+      throw new IllegalArgumentException();
+    }
     T t;
     try {
-      overrideSharedController(withSession);
-      t = code.get();
+      overrideSharedController((TypecheckingSessionImpl) withSession);
+      t = code.apply(withSession);
     }
     finally {
       resetOverride();
@@ -63,29 +66,27 @@ public abstract class TypecheckingSessionHandler {
     return t;
   }
 
-  /**
-   * Requests that the specified sharable session is reused within the code
-   * passed as {@code code}.
-   */
-  public final void runWithSession(@NotNull TypecheckingSession withSession, Runnable code) {
+  @Override
+  public final void runWithSession(@NotNull TypecheckingSession withSession, Consumer<TypecheckingSession> code) {
+    if (!(withSession instanceof TypecheckingSessionImpl)) {
+      throw new IllegalArgumentException();
+    }
     try {
-      overrideSharedController(withSession);
-      code.run();
+      overrideSharedController((TypecheckingSessionImpl) withSession);
+      code.accept(withSession);
     }
     finally {
       resetOverride();
     }
   }
 
-  /**
-   * Requests that the code is launched in isolation from the currently active session.  
-   * A new transient typechecking is setup session with the default flags.
-   */
-  public final <T> T runIsolated(Supplier<T> code) {
+  @Override
+  public final <T> T computeIsolated(Function<TypecheckingSession, T> code) {
     T t;
     try {
-      overrideIsolatedController(Flags.basic());
-      t = code.get();
+      Flags flags = TypecheckingSession.Flags.basic();
+      Handle token = overrideIsolatedController(flags).requestSession(flags);
+      t = code.apply(token.session());
     }
     finally {
       resetOverride();
@@ -93,15 +94,12 @@ public abstract class TypecheckingSessionHandler {
     return t;
   }
 
-  /**
-   * Requests that the code is launched in isolation from the currently active session.
-   * A new transient typechecking session is setup with the specified flags.
-   */
-  public final <T> T runIsolated(Flags flags, Supplier<T> code) {
+  @Override
+  public final <T> T computeIsolated(Flags flags, Function<TypecheckingSession, T> code) {
     T t;
     try {
-      overrideIsolatedController(flags).requestSession(flags);
-      t = code.get();
+      Handle token = overrideIsolatedController(flags).requestSession(flags);
+      t = code.apply(token.session());
     }
     finally {
       resetOverride();
@@ -109,29 +107,23 @@ public abstract class TypecheckingSessionHandler {
     return t;
   }
 
-  /**
-   * Requests that the code is launched in isolation from the currently active session.
-   * A new transient typechecking session is setup with the default flags.
-   */
-  public final void runIsolated(Runnable code) {
+  @Override
+  public final void runIsolated(Consumer<TypecheckingSession> code) {
     try {
-      Flags flags = Flags.basic();
-      overrideIsolatedController(flags).requestSession(flags);
-      code.run();
+      Flags flags = TypecheckingSession.Flags.basic();
+      Handle token = overrideIsolatedController(flags).requestSession(flags);
+      code.accept(token.session());
     }
     finally {
       resetOverride();
     }
   }
 
-  /**
-   * Requests that the code is launched in isolation from the currently active session.
-   * A new transient typechecking session is setup with the specified flags.
-   */
-  public final void runIsolated(Flags flags, Runnable code) {
+  @Override
+  public final void runIsolated(Flags flags, Consumer<TypecheckingSession> code) {
     try {
-      overrideIsolatedController(flags).requestSession(flags);
-      code.run();
+      Handle token = overrideIsolatedController(flags).requestSession(flags);
+      code.accept(token.session());
     }
     finally {
       resetOverride();
@@ -150,7 +142,7 @@ public abstract class TypecheckingSessionHandler {
    * Later calls to {@link TypecheckingSessionHandler#controller()} will return this
    * newly constructed instance, until a call to {@link TypecheckingSessionHandler#resetOverride()}.
    */
-  protected abstract void overrideSharedController(@NotNull TypecheckingSession session);
+  protected abstract void overrideSharedController(@NotNull TypecheckingSessionImpl session);
 
   /**
    * Eagerly initializes and installs a controller for running typechecking queries in isolation.

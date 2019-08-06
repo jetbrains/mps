@@ -31,7 +31,7 @@ import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import java.util.Comparator;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.intentions.IntentionsManager;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.function.Supplier;
 
@@ -155,7 +155,7 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
       return null;
     }
 
-    return TypecheckingFacade.getFromContext().runWithSession(typecheckingSession, new Supplier<Iterable<Pair<IntentionExecutable, SNode>>>() {
+    return TypecheckingFacade.getFromContext().computeWithSession(typecheckingSession, new Supplier<Iterable<Pair<IntentionExecutable, SNode>>>() {
       @Override
       public Iterable<Pair<IntentionExecutable, SNode>> get() {
         return IntentionsManager.getInstance().getAvailableIntentions(query, ((SNode) MapSequence.fromMap(_params).get("selectedNode")), ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));

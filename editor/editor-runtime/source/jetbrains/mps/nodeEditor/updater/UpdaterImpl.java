@@ -131,8 +131,7 @@ public class UpdaterImpl implements Updater {
       Pair<EditorCell, UpdateInfoIndex> result =
           TypecheckingFacade
               .getFromContext()
-              .runWithSession(myEditorComponent.getTypecheckingSession(),
-                              () -> myUpdateSession.performUpdate());
+              .computeWithSession(myEditorComponent.getTypecheckingSession(), (session) -> myUpdateSession.performUpdate());
 
       EditorCell rootCell = result.o1;
       myUpdateInfoIndex = result.o2;

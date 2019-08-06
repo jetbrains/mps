@@ -157,7 +157,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
   }
   /*package*/ List<SNode> calcAllClassifierTypesInRoot(final SNode rootNode, final Map<String, Object> _params) {
 
-    List<SNode> result = TypecheckingFacade.getFromContext().runIsolated(new Supplier<List<SNode>>() {
+    List<SNode> result = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<List<SNode>>() {
       public List<SNode> get() {
         List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
 

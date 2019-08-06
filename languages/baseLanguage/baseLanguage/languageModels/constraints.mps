@@ -23,7 +23,6 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -2127,7 +2126,7 @@
                   <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                 </node>
                 <node concept="liA8E" id="3oDoAYRBiEt" role="2OqNvi">
-                  <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runIsolated(java.util.function.Supplier)" resolve="runIsolated" />
+                  <ref role="37wK5l" to="1ka:~TypecheckingComputations.computeIsolated(java.util.function.Supplier)" resolve="computeIsolated" />
                   <node concept="1bVj0M" id="3oDoAYRBiLj" role="37wK5m">
                     <node concept="3clFbS" id="3oDoAYRBiLk" role="1bW5cS">
                       <node concept="3clFbF" id="3oDoAYRBiLl" role="3cqZAp">
@@ -2615,7 +2614,7 @@
                   <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                 </node>
                 <node concept="liA8E" id="3oDoAYRAUF_" role="2OqNvi">
-                  <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runIsolated(java.util.function.Supplier)" resolve="runIsolated" />
+                  <ref role="37wK5l" to="1ka:~TypecheckingComputations.computeIsolated(java.util.function.Supplier)" resolve="computeIsolated" />
                   <node concept="1bVj0M" id="3oDoAYRAULz" role="37wK5m">
                     <node concept="3clFbS" id="3oDoAYRAUL$" role="1bW5cS">
                       <node concept="3clFbF" id="3oDoAYRAUL_" role="3cqZAp">

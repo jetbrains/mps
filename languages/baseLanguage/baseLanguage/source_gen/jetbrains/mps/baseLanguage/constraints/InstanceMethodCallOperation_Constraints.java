@@ -55,7 +55,7 @@ public class InstanceMethodCallOperation_Constraints extends BaseConstraintsDesc
               return new EmptyScope();
             }
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
-            SNode instanceType = TypecheckingFacade.getFromContext().runIsolated(new Supplier<SNode>() {
+            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
               public SNode get() {
                 return TypecheckingFacade.getFromContext().getTypeOf(instance);
               }

@@ -25,7 +25,7 @@ import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
@@ -42,7 +42,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Legacy "non-typesystem" checker. Relies on {@link LegacyTypecheckingProvider}.
@@ -70,7 +69,7 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
                                           final Cancellable cancellable,
                                           final boolean applyQuickFixes)
   {
-    LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingProvider.class);
+    LegacyTypecheckingQueries legacyTypesystemQueries = session.getQueries(LegacyTypecheckingQueries.class);
     TypeCheckingContext context = legacyTypesystemQueries.getTypeCheckingContext();
 
     if (!(context instanceof IncrementalTypecheckingContext)) {

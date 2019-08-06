@@ -13,84 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.typechecking.backend;
+package jetbrains.mps.typechecking;
 
-import jetbrains.mps.typechecking.TypecheckingQueries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 /**
- * Provides the means to release and dispose a previously allocated session.
- *
- * This object corresponds to a session, which may contain several instances of {@link TypecheckingQueries}
- * coming from different providers.
+ * @author Fedor Isakov
  */
-public class TypecheckingSession {
+public interface TypecheckingSession {
 
-  private int myUsages = 0;
+  Flags flags();
 
-  private final TypecheckingController myController;
-  
-  private final Flags myFlags;
+  <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> providerClass);
 
-  private Map<TypecheckingProvider, TypecheckingQueries> myQueries = new HashMap<>();
+  /**
+   * Provides possibility to release session.
+   */
+  interface Handle {
 
-  protected TypecheckingSession(TypecheckingController controller, Flags flags) {
-    myController = controller;
-    myFlags = new Flags(flags); // defensive copying of a mutable parameter
-  }
+    TypecheckingSession session();
 
-  public Flags flags() {
-    return myFlags;
-  }
-
-  public void release() {
-    myController.sessionReleased(this);
-  }
-
-  public <Q extends TypecheckingQueries> Q getQueries(Class<? extends TypecheckingProvider<Q>> providerClass) {
-    return getQueries(myController.selectProvider(providerClass));
-  }
-
-  protected void dispose () {
-    for (Entry<TypecheckingProvider, TypecheckingQueries> entry : myQueries.entrySet()) {
-      entry.getKey().disposeQueries(entry.getValue());
-    }
-    myQueries.clear();
-  }
-
-  @NotNull
-  @SuppressWarnings("unchecked")
-  protected <Q extends TypecheckingQueries> Q getQueries(TypecheckingProvider<Q> provider) {
-    myQueries.computeIfAbsent(provider, (key) -> provider.createQueries(flags()));
-    return (Q) myQueries.get(provider);
-  }
-
-  protected int getUsages() {
-    return myUsages;
-  }
-
-  protected int incUsages() {
-    return ++myUsages;
-  }
-
-  protected int decUsages() {
-    return --myUsages;
-  }
-  
-  @Override
-  public String toString() {
-    return String.format("Session{%s, usages=%d}", flags(), getUsages());
+    void release();
   }
 
   /**
    * Provides flags for new session instantiation.
    */
-  public static class Flags {
+  class Flags {
 
     public static long FLAG_BASIC         = 0x1;
     public static long FLAG_ROOT_SPECIFIC = 0x1 << 1;

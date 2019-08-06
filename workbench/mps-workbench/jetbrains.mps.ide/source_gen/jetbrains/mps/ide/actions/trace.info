@@ -4521,7 +4521,7 @@
       <unit id="9054606037493939180" at="130,17,134,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$4" />
       <unit id="9054606037493939224" at="140,96,144,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$5" />
       <unit id="1366167984387690229" at="209,0,215,0" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$CONCEPTS" />
-      <unit id="1293684422392460980" at="160,77,173,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$6" />
+      <unit id="1293684422392460980" at="160,81,173,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$6" />
       <unit id="9054606037493534614" at="83,105,103,9" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$1$1" />
       <unit id="9054606037493534585" at="79,42,105,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$1" />
       <unit id="1366167984387690229" at="48,0,216,0" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action" />

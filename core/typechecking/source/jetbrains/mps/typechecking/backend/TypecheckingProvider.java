@@ -16,7 +16,7 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -38,6 +38,8 @@ public interface TypecheckingProvider<Queries extends TypecheckingQueries> {
   
   @NotNull
   Queries createQueries(@NotNull Flags flags);
+
+  Class<Queries> getQueriesClass();
 
   void disposeQueries(@NotNull TypecheckingQueries queries);
 

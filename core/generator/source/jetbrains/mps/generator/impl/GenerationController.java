@@ -25,8 +25,8 @@ import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.ITaskPoolProvider;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.SimpleGenerationTaskPool;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.Handle;
 import jetbrains.mps.util.performance.IPerformanceTracer;
 import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
 import jetbrains.mps.util.performance.PerformanceTracer;
@@ -113,7 +113,7 @@ public class GenerationController implements ITaskPoolProvider {
       : new NullPerformanceTracer();
 
     boolean traceTypes = myOptions.getTracingMode() == GenerationOptions.TRACE_TYPES;
-    TypecheckingSession typecheckingSession = TypecheckingFacade.getFromContext().requestNewSession(Flags.generator());
+    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.generator());
 
     final TransientModelsModule transientModule = myContext.getTransientModelProvider().getModule(task);
     final GenerationTrace genTrace = myOptions.isSaveTransientModels() ? new GenTraceImpl(transientModule) : new GenerationTrace.NoOp();
@@ -158,7 +158,7 @@ public class GenerationController implements ITaskPoolProvider {
       //We need this in order to clear subtyping cache which might occupy too much memory
       //if we generate a lot of models. For example, Charisma generation wasn't possible
       //with -Xmx1200 before this change
-      typecheckingSession.release();
+      typecheckingSessionToken.release();
     }
   }
 

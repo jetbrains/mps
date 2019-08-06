@@ -154,7 +154,7 @@ public class StubResolver {
         if (refScope instanceof ErrorScope) {
           continue;
         }
-        List<SNode> resolved = TypecheckingFacade.getFromContext().runIsolated(new Supplier<IListSequence<SNode>>() {
+        List<SNode> resolved = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<IListSequence<SNode>>() {
           public IListSequence<SNode> get() {
             return Sequence.fromIterable(refScope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode n) {

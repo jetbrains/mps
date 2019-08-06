@@ -16,7 +16,9 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -26,10 +28,10 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class SharedSessionTypecheckingController extends DefaultTypecheckingController {
 
-  private TypecheckingSession mySharedSession;
+  private TypecheckingSessionImpl mySharedSession;
 
-  public SharedSessionTypecheckingController(TypecheckingBackend typecheckingBackend, TypecheckingSession session) {
-    super(typecheckingBackend, Flags.basic());
+  public SharedSessionTypecheckingController(TypecheckingBackend typecheckingBackend, TypecheckingSessionImpl session) {
+    super(typecheckingBackend, TypecheckingSession.Flags.basic());
     mySharedSession = session;
     mySharedSession.incUsages();
   }
@@ -45,7 +47,7 @@ public class SharedSessionTypecheckingController extends DefaultTypecheckingCont
 
   @NotNull
   @Override
-  protected TypecheckingSession requestSession(@NotNull Flags flags) {
+  protected Handle requestSession(@NotNull Flags flags) {
     return super.requestSession(flags);
   }
 
@@ -62,7 +64,7 @@ public class SharedSessionTypecheckingController extends DefaultTypecheckingCont
   }
 
   @Override
-  protected void sessionReleased(@NotNull TypecheckingSession session) {
+  protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
     super.sessionReleased(session);
   }
   

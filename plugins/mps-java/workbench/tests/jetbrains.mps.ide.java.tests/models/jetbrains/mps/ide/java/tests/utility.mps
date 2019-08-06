@@ -38,7 +38,6 @@
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -934,7 +933,7 @@
                   <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                 </node>
                 <node concept="liA8E" id="53G3ljAoY8p" role="2OqNvi">
-                  <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runIsolated(java.lang.Runnable)" resolve="runIsolated" />
+                  <ref role="37wK5l" to="1ka:~TypecheckingComputations.runIsolated(java.lang.Runnable)" resolve="runIsolated" />
                   <node concept="1bVj0M" id="53G3ljAoYpc" role="37wK5m">
                     <node concept="3clFbS" id="53G3ljAoYpd" role="1bW5cS">
                       <node concept="3clFbF" id="53G3ljApWBh" role="3cqZAp">
@@ -978,7 +977,7 @@
                     <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
                   </node>
                   <node concept="liA8E" id="53G3ljAqX5J" role="2OqNvi">
-                    <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runIsolated(java.util.function.Supplier)" resolve="runIsolated" />
+                    <ref role="37wK5l" to="1ka:~TypecheckingComputations.computeIsolated(java.util.function.Supplier)" resolve="computeIsolated" />
                     <node concept="1bVj0M" id="53G3ljAqX5K" role="37wK5m">
                       <node concept="3clFbS" id="53G3ljAqX5L" role="1bW5cS">
                         <node concept="3clFbF" id="53G3ljAqX5M" role="3cqZAp">

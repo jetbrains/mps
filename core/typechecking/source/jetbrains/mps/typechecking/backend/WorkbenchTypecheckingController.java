@@ -16,7 +16,9 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession.Handle;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,15 +37,15 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
 
   private static Logger LOG = Logger.getLogger(WorkbenchTypecheckingController.class);
 
-  private Map<SNodeHandle, TypecheckingSession> myRootSessions = new HashMap<>();
+  private Map<SNodeHandle, TypecheckingSessionImpl> myRootSessions = new HashMap<>();
 
   public WorkbenchTypecheckingController(TypecheckingBackend typecheckingBackend) {
-    super(typecheckingBackend, Flags.basic());
+    super(typecheckingBackend, TypecheckingSession.Flags.basic());
   }
 
   @Override
   public void dispose() {
-    for (TypecheckingSession session : myRootSessions.values()) {
+    for (TypecheckingSessionImpl session : myRootSessions.values()) {
       session.dispose();
     }
     myRootSessions.clear();
@@ -51,12 +53,12 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
 
   @NotNull
   @Override
-  public TypecheckingSession requestSession(@NotNull Flags flags) {
+  public Handle requestSession(@NotNull Flags flags) {
     if (flags.getRoot() != null && flags.isIncremental()) {
       // the editor has requested a session for the opened root
-      TypecheckingSession session = myRootSessions.computeIfAbsent(new SNodeHandle(flags.getRoot()), (key) -> new TypecheckingSession(this, flags));
+      TypecheckingSessionImpl session = myRootSessions.computeIfAbsent(new SNodeHandle(flags.getRoot()), (key) -> new TypecheckingSessionImpl(this, flags));
       session.incUsages();
-      return session;
+      return session.new InternalHandle();
 
     } else {
       return super.requestSession(flags);
@@ -64,7 +66,7 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
   }
 
   @Override
-  protected void sessionReleased(@NotNull TypecheckingSession session) {
+  protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
     if (session.flags().getRoot() != null && session.flags().isIncremental()) {
       SNodeHandle key = new SNodeHandle(session.flags().getRoot());
       if (!myRootSessions.containsKey(key)) {
@@ -83,7 +85,7 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
   @Override
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     SNode containingRoot = src.getContainingRoot();
-    TypecheckingSession session = myRootSessions.get(new SNodeHandle(containingRoot));
+    TypecheckingSessionImpl session = myRootSessions.get(new SNodeHandle(containingRoot));
     if (session == null) {
       // sometimes root is not the "containing root"
       session = myRootSessions.get(new SNodeHandle(src));
