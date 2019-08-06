@@ -69,10 +69,6 @@ public abstract class BaseAction extends AnAction {
     myExecuteOutsideCommand = executeOutsideCommand;
   }
 
-  public boolean isExecuteOutsideCommand() {
-    return myExecuteOutsideCommand;
-  }
-
   public void setIsAlwaysVisible(boolean isAlwaysVisible) {
     myIsAlwaysVisible = isAlwaysVisible;
   }
@@ -124,23 +120,21 @@ public abstract class BaseAction extends AnAction {
       return;
     }
 
-    getModelAccess(e).runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        Map<String, Object> params = new CollectActionData(e).compute();
-        if (params == null) {
-          disable(e.getPresentation());
-          return;
+    getModelAccess(e).runReadAction(() -> {
+      Map<String, Object> params = new THashMap<>();
+      if (!collectActionData(e, params)) {
+        disable(e.getPresentation());
+        return;
+      }
+      try {
+        doUpdate(e, params);
+      } catch (RuntimeException ex) {
+        final Logger log = LogManager.getLogger(getClass());
+        if (log.isEnabledFor(Level.ERROR)) {
+          log.error(String.format("User's action doUpdate method failed. Action: %s. Class: %s", getTemplatePresentation().getText(),
+                                  BaseAction.this.getClass().getName()), ex);
         }
-        try {
-          doUpdate(e, params);
-        } catch (RuntimeException ex) {
-          final Logger log = LogManager.getLogger(getClass());
-          if (log.isEnabledFor(Level.ERROR)) {
-            log.error(String.format("User's action doUpdate method failed. Action: %s. Class: %s", getTemplatePresentation().getText(), BaseAction.this.getClass().getName()), ex);
-          }
-          disable(e.getPresentation());
-        }
+        disable(e.getPresentation());
       }
     });
   }
@@ -151,7 +145,10 @@ public abstract class BaseAction extends AnAction {
       notifyNoCommandDuringMake(event);
       return;
     }
-    final Map<String, Object> params = new ModelAccessHelper(getModelAccess(event)).runReadAction(new CollectActionData(event));
+
+
+    Map<String, Object> params = new THashMap<>();
+    getModelAccess(event).runReadAction(() -> collectActionData(event, params));
 
     final Runnable r = new UndoRunnable.Base(getTemplatePresentation().getText(), null) {
       @Override
@@ -271,28 +268,8 @@ public abstract class BaseAction extends AnAction {
     // stolen from DumbServiceImpl#showDumbModeNotification
     IdeFrame ideFrame = WindowManager.getInstance().getIdeFrame(project);
     if (ideFrame != null) {
-      StatusBarEx statusBar = (StatusBarEx)ideFrame.getStatusBar();
+      StatusBarEx statusBar = (StatusBarEx) ideFrame.getStatusBar();
       statusBar.notifyProgressByBalloon(kind, htmlMessage);
-    }
-  }
-
-  /**
-   * Produce initialized map with action parameters, or null if any required parameter is missing
-   */
-  private class CollectActionData implements Computable<Map<String,Object>> {
-    private final AnActionEvent myEvent;
-
-    public CollectActionData(AnActionEvent event) {
-      myEvent = event;
-    }
-
-    @Override
-    public Map<String, Object> compute() {
-      THashMap<String, Object> params = new THashMap<>();
-      if (collectActionData(myEvent, params)) {
-        return params;
-      }
-      return null;
     }
   }
 }
