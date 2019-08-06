@@ -80,7 +80,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee1a36a3L);
     b.origin("r:5315d75f-2eea-4bf2-899f-f3d94810cea5(jetbrains.mps.build.mps.tests.structure)/4005526075820600484");
     b.version(2);
-    b.alias("module-testing");
+    b.alias("module-tests");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBuildMpsLayout_TestModule() {

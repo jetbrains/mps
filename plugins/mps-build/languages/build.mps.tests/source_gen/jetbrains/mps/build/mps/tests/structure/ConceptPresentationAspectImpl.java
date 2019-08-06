@@ -26,7 +26,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildModuleTestsPlugin == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("adds ability to execute module tests to the project");
-          cpb.rawPresentation("module-testing");
+          cpb.rawPresentation("module-tests");
           props_BuildModuleTestsPlugin = cpb.create();
         }
         return props_BuildModuleTestsPlugin;

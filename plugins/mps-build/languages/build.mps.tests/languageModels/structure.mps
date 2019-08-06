@@ -112,7 +112,7 @@
     <property role="R4oN_" value="adds ability to execute module tests to the project" />
     <property role="TrG5h" value="BuildModuleTestsPlugin" />
     <property role="3GE5qa" value="Project" />
-    <property role="34LRSv" value="module-testing" />
+    <property role="34LRSv" value="module-tests" />
     <property role="EcuMT" value="4005526075820600484" />
     <ref role="1TJDcQ" to="3ior:5KZfyKsUo6u" resolve="BuildPlugin" />
     <node concept="PrWs8" id="3umvbTBQBt4" role="PzmwI">
