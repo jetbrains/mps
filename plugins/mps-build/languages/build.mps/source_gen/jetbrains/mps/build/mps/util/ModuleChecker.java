@@ -17,6 +17,7 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import java.util.Objects;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -25,7 +26,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.Set;
 import jetbrains.mps.smodel.BootstrapLanguages;
-import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
@@ -98,6 +98,13 @@ public final class ModuleChecker {
     myRepository = parent.myRepository;
   }
 
+  /**
+   * Intended to avoid duplication of ModuleLoader code that loads module descriptor from file. Perhaps, shall be part of ModuleLoader instead (clients unlikely need ModuleChecker instance)
+   */
+  public ModuleDescriptor getModuleDescriptor() {
+    return myModuleDescriptor;
+  }
+
   public void check(CheckType type) {
     if (type.doFullImport) {
       SPropertyOperations.assign(myModule, PROPS.compact$1aZR, false);
@@ -154,6 +161,7 @@ public final class ModuleChecker {
     }
 
     if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Generator$ru)) {
+      generatorSourceLanguage(type);
       processExtendedGenerators(type, previous);
     }
 
@@ -185,6 +193,12 @@ public final class ModuleChecker {
     if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_DevKit$QO)) {
       if (!(myModuleDescriptor instanceof DevkitDescriptor)) {
         report("The imported file is not a devkit file " + SPropertyOperations.getString(myModule, PROPS.name$tAp1));
+        return false;
+      }
+    }
+    if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Generator$ru)) {
+      if (!(myModuleDescriptor instanceof GeneratorDescriptor)) {
+        report("The imported file does not contain generator descriptor " + SPropertyOperations.getString(myModule, PROPS.name$tAp1));
         return false;
       }
     }
@@ -536,6 +550,27 @@ public final class ModuleChecker {
     }
   }
 
+  private void generatorSourceLanguage(CheckType type) {
+    SNode generator = SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$ru);
+    // no need to set sourceLanguage for a generator module nested inside a language module 
+    // in fact, may do that for doFullImport case as it's what we do in loadModules anyway 
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(generator), CONCEPTS.BuildMps_Language$re)) {
+      return;
+    }
+    if (type.doCheck && (SLinkOperations.getTarget(generator, LINKS.sourceLanguage$vc9u) == null)) {
+      report("standalone generator needs its 'sourceLanguage' specified: " + SPropertyOperations.getString(myModule, PROPS.name$tAp1));
+    }
+    if (type.doPartialImport) {
+      GeneratorDescriptor gd = (GeneratorDescriptor) myModuleDescriptor;
+      SNode srcLang = SNodeOperations.as(myVisibleModules.resolve(gd.getSourceLanguage()), CONCEPTS.BuildMps_Language$re);
+      if (srcLang == null) {
+        report(String.format("cannot find source language %s of generator %s among project dependencies", gd.getSourceLanguage(), SPropertyOperations.getString(myModule, PROPS.name$tAp1)));
+      } else {
+        SLinkOperations.setTarget(generator, LINKS.sourceLanguage$vc9u, srcLang);
+      }
+    }
+  }
+
   public void collectSources(CheckType type) {
     SNode module = SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Module$j$);
     // indeed, it's odd way to figure out if there's a model that would produce sources to compile, but ModuleChecker as a whole is odd, why would I bother to make this one perfect? 
@@ -661,7 +696,7 @@ public final class ModuleChecker {
     // todo: hack 
     if (type.doFullImport) {
       if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Generator$ru)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$ru), LINKS.dependencies$Pit_)).addElement(createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a23(BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$ru))));
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$ru), LINKS.dependencies$Pit_)).addElement(createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a63(BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$ru))));
       }
     }
     if (!(SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Generator$ru))) {
@@ -1054,7 +1089,7 @@ public final class ModuleChecker {
   }
 
 
-  private static SNode createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a23(SNode node0) {
+  private static SNode createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a63(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildMps_ModuleDependencyOnModule$_g, null, null, false);
     n1.setReferenceTarget(LINKS.module$gbmo, node0);
@@ -1112,9 +1147,9 @@ public final class ModuleChecker {
     /*package*/ static final SReferenceLink devkit$Ib8b = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
     /*package*/ static final SContainmentLink dependency$6b80 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
     /*package*/ static final SReferenceLink module$gbmo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
+    /*package*/ static final SReferenceLink sourceLanguage$vc9u = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
     /*package*/ static final SContainmentLink path$PN10 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
     /*package*/ static final SContainmentLink generator$zMtG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
-    /*package*/ static final SReferenceLink sourceLanguage$vc9u = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
     /*package*/ static final SContainmentLink folder$99_v = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x3b60c4a45c195c52L, "folder");
     /*package*/ static final SContainmentLink sources$Pqd_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
     /*package*/ static final SContainmentLink folder$99Dv = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
