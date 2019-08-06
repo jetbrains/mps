@@ -29,17 +29,17 @@ import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class MoveConcepts extends AbstractLanguageMove implements MoveNodesAction {
+public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements MoveNodesAction {
 
-  public static class MoveConcepts_extension extends Extension.Default<MoveNodesAction> {
-    public MoveConcepts_extension() {
+  public static class MoveConceptsAndDatatypes_extension extends Extension.Default<MoveNodesAction> {
+    public MoveConceptsAndDatatypes_extension() {
       super("jetbrains.mps.ide.platform.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
-      return new MoveConcepts();
+      return new MoveConceptsAndDatatypes();
     }
   }
-  private static final String NAME = "Move Concepts";
+  private static final String NAME = "Move";
   public String getName() {
     return NAME;
   }
@@ -52,7 +52,7 @@ public class MoveConcepts extends AbstractLanguageMove implements MoveNodesActio
       public void run() {
         result.value = ListSequence.fromList(target).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$UN);
+            return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$UN) || SNodeOperations.isInstanceOf(it, CONCEPTS.DataTypeDeclaration$KQ);
           }
         });
       }
@@ -61,6 +61,9 @@ public class MoveConcepts extends AbstractLanguageMove implements MoveNodesActio
   }
   public void execute(final MPSProject project, List<SNode> nodesToMove) {
     final List<SNode> conceptsToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.AbstractConceptDeclaration$UN)).toListSequence();
+    final List<SNode> datatypesToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.DataTypeDeclaration$KQ)).toListSequence();
+
+    String name = chooseName(conceptsToMove, datatypesToMove);
 
     ListSequence.fromList(conceptsToMove).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -78,7 +81,7 @@ public class MoveConcepts extends AbstractLanguageMove implements MoveNodesActio
       }
     });
     if (hasGenerator.value) {
-      Messages.showWarningDialog(project.getProject(), "Generator fragments will not be moved.", NAME);
+      Messages.showWarningDialog(project.getProject(), "Generator fragments will not be moved.", name);
     }
 
     final Wrappers._T<List<SModelReference>> structureModels = new Wrappers._T<List<SModelReference>>();
@@ -87,7 +90,7 @@ public class MoveConcepts extends AbstractLanguageMove implements MoveNodesActio
         Iterable<SModule> modules = project.getProjectModules();
         return structureModels.value = Sequence.fromIterable(modules).ofType(Language.class).select(new ISelector<Language, SModelReference>() {
           public SModelReference select(Language it) {
-            return check_u6ijv2_a0a0a0a0a1a0i0f(it.getStructureModelDescriptor());
+            return check_xd29i2_a0a0a0a0a1a0l0f(it.getStructureModelDescriptor());
           }
         }).where(new IWhereFilter<SModelReference>() {
           public boolean accept(SModelReference it) {
@@ -96,7 +99,7 @@ public class MoveConcepts extends AbstractLanguageMove implements MoveNodesActio
         }).toListSequence();
       }
     }));
-    final SModelReference targetModelRef = CommonChoosers.showModelChooser(project, NAME, structureModels.value);
+    final SModelReference targetModelRef = CommonChoosers.showModelChooser(project, name, structureModels.value);
     if (targetModelRef == null) {
       return;
     }
@@ -108,10 +111,32 @@ public class MoveConcepts extends AbstractLanguageMove implements MoveNodesActio
       }
     });
 
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel.value), project)).withValues(nodesToMove));
+    MoveNodesUtil.moveTo(project, name, MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel.value), project)).withValues(nodesToMove));
   }
 
-  private static SModelReference check_u6ijv2_a0a0a0a0a1a0i0f(SModel checkedDotOperand) {
+  private static String chooseName(final List<SNode> conceptsToMove, final List<SNode> datatypesToMove) {
+    int size = ListSequence.fromList(conceptsToMove).count() + ListSequence.fromList(datatypesToMove).count();
+    if (size > 1) {
+      if (ListSequence.fromList(conceptsToMove).isEmpty()) {
+        return "Move Data Types";
+      }
+      if (ListSequence.fromList(datatypesToMove).isEmpty()) {
+        return "Move Concepts";
+      }
+      return "Move Concepts and Data Types";
+    } else {
+      if (ListSequence.fromList(datatypesToMove).isNotEmpty()) {
+        return "Move Data Type";
+      }
+      if (ListSequence.fromList(conceptsToMove).isNotEmpty()) {
+        return "Move Concept";
+      }
+    }
+    // should never happen 
+    return null;
+  }
+
+  private static SModelReference check_xd29i2_a0a0a0a0a1a0l0f(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getReference();
     }
@@ -119,6 +144,7 @@ public class MoveConcepts extends AbstractLanguageMove implements MoveNodesActio
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept DataTypeDeclaration$KQ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
     /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }
