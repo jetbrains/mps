@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Update gensources" type="Application" factoryName="Application">
+  <configuration default="false" name="Update gensources.iml and compiler.xml" type="Application" factoryName="Application" folderName="Util">
     <option name="MAIN_CLASS_NAME" value="jetbrains.mps.excluded.GeneratorsRunner" />
     <module name="tools" />
     <option name="VM_PARAMETERS" value="-ea " />

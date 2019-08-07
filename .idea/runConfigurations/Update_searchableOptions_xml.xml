@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="TraverseUI" type="Application" factoryName="Application">
+  <configuration default="false" name="Update searchableOptions.xml" type="Application" factoryName="Application" folderName="Util">
     <option name="MAIN_CLASS_NAME" value="jetbrains.mps.Launcher" />
     <module name="startup" />
     <option name="PROGRAM_PARAMETERS" value="traverseUI $PROJECT_DIR$/workbench/mps-workbench/source/search/searchableOptions.xml" />
