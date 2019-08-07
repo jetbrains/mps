@@ -29,6 +29,7 @@ import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.wm.IdeGlassPane;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.DocumentAdapter;
+import com.intellij.ui.DoubleClickListener;
 import com.intellij.ui.PopupBorder;
 import com.intellij.ui.WindowResizeListener;
 import com.intellij.ui.awt.RelativePoint;
@@ -50,6 +51,7 @@ import jetbrains.mps.ide.findusages.model.holders.StringHolder;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.ide.ui.FindTextInModelTask.MatchHandlerEx;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.scope.EmptySearchScope;
 import jetbrains.mps.smodel.SNodeUtil;
@@ -66,17 +68,20 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JRootPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.RootPaneContainer;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Window;
+import java.awt.event.MouseEvent;
 import java.text.MessageFormat;
 
 /**
@@ -195,7 +200,21 @@ public class FindTextInModelDialog extends DialogWrapper {
     myResultsPreviewTable.setIntercellSpacing(JBUI.emptySize());
     myResultsPreviewTable.setCellSelectionEnabled(false);
     myResultsPreviewTable.setFillsViewportHeight(true); // JBTable does that, can remove?
-    //myResultsPreviewTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    myResultsPreviewTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    new DoubleClickListener() {
+      @Override
+      protected boolean onDoubleClick(MouseEvent event) {
+        final int selectedRow = myResultsPreviewTable.getSelectedRow();
+        final TableModel model = myResultsPreviewTable.getModel();
+        if (selectedRow != -1 && model != null) {
+          final Object valueAt = model.getValueAt(selectedRow, 0);
+          if (valueAt instanceof TableEntry) {
+            new EditorNavigator(myProject).shallFocus(false).selectIfChild().open(((TableEntry) valueAt).node);
+          }
+        }
+        return true;
+      }
+    }.installOn(myResultsPreviewTable);
     myResultsPreviewTable.setRowSelectionAllowed(false);
     myResultsPreviewTable.setColumnSelectionAllowed(false);
     final Dimension minSize = new Dimension(mySearchEntry.getWidth(), 1+ myResultsPreviewTable.getRowHeight() * 4);
