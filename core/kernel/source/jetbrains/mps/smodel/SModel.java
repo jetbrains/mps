@@ -18,6 +18,7 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.model.SModelDescriptorStub;
+import jetbrains.mps.project.UserVisibleException;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.structure.modules.RefUpdateUtil;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
@@ -668,8 +669,7 @@ public class SModel implements SModelData, UpdateModeSupport {
         return;
       }
       if (existingVersion != -1) {
-        throw new IllegalStateException("Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
-                                        "; model: " + getModelDescriptor().getModelName() + "; language: " + language.getQualifiedName());
+        throw new VersionMismatchException(getModelDescriptor(), language, existingVersion, version);
       }
     }
 
@@ -987,4 +987,11 @@ public class SModel implements SModelData, UpdateModeSupport {
     }
   }
 
+  private static class VersionMismatchException extends UserVisibleException {
+    public VersionMismatchException(org.jetbrains.mps.openapi.model.SModel modelDescriptor,
+                                    SLanguage language, Integer existingVersion, int version) {
+      super("Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
+            "; model: " + modelDescriptor.getModelName() + "; language: " + language.getQualifiedName());
+    }
+  }
 }
