@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-49eet6hz165n1m3czs23peet671fsvm">
-  <files names="ConceptMethodSuperCall.java:DataTypeUtil.java:PropertiesUtil.java:QueriesUtil.java:SModelLanguageUtil.java" />
+<product version="3" modelHash="-8lr7cjc9uqfdktjeazbipjpicmc1rwv">
+  <files names="ConceptMethodSuperCall.java:DataTypeUtil.java:EnumSwitchQuieries.java:PropertiesUtil.java:QueriesUtil.java:SModelLanguageUtil.java" />
 </product>
 

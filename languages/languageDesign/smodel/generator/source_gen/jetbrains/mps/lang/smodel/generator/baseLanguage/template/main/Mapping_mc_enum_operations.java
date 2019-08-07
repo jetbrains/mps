@@ -40,7 +40,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
   private final Collection<TemplateReductionRule> rules;
   public Mapping_mc_enum_operations(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1240159487170"), "mc_enum_operations", model, false);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5(), new ReductionRule6(), new ReductionRule7(), new ReductionRule8(), new ReductionRule9());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5(), new ReductionRule6(), new ReductionRule7(), new ReductionRule8(), new ReductionRule9(), new ReductionRule10());
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
@@ -179,7 +179,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630339828"), CONCEPTS.ExpressionStatement$nm, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "651058060500594931"), CONCEPTS.ExpressionStatement$nm, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -190,13 +190,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c8));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630351861", context);
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/651058060500594933", context);
       return tlist1;
     }
   }
   /*package*/ static final class ReductionRule5 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630352297"), CONCEPTS.ExpressionStatement$nm, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630339828"), CONCEPTS.ExpressionStatement$nm, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -207,17 +207,34 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_4(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c9));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c9, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630434285", context);
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c9, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630351861", context);
       return tlist1;
     }
   }
   /*package*/ static final class ReductionRule6 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209547397"), CONCEPTS.LocalVariableDeclarationStatement$BI, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630352297"), CONCEPTS.ExpressionStatement$nm, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
       return QueriesGenerated.rule_Condition_48_4(new ReductionRuleQueryContext(context, getRuleNode()));
+    }
+    @Override
+    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
+      Collection<SNode> tlist1 = null;
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_5(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c01));
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c01, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630434285", context);
+      return tlist1;
+    }
+  }
+  /*package*/ static final class ReductionRule7 extends ReductionRuleBase implements TemplateRuleWithCondition {
+    public ReductionRule7() {
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209547397"), CONCEPTS.LocalVariableDeclarationStatement$BI, false);
+    }
+    @Override
+    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+      return QueriesGenerated.rule_Condition_48_5(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -227,18 +244,18 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           final List<SNode> tlist2 = new ArrayList<SNode>();
-          final SNode sourceNode2 = QueriesGenerated.sourceNodeQuery_48_6(new SourceSubstituteMacroNodeContext(context1, mapsrcMacroRef_3ivvp5_b0a0a1a1a2a2k));
+          final SNode sourceNode2 = QueriesGenerated.sourceNodeQuery_48_7(new SourceSubstituteMacroNodeContext(context1, mapsrcMacroRef_3ivvp5_b0a0a1a1a2a2l));
           TemplateContext context2 = context1.subContext("EnumSwitchExpression_LVD", sourceNode2);
           if (sourceNode2 != null) {
             final SNode tnode3 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration"));
             try {
               environment.nodeCopied(context2, tnode3, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209592708");
-              SNodeAccessUtil.setProperty(tnode3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_48_0(new PropertyMacroContext(context2, "x", propertyMacro_3ivvp5_c0a0c0b0b0d0b0c0c01))));
+              SNodeAccessUtil.setProperty(tnode3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_48_0(new PropertyMacroContext(context2, "x", propertyMacro_3ivvp5_c0a0c0b0b0d0b0c0c11))));
               TemplateContext context3 = context2.subContext();
               {
                 Collection<SNode> tlist4 = null;
-                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_48_5(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c01));
-                tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c01, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209592703", context3);
+                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_48_6(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c11));
+                tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c11, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209592703", context3);
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), child5);
                 }
@@ -259,31 +276,31 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       } finally {
       }
       Collection<SNode> tlist7 = null;
-      final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_48_7(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0f0c01));
-      tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_3ivvp5_b0a0f0c01, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209613169", context);
+      final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_48_8(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0f0c11));
+      tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_3ivvp5_b0a0f0c11, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209613169", context);
       Collection<SNode> tlist8 = TemplateUtil.asList(tnode1, tlist7);
       return tlist8;
     }
   }
-  /*package*/ static final class ReductionRule7 extends ReductionRuleBase implements TemplateRuleWithCondition {
-    public ReductionRule7() {
+  /*package*/ static final class ReductionRule8 extends ReductionRuleBase implements TemplateRuleWithCondition {
+    public ReductionRule8() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630505830"), CONCEPTS.ReturnStatement$SF, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_5(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_48_6(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_8(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c11));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c11, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630520035", context);
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_9(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c21));
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c21, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630520035", context);
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule8 extends ReductionRuleBase {
-    public ReductionRule8() {
+  /*package*/ static final class ReductionRule9 extends ReductionRuleBase {
+    public ReductionRule9() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993631669060"), CONCEPTS.EnumSwitchCaseBody_StatementList$Ze, false);
     }
     @Override
@@ -302,8 +319,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 TemplateContext context3 = context2.subContext();
                 {
                   Collection<SNode> tlist4 = null;
-                  final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_48_0(new SourceSubstituteMacroNodesContext(context3, copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1m));
-                  tlist4 = environment.copyNodes(copyListInput4, copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1m, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993632160152", context3);
+                  final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_48_0(new SourceSubstituteMacroNodesContext(context3, copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1n));
+                  tlist4 = environment.copyNodes(copyListInput4, copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1n, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993632160152", context3);
                   for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                     tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), child5);
                   }
@@ -311,7 +328,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist6 = null;
-                  if (QueriesGenerated.ifMacro_Condition_48_0(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0c0b0b0b0b0c0b21))) {
+                  if (QueriesGenerated.ifMacro_Condition_48_0(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0c0b0b0b0b0c0b31))) {
                     final SNode tnode7 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
                     try {
                       TemplateContext context4 = context3.subContext();
@@ -321,8 +338,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                           TemplateContext context5 = context4.subContext();
                           {
                             Collection<SNode> tlist9 = null;
-                            final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_48_9(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b21));
-                            tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b21, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993633258441", context5);
+                            final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_48_10(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b31));
+                            tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993633258441", context5);
                             for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
                               tnode8.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"), child10);
                             }
@@ -330,8 +347,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                           }
                           {
                             Collection<SNode> tlist11 = null;
-                            final SNode copySrcInput11 = QueriesGenerated.sourceNodeQuery_48_10(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b21));
-                            tlist11 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput11), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b21, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993633284915", context5);
+                            final SNode copySrcInput11 = QueriesGenerated.sourceNodeQuery_48_11(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b31));
+                            tlist11 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput11), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993633284915", context5);
                             for (SNode child12 : TemplateUtil.asNotNull(tlist11)) {
                               tnode8.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue"), child12);
                             }
@@ -353,7 +370,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist14 = null;
-                  if (QueriesGenerated.ifMacro_Condition_48_1(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0d0b0b0b0b0c0b21))) {
+                  if (QueriesGenerated.ifMacro_Condition_48_1(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0d0b0b0b0b0c0b31))) {
                     final SNode tnode15 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
                     try {
                       TemplateContext context6 = context3.subContext();
@@ -377,8 +394,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                           }
                           {
                             Collection<SNode> tlist18 = null;
-                            final SNode copySrcInput18 = QueriesGenerated.sourceNodeQuery_48_11(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b21));
-                            tlist18 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput18), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b21, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209809657", context7);
+                            final SNode copySrcInput18 = QueriesGenerated.sourceNodeQuery_48_12(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b31));
+                            tlist18 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput18), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209809657", context7);
                             for (SNode child19 : TemplateUtil.asNotNull(tlist18)) {
                               tnode16.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue"), child19);
                             }
@@ -400,7 +417,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist21 = null;
-                  if (QueriesGenerated.ifMacro_Condition_48_2(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0e0b0b0b0b0c0b21))) {
+                  if (QueriesGenerated.ifMacro_Condition_48_2(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0e0b0b0b0b0c0b31))) {
                     final SNode tnode22 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbe39a867fL, "BreakStatement"));
                     try {
                     } finally {
@@ -414,14 +431,14 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist24 = null;
-                  if (QueriesGenerated.ifMacro_Condition_48_3(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0f0b0b0b0b0c0b21))) {
+                  if (QueriesGenerated.ifMacro_Condition_48_3(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0f0b0b0b0b0c0b31))) {
                     final SNode tnode25 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement"));
                     try {
                       TemplateContext context8 = context3.subContext();
                       {
                         Collection<SNode> tlist26 = null;
-                        final SNode copySrcInput26 = QueriesGenerated.sourceNodeQuery_48_12(new SourceSubstituteMacroNodeContext(context8, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b21));
-                        tlist26 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput26), copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b21, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948207418472", context8);
+                        final SNode copySrcInput26 = QueriesGenerated.sourceNodeQuery_48_13(new SourceSubstituteMacroNodeContext(context8, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b31));
+                        tlist26 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput26), copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948207418472", context8);
                         for (SNode child27 : TemplateUtil.asNotNull(tlist26)) {
                           tnode25.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), child27);
                         }
@@ -451,8 +468,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ static final class ReductionRule9 extends ReductionRuleBase {
-    public ReductionRule9() {
+  /*package*/ static final class ReductionRule10 extends ReductionRuleBase {
+    public ReductionRule10() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207420576"), CONCEPTS.EnumSwitchCaseBody_Expression$Xi, false);
     }
     @Override
@@ -463,14 +480,14 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          if (QueriesGenerated.ifMacro_Condition_48_4(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0b0c0b31))) {
+          if (QueriesGenerated.ifMacro_Condition_48_4(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0b0c0b41))) {
             final SNode tnode3 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
             try {
               TemplateContext context2 = context1.subContext();
               {
                 Collection<SNode> tlist4 = null;
-                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_48_13(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b31));
-                tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/3355805929452566739", context2);
+                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_48_14(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b41));
+                tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/651058060500903646", context2);
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), child5);
                 }
@@ -487,7 +504,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist7 = null;
-          if (QueriesGenerated.ifMacro_Condition_48_5(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0c0c0b31))) {
+          if (QueriesGenerated.ifMacro_Condition_48_5(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0c0c0b41))) {
             final SNode tnode8 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
             try {
               TemplateContext context3 = context1.subContext();
@@ -497,8 +514,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   TemplateContext context4 = context3.subContext();
                   {
                     Collection<SNode> tlist10 = null;
-                    final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_48_14(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b31));
-                    tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952010", context4);
+                    final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_48_15(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b41));
+                    tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952010", context4);
                     for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
                       tnode9.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"), child11);
                     }
@@ -506,8 +523,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   }
                   {
                     Collection<SNode> tlist12 = null;
-                    final SNode copySrcInput12 = QueriesGenerated.sourceNodeQuery_48_15(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b31));
-                    tlist12 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput12), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952026", context4);
+                    final SNode copySrcInput12 = QueriesGenerated.sourceNodeQuery_48_16(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b41));
+                    tlist12 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput12), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952026", context4);
                     for (SNode child13 : TemplateUtil.asNotNull(tlist12)) {
                       tnode9.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue"), child13);
                     }
@@ -529,7 +546,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist15 = null;
-          if (QueriesGenerated.ifMacro_Condition_48_6(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0d0c0b31))) {
+          if (QueriesGenerated.ifMacro_Condition_48_6(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0d0c0b41))) {
             final SNode tnode16 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
             try {
               TemplateContext context5 = context1.subContext();
@@ -553,8 +570,8 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   }
                   {
                     Collection<SNode> tlist19 = null;
-                    final SNode copySrcInput19 = QueriesGenerated.sourceNodeQuery_48_16(new SourceSubstituteMacroNodeContext(context6, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b31));
-                    tlist19 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput19), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952073", context6);
+                    final SNode copySrcInput19 = QueriesGenerated.sourceNodeQuery_48_17(new SourceSubstituteMacroNodeContext(context6, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b41));
+                    tlist19 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput19), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952073", context6);
                     for (SNode child20 : TemplateUtil.asNotNull(tlist19)) {
                       tnode17.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue"), child20);
                     }
@@ -576,7 +593,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist22 = null;
-          if (QueriesGenerated.ifMacro_Condition_48_7(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0e0c0b31))) {
+          if (QueriesGenerated.ifMacro_Condition_48_7(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0e0c0b41))) {
             final SNode tnode23 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbe39a867fL, "BreakStatement"));
             try {
             } finally {
@@ -590,14 +607,14 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist25 = null;
-          if (QueriesGenerated.ifMacro_Condition_48_8(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0f0c0b31))) {
+          if (QueriesGenerated.ifMacro_Condition_48_8(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0f0c0b41))) {
             final SNode tnode26 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement"));
             try {
               TemplateContext context7 = context1.subContext();
               {
                 Collection<SNode> tlist27 = null;
-                final SNode copySrcInput27 = QueriesGenerated.sourceNodeQuery_48_17(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b31));
-                tlist27 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput27), copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948207669650", context7);
+                final SNode copySrcInput27 = QueriesGenerated.sourceNodeQuery_48_18(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b41));
+                tlist27 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput27), copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948207669650", context7);
                 for (SNode child28 : TemplateUtil.asNotNull(tlist27)) {
                   tnode26.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), child28);
                 }
@@ -623,32 +640,33 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
   private static final SNodePointer templateSwitchNode_3ivvp5_a0a0c0a1a2a2f = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552954635");
   private static final SNodePointer switchMacroRef_3ivvp5_b0a0a0a2a2g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252945863");
   private static final SNodePointer templateSwitchNode_3ivvp5_a0a0c0a1a2a2g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252958448");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630351868");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630434286");
-  private static final SNodePointer mapsrcMacroRef_3ivvp5_b0a0a1a1a2a2k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948210261011");
-  private static final SNodePointer propertyMacro_3ivvp5_c0a0c0b0b0d0b0c0c01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209777084");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209767286");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0f0c01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209794829");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630520036");
-  private static final SNodePointer copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633018504");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633258442");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633286612");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0c0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633258453");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209809658");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0d0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209809671");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0e0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207684891");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207418473");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0f0b0b0b0b0c0b21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633258464");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3355805929456007084");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3355805929452576996");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952011");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952027");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0c0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952040");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952074");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0d0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952087");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0e0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207677248");
-  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207669651");
-  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0f0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207669636");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "651058060500594934");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630351868");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630434286");
+  private static final SNodePointer mapsrcMacroRef_3ivvp5_b0a0a1a1a2a2l = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948210261011");
+  private static final SNodePointer propertyMacro_3ivvp5_c0a0c0b0b0d0b0c0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209777084");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209767286");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0f0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209794829");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630520036");
+  private static final SNodePointer copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1n = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633018504");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633258442");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633286612");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0c0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633258453");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209809658");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0d0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209809671");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0e0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207684891");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207418473");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0f0b0b0b0b0c0b31 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993633258464");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "651058060500911589");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0b0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3355805929452576996");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952011");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952027");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0c0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952040");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952074");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0d0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952087");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0e0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207677248");
+  private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207669651");
+  private static final SNodePointer ifMacroRef_3ivvp5_b0a0b0f0c0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207669636");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SEnumOperationInvocation$$b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, "jetbrains.mps.lang.smodel.structure.SEnumOperationInvocation");
