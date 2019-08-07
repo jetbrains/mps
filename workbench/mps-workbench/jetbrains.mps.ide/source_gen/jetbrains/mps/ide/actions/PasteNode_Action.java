@@ -92,9 +92,6 @@ public class PasteNode_Action extends BaseAction {
     {
       List<Pair<SModel, String>> p = event.getData(MPSDataKeys.VIRTUAL_PACKAGES);
       MapSequence.fromMap(_params).put("packs", p);
-      if (p == null) {
-        return false;
-      }
     }
     return true;
   }
