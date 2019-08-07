@@ -5,17 +5,12 @@ package jetbrains.mps.ide.modelchecker.actions;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.ide.actions.Tools_ActionGroup;
 import jetbrains.mps.ide.actions.ProjectActions_ActionGroup;
 import jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.NamespaceActions_ActionGroup;
 import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
-import java.util.List;
-import jetbrains.mps.plugins.actions.BaseKeymapChanges;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 
 public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.ide.modelchecker");
@@ -37,27 +32,19 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new FindCrossTemplateReferences_Action());
     addAction(new FindReferencesToNonReferenceable_Action());
     addAction(new FindWrongAspectDependencies_Action());
-    addAction(new ShowModelChecker_Action());
     // groups 
     addGroup(new CheckModel_ActionGroup(this));
     addGroup(new CheckModule_ActionGroup(this));
     addGroup(new CheckNamespace_ActionGroup(this));
     addGroup(new CheckProject_ActionGroup(this));
-    addGroup(new ShowModelCheckerTool_ActionGroup(this));
     addGroup(new ToolsInternalEx_ActionGroup(this));
   }
   public void adjustRegularGroups() {
-    insertGroupIntoAnother(ShowModelCheckerTool_ActionGroup.ID, Tools_ActionGroup.ID, Tools_ActionGroup.LABEL_ID_customTools);
     insertGroupIntoAnother(CheckProject_ActionGroup.ID, ProjectActions_ActionGroup.ID, ProjectActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(CheckModule_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(CheckModule_ActionGroup.ID, DevkitActions_ActionGroup.ID, DevkitActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(CheckModel_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(CheckNamespace_ActionGroup.ID, NamespaceActions_ActionGroup.ID, NamespaceActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(ToolsInternalEx_ActionGroup.ID, ToolsInternal_ActionGroup.ID, null);
-  }
-  public List<BaseKeymapChanges> initKeymaps() {
-    List<BaseKeymapChanges> res = ListSequence.fromList(new ArrayList<BaseKeymapChanges>());
-    ListSequence.fromList(res).addElement(new Default_KeymapChanges());
-    return res;
   }
 }

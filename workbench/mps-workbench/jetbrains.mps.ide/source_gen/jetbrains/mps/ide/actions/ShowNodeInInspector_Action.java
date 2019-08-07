@@ -59,6 +59,10 @@ public class ShowNodeInInspector_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    if (!(((EditorComponent) MapSequence.fromMap(_params).get("editor")) instanceof InspectorEditorComponent)) {
+      ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().openInspector();
+      return;
+    }
     ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         InspectorEditorComponent inspectorComponent = ((InspectorEditorComponent) ((EditorComponent) MapSequence.fromMap(_params).get("editor")));
