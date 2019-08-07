@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.workbench.index;
 
+import com.intellij.openapi.progress.ProcessCanceledException;
+import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.indexing.FileBasedIndex;
@@ -55,55 +57,59 @@ public final class PropertyValueProcessor {
     if (progressMonitor.isCanceled()) {
       return;
     }
-    progressMonitor.start("Index lookup...", 3);
-    ArrayList<VirtualFile> files = new ArrayList<>();
-    FileBasedIndex.getInstance().processFilesContainingAllKeys(PropertyValueIndex.NAME, keys, scope, null, new CollectProcessor<>(files));
-    if (files.isEmpty()) {
-      return;
-    }
-    progressMonitor.advance(1);
-    if (progressMonitor.isCanceled()) {
-      return;
-    }
-    final ProgressMonitor sub1 = progressMonitor.subTask(2);
-    SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(myProject.getRepository());
-    sub1.start("Processing files...", files.size());
-    for (VirtualFile vf : files) {
-      // only nodes that are mentioned for all keys
-      IntersectDataProcessor valueProcessor = new IntersectDataProcessor();
-      for (WordIndexEntry w : keys) {
-        FileBasedIndex.getInstance().processValues(PropertyValueIndex.NAME, w, vf, valueProcessor, scope);
-        if (progressMonitor.isCanceled()) {
-          return;
-        }
-      }
-      if (valueProcessor.intersection.count() == 0) {
-        // though vf has to contain all keys (I assume #processFilesContainingAllKeys() does that)
-        // it's still possible that the values belong to different nodes
-        continue;
-      }
-      IdeaFileSystem fs = myProject.getFileSystem();
-      if (!fs.canConvert(vf)) {
+    try {
+      progressMonitor.start("Index lookup...", 3);
+      ArrayList<VirtualFile> files = new ArrayList<>();
+      FileBasedIndex.getInstance().processFilesContainingAllKeys(PropertyValueIndex.NAME, keys, scope, null, new CollectProcessor<>(files));
+      if (files.isEmpty()) {
         return;
       }
-      final IFile mpsFile = fs.fromVirtualFile(vf);
-      myProject.getModelAccess().runReadAction(() -> {
-        final SModel model = modelFileTracker.findModel(mpsFile);
-        if (model == null) {
-          return;
-        }
-        for (SNodeId nid : valueProcessor.intersection.elements()) {
-          final SNode node = model.getNode(nid);
-          if (node == null) {
-            continue;
-          }
-          mySink.accept(node);
+      progressMonitor.advance(1);
+      if (progressMonitor.isCanceled()) {
+        return;
+      }
+      final ProgressMonitor sub1 = progressMonitor.subTask(2);
+      SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(myProject.getRepository());
+      sub1.start("Processing files...", files.size());
+      for (VirtualFile vf : files) {
+        // only nodes that are mentioned for all keys
+        IntersectDataProcessor valueProcessor = new IntersectDataProcessor();
+        for (WordIndexEntry w : keys) {
+          FileBasedIndex.getInstance().processValues(PropertyValueIndex.NAME, w, vf, valueProcessor, scope);
           if (progressMonitor.isCanceled()) {
             return;
           }
         }
-      });
-      sub1.advance(1);
+        if (valueProcessor.intersection.count() == 0) {
+          // though vf has to contain all keys (I assume #processFilesContainingAllKeys() does that)
+          // it's still possible that the values belong to different nodes
+          continue;
+        }
+        IdeaFileSystem fs = myProject.getFileSystem();
+        if (!fs.canConvert(vf)) {
+          return;
+        }
+        final IFile mpsFile = fs.fromVirtualFile(vf);
+        myProject.getModelAccess().runReadAction(() -> {
+          final SModel model = modelFileTracker.findModel(mpsFile);
+          if (model == null) {
+            return;
+          }
+          for (SNodeId nid : valueProcessor.intersection.elements()) {
+            final SNode node = model.getNode(nid);
+            if (node == null) {
+              continue;
+            }
+            mySink.accept(node);
+            if (progressMonitor.isCanceled()) {
+              return;
+            }
+          }
+        });
+        sub1.advance(1);
+      }
+    } catch (IndexNotReadyException | ProcessCanceledException ex) {
+      return;
     }
     progressMonitor.done();
   }

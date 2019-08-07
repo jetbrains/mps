@@ -54,10 +54,11 @@ import java.util.function.Consumer;
   @Override
   public void computeInReadAction(@NotNull ProgressIndicator indicator) throws ProcessCanceledException {
     myActualProgressMonitor = new ProgressMonitorAdapter(indicator);
-    performLookup(myActualProgressMonitor);
+    myProject.getModelAccess().runReadAction(() -> performLookup(myActualProgressMonitor));
     myActualProgressMonitor = null;
   }
 
+  // requires model read
   /*package*/ void performLookup(ProgressMonitor pm) {
     pm.start("", 5);
     myDialogCallback.reset();
@@ -91,36 +92,36 @@ import java.util.function.Consumer;
     return myCancelState;
   }
 
+  // assumes model read lock for a project repository
   private void lookupChangedModels(final FindInNodeSink sink, ProgressMonitor pm) {
     if (pm.isCanceled()) {
       return;
     }
+    myProject.getModelAccess().checkReadAccess();
     // for changed models, let FindInNodeSink logic detect matches (pretend each node of a changed model triggers a match)
-    myProject.getModelAccess().runReadAction(() -> {
-      // XXX Don't use new ModuleRepositoryFacade(myProject.getRepository()).getAllModels() as it NOW gives access to all models, not only those from project
-      List<SModel> changedModels = new ArrayList<>();
-      for (SModule projectModule : myProject.getProjectModulesWithGenerators()) {
-        for (SModel m : projectModule.getModels()) {
-          if (m instanceof EditableSModel && ((EditableSModel) m).isChanged()) {
-            changedModels.add(m);
-          }
+    // XXX Don't use new ModuleRepositoryFacade(myProject.getRepository()).getAllModels() as it NOW gives access to all models, not only those from project
+    List<SModel> changedModels = new ArrayList<>();
+    for (SModule projectModule : myProject.getProjectModulesWithGenerators()) {
+      for (SModel m : projectModule.getModels()) {
+        if (m instanceof EditableSModel && ((EditableSModel) m).isChanged()) {
+          changedModels.add(m);
         }
       }
+    }
+    if (pm.isCanceled()) {
+      return;
+    }
+    pm.start("Analyze changed models", 1 + changedModels.size());
+    pm.advance(1);
+    for (SModel m : changedModels) {
       if (pm.isCanceled()) {
         return;
       }
-      pm.start("Analyze changed models", 1 + changedModels.size());
+      pm.step(m.getName().getValue());
+      org.jetbrains.mps.openapi.model.SNodeUtil.getDescendants(m).forEach(sink);
       pm.advance(1);
-      for (SModel m : changedModels) {
-        if (pm.isCanceled()) {
-          return;
-        }
-        pm.step(m.getName().getValue());
-        org.jetbrains.mps.openapi.model.SNodeUtil.getDescendants(m).forEach(sink);
-        pm.advance(1);
-      }
-      pm.done();
-    });
+    }
+    pm.done();
   }
 
   private static final class FindInNodeSink implements Consumer<SNode> {
