@@ -169,7 +169,7 @@ public abstract class StubSolutionIdea extends StubSolution {
     if (vfsManager.getFileSystem(fsId)==null){
       throw new IllegalArgumentException("File system not supported: " + fsId);
     }
-    return new QualifiedPath(VFSManager.JRT_FS, f.getPath());
+    return new QualifiedPath(fsId, f.getPath());
   }
 
   protected void attachRootsListener() {
