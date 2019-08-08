@@ -29,7 +29,7 @@
       <node id="7081154005684071588" at="42,22,43,0" concept="11" />
       <node id="7110462768343000847" at="46,63,47,98" concept="15" />
       <node id="7110462768343065971" at="48,9,49,0" concept="11" />
-      <node id="4448668666024477018" at="52,34,53,40" concept="3" />
+      <node id="578654937120051828" at="52,34,53,66" concept="3" />
       <node id="7081154005683668270" at="57,7,58,74" concept="3" />
       <node id="7081154005683388194" at="58,74,59,0" concept="11" />
       <node id="5149305731183884493" at="59,0,60,11" concept="3" />
@@ -96,7 +96,7 @@
       <node id="1613125646032871453" at="38,0,63,0" concept="2" trace="NewModelDialog#(Ljetbrains/mps/project/Project;Ljetbrains/mps/project/AbstractModule;Ljava/lang/String;Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;)V" />
       <node id="7671451525403065902" at="91,0,134,0" concept="7" trace="checkImpl#()Z" />
       <scope id="7110462768342997648" at="46,63,47,98" />
-      <scope id="4448668666024477017" at="52,34,53,40" />
+      <scope id="4448668666024477017" at="52,34,53,66" />
       <scope id="8939612310996012490" at="64,46,65,20" />
       <scope id="5149305731183885504" at="70,21,71,13" />
       <scope id="3839167337202609117" at="79,41,80,186" />

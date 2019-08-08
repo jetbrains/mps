@@ -20,8 +20,8 @@ import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.ModelFactoryRegistry;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
@@ -46,7 +46,6 @@ import org.jetbrains.mps.openapi.persistence.ModelCreationException;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
@@ -184,10 +183,23 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
       //     to figure out proper source root as well, which is not a task I'd like to tackle now. I'd use object return value instead of simple
       //     boolean here, which would keep all relevant data (model factory, source root) for model creation
       CompositeResult<DataSource> result = getDataSourceFactoryBridge().create(new SModelName(modelName), Defaults.sourceRoot(this), Defaults.DATA_SOURCE_TYPE);
-      return defaultModelFactory.supports(result.getDataSource());
+      DataSource dataSource = result.getDataSource();
+      return defaultModelFactory.supports(dataSource) && this.getModels().stream().allMatch(sModel -> dataSourcesCompatible(sModel.getSource(), dataSource));
     } catch (NoSourceRootsInModelRootException | DataSourceFactoryNotFoundException | SourceRootDoesNotExistException ignored) {
     }
     return false;
+  }
+
+  private boolean dataSourcesCompatible(DataSource a, DataSource b) {
+    if (a instanceof FileSystemBasedDataSource && b instanceof FileSystemBasedDataSource) {
+      Collection<IFile> bFiles = ((FileSystemBasedDataSource) b).getAffectedFiles();
+      for (IFile aFile : ((FileSystemBasedDataSource) a).getAffectedFiles()) {
+        if (bFiles.contains(aFile)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   /**
