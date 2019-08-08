@@ -665,7 +665,7 @@ public class SModel implements SModelData, UpdateModeSupport {
     final int version = language.getLanguageVersion();
     Integer existingVersion = myLanguagesIds.get(language);
     if (existingVersion != null) {
-      if (version == -1 || existingVersion == version) {
+      if (version == -1 || existingVersion <= version) {
         return;
       }
       if (existingVersion != -1) {
