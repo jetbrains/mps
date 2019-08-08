@@ -36,9 +36,7 @@
     <import index="cm63" ref="d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)" />
     <import index="ykok" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.constraints(MPS.Core/)" />
     <import index="xx25" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure.types(MPS.Core/)" />
-    <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
-    <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="vl5q" ref="52b81ac7-93fd-4e9e-b972-4995882da6d4/java:jetbrains.mps.references(jetbrains.mps.baseLanguage.references.runtime/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="beok" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.stub(MPS.Core/)" />
@@ -6689,7 +6687,7 @@
             <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           </node>
           <node concept="Xl_RD" id="E_Nz9ZrkRD" role="37wK5m">
-            <property role="Xl_RC" value="Attempt to add node to nonexistent parent or role. Node: %s" />
+            <property role="Xl_RC" value="Attempt to add node to non-existent parent or role. Node: %s" />
           </node>
         </node>
       </node>
@@ -12183,88 +12181,6 @@
         <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
       </node>
     </node>
-    <node concept="2YIFZL" id="5IkW5anFeAQ" role="jymVt">
-      <property role="TrG5h" value="getContainingLinkDeclaration" />
-      <node concept="P$JXv" id="5j5ScoB0WC$" role="lGtFl">
-        <node concept="TZ5HI" id="5j5ScoB0WC_" role="3nqlJM">
-          <node concept="TZ5HA" id="5j5ScoB0WCA" role="3HnX3l" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="5j5ScoB0WCB" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="5j5ScoB0WGu" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="5j5ScoB0WOB" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="5j5ScoB0WXC" role="2B70Vg">
-            <property role="$nhwW" value="2018.1" />
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="5IkW5anFeAT" role="3clF46">
-        <property role="TrG5h" value="childNode" />
-        <node concept="3Tqbb2" id="3WQ1sVBtaAg" role="1tU5fm" />
-      </node>
-      <node concept="3clFbS" id="5IkW5anFeAV" role="3clF47">
-        <node concept="3clFbJ" id="5IkW5anFeAW" role="3cqZAp">
-          <node concept="3clFbC" id="5IkW5anFeAX" role="3clFbw">
-            <node concept="37vLTw" id="2BHiRxghgfM" role="3uHU7B">
-              <ref role="3cqZAo" node="5IkW5anFeAT" resolve="childNode" />
-            </node>
-            <node concept="10Nm6u" id="5IkW5anFeAZ" role="3uHU7w" />
-          </node>
-          <node concept="3clFbS" id="5IkW5anFeB0" role="3clFbx">
-            <node concept="3cpWs6" id="5IkW5anFeB1" role="3cqZAp">
-              <node concept="10Nm6u" id="5IkW5anFeB2" role="3cqZAk" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="MEgg0GzKFL" role="3cqZAp">
-          <node concept="3cpWsn" id="MEgg0GzKFM" role="3cpWs9">
-            <property role="TrG5h" value="containmentLink" />
-            <node concept="3uibUv" id="MEgg0GzKFH" role="1tU5fm">
-              <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
-            </node>
-            <node concept="2OqwBi" id="MEgg0GzKFN" role="33vP2m">
-              <node concept="2JrnkZ" id="MEgg0GzKFO" role="2Oq$k0">
-                <node concept="37vLTw" id="MEgg0GzKFP" role="2JrQYb">
-                  <ref role="3cqZAo" node="5IkW5anFeAT" resolve="childNode" />
-                </node>
-              </node>
-              <node concept="liA8E" id="MEgg0GzKFQ" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="MEgg0GzNIe" role="3cqZAp">
-          <node concept="3clFbS" id="MEgg0GzNIh" role="3clFbx">
-            <node concept="3cpWs6" id="MEgg0GzNV0" role="3cqZAp">
-              <node concept="10Nm6u" id="MEgg0GzO3B" role="3cqZAk" />
-            </node>
-          </node>
-          <node concept="3clFbC" id="MEgg0GzNRO" role="3clFbw">
-            <node concept="10Nm6u" id="MEgg0GzNT9" role="3uHU7w" />
-            <node concept="37vLTw" id="MEgg0GzNPR" role="3uHU7B">
-              <ref role="3cqZAo" node="MEgg0GzKFM" resolve="containmentLink" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="3oBWDt4ZK34" role="3cqZAp">
-          <node concept="2OqwBi" id="3oBWDt4ZJqv" role="3cqZAk">
-            <node concept="37vLTw" id="MEgg0GzKFR" role="2Oq$k0">
-              <ref role="3cqZAo" node="MEgg0GzKFM" resolve="containmentLink" />
-            </node>
-            <node concept="liA8E" id="3oBWDt4ZJJW" role="2OqNvi">
-              <ref role="37wK5l" to="c17a:~SContainmentLink.getDeclarationNode()" resolve="getDeclarationNode" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="5IkW5anFeAR" role="1B3o_S" />
-      <node concept="3Tqbb2" id="3WQ1sVBtaAi" role="3clF45" />
-    </node>
     <node concept="2YIFZL" id="63cAeS_sgEb" role="jymVt">
       <property role="TrG5h" value="getContainingLinkInChildrenAndChildAttributesCollection" />
       <property role="od$2w" value="false" />
@@ -12368,6 +12284,34 @@
     <node concept="2YIFZL" id="5IkW5anFeBi" role="jymVt">
       <property role="TrG5h" value="getContainingLinkRole" />
       <node concept="3clFbS" id="5IkW5anFeBn" role="3clF47">
+        <node concept="3SKdUt" id="776YOYGTjLU" role="3cqZAp">
+          <node concept="1PaTwC" id="776YOYGTjLV" role="3ndbpf">
+            <node concept="3oM_SD" id="776YOYGTk3_" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+            <node concept="3oM_SD" id="776YOYGTjMv" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="776YOYGTk3g" role="1PaTwD">
+              <property role="3oM_SC" value="still" />
+            </node>
+            <node concept="3oM_SD" id="776YOYGTk3T" role="1PaTwD">
+              <property role="3oM_SC" value="uses" />
+            </node>
+            <node concept="3oM_SD" id="776YOYGTk46" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="776YOYGTk4F" role="1PaTwD">
+              <property role="3oM_SC" value="Node_GetContainingRoleOperation" />
+            </node>
+            <node concept="3oM_SD" id="776YOYGTk53" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="776YOYGTk4s" role="1PaTwD">
+              <property role="3oM_SC" value="mbeddr" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="5IkW5anFeBo" role="3cqZAp">
           <node concept="3clFbS" id="5IkW5anFeBs" role="3clFbx">
             <node concept="3cpWs6" id="5IkW5anFeBt" role="3cqZAp">
@@ -12442,7 +12386,7 @@
                 <node concept="1pGfFk" id="E_Nz9ZvLH8" role="2ShVmc">
                   <ref role="37wK5l" node="E_Nz9Zv4Wn" resolve="EmptyList" />
                   <node concept="Xl_RD" id="E_Nz9ZvX2n" role="37wK5m">
-                    <property role="Xl_RC" value="Attempt to add reference to unexistent parent. Reference: %s" />
+                    <property role="Xl_RC" value="Attempt to add reference to non-existent parent. Reference: %s" />
                   </node>
                   <node concept="3uibUv" id="E_Nz9ZvPyk" role="1pMfVU">
                     <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />

@@ -324,6 +324,7 @@
       <concept id="7430509679014182526" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef" flags="ng" index="1qCSth">
         <property id="7430509679014182818" name="contextVarName" index="1qCSqd" />
       </concept>
+      <concept id="1217004708011" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetInputModel" flags="nn" index="1r8y6K" />
       <concept id="1217026863835" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalInputModel" flags="nn" index="1st3f0" />
       <concept id="1217282130234" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputModel" flags="nn" index="1FEO0x" />
     </language>
@@ -2640,22 +2641,47 @@
                       <ref role="37wK5l" to="mhbf:~SNode.addChild(org.jetbrains.mps.openapi.language.SContainmentLink,org.jetbrains.mps.openapi.model.SNode)" resolve="addChild" />
                       <node concept="10Nm6u" id="4ToIrUjQF9W" role="37wK5m">
                         <node concept="5jKBG" id="za$VMvkOfI" role="lGtFl">
-                          <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
+                          <ref role="v9R2y" to="tp27:7jb4LXp9xsD" resolve="reduce_ContainmentLinkId_SContainmentLink" />
                           <node concept="3NFfHV" id="4ToIrUjQF9Y" role="5jGum">
                             <node concept="3clFbS" id="4ToIrUjQF9Z" role="2VODD2">
-                              <node concept="3clFbF" id="4ToIrUjQFa0" role="3cqZAp">
-                                <node concept="2OqwBi" id="4ToIrUjQFa1" role="3clFbG">
-                                  <node concept="2OqwBi" id="4ToIrUjQFa2" role="2Oq$k0">
-                                    <node concept="2JrnkZ" id="4ToIrUjQFa3" role="2Oq$k0">
-                                      <node concept="30H73N" id="4ToIrUjQFa4" role="2JrQYb" />
+                              <node concept="3cpWs8" id="776YOYGVQdT" role="3cqZAp">
+                                <node concept="3cpWsn" id="776YOYGVQdU" role="3cpWs9">
+                                  <property role="TrG5h" value="cid" />
+                                  <node concept="3Tqbb2" id="776YOYGVQdu" role="1tU5fm">
+                                    <ref role="ehGHo" to="tp25:7jb4LXp8VrB" resolve="ContainmentLinkId" />
+                                  </node>
+                                  <node concept="2OqwBi" id="776YOYGVQdV" role="33vP2m">
+                                    <node concept="2OqwBi" id="776YOYGVQdW" role="2Oq$k0">
+                                      <node concept="1iwH7S" id="776YOYGVQdX" role="2Oq$k0" />
+                                      <node concept="1r8y6K" id="776YOYGVQdY" role="2OqNvi" />
                                     </node>
-                                    <node concept="liA8E" id="4ToIrUjQFa5" role="2OqNvi">
-                                      <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
+                                    <node concept="I8ghe" id="776YOYGVQdZ" role="2OqNvi">
+                                      <ref role="I8UWU" to="tp25:7jb4LXp8VrB" resolve="ContainmentLinkId" />
                                     </node>
                                   </node>
-                                  <node concept="liA8E" id="4ToIrUjQFa6" role="2OqNvi">
-                                    <ref role="37wK5l" to="c17a:~SContainmentLink.getDeclarationNode()" resolve="getDeclarationNode" />
+                                </node>
+                              </node>
+                              <node concept="3clFbF" id="776YOYGVP_o" role="3cqZAp">
+                                <node concept="2OqwBi" id="776YOYGVQs1" role="3clFbG">
+                                  <node concept="37vLTw" id="776YOYGVQe0" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="776YOYGVQdU" resolve="cid" />
                                   </node>
+                                  <node concept="2qgKlT" id="776YOYGVQAS" role="2OqNvi">
+                                    <ref role="37wK5l" to="tpeu:7jb4LXp8VsD" resolve="setLink" />
+                                    <node concept="2OqwBi" id="4ToIrUjQFa2" role="37wK5m">
+                                      <node concept="2JrnkZ" id="4ToIrUjQFa3" role="2Oq$k0">
+                                        <node concept="30H73N" id="4ToIrUjQFa4" role="2JrQYb" />
+                                      </node>
+                                      <node concept="liA8E" id="4ToIrUjQFa5" role="2OqNvi">
+                                        <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3cpWs6" id="776YOYGVRbI" role="3cqZAp">
+                                <node concept="37vLTw" id="776YOYGVRel" role="3cqZAk">
+                                  <ref role="3cqZAo" node="776YOYGVQdU" resolve="cid" />
                                 </node>
                               </node>
                             </node>
@@ -2926,22 +2952,47 @@
                           <ref role="37wK5l" to="mhbf:~SNode.addChild(org.jetbrains.mps.openapi.language.SContainmentLink,org.jetbrains.mps.openapi.model.SNode)" resolve="addChild" />
                           <node concept="10Nm6u" id="4ToIrUjQD0_" role="37wK5m">
                             <node concept="5jKBG" id="za$VMvkOfJ" role="lGtFl">
-                              <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
+                              <ref role="v9R2y" to="tp27:7jb4LXp9xsD" resolve="reduce_ContainmentLinkId_SContainmentLink" />
                               <node concept="3NFfHV" id="4ToIrUjQDqV" role="5jGum">
                                 <node concept="3clFbS" id="4ToIrUjQDqW" role="2VODD2">
-                                  <node concept="3clFbF" id="4ToIrUjQDzd" role="3cqZAp">
-                                    <node concept="2OqwBi" id="4ToIrUjQEut" role="3clFbG">
-                                      <node concept="2OqwBi" id="4ToIrUjQEee" role="2Oq$k0">
-                                        <node concept="2JrnkZ" id="4ToIrUjQEcf" role="2Oq$k0">
-                                          <node concept="30H73N" id="4ToIrUjQDzc" role="2JrQYb" />
+                                  <node concept="3cpWs8" id="776YOYGVRrN" role="3cqZAp">
+                                    <node concept="3cpWsn" id="776YOYGVRrO" role="3cpWs9">
+                                      <property role="TrG5h" value="cid" />
+                                      <node concept="3Tqbb2" id="776YOYGVRrP" role="1tU5fm">
+                                        <ref role="ehGHo" to="tp25:7jb4LXp8VrB" resolve="ContainmentLinkId" />
+                                      </node>
+                                      <node concept="2OqwBi" id="776YOYGVRrQ" role="33vP2m">
+                                        <node concept="2OqwBi" id="776YOYGVRrR" role="2Oq$k0">
+                                          <node concept="1iwH7S" id="776YOYGVRrS" role="2Oq$k0" />
+                                          <node concept="1r8y6K" id="776YOYGVRrT" role="2OqNvi" />
                                         </node>
-                                        <node concept="liA8E" id="4ToIrUjQEr9" role="2OqNvi">
-                                          <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
+                                        <node concept="I8ghe" id="776YOYGVRrU" role="2OqNvi">
+                                          <ref role="I8UWU" to="tp25:7jb4LXp8VrB" resolve="ContainmentLinkId" />
                                         </node>
                                       </node>
-                                      <node concept="liA8E" id="4ToIrUjQEIw" role="2OqNvi">
-                                        <ref role="37wK5l" to="c17a:~SContainmentLink.getDeclarationNode()" resolve="getDeclarationNode" />
+                                    </node>
+                                  </node>
+                                  <node concept="3clFbF" id="776YOYGVRtQ" role="3cqZAp">
+                                    <node concept="2OqwBi" id="776YOYGVRFS" role="3clFbG">
+                                      <node concept="37vLTw" id="776YOYGVRtO" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="776YOYGVRrO" resolve="cid" />
                                       </node>
+                                      <node concept="2qgKlT" id="776YOYGVRTN" role="2OqNvi">
+                                        <ref role="37wK5l" to="tpeu:7jb4LXp8VsD" resolve="setLink" />
+                                        <node concept="2OqwBi" id="4ToIrUjQEee" role="37wK5m">
+                                          <node concept="2JrnkZ" id="4ToIrUjQEcf" role="2Oq$k0">
+                                            <node concept="30H73N" id="4ToIrUjQDzc" role="2JrQYb" />
+                                          </node>
+                                          <node concept="liA8E" id="4ToIrUjQEr9" role="2OqNvi">
+                                            <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="3cpWs6" id="776YOYGVSGC" role="3cqZAp">
+                                    <node concept="37vLTw" id="776YOYGVSGE" role="3cqZAk">
+                                      <ref role="3cqZAo" node="776YOYGVRrO" resolve="cid" />
                                     </node>
                                   </node>
                                 </node>
@@ -3179,22 +3230,47 @@
                           <ref role="37wK5l" to="mhbf:~SNode.addChild(org.jetbrains.mps.openapi.language.SContainmentLink,org.jetbrains.mps.openapi.model.SNode)" resolve="addChild" />
                           <node concept="10Nm6u" id="4ToIrUjQFq4" role="37wK5m">
                             <node concept="5jKBG" id="za$VMvkOfK" role="lGtFl">
-                              <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
+                              <ref role="v9R2y" to="tp27:7jb4LXp9xsD" resolve="reduce_ContainmentLinkId_SContainmentLink" />
                               <node concept="3NFfHV" id="4ToIrUjQFq6" role="5jGum">
                                 <node concept="3clFbS" id="4ToIrUjQFq7" role="2VODD2">
-                                  <node concept="3clFbF" id="4ToIrUjQFq8" role="3cqZAp">
-                                    <node concept="2OqwBi" id="4ToIrUjQFq9" role="3clFbG">
-                                      <node concept="2OqwBi" id="4ToIrUjQFqa" role="2Oq$k0">
-                                        <node concept="2JrnkZ" id="4ToIrUjQFqb" role="2Oq$k0">
-                                          <node concept="30H73N" id="4ToIrUjQFqc" role="2JrQYb" />
+                                  <node concept="3cpWs8" id="776YOYGVSOk" role="3cqZAp">
+                                    <node concept="3cpWsn" id="776YOYGVSOl" role="3cpWs9">
+                                      <property role="TrG5h" value="cid" />
+                                      <node concept="3Tqbb2" id="776YOYGVSOm" role="1tU5fm">
+                                        <ref role="ehGHo" to="tp25:7jb4LXp8VrB" resolve="ContainmentLinkId" />
+                                      </node>
+                                      <node concept="2OqwBi" id="776YOYGVSOn" role="33vP2m">
+                                        <node concept="2OqwBi" id="776YOYGVSOo" role="2Oq$k0">
+                                          <node concept="1iwH7S" id="776YOYGVSOp" role="2Oq$k0" />
+                                          <node concept="1r8y6K" id="776YOYGVSOq" role="2OqNvi" />
                                         </node>
-                                        <node concept="liA8E" id="4ToIrUjQFqd" role="2OqNvi">
-                                          <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
+                                        <node concept="I8ghe" id="776YOYGVSOr" role="2OqNvi">
+                                          <ref role="I8UWU" to="tp25:7jb4LXp8VrB" resolve="ContainmentLinkId" />
                                         </node>
                                       </node>
-                                      <node concept="liA8E" id="4ToIrUjQFqe" role="2OqNvi">
-                                        <ref role="37wK5l" to="c17a:~SContainmentLink.getDeclarationNode()" resolve="getDeclarationNode" />
+                                    </node>
+                                  </node>
+                                  <node concept="3clFbF" id="776YOYGVSOs" role="3cqZAp">
+                                    <node concept="2OqwBi" id="776YOYGVSOt" role="3clFbG">
+                                      <node concept="37vLTw" id="776YOYGVSOu" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="776YOYGVSOl" resolve="cid" />
                                       </node>
+                                      <node concept="2qgKlT" id="776YOYGVSOv" role="2OqNvi">
+                                        <ref role="37wK5l" to="tpeu:7jb4LXp8VsD" resolve="setLink" />
+                                        <node concept="2OqwBi" id="776YOYGVSOw" role="37wK5m">
+                                          <node concept="2JrnkZ" id="776YOYGVSOx" role="2Oq$k0">
+                                            <node concept="30H73N" id="776YOYGVSOy" role="2JrQYb" />
+                                          </node>
+                                          <node concept="liA8E" id="776YOYGVSOz" role="2OqNvi">
+                                            <ref role="37wK5l" to="mhbf:~SNode.getContainmentLink()" resolve="getContainmentLink" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="3cpWs6" id="776YOYGVSO$" role="3cqZAp">
+                                    <node concept="37vLTw" id="776YOYGVSO_" role="3cqZAk">
+                                      <ref role="3cqZAo" node="776YOYGVSOl" resolve="cid" />
                                     </node>
                                   </node>
                                 </node>
