@@ -49,6 +49,7 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.project.Project;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -294,8 +295,9 @@ public class SModel implements SModelData, UpdateModeSupport {
   /**
    * Tells this model data implementation is bound to specific model descriptor and uses a supplied mechanism to dispatch events.
    * This method is intended for use by {@link org.jetbrains.mps.openapi.model.SModel model descriptor} implementations only.
+   *
    * @param modelDescriptor
-   * @param eventDispatch generally, non-null value makes sense only when {@code modelDescriptor} is not null as well.
+   * @param eventDispatch   generally, non-null value makes sense only when {@code modelDescriptor} is not null as well.
    */
   public void setModelDescriptor(@Nullable org.jetbrains.mps.openapi.model.SModel modelDescriptor, @Nullable ModelEventDispatch eventDispatch) {
     myModelDescriptor = modelDescriptor;
@@ -346,7 +348,7 @@ public class SModel implements SModelData, UpdateModeSupport {
    * Doesn't dispatch any event (it's responsibility of openapi.SModel impl).
    * Disconnects from openapi.SModel descriptor, if any.
    * XXX At the moment, doesn't change owner of nodes to DetachedNodeOwner, though it seems it should.
-   *     The only objection is that doing so would trigger a lot of unregister events we don't really care to get.
+   * The only objection is that doing so would trigger a lot of unregister events we don't really care to get.
    */
   public void dispose() {
     if (myDisposed) {
@@ -669,7 +671,7 @@ public class SModel implements SModelData, UpdateModeSupport {
         return;
       }
       if (existingVersion != -1) {
-        throw new VersionMismatchException(getModelDescriptor(), language, existingVersion, version);
+        throw new VersionMismatchException(null, getModelDescriptor(), language, existingVersion, version);
       }
     }
 
@@ -988,10 +990,10 @@ public class SModel implements SModelData, UpdateModeSupport {
   }
 
   private static class VersionMismatchException extends UserVisibleException {
-    public VersionMismatchException(org.jetbrains.mps.openapi.model.SModel modelDescriptor,
+    public VersionMismatchException(@Nullable Project p, org.jetbrains.mps.openapi.model.SModel modelDescriptor,
                                     SLanguage language, Integer existingVersion, int version) {
-      super("Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
-            "; model: " + modelDescriptor.getModelName() + "; language: " + language.getQualifiedName());
+      super(p, "Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
+               "; model: " + modelDescriptor.getModelName() + "; language: " + language.getQualifiedName());
     }
 
     @Override

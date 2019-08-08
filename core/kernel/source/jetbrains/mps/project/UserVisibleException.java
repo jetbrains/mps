@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.project;
 
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.project.Project;
+
 /**
  * Base class for exceptions that reflect some problem in user's configuration.
  * Such a problem should be reported to the user in UI and [possibly] changes made by current command should be reverted.
@@ -25,21 +28,25 @@ package jetbrains.mps.project;
  * current command could be implemented, however, this requires at least undo for model/module properties.
  */
 public class UserVisibleException extends RuntimeException{
-  public UserVisibleException() {
-  }
+  @Nullable
+  private final Project myProject;
 
-  public UserVisibleException(String message) {
+  public UserVisibleException(@Nullable Project p, String message) {
     super(message);
+    myProject = p;
   }
 
-  public UserVisibleException(String message, Throwable cause) {
+  public UserVisibleException(@Nullable Project p, String message, Throwable cause) {
     super(message, cause);
-  }
-
-  public UserVisibleException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    myProject = p;
   }
 
   public String getHint(){
     return null;
+  }
+
+  @Nullable
+  public Project getProject() {
+    return myProject;
   }
 }
