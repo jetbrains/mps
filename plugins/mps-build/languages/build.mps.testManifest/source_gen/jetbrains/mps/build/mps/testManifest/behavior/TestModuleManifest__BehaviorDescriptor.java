@@ -16,23 +16,18 @@ import jetbrains.mps.project.Project;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.adapter.ids.SLanguageId;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.smodel.behavior.ModuleReferenceExpression__BehaviorDescriptor;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescriptor {
@@ -47,16 +42,13 @@ public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static List<Tuples._3<String, String, String>> languagesToInclude_id2R6x4AnylYu(@NotNull SNode __thisNode__, Project project) {
-    SLanguageHierarchy hierarchy = new SLanguageHierarchy(SModelOperations.getAllLanguageImports(SNodeOperations.getModel(__thisNode__)));
-
     List<Tuples._3<String, String, String>> result = ListSequence.fromList(new ArrayList<Tuples._3<String, String, String>>());
     for (SNode ref : SLinkOperations.getChildren(__thisNode__, LINKS.language$c5DN)) {
-      SLanguage sLanguage = MetaAdapterFactory.getLanguage(SLanguageId.deserialize(SPropertyOperations.getString(ref, PROPS.moduleId$IIeZ)), SPropertyOperations.getString(ref, PROPS.name$IIew));
+      SModule sModule = ModuleReferenceExpression__BehaviorDescriptor.getModule_id3wj3sjzQUV1.invoke(ref);
 
-      SModule sModule = sLanguage.getSourceModule();
       if (sModule != null && project.isProjectModule(sModule) && sModule instanceof AbstractModule) {
         IFile descriptorIFile = ((AbstractModule) sModule).getDescriptorFile();
-        ListSequence.fromList(result).addElement(MultiTuple.<String,String,String>from(sLanguage.getQualifiedName(), descriptorIFile.getPath(), sLanguage.getSourceModule().getModuleId().toString()));
+        ListSequence.fromList(result).addElement(MultiTuple.<String,String,String>from(sModule.getModuleName(), descriptorIFile.getPath(), sModule.getModuleId().toString()));
       }
     }
 
@@ -120,11 +112,6 @@ public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty moduleId$IIeZ = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
-    /*package*/ static final SProperty name$IIew = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
   }
 
   private static final class LINKS {
