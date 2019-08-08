@@ -8076,105 +8076,108 @@
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/7427066632718486477">
     <file name="DocTagHelper.java">
-      <node id="7427066632718041120" at="19,39,20,79" concept="9" />
-      <node id="7427066632718042702" at="24,39,25,78" concept="9" />
-      <node id="7427066632718043078" at="29,39,30,80" concept="9" />
-      <node id="7427066632718043616" at="34,39,35,76" concept="9" />
-      <node id="7427066632718044316" at="39,39,40,82" concept="9" />
-      <node id="7427066632718045033" at="44,39,45,79" concept="9" />
-      <node id="7427066632718046057" at="49,39,50,83" concept="9" />
-      <node id="7427066632718047243" at="54,39,55,79" concept="9" />
-      <node id="7427066632718056450" at="57,7,58,89" concept="2" />
-      <node id="7427066632718085142" at="60,35,61,100" concept="2" />
-      <node id="7427066632718486477" at="67,0,68,0" concept="12" trace="tags$LJD$" />
-      <node id="7427066632718486477" at="71,0,72,0" concept="12" trace="AuthorBlockDocTag$xE" />
-      <node id="7427066632718486477" at="72,0,73,0" concept="12" trace="SinceBlockDocTag$YE" />
-      <node id="7427066632718486477" at="73,0,74,0" concept="12" trace="VersionBlockDocTag$Ic" />
-      <node id="7427066632718486477" at="74,0,75,0" concept="12" trace="SeeBlockDocTag$tx" />
-      <node id="7427066632718486477" at="75,0,76,0" concept="12" trace="ParameterBlockDocTag$w1" />
-      <node id="7427066632718486477" at="76,0,77,0" concept="12" trace="ThrowsBlockDocTag$ph" />
-      <node id="7427066632718486477" at="77,0,78,0" concept="12" trace="DeprecatedBlockDocTag$ma" />
-      <node id="7427066632718486477" at="78,0,79,0" concept="12" trace="ReturnBlockDocTag$Ys" />
-      <node id="7427066632718041118" at="19,0,22,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718042700" at="24,0,27,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718043076" at="29,0,32,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718043614" at="34,0,37,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718044314" at="39,0,42,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718045031" at="44,0,47,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718046055" at="49,0,52,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718047241" at="54,0,57,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7427066632718084148" at="60,0,63,0" concept="7" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="7427066632718041111" at="17,56,22,7" concept="8" />
-      <node id="7427066632718042691" at="22,7,27,7" concept="8" />
-      <node id="7427066632718043067" at="27,7,32,7" concept="8" />
-      <node id="7427066632718043605" at="32,7,37,7" concept="8" />
-      <node id="7427066632718044305" at="37,7,42,7" concept="8" />
-      <node id="7427066632718045022" at="42,7,47,7" concept="8" />
-      <node id="7427066632718046046" at="47,7,52,7" concept="8" />
-      <node id="7427066632718047232" at="52,7,57,7" concept="8" />
-      <node id="7427066632718076377" at="58,89,63,7" concept="2" />
-      <node id="7427066632718486524" at="17,0,65,0" concept="13" trace="organizeTags#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="7427066632718041119" at="19,39,20,79" />
-      <scope id="7427066632718042701" at="24,39,25,78" />
-      <scope id="7427066632718043077" at="29,39,30,80" />
-      <scope id="7427066632718043615" at="34,39,35,76" />
-      <scope id="7427066632718044315" at="39,39,40,82" />
-      <scope id="7427066632718045032" at="44,39,45,79" />
-      <scope id="7427066632718046056" at="49,39,50,83" />
-      <scope id="7427066632718047242" at="54,39,55,79" />
-      <scope id="7427066632718084149" at="60,35,61,100" />
-      <scope id="7427066632718041118" at="19,0,22,0">
+      <node id="7427066632718041120" at="20,39,21,79" concept="9" />
+      <node id="7427066632718042702" at="25,39,26,78" concept="9" />
+      <node id="7427066632718043078" at="30,39,31,80" concept="9" />
+      <node id="7427066632718043616" at="35,39,36,76" concept="9" />
+      <node id="7427066632718044316" at="40,39,41,82" concept="9" />
+      <node id="7427066632718045033" at="45,39,46,79" concept="9" />
+      <node id="7427066632718046057" at="50,39,51,83" concept="9" />
+      <node id="7427066632718047243" at="55,39,56,79" concept="9" />
+      <node id="180369345748927584" at="58,7,59,130" concept="10" />
+      <node id="180369345748858064" at="59,130,60,340" concept="8" />
+      <node id="7427066632718056450" at="60,340,61,89" concept="2" />
+      <node id="7427066632718085142" at="63,35,64,100" concept="2" />
+      <node id="7427066632718486477" at="70,0,71,0" concept="12" trace="tags$LJD$" />
+      <node id="7427066632718486477" at="74,0,75,0" concept="12" trace="AuthorBlockDocTag$xE" />
+      <node id="7427066632718486477" at="75,0,76,0" concept="12" trace="SinceBlockDocTag$YE" />
+      <node id="7427066632718486477" at="76,0,77,0" concept="12" trace="VersionBlockDocTag$Ic" />
+      <node id="7427066632718486477" at="77,0,78,0" concept="12" trace="SeeBlockDocTag$tx" />
+      <node id="7427066632718486477" at="78,0,79,0" concept="12" trace="ParameterBlockDocTag$w1" />
+      <node id="7427066632718486477" at="79,0,80,0" concept="12" trace="ThrowsBlockDocTag$ph" />
+      <node id="7427066632718486477" at="80,0,81,0" concept="12" trace="DeprecatedBlockDocTag$ma" />
+      <node id="7427066632718486477" at="81,0,82,0" concept="12" trace="ReturnBlockDocTag$Ys" />
+      <node id="7427066632718041118" at="20,0,23,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718042700" at="25,0,28,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718043076" at="30,0,33,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718043614" at="35,0,38,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718044314" at="40,0,43,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718045031" at="45,0,48,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718046055" at="50,0,53,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718047241" at="55,0,58,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7427066632718084148" at="63,0,66,0" concept="7" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7427066632718041111" at="18,56,23,7" concept="8" />
+      <node id="7427066632718042691" at="23,7,28,7" concept="8" />
+      <node id="7427066632718043067" at="28,7,33,7" concept="8" />
+      <node id="7427066632718043605" at="33,7,38,7" concept="8" />
+      <node id="7427066632718044305" at="38,7,43,7" concept="8" />
+      <node id="7427066632718045022" at="43,7,48,7" concept="8" />
+      <node id="7427066632718046046" at="48,7,53,7" concept="8" />
+      <node id="7427066632718047232" at="53,7,58,7" concept="8" />
+      <node id="7427066632718076377" at="61,89,66,7" concept="2" />
+      <node id="7427066632718486524" at="18,0,68,0" concept="13" trace="organizeTags#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="7427066632718041119" at="20,39,21,79" />
+      <scope id="7427066632718042701" at="25,39,26,78" />
+      <scope id="7427066632718043077" at="30,39,31,80" />
+      <scope id="7427066632718043615" at="35,39,36,76" />
+      <scope id="7427066632718044315" at="40,39,41,82" />
+      <scope id="7427066632718045032" at="45,39,46,79" />
+      <scope id="7427066632718046056" at="50,39,51,83" />
+      <scope id="7427066632718047242" at="55,39,56,79" />
+      <scope id="7427066632718084149" at="63,35,64,100" />
+      <scope id="7427066632718041118" at="20,0,23,0">
         <var name="it" id="7427066632718041118" />
       </scope>
-      <scope id="7427066632718042700" at="24,0,27,0">
+      <scope id="7427066632718042700" at="25,0,28,0">
         <var name="it" id="7427066632718042700" />
       </scope>
-      <scope id="7427066632718043076" at="29,0,32,0">
+      <scope id="7427066632718043076" at="30,0,33,0">
         <var name="it" id="7427066632718043076" />
       </scope>
-      <scope id="7427066632718043614" at="34,0,37,0">
+      <scope id="7427066632718043614" at="35,0,38,0">
         <var name="it" id="7427066632718043614" />
       </scope>
-      <scope id="7427066632718044314" at="39,0,42,0">
+      <scope id="7427066632718044314" at="40,0,43,0">
         <var name="it" id="7427066632718044314" />
       </scope>
-      <scope id="7427066632718045031" at="44,0,47,0">
+      <scope id="7427066632718045031" at="45,0,48,0">
         <var name="it" id="7427066632718045031" />
       </scope>
-      <scope id="7427066632718046055" at="49,0,52,0">
+      <scope id="7427066632718046055" at="50,0,53,0">
         <var name="it" id="7427066632718046055" />
       </scope>
-      <scope id="7427066632718047241" at="54,0,57,0">
+      <scope id="7427066632718047241" at="55,0,58,0">
         <var name="it" id="7427066632718047241" />
       </scope>
-      <scope id="7427066632718084148" at="60,0,63,0">
+      <scope id="7427066632718084148" at="63,0,66,0">
         <var name="it" id="7427066632718084148" />
       </scope>
-      <scope id="7427066632718486527" at="17,56,63,7">
+      <scope id="7427066632718486527" at="18,56,66,7">
         <var name="author" id="7427066632718041112" />
         <var name="deprecated" id="7427066632718046047" />
         <var name="param" id="7427066632718044306" />
         <var name="returns" id="7427066632718047233" />
         <var name="see" id="7427066632718043606" />
         <var name="since" id="7427066632718042692" />
+        <var name="sortedTags" id="180369345748858065" />
         <var name="thr" id="7427066632718045023" />
         <var name="version" id="7427066632718043068" />
       </scope>
-      <scope id="7427066632718486524" at="17,0,65,0">
+      <scope id="7427066632718486524" at="18,0,68,0">
         <var name="comment" id="7427066632718488124" />
       </scope>
-      <unit id="7427066632718486477" at="66,0,69,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$LINKS" />
-      <unit id="7427066632718041118" at="18,116,22,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$1" />
-      <unit id="7427066632718042700" at="23,115,27,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$2" />
-      <unit id="7427066632718043076" at="28,117,32,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$3" />
-      <unit id="7427066632718043614" at="33,113,37,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$4" />
-      <unit id="7427066632718044314" at="38,115,42,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$5" />
-      <unit id="7427066632718045031" at="43,113,47,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$6" />
-      <unit id="7427066632718046055" at="48,120,52,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$7" />
-      <unit id="7427066632718047241" at="53,117,57,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$8" />
-      <unit id="7427066632718084148" at="59,311,63,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$9" />
-      <unit id="7427066632718486477" at="70,0,80,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$CONCEPTS" />
-      <unit id="7427066632718486477" at="16,0,81,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper" />
+      <unit id="7427066632718486477" at="69,0,72,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$LINKS" />
+      <unit id="7427066632718041118" at="19,116,23,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$1" />
+      <unit id="7427066632718042700" at="24,115,28,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$2" />
+      <unit id="7427066632718043076" at="29,117,33,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$3" />
+      <unit id="7427066632718043614" at="34,113,38,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$4" />
+      <unit id="7427066632718044314" at="39,115,43,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$5" />
+      <unit id="7427066632718045031" at="44,113,48,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$6" />
+      <unit id="7427066632718046055" at="49,120,53,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$7" />
+      <unit id="7427066632718047241" at="54,117,58,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$8" />
+      <unit id="7427066632718084148" at="62,51,66,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$9" />
+      <unit id="7427066632718486477" at="73,0,83,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper$CONCEPTS" />
+      <unit id="7427066632718486477" at="17,0,84,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTagHelper" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/7983358747940873985">
