@@ -144,13 +144,13 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az), LINKS.target$dU9a).getNodeId().toString();
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false), LINKS.modelToCreate$kInZ), "parametersFromExpressionsQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_0_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false), LINKS.nodeId$QEQA), "parametersFromExpressionsQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false), LINKS.modelToCreate$kInZ), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_2(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false), LINKS.nodeId$QEQA), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_3(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
