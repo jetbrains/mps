@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import org.apache.log4j.Level;
+import com.intellij.openapi.progress.ProcessCanceledException;
 import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
@@ -89,6 +90,9 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
           // FIXME report the exception in UI 
         }
       }
+    } catch (ProcessCanceledException ex) {
+      // Though this exception is not manifested, chances are ProgressManager.checkCanceled() call somewhere deep down the call stack may cause it, 
+      // just ignore the exception and stop annotating. 
     } finally {
       myLoading = false;
     }

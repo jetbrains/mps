@@ -248,6 +248,7 @@
     <classNode extendsClassName="com.intellij.openapi.ui.FrameWrapper" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.RootHistoryModel">
+    <classNode dependClassName="com.intellij.openapi.progress.ProcessCanceledException" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Integer" />
