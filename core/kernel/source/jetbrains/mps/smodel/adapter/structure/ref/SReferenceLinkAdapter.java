@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.LinkDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,6 +32,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SScope;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public abstract class SReferenceLinkAdapter implements SReferenceLink {
   public static final String ID_DELIM = ":";
@@ -104,6 +106,13 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
   public SScope getScope(SNode contextNode, @Nullable SContainmentLink link, int index) {
     Scope scope = ModelConstraints.getReferenceDescriptor(contextNode, link, index, this).getScope();
     return new SScopeAdapter(scope, contextNode);
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getSourceNode() {
+    ReferenceDescriptor rd = getReferenceDescriptor();
+    return rd == null ? null : rd.getSourceNode();
   }
 
   private static class SScopeAdapter implements SScope {
