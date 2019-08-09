@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 package jetbrains.mps.newTypesystem.state;
-
 
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
@@ -45,7 +44,6 @@ import jetbrains.mps.newTypesystem.state.blocks.ConditionKind;
 import jetbrains.mps.newTypesystem.state.blocks.InequalityBlock;
 import jetbrains.mps.newTypesystem.state.blocks.RelationKind;
 import jetbrains.mps.newTypesystem.state.blocks.WhenConcreteBlock;
-import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
@@ -59,7 +57,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 import java.lang.reflect.Array;
 import java.util.AbstractSet;
@@ -440,9 +437,9 @@ public class State {
   }
 
   public SNode createNewRuntimeTypesVariable() {
-    SNode typeVar = SModelUtil_new.instantiateConceptDeclaration(SNodeUtil.concept_RuntimeTypeVariable, null, null, false);
+    SNode typeVar = new jetbrains.mps.smodel.SNode(SNodeUtil.concept_RuntimeTypeVariable);
     //todo this code should be moved into MPS
-    SNodeAccessUtil.setProperty(typeVar, SNodeUtil.property_INamedConcept_name, myVariableIdentifier.getNewVarName());
+    typeVar.setProperty(SNodeUtil.property_INamedConcept_name, myVariableIdentifier.getNewVarName());
     return typeVar;
   }
 
