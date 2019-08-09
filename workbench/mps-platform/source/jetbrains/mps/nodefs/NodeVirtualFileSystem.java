@@ -20,6 +20,10 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.vfs.DeprecatedVirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.openapi.vfs.newvfs.BulkFileListener;
+import com.intellij.openapi.vfs.newvfs.events.VFileDeleteEvent;
+import com.intellij.openapi.vfs.newvfs.events.VFileMoveEvent;
+import com.intellij.openapi.vfs.newvfs.events.VFilePropertyChangeEvent;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -45,6 +49,7 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -58,6 +63,7 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   public static NodeVirtualFileSystem getInstance() {
     return (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   }
+
   public static final String PROTOCOL = "mps";
 
   /*
@@ -69,7 +75,7 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   @ToRemove(version = 3.4)
   private final RepositoryVirtualFiles myGlobalRepoFiles =
       new RepositoryVirtualFiles(this,
-                                 ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository());;
+                                 ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository());
 
   private final Object myRepoVFLock = new Object();
   // I don't expect this collection to grow significantly, hence just List
@@ -77,6 +83,7 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   private final Map<RepositoryVirtualFiles, MyRepositoryListener> myFiles2ListenerMap = new HashMap<>();
   private final SRepositoryContentAdapter myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
   private boolean myDisposed = false;
+  private final BulkFileListener myBulkFileListener = ApplicationManager.getApplication().getMessageBus().syncPublisher(VirtualFileManager.VFS_CHANGES);
 
   public NodeVirtualFileSystem() {
     new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach();
@@ -178,6 +185,24 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
     return null;
   }
 
+  @Override
+  protected void fireBeforeFileDeletion(Object requestor, @NotNull VirtualFile file) {
+    super.fireBeforeFileDeletion(requestor, file);
+    myBulkFileListener.before(Collections.singletonList(new VFileDeleteEvent(requestor, file, false)));
+  }
+
+  @Override
+  protected void firePropertyChanged(Object requestor, @NotNull VirtualFile file, @NotNull String propertyName, Object oldValue, Object newValue) {
+    super.firePropertyChanged(requestor, file, propertyName, oldValue, newValue);
+    myBulkFileListener.after(Collections.singletonList(new VFilePropertyChangeEvent(requestor, file, propertyName, oldValue, newValue, false)));
+  }
+
+  @Override
+  protected void fireFileMoved(Object requestor, @NotNull VirtualFile file, VirtualFile oldParent) {
+    super.fireFileMoved(requestor, file, oldParent);
+    myBulkFileListener.after(Collections.singletonList(new VFileMoveEvent(requestor, file, file.getParent())));
+  }
+
   private void updateModificationStamp(Collection<MPSNodeVirtualFile> files) {
     // identical timestamp for all roots touched simultaneously
     final long vfsStamp = LocalTimeCounter.currentTime();
@@ -195,8 +220,8 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
     /**
      * FIXME the only reason we don't use single listener instance (we can obtain proper SRepository from the change event's model/node)
      * FIXME is that our project repository implementation is not capable of event sending, all events come from global repository.
-     *       Thus, it would be impossible to find proper RepositoryVirtualFiles instance. Shall fix ProjectRepository and its base impl
-     *       to send events on its own.
+     * Thus, it would be impossible to find proper RepositoryVirtualFiles instance. Shall fix ProjectRepository and its base impl
+     * to send events on its own.
      */
     public MyRepositoryListener(RepositoryVirtualFiles repoFiles) {
       myRepoFiles = repoFiles;
