@@ -97,14 +97,16 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
 
   @Override
   public SModel resolve(SRepository repo) {
+    // NOTE, shall tolerate null repo unless every single piece of code that expects StaticReference of a newly created node
+    // hanging in the air to resolve. @see StaticReference#getTargetSModel
+    final SRepository repository;
+    if (repo == null) {
+      // see StaticReference, which seems to be the only place we pass null as repository
+      repository = MPSModuleRepository.getInstance();
+    } else {
+      repository = repo;
+    }
     if (myModuleReference != null) {
-      final SRepository repository;
-      if (repo == null) {
-        // see StaticReference, which seems to be the only place we pass null as repository
-        repository = MPSModuleRepository.getInstance();
-      } else {
-        repository = repo;
-      }
       Computable<SModel> c = () -> {
         SModule module = repository.getModule(myModuleReference.getModuleId());
         if (module == null) {
@@ -119,18 +121,8 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
         return c.compute();
       }
     }
-
-    // FIXME !!! use supplied SRepository, not global model repo !!!
-    // If there's no module reference, and model id is global, it's supposed we shall get the model from a global repository.
-    // However, at the moment, there's no easy way to get model from SRepository (other than to iterate over all modules and models,
-    // which doesn't sound like a good approach). Either shall provide method to find model from SRepository, or drop
-    // 'globally unique' model id altogether. What's the benefit of them?
-
-    // NOTE, shall tolerate null repo unless every single piece of code that expects StaticReference of a newly created node
-    // hanging in the air to resolve. @see StaticReference#getTargetSModel
-    if (SModelRepository.getInstance() != null) {
-      // could be null in tests
-      return SModelRepository.getInstance().getModelDescriptor(this);
+    if (myModelId.isGloballyUnique()) {
+      return repository.getModel(myModelId);
     }
     return null;
   }
