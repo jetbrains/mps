@@ -22,8 +22,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ReplaceIncludeWithCall extends MigrationScriptBase {
+  private final String description = "Replace $INCLUDE$ macro with $CALL$";
   public String getCaption() {
-    return "Replace $INCLUDE$ macro with $CALL$";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

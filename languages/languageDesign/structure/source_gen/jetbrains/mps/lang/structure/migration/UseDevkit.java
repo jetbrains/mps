@@ -16,8 +16,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
 public class UseDevkit extends MigrationScriptBase {
+  private final String description = "Employ dedicated devkit to specify used languages";
   public String getCaption() {
-    return "Employ dedicated devkit to specify used languages";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

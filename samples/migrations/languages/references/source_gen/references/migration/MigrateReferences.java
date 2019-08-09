@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class MigrateReferences extends MigrationScriptBase {
+  private final String description = "migrate the references using a TransformStatement";
   public String getCaption() {
-    return "migrate the references using a TransformStatement";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

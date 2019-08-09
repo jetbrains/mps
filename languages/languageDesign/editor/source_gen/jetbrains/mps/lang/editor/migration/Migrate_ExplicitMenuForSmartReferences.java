@@ -38,8 +38,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase {
+  private final String description = "Create explicit substitute menus for smart references";
   public String getCaption() {
-    return "Create explicit substitute menus for smart references";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -52,11 +53,11 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
     SNode data = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debaL, "jetbrains.mps.lang.editor.structure.SmartRefMigrationData"));
 
     {
-      SearchScope scope_b3phj_c0d = CommandUtil.createScope(m);
-      final SearchScope scope_b3phj_c0d_0 = new EditableFilteringScope(scope_b3phj_c0d);
+      SearchScope scope_b3phj_c0e = CommandUtil.createScope(m);
+      final SearchScope scope_b3phj_c0e_0 = new EditableFilteringScope(scope_b3phj_c0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_b3phj_c0d_0;
+          return scope_b3phj_c0e_0;
         }
       };
       SCAs = extractSCAs(m);

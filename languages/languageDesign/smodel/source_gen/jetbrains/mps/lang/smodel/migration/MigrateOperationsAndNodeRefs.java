@@ -39,8 +39,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateOperationsAndNodeRefs extends MigrationScriptBase {
+  private final String description = "Migrate smodel operations and node/name references";
   public String getCaption() {
-    return "Migrate smodel operations and node/name references";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -133,11 +134,11 @@ public class MigrateOperationsAndNodeRefs extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_3qm329_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_3qm329_a0e_0 = new EditableFilteringScope(scope_3qm329_a0e);
+      SearchScope scope_3qm329_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_3qm329_a0f_0 = new EditableFilteringScope(scope_3qm329_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_3qm329_a0e_0;
+          return scope_3qm329_a0f_0;
         }
       };
       List<SNode> deprecated = ListSequence.fromList(new ArrayList<SNode>());

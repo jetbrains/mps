@@ -31,8 +31,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
+  private final String description = "RemoveUsagesOfDeprecatedProperty";
   public String getCaption() {
-    return "RemoveUsagesOfDeprecatedProperty";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -44,11 +45,11 @@ public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_pu917e_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_pu917e_a0d_0 = new EditableFilteringScope(scope_pu917e_a0d);
+      SearchScope scope_pu917e_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_pu917e_a0e_0 = new EditableFilteringScope(scope_pu917e_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_pu917e_a0d_0;
+          return scope_pu917e_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).where(new IWhereFilter<SNode>() {
@@ -103,11 +104,11 @@ public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_pu917e_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_pu917e_a0e_0 = new EditableFilteringScope(scope_pu917e_a0e);
+      SearchScope scope_pu917e_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_pu917e_a0f_0 = new EditableFilteringScope(scope_pu917e_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_pu917e_a0e_0;
+          return scope_pu917e_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).where(new IWhereFilter<SNode>() {

@@ -28,8 +28,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ProperIdentityInLanguageRef extends MigrationScriptBase {
+  private final String description = "Update identity in language reference expressions";
   public String getCaption() {
-    return "Update identity in language reference expressions";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -41,11 +42,11 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_4t4wzo_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_4t4wzo_a0d_0 = new EditableFilteringScope(scope_4t4wzo_a0d);
+      SearchScope scope_4t4wzo_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_4t4wzo_a0e_0 = new EditableFilteringScope(scope_4t4wzo_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_4t4wzo_a0d_0;
+          return scope_4t4wzo_a0e_0;
         }
       };
       for (SNode lre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$Oe, false)).where(new IWhereFilter<SNode>() {
@@ -67,11 +68,11 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_4t4wzo_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_4t4wzo_a0e_0 = new EditableFilteringScope(scope_4t4wzo_a0e);
+      SearchScope scope_4t4wzo_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_4t4wzo_a0f_0 = new EditableFilteringScope(scope_4t4wzo_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_4t4wzo_a0e_0;
+          return scope_4t4wzo_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$Oe, false)).where(new IWhereFilter<SNode>() {

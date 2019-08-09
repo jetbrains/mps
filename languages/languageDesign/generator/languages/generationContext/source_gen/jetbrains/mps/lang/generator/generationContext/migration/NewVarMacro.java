@@ -27,8 +27,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NewVarMacro extends MigrationScriptBase {
+  private final String description = "Replace legacy $VAR$ macro with a contemporary counterpart";
   public String getCaption() {
-    return "Replace legacy $VAR$ macro with a contemporary counterpart";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

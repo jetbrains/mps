@@ -18,8 +18,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumPropertyPersistedById extends MigrationScriptBase {
+  private final String description = "Persist enum property values by literal id";
   public String getCaption() {
-    return "Persist enum property values by literal id";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -31,11 +32,11 @@ public class EnumPropertyPersistedById extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_ul5hh3_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_ul5hh3_a0d_0 = new EditableFilteringScope(scope_ul5hh3_a0d);
+      SearchScope scope_ul5hh3_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_ul5hh3_a0e_0 = new EditableFilteringScope(scope_ul5hh3_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_ul5hh3_a0d_0;
+          return scope_ul5hh3_a0e_0;
         }
       };
       for (SNode node : Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context)))) {

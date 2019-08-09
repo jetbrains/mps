@@ -31,8 +31,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class IntroduceSmartRefAttribute extends MigrationScriptBase {
+  private final String description = "Annotate 'smart reference' concepts";
   public String getCaption() {
-    return "Annotate 'smart reference' concepts";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -44,11 +45,11 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_nopsft_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_nopsft_a0d_0 = new EditableFilteringScope(scope_nopsft_a0d);
+      SearchScope scope_nopsft_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_nopsft_a0e_0 = new EditableFilteringScope(scope_nopsft_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_nopsft_a0d_0;
+          return scope_nopsft_a0e_0;
         }
       };
       Collection<SNode> conceptNodes = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false);

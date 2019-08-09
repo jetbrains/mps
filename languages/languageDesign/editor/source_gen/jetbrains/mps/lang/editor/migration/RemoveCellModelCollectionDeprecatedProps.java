@@ -18,8 +18,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBase {
+  private final String description = "Remove CellModel_Collection Deprecated Properties";
   public String getCaption() {
-    return "Remove CellModel_Collection Deprecated Properties";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -31,11 +32,11 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_rnfh72_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_rnfh72_a0d_0 = new EditableFilteringScope(scope_rnfh72_a0d);
+      SearchScope scope_rnfh72_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_rnfh72_a0e_0 = new EditableFilteringScope(scope_rnfh72_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_rnfh72_a0d_0;
+          return scope_rnfh72_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_Collection$CD, false)).visitAll(new IVisitor<SNode>() {

@@ -27,8 +27,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends MigrationScriptBase {
+  private final String description = "Migrate enumeration property usages and property pattern variables (typesystems)";
   public String getCaption() {
-    return "Migrate enumeration property usages and property pattern variables (typesystems)";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -40,11 +41,11 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_qggrhk_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_qggrhk_a0d_0 = new EditableFilteringScope(scope_qggrhk_a0d);
+      SearchScope scope_qggrhk_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_qggrhk_a0e_0 = new EditableFilteringScope(scope_qggrhk_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_qggrhk_a0d_0;
+          return scope_qggrhk_a0e_0;
         }
       };
       EnumUsagesMigration migration = new EnumUsagesMigration();
@@ -74,11 +75,11 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_qggrhk_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_qggrhk_a0e_0 = new EditableFilteringScope(scope_qggrhk_a0e);
+      SearchScope scope_qggrhk_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_qggrhk_a0f_0 = new EditableFilteringScope(scope_qggrhk_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_qggrhk_a0e_0;
+          return scope_qggrhk_a0f_0;
         }
       };
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());

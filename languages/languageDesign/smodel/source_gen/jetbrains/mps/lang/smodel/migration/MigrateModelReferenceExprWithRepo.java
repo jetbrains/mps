@@ -28,8 +28,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
+  private final String description = "Replace model-by-name access expression with model-by-reference counterpart";
   public String getCaption() {
-    return "Replace model-by-name access expression with model-by-reference counterpart";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -41,11 +42,11 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_lc3hzh_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_lc3hzh_a0d_0 = new EditableFilteringScope(scope_lc3hzh_a0d);
+      SearchScope scope_lc3hzh_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_lc3hzh_a0e_0 = new EditableFilteringScope(scope_lc3hzh_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_lc3hzh_a0d_0;
+          return scope_lc3hzh_a0e_0;
         }
       };
       final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(m.getRepository());

@@ -27,8 +27,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigratePropertyPatternVariables extends MigrationScriptBase {
+  private final String description = "Migrate property pattern variables";
   public String getCaption() {
-    return "Migrate property pattern variables";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -44,11 +45,11 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_mymgc3_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_mymgc3_a0e_0 = new EditableFilteringScope(scope_mymgc3_a0e);
+      SearchScope scope_mymgc3_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_mymgc3_a0f_0 = new EditableFilteringScope(scope_mymgc3_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_mymgc3_a0e_0;
+          return scope_mymgc3_a0f_0;
         }
       };
       List<Problem> res = ListSequence.fromList(new ArrayList<Problem>());

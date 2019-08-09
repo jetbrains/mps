@@ -36,8 +36,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class TransferCustomPackagingToLayout extends MigrationScriptBase {
   private static final Logger LOG = LogManager.getLogger(TransferCustomPackagingToLayout.class);
+  private final String description = "Removes custom packaging from the BuildMps_IdeaPluginContent and add the corresponding elements to the layout";
   public String getCaption() {
-    return "Removes custom packaging from the BuildMps_IdeaPluginContent and add the corresponding elements to the layout";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -49,11 +50,11 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_2skbva_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_2skbva_a0d_0 = new EditableFilteringScope(scope_2skbva_a0d);
+      SearchScope scope_2skbva_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_2skbva_a0e_0 = new EditableFilteringScope(scope_2skbva_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_2skbva_a0d_0;
+          return scope_2skbva_a0e_0;
         }
       };
       for (SNode ideaPlugin : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_IdeaPlugin$X0, false)) {

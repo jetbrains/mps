@@ -27,8 +27,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BaseToolDeclaration_number extends MigrationScriptBase {
+  private final String description = "BaseToolDeclaration_number";
   public String getCaption() {
-    return "BaseToolDeclaration_number";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -40,11 +41,11 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_p58wrf_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_p58wrf_a0d_0 = new EditableFilteringScope(scope_p58wrf_a0d);
+      SearchScope scope_p58wrf_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_p58wrf_a0e_0 = new EditableFilteringScope(scope_p58wrf_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_p58wrf_a0d_0;
+          return scope_p58wrf_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseToolDeclaration$fH, false)).where(new IWhereFilter<SNode>() {
@@ -62,11 +63,11 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_p58wrf_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_p58wrf_a0e_0 = new EditableFilteringScope(scope_p58wrf_a0e);
+      SearchScope scope_p58wrf_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_p58wrf_a0f_0 = new EditableFilteringScope(scope_p58wrf_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_p58wrf_a0e_0;
+          return scope_p58wrf_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseToolDeclaration$fH, false)).where(new IWhereFilter<SNode>() {

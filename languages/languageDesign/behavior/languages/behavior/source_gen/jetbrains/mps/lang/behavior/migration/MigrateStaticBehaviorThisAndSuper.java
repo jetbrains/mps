@@ -41,8 +41,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateStaticBehaviorThisAndSuper extends MigrationScriptBase {
+  private final String description = "Migrate 'this' and 'super' in static behavior methods";
   public String getCaption() {
-    return "Migrate 'this' and 'super' in static behavior methods";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -169,11 +170,11 @@ public class MigrateStaticBehaviorThisAndSuper extends MigrationScriptBase {
     }
 
     {
-      SearchScope scope_bb55mu_e0d = CommandUtil.createScope(m);
-      final SearchScope scope_bb55mu_e0d_0 = new EditableFilteringScope(scope_bb55mu_e0d);
+      SearchScope scope_bb55mu_e0e = CommandUtil.createScope(m);
+      final SearchScope scope_bb55mu_e0e_0 = new EditableFilteringScope(scope_bb55mu_e0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_bb55mu_e0d_0;
+          return scope_bb55mu_e0e_0;
         }
       };
       Sequence.fromIterable(getApplicableNodes(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ThisNodeExpression$BO, false))).visitAll(new IVisitor<SNode>() {
@@ -192,11 +193,11 @@ public class MigrateStaticBehaviorThisAndSuper extends MigrationScriptBase {
   public Iterable<Problem> check(SModule m) {
     List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
     {
-      SearchScope scope_bb55mu_b0e = CommandUtil.createScope(m);
-      final SearchScope scope_bb55mu_b0e_0 = new EditableFilteringScope(scope_bb55mu_b0e);
+      SearchScope scope_bb55mu_b0f = CommandUtil.createScope(m);
+      final SearchScope scope_bb55mu_b0f_0 = new EditableFilteringScope(scope_bb55mu_b0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_bb55mu_b0e_0;
+          return scope_bb55mu_b0f_0;
         }
       };
       ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ThisNodeExpression$BO, false)).where(new IWhereFilter<SNode>() {

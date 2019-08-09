@@ -26,8 +26,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrateDeclarations extends MigrationScriptBase {
+  private final String description = "migrate the declarations preserving ids";
   public String getCaption() {
-    return "migrate the declarations preserving ids";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

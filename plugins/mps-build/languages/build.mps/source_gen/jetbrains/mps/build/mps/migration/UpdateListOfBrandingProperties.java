@@ -19,8 +19,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class UpdateListOfBrandingProperties extends MigrationScriptBase {
+  private final String description = "Update list of branding properties: remove obsolete ones and migrate new required from existing";
   public String getCaption() {
-    return "Update list of branding properties: remove obsolete ones and migrate new required from existing";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -32,11 +33,11 @@ public class UpdateListOfBrandingProperties extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_2tnex2_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_2tnex2_a0d_0 = new EditableFilteringScope(scope_2tnex2_a0d);
+      SearchScope scope_2tnex2_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_2tnex2_a0e_0 = new EditableFilteringScope(scope_2tnex2_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_2tnex2_a0d_0;
+          return scope_2tnex2_a0e_0;
         }
       };
       for (SNode branding : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_Branding$lC, true)) {

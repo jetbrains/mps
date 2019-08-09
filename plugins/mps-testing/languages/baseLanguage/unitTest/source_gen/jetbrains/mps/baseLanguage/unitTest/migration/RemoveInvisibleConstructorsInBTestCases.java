@@ -20,8 +20,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RemoveInvisibleConstructorsInBTestCases extends MigrationScriptBase {
+  private final String description = "Remove Invisible Constructors in BTestCases";
   public String getCaption() {
-    return "Remove Invisible Constructors in BTestCases";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -33,11 +34,11 @@ public class RemoveInvisibleConstructorsInBTestCases extends MigrationScriptBase
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_zcz6pn_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_zcz6pn_a0d_0 = new EditableFilteringScope(scope_zcz6pn_a0d);
+      SearchScope scope_zcz6pn_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_zcz6pn_a0e_0 = new EditableFilteringScope(scope_zcz6pn_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_zcz6pn_a0d_0;
+          return scope_zcz6pn_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BTestCase$o9, false)).translate(new ITranslator2<SNode, SNode>() {

@@ -24,8 +24,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RemoveOddAnnotations extends MigrationScriptBase {
+  private final String description = "Remove @dslclass annotations from instances of AutoInitDSLClass";
   public String getCaption() {
-    return "Remove @dslclass annotations from instances of AutoInitDSLClass";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -37,11 +38,11 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_gqzzto_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_gqzzto_a0d_0 = new EditableFilteringScope(scope_gqzzto_a0d);
+      SearchScope scope_gqzzto_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_gqzzto_a0e_0 = new EditableFilteringScope(scope_gqzzto_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_gqzzto_a0d_0;
+          return scope_gqzzto_a0e_0;
         }
       };
       Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$sF, false), CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
@@ -58,11 +59,11 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_gqzzto_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_gqzzto_a0e_0 = new EditableFilteringScope(scope_gqzzto_a0e);
+      SearchScope scope_gqzzto_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_gqzzto_a0f_0 = new EditableFilteringScope(scope_gqzzto_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_gqzzto_a0e_0;
+          return scope_gqzzto_a0f_0;
         }
       };
       return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$sF, false), CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {

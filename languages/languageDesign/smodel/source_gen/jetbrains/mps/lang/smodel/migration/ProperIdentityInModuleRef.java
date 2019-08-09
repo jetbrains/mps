@@ -24,8 +24,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ProperIdentityInModuleRef extends MigrationScriptBase {
+  private final String description = "Update identity in module-reference// expression";
   public String getCaption() {
-    return "Update identity in module-reference// expression";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -37,11 +38,11 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_g2wvru_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_g2wvru_a0d_0 = new EditableFilteringScope(scope_g2wvru_a0d);
+      SearchScope scope_g2wvru_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_g2wvru_a0e_0 = new EditableFilteringScope(scope_g2wvru_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_g2wvru_a0d_0;
+          return scope_g2wvru_a0e_0;
         }
       };
       for (SNode mre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModuleRefExpression$Hw, false)).where(new IWhereFilter<SNode>() {

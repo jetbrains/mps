@@ -26,8 +26,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ModuleResources extends MigrationScriptBase {
+  private final String description = "Add explicit specification of module resources to copy.";
   public String getCaption() {
-    return "Add explicit specification of module resources to copy.";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -45,11 +46,11 @@ public class ModuleResources extends MigrationScriptBase {
     SNode includes = SLinkOperations.addNewChild(fs, LINKS.selectors$6oar, CONCEPTS.BuildFileIncludesSelector$LC);
     SPropertyOperations.assign(includes, PROPS.pattern$Odcv, "icons/**, resources/**");
     {
-      SearchScope scope_tzykqk_g0d = CommandUtil.createScope(m);
-      final SearchScope scope_tzykqk_g0d_0 = new EditableFilteringScope(scope_tzykqk_g0d);
+      SearchScope scope_tzykqk_g0e = CommandUtil.createScope(m);
+      final SearchScope scope_tzykqk_g0e_0 = new EditableFilteringScope(scope_tzykqk_g0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_tzykqk_g0d_0;
+          return scope_tzykqk_g0e_0;
         }
       };
       // path.isNotNull check is a tribute to IF condition in template. In fact, it's likely just to filter out _Generator module, as others always have path 

@@ -24,8 +24,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class Removing_IDontSubstituteByDefault extends MigrationScriptBase {
+  private final String description = "Removing IDontSubstituteByDefault from Concept Implemented Interfaces";
   public String getCaption() {
-    return "Removing IDontSubstituteByDefault from Concept Implemented Interfaces";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -37,11 +38,11 @@ public class Removing_IDontSubstituteByDefault extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_c264be_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_c264be_a0d_0 = new EditableFilteringScope(scope_c264be_a0d);
+      SearchScope scope_c264be_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_c264be_a0e_0 = new EditableFilteringScope(scope_c264be_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_c264be_a0d_0;
+          return scope_c264be_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false)).visitAll(new IVisitor<SNode>() {

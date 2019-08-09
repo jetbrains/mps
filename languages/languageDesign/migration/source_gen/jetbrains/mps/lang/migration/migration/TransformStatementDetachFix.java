@@ -32,8 +32,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TransformStatementDetachFix extends MigrationScriptBase {
+  private final String description = "Searchs transform statements that might be affected by semantics change";
   public String getCaption() {
-    return "Searchs transform statements that might be affected by semantics change";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -99,11 +100,11 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
   public List<SNode> findAffectedVariables(SModule m) {
     List<SNode> affectedUsages = ListSequence.fromList(new ArrayList<SNode>());
     {
-      SearchScope scope_xvsotb_b0n = CommandUtil.createScope(m);
-      final SearchScope scope_xvsotb_b0n_0 = new EditableFilteringScope(scope_xvsotb_b0n);
+      SearchScope scope_xvsotb_b0o = CommandUtil.createScope(m);
+      final SearchScope scope_xvsotb_b0o_0 = new EditableFilteringScope(scope_xvsotb_b0o);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_xvsotb_b0n_0;
+          return scope_xvsotb_b0o_0;
         }
       };
       ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePatternVariableReference$U8, false)).where(new IWhereFilter<SNode>() {
@@ -123,11 +124,11 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
   public List<SNode> findAffectedAntiquotations(SModule m) {
     List<SNode> affectedUsages = ListSequence.fromList(new ArrayList<SNode>());
     {
-      SearchScope scope_xvsotb_b0p = CommandUtil.createScope(m);
-      final SearchScope scope_xvsotb_b0p_0 = new EditableFilteringScope(scope_xvsotb_b0p);
+      SearchScope scope_xvsotb_b0q = CommandUtil.createScope(m);
+      final SearchScope scope_xvsotb_b0q_0 = new EditableFilteringScope(scope_xvsotb_b0q);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_xvsotb_b0p_0;
+          return scope_xvsotb_b0q_0;
         }
       };
       ListSequence.fromList(affectedUsages).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.QuotationConsequence$w, false)).translate(new ITranslator2<SNode, SNode>() {

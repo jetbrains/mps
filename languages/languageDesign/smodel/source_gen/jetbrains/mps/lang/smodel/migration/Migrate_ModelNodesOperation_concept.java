@@ -42,8 +42,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class Migrate_ModelNodesOperation_concept extends MigrationScriptBase {
+  private final String description = "Migrate_ModelNodesOperation_concept";
   public String getCaption() {
-    return "Migrate_ModelNodesOperation_concept";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -116,11 +117,11 @@ public class Migrate_ModelNodesOperation_concept extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_vs95qi_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_vs95qi_a0e_0 = new EditableFilteringScope(scope_vs95qi_a0e);
+      SearchScope scope_vs95qi_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_vs95qi_a0f_0 = new EditableFilteringScope(scope_vs95qi_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_vs95qi_a0e_0;
+          return scope_vs95qi_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Model_NodesOperation$ae, false)).where(new IWhereFilter<SNode>() {

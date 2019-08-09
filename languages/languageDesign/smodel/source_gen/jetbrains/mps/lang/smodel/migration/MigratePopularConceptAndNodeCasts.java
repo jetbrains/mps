@@ -45,8 +45,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
+  private final String description = "Migrate popular concept<->node conversions";
   public String getCaption() {
-    return "Migrate popular concept<->node conversions";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -1021,11 +1022,11 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
   public Iterable<Problem> check(SModule m) {
     List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
     {
-      SearchScope scope_qvpvui_b0e = CommandUtil.createScope(m);
-      final SearchScope scope_qvpvui_b0e_0 = new EditableFilteringScope(scope_qvpvui_b0e);
+      SearchScope scope_qvpvui_b0f = CommandUtil.createScope(m);
+      final SearchScope scope_qvpvui_b0f_0 = new EditableFilteringScope(scope_qvpvui_b0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_qvpvui_b0e_0;
+          return scope_qvpvui_b0f_0;
         }
       };
       ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AsNodeOperation$SU, false)).select(new ISelector<SNode, Problem>() {

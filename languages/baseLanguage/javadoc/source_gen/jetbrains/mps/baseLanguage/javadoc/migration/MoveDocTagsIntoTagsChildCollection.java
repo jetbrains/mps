@@ -29,8 +29,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
+  private final String description = "MoveDocTagsIntoTagsChildCollection";
   public String getCaption() {
-    return "MoveDocTagsIntoTagsChildCollection";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -82,11 +83,11 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_i7tkk0_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_i7tkk0_a0e_0 = new EditableFilteringScope(scope_i7tkk0_a0e);
+      SearchScope scope_i7tkk0_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_i7tkk0_a0f_0 = new EditableFilteringScope(scope_i7tkk0_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_i7tkk0_a0e_0;
+          return scope_i7tkk0_a0f_0;
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());

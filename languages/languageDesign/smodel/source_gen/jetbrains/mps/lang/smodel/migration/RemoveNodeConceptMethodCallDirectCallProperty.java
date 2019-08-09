@@ -18,8 +18,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class RemoveNodeConceptMethodCallDirectCallProperty extends MigrationScriptBase {
+  private final String description = "Remove Node_ConceptMethodCall.directCall Property";
   public String getCaption() {
-    return "Remove Node_ConceptMethodCall.directCall Property";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -31,11 +32,11 @@ public class RemoveNodeConceptMethodCallDirectCallProperty extends MigrationScri
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_l3gfem_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_l3gfem_a0d_0 = new EditableFilteringScope(scope_l3gfem_a0d);
+      SearchScope scope_l3gfem_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_l3gfem_a0e_0 = new EditableFilteringScope(scope_l3gfem_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_l3gfem_a0d_0;
+          return scope_l3gfem_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Node_ConceptMethodCall$l3, false)).visitAll(new IVisitor<SNode>() {

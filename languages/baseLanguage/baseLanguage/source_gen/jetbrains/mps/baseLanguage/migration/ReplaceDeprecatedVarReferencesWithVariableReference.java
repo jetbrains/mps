@@ -27,8 +27,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ReplaceDeprecatedVarReferencesWithVariableReference extends MigrationScriptBase {
+  private final String description = "Migrates LocalInstanceFieldReferences, LocalStaticFieldReferences, LocalVariableReferences and ParameterReferences to VariableReferences";
   public String getCaption() {
-    return "Migrates LocalInstanceFieldReferences, LocalStaticFieldReferences, LocalVariableReferences and ParameterReferences to VariableReferences";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

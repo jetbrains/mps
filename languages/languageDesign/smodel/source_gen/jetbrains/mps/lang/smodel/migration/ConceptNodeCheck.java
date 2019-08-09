@@ -20,8 +20,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptNodeCheck extends MigrationScriptBase {
+  private final String description = "Check ";
   public String getCaption() {
-    return "Check ";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class ConceptNodeCheck extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_pppjdr_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_pppjdr_a0e_0 = new EditableFilteringScope(scope_pppjdr_a0e);
+      SearchScope scope_pppjdr_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_pppjdr_a0f_0 = new EditableFilteringScope(scope_pppjdr_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_pppjdr_a0e_0;
+          return scope_pppjdr_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SNodeTypeCastExpression$Sg, false)).where(new IWhereFilter<SNode>() {

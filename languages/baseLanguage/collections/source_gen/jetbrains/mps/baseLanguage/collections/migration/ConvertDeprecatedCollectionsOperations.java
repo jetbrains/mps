@@ -21,8 +21,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase {
+  private final String description = "Convert Deprecated Collections Operations";
   public String getCaption() {
-    return "Convert Deprecated Collections Operations";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -34,11 +35,11 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_oas78t_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_oas78t_a0d_0 = new EditableFilteringScope(scope_oas78t_a0d);
+      SearchScope scope_oas78t_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_oas78t_a0e_0 = new EditableFilteringScope(scope_oas78t_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_oas78t_a0d_0;
+          return scope_oas78t_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddSetElementOperation$R, false)).visitAll(new IVisitor<SNode>() {

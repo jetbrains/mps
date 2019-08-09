@@ -30,8 +30,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class CopyIconsToResources extends MigrationScriptBase {
+  private final String description = "Copy Concept Icons to Resources";
   public String getCaption() {
-    return "Copy Concept Icons to Resources";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -43,11 +44,11 @@ public class CopyIconsToResources extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_n70cuq_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_n70cuq_a0d_0 = new EditableFilteringScope(scope_n70cuq_a0d);
+      SearchScope scope_n70cuq_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_n70cuq_a0e_0 = new EditableFilteringScope(scope_n70cuq_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_n70cuq_a0d_0;
+          return scope_n70cuq_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false)).where(new IWhereFilter<SNode>() {
@@ -78,11 +79,11 @@ public class CopyIconsToResources extends MigrationScriptBase {
   public Iterable<Problem> check(SModule m) {
     Iterable<Problem> result;
     {
-      SearchScope scope_n70cuq_b0e = CommandUtil.createScope(m);
-      final SearchScope scope_n70cuq_b0e_0 = new EditableFilteringScope(scope_n70cuq_b0e);
+      SearchScope scope_n70cuq_b0f = CommandUtil.createScope(m);
+      final SearchScope scope_n70cuq_b0f_0 = new EditableFilteringScope(scope_n70cuq_b0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_n70cuq_b0e_0;
+          return scope_n70cuq_b0f_0;
         }
       };
       result = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false)).where(new IWhereFilter<SNode>() {

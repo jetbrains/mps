@@ -37,8 +37,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrateScopes extends MigrationScriptBase {
+  private final String description = "Migrate Query Scopes";
   public String getCaption() {
-    return "Migrate Query Scopes";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

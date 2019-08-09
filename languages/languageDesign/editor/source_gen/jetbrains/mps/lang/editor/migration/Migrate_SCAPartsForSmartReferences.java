@@ -33,8 +33,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
+  private final String description = "Migrate 'simple concept action' menu parts for smart references";
   public String getCaption() {
-    return "Migrate 'simple concept action' menu parts for smart references";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -47,11 +48,11 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
   public void doExecute(final SModule m) {
     final Map<SModule, SNode> data = getDataCollector().collectData(m, new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 8));
     {
-      SearchScope scope_6mkphx_b0d = CommandUtil.createScope(m);
-      final SearchScope scope_6mkphx_b0d_0 = new EditableFilteringScope(scope_6mkphx_b0d);
+      SearchScope scope_6mkphx_b0e = CommandUtil.createScope(m);
+      final SearchScope scope_6mkphx_b0e_0 = new EditableFilteringScope(scope_6mkphx_b0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_6mkphx_b0d_0;
+          return scope_6mkphx_b0e_0;
         }
       };
       Collection<SNode> SCAs = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SubstituteMenuPart_AddConcept$UH, false);
@@ -64,7 +65,7 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
           SNode charactersticReference = SLinkOperations.getTarget(smartRefAttr, LINKS.charactersticReference$hNpW);
           SNode template = SLinkOperations.getTarget(smartRefAttr, LINKS.refPresentationTemplate$RgQc);
 
-          SNode entity = ListSequence.fromList(SLinkOperations.getChildren(MapSequence.fromMap(data).get(check_6mkphx_a0a0a0d0d0c0b0d(SNodeOperations.getModel(SLinkOperations.getTarget(sca, LINKS.concept$UyDc)))), LINKS.entities$fdG0)).where(new IWhereFilter<SNode>() {
+          SNode entity = ListSequence.fromList(SLinkOperations.getChildren(MapSequence.fromMap(data).get(check_6mkphx_a0a0a0d0d0c0b0e(SNodeOperations.getModel(SLinkOperations.getTarget(sca, LINKS.concept$UyDc)))), LINKS.entities$fdG0)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptNode$fdeu), conceptNode);
             }
@@ -90,7 +91,7 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
 
 
 
-  private static SModule check_6mkphx_a0a0a0d0d0c0b0d(SModel checkedDotOperand) {
+  private static SModule check_6mkphx_a0a0a0d0d0c0b0e(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
     }

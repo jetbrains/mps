@@ -18,8 +18,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class WeaveEachConsequence extends MigrationScriptBase {
+  private final String description = "Support template with arguments in weave-each";
   public String getCaption() {
-    return "Support template with arguments in weave-each";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

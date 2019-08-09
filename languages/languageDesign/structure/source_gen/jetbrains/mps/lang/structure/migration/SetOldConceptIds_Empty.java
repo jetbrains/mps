@@ -9,8 +9,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SetOldConceptIds_Empty extends MigrationScriptBase {
+  private final String description = "Set Old Concept Ids (empty)";
   public String getCaption() {
-    return "Set Old Concept Ids (empty)";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

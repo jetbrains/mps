@@ -45,8 +45,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class migrateExtension extends MigrationScriptBase {
+  private final String description = "migrate extensions to classLike";
   public String getCaption() {
-    return "migrate extensions to classLike";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -308,11 +309,11 @@ public class migrateExtension extends MigrationScriptBase {
   public Iterable<Problem> check(SModule m) {
     List<SNode> notMigrated = ListSequence.fromList(new ArrayList<SNode>());
     {
-      SearchScope scope_2kk9yi_b0e = CommandUtil.createScope(m);
-      final SearchScope scope_2kk9yi_b0e_0 = new EditableFilteringScope(scope_2kk9yi_b0e);
+      SearchScope scope_2kk9yi_b0f = CommandUtil.createScope(m);
+      final SearchScope scope_2kk9yi_b0f_0 = new EditableFilteringScope(scope_2kk9yi_b0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_2kk9yi_b0e_0;
+          return scope_2kk9yi_b0f_0;
         }
       };
       ListSequence.fromList(notMigrated).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ExtensionDeclaration$9r, false)).where(new IWhereFilter<SNode>() {

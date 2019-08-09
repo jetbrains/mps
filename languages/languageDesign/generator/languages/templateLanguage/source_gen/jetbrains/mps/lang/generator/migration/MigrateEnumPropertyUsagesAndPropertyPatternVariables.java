@@ -28,8 +28,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends MigrationScriptBase {
+  private final String description = "Migrate enumeration property usages and property pattern variables (generator)";
   public String getCaption() {
-    return "Migrate enumeration property usages and property pattern variables (generator)";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -41,11 +42,11 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_sag2ow_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_sag2ow_a0d_0 = new EditableFilteringScope(scope_sag2ow_a0d);
+      SearchScope scope_sag2ow_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_sag2ow_a0e_0 = new EditableFilteringScope(scope_sag2ow_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_sag2ow_a0d_0;
+          return scope_sag2ow_a0e_0;
         }
       };
       EnumExpressionsMigration migration = new EnumExpressionsMigration();
@@ -81,11 +82,11 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_sag2ow_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_sag2ow_a0e_0 = new EditableFilteringScope(scope_sag2ow_a0e);
+      SearchScope scope_sag2ow_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_sag2ow_a0f_0 = new EditableFilteringScope(scope_sag2ow_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_sag2ow_a0e_0;
+          return scope_sag2ow_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMacro$wt, false)).where(new IWhereFilter<SNode>() {

@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class Migrate_ReplaceChild_Params extends MigrationScriptBase {
+  private final String description = "Migrate_ReplaceChild_Params";
   public String getCaption() {
-    return "Migrate_ReplaceChild_Params";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class Migrate_ReplaceChild_Params extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_s09h5g_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_s09h5g_a0d_0 = new EditableFilteringScope(scope_s09h5g_a0d);
+      SearchScope scope_s09h5g_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_s09h5g_a0e_0 = new EditableFilteringScope(scope_s09h5g_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_s09h5g_a0d_0;
+          return scope_s09h5g_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$jv, false)).visitAll(new IVisitor<SNode>() {

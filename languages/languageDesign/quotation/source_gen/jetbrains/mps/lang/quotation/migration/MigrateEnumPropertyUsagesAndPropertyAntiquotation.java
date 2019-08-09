@@ -31,8 +31,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends MigrationScriptBase {
+  private final String description = "Migrate enum property usages and property antiquotation (quotations)";
   public String getCaption() {
-    return "Migrate enum property usages and property antiquotation (quotations)";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -45,11 +46,11 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
   public void doExecute(final SModule m) {
     EnumExpressionsMigration migration = new EnumExpressionsMigration();
     {
-      SearchScope scope_pk3j60_b0d = CommandUtil.createScope(m);
-      final SearchScope scope_pk3j60_b0d_0 = new EditableFilteringScope(scope_pk3j60_b0d);
+      SearchScope scope_pk3j60_b0e = CommandUtil.createScope(m);
+      final SearchScope scope_pk3j60_b0e_0 = new EditableFilteringScope(scope_pk3j60_b0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_pk3j60_b0d_0;
+          return scope_pk3j60_b0e_0;
         }
       };
       for (SNode propertyInit : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$wV, false))) {
@@ -77,11 +78,11 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_pk3j60_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_pk3j60_a0e_0 = new EditableFilteringScope(scope_pk3j60_a0e);
+      SearchScope scope_pk3j60_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_pk3j60_a0f_0 = new EditableFilteringScope(scope_pk3j60_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_pk3j60_a0e_0;
+          return scope_pk3j60_a0f_0;
         }
       };
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());

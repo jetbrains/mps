@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
+  private final String description = "Inline 'reference presentation' functions to cells";
   public String getCaption() {
-    return "Inline 'reference presentation' functions to cells";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_5nvoa5_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_5nvoa5_a0d_0 = new EditableFilteringScope(scope_5nvoa5_a0d);
+      SearchScope scope_5nvoa5_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_5nvoa5_a0e_0 = new EditableFilteringScope(scope_5nvoa5_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_5nvoa5_a0d_0;
+          return scope_5nvoa5_a0e_0;
         }
       };
       Iterable<SNode> refCells = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_RefCell$VD, false);

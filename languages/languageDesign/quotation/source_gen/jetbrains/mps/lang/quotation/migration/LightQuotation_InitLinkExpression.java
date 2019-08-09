@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class LightQuotation_InitLinkExpression extends MigrationScriptBase {
+  private final String description = "Link initializers in light quotations";
   public String getCaption() {
-    return "Link initializers in light quotations";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class LightQuotation_InitLinkExpression extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_ppg5g5_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_ppg5g5_a0d_0 = new EditableFilteringScope(scope_ppg5g5_a0d);
+      SearchScope scope_ppg5g5_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_ppg5g5_a0e_0 = new EditableFilteringScope(scope_ppg5g5_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_ppg5g5_a0d_0;
+          return scope_ppg5g5_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitLink$Xj, false)).where(new IWhereFilter<SNode>() {
@@ -66,11 +67,11 @@ public class LightQuotation_InitLinkExpression extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_ppg5g5_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_ppg5g5_a0e_0 = scope_ppg5g5_a0e;
+      SearchScope scope_ppg5g5_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_ppg5g5_a0f_0 = scope_ppg5g5_a0f;
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_ppg5g5_a0e_0;
+          return scope_ppg5g5_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitPart$YX, false)).where(new IWhereFilter<SNode>() {

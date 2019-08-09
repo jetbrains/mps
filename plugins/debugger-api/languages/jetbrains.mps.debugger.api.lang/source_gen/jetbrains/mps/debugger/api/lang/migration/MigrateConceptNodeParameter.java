@@ -27,8 +27,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateConceptNodeParameter extends MigrationScriptBase {
+  private final String description = "MigrateConceptNodeParameter";
   public String getCaption() {
-    return "MigrateConceptNodeParameter";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -61,11 +62,11 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
   private Iterable<SNode> getNodesToMigrate(SModule m) {
     Iterable<SNode> nodes;
     {
-      SearchScope scope_q4h85_b0i = CommandUtil.createScope(m);
-      final SearchScope scope_q4h85_b0i_0 = new EditableFilteringScope(scope_q4h85_b0i);
+      SearchScope scope_q4h85_b0j = CommandUtil.createScope(m);
+      final SearchScope scope_q4h85_b0j_0 = new EditableFilteringScope(scope_q4h85_b0j);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_q4h85_b0i_0;
+          return scope_q4h85_b0j_0;
         }
       };
       nodes = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptFunctionParameter_Concept$zb, false)).where(new IWhereFilter<SNode>() {

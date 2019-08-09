@@ -26,8 +26,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateEnumPropertyUsages extends MigrationScriptBase {
+  private final String description = "Migrate enumeration property usages (constraints)";
   public String getCaption() {
-    return "Migrate enumeration property usages (constraints)";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -40,11 +41,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   public void doExecute(final SModule m) {
     EnumExpressionsMigration migration = new EnumExpressionsMigration();
     {
-      SearchScope scope_32rjqx_b0d = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_b0d_0 = new EditableFilteringScope(scope_32rjqx_b0d);
+      SearchScope scope_32rjqx_b0e = CommandUtil.createScope(m);
+      final SearchScope scope_32rjqx_b0e_0 = new EditableFilteringScope(scope_32rjqx_b0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_b0d_0;
+          return scope_32rjqx_b0e_0;
         }
       };
       for (SNode propertyConstraint : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePropertyConstraint$pW, false))) {
@@ -64,11 +65,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_32rjqx_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0e_0 = new EditableFilteringScope(scope_32rjqx_a0e);
+      SearchScope scope_32rjqx_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_32rjqx_a0f_0 = new EditableFilteringScope(scope_32rjqx_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0e_0;
+          return scope_32rjqx_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePropertyConstraint$pW, false)).where(new IWhereFilter<SNode>() {

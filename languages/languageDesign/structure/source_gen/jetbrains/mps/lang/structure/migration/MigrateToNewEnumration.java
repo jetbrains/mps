@@ -53,8 +53,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class MigrateToNewEnumration extends MigrationScriptBase {
+  private final String description = "Update enumerations";
   public String getCaption() {
-    return "Update enumerations";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -65,7 +66,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    Language language = as_3t318f_a0a0a3(m, Language.class);
+    Language language = as_3t318f_a0a0a4(m, Language.class);
     if (language == null) {
       return;
     }
@@ -105,11 +106,11 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_3t318f_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_3t318f_a0e_0 = new EditableFilteringScope(scope_3t318f_a0e);
+      SearchScope scope_3t318f_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_3t318f_a0f_0 = new EditableFilteringScope(scope_3t318f_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_3t318f_a0e_0;
+          return scope_3t318f_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll, false)).where(new IWhereFilter<SNode>() {
@@ -359,7 +360,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   }
 
   private static boolean isValidIdentifier(String name) {
-    return (name != null && name.length() > 0) && (REGEXP_3t318f_a0a0a0a82.matcher(name).matches());
+    return (name != null && name.length() > 0) && (REGEXP_3t318f_a0a0a0a92.matcher(name).matches());
   }
 
   private interface NamingStrategy {
@@ -677,13 +678,13 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     quotedNode_17.setReferenceTarget(LINKS.variableDeclaration$2ky6, quotedNode_8);
     return quotedNode_7;
   }
-  private static <T> T as_3t318f_a0a0a3(Object o, Class<T> type) {
+  private static <T> T as_3t318f_a0a0a4(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
-  private static final Pattern REGEXP_3t318f_a0a0a0a82 = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
+  private static final Pattern REGEXP_3t318f_a0a0a0a92 = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 
   private static final class PROPS {
     /*package*/ static final SProperty datatypeId$Bvg3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");

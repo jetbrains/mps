@@ -35,8 +35,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateEnumPropertyAccess extends MigrationScriptBase {
+  private final String description = "Migrate enumeration property usages (smodel expressions)";
   public String getCaption() {
-    return "Migrate enumeration property usages (smodel expressions)";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -54,11 +55,11 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_xqhmgi_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_xqhmgi_a0e_0 = new EditableFilteringScope(scope_xqhmgi_a0e);
+      SearchScope scope_xqhmgi_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_xqhmgi_a0f_0 = new EditableFilteringScope(scope_xqhmgi_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_xqhmgi_a0e_0;
+          return scope_xqhmgi_a0f_0;
         }
       };
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
@@ -130,11 +131,11 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
 
   private void migrate(SModule m, EnumExpressionsMigration migration) {
     {
-      SearchScope scope_xqhmgi_a0k = CommandUtil.createScope(m);
-      final SearchScope scope_xqhmgi_a0k_0 = new EditableFilteringScope(scope_xqhmgi_a0k);
+      SearchScope scope_xqhmgi_a0l = CommandUtil.createScope(m);
+      final SearchScope scope_xqhmgi_a0l_0 = new EditableFilteringScope(scope_xqhmgi_a0l);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_xqhmgi_a0k_0;
+          return scope_xqhmgi_a0l_0;
         }
       };
 

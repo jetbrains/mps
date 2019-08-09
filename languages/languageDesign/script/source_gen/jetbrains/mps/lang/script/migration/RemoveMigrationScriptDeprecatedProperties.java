@@ -18,8 +18,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class RemoveMigrationScriptDeprecatedProperties extends MigrationScriptBase {
+  private final String description = "Remove MigrationScript Deprecated Properties";
   public String getCaption() {
-    return "Remove MigrationScript Deprecated Properties";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -31,11 +32,11 @@ public class RemoveMigrationScriptDeprecatedProperties extends MigrationScriptBa
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_z5cx65_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_z5cx65_a0d_0 = new EditableFilteringScope(scope_z5cx65_a0d);
+      SearchScope scope_z5cx65_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_z5cx65_a0e_0 = new EditableFilteringScope(scope_z5cx65_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_z5cx65_a0d_0;
+          return scope_z5cx65_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationScript$c5, false)).visitAll(new IVisitor<SNode>() {

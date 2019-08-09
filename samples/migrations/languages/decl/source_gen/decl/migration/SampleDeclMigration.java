@@ -37,8 +37,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class SampleDeclMigration extends MigrationScriptBase {
+  private final String description = "migrate the declarations using smodel API";
   public String getCaption() {
-    return "migrate the declarations using smodel API";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -57,11 +58,11 @@ public class SampleDeclMigration extends MigrationScriptBase {
     });
 
     {
-      SearchScope scope_i4ro0d_d0d = CommandUtil.createScope(searchScope);
-      final SearchScope scope_i4ro0d_d0d_0 = new EditableFilteringScope(scope_i4ro0d_d0d);
+      SearchScope scope_i4ro0d_d0e = CommandUtil.createScope(searchScope);
+      final SearchScope scope_i4ro0d_d0e_0 = new EditableFilteringScope(scope_i4ro0d_d0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_d0d_0;
+          return scope_i4ro0d_d0e_0;
         }
       };
 
@@ -92,11 +93,11 @@ public class SampleDeclMigration extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_i4ro0d_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_i4ro0d_a0e_0 = new EditableFilteringScope(scope_i4ro0d_a0e);
+      SearchScope scope_i4ro0d_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_i4ro0d_a0f_0 = new EditableFilteringScope(scope_i4ro0d_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_a0e_0;
+          return scope_i4ro0d_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$sl, false)).select(new ISelector<SNode, NotMigratedNode>() {

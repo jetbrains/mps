@@ -36,8 +36,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class UpdateDeprecatedBlockDocTags extends MigrationScriptBase {
+  private final String description = "Add CommentLine child to DeprecatedBlockDocTags";
   public String getCaption() {
-    return "Add CommentLine child to DeprecatedBlockDocTags";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -90,11 +91,11 @@ public class UpdateDeprecatedBlockDocTags extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_fgay1s_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_fgay1s_a0e_0 = new EditableFilteringScope(scope_fgay1s_a0e);
+      SearchScope scope_fgay1s_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_fgay1s_a0f_0 = new EditableFilteringScope(scope_fgay1s_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_fgay1s_a0e_0;
+          return scope_fgay1s_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.DeprecatedBlockDocTag$ma, false)).where(new IWhereFilter<SNode>() {

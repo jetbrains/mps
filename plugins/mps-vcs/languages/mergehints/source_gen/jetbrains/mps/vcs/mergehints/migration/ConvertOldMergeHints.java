@@ -9,8 +9,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConvertOldMergeHints extends MigrationScriptBase {
+  private final String description = "Convert @mergeHints";
   public String getCaption() {
-    return "Convert @mergeHints";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

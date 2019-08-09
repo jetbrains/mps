@@ -19,8 +19,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
+  private final String description = "Update checkpoint declarations to use in-place specification";
   public String getCaption() {
-    return "Update checkpoint declarations to use in-place specification";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
