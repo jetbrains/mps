@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -76,7 +76,7 @@ public class NodePointersTypesystem extends MigrationScriptBase {
 
   private static SNode createSemanticDowncastExpression_p7xwcw_a0a0a2a0a0a0b0a0g(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SemanticDowncastExpression$us, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SemanticDowncastExpression$us, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.leftExpression$flIo, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
     }

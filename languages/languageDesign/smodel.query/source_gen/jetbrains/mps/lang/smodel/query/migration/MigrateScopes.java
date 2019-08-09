@@ -29,7 +29,7 @@ import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -185,7 +185,7 @@ public class MigrateScopes extends MigrationScriptBase {
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL)).seal();
   private static SNode createCustomScope_9zyy9x_a0a0a0a0m0d0d(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CustomScope$CZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CustomScope$CZ, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.scope$M3Kw, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
     }
@@ -193,11 +193,11 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a0a21a3a3(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CustomScope$CZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CustomScope$CZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GenericNewExpression$ev, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.GenericNewExpression$ev, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassCreator$yU, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.ClassCreator$yU, null, null).node();
         n3.setReference(LINKS.baseMethodDeclaration$$A7i, SReference.create(LINKS.baseMethodDeclaration$$A7i, n3, facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
         if (node0 != null) {
           n3.addChild(LINKS.actualArgument$$A7L, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
@@ -210,11 +210,11 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a1m0d0d(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CustomScope$CZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CustomScope$CZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GenericNewExpression$ev, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.GenericNewExpression$ev, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassCreator$yU, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.ClassCreator$yU, null, null).node();
         n3.setReference(LINKS.baseMethodDeclaration$$A7i, SReference.create(LINKS.baseMethodDeclaration$$A7i, n3, facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
         if (node0 != null) {
           n3.addChild(LINKS.actualArgument$$A7L, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
@@ -227,16 +227,16 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a0b21a3a3(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CustomScope$CZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CustomScope$CZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GenericNewExpression$ev, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.GenericNewExpression$ev, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassCreator$yU, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.ClassCreator$yU, null, null).node();
         {
           n3.setReference(LINKS.baseMethodDeclaration$$A7i, SReference.create(LINKS.baseMethodDeclaration$$A7i, n3, facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
-          SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GenericNewExpression$ev, null, null, false);
+          SNode n4 = new SNodeBuilder(CONCEPTS.GenericNewExpression$ev, null, null).node();
           {
-            SNode n5 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassCreator$yU, null, null, false);
+            SNode n5 = new SNodeBuilder(CONCEPTS.ClassCreator$yU, null, null).node();
             n5.setReference(LINKS.baseMethodDeclaration$$A7i, SReference.create(LINKS.baseMethodDeclaration$$A7i, n5, facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
             if (node0 != null) {
               n5.addChild(LINKS.actualArgument$$A7L, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
@@ -253,11 +253,11 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a2m0d0d(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CustomScope$CZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CustomScope$CZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GenericNewExpression$ev, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.GenericNewExpression$ev, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassCreator$yU, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.ClassCreator$yU, null, null).node();
         n3.setReference(LINKS.baseMethodDeclaration$$A7i, SReference.create(LINKS.baseMethodDeclaration$$A7i, n3, facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
         if (node0 != null) {
           n3.addChild(LINKS.actualArgument$$A7L, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
@@ -270,16 +270,16 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a0c21a3a3(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CustomScope$CZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CustomScope$CZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GenericNewExpression$ev, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.GenericNewExpression$ev, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassCreator$yU, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.ClassCreator$yU, null, null).node();
         {
           n3.setReference(LINKS.baseMethodDeclaration$$A7i, SReference.create(LINKS.baseMethodDeclaration$$A7i, n3, facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
-          SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GenericNewExpression$ev, null, null, false);
+          SNode n4 = new SNodeBuilder(CONCEPTS.GenericNewExpression$ev, null, null).node();
           {
-            SNode n5 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassCreator$yU, null, null, false);
+            SNode n5 = new SNodeBuilder(CONCEPTS.ClassCreator$yU, null, null).node();
             n5.setReference(LINKS.baseMethodDeclaration$$A7i, SReference.create(LINKS.baseMethodDeclaration$$A7i, n5, facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
             if (node0 != null) {
               n5.addChild(LINKS.actualArgument$$A7L, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));

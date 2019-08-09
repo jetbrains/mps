@@ -13,7 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -48,7 +48,7 @@ public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractIn
   }
   private static SNode createSimpleMathBooleanType_ngq3xd_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathBooleanType$9q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathBooleanType$9q, null, null).node();
     return n1;
   }
 

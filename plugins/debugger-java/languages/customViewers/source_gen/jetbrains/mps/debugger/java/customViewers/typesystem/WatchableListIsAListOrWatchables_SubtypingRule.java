@@ -9,7 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,10 +33,10 @@ public class WatchableListIsAListOrWatchables_SubtypingRule extends SubtypingRul
   }
   private static SNode createClassifierType_izre6f_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
     {
       n1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~List")));
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.WatchableType$1t, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.WatchableType$1t, null, null).node();
       n1.addChild(LINKS.parameter$dQne, n2);
     }
     return n1;

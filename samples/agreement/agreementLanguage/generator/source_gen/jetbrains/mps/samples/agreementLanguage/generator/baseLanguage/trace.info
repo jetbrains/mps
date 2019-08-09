@@ -15,15 +15,15 @@
   <root>
     <file name="QueriesGenerated.java">
       <unit at="676,0,683,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$CONCEPTS" />
-      <unit at="706,0,716,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$PROPS" />
+      <unit at="705,0,715,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$PROPS" />
       <unit at="423,0,438,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$CRC" />
       <unit at="633,0,651,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$RTQ" />
-      <unit at="684,0,705,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$LINKS" />
+      <unit at="684,0,704,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$LINKS" />
       <unit at="521,0,544,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$SNsQ" />
       <unit at="464,0,503,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$SNQ" />
       <unit at="368,0,409,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$RRC" />
       <unit at="573,0,619,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated$PVQ" />
-      <unit at="52,0,717,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated" />
+      <unit at="52,0,716,0" name="jetbrains.mps.samples.agreementLanguage.generator.baseLanguage.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959040c(jetbrains.mps.samples.agreementLanguage.generator.baseLanguage@generator)/1112303804151">
@@ -152,22 +152,22 @@
       <node id="1197661255754" at="644,15,645,70" concept="8" />
       <node id="1197660100926" at="651,64,652,63" concept="7" />
       <node id="1197660100926" at="652,63,653,30" concept="7" />
-      <node id="1197660100926" at="653,30,654,257" concept="3" />
-      <node id="1197660100926" at="654,257,655,238" concept="3" />
-      <node id="1197660100926" at="655,238,656,256" concept="3" />
-      <node id="1197660100926" at="656,256,657,24" concept="8" />
+      <node id="1197660100926" at="653,30,654,229" concept="3" />
+      <node id="1197660100926" at="654,229,655,440" concept="3" />
+      <node id="1197660100926" at="655,440,656,456" concept="3" />
+      <node id="1197660100926" at="656,456,657,24" concept="8" />
       <node id="1197660227594" at="659,64,660,63" concept="7" />
       <node id="1197660227594" at="660,63,661,30" concept="7" />
-      <node id="1197660227594" at="661,30,662,257" concept="3" />
-      <node id="1197660227594" at="662,257,663,238" concept="3" />
-      <node id="1197660227594" at="663,238,664,256" concept="3" />
-      <node id="1197660227594" at="664,256,665,24" concept="8" />
+      <node id="1197660227594" at="661,30,662,229" concept="3" />
+      <node id="1197660227594" at="662,229,663,440" concept="3" />
+      <node id="1197660227594" at="663,440,664,456" concept="3" />
+      <node id="1197660227594" at="664,456,665,24" concept="8" />
       <node id="1197660289404" at="667,64,668,63" concept="7" />
       <node id="1197660289404" at="668,63,669,30" concept="7" />
-      <node id="1197660289404" at="669,30,670,257" concept="3" />
-      <node id="1197660289404" at="670,257,671,238" concept="3" />
-      <node id="1197660289404" at="671,238,672,256" concept="3" />
-      <node id="1197660289404" at="672,256,673,24" concept="8" />
+      <node id="1197660289404" at="669,30,670,229" concept="3" />
+      <node id="1197660289404" at="670,229,671,440" concept="3" />
+      <node id="1197660289404" at="671,440,672,456" concept="3" />
+      <node id="1197660289404" at="672,456,673,24" concept="8" />
       <node id="1197663015302" at="117,0,120,0" concept="10" trace="propertyMacro_GetValue_1_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="1197663246177" at="120,0,123,0" concept="10" trace="propertyMacro_GetValue_1_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="1197663161045" at="131,0,134,0" concept="10" trace="propertyMacro_GetValue_1_5#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

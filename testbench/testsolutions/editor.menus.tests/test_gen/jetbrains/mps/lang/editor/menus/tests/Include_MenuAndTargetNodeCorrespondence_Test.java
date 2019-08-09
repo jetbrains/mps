@@ -25,7 +25,7 @@ import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -83,7 +83,7 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
 
     private static SNode createSNodeType_sxmjox_a0a0a0c0d9() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SNodeType$gn, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SNodeType$gn, null, null).node();
       n1.setReference(LINKS.concept$HWFQ, SReference.create(LINKS.concept$HWFQ, n1, facade.createModelReference("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)"), facade.createNodeId("2705676212746996052")));
       return n1;
     }

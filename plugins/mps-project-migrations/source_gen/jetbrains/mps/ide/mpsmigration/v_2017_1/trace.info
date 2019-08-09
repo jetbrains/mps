@@ -214,25 +214,25 @@
       <node id="2180956403485033180" at="119,30,120,30" concept="9" />
       <node id="2180956403485033180" at="120,30,121,30" concept="9" />
       <node id="2180956403485033180" at="121,30,122,30" concept="9" />
-      <node id="2180956403485033180" at="122,30,123,262" concept="4" />
-      <node id="2180956403485033180" at="123,262,124,163" concept="4" />
-      <node id="2180956403485033180" at="124,163,125,252" concept="4" />
-      <node id="2180956403485033180" at="125,252,126,267" concept="4" />
-      <node id="2180956403485033180" at="126,267,127,63" concept="4" />
-      <node id="2180956403485033180" at="127,63,128,250" concept="4" />
-      <node id="2180956403485033180" at="128,250,129,252" concept="4" />
-      <node id="2180956403485033180" at="129,252,130,248" concept="4" />
-      <node id="2180956403485033180" at="130,248,131,63" concept="4" />
-      <node id="2180956403485033180" at="131,63,132,62" concept="4" />
-      <node id="2180956403485033180" at="132,62,133,57" concept="4" />
-      <node id="2180956403485033180" at="133,57,134,255" concept="4" />
-      <node id="2180956403485033180" at="134,255,135,68" concept="4" />
-      <node id="2180956403485033180" at="135,68,136,262" concept="4" />
-      <node id="2180956403485033180" at="136,262,137,294" concept="4" />
-      <node id="2180956403485033180" at="137,294,138,68" concept="4" />
-      <node id="2180956403485033180" at="138,68,139,255" concept="4" />
-      <node id="2180956403485033180" at="139,255,140,63" concept="4" />
-      <node id="2180956403485033180" at="140,63,141,24" concept="10" />
+      <node id="2180956403485033180" at="122,30,123,234" concept="4" />
+      <node id="2180956403485033180" at="123,234,124,163" concept="4" />
+      <node id="2180956403485033180" at="124,163,125,224" concept="4" />
+      <node id="2180956403485033180" at="125,224,126,471" concept="4" />
+      <node id="2180956403485033180" at="126,471,127,165" concept="4" />
+      <node id="2180956403485033180" at="127,165,128,222" concept="4" />
+      <node id="2180956403485033180" at="128,222,129,224" concept="4" />
+      <node id="2180956403485033180" at="129,224,130,220" concept="4" />
+      <node id="2180956403485033180" at="130,220,131,165" concept="4" />
+      <node id="2180956403485033180" at="131,165,132,164" concept="4" />
+      <node id="2180956403485033180" at="132,164,133,159" concept="4" />
+      <node id="2180956403485033180" at="133,159,134,227" concept="4" />
+      <node id="2180956403485033180" at="134,227,135,177" concept="4" />
+      <node id="2180956403485033180" at="135,177,136,234" concept="4" />
+      <node id="2180956403485033180" at="136,234,137,518" concept="4" />
+      <node id="2180956403485033180" at="137,518,138,177" concept="4" />
+      <node id="2180956403485033180" at="138,177,139,227" concept="4" />
+      <node id="2180956403485033180" at="139,227,140,167" concept="4" />
+      <node id="2180956403485033180" at="140,167,141,24" concept="10" />
       <node id="7831187068298103528" at="145,0,146,0" concept="13" trace="TemplateDeclaration$q0" />
       <node id="7831187068298103528" at="146,0,147,0" concept="13" trace="TemplateFragment$yI" />
       <node id="7831187068298103528" at="147,0,148,0" concept="13" trace="InstanceMethodDeclaration$An" />
@@ -242,14 +242,7 @@
       <node id="7831187068298103528" at="154,0,155,0" concept="13" trace="labelDeclaration$SD8p" />
       <node id="7831187068298103528" at="155,0,156,0" concept="13" trace="template$yiTA" />
       <node id="7831187068298103528" at="156,0,157,0" concept="13" trace="mappingLabel$9pST" />
-      <node id="7831187068298103528" at="157,0,158,0" concept="13" trace="classifier$pQ_R" />
-      <node id="7831187068298103528" at="158,0,159,0" concept="13" trace="returnType$WIkw" />
-      <node id="7831187068298103528" at="159,0,160,0" concept="13" trace="expression$EsbK" />
-      <node id="7831187068298103528" at="160,0,161,0" concept="13" trace="statement$WHn8" />
-      <node id="7831187068298103528" at="161,0,162,0" concept="13" trace="body$WIlu" />
-      <node id="7831187068298103528" at="162,0,163,0" concept="13" trace="smodelAttribute$K8bJ" />
-      <node id="7831187068298103528" at="163,0,164,0" concept="13" trace="visibility$2GiC" />
-      <node id="7831187068298103528" at="167,0,168,0" concept="13" trace="name$tAp1" />
+      <node id="7831187068298103528" at="160,0,161,0" concept="13" trace="name$tAp1" />
       <node id="129608261008895994" at="39,0,42,0" concept="2" trace="EditorGeneratorRefactoring#()V" />
       <node id="5369771541921952907" at="54,0,57,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/module/SDependency;)Z" />
       <node id="2180956403484877067" at="63,0,66,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -346,16 +339,16 @@
       <scope id="7831187068298105302" at="43,0,76,0">
         <var name="project" id="7831187068298105306" />
       </scope>
-      <unit id="7831187068298103528" at="166,0,169,0" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$PROPS" />
+      <unit id="7831187068298103528" at="159,0,162,0" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$PROPS" />
       <unit id="5369771541921952907" at="53,90,57,7" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$1" />
       <unit id="2180956403484877067" at="62,123,66,11" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$2" />
       <unit id="2180956403484883560" at="66,26,70,11" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$3" />
       <unit id="2180956403485398377" at="83,379,87,9" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$4$1" />
       <unit id="2180956403484602864" at="97,318,101,5" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$5" />
+      <unit id="7831187068298103528" at="153,0,158,0" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$LINKS" />
       <unit id="2180956403485385367" at="81,85,89,5" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$4" />
       <unit id="7831187068298103528" at="144,0,152,0" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$CONCEPTS" />
-      <unit id="7831187068298103528" at="153,0,165,0" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring$LINKS" />
-      <unit id="7831187068298103528" at="36,0,170,0" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring" />
+      <unit id="7831187068298103528" at="36,0,163,0" name="jetbrains.mps.ide.mpsmigration.v_2017_1.EditorGeneratorRefactoring" />
     </file>
   </root>
 </debug-info>

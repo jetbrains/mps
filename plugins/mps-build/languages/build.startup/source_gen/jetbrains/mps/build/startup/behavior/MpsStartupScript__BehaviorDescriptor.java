@@ -26,7 +26,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -184,13 +184,13 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
   }
   private static SNode createTextLine_p7akvg_a0a0a0a0e(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TextLine$oe, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TextLine$oe, null, null).node();
     n1.setProperty(PROPS.text$$xW, PROPS.text$$xW.getType().toString(p0));
     return n1;
   }
   private static SNode createTextLine_p7akvg_a0a0a0a0f(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TextLine$oe, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TextLine$oe, null, null).node();
     n1.setProperty(PROPS.text$$xW, PROPS.text$$xW.getType().toString(p0));
     return n1;
   }

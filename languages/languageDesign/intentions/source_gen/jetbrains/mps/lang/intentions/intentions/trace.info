@@ -97,11 +97,11 @@
       <node id="7271443492838111673" at="187,67,188,63" concept="7" />
       <node id="7271443492838111673" at="188,63,189,30" concept="7" />
       <node id="7271443492838111673" at="189,30,190,30" concept="7" />
-      <node id="7271443492838111673" at="190,30,191,252" concept="2" />
-      <node id="7271443492838111673" at="191,252,192,252" concept="2" />
-      <node id="7271443492838111673" at="192,252,193,150" concept="2" />
-      <node id="7271443492838111673" at="193,150,194,63" concept="2" />
-      <node id="7271443492838111673" at="194,63,195,24" concept="8" />
+      <node id="7271443492838111673" at="190,30,191,224" concept="2" />
+      <node id="7271443492838111673" at="191,224,192,224" concept="2" />
+      <node id="7271443492838111673" at="192,224,193,150" concept="2" />
+      <node id="7271443492838111673" at="193,150,194,165" concept="2" />
+      <node id="7271443492838111673" at="194,165,195,24" concept="8" />
       <node id="7271443492838023362" at="199,0,200,0" concept="11" trace="IntentionDeclaration$DB" />
       <node id="7271443492838023362" at="200,0,201,0" concept="11" trace="VariableReference$sQ" />
       <node id="7271443492838023362" at="201,0,202,0" concept="11" trace="ConceptFunctionParameter_childNode$DO" />
@@ -122,11 +122,10 @@
       <node id="7271443492838023362" at="219,0,220,0" concept="11" trace="forConcept$G_IT" />
       <node id="7271443492838023362" at="220,0,221,0" concept="11" trace="forConcept$SvTG" />
       <node id="7271443492838023362" at="221,0,222,0" concept="11" trace="priority$GsqG" />
-      <node id="7271443492838023362" at="222,0,223,0" concept="11" trace="expression$EsbK" />
-      <node id="7271443492838023362" at="226,0,227,0" concept="11" trace="isErrorIntention$AoZt" />
-      <node id="7271443492838023362" at="227,0,228,0" concept="11" trace="isAvailableInChildNodes$AoZW" />
-      <node id="7271443492838023362" at="228,0,229,0" concept="11" trace="name$tAp1" />
-      <node id="7271443492838023362" at="229,0,230,0" concept="11" trace="virtualPackage$j19t" />
+      <node id="7271443492838023362" at="225,0,226,0" concept="11" trace="isErrorIntention$AoZt" />
+      <node id="7271443492838023362" at="226,0,227,0" concept="11" trace="isAvailableInChildNodes$AoZW" />
+      <node id="7271443492838023362" at="227,0,228,0" concept="11" trace="name$tAp1" />
+      <node id="7271443492838023362" at="228,0,229,0" concept="11" trace="virtualPackage$j19t" />
       <node id="7271443492838023362" at="35,0,37,0" concept="1" trace="ConvertIntention#()V" />
       <node id="7271443492838023362" at="38,0,41,0" concept="6" trace="getId#()Ljava/lang/String;" />
       <node id="7271443492838023362" at="42,0,45,0" concept="6" trace="isAvailableInChildren#()Z" />
@@ -284,11 +283,11 @@
         <var name="node" id="7271443492838023387" />
       </scope>
       <unit id="7271443492838163870" at="76,227,80,5" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention$1" />
-      <unit id="7271443492838023362" at="225,0,231,0" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention$PROPS" />
+      <unit id="7271443492838023362" at="224,0,230,0" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention$PROPS" />
       <unit id="7271443492838023362" at="177,61,184,5" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention$2" />
       <unit id="7271443492838023362" at="198,0,208,0" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention$CONCEPTS" />
-      <unit id="7271443492838023362" at="209,0,224,0" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention$LINKS" />
-      <unit id="7271443492838023362" at="34,0,232,0" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention" />
+      <unit id="7271443492838023362" at="209,0,223,0" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention$LINKS" />
+      <unit id="7271443492838023362" at="34,0,231,0" name="jetbrains.mps.lang.intentions.intentions.ConvertIntention" />
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="7271443492838023362" at="39,47,40,123" concept="2" />

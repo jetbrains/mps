@@ -17,7 +17,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -61,8 +61,8 @@ public class MigrateReferences extends MigrationScriptBase {
   private static SNode _quotation_createNode_w5820p_a0a0a0a2a5(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x1610048531ac4899L, 0x91122289e22843ddL, "references"), 0x6aff2c104932a6c9L, "NewComponentRef"), null, null, false);
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, LINKS.target$Ql60, (SNode) parameter_1);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x1610048531ac4899L, 0x91122289e22843ddL, "references"), 0x6aff2c104932a6c9L, "NewComponentRef"), null, null).node();
+    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target"), (SNode) parameter_1);
     return quotedNode_2;
   }
 
@@ -72,6 +72,5 @@ public class MigrateReferences extends MigrationScriptBase {
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink target$d0hC = MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target");
-    /*package*/ static final SReferenceLink target$Ql60 = MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target");
   }
 }

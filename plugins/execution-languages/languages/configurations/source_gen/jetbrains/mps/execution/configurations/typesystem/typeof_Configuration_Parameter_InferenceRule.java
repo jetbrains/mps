@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -40,7 +40,7 @@ public class typeof_Configuration_Parameter_InferenceRule extends AbstractInfere
   }
   private static SNode createRunConfigurationType_luyquc_a1a0c0b0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RunConfigurationType$qY, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RunConfigurationType$qY, null, null).node();
     n1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
     return n1;
   }

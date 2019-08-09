@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -45,13 +45,13 @@ public class typeof_GetEditorOperation_InferenceRule extends AbstractInferenceRu
   }
   private static SNode createPersistentConfigurationType_89tbzo_a1a0c0b0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.PersistentConfigurationType$e2, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.PersistentConfigurationType$e2, null, null).node();
     n1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
     return n1;
   }
   private static SNode createSettingsEditorType_89tbzo_a1a0c0c0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SettingsEditorType$Bn, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SettingsEditorType$Bn, null, null).node();
     n1.setReferenceTarget(LINKS.configuration$2u$w, node0);
     return n1;
   }

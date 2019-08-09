@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -116,17 +116,17 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     private static SNode createSimpleMathIntegerType_3ist9o_a0a0a1() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathIntegerType$TX, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathIntegerType$TX, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathIntegerType_3ist9o_a0b0a1() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathIntegerType$TX, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathIntegerType$TX, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathIntegerType_3ist9o_a0a1b() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathIntegerType$TX, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathIntegerType$TX, null, null).node();
       return n1;
     }
   }
@@ -154,27 +154,27 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     private static SNode createSimpleMathFloatType_3ist9o_a0a0a2() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathFloatType$Lj, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathFloatType$Lj, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathFloatType_3ist9o_a0b0a2() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathFloatType$Lj, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathFloatType$Lj, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathFloatType_3ist9o_a0a1c() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathFloatType$Lj, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathFloatType$Lj, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathLongType_3ist9o_b0a0a0a2c() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathLongType$jS, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathLongType$jS, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathLongType_3ist9o_b0a0a0a2c_0() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathLongType$jS, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathLongType$jS, null, null).node();
       return n1;
     }
   }
@@ -202,27 +202,27 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     private static SNode createSimpleMathNumberType_3ist9o_a0a0a3() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathNumberType$zZ, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathNumberType$zZ, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathNumberType_3ist9o_a0b0a3() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathNumberType$zZ, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathNumberType$zZ, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathNumberType_3ist9o_a0a1d() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathNumberType$zZ, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathNumberType$zZ, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathFloatType_3ist9o_b0a0a0a2d() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathFloatType$Lj, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathFloatType$Lj, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathFloatType_3ist9o_b0a0a0a2d_0() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathFloatType$Lj, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathFloatType$Lj, null, null).node();
       return n1;
     }
   }
@@ -250,27 +250,27 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     private static SNode createSimpleMathLongType_3ist9o_a0a0a4() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathLongType$jS, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathLongType$jS, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathLongType_3ist9o_a0b0a4() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathLongType$jS, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathLongType$jS, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathLongType_3ist9o_a0a1e() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathLongType$jS, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathLongType$jS, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathIntegerType_3ist9o_b0a0a0a2e() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathIntegerType$TX, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathIntegerType$TX, null, null).node();
       return n1;
     }
     private static SNode createSimpleMathIntegerType_3ist9o_b0a0a0a2e_0() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathIntegerType$TX, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathIntegerType$TX, null, null).node();
       return n1;
     }
   }

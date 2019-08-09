@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -90,10 +90,10 @@ public final class WatchableListType__BehaviorDescriptor extends BaseBHDescripto
   }
   private static SNode createClassifierType_za89pk_a0b0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
     {
       n1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~List")));
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.WatchableType$1t, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.WatchableType$1t, null, null).node();
       n1.addChild(LINKS.parameter$dQne, n2);
     }
     return n1;

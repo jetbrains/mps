@@ -11,12 +11,11 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_OverridingPrimNumConstant_InferenceRule() {
@@ -43,14 +42,14 @@ public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInfe
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x394e385732564e8bL, 0x96015abe7ad354d9L, "testOverridingType"), 0x5b362c13a49935f1L, "OverridingPrimIntType"), null, null, false);
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, "testAnnotatedType"), 0x58e32a0782be61ecL, "SubstituteAnnotation"), null, null, false);
-    quotedNode_4 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, "testAnnotatedType"), 0x58e32a0782beb1c7L, "PresenceCondition"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x394e385732564e8bL, 0x96015abe7ad354d9L, "testOverridingType"), 0x5b362c13a49935f1L, "OverridingPrimIntType"), null, null).node();
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, "testAnnotatedType"), 0x58e32a0782be61ecL, "SubstituteAnnotation"), null, null).node();
+    quotedNode_4 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, "testAnnotatedType"), 0x58e32a0782beb1c7L, "PresenceCondition"), null, null).node();
     SNodeAccessUtil.setPropertyValue(quotedNode_4, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
-    quotedNode_3.addChild(LINKS.condition$x8xZ, quotedNode_4);
-    quotedNode_5 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x394e385732564e8bL, 0x96015abe7ad354d9L, "testOverridingType"), 0x5b362c13a4993604L, "OverridingPrimFloatType"), null, null, false);
-    quotedNode_3.addChild(LINKS.substitute$x8iY, quotedNode_5);
-    quotedNode_2.addChild(LINKS.smodelAttribute$K8bJ, quotedNode_3);
+    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1c4L, "condition"), quotedNode_4);
+    quotedNode_5 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x394e385732564e8bL, 0x96015abe7ad354d9L, "testOverridingType"), 0x5b362c13a4993604L, "OverridingPrimFloatType"), null, null).node();
+    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1baL, "substitute"), quotedNode_5);
+    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), quotedNode_3);
     return quotedNode_2;
   }
 
@@ -61,11 +60,5 @@ public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInfe
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept OverridingPrimNumConstant$xd = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, "testOverridingType.structure.OverridingPrimNumConstant");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$x8xZ = MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1c4L, "condition");
-    /*package*/ static final SContainmentLink substitute$x8iY = MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1baL, "substitute");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

@@ -9,7 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -34,7 +34,7 @@ public class PropertyPointer_supertypes_SubtypingRule extends SubtypingRule_Runt
   private static SNode _quotation_createNode_spf8l0_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, "jetbrains.mps.lang.checkedName"), 0x433c3c31e7218f3eL, "PropertyRefType"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, "jetbrains.mps.lang.checkedName"), 0x433c3c31e7218f3eL, "PropertyRefType"), null, null).node();
     return quotedNode_1;
   }
 

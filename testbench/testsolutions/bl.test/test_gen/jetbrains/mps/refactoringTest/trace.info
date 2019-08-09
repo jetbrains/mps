@@ -951,58 +951,57 @@
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052902925">
     <file name="AddThrowDeclaration_Test.java">
-      <node id="1230052902925" at="38,37,39,25" concept="12" />
-      <node id="1230052902944" at="43,59,44,50" concept="2" />
-      <node id="1230052902925" at="49,52,50,19" concept="12" />
-      <node id="1230052902926" at="53,61,54,35" concept="2" />
-      <node id="1230052902935" at="54,35,55,35" concept="2" />
-      <node id="1230052902947" at="55,35,56,342" concept="7" />
-      <node id="1230052902953" at="56,342,57,156" concept="2" />
-      <node id="1230052902963" at="57,156,58,349" concept="7" />
-      <node id="1230052902970" at="58,349,59,26" concept="2" />
-      <node id="1230052902974" at="60,7,61,334" concept="7" />
-      <node id="1230052902974" at="61,334,62,333" concept="7" />
-      <node id="1230052902974" at="62,333,63,160" concept="2" />
-      <node id="1230052902961" at="68,65,69,65" concept="7" />
-      <node id="1230052902961" at="69,65,70,32" concept="7" />
-      <node id="1230052902961" at="70,32,71,254" concept="2" />
-      <node id="1230052902961" at="71,254,72,247" concept="2" />
-      <node id="1230052902961" at="72,247,73,26" concept="8" />
-      <node id="1230052902925" at="78,0,79,0" concept="10" trace="throwsItem$gr7e" />
-      <node id="1230052902925" at="79,0,80,0" concept="10" trace="classifier$pQ_R" />
-      <node id="1230052902925" at="33,0,35,0" concept="10" trace="ourParamCache" />
-      <node id="1230052902925" at="35,0,37,0" concept="3" trace="myWithCommandRule" />
-      <node id="1230052902925" at="38,0,41,0" concept="1" trace="AddThrowDeclaration_Test#()V" />
-      <node id="1230052902925" at="49,0,52,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1230052902944" at="42,0,46,0" concept="6" trace="test_AddThrowDeclaration#()V" />
-      <node id="1230052902974" at="59,26,64,7" concept="0" />
-      <node id="1230052902961" at="68,0,75,0" concept="11" trace="_quotation_createNode_njbq9a_a0a3a3h#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="1230052902944" at="53,0,66,0" concept="6" trace="test_AddThrowDeclaration#()V" />
-      <scope id="1230052902925" at="38,37,39,25" />
-      <scope id="1230052902944" at="43,59,44,50" />
-      <scope id="1230052902925" at="49,52,50,19" />
-      <scope id="1230052902925" at="38,0,41,0" />
-      <scope id="1230052902925" at="49,0,52,0">
+      <node id="1230052902925" at="37,37,38,25" concept="12" />
+      <node id="1230052902944" at="42,59,43,50" concept="2" />
+      <node id="1230052902925" at="48,52,49,19" concept="12" />
+      <node id="1230052902926" at="52,61,53,35" concept="2" />
+      <node id="1230052902935" at="53,35,54,35" concept="2" />
+      <node id="1230052902947" at="54,35,55,342" concept="7" />
+      <node id="1230052902953" at="55,342,56,156" concept="2" />
+      <node id="1230052902963" at="56,156,57,349" concept="7" />
+      <node id="1230052902970" at="57,349,58,26" concept="2" />
+      <node id="1230052902974" at="59,7,60,334" concept="7" />
+      <node id="1230052902974" at="60,334,61,333" concept="7" />
+      <node id="1230052902974" at="61,333,62,160" concept="2" />
+      <node id="1230052902961" at="67,65,68,65" concept="7" />
+      <node id="1230052902961" at="68,65,69,32" concept="7" />
+      <node id="1230052902961" at="69,32,70,226" concept="2" />
+      <node id="1230052902961" at="70,226,71,451" concept="2" />
+      <node id="1230052902961" at="71,451,72,26" concept="8" />
+      <node id="1230052902925" at="77,0,78,0" concept="10" trace="throwsItem$gr7e" />
+      <node id="1230052902925" at="32,0,34,0" concept="10" trace="ourParamCache" />
+      <node id="1230052902925" at="34,0,36,0" concept="3" trace="myWithCommandRule" />
+      <node id="1230052902925" at="37,0,40,0" concept="1" trace="AddThrowDeclaration_Test#()V" />
+      <node id="1230052902925" at="48,0,51,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1230052902944" at="41,0,45,0" concept="6" trace="test_AddThrowDeclaration#()V" />
+      <node id="1230052902974" at="58,26,63,7" concept="0" />
+      <node id="1230052902961" at="67,0,74,0" concept="11" trace="_quotation_createNode_njbq9a_a0a3a3h#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1230052902944" at="52,0,65,0" concept="6" trace="test_AddThrowDeclaration#()V" />
+      <scope id="1230052902925" at="37,37,38,25" />
+      <scope id="1230052902944" at="42,59,43,50" />
+      <scope id="1230052902925" at="48,52,49,19" />
+      <scope id="1230052902925" at="37,0,40,0" />
+      <scope id="1230052902925" at="48,0,51,0">
         <var name="owner" id="1230052902925" />
       </scope>
-      <scope id="1230052902974" at="60,7,63,160">
+      <scope id="1230052902974" at="59,7,62,160">
         <var name="nodesAfter" id="1230052902974" />
         <var name="nodesBefore" id="1230052902974" />
       </scope>
-      <scope id="1230052902944" at="42,0,46,0" />
-      <scope id="1230052902961" at="68,65,73,26">
+      <scope id="1230052902944" at="41,0,45,0" />
+      <scope id="1230052902961" at="67,65,72,26">
         <var name="facade" id="1230052902961" />
         <var name="quotedNode_1" id="1230052902961" />
       </scope>
-      <scope id="1230052902961" at="68,0,75,0" />
-      <scope id="1230052902944" at="53,61,64,7">
+      <scope id="1230052902961" at="67,0,74,0" />
+      <scope id="1230052902944" at="52,61,63,7">
         <var name="params" id="1230052902948" />
         <var name="ref" id="1230052902964" />
       </scope>
-      <scope id="1230052902944" at="53,0,66,0" />
-      <unit id="1230052902925" at="77,0,81,0" name="jetbrains.mps.refactoringTest.AddThrowDeclaration_Test$LINKS" />
-      <unit id="1230052902925" at="47,0,76,0" name="jetbrains.mps.refactoringTest.AddThrowDeclaration_Test$TestBody" />
-      <unit id="1230052902925" at="31,0,82,0" name="jetbrains.mps.refactoringTest.AddThrowDeclaration_Test" />
+      <scope id="1230052902944" at="52,0,65,0" />
+      <unit id="1230052902925" at="76,0,79,0" name="jetbrains.mps.refactoringTest.AddThrowDeclaration_Test$LINKS" />
+      <unit id="1230052902925" at="46,0,75,0" name="jetbrains.mps.refactoringTest.AddThrowDeclaration_Test$TestBody" />
+      <unit id="1230052902925" at="30,0,80,0" name="jetbrains.mps.refactoringTest.AddThrowDeclaration_Test" />
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052902977">
@@ -1165,13 +1164,12 @@
       <node id="1230052943800" at="66,65,67,65" concept="7" />
       <node id="1230052943800" at="67,65,68,32" concept="7" />
       <node id="1230052943800" at="68,32,69,32" concept="7" />
-      <node id="1230052943800" at="69,32,70,259" concept="2" />
-      <node id="1230052943800" at="70,259,71,150" concept="2" />
-      <node id="1230052943800" at="71,150,72,247" concept="2" />
-      <node id="1230052943800" at="72,247,73,59" concept="2" />
-      <node id="1230052943800" at="73,59,74,26" concept="8" />
+      <node id="1230052943800" at="69,32,70,231" concept="2" />
+      <node id="1230052943800" at="70,231,71,150" concept="2" />
+      <node id="1230052943800" at="71,150,72,219" concept="2" />
+      <node id="1230052943800" at="72,219,73,173" concept="2" />
+      <node id="1230052943800" at="73,173,74,26" concept="8" />
       <node id="1230052943763" at="79,0,80,0" concept="10" trace="parameter$WIkZ" />
-      <node id="1230052943763" at="80,0,81,0" concept="10" trace="type$pLrO" />
       <node id="1230052943763" at="31,0,33,0" concept="10" trace="ourParamCache" />
       <node id="1230052943763" at="33,0,35,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052943763" at="36,0,39,0" concept="1" trace="AddParameter_Test#()V" />
@@ -1203,9 +1201,9 @@
         <var name="ref" id="1230052943804" />
       </scope>
       <scope id="1230052943783" at="51,0,64,0" />
-      <unit id="1230052943763" at="78,0,82,0" name="jetbrains.mps.refactoringTest.AddParameter_Test$LINKS" />
+      <unit id="1230052943763" at="78,0,81,0" name="jetbrains.mps.refactoringTest.AddParameter_Test$LINKS" />
       <unit id="1230052943763" at="45,0,77,0" name="jetbrains.mps.refactoringTest.AddParameter_Test$TestBody" />
-      <unit id="1230052943763" at="29,0,83,0" name="jetbrains.mps.refactoringTest.AddParameter_Test" />
+      <unit id="1230052943763" at="29,0,82,0" name="jetbrains.mps.refactoringTest.AddParameter_Test" />
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/1230052943817">
@@ -1270,8 +1268,8 @@
       <node id="1230052943943" at="60,333,61,160" concept="2" />
       <node id="1230052943920" at="66,64,67,65" concept="7" />
       <node id="1230052943920" at="67,65,68,32" concept="7" />
-      <node id="1230052943920" at="68,32,69,250" concept="2" />
-      <node id="1230052943920" at="69,250,70,26" concept="8" />
+      <node id="1230052943920" at="68,32,69,222" concept="2" />
+      <node id="1230052943920" at="69,222,70,26" concept="8" />
       <node id="1230052943883" at="75,0,76,0" concept="10" trace="parameter$WIkZ" />
       <node id="1230052943883" at="76,0,77,0" concept="10" trace="type$pLrO" />
       <node id="1230052943883" at="31,0,33,0" concept="10" trace="ourParamCache" />

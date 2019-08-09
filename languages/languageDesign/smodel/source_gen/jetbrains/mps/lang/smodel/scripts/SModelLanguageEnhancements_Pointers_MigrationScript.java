@@ -14,7 +14,7 @@ import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -681,14 +681,14 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
   }
   private static SNode createDotExpression_y8o86o_a0c0a4(SNode node0, SNode node1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DotExpression$6a, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
     {
       if (node0 != null) {
         n1.addChild(LINKS.operand$Lcrr, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
       }
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Link_SetTargetPointerOperation$59, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerArg_Identity$5_, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
         if (node1 != null) {
           n3.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.NodeIdentity$tk)));
         }
@@ -700,9 +700,9 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
   }
   private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a5(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Link_SetTargetPointerOperation$59, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerArg_Identity$5_, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
       if (node0 != null) {
         n2.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
       }
@@ -712,14 +712,14 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
   }
   private static SNode createDotExpression_y8o86o_a0c0a91(SNode node0, SNode node1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DotExpression$6a, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
     {
       if (node0 != null) {
         n1.addChild(LINKS.operand$Lcrr, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
       }
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Link_SetTargetPointerOperation$59, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerArg_Identity$5_, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
         if (node1 != null) {
           n3.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.NodeIdentity$tk)));
         }
@@ -731,9 +731,9 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
   }
   private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a02(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Link_SetTargetPointerOperation$59, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerArg_Identity$5_, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
       if (node0 != null) {
         n2.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
       }

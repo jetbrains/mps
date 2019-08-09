@@ -222,8 +222,8 @@
       <node id="1262430001741519711" at="97,40,98,19" concept="5" />
       <node id="658365993681973144" at="100,60,101,63" concept="4" />
       <node id="658365993681973144" at="101,63,102,30" concept="4" />
-      <node id="658365993681973144" at="102,30,103,248" concept="1" />
-      <node id="658365993681973144" at="103,248,104,24" concept="5" />
+      <node id="658365993681973144" at="102,30,103,220" concept="1" />
+      <node id="658365993681973144" at="103,220,104,24" concept="5" />
       <node id="1262430001741519711" at="108,0,109,0" concept="6" trace="ConceptFunction$Tt" />
       <node id="1262430001741519711" at="109,0,110,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
       <node id="1262430001741519711" at="110,0,111,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
@@ -332,15 +332,14 @@
       <node id="1240492758690" at="103,78,104,63" concept="4" />
       <node id="1240492758690" at="104,63,105,30" concept="4" />
       <node id="1240492758690" at="105,30,106,30" concept="4" />
-      <node id="1240492758690" at="106,30,107,258" concept="1" />
-      <node id="1240492758690" at="107,258,108,39" concept="1" />
-      <node id="1240492758690" at="109,31,110,99" concept="1" />
+      <node id="1240492758690" at="106,30,107,230" concept="1" />
+      <node id="1240492758690" at="107,230,108,39" concept="1" />
+      <node id="1240492758690" at="109,31,110,203" concept="1" />
       <node id="1240492758690" at="111,5,112,24" concept="5" />
       <node id="1262430001741703089" at="116,0,117,0" concept="6" trace="ConceptFunction$Tt" />
       <node id="1262430001741703089" at="117,0,118,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
       <node id="1262430001741703089" at="118,0,119,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
       <node id="1262430001741703089" at="122,0,123,0" concept="6" trace="paramType$tho0" />
-      <node id="1262430001741703089" at="123,0,124,0" concept="6" trace="elementType$xJJW" />
       <node id="1262430001741703089" at="38,0,40,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1262430001741703089" at="54,0,56,0" concept="0" trace="QueryBlock__BehaviorDescriptor#()V" />
       <node id="1262430001741703089" at="41,0,44,0" concept="7" trace="showName_id1653mnvAgry#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
@@ -371,7 +370,7 @@
       <scope id="1262430001741703089" at="87,14,88,58" />
       <scope id="1262430001741703089" at="94,48,95,22" />
       <scope id="1262430001741703089" at="100,40,101,19" />
-      <scope id="1240492758690" at="109,31,110,99" />
+      <scope id="1240492758690" at="109,31,110,203" />
       <scope id="1262430001741703089" at="38,0,40,0">
         <var name="__thisNode__" id="1262430001741703089" />
       </scope>
@@ -419,9 +418,9 @@
         <var name="node" id="1262430001741703089" />
         <var name="parameters" id="1262430001741703089" />
       </scope>
-      <unit id="1262430001741703089" at="121,0,125,0" name="jetbrains.mps.lang.intentions.behavior.QueryBlock__BehaviorDescriptor$LINKS" />
+      <unit id="1262430001741703089" at="121,0,124,0" name="jetbrains.mps.lang.intentions.behavior.QueryBlock__BehaviorDescriptor$LINKS" />
       <unit id="1262430001741703089" at="115,0,120,0" name="jetbrains.mps.lang.intentions.behavior.QueryBlock__BehaviorDescriptor$CONCEPTS" />
-      <unit id="1262430001741703089" at="29,0,126,0" name="jetbrains.mps.lang.intentions.behavior.QueryBlock__BehaviorDescriptor" />
+      <unit id="1262430001741703089" at="29,0,125,0" name="jetbrains.mps.lang.intentions.behavior.QueryBlock__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959034e(jetbrains.mps.lang.intentions.behavior)/1262430001741719753">
@@ -452,8 +451,8 @@
       <node id="1262430001741719753" at="101,40,102,19" concept="5" />
       <node id="658365993681975247" at="104,60,105,63" concept="4" />
       <node id="658365993681975247" at="105,63,106,30" concept="4" />
-      <node id="658365993681975247" at="106,30,107,248" concept="1" />
-      <node id="658365993681975247" at="107,248,108,24" concept="5" />
+      <node id="658365993681975247" at="106,30,107,220" concept="1" />
+      <node id="658365993681975247" at="107,220,108,24" concept="5" />
       <node id="1262430001741719753" at="112,0,113,0" concept="6" trace="ConceptFunction$Tt" />
       <node id="1262430001741719753" at="113,0,114,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
       <node id="1262430001741719753" at="114,0,115,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
@@ -566,8 +565,8 @@
       <node id="1262430001741720159" at="101,40,102,19" concept="5" />
       <node id="658365993682020122" at="104,60,105,63" concept="4" />
       <node id="658365993682020122" at="105,63,106,30" concept="4" />
-      <node id="658365993682020122" at="106,30,107,245" concept="1" />
-      <node id="658365993682020122" at="107,245,108,24" concept="5" />
+      <node id="658365993682020122" at="106,30,107,217" concept="1" />
+      <node id="658365993682020122" at="107,217,108,24" concept="5" />
       <node id="1262430001741720159" at="112,0,113,0" concept="6" trace="ConceptFunction$Tt" />
       <node id="1262430001741720159" at="113,0,114,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
       <node id="1262430001741720159" at="114,0,115,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
@@ -677,8 +676,8 @@
       <node id="3044950653914719384" at="92,40,93,19" concept="5" />
       <node id="658365993682020038" at="95,60,96,63" concept="4" />
       <node id="658365993682020038" at="96,63,97,30" concept="4" />
-      <node id="658365993682020038" at="97,30,98,248" concept="1" />
-      <node id="658365993682020038" at="98,248,99,24" concept="5" />
+      <node id="658365993682020038" at="97,30,98,220" concept="1" />
+      <node id="658365993682020038" at="98,220,99,24" concept="5" />
       <node id="3044950653914719384" at="103,0,104,0" concept="6" trace="ConceptFunction$Tt" />
       <node id="3044950653914719384" at="104,0,105,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
       <node id="3044950653914719384" at="105,0,106,0" concept="6" trace="ConceptFunctionParameter_childNode$DO" />
@@ -924,12 +923,11 @@
       <node id="4958616572667243135" at="91,78,92,63" concept="4" />
       <node id="4958616572667243135" at="92,63,93,30" concept="4" />
       <node id="4958616572667243135" at="93,30,94,30" concept="4" />
-      <node id="4958616572667243135" at="94,30,95,258" concept="1" />
-      <node id="4958616572667243135" at="95,258,96,39" concept="1" />
-      <node id="4958616572667243135" at="97,31,98,99" concept="1" />
+      <node id="4958616572667243135" at="94,30,95,230" concept="1" />
+      <node id="4958616572667243135" at="95,230,96,39" concept="1" />
+      <node id="4958616572667243135" at="97,31,98,203" concept="1" />
       <node id="4958616572667243135" at="99,5,100,24" concept="5" />
       <node id="7388353295030898203" at="104,0,105,0" concept="6" trace="parameterType$kN40" />
-      <node id="7388353295030898203" at="105,0,106,0" concept="6" trace="elementType$xJJW" />
       <node id="7388353295030898203" at="34,0,36,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7388353295030898203" at="44,0,46,0" concept="0" trace="Parameter__BehaviorDescriptor#()V" />
       <node id="7388353295030898203" at="37,0,40,0" concept="7" trace="getDeclaration_id7T23sO8vZuR#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -958,7 +956,7 @@
       <scope id="7388353295030898203" at="75,14,76,58" />
       <scope id="7388353295030898203" at="82,48,83,22" />
       <scope id="7388353295030898203" at="88,40,89,19" />
-      <scope id="4958616572667243135" at="97,31,98,99" />
+      <scope id="4958616572667243135" at="97,31,98,203" />
       <scope id="7388353295030898203" at="34,0,36,0">
         <var name="__thisNode__" id="7388353295030898203" />
       </scope>
@@ -1000,8 +998,8 @@
         <var name="node" id="7388353295030898203" />
         <var name="parameters" id="7388353295030898203" />
       </scope>
-      <unit id="7388353295030898203" at="103,0,107,0" name="jetbrains.mps.lang.intentions.behavior.Parameter__BehaviorDescriptor$LINKS" />
-      <unit id="7388353295030898203" at="26,0,108,0" name="jetbrains.mps.lang.intentions.behavior.Parameter__BehaviorDescriptor" />
+      <unit id="7388353295030898203" at="103,0,106,0" name="jetbrains.mps.lang.intentions.behavior.Parameter__BehaviorDescriptor$LINKS" />
+      <unit id="7388353295030898203" at="26,0,107,0" name="jetbrains.mps.lang.intentions.behavior.Parameter__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959034e(jetbrains.mps.lang.intentions.behavior)/7538218632063813121">

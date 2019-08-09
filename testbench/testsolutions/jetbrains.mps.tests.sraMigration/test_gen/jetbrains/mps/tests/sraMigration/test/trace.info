@@ -215,60 +215,60 @@
       <node id="3787933655124354357" at="434,88,435,63" concept="5" />
       <node id="3787933655124354357" at="435,63,436,30" concept="5" />
       <node id="3787933655124354357" at="436,30,437,30" concept="5" />
-      <node id="3787933655124354357" at="437,30,438,268" concept="1" />
-      <node id="3787933655124354357" at="438,268,439,109" concept="1" />
-      <node id="3787933655124354357" at="439,109,440,268" concept="1" />
-      <node id="3787933655124354357" at="440,268,441,172" concept="1" />
+      <node id="3787933655124354357" at="437,30,438,240" concept="1" />
+      <node id="3787933655124354357" at="438,240,439,221" concept="1" />
+      <node id="3787933655124354357" at="439,221,440,240" concept="1" />
+      <node id="3787933655124354357" at="440,240,441,172" concept="1" />
       <node id="3787933655124354357" at="441,172,442,161" concept="1" />
-      <node id="3787933655124354357" at="442,161,443,76" concept="1" />
-      <node id="3787933655124354357" at="443,76,444,24" concept="6" />
+      <node id="3787933655124354357" at="442,161,443,190" concept="1" />
+      <node id="3787933655124354357" at="443,190,444,24" concept="6" />
       <node id="3787933655124494884" at="446,88,447,63" concept="5" />
       <node id="3787933655124494884" at="447,63,448,30" concept="5" />
-      <node id="3787933655124494884" at="448,30,449,268" concept="1" />
-      <node id="3787933655124494884" at="449,268,450,109" concept="1" />
-      <node id="3787933655124494884" at="450,109,451,24" concept="6" />
+      <node id="3787933655124494884" at="448,30,449,240" concept="1" />
+      <node id="3787933655124494884" at="449,240,450,221" concept="1" />
+      <node id="3787933655124494884" at="450,221,451,24" concept="6" />
       <node id="3787933655124575668" at="453,88,454,63" concept="5" />
       <node id="3787933655124575668" at="454,63,455,30" concept="5" />
-      <node id="3787933655124575668" at="455,30,456,268" concept="1" />
-      <node id="3787933655124575668" at="456,268,457,109" concept="1" />
-      <node id="3787933655124575668" at="457,109,458,24" concept="6" />
+      <node id="3787933655124575668" at="455,30,456,240" concept="1" />
+      <node id="3787933655124575668" at="456,240,457,221" concept="1" />
+      <node id="3787933655124575668" at="457,221,458,24" concept="6" />
       <node id="3787933655124644969" at="460,88,461,63" concept="5" />
       <node id="3787933655124644969" at="461,63,462,30" concept="5" />
-      <node id="3787933655124644969" at="462,30,463,268" concept="1" />
-      <node id="3787933655124644969" at="463,268,464,109" concept="1" />
-      <node id="3787933655124644969" at="464,109,465,24" concept="6" />
+      <node id="3787933655124644969" at="462,30,463,240" concept="1" />
+      <node id="3787933655124644969" at="463,240,464,221" concept="1" />
+      <node id="3787933655124644969" at="464,221,465,24" concept="6" />
       <node id="44712766211367289" at="467,108,468,63" concept="5" />
       <node id="44712766211367289" at="468,63,469,30" concept="5" />
       <node id="44712766211367289" at="469,30,470,30" concept="5" />
       <node id="44712766211367289" at="470,30,471,30" concept="5" />
       <node id="44712766211367289" at="471,30,472,30" concept="5" />
-      <node id="44712766211367289" at="472,30,473,264" concept="1" />
-      <node id="44712766211367289" at="473,264,474,170" concept="1" />
-      <node id="44712766211367289" at="474,170,475,105" concept="1" />
-      <node id="44712766211367289" at="475,105,476,271" concept="1" />
-      <node id="44712766211367289" at="476,271,477,271" concept="1" />
-      <node id="44712766211367289" at="477,271,478,91" concept="1" />
-      <node id="44712766211367289" at="478,91,479,66" concept="1" />
-      <node id="44712766211367289" at="479,66,480,58" concept="1" />
-      <node id="44712766211367289" at="480,58,481,271" concept="1" />
-      <node id="44712766211367289" at="481,271,482,58" concept="1" />
-      <node id="44712766211367289" at="482,58,483,24" concept="6" />
+      <node id="44712766211367289" at="472,30,473,236" concept="1" />
+      <node id="44712766211367289" at="473,236,474,170" concept="1" />
+      <node id="44712766211367289" at="474,170,475,217" concept="1" />
+      <node id="44712766211367289" at="475,217,476,243" concept="1" />
+      <node id="44712766211367289" at="476,243,477,243" concept="1" />
+      <node id="44712766211367289" at="477,243,478,203" concept="1" />
+      <node id="44712766211367289" at="478,203,479,178" concept="1" />
+      <node id="44712766211367289" at="479,178,480,171" concept="1" />
+      <node id="44712766211367289" at="480,171,481,243" concept="1" />
+      <node id="44712766211367289" at="481,243,482,171" concept="1" />
+      <node id="44712766211367289" at="482,171,483,24" concept="6" />
       <node id="44712766211050912" at="485,88,486,63" concept="5" />
       <node id="44712766211050912" at="486,63,487,30" concept="5" />
       <node id="44712766211050912" at="487,30,488,30" concept="5" />
-      <node id="44712766211050912" at="488,30,489,271" concept="1" />
-      <node id="44712766211050912" at="489,271,490,271" concept="1" />
-      <node id="44712766211050912" at="490,271,491,91" concept="1" />
-      <node id="44712766211050912" at="491,91,492,66" concept="1" />
-      <node id="44712766211050912" at="492,66,493,24" concept="6" />
+      <node id="44712766211050912" at="488,30,489,243" concept="1" />
+      <node id="44712766211050912" at="489,243,490,243" concept="1" />
+      <node id="44712766211050912" at="490,243,491,203" concept="1" />
+      <node id="44712766211050912" at="491,203,492,178" concept="1" />
+      <node id="44712766211050912" at="492,178,493,24" concept="6" />
       <node id="44712766211124743" at="495,88,496,63" concept="5" />
       <node id="44712766211124743" at="496,63,497,30" concept="5" />
       <node id="44712766211124743" at="497,30,498,30" concept="5" />
-      <node id="44712766211124743" at="498,30,499,271" concept="1" />
-      <node id="44712766211124743" at="499,271,500,271" concept="1" />
-      <node id="44712766211124743" at="500,271,501,91" concept="1" />
-      <node id="44712766211124743" at="501,91,502,66" concept="1" />
-      <node id="44712766211124743" at="502,66,503,24" concept="6" />
+      <node id="44712766211124743" at="498,30,499,243" concept="1" />
+      <node id="44712766211124743" at="499,243,500,243" concept="1" />
+      <node id="44712766211124743" at="500,243,501,203" concept="1" />
+      <node id="44712766211124743" at="501,203,502,178" concept="1" />
+      <node id="44712766211124743" at="502,178,503,24" concept="6" />
       <node id="2925222852789993400" at="507,0,508,0" concept="9" trace="SmartReferenceAttribute$Lg" />
       <node id="2925222852789993400" at="508,0,509,0" concept="9" trace="SubstituteMenuPart_ReferenceScope$po" />
       <node id="2925222852789993400" at="509,0,510,0" concept="9" trace="CellMenuPart_ReferentPrimary$j6" />
@@ -284,10 +284,6 @@
       <node id="2925222852789993400" at="522,0,523,0" concept="9" trace="visibleMatchingText$_Wck" />
       <node id="2925222852789993400" at="523,0,524,0" concept="9" trace="referentPresentation$z_4O" />
       <node id="2925222852789993400" at="524,0,525,0" concept="9" trace="conceptDeclaration$acmt" />
-      <node id="2925222852789993400" at="525,0,526,0" concept="9" trace="charactersticReference$hNpW" />
-      <node id="2925222852789993400" at="526,0,527,0" concept="9" trace="refPresentationTemplate$RgQc" />
-      <node id="2925222852789993400" at="527,0,528,0" concept="9" trace="menu$6o5e" />
-      <node id="2925222852789993400" at="528,0,529,0" concept="9" trace="menuReference$mfCY" />
       <node id="7273969254452768777" at="342,0,345,0" concept="10" trace="ref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="3787933655125051785" at="346,0,349,0" concept="10" trace="modelref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SModelReference;" />
       <node id="7273969254452883829" at="351,0,354,0" concept="4" trace="resolveCD#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -674,16 +670,16 @@
       <unit id="44712766212443702" at="221,25,231,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$11" />
       <unit id="44712766212694972" at="234,25,244,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$12" />
       <unit id="44712766212962769" at="275,25,285,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$15" />
+      <unit id="2925222852789993400" at="515,0,526,0" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$LINKS" />
       <unit id="44712766212874708" at="259,25,272,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$14" />
       <unit id="44712766213000621" at="288,25,301,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$16" />
       <unit id="44712766213033066" at="304,25,317,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$17" />
       <unit id="44712766213033104" at="320,25,333,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$18" />
       <unit id="4561536768497792346" at="415,58,428,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$21" />
-      <unit id="2925222852789993400" at="515,0,530,0" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$LINKS" />
       <unit id="44712766210840262" at="181,25,198,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$9" />
       <unit id="44712766211124706" at="201,25,218,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$10" />
       <unit id="3787933655124987480" at="133,25,152,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$6" />
-      <unit id="2925222852789993400" at="36,0,531,0" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test" />
+      <unit id="2925222852789993400" at="36,0,527,0" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test" />
     </file>
   </root>
 </debug-info>

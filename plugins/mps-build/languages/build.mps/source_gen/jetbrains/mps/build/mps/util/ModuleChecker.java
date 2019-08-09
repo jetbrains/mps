@@ -58,7 +58,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.smodel.ModelImports;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -1091,7 +1091,7 @@ public final class ModuleChecker {
 
   private static SNode createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a63(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildMps_ModuleDependencyOnModule$_g, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.BuildMps_ModuleDependencyOnModule$_g, null, null).node();
     n1.setReferenceTarget(LINKS.module$gbmo, node0);
     n1.setProperty(PROPS.reexport$gb$r, PROPS.reexport$gb$r.getType().toString(false));
     return n1;

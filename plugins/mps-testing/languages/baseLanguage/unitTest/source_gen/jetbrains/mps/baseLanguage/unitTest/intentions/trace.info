@@ -43,19 +43,19 @@
       <node id="2230548360390192818" at="91,48,92,63" concept="8" />
       <node id="2230548360390284900" at="95,63,96,63" concept="7" />
       <node id="2230548360390284900" at="96,63,97,30" concept="7" />
-      <node id="2230548360390284900" at="97,30,98,252" concept="2" />
-      <node id="2230548360390284900" at="98,252,99,241" concept="2" />
-      <node id="2230548360390284900" at="99,241,100,24" concept="8" />
+      <node id="2230548360390284900" at="97,30,98,224" concept="2" />
+      <node id="2230548360390284900" at="98,224,99,445" concept="2" />
+      <node id="2230548360390284900" at="99,445,100,24" concept="8" />
       <node id="2230548360390286986" at="102,104,103,63" concept="7" />
       <node id="2230548360390286986" at="103,63,104,30" concept="7" />
       <node id="2230548360390286986" at="104,30,105,30" concept="7" />
       <node id="2230548360390286986" at="105,30,106,30" concept="7" />
-      <node id="2230548360390286986" at="106,30,107,257" concept="2" />
-      <node id="2230548360390286986" at="107,257,108,193" concept="2" />
-      <node id="2230548360390286986" at="108,193,109,245" concept="2" />
-      <node id="2230548360390286986" at="109,245,110,63" concept="2" />
-      <node id="2230548360390286986" at="110,63,111,39" concept="2" />
-      <node id="2230548360390286986" at="112,31,113,92" concept="2" />
+      <node id="2230548360390286986" at="106,30,107,229" concept="2" />
+      <node id="2230548360390286986" at="107,229,108,193" concept="2" />
+      <node id="2230548360390286986" at="108,193,109,217" concept="2" />
+      <node id="2230548360390286986" at="109,217,110,165" concept="2" />
+      <node id="2230548360390286986" at="110,165,111,39" concept="2" />
+      <node id="2230548360390286986" at="112,31,113,194" concept="2" />
       <node id="2230548360390286986" at="114,5,115,24" concept="8" />
       <node id="2230548360390192818" at="119,0,120,0" concept="9" trace="ClassConcept$IY" />
       <node id="2230548360390192818" at="120,0,121,0" concept="9" trace="BTestCase$o9" />
@@ -65,9 +65,8 @@
       <node id="2230548360390192818" at="127,0,128,0" concept="9" trace="testMethod$z_o0" />
       <node id="2230548360390192818" at="128,0,129,0" concept="9" trace="body$WIlu" />
       <node id="2230548360390192818" at="129,0,130,0" concept="9" trace="member$oYX5" />
-      <node id="2230548360390192818" at="130,0,131,0" concept="9" trace="returnType$WIkw" />
-      <node id="2230548360390192818" at="134,0,135,0" concept="9" trace="name$tAp1" />
-      <node id="2230548360390192818" at="135,0,136,0" concept="9" trace="testCaseName$9DFZ" />
+      <node id="2230548360390192818" at="133,0,134,0" concept="9" trace="name$tAp1" />
+      <node id="2230548360390192818" at="134,0,135,0" concept="9" trace="testCaseName$9DFZ" />
       <node id="2230548360390192818" at="65,0,67,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1571838961922885172" at="82,14,84,9" concept="0" />
       <node id="2230548360390192818" at="37,0,40,0" concept="1" trace="convert_test_case_to_unittest_case_Intention#()V" />
@@ -101,7 +100,7 @@
       <scope id="1571838961922885173" at="82,16,83,132" />
       <scope id="1571838961922885214" at="86,117,87,130" />
       <scope id="2230548360390192818" at="91,48,92,63" />
-      <scope id="2230548360390286986" at="112,31,113,92" />
+      <scope id="2230548360390286986" at="112,31,113,194" />
       <scope id="2230548360390192818" at="65,0,67,0" />
       <scope id="2230548360390192818" at="37,0,40,0" />
       <scope id="2230548360390192818" at="51,0,54,0">
@@ -155,10 +154,10 @@
         <var name="node" id="2230548360390192818" />
       </scope>
       <unit id="2230548360390192818" at="118,0,122,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention$CONCEPTS" />
-      <unit id="2230548360390192818" at="133,0,137,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention$PROPS" />
-      <unit id="2230548360390192818" at="123,0,132,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention$LINKS" />
+      <unit id="2230548360390192818" at="132,0,136,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention$PROPS" />
+      <unit id="2230548360390192818" at="123,0,131,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention$LINKS" />
       <unit id="2230548360390192818" at="64,0,95,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention$IntentionImplementation" />
-      <unit id="2230548360390192818" at="35,0,138,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention" />
+      <unit id="2230548360390192818" at="35,0,137,0" name="jetbrains.mps.baseLanguage.unitTest.intentions.convert_test_case_to_unittest_case_Intention" />
     </file>
   </root>
   <root nodeRef="r:ae5a3427-e70c-4b57-99b6-7ec8fc28a394(jetbrains.mps.baseLanguage.unitTest.intentions)/7080278351417190887">

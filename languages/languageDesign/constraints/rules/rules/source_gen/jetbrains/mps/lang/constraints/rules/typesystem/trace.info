@@ -276,8 +276,8 @@
       <node id="7201029305263586813" at="34,68,35,102" concept="7" />
       <node id="7201029305263586813" at="37,30,38,17" concept="7" />
       <node id="7201029305263589679" at="40,63,41,63" concept="6" />
-      <node id="7201029305263589679" at="41,63,42,104" concept="6" />
-      <node id="7201029305263589679" at="42,104,43,14" concept="7" />
+      <node id="7201029305263589679" at="41,63,42,76" concept="6" />
+      <node id="7201029305263589679" at="42,76,43,14" concept="7" />
       <node id="7201029305263586813" at="47,0,48,0" concept="9" trace="expr$dx1v" />
       <node id="7201029305263586813" at="48,0,49,0" concept="9" trace="expression$GH5k" />
       <node id="7201029305263586813" at="52,0,53,0" concept="9" trace="Rule$LR" />
@@ -405,14 +405,14 @@
       <node id="7291380803376371708" at="71,30,72,17" concept="7" />
       <node id="315923949159027449" at="74,83,75,63" concept="6" />
       <node id="315923949159027449" at="75,63,76,30" concept="6" />
-      <node id="315923949159027449" at="76,30,77,246" concept="3" />
-      <node id="315923949159027449" at="77,246,78,94" concept="3" />
-      <node id="315923949159027449" at="78,94,79,24" concept="7" />
+      <node id="315923949159027449" at="76,30,77,218" concept="3" />
+      <node id="315923949159027449" at="77,218,78,196" concept="3" />
+      <node id="315923949159027449" at="78,196,79,24" concept="7" />
       <node id="4622342125580497424" at="81,84,82,63" concept="6" />
       <node id="4622342125580497424" at="82,63,83,30" concept="6" />
-      <node id="4622342125580497424" at="83,30,84,254" concept="3" />
-      <node id="4622342125580497424" at="84,254,85,104" concept="3" />
-      <node id="4622342125580497424" at="85,104,86,24" concept="7" />
+      <node id="4622342125580497424" at="83,30,84,226" concept="3" />
+      <node id="4622342125580497424" at="84,226,85,216" concept="3" />
+      <node id="4622342125580497424" at="85,216,86,24" concept="7" />
       <node id="7291380803376371708" at="90,0,91,0" concept="9" trace="RulesConstraintsRoot$xz" />
       <node id="7291380803376371708" at="91,0,92,0" concept="9" trace="NativeTypedNodeDef$qx" />
       <node id="7291380803376371708" at="92,0,93,0" concept="9" trace="NativeTypedConceptDef$4n" />
@@ -420,8 +420,6 @@
       <node id="7291380803376371708" at="94,0,95,0" concept="9" trace="NativeDef$p3" />
       <node id="7291380803376371708" at="98,0,99,0" concept="9" trace="concept$aYvX" />
       <node id="7291380803376371708" at="99,0,100,0" concept="9" trace="declaration$LqCB" />
-      <node id="7291380803376371708" at="100,0,101,0" concept="9" trace="concept$HWFQ" />
-      <node id="7291380803376371708" at="101,0,102,0" concept="9" trace="conceptDeclaraton$l1qw" />
       <node id="7291380803376371708" at="23,0,25,0" concept="1" trace="typeof_TypedDefReference_InferenceRule#()V" />
       <node id="7291380803376371708" at="67,10,69,5" concept="0" />
       <node id="4622342125580431504" at="27,107,30,7" concept="4" />
@@ -499,9 +497,9 @@
         <var name="typeCheckingContext" id="7291380803376371708" />
       </scope>
       <unit id="7291380803376371708" at="62,40,66,7" name="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule$1" />
-      <unit id="7291380803376371708" at="97,0,103,0" name="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule$LINKS" />
+      <unit id="7291380803376371708" at="97,0,101,0" name="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule$LINKS" />
       <unit id="7291380803376371708" at="89,0,96,0" name="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule$CONCEPTS" />
-      <unit id="7291380803376371708" at="22,0,104,0" name="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule" />
+      <unit id="7291380803376371708" at="22,0,102,0" name="jetbrains.mps.lang.constraints.rules.typesystem.typeof_TypedDefReference_InferenceRule" />
     </file>
   </root>
 </debug-info>

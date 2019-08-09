@@ -21,7 +21,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.editor.intentions.BaseNodeTransformer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -110,7 +110,7 @@ public class ConvertConstraintsToRulesAutomatically extends IntentionsFactory {
   }
   private static SNode createRulesBlock_dji8hx_a0a0b0f0h(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RulesBlock$2N, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RulesBlock$2N, null, null).node();
     n1.setReference(LINKS.kind$ipQZ, SReference.create(LINKS.kind$ipQZ, n1, facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382583")));
     for (SNode n : seq0) {
       n1.addChild(LINKS.members$ipQw, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.RuleBlockMember$5H)));
@@ -119,7 +119,7 @@ public class ConvertConstraintsToRulesAutomatically extends IntentionsFactory {
   }
   private static SNode createRulesBlock_dji8hx_a0a0b0g0h(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RulesBlock$2N, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RulesBlock$2N, null, null).node();
     n1.setReference(LINKS.kind$ipQZ, SReference.create(LINKS.kind$ipQZ, n1, facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382590")));
     for (SNode n : seq0) {
       n1.addChild(LINKS.members$ipQw, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.RuleBlockMember$5H)));

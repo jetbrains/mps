@@ -19,7 +19,7 @@ import jetbrains.mps.openapi.editor.cells.traversal.CellTreeIterable;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -56,7 +56,7 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
   }
   private static SNode createEditorListOfDefs_igmisa_a0d0e(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.EditorListOfDefs$7C, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.EditorListOfDefs$7C, null, null).node();
     for (SNode n : seq0) {
       n1.addChild(LINKS.defs$D2dt, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.TypedDefReference$7f)));
     }

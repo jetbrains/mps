@@ -386,14 +386,14 @@
       <node id="6456024106307577739" at="21,46,22,42" concept="8" />
       <node id="6456024106307578268" at="25,39,26,71" concept="8" />
       <node id="6456024106307578266" at="28,85,29,63" concept="7" />
-      <node id="6456024106307578266" at="29,63,30,122" concept="7" />
+      <node id="6456024106307578266" at="29,63,30,94" concept="7" />
       <node id="6456024106307578266" at="31,24,32,127" concept="2" />
       <node id="6456024106307578266" at="33,5,34,14" concept="8" />
       <node id="6456024106307577739" at="38,0,39,0" concept="10" trace="Expression$TP" />
       <node id="6456024106307577739" at="39,0,40,0" concept="10" trace="EnumSwitchCaseBody$Fk" />
       <node id="6456024106307577739" at="40,0,41,0" concept="10" trace="EnumSwitchCaseBody_Expression$Xi" />
       <node id="6456024106307577739" at="44,0,45,0" concept="10" trace="expression$6WR0" />
-      <node id="6456024106307578266" at="30,122,33,5" concept="5" />
+      <node id="6456024106307578266" at="30,94,33,5" concept="5" />
       <node id="6456024106307577739" at="16,0,20,0" concept="6" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106307577739" at="20,0,24,0" concept="6" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106307577739" at="24,0,28,0" concept="6" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -423,7 +423,7 @@
       <node id="6456024106309261373" at="22,46,23,43" concept="8" />
       <node id="6456024106309261376" at="26,39,27,111" concept="8" />
       <node id="6456024106309262579" at="29,75,30,63" concept="7" />
-      <node id="6456024106309262579" at="30,63,31,112" concept="7" />
+      <node id="6456024106309262579" at="30,63,31,84" concept="7" />
       <node id="6456024106309262579" at="32,24,33,127" concept="2" />
       <node id="6456024106309262579" at="34,5,35,14" concept="8" />
       <node id="6456024106309261373" at="39,0,40,0" concept="10" trace="EnumSwitchCaseBody_Expression$Xi" />
@@ -431,7 +431,7 @@
       <node id="6456024106309261373" at="41,0,42,0" concept="10" trace="Expression$TP" />
       <node id="6456024106309261373" at="45,0,46,0" concept="10" trace="expression$6WR0" />
       <node id="6456024106309261373" at="46,0,47,0" concept="10" trace="expression$WIP0" />
-      <node id="6456024106309262579" at="31,112,34,5" concept="5" />
+      <node id="6456024106309262579" at="31,84,34,5" concept="5" />
       <node id="6456024106309261373" at="17,0,21,0" concept="6" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309261373" at="21,0,25,0" concept="6" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309261373" at="25,0,29,0" concept="6" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -461,7 +461,7 @@
       <node id="6456024106309261380" at="22,46,23,42" concept="8" />
       <node id="6456024106309261383" at="26,39,27,121" concept="8" />
       <node id="6456024106309261384" at="29,85,30,63" concept="7" />
-      <node id="6456024106309261384" at="30,63,31,122" concept="7" />
+      <node id="6456024106309261384" at="30,63,31,94" concept="7" />
       <node id="6456024106309261384" at="32,24,33,127" concept="2" />
       <node id="6456024106309261384" at="34,5,35,14" concept="8" />
       <node id="6456024106309261380" at="39,0,40,0" concept="10" trace="ExpressionStatement$nm" />
@@ -470,7 +470,7 @@
       <node id="6456024106309261380" at="42,0,43,0" concept="10" trace="Expression$TP" />
       <node id="6456024106309261380" at="46,0,47,0" concept="10" trace="expression$WIP0" />
       <node id="6456024106309261380" at="47,0,48,0" concept="10" trace="expression$6WR0" />
-      <node id="6456024106309261384" at="31,122,34,5" concept="5" />
+      <node id="6456024106309261384" at="31,94,34,5" concept="5" />
       <node id="6456024106309261380" at="17,0,21,0" concept="6" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309261380" at="21,0,25,0" concept="6" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309261380" at="25,0,29,0" concept="6" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -500,7 +500,7 @@
       <node id="6456024106309271868" at="22,46,23,42" concept="8" />
       <node id="6456024106309271871" at="26,39,27,124" concept="8" />
       <node id="6456024106309271872" at="29,88,30,63" concept="7" />
-      <node id="6456024106309271872" at="30,63,31,125" concept="7" />
+      <node id="6456024106309271872" at="30,63,31,97" concept="7" />
       <node id="6456024106309271872" at="32,24,33,133" concept="2" />
       <node id="6456024106309271872" at="34,5,35,14" concept="8" />
       <node id="6456024106309271868" at="39,0,40,0" concept="10" trace="BlockStatement$1i" />
@@ -509,7 +509,7 @@
       <node id="6456024106309271868" at="42,0,43,0" concept="10" trace="StatementList$TN" />
       <node id="6456024106309271868" at="46,0,47,0" concept="10" trace="statements$uqR0" />
       <node id="6456024106309271868" at="47,0,48,0" concept="10" trace="statementList$6WT0" />
-      <node id="6456024106309271872" at="31,125,34,5" concept="5" />
+      <node id="6456024106309271872" at="31,97,34,5" concept="5" />
       <node id="6456024106309271868" at="17,0,21,0" concept="6" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309271868" at="21,0,25,0" concept="6" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309271868" at="25,0,29,0" concept="6" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -539,8 +539,8 @@
       <node id="6456024106309266174" at="23,46,24,42" concept="8" />
       <node id="6456024106309266642" at="27,39,28,129" concept="8" />
       <node id="6456024106309266640" at="30,107,31,63" concept="7" />
-      <node id="6456024106309266640" at="31,63,32,125" concept="7" />
-      <node id="6456024106309266640" at="33,5,34,108" concept="7" />
+      <node id="6456024106309266640" at="31,63,32,97" concept="7" />
+      <node id="6456024106309266640" at="33,5,34,80" concept="7" />
       <node id="6456024106309266640" at="35,28,36,123" concept="2" />
       <node id="6456024106309266640" at="37,7,38,48" concept="2" />
       <node id="6456024106309266640" at="39,5,40,14" concept="8" />
@@ -550,17 +550,17 @@
       <node id="6456024106309266174" at="47,0,48,0" concept="10" trace="StatementList$TN" />
       <node id="6456024106309266174" at="51,0,52,0" concept="10" trace="statement$WHn8" />
       <node id="6456024106309266174" at="52,0,53,0" concept="10" trace="statementList$6WT0" />
-      <node id="6456024106309266640" at="34,108,37,7" concept="4" />
+      <node id="6456024106309266640" at="34,80,37,7" concept="4" />
       <node id="6456024106309266174" at="18,0,22,0" concept="6" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309266174" at="22,0,26,0" concept="6" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309266174" at="26,0,30,0" concept="6" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6456024106309266640" at="32,125,39,5" concept="0" />
+      <node id="6456024106309266640" at="32,97,39,5" concept="0" />
       <node id="6456024106309266640" at="30,0,42,0" concept="11" trace="createEnumSwitchCaseBody_StatementList_degi1_a0a0f#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="6456024106309266174" at="19,46,20,33" />
       <scope id="6456024106309266174" at="23,46,24,42" />
       <scope id="6456024106309266176" at="27,39,28,129" />
       <scope id="6456024106309266640" at="35,28,36,123" />
-      <scope id="6456024106309266640" at="34,108,37,7">
+      <scope id="6456024106309266640" at="34,80,37,7">
         <var name="n" id="6456024106309266640" />
       </scope>
       <scope id="6456024106309266174" at="18,0,22,0" />
@@ -587,7 +587,7 @@
       <node id="6456024106309276274" at="22,46,23,33" concept="8" />
       <node id="6456024106309276277" at="26,39,27,109" concept="8" />
       <node id="6456024106309276278" at="29,70,30,63" concept="7" />
-      <node id="6456024106309276278" at="30,63,31,107" concept="7" />
+      <node id="6456024106309276278" at="30,63,31,79" concept="7" />
       <node id="6456024106309276278" at="32,24,33,130" concept="2" />
       <node id="6456024106309276278" at="34,5,35,14" concept="8" />
       <node id="6456024106309276274" at="39,0,40,0" concept="10" trace="EnumSwitchCaseBody_StatementList$Ze" />
@@ -596,7 +596,7 @@
       <node id="6456024106309276274" at="42,0,43,0" concept="10" trace="StatementList$TN" />
       <node id="6456024106309276274" at="46,0,47,0" concept="10" trace="statementList$6WT0" />
       <node id="6456024106309276274" at="47,0,48,0" concept="10" trace="statements$uqR0" />
-      <node id="6456024106309276278" at="31,107,34,5" concept="5" />
+      <node id="6456024106309276278" at="31,79,34,5" concept="5" />
       <node id="6456024106309276274" at="17,0,21,0" concept="6" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309276274" at="21,0,25,0" concept="6" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6456024106309276274" at="25,0,29,0" concept="6" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

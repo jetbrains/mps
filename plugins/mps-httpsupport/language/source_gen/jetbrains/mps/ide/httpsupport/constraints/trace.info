@@ -226,58 +226,57 @@
   </root>
   <root nodeRef="r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)/6886330673564850976">
     <file name="HttpRequestOperation_Constraints.java">
-      <node id="6886330673564850976" at="26,45,27,44" concept="9" />
-      <node id="6886330673564850976" at="34,127,35,128" concept="4" />
-      <node id="6886330673564850976" at="35,128,36,0" concept="6" />
-      <node id="6886330673564850976" at="37,55,38,71" concept="1" />
-      <node id="6886330673564850976" at="39,9,40,0" concept="6" />
-      <node id="6886330673564850976" at="40,0,41,22" concept="5" />
-      <node id="1227128029536566378" at="45,128,46,251" concept="5" />
-      <node id="1227128029536566387" at="48,62,49,63" concept="4" />
-      <node id="1227128029536566387" at="49,63,50,30" concept="4" />
-      <node id="1227128029536566387" at="50,30,51,252" concept="1" />
-      <node id="1227128029536566387" at="51,252,52,270" concept="1" />
-      <node id="1227128029536566387" at="52,270,53,24" concept="5" />
-      <node id="6886330673564850976" at="55,0,56,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="6886330673564850976" at="58,0,59,0" concept="7" trace="HttpRequestOperation$wK" />
-      <node id="6886330673564850976" at="59,0,60,0" concept="7" trace="DotExpression$6a" />
-      <node id="6886330673564850976" at="63,0,64,0" concept="7" trace="operand$Lcrr" />
-      <node id="6886330673564850976" at="64,0,65,0" concept="7" trace="classifier$pQ_R" />
-      <node id="6886330673564850976" at="26,0,29,0" concept="0" trace="HttpRequestOperation_Constraints#()V" />
-      <node id="6886330673564850976" at="36,0,39,9" concept="2" />
-      <node id="6886330673564850976" at="45,0,48,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="1227128029536566387" at="48,0,55,0" concept="8" trace="_quotation_createNode_nrt74r_b0a0a3#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6886330673564850976" at="33,0,43,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="6886330673564850976" at="31,103,43,6" concept="5" />
-      <node id="6886330673564850976" at="30,0,45,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="6886330673564850976" at="26,45,27,44" />
-      <scope id="6886330673564850976" at="37,55,38,71" />
-      <scope id="1227128029536566377" at="45,128,46,251" />
-      <scope id="6886330673564850976" at="26,0,29,0" />
-      <scope id="6886330673564850976" at="45,0,48,0">
+      <node id="6886330673564850976" at="25,45,26,44" concept="9" />
+      <node id="6886330673564850976" at="33,127,34,128" concept="4" />
+      <node id="6886330673564850976" at="34,128,35,0" concept="6" />
+      <node id="6886330673564850976" at="36,55,37,71" concept="1" />
+      <node id="6886330673564850976" at="38,9,39,0" concept="6" />
+      <node id="6886330673564850976" at="39,0,40,22" concept="5" />
+      <node id="1227128029536566378" at="44,128,45,251" concept="5" />
+      <node id="1227128029536566387" at="47,62,48,63" concept="4" />
+      <node id="1227128029536566387" at="48,63,49,30" concept="4" />
+      <node id="1227128029536566387" at="49,30,50,224" concept="1" />
+      <node id="1227128029536566387" at="50,224,51,474" concept="1" />
+      <node id="1227128029536566387" at="51,474,52,24" concept="5" />
+      <node id="6886330673564850976" at="54,0,55,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="6886330673564850976" at="57,0,58,0" concept="7" trace="HttpRequestOperation$wK" />
+      <node id="6886330673564850976" at="58,0,59,0" concept="7" trace="DotExpression$6a" />
+      <node id="6886330673564850976" at="62,0,63,0" concept="7" trace="operand$Lcrr" />
+      <node id="6886330673564850976" at="25,0,28,0" concept="0" trace="HttpRequestOperation_Constraints#()V" />
+      <node id="6886330673564850976" at="35,0,38,9" concept="2" />
+      <node id="6886330673564850976" at="44,0,47,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="1227128029536566387" at="47,0,54,0" concept="8" trace="_quotation_createNode_nrt74r_b0a0a3#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6886330673564850976" at="32,0,42,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="6886330673564850976" at="30,103,42,6" concept="5" />
+      <node id="6886330673564850976" at="29,0,44,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="6886330673564850976" at="25,45,26,44" />
+      <scope id="6886330673564850976" at="36,55,37,71" />
+      <scope id="1227128029536566377" at="44,128,45,251" />
+      <scope id="6886330673564850976" at="25,0,28,0" />
+      <scope id="6886330673564850976" at="44,0,47,0">
         <var name="childConcept" id="6886330673564850976" />
         <var name="link" id="6886330673564850976" />
         <var name="node" id="6886330673564850976" />
         <var name="parentNode" id="6886330673564850976" />
       </scope>
-      <scope id="1227128029536566387" at="48,62,53,24">
+      <scope id="1227128029536566387" at="47,62,52,24">
         <var name="facade" id="1227128029536566387" />
         <var name="quotedNode_1" id="1227128029536566387" />
       </scope>
-      <scope id="6886330673564850976" at="34,127,41,22">
+      <scope id="6886330673564850976" at="33,127,40,22">
         <var name="result" id="6886330673564850976" />
       </scope>
-      <scope id="1227128029536566387" at="48,0,55,0" />
-      <scope id="6886330673564850976" at="33,0,43,0">
+      <scope id="1227128029536566387" at="47,0,54,0" />
+      <scope id="6886330673564850976" at="32,0,42,0">
         <var name="checkingNodeContext" id="6886330673564850976" />
         <var name="context" id="6886330673564850976" />
       </scope>
-      <scope id="6886330673564850976" at="31,103,43,6" />
-      <scope id="6886330673564850976" at="30,0,45,0" />
-      <unit id="6886330673564850976" at="57,0,61,0" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints$CONCEPTS" />
-      <unit id="6886330673564850976" at="62,0,66,0" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints$LINKS" />
-      <unit id="6886330673564850976" at="32,15,43,5" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints$1" />
-      <unit id="6886330673564850976" at="25,0,67,0" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints" />
+      <scope id="6886330673564850976" at="30,103,42,6" />
+      <scope id="6886330673564850976" at="29,0,44,0" />
+      <unit id="6886330673564850976" at="61,0,64,0" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints$LINKS" />
+      <unit id="6886330673564850976" at="56,0,60,0" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints$CONCEPTS" />
+      <unit id="6886330673564850976" at="31,15,42,5" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints$1" />
+      <unit id="6886330673564850976" at="24,0,65,0" name="jetbrains.mps.ide.httpsupport.constraints.HttpRequestOperation_Constraints" />
     </file>
   </root>
   <root nodeRef="r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)/7720980209310028903">

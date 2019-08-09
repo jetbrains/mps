@@ -30,8 +30,8 @@
       <node id="3418954410726345310" at="32,68,33,102" concept="5" />
       <node id="3418954410726345310" at="35,30,36,17" concept="5" />
       <node id="3418954410726346653" at="38,64,39,63" concept="4" />
-      <node id="3418954410726346653" at="39,63,40,107" concept="4" />
-      <node id="3418954410726346653" at="40,107,41,236" concept="2" />
+      <node id="3418954410726346653" at="39,63,40,79" concept="4" />
+      <node id="3418954410726346653" at="40,79,41,236" concept="2" />
       <node id="3418954410726346653" at="41,236,42,14" concept="5" />
       <node id="3418954410726345310" at="46,0,47,0" concept="6" trace="PlatformAccessExpression$27" />
       <node id="3418954410726345310" at="47,0,48,0" concept="6" trace="ClassifierType$IZ" />
@@ -75,47 +75,45 @@
   </root>
   <root nodeRef="r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)/481983775135178859">
     <file name="Typeof_ProjectPluginType_SubtypingRule.java">
-      <node id="481983775135178861" at="21,120,22,47" concept="5" />
-      <node id="481983775135178859" at="24,50,25,41" concept="5" />
-      <node id="481983775135178859" at="27,68,28,102" concept="5" />
-      <node id="481983775135178859" at="30,27,31,17" concept="5" />
-      <node id="481983775135178862" at="33,60,34,63" concept="4" />
-      <node id="481983775135178862" at="34,63,35,30" concept="4" />
-      <node id="481983775135178862" at="35,30,36,252" concept="2" />
-      <node id="481983775135178862" at="36,252,37,269" concept="2" />
-      <node id="481983775135178862" at="37,269,38,24" concept="5" />
-      <node id="481983775135178859" at="42,0,43,0" concept="6" trace="ProjectPluginType$zP" />
-      <node id="481983775135178859" at="46,0,47,0" concept="6" trace="classifier$pQ_R" />
-      <node id="481983775135178859" at="19,0,21,0" concept="1" trace="Typeof_ProjectPluginType_SubtypingRule#()V" />
-      <node id="481983775135178859" at="21,0,24,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="481983775135178859" at="24,0,27,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="481983775135178859" at="27,0,30,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="481983775135178859" at="30,0,33,0" concept="3" trace="isWeak#()Z" />
-      <node id="481983775135178862" at="33,0,40,0" concept="7" trace="_quotation_createNode_lh579i_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="481983775135178859" at="19,51,19,51" />
-      <scope id="481983775135178860" at="21,120,22,47" />
-      <scope id="481983775135178859" at="24,50,25,41" />
-      <scope id="481983775135178859" at="27,68,28,102" />
-      <scope id="481983775135178859" at="30,27,31,17" />
-      <scope id="481983775135178859" at="19,0,21,0" />
-      <scope id="481983775135178859" at="21,0,24,0">
+      <node id="481983775135178861" at="20,120,21,47" concept="5" />
+      <node id="481983775135178859" at="23,50,24,41" concept="5" />
+      <node id="481983775135178859" at="26,68,27,102" concept="5" />
+      <node id="481983775135178859" at="29,27,30,17" concept="5" />
+      <node id="481983775135178862" at="32,60,33,63" concept="4" />
+      <node id="481983775135178862" at="33,63,34,30" concept="4" />
+      <node id="481983775135178862" at="34,30,35,224" concept="2" />
+      <node id="481983775135178862" at="35,224,36,473" concept="2" />
+      <node id="481983775135178862" at="36,473,37,24" concept="5" />
+      <node id="481983775135178859" at="41,0,42,0" concept="6" trace="ProjectPluginType$zP" />
+      <node id="481983775135178859" at="18,0,20,0" concept="1" trace="Typeof_ProjectPluginType_SubtypingRule#()V" />
+      <node id="481983775135178859" at="20,0,23,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="481983775135178859" at="23,0,26,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="481983775135178859" at="26,0,29,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="481983775135178859" at="29,0,32,0" concept="3" trace="isWeak#()Z" />
+      <node id="481983775135178862" at="32,0,39,0" concept="7" trace="_quotation_createNode_lh579i_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="481983775135178859" at="18,51,18,51" />
+      <scope id="481983775135178860" at="20,120,21,47" />
+      <scope id="481983775135178859" at="23,50,24,41" />
+      <scope id="481983775135178859" at="26,68,27,102" />
+      <scope id="481983775135178859" at="29,27,30,17" />
+      <scope id="481983775135178859" at="18,0,20,0" />
+      <scope id="481983775135178859" at="20,0,23,0">
         <var name="pluginType" id="481983775135178859" />
         <var name="status" id="481983775135178859" />
         <var name="typeCheckingContext" id="481983775135178859" />
       </scope>
-      <scope id="481983775135178859" at="24,0,27,0" />
-      <scope id="481983775135178859" at="27,0,30,0">
+      <scope id="481983775135178859" at="23,0,26,0" />
+      <scope id="481983775135178859" at="26,0,29,0">
         <var name="argument" id="481983775135178859" />
       </scope>
-      <scope id="481983775135178859" at="30,0,33,0" />
-      <scope id="481983775135178862" at="33,60,38,24">
+      <scope id="481983775135178859" at="29,0,32,0" />
+      <scope id="481983775135178862" at="32,60,37,24">
         <var name="facade" id="481983775135178862" />
         <var name="quotedNode_1" id="481983775135178862" />
       </scope>
-      <scope id="481983775135178862" at="33,0,40,0" />
-      <unit id="481983775135178859" at="41,0,44,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ProjectPluginType_SubtypingRule$CONCEPTS" />
-      <unit id="481983775135178859" at="45,0,48,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ProjectPluginType_SubtypingRule$LINKS" />
-      <unit id="481983775135178859" at="18,0,49,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ProjectPluginType_SubtypingRule" />
+      <scope id="481983775135178862" at="32,0,39,0" />
+      <unit id="481983775135178859" at="40,0,43,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ProjectPluginType_SubtypingRule$CONCEPTS" />
+      <unit id="481983775135178859" at="17,0,44,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ProjectPluginType_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="481983775135178859" at="27,5,28,89" concept="4" />
@@ -128,47 +126,45 @@
   </root>
   <root nodeRef="r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)/481983775135178865">
     <file name="Typeof_ApplicationPluginType_SubtypingRule.java">
-      <node id="481983775135178867" at="21,137,22,47" concept="5" />
-      <node id="481983775135178865" at="24,50,25,45" concept="5" />
-      <node id="481983775135178865" at="27,68,28,102" concept="5" />
-      <node id="481983775135178865" at="30,27,31,17" concept="5" />
-      <node id="481983775135178868" at="33,60,34,63" concept="4" />
-      <node id="481983775135178868" at="34,63,35,30" concept="4" />
-      <node id="481983775135178868" at="35,30,36,252" concept="2" />
-      <node id="481983775135178868" at="36,252,37,273" concept="2" />
-      <node id="481983775135178868" at="37,273,38,24" concept="5" />
-      <node id="481983775135178865" at="42,0,43,0" concept="6" trace="ApplicationPluginType$3o" />
-      <node id="481983775135178865" at="46,0,47,0" concept="6" trace="classifier$pQ_R" />
-      <node id="481983775135178865" at="19,0,21,0" concept="1" trace="Typeof_ApplicationPluginType_SubtypingRule#()V" />
-      <node id="481983775135178865" at="21,0,24,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="481983775135178865" at="24,0,27,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="481983775135178865" at="27,0,30,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="481983775135178865" at="30,0,33,0" concept="3" trace="isWeak#()Z" />
-      <node id="481983775135178868" at="33,0,40,0" concept="7" trace="_quotation_createNode_mtmcrl_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="481983775135178865" at="19,55,19,55" />
-      <scope id="481983775135178866" at="21,137,22,47" />
-      <scope id="481983775135178865" at="24,50,25,45" />
-      <scope id="481983775135178865" at="27,68,28,102" />
-      <scope id="481983775135178865" at="30,27,31,17" />
-      <scope id="481983775135178865" at="19,0,21,0" />
-      <scope id="481983775135178865" at="21,0,24,0">
+      <node id="481983775135178867" at="20,137,21,47" concept="5" />
+      <node id="481983775135178865" at="23,50,24,45" concept="5" />
+      <node id="481983775135178865" at="26,68,27,102" concept="5" />
+      <node id="481983775135178865" at="29,27,30,17" concept="5" />
+      <node id="481983775135178868" at="32,60,33,63" concept="4" />
+      <node id="481983775135178868" at="33,63,34,30" concept="4" />
+      <node id="481983775135178868" at="34,30,35,224" concept="2" />
+      <node id="481983775135178868" at="35,224,36,477" concept="2" />
+      <node id="481983775135178868" at="36,477,37,24" concept="5" />
+      <node id="481983775135178865" at="41,0,42,0" concept="6" trace="ApplicationPluginType$3o" />
+      <node id="481983775135178865" at="18,0,20,0" concept="1" trace="Typeof_ApplicationPluginType_SubtypingRule#()V" />
+      <node id="481983775135178865" at="20,0,23,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="481983775135178865" at="23,0,26,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="481983775135178865" at="26,0,29,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="481983775135178865" at="29,0,32,0" concept="3" trace="isWeak#()Z" />
+      <node id="481983775135178868" at="32,0,39,0" concept="7" trace="_quotation_createNode_mtmcrl_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="481983775135178865" at="18,55,18,55" />
+      <scope id="481983775135178866" at="20,137,21,47" />
+      <scope id="481983775135178865" at="23,50,24,45" />
+      <scope id="481983775135178865" at="26,68,27,102" />
+      <scope id="481983775135178865" at="29,27,30,17" />
+      <scope id="481983775135178865" at="18,0,20,0" />
+      <scope id="481983775135178865" at="20,0,23,0">
         <var name="customApplicationPluginType" id="481983775135178865" />
         <var name="status" id="481983775135178865" />
         <var name="typeCheckingContext" id="481983775135178865" />
       </scope>
-      <scope id="481983775135178865" at="24,0,27,0" />
-      <scope id="481983775135178865" at="27,0,30,0">
+      <scope id="481983775135178865" at="23,0,26,0" />
+      <scope id="481983775135178865" at="26,0,29,0">
         <var name="argument" id="481983775135178865" />
       </scope>
-      <scope id="481983775135178865" at="30,0,33,0" />
-      <scope id="481983775135178868" at="33,60,38,24">
+      <scope id="481983775135178865" at="29,0,32,0" />
+      <scope id="481983775135178868" at="32,60,37,24">
         <var name="facade" id="481983775135178868" />
         <var name="quotedNode_1" id="481983775135178868" />
       </scope>
-      <scope id="481983775135178868" at="33,0,40,0" />
-      <unit id="481983775135178865" at="41,0,44,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ApplicationPluginType_SubtypingRule$CONCEPTS" />
-      <unit id="481983775135178865" at="45,0,48,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ApplicationPluginType_SubtypingRule$LINKS" />
-      <unit id="481983775135178865" at="18,0,49,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ApplicationPluginType_SubtypingRule" />
+      <scope id="481983775135178868" at="32,0,39,0" />
+      <unit id="481983775135178865" at="40,0,43,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ApplicationPluginType_SubtypingRule$CONCEPTS" />
+      <unit id="481983775135178865" at="17,0,44,0" name="jetbrains.mps.lang.plugin.standalone.typesystem.Typeof_ApplicationPluginType_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="481983775135178865" at="23,5,24,93" concept="4" />

@@ -35,17 +35,16 @@
       <node id="5540778578667542601" at="42,30,43,30" concept="5" />
       <node id="5540778578667542601" at="43,30,44,30" concept="5" />
       <node id="5540778578667542601" at="44,30,45,30" concept="5" />
-      <node id="5540778578667542601" at="45,30,46,249" concept="2" />
-      <node id="5540778578667542601" at="46,249,47,248" concept="2" />
-      <node id="5540778578667542601" at="47,248,48,61" concept="2" />
-      <node id="5540778578667542601" at="48,61,49,248" concept="2" />
-      <node id="5540778578667542601" at="49,248,50,61" concept="2" />
-      <node id="5540778578667542601" at="50,61,51,248" concept="2" />
-      <node id="5540778578667542601" at="51,248,52,61" concept="2" />
-      <node id="5540778578667542601" at="52,61,53,24" concept="6" />
+      <node id="5540778578667542601" at="45,30,46,221" concept="2" />
+      <node id="5540778578667542601" at="46,221,47,220" concept="2" />
+      <node id="5540778578667542601" at="47,220,48,165" concept="2" />
+      <node id="5540778578667542601" at="48,165,49,220" concept="2" />
+      <node id="5540778578667542601" at="49,220,50,165" concept="2" />
+      <node id="5540778578667542601" at="50,165,51,220" concept="2" />
+      <node id="5540778578667542601" at="51,220,52,165" concept="2" />
+      <node id="5540778578667542601" at="52,165,53,24" concept="6" />
       <node id="5540778578667537766" at="57,0,58,0" concept="7" trace="type$dvU0" />
-      <node id="5540778578667537766" at="58,0,59,0" concept="7" trace="argument$xIHX" />
-      <node id="5540778578667537766" at="62,0,63,0" concept="7" trace="DefaultGeneratorParameter$JZ" />
+      <node id="5540778578667537766" at="61,0,62,0" concept="7" trace="DefaultGeneratorParameter$JZ" />
       <node id="5540778578667537766" at="20,0,22,0" concept="1" trace="typeof_DefaultGeneratorParameter_InferenceRule#()V" />
       <node id="5540778578667537766" at="31,0,34,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5540778578667537766" at="34,0,37,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -83,9 +82,9 @@
         <var name="quotedNode_4" id="5540778578667542601" />
       </scope>
       <scope id="5540778578667542601" at="40,0,55,0" />
-      <unit id="5540778578667537766" at="61,0,64,0" name="jetbrains.mps.lang.generator.generationParameters.typesystem.typeof_DefaultGeneratorParameter_InferenceRule$CONCEPTS" />
-      <unit id="5540778578667537766" at="56,0,60,0" name="jetbrains.mps.lang.generator.generationParameters.typesystem.typeof_DefaultGeneratorParameter_InferenceRule$LINKS" />
-      <unit id="5540778578667537766" at="19,0,65,0" name="jetbrains.mps.lang.generator.generationParameters.typesystem.typeof_DefaultGeneratorParameter_InferenceRule" />
+      <unit id="5540778578667537766" at="56,0,59,0" name="jetbrains.mps.lang.generator.generationParameters.typesystem.typeof_DefaultGeneratorParameter_InferenceRule$LINKS" />
+      <unit id="5540778578667537766" at="60,0,63,0" name="jetbrains.mps.lang.generator.generationParameters.typesystem.typeof_DefaultGeneratorParameter_InferenceRule$CONCEPTS" />
+      <unit id="5540778578667537766" at="19,0,64,0" name="jetbrains.mps.lang.generator.generationParameters.typesystem.typeof_DefaultGeneratorParameter_InferenceRule" />
     </file>
   </root>
 </debug-info>

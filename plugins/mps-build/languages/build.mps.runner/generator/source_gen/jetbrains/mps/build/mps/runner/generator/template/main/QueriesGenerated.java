@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.VariableValueQuery;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -247,7 +247,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private static SNode createGeneratorInternal_PluginExpanded_x583g4_a0a0a0e0m(Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GeneratorInternal_PluginExpanded$8B, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.GeneratorInternal_PluginExpanded$8B, null, null).node();
     n1.setProperty(PROPS.path$7q6F, PROPS.path$7q6F.getType().toString(p0));
     n1.setProperty(PROPS.id$7q7a, PROPS.id$7q7a.getType().toString(p1));
     return n1;

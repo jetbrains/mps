@@ -26,7 +26,7 @@ import jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -152,10 +152,10 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createToolKeystroke_846jr0_a1a0a0(Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ToolKeystroke$gA, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ToolKeystroke$gA, null, null).node();
     {
       n1.setProperty(PROPS.keymap$bYfr, PROPS.keymap$bYfr.getType().toString(p0));
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.KeyMapKeystroke$7H, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.KeyMapKeystroke$7H, null, null).node();
       n2.setProperty(PROPS.modifiers$PoTw, PROPS.modifiers$PoTw.getType().toString(p1));
       n1.addChild(LINKS.keystroke$5Qdi, n2);
     }

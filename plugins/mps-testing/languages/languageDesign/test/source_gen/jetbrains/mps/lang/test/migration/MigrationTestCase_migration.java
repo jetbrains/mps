@@ -21,7 +21,7 @@ import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigra
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -90,7 +90,7 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
 
   private static SNode createMigrationReference_y0ige7_a0a0a0a0a0a0d(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MigrationReference$BB, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.MigrationReference$BB, null, null).node();
     n1.setReferenceTarget(LINKS.migration$RUsw, node0);
     return n1;
   }

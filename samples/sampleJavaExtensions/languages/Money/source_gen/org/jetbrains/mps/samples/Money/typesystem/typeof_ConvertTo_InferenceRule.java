@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -36,7 +36,7 @@ public class typeof_ConvertTo_InferenceRule extends AbstractInferenceRule_Runtim
   private static SNode _quotation_createNode_6ibh7v_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x662a9f2b58024d16L, 0x955872c65c7a681eL, "org.jetbrains.mps.samples.Money"), 0x4b9a2fe55913516aL, "MoneyType"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x662a9f2b58024d16L, 0x955872c65c7a681eL, "org.jetbrains.mps.samples.Money"), 0x4b9a2fe55913516aL, "MoneyType"), null, null).node();
     return quotedNode_1;
   }
 

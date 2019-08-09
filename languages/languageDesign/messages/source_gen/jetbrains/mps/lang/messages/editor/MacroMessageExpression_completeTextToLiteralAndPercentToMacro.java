@@ -13,7 +13,7 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -70,13 +70,13 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0c0a0() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.LiteralMessageExpression$Ga, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
       n1.setProperty(PROPS.message$vnr0, "");
       return n1;
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0a2a0a() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.LiteralMessageExpression$Ga, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
       n1.setProperty(PROPS.message$vnr0, "");
       return n1;
     }

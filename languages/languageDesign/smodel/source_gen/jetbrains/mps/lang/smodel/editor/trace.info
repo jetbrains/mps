@@ -15149,8 +15149,8 @@
       <node id="2660922206083377564" at="187,129,188,153" concept="8" />
       <node id="6870613620390508257" at="193,65,194,63" concept="7" />
       <node id="6870613620390508257" at="194,63,195,30" concept="7" />
-      <node id="6870613620390508257" at="195,30,196,254" concept="2" />
-      <node id="6870613620390508257" at="196,254,197,24" concept="8" />
+      <node id="6870613620390508257" at="195,30,196,226" concept="2" />
+      <node id="6870613620390508257" at="196,226,197,24" concept="8" />
       <node id="1741258697587099213" at="201,0,202,0" concept="11" trace="DotExpression$6a" />
       <node id="1741258697587099213" at="202,0,203,0" concept="11" trace="SConceptOperation$9b" />
       <node id="1741258697587099213" at="206,0,207,0" concept="11" trace="operand$Lcrr" />
@@ -15804,14 +15804,13 @@
       <node id="8519118779653927422" at="92,68,93,63" concept="7" />
       <node id="8519118779653927422" at="93,63,94,30" concept="7" />
       <node id="8519118779653927422" at="94,30,95,30" concept="7" />
-      <node id="8519118779653927422" at="95,30,96,262" concept="2" />
-      <node id="8519118779653927422" at="96,262,97,246" concept="2" />
-      <node id="8519118779653927422" at="97,246,98,64" concept="2" />
-      <node id="8519118779653927422" at="98,64,99,24" concept="8" />
+      <node id="8519118779653927422" at="95,30,96,234" concept="2" />
+      <node id="8519118779653927422" at="96,234,97,218" concept="2" />
+      <node id="8519118779653927422" at="97,218,98,168" concept="2" />
+      <node id="8519118779653927422" at="98,168,99,24" concept="8" />
       <node id="1741258697587099578" at="103,0,104,0" concept="11" trace="DotExpression$6a" />
       <node id="1741258697587099578" at="104,0,105,0" concept="11" trace="OfConceptOperation$tf" />
       <node id="1741258697587099578" at="108,0,109,0" concept="11" trace="operand$Lcrr" />
-      <node id="1741258697587099578" at="109,0,110,0" concept="11" trace="elementType$2gFy" />
       <node id="1926293835606259868" at="55,209,58,9" concept="5" />
       <node id="1741258697587099578" at="41,249,46,5" concept="15" />
       <node id="2660922206083394957" at="66,221,71,7" concept="15" />
@@ -15866,25 +15865,23 @@
       </scope>
       <scope id="2660922206083394957" at="75,84,89,42" />
       <scope id="2660922206083394957" at="74,0,91,0" />
+      <unit id="1741258697587099578" at="107,0,110,0" name="jetbrains.mps.lang.smodel.editor.OfConceptOperation_SubstituteMenu$LINKS" />
       <unit id="1741258697587099578" at="102,0,106,0" name="jetbrains.mps.lang.smodel.editor.OfConceptOperation_SubstituteMenu$CONCEPTS" />
-      <unit id="1741258697587099578" at="107,0,111,0" name="jetbrains.mps.lang.smodel.editor.OfConceptOperation_SubstituteMenu$LINKS" />
       <unit id="2660922206083399617" at="76,136,89,7" name="jetbrains.mps.lang.smodel.editor.OfConceptOperation_SubstituteMenu$SMP_Group_eso95d_a$1" />
       <unit id="2660922206083394957" at="50,0,92,0" name="jetbrains.mps.lang.smodel.editor.OfConceptOperation_SubstituteMenu$SMP_Group_eso95d_a" />
-      <unit id="1741258697587099578" at="28,0,112,0" name="jetbrains.mps.lang.smodel.editor.OfConceptOperation_SubstituteMenu" />
+      <unit id="1741258697587099578" at="28,0,111,0" name="jetbrains.mps.lang.smodel.editor.OfConceptOperation_SubstituteMenu" />
     </file>
     <file name="Pattern_eso95d_b0a0b0a0a0.java">
-      <node id="5462094956390267090" at="11,55,12,30" concept="13" />
-      <node id="5462094956390267090" at="12,30,13,0" concept="10" />
-      <node id="5462094956390267090" at="13,0,14,0" concept="10" />
-      <node id="5462094956390267093" at="14,0,15,200" concept="2" />
-      <node id="5462094956390267090" at="19,0,20,0" concept="11" trace="concept$HWFQ" />
-      <node id="5462094956390267090" at="11,0,17,0" concept="1" trace="Pattern_eso95d_b0a0b0a0a0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="5462094956390267090" at="11,55,15,200" />
-      <scope id="5462094956390267090" at="11,0,17,0">
+      <node id="5462094956390267090" at="10,55,11,30" concept="13" />
+      <node id="5462094956390267090" at="11,30,12,0" concept="10" />
+      <node id="5462094956390267090" at="12,0,13,0" concept="10" />
+      <node id="5462094956390267093" at="13,0,14,302" concept="2" />
+      <node id="5462094956390267090" at="10,0,16,0" concept="1" trace="Pattern_eso95d_b0a0b0a0a0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="5462094956390267090" at="10,55,14,302" />
+      <scope id="5462094956390267090" at="10,0,16,0">
         <var name="patternNode" id="5462094956390267090" />
       </scope>
-      <unit id="5462094956390267090" at="18,0,21,0" name="jetbrains.mps.lang.smodel.editor.Pattern_eso95d_b0a0b0a0a0$LINKS" />
-      <unit id="5462094956390267090" at="10,0,22,0" name="jetbrains.mps.lang.smodel.editor.Pattern_eso95d_b0a0b0a0a0" />
+      <unit id="5462094956390267090" at="9,0,18,0" name="jetbrains.mps.lang.smodel.editor.Pattern_eso95d_b0a0b0a0a0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/1741258697587099587">
@@ -19796,7 +19793,7 @@
       <node id="2453008993612718895" at="114,80,115,128" concept="8" />
       <node id="2453008993612718895" at="117,86,118,36" concept="8" />
       <node id="2453008993612726998" at="121,86,122,63" concept="7" />
-      <node id="2453008993612726998" at="122,63,123,122" concept="7" />
+      <node id="2453008993612726998" at="122,63,123,94" concept="7" />
       <node id="2453008993612726998" at="124,24,125,127" concept="2" />
       <node id="2453008993612726998" at="126,5,127,14" concept="8" />
       <node id="2453008993612718647" at="131,0,132,0" concept="11" trace="EnumSwitchCaseBody_Expression$Xi" />
@@ -19804,7 +19801,7 @@
       <node id="2453008993612718647" at="136,0,137,0" concept="11" trace="expression$6WR0" />
       <node id="2453008993612718895" at="103,312,106,11" concept="4" />
       <node id="2453008993612718895" at="117,0,120,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="2453008993612726998" at="123,122,126,5" concept="5" />
+      <node id="2453008993612726998" at="123,94,126,5" concept="5" />
       <node id="2453008993612718895" at="94,0,98,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="2453008993612718647" at="53,260,58,5" concept="15" />
       <node id="2453008993612718895" at="67,253,72,7" concept="15" />
@@ -20368,7 +20365,7 @@
       <node id="2469893808086378789" at="115,80,116,193" concept="8" />
       <node id="2469893808086378789" at="118,86,119,39" concept="8" />
       <node id="2469893808086379903" at="122,87,123,63" concept="7" />
-      <node id="2469893808086379903" at="123,63,124,123" concept="7" />
+      <node id="2469893808086379903" at="123,63,124,95" concept="7" />
       <node id="2469893808086379903" at="125,24,126,136" concept="2" />
       <node id="2469893808086379903" at="127,5,128,14" concept="8" />
       <node id="2469893808086378768" at="132,0,133,0" concept="11" trace="LanguageIdentityBySourceModule$RC" />
@@ -20377,7 +20374,7 @@
       <node id="2469893808086378768" at="138,0,139,0" concept="11" trace="moduleReference$tg2r" />
       <node id="2469893808086378789" at="104,312,107,11" concept="4" />
       <node id="2469893808086378789" at="118,0,121,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="2469893808086379903" at="124,123,127,5" concept="5" />
+      <node id="2469893808086379903" at="124,95,127,5" concept="5" />
       <node id="2469893808086378789" at="95,0,99,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="2469893808086378768" at="54,262,59,5" concept="15" />
       <node id="2469893808086378789" at="68,267,73,7" concept="15" />

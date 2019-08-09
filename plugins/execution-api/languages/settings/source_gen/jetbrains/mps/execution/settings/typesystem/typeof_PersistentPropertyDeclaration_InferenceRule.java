@@ -11,7 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -47,34 +47,34 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
   }
   private static SNode createJoinType_sacma3_a1a0c0i0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.JoinType$9o, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.JoinType$9o, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
       n2.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n2, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
       n1.addChild(LINKS.argument$xIHX, n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+      SNode n3 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
       n3.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
       n1.addChild(LINKS.argument$xIHX, n3);
-      SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+      SNode n4 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
       n4.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n4, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
       n1.addChild(LINKS.argument$xIHX, n4);
-      SNode n5 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BooleanType$8G, null, null, false);
+      SNode n5 = new SNodeBuilder(CONCEPTS.BooleanType$8G, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n5);
-      SNode n6 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.IntegerType$Eo, null, null, false);
+      SNode n6 = new SNodeBuilder(CONCEPTS.IntegerType$Eo, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n6);
-      SNode n7 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.FloatType$1B, null, null, false);
+      SNode n7 = new SNodeBuilder(CONCEPTS.FloatType$1B, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n7);
-      SNode n8 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DoubleType$4e, null, null, false);
+      SNode n8 = new SNodeBuilder(CONCEPTS.DoubleType$4e, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n8);
-      SNode n9 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CharType$j4, null, null, false);
+      SNode n9 = new SNodeBuilder(CONCEPTS.CharType$j4, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n9);
-      SNode n10 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ByteType$lE, null, null, false);
+      SNode n10 = new SNodeBuilder(CONCEPTS.ByteType$lE, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n10);
-      SNode n11 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.LongType$Db, null, null, false);
+      SNode n11 = new SNodeBuilder(CONCEPTS.LongType$Db, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n11);
-      SNode n12 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ShortType$YA, null, null, false);
+      SNode n12 = new SNodeBuilder(CONCEPTS.ShortType$YA, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n12);
-      SNode n13 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null, false);
+      SNode n13 = new SNodeBuilder(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n13);
     }
     return n1;

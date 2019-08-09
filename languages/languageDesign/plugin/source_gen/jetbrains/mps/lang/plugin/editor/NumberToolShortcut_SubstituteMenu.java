@@ -20,7 +20,7 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import java.util.regex.Pattern;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -128,7 +128,7 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createNumberToolShortcut_33swfs_a0a0b(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NumberToolShortcut$zP, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.NumberToolShortcut$zP, null, null).node();
     n1.setProperty(PROPS.number$5Dx6, PROPS.number$5Dx6.getType().toString(p0));
     return n1;
   }

@@ -851,11 +851,11 @@
       <node id="315923949159343372" at="180,80,181,128" concept="7" />
       <node id="315923949159343372" at="183,86,184,30" concept="7" />
       <node id="315923949159580069" at="187,69,188,63" concept="6" />
-      <node id="315923949159580069" at="188,63,189,107" concept="6" />
-      <node id="315923949159580069" at="189,107,190,76" concept="1" />
+      <node id="315923949159580069" at="188,63,189,79" concept="6" />
+      <node id="315923949159580069" at="189,79,190,76" concept="1" />
       <node id="315923949159580069" at="190,76,191,14" concept="7" />
       <node id="315923949159343582" at="193,71,194,63" concept="6" />
-      <node id="315923949159343582" at="194,63,195,107" concept="6" />
+      <node id="315923949159343582" at="194,63,195,79" concept="6" />
       <node id="315923949159343582" at="196,24,197,115" concept="1" />
       <node id="315923949159343582" at="198,5,199,14" concept="7" />
       <node id="315923949159341659" at="203,0,204,0" concept="10" trace="TypedNativeDef$BM" />
@@ -865,7 +865,7 @@
       <node id="315923949159579505" at="102,0,105,0" concept="5" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="315923949159343372" at="169,312,172,11" concept="3" />
       <node id="315923949159343372" at="183,0,186,0" concept="5" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="315923949159343582" at="195,107,198,5" concept="4" />
+      <node id="315923949159343582" at="195,79,198,5" concept="4" />
       <node id="315923949159579505" at="97,0,101,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
       <node id="315923949159579505" at="112,0,116,0" concept="5" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
       <node id="315923949159343372" at="160,0,164,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />

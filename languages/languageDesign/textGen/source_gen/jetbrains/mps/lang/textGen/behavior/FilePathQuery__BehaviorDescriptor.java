@@ -21,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 
 public final class FilePathQuery__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x6cdeb9421c83c71fL, "jetbrains.mps.lang.textGen.structure.FilePathQuery");
@@ -92,7 +92,7 @@ public final class FilePathQuery__BehaviorDescriptor extends BaseBHDescriptor {
   }
   private static SNode createStringType_6ior39_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StringType$2b, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.StringType$2b, null, null).node();
     return n1;
   }
 

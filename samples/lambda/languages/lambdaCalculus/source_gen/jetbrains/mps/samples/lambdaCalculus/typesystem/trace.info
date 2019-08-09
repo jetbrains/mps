@@ -111,8 +111,8 @@
       <node id="1888188276221754553" at="35,30,36,17" concept="7" />
       <node id="1888188276221891144" at="38,65,39,63" concept="6" />
       <node id="1888188276221891144" at="39,63,40,30" concept="6" />
-      <node id="1888188276221891144" at="40,30,41,263" concept="2" />
-      <node id="1888188276221891144" at="41,263,42,24" concept="7" />
+      <node id="1888188276221891144" at="40,30,41,235" concept="2" />
+      <node id="1888188276221891144" at="41,235,42,24" concept="7" />
       <node id="1888188276221754553" at="46,0,47,0" concept="9" trace="left$8fcw" />
       <node id="1888188276221754553" at="50,0,51,0" concept="9" trace="BinaryNumericOperation$Zk" />
       <node id="1888188276221754553" at="20,0,22,0" concept="1" trace="typeof_BinaryNumericOperation_InferenceRule#()V" />
@@ -170,8 +170,8 @@
       <node id="1888188276221891147" at="33,30,34,17" concept="7" />
       <node id="1888188276221891160" at="36,65,37,63" concept="6" />
       <node id="1888188276221891160" at="37,63,38,30" concept="6" />
-      <node id="1888188276221891160" at="38,30,39,263" concept="2" />
-      <node id="1888188276221891160" at="39,263,40,24" concept="7" />
+      <node id="1888188276221891160" at="38,30,39,235" concept="2" />
+      <node id="1888188276221891160" at="39,235,40,24" concept="7" />
       <node id="1888188276221891147" at="44,0,45,0" concept="9" trace="BinaryStringOperation$at" />
       <node id="1888188276221891147" at="18,0,20,0" concept="1" trace="typeof_BinaryStringOperation_InferenceRule#()V" />
       <node id="1888188276221891147" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -276,8 +276,8 @@
       <node id="4530871765544527018" at="33,30,34,17" concept="7" />
       <node id="4530871765544543932" at="36,65,37,63" concept="6" />
       <node id="4530871765544543932" at="37,63,38,30" concept="6" />
-      <node id="4530871765544543932" at="38,30,39,263" concept="2" />
-      <node id="4530871765544543932" at="39,263,40,24" concept="7" />
+      <node id="4530871765544543932" at="38,30,39,235" concept="2" />
+      <node id="4530871765544543932" at="39,235,40,24" concept="7" />
       <node id="4530871765544527018" at="44,0,45,0" concept="9" trace="NumericConstant$so" />
       <node id="4530871765544527018" at="18,0,20,0" concept="1" trace="typeof_NumericConstant_InferenceRule#()V" />
       <node id="4530871765544527018" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -333,8 +333,8 @@
       <node id="4530871765544527021" at="33,30,34,17" concept="7" />
       <node id="4530871765544543921" at="36,65,37,63" concept="6" />
       <node id="4530871765544543921" at="37,63,38,30" concept="6" />
-      <node id="4530871765544543921" at="38,30,39,263" concept="2" />
-      <node id="4530871765544543921" at="39,263,40,24" concept="7" />
+      <node id="4530871765544543921" at="38,30,39,235" concept="2" />
+      <node id="4530871765544543921" at="39,235,40,24" concept="7" />
       <node id="4530871765544527021" at="44,0,45,0" concept="9" trace="StringConstant$g_" />
       <node id="4530871765544527021" at="18,0,20,0" concept="1" trace="typeof_StringConstant_InferenceRule#()V" />
       <node id="4530871765544527021" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -411,19 +411,17 @@
       <node id="247065157659474815" at="80,63,81,30" concept="6" />
       <node id="247065157659474815" at="81,30,82,30" concept="6" />
       <node id="247065157659474815" at="82,30,83,30" concept="6" />
-      <node id="247065157659474815" at="83,30,84,265" concept="2" />
-      <node id="247065157659474815" at="84,265,85,39" concept="2" />
-      <node id="247065157659474815" at="86,31,87,94" concept="2" />
+      <node id="247065157659474815" at="83,30,84,237" concept="2" />
+      <node id="247065157659474815" at="84,237,85,39" concept="2" />
+      <node id="247065157659474815" at="86,31,87,208" concept="2" />
       <node id="247065157659474815" at="88,5,89,39" concept="2" />
-      <node id="247065157659474815" at="90,31,91,93" concept="2" />
+      <node id="247065157659474815" at="90,31,91,207" concept="2" />
       <node id="247065157659474815" at="92,5,93,24" concept="7" />
       <node id="4530871765544543935" at="97,0,98,0" concept="9" trace="argument$bGe8" />
       <node id="4530871765544543935" at="98,0,99,0" concept="9" trace="variable$j9XA" />
       <node id="4530871765544543935" at="99,0,100,0" concept="9" trace="function$bGdD" />
-      <node id="4530871765544543935" at="100,0,101,0" concept="9" trace="domain$fvm0" />
-      <node id="4530871765544543935" at="101,0,102,0" concept="9" trace="range$fvmv" />
-      <node id="4530871765544543935" at="105,0,106,0" concept="9" trace="AbstractionVarRef$Na" />
-      <node id="4530871765544543935" at="106,0,107,0" concept="9" trace="LambdaApplication$Er" />
+      <node id="4530871765544543935" at="103,0,104,0" concept="9" trace="AbstractionVarRef$Na" />
+      <node id="4530871765544543935" at="104,0,105,0" concept="9" trace="LambdaApplication$Er" />
       <node id="4530871765544543935" at="27,0,29,0" concept="1" trace="typeof_LambdaApplication_InferenceRule#()V" />
       <node id="247065157659474791" at="37,55,40,5" concept="3" />
       <node id="4530871765544543935" at="70,0,73,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -446,8 +444,8 @@
       <scope id="4530871765544543935" at="70,50,71,41" />
       <scope id="4530871765544543935" at="73,68,74,102" />
       <scope id="4530871765544543935" at="76,30,77,17" />
-      <scope id="247065157659474815" at="86,31,87,94" />
-      <scope id="247065157659474815" at="90,31,91,93" />
+      <scope id="247065157659474815" at="86,31,87,208" />
+      <scope id="247065157659474815" at="90,31,91,207" />
       <scope id="4530871765544543935" at="27,0,29,0" />
       <scope id="247065157659474769" at="31,5,34,320">
         <var name="_info_12389875345" id="247065157659474769" />
@@ -505,9 +503,9 @@
         <var name="status" id="4530871765544543935" />
         <var name="typeCheckingContext" id="4530871765544543935" />
       </scope>
-      <unit id="4530871765544543935" at="104,0,108,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaApplication_InferenceRule$CONCEPTS" />
-      <unit id="4530871765544543935" at="96,0,103,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaApplication_InferenceRule$LINKS" />
-      <unit id="4530871765544543935" at="26,0,109,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaApplication_InferenceRule" />
+      <unit id="4530871765544543935" at="102,0,106,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaApplication_InferenceRule$CONCEPTS" />
+      <unit id="4530871765544543935" at="96,0,101,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaApplication_InferenceRule$LINKS" />
+      <unit id="4530871765544543935" at="26,0,107,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaApplication_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)/4566051064524832993">
@@ -651,17 +649,15 @@
       <node id="6997567109318355521" at="69,63,70,30" concept="6" />
       <node id="6997567109318355521" at="70,30,71,30" concept="6" />
       <node id="6997567109318355521" at="71,30,72,30" concept="6" />
-      <node id="6997567109318355521" at="72,30,73,265" concept="2" />
-      <node id="6997567109318355521" at="73,265,74,39" concept="2" />
-      <node id="6997567109318355521" at="75,31,76,94" concept="2" />
+      <node id="6997567109318355521" at="72,30,73,237" concept="2" />
+      <node id="6997567109318355521" at="73,237,74,39" concept="2" />
+      <node id="6997567109318355521" at="75,31,76,208" concept="2" />
       <node id="6997567109318355521" at="77,5,78,39" concept="2" />
-      <node id="6997567109318355521" at="79,31,80,93" concept="2" />
+      <node id="6997567109318355521" at="79,31,80,207" concept="2" />
       <node id="6997567109318355521" at="81,5,82,24" concept="7" />
       <node id="6645816968628542130" at="86,0,87,0" concept="9" trace="body$y0b4" />
       <node id="6645816968628542130" at="87,0,88,0" concept="9" trace="variable$xZV5" />
-      <node id="6645816968628542130" at="88,0,89,0" concept="9" trace="domain$fvm0" />
-      <node id="6645816968628542130" at="89,0,90,0" concept="9" trace="range$fvmv" />
-      <node id="6645816968628542130" at="93,0,94,0" concept="9" trace="LambdaAbstraction$h5" />
+      <node id="6645816968628542130" at="91,0,92,0" concept="9" trace="LambdaAbstraction$h5" />
       <node id="6645816968628542130" at="25,0,27,0" concept="1" trace="typeof_LambdaAbstraction_InferenceRule#()V" />
       <node id="6997567109318334060" at="35,55,38,5" concept="3" />
       <node id="6645816968628542130" at="59,0,62,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -681,8 +677,8 @@
       <scope id="6645816968628542130" at="59,50,60,41" />
       <scope id="6645816968628542130" at="62,68,63,102" />
       <scope id="6645816968628542130" at="65,30,66,17" />
-      <scope id="6997567109318355521" at="75,31,76,94" />
-      <scope id="6997567109318355521" at="79,31,80,93" />
+      <scope id="6997567109318355521" at="75,31,76,208" />
+      <scope id="6997567109318355521" at="79,31,80,207" />
       <scope id="6645816968628542130" at="25,0,27,0" />
       <scope id="627759474950193612" at="29,5,32,320">
         <var name="_info_12389875345" id="627759474950193612" />
@@ -734,9 +730,9 @@
         <var name="status" id="6645816968628542130" />
         <var name="typeCheckingContext" id="6645816968628542130" />
       </scope>
-      <unit id="6645816968628542130" at="92,0,95,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaAbstraction_InferenceRule$CONCEPTS" />
-      <unit id="6645816968628542130" at="85,0,91,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaAbstraction_InferenceRule$LINKS" />
-      <unit id="6645816968628542130" at="24,0,96,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaAbstraction_InferenceRule" />
+      <unit id="6645816968628542130" at="90,0,93,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaAbstraction_InferenceRule$CONCEPTS" />
+      <unit id="6645816968628542130" at="85,0,89,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaAbstraction_InferenceRule$LINKS" />
+      <unit id="6645816968628542130" at="24,0,94,0" name="jetbrains.mps.samples.lambdaCalculus.typesystem.typeof_LambdaAbstraction_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)/6997567109318694516">

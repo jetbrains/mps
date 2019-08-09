@@ -17,7 +17,7 @@ import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -122,19 +122,19 @@ public class MacroMessageExpression_actions {
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0c0b0a0(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.LiteralMessageExpression$Ga, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
     n1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
     return n1;
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.LiteralMessageExpression$Ga, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
     n1.setProperty(PROPS.message$vnr0, "");
     return n1;
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0c() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.LiteralMessageExpression$Ga, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
     n1.setProperty(PROPS.message$vnr0, "");
     return n1;
   }

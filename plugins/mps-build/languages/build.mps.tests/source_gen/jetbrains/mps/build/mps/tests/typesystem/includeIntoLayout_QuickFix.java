@@ -9,7 +9,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,7 +28,7 @@ public class includeIntoLayout_QuickFix extends QuickFix_Runtime {
   }
   private static SNode createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildMpsLayout_ModuleJars$mB, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.BuildMpsLayout_ModuleJars$mB, null, null).node();
     n1.setReferenceTarget(LINKS.module$5MWZ, node0);
     return n1;
   }

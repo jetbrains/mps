@@ -32,7 +32,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -135,7 +135,7 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
   }
   private static SNode createCombinedMessageExpression_6s2f6n_a0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CombinedMessageExpression$e_, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CombinedMessageExpression$e_, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.part$x7tZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.MessageExpression$FF)));
     }

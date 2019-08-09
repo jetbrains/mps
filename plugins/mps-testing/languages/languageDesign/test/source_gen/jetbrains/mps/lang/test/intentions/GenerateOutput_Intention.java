@@ -33,7 +33,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -147,7 +147,7 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
   }
   private static SNode createTestNode_8ua06z_a0a0a1a3a0(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TestNode$kc, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TestNode$kc, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.nodeToCheck$Pz43, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.BaseConcept$Sz)));
     }

@@ -112,8 +112,8 @@
       <node id="2409421742521905393" at="335,15,336,58" concept="5" />
       <node id="2409421742521905397" at="337,15,338,58" concept="5" />
       <node id="3944198881067742398" at="344,83,345,63" concept="4" />
-      <node id="3944198881067742398" at="345,63,346,117" concept="4" />
-      <node id="3944198881067742398" at="346,117,347,76" concept="0" />
+      <node id="3944198881067742398" at="345,63,346,89" concept="4" />
+      <node id="3944198881067742398" at="346,89,347,76" concept="0" />
       <node id="3944198881067742398" at="347,76,348,14" concept="5" />
       <node id="3609768169816356111" at="350,55,351,43" concept="5" />
       <node id="4608161086085620431" at="59,0,62,0" concept="7" trace="propertyMacro_GetValue_0_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

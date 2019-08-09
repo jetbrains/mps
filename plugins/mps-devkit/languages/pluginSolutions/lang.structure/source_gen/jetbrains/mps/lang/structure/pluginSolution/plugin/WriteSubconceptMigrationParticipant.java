@@ -40,7 +40,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.migration.behavior.AbstractNodeReference__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -191,15 +191,15 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
   }
   private static SNode createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.IncludeMigrationPart$zz, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.IncludeMigrationPart$zz, null, null).node();
     n1.setReferenceTarget(LINKS.target$s$xW, node0);
     return n1;
   }
   private static SNode createConceptMigrationReference_8k3jue_a0a51(SNode node0, Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ConceptMigrationReference$$0, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ConceptMigrationReference$$0, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MigrationScriptReference$AH, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.MigrationScriptReference$AH, null, null).node();
       n2.setProperty(PROPS.fromVersion$6eac, PROPS.fromVersion$6eac.getType().toString(p0));
       n2.setProperty(PROPS.module$CX3T, PROPS.module$CX3T.getType().toString(p1));
       n1.addChild(LINKS.migrationScript$BI00, n2);

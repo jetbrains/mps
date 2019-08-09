@@ -9,15 +9,15 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="338,0,341,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$PROPS" />
-      <unit at="342,0,346,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$CONCEPTS" />
-      <unit at="323,0,337,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$LINKS" />
+      <unit at="337,0,340,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$PROPS" />
+      <unit at="341,0,345,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$CONCEPTS" />
+      <unit at="323,0,336,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$LINKS" />
       <unit at="264,0,279,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$IfMC" />
       <unit at="292,0,308,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$RTQ" />
       <unit at="186,0,205,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$SNsQ" />
       <unit at="224,0,250,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$PVQ" />
       <unit at="141,0,170,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated$SNQ" />
-      <unit at="46,0,347,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated" />
+      <unit at="46,0,346,0" name="jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="cedbe277-2e6e-42bf-ae23-90ac9db5a8e3/r:32cb1cda-0e1a-4fe3-9f6a-1f1dba432ca4(jetbrains.mps.baseLanguage.lightweightdsl#3751132065236752909/jetbrains.mps.baseLanguage.lightweightdsl.generator.template.main@generator)/3682791316838060478">
@@ -128,14 +128,14 @@
       <node id="3384419124890164318" at="301,15,302,70" concept="5" />
       <node id="2260648088429056362" at="308,61,309,63" concept="4" />
       <node id="2260648088429056362" at="309,63,310,30" concept="4" />
-      <node id="2260648088429056362" at="310,30,311,246" concept="1" />
-      <node id="2260648088429056362" at="311,246,312,337" concept="1" />
-      <node id="2260648088429056362" at="312,337,313,24" concept="5" />
+      <node id="2260648088429056362" at="310,30,311,218" concept="1" />
+      <node id="2260648088429056362" at="311,218,312,541" concept="1" />
+      <node id="2260648088429056362" at="312,541,313,24" concept="5" />
       <node id="8880393040217491723" at="315,61,316,63" concept="4" />
       <node id="8880393040217491723" at="316,63,317,30" concept="4" />
-      <node id="8880393040217491723" at="317,30,318,246" concept="1" />
-      <node id="8880393040217491723" at="318,246,319,337" concept="1" />
-      <node id="8880393040217491723" at="319,337,320,24" concept="5" />
+      <node id="8880393040217491723" at="317,30,318,218" concept="1" />
+      <node id="8880393040217491723" at="318,218,319,541" concept="1" />
+      <node id="8880393040217491723" at="319,541,320,24" concept="5" />
       <node id="3384419124890166868" at="51,0,54,0" concept="6" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="4194369961464755071" at="54,0,57,0" concept="6" trace="propertyMacro_GetValue_1_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="3751132065236919833" at="57,0,60,0" concept="6" trace="propertyMacro_GetValue_1_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

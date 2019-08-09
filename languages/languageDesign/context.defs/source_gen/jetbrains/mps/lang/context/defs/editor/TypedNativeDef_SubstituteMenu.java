@@ -37,7 +37,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -186,13 +186,13 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0a(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TypedNativeDef$BM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TypedNativeDef$BM, null, null).node();
     n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
     return n1;
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TypedNativeDef$BM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TypedNativeDef$BM, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.type$AvB0, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Type$IG)));
     }

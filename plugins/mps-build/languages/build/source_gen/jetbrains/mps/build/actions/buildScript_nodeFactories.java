@@ -11,7 +11,7 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -37,7 +37,7 @@ public class buildScript_nodeFactories {
     }
     private static SNode createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildSourceProjectRelativePath$VD, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.BuildSourceProjectRelativePath$VD, null, null).node();
       return n1;
     }
   }

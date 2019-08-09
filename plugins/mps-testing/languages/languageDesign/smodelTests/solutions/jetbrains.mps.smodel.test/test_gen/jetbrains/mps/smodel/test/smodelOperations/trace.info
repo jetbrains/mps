@@ -844,42 +844,39 @@
       <node id="535833678908195741" at="370,32,371,32" concept="5" />
       <node id="535833678908195741" at="371,32,372,32" concept="5" />
       <node id="535833678908195741" at="372,32,373,32" concept="5" />
-      <node id="535833678908195741" at="373,32,374,251" concept="2" />
-      <node id="535833678908195741" at="374,251,375,162" concept="2" />
+      <node id="535833678908195741" at="373,32,374,223" concept="2" />
+      <node id="535833678908195741" at="374,223,375,162" concept="2" />
       <node id="535833678908195741" at="375,162,376,161" concept="2" />
       <node id="535833678908195741" at="376,161,377,156" concept="2" />
       <node id="535833678908195741" at="377,156,378,153" concept="2" />
-      <node id="535833678908195741" at="378,153,379,255" concept="2" />
-      <node id="535833678908195741" at="379,255,380,155" concept="2" />
+      <node id="535833678908195741" at="378,153,379,227" concept="2" />
+      <node id="535833678908195741" at="379,227,380,155" concept="2" />
       <node id="535833678908195741" at="380,155,381,159" concept="2" />
       <node id="535833678908195741" at="381,159,382,155" concept="2" />
       <node id="535833678908195741" at="382,155,383,165" concept="2" />
-      <node id="535833678908195741" at="383,165,384,250" concept="2" />
-      <node id="535833678908195741" at="384,250,385,59" concept="2" />
-      <node id="535833678908195741" at="385,59,386,252" concept="2" />
-      <node id="535833678908195741" at="386,252,387,154" concept="2" />
-      <node id="535833678908195741" at="387,154,388,65" concept="2" />
-      <node id="535833678908195741" at="388,65,389,256" concept="2" />
-      <node id="535833678908195741" at="389,256,390,65" concept="2" />
-      <node id="535833678908195741" at="390,65,391,61" concept="2" />
-      <node id="535833678908195741" at="391,61,392,256" concept="2" />
-      <node id="535833678908195741" at="392,256,393,65" concept="2" />
-      <node id="535833678908195741" at="393,65,394,26" concept="6" />
+      <node id="535833678908195741" at="383,165,384,222" concept="2" />
+      <node id="535833678908195741" at="384,222,385,173" concept="2" />
+      <node id="535833678908195741" at="385,173,386,224" concept="2" />
+      <node id="535833678908195741" at="386,224,387,154" concept="2" />
+      <node id="535833678908195741" at="387,154,388,168" concept="2" />
+      <node id="535833678908195741" at="388,168,389,228" concept="2" />
+      <node id="535833678908195741" at="389,228,390,169" concept="2" />
+      <node id="535833678908195741" at="390,169,391,170" concept="2" />
+      <node id="535833678908195741" at="391,170,392,228" concept="2" />
+      <node id="535833678908195741" at="392,228,393,169" concept="2" />
+      <node id="535833678908195741" at="393,169,394,26" concept="6" />
       <node id="535833678908687849" at="396,68,397,65" concept="5" />
       <node id="535833678908687849" at="397,65,398,32" concept="5" />
-      <node id="535833678908687849" at="398,32,399,254" concept="2" />
-      <node id="535833678908687849" at="399,254,400,257" concept="2" />
-      <node id="535833678908687849" at="400,257,401,26" concept="6" />
+      <node id="535833678908687849" at="398,32,399,226" concept="2" />
+      <node id="535833678908687849" at="399,226,400,461" concept="2" />
+      <node id="535833678908687849" at="400,461,401,26" concept="6" />
       <node id="535833678908748988" at="403,68,404,65" concept="5" />
       <node id="535833678908748988" at="404,65,405,32" concept="5" />
-      <node id="535833678908748988" at="405,32,406,254" concept="2" />
-      <node id="535833678908748988" at="406,254,407,257" concept="2" />
-      <node id="535833678908748988" at="407,257,408,26" concept="6" />
+      <node id="535833678908748988" at="405,32,406,226" concept="2" />
+      <node id="535833678908748988" at="406,226,407,461" concept="2" />
+      <node id="535833678908748988" at="407,461,408,26" concept="6" />
       <node id="535833678905629600" at="413,0,414,0" concept="9" trace="member$oYX5" />
       <node id="535833678905629600" at="414,0,415,0" concept="9" trace="classifier$pQ_R" />
-      <node id="535833678905629600" at="415,0,416,0" concept="9" trace="type$pLrO" />
-      <node id="535833678905629600" at="416,0,417,0" concept="9" trace="initializer$KgD" />
-      <node id="535833678905629600" at="417,0,418,0" concept="9" trace="visibility$2GiC" />
       <node id="535833678905629600" at="42,0,44,0" concept="9" trace="ourParamCache" />
       <node id="535833678905629600" at="44,0,46,0" concept="3" trace="myWithCommandRule" />
       <node id="535833678905629600" at="47,0,50,0" concept="1" trace="NodePointers_Test#()V" />
@@ -1173,9 +1170,9 @@
         <var name="quotedNode_6" id="535833678908195741" />
       </scope>
       <scope id="535833678908195741" at="366,0,396,0" />
-      <unit id="535833678905629600" at="412,0,419,0" name="jetbrains.mps.smodel.test.smodelOperations.NodePointers_Test$LINKS" />
+      <unit id="535833678905629600" at="412,0,416,0" name="jetbrains.mps.smodel.test.smodelOperations.NodePointers_Test$LINKS" />
       <unit id="535833678905629600" at="160,0,411,0" name="jetbrains.mps.smodel.test.smodelOperations.NodePointers_Test$TestBody" />
-      <unit id="535833678905629600" at="40,0,420,0" name="jetbrains.mps.smodel.test.smodelOperations.NodePointers_Test" />
+      <unit id="535833678905629600" at="40,0,417,0" name="jetbrains.mps.smodel.test.smodelOperations.NodePointers_Test" />
     </file>
   </root>
   <root nodeRef="r:3526f944-06ad-48b3-a2a1-fffa752849ed(jetbrains.mps.smodel.test.smodelOperations@tests)/6405539316368481242">

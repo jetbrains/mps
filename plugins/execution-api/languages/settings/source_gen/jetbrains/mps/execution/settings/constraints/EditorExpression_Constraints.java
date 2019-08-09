@@ -30,7 +30,7 @@ import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -90,7 +90,7 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
   }
   private static SNode createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1a0a0a0d() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null).node();
     return n1;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "1227128029536565529");

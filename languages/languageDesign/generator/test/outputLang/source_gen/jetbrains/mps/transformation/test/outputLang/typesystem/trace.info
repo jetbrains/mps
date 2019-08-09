@@ -31,8 +31,8 @@
       <node id="2163819695913379860" at="33,30,34,17" concept="5" />
       <node id="2163819695913393702" at="36,65,37,63" concept="4" />
       <node id="2163819695913393702" at="37,63,38,30" concept="4" />
-      <node id="2163819695913393702" at="38,30,39,248" concept="2" />
-      <node id="2163819695913393702" at="39,248,40,24" concept="5" />
+      <node id="2163819695913393702" at="38,30,39,220" concept="2" />
+      <node id="2163819695913393702" at="39,220,40,24" concept="5" />
       <node id="2163819695913379860" at="44,0,45,0" concept="6" trace="CustomStatementRef$Tr" />
       <node id="2163819695913379860" at="18,0,20,0" concept="1" trace="typeof_CustomStatementRef_InferenceRule#()V" />
       <node id="2163819695913379860" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -88,8 +88,8 @@
       <node id="6266395626234257711" at="35,30,36,17" concept="5" />
       <node id="6266395626234295845" at="38,65,39,63" concept="4" />
       <node id="6266395626234295845" at="39,63,40,30" concept="4" />
-      <node id="6266395626234295845" at="40,30,41,248" concept="2" />
-      <node id="6266395626234295845" at="41,248,42,24" concept="5" />
+      <node id="6266395626234295845" at="40,30,41,220" concept="2" />
+      <node id="6266395626234295845" at="41,220,42,24" concept="5" />
       <node id="6266395626234257711" at="46,0,47,0" concept="6" trace="inner$S6YY" />
       <node id="6266395626234257711" at="50,0,51,0" concept="6" trace="CustomStatement$K4" />
       <node id="6266395626234257711" at="20,0,22,0" concept="1" trace="typeof_CustomStatement_InferenceRule#()V" />

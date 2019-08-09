@@ -18,7 +18,7 @@ import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -78,21 +78,21 @@ public final class ConvertPatternRule_Intention extends AbstractIntentionDescrip
   }
   private static SNode createConceptReference_kdoxak_a0d0a(SNode node0, Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ConceptReference$Je, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ConceptReference$Je, null, null).node();
     n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
     n1.setReferenceTarget(LINKS.concept$Q1Nr, node0);
     return n1;
   }
   private static SNode createStatementList_kdoxak_a0g0a(SNode node0, SNode node1, SNode node2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MatchStatement$1G, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.MatchStatement$1G, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ApplicableNodeReference$VP, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.ApplicableNodeReference$VP, null, null).node();
         n3.setReferenceTarget(LINKS.applicableNode$z$o5, node0);
         n2.addChild(LINKS.expression$8_90, n3);
-        SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MatchStatementItem$EH, null, null, false);
+        SNode n4 = new SNodeBuilder(CONCEPTS.MatchStatementItem$EH, null, null).node();
         if (node1 != null) {
           n4.addChild(LINKS.condition$JZ3Z, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.ApplicableNodeCondition$sh)));
         }

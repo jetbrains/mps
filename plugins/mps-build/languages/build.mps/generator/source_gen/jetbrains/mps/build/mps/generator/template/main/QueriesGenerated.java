@@ -95,7 +95,7 @@ import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import jetbrains.mps.generator.impl.query.VariableValueQuery;
 import jetbrains.mps.generator.impl.query.CallArgumentQuery;
 import jetbrains.mps.generator.impl.query.MapPostProcessor;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -3228,19 +3228,19 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0fm(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GeneratorInternal_String$cg, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.GeneratorInternal_String$cg, null, null).node();
     n1.setProperty(PROPS.path$LlSY, PROPS.path$LlSY.getType().toString(p0));
     return n1;
   }
   private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0km(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GeneratorInternal_String$cg, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.GeneratorInternal_String$cg, null, null).node();
     n1.setProperty(PROPS.path$LlSY, PROPS.path$LlSY.getType().toString(p0));
     return n1;
   }
   private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a453(SNode node0, Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GeneratorInternal_ProjectDependency$CC, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.GeneratorInternal_ProjectDependency$CC, null, null).node();
     n1.setProperty(PROPS.path$Xp8A, PROPS.path$Xp8A.getType().toString(p0));
     n1.setReferenceTarget(LINKS.project$6dB_, node0);
     return n1;

@@ -37,7 +37,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -439,29 +439,29 @@ public class MergeTest extends ChangesTestBase {
   }
   private static SNode createClassConcept_u0wfvp_a0a0a0a0u() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassConcept$IY, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ClassConcept$IY, null, null).node();
     return n1;
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0y() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.InstanceMethodDeclaration$An, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.InstanceMethodDeclaration$An, null, null).node();
     {
       n1.setProperty(PROPS.name$tAp1, "newMethod");
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
       n1.addChild(LINKS.body$WIlu, n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.VoidType$aT, null, null, false);
+      SNode n3 = new SNodeBuilder(CONCEPTS.VoidType$aT, null, null).node();
       n1.addChild(LINKS.returnType$WIkw, n3);
     }
     return n1;
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.InstanceMethodDeclaration$An, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.InstanceMethodDeclaration$An, null, null).node();
     {
       n1.setProperty(PROPS.name$tAp1, "newMethod");
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
       n1.addChild(LINKS.body$WIlu, n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.VoidType$aT, null, null, false);
+      SNode n3 = new SNodeBuilder(CONCEPTS.VoidType$aT, null, null).node();
       n1.addChild(LINKS.returnType$WIkw, n3);
     }
     return n1;

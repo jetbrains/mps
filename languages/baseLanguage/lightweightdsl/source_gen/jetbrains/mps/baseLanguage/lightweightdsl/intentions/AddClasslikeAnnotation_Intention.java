@@ -24,7 +24,7 @@ import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -94,7 +94,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
   }
   private static SNode createDSLAnnotation_qk2y7i_a0a0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DSLAnnotation$dI, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.DSLAnnotation$dI, null, null).node();
     n1.setReferenceTarget(LINKS.descriptor$Zoot, node0);
     return n1;
   }

@@ -15,7 +15,7 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -48,13 +48,13 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
   }
   private static SNode createSNodePointerType_to4p90_a0a0a1a4a1(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SNodePointerType$2t, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SNodePointerType$2t, null, null).node();
     n1.setReferenceTarget(LINKS.concept$fJMt, node0);
     return n1;
   }
   private static SNode createSNodePointerType_to4p90_a0a2a4a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SNodePointerType$2t, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SNodePointerType$2t, null, null).node();
     return n1;
   }
 

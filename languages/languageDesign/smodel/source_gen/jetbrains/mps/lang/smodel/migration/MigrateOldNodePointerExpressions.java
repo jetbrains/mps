@@ -22,7 +22,7 @@ import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedPro
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -87,14 +87,14 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
 
   private static SNode createReviewMigration_old_5d7h7i_a0a0a0a0a0a6() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ReviewMigration_old$E1, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ReviewMigration_old$E1, null, null).node();
     n1.setProperty(PROPS.readableId$WLXq, "MigrateOldNodePointerExpressions");
     n1.setProperty(PROPS.reasonShort$7yZv, "Couldn't migrate node with attributes");
     return n1;
   }
   private static SNode createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerExpression$DS, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.NodePointerExpression$DS, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.ref$Xkjz, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
     }
@@ -102,7 +102,7 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   }
   private static SNode createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SemanticDowncastExpression$us, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SemanticDowncastExpression$us, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.leftExpression$flIo, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
     }

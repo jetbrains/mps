@@ -11,7 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -50,26 +50,26 @@ public class typeof_KeyValueCommandPart_InferenceRule extends AbstractInferenceR
   private static SNode _quotation_createNode_jl7ika_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null).node();
     return quotedNode_1;
   }
   private static SNode createJoinType_jl7ika_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.JoinType$9o, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.JoinType$9o, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StringType$2b, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.StringType$2b, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+      SNode n3 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
       n3.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
       n1.addChild(LINKS.argument$xIHX, n3);
-      SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ProcessBuilderCommandPartType$gI, null, null, false);
+      SNode n4 = new SNodeBuilder(CONCEPTS.ProcessBuilderCommandPartType$gI, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n4);
     }
     return n1;
   }
   private static SNode createProcessBuilderCommandPartType_jl7ika_a1a0c0c0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ProcessBuilderCommandPartType$gI, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ProcessBuilderCommandPartType$gI, null, null).node();
     return n1;
   }
 
