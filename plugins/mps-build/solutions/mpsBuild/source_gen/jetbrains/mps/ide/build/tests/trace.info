@@ -20,6 +20,11 @@
       <unit id="2883693069523015134" at="1,0,955,10" name="jetbrains.mps.ide.build.tests.mpsConstraints" />
     </file>
   </root>
+  <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3071492597344792659">
+    <file name="mpsFeedback.xml">
+      <unit id="3071492597344792659" at="1,0,627,10" name="jetbrains.mps.ide.build.tests.mpsFeedback" />
+    </file>
+  </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3197190366568000187">
     <file name="mpsBuild.xml">
       <unit id="3197190366568000187" at="1,0,622,10" name="jetbrains.mps.ide.build.tests.mpsBuild" />

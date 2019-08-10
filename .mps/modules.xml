@@ -416,7 +416,8 @@
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.sandbox/jetbrains.mps.baseLanguage.math.sandbox.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.tests/jetbrains.mps.baseLanguage.math.tests.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/pluginSolution/jetbrains.mps.baseLanguage.math.pluginSolution.msd" folder="samples.math" />
-      <modulePath path="${mps_home}/samples/messagesCustomization/messagesCustomization.mpl" folder="samples.messages" />
+      <modulePath path="${mps_home}/samples/messagesCustomization/languages/messages.customization/messages.customization.mpl" folder="samples.messages" />
+      <modulePath path="${mps_home}/samples/messagesCustomization/solutions/sandbox/messages.sandbox.msd" folder="samples.messages" />
       <modulePath path="${mps_home}/samples/migrations/languages/decl/decl.mpl" folder="samples.migrations.example1" />
       <modulePath path="${mps_home}/samples/migrations/languages/declarations/declarations.mpl" folder="samples.migrations.example2" />
       <modulePath path="${mps_home}/samples/migrations/languages/ref/ref.mpl" folder="samples.migrations.example1" />
