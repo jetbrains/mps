@@ -12,12 +12,14 @@ public final class LanguageConceptSwitch {
   public static final int ChildConcept = 0;
   public static final int ChildConceptBase = 1;
   public static final int ParentConcept = 2;
+  public static final int SometimesRootableConcept = 3;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL);
     builder.put(0x7825711952b6d480L, ChildConcept);
     builder.put(0x74b496bab051d961L, ChildConceptBase);
     builder.put(0x7af41afae28e1a15L, ParentConcept);
+    builder.put(0x456133ee8100e75cL, SometimesRootableConcept);
     myIndex = builder.seal();
   }
 

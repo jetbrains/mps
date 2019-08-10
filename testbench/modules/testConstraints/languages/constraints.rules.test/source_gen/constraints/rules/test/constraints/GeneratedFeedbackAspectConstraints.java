@@ -11,6 +11,6 @@ public final class GeneratedFeedbackAspectConstraints implements FeedbackAspect 
   @NotNull
   @Override
   public Stream<FeedbackPerConceptDescriptor> getPerConceptDescriptors() {
-    return Stream.of(new ChildConcept_ConstraintsFeedback(), new ParentConcept_ConstraintsFeedback());
+    return Stream.of(new ChildConcept_ConstraintsFeedback(), new SometimesRootableConcept_ConstraintsFeedback());
   }
 }

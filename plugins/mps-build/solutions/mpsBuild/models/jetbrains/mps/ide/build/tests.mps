@@ -7669,10 +7669,8 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="constraints.test" />
       <property role="3LESm3" value="2b800570-3758-4c14-86fb-871266fb9d11" />
-      <property role="2GAjPV" value="false" />
       <node concept="1SiIV0" id="3ciHSU5yUs4" role="3bR37C">
         <node concept="3bR9La" id="3ciHSU5yUs5" role="1SiIV1">
-          <property role="3bR36h" value="false" />
           <ref role="3bR37D" to="ffeo:7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
         </node>
       </node>
@@ -7725,7 +7723,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="TestConstraints" />
       <property role="3LESm3" value="fa6333dc-8872-4c44-8576-d45f9752c17d" />
-      <property role="2GAjPV" value="false" />
       <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
       <node concept="3rtmxn" id="EpEP7iihHO" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iihHP" role="3rtmxm">
@@ -7771,10 +7768,132 @@
           </node>
         </node>
       </node>
-      <node concept="1SiIV0" id="2w4VT5Ubdx0" role="3bR37C">
-        <node concept="3bR9La" id="2w4VT5Ubdx1" role="1SiIV1">
-          <property role="3bR36h" value="false" />
+      <node concept="1SiIV0" id="4lxcYU10m9o" role="3bR37C">
+        <node concept="3bR9La" id="4lxcYU10m9p" role="1SiIV1">
           <ref role="3bR37D" node="2w4VT5UbdqQ" resolve="constraints.test" />
+        </node>
+      </node>
+    </node>
+    <node concept="1E1JtD" id="4lxcYU10m7x" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="constraints.rules.test" />
+      <property role="3LESm3" value="fc39d726-4089-464a-8fc1-5f71edfdf03b" />
+      <node concept="3rtmxn" id="4lxcYU10m7$" role="3bR31x">
+        <node concept="3LXTmp" id="4lxcYU10m7_" role="3rtmxm">
+          <node concept="3qWCbU" id="4lxcYU10m7A" role="3LXTna">
+            <property role="3qWCbO" value="icons/**, resources/**" />
+          </node>
+          <node concept="55IIr" id="4lxcYU10m7B" role="3LXTmr">
+            <node concept="2Ry0Ak" id="4lxcYU10m7C" role="iGT6I">
+              <property role="2Ry0Am" value="testbench" />
+              <node concept="2Ry0Ak" id="4lxcYU10m7D" role="2Ry0An">
+                <property role="2Ry0Am" value="modules" />
+                <node concept="2Ry0Ak" id="4lxcYU10m7E" role="2Ry0An">
+                  <property role="2Ry0Am" value="testConstraints" />
+                  <node concept="2Ry0Ak" id="4lxcYU10m7F" role="2Ry0An">
+                    <property role="2Ry0Am" value="languages" />
+                    <node concept="2Ry0Ak" id="4lxcYU10m7G" role="2Ry0An">
+                      <property role="2Ry0Am" value="constraints.test" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="55IIr" id="4lxcYU10m7H" role="3LF7KH">
+        <node concept="2Ry0Ak" id="4lxcYU10m7I" role="iGT6I">
+          <property role="2Ry0Am" value="testbench" />
+          <node concept="2Ry0Ak" id="4lxcYU10m7J" role="2Ry0An">
+            <property role="2Ry0Am" value="modules" />
+            <node concept="2Ry0Ak" id="4lxcYU10m7K" role="2Ry0An">
+              <property role="2Ry0Am" value="testConstraints" />
+              <node concept="2Ry0Ak" id="4lxcYU10m7L" role="2Ry0An">
+                <property role="2Ry0Am" value="languages" />
+                <node concept="2Ry0Ak" id="4lxcYU10m7M" role="2Ry0An">
+                  <property role="2Ry0Am" value="constraints.rules.test" />
+                  <node concept="2Ry0Ak" id="4lxcYU10m92" role="2Ry0An">
+                    <property role="2Ry0Am" value="constraints.rules.test.mpl" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4lxcYU10m98" role="3bR37C">
+        <node concept="3bR9La" id="4lxcYU10m99" role="1SiIV1">
+          <ref role="3bR37D" to="ffeo:3qkjbZn7Ykj" resolve="jetbrains.mps.lang.constraints.rules" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4lxcYU10m9a" role="3bR37C">
+        <node concept="3bR9La" id="4lxcYU10m9b" role="1SiIV1">
+          <ref role="3bR37D" to="ffeo:3qkjbZn4_1I" resolve="jetbrains.mps.lang.constraints.rules.kinds" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4lxcYU10m9c" role="3bR37C">
+        <node concept="3bR9La" id="4lxcYU10m9d" role="1SiIV1">
+          <ref role="3bR37D" to="ffeo:3qkjbZn89da" resolve="jetbrains.mps.lang.feedback.problem.childAndProp" />
+        </node>
+      </node>
+      <node concept="1yeLz9" id="4lxcYU10m9e" role="1TViLv">
+        <property role="TrG5h" value="constraints.rules.test#1839194279618937625" />
+        <property role="3LESm3" value="219337e2-f934-4eb9-a978-61ebb89e520b" />
+      </node>
+    </node>
+    <node concept="1E1JtA" id="4lxcYU10m7e" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="TestRulesConstraints" />
+      <property role="3LESm3" value="cad2e8db-5f5f-4f27-9421-1daa5ada30ca" />
+      <property role="aoJFB" value="eYcmk9QOlj/sources and tests" />
+      <node concept="3rtmxn" id="4lxcYU10m7f" role="3bR31x">
+        <node concept="3LXTmp" id="4lxcYU10m7g" role="3rtmxm">
+          <node concept="3qWCbU" id="4lxcYU10m7h" role="3LXTna">
+            <property role="3qWCbO" value="icons/**, resources/**" />
+          </node>
+          <node concept="55IIr" id="4lxcYU10m7i" role="3LXTmr">
+            <node concept="2Ry0Ak" id="4lxcYU10m7j" role="iGT6I">
+              <property role="2Ry0Am" value="testbench" />
+              <node concept="2Ry0Ak" id="4lxcYU10m7k" role="2Ry0An">
+                <property role="2Ry0Am" value="modules" />
+                <node concept="2Ry0Ak" id="4lxcYU10m7l" role="2Ry0An">
+                  <property role="2Ry0Am" value="testConstraints" />
+                  <node concept="2Ry0Ak" id="4lxcYU10m7m" role="2Ry0An">
+                    <property role="2Ry0Am" value="solutions" />
+                    <node concept="2Ry0Ak" id="4lxcYU10m7n" role="2Ry0An">
+                      <property role="2Ry0Am" value="TestConstraints" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="55IIr" id="4lxcYU10m7o" role="3LF7KH">
+        <node concept="2Ry0Ak" id="4lxcYU10m7p" role="iGT6I">
+          <property role="2Ry0Am" value="testbench" />
+          <node concept="2Ry0Ak" id="4lxcYU10m7q" role="2Ry0An">
+            <property role="2Ry0Am" value="modules" />
+            <node concept="2Ry0Ak" id="4lxcYU10m7r" role="2Ry0An">
+              <property role="2Ry0Am" value="testConstraints" />
+              <node concept="2Ry0Ak" id="4lxcYU10m7s" role="2Ry0An">
+                <property role="2Ry0Am" value="solutions" />
+                <node concept="2Ry0Ak" id="4lxcYU10m7t" role="2Ry0An">
+                  <property role="2Ry0Am" value="TestRulesConstraints" />
+                  <node concept="2Ry0Ak" id="4lxcYU10m94" role="2Ry0An">
+                    <property role="2Ry0Am" value="TestRulesConstraints.msd" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4lxcYU10m9q" role="3bR37C">
+        <node concept="3bR9La" id="4lxcYU10m9r" role="1SiIV1">
+          <ref role="3bR37D" node="4lxcYU10m7x" resolve="constraints.rules.test" />
         </node>
       </node>
     </node>
@@ -7783,6 +7902,9 @@
       <node concept="24cAiW" id="5I1s5NvQ4Tb" role="24cAkG" />
       <node concept="22LTRM" id="63dIq7NT$5y" role="22LTRK">
         <ref role="22LTRN" node="2w4VT5Ubdsy" resolve="TestConstraints" />
+      </node>
+      <node concept="22LTRM" id="4lxcYU10m9L" role="22LTRK">
+        <ref role="22LTRN" node="4lxcYU10m7e" resolve="TestRulesConstraints" />
       </node>
     </node>
     <node concept="13uUGR" id="2w4VT5Ubdom" role="1l3spa">
@@ -7819,6 +7941,9 @@
         <node concept="L2wRC" id="7Ky$vVkcBN_" role="39821P">
           <ref role="L2wRA" node="2w4VT5Ubdsy" resolve="TestConstraints" />
         </node>
+        <node concept="L2wRC" id="4lxcYU10m9z" role="39821P">
+          <ref role="L2wRA" node="4lxcYU10m7e" resolve="TestRulesConstraints" />
+        </node>
       </node>
       <node concept="398223" id="7Ky$vVkcBOR" role="39821P">
         <node concept="3_J27D" id="7Ky$vVkcBOT" role="Nbhlr">
@@ -7828,6 +7953,9 @@
         </node>
         <node concept="L2wRC" id="7Ky$vVkcBPh" role="39821P">
           <ref role="L2wRA" node="2w4VT5UbdqQ" resolve="constraints.test" />
+        </node>
+        <node concept="L2wRC" id="4lxcYU10m9E" role="39821P">
+          <ref role="L2wRA" node="4lxcYU10m7x" resolve="constraints.rules.test" />
         </node>
       </node>
     </node>

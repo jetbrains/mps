@@ -17,6 +17,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptChildConcept = createDescriptorForChildConcept();
   /*package*/ final ConceptDescriptor myConceptChildConceptBase = createDescriptorForChildConceptBase();
   /*package*/ final ConceptDescriptor myConceptParentConcept = createDescriptorForParentConcept();
+  /*package*/ final ConceptDescriptor myConceptSometimesRootableConcept = createDescriptorForSometimesRootableConcept();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -31,7 +32,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptChildConcept, myConceptChildConceptBase, myConceptParentConcept);
+    return Arrays.asList(myConceptChildConcept, myConceptChildConceptBase, myConceptParentConcept, myConceptSometimesRootableConcept);
   }
 
   @Override
@@ -44,6 +45,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptChildConceptBase;
       case LanguageConceptSwitch.ParentConcept:
         return myConceptParentConcept;
+      case LanguageConceptSwitch.SometimesRootableConcept:
+        return myConceptSometimesRootableConcept;
       default:
         return null;
     }
@@ -65,7 +68,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:3fd4e667-8fcb-4728-850d-184116dcdf79(constraints.rules.test.structure)/8657450212265481344");
     b.version(2);
-    b.associate("a", 0x796cbb180da115eeL).target(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L).optional(true).origin("8749573888056301038").done();
+    b.associate("parent", 0x796cbb180da115eeL).target(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L).optional(true).origin("8749573888056301038").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForChildConceptBase() {
@@ -84,6 +87,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("canHaveChildren", 0x6493b7a43ae22fbaL).type(PrimitiveTypeId.BOOLEAN).origin("7247338141359681466").done();
     b.aggregate("children", 0x7af41afae28e1a16L).target(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L).optional(true).ordered(true).multiple(true).origin("8859736031789718038").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSometimesRootableConcept() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("constraints.rules.test", "SometimesRootableConcept", 0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x456133ee8100e75cL);
+    b.class_(false, false, true);
+    b.origin("r:3fd4e667-8fcb-4728-850d-184116dcdf79(constraints.rules.test.structure)/4999334160817514332");
+    b.version(2);
     return b.create();
   }
 }

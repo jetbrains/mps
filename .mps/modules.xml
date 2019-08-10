@@ -505,6 +505,7 @@
       <modulePath path="${mps_home}/testbench/modules/testConstraints/languages/constraints.rules.test/constraints.rules.test.mpl" folder="tests.testConstraints" />
       <modulePath path="${mps_home}/testbench/modules/testConstraints/languages/constraints.test/constraints.test.mpl" folder="tests.testConstraints" />
       <modulePath path="${mps_home}/testbench/modules/testConstraints/solutions/TestConstraints/TestConstraints.msd" folder="tests.testConstraints" />
+      <modulePath path="${mps_home}/testbench/modules/testConstraints/solutions/TestRulesConstraints/TestRulesConstraints.msd" folder="tests.testConstraints" />
       <modulePath path="${mps_home}/testbench/modules/testDataFlow/languages/testCustomAnalyzer/testCustomAnalyzer.mpl" folder="tests.testDataflow" />
       <modulePath path="${mps_home}/testbench/modules/testDataFlow/languages/testCustomDataFlow/jetbrains.mps.testCustomDataFlow.mpl" folder="tests.testDataflow" />
       <modulePath path="${mps_home}/testbench/modules/testDataFlow/languages/testExtendingAnalyzer/testExtendingAnalyzer.mpl" folder="tests.testDataflow" />

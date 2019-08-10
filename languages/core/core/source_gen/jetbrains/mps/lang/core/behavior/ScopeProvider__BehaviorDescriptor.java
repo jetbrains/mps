@@ -42,6 +42,7 @@ public final class ScopeProvider__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   @Override
+  dule
   protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
     ___init___(node);
   }

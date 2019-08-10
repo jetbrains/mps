@@ -21,9 +21,11 @@ public final class GeneratedRulesConstraintsAspect implements RulesConstraintsAs
         return new ChildConcept_ConstraintRules();
       case 1:
         return new ParentConcept_ConstraintRules();
+      case 2:
+        return new SometimesRootableConcept_ConstraintRules();
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L), MetaIdFactory.conceptId(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L), MetaIdFactory.conceptId(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L), MetaIdFactory.conceptId(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x456133ee8100e75cL)).seal();
 }

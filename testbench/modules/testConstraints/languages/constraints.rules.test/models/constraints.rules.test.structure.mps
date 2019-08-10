@@ -47,7 +47,7 @@
     <ref role="1TJDcQ" node="7iO_FEKkt_x" resolve="ChildConceptBase" />
     <node concept="1TJgyj" id="7_GILwdChnI" role="1TKVEi">
       <property role="IQ2ns" value="8749573888056301038" />
-      <property role="20kJfa" value="a" />
+      <property role="20kJfa" value="parent" />
       <ref role="20lvS9" node="7FO6JFyzxCl" resolve="ParentConcept" />
     </node>
     <node concept="PrWs8" id="2o8jHTOBTez" role="PzmwI">
@@ -84,6 +84,12 @@
       <property role="TrG5h" value="tolerance" />
       <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="4lxcYU10ets">
+    <property role="EcuMT" value="4999334160817514332" />
+    <property role="TrG5h" value="SometimesRootableConcept" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
 </model>
 

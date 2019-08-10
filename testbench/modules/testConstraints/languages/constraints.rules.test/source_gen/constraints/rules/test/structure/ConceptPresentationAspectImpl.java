@@ -12,6 +12,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ChildConcept;
   private ConceptPresentation props_ChildConceptBase;
   private ConceptPresentation props_ParentConcept;
+  private ConceptPresentation props_SometimesRootableConcept;
 
   @Override
   @Nullable
@@ -39,6 +40,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ParentConcept = cpb.create();
         }
         return props_ParentConcept;
+      case LanguageConceptSwitch.SometimesRootableConcept:
+        if (props_SometimesRootableConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SometimesRootableConcept");
+          props_SometimesRootableConcept = cpb.create();
+        }
+        return props_SometimesRootableConcept;
     }
     return null;
   }

@@ -38,14 +38,8 @@
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.BaseRulesConstraintsDescriptor" />
   </dependency>
   <dependency className="constraints.rules.test.constraints.ChildConcept_Constraints">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.HashMap" />
-    <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
   </dependency>
   <dependency className="constraints.rules.test.constraints.ChildConcept_ConstraintsFeedback">
@@ -79,7 +73,7 @@
   </dependency>
   <dependency className="constraints.rules.test.constraints.GeneratedFeedbackAspectConstraints">
     <classNode dependClassName="constraints.rules.test.constraints.ChildConcept_ConstraintsFeedback" />
-    <classNode dependClassName="constraints.rules.test.constraints.ParentConcept_ConstraintsFeedback" />
+    <classNode dependClassName="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintsFeedback" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.stream.Stream" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackPerConceptDescriptor" />
@@ -89,6 +83,7 @@
   <dependency className="constraints.rules.test.constraints.GeneratedRulesConstraintsAspect">
     <classNode dependClassName="constraints.rules.test.constraints.ChildConcept_ConstraintRules" />
     <classNode dependClassName="constraints.rules.test.constraints.ParentConcept_ConstraintRules" />
+    <classNode dependClassName="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintRules" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
@@ -121,14 +116,32 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.BaseRulesConstraintsDescriptor" />
   </dependency>
-  <dependency className="constraints.rules.test.constraints.ParentConcept_ConstraintsFeedback">
-    <classNode dependClassName="constraints.rules.test.constraints.ParentConcept_ConstraintRules" />
+  <dependency className="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintRules">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collections" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.BaseRule" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.Rule" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RuleId" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.constraints.rules.BaseRulesConstraintsDescriptor" />
+  </dependency>
+  <dependency className="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintsFeedback">
+    <classNode dependClassName="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintRules" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.stream.Stream" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackProvider" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider" />
     <classNode dependClassName="jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId" />
