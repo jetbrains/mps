@@ -23,8 +23,8 @@ import jetbrains.mps.checkers.ConstraintsChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
 import jetbrains.mps.checkers.TargetConceptChecker;
 import jetbrains.mps.project.validation.StructureChecker;
+import jetbrains.mps.checkers.ErrorReportHelper;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.checkers.ErrorReportUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -105,10 +105,11 @@ public class TestsErrorsChecker {
     new TargetConceptChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new StructureChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
 
+    final ErrorReportHelper helper = new ErrorReportHelper();
     Set<NodeReportItem> res = SetSequence.fromSetWithValues(new HashSet<NodeReportItem>(), SetSequence.fromSet(result).where(new IWhereFilter<NodeReportItem>() {
       public boolean accept(NodeReportItem it) {
         SNodeReference node = NodeReportItem.FLAVOUR_NODE.tryToGet(it);
-        return node == null || Sequence.fromIterable(ErrorReportUtil.getActiveSuppressors(node.resolve(repository), it)).where(new IWhereFilter<SNode>() {
+        return node == null || Sequence.fromIterable(helper.getActiveSuppressors(node.resolve(repository), it)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode suppressor) {
             return !(SNodeOperations.isInstanceOf(suppressor, CONCEPTS.AbstractTestNodeAnnotation$5M));
           }

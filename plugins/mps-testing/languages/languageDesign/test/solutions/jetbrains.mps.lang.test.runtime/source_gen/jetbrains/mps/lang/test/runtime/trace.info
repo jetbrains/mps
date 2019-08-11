@@ -962,44 +962,45 @@
       <node id="6729911822237119294" at="104,112,105,117" concept="6" />
       <node id="6729911822236982958" at="105,117,106,113" concept="6" />
       <node id="3715262949175891865" at="106,113,107,0" concept="14" />
-      <node id="617150929482672851" at="109,48,110,71" concept="11" />
-      <node id="2501421320961259808" at="112,51,113,103" concept="12" />
-      <node id="2276757138027266834" at="117,8,118,34" concept="6" />
-      <node id="2276757138027266842" at="118,34,119,15" concept="12" />
-      <node id="5256253775190389392" at="123,0,124,0" concept="7" trace="myCachedErrors" />
-      <node id="5256253775189887017" at="125,25,126,28" concept="12" />
-      <node id="5256253775189945267" at="128,36,129,79" concept="6" />
-      <node id="3740508248791186293" at="134,0,135,0" concept="15" trace="AbstractTestNodeAnnotation$5M" />
+      <node id="5968606277578567376" at="107,0,108,61" concept="11" />
+      <node id="617150929482672851" at="110,48,111,71" concept="11" />
+      <node id="2501421320961259808" at="113,51,114,103" concept="12" />
+      <node id="2276757138027266834" at="118,8,119,34" concept="6" />
+      <node id="2276757138027266842" at="119,34,120,15" concept="12" />
+      <node id="5256253775190389392" at="124,0,125,0" concept="7" trace="myCachedErrors" />
+      <node id="5256253775189887017" at="126,25,127,28" concept="12" />
+      <node id="5256253775189945267" at="129,36,130,79" concept="6" />
+      <node id="3740508248791186293" at="135,0,136,0" concept="15" trace="AbstractTestNodeAnnotation$5M" />
       <node id="1890524422884933686" at="52,0,55,0" concept="10" trace="getRoot#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5091186398080935941" at="56,0,59,0" concept="10" trace="getAllErrors#()Ljava/lang/Iterable;" />
       <node id="3740508248791186434" at="68,0,71,0" concept="10" trace="accept#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
       <node id="1277999467583057103" at="85,66,88,5" concept="9" />
       <node id="3818729150937340992" at="89,0,92,5" concept="9" />
       <node id="250369351436395923" at="95,0,98,0" concept="10" trace="consume#(Ljetbrains/mps/errors/item/NodeReportItem;)V" />
-      <node id="2501421320961200874" at="112,0,115,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="5256253775189941779" at="128,0,131,0" concept="10" trace="set#(Ljava/util/Set;)V" />
+      <node id="2501421320961200874" at="113,0,116,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5256253775189941779" at="129,0,132,0" concept="10" trace="set#(Ljava/util/Set;)V" />
       <node id="3740508248791186393" at="60,0,64,0" concept="10" trace="getErrors#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="3740508248791186372" at="77,0,81,0" concept="10" trace="accept#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
-      <node id="5256253775189865764" at="124,0,128,0" concept="10" trace="get#()Ljava/util/Set;" />
+      <node id="5256253775189865764" at="125,0,129,0" concept="10" trace="get#()Ljava/util/Set;" />
       <node id="3740508248791186298" at="46,0,51,0" concept="3" trace="TestsErrorsChecker#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3740508248791186427" at="66,84,71,8" concept="6" />
       <node id="250369351436395921" at="93,90,98,6" concept="11" />
-      <node id="2501421320961200863" at="110,71,115,21" concept="12" />
+      <node id="2501421320961200863" at="111,71,116,21" concept="12" />
       <node id="3740508248791186367" at="75,125,81,7" concept="12" />
       <node id="3740508248791186365" at="75,0,83,0" concept="10" trace="filterReportersByNode#(Ljava/lang/Iterable;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-      <node id="3715262949175775937" at="109,0,117,0" concept="10" trace="accept#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
+      <node id="3715262949175775937" at="110,0,118,0" concept="10" trace="accept#(Ljetbrains/mps/errors/item/NodeReportItem;)Z" />
       <node id="3740508248791186418" at="65,0,74,0" concept="10" trace="getErrorsSpecificType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/errors/MessageStatus;)Ljava/lang/Iterable;" />
-      <node id="3715262949175775932" at="107,0,117,8" concept="11" />
-      <node id="2276757138026969657" at="84,0,121,0" concept="10" trace="getRootErrors#()Ljava/lang/Iterable;" />
+      <node id="3715262949175775932" at="108,61,118,8" concept="11" />
+      <node id="2276757138026969657" at="84,0,122,0" concept="10" trace="getRootErrors#()Ljava/lang/Iterable;" />
       <scope id="1890524422884933689" at="52,26,53,18" />
       <scope id="5091186398080935944" at="56,50,57,27" />
       <scope id="3740508248791186435" at="68,48,69,45" />
       <scope id="1277999467583057106" at="86,31,87,64" />
       <scope id="3818729150937340992" at="90,31,91,59" />
       <scope id="250369351436395924" at="95,54,96,59" />
-      <scope id="2501421320961200875" at="112,51,113,103" />
-      <scope id="5256253775189865767" at="125,25,126,28" />
-      <scope id="5256253775189941782" at="128,36,129,79" />
+      <scope id="2501421320961200875" at="113,51,114,103" />
+      <scope id="5256253775189865767" at="126,25,127,28" />
+      <scope id="5256253775189941782" at="129,36,130,79" />
       <scope id="3740508248791186300" at="47,41,49,18" />
       <scope id="3740508248791186394" at="60,66,62,47">
         <var name="result" id="3740508248791186396" />
@@ -1013,10 +1014,10 @@
       <scope id="250369351436395923" at="95,0,98,0">
         <var name="reportItem" id="250369351436395923" />
       </scope>
-      <scope id="2501421320961200874" at="112,0,115,0">
+      <scope id="2501421320961200874" at="113,0,116,0">
         <var name="suppressor" id="2501421320961200874" />
       </scope>
-      <scope id="5256253775189941779" at="128,0,131,0">
+      <scope id="5256253775189941779" at="129,0,132,0">
         <var name="errors" id="5256253775189943475" />
       </scope>
       <scope id="3740508248791186393" at="60,0,64,0">
@@ -1025,12 +1026,12 @@
       <scope id="3740508248791186372" at="77,0,81,0">
         <var name="it" id="3740508248791186372" />
       </scope>
-      <scope id="5256253775189865764" at="124,0,128,0" />
+      <scope id="5256253775189865764" at="125,0,129,0" />
       <scope id="3740508248791186298" at="46,0,51,0">
         <var name="root" id="3740508248791186308" />
       </scope>
       <scope id="3740508248791186366" at="75,125,81,7" />
-      <scope id="3715262949175775938" at="109,48,115,21">
+      <scope id="3715262949175775938" at="110,48,116,21">
         <var name="node" id="617150929482672852" />
       </scope>
       <scope id="3740508248791186419" at="65,100,72,18">
@@ -1040,29 +1041,30 @@
         <var name="aNode" id="3740508248791186390" />
         <var name="errors" id="3740508248791186387" />
       </scope>
-      <scope id="3715262949175775937" at="109,0,117,0">
+      <scope id="3715262949175775937" at="110,0,118,0">
         <var name="it" id="3715262949175775937" />
       </scope>
       <scope id="3740508248791186418" at="65,0,74,0">
         <var name="errorType" id="3740508248791186449" />
         <var name="node" id="5162610181459332063" />
       </scope>
-      <scope id="2276757138026969623" at="84,52,119,15">
+      <scope id="2276757138026969623" at="84,52,120,15">
         <var name="cachedErrors" id="1277999467583127603" />
         <var name="errorCollector" id="250369351436395922" />
+        <var name="helper" id="5968606277578567377" />
         <var name="repository" id="6729911822236950559" />
         <var name="res" id="3715262949175775933" />
         <var name="result" id="2276757138027266818" />
       </scope>
-      <scope id="2276757138026969657" at="84,0,121,0" />
-      <unit id="3740508248791186293" at="133,0,136,0" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$CONCEPTS" />
+      <scope id="2276757138026969657" at="84,0,122,0" />
+      <unit id="3740508248791186293" at="134,0,137,0" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$CONCEPTS" />
       <unit id="3740508248791186434" at="67,93,71,5" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$1" />
       <unit id="250369351436395923" at="94,50,98,5" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$3" />
-      <unit id="2501421320961200874" at="111,131,115,9" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$4$1" />
+      <unit id="2501421320961200874" at="112,122,116,9" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$4$1" />
       <unit id="3740508248791186372" at="76,51,81,5" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$2" />
-      <unit id="3715262949175775937" at="108,129,117,5" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$4" />
-      <unit id="5256253775189855624" at="122,0,132,0" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$ModelErrorsHolder" />
-      <unit id="3740508248791186293" at="36,0,137,0" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker" />
+      <unit id="3715262949175775937" at="109,129,118,5" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$4" />
+      <unit id="5256253775189855624" at="123,0,133,0" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker$ModelErrorsHolder" />
+      <unit id="3740508248791186293" at="36,0,138,0" name="jetbrains.mps.lang.test.runtime.TestsErrorsChecker" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/3907189119348310603">

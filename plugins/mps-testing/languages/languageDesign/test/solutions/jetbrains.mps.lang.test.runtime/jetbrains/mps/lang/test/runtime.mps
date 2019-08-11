@@ -8454,6 +8454,19 @@
           </node>
         </node>
         <node concept="3clFbH" id="3efgZvcN9up" role="3cqZAp" />
+        <node concept="3cpWs8" id="5bkJW_jfaVg" role="3cqZAp">
+          <node concept="3cpWsn" id="5bkJW_jfaVh" role="3cpWs9">
+            <property role="TrG5h" value="helper" />
+            <node concept="3uibUv" id="5bkJW_jfaiH" role="1tU5fm">
+              <ref role="3uigEE" to="wsw7:5TGjZPCODxZ" resolve="ErrorReportHelper" />
+            </node>
+            <node concept="2ShNRf" id="5bkJW_jfaVi" role="33vP2m">
+              <node concept="HV5vD" id="5bkJW_jfaVj" role="2ShVmc">
+                <ref role="HV5vE" to="wsw7:5TGjZPCODxZ" resolve="ErrorReportHelper" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="3efgZvcMHaW" role="3cqZAp">
           <node concept="3cpWsn" id="3efgZvcMHaX" role="3cpWs9">
             <property role="TrG5h" value="res" />
@@ -8504,22 +8517,26 @@
                             </node>
                             <node concept="2OqwBi" id="2aQPn0PuLb$" role="3uHU7w">
                               <node concept="2OqwBi" id="2aQPn0PuLb_" role="2Oq$k0">
-                                <node concept="2YIFZM" id="2aQPn0PuN66" role="2Oq$k0">
-                                  <ref role="1Pybhc" to="wsw7:5TGjZPCODxZ" resolve="ErrorReportUtil" />
-                                  <ref role="37wK5l" to="wsw7:4fbem5QiJlX" resolve="getActiveSuppressors" />
-                                  <node concept="2OqwBi" id="2aQPn0PuV0y" role="37wK5m">
-                                    <node concept="37vLTw" id="2aQPn0PuT$w" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="ygzS0$BuFk" resolve="node" />
-                                    </node>
-                                    <node concept="liA8E" id="2aQPn0PuWAP" role="2OqNvi">
-                                      <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
-                                      <node concept="37vLTw" id="2aQPn0PuY1x" role="37wK5m">
-                                        <ref role="3cqZAo" node="5P_sMle8E0v" resolve="repository" />
+                                <node concept="2OqwBi" id="5bkJW_jeygg" role="2Oq$k0">
+                                  <node concept="37vLTw" id="5bkJW_jfaVk" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="5bkJW_jfaVh" resolve="helper" />
+                                  </node>
+                                  <node concept="liA8E" id="5bkJW_jeze3" role="2OqNvi">
+                                    <ref role="37wK5l" to="wsw7:5bkJW_jdVHd" resolve="getActiveSuppressors" />
+                                    <node concept="2OqwBi" id="2aQPn0PuV0y" role="37wK5m">
+                                      <node concept="37vLTw" id="2aQPn0PuT$w" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="ygzS0$BuFk" resolve="node" />
+                                      </node>
+                                      <node concept="liA8E" id="2aQPn0PuWAP" role="2OqNvi">
+                                        <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
+                                        <node concept="37vLTw" id="2aQPn0PuY1x" role="37wK5m">
+                                          <ref role="3cqZAo" node="5P_sMle8E0v" resolve="repository" />
+                                        </node>
                                       </node>
                                     </node>
-                                  </node>
-                                  <node concept="37vLTw" id="2aQPn0PuN68" role="37wK5m">
-                                    <ref role="3cqZAo" node="3efgZvcMHb9" resolve="it" />
+                                    <node concept="37vLTw" id="2aQPn0PuN68" role="37wK5m">
+                                      <ref role="3cqZAo" node="3efgZvcMHb9" resolve="it" />
+                                    </node>
                                   </node>
                                 </node>
                                 <node concept="3zZkjj" id="2aQPn0PuLbD" role="2OqNvi">

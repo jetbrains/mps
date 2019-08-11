@@ -25,6 +25,7 @@ import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.util.Consumer;
 
 public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
   private static final Logger LOG = LogManager.getLogger(SuppressErrorsChecker.class);
@@ -74,6 +75,7 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
     return new ICheckingPostprocessor.AbstractCheckingPostprocessor<NodeReportItem>() {
       @Override
       public void postProcess(SRepository repository, ProgressMonitor monitor, CheckingSession<? super NodeReportItem> checkingSession) {
+        ErrorReportHelper errorReportHelper = new ErrorReportHelper();
         for (Collection<? extends CheckingSession.SuppressableError<? extends IssueKindReportItem>> collection : CollectionSequence.fromCollection(checkingSession.getAllFoundErrors().values())) {
           for (CheckingSession.SuppressableError<? extends IssueKindReportItem> foundError : CollectionSequence.fromCollection(collection)) {
             IssueKindReportItem error = foundError.getError();
@@ -95,11 +97,12 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
             if (SModelStereotype.isStubModel(model)) {
               continue;
             }
-            SNode activeSupressor = Sequence.fromIterable(ErrorReportUtil.getActiveSuppressors(node, nodeReportItem)).first();
+            SNode activeSupressor = Sequence.fromIterable(errorReportHelper.getActiveSuppressors(node, nodeReportItem)).first();
             if ((activeSupressor != null)) {
               foundError.suppress();
               NodeReportItem replacement = new SuppressedWrapperReportItem(nodeReportItem, activeSupressor);
-              checkingSession.postprocessingConsumer().consume(replacement);
+              Consumer<? super NodeReportItem> postprocessingConsumer = checkingSession.postprocessingConsumer();
+              postprocessingConsumer.consume(replacement);
 
             }
           }
