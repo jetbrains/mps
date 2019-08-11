@@ -198,8 +198,6 @@ LD_LIBRARY_PATH="$IDE_BIN_HOME:$LD_LIBRARY_PATH" "$JAVA_BIN" \
   ${AGENT} \
   -classpath "$CLASSPATH" \
   ${VM_OPTIONS} \
-  -Dawt.useSystemAAFontSettings=lcd \
-  -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine \
   "-XX:ErrorFile=$HOME/java_error_in_MPS_%p.log" \
   "-XX:HeapDumpPath=$HOME/java_error_in_IDEA.hprof" \
   -Didea.paths.selector=$IDEA_PATHS_SELECTOR \
