@@ -740,6 +740,9 @@
     <node concept="2NdhxG" id="2BgJggCaJy6" role="2NdZaQ">
       <property role="Xl_RC" value="LINE_COMMENT" />
     </node>
+    <node concept="2NdhxG" id="16zq0OE7Du4" role="2NdZaQ">
+      <property role="Xl_RC" value="KEYWORD" />
+    </node>
   </node>
   <node concept="PKFIW" id="1GOfCi7TDXl">
     <property role="TrG5h" value="VirtualPackage" />

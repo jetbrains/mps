@@ -655,16 +655,27 @@
     <file name="BaseKeyPack_KeyPack.java">
       <node id="3013115976262285446" at="9,36,10,28" concept="13" />
       <node id="3013115976262285446" at="12,48,13,38" concept="13" />
+      <node id="1270973925599123332" at="17,31,18,23" concept="13" />
+      <node id="1270973925599123332" at="20,43,21,33" concept="13" />
       <node id="3013115976262285446" at="9,0,12,0" concept="1" trace="LINE_COMMENT_StyleKey#()V" />
       <node id="3013115976262285446" at="12,0,15,0" concept="1" trace="LINE_COMMENT_StyleKey#(I)V" />
+      <node id="1270973925599123332" at="17,0,20,0" concept="1" trace="KEYWORD_StyleKey#()V" />
+      <node id="1270973925599123332" at="20,0,23,0" concept="1" trace="KEYWORD_StyleKey#(I)V" />
       <scope id="3013115976262285446" at="9,36,10,28" />
       <scope id="3013115976262285446" at="12,48,13,38" />
+      <scope id="1270973925599123332" at="17,31,18,23" />
+      <scope id="1270973925599123332" at="20,43,21,33" />
       <scope id="3013115976262285446" at="9,0,12,0" />
       <scope id="3013115976262285446" at="12,0,15,0">
         <var name="priority" id="3013115976262285446" />
       </scope>
+      <scope id="1270973925599123332" at="17,0,20,0" />
+      <scope id="1270973925599123332" at="20,0,23,0">
+        <var name="priority" id="1270973925599123332" />
+      </scope>
       <unit id="3013115976262285446" at="8,0,16,0" name="jetbrains.mps.lang.core.editor.BaseKeyPack_KeyPack$LINE_COMMENT_StyleKey" />
-      <unit id="3013115976262284144" at="7,0,17,0" name="jetbrains.mps.lang.core.editor.BaseKeyPack_KeyPack" />
+      <unit id="1270973925599123332" at="16,0,24,0" name="jetbrains.mps.lang.core.editor.BaseKeyPack_KeyPack$KEYWORD_StyleKey" />
+      <unit id="3013115976262284144" at="7,0,25,0" name="jetbrains.mps.lang.core.editor.BaseKeyPack_KeyPack" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/3078666699043620377">

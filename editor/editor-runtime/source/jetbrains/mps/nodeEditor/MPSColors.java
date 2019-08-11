@@ -33,7 +33,7 @@ public final class MPSColors extends JBColor {
   public static final Color lightBlue = new JBColor(new Color(162, 184, 208), MPSDarculaColors.LIGHT_BLUE);
   public static final Color LIGHT_BLUE = lightBlue;
 
-  public static final Color darkBlue = new JBColor(JBColor.BLUE.darker(), MPSDarculaColors.DARK_BLUE);
+  public static final Color darkBlue = new JBColor(new Color(0x80), MPSDarculaColors.DARK_BLUE);
   public static final Color DARK_BLUE = darkBlue;
 
   public static final Color darkGreen = new JBColor(JBColor.GREEN.darker().darker(), MPSDarculaColors.DARK_GREEN);
