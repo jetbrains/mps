@@ -12652,7 +12652,7 @@
             </node>
           </node>
           <node concept="Xl_RD" id="1cf" role="37wK5m">
-            <property role="Xl_RC" value="Mac OS X" />
+            <property role="Xl_RC" value="IntelliJ IDEA Classic" />
             <node concept="cd27G" id="1cn" role="lGtFl">
               <node concept="3u3nmq" id="1co" role="cd27D">
                 <property role="3u3nmv" value="4241665505353446992" />
@@ -12711,7 +12711,7 @@
     </node>
     <node concept="312cEg" id="1bd" role="jymVt">
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="myMember_Mac_OS_X_10_5__0" />
+      <property role="TrG5h" value="myMember_Mac_OS_X_Plus_0" />
       <node concept="3Tm6S6" id="1c$" role="1B3o_S">
         <node concept="cd27G" id="1cC" role="lGtFl">
           <node concept="3u3nmq" id="1cD" role="cd27D">
@@ -12731,7 +12731,7 @@
         <node concept="1pGfFk" id="1cG" role="2ShVmc">
           <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String,java.lang.String,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
           <node concept="Xl_RD" id="1cI" role="37wK5m">
-            <property role="Xl_RC" value="Mac_OS_X_10_5_" />
+            <property role="Xl_RC" value="Mac_OS_X_Plus" />
             <node concept="cd27G" id="1cP" role="lGtFl">
               <node concept="3u3nmq" id="1cQ" role="cd27D">
                 <property role="3u3nmv" value="4241665505353446992" />
@@ -12739,7 +12739,7 @@
             </node>
           </node>
           <node concept="Xl_RD" id="1cJ" role="37wK5m">
-            <property role="Xl_RC" value="Mac OS X 10.5+" />
+            <property role="Xl_RC" value="macOS" />
             <node concept="cd27G" id="1cR" role="lGtFl">
               <node concept="3u3nmq" id="1cS" role="cd27D">
                 <property role="3u3nmv" value="4241665505353446992" />
@@ -13317,7 +13317,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="1fZ" role="37wK5m">
-            <ref role="3cqZAo" node="1bd" resolve="myMember_Mac_OS_X_10_5__0" />
+            <ref role="3cqZAo" node="1bd" resolve="myMember_Mac_OS_X_Plus_0" />
             <node concept="cd27G" id="1g9" role="lGtFl">
               <node concept="3u3nmq" id="1ga" role="cd27D">
                 <property role="3u3nmv" value="4241665505353446992" />
@@ -13673,7 +13673,7 @@
           </node>
           <node concept="3KbdKl" id="1hW" role="3KbHQx">
             <node concept="Xl_RD" id="1ii" role="3Kbmr1">
-              <property role="Xl_RC" value="Mac_OS_X_10_5_" />
+              <property role="Xl_RC" value="Mac_OS_X_Plus" />
               <node concept="cd27G" id="1il" role="lGtFl">
                 <node concept="3u3nmq" id="1im" role="cd27D">
                   <property role="3u3nmv" value="4241665505353446992" />
@@ -13683,7 +13683,7 @@
             <node concept="3clFbS" id="1ij" role="3Kbo56">
               <node concept="3cpWs6" id="1in" role="3cqZAp">
                 <node concept="37vLTw" id="1ip" role="3cqZAk">
-                  <ref role="3cqZAo" node="1bd" resolve="myMember_Mac_OS_X_10_5__0" />
+                  <ref role="3cqZAo" node="1bd" resolve="myMember_Mac_OS_X_Plus_0" />
                   <node concept="cd27G" id="1ir" role="lGtFl">
                     <node concept="3u3nmq" id="1is" role="cd27D">
                       <property role="3u3nmv" value="4241665505353446992" />
@@ -15611,9 +15611,9 @@
         </node>
       </node>
       <node concept="39e2AG" id="1tj" role="39e3Y0">
-        <ref role="39e2AK" to="tp4k:3Ftr4R6BFpj" resolve="Mac_OS_X_10_5_" />
+        <ref role="39e2AK" to="tp4k:3Ftr4R6BFpj" resolve="Mac_OS_X_Plus" />
         <node concept="385nmt" id="1tR" role="385vvn">
-          <property role="385vuF" value="Mac_OS_X_10_5_" />
+          <property role="385vuF" value="Mac_OS_X_Plus" />
           <node concept="2$VJBW" id="1tT" role="385v07">
             <property role="2$VJBR" value="4241665505353446995" />
             <node concept="2x4n5u" id="1tU" role="3iCydw">
@@ -15627,7 +15627,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="1tS" role="39e2AY">
-          <ref role="39e2AS" node="1bd" resolve="myMember_Mac_OS_X_10_5__0" />
+          <ref role="39e2AS" node="1bd" resolve="myMember_Mac_OS_X_Plus_0" />
         </node>
       </node>
       <node concept="39e2AG" id="1tk" role="39e3Y0">

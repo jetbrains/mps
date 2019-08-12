@@ -27,7 +27,7 @@ import jetbrains.mps.util.JavaNameUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.plugin.behavior.GroupAnchor__BehaviorDescriptor;
 import jetbrains.mps.lang.plugin.behavior.KeyMapKeystroke__BehaviorDescriptor;
-import jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils;
+import jetbrains.mps.lang.plugin.generator.util.KeymapUtil;
 import jetbrains.mps.lang.plugin.behavior.KeymapChangesDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.plugin.behavior.BaseToolDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.plugin.behavior.EditorTab__BehaviorDescriptor;
@@ -381,7 +381,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) ActionDeclaration__BehaviorDescriptor.getActionId_id2JiSCAPXEb8.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.action$f4CQ));
   }
   public static Object propertyMacro_GetValue_34_9(final PropertyMacroContext _context) {
-    return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(_context.getNode(), PROPS.keymap$9wG5));
+    return KeymapUtil.serializeKeymap(SPropertyOperations.getEnum(_context.getNode(), PROPS.keymap$9wG5));
   }
   public static Object propertyMacro_GetValue_34_10(final PropertyMacroContext _context) {
     return _context.createUniqueName(SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.action$f4CQ), PROPS.name$tAp1) + "_ShortcutChange", _context.getNode());
@@ -477,7 +477,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) KeyMapKeystroke__BehaviorDescriptor.getKeyStroke_idhEwIlzu.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_63_3(final PropertyMacroContext _context) {
-    return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.KeymapChangesDeclaration$TA), PROPS.keymap$9wG5));
+    return KeymapUtil.serializeKeymap(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.KeymapChangesDeclaration$TA), PROPS.keymap$9wG5));
   }
   public static Object propertyMacro_GetValue_63_4(final PropertyMacroContext _context) {
     return (String) GroupAnchor__BehaviorDescriptor.getActionId_id4L4tRTddLSL.invoke(SNodeOperations.cast(_context.getNode(), CONCEPTS.GroupAnchor$MS));
