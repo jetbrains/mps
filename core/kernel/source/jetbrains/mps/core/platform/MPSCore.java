@@ -20,7 +20,7 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.problems.VisibleProblemsRegistry;
+import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.extapi.persistence.ModelFactoryRegistry;
@@ -81,7 +81,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
   private ModelsAutoImportsManager myAutoImportsManager;
   private DescriptorIOFacade myModuleDescriptorFacade;
   private VFSManager myVFSManager;
-  private VisibleProblemsRegistry myVisibleProblemsRegistry;
 
   /**
    * made package-private
@@ -115,12 +114,10 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myExtensionRegistry = null;
     myVFSManager = null;
     myInitialized = false;
-    myVisibleProblemsRegistry = null;
   }
 
   private void doInit() {
     SNodeAccessUtil.setInstance(new SNodeAccessUtilImpl());
-    myVisibleProblemsRegistry = init(new VisibleProblemsRegistry());
     myVFSManager = init(new VFSManager());
     // in fact, could be part of PersistenceRegistry to minimize number of components. OTOH, complicates access
     // to the instance, findComponent(PersistenceRegistry.class).getDataSourceService() is longer than just findComponent(DataSourceFactoryRuleService.class)

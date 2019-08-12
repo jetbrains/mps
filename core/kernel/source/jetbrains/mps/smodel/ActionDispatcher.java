@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.problems.UserVisibleException;
-import jetbrains.mps.problems.VisibleProblemsRegistry;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -85,8 +83,6 @@ import java.util.function.Consumer;
       }
       try {
         r.run();
-      } catch (UserVisibleException ue) {
-        VisibleProblemsRegistry.getInstance().add(ue);
       } catch (RuntimeException ex) {
         // re-throw an exception, if any, just to let user code to use exceptions to control code flow (alas, we can't prevent this unfortunate practice)
         // but at least mention it in the log in case it's not a control flow and there are chances for the exception to get obscured by a subsequent one.

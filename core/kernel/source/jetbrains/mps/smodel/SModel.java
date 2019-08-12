@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.model.SModelDescriptorStub;
-import jetbrains.mps.problems.UserVisibleException;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.structure.modules.RefUpdateUtil;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
@@ -989,16 +988,11 @@ public class SModel implements SModelData, UpdateModeSupport {
     }
   }
 
-  private static class VersionMismatchException extends UserVisibleException {
+  private static class VersionMismatchException extends RuntimeException {
     public VersionMismatchException(@Nullable Project p, org.jetbrains.mps.openapi.model.SModel modelDescriptor,
                                     SLanguage language, Integer existingVersion, int version) {
-      super(p, "Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
+      super( "Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
                "; model: " + modelDescriptor.getModelName() + "; language: " + language.getQualifiedName());
-    }
-
-    @Override
-    public String getHint() {
-      return "This might happen when Migration Support plugin is disabled. Please check and enable this plugin.";
     }
   }
 }
