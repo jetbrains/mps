@@ -20,10 +20,11 @@ import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 
 public class EditorCell_Empty extends EditorCell_Basic implements WithCaret {
   private CaretState myCaretState = new CaretState();
-  protected TextLine myTextLine = new TextLine("", getStyle(), false);
+  protected TextLine myTextLine;
 
   public EditorCell_Empty(EditorContext c, SNode node) {
     super(c, node);
+    myTextLine = new TextLine("", getStyle(), false, c);
     myTextLine.setCaretEnabled(true);
   }
 

@@ -574,20 +574,6 @@
       <node concept="3uibUv" id="5FaWHIrqiu7" role="1tU5fm">
         <ref role="3uigEE" to="g51k:~TextLine" resolve="TextLine" />
       </node>
-      <node concept="2ShNRf" id="7dwhomQPrAC" role="33vP2m">
-        <node concept="1pGfFk" id="7dwhomQPrAD" role="2ShVmc">
-          <ref role="37wK5l" to="g51k:~TextLine.&lt;init&gt;(java.lang.String,jetbrains.mps.openapi.editor.style.Style,boolean)" resolve="TextLine" />
-          <node concept="Xl_RD" id="7dwhomQPrAE" role="37wK5m">
-            <property role="Xl_RC" value="" />
-          </node>
-          <node concept="1rXfSq" id="3J9H4udwZPd" role="37wK5m">
-            <ref role="37wK5l" to="g51k:~EditorCell_Basic.getStyle()" resolve="getStyle" />
-          </node>
-          <node concept="3clFbT" id="7dwhomQPrAI" role="37wK5m">
-            <property role="3clFbU" value="false" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="3J9H4udx0Oe" role="jymVt" />
     <node concept="3clFbW" id="7dwhomQPrAJ" role="jymVt">
@@ -613,6 +599,30 @@
           </node>
           <node concept="37vLTw" id="2BHiRxgm7Lx" role="37wK5m">
             <ref role="3cqZAo" node="7dwhomQPrAM" resolve="node" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3E$e_gS$NDX" role="3cqZAp">
+          <node concept="37vLTI" id="3E$e_gS$Ogj" role="3clFbG">
+            <node concept="2ShNRf" id="3E$e_gS$P3c" role="37vLTx">
+              <node concept="1pGfFk" id="3E$e_gS$OOh" role="2ShVmc">
+                <ref role="37wK5l" to="g51k:~TextLine.&lt;init&gt;(java.lang.String,jetbrains.mps.openapi.editor.style.Style,boolean,jetbrains.mps.openapi.editor.cells.EditorFontMetricsProvider)" resolve="TextLine" />
+                <node concept="Xl_RD" id="3E$e_gS$PDH" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="1rXfSq" id="3E$e_gS$PDI" role="37wK5m">
+                  <ref role="37wK5l" to="g51k:~EditorCell_Basic.getStyle()" resolve="getStyle" />
+                </node>
+                <node concept="3clFbT" id="3E$e_gS$PDJ" role="37wK5m">
+                  <property role="3clFbU" value="false" />
+                </node>
+                <node concept="37vLTw" id="3E$e_gS_1a$" role="37wK5m">
+                  <ref role="3cqZAo" node="7dwhomQPrAK" resolve="c" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="3E$e_gS$NDV" role="37vLTJ">
+              <ref role="3cqZAo" node="7dwhomQPrA_" resolve="myTextLine" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7dwhomQPrAU" role="3cqZAp">

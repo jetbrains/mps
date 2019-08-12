@@ -21,6 +21,7 @@ import com.intellij.ide.CutProvider;
 import com.intellij.ide.DataManager;
 import com.intellij.ide.PasteProvider;
 import com.intellij.ide.SelectInContext;
+import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
@@ -542,7 +543,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (configuration.withUI) {
       createUI(configuration);
     }
-
   }
 
   // TODO:
@@ -662,6 +662,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
       myLeftHighlighter.repaint();
     });
+    UISettings.setupEditorAntialiasing(this);
   }
 
   boolean hasUI() {
@@ -1049,8 +1050,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
       if (needNewTypecheckingContext && myNode != null) {
         myTypecheckingSessionHandle = TypecheckingFacade
-                                    .getFromContext()
-                                    .requestNewSession(TypecheckingSession.Flags.forRoot(getNodeForTypechecking()).incremental());
+                                          .getFromContext()
+                                          .requestNewSession(TypecheckingSession.Flags.forRoot(getNodeForTypechecking()).incremental());
       }
 
       rebuildEditorContent();
@@ -2213,8 +2214,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   /**
-   * @deprecated use {@link EditorComponent#getTypecheckingSession()} to launch typechecking reusing the cached state.
    * @return
+   * @deprecated use {@link EditorComponent#getTypecheckingSession()} to launch typechecking reusing the cached state.
    */
   @Deprecated
   @NotNull
@@ -2396,7 +2397,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       patternEditor.toggleReplaceMode();
     }
     NodeSubstituteChooserHandler substituteChooserHandler = new NodeSubstituteChooserHandler(editorCell, this, substituteInfo, patternEditor, isSmart);
-    if (!substituteChooserHandler.tryToSubstituteImmediately()){
+    if (!substituteChooserHandler.tryToSubstituteImmediately()) {
       substituteChooserHandler.showNodeSubstituteChooser(myNodeSubstituteChooser);
     }
     return true;
@@ -2704,8 +2705,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myCommandContext.updateContextNode();
     if (myNode != null) {
       myTypecheckingSessionHandle = TypecheckingFacade
-                                  .getFromContext()
-                                  .requestNewSession(TypecheckingSession.Flags.forRoot(getNodeForTypechecking()).incremental());
+                                        .getFromContext()
+                                        .requestNewSession(TypecheckingSession.Flags.forRoot(getNodeForTypechecking()).incremental());
     }
   }
 

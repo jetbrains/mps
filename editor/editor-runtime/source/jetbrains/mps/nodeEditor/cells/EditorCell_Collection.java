@@ -971,7 +971,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
       style.set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
       style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
 
-      myBraceTextLine = new TextLine(text, style, false);
+      myBraceTextLine = new TextLine(text, style, false, editorContext);
       myBraceTextLine.setCaretEnabled(false);
       setEditable(false);
       setEnabled(false);

@@ -107,6 +107,11 @@ public class FontRegistry {
     return fontEntry == null || fontEntry.getFontName(style) == null;
   }
 
+
+  /**
+   * @deprecated since MPS 2019.2 use {@link jetbrains.mps.openapi.editor.cells.EditorFontMetrics} or {@link EditorFontMetricsImpl}
+   */
+  @Deprecated
   public FontMetrics getFontMetrics(Font font) {
     FontMetrics result = myFontMetricsCache.get(font);
     if (result == null) {
@@ -210,7 +215,7 @@ public class FontRegistry {
         if (fontName.length() < prefixLength) {
           LOG.error(
               "Font name \"" + fontName + "\" registered in font family \"" + myFamilyName + "\" is shorter that the length of common prefix \"" + prefix +
-                  "\". Skipping it.");
+              "\". Skipping it.");
           continue;
         }
 

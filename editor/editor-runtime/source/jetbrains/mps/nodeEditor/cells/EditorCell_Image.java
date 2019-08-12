@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.vfs.LocalFileSystem;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -32,11 +31,9 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -152,12 +149,8 @@ public class EditorCell_Image extends EditorCell_Basic {
     }
 
     if (myDescent < 0) {
-      myDescent = getFontMetrics().getDescent();
+      myDescent = EditorSettings.getInstance().getDefaultEditorFontMetrics().getDescent();
     }
-  }
-
-  private FontMetrics getFontMetrics() {
-    return FontRegistry.getInstance().getFontMetrics(EditorSettings.getInstance().getDefaultEditorFont());
   }
 
   @Override

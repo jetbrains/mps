@@ -17,6 +17,7 @@ package jetbrains.mps.openapi.editor;
 
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorFontMetricsProvider;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.util.Computable;
@@ -31,7 +32,7 @@ import java.util.List;
 /**
  * evgeny, 11/17/11
  */
-public interface EditorContext {
+public interface EditorContext extends EditorFontMetricsProvider {
 
   @NotNull
   SRepository getRepository();

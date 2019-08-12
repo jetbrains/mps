@@ -6571,15 +6571,15 @@
               <node concept="3cpWs8" id="5aO34D5xT59" role="3cqZAp">
                 <node concept="3cpWsn" id="5aO34D5xT5a" role="3cpWs9">
                   <property role="TrG5h" value="fm" />
-                  <node concept="3uibUv" id="5aO34D5xT57" role="1tU5fm">
-                    <ref role="3uigEE" to="z60i:~FontMetrics" resolve="FontMetrics" />
+                  <node concept="3uibUv" id="3E$e_gSzHSn" role="1tU5fm">
+                    <ref role="3uigEE" to="f4zo:~EditorFontMetrics" resolve="EditorFontMetrics" />
                   </node>
                   <node concept="2OqwBi" id="5aO34D5xT5b" role="33vP2m">
                     <node concept="37vLTw" id="5aO34D5xT5c" role="2Oq$k0">
                       <ref role="3cqZAo" node="5aO34D5tR6k" resolve="tl" />
                     </node>
-                    <node concept="liA8E" id="5aO34D5xT5d" role="2OqNvi">
-                      <ref role="37wK5l" to="g51k:~TextLine.getFontMetrics()" resolve="getFontMetrics" />
+                    <node concept="liA8E" id="3E$e_gSzHry" role="2OqNvi">
+                      <ref role="37wK5l" to="g51k:~TextLine.getEditorFontMetrics()" resolve="getEditorFontMetrics" />
                     </node>
                   </node>
                 </node>
@@ -6588,32 +6588,13 @@
                 <node concept="3cpWsn" id="5aO34D5ubE_" role="3cpWs9">
                   <property role="TrG5h" value="renderedText" />
                   <property role="3TUv4t" value="true" />
-                  <node concept="3uibUv" id="5aO34D5ubEy" role="1tU5fm">
-                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                  </node>
+                  <node concept="17QB3L" id="3E$e_gSzI6I" role="1tU5fm" />
                   <node concept="2OqwBi" id="5aO34D5ubEA" role="33vP2m">
                     <node concept="37vLTw" id="5aO34D5ubEB" role="2Oq$k0">
                       <ref role="3cqZAo" node="5aO34D5tR6k" resolve="tl" />
                     </node>
                     <node concept="liA8E" id="5aO34D5ubEC" role="2OqNvi">
                       <ref role="37wK5l" to="g51k:~TextLine.getText()" resolve="getText" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3cpWs8" id="5aO34D5CGzM" role="3cqZAp">
-                <node concept="3cpWsn" id="5aO34D5CGzS" role="3cpWs9">
-                  <property role="3TUv4t" value="true" />
-                  <property role="TrG5h" value="renderedChars" />
-                  <node concept="10Q1$e" id="5aO34D5CGzU" role="1tU5fm">
-                    <node concept="10Pfzv" id="5aO34D5CGzW" role="10Q1$1" />
-                  </node>
-                  <node concept="2OqwBi" id="5aO34D5DSrh" role="33vP2m">
-                    <node concept="37vLTw" id="5aO34D5DN1d" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5aO34D5ubE_" resolve="renderedText" />
-                    </node>
-                    <node concept="liA8E" id="5aO34D5DYpr" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~String.toCharArray()" resolve="toCharArray" />
                     </node>
                   </node>
                 </node>
@@ -6829,9 +6810,9 @@
                               <ref role="3cqZAo" node="5aO34D5xT5a" resolve="fm" />
                             </node>
                             <node concept="liA8E" id="5aO34D5AhBn" role="2OqNvi">
-                              <ref role="37wK5l" to="z60i:~FontMetrics.charsWidth(char[],int,int)" resolve="charsWidth" />
-                              <node concept="37vLTw" id="5aO34D5E4P7" role="37wK5m">
-                                <ref role="3cqZAo" node="5aO34D5CGzS" resolve="renderedChars" />
+                              <ref role="37wK5l" to="f4zo:~EditorFontMetrics.getWidth(java.lang.String,int,int)" resolve="getWidth" />
+                              <node concept="37vLTw" id="3E$e_gSzJNd" role="37wK5m">
+                                <ref role="3cqZAo" node="5aO34D5ubE_" resolve="renderedText" />
                               </node>
                               <node concept="3cmrfG" id="5aO34D5AF0T" role="37wK5m">
                                 <property role="3cmrfH" value="0" />
@@ -6852,9 +6833,9 @@
                               <ref role="3cqZAo" node="5aO34D5xT5a" resolve="fm" />
                             </node>
                             <node concept="liA8E" id="5aO34D5AVQv" role="2OqNvi">
-                              <ref role="37wK5l" to="z60i:~FontMetrics.charsWidth(char[],int,int)" resolve="charsWidth" />
-                              <node concept="37vLTw" id="5aO34D5EeqO" role="37wK5m">
-                                <ref role="3cqZAo" node="5aO34D5CGzS" resolve="renderedChars" />
+                              <ref role="37wK5l" to="f4zo:~EditorFontMetrics.getWidth(java.lang.String,int,int)" resolve="getWidth" />
+                              <node concept="37vLTw" id="3E$e_gSzK39" role="37wK5m">
+                                <ref role="3cqZAo" node="5aO34D5ubE_" resolve="renderedText" />
                               </node>
                               <node concept="3cmrfG" id="4ez_gUcif_n" role="37wK5m">
                                 <property role="3cmrfH" value="0" />
@@ -6947,9 +6928,7 @@
                 </node>
                 <node concept="3cpWsn" id="5aO34D5v49E" role="1Duv9x">
                   <property role="TrG5h" value="w" />
-                  <node concept="3uibUv" id="5aO34D5v9Bb" role="1tU5fm">
-                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                  </node>
+                  <node concept="17QB3L" id="3E$e_gSzJ0g" role="1tU5fm" />
                 </node>
                 <node concept="37vLTw" id="5aO34D5vk$b" role="1DdaDG">
                   <ref role="3cqZAo" node="5aO34D5s6zk" resolve="myWords" />
