@@ -368,7 +368,7 @@ class PriorityGraph {
     return myRulePriorityEntries.isEmpty();
   }
 
-  public void dump() {
+  public void printEntries() {
     for (Entry entry : myRulePriorityEntries) {
       System.out.println(entry);
     }
