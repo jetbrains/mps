@@ -55,7 +55,7 @@ public class GeneratorUtil {
     return new ProblemDescription(nr, String.format("was %s: %s", nodeRole, msg));
   }
 
-  public static ProblemDescription describe(@Nullable SNodeReference node, String nodeRole) {
+  public static ProblemDescription createProblemDescription(@Nullable SNodeReference node, String nodeRole) {
     String msg;
     if (node == null) {
       msg = String.format("was %s: <unknown node reference>", nodeRole);
@@ -68,7 +68,7 @@ public class GeneratorUtil {
     if (node == null) {
       return null;
     }
-    return describe(node, nodeRole);
+    return createProblemDescription(node, nodeRole);
   }
 
   public static ProblemDescription describeIfExists(SNode node, String nodeRole) {

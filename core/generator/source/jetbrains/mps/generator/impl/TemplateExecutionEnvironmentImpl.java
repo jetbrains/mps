@@ -294,8 +294,8 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
         myErrorReported = true;
         getLogger().error(callSite, myMessage,
                           GeneratorUtil.describeIfExists(context.getInput(), "input"),
-                          GeneratorUtil.describe(callSite, "call site"),
-                          GeneratorUtil.describe(getTemplateNode(), "template declaration"));
+                          GeneratorUtil.createProblemDescription(callSite, "call site"),
+                          GeneratorUtil.createProblemDescription(getTemplateNode(), "template declaration"));
       }
     }
     TemplateModel templateModel = generator.getGenerationPlan().getTemplateModel(templateDeclaration.getSourceModel());
@@ -362,8 +362,8 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
       String msg = "%s not found: cannot apply template declaration, try to check & regenerate affected generators";
       getLogger().error(templateNode, String.format(msg, templateModel == null ? "template model" : "declaration"),
           GeneratorUtil.describeIfExists(context.getInput(), "input"),
-          GeneratorUtil.describe(templateNode, "template"),
-          GeneratorUtil.describe(templateDeclaration, "template declaration"));
+          GeneratorUtil.createProblemDescription(templateNode, "template"),
+          GeneratorUtil.createProblemDescription(templateDeclaration, "template declaration"));
       return null;
     }
     return templateDeclarationInstance;

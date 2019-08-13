@@ -149,7 +149,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
           myGenerator.getLogger().warning(rtTemplateChildNode.getTemplateNodeReference(), status.getMessage("apply template"), status.describe(
               GeneratorUtil.describe(context.getInput(), "input"),
               GeneratorUtil.describe(outputNode, "output"),
-              GeneratorUtil.describe(rtTemplateNode.getTemplateNodeReference(), "template node")
+              GeneratorUtil.createProblemDescription(rtTemplateNode.getTemplateNodeReference(), "template node")
           ));
         }
         outputNode.addChild(role, outputChildNode);
