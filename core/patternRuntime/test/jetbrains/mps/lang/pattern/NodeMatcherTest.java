@@ -91,8 +91,8 @@ public class NodeMatcherTest {
     final NodeMatcher top = new NodeMatcher(vc);
     top.capture("top").
         child(ourC1Child1).at(1).capture("c1_2"). // second child in the first role
-          child(ourC1Child2).at(0).capture("c1_c1_1").done().done(). // we are at c1_2
-        done().done(). // pop c1_2, pop ourC1Child1
+          child(ourC1Child2).at(0).capture("c1_c1_1").done().getParent(). // we are at c1_2
+        done().getParent(). // pop c1_2, pop ourC1Child1
         child(ourC1Child2).at(0).capture("c2_1");
 
     final SNode actualNode = newNode(ourConcept1, "1");
@@ -119,7 +119,7 @@ public class NodeMatcherTest {
 
     ValueContainer vc = new ValueContainer();
     final NodeMatcher top = new NodeMatcher(vc);
-    top.child(ourC1Child1).capture("firstList").done().child(ourC1Child2).capture("secondList");
+    top.child(ourC1Child1).capture("firstList").getParent().child(ourC1Child2).capture("secondList");
 
     final SNode actualNode = newNode(ourConcept1);
     actualNode.addChild(ourC1Child1, newNode(ourConcept1));
@@ -225,7 +225,7 @@ public class NodeMatcherTest {
     top.capture("TopNodeVar").propertyValue(p, "PropertyVar").
         child(ourC1Child1).
         at(0).capture("firstChild").propertyValue(p, "ChildName").done().
-        done().
+                                                                            getParent().
         child(ourC1Child2).capture("list");
 
     final SNode actualNode = newNode(ourConcept1, "ActualTopNodeName");
@@ -274,8 +274,8 @@ public class NodeMatcherTest {
     ValueContainer vc = new ValueContainer();
     final NodeMatcher top = new NodeMatcher(vc);
     // extra child().done() after capture('cld') is to avoid aforementioned bypass.
-    top.disjunct(pattern1Node, new NodeMatcher(vc).child(ourC1Child1).at(0).capture("cld").child(ourC1Child1).done().done().done());
-    top.disjunct(pattern2Node, new NodeMatcher(vc).child(ourC1Child2).at(0).capture("cld").child(ourC1Child2).done().done().done());
+    top.disjunct(pattern1Node, new NodeMatcher(vc).child(ourC1Child1).at(0).capture("cld").child(ourC1Child1).getParent().done().getParent());
+    top.disjunct(pattern2Node, new NodeMatcher(vc).child(ourC1Child2).at(0).capture("cld").child(ourC1Child2).getParent().done().getParent());
 
 
     SNode sample1Node = newNode(ourConcept1);

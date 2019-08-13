@@ -58,7 +58,7 @@ public final class ChildMatcher {
     return this;
   }
 
-  public NodeMatcher done() {
+  public NodeMatcher getParent() {
     return myParent;
   }
 
