@@ -53,7 +53,7 @@ public final class TransformHelper {
         }
         GenerationFacade genFacade = new GenerationFacade(myRepository, optBuilder.create());
         final GenerationTaskRecorder<GeneratorTask> taskHandler = new GenerationTaskRecorder<GeneratorTask>(null);
-        genFacade.transients(myTransientsProvider).messages(myMessages).taskHandler(taskHandler);
+        genFacade.transients(myTransientsProvider).setMessageHandler(myMessages).taskHandler(taskHandler);
         genFacade.process(new EmptyProgressMonitor(), myInputModel);
         myGenOutcome = taskHandler.getAllRecorded().get(0);
       }

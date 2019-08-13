@@ -456,7 +456,7 @@ public class Generate_Facet extends IFacet.Stub {
                 projectRepo.getModelAccess().runReadAction(new Runnable() {
                   public void run() {
                     GenerationFacade genFacade = new GenerationFacade(projectRepo, Target_configure.vars(pa.global()).generationOptions().create());
-                    genFacade.transients(Target_configure.vars(pa.global()).transientModelsProvider()).messages(mh).taskHandler(taskHandler);
+                    genFacade.transients(Target_configure.vars(pa.global()).transientModelsProvider()).setMessageHandler(mh).taskHandler(taskHandler);
                     genFacade.process(progressMonitor.subTask(100), tasks);
                   }
                 });

@@ -127,7 +127,7 @@ public class CheckpointModelTest implements EnvironmentAware {
     final TransientModelsProvider tmProvider = mpsProject.getComponent(TransientModelsProvider.class);
     // need write for process(x, model) to construct transient module, and need model read to run transformation
     GenerationStatus genStatus = new ModelAccessHelper(mpsProject.getRepository()).runWriteAction(() -> {
-      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).messages(myGeneratorMessages);
+      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).setMessageHandler(myGeneratorMessages);
       tmProvider.initCheckpointModule();
       GenerationStatus rv = genFacade.process(new EmptyProgressMonitor(), m);
       tmProvider.publishAll();
@@ -187,7 +187,7 @@ public class CheckpointModelTest implements EnvironmentAware {
     final TransientModelsProvider tmProvider = mpsProject.getComponent(TransientModelsProvider.class);
     // write lock - see above #createModelWithOneCheckpoint
     GenerationStatus genStatus = new ModelAccessHelper(mpsProject.getRepository()).runWriteAction(() -> {
-      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).messages(myGeneratorMessages);
+      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).setMessageHandler(myGeneratorMessages);
       tmProvider.initCheckpointModule();
       GenerationStatus rv = genFacade.process(new EmptyProgressMonitor(), m);
       tmProvider.publishAll();
@@ -254,14 +254,14 @@ public class CheckpointModelTest implements EnvironmentAware {
       OptionsBuilder optBuilder = GenerationOptions.getDefaults();
       GenerationOptions opt = optBuilder.customPlan(m1, plan).create();
       final TransientModelsProvider tmProvider = mpsProject.getComponent(TransientModelsProvider.class);
-      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).messages(myGeneratorMessages);
+      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).setMessageHandler(myGeneratorMessages);
       tmProvider.initCheckpointModule();
       genStatus[0] = genFacade.process(new EmptyProgressMonitor(), m1);
       tmProvider.publishAll();
       SModel m2 = resolve(mr2);
       // although could, don't want to put plan for m2 right along with plan for m1, want to have them separate
       opt = optBuilder.customPlan(m2, plan).create();
-      genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).messages(myGeneratorMessages);
+      genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).setMessageHandler(myGeneratorMessages);
       tmProvider.initCheckpointModule();
       genStatus[1] = genFacade.process(new EmptyProgressMonitor(), m2);
       tmProvider.publishAll();
@@ -380,7 +380,7 @@ public class CheckpointModelTest implements EnvironmentAware {
       final SModel m = resolve(PersistenceFacade.getInstance().createModelReference("r:05c2f926-57b0-4b6d-930c-1aabb187694d(jetbrains.mps.generator.crossmodel.sandbox.entrymodel1)"));
       GenerationOptions opt = GenerationOptions.getDefaults().customPlan(m, plan).create();
       final TransientModelsProvider tmProvider = mpsProject.getComponent(TransientModelsProvider.class);
-      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).messages(myGeneratorMessages);
+      GenerationFacade genFacade = new GenerationFacade(mpsProject.getRepository(), opt).transients(tmProvider).setMessageHandler(myGeneratorMessages);
       tmProvider.initCheckpointModule(); // XXX there are no checkpoints in the plan, do I need this?
       GenerationStatus rv = genFacade.process(new EmptyProgressMonitor(), m);
       tmProvider.publishAll();

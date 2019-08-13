@@ -79,7 +79,7 @@ public class GenerationTestBase {
     GenerationOptions options = GenerationOptions.getDefaults()
         .generateInParallel(false, 1)
         .strictMode(true).reporting(false, true, false, 2).create();
-    new GenerationFacade(repo, options).transients(new TransientModelsProvider(repo, null)).messages(msg).process(new EmptyProgressMonitor(), descr);
+    new GenerationFacade(repo, options).transients(new TransientModelsProvider(repo, null)).setMessageHandler(msg).process(new EmptyProgressMonitor(), descr);
 
 
     // Stage 2. Regenerate. Measure time.
@@ -88,7 +88,7 @@ public class GenerationTestBase {
         .generateInParallel(false, 1)
         .strictMode(true).reporting(false, true, false, 2).create();
     long start = System.nanoTime();
-    new GenerationFacade(repo, options).transients(new TransientModelsProvider(repo, null)).messages(msg).process(new EmptyProgressMonitor(), descr);
+    new GenerationFacade(repo, options).transients(new TransientModelsProvider(repo, null)).setMessageHandler(msg).process(new EmptyProgressMonitor(), descr);
     long singleThread = System.nanoTime() - start;
 
     // Stage 3. Regenerate in parallel
@@ -97,7 +97,7 @@ public class GenerationTestBase {
         .generateInParallel(true, threads)
         .strictMode(true).reporting(false, true, false, 2).create();
     start = System.nanoTime();
-    new GenerationFacade(repo, options).transients(new TransientModelsProvider(repo, null)).messages(msg).process(new EmptyProgressMonitor(), descr);
+    new GenerationFacade(repo, options).transients(new TransientModelsProvider(repo, null)).setMessageHandler(msg).process(new EmptyProgressMonitor(), descr);
     long severalThreads = System.nanoTime() - start;
 
     String prefix = myTestName.getMethodName();

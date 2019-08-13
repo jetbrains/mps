@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  * Entry point to model transformation (aka generation) process. Populate with relevant context information:
- * {@link #messages(IMessageHandler)}  to receive generator messages (optional);
+ * {@link #setMessageHandler(IMessageHandler)}  to receive generator messages (optional);
  * {@link #transients(TransientModelsProvider)} where to keep transient models (mandatory);
  * {@link #taskHandler(GeneratorTaskListener)} get notified about progress (optional);
  * {@link #trace(TraceFacility)} to get trace events (optional);
@@ -96,7 +96,7 @@ public final class GenerationFacade {
    * @param messages destination of generator messages, or <code>null</code>
    * @return <code>this</code> for convenience
    */
-  public GenerationFacade messages(@Nullable IMessageHandler messages) {
+  public GenerationFacade setMessageHandler(@Nullable IMessageHandler messages) {
     myMessageHandler = messages == null ? IMessageHandler.NULL_HANDLER : messages;
     return this;
   }
