@@ -57,7 +57,7 @@ public abstract class SRepositoryBase implements SRepository {
     }
   }
 
-  public void dispose() {
+  public void removeRepository() {
     if (myRepositoryRegistry != null){
       myRepositoryRegistry.removeRepository(this);
     }

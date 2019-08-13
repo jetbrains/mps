@@ -190,7 +190,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
    * closes and disposes the project
    */
   public void dispose() {
-    myRepository.dispose();
+    myRepository.removeRepository();
     myDisposed = true;
   }
 

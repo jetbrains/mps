@@ -118,12 +118,12 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   }
 
   @Override
-  public void dispose() {
+  public void removeRepository() {
     myModelRepository.dispose();
     myGlobalModelAccess.removeReadActionListener(myScopeCache);
     myGlobalModelAccess.removeCommandListener(myCommandListener);
     ourInstance = null;
-    super.dispose();
+    super.removeRepository();
   }
 
   // friend-only access, for ModuleRepositoryFacade.
