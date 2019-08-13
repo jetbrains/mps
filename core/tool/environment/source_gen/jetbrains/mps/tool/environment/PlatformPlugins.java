@@ -119,7 +119,7 @@ import java.net.URLClassLoader;
     }
   }
 
-  /*package*/ Collection<Descriptor> found() {
+  /*package*/ Collection<Descriptor> getPlugins() {
     //  provisional method, just to move forward. I indend to hide implementation structures from the outer world eventually. 
     return Collections.<Descriptor>unmodifiableCollection(myPlugins.values());
   }
