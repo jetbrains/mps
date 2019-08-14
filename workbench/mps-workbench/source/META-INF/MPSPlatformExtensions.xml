@@ -286,7 +286,9 @@
 
   <applicationService serviceInterface="com.intellij.ide.UiActivityMonitor" serviceImplementation="com.intellij.ide.UiActivityMonitorImpl"/>
 
+  <!-- Re enable when MPS-30649 will be fixed
   <applicationService serviceImplementation="com.intellij.diagnostic.WindowsDefenderChecker"/>
+  -->
   <applicationService serviceImplementation="com.intellij.diagnostic.GcPauseWatcher"/>
 
   <applicationService serviceInterface="com.intellij.execution.process.ProcessHandlerFactory"
@@ -543,7 +545,9 @@
   <postStartupActivity implementation="com.intellij.openapi.wm.impl.ToolWindowManagerImpl$InitToolWindowsActivity"/>
   <postStartupActivity implementation="com.intellij.xml.breadcrumbs.BreadcrumbsInitializingActivity"/>
 
+  <!-- Re enable when MPS-30649 will be fixed
   <backgroundPostStartupActivity implementation="com.intellij.diagnostic.WindowsDefenderCheckerActivity" os="windows"/>
+  -->
 
   <preloadingActivity implementation="com.intellij.openapi.actionSystem.impl.ActionPreloader"/>
   <preloadingActivity implementation="com.intellij.ide.ui.search.SearchableOptionPreloader"/>
