@@ -22,6 +22,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import javax.swing.JButton;
 import javax.swing.AbstractAction;
@@ -81,8 +82,12 @@ public class EditorUtil {
       public void run() {
         String filePath = expandPath.invoke(SNodeAccessUtil.getProperty(node, property));
         if (filePath != null) {
-          oldFile.value = FileSystem.getInstance().getFile(filePath);
-          if (!(oldFile.value.exists())) {
+          try {
+            oldFile.value = FileSystem.getInstance().getFile(filePath);
+            if (!(oldFile.value.exists())) {
+              oldFile.value = null;
+            }
+          } catch (PathFormatChecker.PathFormatException pfe) {
             oldFile.value = null;
           }
         }
