@@ -46705,8 +46705,8 @@
             <node concept="37vLTw" id="7KZgf2c$brE" role="2Oq$k0">
               <ref role="3cqZAo" node="7KZgf2c$brA" resolve="dlg" />
             </node>
-            <node concept="liA8E" id="7KZgf2c$cEC" role="2OqNvi">
-              <ref role="37wK5l" to="jkm4:~DialogWrapper.show()" resolve="show" />
+            <node concept="liA8E" id="1tinHSP8ra9" role="2OqNvi">
+              <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.show()" resolve="show" />
             </node>
           </node>
         </node>

@@ -22,6 +22,8 @@ import com.intellij.openapi.progress.util.ProgressIndicatorUtils;
 import com.intellij.openapi.ui.DialogPanel;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.OnePixelDivider;
+import com.intellij.openapi.ui.popup.JBPopup;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.util.DimensionService;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
@@ -40,6 +42,7 @@ import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBTextArea;
 import com.intellij.ui.table.JBTable;
 import com.intellij.util.Alarm;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBEmptyBorder;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBUI.Borders;
@@ -82,10 +85,14 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Window;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.MessageFormat;
+import java.util.List;
 
 /**
  * Dialog to query search string to look up property values in model.
@@ -260,6 +267,50 @@ public class FindTextInModelDialog extends DialogWrapper {
     p.add(scrollPane, BorderLayout.CENTER);
     p.setPreferredFocusedComponent(ta);
     return p;
+  }
+
+  @Override
+  public void show() {
+    super.show();
+
+    Window window = this.getPeer().getWindow();
+    window.addWindowListener(new WindowAdapter() {
+      @Override
+      public void windowOpened(WindowEvent e) {
+        window.addWindowFocusListener(new WindowAdapter() {
+          @Override
+          public void windowLostFocus(WindowEvent e) {
+            Window oppositeWindow = e.getOppositeWindow();
+            if (oppositeWindow == window || oppositeWindow != null && oppositeWindow.getOwner() == window) {
+              return;
+            }
+            if (canBeClosed() || oppositeWindow != null) {
+              FindTextInModelDialog.this.doCancelAction();
+            }
+          }
+        });
+      }
+    });
+  }
+
+  protected boolean canBeClosed() {
+    if (myProject.isDisposed()) {
+      return true;
+    }
+    if (!ApplicationManager.getApplication().isActive()) {
+      return false;
+    }
+    if (KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusedWindow() == null) {
+      return false;
+    }
+    List<JBPopup> popups = ContainerUtil.filter(JBPopupFactory.getInstance().getChildPopups(getContentPanel()), popup -> !popup.isDisposed());
+    if (!popups.isEmpty()) {
+      for (JBPopup popup : popups) {
+        popup.cancel();
+      }
+      return false;
+    }
+    return true;
   }
 
   @Override
