@@ -30,6 +30,7 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="pj7v" ref="~ideaJavaPlugin/java:com.intellij.lang.jvm(ideaJavaPlugin/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="tci" ref="c1969cf6-0de2-4f84-9a6b-4019c52c438c/java:jetbrains.mps.idea.core.refactoring(mps-core/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -518,8 +519,8 @@
                                   <node concept="3clFbS" id="6rA4xDH5GNA" role="3clF47">
                                     <node concept="3clFbF" id="6rA4xDHbaPd" role="3cqZAp">
                                       <node concept="2OqwBi" id="6rA4xDHc0CC" role="3clFbG">
-                                        <node concept="liA8E" id="6rA4xDHc1O8" role="2OqNvi">
-                                          <ref role="37wK5l" to=":^" />
+                                        <node concept="liA8E" id="7SLi_qlSlvH" role="2OqNvi">
+                                          <ref role="37wK5l" to="tci:~NodePtr.toSNodeReference()" resolve="toSNodeReference" />
                                         </node>
                                         <node concept="2YIFZM" id="6rA4xDHbb4F" role="2Oq$k0">
                                           <ref role="37wK5l" to="wvgn:4rzMiwARqn7" resolve="computeNodePtr" />

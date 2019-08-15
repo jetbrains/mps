@@ -5935,22 +5935,31 @@
             </node>
           </node>
           <node concept="3clFbS" id="5TwDvfuxtj7" role="3clFbx">
+            <node concept="3cpWs8" id="7SLi_qlTzGz" role="3cqZAp">
+              <node concept="3cpWsn" id="7SLi_qlTzG$" role="3cpWs9">
+                <property role="TrG5h" value="workaround" />
+                <node concept="3uibUv" id="7SLi_qlUDU9" role="1tU5fm">
+                  <ref role="3uigEE" to="dj18:~PsiLiteralValue" resolve="PsiLiteralValue" />
+                </node>
+                <node concept="10QFUN" id="7SLi_qlUE2B" role="33vP2m">
+                  <node concept="3uibUv" id="7SLi_qlUE2C" role="10QFUM">
+                    <ref role="3uigEE" to="dj19:~PsiLiteralExpression" resolve="PsiLiteralExpression" />
+                  </node>
+                  <node concept="37vLTw" id="7SLi_qlUE2D" role="10QFUP">
+                    <ref role="3cqZAo" node="5TwDvfuxqGF" resolve="exp" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="5TwDvfuxu3d" role="3cqZAp">
               <node concept="3cpWsn" id="5TwDvfuxu3e" role="3cpWs9">
                 <property role="TrG5h" value="value" />
                 <node concept="2OqwBi" id="5TwDvfuxwqa" role="33vP2m">
-                  <node concept="liA8E" id="5TwDvfuxzuW" role="2OqNvi">
-                    <ref role="37wK5l" to="dj1a:~PsiLiteralValue.getValue():java.lang.Object" resolve="getValue" />
+                  <node concept="liA8E" id="7SLi_qlVuix" role="2OqNvi">
+                    <ref role="37wK5l" to="dj18:~PsiLiteralValue.getValue()" resolve="getValue" />
                   </node>
-                  <node concept="1eOMI4" id="5TwDvfuxu44" role="2Oq$k0">
-                    <node concept="10QFUN" id="5TwDvfuxu41" role="1eOMHV">
-                      <node concept="3uibUv" id="7SLi_qlPmxN" role="10QFUM">
-                        <ref role="3uigEE" to="dj19:~PsiLiteralExpression" resolve="PsiLiteralExpression" />
-                      </node>
-                      <node concept="37vLTw" id="5TwDvfuxu47" role="10QFUP">
-                        <ref role="3cqZAo" node="5TwDvfuxqGF" resolve="exp" />
-                      </node>
-                    </node>
+                  <node concept="37vLTw" id="7SLi_qlV2rr" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7SLi_qlTzG$" resolve="workaround" />
                   </node>
                 </node>
                 <node concept="3uibUv" id="5TwDvfuxu3f" role="1tU5fm">
@@ -7578,14 +7587,25 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="7SLi_qlWzKj" role="3cqZAp">
+          <node concept="3cpWsn" id="7SLi_qlWzKk" role="3cpWs9">
+            <property role="TrG5h" value="workaround" />
+            <node concept="3uibUv" id="7SLi_qlWzKl" role="1tU5fm">
+              <ref role="3uigEE" to="dj18:~PsiElement" resolve="PsiElement" />
+            </node>
+            <node concept="37vLTw" id="7SLi_qlWzVn" role="33vP2m">
+              <ref role="3cqZAo" node="1r06YY67K7z" resolve="psiTypeElem" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1r06YY5h0Ey" role="3cqZAp">
           <node concept="37vLTI" id="1r06YY5h40y" role="3clFbG">
             <node concept="2OqwBi" id="1r06YY5hCHv" role="37vLTx">
-              <node concept="37vLTw" id="1r06YY6bI4T" role="2Oq$k0">
-                <ref role="3cqZAo" node="1r06YY67K7z" resolve="psiTypeElem" />
+              <node concept="37vLTw" id="7SLi_qlW$Cv" role="2Oq$k0">
+                <ref role="3cqZAo" node="7SLi_qlWzKk" resolve="workaround" />
               </node>
               <node concept="liA8E" id="1r06YY5hNeb" role="2OqNvi">
-                <ref role="37wK5l" to="dj1a:~PsiElement.getText():java.lang.String" resolve="getText" />
+                <ref role="37wK5l" to="dj18:~PsiElement.getText()" resolve="getText" />
               </node>
             </node>
             <node concept="37vLTw" id="1r06YY5h0Ex" role="37vLTJ">

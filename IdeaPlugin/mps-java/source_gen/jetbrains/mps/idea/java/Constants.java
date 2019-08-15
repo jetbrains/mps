@@ -10,35 +10,35 @@ public class Constants {
   public static final SLanguage baseLanguageJavadoc = MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc");
 
   public static class ConceptNames {
-    public static final String Classifier = "jetbrains.mps.baseLanguage.structure.Classifier";
-    public static final String ClassConcept = "jetbrains.mps.baseLanguage.structure.ClassConcept";
-    public static final String Interface = "jetbrains.mps.baseLanguage.structure.Interface";
-    public static final String EnumClass = "jetbrains.mps.baseLanguage.structure.EnumClass";
+    public static final String Classifier = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String ClassConcept = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String Interface = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String EnumClass = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
 
-    public static final String ClassifierType = "jetbrains.mps.baseLanguage.structure.ClassifierType";
-    public static final String StringType = "jetbrains.mps.baseLanguage.structure.StringType";
-    public static final String PrimitiveType = "jetbrains.mps.baseLanguage.structure.PrimitiveType";
-    public static final String UpperBoundType = "jetbrains.mps.baseLanguage.structure.UpperBoundType";
-    public static final String LowerBoundType = "jetbrains.mps.baseLanguage.structure.LowerBoundType";
-    public static final String WildCardType = "jetbrains.mps.baseLanguage.structure.WildCardType";
-    public static final String ArrayType = "jetbrains.mps.baseLanguage.structure.ArrayType";
-    public static final String VariableArityType = "jetbrains.mps.baseLanguage.structure.VariableArityType";
+    public static final String ClassifierType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String StringType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String PrimitiveType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String UpperBoundType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String LowerBoundType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String WildCardType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String ArrayType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String VariableArityType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
 
-    public static final String ConstructorDeclaration = "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration";
-    public static final String BaseMethodDeclaration = "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration";
-    public static final String MethodDeclaration = "jetbrains.mps.baseLanguage.structure.MethodDeclaration";
-    public static final String ParameterDeclaration = "jetbrains.mps.baseLanguage.structure.ParameterDeclaration";
-    public static final String VariableDeclaration = "jetbrains.mps.baseLanguage.structure.VariableDeclaration";
-    public static final String TypeVariableDeclaration = "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration";
-    public static final String TypeVariableReference = "jetbrains.mps.baseLanguage.structure.TypeVariableReference";
-    public static final String FieldDeclaration = "jetbrains.mps.baseLanguage.structure.FieldDeclaration";
-    public static final String EnumConstantDeclaration = "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration";
-    public static final String StaticFieldDeclaration = "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration";
+    public static final String ConstructorDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String BaseMethodDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String MethodDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String ParameterDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String VariableDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String TypeVariableDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String TypeVariableReference = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String FieldDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String EnumConstantDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String StaticFieldDeclaration = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
 
-    public static final String SequenceType = "jetbrains.mps.baseLanguage.collections.structure.SequenceType";
-    public static final String ListType = "jetbrains.mps.baseLanguage.collections.structure.ListType";
-    public static final String SetType = "jetbrains.mps.baseLanguage.collections.structure.SetType";
-    public static final String MapType = "jetbrains.mps.baseLanguage.collections.structure.MapType";
+    public static final String SequenceType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String ListType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String SetType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
+    public static final String MapType = <!TextGen not found for 'jetbrains.mps.lang.smodel.structure.ConceptFqNameRefExpression'!>;
 
 
   }
