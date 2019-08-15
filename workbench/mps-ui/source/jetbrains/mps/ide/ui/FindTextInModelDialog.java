@@ -28,6 +28,7 @@ import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.wm.IdeGlassPane;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.impl.IdeGlassPaneImpl;
 import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.ui.PopupBorder;
@@ -77,6 +78,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -132,8 +134,24 @@ public class FindTextInModelDialog extends DialogWrapper {
     }
     IdeGlassPane glass = (IdeGlassPane) root.getGlassPane();
     int i = Registry.intValue("ide.popup.resizable.border.sensitivity", 4);
-    // original FindPopupPanel overrides WindowResizeListener.setCursor, as the reason not obvious, didn't copy that.
-    WindowResizeListener resizeListener = new WindowResizeListener(root, JBUI.insets(i), null);
+    // Override WindowResizeListener#setCursor to show resize cursor in expected places
+    WindowResizeListener resizeListener = new WindowResizeListener(
+        root, JBUI.insets(i), null) {
+      private Cursor myCursor;
+
+      @Override
+      protected void setCursor(Component content, Cursor cursor) {
+        if (myCursor != cursor || myCursor != Cursor.getDefaultCursor()) {
+          glass.setCursor(cursor, this);
+          myCursor = cursor;
+
+          if (content instanceof JComponent) {
+            IdeGlassPaneImpl.savePreProcessedCursor((JComponent) content, content.getCursor());
+          }
+          super.setCursor(content, cursor);
+        }
+      }
+    };
     glass.addMousePreprocessor(resizeListener, getDisposable());
     glass.addMouseMotionPreprocessor(resizeListener, getDisposable());
     //
