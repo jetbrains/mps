@@ -12,6 +12,11 @@
       <implementation-class>jetbrains.mps.ide.project.WorkbenchPathMacros</implementation-class>
     </component>
 
+    <!-- See MPS-30652 -->
+    <component>
+      <implementation-class>jetbrains.mps.nodefs.NodeVirtualFileSystem</implementation-class>
+    </component>
+
     <component>
       <implementation-class>jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport</implementation-class>
     </component>
@@ -98,7 +103,9 @@
   <extensions defaultExtensionNs="com.intellij">
     <fileTypeFactory implementation="jetbrains.mps.fileTypes.MPSFileTypeFactory"/>
 
+    <!-- See MPS-30652
     <virtualFileSystem implementationClass="jetbrains.mps.nodefs.NodeVirtualFileSystem" key="mps" physical="true"/>
+    -->
 
     <!--For file selection dialog-->
     <getDataRule key="context.ProjectFileDirectory"
