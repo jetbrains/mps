@@ -4,6 +4,8 @@ package jetbrains.mps.idea.java.fastFind;
 
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
 import com.intellij.openapi.components.ApplicationComponent;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.ide.MPSCoreComponents;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.util.Consumer;
@@ -13,12 +15,17 @@ import com.intellij.psi.PsiClass;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
-import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaPsiStubsNavigationContributor implements NavigationParticipant, ApplicationComponent {
+  private PersistenceRegistry myRegistry;
+
+  public JavaPsiStubsNavigationContributor(MPSCoreComponents mpsCore) {
+    myRegistry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
+  }
+
   public JavaPsiStubsNavigationContributor() {
   }
   public void findTargets(NavigationParticipant.TargetKind kind, Collection<SModel> collection, Consumer<NavigationParticipant.NavigationTarget> consumer, Consumer<SModel> processedConsumer) {
@@ -62,10 +69,10 @@ public class JavaPsiStubsNavigationContributor implements NavigationParticipant,
     }
   }
   public void initComponent() {
-    PersistenceRegistry.getInstance().addNavigationParticipant(this);
+    myRegistry.addNavigationParticipant(this);
   }
   public void disposeComponent() {
-    PersistenceRegistry.getInstance().removeNavigationParticipant(this);
+    myRegistry.removeNavigationParticipant(this);
   }
   @NonNls
   @NotNull
