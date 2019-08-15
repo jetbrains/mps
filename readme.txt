@@ -24,7 +24,7 @@ CONTENTS
 	samples.zip         sample projects
 
 SYSTEM REQUIREMENTS
-    To run JetBrains MPS you need JDK 8.0.
+    To run JetBrains MPS you need JDK 11.
 
 HOW TO START
     1. Unpack the JetBrains MPS distribution file to whenever you wish to install the program.
