@@ -505,6 +505,7 @@
     </node>
     <node concept="312cEg" id="4hH4xQoOOF5" role="jymVt">
       <property role="TrG5h" value="myOptions" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="4hH4xQoOOF1" role="1B3o_S" />
       <node concept="2ShNRf" id="4hH4xQoOOF3" role="33vP2m">
         <node concept="1pGfFk" id="6bvoCJgb7Bn" role="2ShVmc">
@@ -574,6 +575,83 @@
       </node>
     </node>
     <node concept="2tJIrI" id="7rAJ3yo1ZQY" role="jymVt" />
+    <node concept="312cEg" id="7lByCvUxRC$" role="jymVt">
+      <property role="34CwA1" value="false" />
+      <property role="eg7rD" value="false" />
+      <property role="TrG5h" value="myProperties" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="7lByCvUxQwk" role="1B3o_S" />
+      <node concept="3uibUv" id="6bvoCJgbuv3" role="1tU5fm">
+        <ref role="3uigEE" to="bdll:~ProjectMigrationProperties" resolve="ProjectMigrationProperties" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3gptLqNJql_" role="jymVt" />
+    <node concept="312cEg" id="1AzqgyAfyJP" role="jymVt">
+      <property role="TrG5h" value="myRepoListener" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="1AzqgyAfyJN" role="1B3o_S" />
+      <node concept="3uibUv" id="3gptLqNIic4" role="1tU5fm">
+        <ref role="3uigEE" node="1AzqgyAfxXw" resolve="MigrationTrigger.MyRepoListener" />
+      </node>
+      <node concept="2ShNRf" id="1AzqgyAfzqY" role="33vP2m">
+        <node concept="HV5vD" id="1WW5sXgigvl" role="2ShVmc">
+          <ref role="HV5vE" node="1AzqgyAfxXw" resolve="MigrationTrigger.MyRepoListener" />
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="4ZuqmWoaja0" role="jymVt">
+      <property role="TrG5h" value="myReloadListener" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="4ZuqmWoaja1" role="1B3o_S" />
+      <node concept="3uibUv" id="4ZuqmWoapsW" role="1tU5fm">
+        <ref role="3uigEE" node="4ZuqmWo9Xvq" resolve="MigrationTrigger.MyReloadListener" />
+      </node>
+      <node concept="2ShNRf" id="4ZuqmWoaja3" role="33vP2m">
+        <node concept="HV5vD" id="4ZuqmWoap1X" role="2ShVmc">
+          <ref role="HV5vE" node="4ZuqmWo9Xvq" resolve="MigrationTrigger.MyReloadListener" />
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="2Om_nYXquPH" role="jymVt">
+      <property role="34CwA1" value="false" />
+      <property role="eg7rD" value="false" />
+      <property role="TrG5h" value="myPropertiesListener" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3uibUv" id="2Om_nYXquPJ" role="1tU5fm">
+        <ref role="3uigEE" node="2Om_nYXqla7" resolve="MigrationTrigger.MyPropertiesListener" />
+      </node>
+      <node concept="2ShNRf" id="2Om_nYXquPM" role="33vP2m">
+        <node concept="HV5vD" id="2Om_nYXquPN" role="2ShVmc">
+          <ref role="HV5vE" node="2Om_nYXqla7" resolve="MigrationTrigger.MyPropertiesListener" />
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2Om_nYXquPL" role="1B3o_S" />
+    </node>
+    <node concept="312cEg" id="5D1sRmGKpDy" role="jymVt">
+      <property role="TrG5h" value="myLanguageDeployListener" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="5D1sRmGKf5H" role="1B3o_S" />
+      <node concept="3uibUv" id="5D1sRmGKp01" role="1tU5fm">
+        <ref role="3uigEE" to="vndm:~LanguageRegistryListener" resolve="LanguageRegistryListener" />
+      </node>
+      <node concept="2ShNRf" id="3SyvI1qzIQj" role="33vP2m">
+        <node concept="HV5vD" id="5D1sRmGK5N$" role="2ShVmc">
+          <ref role="HV5vE" node="3SyvI1qzGDD" resolve="MigrationTrigger.MyLangDeployListener" />
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="7lByCvUxXzX" role="jymVt">
+      <property role="34CwA1" value="false" />
+      <property role="eg7rD" value="false" />
+      <property role="TrG5h" value="myListenersAdded" />
+      <property role="3TUv4t" value="false" />
+      <node concept="3Tm6S6" id="7lByCvUxWqT" role="1B3o_S" />
+      <node concept="10P_77" id="7lByCvUxXxg" role="1tU5fm" />
+      <node concept="3clFbT" id="7lByCvUxYEa" role="33vP2m">
+        <property role="3clFbU" value="false" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2htE_P_Ps7z" role="jymVt" />
     <node concept="312cEg" id="1AzqgyAfdcG" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -652,81 +730,6 @@
       <node concept="10Nm6u" id="6Va2kqwsNpk" role="33vP2m" />
     </node>
     <node concept="2tJIrI" id="JfvRzmbm3B" role="jymVt" />
-    <node concept="312cEg" id="7lByCvUxRC$" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myProperties" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3Tm6S6" id="7lByCvUxQwk" role="1B3o_S" />
-      <node concept="3uibUv" id="6bvoCJgbuv3" role="1tU5fm">
-        <ref role="3uigEE" to="bdll:~ProjectMigrationProperties" resolve="ProjectMigrationProperties" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3gptLqNJql_" role="jymVt" />
-    <node concept="312cEg" id="1AzqgyAfyJP" role="jymVt">
-      <property role="TrG5h" value="myRepoListener" />
-      <node concept="3Tm6S6" id="1AzqgyAfyJN" role="1B3o_S" />
-      <node concept="3uibUv" id="3gptLqNIic4" role="1tU5fm">
-        <ref role="3uigEE" node="1AzqgyAfxXw" resolve="MigrationTrigger.MyRepoListener" />
-      </node>
-      <node concept="2ShNRf" id="1AzqgyAfzqY" role="33vP2m">
-        <node concept="HV5vD" id="1WW5sXgigvl" role="2ShVmc">
-          <ref role="HV5vE" node="1AzqgyAfxXw" resolve="MigrationTrigger.MyRepoListener" />
-        </node>
-      </node>
-    </node>
-    <node concept="312cEg" id="4ZuqmWoaja0" role="jymVt">
-      <property role="TrG5h" value="myReloadListener" />
-      <node concept="3Tm6S6" id="4ZuqmWoaja1" role="1B3o_S" />
-      <node concept="3uibUv" id="4ZuqmWoapsW" role="1tU5fm">
-        <ref role="3uigEE" node="4ZuqmWo9Xvq" resolve="MigrationTrigger.MyReloadListener" />
-      </node>
-      <node concept="2ShNRf" id="4ZuqmWoaja3" role="33vP2m">
-        <node concept="HV5vD" id="4ZuqmWoap1X" role="2ShVmc">
-          <ref role="HV5vE" node="4ZuqmWo9Xvq" resolve="MigrationTrigger.MyReloadListener" />
-        </node>
-      </node>
-    </node>
-    <node concept="312cEg" id="2Om_nYXquPH" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myPropertiesListener" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3uibUv" id="2Om_nYXquPJ" role="1tU5fm">
-        <ref role="3uigEE" node="2Om_nYXqla7" resolve="MigrationTrigger.MyPropertiesListener" />
-      </node>
-      <node concept="2ShNRf" id="2Om_nYXquPM" role="33vP2m">
-        <node concept="HV5vD" id="2Om_nYXquPN" role="2ShVmc">
-          <ref role="HV5vE" node="2Om_nYXqla7" resolve="MigrationTrigger.MyPropertiesListener" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="2Om_nYXquPL" role="1B3o_S" />
-    </node>
-    <node concept="312cEg" id="5D1sRmGKpDy" role="jymVt">
-      <property role="TrG5h" value="myLanguageDeployListener" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="5D1sRmGKf5H" role="1B3o_S" />
-      <node concept="3uibUv" id="5D1sRmGKp01" role="1tU5fm">
-        <ref role="3uigEE" to="vndm:~LanguageRegistryListener" resolve="LanguageRegistryListener" />
-      </node>
-      <node concept="2ShNRf" id="3SyvI1qzIQj" role="33vP2m">
-        <node concept="HV5vD" id="5D1sRmGK5N$" role="2ShVmc">
-          <ref role="HV5vE" node="3SyvI1qzGDD" resolve="MigrationTrigger.MyLangDeployListener" />
-        </node>
-      </node>
-    </node>
-    <node concept="312cEg" id="7lByCvUxXzX" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myListenersAdded" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3Tm6S6" id="7lByCvUxWqT" role="1B3o_S" />
-      <node concept="10P_77" id="7lByCvUxXxg" role="1tU5fm" />
-      <node concept="3clFbT" id="7lByCvUxYEa" role="33vP2m">
-        <property role="3clFbU" value="false" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="2htE_P_Ps7z" role="jymVt" />
     <node concept="3clFbW" id="1AzqgyAfaNk" role="jymVt">
       <node concept="3cqZAl" id="1AzqgyAfaNl" role="3clF45" />
       <node concept="3Tm1VV" id="1AzqgyAfaNm" role="1B3o_S" />

@@ -10,11 +10,11 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
+import jetbrains.mps.migration.global.ProjectMigrationProperties;
+import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import com.intellij.notification.Notification;
-import jetbrains.mps.migration.global.ProjectMigrationProperties;
-import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
@@ -98,11 +98,19 @@ import jetbrains.mps.migration.global.ProjectMigration;
 )
 public class MigrationTrigger extends AbstractProjectComponent implements IStartupMigrationExecutor {
   private final LanguageRegistry myLanguageRegistry;
-  private MigrationOptions myOptions = new MigrationOptions();
+  private final MigrationOptions myOptions = new MigrationOptions();
 
   private final MPSProject myMpsProject;
   private final MigrationRegistry myMigrationRegistry;
   private final ReloadManager myReloadManager;
+
+  private final ProjectMigrationProperties myProperties;
+
+  private final MyRepoListener myRepoListener = new MyRepoListener();
+  private final MyReloadListener myReloadListener = new MyReloadListener();
+  private final MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
+  private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
+  private boolean myListenersAdded = false;
 
   private boolean myMigrationForbidden = false;
   private String myMigrationForbiddenMessage = null;
@@ -112,14 +120,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   private Notification myLastNotification = null;
   private Notification myLastDeployWarning = null;
-
-  private ProjectMigrationProperties myProperties;
-
-  private MyRepoListener myRepoListener = new MyRepoListener();
-  private MyReloadListener myReloadListener = new MyReloadListener();
-  private MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
-  private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
-  private boolean myListenersAdded = false;
 
   public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, ProjectMigrationProperties props, MPSCoreComponents mpsCore, ReloadManagerComponent reloadManager) {
     super(ideaProject);
