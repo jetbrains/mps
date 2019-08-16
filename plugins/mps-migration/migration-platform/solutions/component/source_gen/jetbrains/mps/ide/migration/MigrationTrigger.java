@@ -120,6 +120,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private PostponedState myPostponedState = null;
   private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
 
+  private final MigrationBlock.BlockCause myNotDeployedBlockCause = new MigrationBlock.BlockCause("some languages are not deployed");
   private Notification myLastNotification = null;
   private Notification myLastDeployWarning = null;
 
@@ -294,7 +295,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     }
 
     final Project ideaProject = myProject;
-    myMigrationBlock.blockMigrationsCheck("migration is already scheduled");
+    final MigrationBlock.BlockCause scheduledBlockCause = new MigrationBlock.BlockCause("migration is already scheduled");
+    myMigrationBlock.blockMigrationsCheck(scheduledBlockCause);
 
     // wait until project is fully loaded (if not yet) 
     StartupManager.getInstance(ideaProject).runWhenProjectIsInitialized(new Runnable() {
@@ -349,7 +351,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
               Notifications.Bus.notify(myLastNotification, myProject);
               myPostponedState = myPostponedState.add(newState.value);
             }
-            myMigrationBlock.unblockMigrationsCheck();
+            myMigrationBlock.unblockMigrationsCheck(scheduledBlockCause);
           }
         }, ModalityState.NON_MODAL);
       }
@@ -614,7 +616,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         myLastNotification = null;
         myLastDeployWarning = null;
 
-        myMigrationBlock.unblockMigrationsCheck();
+        myMigrationBlock.unblockMigrationsCheck(myNotDeployedBlockCause);
       }
     } else {
       if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null) {
@@ -623,7 +625,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       // migrations already blocked, warning is showing 
 
       if (myLastDeployWarning == null) {
-        myMigrationBlock.blockMigrationsCheck("some languages are not deployed");
+        myMigrationBlock.blockMigrationsCheck(myNotDeployedBlockCause);
       } else {
         // expire old, show new to get the balloon again 
         if (!((myLastDeployWarning.isExpired()))) {
