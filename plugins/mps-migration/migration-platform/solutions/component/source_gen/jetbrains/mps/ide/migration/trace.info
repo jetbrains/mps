@@ -1415,7 +1415,7 @@
       <node id="340601198064940467" at="216,41,219,15" concept="9" />
       <node id="1847435758021682527" at="230,0,233,0" concept="10" trace="projectClosed#()V" />
       <node id="8459882741667451214" at="242,37,245,5" concept="9" />
-      <node id="7319727230214660641" at="261,0,264,0" concept="10" trace="run#()V" />
+      <node id="4643949976756214271" at="261,0,264,0" concept="10" trace="run#()V" />
       <node id="1847435758021736099" at="267,91,270,5" concept="9" />
       <node id="1847435758021942989" at="272,96,275,5" concept="9" />
       <node id="8914091101146938273" at="279,88,282,5" concept="9" />
@@ -1474,7 +1474,7 @@
       <node id="9067123504052951651" at="147,18,152,7" concept="9" />
       <node id="7983203488411541361" at="174,0,179,15" concept="5" />
       <node id="1847435758021682544" at="253,0,258,0" concept="10" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="7319727230214660639" at="259,43,264,7" concept="5" />
+      <node id="4643949976756214269" at="259,43,264,7" concept="5" />
       <node id="1244156871959641017" at="328,0,333,0" concept="10" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <node id="1244156871959409448" at="393,25,398,9" concept="5" />
       <node id="1244156871959409498" at="404,81,409,17" concept="5" />
@@ -1578,7 +1578,7 @@
       <scope id="1847435758021682531" at="230,31,231,22" />
       <scope id="8459882741667451215" at="243,30,244,18" />
       <scope id="1847435758021682552" at="255,36,256,30" />
-      <scope id="7319727230214660643" at="261,25,262,111" />
+      <scope id="4643949976756214273" at="261,25,262,111" />
       <scope id="1244156871959465630" at="268,31,269,13" />
       <scope id="1244156871959473099" at="273,45,274,31" />
       <scope id="8914091101146938275" at="280,35,281,52" />
@@ -1647,7 +1647,7 @@
       <scope id="9067123504052951653" at="148,27,151,21" />
       <scope id="7983203488411541363" at="176,0,179,0" />
       <scope id="1847435758021682527" at="230,0,233,0" />
-      <scope id="7319727230214660641" at="261,0,264,0" />
+      <scope id="4643949976756214271" at="261,0,264,0" />
       <scope id="1244156871959641023" at="328,62,331,30" />
       <scope id="1244156871959409452" at="395,0,398,0" />
       <scope id="1244156871959409499" at="406,0,409,0" />
@@ -1942,7 +1942,7 @@
         <var name="forceAssistant" id="2425562136858863490" />
       </scope>
       <unit id="7983203488411541363" at="175,76,179,13" name="jetbrains.mps.ide.migration.MigrationTrigger$1$1$1" />
-      <unit id="7319727230214660641" at="260,69,264,5" name="jetbrains.mps.ide.migration.MigrationTrigger$3" />
+      <unit id="4643949976756214271" at="260,68,264,5" name="jetbrains.mps.ide.migration.MigrationTrigger$3" />
       <unit id="1244156871959409452" at="394,61,398,7" name="jetbrains.mps.ide.migration.MigrationTrigger$6" />
       <unit id="1244156871959409499" at="405,78,409,15" name="jetbrains.mps.ide.migration.MigrationTrigger$7$1$1" />
       <unit id="1244156871959409523" at="414,78,418,15" name="jetbrains.mps.ide.migration.MigrationTrigger$7$2$1" />

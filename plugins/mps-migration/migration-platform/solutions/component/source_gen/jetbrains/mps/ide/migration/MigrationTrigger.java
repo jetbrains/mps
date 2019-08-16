@@ -257,7 +257,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   /*package*/ void checkMigrationNeeded() {
-    myMpsProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
+    myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         checkMigrationNeededOnModuleChange(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject));
       }
