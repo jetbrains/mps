@@ -113,9 +113,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private boolean myListenersAdded = false;
 
   private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
-  public MigrationBlock getMigrationBlock() {
-    return myMigrationBlock;
-  }
 
   private PostponedState myPostponedState = null;
   private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
@@ -135,6 +132,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {
     myRebuildHandler = rebuildHandler;
+  }
+
+  public MigrationBlock getMigrationBlock() {
+    return myMigrationBlock;
   }
 
   public void projectOpened() {
@@ -251,7 +252,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
     Set<SModule> modules2Check = SetSequence.fromSetWithValues(new HashSet<SModule>(), modules);
     if (isMigrationRequired(modules2Check)) {
-      postponeMigration(false);
+      scheduleMigration(false);
     }
   }
 
@@ -281,11 +282,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       }
     });
     if (isMigrationRequired(modules2Check)) {
-      postponeMigration(false);
+      scheduleMigration(false);
     }
   }
 
-  public synchronized void postponeMigration(final boolean forceAssistant) {
+  public synchronized void scheduleMigration(final boolean forceAssistant) {
     if (myMigrationBlock.isMigrationForbidden()) {
       if (forceAssistant) {
         String cause = (myMigrationBlock.getMigrationForbiddenMessage() == null ? "" : " as " + myMigrationBlock.getMigrationForbiddenMessage());
@@ -343,7 +344,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                     synchronized (MigrationTrigger.this) {
                       myPostponedState = null;
                     }
-                    postponeMigration(true);
+                    scheduleMigration(true);
                   }
                   notification.expire();
                 }
@@ -359,6 +360,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   }
 
+  /**
+   * 
+   * @return whether migration was postponed
+   */
   private boolean runMigration(boolean update, boolean migrate) {
     MyMigrationSession session = new MyMigrationSession(update, migrate);
     final MigrationWizard wizard = new MigrationWizard(myProject, session);
@@ -710,9 +715,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   public static class PostponedState {
-    public boolean versionUpdate;
-    public Collection<ScriptApplied> scripts;
-    public Collection<ProjectMigration> projectMigrations;
+    private boolean versionUpdate;
+    private Collection<ScriptApplied> scripts;
+    private Collection<ProjectMigration> projectMigrations;
 
     public boolean hasSomethingToApply() {
       return versionUpdate || CollectionSequence.fromCollection(scripts).isNotEmpty() || CollectionSequence.fromCollection(projectMigrations).isNotEmpty();

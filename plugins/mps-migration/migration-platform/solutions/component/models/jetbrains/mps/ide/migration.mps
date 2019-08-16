@@ -64,6 +64,7 @@
     <import index="kz9k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.navigation(MPS.Editor/)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="bdll" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.migration.global(MPS.Platform/)" />
+    <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -347,9 +348,13 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
+        <property id="5858074156537516431" name="text" index="x79VB" />
+      </concept>
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
@@ -666,20 +671,6 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="41MBYoJjmwe" role="jymVt">
-      <property role="TrG5h" value="getMigrationBlock" />
-      <node concept="3uibUv" id="41MBYoJjDvQ" role="3clF45">
-        <ref role="3uigEE" node="41MBYoJhfh$" resolve="MigrationBlock" />
-      </node>
-      <node concept="3Tm1VV" id="41MBYoJjmwh" role="1B3o_S" />
-      <node concept="3clFbS" id="41MBYoJjmwi" role="3clF47">
-        <node concept="3cpWs6" id="41MBYoJjLgd" role="3cqZAp">
-          <node concept="37vLTw" id="41MBYoJjQ5C" role="3cqZAk">
-            <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="2tJIrI" id="41MBYoJh7uQ" role="jymVt" />
     <node concept="312cEg" id="7IPdE2Fi3AV" role="jymVt">
       <property role="34CwA1" value="false" />
@@ -879,6 +870,21 @@
             <node concept="3uibUv" id="1Cq7iQ2TDLK" role="A3Ik2">
               <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="41MBYoJv5Pa" role="jymVt" />
+    <node concept="3clFb_" id="41MBYoJjmwe" role="jymVt">
+      <property role="TrG5h" value="getMigrationBlock" />
+      <node concept="3uibUv" id="41MBYoJjDvQ" role="3clF45">
+        <ref role="3uigEE" node="41MBYoJhfh$" resolve="MigrationBlock" />
+      </node>
+      <node concept="3Tm1VV" id="41MBYoJjmwh" role="1B3o_S" />
+      <node concept="3clFbS" id="41MBYoJjmwi" role="3clF47">
+        <node concept="3cpWs6" id="41MBYoJjLgd" role="3cqZAp">
+          <node concept="37vLTw" id="41MBYoJjQ5C" role="3cqZAk">
+            <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
           </node>
         </node>
       </node>
@@ -1855,7 +1861,7 @@
           <node concept="3clFbS" id="1548xle0mJb" role="3clFbx">
             <node concept="3clFbF" id="3UuU2hft7O0" role="3cqZAp">
               <node concept="1rXfSq" id="1AzqgyAh8$6" role="3clFbG">
-                <ref role="37wK5l" node="1AzqgyAh5MG" resolve="postponeMigration" />
+                <ref role="37wK5l" node="1AzqgyAh5MG" resolve="scheduleMigration" />
                 <node concept="3clFbT" id="26DkYAc7e3s" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>
@@ -2157,7 +2163,7 @@
           <node concept="3clFbS" id="1AzqgyAgwds" role="3clFbx">
             <node concept="3clFbF" id="1AzqgyAh7jX" role="3cqZAp">
               <node concept="1rXfSq" id="1AzqgyAh7jV" role="3clFbG">
-                <ref role="37wK5l" node="1AzqgyAh5MG" resolve="postponeMigration" />
+                <ref role="37wK5l" node="1AzqgyAh5MG" resolve="scheduleMigration" />
                 <node concept="3clFbT" id="26DkYAc7dYn" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>
@@ -2186,7 +2192,7 @@
     <node concept="2tJIrI" id="1AzqgyAgurj" role="jymVt" />
     <node concept="3clFb_" id="1AzqgyAh5MG" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="postponeMigration" />
+      <property role="TrG5h" value="scheduleMigration" />
       <property role="od$2w" value="true" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
@@ -2795,7 +2801,7 @@
                                                         </node>
                                                         <node concept="3clFbF" id="48XdI$UFeHg" role="3cqZAp">
                                                           <node concept="1rXfSq" id="48XdI$UFeHe" role="3clFbG">
-                                                            <ref role="37wK5l" node="1AzqgyAh5MG" resolve="postponeMigration" />
+                                                            <ref role="37wK5l" node="1AzqgyAh5MG" resolve="scheduleMigration" />
                                                             <node concept="3clFbT" id="26DkYAc7bKH" role="37wK5m">
                                                               <property role="3clFbU" value="true" />
                                                             </node>
@@ -3248,6 +3254,11 @@
           <node concept="3clFbT" id="JfvRzm6ZrL" role="3cqZAk">
             <property role="3clFbU" value="false" />
           </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="41MBYoJ$yOC" role="lGtFl">
+        <node concept="x79VA" id="41MBYoJ$yOL" role="3nqlJM">
+          <property role="x79VB" value="whether migration was postponed" />
         </node>
       </node>
     </node>
@@ -5883,14 +5894,14 @@
         <property role="TrG5h" value="versionUpdate" />
         <property role="3TUv4t" value="false" />
         <node concept="10P_77" id="7IPdE2Fh3sn" role="1tU5fm" />
-        <node concept="3Tm1VV" id="7IPdE2Fh3NS" role="1B3o_S" />
+        <node concept="3Tm6S6" id="41MBYoJxKvr" role="1B3o_S" />
       </node>
       <node concept="312cEg" id="7IPdE2Fhn4C" role="jymVt">
         <property role="34CwA1" value="false" />
         <property role="eg7rD" value="false" />
         <property role="TrG5h" value="scripts" />
         <property role="3TUv4t" value="false" />
-        <node concept="3Tm1VV" id="7IPdE2Fh41h" role="1B3o_S" />
+        <node concept="3Tm6S6" id="41MBYoJxKXI" role="1B3o_S" />
         <node concept="3vKaQO" id="7IPdE2FqhqP" role="1tU5fm">
           <node concept="3uibUv" id="7IPdE2FqhqR" role="3O5elw">
             <ref role="3uigEE" node="6fMyXCHDaRA" resolve="ScriptApplied" />
@@ -5902,7 +5913,7 @@
         <property role="eg7rD" value="false" />
         <property role="TrG5h" value="projectMigrations" />
         <property role="3TUv4t" value="false" />
-        <node concept="3Tm1VV" id="7IPdE2FhnzU" role="1B3o_S" />
+        <node concept="3Tm6S6" id="41MBYoJxLVX" role="1B3o_S" />
         <node concept="3vKaQO" id="7IPdE2FqofD" role="1tU5fm">
           <node concept="3uibUv" id="7IPdE2FqofF" role="3O5elw">
             <ref role="3uigEE" to="bdll:~ProjectMigration" resolve="ProjectMigration" />
@@ -14033,10 +14044,14 @@
           <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
         </node>
       </node>
-      <node concept="2ShNRf" id="41MBYoJtiZE" role="33vP2m">
-        <node concept="32HrFt" id="41MBYoJtiZ1" role="2ShVmc">
-          <node concept="3uibUv" id="41MBYoJtiZ2" role="HW$YZ">
-            <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
+      <node concept="2YIFZM" id="41MBYoJxdtX" role="33vP2m">
+        <ref role="37wK5l" to="33ny:~Collections.synchronizedSet(java.util.Set)" resolve="synchronizedSet" />
+        <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+        <node concept="2ShNRf" id="41MBYoJtiZE" role="37wK5m">
+          <node concept="32HrFt" id="41MBYoJtiZ1" role="2ShVmc">
+            <node concept="3uibUv" id="41MBYoJtiZ2" role="HW$YZ">
+              <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
+            </node>
           </node>
         </node>
       </node>
@@ -14104,7 +14119,6 @@
     <node concept="3clFb_" id="7RkTcA9EKKP" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="blockMigrationsCheck" />
-      <property role="od$2w" value="true" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="7RkTcA9EKKS" role="3clF47">
@@ -14143,70 +14157,52 @@
         </node>
       </node>
       <node concept="3clFbS" id="7RkTcA9EM7I" role="3clF47">
-        <node concept="3cpWs8" id="3SyvI1qy1Fp" role="3cqZAp">
-          <node concept="3cpWsn" id="3SyvI1qy1Fs" role="3cpWs9">
-            <property role="TrG5h" value="check" />
-            <node concept="10P_77" id="3SyvI1qy1Fn" role="1tU5fm" />
-            <node concept="3clFbT" id="3SyvI1qy2jK" role="33vP2m">
-              <property role="3clFbU" value="false" />
+        <node concept="3cpWs8" id="41MBYoJxgTS" role="3cqZAp">
+          <node concept="3cpWsn" id="41MBYoJxgTT" role="3cpWs9">
+            <property role="TrG5h" value="contained" />
+            <node concept="3uibUv" id="41MBYoJxgR9" role="1tU5fm">
+              <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
             </node>
-          </node>
-        </node>
-        <node concept="1HWtB8" id="3SyvI1qxVaq" role="3cqZAp">
-          <node concept="Xjq3P" id="3SyvI1qxVMc" role="1HWFw0" />
-          <node concept="3clFbS" id="3SyvI1qxVau" role="1HWHxc">
-            <node concept="1gVbGN" id="7RkTcA9EW0u" role="3cqZAp">
-              <node concept="2OqwBi" id="41MBYoJssgv" role="1gVkn0">
-                <node concept="37vLTw" id="41MBYoJsqWY" role="2Oq$k0">
-                  <ref role="3cqZAo" node="41MBYoJsn8J" resolve="myBlocks" />
-                </node>
-                <node concept="3JPx81" id="41MBYoJtola" role="2OqNvi">
-                  <node concept="37vLTw" id="41MBYoJtosq" role="25WWJ7">
-                    <ref role="3cqZAo" node="41MBYoJt86v" resolve="cause" />
-                  </node>
-                </node>
+            <node concept="2OqwBi" id="41MBYoJxgTU" role="33vP2m">
+              <node concept="37vLTw" id="41MBYoJxgTV" role="2Oq$k0">
+                <ref role="3cqZAo" node="41MBYoJsn8J" resolve="myBlocks" />
               </node>
-              <node concept="Xl_RD" id="7RkTcA9EX98" role="1gVpfI">
-                <property role="Xl_RC" value="Non-paired block-unblock method usage" />
-              </node>
-            </node>
-            <node concept="3clFbF" id="JfvRzm9hsy" role="3cqZAp">
-              <node concept="2OqwBi" id="41MBYoJsuaq" role="3clFbG">
-                <node concept="37vLTw" id="41MBYoJstkS" role="2Oq$k0">
-                  <ref role="3cqZAo" node="41MBYoJsn8J" resolve="myBlocks" />
+              <node concept="3dhRuq" id="41MBYoJxgTW" role="2OqNvi">
+                <node concept="37vLTw" id="41MBYoJxky_" role="25WWJ7">
+                  <ref role="3cqZAo" node="41MBYoJt86v" resolve="cause" />
                 </node>
-                <node concept="3dhRuq" id="41MBYoJtmnt" role="2OqNvi">
-                  <node concept="37vLTw" id="41MBYoJtm_f" role="25WWJ7">
-                    <ref role="3cqZAo" node="41MBYoJt86v" resolve="cause" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="7RkTcA9EXDz" role="3cqZAp">
-              <node concept="3clFbS" id="7RkTcA9EXD_" role="3clFbx">
-                <node concept="3clFbF" id="3SyvI1qy2qA" role="3cqZAp">
-                  <node concept="37vLTI" id="3SyvI1qy2FZ" role="3clFbG">
-                    <node concept="3clFbT" id="3SyvI1qy2I7" role="37vLTx">
-                      <property role="3clFbU" value="true" />
-                    </node>
-                    <node concept="37vLTw" id="3SyvI1qy2q$" role="37vLTJ">
-                      <ref role="3cqZAo" node="3SyvI1qy1Fs" resolve="check" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="2OqwBi" id="41MBYoJswWn" role="3clFbw">
-                <node concept="37vLTw" id="41MBYoJsvsE" role="2Oq$k0">
-                  <ref role="3cqZAo" node="41MBYoJsn8J" resolve="myBlocks" />
-                </node>
-                <node concept="1v1jN8" id="41MBYoJsx1I" role="2OqNvi" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="3SyvI1qy3xb" role="3cqZAp" />
-        <node concept="3clFbJ" id="3SyvI1qy4JR" role="3cqZAp">
-          <node concept="3clFbS" id="3SyvI1qy4JT" role="3clFbx">
+        <node concept="1gVbGN" id="7RkTcA9EW0u" role="3cqZAp">
+          <node concept="3cpWs3" id="41MBYoJxpgI" role="1gVpfI">
+            <node concept="Xl_RD" id="41MBYoJxpjO" role="3uHU7w">
+              <property role="Xl_RC" value="'" />
+            </node>
+            <node concept="3cpWs3" id="41MBYoJxoNF" role="3uHU7B">
+              <node concept="Xl_RD" id="7RkTcA9EX98" role="3uHU7B">
+                <property role="Xl_RC" value="Non-paired block-unblock method usage. Cause: '" />
+              </node>
+              <node concept="2OqwBi" id="41MBYoJxoUj" role="3uHU7w">
+                <node concept="37vLTw" id="41MBYoJxoOU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="41MBYoJt86v" resolve="cause" />
+                </node>
+                <node concept="2OwXpG" id="41MBYoJxp0i" role="2OqNvi">
+                  <ref role="2Oxat5" node="41MBYoJs1LZ" resolve="message" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="41MBYoJxoxI" role="1gVkn0">
+            <node concept="10Nm6u" id="41MBYoJxo_z" role="3uHU7w" />
+            <node concept="37vLTw" id="41MBYoJxorg" role="3uHU7B">
+              <ref role="3cqZAo" node="41MBYoJxgTT" resolve="contained" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="7RkTcA9EXDz" role="3cqZAp">
+          <node concept="3clFbS" id="7RkTcA9EXD_" role="3clFbx">
             <node concept="3clFbF" id="41MBYoJoZAs" role="3cqZAp">
               <node concept="2OqwBi" id="41MBYoJoZSH" role="3clFbG">
                 <node concept="37vLTw" id="41MBYoJoZAq" role="2Oq$k0">
@@ -14218,8 +14214,11 @@
               </node>
             </node>
           </node>
-          <node concept="37vLTw" id="3SyvI1qy5rL" role="3clFbw">
-            <ref role="3cqZAo" node="3SyvI1qy1Fs" resolve="check" />
+          <node concept="2OqwBi" id="41MBYoJswWn" role="3clFbw">
+            <node concept="37vLTw" id="41MBYoJsvsE" role="2Oq$k0">
+              <ref role="3cqZAo" node="41MBYoJsn8J" resolve="myBlocks" />
+            </node>
+            <node concept="1v1jN8" id="41MBYoJsx1I" role="2OqNvi" />
           </node>
         </node>
       </node>
