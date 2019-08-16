@@ -27,6 +27,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Collections;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import javax.swing.SwingUtilities;
@@ -104,8 +106,21 @@ public class WorkbenchMigrationProblemHandler implements ProjectComponent, Migra
             final List<SModel> modelsToClean = Sequence.fromIterable(modules).translate(new ITranslator2<SModuleReference, SModel>() {
               public Iterable<SModel> translate(SModuleReference it) {
                 SModule module = it.resolve(repo);
-                Iterable<SModel> seq = (module == null ? Collections.<SModel>emptyList() : module.getModels());
-                return seq;
+                if (module == null) {
+                  return Collections.<SModel>emptyList();
+                }
+
+                if (!(module instanceof Language)) {
+                  return module.getModels();
+                }
+
+                // this code is only to fix some UI problems, see MPS-30636 for details 
+                Iterable<Generator> generators = ((Language) module).getGenerators();
+                return Sequence.fromIterable(generators).translate(new ITranslator2<Generator, SModel>() {
+                  public Iterable<SModel> translate(Generator it) {
+                    return it.getModels();
+                  }
+                }).concat(Sequence.fromIterable(module.getModels()));
               }
             }).where(new IWhereFilter<SModel>() {
               public boolean accept(SModel it) {
