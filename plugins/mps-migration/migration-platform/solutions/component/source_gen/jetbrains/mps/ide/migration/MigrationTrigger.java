@@ -654,8 +654,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         }
       }
 
-      myLastDeployWarning = createDeployWarn(problems);
-      Notifications.Bus.notify(myLastDeployWarning, myProject);
+      if (isMigrationRequired(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject))) {
+        myLastDeployWarning = createDeployWarn(problems);
+        Notifications.Bus.notify(myLastDeployWarning, myProject);
+      }
     }
   }
   private Notification createDeployWarn(final Set<SLanguage> problems) {

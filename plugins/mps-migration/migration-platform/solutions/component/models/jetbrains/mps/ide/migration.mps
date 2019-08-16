@@ -5135,28 +5135,42 @@
                 </node>
               </node>
               <node concept="3clFbH" id="6Va2kqwtNp2" role="3cqZAp" />
-              <node concept="3clFbF" id="6Va2kqwttga" role="3cqZAp">
-                <node concept="37vLTI" id="6Va2kqwtt$M" role="3clFbG">
-                  <node concept="1rXfSq" id="6Va2kqwttEE" role="37vLTx">
-                    <ref role="37wK5l" node="6Va2kqwtmvr" resolve="createDeployWarn" />
-                    <node concept="37vLTw" id="6Va2kqwttWi" role="37wK5m">
-                      <ref role="3cqZAo" node="6Va2kqwrefP" resolve="problems" />
+              <node concept="3clFbJ" id="1Ol5F9SKnVz" role="3cqZAp">
+                <node concept="3clFbS" id="1Ol5F9SKnV_" role="3clFbx">
+                  <node concept="3clFbF" id="6Va2kqwttga" role="3cqZAp">
+                    <node concept="37vLTI" id="6Va2kqwtt$M" role="3clFbG">
+                      <node concept="1rXfSq" id="6Va2kqwttEE" role="37vLTx">
+                        <ref role="37wK5l" node="6Va2kqwtmvr" resolve="createDeployWarn" />
+                        <node concept="37vLTw" id="6Va2kqwttWi" role="37wK5m">
+                          <ref role="3cqZAo" node="6Va2kqwrefP" resolve="problems" />
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="6Va2kqwttg8" role="37vLTJ">
+                        <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                      </node>
                     </node>
                   </node>
-                  <node concept="37vLTw" id="6Va2kqwttg8" role="37vLTJ">
-                    <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                  <node concept="3clFbF" id="6Va2kqwreh4" role="3cqZAp">
+                    <node concept="2YIFZM" id="6Va2kqwreh5" role="3clFbG">
+                      <ref role="1Pybhc" to="fnpx:~Notifications$Bus" resolve="Notifications.Bus" />
+                      <ref role="37wK5l" to="fnpx:~Notifications$Bus.notify(com.intellij.notification.Notification,com.intellij.openapi.project.Project)" resolve="notify" />
+                      <node concept="37vLTw" id="6Va2kqwuyFA" role="37wK5m">
+                        <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                      </node>
+                      <node concept="37vLTw" id="6Va2kqwreh7" role="37wK5m">
+                        <ref role="3cqZAo" to="1m72:~AbstractProjectComponent.myProject" resolve="myProject" />
+                      </node>
+                    </node>
                   </node>
                 </node>
-              </node>
-              <node concept="3clFbF" id="6Va2kqwreh4" role="3cqZAp">
-                <node concept="2YIFZM" id="6Va2kqwreh5" role="3clFbG">
-                  <ref role="1Pybhc" to="fnpx:~Notifications$Bus" resolve="Notifications.Bus" />
-                  <ref role="37wK5l" to="fnpx:~Notifications$Bus.notify(com.intellij.notification.Notification,com.intellij.openapi.project.Project)" resolve="notify" />
-                  <node concept="37vLTw" id="6Va2kqwuyFA" role="37wK5m">
-                    <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
-                  </node>
-                  <node concept="37vLTw" id="6Va2kqwreh7" role="37wK5m">
-                    <ref role="3cqZAo" to="1m72:~AbstractProjectComponent.myProject" resolve="myProject" />
+                <node concept="1rXfSq" id="1Ol5F9SKteM" role="3clFbw">
+                  <ref role="37wK5l" node="3SyvI1q_x8J" resolve="isMigrationRequired" />
+                  <node concept="2YIFZM" id="1Ol5F9SKteN" role="37wK5m">
+                    <ref role="1Pybhc" to="6f4m:4JlWzK6VGnA" resolve="MigrationModuleUtil" />
+                    <ref role="37wK5l" to="6f4m:3UfGsecu96H" resolve="getMigrateableModulesFromProject" />
+                    <node concept="37vLTw" id="1Ol5F9SKteO" role="37wK5m">
+                      <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
+                    </node>
                   </node>
                 </node>
               </node>
