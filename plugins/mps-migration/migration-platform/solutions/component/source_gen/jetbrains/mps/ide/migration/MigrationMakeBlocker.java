@@ -15,11 +15,11 @@ public class MigrationMakeBlocker extends AbstractProjectComponent {
   private IMakeNotificationListener.Stub myListener = new IMakeNotificationListener.Stub() {
     @Override
     public void sessionOpened(MakeNotification notification) {
-      myMigrationTrigger.blockMigrationsCheck("make session is in progress");
+      myMigrationTrigger.getMigrationBlock().blockMigrationsCheck("make session is in progress");
     }
     @Override
     public void sessionClosed(MakeNotification notification) {
-      myMigrationTrigger.unblockMigrationsCheck();
+      myMigrationTrigger.getMigrationBlock().unblockMigrationsCheck();
     }
   };
 

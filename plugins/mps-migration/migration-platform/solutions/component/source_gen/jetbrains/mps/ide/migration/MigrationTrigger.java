@@ -112,10 +112,12 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
   private boolean myListenersAdded = false;
 
-  private boolean myMigrationForbidden = false;
-  private String myMigrationForbiddenMessage = null;
+  private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
+  public MigrationBlock getMigrationBlock() {
+    return myMigrationBlock;
+  }
+
   private PostponedState myPostponedState = null;
-  private int myBlocked = 0;
   private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
 
   private Notification myLastNotification = null;
@@ -132,29 +134,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {
     myRebuildHandler = rebuildHandler;
-  }
-
-  public synchronized void blockMigrationsCheck(String message) {
-    myBlocked++;
-    myMigrationForbidden = true;
-    myMigrationForbiddenMessage = message;
-  }
-
-  public void unblockMigrationsCheck() {
-    boolean check = false;
-    synchronized (this) {
-      assert myBlocked >= 1 : "Non-paired block-unblock method usage";
-      myBlocked--;
-      if (myBlocked == 0) {
-        myMigrationForbidden = false;
-        myMigrationForbiddenMessage = null;
-        check = true;
-      }
-    }
-
-    if (check) {
-      checkMigrationNeeded();
-    }
   }
 
   public void projectOpened() {
@@ -265,7 +244,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private synchronized void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
-    if (myMigrationForbidden) {
+    if (myMigrationBlock.myMigrationForbidden) {
       return;
     }
 
@@ -284,7 +263,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private synchronized void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
-    if (myMigrationForbidden) {
+    if (myMigrationBlock.myMigrationForbidden) {
       return;
     }
 
@@ -306,17 +285,17 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   public synchronized void postponeMigration(final boolean forceAssistant) {
-    if (myMigrationForbidden) {
+    if (myMigrationBlock.myMigrationForbidden) {
       if (forceAssistant) {
-        String cause = (myMigrationForbiddenMessage == null ? "" : " as " + myMigrationForbiddenMessage);
+        String cause = (myMigrationBlock.myMigrationForbiddenMessage == null ? "" : " as " + myMigrationBlock.myMigrationForbiddenMessage);
         Messages.showMessageDialog(myProject, "The migration can not be run" + cause + ".\n" + "Migration assistant will not be started.", "Migration can't start", null);
       }
       return;
     }
 
     final Project ideaProject = myProject;
-    myMigrationForbidden = true;
-    myMigrationForbiddenMessage = null;
+    myMigrationBlock.myMigrationForbidden = true;
+    myMigrationBlock.myMigrationForbiddenMessage = null;
 
     // wait until project is fully loaded (if not yet) 
     StartupManager.getInstance(ideaProject).runWhenProjectIsInitialized(new Runnable() {
@@ -371,8 +350,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
               Notifications.Bus.notify(myLastNotification, myProject);
               myPostponedState = myPostponedState.add(newState.value);
             }
-            myMigrationForbidden = false;
-            myMigrationForbiddenMessage = null;
+            myMigrationBlock.myMigrationForbidden = false;
+            myMigrationBlock.myMigrationForbiddenMessage = null;
           }
         }, ModalityState.NON_MODAL);
       }
@@ -637,7 +616,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         myLastNotification = null;
         myLastDeployWarning = null;
 
-        unblockMigrationsCheck();
+        myMigrationBlock.unblockMigrationsCheck();
       }
     } else {
       if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null) {
@@ -646,7 +625,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       // migrations already blocked, warning is showing 
 
       if (myLastDeployWarning == null) {
-        blockMigrationsCheck("some languages are not deployed");
+        myMigrationBlock.blockMigrationsCheck("some languages are not deployed");
       } else {
         // expire old, show new to get the balloon again 
         if (!((myLastDeployWarning.isExpired()))) {
