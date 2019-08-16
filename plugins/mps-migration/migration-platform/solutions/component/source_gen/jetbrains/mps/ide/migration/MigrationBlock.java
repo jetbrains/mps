@@ -6,15 +6,13 @@ package jetbrains.mps.ide.migration;
 public class MigrationBlock {
   private MigrationTrigger myMigrationTrigger;
   private int myBlocked = 0;
-  public boolean myMigrationForbidden = false;
-  public String myMigrationForbiddenMessage = null;
+  private String myMigrationForbiddenMessage = null;
 
   public MigrationBlock(MigrationTrigger migrationTrigger) {
     this.myMigrationTrigger = migrationTrigger;
   }
   public synchronized void blockMigrationsCheck(String message) {
     myBlocked++;
-    myMigrationForbidden = true;
     myMigrationForbiddenMessage = message;
   }
   public void unblockMigrationsCheck() {
@@ -23,7 +21,6 @@ public class MigrationBlock {
       assert myBlocked >= 1 : "Non-paired block-unblock method usage";
       myBlocked--;
       if (myBlocked == 0) {
-        myMigrationForbidden = false;
         myMigrationForbiddenMessage = null;
         check = true;
       }
@@ -32,5 +29,11 @@ public class MigrationBlock {
     if (check) {
       myMigrationTrigger.checkMigrationNeeded();
     }
+  }
+  public boolean isMigrationForbidden() {
+    return myBlocked > 0;
+  }
+  public String getMigrationForbiddenMessage() {
+    return this.myMigrationForbiddenMessage;
   }
 }

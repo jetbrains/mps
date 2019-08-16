@@ -1800,8 +1800,8 @@
             <node concept="37vLTw" id="41MBYoJiX9B" role="2Oq$k0">
               <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
             </node>
-            <node concept="2OwXpG" id="41MBYoJiYuI" role="2OqNvi">
-              <ref role="2Oxat5" node="1AzqgyAfdcG" resolve="myMigrationForbidden" />
+            <node concept="liA8E" id="41MBYoJqWy1" role="2OqNvi">
+              <ref role="37wK5l" node="41MBYoJqCoC" resolve="isMigrationForbidden" />
             </node>
           </node>
           <node concept="3clFbS" id="1548xle0kUu" role="3clFbx">
@@ -1947,8 +1947,8 @@
             <node concept="37vLTw" id="41MBYoJiZ$R" role="2Oq$k0">
               <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
             </node>
-            <node concept="2OwXpG" id="41MBYoJiZ$S" role="2OqNvi">
-              <ref role="2Oxat5" node="1AzqgyAfdcG" resolve="myMigrationForbidden" />
+            <node concept="liA8E" id="41MBYoJqSGP" role="2OqNvi">
+              <ref role="37wK5l" node="41MBYoJqCoC" resolve="isMigrationForbidden" />
             </node>
           </node>
         </node>
@@ -2202,8 +2202,8 @@
                           <node concept="37vLTw" id="41MBYoJj5da" role="2Oq$k0">
                             <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
                           </node>
-                          <node concept="2OwXpG" id="41MBYoJpSz5" role="2OqNvi">
-                            <ref role="2Oxat5" node="1yfCl2RBtLX" resolve="myMigrationForbiddenMessage" />
+                          <node concept="liA8E" id="41MBYoJqZjR" role="2OqNvi">
+                            <ref role="37wK5l" node="41MBYoJqCoK" resolve="getMigrationForbiddenMessage" />
                           </node>
                         </node>
                       </node>
@@ -2213,8 +2213,8 @@
                           <node concept="37vLTw" id="41MBYoJj326" role="2Oq$k0">
                             <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
                           </node>
-                          <node concept="2OwXpG" id="41MBYoJpSFI" role="2OqNvi">
-                            <ref role="2Oxat5" node="1yfCl2RBtLX" resolve="myMigrationForbiddenMessage" />
+                          <node concept="liA8E" id="41MBYoJqZaY" role="2OqNvi">
+                            <ref role="37wK5l" node="41MBYoJqCoK" resolve="getMigrationForbiddenMessage" />
                           </node>
                         </node>
                       </node>
@@ -2263,8 +2263,8 @@
             <node concept="37vLTw" id="41MBYoJj1qE" role="2Oq$k0">
               <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
             </node>
-            <node concept="2OwXpG" id="41MBYoJj1qF" role="2OqNvi">
-              <ref role="2Oxat5" node="1AzqgyAfdcG" resolve="myMigrationForbidden" />
+            <node concept="liA8E" id="41MBYoJqZ8o" role="2OqNvi">
+              <ref role="37wK5l" node="41MBYoJqCoC" resolve="isMigrationForbidden" />
             </node>
           </node>
         </node>
@@ -2281,29 +2281,14 @@
           </node>
         </node>
         <node concept="3clFbF" id="1AzqgyAh8Pk" role="3cqZAp">
-          <node concept="37vLTI" id="1AzqgyAh93m" role="3clFbG">
-            <node concept="3clFbT" id="1AzqgyAh95I" role="37vLTx">
-              <property role="3clFbU" value="true" />
+          <node concept="2OqwBi" id="41MBYoJj7fU" role="3clFbG">
+            <node concept="37vLTw" id="41MBYoJj7fV" role="2Oq$k0">
+              <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
             </node>
-            <node concept="2OqwBi" id="41MBYoJj7fU" role="37vLTJ">
-              <node concept="37vLTw" id="41MBYoJj7fV" role="2Oq$k0">
-                <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
-              </node>
-              <node concept="2OwXpG" id="41MBYoJj8e$" role="2OqNvi">
-                <ref role="2Oxat5" node="1AzqgyAfdcG" resolve="myMigrationForbidden" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1yfCl2RBF3t" role="3cqZAp">
-          <node concept="37vLTI" id="1yfCl2RBGbH" role="3clFbG">
-            <node concept="10Nm6u" id="1yfCl2RBH5I" role="37vLTx" />
-            <node concept="2OqwBi" id="41MBYoJj6iL" role="37vLTJ">
-              <node concept="37vLTw" id="41MBYoJj6iM" role="2Oq$k0">
-                <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
-              </node>
-              <node concept="2OwXpG" id="41MBYoJoeRj" role="2OqNvi">
-                <ref role="2Oxat5" node="1yfCl2RBtLX" resolve="myMigrationForbiddenMessage" />
+            <node concept="liA8E" id="41MBYoJr2ik" role="2OqNvi">
+              <ref role="37wK5l" node="7RkTcA9EKKP" resolve="blockMigrationsCheck" />
+              <node concept="Xl_RD" id="41MBYoJr2qH" role="37wK5m">
+                <property role="Xl_RC" value="migration is already scheduled" />
               </node>
             </node>
           </node>
@@ -2858,30 +2843,12 @@
                               </node>
                             </node>
                             <node concept="3clFbF" id="JfvRzm7H9E" role="3cqZAp">
-                              <node concept="37vLTI" id="JfvRzm7HQo" role="3clFbG">
-                                <node concept="3clFbT" id="JfvRzm7I5w" role="37vLTx">
-                                  <property role="3clFbU" value="false" />
+                              <node concept="2OqwBi" id="41MBYoJj96D" role="3clFbG">
+                                <node concept="37vLTw" id="41MBYoJj96E" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
                                 </node>
-                                <node concept="2OqwBi" id="41MBYoJj96D" role="37vLTJ">
-                                  <node concept="37vLTw" id="41MBYoJj96E" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
-                                  </node>
-                                  <node concept="2OwXpG" id="41MBYoJja$S" role="2OqNvi">
-                                    <ref role="2Oxat5" node="1AzqgyAfdcG" resolve="myMigrationForbidden" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="3clFbF" id="1yfCl2RBNzO" role="3cqZAp">
-                              <node concept="37vLTI" id="1yfCl2RBOya" role="3clFbG">
-                                <node concept="10Nm6u" id="1yfCl2RBP1g" role="37vLTx" />
-                                <node concept="2OqwBi" id="41MBYoJjbTG" role="37vLTJ">
-                                  <node concept="37vLTw" id="41MBYoJjbTH" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
-                                  </node>
-                                  <node concept="2OwXpG" id="41MBYoJjbTI" role="2OqNvi">
-                                    <ref role="2Oxat5" node="1yfCl2RBtLX" resolve="myMigrationForbiddenMessage" />
-                                  </node>
+                                <node concept="liA8E" id="41MBYoJr5_6" role="2OqNvi">
+                                  <ref role="37wK5l" node="7RkTcA9EM7H" resolve="unblockMigrationsCheck" />
                                 </node>
                               </node>
                             </node>
@@ -14013,23 +13980,12 @@
       </node>
       <node concept="10Oyi0" id="JfvRzm8Y9L" role="1tU5fm" />
     </node>
-    <node concept="312cEg" id="1AzqgyAfdcG" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myMigrationForbidden" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3Tm1VV" id="41MBYoJitps" role="1B3o_S" />
-      <node concept="10P_77" id="1AzqgyAfd94" role="1tU5fm" />
-      <node concept="3clFbT" id="1AzqgyAfdow" role="33vP2m">
-        <property role="3clFbU" value="false" />
-      </node>
-    </node>
     <node concept="312cEg" id="1yfCl2RBtLX" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myMigrationForbiddenMessage" />
       <property role="3TUv4t" value="false" />
-      <node concept="3Tm1VV" id="41MBYoJpDfU" role="1B3o_S" />
+      <node concept="3Tm6S6" id="41MBYoJqCkZ" role="1B3o_S" />
       <node concept="3uibUv" id="1yfCl2RBt_F" role="1tU5fm">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
@@ -14072,16 +14028,6 @@
           <node concept="3uNrnE" id="JfvRzm9cdC" role="3clFbG">
             <node concept="37vLTw" id="JfvRzm9cdE" role="2$L3a6">
               <ref role="3cqZAo" node="7RkTcA9ETzN" resolve="myBlocked" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="JfvRzm8rNB" role="3cqZAp">
-          <node concept="37vLTI" id="JfvRzm8CXt" role="3clFbG">
-            <node concept="3clFbT" id="JfvRzm8D2_" role="37vLTx">
-              <property role="3clFbU" value="true" />
-            </node>
-            <node concept="37vLTw" id="JfvRzm8rN_" role="37vLTJ">
-              <ref role="3cqZAo" node="1AzqgyAfdcG" resolve="myMigrationForbidden" />
             </node>
           </node>
         </node>
@@ -14146,16 +14092,6 @@
             </node>
             <node concept="3clFbJ" id="7RkTcA9EXDz" role="3cqZAp">
               <node concept="3clFbS" id="7RkTcA9EXD_" role="3clFbx">
-                <node concept="3clFbF" id="JfvRzm8ECa" role="3cqZAp">
-                  <node concept="37vLTI" id="JfvRzm8Ft_" role="3clFbG">
-                    <node concept="3clFbT" id="JfvRzm8Fwu" role="37vLTx">
-                      <property role="3clFbU" value="false" />
-                    </node>
-                    <node concept="37vLTw" id="JfvRzm8EC9" role="37vLTJ">
-                      <ref role="3cqZAo" node="1AzqgyAfdcG" resolve="myMigrationForbidden" />
-                    </node>
-                  </node>
-                </node>
                 <node concept="3clFbF" id="1yfCl2RBM9k" role="3cqZAp">
                   <node concept="37vLTI" id="1yfCl2RBMzy" role="3clFbG">
                     <node concept="10Nm6u" id="1yfCl2RBMA_" role="37vLTx" />
@@ -14207,6 +14143,40 @@
       </node>
       <node concept="3Tm1VV" id="7RkTcA9EM7J" role="1B3o_S" />
       <node concept="3cqZAl" id="7RkTcA9EM7K" role="3clF45" />
+    </node>
+    <node concept="3clFb_" id="41MBYoJqCoC" role="jymVt">
+      <property role="TrG5h" value="isMigrationForbidden" />
+      <node concept="10P_77" id="41MBYoJqCoD" role="3clF45" />
+      <node concept="3Tm1VV" id="41MBYoJqCoE" role="1B3o_S" />
+      <node concept="3clFbS" id="41MBYoJqCoF" role="3clF47">
+        <node concept="3clFbF" id="41MBYoJrfjT" role="3cqZAp">
+          <node concept="3eOSWO" id="41MBYoJrgtl" role="3clFbG">
+            <node concept="3cmrfG" id="41MBYoJrgtY" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+            <node concept="37vLTw" id="41MBYoJrfjO" role="3uHU7B">
+              <ref role="3cqZAo" node="7RkTcA9ETzN" resolve="myBlocked" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="41MBYoJqCoK" role="jymVt">
+      <property role="TrG5h" value="getMigrationForbiddenMessage" />
+      <node concept="3uibUv" id="41MBYoJqCoL" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3Tm1VV" id="41MBYoJqCoM" role="1B3o_S" />
+      <node concept="3clFbS" id="41MBYoJqCoN" role="3clF47">
+        <node concept="3clFbF" id="41MBYoJqCoO" role="3cqZAp">
+          <node concept="2OqwBi" id="41MBYoJqCoH" role="3clFbG">
+            <node concept="Xjq3P" id="41MBYoJqCoI" role="2Oq$k0" />
+            <node concept="2OwXpG" id="41MBYoJqCoJ" role="2OqNvi">
+              <ref role="2Oxat5" node="1yfCl2RBtLX" resolve="myMigrationForbiddenMessage" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

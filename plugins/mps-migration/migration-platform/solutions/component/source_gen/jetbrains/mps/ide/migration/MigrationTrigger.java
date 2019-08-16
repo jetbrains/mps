@@ -244,7 +244,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private synchronized void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
-    if (myMigrationBlock.myMigrationForbidden) {
+    if (myMigrationBlock.isMigrationForbidden()) {
       return;
     }
 
@@ -263,7 +263,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private synchronized void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
-    if (myMigrationBlock.myMigrationForbidden) {
+    if (myMigrationBlock.isMigrationForbidden()) {
       return;
     }
 
@@ -285,17 +285,16 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   public synchronized void postponeMigration(final boolean forceAssistant) {
-    if (myMigrationBlock.myMigrationForbidden) {
+    if (myMigrationBlock.isMigrationForbidden()) {
       if (forceAssistant) {
-        String cause = (myMigrationBlock.myMigrationForbiddenMessage == null ? "" : " as " + myMigrationBlock.myMigrationForbiddenMessage);
+        String cause = (myMigrationBlock.getMigrationForbiddenMessage() == null ? "" : " as " + myMigrationBlock.getMigrationForbiddenMessage());
         Messages.showMessageDialog(myProject, "The migration can not be run" + cause + ".\n" + "Migration assistant will not be started.", "Migration can't start", null);
       }
       return;
     }
 
     final Project ideaProject = myProject;
-    myMigrationBlock.myMigrationForbidden = true;
-    myMigrationBlock.myMigrationForbiddenMessage = null;
+    myMigrationBlock.blockMigrationsCheck("migration is already scheduled");
 
     // wait until project is fully loaded (if not yet) 
     StartupManager.getInstance(ideaProject).runWhenProjectIsInitialized(new Runnable() {
@@ -350,8 +349,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
               Notifications.Bus.notify(myLastNotification, myProject);
               myPostponedState = myPostponedState.add(newState.value);
             }
-            myMigrationBlock.myMigrationForbidden = false;
-            myMigrationBlock.myMigrationForbiddenMessage = null;
+            myMigrationBlock.unblockMigrationsCheck();
           }
         }, ModalityState.NON_MODAL);
       }
