@@ -74,7 +74,7 @@ public class ShowNodeInfo_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Point point = new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY());
     SwingUtilities.convertPointToScreen(point, ((EditorComponent) MapSequence.fromMap(_params).get("editor")));
-    // will be diposed immediately by corresponding events otherwise) 
+    // Displaying this action in .invokeLater call to let popup menu be disposed first ( <node> will be disposed immediately by the corresponding events otherwise) 
     final Frame frame = ((Frame) MapSequence.fromMap(_params).get("frame"));
     final SNode node = ((SNode) MapSequence.fromMap(_params).get("node"));
     final String text = new ModelAccessHelper(((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().getRepository()).runReadAction(new Computable<String>() {

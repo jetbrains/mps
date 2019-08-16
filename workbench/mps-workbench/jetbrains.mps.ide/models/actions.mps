@@ -15564,30 +15564,33 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="5svDBWK8HAG" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXorPm" role="3ndbpf">
-            <node concept="3oM_SD" id="ATZLwXorP_" role="1PaTwD">
-              <property role="3oM_SC" value="will" />
+        <node concept="3SKdUt" id="3v6xPpVsmMH" role="3cqZAp">
+          <node concept="1PaTwC" id="3v6xPpVsmMI" role="3ndbpf">
+            <node concept="3oM_SD" id="3v6xPpVsmMK" role="1PaTwD">
+              <property role="3oM_SC" value="Displaying this action in .invokeLater call to let popup menu be disposed first ( &lt;node&gt; will" />
             </node>
-            <node concept="3oM_SD" id="ATZLwXorPA" role="1PaTwD">
+            <node concept="3oM_SD" id="3v6xPpVsn0g" role="1PaTwD">
               <property role="3oM_SC" value="be" />
             </node>
-            <node concept="3oM_SD" id="ATZLwXorPB" role="1PaTwD">
-              <property role="3oM_SC" value="diposed" />
+            <node concept="3oM_SD" id="3v6xPpVsn1p" role="1PaTwD">
+              <property role="3oM_SC" value="disposed" />
             </node>
-            <node concept="3oM_SD" id="ATZLwXorPC" role="1PaTwD">
+            <node concept="3oM_SD" id="3v6xPpVsn3D" role="1PaTwD">
               <property role="3oM_SC" value="immediately" />
             </node>
-            <node concept="3oM_SD" id="ATZLwXorPD" role="1PaTwD">
+            <node concept="3oM_SD" id="3v6xPpVsn4p" role="1PaTwD">
               <property role="3oM_SC" value="by" />
             </node>
-            <node concept="3oM_SD" id="ATZLwXorPE" role="1PaTwD">
+            <node concept="3oM_SD" id="3v6xPpVsn5a" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="3v6xPpVsn7z" role="1PaTwD">
               <property role="3oM_SC" value="corresponding" />
             </node>
-            <node concept="3oM_SD" id="ATZLwXorPF" role="1PaTwD">
+            <node concept="3oM_SD" id="3v6xPpVsn5W" role="1PaTwD">
               <property role="3oM_SC" value="events" />
             </node>
-            <node concept="3oM_SD" id="ATZLwXorPG" role="1PaTwD">
+            <node concept="3oM_SD" id="3v6xPpVsn6J" role="1PaTwD">
               <property role="3oM_SC" value="otherwise)" />
             </node>
           </node>
