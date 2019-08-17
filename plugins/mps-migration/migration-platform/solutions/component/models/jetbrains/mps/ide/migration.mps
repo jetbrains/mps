@@ -307,10 +307,6 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
-      <concept id="1170075670744" name="jetbrains.mps.baseLanguage.structure.SynchronizedStatement" flags="nn" index="1HWtB8">
-        <child id="1170075728144" name="expression" index="1HWFw0" />
-        <child id="1170075736412" name="block" index="1HWHxc" />
-      </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
@@ -329,6 +325,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
+        <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
       </concept>
     </language>
     <language id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access">
@@ -676,12 +673,22 @@
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myPostponedState" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7IPdE2FhXQr" role="1B3o_S" />
-      <node concept="3uibUv" id="7IPdE2Fi3rd" role="1tU5fm">
-        <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+      <node concept="2ShNRf" id="5rgEk8wvIO9" role="33vP2m">
+        <node concept="1pGfFk" id="5rgEk8wvILM" role="2ShVmc">
+          <ref role="37wK5l" to="i5cy:~AtomicReference.&lt;init&gt;()" resolve="AtomicReference" />
+          <node concept="3uibUv" id="5rgEk8ww0yE" role="1pMfVU">
+            <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+          </node>
+        </node>
       </node>
-      <node concept="10Nm6u" id="7IPdE2Fkxxp" role="33vP2m" />
+      <node concept="3uibUv" id="5rgEk8wvH5A" role="1tU5fm">
+        <ref role="3uigEE" to="i5cy:~AtomicReference" resolve="AtomicReference" />
+        <node concept="3uibUv" id="5rgEk8wvMKQ" role="11_B2D">
+          <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+        </node>
+      </node>
     </node>
     <node concept="312cEg" id="6Va2kqwFvy$" role="jymVt">
       <property role="34CwA1" value="false" />
@@ -1813,7 +1820,6 @@
     <node concept="3clFb_" id="1AzqgyAfcGx" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="checkMigrationNeededOnModuleChange" />
-      <property role="od$2w" value="true" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1AzqgyAfcG$" role="3clF47">
@@ -1923,6 +1929,22 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="5rgEk8ww4nC" role="3cqZAp">
+          <node concept="3cpWsn" id="5rgEk8ww4nD" role="3cpWs9">
+            <property role="TrG5h" value="saved" />
+            <node concept="3uibUv" id="5rgEk8ww3Px" role="1tU5fm">
+              <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+            </node>
+            <node concept="2OqwBi" id="5rgEk8ww4nE" role="33vP2m">
+              <node concept="37vLTw" id="5rgEk8ww4nF" role="2Oq$k0">
+                <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+              </node>
+              <node concept="liA8E" id="5rgEk8ww4nG" role="2OqNvi">
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="7IPdE2FlnIx" role="3cqZAp">
           <node concept="3clFbS" id="7IPdE2FlnIz" role="3clFbx">
             <node concept="3clFbF" id="7IPdE2FsSRR" role="3cqZAp">
@@ -1933,8 +1955,8 @@
                   </node>
                   <node concept="liA8E" id="7IPdE2FsTM0" role="2OqNvi">
                     <ref role="37wK5l" node="7IPdE2Fr9gg" resolve="substract" />
-                    <node concept="37vLTw" id="7IPdE2FsTRr" role="37wK5m">
-                      <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+                    <node concept="37vLTw" id="5rgEk8ww4nI" role="37wK5m">
+                      <ref role="3cqZAo" node="5rgEk8ww4nD" resolve="saved" />
                     </node>
                   </node>
                 </node>
@@ -1945,8 +1967,8 @@
             </node>
           </node>
           <node concept="3y3z36" id="7IPdE2FmrCV" role="3clFbw">
-            <node concept="37vLTw" id="7IPdE2FlsZE" role="3uHU7B">
-              <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+            <node concept="37vLTw" id="5rgEk8ww4nH" role="3uHU7B">
+              <ref role="3cqZAo" node="5rgEk8ww4nD" resolve="saved" />
             </node>
             <node concept="10Nm6u" id="7IPdE2FlBm9" role="3uHU7w" />
           </node>
@@ -1967,7 +1989,6 @@
     <node concept="3clFb_" id="1AzqgyAgwck" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="checkMigrationNeededOnLanguageReload" />
-      <property role="od$2w" value="true" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1AzqgyAgwcl" role="3clF47">
@@ -2213,9 +2234,9 @@
     <node concept="3clFb_" id="1AzqgyAh5MG" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="scheduleMigration" />
-      <property role="od$2w" value="true" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
+      <property role="od$2w" value="true" />
       <node concept="37vLTG" id="26DkYAc72u2" role="3clF46">
         <property role="TrG5h" value="forceAssistant" />
         <node concept="10P_77" id="26DkYAc7bsk" role="1tU5fm" />
@@ -2648,31 +2669,15 @@
                                     <node concept="3clFbJ" id="7IPdE2Fo90u" role="3cqZAp">
                                       <node concept="3clFbS" id="7IPdE2Fo90w" role="3clFbx">
                                         <node concept="3clFbF" id="7IPdE2FtC_e" role="3cqZAp">
-                                          <node concept="37vLTI" id="7IPdE2FtDv5" role="3clFbG">
-                                            <node concept="3K4zz7" id="6wo9SYP9Ei$" role="37vLTx">
-                                              <node concept="37vLTw" id="6wo9SYP9EZj" role="3K4E3e">
+                                          <node concept="2OqwBi" id="5rgEk8wwew8" role="3clFbG">
+                                            <node concept="37vLTw" id="7IPdE2FtC_d" role="2Oq$k0">
+                                              <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+                                            </node>
+                                            <node concept="liA8E" id="5rgEk8wwg7$" role="2OqNvi">
+                                              <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
+                                              <node concept="37vLTw" id="5rgEk8wwhqd" role="37wK5m">
                                                 <ref role="3cqZAo" node="7IPdE2Foz1A" resolve="newState" />
                                               </node>
-                                              <node concept="2OqwBi" id="6wo9SYP9Gfg" role="3K4GZi">
-                                                <node concept="37vLTw" id="6wo9SYP9Fwh" role="2Oq$k0">
-                                                  <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
-                                                </node>
-                                                <node concept="liA8E" id="6wo9SYP9GXT" role="2OqNvi">
-                                                  <ref role="37wK5l" node="6wo9SYP540F" resolve="add" />
-                                                  <node concept="37vLTw" id="6wo9SYP9Hvm" role="37wK5m">
-                                                    <ref role="3cqZAo" node="7IPdE2Foz1A" resolve="newState" />
-                                                  </node>
-                                                </node>
-                                              </node>
-                                              <node concept="3clFbC" id="6wo9SYP9D82" role="3K4Cdx">
-                                                <node concept="10Nm6u" id="6wo9SYP9DIW" role="3uHU7w" />
-                                                <node concept="37vLTw" id="6wo9SYP9ASM" role="3uHU7B">
-                                                  <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
-                                                </node>
-                                              </node>
-                                            </node>
-                                            <node concept="37vLTw" id="7IPdE2FtC_d" role="37vLTJ">
-                                              <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
                                             </node>
                                           </node>
                                         </node>
@@ -2725,8 +2730,13 @@
                               </node>
                               <node concept="22lmx$" id="6wo9SYP9eVH" role="3clFbw">
                                 <node concept="3clFbC" id="6wo9SYP9ej8" role="3uHU7B">
-                                  <node concept="37vLTw" id="7IPdE2FnUeD" role="3uHU7B">
-                                    <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+                                  <node concept="2OqwBi" id="5rgEk8wwkzB" role="3uHU7B">
+                                    <node concept="37vLTw" id="7IPdE2FnUeD" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+                                    </node>
+                                    <node concept="liA8E" id="5rgEk8wwm8h" role="2OqNvi">
+                                      <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
+                                    </node>
                                   </node>
                                   <node concept="10Nm6u" id="7IPdE2FnVun" role="3uHU7w" />
                                 </node>
@@ -2833,18 +2843,14 @@
                                                     </node>
                                                     <node concept="3clFbJ" id="4kwL$UZHXoU" role="3cqZAp">
                                                       <node concept="3clFbS" id="4kwL$UZHXoV" role="3clFbx">
-                                                        <node concept="1HWtB8" id="48XdI$UFdEt" role="3cqZAp">
-                                                          <node concept="Xjq3P" id="48XdI$UFe3D" role="1HWFw0">
-                                                            <ref role="1HBi2w" node="5SsFeroaajZ" resolve="MigrationTrigger" />
-                                                          </node>
-                                                          <node concept="3clFbS" id="48XdI$UFdEx" role="1HWHxc">
-                                                            <node concept="3clFbF" id="48XdI$UFcHN" role="3cqZAp">
-                                                              <node concept="37vLTI" id="48XdI$UFcHO" role="3clFbG">
-                                                                <node concept="37vLTw" id="7IPdE2FnVXz" role="37vLTJ">
-                                                                  <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
-                                                                </node>
-                                                                <node concept="10Nm6u" id="7IPdE2FnWjL" role="37vLTx" />
-                                                              </node>
+                                                        <node concept="3clFbF" id="48XdI$UFcHN" role="3cqZAp">
+                                                          <node concept="2OqwBi" id="5rgEk8wwiI0" role="3clFbG">
+                                                            <node concept="37vLTw" id="7IPdE2FnVXz" role="2Oq$k0">
+                                                              <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+                                                            </node>
+                                                            <node concept="liA8E" id="5rgEk8wwjqX" role="2OqNvi">
+                                                              <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
+                                                              <node concept="10Nm6u" id="5rgEk8wwjvz" role="37wK5m" />
                                                             </node>
                                                           </node>
                                                         </node>
@@ -2908,31 +2914,75 @@
                                       </node>
                                     </node>
                                   </node>
-                                  <node concept="3clFbJ" id="41MBYoJAhGR" role="3cqZAp">
-                                    <node concept="3clFbS" id="41MBYoJAhGT" role="3clFbx">
-                                      <node concept="3clFbF" id="7IPdE2FtFE3" role="3cqZAp">
-                                        <node concept="37vLTI" id="7IPdE2FtGRs" role="3clFbG">
-                                          <node concept="37vLTw" id="7IPdE2FtFE1" role="37vLTJ">
-                                            <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
-                                          </node>
-                                          <node concept="2OqwBi" id="6wo9SYP9HYI" role="37vLTx">
-                                            <node concept="37vLTw" id="6wo9SYP9HYJ" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
-                                            </node>
-                                            <node concept="liA8E" id="6wo9SYP9HYK" role="2OqNvi">
-                                              <ref role="37wK5l" node="6wo9SYP540F" resolve="add" />
-                                              <node concept="37vLTw" id="6wo9SYP9HYL" role="37wK5m">
-                                                <ref role="3cqZAo" node="7IPdE2Foz1A" resolve="newState" />
+                                  <node concept="3clFbF" id="5rgEk8wwwuA" role="3cqZAp">
+                                    <node concept="2OqwBi" id="5rgEk8wwx85" role="3clFbG">
+                                      <node concept="37vLTw" id="5rgEk8wwwu$" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+                                      </node>
+                                      <node concept="liA8E" id="5rgEk8wwybs" role="2OqNvi">
+                                        <ref role="37wK5l" to="i5cy:~AtomicReference.accumulateAndGet(java.lang.Object,java.util.function.BinaryOperator)" resolve="accumulateAndGet" />
+                                        <node concept="37vLTw" id="5rgEk8wwzxL" role="37wK5m">
+                                          <ref role="3cqZAo" node="7IPdE2Foz1A" resolve="newState" />
+                                        </node>
+                                        <node concept="2ShNRf" id="5rgEk8ww_6p" role="37wK5m">
+                                          <node concept="YeOm9" id="5rgEk8wwAsc" role="2ShVmc">
+                                            <node concept="1Y3b0j" id="5rgEk8wwAsf" role="YeSDq">
+                                              <property role="2bfB8j" value="true" />
+                                              <ref role="1Y3XeK" to="82uw:~BinaryOperator" resolve="BinaryOperator" />
+                                              <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                                              <node concept="3Tm1VV" id="5rgEk8wwAsg" role="1B3o_S" />
+                                              <node concept="3uibUv" id="5rgEk8wwAsI" role="2Ghqu4">
+                                                <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+                                              </node>
+                                              <node concept="3clFb_" id="5rgEk8wwE$J" role="jymVt">
+                                                <property role="TrG5h" value="apply" />
+                                                <node concept="3Tm1VV" id="5rgEk8wwE$K" role="1B3o_S" />
+                                                <node concept="3uibUv" id="5rgEk8wwE_2" role="3clF45">
+                                                  <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+                                                </node>
+                                                <node concept="37vLTG" id="5rgEk8wwE$N" role="3clF46">
+                                                  <property role="TrG5h" value="current" />
+                                                  <node concept="3uibUv" id="5rgEk8wwE_1" role="1tU5fm">
+                                                    <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+                                                  </node>
+                                                </node>
+                                                <node concept="37vLTG" id="5rgEk8wwE$P" role="3clF46">
+                                                  <property role="TrG5h" value="additional" />
+                                                  <node concept="3uibUv" id="5rgEk8wwE_0" role="1tU5fm">
+                                                    <ref role="3uigEE" node="7IPdE2FgVl_" resolve="MigrationTrigger.PostponedState" />
+                                                  </node>
+                                                </node>
+                                                <node concept="3clFbS" id="5rgEk8wwE_3" role="3clF47">
+                                                  <node concept="3clFbF" id="5rgEk8wwIUJ" role="3cqZAp">
+                                                    <node concept="3K4zz7" id="5rgEk8wwJo0" role="3clFbG">
+                                                      <node concept="10Nm6u" id="5rgEk8wwJyz" role="3K4E3e" />
+                                                      <node concept="2OqwBi" id="5rgEk8wwJLL" role="3K4GZi">
+                                                        <node concept="37vLTw" id="5rgEk8wwJBy" role="2Oq$k0">
+                                                          <ref role="3cqZAo" node="5rgEk8wwE$N" resolve="current" />
+                                                        </node>
+                                                        <node concept="liA8E" id="5rgEk8wwJRZ" role="2OqNvi">
+                                                          <ref role="37wK5l" node="6wo9SYP540F" resolve="add" />
+                                                          <node concept="37vLTw" id="5rgEk8wwK8t" role="37wK5m">
+                                                            <ref role="3cqZAo" node="5rgEk8wwE$P" resolve="additional" />
+                                                          </node>
+                                                        </node>
+                                                      </node>
+                                                      <node concept="3clFbC" id="5rgEk8wwJbM" role="3K4Cdx">
+                                                        <node concept="10Nm6u" id="5rgEk8wwJg0" role="3uHU7w" />
+                                                        <node concept="37vLTw" id="5rgEk8wwIUI" role="3uHU7B">
+                                                          <ref role="3cqZAo" node="5rgEk8wwE$N" resolve="current" />
+                                                        </node>
+                                                      </node>
+                                                    </node>
+                                                  </node>
+                                                </node>
+                                                <node concept="2AHcQZ" id="5rgEk8wwE_4" role="2AJF6D">
+                                                  <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                                                </node>
                                               </node>
                                             </node>
                                           </node>
                                         </node>
-                                      </node>
-                                    </node>
-                                    <node concept="3y3z36" id="41MBYoJAjxF" role="3clFbw">
-                                      <node concept="10Nm6u" id="41MBYoJAjUH" role="3uHU7w" />
-                                      <node concept="37vLTw" id="41MBYoJAiaS" role="3uHU7B">
-                                        <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
                                       </node>
                                     </node>
                                   </node>

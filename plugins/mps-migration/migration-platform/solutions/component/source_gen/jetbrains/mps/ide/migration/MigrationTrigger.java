@@ -12,6 +12,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.migration.global.ProjectMigrationProperties;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import com.intellij.notification.Notification;
@@ -50,6 +51,7 @@ import com.intellij.notification.NotificationType;
 import com.intellij.notification.NotificationListener;
 import javax.swing.event.HyperlinkEvent;
 import com.intellij.notification.Notifications;
+import java.util.function.BinaryOperator;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.ide.migration.wizard.MigrationWizard;
 import jetbrains.mps.ide.migration.wizard.MigrationError;
@@ -114,7 +116,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
 
-  private PostponedState myPostponedState = null;
+  private final AtomicReference<PostponedState> myPostponedState = new AtomicReference<PostponedState>();
   private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
 
   private final MigrationBlock.BlockCause myNotDeployedBlockCause = new MigrationBlock.BlockCause("some languages are not deployed");
@@ -245,7 +247,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     });
   }
 
-  private synchronized void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
+  private void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
     if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
       return;
     }
@@ -258,13 +260,14 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   private boolean isMigrationRequired(Iterable<SModule> modules2Check) {
     PostponedState current = PostponedState.current(myMigrationRegistry, modules2Check);
-    if (myPostponedState != null) {
-      current = current.substract(myPostponedState);
+    PostponedState saved = myPostponedState.get();
+    if (saved != null) {
+      current = current.substract(saved);
     }
     return current.hasSomethingToApply();
   }
 
-  private synchronized void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
+  private void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
     if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
       return;
     }
@@ -322,12 +325,12 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
               }
             });
 
-            if (myPostponedState == null || forceAssistant) {
+            if (myPostponedState.get() == null || forceAssistant) {
               boolean hasSomethingToApply = newState.value.hasSomethingToApply();
               if (hasSomethingToApply) {
                 boolean migrate = CollectionSequence.fromCollection(newState.value.scripts).isNotEmpty() || CollectionSequence.fromCollection(newState.value.projectMigrations).isNotEmpty();
                 if (runMigration(newState.value.versionUpdate, migrate)) {
-                  myPostponedState = (myPostponedState == null ? newState.value : myPostponedState.add(newState.value));
+                  myPostponedState.set(newState.value);
                 }
               } else if (forceAssistant) {
                 Messages.showMessageDialog(myProject, "Project doesn't need to be migrated.\n" + "Migration assistant will not be started.", "Migration Not Required", null);
@@ -343,18 +346,19 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                     return;
                   }
                   if ("migrate".equals(e.getDescription())) {
-                    synchronized (MigrationTrigger.this) {
-                      myPostponedState = null;
-                    }
+                    myPostponedState.set(null);
                     scheduleMigration(true);
                   }
                   notification.expire();
                 }
               });
               Notifications.Bus.notify(myLastNotification, myProject);
-              if (myPostponedState != null) {
-                myPostponedState = myPostponedState.add(newState.value);
-              }
+              myPostponedState.accumulateAndGet(newState.value, new BinaryOperator<PostponedState>() {
+                @Override
+                public PostponedState apply(PostponedState current, PostponedState additional) {
+                  return (current == null ? null : current.add(additional));
+                }
+              });
             }
             myMigrationBlock.unblockMigrationsCheck(scheduledBlockCause);
           }

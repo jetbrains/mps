@@ -264,6 +264,8 @@
     <classNode dependClassName="java.util.LinkedHashSet" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="java.util.concurrent.atomic.AtomicReference" />
+    <classNode dependClassName="java.util.function.BinaryOperator" />
     <classNode dependClassName="java.util.function.Consumer" />
     <classNode dependClassName="javax.swing.event.HyperlinkEvent" />
     <classNode dependClassName="jetbrains.mps.RuntimeFlags" />
