@@ -35,10 +35,10 @@ import jetbrains.mps.smodel.RepoListenerRegistrar;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.progress.ProgressManager;
@@ -246,7 +246,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private synchronized void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
-    if (myMigrationBlock.isMigrationForbidden()) {
+    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
       return;
     }
 
@@ -265,7 +265,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private synchronized void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
-    if (myMigrationBlock.isMigrationForbidden()) {
+    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
       return;
     }
 
@@ -291,6 +291,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       if (forceAssistant) {
         String cause = (myMigrationBlock.getMigrationForbiddenMessage() == null ? "" : " as " + myMigrationBlock.getMigrationForbiddenMessage());
         Messages.showMessageDialog(myProject, "The migration can not be run" + cause + ".\n" + "Migration assistant will not be started.", "Migration can't start", null);
+      } else if (!(myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause)))) {
+        notifyDeployWarn();
       }
       return;
     }
@@ -623,21 +625,23 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     } else {
       myMigrationBlock.ensureBlocked(myNotDeployedBlockCause);
 
-      if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null) {
-        // migrations already blocked, warning is showing 
-        return;
-      }
-
-      // expire old, show new to get the balloon again 
-      if (myLastDeployWarning != null && !((myLastDeployWarning.isExpired()))) {
-        myLastDeployWarning.expire();
-      }
-
-      if (isMigrationRequired(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject))) {
-        myLastDeployWarning = createDeployWarn(problems);
-        Notifications.Bus.notify(myLastDeployWarning, myProject);
-      }
     }
+  }
+  public void notifyDeployWarn() {
+    Set<SLanguage> problems = getNotDeployedUsedLanguages();
+
+    if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null) {
+      // migrations already blocked, warning is showing 
+      return;
+    }
+
+    // expire old, show new to get the balloon again 
+    if (myLastDeployWarning != null && !((myLastDeployWarning.isExpired()))) {
+      myLastDeployWarning.expire();
+    }
+
+    myLastDeployWarning = createDeployWarn(problems);
+    Notifications.Bus.notify(myLastDeployWarning, myProject);
   }
   private Notification createDeployWarn(final Set<SLanguage> problems) {
     final int treshold = 20;

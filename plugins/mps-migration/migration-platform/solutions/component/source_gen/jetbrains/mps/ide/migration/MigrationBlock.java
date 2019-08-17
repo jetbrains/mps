@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class MigrationBlock {
   private MigrationTrigger myMigrationTrigger;
@@ -42,6 +43,9 @@ public class MigrationBlock {
   }
   public boolean isMigrationForbidden() {
     return SetSequence.fromSet(myBlocks).isNotEmpty();
+  }
+  public boolean isMigrationForbiddenExcept(Iterable<BlockCause> exceptions) {
+    return SetSequence.fromSet(myBlocks).subtract(Sequence.fromIterable(exceptions)).isNotEmpty();
   }
   public String getMigrationForbiddenMessage() {
     return (SetSequence.fromSet(myBlocks).isEmpty() ? null : SetSequence.fromSet(myBlocks).last().message);
