@@ -57,12 +57,12 @@ public class FeaturesAndLocations_Test extends BaseTransformationTest {
     public void test_NodeThisFeatureIsNotAllowedCheck4740302442485194061() throws Exception {
       SNode nodeToCheck = getRealNodeById("4740302442485192019");
       SNode operation = getRealNodeById("4740302442485194061");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4740302442485192019"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6239791100561285509"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6239791100561285509"), myProject.getRepository()).run();
     }
     public void test_NodeMissingFeaturesCheck4740302442485174508() throws Exception {
       SNode nodeToCheck = getRealNodeById("4740302442485174500");
       SNode operation = getRealNodeById("4740302442485174508");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4740302442485174500"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5126791860786257589"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5126791860786257589"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4740302442485195517() throws Exception {
       SNode nodeToCheck = getRealNodeById("4740302442485155894");

@@ -77,7 +77,7 @@
       <node id="529363524336083426" at="167,62,168,163" concept="1" />
       <node id="8206790888929524961" at="170,80,171,64" concept="5" />
       <node id="8206790888929524961" at="171,64,172,63" concept="5" />
-      <node id="8206790888929524961" at="172,63,173,167" concept="1" />
+      <node id="8206790888929524961" at="172,63,173,141" concept="1" />
       <node id="529363524336018154" at="23,0,25,0" concept="9" trace="ourParamCache" />
       <node id="529363524336018154" at="25,0,27,0" concept="2" trace="myWithCommandRule" />
       <node id="529363524336018154" at="28,0,31,0" concept="0" trace="TestDefaultParameterConverter_Test#()V" />
@@ -189,7 +189,7 @@
         <var name="nodeToCheck" id="529363524336083426" />
         <var name="operation" id="529363524336083426" />
       </scope>
-      <scope id="8206790888929524961" at="170,80,173,167">
+      <scope id="8206790888929524961" at="170,80,173,141">
         <var name="nodeToCheck" id="8206790888929524961" />
         <var name="operation" id="8206790888929524961" />
       </scope>
@@ -241,7 +241,7 @@
       <node id="529363524336252998" at="63,62,64,163" concept="1" />
       <node id="529363524336253171" at="66,81,67,64" concept="5" />
       <node id="529363524336253171" at="67,64,68,62" concept="5" />
-      <node id="529363524336253171" at="68,62,69,288" concept="1" />
+      <node id="529363524336253171" at="68,62,69,262" concept="1" />
       <node id="529363524336253166" at="71,78,72,64" concept="5" />
       <node id="529363524336253166" at="72,64,73,62" concept="5" />
       <node id="529363524336253166" at="73,62,74,163" concept="1" />
@@ -280,7 +280,7 @@
         <var name="nodeToCheck" id="529363524336252998" />
         <var name="operation" id="529363524336252998" />
       </scope>
-      <scope id="529363524336253171" at="66,81,69,288">
+      <scope id="529363524336253171" at="66,81,69,262">
         <var name="nodeToCheck" id="529363524336253171" />
         <var name="operation" id="529363524336253171" />
       </scope>

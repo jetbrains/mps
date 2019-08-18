@@ -52,12 +52,12 @@ public class DuplicitRoutineNameTest_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8240600211257314592() throws Exception {
       SNode nodeToCheck = getRealNodeById("8240600211257311814");
       SNode operation = getRealNodeById("8240600211257314592");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("8240600211257311814"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck8240600211257423129() throws Exception {
       SNode nodeToCheck = getRealNodeById("8240600211257311819");
       SNode operation = getRealNodeById("8240600211257423129");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("8240600211257311819"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck8240600211257296170() throws Exception {
       SNode nodeToCheck = getRealNodeById("8240600211257294411");

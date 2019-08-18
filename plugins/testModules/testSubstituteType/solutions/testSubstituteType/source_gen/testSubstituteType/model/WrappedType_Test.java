@@ -103,12 +103,12 @@ public class WrappedType_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck1252378774017462261() throws Exception {
       SNode nodeToCheck = getRealNodeById("1252378774017462175");
       SNode operation = getRealNodeById("1252378774017462261");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1252378774017462175"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1470921783545305313() throws Exception {
       SNode nodeToCheck = getRealNodeById("1470921783545304124");
       SNode operation = getRealNodeById("1470921783545305313");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1470921783545304124"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck1252378774017462295() throws Exception {
       SNode nodeToCheck = getRealNodeById("1252378774017439494");

@@ -101,7 +101,7 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
     public void test_NodeInvalidUseOfBoundTypeCheck6923385624927426896() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451229232");
       SNode operation = getRealNodeById("6923385624927426896");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451229232"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4632498131795767328() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795753567");
@@ -111,7 +111,7 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
     public void test_NodeInvalidUseOfBoundTypeCheck6923385624929530242() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230402");
       SNode operation = getRealNodeById("6923385624929530242");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451230402"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4632498131795771260() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795771253");
@@ -121,7 +121,7 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
     public void test_NodeInvalidUseOfBoundTypeCheck6923385624928690780() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228926");
       SNode operation = getRealNodeById("6923385624928690780");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451228926"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4632498131795771535() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795771528");
@@ -131,7 +131,7 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368246786() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795772275");
       SNode operation = getRealNodeById("6405539316368246786");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4632498131795772275"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265525790"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265525790"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4632498131795772004() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795771997");
@@ -141,7 +141,7 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368298938() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795772705");
       SNode operation = getRealNodeById("6405539316368298938");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4632498131795772705"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265527030"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265527030"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4632498131795772509() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795772500");
@@ -151,7 +151,7 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368298991() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795773230");
       SNode operation = getRealNodeById("6405539316368298991");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4632498131795773230"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265525790"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265525790"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4632498131795773025() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795773016");
@@ -166,12 +166,12 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
     public void test_NodeInvalidUseOfBoundTypeCheck6923385624927141945() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231649");
       SNode operation = getRealNodeById("6923385624927141945");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451231649"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857"), myProject.getRepository()).run();
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368313510() throws Exception {
       SNode nodeToCheck = getRealNodeById("4632498131795796084");
       SNode operation = getRealNodeById("6405539316368313510");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4632498131795796084"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265527030"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928265527030"), myProject.getRepository()).run();
     }
 
   }

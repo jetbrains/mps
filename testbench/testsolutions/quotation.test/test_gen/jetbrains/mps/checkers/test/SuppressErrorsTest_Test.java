@@ -61,7 +61,7 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
     public void test_NodeOperatorCannotBeAppliedCheck2472582545953979358() throws Exception {
       SNode nodeToCheck = getRealNodeById("6807933448482366660");
       SNode operation = getRealNodeById("2472582545953979358");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6807933448482366660"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571120"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571120"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2472582545954064375() throws Exception {
       SNode nodeToCheck = getRealNodeById("6807933448482354120");
@@ -76,7 +76,7 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
     public void test_NodeOperatorCannotBeAppliedCheck2472582545953984250() throws Exception {
       SNode nodeToCheck = getRealNodeById("6807933448482399225");
       SNode operation = getRealNodeById("2472582545953984250");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6807933448482399225"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571120"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1387988544209571120"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2472582545954064584() throws Exception {
       SNode nodeToCheck = getRealNodeById("6807933448482338502");

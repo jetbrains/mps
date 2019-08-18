@@ -58,7 +58,7 @@ public class IfStatementWrongUnreachable_Test extends BaseTransformationTest {
     public void test_NodeUnreachableNodeErrorCheck6923385624927388248() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228077");
       SNode operation = getRealNodeById("6923385624927388248");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451228077"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck1217864892290() throws Exception {
       SNode nodeToCheck = getRealNodeById("1217864474226");

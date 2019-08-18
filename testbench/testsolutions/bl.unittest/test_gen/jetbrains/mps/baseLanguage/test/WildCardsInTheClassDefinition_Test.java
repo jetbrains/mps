@@ -65,7 +65,7 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
     public void test_NodeSupertypeMayNotSpecifyCheck6923385624927497212() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451229706");
       SNode operation = getRealNodeById("6923385624927497212");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451229706"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689317931"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689317931"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck8187342170692700619() throws Exception {
       SNode nodeToCheck = getRealNodeById("8187342170692127762");
@@ -80,7 +80,7 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
     public void test_NodeSupertypeMayNotSpecifyCheck6923385624928818605() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230464");
       SNode operation = getRealNodeById("6923385624928818605");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451230464"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689317931"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689317931"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck8187342170694398489() throws Exception {
       SNode nodeToCheck = getRealNodeById("8187342170694398481");

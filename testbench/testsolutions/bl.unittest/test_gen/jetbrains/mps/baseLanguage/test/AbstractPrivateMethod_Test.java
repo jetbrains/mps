@@ -48,7 +48,7 @@ public class AbstractPrivateMethod_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck2834737865485399118() throws Exception {
       SNode nodeToCheck = getRealNodeById("284804022098951626");
       SNode operation = getRealNodeById("2834737865485399118");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("284804022098951626"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck284804022098937155() throws Exception {
       SNode nodeToCheck = getRealNodeById("284804022098937141");

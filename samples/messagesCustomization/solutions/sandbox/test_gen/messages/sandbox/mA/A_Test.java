@@ -52,7 +52,7 @@ public class A_Test extends BaseTransformationTest {
     public void test_NodeUnknownRuleCheck3071492597344740098() throws Exception {
       SNode nodeToCheck = getRealNodeById("3071492597344664119");
       SNode operation = getRealNodeById("3071492597344740098");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3071492597344664119"), MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344701404"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344701404"), myProject.getRepository()).run();
     }
     public void test_ScopeOf_TestConcept_link_3071492597344664119() throws Exception {
       SNode nodeToCheck = getRealNodeById("3071492597344664119");

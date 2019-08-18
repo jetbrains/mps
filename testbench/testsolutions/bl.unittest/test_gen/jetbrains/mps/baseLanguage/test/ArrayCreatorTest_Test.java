@@ -60,22 +60,22 @@ public class ArrayCreatorTest_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck1100850602766327583() throws Exception {
       SNode nodeToCheck = getRealNodeById("1100850602766324278");
       SNode operation = getRealNodeById("1100850602766327583");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1100850602766324278"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1100850602766335141() throws Exception {
       SNode nodeToCheck = getRealNodeById("1100850602766329249");
       SNode operation = getRealNodeById("1100850602766335141");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1100850602766329249"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1100850602766345812() throws Exception {
       SNode nodeToCheck = getRealNodeById("1100850602766336178");
       SNode operation = getRealNodeById("1100850602766345812");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1100850602766336178"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1100850602766347329() throws Exception {
       SNode nodeToCheck = getRealNodeById("1100850602766342464");
       SNode operation = getRealNodeById("1100850602766347329");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1100850602766342464"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck1100850602766276669() throws Exception {
       SNode nodeToCheck = getRealNodeById("1100850602766276657");

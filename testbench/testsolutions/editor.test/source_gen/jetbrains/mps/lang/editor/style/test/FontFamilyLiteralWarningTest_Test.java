@@ -41,7 +41,7 @@ public class FontFamilyLiteralWarningTest_Test extends BaseTransformationTest {
     public void test_NodeWarningCheck1715298588355941914() throws Exception {
       SNode nodeToCheck = getRealNodeById("1715298588355941887");
       SNode operation = getRealNodeById("1715298588355941914");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1715298588355941887"), MessageStatus.WARNING, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.WARNING, myProject.getRepository()).run();
     }
 
   }

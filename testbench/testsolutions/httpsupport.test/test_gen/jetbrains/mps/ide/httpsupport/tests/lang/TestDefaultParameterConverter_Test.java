@@ -170,7 +170,7 @@ public class TestDefaultParameterConverter_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck8206790888929524961() throws Exception {
       SNode nodeToCheck = getRealNodeById("529363524336083412");
       SNode operation = getRealNodeById("8206790888929524961");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("529363524336083412"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
 
   }

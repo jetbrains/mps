@@ -66,12 +66,12 @@ public class WildCardsInAnonymousClassCreators_Test extends BaseTransformationTe
     public void test_NodeSupertypeMayNotSpecifyCheck6923385624928216045() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228371");
       SNode operation = getRealNodeById("6923385624928216045");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451228371"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170686443221"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170686443221"), myProject.getRepository()).run();
     }
     public void test_NodeTheMethodsReturnTypeIsCheck5450156852673963011() throws Exception {
       SNode nodeToCheck = getRealNodeById("8187342170694477581");
       SNode operation = getRealNodeById("5450156852673963011");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("8187342170694477581"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2792291462223216211"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2792291462223216211"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck8187342170694475514() throws Exception {
       SNode nodeToCheck = getRealNodeById("8187342170694475499");

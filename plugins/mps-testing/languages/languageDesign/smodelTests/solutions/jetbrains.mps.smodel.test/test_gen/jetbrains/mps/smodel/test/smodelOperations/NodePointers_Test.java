@@ -278,32 +278,32 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTargetNodeNotFoundInRepositoryCheck535833678906728045() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905710102");
       SNode operation = getRealNodeById("535833678906728045");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("535833678905710102"), MessageStatus.ERROR, new SNodePointer("r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "3138462966838136628"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "3138462966838136628"), myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905879477() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905879473");
       SNode operation = getRealNodeById("535833678905879477");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905879473"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905721739() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905721167");
       SNode operation = getRealNodeById("535833678905721739");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905721167"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905852712() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905852708");
       SNode operation = getRealNodeById("535833678905852712");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905852708"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905854558() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905854554");
       SNode operation = getRealNodeById("535833678905854558");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905854554"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905860220() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905857278");
       SNode operation = getRealNodeById("535833678905860220");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905857278"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeCheck535833678905910987() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905903293");
@@ -326,7 +326,7 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck535833678905987697() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905985146");
       SNode operation = getRealNodeById("535833678905987697");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905985146"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeCheck535833678906005800() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678906001974");
@@ -337,7 +337,7 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck535833678906363602() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678906356748");
       SNode operation = getRealNodeById("535833678906363602");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678906356748"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeCheck6012981979751350087() throws Exception {
       SNode nodeToCheck = getRealNodeById("6012981979751334876");

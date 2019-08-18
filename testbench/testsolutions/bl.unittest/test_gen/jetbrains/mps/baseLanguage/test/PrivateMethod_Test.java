@@ -58,12 +58,12 @@ public class PrivateMethod_Test extends BaseTransformationTest {
     public void test_NodePrivateMethodIsNeverUsedCheck7938578788783488602() throws Exception {
       SNode nodeToCheck = getRealNodeById("7938578788783487570");
       SNode operation = getRealNodeById("7938578788783488602");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783487570"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()).run();
     }
     public void test_NodePrivateMethodIsNeverUsedCheck7938578788783495769() throws Exception {
       SNode nodeToCheck = getRealNodeById("7938578788783494684");
       SNode operation = getRealNodeById("7938578788783495769");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("7938578788783494684"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677"), myProject.getRepository()).run();
     }
 
   }

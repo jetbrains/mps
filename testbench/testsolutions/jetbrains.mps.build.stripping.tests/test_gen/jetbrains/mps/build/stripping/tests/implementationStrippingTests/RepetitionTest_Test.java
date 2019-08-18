@@ -52,12 +52,12 @@ public class RepetitionTest_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck5264300948581808886() throws Exception {
       SNode nodeToCheck = getRealNodeById("5264300948581808855");
       SNode operation = getRealNodeById("5264300948581808886");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("5264300948581808855"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck5264300948581808891() throws Exception {
       SNode nodeToCheck = getRealNodeById("5264300948581808871");
       SNode operation = getRealNodeById("5264300948581808891");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("5264300948581808871"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck5264300948581808827() throws Exception {
       SNode nodeToCheck = getRealNodeById("5264300948581808819");

@@ -122,7 +122,7 @@ public class Test_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck6594325605663849637() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451224906");
       SNode operation = getRealNodeById("6594325605663849637");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451224906"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2501421320959199232() throws Exception {
       SNode nodeToCheck = getRealNodeById("6594325605663849632");

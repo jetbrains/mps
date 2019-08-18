@@ -78,7 +78,7 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
     public void test_NonMatchingMenuForCurrentNode6903010549536714075() throws Exception {
       SNode nodeToCheck = getRealNodeById("6903010549536712731");
       SNode operation = getRealNodeById("6903010549536714075");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("6903010549536712731"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6903010549536798466"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6903010549536798466"), myProject.getRepository()).run();
     }
 
     private static SNode createSNodeType_sxmjox_a0a0a0c0d9() {
