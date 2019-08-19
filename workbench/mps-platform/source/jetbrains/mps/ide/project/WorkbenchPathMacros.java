@@ -25,7 +25,6 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
@@ -60,11 +59,10 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
     Promise<DataContext> promise = DataManager.getInstance().getDataContextFromFocusAsync();
     promise.onSuccess(dataContext -> {
       Project project = PlatformDataKeys.PROJECT.getData(dataContext);
-      Map<String, String> oldMacroses = collectMacroses();
-      ShowSettingsUtil.getInstance()
-                      .showSettingsDialog(project, new PathMacroConfigurable().getDisplayName());
-      Map<String, String> newMacroses = collectMacroses();
-      if (Objects.equals(oldMacroses, newMacroses)) return;
+      Map<String, String> oldMacros = collectMacros();
+      ShowSettingsUtil.getInstance().showSettingsDialog(project, new PathMacroConfigurable().getDisplayName());
+      Map<String, String> newMacros = collectMacros();
+      if (Objects.equals(oldMacros, newMacros)) return;
 
       int res = Messages.showYesNoDialog(
           "All opened projects should be reloaded in order to apply changes.\n" +
@@ -134,7 +132,7 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
   }
 
   @NotNull
-  private Map<String, String> collectMacroses() {
+  private Map<String, String> collectMacros() {
     HashMap<String, String> res = new HashMap<>();
     for (String name : myPathMacrosIdea.getUserMacroNames()) {
       res.put(name, myPathMacrosIdea.getValue(name));
