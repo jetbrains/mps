@@ -14746,6 +14746,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-platform">
+      <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.dic" />
       <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/workbench/mps-platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />

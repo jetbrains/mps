@@ -118,5 +118,6 @@
     <fileBasedIndex implementation="jetbrains.mps.workbench.index.RootNodeNameIndex"/>
     <fileBasedIndex implementation="jetbrains.mps.workbench.index.PropertyValueIndex"/>
     <editorTabTitleProvider implementation="jetbrains.mps.fileTypes.MPSEditorTabTitleProvider"/>
+    <spellchecker.bundledDictionaryProvider implementation="jetbrains.mps.spellchecker.MPSBundledDictionariesProvider"/>
   </extensions>
 </components>
