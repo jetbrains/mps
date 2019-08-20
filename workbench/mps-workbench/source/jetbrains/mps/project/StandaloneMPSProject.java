@@ -35,6 +35,7 @@ import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
@@ -87,7 +88,8 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       String presentableUrl = getProject().getPresentableUrl();
       assert presentableUrl != null; // by contract the project is default <=> url == null
       File projectFile = new File(presentableUrl);
-      IFile file = myManager.getFile(new QualifiedPath(VFSManager.FILE_FS, projectFile.getPath()));
+      String osIndependentPath = PathUtil.toSystemIndependent(projectFile.getPath());
+      IFile file = myManager.getFile(new QualifiedPath(VFSManager.FILE_FS, osIndependentPath));
       return new ProjectDescriptorPersistence(projectFile, MacrosFactory.forProjectFile(file)).save(descriptor);
     });
   }
