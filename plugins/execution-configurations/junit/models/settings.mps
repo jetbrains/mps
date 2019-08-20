@@ -4764,7 +4764,7 @@
     <node concept="2tJIrI" id="2_AUN5GpMnj" role="jymVt" />
     <node concept="3clFb_" id="1DeqbSM$GzB" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getFqName" />
+      <property role="TrG5h" value="getPresentation" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="1DeqbSM$GzC" role="3clF47">

@@ -54,11 +54,15 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
   }
 
   @Override
-  protected String getFqName(final SNodeReference element) {
+  protected String getPresentation(final SNodeReference element) {
     final SRepository repo = ProjectHelper.getProjectRepository(myProject);
     return new ModelAccessHelper(repo).runReadAction(new Computable<String>() {
       public String compute() {
-        return myPluginNameFunc.apply(element.resolve(repo));
+        SNode resolved = element.resolve(repo);
+        if (resolved == null) {
+          return "[not found] " + element.toString();
+        }
+        return myPluginNameFunc.apply(resolved);
       }
     });
   }

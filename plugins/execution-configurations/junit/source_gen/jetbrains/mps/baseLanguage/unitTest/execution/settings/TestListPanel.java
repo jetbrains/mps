@@ -44,7 +44,7 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
   }
 
   @Override
-  protected String getFqName(ITestNodeWrapper element) {
+  protected String getPresentation(ITestNodeWrapper element) {
     return element.getFqName();
   }
 
