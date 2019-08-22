@@ -439,6 +439,8 @@ public class FindTextInModelDialog extends DialogWrapper {
   }
 
   static final class TableCellRenderer extends JComponent implements javax.swing.table.TableCellRenderer {
+    private static final int MARGIN = 2;
+
     private final JBLabel myChangedIndicator;
     private final JBLabel myValue;
     private final JBLabel myLocation;
@@ -449,6 +451,9 @@ public class FindTextInModelDialog extends DialogWrapper {
       add(myLocation = new JBLabel(), BorderLayout.EAST);
       myChangedIndicator.setForeground(FileStatus.MODIFIED.getColor());
       myLocation.setForeground(UIUtil.getInactiveTextColor());
+      /* As we don't have a line number on the right side as in IntelliJ IDEA,
+      *  we have to set some right margin. 2x was chosen experimentally */
+      setBorder(JBUI.Borders.empty(MARGIN, MARGIN, MARGIN, 2 * MARGIN));
     }
 
     @Override
