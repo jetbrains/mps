@@ -17,8 +17,15 @@ package jetbrains.mps.ide.ui;
 
 import com.intellij.find.SearchTextArea;
 import com.intellij.ide.IdeEventQueue;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.CustomShortcutSet;
+import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.keymap.Keymap;
+import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.progress.util.ProgressIndicatorUtils;
+import com.intellij.openapi.project.DumbAwareAction;
 import com.intellij.openapi.ui.DialogPanel;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.OnePixelDivider;
@@ -34,6 +41,7 @@ import com.intellij.openapi.wm.impl.IdeGlassPaneImpl;
 import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.ui.PopupBorder;
+import com.intellij.ui.ScrollingUtil;
 import com.intellij.ui.WindowMoveListener;
 import com.intellij.ui.WindowResizeListener;
 import com.intellij.ui.awt.RelativePoint;
@@ -71,14 +79,17 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.RootPaneContainer;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -88,6 +99,7 @@ import java.awt.Font;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Window;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -101,6 +113,10 @@ import java.util.List;
  * @since 2019.2
  */
 public class FindTextInModelDialog extends DialogWrapper {
+  private static final KeyStroke ENTER = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+
+  private static final String SERVICE_KEY = "mps.find.text.popup";
+
   private final MPSProject myProject;
   private final Alarm mySearchSchedule;
   private SearchTextArea mySearchEntry;
@@ -204,11 +220,11 @@ public class FindTextInModelDialog extends DialogWrapper {
     p.setLayout(new BorderLayout());
     final JBLabel title = new JBLabel("Find Text in Node Properties");
     title.setFont(title.getFont().deriveFont(Font.BOLD));
-    JBTextArea ta = new JBTextArea(1, 25); // values from FindPopupPanel
+    JBTextArea textArea = new JBTextArea(1, 25); // values from FindPopupPanel
     if (myText != null) {
-      ta.setText(myText);
+      textArea.setText(myText);
     }
-    mySearchEntry = new SearchTextArea(ta, true, true);
+    mySearchEntry = new SearchTextArea(textArea, true, true);
     mySearchEntry.setMultilineEnabled(false);
     // beware, SearchTextArea changes Document of text area, add listener *after* new SearchTextArea did its dirty job
     mySearchEntry.getTextArea().getDocument().addDocumentListener(new DocumentAdapter() {
@@ -219,32 +235,28 @@ public class FindTextInModelDialog extends DialogWrapper {
     });
     myResultsPreviewTable = new JBTable() {
       @Override
-      public boolean isCellEditable(int row, int column) {
-        return false;
+      public Dimension getPreferredScrollableViewportSize() {
+        return new Dimension(getWidth(), 1 + getRowHeight() * 4);
       }
     };
     myResultsPreviewTable.setFocusable(false);
     myResultsPreviewTable.getEmptyText().setShowAboveCenter(false);
     myResultsPreviewTable.setShowColumns(false);
+    myResultsPreviewTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     myResultsPreviewTable.setShowGrid(false);
     myResultsPreviewTable.setIntercellSpacing(JBUI.emptySize());
-    myResultsPreviewTable.setCellSelectionEnabled(false);
-    myResultsPreviewTable.setFillsViewportHeight(true); // JBTable does that, can remove?
-    myResultsPreviewTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     new DoubleClickListener() {
       @Override
       protected boolean onDoubleClick(MouseEvent event) {
-        final int selectedRow = myResultsPreviewTable.getSelectedRow();
-        final TableModel model = myResultsPreviewTable.getModel();
-        if (selectedRow != -1 && model != null) {
-          final Object valueAt = model.getValueAt(selectedRow, 0);
-          if (valueAt instanceof TableEntry) {
-            new EditorNavigator(myProject).shallFocus(false).selectIfChild().open(((TableEntry) valueAt).node);
-          }
+        if (event.getSource() != myResultsPreviewTable) {
+          return false;
         }
+        navigateToSelectedUsage();
         return true;
       }
     }.installOn(myResultsPreviewTable);
+    myResultsPreviewTable.setCellSelectionEnabled(false);
+    myResultsPreviewTable.setFillsViewportHeight(true); // JBTable does that, can remove?
     myResultsPreviewTable.setRowSelectionAllowed(false);
     myResultsPreviewTable.setColumnSelectionAllowed(false);
     final Dimension minSize = new Dimension(mySearchEntry.getWidth(), 1+ myResultsPreviewTable.getRowHeight() * 4);
@@ -254,6 +266,41 @@ public class FindTextInModelDialog extends DialogWrapper {
     JBScrollPane scrollPane = new JBScrollPane(myResultsPreviewTable);
     scrollPane.setBorder(JBUI.Borders.empty());
     scrollPane.setMinimumSize(minSize);
+
+    // Add default find next/previous result shortcuts on dialog components to navigate results
+    JComponent[] tableAware = {textArea};
+    for (JComponent component : tableAware) {
+      ScrollingUtil.installActions(myResultsPreviewTable, false, component);
+    }
+
+    KeymapManager keymapManager = KeymapManager.getInstance();
+    Keymap activeKeymap = keymapManager != null ? keymapManager.getActiveKeymap() : null;
+    if (activeKeymap != null) {
+      ShortcutSet findNextShortcutSet = new CustomShortcutSet(activeKeymap.getShortcuts("FindNext"));
+      ShortcutSet findPreviousShortcutSet = new CustomShortcutSet(activeKeymap.getShortcuts("FindPrevious"));
+      DumbAwareAction findNextAction = DumbAwareAction.create(event -> {
+        int selectedRow = myResultsPreviewTable.getSelectedRow();
+        if (selectedRow >= 0 && selectedRow < myResultsPreviewTable.getRowCount() - 1) {
+          myResultsPreviewTable.setRowSelectionInterval(selectedRow + 1, selectedRow + 1);
+          ScrollingUtil.ensureIndexIsVisible(myResultsPreviewTable, selectedRow + 1, 1);
+        }
+      });
+      DumbAwareAction findPreviousAction = DumbAwareAction.create(event -> {
+        int selectedRow = myResultsPreviewTable.getSelectedRow();
+        if (selectedRow > 0 && selectedRow <= myResultsPreviewTable.getRowCount() - 1) {
+          myResultsPreviewTable.setRowSelectionInterval(selectedRow - 1, selectedRow - 1);
+          ScrollingUtil.ensureIndexIsVisible(myResultsPreviewTable, selectedRow - 1, 1);
+        }
+      });
+      for (JComponent component : tableAware) {
+        findNextAction.registerCustomShortcutSet(findNextShortcutSet, component);
+        findPreviousAction.registerCustomShortcutSet(findPreviousShortcutSet, component);
+      }
+    }
+
+    boolean enterAsOK = Registry.is("ide.find.enter.as.ok", false);
+
+    new MyEnterAction(enterAsOK).registerCustomShortcutSet(new CustomShortcutSet(ENTER), p);
 
     final JBEmptyBorder border = Borders.empty(4, 10);
     // for whatever stupid reason, SearchTextArea implementation overrides its border, therefore have to wrap with another panel to set these
@@ -265,7 +312,7 @@ public class FindTextInModelDialog extends DialogWrapper {
     north.add(mySearchEntry);
     p.add(north, BorderLayout.NORTH);
     p.add(scrollPane, BorderLayout.CENTER);
-    p.setPreferredFocusedComponent(ta);
+    p.setPreferredFocusedComponent(textArea);
     return p;
   }
 
@@ -293,7 +340,7 @@ public class FindTextInModelDialog extends DialogWrapper {
     });
   }
 
-  protected boolean canBeClosed() {
+  private boolean canBeClosed() {
     if (myProject.isDisposed()) {
       return true;
     }
@@ -345,11 +392,11 @@ public class FindTextInModelDialog extends DialogWrapper {
 
   @Override
   protected final String getDimensionServiceKey() {
-    return "mps.find.text.popup";
+    return SERVICE_KEY;
   }
 
   private void saveSettings() {
-//    DimensionService.getInstance().setSize(getDimensionServiceKey(), getSize(), myProject.getProject() );
+    DimensionService.getInstance().setSize(getDimensionServiceKey(), getSize(), myProject.getProject() );
     DimensionService.getInstance().setLocation(getDimensionServiceKey(), getWindow().getLocationOnScreen(), myProject.getProject() );
   }
 
@@ -389,7 +436,12 @@ public class FindTextInModelDialog extends DialogWrapper {
   @SuppressWarnings("WeakerAccess")
   /*package*/ void textChanged() {
     // this method works in EDT
-    final DefaultTableModel model = new DefaultTableModel();
+    final DefaultTableModel model = new DefaultTableModel() {
+      @Override
+      public boolean isCellEditable(int row, int column) {
+        return false;
+      }
+    };
     model.addColumn("usages");
     final String text = mySearchEntry.getTextArea().getText();
     if (text == null) {
@@ -400,7 +452,12 @@ public class FindTextInModelDialog extends DialogWrapper {
       @Override
       public void handleMatch(SNode one, SProperty p, String value) {
         final TableEntry tableEntry = toEntry(one, p, value);
-        ApplicationManager.getApplication().invokeLater(() -> model.addRow(new Object[] {tableEntry}));
+        ApplicationManager.getApplication().invokeLater(() -> {
+          model.addRow(new Object[]{tableEntry});
+          if (model.getRowCount() == 1 && myResultsPreviewTable.getModel() == model) {
+            myResultsPreviewTable.setRowSelectionInterval(0, 0);
+          }
+        });
       }
 
       @Override
@@ -420,8 +477,23 @@ public class FindTextInModelDialog extends DialogWrapper {
     });
     myResultsPreviewTable.setModel(model);
     myResultsPreviewTable.getEmptyText().setText("Searching...");
-    myResultsPreviewTable.getColumnModel().getColumn(0).setCellRenderer(new TableCellRenderer());
+    myResultsPreviewTable.getColumnModel().getColumn(0).setCellRenderer(new UsageTableCellRenderer());
     ProgressIndicatorUtils.scheduleWithWriteActionPriority(myCurrentSearchTask);
+  }
+
+  private void navigateToSelectedUsage() {
+    final int selectedRow = myResultsPreviewTable.getSelectedRow();
+    final TableModel model = myResultsPreviewTable.getModel();
+    if (selectedRow != -1 && model != null) {
+      final Object valueAt = model.getValueAt(selectedRow, 0);
+      if (valueAt instanceof TableEntry) {
+        // Just open chosen property and close dialog
+        new EditorNavigator(myProject).shallFocus(false).selectIfChild().open(((TableEntry) valueAt).node);
+        if (canBeClosed()) {
+          FindTextInModelDialog.this.doCancelAction();
+        }
+      }
+    }
   }
 
   static final class TableEntry {
@@ -438,13 +510,14 @@ public class FindTextInModelDialog extends DialogWrapper {
     }
   }
 
-  static final class TableCellRenderer extends JComponent implements javax.swing.table.TableCellRenderer {
+  static final class UsageTableCellRenderer extends JPanel implements TableCellRenderer {
     private static final int MARGIN = 2;
 
     private final JBLabel myChangedIndicator;
     private final JBLabel myValue;
     private final JBLabel myLocation;
-    public TableCellRenderer() {
+
+    UsageTableCellRenderer() {
       setLayout(new BorderLayout());
       add(myChangedIndicator = new JBLabel(), BorderLayout.WEST);
       add(myValue = new JBLabel(), BorderLayout.CENTER);
@@ -458,6 +531,10 @@ public class FindTextInModelDialog extends DialogWrapper {
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+      // Table is not focusable, but we want make rows appear selected and focused
+      isSelected = table.getSelectedRow() == row;
+      setBackground(UIUtil.getTableBackground(isSelected, isSelected));
+      myValue.setForeground(UIUtil.getTableForeground(isSelected, isSelected));
       if (value instanceof TableEntry) {
         final TableEntry te = (TableEntry) value;
         myChangedIndicator.setText(te.fromChangedModel ? "*" : " ");
@@ -465,6 +542,29 @@ public class FindTextInModelDialog extends DialogWrapper {
         myLocation.setText(te.nodePresentation);
       }
       return this;
+    }
+  }
+
+  private class MyEnterAction extends DumbAwareAction {
+    private final boolean myEnterAsOK;
+
+    private MyEnterAction(boolean enterAsOK) {
+      myEnterAsOK = enterAsOK;
+    }
+
+    @Override
+    public void update(@NotNull AnActionEvent e) {
+      e.getPresentation().setEnabled(e.getData(CommonDataKeys.EDITOR) == null);
+    }
+
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent e) {
+      if (myEnterAsOK) {
+        doOKAction();
+      }
+      else {
+        navigateToSelectedUsage();
+      }
     }
   }
 }
