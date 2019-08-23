@@ -57,8 +57,7 @@ public interface ModelFactory {
    * AP
    * ---------
    *
-   * @deprecated rather try calling {@link #create(DataSource, SModelName, ModelLoadingOption...)} method and
-   * catching the {@link ModelCreationException} during creation or
+   * @deprecated rather try calling {@link #canCreate(DataSource, String, ModelLoadingOption...)}
    * use {@link #supports(DataSource)} method to acknowledge whether this data source is supported at all.
    */
   @ToRemove(version = 2017.3)
@@ -69,6 +68,17 @@ public interface ModelFactory {
     }
     return true;
   }
+
+  /**
+   * @return whether the factory can create the model with such a name
+   */
+  default boolean canCreate(@NotNull DataSource dataSource, @NotNull String modelName, @NotNull ModelLoadingOption... options) {
+    if (!supports(dataSource)) {
+      return false;
+    }
+    return true;
+  }
+
 
   /**
    * Determines whether the provided data source is maintained by this model factory instance.
@@ -92,15 +102,13 @@ public interface ModelFactory {
    * @return newly created model
    *
    * @throws UnsupportedDataSourceException iff {@link #supports(DataSource)} returns false
-   * @throws ModelCreationException iff there was an irrecoverable problem during creation (for instance model file already exists)
+   * @throws ModelCreationException iff there was an irrecoverable problem during creation (for instance model file already exists) or #canCreate returns false
    */
   @NotNull
-  default SModel create(@NotNull DataSource dataSource,
-                        @NotNull SModelName modelName,
-                        @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException,
-                                                                       ModelCreationException {
-    throw new ModelCreationException("Default #create implementation failed. Please implement.", Collections.emptyList());
-  }
+  SModel create(@NotNull DataSource dataSource,
+                @NotNull SModelName modelName,
+                @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException,
+                                                               ModelCreationException;
 
   /**
    * Loads an existing model from the given <code>DataSource</code>.
@@ -140,7 +148,9 @@ public interface ModelFactory {
    *
    * @throws UnsupportedDataSourceException if the data source is not supported
    */
-  void upgrade(@NotNull DataSource dataSource) throws IOException;
+  default void upgrade(@NotNull DataSource dataSource) throws IOException {
+
+  }
 
   /**
    * Returns an id which is used to get model factory by id in the
@@ -166,8 +176,6 @@ public interface ModelFactory {
    *         we are able to establish a file name pattern association with a specific model factory.
    *         For example each model file which ends with '.mps_binary' suffix would be associated with the
    *         corresponding data source type which in turn would be associated with 'MyBinaryModelFactory'.
-   *
-   * @implNote THE DEFAULT IMPLEMENTATION IS A FALLBACK STUB, PLEASE IMPLEMENT
    */
   @NotNull
   List<DataSourceType> getPreferredDataSourceTypes();
