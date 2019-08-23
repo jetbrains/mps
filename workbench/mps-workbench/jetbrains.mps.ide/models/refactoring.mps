@@ -3183,10 +3183,10 @@
                   <node concept="Xl_RD" id="3_TiVQaQw7Z" role="3uHU7B">
                     <property role="Xl_RC" value="&lt;html&gt;&lt;p&gt;" />
                   </node>
-                  <node concept="2YIFZM" id="3_TiVQaQx5M" role="3uHU7w">
-                    <ref role="37wK5l" to="gsnq:~PropertiesBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="gsnq:~PropertiesBundle" resolve="PropertiesBundle" />
-                    <node concept="Xl_RD" id="3_TiVQaQxny" role="37wK5m">
+                  <node concept="2YIFZM" id="1Is$QHiJfIw" role="3uHU7w">
+                    <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                    <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
+                    <node concept="Xl_RD" id="1Is$QHiJfIx" role="37wK5m">
                       <property role="Xl_RC" value="actions.module.rename.contains.submodules" />
                     </node>
                   </node>

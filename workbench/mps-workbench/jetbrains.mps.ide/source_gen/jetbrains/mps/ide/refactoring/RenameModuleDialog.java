@@ -20,7 +20,6 @@ import org.apache.log4j.Level;
 import javax.swing.JComponent;
 import com.intellij.ui.components.JBPanel;
 import java.util.Collections;
-import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import javax.swing.JLabel;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.util.ui.UIUtil;
@@ -118,7 +117,7 @@ public class RenameModuleDialog extends RenameDialog {
     builder.append("</ul>");
 
 
-    final String info = "<html><p>" + PropertiesBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</html></p>";
+    final String info = "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</html></p>";
     JLabel label = new JBLabel(info, UIUtil.getInformationIcon(), JBLabel.LEFT);
     myOptionsPanel.add(label);
   }

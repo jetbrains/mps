@@ -191,7 +191,6 @@
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.ide.IdeBundle" />
-    <classNode dependClassName="jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle" />
     <classNode dependClassName="jetbrains.mps.project.AbstractModule" />
     <classNode dependClassName="jetbrains.mps.project.DescriptorTargetFileAlreadyExistsException" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
