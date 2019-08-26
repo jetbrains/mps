@@ -170,9 +170,8 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
         HighlighterMessage message = HighlightUtil.createHighlighterMessage(reportItem, AbstractTypesystemEditorChecker.this, editorContext.getRepository());
 
         EditorQuickFix quickfix = TypesystemReportItemAdapter.FLAVOUR_EDITOR_QUICKFIX.getAutoApplicable(message.getReportItem());
-        final SNode quickFixNode = errorNode.getKey().resolve(myRepository);
         if (quickfix != null && applyQuickFixes && !instantIntentionApplied && !AbstractTypesystemEditorChecker.IMMEDIATE_QFIX_DISABLED) {
-          instantIntentionApplied = applyInstantIntention(editorContext, quickFixNode, quickfix);
+          instantIntentionApplied = applyInstantIntention(editorContext, quickfix);
           if (instantIntentionApplied) {
             // skip the message
             continue;
@@ -185,18 +184,18 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
     return messages;
   }
 
-  private boolean applyInstantIntention(final EditorContext editorContext, final SNode quickFixNode,
-                                        @NotNull final EditorQuickFix intention) {
+  private boolean applyInstantIntention(final EditorContext editorContext, @NotNull final EditorQuickFix intention) {
     Map<ReportItemFlavour, Object> flavours = new HashMap<>();
     for (ReportItemFlavour<?, ?> flavour : intention.getIdFlavours()) {
       flavours.put(flavour, flavour.tryToGet(intention));
     }
     if (!myOnceExecutedQuickFixes.contains(flavours)) {
       myOnceExecutedQuickFixes.add(flavours);
-      // XXX why Application.invokeLater, not ThreadUtils or ModelAccess (likely, shall use SNodeReference for quickFixNode, not SNode, and resolve inside)
       ApplicationManager.getApplication().invokeLater(() -> {
         editorContext.getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
-            QuickFixRuntimeEditorWrapper.getInstance(intention).execute(editorContext, true);
+            if (intention.isAlive(myRepository)) {
+              QuickFixRuntimeEditorWrapper.getInstance(intention).execute(editorContext, true);
+            }
         });
       }, ModalityState.NON_MODAL);
     }
