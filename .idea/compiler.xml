@@ -3,8 +3,6 @@
   <component name="CompilerConfiguration">
     <option name="BUILD_PROCESS_HEAP_SIZE" value="1024" />
     <excludeFromCompile>
-      <directory url="file://$PROJECT_DIR$/languages.test/constraints.rulesAndMessages.sandbox/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages.test/constraints.rulesAndMessages.sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest.extension/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest.extension/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest/source_gen" includeSubdirectories="true" />
@@ -592,6 +590,9 @@
       <directory url="file://$PROJECT_DIR$/samples/math/solutions/pluginSolution/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/math/solutions/pluginSolution/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/math/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/messagesCustomization/languages/messages.customization/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/messagesCustomization/solutions/sandbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/messagesCustomization/solutions/sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/migrations/languages/decl/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/migrations/languages/declarations/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/migrations/languages/ref/source_gen" includeSubdirectories="true" />
@@ -609,7 +610,6 @@
       <directory url="file://$PROJECT_DIR$/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/money/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/multiAspectLang/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multiTarget/languages/MultiTarget/source_gen" includeSubdirectories="true" />
@@ -771,9 +771,13 @@
       <directory url="file://$PROJECT_DIR$/testbench/modules/testConsMigrations/languages/jetbrains.mps.test.mainLang/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testConsMigrations/languages/jetbrains.mps.test.mainLang/sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testConsMigrations/languages/jetbrains.mps.test.mainLang/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/modules/testConstraints/languages/constraints.rules.test/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/modules/testConstraints/languages/constraints.rules.test/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testConstraints/languages/constraints.test/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testConstraints/solutions/TestConstraints/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testConstraints/solutions/TestConstraints/test_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/modules/testConstraints/solutions/TestRulesConstraints/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/modules/testConstraints/solutions/TestRulesConstraints/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testDataFlow/languages/testCustomAnalyzer/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testDataFlow/languages/testCustomDataFlow/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/testDataFlow/languages/testExtendingAnalyzer/source_gen" includeSubdirectories="true" />
@@ -901,6 +905,8 @@
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/smodel.unittest/tests_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/smodelLanguage_typeTest/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/smodelLanguage_typeTest/test_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/testsolutions/test.test/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/testsolutions/test.test/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.formsTests.testLang/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.contextAssistant.extension.testLanguage/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/testlangs/editor.menus.contextAssistant.testLanguage/source_gen" includeSubdirectories="true" />

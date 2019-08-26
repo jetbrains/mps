@@ -65,27 +65,27 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
     public void test_NodeNoEnclosingInstanceOfCheck6923385624927702653() throws Exception {
       SNode nodeToCheck = getRealNodeById("966837649719086733");
       SNode operation = getRealNodeById("6923385624927702653");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("966837649719086733"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929324173() throws Exception {
       SNode nodeToCheck = getRealNodeById("966837649720650716");
       SNode operation = getRealNodeById("6923385624929324173");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("966837649720650716"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929631137() throws Exception {
       SNode nodeToCheck = getRealNodeById("966837649722354537");
       SNode operation = getRealNodeById("6923385624929631137");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("966837649722354537"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929879922() throws Exception {
       SNode nodeToCheck = getRealNodeById("966837649722379841");
       SNode operation = getRealNodeById("6923385624929879922");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("966837649722379841"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929258956() throws Exception {
       SNode nodeToCheck = getRealNodeById("966837649720836439");
       SNode operation = getRealNodeById("6923385624929258956");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("966837649720836439"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck966837649722301965() throws Exception {
       SNode nodeToCheck = getRealNodeById("966837649722297928");

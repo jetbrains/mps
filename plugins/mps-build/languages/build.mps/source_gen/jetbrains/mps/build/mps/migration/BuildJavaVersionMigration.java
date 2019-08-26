@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BuildJavaVersionMigration extends MigrationScriptBase {
+  private final String description = "set java target version to 1.6 to build scripts where it was not specified";
   public String getCaption() {
-    return "set java target version to 1.6 to build scripts where it was not specified";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

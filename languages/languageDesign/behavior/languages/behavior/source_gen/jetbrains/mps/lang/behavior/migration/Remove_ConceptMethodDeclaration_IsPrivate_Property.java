@@ -17,8 +17,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends MigrationScriptBase {
+  private final String description = "Remove ConceptMethodDeclaration.isPrivate property ";
   public String getCaption() {
-    return "Remove ConceptMethodDeclaration.isPrivate property ";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -30,11 +31,11 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_65f75z_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_65f75z_a0d_0 = new EditableFilteringScope(scope_65f75z_a0d);
+      SearchScope scope_65f75z_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_65f75z_a0e_0 = new EditableFilteringScope(scope_65f75z_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_65f75z_a0d_0;
+          return scope_65f75z_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptMethodDeclaration$VN, false)).visitAll(new IVisitor<SNode>() {

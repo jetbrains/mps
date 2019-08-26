@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -35,7 +35,7 @@ public class typeof_KeyMapKeystroke_InferenceRule extends AbstractInferenceRule_
   }
   private static SNode createKeyStrokeType_wqs68h_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.KeyStrokeType$48, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.KeyStrokeType$48, null, null).node();
     return n1;
   }
 

@@ -16,13 +16,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase {
+  private final String description = "Convert Deprecated Collections Operations";
   public String getCaption() {
-    return "Convert Deprecated Collections Operations";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -34,11 +35,11 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_oas78t_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_oas78t_a0d_0 = new EditableFilteringScope(scope_oas78t_a0d);
+      SearchScope scope_oas78t_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_oas78t_a0e_0 = new EditableFilteringScope(scope_oas78t_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_oas78t_a0d_0;
+          return scope_oas78t_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddSetElementOperation$R, false)).visitAll(new IVisitor<SNode>() {
@@ -71,10 +72,10 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10e39e3ff80L, "AddElementOperation"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10e39e3ff80L, "AddElementOperation"), null, null).node();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
-      quotedNode_2.addChild(LINKS.argument$I6hw, SNodeOperations.copyIfNecessary(quotedNode_3));
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
   }
@@ -82,10 +83,10 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10e3d20dbefL, "AddAllElementsOperation"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10e3d20dbefL, "AddAllElementsOperation"), null, null).node();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
-      quotedNode_2.addChild(LINKS.argument$I6hw, SNodeOperations.copyIfNecessary(quotedNode_3));
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
   }
@@ -93,10 +94,10 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10fcd477695L, "RemoveElementOperation"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10fcd477695L, "RemoveElementOperation"), null, null).node();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
-      quotedNode_2.addChild(LINKS.argument$I6hw, SNodeOperations.copyIfNecessary(quotedNode_3));
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
   }
@@ -104,10 +105,10 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x11154a8aed3L, "RemoveAllElementsOperation"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x11154a8aed3L, "RemoveAllElementsOperation"), null, null).node();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
-      quotedNode_2.addChild(LINKS.argument$I6hw, SNodeOperations.copyIfNecessary(quotedNode_3));
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
   }
@@ -124,6 +125,5 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
     /*package*/ static final SContainmentLink argument$i8R5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d969dca87L, 0x11d969e1c69L, "argument");
     /*package*/ static final SContainmentLink argument$798v = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
     /*package*/ static final SContainmentLink argument$bWHU = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L, 0x11d96b1a226L, "argument");
-    /*package*/ static final SContainmentLink argument$I6hw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
   }
 }

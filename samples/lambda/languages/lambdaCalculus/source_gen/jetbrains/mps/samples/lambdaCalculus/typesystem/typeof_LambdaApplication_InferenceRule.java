@@ -18,7 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -81,14 +81,14 @@ public class typeof_LambdaApplication_InferenceRule extends AbstractInferenceRul
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, "jetbrains.mps.samples.lambdaCalculus"), 0x3ee0e3dd7c1afae8L, "FunctionType"), null, null, false);
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, "jetbrains.mps.samples.lambdaCalculus"), 0x3ee0e3dd7c1afae8L, "FunctionType"), null, null).node();
     quotedNode_4 = (SNode) parameter_1;
     if (quotedNode_4 != null) {
-      quotedNode_3.addChild(LINKS.domain$fvm0, SNodeOperations.copyIfNecessary(quotedNode_4));
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3ee0e3dd7c1afae8L, 0x3ee0e3dd7c1afae9L, "domain"), SNodeOperations.copyIfNecessary(quotedNode_4));
     }
     quotedNode_5 = (SNode) parameter_2;
     if (quotedNode_5 != null) {
-      quotedNode_3.addChild(LINKS.range$fvmv, SNodeOperations.copyIfNecessary(quotedNode_5));
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3ee0e3dd7c1afae8L, 0x3ee0e3dd7c1afaeaL, "range"), SNodeOperations.copyIfNecessary(quotedNode_5));
     }
     return quotedNode_3;
   }
@@ -97,8 +97,6 @@ public class typeof_LambdaApplication_InferenceRule extends AbstractInferenceRul
     /*package*/ static final SContainmentLink argument$bGe8 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de1L, "argument");
     /*package*/ static final SReferenceLink variable$j9XA = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
     /*package*/ static final SContainmentLink function$bGdD = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function");
-    /*package*/ static final SContainmentLink domain$fvm0 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3ee0e3dd7c1afae8L, 0x3ee0e3dd7c1afae9L, "domain");
-    /*package*/ static final SContainmentLink range$fvmv = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3ee0e3dd7c1afae8L, 0x3ee0e3dd7c1afaeaL, "range");
   }
 
   private static final class CONCEPTS {

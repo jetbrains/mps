@@ -117,7 +117,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
       final Wrappers._T<ProcessHandler> process = new Wrappers._T<ProcessHandler>();
       try {
         // targets in the mps build lang? 
-        process.value = new Ant_Command().setTargetName_String("buildDependents build").createProcess(assembleScriptLocation);
+        process.value = new Ant_Command().setTargetName_String("buildDependents build").setProject_Project(mpsProject).createProcess(assembleScriptLocation);
         console[0].attachToProcess(process.value);
       } catch (ExecutionException e) {
         if (LOG.isEnabledFor(Level.ERROR)) {

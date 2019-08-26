@@ -1305,16 +1305,16 @@
       <node id="7905571935048871275" at="379,34,380,34" concept="5" />
       <node id="7905571935048871275" at="380,34,381,34" concept="5" />
       <node id="7905571935048871275" at="381,34,382,34" concept="5" />
-      <node id="7905571935048871275" at="382,34,383,265" concept="1" />
-      <node id="7905571935048871275" at="383,265,384,254" concept="1" />
-      <node id="7905571935048871275" at="384,254,385,61" concept="1" />
-      <node id="7905571935048871275" at="385,61,386,261" concept="1" />
-      <node id="7905571935048871275" at="386,261,387,157" concept="1" />
-      <node id="7905571935048871275" at="387,157,388,250" concept="1" />
-      <node id="7905571935048871275" at="388,250,389,98" concept="1" />
-      <node id="7905571935048871275" at="389,98,390,61" concept="1" />
-      <node id="7905571935048871275" at="390,61,391,66" concept="1" />
-      <node id="7905571935048871275" at="391,66,392,28" concept="6" />
+      <node id="7905571935048871275" at="382,34,383,237" concept="1" />
+      <node id="7905571935048871275" at="383,237,384,226" concept="1" />
+      <node id="7905571935048871275" at="384,226,385,165" concept="1" />
+      <node id="7905571935048871275" at="385,165,386,233" concept="1" />
+      <node id="7905571935048871275" at="386,233,387,157" concept="1" />
+      <node id="7905571935048871275" at="387,157,388,222" concept="1" />
+      <node id="7905571935048871275" at="388,222,389,200" concept="1" />
+      <node id="7905571935048871275" at="389,200,390,175" concept="1" />
+      <node id="7905571935048871275" at="390,175,391,170" concept="1" />
+      <node id="7905571935048871275" at="391,170,392,28" concept="6" />
       <node id="5386558680326206168" at="396,43,397,122" concept="5" />
       <node id="5386558680326206168" at="397,122,398,49" concept="1" />
       <node id="5386558680326206168" at="398,49,399,34" concept="5" />
@@ -1354,14 +1354,10 @@
       <node id="5386558680326206168" at="474,0,475,0" concept="8" trace="baseConceptFunc$V8t8" />
       <node id="5386558680326206168" at="475,0,476,0" concept="8" trace="method$V8hw" />
       <node id="5386558680326206168" at="476,0,477,0" concept="8" trace="cncpt$V8vz" />
-      <node id="5386558680326206168" at="477,0,478,0" concept="8" trace="body$DJEC" />
-      <node id="5386558680326206168" at="478,0,479,0" concept="8" trace="concept$HWFQ" />
-      <node id="5386558680326206168" at="479,0,480,0" concept="8" trace="type$pLrO" />
-      <node id="5386558680326206168" at="480,0,481,0" concept="8" trace="parameter$WRt7" />
-      <node id="5386558680326206168" at="484,0,485,0" concept="8" trace="LinkAttribute$7j" />
-      <node id="5386558680326206168" at="485,0,486,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="5386558680326206168" at="486,0,487,0" concept="8" trace="ClosureLiteral$zJ" />
-      <node id="5386558680326206168" at="490,0,491,0" concept="8" trace="name$tAp1" />
+      <node id="5386558680326206168" at="480,0,481,0" concept="8" trace="LinkAttribute$7j" />
+      <node id="5386558680326206168" at="481,0,482,0" concept="8" trace="PropertyAttribute$jT" />
+      <node id="5386558680326206168" at="482,0,483,0" concept="8" trace="ClosureLiteral$zJ" />
+      <node id="5386558680326206168" at="486,0,487,0" concept="8" trace="name$tAp1" />
       <node id="5386558680326206168" at="71,0,73,0" concept="2" trace="myNode" />
       <node id="5386558680326206172" at="161,0,163,0" concept="2" trace="myNode" />
       <node id="5386558680326206265" at="250,0,252,0" concept="2" trace="myNode" />
@@ -1693,16 +1689,16 @@
       </scope>
       <scope id="5386558680326206168" at="124,0,160,0" />
       <scope id="5386558680326206168" at="213,0,249,0" />
-      <unit id="5386558680326206168" at="489,0,492,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$PROPS" />
+      <unit id="5386558680326206168" at="485,0,488,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$PROPS" />
       <unit id="5386558680326206168" at="128,74,132,9" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$1$1" />
       <unit id="5386558680326206168" at="149,102,153,5" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$2" />
       <unit id="5386558680326206186" at="192,104,196,9" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$Inline_Builder0$1" />
       <unit id="5386558680326206168" at="217,74,221,9" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$3$1" />
       <unit id="5386558680326206168" at="238,102,242,5" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$4" />
       <unit id="5386558680326206285" at="281,104,285,9" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$Inline_Builder1$1" />
-      <unit id="5386558680326206168" at="483,0,488,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$CONCEPTS" />
+      <unit id="5386558680326206168" at="473,0,478,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$LINKS" />
+      <unit id="5386558680326206168" at="479,0,484,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$CONCEPTS" />
       <unit id="7905571935048869528" at="358,23,365,13" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$baseConceptFuncSingleRoleHandler_x9dtrm_e0a$AspectMethodDescriptor_generic_cellMenu_x9dtrm_a0e0a$1$1" />
-      <unit id="5386558680326206168" at="473,0,482,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$LINKS" />
       <unit id="7905571935048869528" at="356,66,367,9" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$baseConceptFuncSingleRoleHandler_x9dtrm_e0a$AspectMethodDescriptor_generic_cellMenu_x9dtrm_a0e0a$1" />
       <unit id="5386558680326206168" at="126,42,138,5" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$1" />
       <unit id="5386558680326206168" at="215,42,227,5" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$3" />
@@ -1711,7 +1707,7 @@
       <unit id="5386558680326206265" at="249,0,296,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$Inline_Builder1" />
       <unit id="5386558680326206168" at="421,0,472,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$baseConceptFuncSingleRoleHandler_x9dtrm_c1a" />
       <unit id="5386558680326206168" at="300,0,396,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a$baseConceptFuncSingleRoleHandler_x9dtrm_e0a" />
-      <unit id="5386558680326206168" at="70,0,493,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a" />
+      <unit id="5386558680326206168" at="70,0,489,0" name="jetbrains.mps.lang.aspect.editor.AspectMethodDescriptor_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:2b4fd559-cd7b-4f90-8197-013c655f64e4(jetbrains.mps.lang.aspect.editor)/5386558680326207934">

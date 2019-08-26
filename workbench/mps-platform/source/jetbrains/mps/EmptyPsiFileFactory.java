@@ -23,6 +23,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.SingleRootFileViewProvider;
+import com.intellij.psi.impl.PsiFileFactoryImpl;
 import com.intellij.psi.impl.source.PsiPlainTextFileImpl;
 import com.intellij.testFramework.LightVirtualFile;
 import com.intellij.util.LocalTimeCounter;
@@ -30,10 +31,11 @@ import com.intellij.util.text.CharSequenceSubSequence;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class EmptyPsiFileFactory extends PsiFileFactory {
+public class EmptyPsiFileFactory extends PsiFileFactoryImpl {
   private final PsiManager myManager;
 
   public EmptyPsiFileFactory(final PsiManager manager) {
+    super(manager);
     myManager = manager;
   }
 

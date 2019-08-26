@@ -102,7 +102,7 @@ public class MethodResolveUtil {
         if (nodesAndTypes.containsKey(term)) {
           typeOfArg = nodesAndTypes.get(term);
         } else {
-          typeOfArg = TypecheckingFacade.getFromContext().runIsolated(new Supplier<SNode>() {
+          typeOfArg = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
             public SNode get() {
               return TypecheckingFacade.getFromContext().getTypeOf(term);
             }

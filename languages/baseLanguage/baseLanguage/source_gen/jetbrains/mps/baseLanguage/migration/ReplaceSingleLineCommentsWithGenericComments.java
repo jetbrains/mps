@@ -32,8 +32,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScriptBase {
+  private final String description = "Replace all non-textual nodes of SingleLineComment with the new generic way of commenting out code";
   public String getCaption() {
-    return "Replace all non-textual nodes of SingleLineComment with the new generic way of commenting out code";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -51,7 +52,7 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
         // Remove meaningless empty text comment parts 
         ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.TextCommentPart$lb)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.SingleLineComment$jI) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0d(SPropertyOperations.getString(it, PROPS.text$AaEw))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();
+            return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.SingleLineComment$jI) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(SPropertyOperations.getString(it, PROPS.text$AaEw))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
@@ -80,11 +81,11 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_o7ozeo_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_o7ozeo_a0e_0 = new EditableFilteringScope(scope_o7ozeo_a0e);
+      SearchScope scope_o7ozeo_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_o7ozeo_a0f_0 = new EditableFilteringScope(scope_o7ozeo_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_o7ozeo_a0e_0;
+          return scope_o7ozeo_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StatementCommentPart$7K, false)).select(new ISelector<SNode, Problem>() {
@@ -101,7 +102,7 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
-  public static String trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0d(String str) {
+  public static String trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(String str) {
     return (str == null ? null : str.trim());
   }
 

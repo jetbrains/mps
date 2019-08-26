@@ -173,18 +173,16 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     if (sdk == null) return;
 
     synchronized (LOCK) {
-      if (sdk.equals(myJavaSdk) || sdk.equals(myIdeaSdk)) {
-        myModules.remove(module);
-      }
+      myModules.remove(module);
     }
   }
 
   @Override
   protected void handleModuleNameTaken(StubModuleNameTakenException exception) {
     String message = String.format(
-        MPSBundle.message("mps.stub.warning.duplicate.sdk.message"),
-        exception.getLibraryName(),
-        exception.getNamespace());
+      MPSBundle.message("mps.stub.warning.duplicate.sdk.message"),
+      exception.getLibraryName(),
+      exception.getNamespace());
     new Notification(
       MPSBundle.message("mps.stub.warning.group.display.id"),
       MPSBundle.message("mps.stub.warning.duplicate.sdk.title"),
@@ -193,7 +191,6 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
   }
 
   /**
-   *
    * @param repository A repository. It's implied to be simply an accessor to global repository, a means
    *                   to take a lock. Because our SDKs are currently tracked per application, not per project;
    */
@@ -313,7 +310,9 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
   protected void dispose() {
     super.dispose();
     // todo remove listener
-  };
+  }
+
+  ;
 
   @Override
   public void jdkAdded(final Sdk jdk) {

@@ -25,7 +25,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -33,8 +33,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
+  private final String description = "Migrate 'simple concept action' menu parts for smart references";
   public String getCaption() {
-    return "Migrate 'simple concept action' menu parts for smart references";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -47,11 +48,11 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
   public void doExecute(final SModule m) {
     final Map<SModule, SNode> data = getDataCollector().collectData(m, new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 8));
     {
-      SearchScope scope_6mkphx_b0d = CommandUtil.createScope(m);
-      final SearchScope scope_6mkphx_b0d_0 = new EditableFilteringScope(scope_6mkphx_b0d);
+      SearchScope scope_6mkphx_b0e = CommandUtil.createScope(m);
+      final SearchScope scope_6mkphx_b0e_0 = new EditableFilteringScope(scope_6mkphx_b0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_6mkphx_b0d_0;
+          return scope_6mkphx_b0e_0;
         }
       };
       Collection<SNode> SCAs = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SubstituteMenuPart_AddConcept$UH, false);
@@ -64,7 +65,7 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
           SNode charactersticReference = SLinkOperations.getTarget(smartRefAttr, LINKS.charactersticReference$hNpW);
           SNode template = SLinkOperations.getTarget(smartRefAttr, LINKS.refPresentationTemplate$RgQc);
 
-          SNode entity = ListSequence.fromList(SLinkOperations.getChildren(MapSequence.fromMap(data).get(check_6mkphx_a0a0a0d0d0c0b0d(SNodeOperations.getModel(SLinkOperations.getTarget(sca, LINKS.concept$UyDc)))), LINKS.entities$fdG0)).where(new IWhereFilter<SNode>() {
+          SNode entity = ListSequence.fromList(SLinkOperations.getChildren(MapSequence.fromMap(data).get(check_6mkphx_a0a0a0d0d0c0b0e(SNodeOperations.getModel(SLinkOperations.getTarget(sca, LINKS.concept$UyDc)))), LINKS.entities$fdG0)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptNode$fdeu), conceptNode);
             }
@@ -90,7 +91,7 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
 
 
 
-  private static SModule check_6mkphx_a0a0a0d0d0c0b0d(SModel checkedDotOperand) {
+  private static SModule check_6mkphx_a0a0a0d0d0c0b0e(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
     }
@@ -100,10 +101,10 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xa22200b56b57990L, "SubstituteMenuPart_IncludeMenu"), null, null, false);
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x5480a271c0d1df1fL, "SubstituteMenuReference_Named"), null, null, false);
-    SNodeAccessUtil.setReferenceTarget(quotedNode_3, LINKS.menu$6o5e, (SNode) parameter_1);
-    quotedNode_2.addChild(LINKS.menuReference$mfCY, quotedNode_3);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xa22200b56b57990L, "SubstituteMenuPart_IncludeMenu"), null, null).node();
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x5480a271c0d1df1fL, "SubstituteMenuReference_Named"), null, null).node();
+    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu"), (SNode) parameter_1);
+    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference"), quotedNode_3);
     return quotedNode_2;
   }
 
@@ -118,8 +119,6 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
     /*package*/ static final SContainmentLink entities$fdG0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debaL, 0x29e124551692ded1L, "entities");
     /*package*/ static final SReferenceLink conceptNode$fdeu = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692debeL, "conceptNode");
     /*package*/ static final SReferenceLink generatedMenu$fdfV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692dec1L, "generatedMenu");
-    /*package*/ static final SReferenceLink menu$6o5e = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu");
-    /*package*/ static final SContainmentLink menuReference$mfCY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference");
   }
 
   private static final class PROPS {

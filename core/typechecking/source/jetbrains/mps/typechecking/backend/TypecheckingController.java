@@ -18,7 +18,7 @@ package jetbrains.mps.typechecking.backend;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -122,7 +122,7 @@ public abstract class TypecheckingController implements TypecheckingQueries {
    * Either initialize a new session or return a sharable session.
    */
   @NotNull
-  protected abstract TypecheckingSession requestSession(@NotNull Flags flags);
+  protected abstract Handle requestSession(@NotNull Flags flags);
 
   /**
    * @throws IllegalStateException if no session is available.
@@ -131,7 +131,7 @@ public abstract class TypecheckingController implements TypecheckingQueries {
   protected abstract TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept);
 
   @NotNull
-  public <Q extends TypecheckingQueries> TypecheckingProvider<Q> selectProvider(@NotNull Class<? extends TypecheckingProvider<Q>> providerClass) {
+  protected  <Q extends TypecheckingQueries> TypecheckingProvider<Q> selectProvider(@NotNull Class<? extends Q> providerClass) {
     return myTypecheckingBackend.selectProvider(providerClass);
   }
 
@@ -140,6 +140,6 @@ public abstract class TypecheckingController implements TypecheckingQueries {
     return myTypecheckingBackend.selectProvider(src, trg, trgConcept);
   }
 
-  protected abstract void sessionReleased(@NotNull TypecheckingSession session);
+  protected abstract void sessionReleased(@NotNull TypecheckingSessionImpl session);
 
 }

@@ -33,7 +33,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.behavior.PropertyId__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
+import jetbrains.mps.lang.smodel.behavior.ReferenceLinkId__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.behavior.ContainmentLinkId__BehaviorDescriptor;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -370,28 +372,36 @@ public class QueriesGenerated {
     return pid;
   }
   public static SNode sourceNodeQuery_0_5(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.role$_WX0);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$y0S0);
   }
   public static SNode sourceNodeQuery_0_6(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.role$_WX0);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$y0S0);
   }
   public static SNode sourceNodeQuery_0_7(final SourceSubstituteMacroNodeContext _context) {
-    return LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()).getDeclarationNode();
+    SNode id = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ReferenceLinkId$Ic);
+    ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(id, LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
+    return id;
   }
   public static SNode sourceNodeQuery_0_8(final SourceSubstituteMacroNodeContext _context) {
-    return _context.getNode().getContainmentLink().getDeclarationNode();
+    SNode cid = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ContainmentLinkId$FL);
+    ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(cid, _context.getNode().getContainmentLink());
+    return cid;
   }
   public static SNode sourceNodeQuery_0_9(final SourceSubstituteMacroNodeContext _context) {
-    return _context.getNode().getContainmentLink().getDeclarationNode();
+    SNode cid = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ContainmentLinkId$FL);
+    ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(cid, _context.getNode().getContainmentLink());
+    return cid;
   }
   public static SNode sourceNodeQuery_0_10(final SourceSubstituteMacroNodeContext _context) {
-    return _context.getNode().getContainmentLink().getDeclarationNode();
+    SNode cid = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ContainmentLinkId$FL);
+    ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(cid, _context.getNode().getContainmentLink());
+    return cid;
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$kInw);
   }
   public static SNode sourceNodeQuery_2_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.role$$I80);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$ZYnV);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw);
@@ -529,7 +539,8 @@ public class QueriesGenerated {
       SModel targetModel = ref.getTargetSModelReference().resolve(repo);
       final PersistenceFacade pf = PersistenceFacade.getInstance();
       SPropertyOperations.assign(referenceNode, PROPS.targetModel$hTil, pf.asString((targetModel == null ? ref.getTargetSModelReference() : targetModel.getReference())));
-      SLinkOperations.setTarget(referenceNode, LINKS.role$_WX0, (SNode) ref.getLink().getDeclarationNode());
+      SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$y0S0, null);
+      ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(rid, ref.getLink());
       if (targetNode != null) {
         SPropertyOperations.assign(referenceNode, PROPS.targetNodeId$_WXv, targetNode.getNodeId().toString());
       }
@@ -618,7 +629,8 @@ public class QueriesGenerated {
               SNode targetNode = reference.getTargetNode();
               if (SNodeOperations.getNodeAncestor(targetNode, CONCEPTS.Quotation$UL, false, false) == SNodeOperations.getNodeAncestor(child, CONCEPTS.Quotation$UL, false, false)) {
                 SNode referenceNode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_InternalReferenceHolder$FK);
-                SLinkOperations.setTarget(referenceNode, LINKS.role$$I80, (SNode) reference.getLink().getDeclarationNode());
+                SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$ZYnV, null);
+                ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(rid, reference.getLink());
                 SLinkOperations.setTarget(referenceNode, LINKS.targetNode$DF02, targetNode);
                 SLinkOperations.setTarget(referenceNode, LINKS.sourceNode$DFe$, child);
                 ListSequence.fromList(result).addElement(referenceNode);
@@ -712,6 +724,8 @@ public class QueriesGenerated {
     /*package*/ static final SConcept ListAntiquotation$Xc = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
     /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
     /*package*/ static final SConcept PropertyId$Ig = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId");
+    /*package*/ static final SConcept ReferenceLinkId$Ic = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId");
+    /*package*/ static final SConcept ContainmentLinkId$FL = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId");
     /*package*/ static final SConcept PropertyAntiquotation$v = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation");
     /*package*/ static final SConcept GeneratorInternal_PropertyDescriptor$BZ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, "jetbrains.mps.lang.quotation.structure.GeneratorInternal_PropertyDescriptor");
     /*package*/ static final SConcept ReferenceAntiquotation$WH = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465dL, "jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation");
@@ -739,8 +753,8 @@ public class QueriesGenerated {
     /*package*/ static final SContainmentLink modelToCreate$8JaZ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9fL, "modelToCreate");
     /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
     /*package*/ static final SContainmentLink propertyIdentity$qKOm = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, 0x166bab613f6f633aL, "propertyIdentity");
-    /*package*/ static final SReferenceLink role$_WX0 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a47f973eL, "role");
-    /*package*/ static final SReferenceLink role$$I80 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x1c4b068f93acf229L, "role");
+    /*package*/ static final SContainmentLink linkId$y0S0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x6e238a9f74e89138L, "linkId");
+    /*package*/ static final SContainmentLink linkId$ZYnV = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x6e238a9f74e89133L, "linkId");
     /*package*/ static final SContainmentLink expression$NDf$ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
     /*package*/ static final SContainmentLink initValue$UJfh = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
     /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");

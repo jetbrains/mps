@@ -10,7 +10,7 @@ import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -59,10 +59,10 @@ public class ConstraintAnalyzer {
     }
     private static SNode createRule_6fp4o1_a0a0a2b(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Rule$LR, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.Rule$LR, null, null).node();
       {
         n1.setProperty(PROPS.name$tAp1, "rule");
-        SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionWrapper$mw, null, null, false);
+        SNode n2 = new SNodeBuilder(CONCEPTS.ExpressionWrapper$mw, null, null).node();
         if (node0 != null) {
           n2.addChild(LINKS.expression$GH5k, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
         }
@@ -173,15 +173,15 @@ public class ConstraintAnalyzer {
     }
     private static SNode createIfStatement_6fp4o1_a0a0a4f(SNode node0, SNode node1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.IfStatement$pi, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.IfStatement$pi, null, null).node();
       {
         n1.setProperty(PROPS.forceMultiLine$LXXY, PROPS.forceMultiLine$LXXY.getType().toString(true));
         if (node0 != null) {
           n1.addChild(LINKS.condition$WJ1b, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
         }
-        SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+        SNode n2 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
         {
-          SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ReturnStatement$SF, null, null, false);
+          SNode n3 = new SNodeBuilder(CONCEPTS.ReturnStatement$SF, null, null).node();
           if (node1 != null) {
             n3.addChild(LINKS.expression$EsbK, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.Expression$TP)));
           }
@@ -193,13 +193,13 @@ public class ConstraintAnalyzer {
     }
     private static SNode createBooleanConstant_6fp4o1_a0a0a5f() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BooleanConstant$Ui, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.BooleanConstant$Ui, null, null).node();
       n1.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(true));
       return n1;
     }
     private static SNode createAndExpression_6fp4o1_a0a0a0a1a5f(SNode node0, SNode node1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.AndExpression$zq, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.AndExpression$zq, null, null).node();
       if (node0 != null) {
         n1.addChild(LINKS.leftExpression$rxLZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
       }
@@ -210,14 +210,14 @@ public class ConstraintAnalyzer {
     }
     private static SNode createIfStatement_6fp4o1_a0a2a6f(SNode node0, SNode node1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.IfStatement$pi, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.IfStatement$pi, null, null).node();
       {
         if (node0 != null) {
           n1.addChild(LINKS.condition$WJ1b, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
         }
-        SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+        SNode n2 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
         {
-          SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.LocalVariableDeclarationStatement$BI, null, null, false);
+          SNode n3 = new SNodeBuilder(CONCEPTS.LocalVariableDeclarationStatement$BI, null, null).node();
           if (node1 != null) {
             n3.addChild(LINKS.localVariableDeclaration$O0D0, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.LocalVariableDeclaration$Bf)));
           }
@@ -229,9 +229,9 @@ public class ConstraintAnalyzer {
     }
     private static SNode createNotExpression_6fp4o1_a0a0a0j5(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NotExpression$oq, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.NotExpression$oq, null, null).node();
       {
-        SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ParenthesizedExpression$vE, null, null, false);
+        SNode n2 = new SNodeBuilder(CONCEPTS.ParenthesizedExpression$vE, null, null).node();
         if (node0 != null) {
           n2.addChild(LINKS.expression$4_F0, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
         }
@@ -241,21 +241,21 @@ public class ConstraintAnalyzer {
     }
     private static SNode createRule_6fp4o1_a0a0a0a0b0b0b0o5(SNode node0, Object p0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Rule$LR, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.Rule$LR, null, null).node();
       {
         n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-        SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ApplicableCondition$xa, null, null, false);
+        SNode n2 = new SNodeBuilder(CONCEPTS.ApplicableCondition$xa, null, null).node();
         {
-          SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionWrapper$mw, null, null, false);
+          SNode n3 = new SNodeBuilder(CONCEPTS.ExpressionWrapper$mw, null, null).node();
           {
-            SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BooleanConstant$Ui, null, null, false);
+            SNode n4 = new SNodeBuilder(CONCEPTS.BooleanConstant$Ui, null, null).node();
             n4.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(true));
             n3.addChild(LINKS.expression$GH5k, n4);
           }
           n2.addChild(LINKS.expr$y0me, n3);
         }
         n1.addChild(LINKS.condition$yA9K, n2);
-        SNode n5 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionWrapper$mw, null, null, false);
+        SNode n5 = new SNodeBuilder(CONCEPTS.ExpressionWrapper$mw, null, null).node();
         if (node0 != null) {
           n5.addChild(LINKS.expression$GH5k, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
         }
@@ -265,19 +265,19 @@ public class ConstraintAnalyzer {
     }
     private static SNode createRule_6fp4o1_a0a0a0b0b0b0o5(SNode node0, SNode node1, Object p0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Rule$LR, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.Rule$LR, null, null).node();
       {
         n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-        SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ApplicableCondition$xa, null, null, false);
+        SNode n2 = new SNodeBuilder(CONCEPTS.ApplicableCondition$xa, null, null).node();
         {
-          SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionWrapper$mw, null, null, false);
+          SNode n3 = new SNodeBuilder(CONCEPTS.ExpressionWrapper$mw, null, null).node();
           if (node0 != null) {
             n3.addChild(LINKS.expression$GH5k, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
           }
           n2.addChild(LINKS.expr$y0me, n3);
         }
         n1.addChild(LINKS.condition$yA9K, n2);
-        SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionWrapper$mw, null, null, false);
+        SNode n4 = new SNodeBuilder(CONCEPTS.ExpressionWrapper$mw, null, null).node();
         if (node1 != null) {
           n4.addChild(LINKS.expression$GH5k, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.Expression$TP)));
         }
@@ -287,19 +287,19 @@ public class ConstraintAnalyzer {
     }
     private static SNode createDefForRule_6fp4o1_a0b0a1a1a41f(SNode node0, SNode node1, SNode node2, Object p0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DefForRule$Hm, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.DefForRule$Hm, null, null).node();
       {
         n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-        SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ApplicableCondition$xa, null, null, false);
+        SNode n2 = new SNodeBuilder(CONCEPTS.ApplicableCondition$xa, null, null).node();
         {
-          SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionWrapper$mw, null, null, false);
+          SNode n3 = new SNodeBuilder(CONCEPTS.ExpressionWrapper$mw, null, null).node();
           if (node0 != null) {
             n3.addChild(LINKS.expression$GH5k, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
           }
           n2.addChild(LINKS.expr$y0me, n3);
         }
         n1.addChild(LINKS.condition$yA9K, n2);
-        SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionWrapper$mw, null, null, false);
+        SNode n4 = new SNodeBuilder(CONCEPTS.ExpressionWrapper$mw, null, null).node();
         if (node1 != null) {
           n4.addChild(LINKS.expression$GH5k, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.Expression$TP)));
         }
@@ -518,30 +518,30 @@ public class ConstraintAnalyzer {
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb8255689fL, "OrExpression"), null, null, false);
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb8255689fL, "OrExpression"), null, null).node();
     quotedNode_4 = (SNode) parameter_1;
     if (quotedNode_4 != null) {
-      quotedNode_3.addChild(LINKS.rightExpression$rxBl, SNodeOperations.copyIfNecessary(quotedNode_4));
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), SNodeOperations.copyIfNecessary(quotedNode_4));
     }
-    quotedNode_5 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression"), null, null, false);
-    quotedNode_6 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb4ed32b7fL, "ParenthesizedExpression"), null, null, false);
+    quotedNode_5 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression"), null, null).node();
+    quotedNode_6 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb4ed32b7fL, "ParenthesizedExpression"), null, null).node();
     quotedNode_7 = (SNode) parameter_2;
     if (quotedNode_7 != null) {
-      quotedNode_6.addChild(LINKS.expression$4_F0, SNodeOperations.copyIfNecessary(quotedNode_7));
+      quotedNode_6.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), SNodeOperations.copyIfNecessary(quotedNode_7));
     }
-    quotedNode_5.addChild(LINKS.expression$bUD_, quotedNode_6);
-    quotedNode_3.addChild(LINKS.leftExpression$rxLZ, quotedNode_5);
+    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"), quotedNode_6);
+    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), quotedNode_5);
     return quotedNode_3;
   }
   private static SNode createTypedDefReference_6fp4o1_a0a0a2a0a41(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TypedDefReference$7f, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TypedDefReference$7f, null, null).node();
     n1.setReferenceTarget(LINKS.declaration$LqCB, node0);
     return n1;
   }
   private static SNode createTypedDefReference_6fp4o1_a0a0a1a0a0o(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TypedDefReference$7f, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TypedDefReference$7f, null, null).node();
     n1.setReferenceTarget(LINKS.declaration$LqCB, node0);
     return n1;
   }

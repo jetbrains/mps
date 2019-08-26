@@ -26,7 +26,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -142,17 +142,17 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
   private static SNode _quotation_createNode_qal9w4_a0a0a3() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
-    quotedNode_1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, quotedNode_1, facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution(MPS.IDEA/)"), facade.createNodeId("~ExecutionException")));
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null).node();
+    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution(MPS.IDEA/)"), facade.createNodeId("~ExecutionException")));
     return quotedNode_1;
   }
   private static SNode createJoinType_qal9w4_a0a5() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.JoinType$9o, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.JoinType$9o, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ProcessType$tB, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.ProcessType$tB, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+      SNode n3 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
       n3.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n3, facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)"), facade.createNodeId("~ProcessHandler")));
       n1.addChild(LINKS.argument$xIHX, n3);
     }
@@ -164,8 +164,8 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
     /*package*/ static final SContainmentLink debuggerParameter$u2aT = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x75aadb0d4e6223baL, "debuggerParameter");
     /*package*/ static final SContainmentLink execute$ZllZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, 0x550ea9458ea107aeL, "execute");
     /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

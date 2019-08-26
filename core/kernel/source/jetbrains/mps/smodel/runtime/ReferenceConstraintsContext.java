@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ public interface ReferenceConstraintsContext {
   @Nullable
   SContainmentLink getContainmentLink();
 
-
   /**
    *
    * @return concrete target concept of the reference
@@ -59,13 +58,6 @@ public interface ReferenceConstraintsContext {
 
   /**
    *
-   * @return true if the reference exists
-   * @deprecated use {@code context.getReferenceNode().getReference(link) != null} instead
-   */
-  boolean isExists();
-
-  /**
-   *
    * @return context model
    * @deprecated  use {@code context.getContextNode().getModel()} instead
    */
@@ -73,27 +65,8 @@ public interface ReferenceConstraintsContext {
   SModel getModel();
 
   /**
-   *
-   * @deprecated use {@link #getContainmentLink()} instead
-   */
-  @Deprecated
-  String getContextRole();
-
-  /**
    * @deprecated equals to {@code getReferenceNode() != null ? getReferenceNode().getParent() : getContextNode()}
    */
   @Deprecated
   SNode getEnclosingNode();
-
-  /**
-   * @deprecated use {@link #getLinkTargetConcept()} instead
-   */
-  @Deprecated
-  SNode getLinkTarget();
-
-  /**
-   * @deprecated use {@link #getContainmentLink()} instead
-   */
-  @Deprecated
-  SNode getContainingLink();
 }

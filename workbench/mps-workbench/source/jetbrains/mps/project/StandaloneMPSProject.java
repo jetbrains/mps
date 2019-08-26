@@ -32,6 +32,10 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.QualifiedPath;
+import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
@@ -64,11 +68,13 @@ import java.util.List;
 public class StandaloneMPSProject extends MPSProject implements PersistentStateComponent<Element> {
   private static final Logger LOG = LogManager.getLogger(StandaloneMPSProject.class);
   private ProjectModuleFileChangeListener myListener;
+  private final VFSManager myManager;
 
   @SuppressWarnings("UnusedParameters")
   public StandaloneMPSProject(final Project project, ProjectLibraryManager projectLibraryManager, ProjectRootListenerComponent unused,
                               MPSCoreComponents mpsCore, IdeaFileSystem ideaFS, WorkbenchModelAccess modelAccess) {
     super(project, unused, mpsCore, ideaFS, modelAccess);
+    myManager = mpsCore.getPlatform().findComponent(VFSManager.class);
   }
 
   @Override
@@ -82,7 +88,9 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       String presentableUrl = getProject().getPresentableUrl();
       assert presentableUrl != null; // by contract the project is default <=> url == null
       File projectFile = new File(presentableUrl);
-      return new ProjectDescriptorPersistence(projectFile, MacrosFactory.getGlobal()).save(descriptor);
+      String osIndependentPath = PathUtil.toSystemIndependent(projectFile.getPath());
+      IFile file = myManager.getFile(new QualifiedPath(VFSManager.FILE_FS, osIndependentPath));
+      return new ProjectDescriptorPersistence(projectFile, MacrosFactory.forProjectFile(file)).save(descriptor);
     });
   }
 

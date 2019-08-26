@@ -9,10 +9,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="142,0,148,0" name="jetbrains.mps.execution.configurations.generator.template.preprocess.QueriesGenerated$CONCEPTS" />
-      <unit at="129,0,141,0" name="jetbrains.mps.execution.configurations.generator.template.preprocess.QueriesGenerated$LINKS" />
+      <unit at="139,0,145,0" name="jetbrains.mps.execution.configurations.generator.template.preprocess.QueriesGenerated$CONCEPTS" />
+      <unit at="129,0,138,0" name="jetbrains.mps.execution.configurations.generator.template.preprocess.QueriesGenerated$LINKS" />
       <unit at="79,0,95,0" name="jetbrains.mps.execution.configurations.generator.template.preprocess.QueriesGenerated$SCB" />
-      <unit at="34,0,149,0" name="jetbrains.mps.execution.configurations.generator.template.preprocess.QueriesGenerated" />
+      <unit at="34,0,146,0" name="jetbrains.mps.execution.configurations.generator.template.preprocess.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:2a0121e0-959c-434f-b621-0b4c60f1f305(jetbrains.mps.execution.configurations.generator.template.preprocess@generator)/5916922432461069145">
@@ -36,25 +36,25 @@
       <node id="2797684467151013938" at="100,30,101,30" concept="4" />
       <node id="2797684467151013938" at="101,30,102,30" concept="4" />
       <node id="2797684467151013938" at="102,30,103,30" concept="4" />
-      <node id="2797684467151013938" at="103,30,104,251" concept="0" />
-      <node id="2797684467151013938" at="104,251,105,265" concept="0" />
-      <node id="2797684467151013938" at="105,265,106,271" concept="0" />
-      <node id="2797684467151013938" at="106,271,107,252" concept="0" />
-      <node id="2797684467151013938" at="107,252,108,150" concept="0" />
-      <node id="2797684467151013938" at="108,150,109,67" concept="0" />
-      <node id="2797684467151013938" at="109,67,110,62" concept="0" />
-      <node id="2797684467151013938" at="110,62,111,39" concept="0" />
-      <node id="2797684467151013938" at="112,31,113,95" concept="0" />
+      <node id="2797684467151013938" at="103,30,104,223" concept="0" />
+      <node id="2797684467151013938" at="104,223,105,237" concept="0" />
+      <node id="2797684467151013938" at="105,237,106,473" concept="0" />
+      <node id="2797684467151013938" at="106,473,107,224" concept="0" />
+      <node id="2797684467151013938" at="107,224,108,150" concept="0" />
+      <node id="2797684467151013938" at="108,150,109,170" concept="0" />
+      <node id="2797684467151013938" at="109,170,110,166" concept="0" />
+      <node id="2797684467151013938" at="110,166,111,39" concept="0" />
+      <node id="2797684467151013938" at="112,31,113,199" concept="0" />
       <node id="2797684467151013938" at="114,5,115,24" concept="5" />
       <node id="2797684467150976412" at="117,85,118,63" concept="4" />
       <node id="2797684467150976412" at="118,63,119,30" concept="4" />
       <node id="2797684467150976412" at="119,30,120,30" concept="4" />
-      <node id="2797684467150976412" at="120,30,121,274" concept="0" />
-      <node id="2797684467150976412" at="121,274,122,107" concept="0" />
-      <node id="2797684467150976412" at="122,107,123,250" concept="0" />
-      <node id="2797684467150976412" at="123,250,124,146" concept="0" />
-      <node id="2797684467150976412" at="124,146,125,58" concept="0" />
-      <node id="2797684467150976412" at="125,58,126,24" concept="5" />
+      <node id="2797684467150976412" at="120,30,121,246" concept="0" />
+      <node id="2797684467150976412" at="121,246,122,217" concept="0" />
+      <node id="2797684467150976412" at="122,217,123,222" concept="0" />
+      <node id="2797684467150976412" at="123,222,124,146" concept="0" />
+      <node id="2797684467150976412" at="124,146,125,170" concept="0" />
+      <node id="2797684467150976412" at="125,170,126,24" concept="5" />
       <node id="5916922432461075186" at="41,0,44,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5916922432461075292" at="48,0,51,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="2797684467151013938" at="111,39,114,5" concept="2" />
@@ -68,7 +68,7 @@
       <node id="5916922432461069146" at="39,0,65,0" concept="6" trace="mappingScript_CodeBlock_1#(Ljetbrains/mps/generator/template/MappingScriptContext;)V" />
       <scope id="5916922432461075187" at="41,39,42,199" />
       <scope id="5916922432461075293" at="48,46,49,172" />
-      <scope id="2797684467151013938" at="112,31,113,95" />
+      <scope id="2797684467151013938" at="112,31,113,199" />
       <scope id="5916922432461069145" at="87,15,89,17" />
       <scope id="5916922432461075186" at="41,0,44,0">
         <var name="it" id="5916922432461075186" />

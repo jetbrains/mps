@@ -39,7 +39,7 @@
     <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionDescriptor" />
     <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionExecutable" />
     <classNode dependClassName="jetbrains.mps.openapi.intentions.Kind" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />

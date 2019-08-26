@@ -57,17 +57,17 @@ public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
     public void test_NodeCycleInImportsCheck4205244270189351140() throws Exception {
       SNode nodeToCheck = getRealNodeById("4205244270189351135");
       SNode operation = getRealNodeById("4205244270189351140");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4205244270189351135"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
     }
     public void test_NodeCycleInImportsCheck4205244270189500694() throws Exception {
       SNode nodeToCheck = getRealNodeById("4205244270189351612");
       SNode operation = getRealNodeById("4205244270189500694");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4205244270189351612"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
     }
     public void test_NodeCycleInImportsCheck4205244270189549224() throws Exception {
       SNode nodeToCheck = getRealNodeById("4205244270189549221");
       SNode operation = getRealNodeById("4205244270189549224");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("4205244270189549221"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6782712264211226823"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck6782712264220244949() throws Exception {
       SNode nodeToCheck = getRealNodeById("6782712264208964689");

@@ -12,32 +12,13 @@
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
-      </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <property id="1212080844762" name="hasNoDefaultMember" index="PDuV0" />
-        <property id="1197591154882" name="memberIdentifierPolicy" index="3lZH7k" />
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -68,9 +49,6 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -169,13 +147,6 @@
       <property role="TrG5h" value="day" />
       <property role="IQ2nx" value="4664795093170605735" />
       <ref role="AX2Wp" node="3Ftr4R6BFI6" resolve="DayDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHbh" role="lGtFl">
-        <node concept="1TJgyi" id="42WFAKeqOUB" role="3l_iP">
-          <property role="TrG5h" value="day" />
-          <property role="IQ2nx" value="4664795093170605735" />
-          <ref role="AX2Wp" node="4p4E$Nw_8p$" resolve="DayDataType" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="42WFAKeqWlF">
@@ -187,25 +158,11 @@
       <property role="TrG5h" value="start" />
       <property role="IQ2nx" value="4664795093170636191" />
       <ref role="AX2Wp" node="3Ftr4R6BFI6" resolve="DayDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHbj" role="lGtFl">
-        <node concept="1TJgyi" id="42WFAKeqWmv" role="3l_iP">
-          <property role="TrG5h" value="start" />
-          <property role="IQ2nx" value="4664795093170636191" />
-          <ref role="AX2Wp" node="4p4E$Nw_8p$" resolve="DayDataType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="3Ftr4R6BHbk" role="1TKVEl">
       <property role="TrG5h" value="end" />
       <property role="IQ2nx" value="4664795093170636193" />
       <ref role="AX2Wp" node="3Ftr4R6BFI6" resolve="DayDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHbl" role="lGtFl">
-        <node concept="1TJgyi" id="42WFAKeqWmx" role="3l_iP">
-          <property role="TrG5h" value="end" />
-          <property role="IQ2nx" value="4664795093170636193" />
-          <ref role="AX2Wp" node="4p4E$Nw_8p$" resolve="DayDataType" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="4XSronYa85Q">
@@ -240,86 +197,40 @@
     <property role="TrG5h" value="DayDataType" />
     <property role="3F6X1D" value="5063359128233346660" />
     <ref role="1H5jkz" node="3Ftr4R6BFI8" resolve="monday" />
-    <node concept="2JgGob" id="3Ftr4R6BFI7" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="4p4E$Nw_8p$" role="3lCyv">
-        <property role="TrG5h" value="DayDataType" />
-        <property role="PDuV0" value="false" />
-        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
-        <property role="3F6X1D" value="5063359128233346660" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="4p4E$Nw_8p_" role="M5hS2">
-          <property role="1uS6qo" value="Monday" />
-          <property role="1uS6qv" value="monday" />
-        </node>
-        <node concept="M4N5e" id="4p4E$Nw_8pA" role="M5hS2">
-          <property role="1uS6qo" value="Tuesday" />
-          <property role="1uS6qv" value="tuesday" />
-        </node>
-        <node concept="M4N5e" id="4p4E$Nw_8pD" role="M5hS2">
-          <property role="1uS6qo" value="Wednesday" />
-          <property role="1uS6qv" value="wednesday" />
-        </node>
-        <node concept="M4N5e" id="4p4E$Nw_8pH" role="M5hS2">
-          <property role="1uS6qo" value="Thursday" />
-          <property role="1uS6qv" value="thursday" />
-        </node>
-        <node concept="M4N5e" id="4p4E$Nw_8pM" role="M5hS2">
-          <property role="1uS6qo" value="Friday" />
-          <property role="1uS6qv" value="friday" />
-        </node>
-        <node concept="M4N5e" id="4p4E$Nw_8pS" role="M5hS2">
-          <property role="1uS6qo" value="Saturday" />
-          <property role="1uS6qv" value="saturday" />
-        </node>
-        <node concept="M4N5e" id="4p4E$Nw_8pZ" role="M5hS2">
-          <property role="1uS6qo" value="Sunday" />
-          <property role="1uS6qv" value="sunday" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFI8" role="25R1y">
       <property role="TrG5h" value="monday" />
       <property role="1L1pqM" value="Monday" />
       <property role="3tVfz5" value="5063359128233346661" />
-      <ref role="2wpffI" node="4p4E$Nw_8p_" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFI9" role="25R1y">
       <property role="TrG5h" value="tuesday" />
       <property role="1L1pqM" value="Tuesday" />
       <property role="3tVfz5" value="5063359128233346662" />
-      <ref role="2wpffI" node="4p4E$Nw_8pA" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFIa" role="25R1y">
       <property role="TrG5h" value="wednesday" />
       <property role="1L1pqM" value="Wednesday" />
       <property role="3tVfz5" value="5063359128233346665" />
-      <ref role="2wpffI" node="4p4E$Nw_8pD" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFIb" role="25R1y">
       <property role="TrG5h" value="thursday" />
       <property role="1L1pqM" value="Thursday" />
       <property role="3tVfz5" value="5063359128233346669" />
-      <ref role="2wpffI" node="4p4E$Nw_8pH" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFIc" role="25R1y">
       <property role="TrG5h" value="friday" />
       <property role="1L1pqM" value="Friday" />
       <property role="3tVfz5" value="5063359128233346674" />
-      <ref role="2wpffI" node="4p4E$Nw_8pM" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFId" role="25R1y">
       <property role="TrG5h" value="saturday" />
       <property role="1L1pqM" value="Saturday" />
       <property role="3tVfz5" value="5063359128233346680" />
-      <ref role="2wpffI" node="4p4E$Nw_8pS" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFIe" role="25R1y">
       <property role="TrG5h" value="sunday" />
       <property role="1L1pqM" value="Sunday" />
       <property role="3tVfz5" value="5063359128233346687" />
-      <ref role="2wpffI" node="4p4E$Nw_8pZ" />
     </node>
   </node>
 </model>

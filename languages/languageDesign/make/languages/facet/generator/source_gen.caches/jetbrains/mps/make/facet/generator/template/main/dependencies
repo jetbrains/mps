@@ -49,7 +49,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.make.facet.behavior.FacetDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.make.facet.behavior.TargetDeclaration__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.SReference" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />

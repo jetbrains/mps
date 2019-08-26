@@ -62,7 +62,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -372,7 +372,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       }
       private static SNode createMigrationReference_w3rzlq_a0a0a0a0a2c0(SNode node0) {
         PersistenceFacade facade = PersistenceFacade.getInstance();
-        SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MigrationReference$BB, null, null, false);
+        SNode n1 = new SNodeBuilder(CONCEPTS.MigrationReference$BB, null, null).node();
         n1.setReferenceTarget(LINKS.migration$RUsw, node0);
         return n1;
       }

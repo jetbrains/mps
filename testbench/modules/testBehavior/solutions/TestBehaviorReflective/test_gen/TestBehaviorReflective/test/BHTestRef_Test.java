@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.io.File;
 import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -461,372 +461,372 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   private static SNode createA_cc8y9n_a0a0a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0b0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0c0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0d0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0e0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0f0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0g0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0h0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0i0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0j0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0k0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0l0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0m0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0n0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0o0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0p0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0q0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0r0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0s0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0t0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0u0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0v0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0w0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0x0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0y0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0z0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$5Q, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$5Q, null, null).node();
     return n1;
   }
   private static SNode createA1_cc8y9n_a0a0ab0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A1$TK, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A1$TK, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0bb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$OZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$OZ, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0c0bb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$uM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$uM, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0cb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$OZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$OZ, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0c0cb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$uM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$uM, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0db0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Ck, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Ck, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0c0db0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Ck, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Ck, null, null).node();
     return n1;
   }
   private static SNode createC1_cc8y9n_a0a0eb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C1$Fd, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C1$Fd, null, null).node();
     return n1;
   }
   private static SNode createC2_cc8y9n_a0a0fb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C2$Gl, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C2$Gl, null, null).node();
     return n1;
   }
   private static SNode createC3_cc8y9n_a0a0gb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C3$Wr, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C3$Wr, null, null).node();
     return n1;
   }
   private static SNode createC4_cc8y9n_a0a0hb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C4$cS, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C4$cS, null, null).node();
     return n1;
   }
   private static SNode createC5_cc8y9n_a0a0ib0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C5$Ng, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C5$Ng, null, null).node();
     return n1;
   }
   private static SNode createP_cc8y9n_a0a0jb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.P$tz, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.P$tz, null, null).node();
     return n1;
   }
   private static SNode createP_cc8y9n_a0a0kb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.P$tz, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.P$tz, null, null).node();
     return n1;
   }
   private static SNode createP_cc8y9n_a0a0lb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.P$tz, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.P$tz, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0tb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$70, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$70, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0ub0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Yl, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Yl, null, null).node();
     return n1;
   }
   private static SNode createC_cc8y9n_a0a0vb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C$Q6, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C$Q6, null, null).node();
     return n1;
   }
   private static SNode createD_cc8y9n_a0a0yb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.D$6y, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.D$6y, null, null).node();
     return n1;
   }
   private static SNode createD_cc8y9n_a0a0zb0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.D$6y, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.D$6y, null, null).node();
     return n1;
   }
   private static SNode createD_cc8y9n_a0a0ac0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.D$6y, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.D$6y, null, null).node();
     return n1;
   }
   private static SNode createD_cc8y9n_a0b0bc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.D$6y, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.D$6y, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0cc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Yl, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Yl, null, null).node();
     return n1;
   }
   private static SNode createD_cc8y9n_a0c0cc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.D$6y, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.D$6y, null, null).node();
     return n1;
   }
   private static SNode createH_cc8y9n_a0a0dc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.H$xy, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.H$xy, null, null).node();
     return n1;
   }
   private static SNode createH_cc8y9n_a0c0dc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.H$xy, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.H$xy, null, null).node();
     return n1;
   }
   private static SNode createJ_cc8y9n_a0a0ec0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.J$69, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.J$69, null, null).node();
     return n1;
   }
   private static SNode createJ_cc8y9n_a0a0fc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.J$69, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.J$69, null, null).node();
     return n1;
   }
   private static SNode createE_cc8y9n_a0a0gc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.E$qK, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.E$qK, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0hc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Xh, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Xh, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0ic0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Xh, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Xh, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0jc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Xh, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Xh, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0kc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Xh, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Xh, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0a0lc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Xh, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Xh, null, null).node();
     return n1;
   }
   private static SNode createC_cc8y9n_a0a0mc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C$Fu, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C$Fu, null, null).node();
     return n1;
   }
   private static SNode createH_cc8y9n_a0a0nc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.H$Vv, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.H$Vv, null, null).node();
     return n1;
   }
   private static SNode createD_cc8y9n_a0b0oc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.D$q8, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.D$q8, null, null).node();
     return n1;
   }
   private static SNode createD_cc8y9n_a0d0oc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.D$q8, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.D$q8, null, null).node();
     return n1;
   }
   private static SNode createF_cc8y9n_a0a0pc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.F$pf, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.F$pf, null, null).node();
     return n1;
   }
   private static SNode createG_cc8y9n_a0d0pc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.G$CM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.G$CM, null, null).node();
     return n1;
   }
   private static SNode createG_cc8y9n_a0f0pc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.G$CM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.G$CM, null, null).node();
     return n1;
   }
   private static SNode createE_cc8y9n_a0a0qc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.E$vi, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.E$vi, null, null).node();
     return n1;
   }
   private static SNode createC_cc8y9n_a0a0sc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.C$Fu, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.C$Fu, null, null).node();
     return n1;
   }
   private static SNode createB_cc8y9n_a0b0sc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.B$Xh, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.B$Xh, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0c0sc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$WM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$WM, null, null).node();
     return n1;
   }
   private static SNode createK_cc8y9n_a0d0sc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.K$be, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.K$be, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0tc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$WM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$WM, null, null).node();
     return n1;
   }
   private static SNode createA_cc8y9n_a0a0uc0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.A$WM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.A$WM, null, null).node();
     return n1;
   }
 

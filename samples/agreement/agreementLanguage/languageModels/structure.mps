@@ -111,13 +111,6 @@
       <property role="TrG5h" value="type" />
       <property role="IQ2nx" value="1111792955937" />
       <ref role="AX2Wp" node="3Ftr4R6BFHr" resolve="ValueType" />
-      <node concept="3l_iC" id="3Ftr4R6BHaL" role="lGtFl">
-        <node concept="1TJgyi" id="gbs1z8x" role="3l_iP">
-          <property role="TrG5h" value="type" />
-          <property role="IQ2nx" value="1111792955937" />
-          <ref role="AX2Wp" node="gbs1dxE" resolve="ValueType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyj" id="gbrXfpY" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -265,13 +258,6 @@
       <property role="TrG5h" value="type" />
       <property role="IQ2nx" value="1111793807574" />
       <ref role="AX2Wp" node="3Ftr4R6BFHr" resolve="ValueType" />
-      <node concept="3l_iC" id="3Ftr4R6BHaR" role="lGtFl">
-        <node concept="1TJgyi" id="gbs4N3m" role="3l_iP">
-          <property role="TrG5h" value="type" />
-          <property role="IQ2nx" value="1111793807574" />
-          <ref role="AX2Wp" node="gbs1dxE" resolve="ValueType" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="gbs8ljn">
@@ -372,36 +358,15 @@
     <property role="TrG5h" value="ValueType" />
     <property role="3F6X1D" value="1111792867434" />
     <ref role="1H5jkz" node="3Ftr4R6BFHt" resolve="Quantity" />
-    <node concept="2JgGob" id="3Ftr4R6BFHs" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="gbs1dxE" role="3lCyv">
-        <property role="3lZH7k" value="hrlZj6Q/derive_from_internal_value" />
-        <property role="TrG5h" value="ValueType" />
-        <property role="3F6X1D" value="1111792867434" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <ref role="Qgau1" node="gbs1fmB" />
-        <node concept="M4N5e" id="gbs1fmB" role="M5hS2">
-          <property role="1uS6qv" value="Quantity" />
-          <property role="1uS6qo" value="QUANTITY" />
-        </node>
-        <node concept="M4N5e" id="gbs1lSA" role="M5hS2">
-          <property role="1uS6qv" value="Money" />
-          <property role="1uS6qo" value="MONEY" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFHt" role="25R1y">
       <property role="TrG5h" value="Quantity" />
       <property role="1L1pqM" value="QUANTITY" />
       <property role="3tVfz5" value="1111792874919" />
-      <ref role="2wpffI" node="gbs1fmB" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFHu" role="25R1y">
       <property role="TrG5h" value="Money" />
       <property role="1L1pqM" value="MONEY" />
       <property role="3tVfz5" value="1111792901670" />
-      <ref role="2wpffI" node="gbs1lSA" />
     </node>
   </node>
   <node concept="25R3W" id="3Ftr4R6BFHv">

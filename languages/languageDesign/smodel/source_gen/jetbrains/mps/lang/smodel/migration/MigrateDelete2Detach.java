@@ -24,17 +24,19 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import java.util.Objects;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateDelete2Detach extends MigrationScriptBase {
+  private final String description = "migrate node<>.delete";
   public String getCaption() {
-    return "migrate node<>.delete";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -87,16 +89,16 @@ public class MigrateDelete2Detach extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_vn1hs7_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_vn1hs7_a0e_0 = new EditableFilteringScope(scope_vn1hs7_a0e);
+      SearchScope scope_vn1hs7_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_vn1hs7_a0f_0 = new EditableFilteringScope(scope_vn1hs7_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_vn1hs7_a0e_0;
+          return scope_vn1hs7_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Node_DeleteOperation$kc, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.getPointer(SNodeOperations.getContainingRoot(it)) != new SNodePointer("r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)", "7007208114699959039");
+          return !(Objects.equals(SNodeOperations.getPointer(SNodeOperations.getContainingRoot(it)), new SNodePointer("r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)", "7007208114699959039")));
         }
       }).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
         public DeprecatedConceptNotMigratedProblem select(SNode it) {
@@ -112,13 +114,13 @@ public class MigrateDelete2Detach extends MigrationScriptBase {
   private static SNode _quotation_createNode_vn1hs7_a0a0a6() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1097542784fL, "Node_DeleteOperation"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1097542784fL, "Node_DeleteOperation"), null, null).node();
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_vn1hs7_a0a0g() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x11dfede6ec0L, "Node_DetachOperation"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x11dfede6ec0L, "Node_DetachOperation"), null, null).node();
     return quotedNode_1;
   }
 

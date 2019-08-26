@@ -27,7 +27,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -103,9 +103,9 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
   }
   private static SNode createReferenceMacro_nfdvwd_a0a0e0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ReferenceMacro$nk, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ReferenceMacro$nk, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ReferenceMacro_GetReferent$OO, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.ReferenceMacro_GetReferent$OO, null, null).node();
       if (node0 != null) {
         n2.addChild(LINKS.body$pTP2, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.StatementList$TN)));
       }
@@ -115,7 +115,7 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
   }
   private static SNode createDotExpression_nfdvwd_a0a5a0(SNode node0, SNode node1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DotExpression$6a, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.operand$Lcrr, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
     }

@@ -11,7 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -45,21 +45,20 @@ public class typeof_RunConfigurationCreator_InferenceRule extends AbstractInfere
   private static SNode _quotation_createNode_ijawlg_a1a0c0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, "jetbrains.mps.execution.settings"), 0xd244b712f91001cL, "PersistentConfigurationType"), null, null, false);
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, LINKS.persistentConfiguration$28v0, (SNode) parameter_1);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, "jetbrains.mps.execution.settings"), 0xd244b712f91001cL, "PersistentConfigurationType"), null, null).node();
+    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration"), (SNode) parameter_1);
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_ijawlg_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null).node();
     return quotedNode_1;
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink configuration$Kvew = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x328e81d9f20cd1deL, 0x328e81d9f20cd1dfL, "configuration");
     /*package*/ static final SContainmentLink configurationName$L2S2 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x328e81d9f20cd1deL, 0x758d43e19b4fdb6L, "configurationName");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class CONCEPTS {

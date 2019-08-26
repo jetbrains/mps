@@ -432,14 +432,13 @@
       <node id="1926293835606285046" at="91,65,92,63" concept="5" />
       <node id="1926293835606285046" at="92,63,93,30" concept="5" />
       <node id="1926293835606285046" at="93,30,94,30" concept="5" />
-      <node id="1926293835606285046" at="94,30,95,262" concept="1" />
-      <node id="1926293835606285046" at="95,262,96,246" concept="1" />
-      <node id="1926293835606285046" at="96,246,97,64" concept="1" />
-      <node id="1926293835606285046" at="97,64,98,24" concept="6" />
+      <node id="1926293835606285046" at="94,30,95,234" concept="1" />
+      <node id="1926293835606285046" at="95,234,96,218" concept="1" />
+      <node id="1926293835606285046" at="96,218,97,168" concept="1" />
+      <node id="1926293835606285046" at="97,168,98,24" concept="6" />
       <node id="1741258697586930332" at="102,0,103,0" concept="8" trace="DotExpression$6a" />
       <node id="1741258697586930332" at="103,0,104,0" concept="8" trace="RefactorOperation$jt" />
       <node id="1741258697586930332" at="107,0,108,0" concept="8" trace="operand$Lcrr" />
-      <node id="1741258697586930332" at="108,0,109,0" concept="8" trace="elementType$2gFy" />
       <node id="1926293835606259868" at="54,145,57,9" concept="3" />
       <node id="1741258697586930332" at="41,252,46,5" concept="11" />
       <node id="2660922206084153591" at="65,225,70,7" concept="11" />
@@ -493,11 +492,11 @@
       </scope>
       <scope id="2660922206084153591" at="74,84,88,41" />
       <scope id="2660922206084153591" at="73,0,90,0" />
+      <unit id="1741258697586930332" at="106,0,109,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$LINKS" />
       <unit id="1741258697586930332" at="101,0,105,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$CONCEPTS" />
-      <unit id="1741258697586930332" at="106,0,110,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$LINKS" />
       <unit id="1741258697586930337" at="75,136,88,7" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$SMP_Group_wjsnk9_a$1" />
       <unit id="2660922206084153591" at="50,0,91,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu$SMP_Group_wjsnk9_a" />
-      <unit id="1741258697586930332" at="28,0,111,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu" />
+      <unit id="1741258697586930332" at="28,0,110,0" name="jetbrains.mps.console.scripts.editor.RefactorOperation_SubstituteMenu" />
     </file>
   </root>
 </debug-info>

@@ -53,7 +53,6 @@
       <modulePath path="${mps_home}/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/editorlang-runtime/jetbrains.mps.editorlang.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/editor/typesystemIntegration/typesystemIntegration.msd" folder="core.aspects.editor" />
-      <modulePath path="${mps_home}/languages.test/constraints.rulesAndMessages.sandbox/constraints.rulesAndMessages.sandbox.mpl" folder="samples.constraintsRulesAndFeedback" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest.extension/jetbrains.mps.lang.editor.editorTest.extension.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.editorTest/jetbrains.mps.lang.editor.editorTest.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/languages.test/languageDesign/lang.editor.ide.tests/module.msd" folder="core.aspects.editor" />
@@ -417,6 +416,8 @@
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.sandbox/jetbrains.mps.baseLanguage.math.sandbox.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/jetbrains.mps.baseLanguage.math.tests/jetbrains.mps.baseLanguage.math.tests.msd" folder="samples.math" />
       <modulePath path="${mps_home}/samples/math/solutions/pluginSolution/jetbrains.mps.baseLanguage.math.pluginSolution.msd" folder="samples.math" />
+      <modulePath path="${mps_home}/samples/messagesCustomization/languages/messages.customization/messages.customization.mpl" folder="samples.messages" />
+      <modulePath path="${mps_home}/samples/messagesCustomization/solutions/sandbox/messages.sandbox.msd" folder="samples.messages" />
       <modulePath path="${mps_home}/samples/migrations/languages/decl/decl.mpl" folder="samples.migrations.example1" />
       <modulePath path="${mps_home}/samples/migrations/languages/declarations/declarations.mpl" folder="samples.migrations.example2" />
       <modulePath path="${mps_home}/samples/migrations/languages/ref/ref.mpl" folder="samples.migrations.example1" />
@@ -428,7 +429,6 @@
       <modulePath path="${mps_home}/samples/money/jetbrains.mps.baseLanguage.money.mpl" folder="samples.money" />
       <modulePath path="${mps_home}/samples/money/runtimeSolution/jetbrains.mps.baseLanguage.money.runtime.msd" folder="samples.money" />
       <modulePath path="${mps_home}/samples/money/solutions/jetbrains.mps.baseLanguage.money.sandbox/jetbrains.mps.baseLanguage.money.sandbox.msd" folder="samples.money" />
-      <modulePath path="${mps_home}/samples/multiAspectLang/multiAspectLang.mpl" folder="samples.constraintsRulesAndFeedback" />
       <modulePath path="${mps_home}/samples/multiTarget/languages/MultiTarget/MultiTarget.mpl" folder="samples.multiTarget" />
       <modulePath path="${mps_home}/samples/multiTarget/languages/MultiTarget/sandbox/MultiTarget.sandbox.msd" folder="samples.multiTarget" />
       <modulePath path="${mps_home}/samples/multiTarget/languages/jetbrains.mps.samples.TargetBL/jetbrains.mps.samples.TargetBL.mpl" folder="samples.multiTarget" />
@@ -503,8 +503,10 @@
       <modulePath path="${mps_home}/testbench/modules/testBehavior/solutions/UtilSolution/UtilSolution.msd" folder="tests.testBehavior" />
       <modulePath path="${mps_home}/testbench/modules/testClassLoading/languages/L1/L1.mpl" folder="tests.testClassLoading" />
       <modulePath path="${mps_home}/testbench/modules/testClassLoading/languages/L2/L2.mpl" folder="tests.testClassLoading" />
+      <modulePath path="${mps_home}/testbench/modules/testConstraints/languages/constraints.rules.test/constraints.rules.test.mpl" folder="tests.testConstraints" />
       <modulePath path="${mps_home}/testbench/modules/testConstraints/languages/constraints.test/constraints.test.mpl" folder="tests.testConstraints" />
       <modulePath path="${mps_home}/testbench/modules/testConstraints/solutions/TestConstraints/TestConstraints.msd" folder="tests.testConstraints" />
+      <modulePath path="${mps_home}/testbench/modules/testConstraints/solutions/TestRulesConstraints/TestRulesConstraints.msd" folder="tests.testConstraints" />
       <modulePath path="${mps_home}/testbench/modules/testDataFlow/languages/testCustomAnalyzer/testCustomAnalyzer.mpl" folder="tests.testDataflow" />
       <modulePath path="${mps_home}/testbench/modules/testDataFlow/languages/testCustomDataFlow/jetbrains.mps.testCustomDataFlow.mpl" folder="tests.testDataflow" />
       <modulePath path="${mps_home}/testbench/modules/testDataFlow/languages/testExtendingAnalyzer/testExtendingAnalyzer.mpl" folder="tests.testDataflow" />
@@ -569,6 +571,7 @@
       <modulePath path="${mps_home}/testbench/testsolutions/regexp.unittest/jetbrains.mps.baseLanguage.regexp.unittest.msd" folder="core.baseLanguage.regexp" />
       <modulePath path="${mps_home}/testbench/testsolutions/smodel.unittest/jetbrains.mps.lang.smodel.unittest.msd" folder="core.languages.smodel" />
       <modulePath path="${mps_home}/testbench/testsolutions/smodelLanguage_typeTest/smodelLanguage_typetest.msd" folder="core.languages.smodel" />
+      <modulePath path="${mps_home}/testbench/testsolutions/test.test/jetbrains.mps.lang.test.test.msd" folder="core.languages.test" />
       <modulePath path="${mps_home}/testbench/testsolutions/testlangs/editor.formsTests.testLang/jetbrains.mps.lang.editor.formsTests.mpl" folder="core.aspects.editor" />
       <modulePath path="${mps_home}/testbench/testsolutions/testlangs/editor.menus.contextAssistant.extension.testLanguage/jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.mpl" folder="core.aspects.editor.menus.contextAssistant.tests" />
       <modulePath path="${mps_home}/testbench/testsolutions/testlangs/editor.menus.contextAssistant.testLanguage/jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.mpl" folder="core.aspects.editor.menus.contextAssistant.tests" />

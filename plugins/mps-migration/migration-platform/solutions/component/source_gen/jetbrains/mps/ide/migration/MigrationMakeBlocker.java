@@ -11,15 +11,16 @@ import com.intellij.openapi.project.Project;
 public class MigrationMakeBlocker extends AbstractProjectComponent {
   private final IMakeService myMake;
   private final MigrationTrigger myMigrationTrigger;
+  private MigrationBlock.BlockCause myCause = new MigrationBlock.BlockCause("make session is in progress");
 
   private IMakeNotificationListener.Stub myListener = new IMakeNotificationListener.Stub() {
     @Override
     public void sessionOpened(MakeNotification notification) {
-      myMigrationTrigger.blockMigrationsCheck("make session is in progress");
+      myMigrationTrigger.getMigrationBlock().blockMigrationsCheck(myCause);
     }
     @Override
     public void sessionClosed(MakeNotification notification) {
-      myMigrationTrigger.unblockMigrationsCheck();
+      myMigrationTrigger.getMigrationBlock().unblockMigrationsCheck(myCause);
     }
   };
 

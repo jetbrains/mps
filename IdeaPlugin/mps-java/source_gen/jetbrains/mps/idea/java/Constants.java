@@ -4,43 +4,72 @@ package jetbrains.mps.idea.java;
 
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Constants {
   public static final SLanguage baseLanguage = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   public static final SLanguage baseLanguageJavadoc = MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc");
 
   public static class ConceptNames {
-    public static final String Classifier = "jetbrains.mps.baseLanguage.structure.Classifier";
-    public static final String ClassConcept = "jetbrains.mps.baseLanguage.structure.ClassConcept";
-    public static final String Interface = "jetbrains.mps.baseLanguage.structure.Interface";
-    public static final String EnumClass = "jetbrains.mps.baseLanguage.structure.EnumClass";
+    public static final String Classifier = CONCEPTS.Classifier$hJ.getQualifiedName();
+    public static final String ClassConcept = CONCEPTS.ClassConcept$IY.getQualifiedName();
+    public static final String Interface = CONCEPTS.Interface$Kp.getQualifiedName();
+    public static final String EnumClass = CONCEPTS.EnumClass$uy.getQualifiedName();
 
-    public static final String ClassifierType = "jetbrains.mps.baseLanguage.structure.ClassifierType";
-    public static final String StringType = "jetbrains.mps.baseLanguage.structure.StringType";
-    public static final String PrimitiveType = "jetbrains.mps.baseLanguage.structure.PrimitiveType";
-    public static final String UpperBoundType = "jetbrains.mps.baseLanguage.structure.UpperBoundType";
-    public static final String LowerBoundType = "jetbrains.mps.baseLanguage.structure.LowerBoundType";
-    public static final String WildCardType = "jetbrains.mps.baseLanguage.structure.WildCardType";
-    public static final String ArrayType = "jetbrains.mps.baseLanguage.structure.ArrayType";
-    public static final String VariableArityType = "jetbrains.mps.baseLanguage.structure.VariableArityType";
+    public static final String ClassifierType = CONCEPTS.ClassifierType$IZ.getQualifiedName();
+    public static final String StringType = CONCEPTS.StringType$2b.getQualifiedName();
+    public static final String PrimitiveType = CONCEPTS.PrimitiveType$5.getQualifiedName();
+    public static final String UpperBoundType = CONCEPTS.UpperBoundType$r6.getQualifiedName();
+    public static final String LowerBoundType = CONCEPTS.LowerBoundType$Uz.getQualifiedName();
+    public static final String WildCardType = CONCEPTS.WildCardType$29.getQualifiedName();
+    public static final String ArrayType = CONCEPTS.ArrayType$Yv.getQualifiedName();
+    public static final String VariableArityType = CONCEPTS.VariableArityType$jT.getQualifiedName();
 
-    public static final String ConstructorDeclaration = "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration";
-    public static final String BaseMethodDeclaration = "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration";
-    public static final String MethodDeclaration = "jetbrains.mps.baseLanguage.structure.MethodDeclaration";
-    public static final String ParameterDeclaration = "jetbrains.mps.baseLanguage.structure.ParameterDeclaration";
-    public static final String VariableDeclaration = "jetbrains.mps.baseLanguage.structure.VariableDeclaration";
-    public static final String TypeVariableDeclaration = "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration";
-    public static final String TypeVariableReference = "jetbrains.mps.baseLanguage.structure.TypeVariableReference";
-    public static final String FieldDeclaration = "jetbrains.mps.baseLanguage.structure.FieldDeclaration";
-    public static final String EnumConstantDeclaration = "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration";
-    public static final String StaticFieldDeclaration = "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration";
+    public static final String ConstructorDeclaration = CONCEPTS.ConstructorDeclaration$5U.getQualifiedName();
+    public static final String BaseMethodDeclaration = CONCEPTS.BaseMethodDeclaration$RR.getQualifiedName();
+    public static final String MethodDeclaration = CONCEPTS.MethodDeclaration$93.getQualifiedName();
+    public static final String ParameterDeclaration = CONCEPTS.ParameterDeclaration$qU.getQualifiedName();
+    public static final String VariableDeclaration = CONCEPTS.VariableDeclaration$xe.getQualifiedName();
+    public static final String TypeVariableDeclaration = CONCEPTS.TypeVariableDeclaration$Cc.getQualifiedName();
+    public static final String TypeVariableReference = CONCEPTS.TypeVariableReference$vZ.getQualifiedName();
+    public static final String FieldDeclaration = CONCEPTS.FieldDeclaration$Ps.getQualifiedName();
+    public static final String EnumConstantDeclaration = CONCEPTS.EnumConstantDeclaration$ma.getQualifiedName();
+    public static final String StaticFieldDeclaration = CONCEPTS.StaticFieldDeclaration$R5.getQualifiedName();
 
-    public static final String SequenceType = "jetbrains.mps.baseLanguage.collections.structure.SequenceType";
-    public static final String ListType = "jetbrains.mps.baseLanguage.collections.structure.ListType";
-    public static final String SetType = "jetbrains.mps.baseLanguage.collections.structure.SetType";
-    public static final String MapType = "jetbrains.mps.baseLanguage.collections.structure.MapType";
+    public static final String SequenceType = CONCEPTS.SequenceType$n9.getQualifiedName();
+    public static final String ListType = CONCEPTS.ListType$z$.getQualifiedName();
+    public static final String SetType = CONCEPTS.SetType$1N.getQualifiedName();
+    public static final String MapType = CONCEPTS.MapType$2H.getQualifiedName();
 
 
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept UpperBoundType$r6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
+    /*package*/ static final SConcept LowerBoundType$Uz = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
+    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept VariableArityType$jT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept MethodDeclaration$93 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
+    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept SequenceType$n9 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    /*package*/ static final SConcept ListType$z$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept SetType$1N = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    /*package*/ static final SConcept MapType$2H = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
+  }
 }

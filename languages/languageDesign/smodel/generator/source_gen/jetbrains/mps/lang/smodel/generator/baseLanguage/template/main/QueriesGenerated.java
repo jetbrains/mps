@@ -13,6 +13,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.ExpressionStatement__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.AttributeDesignTimeOperations;
 import jetbrains.mps.lang.smodel.behavior.AttributeQualifier__BehaviorDescriptor;
@@ -59,7 +60,7 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.behavior.generator.template.util.Constants;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.baseLanguage.behavior.ExpressionStatement__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.behavior.Node_ConceptMethodCall__BehaviorDescriptor;
@@ -170,15 +171,18 @@ public class QueriesGenerated {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$X4R8), CONCEPTS.EnumOperation$VK);
   }
   public static boolean rule_Condition_48_2(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0), CONCEPTS.EnumSwitchExpression$R0);
+    return (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(_context.getNode()) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0), CONCEPTS.EnumSwitchExpression$R0);
   }
   public static boolean rule_Condition_48_3(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0), CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2), CONCEPTS.EnumSwitchExpression$R0);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0), CONCEPTS.EnumSwitchExpression$R0);
   }
   public static boolean rule_Condition_48_4(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD), CONCEPTS.EnumSwitchExpression$R0);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0), CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2), CONCEPTS.EnumSwitchExpression$R0);
   }
   public static boolean rule_Condition_48_5(final BaseMappingRuleContext _context) {
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD), CONCEPTS.EnumSwitchExpression$R0);
+  }
+  public static boolean rule_Condition_48_6(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$EsbK), CONCEPTS.EnumSwitchExpression$R0);
   }
   public static boolean rule_Condition_50_0(final BaseMappingRuleContext _context) {
@@ -870,11 +874,11 @@ public class QueriesGenerated {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.member$COZ0), PROPS.internalValue$bx$m);
   }
   public static Object propertyMacro_GetValue_119_0(final PropertyMacroContext _context) {
-    long v = MetaIdByDeclaration.getLanguageId(as_x583g4_a0a0a0a812(SNodeOperations.getModel(_context.getNode()).getModule(), Language.class)).getHighBits();
+    long v = MetaIdByDeclaration.getLanguageId(as_x583g4_a0a0a0a912(SNodeOperations.getModel(_context.getNode()).getModule(), Language.class)).getHighBits();
     return "0x" + Long.toHexString(v) + 'L';
   }
   public static Object propertyMacro_GetValue_119_1(final PropertyMacroContext _context) {
-    long v = MetaIdByDeclaration.getLanguageId(as_x583g4_a0a0a0a912(SNodeOperations.getModel(_context.getNode()).getModule(), Language.class)).getLowBits();
+    long v = MetaIdByDeclaration.getLanguageId(as_x583g4_a0a0a0a022(SNodeOperations.getModel(_context.getNode()).getModule(), Language.class)).getLowBits();
     return "0x" + Long.toHexString(v) + 'L';
   }
   public static Object propertyMacro_GetValue_119_2(final PropertyMacroContext _context) {
@@ -1159,33 +1163,31 @@ public class QueriesGenerated {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.conceptArgument$63TI) != null);
   }
   public static boolean ifMacro_Condition_48_0(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false)), CONCEPTS.AssignmentExpression$rS);
+    return EnumSwitchQuieries.isInAssignment(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_1(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false)), CONCEPTS.LocalVariableDeclaration$Bf);
+    return EnumSwitchQuieries.isInVarDeclaration(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_2(final IfMacroContext _context) {
-    SNode switchParent = SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false));
-    return SNodeOperations.isInstanceOf(switchParent, CONCEPTS.AssignmentExpression$rS) || SNodeOperations.isInstanceOf(switchParent, CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(switchParent, CONCEPTS.ExpressionStatement$nm);
+    return !(EnumSwitchQuieries.isInReturn(_context.getNode()));
   }
   public static boolean ifMacro_Condition_48_3(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode()))), CONCEPTS.ReturnStatement$SF);
+    return EnumSwitchQuieries.isInReturn(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_4(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false)), CONCEPTS.ExpressionStatement$nm);
+    return EnumSwitchQuieries.isInExpression(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_5(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false)), CONCEPTS.AssignmentExpression$rS);
+    return EnumSwitchQuieries.isInAssignment(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_6(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false)), CONCEPTS.LocalVariableDeclaration$Bf);
+    return EnumSwitchQuieries.isInVarDeclaration(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_7(final IfMacroContext _context) {
-    SNode switchParent = SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false));
-    return SNodeOperations.isInstanceOf(switchParent, CONCEPTS.AssignmentExpression$rS) || SNodeOperations.isInstanceOf(switchParent, CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(switchParent, CONCEPTS.ExpressionStatement$nm);
+    return !(EnumSwitchQuieries.isInReturn(_context.getNode()));
   }
   public static boolean ifMacro_Condition_48_8(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false)), CONCEPTS.ReturnStatement$SF);
+    return EnumSwitchQuieries.isInReturn(_context.getNode());
   }
   public static boolean ifMacro_Condition_59_0(final IfMacroContext _context) {
     SNode grandParent = SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode()));
@@ -1767,25 +1769,25 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0);
   }
   public static SNode sourceNodeQuery_48_4(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0), CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0);
   }
   public static SNode sourceNodeQuery_48_5(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0), CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2);
   }
   public static SNode sourceNodeQuery_48_6(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$O0D0);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO);
   }
   public static SNode sourceNodeQuery_48_7(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$O0D0);
   }
   public static SNode sourceNodeQuery_48_8(final SourceSubstituteMacroNodeContext _context) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$EsbK), CONCEPTS.EnumSwitchExpression$R0);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD);
   }
   public static SNode sourceNodeQuery_48_9(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode()))), CONCEPTS.AssignmentExpression$rS), LINKS.lValue$J0D4);
+    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$EsbK), CONCEPTS.EnumSwitchExpression$R0);
   }
   public static SNode sourceNodeQuery_48_10(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0)), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0);
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.AssignmentExpression$rS, false, false), LINKS.lValue$J0D4);
   }
   public static SNode sourceNodeQuery_48_11(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.cast(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0)), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0);
@@ -1794,18 +1796,21 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(SNodeOperations.cast(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0)), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0);
   }
   public static SNode sourceNodeQuery_48_13(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$6WR0);
+    return SLinkOperations.getTarget(SNodeOperations.cast(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0)), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0);
   }
   public static SNode sourceNodeQuery_48_14(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode()))), CONCEPTS.AssignmentExpression$rS), LINKS.lValue$J0D4);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$6WR0);
   }
   public static SNode sourceNodeQuery_48_15(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$6WR0);
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.AssignmentExpression$rS, false, false), LINKS.lValue$J0D4);
   }
   public static SNode sourceNodeQuery_48_16(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$6WR0);
   }
   public static SNode sourceNodeQuery_48_17(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$6WR0);
+  }
+  public static SNode sourceNodeQuery_48_18(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$6WR0);
   }
   public static SNode sourceNodeQuery_50_0(final SourceSubstituteMacroNodeContext _context) {
@@ -2472,8 +2477,7 @@ public class QueriesGenerated {
   }
   public static Iterable<SNode> sourceNodesQuery_48_0(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0), LINKS.statement$WHn8);
-    SNode switchParent = SNodeOperations.getParent(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.EnumSwitchExpression$R0, false, false));
-    if (!(SNodeOperations.isInstanceOf(switchParent, CONCEPTS.ExpressionStatement$nm))) {
+    if (!(EnumSwitchQuieries.isInExpression(_context.getNode()))) {
       return ListSequence.fromList(statements).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0)))));
     }
     return statements;
@@ -2599,10 +2603,10 @@ public class QueriesGenerated {
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
-  private static <T> T as_x583g4_a0a0a0a812(Object o, Class<T> type) {
+  private static <T> T as_x583g4_a0a0a0a912(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_x583g4_a0a0a0a912(Object o, Class<T> type) {
+  private static <T> T as_x583g4_a0a0a0a022(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static boolean isNotEmptyString(String str) {
@@ -2783,10 +2787,10 @@ public class QueriesGenerated {
     /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
     /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
     /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
     /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
     /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SConcept VariableArityType$jT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
     /*package*/ static final SConcept SubconceptCase$mx = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f432L, "jetbrains.mps.lang.smodel.structure.SubconceptCase");
     /*package*/ static final SConcept EnumSwitchCase$37 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase");
     /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");

@@ -28,8 +28,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrateEnumProperties extends MigrationScriptBase {
+  private final String description = "Update enumeration properties";
   public String getCaption() {
-    return "Update enumeration properties";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -41,11 +42,11 @@ public class MigrateEnumProperties extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_tfrsu7_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_tfrsu7_a0d_0 = new EditableFilteringScope(scope_tfrsu7_a0d);
+      SearchScope scope_tfrsu7_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_tfrsu7_a0e_0 = new EditableFilteringScope(scope_tfrsu7_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_tfrsu7_a0d_0;
+          return scope_tfrsu7_a0e_0;
         }
       };
       for (SNode propertyDeclaration : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$c5, false))) {
@@ -56,11 +57,11 @@ public class MigrateEnumProperties extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_tfrsu7_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_tfrsu7_a0e_0 = new EditableFilteringScope(scope_tfrsu7_a0e);
+      SearchScope scope_tfrsu7_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_tfrsu7_a0f_0 = new EditableFilteringScope(scope_tfrsu7_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_tfrsu7_a0e_0;
+          return scope_tfrsu7_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$c5, false)).where(new IWhereFilter<SNode>() {

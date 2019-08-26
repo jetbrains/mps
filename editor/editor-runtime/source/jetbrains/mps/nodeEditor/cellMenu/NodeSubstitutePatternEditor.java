@@ -18,6 +18,7 @@ package jetbrains.mps.nodeEditor.cellMenu;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.MPSColors;
+import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.cells.TextLine;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
@@ -25,7 +26,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JPanel;
 import javax.swing.JWindow;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -192,7 +192,7 @@ public class NodeSubstitutePatternEditor {
 
     public EditorWindow(Window owner) {
       super(owner);
-      myTextLine = new TextLine("");
+      myTextLine = new TextLine("", EditorFontMetricsImpl.DEFAULT_FONT_METRICS_PROVIDER);
       add(myPanel);
     }
 

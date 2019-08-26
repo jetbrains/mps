@@ -70,6 +70,9 @@ import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import jetbrains.mps.generator.impl.query.VariableValueQuery;
 import jetbrains.mps.generator.impl.query.CallArgumentQuery;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -580,15 +583,10 @@ public class QueriesGenerated extends QueryProviderBase {
     ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.actualArgument$$A7L)).addElement(stringLiteral);
     return result;
   }
-  public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
-    SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
-    SLinkOperations.setPointer(result, LINKS.baseMethodDeclaration$$A7i, new SNodePointer("r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)", "1221570218022"));
-    SNode stringLiteral = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
-    SPropertyOperations.assign(stringLiteral, PROPS.value$kiE0, _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString());
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.actualArgument$$A7L)).addElement(stringLiteral);
-    return result;
-  }
   public static Object varMacro_Value_15_0(final TemplateVarContext _context) {
+    return _quotation_createNode_x583g4_a0a641();
+  }
+  public static Object varMacro_Value_15_1(final TemplateVarContext _context) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
     SLinkOperations.setPointer(result, LINKS.baseMethodDeclaration$$A7i, new SNodePointer("r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)", "1221570218022"));
     SNode stringLiteral = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
@@ -1220,7 +1218,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
     vvqMethods.put("9018216227571608988", new VVQ(0));
-    vvqMethods.put("9018216227572712558", new VVQ(1));
+    vvqMethods.put("1225972903833841495", new VVQ(1));
     vvqMethods.put("9018216227571527085", new VVQ(2));
     vvqMethods.put("9018216227568987309", new VVQ(3));
     vvqMethods.put("9018216227568987444", new VVQ(4));
@@ -1246,9 +1244,9 @@ public class QueriesGenerated extends QueryProviderBase {
         case 0:
           return QueriesGenerated.varMacro_Value_0_0(ctx);
         case 1:
-          return QueriesGenerated.varMacro_Value_3_0(ctx);
-        case 2:
           return QueriesGenerated.varMacro_Value_15_0(ctx);
+        case 2:
+          return QueriesGenerated.varMacro_Value_15_1(ctx);
         case 3:
           return QueriesGenerated.varMacro_Value_16_0(ctx);
         case 4:
@@ -1287,6 +1285,17 @@ public class QueriesGenerated extends QueryProviderBase {
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
+  }
+  private static SNode _quotation_createNode_x583g4_a0a641() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    SNode quotedNode_2 = null;
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal"), 0x111fb5bb1f2L, "InternalVariableReference"), null, null).node();
+    quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name"), "nodeToCheck");
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null).node();
+    quotedNode_2.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), SReference.create(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), quotedNode_2, facade.createModelReference("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)"), facade.createNodeId("1068431790191")));
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type"), quotedNode_2);
+    return quotedNode_1;
   }
 
   private static final class CONCEPTS {

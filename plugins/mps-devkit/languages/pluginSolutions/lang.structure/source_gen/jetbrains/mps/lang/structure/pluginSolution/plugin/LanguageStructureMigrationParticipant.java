@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -142,14 +142,14 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
     }
     private static SNode createPureMigrationScript_kz6lmo_a0d0d11(Object p0, Object p1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.PureMigrationScript$YW, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.PureMigrationScript$YW, null, null).node();
       n1.setProperty(PROPS.fromVersion$jLy0, PROPS.fromVersion$jLy0.getType().toString(p0));
       n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p1));
       return n1;
     }
     private static SNode createMoveNodeMigrationPart_kz6lmo_a0a0e11(SNode node0, SNode node1, SNode node2) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MoveNodeMigrationPart$gB, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.MoveNodeMigrationPart$gB, null, null).node();
       if (node0 != null) {
         n1.addChild(LINKS.fromNode$JVN3, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.AbstractNodeReference$T6)));
       }

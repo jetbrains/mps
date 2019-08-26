@@ -9,7 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -31,7 +31,7 @@ public class subtype_ComplexType_SubtypingRule extends SubtypingRule_Runtime imp
   private static SNode _quotation_createNode_roewzw_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, "jetbrains.mps.samples.complex"), 0x11686a0422aL, "ComplexType"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, "jetbrains.mps.samples.complex"), 0x11686a0422aL, "ComplexType"), null, null).node();
     return quotedNode_1;
   }
 

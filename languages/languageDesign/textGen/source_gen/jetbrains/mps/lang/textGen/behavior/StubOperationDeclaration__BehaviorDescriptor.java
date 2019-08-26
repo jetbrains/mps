@@ -16,7 +16,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -77,7 +77,7 @@ public final class StubOperationDeclaration__BehaviorDescriptor extends BaseBHDe
   }
   private static SNode createStatementList_8pk1bs_a0a1a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
     return n1;
   }
 

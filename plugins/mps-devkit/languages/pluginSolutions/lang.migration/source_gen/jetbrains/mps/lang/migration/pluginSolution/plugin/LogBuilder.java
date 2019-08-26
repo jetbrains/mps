@@ -37,7 +37,7 @@ import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -135,7 +135,7 @@ public class LogBuilder {
   }
   private static SNode createRefactoringLog_1o8b1n_a0h0d(Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefactoringLog$eD, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RefactoringLog$eD, null, null).node();
     n1.setProperty(PROPS.virtualPackage$j19t, "refactoring");
     n1.setProperty(PROPS.fromVersion$jArZ, PROPS.fromVersion$jArZ.getType().toString(p0));
     n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p1));
@@ -143,7 +143,7 @@ public class LogBuilder {
   }
   private static SNode createRefactoringPart_1o8b1n_a0a0a4(SNode node0, SNode node1, Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefactoringPart$34, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RefactoringPart$34, null, null).node();
     n1.setProperty(PROPS.participant$hcv6, PROPS.participant$hcv6.getType().toString(p0));
     if (node0 != null) {
       n1.addChild(LINKS.initialState$hcw4, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.BaseConcept$Sz)));
@@ -155,7 +155,7 @@ public class LogBuilder {
   }
   private static SNode createRefactoringOption_1o8b1n_a0a0a0a1a6(Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefactoringOption$Ks, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RefactoringOption$Ks, null, null).node();
     n1.setProperty(PROPS.optionId$o0M0, PROPS.optionId$o0M0.getType().toString(p0));
     n1.setProperty(PROPS.description$akyD, PROPS.description$akyD.getType().toString(p1));
     return n1;

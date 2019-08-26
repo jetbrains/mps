@@ -50,7 +50,7 @@ public class NewModelDialog extends DialogWrapper {
         return factory.create(project, module, new NewModelDialogSettings.SettingsValidator() {
           @Override
           public void validate() {
-            NewModelDialog.this.check();
+            getOKAction().setEnabled(NewModelDialog.this.check());
           }
         });
       }

@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -32,7 +32,7 @@ public class TemplatePersistentPropertyIsSubtypeOfPersistentConfiguration_Subtyp
   }
   private static SNode createPersistentConfigurationType_5pnrvt_a0a1(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.PersistentConfigurationType$e2, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.PersistentConfigurationType$e2, null, null).node();
     n1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
     return n1;
   }

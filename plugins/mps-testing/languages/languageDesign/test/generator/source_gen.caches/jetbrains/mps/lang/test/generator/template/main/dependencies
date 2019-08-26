@@ -62,7 +62,9 @@
     <classNode dependClassName="jetbrains.mps.lang.test.behavior.ScopesTest__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.test.behavior.TestInfo__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.test.generator.template.util.TestsUtil" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
+    <classNode dependClassName="jetbrains.mps.smodel.SReference" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.util.IterableUtil" />
     <classNode dependClassName="jetbrains.mps.util.NameUtil" />
@@ -76,6 +78,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.generator.impl.query.QueryProviderBase" />
   </dependency>
 </dependenciesRoot>

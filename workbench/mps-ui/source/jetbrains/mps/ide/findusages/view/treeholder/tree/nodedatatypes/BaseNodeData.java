@@ -124,6 +124,7 @@ public abstract class BaseNodeData implements IExternalizeable {
   }
 
   public boolean isInvalid() {
+    // FIXME always false
     return getIdObject() == null;
   }
 

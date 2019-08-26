@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
 import jetbrains.mps.newTypesystem.state.Equations;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystemEngine.util.LatticeUtil;
@@ -34,7 +33,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -225,10 +223,5 @@ public class TypesUtil {
     public void performGroupAction(List<SNode> nodes1, List<SNode> nodes2) {
     }
   }
-
-  public static SNode createRuntimeErrorType() {
-    return SModelUtil_new.instantiateConceptDeclaration(SNodeUtil.concept_RuntimeErrorType, null, null, false);
-  }
-
 }
 

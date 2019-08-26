@@ -184,8 +184,12 @@ public class CreateRootNodeGroup extends BaseGroup {
   private boolean shouldAddActionForConcept(SAbstractConcept concept, SModel target, boolean deprecatedOrExperimental) {
     return ModelConstraints.canBeRoot(concept, target)
            && !CreateRootFilterEP.getInstance().shouldBeRemoved(concept)
-           && (getConceptProperties(concept).isDeprecated() ||
-               getConceptProperties(concept).isExperimental() == deprecatedOrExperimental);
+           && (isConceptDeprecatedOrExperimental(concept) == deprecatedOrExperimental);
+  }
+
+  private boolean isConceptDeprecatedOrExperimental(SAbstractConcept concept) {
+    ConceptPresentation properties = getConceptProperties(concept);
+    return properties.isDeprecated() || properties.isExperimental();
   }
 
   private ConceptPresentation getConceptProperties(SAbstractConcept concept) {

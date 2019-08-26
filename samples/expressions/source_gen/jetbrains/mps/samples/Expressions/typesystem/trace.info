@@ -39,8 +39,8 @@
       <node id="2073504467207965653" at="43,68,44,102" concept="6" />
       <node id="2073504467207965653" at="46,30,47,17" concept="6" />
       <node id="2073504467208624598" at="49,71,50,63" concept="5" />
-      <node id="2073504467208624598" at="50,63,51,114" concept="5" />
-      <node id="2073504467208624598" at="51,114,52,14" concept="6" />
+      <node id="2073504467208624598" at="50,63,51,86" concept="5" />
+      <node id="2073504467208624598" at="51,86,52,14" concept="6" />
       <node id="2073504467207965653" at="56,0,57,0" concept="8" trace="left$Nd26" />
       <node id="2073504467207965653" at="57,0,58,0" concept="8" trace="right$Nd34" />
       <node id="2073504467207965653" at="61,0,62,0" concept="8" trace="LogicalSimpleMathExpression$gV" />
@@ -152,11 +152,11 @@
       <node id="2073504467208515079" at="37,68,38,102" concept="6" />
       <node id="2073504467208515079" at="40,30,41,17" concept="6" />
       <node id="2073504467208655871" at="43,71,44,63" concept="5" />
-      <node id="2073504467208655871" at="44,63,45,114" concept="5" />
-      <node id="2073504467208655871" at="45,114,46,14" concept="6" />
+      <node id="2073504467208655871" at="44,63,45,86" concept="5" />
+      <node id="2073504467208655871" at="45,86,46,14" concept="6" />
       <node id="2073504467208655915" at="48,71,49,63" concept="5" />
-      <node id="2073504467208655915" at="49,63,50,114" concept="5" />
-      <node id="2073504467208655915" at="50,114,51,14" concept="6" />
+      <node id="2073504467208655915" at="49,63,50,86" concept="5" />
+      <node id="2073504467208655915" at="50,86,51,14" concept="6" />
       <node id="2073504467208515079" at="55,0,56,0" concept="8" trace="original$lu10" />
       <node id="2073504467208515079" at="59,0,60,0" concept="8" trace="NotSimpleMathExpression$jw" />
       <node id="2073504467208515079" at="60,0,61,0" concept="8" trace="SimpleMathBooleanType$9q" />
@@ -274,8 +274,8 @@
       <node id="2073504467208540237" at="30,68,31,102" concept="6" />
       <node id="2073504467208540237" at="33,30,34,17" concept="6" />
       <node id="2073504467208601023" at="36,71,37,63" concept="5" />
-      <node id="2073504467208601023" at="37,63,38,114" concept="5" />
-      <node id="2073504467208601023" at="38,114,39,14" concept="6" />
+      <node id="2073504467208601023" at="37,63,38,86" concept="5" />
+      <node id="2073504467208601023" at="38,86,39,14" concept="6" />
       <node id="2073504467208540237" at="43,0,44,0" concept="8" trace="SimpleMathBooleanConstant$Pq" />
       <node id="2073504467208540237" at="44,0,45,0" concept="8" trace="SimpleMathBooleanType$9q" />
       <node id="2073504467208540237" at="18,0,20,0" concept="1" trace="typeof_SimpleMathBooleanConstant_InferenceRule#()V" />
@@ -331,8 +331,8 @@
       <node id="2073504467208541211" at="30,68,31,102" concept="6" />
       <node id="2073504467208541211" at="33,30,34,17" concept="6" />
       <node id="2073504467208601170" at="36,71,37,63" concept="5" />
-      <node id="2073504467208601170" at="37,63,38,114" concept="5" />
-      <node id="2073504467208601170" at="38,114,39,14" concept="6" />
+      <node id="2073504467208601170" at="37,63,38,86" concept="5" />
+      <node id="2073504467208601170" at="38,86,39,14" concept="6" />
       <node id="2073504467208541211" at="43,0,44,0" concept="8" trace="SimpleMathIntegerConstant$2z" />
       <node id="2073504467208541211" at="44,0,45,0" concept="8" trace="SimpleMathIntegerType$TX" />
       <node id="2073504467208541211" at="18,0,20,0" concept="1" trace="typeof_SimpleMathIntegerConstant_InferenceRule#()V" />
@@ -445,14 +445,14 @@
       <node id="2073504467208952445" at="82,68,83,102" concept="6" />
       <node id="2073504467208952445" at="85,30,86,17" concept="6" />
       <node id="2073504467210590373" at="88,70,89,63" concept="5" />
-      <node id="2073504467210590373" at="89,63,90,113" concept="5" />
-      <node id="2073504467210590373" at="90,113,91,14" concept="6" />
+      <node id="2073504467210590373" at="89,63,90,85" concept="5" />
+      <node id="2073504467210590373" at="90,85,91,14" concept="6" />
       <node id="2073504467209636580" at="93,70,94,63" concept="5" />
-      <node id="2073504467209636580" at="94,63,95,113" concept="5" />
-      <node id="2073504467209636580" at="95,113,96,14" concept="6" />
+      <node id="2073504467209636580" at="94,63,95,85" concept="5" />
+      <node id="2073504467209636580" at="95,85,96,14" concept="6" />
       <node id="2073504467209636991" at="98,70,99,63" concept="5" />
-      <node id="2073504467209636991" at="99,63,100,113" concept="5" />
-      <node id="2073504467209636991" at="100,113,101,14" concept="6" />
+      <node id="2073504467209636991" at="99,63,100,85" concept="5" />
+      <node id="2073504467209636991" at="100,85,101,14" concept="6" />
       <node id="2073504467208952445" at="105,0,106,0" concept="8" trace="left$Nd26" />
       <node id="2073504467208952445" at="106,0,107,0" concept="8" trace="right$Nd34" />
       <node id="2073504467208952445" at="110,0,111,0" concept="8" trace="operator$brpL" />
@@ -666,8 +666,8 @@
       <node id="2073504467209504627" at="28,27,29,17" concept="6" />
       <node id="2073504467209504627" at="31,39,32,16" concept="6" />
       <node id="2073504467209570045" at="34,66,35,63" concept="5" />
-      <node id="2073504467209570045" at="35,63,36,114" concept="5" />
-      <node id="2073504467209570045" at="36,114,37,14" concept="6" />
+      <node id="2073504467209570045" at="35,63,36,86" concept="5" />
+      <node id="2073504467209570045" at="36,86,37,14" concept="6" />
       <node id="2073504467209504627" at="41,0,42,0" concept="8" trace="SimpleMathNumberType$zZ" />
       <node id="2073504467209504627" at="42,0,43,0" concept="8" trace="SimpleMathElementType$o$" />
       <node id="2073504467209504627" at="17,0,19,0" concept="1" trace="SimpleMathNumberType_subtypeOf_Element_SubtypingRule#()V" />
@@ -720,8 +720,8 @@
       <node id="2073504467209660703" at="28,27,29,17" concept="6" />
       <node id="2073504467209660703" at="31,39,32,16" concept="6" />
       <node id="2073504467209660719" at="34,64,35,63" concept="5" />
-      <node id="2073504467209660719" at="35,63,36,112" concept="5" />
-      <node id="2073504467209660719" at="36,112,37,14" concept="6" />
+      <node id="2073504467209660719" at="35,63,36,84" concept="5" />
+      <node id="2073504467209660719" at="36,84,37,14" concept="6" />
       <node id="2073504467209660703" at="41,0,42,0" concept="8" trace="SimpleMathLongType$jS" />
       <node id="2073504467209660703" at="42,0,43,0" concept="8" trace="SimpleMathFloatType$Lj" />
       <node id="2073504467209660703" at="17,0,19,0" concept="1" trace="SimpleMathLongType_subtypeOf_Float_SubtypingRule#()V" />
@@ -783,8 +783,8 @@
       <node id="2073504467209943151" at="30,68,31,102" concept="6" />
       <node id="2073504467209943151" at="33,30,34,17" concept="6" />
       <node id="2073504467209943740" at="36,68,37,63" concept="5" />
-      <node id="2073504467209943740" at="37,63,38,111" concept="5" />
-      <node id="2073504467209943740" at="38,111,39,14" concept="6" />
+      <node id="2073504467209943740" at="37,63,38,83" concept="5" />
+      <node id="2073504467209943740" at="38,83,39,14" concept="6" />
       <node id="2073504467209943151" at="43,0,44,0" concept="8" trace="SimpleMathLongConstant$ut" />
       <node id="2073504467209943151" at="44,0,45,0" concept="8" trace="SimpleMathLongType$jS" />
       <node id="2073504467209943151" at="18,0,20,0" concept="1" trace="typeof_SimpleMathLongConstant_InferenceRule#()V" />
@@ -831,8 +831,8 @@
       <node id="2073504467210017720" at="28,27,29,17" concept="6" />
       <node id="2073504467210017720" at="31,39,32,16" concept="6" />
       <node id="2073504467210017736" at="34,63,35,63" concept="5" />
-      <node id="2073504467210017736" at="35,63,36,111" concept="5" />
-      <node id="2073504467210017736" at="36,111,37,14" concept="6" />
+      <node id="2073504467210017736" at="35,63,36,83" concept="5" />
+      <node id="2073504467210017736" at="36,83,37,14" concept="6" />
       <node id="2073504467210017720" at="41,0,42,0" concept="8" trace="SimpleMathIntegerType$TX" />
       <node id="2073504467210017720" at="42,0,43,0" concept="8" trace="SimpleMathLongType$jS" />
       <node id="2073504467210017720" at="17,0,19,0" concept="1" trace="SimpleMathIntegerType_subtypeOf_Long_SubtypingRule#()V" />
@@ -895,14 +895,14 @@
       <node id="2073504467210335750" at="110,99,111,56" concept="6" />
       <node id="2073504467210323425" at="114,71,115,59" concept="2" />
       <node id="2073504467210323657" at="117,70,118,65" concept="5" />
-      <node id="2073504467210323657" at="118,65,119,116" concept="5" />
-      <node id="2073504467210323657" at="119,116,120,16" concept="6" />
+      <node id="2073504467210323657" at="118,65,119,88" concept="5" />
+      <node id="2073504467210323657" at="119,88,120,16" concept="6" />
       <node id="2073504467210324235" at="122,70,123,65" concept="5" />
-      <node id="2073504467210324235" at="123,65,124,116" concept="5" />
-      <node id="2073504467210324235" at="124,116,125,16" concept="6" />
+      <node id="2073504467210324235" at="123,65,124,88" concept="5" />
+      <node id="2073504467210324235" at="124,88,125,16" concept="6" />
       <node id="2073504467210335748" at="127,69,128,65" concept="5" />
-      <node id="2073504467210335748" at="128,65,129,116" concept="5" />
-      <node id="2073504467210335748" at="129,116,130,16" concept="6" />
+      <node id="2073504467210335748" at="128,65,129,88" concept="5" />
+      <node id="2073504467210335748" at="129,88,130,16" concept="6" />
       <node id="2073504467210336004" at="134,80,135,73" concept="2" />
       <node id="2073504467210336004" at="135,73,136,74" concept="2" />
       <node id="2073504467210336004" at="136,74,137,40" concept="2" />
@@ -916,20 +916,20 @@
       <node id="3453667744252263631" at="148,132,149,241" concept="6" />
       <node id="2073504467210336004" at="152,71,153,59" concept="2" />
       <node id="2073504467210336005" at="155,68,156,65" concept="5" />
-      <node id="2073504467210336005" at="156,65,157,114" concept="5" />
-      <node id="2073504467210336005" at="157,114,158,16" concept="6" />
+      <node id="2073504467210336005" at="156,65,157,86" concept="5" />
+      <node id="2073504467210336005" at="157,86,158,16" concept="6" />
       <node id="2073504467210336013" at="160,68,161,65" concept="5" />
-      <node id="2073504467210336013" at="161,65,162,114" concept="5" />
-      <node id="2073504467210336013" at="162,114,163,16" concept="6" />
+      <node id="2073504467210336013" at="161,65,162,86" concept="5" />
+      <node id="2073504467210336013" at="162,86,163,16" concept="6" />
       <node id="2073504467210336011" at="165,67,166,65" concept="5" />
-      <node id="2073504467210336011" at="166,65,167,114" concept="5" />
-      <node id="2073504467210336011" at="167,114,168,16" concept="6" />
+      <node id="2073504467210336011" at="166,65,167,86" concept="5" />
+      <node id="2073504467210336011" at="167,86,168,16" concept="6" />
       <node id="3453667744252263636" at="170,70,171,65" concept="5" />
-      <node id="3453667744252263636" at="171,65,172,113" concept="5" />
-      <node id="3453667744252263636" at="172,113,173,16" concept="6" />
+      <node id="3453667744252263636" at="171,65,172,85" concept="5" />
+      <node id="3453667744252263636" at="172,85,173,16" concept="6" />
       <node id="3453667744252263641" at="175,72,176,65" concept="5" />
-      <node id="3453667744252263641" at="176,65,177,113" concept="5" />
-      <node id="3453667744252263641" at="177,113,178,16" concept="6" />
+      <node id="3453667744252263641" at="176,65,177,85" concept="5" />
+      <node id="3453667744252263641" at="177,85,178,16" concept="6" />
       <node id="2073504467210336494" at="182,80,183,74" concept="2" />
       <node id="2073504467210336494" at="183,74,184,75" concept="2" />
       <node id="2073504467210336494" at="184,75,185,40" concept="2" />
@@ -943,20 +943,20 @@
       <node id="3453667744252256226" at="196,132,197,243" concept="6" />
       <node id="2073504467210336494" at="200,71,201,59" concept="2" />
       <node id="2073504467210336495" at="203,69,204,65" concept="5" />
-      <node id="2073504467210336495" at="204,65,205,115" concept="5" />
-      <node id="2073504467210336495" at="205,115,206,16" concept="6" />
+      <node id="2073504467210336495" at="204,65,205,87" concept="5" />
+      <node id="2073504467210336495" at="205,87,206,16" concept="6" />
       <node id="2073504467210336503" at="208,69,209,65" concept="5" />
-      <node id="2073504467210336503" at="209,65,210,115" concept="5" />
-      <node id="2073504467210336503" at="210,115,211,16" concept="6" />
+      <node id="2073504467210336503" at="209,65,210,87" concept="5" />
+      <node id="2073504467210336503" at="210,87,211,16" concept="6" />
       <node id="3453667744252461015" at="213,68,214,65" concept="5" />
-      <node id="3453667744252461015" at="214,65,215,115" concept="5" />
-      <node id="3453667744252461015" at="215,115,216,16" concept="6" />
+      <node id="3453667744252461015" at="214,65,215,87" concept="5" />
+      <node id="3453667744252461015" at="215,87,216,16" concept="6" />
       <node id="3453667744252254625" at="218,71,219,65" concept="5" />
-      <node id="3453667744252254625" at="219,65,220,114" concept="5" />
-      <node id="3453667744252254625" at="220,114,221,16" concept="6" />
+      <node id="3453667744252254625" at="219,65,220,86" concept="5" />
+      <node id="3453667744252254625" at="220,86,221,16" concept="6" />
       <node id="3453667744252249105" at="223,73,224,65" concept="5" />
-      <node id="3453667744252249105" at="224,65,225,114" concept="5" />
-      <node id="3453667744252249105" at="225,114,226,16" concept="6" />
+      <node id="3453667744252249105" at="224,65,225,86" concept="5" />
+      <node id="3453667744252249105" at="225,86,226,16" concept="6" />
       <node id="2073504467211045081" at="230,80,231,72" concept="2" />
       <node id="2073504467211045081" at="231,72,232,73" concept="2" />
       <node id="2073504467211045081" at="232,73,233,40" concept="2" />
@@ -970,20 +970,20 @@
       <node id="3453667744252267544" at="244,132,245,247" concept="6" />
       <node id="2073504467211045081" at="248,71,249,59" concept="2" />
       <node id="2073504467211045082" at="251,67,252,65" concept="5" />
-      <node id="2073504467211045082" at="252,65,253,113" concept="5" />
-      <node id="2073504467211045082" at="253,113,254,16" concept="6" />
+      <node id="2073504467211045082" at="252,65,253,85" concept="5" />
+      <node id="2073504467211045082" at="253,85,254,16" concept="6" />
       <node id="2073504467211045090" at="256,67,257,65" concept="5" />
-      <node id="2073504467211045090" at="257,65,258,113" concept="5" />
-      <node id="2073504467211045090" at="258,113,259,16" concept="6" />
+      <node id="2073504467211045090" at="257,65,258,85" concept="5" />
+      <node id="2073504467211045090" at="258,85,259,16" concept="6" />
       <node id="2073504467211045088" at="261,66,262,65" concept="5" />
-      <node id="2073504467211045088" at="262,65,263,113" concept="5" />
-      <node id="2073504467211045088" at="263,113,264,16" concept="6" />
+      <node id="2073504467211045088" at="262,65,263,85" concept="5" />
+      <node id="2073504467211045088" at="263,85,264,16" concept="6" />
       <node id="3453667744252267549" at="266,73,267,65" concept="5" />
-      <node id="3453667744252267549" at="267,65,268,116" concept="5" />
-      <node id="3453667744252267549" at="268,116,269,16" concept="6" />
+      <node id="3453667744252267549" at="267,65,268,88" concept="5" />
+      <node id="3453667744252267549" at="268,88,269,16" concept="6" />
       <node id="3453667744252267554" at="271,75,272,65" concept="5" />
-      <node id="3453667744252267554" at="272,65,273,116" concept="5" />
-      <node id="3453667744252267554" at="273,116,274,16" concept="6" />
+      <node id="3453667744252267554" at="272,65,273,88" concept="5" />
+      <node id="3453667744252267554" at="273,88,274,16" concept="6" />
       <node id="2073504467210323425" at="110,0,113,0" concept="4" trace="getOperationType#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467210336004" at="145,0,148,0" concept="4" trace="getOperationType#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467210336004" at="148,0,151,0" concept="4" trace="isApplicable#(Ljetbrains/mps/typesystem/inference/SubtypingManager;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -1198,8 +1198,8 @@
       <node id="2073504467210944275" at="28,27,29,17" concept="6" />
       <node id="2073504467210944275" at="31,39,32,16" concept="6" />
       <node id="2073504467210944554" at="34,65,35,63" concept="5" />
-      <node id="2073504467210944554" at="35,63,36,113" concept="5" />
-      <node id="2073504467210944554" at="36,113,37,14" concept="6" />
+      <node id="2073504467210944554" at="35,63,36,85" concept="5" />
+      <node id="2073504467210944554" at="36,85,37,14" concept="6" />
       <node id="2073504467210944275" at="41,0,42,0" concept="8" trace="SimpleMathFloatType$Lj" />
       <node id="2073504467210944275" at="42,0,43,0" concept="8" trace="SimpleMathNumberType$zZ" />
       <node id="2073504467210944275" at="17,0,19,0" concept="1" trace="SimpleMathFloatType_subtypeOf_Number_SubtypingRule#()V" />
@@ -1261,8 +1261,8 @@
       <node id="2073504467210944707" at="30,68,31,102" concept="6" />
       <node id="2073504467210944707" at="33,30,34,17" concept="6" />
       <node id="2073504467210945308" at="36,69,37,63" concept="5" />
-      <node id="2073504467210945308" at="37,63,38,112" concept="5" />
-      <node id="2073504467210945308" at="38,112,39,14" concept="6" />
+      <node id="2073504467210945308" at="37,63,38,84" concept="5" />
+      <node id="2073504467210945308" at="38,84,39,14" concept="6" />
       <node id="2073504467210944707" at="43,0,44,0" concept="8" trace="SimpleMathFloatConstant$Fa" />
       <node id="2073504467210944707" at="44,0,45,0" concept="8" trace="SimpleMathFloatType$Lj" />
       <node id="2073504467210944707" at="18,0,20,0" concept="1" trace="typeof_SimpleMathFloatConstant_InferenceRule#()V" />

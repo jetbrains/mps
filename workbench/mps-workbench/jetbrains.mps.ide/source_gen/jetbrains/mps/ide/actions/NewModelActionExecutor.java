@@ -88,10 +88,10 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   }
 
   public static NewModelDialogSettings.Factory getDefaultSettingsFactory(SModule module, TreeNode treeNode) {
-    return NewModelDialogDefaultSettings.getFactory(getDefaultNamespaceFor(module), getDefaultStereotypeProvider(treeNode));
+    return getDefaultSettingsFactory(getDefaultNamespaceFor(module), treeNode);
   }
   public static NewModelDialogSettings.Factory getDefaultSettingsFactory(String namespace, TreeNode treeNode) {
-    return NewModelDialogDefaultSettings.getFactory(namespace, getDefaultStereotypeProvider(treeNode));
+    return NewModelDialogDefaultSettings.getFactory(namespace + ".", getDefaultStereotypeProvider(treeNode));
   }
 
   public static String getDefaultNamespaceFor(SModule module) {
@@ -124,7 +124,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   }
 
   public static NewModelDialogSettings.Factory getSettingsFactoryForSubmodel(SModel supermodel) {
-    return NewModelDialogDefaultSettings.getFactory(supermodel.getName().getLongName(), StereotypeProvider.create(supermodel.getName().getStereotype(), true));
+    return NewModelDialogDefaultSettings.getFactory(supermodel.getName().getLongName() + ".", StereotypeProvider.create(supermodel.getName().getStereotype(), true));
   }
 
   private static String getTitle() {

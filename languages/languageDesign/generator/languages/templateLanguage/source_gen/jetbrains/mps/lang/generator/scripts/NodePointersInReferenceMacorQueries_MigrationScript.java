@@ -11,7 +11,7 @@ import jetbrains.mps.lang.smodel.scripts.NodePointerMigrations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -84,7 +84,7 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a0a0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerExpression$DS, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.NodePointerExpression$DS, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.ref$Xkjz, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
     }
@@ -92,7 +92,7 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a1a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerExpression$DS, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.NodePointerExpression$DS, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.ref$Xkjz, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
     }

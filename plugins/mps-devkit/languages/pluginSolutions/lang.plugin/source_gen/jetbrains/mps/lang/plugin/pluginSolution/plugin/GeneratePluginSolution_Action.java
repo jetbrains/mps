@@ -22,7 +22,7 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 
 public class GeneratePluginSolution_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Nodes.Plugin;
@@ -85,7 +85,7 @@ public class GeneratePluginSolution_Action extends BaseAction {
   private static SNode _quotation_createNode_ljjiw0_a0a9a0a0a0a5a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone"), 0x685ef16bc1750e9cL, "StandalonePluginDescriptor"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone"), 0x685ef16bc1750e9cL, "StandalonePluginDescriptor"), null, null).node();
     return quotedNode_1;
   }
 }

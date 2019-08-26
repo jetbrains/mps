@@ -26,8 +26,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class Migrate_ParametrizedIntentions extends MigrationScriptBase {
+  private final String description = "Migrate_ParametrizedIntentions";
   public String getCaption() {
-    return "Migrate_ParametrizedIntentions";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -39,11 +40,11 @@ public class Migrate_ParametrizedIntentions extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_bhj2gw_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_bhj2gw_a0d_0 = new EditableFilteringScope(scope_bhj2gw_a0d);
+      SearchScope scope_bhj2gw_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_bhj2gw_a0e_0 = new EditableFilteringScope(scope_bhj2gw_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_bhj2gw_a0d_0;
+          return scope_bhj2gw_a0e_0;
         }
       };
       Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
@@ -69,11 +70,11 @@ public class Migrate_ParametrizedIntentions extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_bhj2gw_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_bhj2gw_a0e_0 = new EditableFilteringScope(scope_bhj2gw_a0e);
+      SearchScope scope_bhj2gw_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_bhj2gw_a0f_0 = new EditableFilteringScope(scope_bhj2gw_a0f);
       final QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_bhj2gw_a0e_0;
+          return scope_bhj2gw_a0f_0;
         }
       };
       return Sequence.fromClosure(new ISequenceClosure<Problem>() {
@@ -91,7 +92,7 @@ __switch__:
                         assert false : "Internal error";
                         return false;
                       case 2:
-                        this._2__yield_bhj2gw_a0a0d0a0e_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
+                        this._2__yield_bhj2gw_a0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
                           public boolean accept(SNode it) {
                             return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, "jetbrains.mps.lang.intentions"), 0x1925e8184af03861L, "ParameterizedDescriptionBlock"))) && !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, "jetbrains.mps.lang.intentions"), 0x115b81bfaa7L, "DescriptionBlock"))));
                           }
@@ -102,15 +103,15 @@ __switch__:
                           }
                         })).iterator();
                       case 3:
-                        if (!(this._2__yield_bhj2gw_a0a0d0a0e_it.hasNext())) {
+                        if (!(this._2__yield_bhj2gw_a0a0d0a0f_it.hasNext())) {
                           this.__CP__ = 5;
                           break;
                         }
-                        this._2__yield_bhj2gw_a0a0d0a0e = this._2__yield_bhj2gw_a0a0d0a0e_it.next();
+                        this._2__yield_bhj2gw_a0a0d0a0f = this._2__yield_bhj2gw_a0a0d0a0f_it.next();
                         this.__CP__ = 4;
                         break;
                       case 5:
-                        this._6__yield_bhj2gw_b0a0d0a0e_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
+                        this._6__yield_bhj2gw_b0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
                           public boolean accept(SNode it) {
                             return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, "jetbrains.mps.lang.intentions"), 0x1925e8184af310edL, "ParameterizedExecuteBlock"))) && !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, "jetbrains.mps.lang.intentions"), 0x115b82d36d9L, "ExecuteBlock"))));
                           }
@@ -121,20 +122,20 @@ __switch__:
                           }
                         })).iterator();
                       case 7:
-                        if (!(this._6__yield_bhj2gw_b0a0d0a0e_it.hasNext())) {
+                        if (!(this._6__yield_bhj2gw_b0a0d0a0f_it.hasNext())) {
                           this.__CP__ = 1;
                           break;
                         }
-                        this._6__yield_bhj2gw_b0a0d0a0e = this._6__yield_bhj2gw_b0a0d0a0e_it.next();
+                        this._6__yield_bhj2gw_b0a0d0a0f = this._6__yield_bhj2gw_b0a0d0a0f_it.next();
                         this.__CP__ = 8;
                         break;
                       case 6:
                         this.__CP__ = 3;
-                        this.yield(_2__yield_bhj2gw_a0a0d0a0e);
+                        this.yield(_2__yield_bhj2gw_a0a0d0a0f);
                         return true;
                       case 9:
                         this.__CP__ = 7;
-                        this.yield(_6__yield_bhj2gw_b0a0d0a0e);
+                        this.yield(_6__yield_bhj2gw_b0a0d0a0f);
                         return true;
                       case 0:
                         this.__CP__ = 2;
@@ -151,10 +152,10 @@ __switch__:
                   } while (true);
                   return false;
                 }
-                private Problem _2__yield_bhj2gw_a0a0d0a0e;
-                private Iterator<Problem> _2__yield_bhj2gw_a0a0d0a0e_it;
-                private Problem _6__yield_bhj2gw_b0a0d0a0e;
-                private Iterator<Problem> _6__yield_bhj2gw_b0a0d0a0e_it;
+                private Problem _2__yield_bhj2gw_a0a0d0a0f;
+                private Iterator<Problem> _2__yield_bhj2gw_a0a0d0a0f_it;
+                private Problem _6__yield_bhj2gw_b0a0d0a0f;
+                private Iterator<Problem> _6__yield_bhj2gw_b0a0d0a0f_it;
               };
             }
           };

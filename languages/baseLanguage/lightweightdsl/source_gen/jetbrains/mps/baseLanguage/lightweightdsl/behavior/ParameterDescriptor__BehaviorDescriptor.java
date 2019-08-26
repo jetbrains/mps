@@ -24,7 +24,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -117,7 +117,7 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
   }
   private static SNode createMethodParameterInstance_e87i4c_a0a0(SNode node0, SNode node1, Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MethodParameterInstance$yX, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.MethodParameterInstance$yX, null, null).node();
     n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
     n1.setReferenceTarget(LINKS.decl$HZxr, node0);
     if (node1 != null) {

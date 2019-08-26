@@ -21,14 +21,15 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateConceptNodeParameter extends MigrationScriptBase {
+  private final String description = "MigrateConceptNodeParameter";
   public String getCaption() {
-    return "MigrateConceptNodeParameter";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -61,11 +62,11 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
   private Iterable<SNode> getNodesToMigrate(SModule m) {
     Iterable<SNode> nodes;
     {
-      SearchScope scope_q4h85_b0i = CommandUtil.createScope(m);
-      final SearchScope scope_q4h85_b0i_0 = new EditableFilteringScope(scope_q4h85_b0i);
+      SearchScope scope_q4h85_b0j = CommandUtil.createScope(m);
+      final SearchScope scope_q4h85_b0j_0 = new EditableFilteringScope(scope_q4h85_b0j);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_q4h85_b0i_0;
+          return scope_q4h85_b0j_0;
         }
       };
       nodes = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptFunctionParameter_Concept$zb, false)).where(new IWhereFilter<SNode>() {
@@ -84,13 +85,13 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"), null, null).node();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
-      quotedNode_2.addChild(LINKS.operand$Lcrr, SNodeOperations.copyIfNecessary(quotedNode_3));
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
-    quotedNode_4 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x7b0da3c650be8558L, "AsNodeOperation"), null, null, false);
-    quotedNode_2.addChild(LINKS.operation$X4R8, quotedNode_4);
+    quotedNode_4 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x7b0da3c650be8558L, "AsNodeOperation"), null, null).node();
+    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_4);
     return quotedNode_2;
   }
 
@@ -106,6 +107,5 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

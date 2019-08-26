@@ -23,8 +23,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class InferenceRule_OverridesFun extends MigrationScriptBase {
+  private final String description = "InferenceRule_OverridesFun";
   public String getCaption() {
-    return "InferenceRule_OverridesFun";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class InferenceRule_OverridesFun extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_gt4fl_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_gt4fl_a0d_0 = new EditableFilteringScope(scope_gt4fl_a0d);
+      SearchScope scope_gt4fl_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_gt4fl_a0e_0 = new EditableFilteringScope(scope_gt4fl_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_gt4fl_a0d_0;
+          return scope_gt4fl_a0e_0;
         }
       };
       Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
@@ -57,11 +58,11 @@ public class InferenceRule_OverridesFun extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_gt4fl_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_gt4fl_a0e_0 = new EditableFilteringScope(scope_gt4fl_a0e);
+      SearchScope scope_gt4fl_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_gt4fl_a0f_0 = new EditableFilteringScope(scope_gt4fl_a0f);
       final QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_gt4fl_a0e_0;
+          return scope_gt4fl_a0f_0;
         }
       };
       return Sequence.fromClosure(new ISequenceClosure<Problem>() {

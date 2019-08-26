@@ -29,6 +29,9 @@ import jetbrains.mps.refactoring.participant.MoveNodeRefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -99,10 +102,14 @@ public class UpdateDependentModelsRefactoringParticipant extends RefactoringPart
             refactoringSession.registerChange(new Runnable() {
               public void run() {
                 SModel usage = usageRef.resolve(repository);
-                if (usage instanceof SModelInternal && usage instanceof EditableSModel) {
+                if (usage instanceof SModelInternal && usage instanceof EditableSModel && ((SModelInternal) usage).getModelImports().contains(initialState)) {
                   ((SModelInternal) usage).addModelImport(finalState);
                   updateUsages((EditableSModel) usage, initialState, finalState);
                   ((SModelInternal) usage).deleteModelImport(initialState);
+                }
+                SModule targetModule = finalState.resolve(repository).getModule();
+                if (usage.getModule() instanceof AbstractModule && !(new GlobalModuleDependenciesManager(usage.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE).contains(targetModule))) {
+                  ((AbstractModule) usage.getModule()).addDependency(targetModule.getModuleReference(), false);
                 }
               }
             });

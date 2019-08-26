@@ -27,7 +27,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -36,8 +36,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class TransferCustomPackagingToLayout extends MigrationScriptBase {
   private static final Logger LOG = LogManager.getLogger(TransferCustomPackagingToLayout.class);
+  private final String description = "Removes custom packaging from the BuildMps_IdeaPluginContent and add the corresponding elements to the layout";
   public String getCaption() {
-    return "Removes custom packaging from the BuildMps_IdeaPluginContent and add the corresponding elements to the layout";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -49,11 +50,11 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_2skbva_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_2skbva_a0d_0 = new EditableFilteringScope(scope_2skbva_a0d);
+      SearchScope scope_2skbva_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_2skbva_a0e_0 = new EditableFilteringScope(scope_2skbva_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_2skbva_a0d_0;
+          return scope_2skbva_a0e_0;
         }
       };
       for (SNode ideaPlugin : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_IdeaPlugin$X0, false)) {
@@ -154,7 +155,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
 
   private static SNode createBuildMpsLayout_ModuleJars_2skbva_a0a2a0a0(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildMpsLayout_ModuleJars$mB, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.BuildMpsLayout_ModuleJars$mB, null, null).node();
     n1.setReferenceTarget(LINKS.module$5MWZ, node0);
     return n1;
   }
@@ -163,12 +164,12 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafac4c78L, "BuildLayout_Folder"), null, null, false);
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0xbabdfbeee17fe57L, "BuildStringNotEmpty"), null, null, false);
-    quotedNode_4 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d03L, "BuildTextStringPart"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x668c6cfbafac4c78L, "BuildLayout_Folder"), null, null).node();
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0xbabdfbeee17fe57L, "BuildStringNotEmpty"), null, null).node();
+    quotedNode_4 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x440d7ea3b68b7d03L, "BuildTextStringPart"), null, null).node();
     SNodeAccessUtil.setPropertyValue(quotedNode_4, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), (String) parameter_1);
-    quotedNode_3.addChild(LINKS.parts$aVY3, quotedNode_4);
-    quotedNode_2.addChild(LINKS.containerName$Mzv5, quotedNode_3);
+    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts"), quotedNode_4);
+    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName"), quotedNode_3);
     return quotedNode_2;
   }
 
@@ -201,6 +202,5 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
     /*package*/ static final SReferenceLink target$7iJF = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L, 0x37fdb3de482e2b28L, "target");
     /*package*/ static final SReferenceLink plugin$hRNK = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
     /*package*/ static final SContainmentLink containerName$Mzv5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
-    /*package*/ static final SContainmentLink parts$aVY3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 }

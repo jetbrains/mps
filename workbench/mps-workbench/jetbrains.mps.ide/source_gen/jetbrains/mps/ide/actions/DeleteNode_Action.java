@@ -17,13 +17,13 @@ import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.dialogs.DeleteDialog;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -76,9 +76,6 @@ public class DeleteNode_Action extends BaseAction {
     {
       List<Pair<SModel, String>> p = event.getData(MPSDataKeys.VIRTUAL_PACKAGES);
       MapSequence.fromMap(_params).put("packs", p);
-      if (p == null) {
-        return false;
-      }
     }
     return true;
   }
@@ -111,8 +108,22 @@ public class DeleteNode_Action extends BaseAction {
     helper.deleteNodes(safeOption.selected, aspectsOption.selected, true);
   }
   private Iterable<SNode> getAffectedNodes(final Map<String, Object> _params) {
+    Iterable<SNode> list = ((List<SNode>) MapSequence.fromMap(_params).get("nodes"));
+    Iterable<SNode> modifiableNodes = Sequence.fromIterable(list).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return !(check_tbcoj8_a0a0a0a0b0i(it.getModel()));
+      }
+    });
+    if (((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")) == null || ((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")).isEmpty()) {
+      return modifiableNodes;
+    }
+
     Set<Pair<SModel, String>> packs = SetSequence.fromSetWithValues(new HashSet<Pair<SModel, String>>(), ((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")));
-    Iterable<SNode> nodeFromPacks = SetSequence.fromSet(packs).translate(new ITranslator2<Pair<SModel, String>, SNode>() {
+    Iterable<SNode> nodeFromPacks = SetSequence.fromSet(packs).where(new IWhereFilter<Pair<SModel, String>>() {
+      public boolean accept(Pair<SModel, String> it) {
+        return !(it.o1.isReadOnly());
+      }
+    }).translate(new ITranslator2<Pair<SModel, String>, SNode>() {
       public Iterable<SNode> translate(final Pair<SModel, String> pack) {
         return ListSequence.fromList(SModelOperations.roots(((SModel) pack.o1), null)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode node) {
@@ -121,13 +132,9 @@ public class DeleteNode_Action extends BaseAction {
         });
       }
     });
-    return Sequence.fromIterable(nodeFromPacks).union(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(check_tbcoj8_a0a0a0a2a8(it.getModel()));
-      }
-    });
+    return Sequence.fromIterable(nodeFromPacks).union(Sequence.fromIterable(modifiableNodes));
   }
-  private static boolean check_tbcoj8_a0a0a0a2a8(SModel checkedDotOperand) {
+  private static boolean check_tbcoj8_a0a0a0a0b0i(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.isReadOnly();
     }

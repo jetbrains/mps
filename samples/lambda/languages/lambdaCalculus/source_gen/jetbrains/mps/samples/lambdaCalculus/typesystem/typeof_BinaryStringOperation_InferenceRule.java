@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -36,7 +36,7 @@ public class typeof_BinaryStringOperation_InferenceRule extends AbstractInferenc
   private static SNode _quotation_createNode_wf0uj2_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, "jetbrains.mps.samples.lambdaCalculus"), 0x3ee0e3dd7c1afae1L, "StringType"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, "jetbrains.mps.samples.lambdaCalculus"), 0x3ee0e3dd7c1afae1L, "StringType"), null, null).node();
     return quotedNode_1;
   }
 

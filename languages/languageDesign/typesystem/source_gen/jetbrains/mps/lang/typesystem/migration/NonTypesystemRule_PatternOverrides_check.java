@@ -25,8 +25,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBase {
+  private final String description = "Find checking rules that should be refactored";
   public String getCaption() {
-    return "Find checking rules that should be refactored";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -41,11 +42,11 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_wz5m8m_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_wz5m8m_a0e_0 = new EditableFilteringScope(scope_wz5m8m_a0e);
+      SearchScope scope_wz5m8m_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_wz5m8m_a0f_0 = new EditableFilteringScope(scope_wz5m8m_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_wz5m8m_a0e_0;
+          return scope_wz5m8m_a0f_0;
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());

@@ -68,6 +68,10 @@ public abstract class AbstractResultNodeData extends BaseNodeData {
   public final Object getIdObject() {
     if (myCachedIdObject == null) {
       myCachedIdObject = createIdObject();
+      if (isPathTail()) {
+        final int i = System.identityHashCode(myPresentationObject != null ? myPresentationObject : getCaption());
+        myCachedIdObject += '/' + Integer.toHexString(i);
+      }
     }
     return myCachedIdObject;
   }

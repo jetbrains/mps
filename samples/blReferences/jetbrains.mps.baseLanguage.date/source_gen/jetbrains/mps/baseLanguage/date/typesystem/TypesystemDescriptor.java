@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -48,17 +48,17 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     private static SNode createDateType_3ist9o_a0a0a1() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DateType$_S, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.DateType$_S, null, null).node();
       return n1;
     }
     private static SNode createIntegerType_3ist9o_a0b0a1() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.IntegerType$Eo, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.IntegerType$Eo, null, null).node();
       return n1;
     }
     private static SNode createDateType_3ist9o_a0a1b() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DateType$_S, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.DateType$_S, null, null).node();
       return n1;
     }
   }

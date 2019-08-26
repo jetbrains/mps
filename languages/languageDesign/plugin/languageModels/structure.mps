@@ -2353,13 +2353,13 @@
     </node>
     <node concept="25R33" id="3Ftr4R6BFpi" role="25R1y">
       <property role="TrG5h" value="Mac_OS_X" />
-      <property role="1L1pqM" value="Mac OS X" />
+      <property role="1L1pqM" value="IntelliJ IDEA Classic" />
       <property role="3tVfz5" value="1562714432501166201" />
       <ref role="2wpffI" node="1mJS7WEAV1T" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFpj" role="25R1y">
-      <property role="TrG5h" value="Mac_OS_X_10_5_" />
-      <property role="1L1pqM" value="Mac OS X 10.5+" />
+      <property role="TrG5h" value="Mac_OS_X_Plus" />
+      <property role="1L1pqM" value="macOS" />
       <property role="3tVfz5" value="3121818631993380487" />
       <ref role="2wpffI" node="2HiVo5PakU7" />
     </node>

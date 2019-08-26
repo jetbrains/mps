@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class EditorTestCase_TestNode extends MigrationScriptBase {
+  private final String description = "TestNodes inside EditorTestCase";
   public String getCaption() {
-    return "TestNodes inside EditorTestCase";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_wvzb5u_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_wvzb5u_a0d_0 = new EditableFilteringScope(scope_wvzb5u_a0d);
+      SearchScope scope_wvzb5u_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_wvzb5u_a0e_0 = new EditableFilteringScope(scope_wvzb5u_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_wvzb5u_a0d_0;
+          return scope_wvzb5u_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$qk, false)).where(new IWhereFilter<SNode>() {
@@ -72,11 +73,11 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_wvzb5u_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_wvzb5u_a0e_0 = scope_wvzb5u_a0e;
+      SearchScope scope_wvzb5u_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_wvzb5u_a0f_0 = scope_wvzb5u_a0f;
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_wvzb5u_a0e_0;
+          return scope_wvzb5u_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$qk, false)).where(new IWhereFilter<SNode>() {

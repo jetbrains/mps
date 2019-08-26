@@ -88,9 +88,9 @@
       <node id="2141245758541445224" at="39,30,40,17" concept="7" />
       <node id="2141245758541445236" at="42,65,43,63" concept="6" />
       <node id="2141245758541445236" at="43,63,44,30" concept="6" />
-      <node id="2141245758541445236" at="44,30,45,262" concept="2" />
-      <node id="2141245758541445236" at="45,262,46,275" concept="2" />
-      <node id="2141245758541445236" at="46,275,47,24" concept="7" />
+      <node id="2141245758541445236" at="44,30,45,234" concept="2" />
+      <node id="2141245758541445236" at="45,234,46,479" concept="2" />
+      <node id="2141245758541445236" at="46,479,47,24" concept="7" />
       <node id="2141245758541445224" at="51,0,52,0" concept="9" trace="objectType$NJyf" />
       <node id="2141245758541445224" at="52,0,53,0" concept="9" trace="descriptor$ZkDR" />
       <node id="2141245758541445224" at="56,0,57,0" concept="9" trace="ExtensionPointDeclaration$ap" />
@@ -140,16 +140,14 @@
       <node id="3175313036448558253" at="39,80,40,63" concept="6" />
       <node id="3175313036448558253" at="40,63,41,30" concept="6" />
       <node id="3175313036448558253" at="41,30,42,30" concept="6" />
-      <node id="3175313036448558253" at="42,30,43,252" concept="2" />
-      <node id="3175313036448558253" at="43,252,44,265" concept="2" />
-      <node id="3175313036448558253" at="44,265,45,39" concept="2" />
-      <node id="3175313036448558253" at="46,31,47,97" concept="2" />
+      <node id="3175313036448558253" at="42,30,43,224" concept="2" />
+      <node id="3175313036448558253" at="43,224,44,469" concept="2" />
+      <node id="3175313036448558253" at="44,469,45,39" concept="2" />
+      <node id="3175313036448558253" at="46,31,47,201" concept="2" />
       <node id="3175313036448558253" at="48,5,49,24" concept="7" />
       <node id="3175313036448550191" at="53,0,54,0" concept="9" trace="extensionPoint$Ohsw" />
       <node id="3175313036448550191" at="54,0,55,0" concept="9" trace="objectType$NJyf" />
-      <node id="3175313036448550191" at="55,0,56,0" concept="9" trace="classifier$pQ_R" />
-      <node id="3175313036448550191" at="56,0,57,0" concept="9" trace="parameter$dQne" />
-      <node id="3175313036448550191" at="60,0,61,0" concept="9" trace="ExtensionPointType$TB" />
+      <node id="3175313036448550191" at="58,0,59,0" concept="9" trace="ExtensionPointType$TB" />
       <node id="3175313036448550191" at="25,0,27,0" concept="1" trace="ExtensionPointType_supertypes_SubtypingRule#()V" />
       <node id="3175313036448550191" at="27,0,30,0" concept="5" trace="getSubOrSuperTypes#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljava/util/List;" />
       <node id="3175313036448550191" at="30,0,33,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -162,7 +160,7 @@
       <scope id="3175313036448550191" at="30,50,31,42" />
       <scope id="3175313036448550191" at="33,68,34,102" />
       <scope id="3175313036448550191" at="36,27,37,16" />
-      <scope id="3175313036448558253" at="46,31,47,97" />
+      <scope id="3175313036448558253" at="46,31,47,201" />
       <scope id="3175313036448550191" at="25,0,27,0" />
       <scope id="3175313036448550191" at="27,0,30,0">
         <var name="ept" id="3175313036448550191" />
@@ -182,9 +180,9 @@
       <scope id="3175313036448558253" at="39,0,51,0">
         <var name="parameter_1" id="3175313036448558253" />
       </scope>
-      <unit id="3175313036448550191" at="59,0,62,0" name="jetbrains.mps.lang.extension.typesystem.ExtensionPointType_supertypes_SubtypingRule$CONCEPTS" />
-      <unit id="3175313036448550191" at="52,0,58,0" name="jetbrains.mps.lang.extension.typesystem.ExtensionPointType_supertypes_SubtypingRule$LINKS" />
-      <unit id="3175313036448550191" at="24,0,63,0" name="jetbrains.mps.lang.extension.typesystem.ExtensionPointType_supertypes_SubtypingRule" />
+      <unit id="3175313036448550191" at="57,0,60,0" name="jetbrains.mps.lang.extension.typesystem.ExtensionPointType_supertypes_SubtypingRule$CONCEPTS" />
+      <unit id="3175313036448550191" at="52,0,56,0" name="jetbrains.mps.lang.extension.typesystem.ExtensionPointType_supertypes_SubtypingRule$LINKS" />
+      <unit id="3175313036448550191" at="24,0,61,0" name="jetbrains.mps.lang.extension.typesystem.ExtensionPointType_supertypes_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="3175313036448550191" at="36,5,37,94" concept="6" />
@@ -223,21 +221,20 @@
       <node id="3175313036448577254" at="64,30,65,17" concept="7" />
       <node id="3999125756866746589" at="67,85,68,63" concept="6" />
       <node id="3999125756866746589" at="68,63,69,30" concept="6" />
-      <node id="3999125756866746589" at="69,30,70,263" concept="2" />
-      <node id="3999125756866746589" at="70,263,71,101" concept="2" />
-      <node id="3999125756866746589" at="71,101,72,24" concept="7" />
+      <node id="3999125756866746589" at="69,30,70,235" concept="2" />
+      <node id="3999125756866746589" at="70,235,71,213" concept="2" />
+      <node id="3999125756866746589" at="71,213,72,24" concept="7" />
       <node id="3175313036448577269" at="74,93,75,63" concept="6" />
       <node id="3175313036448577269" at="75,63,76,30" concept="6" />
       <node id="3175313036448577269" at="76,30,77,30" concept="6" />
-      <node id="3175313036448577269" at="77,30,78,262" concept="2" />
-      <node id="3175313036448577269" at="78,262,79,39" concept="2" />
-      <node id="3175313036448577269" at="80,31,81,99" concept="2" />
+      <node id="3175313036448577269" at="77,30,78,234" concept="2" />
+      <node id="3175313036448577269" at="78,234,79,39" concept="2" />
+      <node id="3175313036448577269" at="80,31,81,203" concept="2" />
       <node id="3175313036448577269" at="82,5,83,24" concept="7" />
       <node id="3175313036448577254" at="87,0,88,0" concept="9" trace="ExtensionPointType$TB" />
       <node id="3175313036448577254" at="88,0,89,0" concept="9" trace="GetExtensionObjectsOperation$No" />
       <node id="3175313036448577254" at="92,0,93,0" concept="9" trace="extensionPoint$Ohsw" />
       <node id="3175313036448577254" at="93,0,94,0" concept="9" trace="objectType$NJyf" />
-      <node id="3175313036448577254" at="94,0,95,0" concept="9" trace="elementType$2gFy" />
       <node id="3175313036448577254" at="25,0,27,0" concept="1" trace="typeof_GetExtensionObjectsOperation_InferenceRule#()V" />
       <node id="3175313036448577254" at="58,0,61,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3175313036448577254" at="61,0,64,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -259,7 +256,7 @@
       <scope id="3175313036448577254" at="58,50,59,52" />
       <scope id="3175313036448577254" at="61,68,62,102" />
       <scope id="3175313036448577254" at="64,30,65,17" />
-      <scope id="3175313036448577269" at="80,31,81,99" />
+      <scope id="3175313036448577269" at="80,31,81,203" />
       <scope id="3175313036448577254" at="25,0,27,0" />
       <scope id="3175313036448577342" at="30,7,33,381">
         <var name="_info_12389875345" id="3175313036448577342" />
@@ -309,9 +306,9 @@
         <var name="typeCheckingContext" id="3175313036448577254" />
       </scope>
       <unit id="3175313036448577254" at="86,0,90,0" name="jetbrains.mps.lang.extension.typesystem.typeof_GetExtensionObjectsOperation_InferenceRule$CONCEPTS" />
-      <unit id="3175313036448577254" at="91,0,96,0" name="jetbrains.mps.lang.extension.typesystem.typeof_GetExtensionObjectsOperation_InferenceRule$LINKS" />
+      <unit id="3175313036448577254" at="91,0,95,0" name="jetbrains.mps.lang.extension.typesystem.typeof_GetExtensionObjectsOperation_InferenceRule$LINKS" />
       <unit id="3999125756866733643" at="39,56,55,7" name="jetbrains.mps.lang.extension.typesystem.typeof_GetExtensionObjectsOperation_InferenceRule$1" />
-      <unit id="3175313036448577254" at="24,0,97,0" name="jetbrains.mps.lang.extension.typesystem.typeof_GetExtensionObjectsOperation_InferenceRule" />
+      <unit id="3175313036448577254" at="24,0,96,0" name="jetbrains.mps.lang.extension.typesystem.typeof_GetExtensionObjectsOperation_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)/6626851894249712466">
@@ -331,8 +328,8 @@
       <node id="6626851894249712466" at="32,68,33,102" concept="7" />
       <node id="6626851894249712466" at="35,30,36,17" concept="7" />
       <node id="3999125756866684069" at="38,79,39,63" concept="6" />
-      <node id="3999125756866684069" at="39,63,40,111" concept="6" />
-      <node id="3999125756866684069" at="40,111,41,60" concept="2" />
+      <node id="3999125756866684069" at="39,63,40,83" concept="6" />
+      <node id="3999125756866684069" at="40,83,41,60" concept="2" />
       <node id="3999125756866684069" at="41,60,42,14" concept="7" />
       <node id="6626851894249712466" at="46,0,47,0" concept="9" trace="extensionPoint$xzwB" />
       <node id="6626851894249712466" at="47,0,48,0" concept="9" trace="extensionPoint$Ohsw" />

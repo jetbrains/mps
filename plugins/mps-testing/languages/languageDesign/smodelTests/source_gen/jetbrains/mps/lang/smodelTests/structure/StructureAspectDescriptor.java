@@ -28,12 +28,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptReferenceContainerSubConcept = createDescriptorForReferenceContainerSubConcept();
   /*package*/ final ConceptDescriptor myConceptRoot = createDescriptorForRoot();
   /*package*/ final ConceptDescriptor myConceptTestEnum_Container = createDescriptorForTestEnum_Container();
-  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_CustomDefaultValue = new EnumerationDescriptor_TestEnum_CustomDefaultValue();
-  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_CustomIdentifier = new EnumerationDescriptor_TestEnum_CustomIdentifier();
-  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_DeriveFromInternalValue = new EnumerationDescriptor_TestEnum_DeriveFromInternalValue();
-  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_DeriveFromPresentation = new EnumerationDescriptor_TestEnum_DeriveFromPresentation();
-  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_FirstMemberDefaultValue = new EnumerationDescriptor_TestEnum_FirstMemberDefaultValue();
-  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_NoDefaultValue = new EnumerationDescriptor_TestEnum_NoDefaultValue();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_WODefault = new EnumerationDescriptor_TestEnum_WODefault();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_WithDefault = new EnumerationDescriptor_TestEnum_WithDefault();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -90,7 +84,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationTestEnum_CustomDefaultValue, myEnumerationTestEnum_CustomIdentifier, myEnumerationTestEnum_DeriveFromInternalValue, myEnumerationTestEnum_DeriveFromPresentation, myEnumerationTestEnum_FirstMemberDefaultValue, myEnumerationTestEnum_NoDefaultValue, myEnumerationTestEnum_WODefault, myEnumerationTestEnum_WithDefault);
+    return Arrays.asList(myEnumerationTestEnum_WODefault, myEnumerationTestEnum_WithDefault);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {

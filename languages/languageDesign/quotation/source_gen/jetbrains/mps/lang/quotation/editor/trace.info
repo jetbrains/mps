@@ -4015,7 +4015,7 @@
       <node id="6511867472298489813" at="215,80,216,128" concept="9" />
       <node id="6511867472298489813" at="218,86,219,37" concept="9" />
       <node id="6511867472298495262" at="222,78,223,63" concept="8" />
-      <node id="6511867472298495262" at="223,63,224,114" concept="8" />
+      <node id="6511867472298495262" at="223,63,224,86" concept="8" />
       <node id="6511867472298495262" at="225,24,226,127" concept="3" />
       <node id="6511867472298495262" at="227,5,228,14" concept="9" />
       <node id="7984637217096192335" at="232,0,233,0" concept="11" trace="NodeBuilderExpression$Ub" />
@@ -4031,7 +4031,7 @@
       <node id="7984637217096455838" at="159,0,162,0" concept="7" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6511867472298489813" at="204,312,207,11" concept="5" />
       <node id="6511867472298489813" at="218,0,221,0" concept="7" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6511867472298495262" at="224,114,227,5" concept="6" />
+      <node id="6511867472298495262" at="224,86,227,5" concept="6" />
       <node id="6511867472298489813" at="195,0,199,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="7984637217096192335" at="58,252,63,5" concept="14" />
       <node id="7984637217096420263" at="73,264,78,7" concept="14" />

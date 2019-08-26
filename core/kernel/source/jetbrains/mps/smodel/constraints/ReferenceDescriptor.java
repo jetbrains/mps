@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -142,7 +142,7 @@ public abstract class ReferenceDescriptor {
     @NotNull
     public Scope getScope() {
       final ReferentConstraintsContextImpl context =
-          new ReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myReference != null, myLinkTarget);
+          new ReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myLinkTarget);
 
       try {
         if (myScopeProvider != null) {
@@ -170,7 +170,7 @@ public abstract class ReferenceDescriptor {
 
       return myScopeProvider.getPresentation(
           getOperationContext(getModule()),
-          new PresentationReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myReference != null, myLinkTarget,
+          new PresentationReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myLinkTarget,
                                                          targetNode, visible, smartRef, inEditor)
       );
     }

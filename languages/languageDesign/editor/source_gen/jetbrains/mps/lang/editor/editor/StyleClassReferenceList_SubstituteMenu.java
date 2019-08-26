@@ -34,7 +34,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -122,7 +122,7 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createStyleClassReferenceList_cyyevv_a0a0a(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StyleClassReferenceList$9U, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.StyleClassReferenceList$9U, null, null).node();
     for (SNode n : seq0) {
       n1.addChild(LINKS.element$VLR9, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.StyleClassReference$zy)));
     }

@@ -25,6 +25,7 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
+    <import index="jtsr" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.project(MPS.OpenAPI/)" />
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" implicit="true" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
@@ -683,6 +684,12 @@
                   <ref role="3cqZAo" node="1DY7ma73mMc" resolve="targetName" />
                 </node>
               </node>
+              <node concept="2LYoGL" id="3KU19GSwNyS" role="2LYoGw">
+                <ref role="2LYoGK" node="3KU19GSwEj3" resolve="project" />
+                <node concept="2LYoG9" id="3KU19GSwOeW" role="2LYoGN">
+                  <ref role="2LYoGb" node="3KU19GSwNy9" resolve="mpsProject" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -713,6 +720,12 @@
       <node concept="2LYoGR" id="j$XAJDK0Cr" role="3rFUVC">
         <property role="TrG5h" value="options" />
         <node concept="17QB3L" id="j$XAJDK0Cs" role="1tU5fm" />
+      </node>
+      <node concept="2LYoGR" id="3KU19GSwNy9" role="3rFUVC">
+        <property role="TrG5h" value="mpsProject" />
+        <node concept="3uibUv" id="3KU19GSwNya" role="1tU5fm">
+          <ref role="3uigEE" to="jtsr:~Project" resolve="Project" />
+        </node>
       </node>
     </node>
     <node concept="3rFUVD" id="j$XAJDK0Ct" role="3rFUVV">
@@ -862,6 +875,12 @@
                   </node>
                 </node>
               </node>
+              <node concept="2LYoGL" id="3KU19GSwGZi" role="2LYoGw">
+                <ref role="2LYoGK" to="go48:3KU19GSwh4P" resolve="project" />
+                <node concept="2LYoG9" id="3KU19GSwHyX" role="2LYoGN">
+                  <ref role="2LYoGb" node="3KU19GSwEj3" resolve="project" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -894,6 +913,12 @@
         <node concept="10Nm6u" id="7JA3O4XU$tW" role="33vP2m" />
         <node concept="_YKpA" id="7JA3O4XSC3o" role="1tU5fm">
           <node concept="17QB3L" id="7JA3O4XSC3S" role="_ZDj9" />
+        </node>
+      </node>
+      <node concept="2LYoGR" id="3KU19GSwEj3" role="3rFUVC">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="3KU19GSwE_v" role="1tU5fm">
+          <ref role="3uigEE" to="jtsr:~Project" resolve="Project" />
         </node>
       </node>
     </node>

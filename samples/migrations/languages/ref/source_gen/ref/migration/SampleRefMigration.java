@@ -41,8 +41,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class SampleRefMigration extends MigrationScriptBase {
+  private final String description = "migrate the references using smodel API";
   public String getCaption() {
-    return "migrate the references using smodel API";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -61,11 +62,11 @@ public class SampleRefMigration extends MigrationScriptBase {
     });
 
     {
-      SearchScope scope_u457zm_d0d = CommandUtil.createScope(searchScope);
-      final SearchScope scope_u457zm_d0d_0 = new EditableFilteringScope(scope_u457zm_d0d);
+      SearchScope scope_u457zm_d0e = CommandUtil.createScope(searchScope);
+      final SearchScope scope_u457zm_d0e_0 = new EditableFilteringScope(scope_u457zm_d0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_u457zm_d0d_0;
+          return scope_u457zm_d0e_0;
         }
       };
 
@@ -114,11 +115,11 @@ public class SampleRefMigration extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_u457zm_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_u457zm_a0e_0 = new EditableFilteringScope(scope_u457zm_a0e);
+      SearchScope scope_u457zm_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_u457zm_a0f_0 = new EditableFilteringScope(scope_u457zm_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_u457zm_a0e_0;
+          return scope_u457zm_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$GK, false)).select(new ISelector<SNode, NotMigratedNode>() {
@@ -137,11 +138,11 @@ public class SampleRefMigration extends MigrationScriptBase {
   }
   public List<SNode> getDeclData(SModule m) {
     {
-      SearchScope scope_u457zm_a0g = CommandUtil.createScope(m);
-      final SearchScope scope_u457zm_a0g_0 = scope_u457zm_a0g;
+      SearchScope scope_u457zm_a0h = CommandUtil.createScope(m);
+      final SearchScope scope_u457zm_a0h_0 = scope_u457zm_a0h;
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_u457zm_a0g_0;
+          return scope_u457zm_a0h_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationDataAnnotation$gb, false)).where(new IWhereFilter<SNode>() {

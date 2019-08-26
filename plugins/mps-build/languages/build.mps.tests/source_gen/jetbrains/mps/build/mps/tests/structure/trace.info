@@ -23,8 +23,8 @@
       <node id="4005526075820600484" at="12,0,13,0" concept="1" trace="props_BuildModuleTestsPlugin" />
       <node id="4005526075820600484" at="26,51,27,76" concept="3" />
       <node id="4005526075820600484" at="27,76,28,79" concept="0" />
-      <node id="4005526075820600484" at="28,79,29,48" concept="0" />
-      <node id="4005526075820600484" at="29,48,30,54" concept="0" />
+      <node id="4005526075820600484" at="28,79,29,46" concept="0" />
+      <node id="4005526075820600484" at="29,46,30,54" concept="0" />
       <node id="4005526075820600484" at="31,9,32,44" concept="4" />
       <node id="4005526075820600484" at="25,56,31,9" concept="2" />
       <scope id="4005526075820600484" at="26,51,30,54">
@@ -45,8 +45,8 @@
       <node id="4005526075820600484" at="79,121,80,75" concept="0" />
       <node id="4005526075820600484" at="80,75,81,116" concept="0" />
       <node id="4005526075820600484" at="81,116,82,17" concept="0" />
-      <node id="4005526075820600484" at="82,17,83,30" concept="0" />
-      <node id="4005526075820600484" at="83,30,84,22" concept="4" />
+      <node id="4005526075820600484" at="82,17,83,28" concept="0" />
+      <node id="4005526075820600484" at="83,28,84,22" concept="4" />
       <node id="4005526075820600484" at="76,0,86,0" concept="6" trace="createDescriptorForBuildModuleTestsPlugin#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="4005526075820600484" at="48,56,49,47" />
       <scope id="4005526075820600484" at="76,80,84,22">

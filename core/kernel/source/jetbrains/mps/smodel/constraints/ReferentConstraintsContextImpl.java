@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,15 @@
  */
 package jetbrains.mps.smodel.constraints;
 
+import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 
 public class ReferentConstraintsContextImpl implements ReferenceConstraintsContext {
-
-  @Deprecated
-  private boolean myExists;
 
   @NotNull
   private final SNode myContextNode;
@@ -43,37 +40,24 @@ public class ReferentConstraintsContextImpl implements ReferenceConstraintsConte
   private final SAbstractConcept myTargetConcept;
 
   public ReferentConstraintsContextImpl(@NotNull SNode contextNode, @Nullable SContainmentLink containmentLink, int position, @Nullable SNode referenceNode,
-      boolean exists, @NotNull SAbstractConcept targetConcept) {
+      @NotNull SAbstractConcept targetConcept) {
     myContextNode = contextNode;
     myContainmentLink = containmentLink;
     myPosition = position;
     myReferenceNode = referenceNode;
-    myExists = exists;
     myTargetConcept = targetConcept;
   }
 
+  @Nullable
   @Override
   public SContainmentLink getContainmentLink() {
     return myContainmentLink;
-  }
-
-  @Override
-  public boolean isExists() {
-    return myExists;
   }
 
   @NotNull
   @Override
   public SNode getContextNode() {
     return myContextNode;
-  }
-
-  @Override
-  public String getContextRole() {
-    if (myContainmentLink == null) {
-      return null;
-    }
-    return myContainmentLink.getName();
   }
 
   @Override
@@ -101,15 +85,5 @@ public class ReferentConstraintsContextImpl implements ReferenceConstraintsConte
   @Override
   public SAbstractConcept getLinkTargetConcept() {
     return myTargetConcept;
-  }
-
-  @Override
-  public SNode getLinkTarget() {
-    return myTargetConcept.getDeclarationNode();
-  }
-
-  @Override
-  public SNode getContainingLink() {
-    return myContainmentLink == null ? null : myContainmentLink.getDeclarationNode();
   }
 }

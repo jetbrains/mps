@@ -27,8 +27,9 @@ import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import jetbrains.mps.nodeEditor.EditorSettings.MyState;
+import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
-import jetbrains.mps.nodeEditor.cells.TextLine;
+import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -75,7 +76,7 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
   private boolean myPresentationMode;
   private int myPresentationModeFontSize = 24;
   private Font myDefaultEditorFont;
-  private int mySpaceWidth = -1;
+  private EditorFontMetrics myFontMetrics;
 
   public EditorSettings(EditorColorsManager colorsManager, UISettings uiSettings) {
     myColorsManager = colorsManager;
@@ -290,13 +291,14 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
   }
 
   public int getSpacesWidth(int size) {
-    if (mySpaceWidth == -1) {
-      TextLine textLine = new TextLine(" ");
-      textLine.relayout();
-      mySpaceWidth = textLine.getWidth();
-    }
+    return getDefaultEditorFontMetrics().getWidth(' ', size);
+  }
 
-    return mySpaceWidth * size;
+  public EditorFontMetrics getDefaultEditorFontMetrics() {
+    if (myFontMetrics == null) {
+      myFontMetrics = EditorFontMetricsImpl.DEFAULT_FONT_METRICS_PROVIDER.getFontMetrics(getFontFamily(), Font.PLAIN, getFontSize());
+    }
+    return myFontMetrics;
   }
 
   public void addEditorSettingsListener(EditorSettingsListener l) {
@@ -342,7 +344,7 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
 
   void updateCachedValue() {
     myDefaultEditorFont = null;
-    mySpaceWidth = -1;
+    myFontMetrics = null;
   }
 
   @Override

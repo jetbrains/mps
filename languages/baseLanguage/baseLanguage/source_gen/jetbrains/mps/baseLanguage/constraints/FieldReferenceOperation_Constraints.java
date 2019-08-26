@@ -52,7 +52,7 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
-            SNode instanceType = TypecheckingFacade.getFromContext().runIsolated(new Supplier<SNode>() {
+            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
               public SNode get() {
                 return TypecheckingFacade.getFromContext().getTypeOf(instance);
               }

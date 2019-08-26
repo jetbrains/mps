@@ -128,7 +128,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
 
     myRepositoryRegistry = init(new SRepositoryRegistry());
     myModuleRepository = init(new MPSModuleRepository(myRepositoryRegistry));
-    init(new SModelRepository(myModuleRepository));
     myClassLoaderManager = init(new ClassLoaderManager(myModuleRepository));
     init(new DebugRegistry());
 

@@ -14,5 +14,7 @@ public class ShowAsIntentions_LangStructure_ActionGroup extends GeneratedActionG
     setIsInternal(false);
     setPopup(false);
     ShowAsIntentions_LangStructure_ActionGroup.this.addAction("jetbrains.mps.lang.structure.pluginSolution.plugin.CreateReferenceConcept_Action");
+    ShowAsIntentions_LangStructure_ActionGroup.this.addAction("jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumMigrationAttribute_Action");
+    ShowAsIntentions_LangStructure_ActionGroup.this.addAction("jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumPropertyMigrationAttribute_Action");
   }
 }

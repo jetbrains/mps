@@ -49,7 +49,7 @@ import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -390,7 +390,7 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createAnnotationInstance_p790zr_a0a4a5a0a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.AnnotationInstance$5z, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.AnnotationInstance$5z, null, null).node();
     n1.setReference(LINKS.annotation$zNxu, SReference.create(LINKS.annotation$zNxu, n1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Override")));
     return n1;
   }

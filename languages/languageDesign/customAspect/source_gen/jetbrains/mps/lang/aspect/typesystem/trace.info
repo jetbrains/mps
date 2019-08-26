@@ -24,68 +24,65 @@
       </scope>
     </file>
     <file name="typeof_AspectMethodDescriptor_InferenceRule.java">
-      <node id="5386558680326206553" at="26,5,27,45" concept="5" />
-      <node id="5386558680326206553" at="27,45,28,202" concept="5" />
-      <node id="5386558680326206553" at="28,202,29,331" concept="2" />
-      <node id="5386558680326206395" at="32,50,33,45" concept="6" />
-      <node id="5386558680326206395" at="35,68,36,102" concept="6" />
-      <node id="5386558680326206395" at="38,30,39,17" concept="6" />
-      <node id="5386558680326206577" at="41,83,42,63" concept="5" />
-      <node id="5386558680326206577" at="42,63,43,30" concept="5" />
+      <node id="5386558680326206553" at="25,5,26,45" concept="5" />
+      <node id="5386558680326206553" at="26,45,27,202" concept="5" />
+      <node id="5386558680326206553" at="27,202,28,331" concept="2" />
+      <node id="5386558680326206395" at="31,50,32,45" concept="6" />
+      <node id="5386558680326206395" at="34,68,35,102" concept="6" />
+      <node id="5386558680326206395" at="37,30,38,17" concept="6" />
+      <node id="5386558680326206577" at="40,83,41,63" concept="5" />
+      <node id="5386558680326206577" at="41,63,42,30" concept="5" />
+      <node id="5386558680326206577" at="42,30,43,30" concept="5" />
       <node id="5386558680326206577" at="43,30,44,30" concept="5" />
-      <node id="5386558680326206577" at="44,30,45,30" concept="5" />
-      <node id="5386558680326206577" at="45,30,46,259" concept="2" />
-      <node id="5386558680326206577" at="46,259,47,246" concept="2" />
-      <node id="5386558680326206577" at="47,246,48,94" concept="2" />
-      <node id="5386558680326206577" at="48,94,49,66" concept="2" />
-      <node id="5386558680326206577" at="49,66,50,246" concept="2" />
-      <node id="5386558680326206577" at="50,246,51,252" concept="2" />
-      <node id="5386558680326206577" at="51,252,52,63" concept="2" />
-      <node id="5386558680326206577" at="52,63,53,24" concept="6" />
-      <node id="5386558680326206395" at="57,0,58,0" concept="7" trace="cncpt$V8vz" />
-      <node id="5386558680326206395" at="58,0,59,0" concept="7" trace="concept$HWFQ" />
-      <node id="5386558680326206395" at="59,0,60,0" concept="7" trace="parameterType$odu6" />
-      <node id="5386558680326206395" at="60,0,61,0" concept="7" trace="resultType$ln42" />
-      <node id="5386558680326206395" at="64,0,65,0" concept="7" trace="AspectMethodDescriptor$X" />
-      <node id="5386558680326206395" at="23,0,25,0" concept="1" trace="typeof_AspectMethodDescriptor_InferenceRule#()V" />
-      <node id="5386558680326206395" at="32,0,35,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="5386558680326206395" at="35,0,38,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="5386558680326206395" at="38,0,41,0" concept="4" trace="overrides#()Z" />
-      <node id="5386558680326206553" at="25,116,30,5" concept="0" />
-      <node id="5386558680326206395" at="25,0,32,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <node id="5386558680326206577" at="41,0,55,0" concept="8" trace="_quotation_createNode_q679gm_a1a0c0a0b#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="5386558680326206395" at="23,56,23,56" />
-      <scope id="5386558680326206395" at="32,50,33,45" />
-      <scope id="5386558680326206395" at="35,68,36,102" />
-      <scope id="5386558680326206395" at="38,30,39,17" />
-      <scope id="5386558680326206395" at="23,0,25,0" />
-      <scope id="5386558680326206553" at="26,5,29,331">
+      <node id="5386558680326206577" at="44,30,45,231" concept="2" />
+      <node id="5386558680326206577" at="45,231,46,218" concept="2" />
+      <node id="5386558680326206577" at="46,218,47,196" concept="2" />
+      <node id="5386558680326206577" at="47,196,48,170" concept="2" />
+      <node id="5386558680326206577" at="48,170,49,218" concept="2" />
+      <node id="5386558680326206577" at="49,218,50,456" concept="2" />
+      <node id="5386558680326206577" at="50,456,51,167" concept="2" />
+      <node id="5386558680326206577" at="51,167,52,24" concept="6" />
+      <node id="5386558680326206395" at="56,0,57,0" concept="7" trace="cncpt$V8vz" />
+      <node id="5386558680326206395" at="60,0,61,0" concept="7" trace="AspectMethodDescriptor$X" />
+      <node id="5386558680326206395" at="22,0,24,0" concept="1" trace="typeof_AspectMethodDescriptor_InferenceRule#()V" />
+      <node id="5386558680326206395" at="31,0,34,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5386558680326206395" at="34,0,37,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="5386558680326206395" at="37,0,40,0" concept="4" trace="overrides#()Z" />
+      <node id="5386558680326206553" at="24,116,29,5" concept="0" />
+      <node id="5386558680326206395" at="24,0,31,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="5386558680326206577" at="40,0,54,0" concept="8" trace="_quotation_createNode_q679gm_a1a0c0a0b#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="5386558680326206395" at="22,56,22,56" />
+      <scope id="5386558680326206395" at="31,50,32,45" />
+      <scope id="5386558680326206395" at="34,68,35,102" />
+      <scope id="5386558680326206395" at="37,30,38,17" />
+      <scope id="5386558680326206395" at="22,0,24,0" />
+      <scope id="5386558680326206553" at="25,5,28,331">
         <var name="_info_12389875345" id="5386558680326206553" />
         <var name="_nodeToCheck_1029348928467" id="5386558680326206553" />
       </scope>
-      <scope id="5386558680326206395" at="32,0,35,0" />
-      <scope id="5386558680326206395" at="35,0,38,0">
+      <scope id="5386558680326206395" at="31,0,34,0" />
+      <scope id="5386558680326206395" at="34,0,37,0">
         <var name="argument" id="5386558680326206395" />
       </scope>
-      <scope id="5386558680326206395" at="38,0,41,0" />
-      <scope id="5386558680326206396" at="25,116,30,5" />
-      <scope id="5386558680326206395" at="25,0,32,0">
+      <scope id="5386558680326206395" at="37,0,40,0" />
+      <scope id="5386558680326206396" at="24,116,29,5" />
+      <scope id="5386558680326206395" at="24,0,31,0">
         <var name="amd" id="5386558680326206395" />
         <var name="status" id="5386558680326206395" />
         <var name="typeCheckingContext" id="5386558680326206395" />
       </scope>
-      <scope id="5386558680326206577" at="41,83,53,24">
+      <scope id="5386558680326206577" at="40,83,52,24">
         <var name="facade" id="5386558680326206577" />
         <var name="quotedNode_2" id="5386558680326206577" />
         <var name="quotedNode_3" id="5386558680326206577" />
         <var name="quotedNode_4" id="5386558680326206577" />
       </scope>
-      <scope id="5386558680326206577" at="41,0,55,0">
+      <scope id="5386558680326206577" at="40,0,54,0">
         <var name="parameter_1" id="5386558680326206577" />
       </scope>
-      <unit id="5386558680326206395" at="63,0,66,0" name="jetbrains.mps.lang.aspect.typesystem.typeof_AspectMethodDescriptor_InferenceRule$CONCEPTS" />
-      <unit id="5386558680326206395" at="56,0,62,0" name="jetbrains.mps.lang.aspect.typesystem.typeof_AspectMethodDescriptor_InferenceRule$LINKS" />
-      <unit id="5386558680326206395" at="22,0,67,0" name="jetbrains.mps.lang.aspect.typesystem.typeof_AspectMethodDescriptor_InferenceRule" />
+      <unit id="5386558680326206395" at="55,0,58,0" name="jetbrains.mps.lang.aspect.typesystem.typeof_AspectMethodDescriptor_InferenceRule$LINKS" />
+      <unit id="5386558680326206395" at="59,0,62,0" name="jetbrains.mps.lang.aspect.typesystem.typeof_AspectMethodDescriptor_InferenceRule$CONCEPTS" />
+      <unit id="5386558680326206395" at="21,0,63,0" name="jetbrains.mps.lang.aspect.typesystem.typeof_AspectMethodDescriptor_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)/6422667311313318807">

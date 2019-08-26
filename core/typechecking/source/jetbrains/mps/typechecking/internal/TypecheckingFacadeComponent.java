@@ -19,12 +19,13 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.backend.DefaultTypecheckingController;
 import jetbrains.mps.typechecking.backend.SharedSessionTypecheckingController;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend;
 import jetbrains.mps.typechecking.backend.TypecheckingController;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.backend.TypecheckingSessionImpl;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.backend.WorkbenchTypecheckingController;
 import org.jetbrains.annotations.NotNull;
 
@@ -78,7 +79,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
                 }
               }
 
-              public TypecheckingController shared(@NotNull TypecheckingSession session) {
+              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session) {
                 return new SharedSessionTypecheckingController(myTypecheckingBackend, session);
               }
             });
@@ -87,14 +88,14 @@ public class TypecheckingFacadeComponent implements CoreComponent {
             // TODO correctly initialize facade for threads other than AWT
             return createFacade(new TypecheckingControllerFactory() {
               public TypecheckingController context() {
-                return new DefaultTypecheckingController(myTypecheckingBackend, Flags.basic());
+                return new DefaultTypecheckingController(myTypecheckingBackend, TypecheckingSession.Flags.basic());
               }
 
               public TypecheckingController isolated(Flags flags) {
                 return new DefaultTypecheckingController(myTypecheckingBackend, flags);
               }
 
-              public TypecheckingController shared(@NotNull TypecheckingSession session) {
+              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session) {
                 return new SharedSessionTypecheckingController(myTypecheckingBackend, session);
               }
             });
@@ -122,7 +123,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
     TypecheckingController isolated(Flags flags);
 
-    TypecheckingController shared(@NotNull TypecheckingSession session);
+    TypecheckingController shared(@NotNull TypecheckingSessionImpl session);
 
   }
 
@@ -158,7 +159,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
     }
 
     @Override
-    protected void overrideSharedController(@NotNull TypecheckingSession session) {
+    protected void overrideSharedController(@NotNull TypecheckingSessionImpl session) {
       myControllerStack.push(myControllerFactory.shared(session));
     }
 

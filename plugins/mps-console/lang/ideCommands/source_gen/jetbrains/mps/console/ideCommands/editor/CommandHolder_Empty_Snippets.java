@@ -26,7 +26,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -177,22 +177,22 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
   }
   private static SNode createBLExpression_vryvy0_a0a0a0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BLExpression$iZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.BLExpression$iZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DotExpression$6a, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DotExpression$6a, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
         {
-          SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.InstancesExpression$OR, null, null, false);
+          SNode n4 = new SNodeBuilder(CONCEPTS.InstancesExpression$OR, null, null).node();
           {
-            SNode n5 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefConcept_Reference$GN, null, null, false);
+            SNode n5 = new SNodeBuilder(CONCEPTS.RefConcept_Reference$GN, null, null).node();
             n5.setReference(LINKS.conceptDeclaration$GmCT, SReference.create(LINKS.conceptDeclaration$GmCT, n5, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
             n4.addChild(LINKS.conceptArg$NvOw, n5);
-            SNode n6 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.QueryParameterList$wL, null, null, false);
+            SNode n6 = new SNodeBuilder(CONCEPTS.QueryParameterList$wL, null, null).node();
             {
-              SNode n7 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.QueryParameterScope$rU, null, null, false);
+              SNode n7 = new SNodeBuilder(CONCEPTS.QueryParameterScope$rU, null, null).node();
               {
-                SNode n8 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ProjectEditableScope$Jb, null, null, false);
+                SNode n8 = new SNodeBuilder(CONCEPTS.ProjectEditableScope$Jb, null, null).node();
                 n7.addChild(LINKS.value$M3Hb, n8);
               }
               n6.addChild(LINKS.parameter$o_k7, n7);
@@ -200,43 +200,43 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
             n4.addChild(LINKS.parameter$ew30, n6);
           }
           n3.addChild(LINKS.operand$Lcrr, n4);
-          SNode n9 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.WhereOperation$I$, null, null, false);
+          SNode n9 = new SNodeBuilder(CONCEPTS.WhereOperation$I$, null, null).node();
           {
-            SNode n10 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClosureLiteral$zJ, null, null, false);
+            SNode n10 = new SNodeBuilder(CONCEPTS.ClosureLiteral$zJ, null, null).node();
             {
               n10.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
-              SNode n11 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+              SNode n11 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
               {
-                SNode n12 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SingleLineComment$jI, null, null, false);
+                SNode n12 = new SNodeBuilder(CONCEPTS.SingleLineComment$jI, null, null).node();
                 {
-                  SNode n13 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Line$w3, null, null, false);
+                  SNode n13 = new SNodeBuilder(CONCEPTS.Line$w3, null, null).node();
                   {
-                    SNode n14 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                    SNode n14 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                     n14.setProperty(PROPS.value$cK70, "TODO");
                     n13.addChild(LINKS.elements$eRew, n14);
-                    SNode n15 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                    SNode n15 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                     n15.setProperty(PROPS.value$cK70, "specify");
                     n13.addChild(LINKS.elements$eRew, n15);
-                    SNode n16 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                    SNode n16 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                     n16.setProperty(PROPS.value$cK70, "condition");
                     n13.addChild(LINKS.elements$eRew, n16);
                   }
                   n12.addChild(LINKS.text$BOhB, n13);
                 }
                 n11.addChild(LINKS.statement$WHn8, n12);
-                SNode n17 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ExpressionStatement$nm, null, null, false);
+                SNode n17 = new SNodeBuilder(CONCEPTS.ExpressionStatement$nm, null, null).node();
                 {
-                  SNode n18 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BooleanConstant$Ui, null, null, false);
+                  SNode n18 = new SNodeBuilder(CONCEPTS.BooleanConstant$Ui, null, null).node();
                   n18.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(true));
                   n17.addChild(LINKS.expression$WIP0, n18);
                 }
                 n11.addChild(LINKS.statement$WHn8, n17);
               }
               n10.addChild(LINKS.body$DJEC, n11);
-              SNode n19 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null, false);
+              SNode n19 = new SNodeBuilder(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null).node();
               {
                 n19.setProperty(PROPS.name$tAp1, "node");
-                SNode n20 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.UndefinedType$1H, null, null, false);
+                SNode n20 = new SNodeBuilder(CONCEPTS.UndefinedType$1H, null, null).node();
                 n19.addChild(LINKS.type$pLrO, n20);
               }
               n10.addChild(LINKS.parameter$WRt7, n19);
@@ -246,24 +246,24 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
           n3.addChild(LINKS.operation$X4R8, n9);
         }
         n2.addChild(LINKS.operand$Lcrr, n3);
-        SNode n21 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefactorOperation$jt, null, null, false);
+        SNode n21 = new SNodeBuilder(CONCEPTS.RefactorOperation$jt, null, null).node();
         {
-          SNode n22 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClosureLiteral$zJ, null, null, false);
+          SNode n22 = new SNodeBuilder(CONCEPTS.ClosureLiteral$zJ, null, null).node();
           {
             n22.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
-            SNode n23 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+            SNode n23 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
             {
-              SNode n24 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SingleLineComment$jI, null, null, false);
+              SNode n24 = new SNodeBuilder(CONCEPTS.SingleLineComment$jI, null, null).node();
               {
-                SNode n25 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Line$w3, null, null, false);
+                SNode n25 = new SNodeBuilder(CONCEPTS.Line$w3, null, null).node();
                 {
-                  SNode n26 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                  SNode n26 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                   n26.setProperty(PROPS.value$cK70, "TODO");
                   n25.addChild(LINKS.elements$eRew, n26);
-                  SNode n27 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                  SNode n27 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                   n27.setProperty(PROPS.value$cK70, "specify");
                   n25.addChild(LINKS.elements$eRew, n27);
-                  SNode n28 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                  SNode n28 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                   n28.setProperty(PROPS.value$cK70, "action");
                   n25.addChild(LINKS.elements$eRew, n28);
                 }
@@ -272,10 +272,10 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
               n23.addChild(LINKS.statement$WHn8, n24);
             }
             n22.addChild(LINKS.body$DJEC, n23);
-            SNode n29 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null, false);
+            SNode n29 = new SNodeBuilder(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null).node();
             {
               n29.setProperty(PROPS.name$tAp1, "node");
-              SNode n30 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.UndefinedType$1H, null, null, false);
+              SNode n30 = new SNodeBuilder(CONCEPTS.UndefinedType$1H, null, null).node();
               n29.addChild(LINKS.type$pLrO, n30);
             }
             n22.addChild(LINKS.parameter$WRt7, n29);
@@ -290,22 +290,22 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
   }
   private static SNode createBLExpression_vryvy0_a0a0a1a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BLExpression$iZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.BLExpression$iZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ShowExpression$Es, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.ShowExpression$Es, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DotExpression$6a, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
         {
-          SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.InstancesExpression$OR, null, null, false);
+          SNode n4 = new SNodeBuilder(CONCEPTS.InstancesExpression$OR, null, null).node();
           {
-            SNode n5 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefConcept_Reference$GN, null, null, false);
+            SNode n5 = new SNodeBuilder(CONCEPTS.RefConcept_Reference$GN, null, null).node();
             n5.setReference(LINKS.conceptDeclaration$GmCT, SReference.create(LINKS.conceptDeclaration$GmCT, n5, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
             n4.addChild(LINKS.conceptArg$NvOw, n5);
-            SNode n6 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.QueryParameterList$wL, null, null, false);
+            SNode n6 = new SNodeBuilder(CONCEPTS.QueryParameterList$wL, null, null).node();
             {
-              SNode n7 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.QueryParameterScope$rU, null, null, false);
+              SNode n7 = new SNodeBuilder(CONCEPTS.QueryParameterScope$rU, null, null).node();
               {
-                SNode n8 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ProjectEditableScope$Jb, null, null, false);
+                SNode n8 = new SNodeBuilder(CONCEPTS.ProjectEditableScope$Jb, null, null).node();
                 n7.addChild(LINKS.value$M3Hb, n8);
               }
               n6.addChild(LINKS.parameter$o_k7, n7);
@@ -313,24 +313,24 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
             n4.addChild(LINKS.parameter$ew30, n6);
           }
           n3.addChild(LINKS.operand$Lcrr, n4);
-          SNode n9 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.WhereOperation$I$, null, null, false);
+          SNode n9 = new SNodeBuilder(CONCEPTS.WhereOperation$I$, null, null).node();
           {
-            SNode n10 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClosureLiteral$zJ, null, null, false);
+            SNode n10 = new SNodeBuilder(CONCEPTS.ClosureLiteral$zJ, null, null).node();
             {
               n10.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
-              SNode n11 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+              SNode n11 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
               {
-                SNode n12 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SingleLineComment$jI, null, null, false);
+                SNode n12 = new SNodeBuilder(CONCEPTS.SingleLineComment$jI, null, null).node();
                 {
-                  SNode n13 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Line$w3, null, null, false);
+                  SNode n13 = new SNodeBuilder(CONCEPTS.Line$w3, null, null).node();
                   {
-                    SNode n14 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                    SNode n14 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                     n14.setProperty(PROPS.value$cK70, "TODO");
                     n13.addChild(LINKS.elements$eRew, n14);
-                    SNode n15 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                    SNode n15 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                     n15.setProperty(PROPS.value$cK70, "specify");
                     n13.addChild(LINKS.elements$eRew, n15);
-                    SNode n16 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.Word$AM, null, null, false);
+                    SNode n16 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
                     n16.setProperty(PROPS.value$cK70, "condition");
                     n13.addChild(LINKS.elements$eRew, n16);
                   }
@@ -339,10 +339,10 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
                 n11.addChild(LINKS.statement$WHn8, n12);
               }
               n10.addChild(LINKS.body$DJEC, n11);
-              SNode n17 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null, false);
+              SNode n17 = new SNodeBuilder(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null).node();
               {
                 n17.setProperty(PROPS.name$tAp1, "node");
-                SNode n18 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.UndefinedType$1H, null, null, false);
+                SNode n18 = new SNodeBuilder(CONCEPTS.UndefinedType$1H, null, null).node();
                 n17.addChild(LINKS.type$pLrO, n18);
               }
               n10.addChild(LINKS.parameter$WRt7, n17);

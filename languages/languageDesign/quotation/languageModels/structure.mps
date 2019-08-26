@@ -360,6 +360,13 @@
     <property role="3GE5qa" value="quotation.generation" />
     <property role="EcuMT" value="2652588855789590333" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6SzyDXOU94S" role="1TKVEi">
+      <property role="IQ2ns" value="7936339385822777656" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="linkId" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tp25:7jb4LXp8VrG" resolve="ReferenceLinkId" />
+    </node>
     <node concept="1TJgyi" id="2jfSSa$vTsZ" role="1TKVEl">
       <property role="TrG5h" value="targetNodeId" />
       <property role="IQ2nx" value="2652588855789590335" />
@@ -372,7 +379,6 @@
     </node>
     <node concept="1TJgyj" id="2jfSSa$vTsY" role="1TKVEi">
       <property role="20kJfa" value="role" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2652588855789590334" />
       <ref role="20lvS9" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
     </node>
@@ -382,9 +388,15 @@
     <property role="3GE5qa" value="quotation.generation" />
     <property role="EcuMT" value="2038730470042956328" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6SzyDXOU94N" role="1TKVEi">
+      <property role="IQ2ns" value="7936339385822777651" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="linkId" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tp25:7jb4LXp8VrG" resolve="ReferenceLinkId" />
+    </node>
     <node concept="1TJgyj" id="1Lb1CYjFf8D" role="1TKVEi">
       <property role="20kJfa" value="role" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2038730470042956329" />
       <ref role="20lvS9" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
     </node>

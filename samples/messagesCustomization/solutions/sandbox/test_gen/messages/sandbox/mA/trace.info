@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)/3071492597344664118">
+    <file name="A_Test.java">
+      <node id="3071492597344664118" at="32,19,33,25" concept="6" />
+      <node id="3071492597344740098" at="37,79,38,70" concept="1" />
+      <node id="3071492597344740107" at="41,84,42,75" concept="1" />
+      <node id="3071492597344664118" at="47,52,48,19" concept="6" />
+      <node id="3071492597344740098" at="52,81,53,65" concept="4" />
+      <node id="3071492597344740098" at="53,65,54,63" concept="4" />
+      <node id="3071492597344740098" at="54,63,55,254" concept="1" />
+      <node id="3071492597344740107" at="57,86,58,65" concept="4" />
+      <node id="3071492597344740107" at="58,65,59,63" concept="4" />
+      <node id="3071492597344740107" at="59,63,60,322" concept="1" />
+      <node id="3071492597344664118" at="27,0,29,0" concept="5" trace="ourParamCache" />
+      <node id="3071492597344664118" at="29,0,31,0" concept="2" trace="myWithCommandRule" />
+      <node id="3071492597344664118" at="32,0,35,0" concept="0" trace="A_Test#()V" />
+      <node id="3071492597344664118" at="47,0,50,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3071492597344740098" at="36,0,40,0" concept="3" trace="test_NodeUnknownRuleCheck3071492597344740098#()V" />
+      <node id="3071492597344740107" at="40,0,44,0" concept="3" trace="test_ScopeOf_TestConcept_link_3071492597344664119#()V" />
+      <node id="3071492597344740098" at="52,0,57,0" concept="3" trace="test_NodeUnknownRuleCheck3071492597344740098#()V" />
+      <node id="3071492597344740107" at="57,0,62,0" concept="3" trace="test_ScopeOf_TestConcept_link_3071492597344664119#()V" />
+      <scope id="3071492597344664118" at="32,19,33,25" />
+      <scope id="3071492597344740098" at="37,79,38,70" />
+      <scope id="3071492597344740107" at="41,84,42,75" />
+      <scope id="3071492597344664118" at="47,52,48,19" />
+      <scope id="3071492597344664118" at="32,0,35,0" />
+      <scope id="3071492597344664118" at="47,0,50,0">
+        <var name="owner" id="3071492597344664118" />
+      </scope>
+      <scope id="3071492597344740098" at="52,81,55,254">
+        <var name="nodeToCheck" id="3071492597344740098" />
+        <var name="operation" id="3071492597344740098" />
+      </scope>
+      <scope id="3071492597344740107" at="57,86,60,322">
+        <var name="nodeToCheck" id="3071492597344740107" />
+        <var name="operation" id="3071492597344740107" />
+      </scope>
+      <scope id="3071492597344740098" at="36,0,40,0" />
+      <scope id="3071492597344740107" at="40,0,44,0" />
+      <scope id="3071492597344740098" at="52,0,57,0" />
+      <scope id="3071492597344740107" at="57,0,62,0" />
+      <unit id="3071492597344664118" at="45,0,64,0" name="messages.sandbox.mA.A_Test$TestBody" />
+      <unit id="3071492597344664118" at="25,0,65,0" name="messages.sandbox.mA.A_Test" />
+    </file>
+  </root>
+</debug-info>
+

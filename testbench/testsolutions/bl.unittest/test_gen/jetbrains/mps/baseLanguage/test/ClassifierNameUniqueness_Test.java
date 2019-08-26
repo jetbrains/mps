@@ -69,32 +69,32 @@ public class ClassifierNameUniqueness_Test extends BaseTransformationTest {
     public void test_NodeTheNestedTypeCannotHideCheck2654404125187272997() throws Exception {
       SNode nodeToCheck = getRealNodeById("2654404125187259924");
       SNode operation = getRealNodeById("2654404125187272997");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2654404125187259924"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125184154445"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125184154445"), myProject.getRepository()).run();
     }
     public void test_NodeDuplicatedNameOfNestedCheck2654404125187273794() throws Exception {
       SNode nodeToCheck = getRealNodeById("2654404125187273267");
       SNode operation = getRealNodeById("2654404125187273794");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2654404125187273267"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
     }
     public void test_NodeDuplicatedNameOfNestedCheck2654404125187284431() throws Exception {
       SNode nodeToCheck = getRealNodeById("2654404125187273353");
       SNode operation = getRealNodeById("2654404125187284431");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2654404125187273353"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
     }
     public void test_NodeDuplicatedNameOfNestedCheck2654404125187284693() throws Exception {
       SNode nodeToCheck = getRealNodeById("2654404125187273443");
       SNode operation = getRealNodeById("2654404125187284693");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2654404125187273443"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
     }
     public void test_NodeDuplicatedNameOfNestedCheck2654404125187284994() throws Exception {
       SNode nodeToCheck = getRealNodeById("2654404125187273549");
       SNode operation = getRealNodeById("2654404125187284994");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2654404125187273549"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
     }
     public void test_NodeDuplicatedNameOfNestedCheck2654404125187285270() throws Exception {
       SNode nodeToCheck = getRealNodeById("2654404125187273673");
       SNode operation = getRealNodeById("2654404125187285270");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2654404125187273673"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2654404125187259971() throws Exception {
       SNode nodeToCheck = getRealNodeById("2654404125187242909");

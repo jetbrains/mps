@@ -27,7 +27,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -182,7 +182,7 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
   }
   private static SNode createPersistentConfigurationType_4ves9l_a0a3(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.PersistentConfigurationType$e2, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.PersistentConfigurationType$e2, null, null).node();
     n1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
     return n1;
   }

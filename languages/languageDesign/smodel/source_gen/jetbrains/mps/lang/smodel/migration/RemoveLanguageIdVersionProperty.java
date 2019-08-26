@@ -18,8 +18,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class RemoveLanguageIdVersionProperty extends MigrationScriptBase {
+  private final String description = "Remove LanguageId.version Property";
   public String getCaption() {
-    return "Remove LanguageId.version Property";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -31,11 +32,11 @@ public class RemoveLanguageIdVersionProperty extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_8n7xrv_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_8n7xrv_a0d_0 = new EditableFilteringScope(scope_8n7xrv_a0d);
+      SearchScope scope_8n7xrv_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_8n7xrv_a0e_0 = new EditableFilteringScope(scope_8n7xrv_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_8n7xrv_a0d_0;
+          return scope_8n7xrv_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageId$Tn, false)).visitAll(new IVisitor<SNode>() {

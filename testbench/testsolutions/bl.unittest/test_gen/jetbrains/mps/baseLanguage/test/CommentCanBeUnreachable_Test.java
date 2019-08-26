@@ -49,7 +49,7 @@ public class CommentCanBeUnreachable_Test extends BaseTransformationTest {
     public void test_NodeUnusedVariableWarningCheck6923385624928604784() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451227675");
       SNode operation = getRealNodeById("6923385624928604784");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451227675"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck1226936244308() throws Exception {
       SNode nodeToCheck = getRealNodeById("1226936071520");

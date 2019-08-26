@@ -21,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 
 public final class GetHighLevelWatchablesBlock_ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514043ecbd6L, "jetbrains.mps.debugger.java.customViewers.structure.GetHighLevelWatchablesBlock_ConceptFunction");
@@ -92,7 +92,7 @@ public final class GetHighLevelWatchablesBlock_ConceptFunction__BehaviorDescript
   }
   private static SNode createWatchableListType_jjngr0_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.WatchableListType$LM, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.WatchableListType$LM, null, null).node();
     return n1;
   }
 

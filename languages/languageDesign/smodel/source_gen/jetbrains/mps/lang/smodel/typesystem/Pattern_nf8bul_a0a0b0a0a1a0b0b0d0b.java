@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.typesystem;
 
 import jetbrains.mps.lang.pattern.GeneratedMatcher;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class Pattern_nf8bul_a0a0b0a0a1a0b0b0d0b extends GeneratedMatcher {
@@ -12,10 +11,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     super(patternNode, false);
 
 
-    myTopMatcher.association(LINKS.conceptDeclaraton$l1qw, "concept");
+    myTopMatcher.association(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton"), "concept");
   }
 
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaraton$l1qw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton");
-  }
 }

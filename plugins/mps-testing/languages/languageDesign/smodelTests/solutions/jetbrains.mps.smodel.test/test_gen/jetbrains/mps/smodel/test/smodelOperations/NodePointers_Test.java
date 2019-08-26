@@ -32,7 +32,7 @@ import jetbrains.mps.lang.test.runtime.CheckTypesAction;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -278,32 +278,32 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTargetNodeNotFoundInRepositoryCheck535833678906728045() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905710102");
       SNode operation = getRealNodeById("535833678906728045");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("535833678905710102"), MessageStatus.ERROR, new SNodePointer("r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "3138462966838136628"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "3138462966838136628"), myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905879477() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905879473");
       SNode operation = getRealNodeById("535833678905879477");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905879473"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905721739() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905721167");
       SNode operation = getRealNodeById("535833678905721739");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905721167"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905852712() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905852708");
       SNode operation = getRealNodeById("535833678905852712");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905852708"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905854558() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905854554");
       SNode operation = getRealNodeById("535833678905854558");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905854554"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeSystemCheck535833678905860220() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905857278");
       SNode operation = getRealNodeById("535833678905860220");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905857278"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeCheck535833678905910987() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905903293");
@@ -326,7 +326,7 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck535833678905987697() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678905985146");
       SNode operation = getRealNodeById("535833678905987697");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678905985146"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeCheck535833678906005800() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678906001974");
@@ -337,7 +337,7 @@ public class NodePointers_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck535833678906363602() throws Exception {
       SNode nodeToCheck = getRealNodeById("535833678906356748");
       SNode operation = getRealNodeById("535833678906363602");
-      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(getRealNodeById("535833678906356748"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeTypeCheck6012981979751350087() throws Exception {
       SNode nodeToCheck = getRealNodeById("6012981979751334876");
@@ -371,40 +371,40 @@ public class NodePointers_Test extends BaseTransformationTest {
       SNode quotedNode_4 = null;
       SNode quotedNode_5 = null;
       SNode quotedNode_6 = null;
-      quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"), null, null, false);
+      quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"), null, null).node();
       quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic"), "true");
       quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass"), "false");
       quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal"), "false");
       quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "Data");
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca68L, "FieldDeclaration"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca68L, "FieldDeclaration"), null, null).node();
       quotedNode_2.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "MEMBER");
       quotedNode_2.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile"), "false");
       quotedNode_2.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"), "true");
       quotedNode_2.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient"), "false");
-      quotedNode_4 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null, false);
-      quotedNode_2.addChild(LINKS.type$pLrO, quotedNode_4);
-      quotedNode_5 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"), null, null, false);
+      quotedNode_4 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"), null, null).node();
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_4);
+      quotedNode_5 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"), null, null).node();
       quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "member");
-      quotedNode_2.addChild(LINKS.initializer$KgD, quotedNode_5);
-      quotedNode_6 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"), null, null, false);
-      quotedNode_2.addChild(LINKS.visibility$2GiC, quotedNode_6);
-      quotedNode_1.addChild(LINKS.member$oYX5, quotedNode_2);
-      quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"), null, null, false);
-      quotedNode_1.addChild(LINKS.visibility$2GiC, quotedNode_3);
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"), quotedNode_5);
+      quotedNode_6 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"), null, null).node();
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_6);
+      quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"), quotedNode_2);
+      quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"), null, null).node();
+      quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_3);
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_hosvw_a0a0b0e0g33() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
-      quotedNode_1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, quotedNode_1, facade.createModelReference("r:6598b34f-7cc0-4465-ba61-6e5504d2a2be(jetbrains.mps.smodel.test.data)"), facade.createNodeId("535833678908607806")));
+      quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null).node();
+      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("r:6598b34f-7cc0-4465-ba61-6e5504d2a2be(jetbrains.mps.smodel.test.data)"), facade.createNodeId("535833678908607806")));
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_hosvw_a0a0b0i0g33() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
-      quotedNode_1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, quotedNode_1, facade.createModelReference("r:6598b34f-7cc0-4465-ba61-6e5504d2a2be(jetbrains.mps.smodel.test.data)"), facade.createNodeId("535833678908607934")));
+      quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null).node();
+      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("r:6598b34f-7cc0-4465-ba61-6e5504d2a2be(jetbrains.mps.smodel.test.data)"), facade.createNodeId("535833678908607934")));
       return quotedNode_1;
     }
   }
@@ -412,8 +412,5 @@ public class NodePointers_Test extends BaseTransformationTest {
   private static final class LINKS {
     /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
     /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

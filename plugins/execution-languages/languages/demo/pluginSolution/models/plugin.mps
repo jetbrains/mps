@@ -646,6 +646,14 @@
                 <node concept="21ER0p" id="1CVOLqOO24B" role="37wK5m" />
               </node>
             </node>
+            <node concept="2LYoGL" id="3KU19GSx8WA" role="2LYoGw">
+              <ref role="2LYoGK" to="go48:3KU19GSx31$" resolve="project" />
+              <node concept="2YIFZM" id="2wXnDyl82Ub" role="2LYoGN">
+                <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                <node concept="21ER0p" id="2wXnDyl82Vb" role="37wK5m" />
+              </node>
+            </node>
           </node>
         </node>
       </node>

@@ -156,13 +156,13 @@ public class NodeSubstituteChooserHandler {
     if (isSmart) {
       return TypecheckingFacade
                  .getFromContext()
-                 .runIsolated(() -> getSubstituteActions(editorCell, substituteInfo, isSmart, pattern));
+                 .computeIsolated((session) -> getSubstituteActions(editorCell, substituteInfo, isSmart, pattern));
 
     } else {
       return TypecheckingFacade
                  .getFromContext()
-                 .runWithSession(myEditorComponent.getTypecheckingSession(),
-                                 () -> getSubstituteActions(editorCell, substituteInfo, isSmart, pattern));
+                 .computeWithSession(myEditorComponent.getTypecheckingSession(),
+                                     (session) -> getSubstituteActions(editorCell, substituteInfo, isSmart, pattern));
     }
   }
 

@@ -44,18 +44,18 @@
       <node id="1196777970339" at="60,63,61,30" concept="8" />
       <node id="1196777970339" at="61,30,62,30" concept="8" />
       <node id="1196777970339" at="62,30,63,30" concept="8" />
-      <node id="1196777970339" at="63,30,64,275" concept="3" />
-      <node id="1196777970339" at="64,275,65,167" concept="3" />
-      <node id="1196777970339" at="65,167,66,251" concept="3" />
-      <node id="1196777970339" at="66,251,67,61" concept="3" />
-      <node id="1196777970339" at="67,61,68,241" concept="3" />
-      <node id="1196777970339" at="68,241,69,62" concept="3" />
-      <node id="1196777970339" at="69,62,70,24" concept="9" />
+      <node id="1196777970339" at="63,30,64,247" concept="3" />
+      <node id="1196777970339" at="64,247,65,167" concept="3" />
+      <node id="1196777970339" at="65,167,66,223" concept="3" />
+      <node id="1196777970339" at="66,223,67,165" concept="3" />
+      <node id="1196777970339" at="67,165,68,213" concept="3" />
+      <node id="1196777970339" at="68,213,69,166" concept="3" />
+      <node id="1196777970339" at="69,166,70,24" concept="9" />
       <node id="1219331742419" at="72,62,73,63" concept="8" />
       <node id="1219331742419" at="73,63,74,30" concept="8" />
-      <node id="1219331742419" at="74,30,75,252" concept="3" />
-      <node id="1219331742419" at="75,252,76,231" concept="3" />
-      <node id="1219331742419" at="76,231,77,24" concept="9" />
+      <node id="1219331742419" at="74,30,75,224" concept="3" />
+      <node id="1219331742419" at="75,224,76,435" concept="3" />
+      <node id="1219331742419" at="76,435,77,24" concept="9" />
       <node id="1170730182541" at="81,0,82,0" concept="11" trace="ClassConcept$IY" />
       <node id="1170730182541" at="82,0,83,0" concept="11" trace="BaseMethodDeclaration$RR" />
       <node id="1170730182541" at="83,0,84,0" concept="11" trace="Closure$5Q" />
@@ -65,7 +65,6 @@
       <node id="1170730182541" at="90,0,91,0" concept="11" trace="classifier$pQ_R" />
       <node id="1170730182541" at="91,0,92,0" concept="11" trace="fieldType$Pz5$" />
       <node id="1170730182541" at="92,0,93,0" concept="11" trace="classConcept$Hbij" />
-      <node id="1170730182541" at="93,0,94,0" concept="11" trace="instance$qki$" />
       <node id="4723230619342922312" at="20,0,22,0" concept="1" trace="QueriesUtil#()V" />
       <node id="1196275120554" at="34,118,37,5" concept="6" />
       <node id="1219331728661" at="56,0,59,0" concept="12" trace="getJavaLangObject#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -114,9 +113,9 @@
       <scope id="1196274932495" at="30,0,56,0">
         <var name="nodeInsideClosure" id="1196275018539" />
       </scope>
+      <unit id="1170730182541" at="88,0,94,0" name="jetbrains.mps.baseLanguage.generator.java.closures.util.QueriesUtil$LINKS" />
       <unit id="1170730182541" at="80,0,87,0" name="jetbrains.mps.baseLanguage.generator.java.closures.util.QueriesUtil$CONCEPTS" />
-      <unit id="1170730182541" at="88,0,95,0" name="jetbrains.mps.baseLanguage.generator.java.closures.util.QueriesUtil$LINKS" />
-      <unit id="1170730182541" at="19,0,96,0" name="jetbrains.mps.baseLanguage.generator.java.closures.util.QueriesUtil" />
+      <unit id="1170730182541" at="19,0,95,0" name="jetbrains.mps.baseLanguage.generator.java.closures.util.QueriesUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ce(jetbrains.mps.baseLanguage.generator.java.closures.util)/1238940012773">

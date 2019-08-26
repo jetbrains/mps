@@ -12,13 +12,9 @@
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
         <child id="3348158742936976577" name="members" index="25R1y" />
-      </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
       <concept id="6054523464626862044" name="jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple" flags="ng" index="tn0Fv">
         <property id="6054523464626875854" name="value" index="tnX3d" />
@@ -28,20 +24,6 @@
       </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
-      </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <property id="1212080844762" name="hasNoDefaultMember" index="PDuV0" />
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="2992811758677295509" name="jetbrains.mps.lang.structure.structure.AttributeInfo" flags="ng" index="M6xJ_">
         <property id="7588428831955550663" name="role" index="Hh88m" />
@@ -1123,61 +1105,26 @@
       <property role="TrG5h" value="defaultEnumProperty" />
       <property role="IQ2nx" value="476103360378640388" />
       <ref role="AX2Wp" node="3Ftr4R6BFNk" resolve="TestSubstituteEnumDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHd9" role="lGtFl">
-        <node concept="1TJgyi" id="qrtnJnJhw4" role="3l_iP">
-          <property role="IQ2nx" value="476103360378640388" />
-          <property role="TrG5h" value="defaultEnumProperty" />
-          <ref role="AX2Wp" node="qrtnJnJhw7" resolve="TestSubstituteEnumDataType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="3Ftr4R6BHda" role="1TKVEl">
       <property role="TrG5h" value="enumPropertyWithPropertyMenuPart" />
       <property role="IQ2nx" value="476103360382568450" />
       <ref role="AX2Wp" node="3Ftr4R6BFNk" resolve="TestSubstituteEnumDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHdb" role="lGtFl">
-        <node concept="1TJgyi" id="qrtnJnYgw2" role="3l_iP">
-          <property role="IQ2nx" value="476103360382568450" />
-          <property role="TrG5h" value="enumPropertyWithPropertyMenuPart" />
-          <ref role="AX2Wp" node="qrtnJnJhw7" resolve="TestSubstituteEnumDataType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="3Ftr4R6BHdc" role="1TKVEl">
       <property role="TrG5h" value="enumPropertyWithIsValidConstraints" />
       <property role="IQ2nx" value="1588042961787415215" />
       <ref role="AX2Wp" node="3Ftr4R6BFNk" resolve="TestSubstituteEnumDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHdd" role="lGtFl">
-        <node concept="1TJgyi" id="1o9RazLpuEJ" role="3l_iP">
-          <property role="IQ2nx" value="1588042961787415215" />
-          <property role="TrG5h" value="enumPropertyWithIsValidConstraints" />
-          <ref role="AX2Wp" node="qrtnJnJhw7" resolve="TestSubstituteEnumDataType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="3Ftr4R6BHde" role="1TKVEl">
       <property role="TrG5h" value="enumPropertyWithSetter" />
       <property role="IQ2nx" value="1588042961787615457" />
       <ref role="AX2Wp" node="3Ftr4R6BFNk" resolve="TestSubstituteEnumDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHdf" role="lGtFl">
-        <node concept="1TJgyi" id="1o9RazLqfzx" role="3l_iP">
-          <property role="IQ2nx" value="1588042961787615457" />
-          <property role="TrG5h" value="enumPropertyWithSetter" />
-          <ref role="AX2Wp" node="qrtnJnJhw7" resolve="TestSubstituteEnumDataType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="3Ftr4R6BHdg" role="1TKVEl">
       <property role="TrG5h" value="enumPropertyWithGetter" />
       <property role="IQ2nx" value="1588042961787617775" />
       <ref role="AX2Wp" node="3Ftr4R6BFNk" resolve="TestSubstituteEnumDataType" />
-      <node concept="3l_iC" id="3Ftr4R6BHdh" role="lGtFl">
-        <node concept="1TJgyi" id="1o9RazLqg7J" role="3l_iP">
-          <property role="IQ2nx" value="1588042961787617775" />
-          <property role="TrG5h" value="enumPropertyWithGetter" />
-          <ref role="AX2Wp" node="qrtnJnJhw7" resolve="TestSubstituteEnumDataType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="qrtnJnJhwc" role="1TKVEl">
       <property role="IQ2nx" value="476103360378640396" />
@@ -1305,36 +1252,15 @@
     <property role="TrG5h" value="TestSubstituteEnumDataType" />
     <property role="3GE5qa" value="propertyAndReference" />
     <property role="3F6X1D" value="476103360378640391" />
-    <node concept="2JgGob" id="3Ftr4R6BFNl" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
-      <node concept="AxPO7" id="qrtnJnJhw7" role="3lCyv">
-        <property role="3GE5qa" value="propertyAndReference" />
-        <property role="TrG5h" value="TestSubstituteEnumDataType" />
-        <property role="PDuV0" value="true" />
-        <property role="3F6X1D" value="476103360378640391" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="qrtnJnJhw8" role="M5hS2">
-          <property role="1uS6qo" value="first presentation" />
-          <property role="1uS6qv" value="myFirstValue" />
-        </node>
-        <node concept="M4N5e" id="qrtnJnJhw9" role="M5hS2">
-          <property role="1uS6qo" value="second presentation" />
-          <property role="1uS6qv" value="mySecondValue" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFNm" role="25R1y">
       <property role="TrG5h" value="myFirstValue" />
       <property role="1L1pqM" value="first presentation" />
       <property role="3tVfz5" value="476103360378640392" />
-      <ref role="2wpffI" node="qrtnJnJhw8" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFNn" role="25R1y">
       <property role="TrG5h" value="mySecondValue" />
       <property role="1L1pqM" value="second presentation" />
       <property role="3tVfz5" value="476103360378640393" />
-      <ref role="2wpffI" node="qrtnJnJhw9" />
     </node>
   </node>
 </model>

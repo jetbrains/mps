@@ -59,6 +59,7 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getTestMethods_id1RfJDyhAUar(@NotNull SNode __thisNode__) {
     return ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(__thisNode__);
   }
+  @Deprecated
   /*package*/ static boolean isIntentionApplicable_idhHDM9no(@NotNull SAbstractConcept __thisConcept__, SNode node) {
     return (SNodeOperations.getNodeAncestor(node, CONCEPTS.TestNode$kc, false, false) != null);
   }

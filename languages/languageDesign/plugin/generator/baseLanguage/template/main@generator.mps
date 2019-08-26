@@ -56,6 +56,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tp4o" ref="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)" />
     <import index="y8j6" ref="r:d226432d-2ab7-4e39-8f05-f0fb5c65285d(jetbrains.mps.lang.plugin.enumMigration)" />
+    <import index="wzm8" ref="r:c38b095a-620d-449b-83bf-eebdb57fa62c(jetbrains.mps.lang.plugin.generator.util)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -9435,9 +9436,9 @@
               <node concept="3zFVjK" id="5suWGB1j_uT" role="3zH0cK">
                 <node concept="3clFbS" id="5suWGB1j_uU" role="2VODD2">
                   <node concept="3clFbF" id="5suWGB1j_uV" role="3cqZAp">
-                    <node concept="2YIFZM" id="3Ftr4R8vajO" role="3clFbG">
-                      <ref role="37wK5l" to="y8j6:3Ftr4R6BFpN" resolve="value" />
-                      <ref role="1Pybhc" to="y8j6:3Ftr4R6BFpo" resolve="Keymap_MigrationUtils" />
+                    <node concept="2YIFZM" id="$91tH8hQZB" role="3clFbG">
+                      <ref role="37wK5l" to="wzm8:$91tH8hK_3" resolve="serializeKeymap" />
+                      <ref role="1Pybhc" to="wzm8:$91tH8hKzh" resolve="KeymapUtil" />
                       <node concept="2OqwBi" id="5suWGB1j_uX" role="37wK5m">
                         <node concept="3TrcHB" id="5suWGB1j_v1" role="2OqNvi">
                           <ref role="3TsBF5" to="tp4k:3Ftr4R6BH7p" resolve="keymap" />
@@ -14431,9 +14432,9 @@
                       <node concept="3zFVjK" id="1XGsQcRFa6E" role="3zH0cK">
                         <node concept="3clFbS" id="1XGsQcRFa6F" role="2VODD2">
                           <node concept="3clFbF" id="1XGsQcRFa6G" role="3cqZAp">
-                            <node concept="2YIFZM" id="3Ftr4R8vajV" role="3clFbG">
-                              <ref role="37wK5l" to="y8j6:3Ftr4R6BFpN" resolve="value" />
-                              <ref role="1Pybhc" to="y8j6:3Ftr4R6BFpo" resolve="Keymap_MigrationUtils" />
+                            <node concept="2YIFZM" id="$91tH8hRMw" role="3clFbG">
+                              <ref role="37wK5l" to="wzm8:$91tH8hK_3" resolve="serializeKeymap" />
+                              <ref role="1Pybhc" to="wzm8:$91tH8hKzh" resolve="KeymapUtil" />
                               <node concept="2OqwBi" id="1XGsQcRFa6H" role="37wK5m">
                                 <node concept="1PxgMI" id="1XGsQcRFa6I" role="2Oq$k0">
                                   <node concept="2OqwBi" id="1XGsQcRFa6J" role="1m5AlR">

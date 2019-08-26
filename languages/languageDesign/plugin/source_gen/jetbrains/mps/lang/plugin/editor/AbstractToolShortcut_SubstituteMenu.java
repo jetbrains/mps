@@ -38,7 +38,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -155,7 +155,7 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createCustomToolShortcut_7ty2v0_a0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CustomToolShortcut$gS, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CustomToolShortcut$gS, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.changes$bLB7, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.AbstractToolKeystroke$VM)));
     }

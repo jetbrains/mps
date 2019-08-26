@@ -22,7 +22,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -92,7 +92,7 @@ public final class AddOverrideAnnotation_Intention extends AbstractIntentionDesc
   }
   private static SNode createAnnotationInstance_4i19oe_a0a0a2a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.AnnotationInstance$5z, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.AnnotationInstance$5z, null, null).node();
     n1.setReference(LINKS.annotation$zNxu, SReference.create(LINKS.annotation$zNxu, n1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Override")));
     return n1;
   }

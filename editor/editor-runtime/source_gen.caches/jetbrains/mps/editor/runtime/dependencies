@@ -77,6 +77,7 @@
     <classNode dependClassName="jetbrains.mps.vfs.FileSystem" />
     <classNode dependClassName="jetbrains.mps.vfs.FileSystems" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
+    <classNode dependClassName="jetbrains.mps.vfs.util.PathFormatChecker" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
@@ -191,8 +192,7 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
-    <classNode dependClassName="jetbrains.mps.typechecking.backend.TypecheckingSession" />
-    <classNode dependClassName="jetbrains.mps.typesystem.LegacyTypecheckingProvider" />
+    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingSession" />
     <classNode dependClassName="jetbrains.mps.typesystem.LegacyTypecheckingQueries" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />
     <classNode dependClassName="jetbrains.mps.util.Cancellable" />

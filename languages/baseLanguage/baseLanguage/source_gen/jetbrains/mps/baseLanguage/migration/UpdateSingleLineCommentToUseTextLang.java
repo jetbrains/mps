@@ -30,8 +30,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
+  private final String description = "UpdateSingleLineCommentToUseTextLang";
   public String getCaption() {
-    return "UpdateSingleLineCommentToUseTextLang";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -44,11 +45,11 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
   public void doExecute(final SModule m) {
     final SLanguage bl = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     {
-      SearchScope scope_ldzx6u_b0d = CommandUtil.createScope(m);
-      final SearchScope scope_ldzx6u_b0d_0 = new EditableFilteringScope(scope_ldzx6u_b0d);
+      SearchScope scope_ldzx6u_b0e = CommandUtil.createScope(m);
+      final SearchScope scope_ldzx6u_b0e_0 = new EditableFilteringScope(scope_ldzx6u_b0e);
       final QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_ldzx6u_b0d_0;
+          return scope_ldzx6u_b0e_0;
         }
       };
 

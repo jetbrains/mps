@@ -69,12 +69,12 @@ public class DispatchTypeCheckingErrors_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck3813896760029624351() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230420");
       SNode operation = getRealNodeById("3813896760029624351");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451230420"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck3813896760029586546() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231115");
       SNode operation = getRealNodeById("3813896760029586546");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451231115"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck3813896760029627239() throws Exception {
       SNode nodeToCheck = getRealNodeById("3813896760029626826");
@@ -84,7 +84,7 @@ public class DispatchTypeCheckingErrors_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck3813896760029637821() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231717");
       SNode operation = getRealNodeById("3813896760029637821");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("3951985765451231717"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck3813896760029629781() throws Exception {
       SNode nodeToCheck = getRealNodeById("3813896760029627241");

@@ -4,6 +4,8 @@ package jetbrains.mps.idea.java.fastFind;
 
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
 import com.intellij.openapi.components.ApplicationComponent;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.ide.MPSCoreComponents;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.util.Consumer;
@@ -11,14 +13,19 @@ import jetbrains.mps.idea.java.psiStubs.PsiJavaStubModelDescriptor;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiClass;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
-import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaPsiStubsNavigationContributor implements NavigationParticipant, ApplicationComponent {
+  private PersistenceRegistry myRegistry;
+
+  public JavaPsiStubsNavigationContributor(MPSCoreComponents mpsCore) {
+    myRegistry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
+  }
+
   public JavaPsiStubsNavigationContributor() {
   }
   public void findTargets(NavigationParticipant.TargetKind kind, Collection<SModel> collection, Consumer<NavigationParticipant.NavigationTarget> consumer, Consumer<SModel> processedConsumer) {
@@ -42,13 +49,13 @@ public class JavaPsiStubsNavigationContributor implements NavigationParticipant,
             }
             public SConcept getConcept() {
               if (psiClaz.isAnnotationType()) {
-                return (SConcept) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+                return (SConcept) CONCEPTS.Annotation$Os;
               } else if (psiClaz.isInterface()) {
-                return (SConcept) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+                return (SConcept) CONCEPTS.Interface$Kp;
               } else if (psiClaz.isEnum()) {
-                return (SConcept) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+                return (SConcept) CONCEPTS.EnumClass$uy;
               } else {
-                return (SConcept) MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+                return (SConcept) CONCEPTS.ClassConcept$IY;
               }
             }
             public SNodeReference getNodeReference() {
@@ -62,14 +69,21 @@ public class JavaPsiStubsNavigationContributor implements NavigationParticipant,
     }
   }
   public void initComponent() {
-    PersistenceRegistry.getInstance().addNavigationParticipant(this);
+    myRegistry.addNavigationParticipant(this);
   }
   public void disposeComponent() {
-    PersistenceRegistry.getInstance().removeNavigationParticipant(this);
+    myRegistry.removeNavigationParticipant(this);
   }
   @NonNls
   @NotNull
   public String getComponentName() {
     return "Java PSI stubs navigation participant";
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Annotation$Os = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

@@ -10,14 +10,11 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 import jetbrains.mps.debugger.java.api.state.JavaUiState;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
@@ -25,26 +22,15 @@ import jetbrains.mps.classloading.MPSModuleClassLoader;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.smodel.ModelDependencyUpdate;
-import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class EvaluationContainer implements IEvaluationContainer {
+public abstract class EvaluationContainer implements IEvaluationContainer {
   protected final Project myProject;
   protected final SModuleReference myContainerModule;
   protected volatile SModelReference myContainerModel;
@@ -54,29 +40,18 @@ public class EvaluationContainer implements IEvaluationContainer {
   protected final DebugSession myDebugSession;
   protected volatile JavaUiState myUiState;
 
-  public EvaluationContainer(Project mpsProject, DebugSession session, @NotNull SModuleReference containerModule, final List<SNodeReference> nodesToImport, final _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
+  public EvaluationContainer(Project mpsProject, DebugSession session, @NotNull SModuleReference containerModule) {
     myProject = mpsProject;
     myDebugSession = session;
     myContainerModule = containerModule;
     myUiState = myDebugSession.getUiState();
     myDebuggerRepository = mpsProject.getRepository();
-    final ModelAccess modelAccess = mpsProject.getModelAccess();
+    ModelAccess modelAccess = mpsProject.getModelAccess();
     modelAccess.runWriteAction(new Runnable() {
       public void run() {
         SModule containerModule = myContainerModule.resolve(myDebuggerRepository);
         SModel descriptor = TemporaryModels.getInstance().createLongTerm("DebuggerModel", TempModuleOptions.forExistingModule(containerModule));
         myContainerModel = descriptor.getReference();
-      }
-    });
-
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        modelAccess.executeCommand(new Runnable() {
-          public void run() {
-            setUpNode(nodesToImport);
-          }
-        });
-        onNodeSetUp.invoke(EvaluationContainer.this);
       }
     });
   }
@@ -106,15 +81,7 @@ public class EvaluationContainer implements IEvaluationContainer {
   }
 
   @Override
-  public IEvaluationContainer copy(boolean isWatch, _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
-    final SNodeReference reference = myNode;
-    return new EvaluationContainer(myProject, myDebugSession, myContainerModule, ListSequence.fromList(new ArrayList<SNodeReference>()), onNodeSetUp) {
-      @Override
-      protected SNode createEvaluatorNode() {
-        return (SNode) CopyUtil.copyAndPreserveId(reference.resolve(myDebuggerRepository), true);
-      }
-    };
-  }
+  public abstract IEvaluationContainer copy(boolean isWatch, _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp);
 
   @Override
   public String getPresentation() {
@@ -139,60 +106,7 @@ public class EvaluationContainer implements IEvaluationContainer {
     myUiState = myDebugSession.getUiState();
   }
 
-  protected void setUpNode(List<SNodeReference> nodesToImport) {
-    SModel containerModel = myContainerModel.resolve(myDebuggerRepository);
-
-    SNode evaluatorNode = createEvaluatorNode();
-    containerModel.addRootNode(evaluatorNode);
-    myNode = SNodeOperations.getPointer(evaluatorNode);
-
-    // todo: variables 
-    new MyBaseLanguagesImportHelper().tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, CONCEPTS.IEvaluatorConcept$wG, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))), nodesToImport);
-
-    // XXX likely, don't need a repo in updateImportedModels() here, as it's not vital to import accessories implicitly 
-    new ModelDependencyUpdate(containerModel).updateUsedLanguages().updateImportedModels(myDebuggerRepository).updateModuleDependencies(myDebuggerRepository);
-    ModelImports modelImports = new ModelImports(containerModel);
-    modelImports.addUsedLanguage(MetaAdapterFactory.getLanguage(0x7da4580f9d754603L, 0x816251a896d78375L, "jetbrains.mps.debugger.java.evaluation"));
-    modelImports.addUsedLanguage(MetaAdapterFactory.getLanguage(0x802088974572437dL, 0xb50e8f050cba9566L, "jetbrains.mps.debugger.java.privateMembers"));
-  }
-  protected SNode createEvaluatorNode() {
-    return SNodeFactoryOperations.createNewNode(CONCEPTS.Evaluator$90, null);
-  }
-  private class MyBaseLanguagesImportHelper extends BaseLanguagesImportHelper {
-    @Override
-    public SNode findVariable(SReference variableReference) {
-      return null;
-    }
-    @Override
-    public SNode createVariableReference(SNode variable) {
-      return createInternalVariableReference_jbng3m_a0a1z(variable.getName());
-    }
-  }
-  private static SNode createInternalVariableReference_jbng3m_a0a1z(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.InternalVariableReference$M_, null, null, false);
-    {
-      n1.setProperty(PROPS.name$tMiD, PROPS.name$tMiD.getType().toString(p0));
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
-      n2.setReference(LINKS.classifier$pQ_R, jetbrains.mps.smodel.SReference.create(LINKS.classifier$pQ_R, n2, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
-      n1.addChild(LINKS.type$Ttix, n2);
-    }
-    return n1;
-  }
-
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IEvaluatorConcept$wG = MetaAdapterFactory.getInterfaceConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7f4a99699cea367bL, "jetbrains.mps.debugger.java.evaluation.structure.IEvaluatorConcept");
-    /*package*/ static final SConcept Evaluator$90 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0xbbe5b47d7cc5fa1L, "jetbrains.mps.debugger.java.evaluation.structure.Evaluator");
-    /*package*/ static final SConcept InternalVariableReference$M_ = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, "jetbrains.mps.baseLanguageInternal.structure.InternalVariableReference");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$tMiD = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink type$Ttix = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type");
   }
 }

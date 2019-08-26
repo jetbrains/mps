@@ -52,7 +52,7 @@ public class CloneModelActionExecutor extends ModelCreationActionsBaseExecutor {
   }
 
   public static String getNameForClone(SModel originalModel) {
-    return originalModel.getName().getLongName() + "_clone";
+    return originalModel.getName().getLongName() + ".clone";
   }
 
   public static StereotypeProvider getStereotypeForClone(final SModel model) {

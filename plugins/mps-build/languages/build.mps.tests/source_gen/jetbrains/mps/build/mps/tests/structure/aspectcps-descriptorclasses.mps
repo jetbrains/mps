@@ -356,7 +356,7 @@
                       <node concept="liA8E" id="1b" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="1c" role="37wK5m">
-                          <property role="Xl_RC" value="module-testing" />
+                          <property role="Xl_RC" value="module-tests" />
                           <node concept="cd27G" id="1e" role="lGtFl">
                             <node concept="3u3nmq" id="1f" role="cd27D">
                               <property role="3u3nmv" value="4005526075820600484" />
@@ -1839,7 +1839,7 @@
             <node concept="liA8E" id="a1" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="a2" role="37wK5m">
-                <property role="Xl_RC" value="module-testing" />
+                <property role="Xl_RC" value="module-tests" />
               </node>
             </node>
           </node>

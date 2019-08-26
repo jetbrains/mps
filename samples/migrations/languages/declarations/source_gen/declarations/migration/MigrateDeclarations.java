@@ -18,7 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,8 +26,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrateDeclarations extends MigrationScriptBase {
+  private final String description = "migrate the declarations preserving ids";
   public String getCaption() {
-    return "migrate the declarations preserving ids";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -63,12 +64,12 @@ public class MigrateDeclarations extends MigrationScriptBase {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, "declarations"), 0x6aff2c1049329d71L, "NewComponent"), null, null, false);
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, "declarations"), 0x6aff2c1049329d71L, "NewComponent"), null, null).node();
     SNodeAccessUtil.setPropertyValue(quotedNode_3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_2);
     {
       List<SNode> nodes = (List<SNode>) parameter_1;
       for (SNode child : nodes) {
-        quotedNode_3.addChild(LINKS.member$I_O9, SNodeOperations.copyIfNecessary(child));
+        quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, 0x6aff2c1049329d71L, 0x6aff2c1049329d74L, "member"), SNodeOperations.copyIfNecessary(child));
       }
     }
     return quotedNode_3;
@@ -80,7 +81,6 @@ public class MigrateDeclarations extends MigrationScriptBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink member$b5zN = MetaAdapterFactory.getContainmentLink(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
-    /*package*/ static final SContainmentLink member$I_O9 = MetaAdapterFactory.getContainmentLink(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, 0x6aff2c1049329d71L, 0x6aff2c1049329d74L, "member");
   }
 
   private static final class PROPS {

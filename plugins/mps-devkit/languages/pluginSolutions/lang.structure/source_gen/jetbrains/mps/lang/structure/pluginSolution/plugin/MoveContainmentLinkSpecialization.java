@@ -30,7 +30,7 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -82,13 +82,13 @@ public class MoveContainmentLinkSpecialization extends StructureSpecializationBa
   }
   private static SNode createDeprecatedNodeAnnotation_mzlq6b_a0e0b(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DeprecatedNodeAnnotation$I8, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.DeprecatedNodeAnnotation$I8, null, null).node();
     n1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
     return n1;
   }
   private static SNode createMoveContainmentLink_mzlq6b_c0a21a1(SNode node0, SNode node1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MoveContainmentLink$1e, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.MoveContainmentLink$1e, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.sourceId$YxeZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.ContainmentLinkId$FL)));
     }

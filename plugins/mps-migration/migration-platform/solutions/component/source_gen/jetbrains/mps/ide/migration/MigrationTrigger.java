@@ -10,11 +10,12 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
+import jetbrains.mps.migration.global.ProjectMigrationProperties;
+import jetbrains.mps.smodel.language.LanguageRegistryListener;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import com.intellij.notification.Notification;
-import jetbrains.mps.migration.global.ProjectMigrationProperties;
-import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
@@ -35,10 +36,10 @@ import jetbrains.mps.smodel.RepoListenerRegistrar;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.progress.ProgressManager;
@@ -50,6 +51,7 @@ import com.intellij.notification.NotificationType;
 import com.intellij.notification.NotificationListener;
 import javax.swing.event.HyperlinkEvent;
 import com.intellij.notification.Notifications;
+import java.util.function.BinaryOperator;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.ide.migration.wizard.MigrationWizard;
 import jetbrains.mps.ide.migration.wizard.MigrationError;
@@ -98,28 +100,28 @@ import jetbrains.mps.migration.global.ProjectMigration;
 )
 public class MigrationTrigger extends AbstractProjectComponent implements IStartupMigrationExecutor {
   private final LanguageRegistry myLanguageRegistry;
-  private MigrationOptions myOptions = new MigrationOptions();
+  private final MigrationOptions myOptions = new MigrationOptions();
 
   private final MPSProject myMpsProject;
   private final MigrationRegistry myMigrationRegistry;
   private final ReloadManager myReloadManager;
 
-  private boolean myMigrationForbidden = false;
-  private String myMigrationForbiddenMessage = null;
-  private PostponedState myPostponedState = null;
-  private int myBlocked = 0;
-  private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
+  private final ProjectMigrationProperties myProperties;
 
-  private Notification myLastNotification = null;
-  private Notification myLastDeployWarning = null;
-
-  private ProjectMigrationProperties myProperties;
-
-  private MyRepoListener myRepoListener = new MyRepoListener();
-  private MyReloadListener myReloadListener = new MyReloadListener();
-  private MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
+  private final MyRepoListener myRepoListener = new MyRepoListener();
+  private final MyReloadListener myReloadListener = new MyReloadListener();
+  private final MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
   private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
   private boolean myListenersAdded = false;
+
+  private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
+
+  private final AtomicReference<PostponedState> myPostponedState = new AtomicReference<PostponedState>();
+  private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
+
+  private final MigrationBlock.BlockCause myNotDeployedBlockCause = new MigrationBlock.BlockCause("some languages are not deployed");
+  private Notification myLastNotification = null;
+  private Notification myLastDeployWarning = null;
 
   public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, ProjectMigrationProperties props, MPSCoreComponents mpsCore, ReloadManagerComponent reloadManager) {
     super(ideaProject);
@@ -134,27 +136,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myRebuildHandler = rebuildHandler;
   }
 
-  public synchronized void blockMigrationsCheck(String message) {
-    myBlocked++;
-    myMigrationForbidden = true;
-    myMigrationForbiddenMessage = message;
-  }
-
-  public void unblockMigrationsCheck() {
-    boolean check = false;
-    synchronized (this) {
-      assert myBlocked >= 1 : "Non-paired block-unblock method usage";
-      myBlocked--;
-      if (myBlocked == 0) {
-        myMigrationForbidden = false;
-        myMigrationForbiddenMessage = null;
-        check = true;
-      }
-    }
-
-    if (check) {
-      checkMigrationNeeded();
-    }
+  public MigrationBlock getMigrationBlock() {
+    return myMigrationBlock;
   }
 
   public void projectOpened() {
@@ -257,34 +240,35 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   /*package*/ void checkMigrationNeeded() {
-    myMpsProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
+    myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         checkMigrationNeededOnModuleChange(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject));
       }
     });
   }
 
-  private synchronized void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
-    if (myMigrationForbidden) {
+  private void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
+    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
       return;
     }
 
     Set<SModule> modules2Check = SetSequence.fromSetWithValues(new HashSet<SModule>(), modules);
     if (isMigrationRequired(modules2Check)) {
-      postponeMigration(false);
+      scheduleMigration(false);
     }
   }
 
   private boolean isMigrationRequired(Iterable<SModule> modules2Check) {
     PostponedState current = PostponedState.current(myMigrationRegistry, modules2Check);
-    if (myPostponedState != null) {
-      current = current.substract(myPostponedState);
+    PostponedState saved = myPostponedState.get();
+    if (saved != null) {
+      current = current.substract(saved);
     }
     return current.hasSomethingToApply();
   }
 
-  private synchronized void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
-    if (myMigrationForbidden) {
+  private void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
+    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
       return;
     }
 
@@ -301,22 +285,24 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       }
     });
     if (isMigrationRequired(modules2Check)) {
-      postponeMigration(false);
+      scheduleMigration(false);
     }
   }
 
-  public synchronized void postponeMigration(final boolean forceAssistant) {
-    if (myMigrationForbidden) {
+  public synchronized void scheduleMigration(final boolean forceAssistant) {
+    if (myMigrationBlock.isMigrationForbidden()) {
       if (forceAssistant) {
-        String cause = (myMigrationForbiddenMessage == null ? "" : " as " + myMigrationForbiddenMessage);
+        String cause = (myMigrationBlock.getMigrationForbiddenMessage() == null ? "" : " as " + myMigrationBlock.getMigrationForbiddenMessage());
         Messages.showMessageDialog(myProject, "The migration can not be run" + cause + ".\n" + "Migration assistant will not be started.", "Migration can't start", null);
+      } else if (!(myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause)))) {
+        notifyDeployWarn();
       }
       return;
     }
 
     final Project ideaProject = myProject;
-    myMigrationForbidden = true;
-    myMigrationForbiddenMessage = null;
+    final MigrationBlock.BlockCause scheduledBlockCause = new MigrationBlock.BlockCause("migration is already scheduled");
+    myMigrationBlock.blockMigrationsCheck(scheduledBlockCause);
 
     // wait until project is fully loaded (if not yet) 
     StartupManager.getInstance(ideaProject).runWhenProjectIsInitialized(new Runnable() {
@@ -339,12 +325,12 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
               }
             });
 
-            if (myPostponedState == null || forceAssistant) {
+            if (myPostponedState.get() == null || forceAssistant) {
               boolean hasSomethingToApply = newState.value.hasSomethingToApply();
               if (hasSomethingToApply) {
                 boolean migrate = CollectionSequence.fromCollection(newState.value.scripts).isNotEmpty() || CollectionSequence.fromCollection(newState.value.projectMigrations).isNotEmpty();
                 if (runMigration(newState.value.versionUpdate, migrate)) {
-                  myPostponedState = (myPostponedState == null ? newState.value : myPostponedState.add(newState.value));
+                  myPostponedState.set(newState.value);
                 }
               } else if (forceAssistant) {
                 Messages.showMessageDialog(myProject, "Project doesn't need to be migrated.\n" + "Migration assistant will not be started.", "Migration Not Required", null);
@@ -360,19 +346,21 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                     return;
                   }
                   if ("migrate".equals(e.getDescription())) {
-                    synchronized (MigrationTrigger.this) {
-                      myPostponedState = null;
-                    }
-                    postponeMigration(true);
+                    myPostponedState.set(null);
+                    scheduleMigration(true);
                   }
                   notification.expire();
                 }
               });
               Notifications.Bus.notify(myLastNotification, myProject);
-              myPostponedState = myPostponedState.add(newState.value);
+              myPostponedState.accumulateAndGet(newState.value, new BinaryOperator<PostponedState>() {
+                @Override
+                public PostponedState apply(PostponedState current, PostponedState additional) {
+                  return (current == null ? null : current.add(additional));
+                }
+              });
             }
-            myMigrationForbidden = false;
-            myMigrationForbiddenMessage = null;
+            myMigrationBlock.unblockMigrationsCheck(scheduledBlockCause);
           }
         }, ModalityState.NON_MODAL);
       }
@@ -380,6 +368,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   }
 
+  /**
+   * 
+   * @return whether migration was postponed
+   */
   private boolean runMigration(boolean update, boolean migrate) {
     MyMigrationSession session = new MyMigrationSession(update, migrate);
     final MigrationWizard wizard = new MigrationWizard(myProject, session);
@@ -615,12 +607,12 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
     @Override
     public void afterLanguagesLoaded(Iterable<LanguageRuntime> loaded) {
+      checkNotDeployedLanguages();
       checkMigrationNeededOnLanguageReload(Sequence.fromIterable(loaded).select(new ISelector<LanguageRuntime, SLanguage>() {
         public SLanguage select(LanguageRuntime it) {
           return it.getIdentity();
         }
       }).toListSequence());
-      checkNotDeployedLanguages();
     }
 
     @Override
@@ -633,30 +625,27 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   /*package*/ void checkNotDeployedLanguages() {
     Set<SLanguage> problems = getNotDeployedUsedLanguages();
     if (SetSequence.fromSet(problems).isEmpty()) {
-      if (myLastDeployWarning != null) {
-        myLastNotification = null;
-        myLastDeployWarning = null;
-
-        unblockMigrationsCheck();
-      }
+      myMigrationBlock.ensureUnblocked(myNotDeployedBlockCause);
     } else {
-      if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null) {
-        return;
-      }
-      // migrations already blocked, warning is showing 
+      myMigrationBlock.ensureBlocked(myNotDeployedBlockCause);
 
-      if (myLastDeployWarning == null) {
-        blockMigrationsCheck("some languages are not deployed");
-      } else {
-        // expire old, show new to get the balloon again 
-        if (!((myLastDeployWarning.isExpired()))) {
-          myLastDeployWarning.expire();
-        }
-      }
-
-      myLastDeployWarning = createDeployWarn(problems);
-      Notifications.Bus.notify(myLastDeployWarning, myProject);
     }
+  }
+  public void notifyDeployWarn() {
+    Set<SLanguage> problems = getNotDeployedUsedLanguages();
+
+    if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null) {
+      // migrations already blocked, warning is showing 
+      return;
+    }
+
+    // expire old, show new to get the balloon again 
+    if (myLastDeployWarning != null && !((myLastDeployWarning.isExpired()))) {
+      myLastDeployWarning.expire();
+    }
+
+    myLastDeployWarning = createDeployWarn(problems);
+    Notifications.Bus.notify(myLastDeployWarning, myProject);
   }
   private Notification createDeployWarn(final Set<SLanguage> problems) {
     final int treshold = 20;
@@ -729,9 +718,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   public static class PostponedState {
-    public boolean versionUpdate;
-    public Collection<ScriptApplied> scripts;
-    public Collection<ProjectMigration> projectMigrations;
+    private boolean versionUpdate;
+    private Collection<ScriptApplied> scripts;
+    private Collection<ProjectMigration> projectMigrations;
 
     public boolean hasSomethingToApply() {
       return versionUpdate || CollectionSequence.fromCollection(scripts).isNotEmpty() || CollectionSequence.fromCollection(projectMigrations).isNotEmpty();

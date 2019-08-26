@@ -16,7 +16,6 @@
 package jetbrains.mps.typesystem;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
 import jetbrains.mps.lang.pattern.ConceptMatchingPattern;
@@ -26,11 +25,10 @@ import jetbrains.mps.newTypesystem.context.TargetTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.backend.TypecheckingProvider;
-import jetbrains.mps.typechecking.backend.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
-import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,8 +36,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -73,6 +69,11 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     } else {
       return new TargetLegacyTypecheckingQueries(flags);
     }
+  }
+
+  @Override
+  public Class<LegacyTypecheckingQueries> getQueriesClass() {
+    return LegacyTypecheckingQueries.class;
   }
 
   @Override

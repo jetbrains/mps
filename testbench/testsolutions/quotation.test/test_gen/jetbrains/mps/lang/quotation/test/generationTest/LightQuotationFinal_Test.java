@@ -20,7 +20,7 @@ import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -167,26 +167,26 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     private static SNode _quotation_createNode_3vdjo8_a0b0d41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"), null, null).node();
       SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), (boolean) parameter_1);
       return quotedNode_2;
     }
     private static SNode createBooleanConstant_3vdjo8_a0c0d41(Object p0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BooleanConstant$Ui, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.BooleanConstant$Ui, null, null).node();
       n1.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(p0));
       return n1;
     }
     private static SNode _quotation_createNode_3vdjo8_a0b0e41(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"), null, null).node();
       SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), (String) parameter_1);
       return quotedNode_2;
     }
     private static SNode createStringLiteral_3vdjo8_a0c0e41(Object p0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StringLiteral$4G, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.StringLiteral$4G, null, null).node();
       n1.setProperty(PROPS.value$kiE0, PROPS.value$kiE0.getType().toString(p0));
       return n1;
     }
@@ -194,16 +194,16 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement"), null, null).node();
       quotedNode_3 = (SNode) parameter_1;
       if (quotedNode_3 != null) {
-        quotedNode_2.addChild(LINKS.expression$EsbK, SNodeOperations.copyIfNecessary(quotedNode_3));
+        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), SNodeOperations.copyIfNecessary(quotedNode_3));
       }
       return quotedNode_2;
     }
     private static SNode createReturnStatement_3vdjo8_a0c0f41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ReturnStatement$SF, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.ReturnStatement$SF, null, null).node();
       if (node0 != null) {
         n1.addChild(LINKS.expression$EsbK, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
       }
@@ -213,16 +213,16 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement"), null, null).node();
       quotedNode_3 = (SNode) parameter_1;
       if (quotedNode_3 != null) {
-        quotedNode_2.addChild(LINKS.expression$EsbK, SNodeOperations.copyIfNecessary(quotedNode_3));
+        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), SNodeOperations.copyIfNecessary(quotedNode_3));
       }
       return quotedNode_2;
     }
     private static SNode createReturnStatement_3vdjo8_a0c0g41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ReturnStatement$SF, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.ReturnStatement$SF, null, null).node();
       if (node0 != null) {
         n1.addChild(LINKS.expression$EsbK, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
       }
@@ -232,16 +232,16 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null).node();
       quotedNode_3 = (SNode) parameter_1;
       if (quotedNode_3 != null) {
-        quotedNode_2.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(quotedNode_3));
+        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeOperations.copyIfNecessary(quotedNode_3));
       }
       return quotedNode_2;
     }
     private static SNode createStatementList_3vdjo8_a0c0h41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
       if (node0 != null) {
         n1.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Statement$ok)));
       }
@@ -251,16 +251,16 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null).node();
       quotedNode_3 = (SNode) parameter_1;
       if (quotedNode_3 != null) {
-        quotedNode_2.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(quotedNode_3));
+        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeOperations.copyIfNecessary(quotedNode_3));
       }
       return quotedNode_2;
     }
     private static SNode createStatementList_3vdjo8_a0c0i41(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
       if (node0 != null) {
         n1.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Statement$ok)));
       }
@@ -270,18 +270,18 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null).node();
       {
         List<SNode> nodes = (List<SNode>) parameter_1;
         for (SNode child : nodes) {
-          quotedNode_2.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(child));
+          quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeOperations.copyIfNecessary(child));
         }
       }
       return quotedNode_2;
     }
     private static SNode createStatementList_3vdjo8_a0c0j41(Iterable<? extends SNode> seq0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
       for (SNode n : seq0) {
         n1.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.Statement$ok)));
       }
@@ -291,18 +291,18 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;
-      quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null, false);
+      quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null).node();
       {
         List<SNode> nodes = (List<SNode>) parameter_1;
         for (SNode child : nodes) {
-          quotedNode_2.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(child));
+          quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeOperations.copyIfNecessary(child));
         }
       }
       return quotedNode_2;
     }
     private static SNode createStatementList_3vdjo8_a0a2a01o(Iterable<? extends SNode> seq0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
       for (SNode n : seq0) {
         n1.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.Statement$ok)));
       }

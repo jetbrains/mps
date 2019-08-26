@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.project.Project;
 import jetbrains.mps.execution.api.commands.CommandPart;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
@@ -37,7 +38,6 @@ import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import java.util.Objects;
 import java.util.Set;
 import jetbrains.mps.project.facets.JavaModuleOperations;
-import jetbrains.mps.reloading.CommonPaths;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.SystemProperties;
@@ -47,12 +47,10 @@ import jetbrains.mps.debug.api.IDebuggerSettings;
 import jetbrains.mps.debugger.java.api.settings.LocalConnectionSettings;
 import jetbrains.mps.debug.api.Debuggers;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class Java_Command {
   private static final Logger LOG = LogManager.getLogger(Java_Command.class);
@@ -61,6 +59,7 @@ public class Java_Command {
   private String myProgramParameter_String;
   private String myVirtualMachineParameter_String;
   private List<String> myClassPath_ListString = ListSequence.fromList(new ArrayList<String>());
+  private Project myProject_Project;
   private String myDebuggerSettings_String;
   private CommandPart myVirtualMachineParameter_ProcessBuilderCommandPart;
   public Java_Command() {
@@ -95,6 +94,12 @@ public class Java_Command {
     }
     return this;
   }
+  public Java_Command setProject_Project(Project project) {
+    if (project != null) {
+      myProject_Project = project;
+    }
+    return this;
+  }
   public Java_Command setDebuggerSettings_String(String debuggerSettings) {
     if (debuggerSettings != null) {
       myDebuggerSettings_String = debuggerSettings;
@@ -109,7 +114,7 @@ public class Java_Command {
   }
 
   public ProcessHandler createProcess(String className) throws ExecutionException {
-    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(className, ListSequence.fromList(myClassPath_ListString).select(new ISelector<String, File>() {
+    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(className, ListSequence.fromList(myClassPath_ListString).select(new ISelector<String, File>() {
       public File select(String it) {
         if (it.startsWith("\"") && it.endsWith("\"")) {
           return new File(it.substring(1, it.length() - 2));
@@ -119,13 +124,14 @@ public class Java_Command {
     }).toListSequence());
   }
   public ProcessHandler createProcess(String className, List<File> classPath) throws ExecutionException {
-    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myVirtualMachineParameter_String))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myProgramParameter_String)), className, classPath);
+    return new Java_Command().setWorkingDirectory_File(myWorkingDirectory_File).setJrePath_String(myJrePath_String).setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myVirtualMachineParameter_String))).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myProgramParameter_String)), className, classPath);
   }
   public ProcessHandler createProcess(CommandPart programParameter, String className, List<File> classPath) throws ExecutionException {
     if ((className == null || className.length() == 0)) {
       throw new ExecutionException("Classname is empty");
     }
     File java = Java_Command.getJavaCommand(myJrePath_String);
+    new JDKVersionChecker(myProject_Project).checkAndNotifyOldJDK(myJrePath_String);
     // FIXME need better logic to decide when to use java -jar, and when directly java -classpath 
     // Now I just throw in some magic number I consider too big to get tired of looking at long CP 
     // XXX Besides, I'd like to test this, therefore would like to see this branch to trigger often (MPS JUnit 
@@ -134,7 +140,7 @@ public class Java_Command {
     // with program arguments (and even if we do, e.g. enumerating all test methods from JUnit command, we can still 
     // address huge argument list with -f or piping input from file (i.e. runner would need to support arguments other than 
     // String[] args in main())) 
-    if (ListSequence.fromList(classPath).count() > 20) {
+    if (ListSequence.fromList(classPath).count() > 220) {
       // next is to deal with very long cp 
       try {
         JarManifestBuilder jmb = new JarManifestBuilder();
@@ -170,10 +176,10 @@ public class Java_Command {
       throw new ExecutionException(errorText.value);
     }
 
-    return new Java_Command().setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setClassPath_ListString(cp.value).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(cn.value);
+    return new Java_Command().setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(myProgramParameter_String).setVirtualMachineParameter_String(myVirtualMachineParameter_String).setClassPath_ListString(cp.value).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(cn.value);
   }
   public ProcessHandler createProcess(JavaRunParameters runParameters, SNodeReference nodePointer, SRepository repository) throws ExecutionException {
-    return new Java_Command().setJrePath_String(check_yvpt_a0a0a0e(runParameters)).setProgramParameter_String(check_yvpt_a3a0a0e(runParameters)).setVirtualMachineParameter_String(check_yvpt_a4a0a0e(runParameters)).setWorkingDirectory_File((isEmptyString(check_yvpt_a0a5a0a0e(runParameters)) ? null : new File(check_yvpt_a0a0f0a0a4(runParameters)))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(nodePointer, repository);
+    return new Java_Command().setJrePath_String(check_yvpt_a0a0a0e(runParameters)).setProgramParameter_String(check_yvpt_a3a0a0e(runParameters)).setVirtualMachineParameter_String(check_yvpt_a4a0a0e(runParameters)).setWorkingDirectory_File((isEmptyString(check_yvpt_a0a5a0a0e(runParameters)) ? null : new File(check_yvpt_a0a0f0a0a4(runParameters)))).setProject_Project(myProject_Project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(nodePointer, repository);
   }
 
   public static IDebugger getDebugger() {
@@ -235,12 +241,7 @@ public class Java_Command {
   }
   public static List<String> getClasspath(Iterable<SModule> modules) {
     Set<String> classpath = JavaModuleOperations.collectExecuteClasspath(Sequence.fromIterable(modules).toListSequence().toGenericArray(SModule.class));
-    // Here used to be module/JDK/.getAdditionalJavaStubPaths, introduced in 6f53b9c0 with no explanation, 
-    // which replaced CommonPaths.getJDKPath() introduced with no explanation either in b4a00256. 
-    // As long as getAdditionalJavaStubPaths() are populated from CommonPaths.getJDKPath (see Solution) 
-    // I see no reason to go though global module to retrieve these. To be honest, I don't quite get the need 
-    // to remove java paths at all. 
-    classpath.removeAll(CommonPaths.getJDKPath());
+
     return new ArrayList<String>(classpath);
   }
   public static File getJavaCommand(@Nullable String javaHome) throws ExecutionException {
@@ -279,10 +280,11 @@ public class Java_Command {
     return homes;
   }
   public static String getJdkHome() {
-    List<String> homes = Java_Command.getJavaHomes();
-    for (String javaHome : homes) {
-      if (new File(Java_Command.getJavaCommandPath(javaHome)).exists()) {
-        return javaHome;
+    List<String> homePaths = Java_Command.getJavaHomes();
+    for (String homePath : homePaths) {
+      File homeDir = new File(Java_Command.getJavaCommandPath(homePath));
+      if (homeDir.exists()) {
+        return homePath;
       }
     }
     return null;
@@ -362,22 +364,22 @@ public class Java_Command {
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf0aL, "StaticMethodDeclaration"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf0aL, "StaticMethodDeclaration"), null, null).node();
     quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "main");
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null, false);
-    quotedNode_1.addChild(LINKS.returnType$WIkw, quotedNode_2);
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"), null, null, false);
-    quotedNode_1.addChild(LINKS.visibility$2GiC, quotedNode_3);
-    quotedNode_4 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null, false);
-    quotedNode_1.addChild(LINKS.body$WIlu, quotedNode_4);
-    quotedNode_5 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"), null, null).node();
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), quotedNode_2);
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"), null, null).node();
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_3);
+    quotedNode_4 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"), null, null).node();
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), quotedNode_4);
+    quotedNode_5 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"), null, null).node();
     quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "args");
-    quotedNode_6 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"), null, null, false);
-    quotedNode_7 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
-    quotedNode_7.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, quotedNode_7, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
-    quotedNode_6.addChild(LINKS.componentType$10w, quotedNode_7);
-    quotedNode_5.addChild(LINKS.type$pLrO, quotedNode_6);
-    quotedNode_1.addChild(LINKS.parameter$WIkZ, quotedNode_5);
+    quotedNode_6 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"), null, null).node();
+    quotedNode_7 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null).node();
+    quotedNode_7.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_7, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
+    quotedNode_6.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"), quotedNode_7);
+    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_6);
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"), quotedNode_5);
     return quotedNode_1;
   }
   private static boolean isEmptyString(String str) {
@@ -393,15 +395,5 @@ public class Java_Command {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

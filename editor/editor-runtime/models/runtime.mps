@@ -63,6 +63,7 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="h83j" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem(MPS.Core/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
+    <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
     <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -574,20 +575,6 @@
       <node concept="3uibUv" id="5FaWHIrqiu7" role="1tU5fm">
         <ref role="3uigEE" to="g51k:~TextLine" resolve="TextLine" />
       </node>
-      <node concept="2ShNRf" id="7dwhomQPrAC" role="33vP2m">
-        <node concept="1pGfFk" id="7dwhomQPrAD" role="2ShVmc">
-          <ref role="37wK5l" to="g51k:~TextLine.&lt;init&gt;(java.lang.String,jetbrains.mps.openapi.editor.style.Style,boolean)" resolve="TextLine" />
-          <node concept="Xl_RD" id="7dwhomQPrAE" role="37wK5m">
-            <property role="Xl_RC" value="" />
-          </node>
-          <node concept="1rXfSq" id="3J9H4udwZPd" role="37wK5m">
-            <ref role="37wK5l" to="g51k:~EditorCell_Basic.getStyle()" resolve="getStyle" />
-          </node>
-          <node concept="3clFbT" id="7dwhomQPrAI" role="37wK5m">
-            <property role="3clFbU" value="false" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="3J9H4udx0Oe" role="jymVt" />
     <node concept="3clFbW" id="7dwhomQPrAJ" role="jymVt">
@@ -613,6 +600,30 @@
           </node>
           <node concept="37vLTw" id="2BHiRxgm7Lx" role="37wK5m">
             <ref role="3cqZAo" node="7dwhomQPrAM" resolve="node" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3E$e_gS$NDX" role="3cqZAp">
+          <node concept="37vLTI" id="3E$e_gS$Ogj" role="3clFbG">
+            <node concept="2ShNRf" id="3E$e_gS$P3c" role="37vLTx">
+              <node concept="1pGfFk" id="3E$e_gS$OOh" role="2ShVmc">
+                <ref role="37wK5l" to="g51k:~TextLine.&lt;init&gt;(java.lang.String,jetbrains.mps.openapi.editor.style.Style,boolean,jetbrains.mps.openapi.editor.cells.EditorFontMetricsProvider)" resolve="TextLine" />
+                <node concept="Xl_RD" id="3E$e_gS$PDH" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="1rXfSq" id="3E$e_gS$PDI" role="37wK5m">
+                  <ref role="37wK5l" to="g51k:~EditorCell_Basic.getStyle()" resolve="getStyle" />
+                </node>
+                <node concept="3clFbT" id="3E$e_gS$PDJ" role="37wK5m">
+                  <property role="3clFbU" value="false" />
+                </node>
+                <node concept="37vLTw" id="3E$e_gS_1a$" role="37wK5m">
+                  <ref role="3cqZAo" node="7dwhomQPrAK" resolve="c" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="3E$e_gS$NDV" role="37vLTJ">
+              <ref role="3cqZAo" node="7dwhomQPrA_" resolve="myTextLine" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7dwhomQPrAU" role="3cqZAp">
@@ -2627,43 +2638,65 @@
               </node>
               <node concept="3clFbJ" id="LiJMKzchER" role="3cqZAp">
                 <node concept="3clFbS" id="LiJMKzchET" role="3clFbx">
-                  <node concept="3clFbF" id="LiJMKzceiJ" role="3cqZAp">
-                    <node concept="37vLTI" id="LiJMKzceiL" role="3clFbG">
-                      <node concept="2OqwBi" id="LiJMKzce1f" role="37vLTx">
-                        <node concept="2YIFZM" id="LiJMKzce1g" role="2Oq$k0">
-                          <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
-                          <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
-                        </node>
-                        <node concept="liA8E" id="LiJMKzce1h" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
-                          <node concept="37vLTw" id="LiJMKzce1i" role="37wK5m">
-                            <ref role="3cqZAo" node="LiJMKzca9W" resolve="filePath" />
+                  <node concept="SfApY" id="z2bthUcq6P" role="3cqZAp">
+                    <node concept="3clFbS" id="z2bthUcq6R" role="SfCbr">
+                      <node concept="3clFbF" id="LiJMKzceiJ" role="3cqZAp">
+                        <node concept="37vLTI" id="LiJMKzceiL" role="3clFbG">
+                          <node concept="2OqwBi" id="LiJMKzce1f" role="37vLTx">
+                            <node concept="2YIFZM" id="LiJMKzce1g" role="2Oq$k0">
+                              <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
+                              <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
+                            </node>
+                            <node concept="liA8E" id="LiJMKzce1h" role="2OqNvi">
+                              <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
+                              <node concept="37vLTw" id="LiJMKzce1i" role="37wK5m">
+                                <ref role="3cqZAo" node="LiJMKzca9W" resolve="filePath" />
+                              </node>
+                            </node>
                           </node>
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="LiJMKzcjgw" role="37vLTJ">
-                        <ref role="3cqZAo" node="LiJMKzce1e" resolve="oldFile" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbJ" id="LiJMKzcjCL" role="3cqZAp">
-                    <node concept="3clFbS" id="LiJMKzcjCN" role="3clFbx">
-                      <node concept="3clFbF" id="LiJMKzckG8" role="3cqZAp">
-                        <node concept="37vLTI" id="LiJMKzckTu" role="3clFbG">
-                          <node concept="10Nm6u" id="LiJMKzcl6M" role="37vLTx" />
-                          <node concept="37vLTw" id="LiJMKzckG6" role="37vLTJ">
+                          <node concept="37vLTw" id="LiJMKzcjgw" role="37vLTJ">
                             <ref role="3cqZAo" node="LiJMKzce1e" resolve="oldFile" />
                           </node>
                         </node>
                       </node>
-                    </node>
-                    <node concept="3fqX7Q" id="LiJMKzcjQb" role="3clFbw">
-                      <node concept="2OqwBi" id="LiJMKzck8$" role="3fr31v">
-                        <node concept="37vLTw" id="LiJMKzcjUB" role="2Oq$k0">
-                          <ref role="3cqZAo" node="LiJMKzce1e" resolve="oldFile" />
+                      <node concept="3clFbJ" id="LiJMKzcjCL" role="3cqZAp">
+                        <node concept="3clFbS" id="LiJMKzcjCN" role="3clFbx">
+                          <node concept="3clFbF" id="LiJMKzckG8" role="3cqZAp">
+                            <node concept="37vLTI" id="LiJMKzckTu" role="3clFbG">
+                              <node concept="10Nm6u" id="LiJMKzcl6M" role="37vLTx" />
+                              <node concept="37vLTw" id="LiJMKzckG6" role="37vLTJ">
+                                <ref role="3cqZAo" node="LiJMKzce1e" resolve="oldFile" />
+                              </node>
+                            </node>
+                          </node>
                         </node>
-                        <node concept="liA8E" id="LiJMKzcks4" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
+                        <node concept="3fqX7Q" id="LiJMKzcjQb" role="3clFbw">
+                          <node concept="2OqwBi" id="LiJMKzck8$" role="3fr31v">
+                            <node concept="37vLTw" id="LiJMKzcjUB" role="2Oq$k0">
+                              <ref role="3cqZAo" node="LiJMKzce1e" resolve="oldFile" />
+                            </node>
+                            <node concept="liA8E" id="LiJMKzcks4" role="2OqNvi">
+                              <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="TDmWw" id="z2bthUcq6S" role="TEbGg">
+                      <node concept="3cpWsn" id="z2bthUcq6U" role="TDEfY">
+                        <property role="TrG5h" value="pfe" />
+                        <node concept="3uibUv" id="z2bthUc$Jm" role="1tU5fm">
+                          <ref role="3uigEE" to="ifj7:~PathFormatChecker$PathFormatException" resolve="PathFormatChecker.PathFormatException" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="z2bthUcq6Y" role="TDEfX">
+                        <node concept="3clFbF" id="z2bthUc_2r" role="3cqZAp">
+                          <node concept="37vLTI" id="z2bthUc_hb" role="3clFbG">
+                            <node concept="10Nm6u" id="z2bthUc_q4" role="37vLTx" />
+                            <node concept="37vLTw" id="z2bthUc_2q" role="37vLTJ">
+                              <ref role="3cqZAo" node="LiJMKzce1e" resolve="oldFile" />
+                            </node>
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -6954,8 +6987,8 @@
             <node concept="3cpWs8" id="4r5mV$u7W5x" role="3cqZAp">
               <node concept="3cpWsn" id="4r5mV$u7W5y" role="3cpWs9">
                 <property role="TrG5h" value="typecheckingSession" />
-                <node concept="3uibUv" id="4r5mV$u7V7g" role="1tU5fm">
-                  <ref role="3uigEE" to="ev0w:~TypecheckingSession" resolve="TypecheckingSession" />
+                <node concept="3uibUv" id="2Y_SODIEk9M" role="1tU5fm">
+                  <ref role="3uigEE" to="1ka:~TypecheckingSession" resolve="TypecheckingSession" />
                 </node>
                 <node concept="2OqwBi" id="4r5mV$u7W5z" role="33vP2m">
                   <node concept="37vLTw" id="4r5mV$u7W5$" role="2Oq$k0">
@@ -6999,7 +7032,7 @@
                     <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
                   </node>
                   <node concept="liA8E" id="4HQ6gVAN1pW" role="2OqNvi">
-                    <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.runWithSession(jetbrains.mps.typechecking.backend.TypecheckingSession,java.util.function.Supplier)" resolve="runWithSession" />
+                    <ref role="37wK5l" to="1ka:~TypecheckingComputations.computeWithSession(jetbrains.mps.typechecking.TypecheckingSession,java.util.function.Supplier)" resolve="computeWithSession" />
                     <node concept="37vLTw" id="4r5mV$u7W5A" role="37wK5m">
                       <ref role="3cqZAo" node="4r5mV$u7W5y" resolve="typecheckingSession" />
                     </node>
@@ -7196,9 +7229,9 @@
                 </node>
               </node>
               <node concept="liA8E" id="4HQ6gVAMBSy" role="2OqNvi">
-                <ref role="37wK5l" to="ev0w:~TypecheckingSession.getQueries(java.lang.Class)" resolve="getQueries" />
+                <ref role="37wK5l" to="1ka:~TypecheckingSession.getQueries(java.lang.Class)" resolve="getQueries" />
                 <node concept="3VsKOn" id="4HQ6gVAMBSz" role="37wK5m">
-                  <ref role="3VsUkX" to="h83j:~LegacyTypecheckingProvider" resolve="LegacyTypecheckingProvider" />
+                  <ref role="3VsUkX" to="h83j:~LegacyTypecheckingQueries" resolve="LegacyTypecheckingQueries" />
                 </node>
               </node>
             </node>

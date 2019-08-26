@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DevkitAsJar extends MigrationScriptBase {
+  private final String description = "Deploy devkits as regular module jars";
   public String getCaption() {
-    return "Deploy devkits as regular module jars";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class DevkitAsJar extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_66hauc_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_66hauc_a0d_0 = new EditableFilteringScope(scope_66hauc_a0d);
+      SearchScope scope_66hauc_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_66hauc_a0e_0 = new EditableFilteringScope(scope_66hauc_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_66hauc_a0d_0;
+          return scope_66hauc_a0e_0;
         }
       };
       for (SNode dk : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_DevKit$QO, false)) {

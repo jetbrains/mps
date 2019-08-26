@@ -6,7 +6,7 @@ import jetbrains.mps.openapi.actions.descriptor.PasteWrapper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -27,7 +27,7 @@ public final class SwitchExpressionPW_PasteWrapper_1 implements PasteWrapper {
   }
   private static SNode createEnumSwitchCaseBody_Expression_degi1_a0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.EnumSwitchCaseBody_Expression$Xi, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.EnumSwitchCaseBody_Expression$Xi, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.expression$6WR0, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
     }

@@ -26,6 +26,7 @@ import jetbrains.mps.lang.smodel.behavior.ContainmentLinkId__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.behavior.PropertyId__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.behavior.ReferenceLinkId__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import java.util.List;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
@@ -192,8 +193,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_8_4(final SourceSubstituteMacroNodeContext _context) {
-    // FIXME need SNode to wrap SReferenceLink or a template that takes SReferenceLink as argument 
-    return LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()).getDeclarationNode();
+    SNode id = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ReferenceLinkId$Ic);
+    ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(id, LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
+    return id;
+
   }
   public static SNode sourceNodeQuery_8_5(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.getParent(_context.getNode());
@@ -708,6 +711,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept OrPatternClause$W4 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x4363a36537b0b250L, "jetbrains.mps.lang.pattern.structure.OrPatternClause");
     /*package*/ static final SConcept ActionAsPattern$TP = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, "jetbrains.mps.lang.pattern.structure.ActionAsPattern");
     /*package*/ static final SConcept PropertyId$Ig = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId");
+    /*package*/ static final SConcept ReferenceLinkId$Ic = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId");
     /*package*/ static final SConcept Pattern$Ke = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478fL, "jetbrains.mps.lang.pattern.structure.Pattern");
     /*package*/ static final SConcept PropertyPatternVariableDeclaration$Xj = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
     /*package*/ static final SConcept LinkPatternVariableDeclaration$UB = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration");

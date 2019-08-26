@@ -7,8 +7,12 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.ui.FindTextInModelDialog;
+import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 
 public class FindTextInProject_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -33,14 +37,22 @@ public class FindTextInProject_Action extends BaseAction {
         return false;
       }
     }
+    {
+      EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    FindTextInModelDialog dlg = new FindTextInModelDialog(mpsProject);
-    // no idea what's the proper way to use active selection, but PlatformDataKeys.PREDEFINED_TEXT key doesn't work. 
-    // There's IDEA's FindUtil.getSelectedText(Editor), no idea what's MPS way to do the same 
-    dlg.show();
+    FindTextInModelDialog dialog = new FindTextInModelDialog(mpsProject);
+    // As long as we are searching only in properties, it is enough to use only selection within one cell - property value can't be split between  several cells 
+    if (event.getData(MPSEditorDataKeys.EDITOR_CONTEXT) != null && event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getSelectionManager().getSelection() != null) {
+      Selection selection = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getSelectionManager().getSelection();
+      if (selection instanceof EditorCellLabelSelection) {
+        dialog.setText(((EditorCellLabelSelection) selection).getEditorCellLabel().getSelectedText());
+      }
+    }
+    dialog.show();
   }
 }

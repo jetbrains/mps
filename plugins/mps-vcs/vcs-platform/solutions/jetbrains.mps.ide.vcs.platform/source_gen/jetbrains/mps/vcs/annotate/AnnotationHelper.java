@@ -34,8 +34,8 @@ import com.intellij.util.Consumer;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
@@ -137,7 +137,7 @@ public class AnnotationHelper {
         }
 
         if (myFileAnnotation != null) {
-          // Now annotation is build asynchroniously, and is reloaded after build finished (can be done several times) 
+          // Now annotation is build asynchronously, and is reloaded after build finished (can be done several times) 
           myFileAnnotation.setReloader(new Consumer<FileAnnotation>() {
             public void consume(FileAnnotation newFA) {
               annotate(editorComponent);
@@ -147,33 +147,43 @@ public class AnnotationHelper {
           if (myFileAnnotation.getRevisions() == null) {
             return;
           }
-          final Wrappers._T<List<LineContent>> fileLineToContent = new Wrappers._T<List<LineContent>>(null);
-          final Wrappers._T<ModelReadException> mre = new Wrappers._T<ModelReadException>(null);
           try {
-            fileLineToContent.value = VCSPersistenceSupport.getLineToContentMap(myFileAnnotation.getAnnotatedContent());
-          } catch (ModelReadException e) {
-            mre.value = e;
-          }
-          if (fileLineToContent.value == null) {
-            ApplicationManager.getApplication().invokeLater(new Runnable() {
+            final Wrappers._T<List<LineContent>> fileLineToContent = new Wrappers._T<List<LineContent>>(null);
+            String annotatedContent = myFileAnnotation.getAnnotatedContent();
+            if (annotatedContent == null) {
+              reportWarning("No content to annotate", null);
+              return;
+            }
+            fileLineToContent.value = VCSPersistenceSupport.getLineToContentMap(annotatedContent);
+            if (fileLineToContent.value == null) {
+              reportWarning("Failed to annotate model", null);
+              return;
+            }
+
+            editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
               public void run() {
-                String msg = "Couldn't show annotation";
-                if (mre.value != null && mre.value.getCause() != null) {
-                  msg += ": " + mre.value.getCause().getMessage();
-                }
-                ToolWindowManager.getInstance(vcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, msg);
+                AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, root, myFileAnnotation, fileLineToContent.value);
+                leftEditorHighlighter.addLeftColumn(annotationColumn);
               }
             });
-            return;
+          } catch (ModelReadException e) {
+            reportWarning("Couldn't show annotation", e);
           }
-
-          editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, root, myFileAnnotation, fileLineToContent.value);
-              leftEditorHighlighter.addLeftColumn(annotationColumn);
-            }
-          });
         }
+      }
+
+      private void reportWarning(String msg, @Nullable final Exception ex) {
+        final String warning;
+        if (ex != null) {
+          warning = (msg + ": " + ex.getCause() != null ? ex.getCause().getMessage() : ex.getMessage());
+        } else {
+          warning = msg;
+        }
+        ApplicationManager.getApplication().invokeLater(new Runnable() {
+          public void run() {
+            ToolWindowManager.getInstance(vcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning);
+          }
+        });
       }
     };
     SetSequence.fromSet(ourProgress).addElement(editorComponent);

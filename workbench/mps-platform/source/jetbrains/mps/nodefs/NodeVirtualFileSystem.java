@@ -58,6 +58,7 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   public static NodeVirtualFileSystem getInstance() {
     return (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   }
+
   public static final String PROTOCOL = "mps";
 
   /*
@@ -69,13 +70,13 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   @ToRemove(version = 3.4)
   private final RepositoryVirtualFiles myGlobalRepoFiles =
       new RepositoryVirtualFiles(this,
-                                 ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository());;
+                                 ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository());
 
   private final Object myRepoVFLock = new Object();
   // I don't expect this collection to grow significantly, hence just List
   private final List<RepositoryVirtualFiles> myPerRepositoryFiles = new CopyOnWriteArrayList<>();
   private final Map<RepositoryVirtualFiles, MyRepositoryListener> myFiles2ListenerMap = new HashMap<>();
-  private final SRepositoryContentAdapter myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);;
+  private final SRepositoryContentAdapter myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
   private boolean myDisposed = false;
 
   public NodeVirtualFileSystem() {
@@ -195,8 +196,8 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
     /**
      * FIXME the only reason we don't use single listener instance (we can obtain proper SRepository from the change event's model/node)
      * FIXME is that our project repository implementation is not capable of event sending, all events come from global repository.
-     *       Thus, it would be impossible to find proper RepositoryVirtualFiles instance. Shall fix ProjectRepository and its base impl
-     *       to send events on its own.
+     * Thus, it would be impossible to find proper RepositoryVirtualFiles instance. Shall fix ProjectRepository and its base impl
+     * to send events on its own.
      */
     public MyRepositoryListener(RepositoryVirtualFiles repoFiles) {
       myRepoFiles = repoFiles;
@@ -364,7 +365,7 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
       if (vf1 != null) {
         files.add(vf1);
       }
-      if (root != null && root != changed) {
+      if (root != null && root.equals(changed)) {
         MPSNodeVirtualFile vf2 = rvf.getVirtualFile(root);
         if (vf2 != null && !vf2.equals(vf1)) {
           files.add(vf2);

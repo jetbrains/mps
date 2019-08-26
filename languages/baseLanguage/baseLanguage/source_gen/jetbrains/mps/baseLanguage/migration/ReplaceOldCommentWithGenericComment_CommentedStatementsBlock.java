@@ -9,8 +9,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReplaceOldCommentWithGenericComment_CommentedStatementsBlock extends MigrationScriptBase {
+  private final String description = "ReplaceOldCommentWithGenericComment_CommentedStatementsBlock";
   public String getCaption() {
-    return "ReplaceOldCommentWithGenericComment_CommentedStatementsBlock";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

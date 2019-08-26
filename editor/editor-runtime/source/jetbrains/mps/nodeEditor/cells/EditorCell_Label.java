@@ -55,7 +55,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.Optional;
 
 public abstract class EditorCell_Label extends EditorCell_Basic implements jetbrains.mps.openapi.editor.cells.EditorCell_Label, WithCaret {
   protected boolean myNoTextSet;
@@ -65,8 +64,8 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   protected EditorCell_Label(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text) {
     super(editorContext, node);
-    myTextLine = new TextLine("", getStyle(), false);
-    myNullTextLine = new TextLine("", getStyle(), true);
+    myTextLine = new TextLine("", getStyle(), false, editorContext);
+    myNullTextLine = new TextLine("", getStyle(), true, editorContext);
 
     myTextLine.setCaretEnabled(true);
     myNullTextLine.setCaretEnabled(true);

@@ -261,6 +261,10 @@
       <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
         <reference id="7256306938026143658" name="target" index="2aWVGs" />
       </concept>
+      <concept id="361130699826193249" name="jetbrains.mps.lang.modelapi.structure.ModulePointer" flags="ng" index="1dCxOk">
+        <property id="1863527487546097500" name="moduleId" index="1XweGW" />
+        <property id="1863527487545993577" name="moduleName" index="1XxBO9" />
+      </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
       <concept id="1176544042499" name="jetbrains.mps.lang.typesystem.structure.Node_TypeOperation" flags="nn" index="3JvlWi" />
@@ -382,6 +386,9 @@
       </concept>
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
+      </concept>
+      <concept id="1678062499342629858" name="jetbrains.mps.lang.smodel.structure.ModuleRefExpression" flags="ng" index="37shsh">
+        <child id="1678062499342629861" name="moduleId" index="37shsm" />
       </concept>
       <concept id="3609773094169249792" name="jetbrains.mps.lang.smodel.structure.Node_GetReferenceOperation" flags="nn" index="37Cfm0">
         <child id="3609773094169252180" name="linkQualifier" index="37CeNk" />
@@ -11970,6 +11977,59 @@
   <node concept="312cEu" id="v01Wj46Dq4">
     <property role="3GE5qa" value="substitute.expression" />
     <property role="TrG5h" value="ModuleDependencyUtils" />
+    <node concept="2YIFZL" id="v01Wj46Hrq" role="jymVt">
+      <property role="TrG5h" value="addDependencyOnJDKIfMissing" />
+      <property role="DiZV1" value="false" />
+      <property role="od$2w" value="false" />
+      <node concept="3clFbS" id="v01Wj46Dqv" role="3clF47">
+        <node concept="3clFbJ" id="v01Wj42qqi" role="3cqZAp">
+          <node concept="3clFbS" id="v01Wj42qql" role="3clFbx">
+            <node concept="3clFbF" id="v01Wj42rzR" role="3cqZAp">
+              <node concept="2OqwBi" id="v01Wj42t2n" role="3clFbG">
+                <node concept="1eOMI4" id="_6Q$pqFY1N" role="2Oq$k0">
+                  <node concept="10QFUN" id="_6Q$pqFY1O" role="1eOMHV">
+                    <node concept="37vLTw" id="4Q2b1QmXB2C" role="10QFUP">
+                      <ref role="3cqZAo" node="v01Wj46EfI" resolve="currentModule" />
+                    </node>
+                    <node concept="3uibUv" id="_6Q$pqFY1P" role="10QFUM">
+                      <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="v01Wj42uCa" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~AbstractModule.addDependency(org.jetbrains.mps.openapi.module.SModuleReference,boolean)" resolve="addDependency" />
+                  <node concept="37shsh" id="7ESDA_iqVuU" role="37wK5m">
+                    <node concept="1dCxOk" id="5ZqXG2n7xIG" role="37shsm">
+                      <property role="1XxBO9" value="JDK" />
+                      <property role="1XweGW" value="6354ebe7-c22a-4a0f-ac54-50b52ab9b065" />
+                    </node>
+                  </node>
+                  <node concept="3clFbT" id="v01Wj42Vv1" role="37wK5m">
+                    <property role="3clFbU" value="false" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="v01Wj42r2v" role="3clFbw">
+            <node concept="3uibUv" id="v01Wj42rfI" role="2ZW6by">
+              <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
+            </node>
+            <node concept="37vLTw" id="v01Wj46GhZ" role="2ZW6bz">
+              <ref role="3cqZAo" node="v01Wj46EfI" resolve="currentModule" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="v01Wj46EfI" role="3clF46">
+        <property role="TrG5h" value="currentModule" />
+        <node concept="3uibUv" id="v01Wj46EfH" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="v01Wj46Dqk" role="3clF45" />
+      <node concept="3Tm1VV" id="41ZU75XXsks" role="1B3o_S" />
+    </node>
     <node concept="2YIFZL" id="6BkpuGOYpXd" role="jymVt">
       <property role="TrG5h" value="addDependencyOnJavaDocIfMissing" />
       <property role="DiZV1" value="false" />

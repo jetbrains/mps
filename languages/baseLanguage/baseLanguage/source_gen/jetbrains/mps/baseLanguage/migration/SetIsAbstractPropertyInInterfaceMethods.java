@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class SetIsAbstractPropertyInInterfaceMethods extends MigrationScriptBase {
+  private final String description = "SetIsAbstractPropertyInInterfaceMethods";
   public String getCaption() {
-    return "SetIsAbstractPropertyInInterfaceMethods";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class SetIsAbstractPropertyInInterfaceMethods extends MigrationScriptBase
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_km8cgg_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_km8cgg_a0d_0 = new EditableFilteringScope(scope_km8cgg_a0d);
+      SearchScope scope_km8cgg_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_km8cgg_a0e_0 = new EditableFilteringScope(scope_km8cgg_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_km8cgg_a0d_0;
+          return scope_km8cgg_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Interface$Kp, true)).visitAll(new IVisitor<SNode>() {

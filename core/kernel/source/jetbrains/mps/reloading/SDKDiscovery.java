@@ -66,7 +66,10 @@ public class SDKDiscovery {
       String url = cls.getResource(cls.getSimpleName() + ".class").toString();
       url = URLDecoder.decode(url, Charset.defaultCharset().name()).replace('/', File.separatorChar);
       String prefix = "jar:";
-      assert url.startsWith(prefix) : url;
+      if (!url.startsWith(prefix)) {
+        LOG.warn("Can't extract JDK tools path from " + url);
+        return null;
+      }
 
       String jarPath = url.substring(prefix.length(), url.indexOf('!'));
       return new QualifiedPath(VFSManager.FILE_FS, Files.fromURL(new URL(jarPath)).getPath());
@@ -74,7 +77,7 @@ public class SDKDiscovery {
       LOG.warn("jar file for class " + toolsJarClass + " could not be found");
       return null;
     } catch (UnsupportedEncodingException e) {
-      LOG.error("Exception when trying to find tools.jar: ",e);
+      LOG.error("Exception when trying to find tools.jar: ", e);
       return null;
     }
   }

@@ -15,16 +15,12 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="6xgk" ref="r:6e9ad488-5df2-49e4-8c01-8a7f3812adf7(jetbrains.mps.lang.scopes.runtime)" />
+    <import index="qzsv" ref="r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)" />
     <import index="uj7v" ref="r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)" implicit="true" />
     <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
-    <language id="ea3159bf-f48e-4720-bde2-86dba75f0d34" name="jetbrains.mps.lang.context.defs">
-      <concept id="5473446470512342705" name="jetbrains.mps.lang.context.defs.structure.TypedNativeDef" flags="ng" index="3RXm0x">
-        <child id="5473446470512342706" name="type" index="3RXm0y" />
-      </concept>
-    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -63,9 +59,6 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
-      <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
-        <reference id="1107535924139" name="classifier" index="3uigEE" />
-      </concept>
     </language>
     <language id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints">
       <concept id="8966504967485224688" name="jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_contextNode" flags="nn" index="2rP1CM" />
@@ -79,19 +72,9 @@
         <child id="1148687345559" name="searchScopeFactory" index="1N6uqs" />
       </concept>
     </language>
-    <language id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem">
-      <concept id="24399255755750911" name="jetbrains.mps.lang.feedback.problem.structure.ProblemKindRoot" flags="ng" index="1Gj5c1">
-        <child id="24399255755751437" name="context" index="1GjqVN" />
-      </concept>
-    </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
       <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
         <reference id="7256306938026143658" name="target" index="2aWVGs" />
-      </concept>
-    </language>
-    <language id="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" name="jetbrains.mps.lang.context">
-      <concept id="24399255755667773" name="jetbrains.mps.lang.context.structure.Context" flags="ng" index="1GjLv3">
-        <child id="7291380803376071326" name="defs" index="3QpnaF" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -122,21 +105,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="1Gj5c1" id="4XK1Xd019ID">
-    <property role="TrG5h" value="MissingProperty" />
-    <node concept="1GjLv3" id="4XK1Xd019IE" role="1GjqVN">
-      <node concept="3RXm0x" id="1dKt_a0nok$" role="3QpnaF">
-        <property role="TrG5h" value="node" />
-        <node concept="3Tqbb2" id="1dKt_a0nokB" role="3RXm0y" />
-      </node>
-      <node concept="3RXm0x" id="1mFJTG7MCZ" role="3QpnaF">
-        <property role="TrG5h" value="property" />
-        <node concept="3uibUv" id="1mFJTG7MD5" role="3RXm0y">
-          <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="1M2fIO" id="4XK1Xd019PZ">
     <ref role="1M2myG" to="uj7v:4XK1Xd019GL" resolve="MissingPropertyInConceptProblem" />
     <node concept="1N5Pfh" id="6GnzfDRdBjk" role="1Mr941">
@@ -152,7 +120,7 @@
               <node concept="2OqwBi" id="6GnzfDRdDSE" role="33vP2m">
                 <node concept="2tJFMh" id="6GnzfDRdDSF" role="2Oq$k0">
                   <node concept="ZC_QK" id="6GnzfDRh7UR" role="2tJFKM">
-                    <ref role="2aWVGs" node="4XK1Xd019ID" resolve="MissingProperty" />
+                    <ref role="2aWVGs" to="qzsv:4XK1Xd019ID" resolve="MissingProperty" />
                   </node>
                 </node>
                 <node concept="Vyspw" id="6GnzfDRdDSH" role="2OqNvi">
@@ -189,25 +157,6 @@
       </node>
     </node>
   </node>
-  <node concept="1Gj5c1" id="2dMY_rcjEws">
-    <property role="TrG5h" value="MissingChild" />
-    <node concept="1GjLv3" id="2dMY_rcjEwt" role="1GjqVN">
-      <node concept="3RXm0x" id="2dMY_rcjEwu" role="3QpnaF">
-        <property role="TrG5h" value="node" />
-        <node concept="3Tqbb2" id="2dMY_rcjEwv" role="3RXm0y" />
-      </node>
-      <node concept="3RXm0x" id="2dMY_rcjEww" role="3QpnaF">
-        <property role="TrG5h" value="child" />
-        <node concept="3Tqbb2" id="2dMY_rcjEwy" role="3RXm0y" />
-      </node>
-      <node concept="3RXm0x" id="1oq9tin0UZe" role="3QpnaF">
-        <property role="TrG5h" value="link" />
-        <node concept="3uibUv" id="1oq9tin0UZo" role="3RXm0y">
-          <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="1M2fIO" id="2dMY_rcjEQ$">
     <ref role="1M2myG" to="uj7v:2dMY_rcjEfO" resolve="MissingChildInConceptProblem" />
     <node concept="1N5Pfh" id="2dMY_rcjEQ_" role="1Mr941">
@@ -223,7 +172,7 @@
               <node concept="2OqwBi" id="2dMY_rcjEQF" role="33vP2m">
                 <node concept="2tJFMh" id="2dMY_rcjEQG" role="2Oq$k0">
                   <node concept="ZC_QK" id="2dMY_rcjF8m" role="2tJFKM">
-                    <ref role="2aWVGs" node="2dMY_rcjEws" resolve="MissingChild" />
+                    <ref role="2aWVGs" to="qzsv:2dMY_rcjEws" resolve="MissingChild" />
                   </node>
                 </node>
                 <node concept="Vyspw" id="2dMY_rcjEQI" role="2OqNvi">

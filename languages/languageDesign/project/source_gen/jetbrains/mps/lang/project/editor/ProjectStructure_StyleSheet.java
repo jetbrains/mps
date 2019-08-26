@@ -7,10 +7,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
-import jetbrains.mps.nodeEditor.MPSFonts;
+import jetbrains.mps.lang.core.editor.BaseKeyPack_KeyPack.KEYWORD_StyleKey;
 
 public class ProjectStructure_StyleSheet {
   /**
@@ -31,8 +28,7 @@ public class ProjectStructure_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+      new KEYWORD_StyleKey().apply(style);
     }
 
   }

@@ -112,31 +112,30 @@
       <node id="2693191044933800258" at="249,72,250,70" concept="11" />
       <node id="5959401720050577811" at="255,45,256,70" concept="10" />
       <node id="5959401720052542478" at="256,70,257,88" concept="10" />
-      <node id="5959401720051634505" at="257,88,258,45" concept="10" />
-      <node id="5959401720050662052" at="258,45,259,49" concept="10" />
-      <node id="5959401720053418226" at="259,49,260,64" concept="10" />
-      <node id="5959401720051863200" at="260,64,261,31" concept="4" />
-      <node id="5959401720050799758" at="261,31,262,18" concept="10" />
-      <node id="5959401720053998994" at="262,18,263,135" concept="12" />
-      <node id="5959401720055100893" at="263,135,264,49" concept="12" />
-      <node id="5959401720054308996" at="264,49,265,134" concept="12" />
-      <node id="5959401720051153173" at="266,34,267,45" concept="10" />
-      <node id="5959401720052783571" at="268,23,269,56" concept="10" />
-      <node id="5959401720052956570" at="269,56,270,69" concept="10" />
-      <node id="5959401720051731230" at="270,69,271,84" concept="4" />
-      <node id="5959401720053932012" at="271,84,272,31" concept="4" />
-      <node id="2102711303282678814" at="275,14,276,67" concept="4" />
-      <node id="2102711303277483637" at="282,0,283,0" concept="14" trace="TextCommentPart$lb" />
-      <node id="2102711303277483637" at="283,0,284,0" concept="14" trace="TextCommentLinePart$RY" />
-      <node id="2102711303277483637" at="284,0,285,0" concept="14" trace="Word$AM" />
-      <node id="2102711303277483637" at="285,0,286,0" concept="14" trace="StringLiteral$4G" />
-      <node id="2102711303277483637" at="289,0,290,0" concept="14" trace="text$5Ox0" />
-      <node id="2102711303277483637" at="290,0,291,0" concept="14" trace="text$AaEw" />
-      <node id="2102711303277483637" at="291,0,292,0" concept="14" trace="value$cK70" />
-      <node id="2102711303277483637" at="292,0,293,0" concept="14" trace="value$kiE0" />
+      <node id="5959401720051634505" at="257,88,258,57" concept="10" />
+      <node id="5959401720050662052" at="258,57,259,49" concept="10" />
+      <node id="5959401720051863200" at="259,49,260,31" concept="4" />
+      <node id="5959401720050799758" at="260,31,261,18" concept="10" />
+      <node id="5959401720053998994" at="261,18,262,135" concept="12" />
+      <node id="5959401720055100893" at="262,135,263,49" concept="12" />
+      <node id="5959401720054308996" at="263,49,264,134" concept="12" />
+      <node id="5959401720051153173" at="265,34,266,45" concept="10" />
+      <node id="5959401720052783571" at="267,23,268,53" concept="10" />
+      <node id="5959401720052956570" at="268,53,269,66" concept="10" />
+      <node id="5959401720051731230" at="269,66,270,84" concept="4" />
+      <node id="5959401720053932012" at="270,84,271,31" concept="4" />
+      <node id="2102711303282678814" at="274,14,275,67" concept="4" />
+      <node id="2102711303277483637" at="281,0,282,0" concept="14" trace="TextCommentPart$lb" />
+      <node id="2102711303277483637" at="282,0,283,0" concept="14" trace="TextCommentLinePart$RY" />
+      <node id="2102711303277483637" at="283,0,284,0" concept="14" trace="Word$AM" />
+      <node id="2102711303277483637" at="284,0,285,0" concept="14" trace="StringLiteral$4G" />
+      <node id="2102711303277483637" at="288,0,289,0" concept="14" trace="text$5Ox0" />
+      <node id="2102711303277483637" at="289,0,290,0" concept="14" trace="text$AaEw" />
+      <node id="2102711303277483637" at="290,0,291,0" concept="14" trace="value$cK70" />
+      <node id="2102711303277483637" at="291,0,292,0" concept="14" trace="value$kiE0" />
       <node id="3522676824911107735" at="216,10,218,5" concept="0" />
       <node id="5959401720049800535" at="242,12,244,7" concept="0" />
-      <node id="5959401720055422492" at="275,12,277,7" concept="0" />
+      <node id="5959401720055422492" at="274,12,276,7" concept="0" />
       <node id="2102711303279263068" at="53,0,56,0" concept="2" trace="CommentSpellChecker#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="2102711303279028710" at="57,0,60,0" concept="9" trace="isDisabled#()Z" />
       <node id="2102711303279123074" at="61,31,64,5" concept="8" />
@@ -166,7 +165,7 @@
       <node id="2102711303282274728" at="231,0,236,0" concept="2" trace="M#(Ljava/util/List;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/message/EditorMessageOwner;)V" />
       <node id="2102711303279065130" at="61,0,67,0" concept="9" trace="isEnabled#()Z" />
       <node id="5959401720045195884" at="146,9,152,9" concept="8" />
-      <node id="5959401720051247904" at="267,45,273,11" concept="8" />
+      <node id="5959401720051247904" at="266,45,272,11" concept="8" />
       <node id="2102711303278423554" at="76,34,83,7" concept="8" />
       <node id="3522676824911053441" at="213,0,220,0" concept="15" trace="incorrectWords#(Ljetbrains/mps/openapi/editor/message/SimpleEditorMessage;)[Ljava/lang/String;" />
       <node id="3522676824911567109" at="221,0,228,0" concept="15" trace="addToDictionary#(Lcom/intellij/openapi/project/Project;Ljava/lang/String;)V" />
@@ -174,15 +173,15 @@
       <node id="5959401720048315669" at="171,7,179,7" concept="8" />
       <node id="2102711303278415214" at="75,5,84,5" concept="7" />
       <node id="5959401720049615049" at="237,0,246,0" concept="15" trace="msg#(Ljava/util/List;)Ljava/lang/String;" />
-      <node id="5959401720050893415" at="265,134,274,9" concept="7" />
+      <node id="5959401720050893415" at="264,134,273,9" concept="7" />
       <node id="6100916785565197113" at="195,43,205,5" concept="6" />
       <node id="2102711303279723182" at="105,7,118,7" concept="8" />
       <node id="6100916785564517044" at="195,0,208,0" concept="9" trace="isRegularWord#(Ljava/lang/String;)Z" />
       <node id="2102711303278406836" at="68,0,86,0" concept="9" trace="processEvents#(Ljava/util/List;)V" />
       <node id="2102711303278841073" at="101,67,119,5" concept="7" />
-      <node id="5959401720049259039" at="254,85,277,7" concept="8" />
+      <node id="5959401720049259039" at="254,85,276,7" concept="8" />
       <node id="2102711303277492472" at="97,0,122,0" concept="9" trace="update#(Ljetbrains/mps/nodeEditor/EditorComponent;ZZLjetbrains/mps/util/Cancellable;)Ljetbrains/mps/nodeEditor/checking/UpdateResult;" />
-      <node id="2102711303282629228" at="253,0,279,0" concept="9" trace="paint#(Ljava/awt/Graphics;Ljetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="2102711303282629228" at="253,0,278,0" concept="9" trace="paint#(Ljava/awt/Graphics;Ljetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
       <node id="5959401720044765006" at="135,29,167,7" concept="18" />
       <node id="2102711303281501910" at="129,38,188,5" concept="7" />
       <node id="2102711303280341684" at="123,0,194,0" concept="9" trace="spellCheck#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)V" />
@@ -210,7 +209,7 @@
       <scope id="5959401720049800516" at="240,40,241,94" />
       <scope id="5959401720049800536" at="242,14,243,95" />
       <scope id="2693191044933443954" at="249,72,250,70" />
-      <scope id="5959401720055422493" at="275,14,276,67" />
+      <scope id="5959401720055422493" at="274,14,275,67" />
       <scope id="2102711303278580600" at="79,144,81,16" />
       <scope id="2102711303279723184" at="106,90,108,83">
         <var name="p" id="2102711303280122673" />
@@ -247,7 +246,7 @@
         <var name="cell" id="2693191044933443950" />
         <var name="editor" id="2693191044933443952" />
       </scope>
-      <scope id="5959401720051247906" at="268,23,272,31">
+      <scope id="5959401720051247906" at="267,23,271,31">
         <var name="x1" id="5959401720052783572" />
         <var name="x2" id="5959401720052956571" />
       </scope>
@@ -274,7 +273,7 @@
         <var name="word" id="3522676824911578598" />
       </scope>
       <scope id="5959401720049615052" at="237,54,244,7" />
-      <scope id="5959401720050893417" at="266,34,273,11">
+      <scope id="5959401720050893417" at="265,34,272,11">
         <var name="i" id="5959401720051153174" />
       </scope>
       <scope id="6100916785565197115" at="196,42,204,7">
@@ -286,7 +285,7 @@
       <scope id="5959401720049615049" at="237,0,246,0">
         <var name="mistakes" id="5959401720049636139" />
       </scope>
-      <scope id="5959401720050893415" at="265,134,274,9">
+      <scope id="5959401720050893415" at="264,134,273,9">
         <var name="w" id="5959401720050893418" />
       </scope>
       <scope id="6100916785565197113" at="195,43,205,5">
@@ -304,9 +303,8 @@
       <scope id="2102711303278841073" at="101,67,119,5">
         <var name="n" id="2102711303278841077" />
       </scope>
-      <scope id="5959401720049259041" at="255,45,274,9">
+      <scope id="5959401720049259041" at="255,45,273,9">
         <var name="fm" id="5959401720051634506" />
-        <var name="renderedChars" id="5959401720053418232" />
         <var name="renderedText" id="5959401720050662053" />
         <var name="s" id="5959401720050799761" />
         <var name="tl" id="5959401720050577812" />
@@ -316,14 +314,14 @@
         <var name="editedNode" id="2102711303278764677" />
         <var name="messages" id="2102711303280742509" />
       </scope>
-      <scope id="2102711303282629238" at="254,85,277,7" />
+      <scope id="2102711303282629238" at="254,85,276,7" />
       <scope id="2102711303277492472" at="97,0,122,0">
         <var name="applyQuickFix" id="2102711303277492481" />
         <var name="cancellable" id="2102711303277492483" />
         <var name="component" id="2102711303277492477" />
         <var name="incremental" id="2102711303277492479" />
       </scope>
-      <scope id="2102711303282629228" at="253,0,279,0">
+      <scope id="2102711303282629228" at="253,0,278,0">
         <var name="cell" id="2102711303282629236" />
         <var name="editorComponent" id="2102711303282629234" />
         <var name="g" id="2102711303282629232" />
@@ -351,10 +349,10 @@
         <var name="n" id="2102711303282874109" />
         <var name="text" id="2102711303280350303" />
       </scope>
-      <unit id="2102711303277483637" at="281,0,287,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker$CONCEPTS" />
-      <unit id="2102711303277483637" at="288,0,294,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker$PROPS" />
-      <unit id="2102711303281204187" at="229,0,280,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker$M" />
-      <unit id="2102711303277483637" at="37,0,295,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker" />
+      <unit id="2102711303277483637" at="280,0,286,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker$CONCEPTS" />
+      <unit id="2102711303277483637" at="287,0,293,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker$PROPS" />
+      <unit id="2102711303281204187" at="229,0,279,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker$M" />
+      <unit id="2102711303277483637" at="37,0,294,0" name="jetbrains.mps.java.platform.highlighters.CommentSpellChecker" />
     </file>
   </root>
   <root nodeRef="r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/5916754392152656888">

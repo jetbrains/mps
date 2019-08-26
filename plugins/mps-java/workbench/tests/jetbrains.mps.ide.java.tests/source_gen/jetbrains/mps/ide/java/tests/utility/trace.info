@@ -634,7 +634,7 @@
       </scope>
       <unit id="8083368042256321540" at="451,0,454,0" name="jetbrains.mps.ide.java.tests.utility.Utils$PROPS" />
       <unit id="5831050275831670348" at="107,58,111,7" name="jetbrains.mps.ide.java.tests.utility.Utils$1" />
-      <unit id="5831050275832189296" at="112,86,116,7" name="jetbrains.mps.ide.java.tests.utility.Utils$2" />
+      <unit id="5831050275832189296" at="112,90,116,7" name="jetbrains.mps.ide.java.tests.utility.Utils$2" />
       <unit id="8051061021619746343" at="329,56,333,5" name="jetbrains.mps.ide.java.tests.utility.Utils$3" />
       <unit id="8051061021619746361" at="334,56,338,5" name="jetbrains.mps.ide.java.tests.utility.Utils$4" />
       <unit id="8083368042256321540" at="455,0,460,0" name="jetbrains.mps.ide.java.tests.utility.Utils$LINKS" />

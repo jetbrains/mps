@@ -329,12 +329,12 @@ public class CellLayout_Indent extends AbstractCellLayout {
       boolean hasWrapAnchor = collection.getStyle().get(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR);
 
       int indent = hasIndent && hasAnchor ? currentIndent() + myIndentSize :
-          hasIndent ? myCurrentIndent + myIndentSize :
-              hasAnchor ? currentIndent() + getFirstChildLeftGap(collection)
-                  : myCurrentIndent;
+                   hasIndent ? myCurrentIndent + myIndentSize :
+                   hasAnchor ? currentIndent() + getFirstChildLeftGap(collection)
+                             : myCurrentIndent;
       int wrapIndent = hasWrapAnchor ? currentIndent() + getFirstChildLeftGap(collection) :
-          (hasAnchor || hasIndent) ? indent + 2 * myIndentSize
-              : myCurrentIndentAfterWrap;
+                       (hasAnchor || hasIndent) ? indent + 2 * myIndentSize
+                                                : myCurrentIndentAfterWrap;
 
       withIndent(indent, wrapIndent, () -> {
         for (EditorCell child : collection) {
@@ -523,7 +523,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
     private boolean cellRangeFitsOnOneLine(EditorCell firstCell, EditorCell lastCell) {
       return lastCell.getX() + lastCell.getWidth() - firstCell.getX() <
-          myMaxWidth - myX - myCurrentIndentAfterWrap;
+             myMaxWidth - myX - myCurrentIndentAfterWrap;
     }
 
     private boolean isOnRightSide(EditorCell cell) {

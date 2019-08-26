@@ -33,13 +33,12 @@
       <node id="1177463041902" at="38,30,39,17" concept="6" />
       <node id="1196777967634" at="41,83,42,63" concept="5" />
       <node id="1196777967634" at="42,63,43,30" concept="5" />
-      <node id="1196777967634" at="43,30,44,246" concept="2" />
-      <node id="1196777967634" at="44,246,45,94" concept="2" />
-      <node id="1196777967634" at="45,94,46,24" concept="6" />
+      <node id="1196777967634" at="43,30,44,218" concept="2" />
+      <node id="1196777967634" at="44,218,45,196" concept="2" />
+      <node id="1196777967634" at="45,196,46,24" concept="6" />
       <node id="1177463041902" at="50,0,51,0" concept="7" trace="MigrationScriptPart_Instance$AE" />
       <node id="1177463041902" at="51,0,52,0" concept="7" trace="MigrationScriptPart_node$lz" />
       <node id="1177463041902" at="55,0,56,0" concept="7" trace="affectedInstanceConcept$EvED" />
-      <node id="1177463041902" at="56,0,57,0" concept="7" trace="concept$HWFQ" />
       <node id="1177463041902" at="22,0,24,0" concept="1" trace="typeof_MigrationScriptPart_node_InferenceRule#()V" />
       <node id="1177463041902" at="32,0,35,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1177463041902" at="35,0,38,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -76,9 +75,9 @@
         <var name="status" id="1177463041902" />
         <var name="typeCheckingContext" id="1177463041902" />
       </scope>
+      <unit id="1177463041902" at="54,0,57,0" name="jetbrains.mps.lang.script.typesystem.typeof_MigrationScriptPart_node_InferenceRule$LINKS" />
       <unit id="1177463041902" at="49,0,53,0" name="jetbrains.mps.lang.script.typesystem.typeof_MigrationScriptPart_node_InferenceRule$CONCEPTS" />
-      <unit id="1177463041902" at="54,0,58,0" name="jetbrains.mps.lang.script.typesystem.typeof_MigrationScriptPart_node_InferenceRule$LINKS" />
-      <unit id="1177463041902" at="21,0,59,0" name="jetbrains.mps.lang.script.typesystem.typeof_MigrationScriptPart_node_InferenceRule" />
+      <unit id="1177463041902" at="21,0,58,0" name="jetbrains.mps.lang.script.typesystem.typeof_MigrationScriptPart_node_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)/2598676492883170109">
@@ -91,65 +90,63 @@
       </scope>
     </file>
     <file name="check_FactoryMigrationScriptPath_NonTypesystemRule.java">
-      <node id="2598676492883176318" at="28,117,29,128" concept="5" />
-      <node id="2598676492883176352" at="31,7,32,66" concept="5" />
-      <node id="2598676492883176352" at="32,66,33,387" concept="5" />
-      <node id="2598676492883170109" at="37,50,38,50" concept="6" />
-      <node id="2598676492883170109" at="40,68,41,102" concept="6" />
-      <node id="2598676492883170109" at="43,30,44,17" concept="6" />
-      <node id="2598676492883176348" at="46,63,47,63" concept="5" />
-      <node id="2598676492883176348" at="47,63,48,30" concept="5" />
-      <node id="2598676492883176348" at="48,30,49,30" concept="5" />
-      <node id="2598676492883176348" at="49,30,50,252" concept="2" />
-      <node id="2598676492883176348" at="50,252,51,233" concept="2" />
-      <node id="2598676492883176348" at="51,233,52,252" concept="2" />
-      <node id="2598676492883176348" at="52,252,53,282" concept="2" />
-      <node id="2598676492883176348" at="53,282,54,62" concept="2" />
-      <node id="2598676492883176348" at="54,62,55,24" concept="6" />
-      <node id="2598676492883170109" at="59,0,60,0" concept="7" trace="factoryMethod$1qwv" />
-      <node id="2598676492883170109" at="60,0,61,0" concept="7" trace="classifier$pQ_R" />
-      <node id="2598676492883170109" at="61,0,62,0" concept="7" trace="parameter$dQne" />
-      <node id="2598676492883170109" at="65,0,66,0" concept="7" trace="FactoryMigrationScriptPart$F0" />
-      <node id="2598676492883170109" at="26,0,28,0" concept="1" trace="check_FactoryMigrationScriptPath_NonTypesystemRule#()V" />
-      <node id="2598676492883170109" at="37,0,40,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="2598676492883170109" at="40,0,43,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="2598676492883170109" at="43,0,46,0" concept="4" trace="overrides#()Z" />
-      <node id="2598676492883176352" at="30,111,34,7" concept="0" />
-      <node id="2598676492883176341" at="29,128,35,5" concept="3" />
-      <node id="2598676492883170109" at="28,0,37,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <node id="2598676492883176348" at="46,0,57,0" concept="8" trace="_quotation_createNode_5hdosv_b0a0b0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="2598676492883170109" at="26,63,26,63" />
-      <scope id="2598676492883170109" at="37,50,38,50" />
-      <scope id="2598676492883170109" at="40,68,41,102" />
-      <scope id="2598676492883170109" at="43,30,44,17" />
-      <scope id="2598676492883170109" at="26,0,28,0" />
-      <scope id="2598676492883176352" at="31,7,33,387">
+      <node id="2598676492883176318" at="27,117,28,128" concept="5" />
+      <node id="2598676492883176352" at="30,7,31,66" concept="5" />
+      <node id="2598676492883176352" at="31,66,32,387" concept="5" />
+      <node id="2598676492883170109" at="36,50,37,50" concept="6" />
+      <node id="2598676492883170109" at="39,68,40,102" concept="6" />
+      <node id="2598676492883170109" at="42,30,43,17" concept="6" />
+      <node id="2598676492883176348" at="45,63,46,63" concept="5" />
+      <node id="2598676492883176348" at="46,63,47,30" concept="5" />
+      <node id="2598676492883176348" at="47,30,48,30" concept="5" />
+      <node id="2598676492883176348" at="48,30,49,224" concept="2" />
+      <node id="2598676492883176348" at="49,224,50,437" concept="2" />
+      <node id="2598676492883176348" at="50,437,51,224" concept="2" />
+      <node id="2598676492883176348" at="51,224,52,486" concept="2" />
+      <node id="2598676492883176348" at="52,486,53,166" concept="2" />
+      <node id="2598676492883176348" at="53,166,54,24" concept="6" />
+      <node id="2598676492883170109" at="58,0,59,0" concept="7" trace="factoryMethod$1qwv" />
+      <node id="2598676492883170109" at="62,0,63,0" concept="7" trace="FactoryMigrationScriptPart$F0" />
+      <node id="2598676492883170109" at="25,0,27,0" concept="1" trace="check_FactoryMigrationScriptPath_NonTypesystemRule#()V" />
+      <node id="2598676492883170109" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="2598676492883170109" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="2598676492883170109" at="42,0,45,0" concept="4" trace="overrides#()Z" />
+      <node id="2598676492883176352" at="29,111,33,7" concept="0" />
+      <node id="2598676492883176341" at="28,128,34,5" concept="3" />
+      <node id="2598676492883170109" at="27,0,36,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="2598676492883176348" at="45,0,56,0" concept="8" trace="_quotation_createNode_5hdosv_b0a0b0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="2598676492883170109" at="25,63,25,63" />
+      <scope id="2598676492883170109" at="36,50,37,50" />
+      <scope id="2598676492883170109" at="39,68,40,102" />
+      <scope id="2598676492883170109" at="42,30,43,17" />
+      <scope id="2598676492883170109" at="25,0,27,0" />
+      <scope id="2598676492883176352" at="30,7,32,387">
         <var name="_reporter_2309309498" id="2598676492883176352" />
         <var name="errorTarget" id="2598676492883176352" />
       </scope>
-      <scope id="2598676492883170109" at="37,0,40,0" />
-      <scope id="2598676492883170109" at="40,0,43,0">
+      <scope id="2598676492883170109" at="36,0,39,0" />
+      <scope id="2598676492883170109" at="39,0,42,0">
         <var name="argument" id="2598676492883170109" />
       </scope>
-      <scope id="2598676492883170109" at="43,0,46,0" />
-      <scope id="2598676492883176342" at="30,111,34,7" />
-      <scope id="2598676492883170110" at="28,117,35,5">
+      <scope id="2598676492883170109" at="42,0,45,0" />
+      <scope id="2598676492883176342" at="29,111,33,7" />
+      <scope id="2598676492883170110" at="27,117,34,5">
         <var name="returnType" id="2598676492883176319" />
       </scope>
-      <scope id="2598676492883170109" at="28,0,37,0">
+      <scope id="2598676492883170109" at="27,0,36,0">
         <var name="part" id="2598676492883170109" />
         <var name="status" id="2598676492883170109" />
         <var name="typeCheckingContext" id="2598676492883170109" />
       </scope>
-      <scope id="2598676492883176348" at="46,63,55,24">
+      <scope id="2598676492883176348" at="45,63,54,24">
         <var name="facade" id="2598676492883176348" />
         <var name="quotedNode_1" id="2598676492883176348" />
         <var name="quotedNode_2" id="2598676492883176348" />
       </scope>
-      <scope id="2598676492883176348" at="46,0,57,0" />
-      <unit id="2598676492883170109" at="64,0,67,0" name="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule$CONCEPTS" />
-      <unit id="2598676492883170109" at="58,0,63,0" name="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule$LINKS" />
-      <unit id="2598676492883170109" at="25,0,68,0" name="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule" />
+      <scope id="2598676492883176348" at="45,0,56,0" />
+      <unit id="2598676492883170109" at="57,0,60,0" name="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule$LINKS" />
+      <unit id="2598676492883170109" at="61,0,64,0" name="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule$CONCEPTS" />
+      <unit id="2598676492883170109" at="24,0,65,0" name="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)/7867202088808416390">

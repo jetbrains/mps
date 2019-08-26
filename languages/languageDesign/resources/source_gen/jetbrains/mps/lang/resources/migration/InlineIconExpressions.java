@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class InlineIconExpressions extends MigrationScriptBase {
+  private final String description = "Inline icon expressions";
   public String getCaption() {
-    return "Inline icon expressions";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class InlineIconExpressions extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_a8f904_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_a8f904_a0d_0 = new EditableFilteringScope(scope_a8f904_a0d);
+      SearchScope scope_a8f904_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_a8f904_a0e_0 = new EditableFilteringScope(scope_a8f904_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_a8f904_a0d_0;
+          return scope_a8f904_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$_h, false)).where(new IWhereFilter<SNode>() {
@@ -57,11 +58,11 @@ public class InlineIconExpressions extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_a8f904_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_a8f904_a0e_0 = new EditableFilteringScope(scope_a8f904_a0e);
+      SearchScope scope_a8f904_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_a8f904_a0f_0 = new EditableFilteringScope(scope_a8f904_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_a8f904_a0e_0;
+          return scope_a8f904_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$_h, false)).where(new IWhereFilter<SNode>() {

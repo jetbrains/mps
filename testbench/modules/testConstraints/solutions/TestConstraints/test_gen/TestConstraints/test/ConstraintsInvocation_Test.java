@@ -46,12 +46,12 @@ public class ConstraintsInvocation_Test extends BaseTransformationTest {
     public void test_NodeUnknownRuleCheck730305212589682236() throws Exception {
       SNode nodeToCheck = getRealNodeById("730305212589577115");
       SNode operation = getRealNodeById("730305212589682236");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("730305212589577115"), MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589401486"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589401486"), myProject.getRepository()).run();
     }
     public void test_NodeUnknownRuleCheck730305212589682205() throws Exception {
       SNode nodeToCheck = getRealNodeById("730305212589682202");
       SNode operation = getRealNodeById("730305212589682205");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("730305212589682202"), MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589427430"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589427430"), myProject.getRepository()).run();
     }
 
   }

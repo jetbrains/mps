@@ -36,7 +36,7 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -125,19 +125,19 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
   }
   private static SNode createDeprecatedNodeAnnotation_c4c66o_a0d0b(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DeprecatedNodeAnnotation$I8, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.DeprecatedNodeAnnotation$I8, null, null).node();
     n1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
     return n1;
   }
   private static SNode createInterfaceConceptReference_c4c66o_a0a0a0a0l0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.InterfaceConceptReference$Yh, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.InterfaceConceptReference$Yh, null, null).node();
     n1.setReferenceTarget(LINKS.intfc$fO5, node0);
     return n1;
   }
   private static SNode createMoveConcept_c4c66o_c0a71a1(SNode node0, SNode node1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MoveConcept$Zi, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.MoveConcept$Zi, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.sourceId$NVp5, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.ConceptId$5a)));
     }
@@ -148,14 +148,14 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
   }
   private static SNode createSubstituteMenu_Default_c4c66o_a0a0a0a1a2(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SubstituteMenu_Default$hk, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SubstituteMenu_Default$hk, null, null).node();
     n1.setReferenceTarget(LINKS.conceptDeclaration$acmt, node0);
     return n1;
   }
   private static SNode _quotation_createNode_c4c66o_a0a2a2() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x88a6ffdb3b4f8c6L, "SubstituteMenuPart_Subconcepts"), null, null, false);
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x88a6ffdb3b4f8c6L, "SubstituteMenuPart_Subconcepts"), null, null).node();
     return quotedNode_1;
   }
 

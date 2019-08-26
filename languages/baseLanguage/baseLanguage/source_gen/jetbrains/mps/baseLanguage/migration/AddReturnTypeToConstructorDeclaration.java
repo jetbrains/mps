@@ -19,8 +19,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class AddReturnTypeToConstructorDeclaration extends MigrationScriptBase {
+  private final String description = "Add return type into constructor declarations";
   public String getCaption() {
-    return "Add return type into constructor declarations";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -32,11 +33,11 @@ public class AddReturnTypeToConstructorDeclaration extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_kg2ekj_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_kg2ekj_a0d_0 = new EditableFilteringScope(scope_kg2ekj_a0d);
+      SearchScope scope_kg2ekj_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_kg2ekj_a0e_0 = new EditableFilteringScope(scope_kg2ekj_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_kg2ekj_a0d_0;
+          return scope_kg2ekj_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConstructorDeclaration$5U, true)).where(new IWhereFilter<SNode>() {

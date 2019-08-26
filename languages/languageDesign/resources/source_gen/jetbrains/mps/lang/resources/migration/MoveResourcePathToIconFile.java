@@ -9,8 +9,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MoveResourcePathToIconFile extends MigrationScriptBase {
+  private final String description = "Move Resource.path to IconFile.file property";
   public String getCaption() {
-    return "Move Resource.path to IconFile.file property";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

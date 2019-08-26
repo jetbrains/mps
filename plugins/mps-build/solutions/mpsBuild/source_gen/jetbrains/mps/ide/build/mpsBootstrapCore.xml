@@ -3,7 +3,7 @@
   <property name="build.dir" location="build" />
   <property name="build.tmp" location="${build.dir}/tmp/mpsBootstrapCore" />
   <property name="build.layout" location="${build.dir}/artifacts/mpsBootstrapCore" />
-  <property name="version" value="2019.2 EAP" />
+  <property name="version" value="2019.2" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
   <property name="platform_lib" location="${basedir}/lib" />
@@ -3391,6 +3391,7 @@
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
           <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="rt" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="rt" />
           <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
           <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
           <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
@@ -3399,12 +3400,20 @@
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
           <module ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" kind="rt" />
+          <module ref="9e9ef4e2-decf-4e97-bf80-9109e8b759bb(jetbrains.mps.lang.feedback.api)" kind="rt" />
           <module ref="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" kind="rt" />
+          <module ref="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" kind="rt" />
+          <module ref="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)" kind="rt" />
+          <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
+          <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
+          <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
           <module ref="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" kind="cl" />
+          <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="cl" />
           <module ref="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
         </dependencies>
@@ -3419,13 +3428,22 @@
           <language id="l:af65afd8-f0dd-4942-87d9-63a55f2a9db1:jetbrains.mps.lang.behavior" />
           <language id="l:3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1:jetbrains.mps.lang.constraints" />
           <language id="l:134c38d4-e3af-4d9e-b069-1c7df0a4005d:jetbrains.mps.lang.constraints.rules.skeleton" />
+          <language id="l:3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7:jetbrains.mps.lang.context" />
           <language id="l:ea3159bf-f48e-4720-bde2-86dba75f0d34:jetbrains.mps.lang.context.defs" />
           <language id="l:f4ad079d-bc71-4ffb-9600-9328705cf998:jetbrains.mps.lang.descriptor" />
           <language id="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" />
+          <language id="l:cd17a113-ca4e-472f-a8de-c49008f9eea8:jetbrains.mps.lang.feedback" />
+          <language id="l:16e76fe3-9534-4def-afb7-925a169a7c0b:jetbrains.mps.lang.feedback.messages" />
           <language id="l:033598a4-76a9-47e1-ac89-a300c0fceab8:jetbrains.mps.lang.feedback.problem" />
+          <language id="l:cddf55b3-117e-46ec-837c-ff50eb7b89b0:jetbrains.mps.lang.feedback.problem.childAndProp" />
+          <language id="l:feec32f9-bc8f-4da8-8efd-7f3f9dd4101b:jetbrains.mps.lang.feedback.problem.scopes" />
+          <language id="l:7127d409-29f0-43e8-917f-f016ea288944:jetbrains.mps.lang.feedback.problem.structural" />
+          <language id="l:517077fd-e44f-4338-a475-1d29781dfdb8:jetbrains.mps.lang.feedback.skeleton" />
+          <language id="l:90746344-04fd-4286-97d5-b46ae6a81709:jetbrains.mps.lang.migration" />
           <language id="l:d4615e3b-d671-4ba9-af01-2b78369b0ba7:jetbrains.mps.lang.pattern" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
           <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
+          <language id="l:13744753-c81f-424a-9c1b-cf8943bf4e86:jetbrains.mps.lang.sharedConcepts" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c72da2b9-7cce-4447-8389-f407dc1158b7:jetbrains.mps.lang.structure" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
@@ -3651,6 +3669,7 @@
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
           <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="rt" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="rt" />
           <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
           <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
           <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
@@ -3659,13 +3678,21 @@
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
           <module ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" kind="rt" />
+          <module ref="9e9ef4e2-decf-4e97-bf80-9109e8b759bb(jetbrains.mps.lang.feedback.api)" kind="rt" />
           <module ref="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" kind="rt" />
+          <module ref="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" kind="rt" />
+          <module ref="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)" kind="rt" />
+          <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
+          <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
+          <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
           <module ref="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" kind="cl" />
           <module ref="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" kind="cl" />
+          <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="cl" />
           <module ref="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
         </dependencies>
@@ -3680,12 +3707,22 @@
           <language id="l:af65afd8-f0dd-4942-87d9-63a55f2a9db1:jetbrains.mps.lang.behavior" />
           <language id="l:3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1:jetbrains.mps.lang.constraints" />
           <language id="l:134c38d4-e3af-4d9e-b069-1c7df0a4005d:jetbrains.mps.lang.constraints.rules.skeleton" />
+          <language id="l:3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7:jetbrains.mps.lang.context" />
+          <language id="l:ea3159bf-f48e-4720-bde2-86dba75f0d34:jetbrains.mps.lang.context.defs" />
           <language id="l:f4ad079d-bc71-4ffb-9600-9328705cf998:jetbrains.mps.lang.descriptor" />
           <language id="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" />
+          <language id="l:cd17a113-ca4e-472f-a8de-c49008f9eea8:jetbrains.mps.lang.feedback" />
+          <language id="l:16e76fe3-9534-4def-afb7-925a169a7c0b:jetbrains.mps.lang.feedback.messages" />
           <language id="l:033598a4-76a9-47e1-ac89-a300c0fceab8:jetbrains.mps.lang.feedback.problem" />
+          <language id="l:cddf55b3-117e-46ec-837c-ff50eb7b89b0:jetbrains.mps.lang.feedback.problem.childAndProp" />
+          <language id="l:feec32f9-bc8f-4da8-8efd-7f3f9dd4101b:jetbrains.mps.lang.feedback.problem.scopes" />
+          <language id="l:7127d409-29f0-43e8-917f-f016ea288944:jetbrains.mps.lang.feedback.problem.structural" />
+          <language id="l:517077fd-e44f-4338-a475-1d29781dfdb8:jetbrains.mps.lang.feedback.skeleton" />
+          <language id="l:90746344-04fd-4286-97d5-b46ae6a81709:jetbrains.mps.lang.migration" />
           <language id="l:d4615e3b-d671-4ba9-af01-2b78369b0ba7:jetbrains.mps.lang.pattern" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
           <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
+          <language id="l:13744753-c81f-424a-9c1b-cf8943bf4e86:jetbrains.mps.lang.sharedConcepts" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c72da2b9-7cce-4447-8389-f407dc1158b7:jetbrains.mps.lang.structure" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
@@ -3780,6 +3817,7 @@
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
           <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="rt" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="rt" />
           <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
           <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
           <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
@@ -3788,13 +3826,21 @@
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
           <module ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" kind="rt" />
+          <module ref="9e9ef4e2-decf-4e97-bf80-9109e8b759bb(jetbrains.mps.lang.feedback.api)" kind="rt" />
           <module ref="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" kind="rt" />
+          <module ref="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" kind="rt" />
+          <module ref="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)" kind="rt" />
+          <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
+          <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
+          <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
           <module ref="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" kind="cl" />
           <module ref="517077fd-e44f-4338-a475-1d29781dfdb8(jetbrains.mps.lang.feedback.skeleton)" kind="cl" />
+          <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="cl" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
         </dependencies>
@@ -3810,13 +3856,22 @@
           <language id="l:af65afd8-f0dd-4942-87d9-63a55f2a9db1:jetbrains.mps.lang.behavior" />
           <language id="l:3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1:jetbrains.mps.lang.constraints" />
           <language id="l:134c38d4-e3af-4d9e-b069-1c7df0a4005d:jetbrains.mps.lang.constraints.rules.skeleton" />
+          <language id="l:3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7:jetbrains.mps.lang.context" />
           <language id="l:ea3159bf-f48e-4720-bde2-86dba75f0d34:jetbrains.mps.lang.context.defs" />
           <language id="l:f4ad079d-bc71-4ffb-9600-9328705cf998:jetbrains.mps.lang.descriptor" />
           <language id="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" />
+          <language id="l:cd17a113-ca4e-472f-a8de-c49008f9eea8:jetbrains.mps.lang.feedback" />
+          <language id="l:16e76fe3-9534-4def-afb7-925a169a7c0b:jetbrains.mps.lang.feedback.messages" />
           <language id="l:033598a4-76a9-47e1-ac89-a300c0fceab8:jetbrains.mps.lang.feedback.problem" />
+          <language id="l:cddf55b3-117e-46ec-837c-ff50eb7b89b0:jetbrains.mps.lang.feedback.problem.childAndProp" />
+          <language id="l:feec32f9-bc8f-4da8-8efd-7f3f9dd4101b:jetbrains.mps.lang.feedback.problem.scopes" />
+          <language id="l:7127d409-29f0-43e8-917f-f016ea288944:jetbrains.mps.lang.feedback.problem.structural" />
+          <language id="l:517077fd-e44f-4338-a475-1d29781dfdb8:jetbrains.mps.lang.feedback.skeleton" />
+          <language id="l:90746344-04fd-4286-97d5-b46ae6a81709:jetbrains.mps.lang.migration" />
           <language id="l:d4615e3b-d671-4ba9-af01-2b78369b0ba7:jetbrains.mps.lang.pattern" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
           <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
+          <language id="l:13744753-c81f-424a-9c1b-cf8943bf4e86:jetbrains.mps.lang.sharedConcepts" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c72da2b9-7cce-4447-8389-f407dc1158b7:jetbrains.mps.lang.structure" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
@@ -3921,6 +3976,7 @@
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7(jetbrains.mps.lang.context)" kind="cl" />
+          <module ref="ea3159bf-f48e-4720-bde2-86dba75f0d34(jetbrains.mps.lang.context.defs)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
         </dependencies>
         <uses>
@@ -5182,14 +5238,12 @@
           <language id="l:aee9cad2-acd4-4608-aef2-0004f6a1cdbd:jetbrains.mps.lang.actions" />
           <language id="l:f4ad079d-bc71-4ffb-9600-9328705cf998:jetbrains.mps.lang.descriptor" />
           <language id="l:d7a92d38-f7db-40d0-8431-763b0c3c9f20:jetbrains.mps.lang.intentions" />
-          <language id="l:d4615e3b-d671-4ba9-af01-2b78369b0ba7:jetbrains.mps.lang.pattern" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
           <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
           <language id="l:13744753-c81f-424a-9c1b-cf8943bf4e86:jetbrains.mps.lang.sharedConcepts" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c72da2b9-7cce-4447-8389-f407dc1158b7:jetbrains.mps.lang.structure" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
-          <language id="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" />
         </uses>
         <classpath>
           <entry path="." />
@@ -8085,6 +8139,7 @@
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
           <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
+          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="cl" />
           <module ref="d4615e3b-d671-4ba9-af01-2b78369b0ba7(jetbrains.mps.lang.pattern)" kind="cl" />
@@ -8156,6 +8211,7 @@
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
           <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
+          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
           <module ref="d4615e3b-d671-4ba9-af01-2b78369b0ba7(jetbrains.mps.lang.pattern)" kind="cl" />
           <module ref="3a13115c-633c-4c5c-bbcc-75c4219e9555(jetbrains.mps.lang.quotation)" kind="cl" />
           <module ref="b736a816-59a2-4796-a8e6-372fc0a096ce(jetbrains.mps.lang.quotation#1196351859310)" kind="cl" />
@@ -8171,7 +8227,6 @@
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
           <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
-          <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
           <language id="l:aee9cad2-acd4-4608-aef2-0004f6a1cdbd:jetbrains.mps.lang.actions" />
           <language id="l:af65afd8-f0dd-4942-87d9-63a55f2a9db1:jetbrains.mps.lang.behavior" />
           <language id="l:3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1:jetbrains.mps.lang.constraints" />
@@ -13709,14 +13764,15 @@
         <module file="${mps_home}/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" />
         <module file="${mps_home}/languages/languageDesign/messages/rules/jetbrains.mps.lang.rulesAndMessages.mpl" />
       </chunk>
+      <chunk bootstrap="true">
+        <module file="${mps_home}/languages/languageDesign/feedback/messages/jetbrains.mps.lang.feedback.messages.mpl" />
+        <module file="${mps_home}/languages/languageDesign/feedback/problem/childAndProp/jetbrains.mps.lang.feedback.problem.childAndProp.mpl" bootstrap="true" />
+        <module file="${mps_home}/languages/languageDesign/feedback/problem/scopes/jetbrains.mps.lang.feedback.problem.scopes.mpl" bootstrap="true" />
+        <module file="${mps_home}/languages/languageDesign/feedback/problem/structural/jetbrains.mps.lang.feedback.problem.structural.mpl" bootstrap="true" />
+      </chunk>
       <chunk>
         <module file="${mps_home}/languages/languageDesign/constraints/legacy-msg-specification/jetbrains.mps.lang.constraints.msg.specification.mpl" />
-        <module file="${mps_home}/languages/languageDesign/feedback/messages/jetbrains.mps.lang.feedback.messages.mpl" />
-        <module file="${mps_home}/languages/languageDesign/feedback/problem/childAndProp/jetbrains.mps.lang.feedback.problem.childAndProp.mpl" />
-        <module file="${mps_home}/languages/languageDesign/feedback/problem/scopes/jetbrains.mps.lang.feedback.problem.scopes.mpl" />
-        <module file="${mps_home}/languages/languageDesign/feedback/problem/structural/jetbrains.mps.lang.feedback.problem.structural.mpl" />
       </chunk>
-      <chunk />
       <jvmargs>
         <arg value="-ea" />
         <arg value="-Xmx512m" />
@@ -13759,6 +13815,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -13797,6 +13854,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -13838,6 +13896,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -13881,6 +13940,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -13928,6 +13988,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -13976,6 +14037,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14019,6 +14081,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14065,6 +14128,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14129,6 +14193,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14171,6 +14236,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14213,6 +14279,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14255,6 +14322,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14296,6 +14364,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14342,6 +14411,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14385,6 +14455,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14428,6 +14499,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14472,6 +14544,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14521,6 +14594,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14570,6 +14644,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14629,6 +14704,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14670,6 +14746,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-platform">
+      <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.dic" />
       <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/workbench/mps-platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
@@ -14703,6 +14780,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14787,6 +14865,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14850,6 +14929,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14913,6 +14993,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -14971,6 +15052,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15075,6 +15157,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15146,6 +15229,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15217,6 +15301,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15289,6 +15374,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15359,6 +15445,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15438,6 +15525,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15508,6 +15596,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15587,6 +15676,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15657,6 +15747,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15730,6 +15821,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15799,6 +15891,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15871,6 +15964,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -15943,6 +16037,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16013,6 +16108,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16086,6 +16182,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16159,6 +16256,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16230,6 +16328,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16299,6 +16398,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16368,6 +16468,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16440,6 +16541,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16515,6 +16617,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16589,6 +16692,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16663,6 +16767,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16718,6 +16823,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16791,6 +16897,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16863,6 +16970,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -16933,6 +17041,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17006,6 +17115,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17075,6 +17185,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17147,6 +17258,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17218,6 +17330,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17310,6 +17423,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17378,6 +17492,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17451,6 +17566,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17523,6 +17639,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17598,6 +17715,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17672,6 +17790,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17745,6 +17864,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17817,6 +17937,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17889,6 +18010,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -17960,6 +18082,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18037,6 +18160,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18112,6 +18236,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18185,6 +18310,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18230,7 +18356,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.feedback.problem" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.idea-platform, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.jetbrains.mps.lang.context, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.feedback.problem" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.idea-platform, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.context, java.compile.jetbrains.mps.lang.context.defs, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/feedback/problem/problem/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -18241,10 +18367,10 @@
       <classpath>
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
+        <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
-        <pathelement path="${build.tmp}/java/out/mps-generator" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
@@ -18259,39 +18385,44 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
-        <pathelement path="${build.tmp}/java/out/kernel-resources" />
-        <pathelement path="${build.tmp}/java/out/mps-make-rt" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
-        <pathelement path="${build.tmp}/java/out/mps-project-check" />
-        <pathelement path="${build.tmp}/java/out/mps-textgen" />
-        <pathelement path="${build.tmp}/java/out/mps-typesystem" />
-        <pathelement path="${build.tmp}/java/out/pattern-runtime" />
-        <pathelement path="${build.tmp}/java/out/scripts-runtime" />
-        <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.logging.runtime" />
-        <pathelement path="${build.tmp}/java/out/idea-platform" />
         <pathelement path="${build.tmp}/java/out/mps-editing" />
         <pathelement path="${build.tmp}/java/out/mps-editor-api" />
         <pathelement path="${build.tmp}/java/out/mps-editorlang-runtime" />
+        <pathelement path="${build.tmp}/java/out/mps-typesystem" />
         <pathelement path="${build.tmp}/java/out/mps-editor" />
+        <pathelement path="${build.tmp}/java/out/mps-generator" />
+        <pathelement path="${build.tmp}/java/out/kernel-resources" />
+        <pathelement path="${build.tmp}/java/out/mps-make-rt" />
         <pathelement path="${build.tmp}/java/out/mps-migration" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
         <pathelement path="${build.tmp}/java/out/platform" />
         <pathelement path="${build.tmp}/java/out/mps-environment" />
         <pathelement path="${build.tmp}/java/out/mps-platform" />
+        <pathelement path="${build.tmp}/java/out/mps-project-check" />
+        <pathelement path="${build.tmp}/java/out/mps-textgen" />
         <pathelement path="${build.tmp}/java/out/mps-ui" />
+        <pathelement path="${build.tmp}/java/out/pattern-runtime" />
+        <pathelement path="${build.tmp}/java/out/scripts-runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.logging.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.scopes" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.context" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.context.defs" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.core" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor.aspects" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
+        <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
         <fileset file="${artifacts.IDEA}/lib/trove4j.jar" />
         <path refid="path.java.library.ecj" />
-        <path refid="path.java.library.idea-libraries" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -18329,6 +18460,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18398,6 +18530,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18433,6 +18566,9 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-for-structure.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-api.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
@@ -18476,6 +18612,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18548,6 +18685,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18627,6 +18765,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18702,6 +18841,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18737,6 +18877,9 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-for-structure.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-api.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
@@ -18780,6 +18923,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18852,6 +18996,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18882,6 +19027,9 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.skeleton" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-for-structure.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-api.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
@@ -18925,6 +19073,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -18996,6 +19145,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19073,6 +19223,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19149,6 +19300,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19229,6 +19381,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19314,6 +19467,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19388,6 +19542,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19457,6 +19612,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19527,6 +19683,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19606,6 +19763,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19679,6 +19837,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19744,6 +19903,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19826,6 +19986,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19905,6 +20066,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -19960,6 +20122,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20029,6 +20192,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20097,6 +20261,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20166,6 +20331,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20247,6 +20413,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20316,6 +20483,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20391,6 +20559,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20460,6 +20629,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20540,6 +20710,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20614,6 +20785,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20686,6 +20858,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20768,6 +20941,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20847,6 +21021,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -20926,6 +21101,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21007,6 +21183,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21086,6 +21263,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21163,6 +21341,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21233,6 +21412,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21313,6 +21493,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21383,6 +21564,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21468,6 +21650,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21541,6 +21724,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21613,6 +21797,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21697,6 +21882,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21781,6 +21967,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21847,6 +22034,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21924,6 +22112,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -21998,6 +22187,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22068,6 +22258,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22145,6 +22336,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22227,6 +22419,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22308,6 +22501,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22380,6 +22574,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22452,6 +22647,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22521,6 +22717,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22616,6 +22813,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22686,6 +22884,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22759,6 +22958,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22832,6 +23032,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22905,6 +23106,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -22974,6 +23176,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23059,6 +23262,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23137,6 +23341,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23206,6 +23411,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23283,6 +23489,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23353,6 +23560,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23428,6 +23636,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23498,6 +23707,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23583,6 +23793,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23653,6 +23864,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23733,6 +23945,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23804,6 +24017,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23886,6 +24100,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -23955,6 +24170,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24029,6 +24245,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24103,6 +24320,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24176,6 +24394,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24245,6 +24464,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24323,6 +24543,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24392,6 +24613,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24462,6 +24684,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24540,6 +24763,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24610,6 +24834,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24684,6 +24909,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24754,6 +24980,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24823,6 +25050,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24898,6 +25126,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -24967,6 +25196,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25040,6 +25270,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25110,6 +25341,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25189,6 +25421,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25274,6 +25507,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25353,6 +25587,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25423,6 +25658,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25501,6 +25737,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25571,6 +25808,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25650,6 +25888,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25719,6 +25958,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25789,6 +26029,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25871,6 +26112,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -25951,6 +26193,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26027,6 +26270,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26094,6 +26338,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26164,6 +26409,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26236,6 +26482,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26305,6 +26552,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26376,6 +26624,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26449,6 +26698,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26521,6 +26771,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26585,6 +26836,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26669,6 +26921,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26747,6 +27000,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26828,6 +27082,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26909,6 +27164,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -26986,6 +27242,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -27061,6 +27318,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -27139,6 +27397,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -27208,6 +27467,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -27277,6 +27537,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
@@ -27359,13 +27620,9 @@
     <delete dir="${mps_home}/languages/languageDesign/sharedConcepts/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/constraints/legacy-msg-specification/source_gen" />
-    <delete dir="${mps_home}/languages/languageDesign/feedback/messages/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/feedback/messages/generator/source_gen" />
-    <delete dir="${mps_home}/languages/languageDesign/feedback/problem/childAndProp/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/feedback/problem/childAndProp/generator/source_gen" />
-    <delete dir="${mps_home}/languages/languageDesign/feedback/problem/scopes/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/feedback/problem/scopes/generator/source_gen" />
-    <delete dir="${mps_home}/languages/languageDesign/feedback/problem/structural/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/feedback/problem/structural/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/messages/rules/generator/source_gen" />
   </target>

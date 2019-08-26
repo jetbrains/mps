@@ -31,7 +31,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -148,7 +148,7 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
   }
   private static SNode createClassConcept_2jv4hj_a0a1a5() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassConcept$IY, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ClassConcept$IY, null, null).node();
     n1.setProperty(PROPS.name$tAp1, "NewRoot");
     return n1;
   }

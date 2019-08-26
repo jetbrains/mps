@@ -70,12 +70,12 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
     public void test_NodeVariableHasNotBeenInitializedCheck6923385624928056097() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451229351");
       SNode operation = getRealNodeById("6923385624928056097");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451229351"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047680817"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047680817"), myProject.getRepository()).run();
     }
     public void test_NodeVariableHasNotBeenInitializedCheck6923385624928725296() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451227571");
       SNode operation = getRealNodeById("6923385624928725296");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451227571"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047887576"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047887576"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2466039659637288472() throws Exception {
       SNode nodeToCheck = getRealNodeById("7255638311037833668");
@@ -85,7 +85,7 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
     public void test_NodeCannotAssignValueToFinalCheck2466039659637220345() throws Exception {
       SNode nodeToCheck = getRealNodeById("2466039659637219764");
       SNode operation = getRealNodeById("2466039659637220345");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("2466039659637219764"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4705425356437995968"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4705425356437995968"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2466039659637478694() throws Exception {
       SNode nodeToCheck = getRealNodeById("2466039659637477690");

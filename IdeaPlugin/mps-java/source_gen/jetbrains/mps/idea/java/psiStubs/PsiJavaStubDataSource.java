@@ -45,7 +45,7 @@ public class PsiJavaStubDataSource extends DataSourceBase implements JavaFilesHo
     // we've been told something has changed in PSI 
     // let's see what matters to us 
 
-    PsiJavaStubEvent ourEvent = new PsiJavaStubDataSource.OurEvent(event);
+    PsiJavaStubEvent ourEvent = new OurEvent(event);
 
     synchronized (LOCK) {
 

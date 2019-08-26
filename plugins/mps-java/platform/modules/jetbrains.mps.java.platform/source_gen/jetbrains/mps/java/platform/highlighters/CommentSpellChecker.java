@@ -29,7 +29,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.cells.TextLine;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
-import java.awt.FontMetrics;
+import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import jetbrains.mps.ide.editor.checkers.ModelProblemMessage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -255,9 +255,8 @@ public class CommentSpellChecker extends BaseEditorChecker {
       if (cell instanceof EditorCell_Label) {
         TextLine tl = ((EditorCell_Label) cell).getRenderedTextLine();
         final int y = cell.getY() + cell.getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT;
-        FontMetrics fm = tl.getFontMetrics();
+        EditorFontMetrics fm = tl.getEditorFontMetrics();
         final String renderedText = tl.getText();
-        final char[] renderedChars = renderedText.toCharArray();
         g.setColor(getColor());
         int s = 0;
         // highlight each word only once (just for simplicity now, perhaps, shall highlight all entries. just need to be careful about 
@@ -266,8 +265,8 @@ public class CommentSpellChecker extends BaseEditorChecker {
         for (String w : myWords) {
           int i = renderedText.indexOf(w, s);
           if (i >= s) {
-            int x1 = fm.charsWidth(renderedChars, 0, i);
-            int x2 = fm.charsWidth(renderedChars, 0, i + w.length());
+            int x1 = fm.getWidth(renderedText, 0, i);
+            int x2 = fm.getWidth(renderedText, 0, i + w.length());
             ColorAndGraphicsUtil.drawWave(g, cell.getX() + x1, cell.getX() + x2, y);
             s = i + w.length();
           }

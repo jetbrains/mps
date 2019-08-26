@@ -120,15 +120,14 @@
       <node id="9097849371504760812" at="23,65,24,65" concept="3" />
       <node id="9097849371504760812" at="24,65,25,32" concept="3" />
       <node id="9097849371504760812" at="25,32,26,32" concept="3" />
-      <node id="9097849371504760812" at="26,32,27,259" concept="0" />
-      <node id="9097849371504760812" at="27,259,28,154" concept="0" />
-      <node id="9097849371504760812" at="28,154,29,248" concept="0" />
-      <node id="9097849371504760812" at="29,248,30,59" concept="0" />
-      <node id="9097849371504760812" at="30,59,31,26" concept="4" />
+      <node id="9097849371504760812" at="26,32,27,231" concept="0" />
+      <node id="9097849371504760812" at="27,231,28,154" concept="0" />
+      <node id="9097849371504760812" at="28,154,29,220" concept="0" />
+      <node id="9097849371504760812" at="29,220,30,173" concept="0" />
+      <node id="9097849371504760812" at="30,173,31,26" concept="4" />
       <node id="9097849371504700257" at="36,0,37,0" concept="6" trace="getter$HURw" />
       <node id="9097849371504700257" at="37,0,38,0" concept="6" trace="parameter$WRt7" />
       <node id="9097849371504700257" at="38,0,39,0" concept="6" trace="body$DJEC" />
-      <node id="9097849371504700257" at="39,0,40,0" concept="6" trace="type$pLrO" />
       <node id="9097849371504700258" at="18,0,23,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="9097849371504760812" at="23,0,33,0" concept="7" trace="_quotation_createNode_6hmkle_a0a1a0a#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="9097849371504700258" at="18,91,21,280" />
@@ -144,9 +143,9 @@
         <var name="quotedNode_2" id="9097849371504760812" />
       </scope>
       <scope id="9097849371504760812" at="23,0,33,0" />
-      <unit id="9097849371504700257" at="35,0,41,0" name="jetbrains.mps.baseLanguage.lightweightdsl.actions.DependentType_factory$LINKS" />
+      <unit id="9097849371504700257" at="35,0,40,0" name="jetbrains.mps.baseLanguage.lightweightdsl.actions.DependentType_factory$LINKS" />
       <unit id="9097849371504700258" at="17,0,34,0" name="jetbrains.mps.baseLanguage.lightweightdsl.actions.DependentType_factory$NodeFactory_9097849371504700258" />
-      <unit id="9097849371504700257" at="16,0,42,0" name="jetbrains.mps.baseLanguage.lightweightdsl.actions.DependentType_factory" />
+      <unit id="9097849371504700257" at="16,0,41,0" name="jetbrains.mps.baseLanguage.lightweightdsl.actions.DependentType_factory" />
     </file>
   </root>
 </debug-info>

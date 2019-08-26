@@ -37,6 +37,7 @@ public class EditorCheckerComponent implements Disposable {
       myRefScopeCheckerInEditor = new RefScopeCheckerInEditor(myCoreComponents.getPlatform());
       myTypesystemChecker = new TypesystemChecker();
       myNonTypesystemChecker = new NonTypesystemChecker();
+      registry.registerChecker(myNonTypesystemChecker);
       registry.registerChecker(myTypesystemChecker);
       registry.registerEditorChecker(myRefScopeCheckerInEditor);
     }

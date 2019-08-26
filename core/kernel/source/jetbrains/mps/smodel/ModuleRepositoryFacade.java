@@ -243,7 +243,13 @@ public final class ModuleRepositoryFacade implements CoreComponent {
    * @return snapshot state of the models available in the repository
    */
   public Collection<SModel> getAllModels() {
-    return SModelRepository.getInstance().getModelDescriptors();
+    if (myRepo instanceof MPSModuleRepository) {
+      return ((MPSModuleRepository) myRepo).getModelRepository().getModelDescriptors();
+    } else {
+      // slow way. If getAllModels method is important enough, perhaps, shall be part of SRepository so that
+      // repo implementation may decide whether to go slow way or use some faster cache (e.g. SModelRepository)
+      return StreamSupport.stream(myRepo.getModules().spliterator(), false).flatMap(m -> StreamSupport.stream(m.getModels().spliterator(), false)).collect(Collectors.toList());
+    }
   }
 
   /**

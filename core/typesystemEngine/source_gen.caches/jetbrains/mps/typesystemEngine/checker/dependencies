@@ -5,6 +5,7 @@
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="java.util.function.Function" />
     <classNode dependClassName="jetbrains.mps.errors.IErrorReporter" />
     <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />
@@ -13,8 +14,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
-    <classNode dependClassName="jetbrains.mps.typechecking.backend.TypecheckingSession" />
-    <classNode dependClassName="jetbrains.mps.typesystem.LegacyTypecheckingProvider" />
+    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingSession" />
     <classNode dependClassName="jetbrains.mps.typesystem.LegacyTypecheckingQueries" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />
     <classNode dependClassName="jetbrains.mps.util.Pair" />
@@ -35,7 +35,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
-    <classNode dependClassName="jetbrains.mps.typechecking.backend.TypecheckingSession" />
+    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingSession" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.Consumer" />

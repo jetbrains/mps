@@ -147,7 +147,7 @@ public class EvaluationProvider implements IEvaluationProvider {
     myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
 
-        createEvaluationContainer(true, new _FunctionTypes._void_P1_E0<IEvaluationContainer>() {
+        createEvaluationContainer(true, null, new _FunctionTypes._void_P1_E0<IEvaluationContainer>() {
           public void invoke(final IEvaluationContainer container) {
             ApplicationManager.getApplication().assertIsDispatchThread();
             EditWatchDialog editWatchDialog = new EditWatchDialog(myDebugSession.getIdeaProject(), EvaluationProvider.this, container, new _FunctionTypes._void_P0_E0() {
@@ -174,19 +174,22 @@ public class EvaluationProvider implements IEvaluationProvider {
   }
 
   @Nullable
-  private synchronized IEvaluationContainer createEvaluationContainer(boolean isWatch, _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
+  private synchronized IEvaluationContainer createEvaluationContainer(boolean isWatch, final List<SNodeReference> selectedNodes, final _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
     if (myContainerModuleRef == null) {
       return null;
     }
-    return new EvaluationWithContextContainer(myDebugSession.getProject(), myDebugSession, myContainerModuleRef, ListSequence.fromList(new ArrayList<SNodeReference>()), isWatch, onNodeSetUp);
-  }
-
-  @Nullable
-  private synchronized IEvaluationContainer createEvaluationContainer(boolean isWatch, List<SNodeReference> selectedNodes, _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
-    if (myContainerModuleRef == null) {
-      return null;
-    }
-    return new EvaluationWithContextContainer(myDebugSession.getProject(), myDebugSession, myContainerModuleRef, selectedNodes, isWatch, onNodeSetUp);
+    final EvaluationWithContextContainer rv = new EvaluationWithContextContainer(myDebugSession.getProject(), myDebugSession, myContainerModuleRef, isWatch);
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
+      public void run() {
+        myDebugSession.getProject().getModelAccess().executeCommand(new Runnable() {
+          public void run() {
+            rv.setUpNode(selectedNodes);
+          }
+        });
+        onNodeSetUp.invoke(rv);
+      }
+    });
+    return rv;
   }
 
   public List<IEvaluationContainer> getWatches() {

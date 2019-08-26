@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -37,7 +37,7 @@ public class typeof_ContextExpression_InferenceRule extends AbstractInferenceRul
   }
   private static SNode createClassifierType_wnwgn_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
     n1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n1, facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.actions(MPS.IDEA/)"), facade.createNodeId("~ConfigurationContext")));
     return n1;
   }

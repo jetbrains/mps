@@ -22,6 +22,7 @@ import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -57,6 +58,9 @@ public final class SModelLegacy {
     myModel.addLanguage(MetaAdapterFactory.getLanguage(ref));
   }
 
+  @Deprecated
+  @ToRemove(version = 2019.2)
+  //use SModelInternal.addLanguage(SLanguage)
   public void addLanguage(Language language) {
     myModel.addLanguage(MetaAdapterByDeclaration.getLanguage(language));
   }

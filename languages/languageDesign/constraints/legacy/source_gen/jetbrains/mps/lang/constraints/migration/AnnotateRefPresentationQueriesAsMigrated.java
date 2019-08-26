@@ -40,14 +40,15 @@ import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBase {
+  private final String description = "Annotate ref. presentation queries as migrated";
   public String getCaption() {
-    return "Annotate ref. presentation queries as migrated";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -59,11 +60,11 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_lpnriw_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_lpnriw_a0d_0 = new EditableFilteringScope(scope_lpnriw_a0d);
+      SearchScope scope_lpnriw_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_lpnriw_a0e_0 = new EditableFilteringScope(scope_lpnriw_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_lpnriw_a0d_0;
+          return scope_lpnriw_a0e_0;
         }
       };
       Collection<SNode> conceptConstraints = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$St, false);
@@ -102,11 +103,11 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
   public Iterable<Problem> check(SModule m) {
     List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
     {
-      SearchScope scope_lpnriw_b0e = CommandUtil.createScope(m);
-      final SearchScope scope_lpnriw_b0e_0 = new EditableFilteringScope(scope_lpnriw_b0e);
+      SearchScope scope_lpnriw_b0f = CommandUtil.createScope(m);
+      final SearchScope scope_lpnriw_b0f_0 = new EditableFilteringScope(scope_lpnriw_b0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_lpnriw_b0e_0;
+          return scope_lpnriw_b0f_0;
         }
       };
       ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConstraintFunction_ReferentSearchScope_Presentation$oU, false)).where(new IWhereFilter<SNode>() {
@@ -200,7 +201,7 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
 
   private static SNode createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a0a6(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefPresentationMigratedProblem$Pu, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RefPresentationMigratedProblem$Pu, null, null).node();
     n1.setReferenceTarget(LINKS.editor$ZXL0, node0);
     return n1;
   }

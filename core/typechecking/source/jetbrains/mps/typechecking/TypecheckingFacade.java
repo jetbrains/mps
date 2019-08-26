@@ -39,7 +39,10 @@ import java.util.function.Supplier;
  *
  * @author Fedor Isakov
  */
-public abstract class TypecheckingFacade extends TypecheckingSessionHandler implements TypecheckingQueries {
+public abstract class TypecheckingFacade
+    extends TypecheckingSessionHandler
+    implements TypecheckingQueries, TypecheckingComputations
+{
 
   /**
    * Provides access to an instance of {@code TypecheckingFacade} that is available from the environment.

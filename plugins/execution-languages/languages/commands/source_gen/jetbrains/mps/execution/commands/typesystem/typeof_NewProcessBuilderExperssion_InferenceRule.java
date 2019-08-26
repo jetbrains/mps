@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -52,26 +52,26 @@ public class typeof_NewProcessBuilderExperssion_InferenceRule extends AbstractIn
   }
   private static SNode createProcessType_mm85y1_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ProcessType$tB, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ProcessType$tB, null, null).node();
     return n1;
   }
   private static SNode _quotation_createNode_mm85y1_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
-    quotedNode_1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
+    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null).node();
+    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
     return quotedNode_1;
   }
   private static SNode createJoinType_mm85y1_a1a0c0a0c0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.JoinType$9o, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.JoinType$9o, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StringType$2b, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.StringType$2b, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+      SNode n3 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
       n3.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
       n1.addChild(LINKS.argument$xIHX, n3);
-      SNode n4 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ProcessBuilderCommandPartType$gI, null, null, false);
+      SNode n4 = new SNodeBuilder(CONCEPTS.ProcessBuilderCommandPartType$gI, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n4);
     }
     return n1;
@@ -80,8 +80,8 @@ public class typeof_NewProcessBuilderExperssion_InferenceRule extends AbstractIn
   private static final class LINKS {
     /*package*/ static final SContainmentLink workingDirectory$irPt = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x2085f2c5c8400c12L, 0x2085f2c5c8400c16L, "workingDirectory");
     /*package*/ static final SContainmentLink commandPart$irOY = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x2085f2c5c8400c12L, 0x2085f2c5c8400c15L, "commandPart");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

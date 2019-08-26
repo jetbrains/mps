@@ -68,12 +68,12 @@ public class NullProperties_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8681827087508331151() throws Exception {
       SNode nodeToCheck = getRealNodeById("706089536802542537");
       SNode operation = getRealNodeById("8681827087508331151");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("706089536802542537"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck8681827087508331336() throws Exception {
       SNode nodeToCheck = getRealNodeById("706089536802542541");
       SNode operation = getRealNodeById("8681827087508331336");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("706089536802542541"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck706089536802542545() throws Exception {
       SNode nodeToCheck = getRealNodeById("706089536802542527");
@@ -83,12 +83,12 @@ public class NullProperties_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck3029960565848077192() throws Exception {
       SNode nodeToCheck = getRealNodeById("706089536802542557");
       SNode operation = getRealNodeById("3029960565848077192");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("706089536802542557"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck3029960565848077546() throws Exception {
       SNode nodeToCheck = getRealNodeById("706089536802542561");
       SNode operation = getRealNodeById("3029960565848077546");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("706089536802542561"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck706089536802542565() throws Exception {
       SNode nodeToCheck = getRealNodeById("706089536802542547");

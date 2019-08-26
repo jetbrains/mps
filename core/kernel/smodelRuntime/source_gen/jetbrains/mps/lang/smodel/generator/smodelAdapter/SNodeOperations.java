@@ -44,7 +44,7 @@ public class SNodeOperations {
    * For example, if there's NodeA.nodeB [0..1] and NodeB.nodeC[0..*], the query
    * <code>myA.nodeB.nodeC.add(new NodeC)</code> used to pass silently even if nodeB was not set.
    */
-  /*package*/ static final List<SNode> EMPTY_LIST = new EmptyList<SNode>("Attempt to add node to nonexistent parent or role. Node: %s");
+  /*package*/ static final List<SNode> EMPTY_LIST = new EmptyList<SNode>("Attempt to add node to non-existent parent or role. Node: %s");
   public SNodeOperations() {
   }
   public static SNode copyNode(SNode node) {
@@ -618,22 +618,6 @@ public class SNodeOperations {
   public static SConcept asInstanceConcept(SAbstractConcept concept) {
     return MetaAdapterByDeclaration.asInstanceConcept(concept);
   }
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public static SNode getContainingLinkDeclaration(SNode childNode) {
-    if (childNode == null) {
-      return null;
-    }
-    SContainmentLink containmentLink = childNode.getContainmentLink();
-    if (containmentLink == null) {
-      return null;
-    }
-    return containmentLink.getDeclarationNode();
-  }
   public static SContainmentLink getContainingLinkInChildrenAndChildAttributesCollection(SNode childNode) {
     if (childNode.isInstanceOfConcept(CONCEPTS.ChildAttribute$XQ)) {
       return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf")));
@@ -648,6 +632,7 @@ public class SNodeOperations {
     return childNode.getContainmentLink();
   }
   public static String getContainingLinkRole(SNode childNode) {
+    // there are still uses of Node_GetContainingRoleOperation in mbeddr 
     if (childNode == null) {
       return null;
     }
@@ -659,7 +644,7 @@ public class SNodeOperations {
   }
   public static List<SReference> getReferences(SNode node) {
     if (node == null) {
-      return new EmptyList<SReference>("Attempt to add reference to unexistent parent. Reference: %s");
+      return new EmptyList<SReference>("Attempt to add reference to non-existent parent. Reference: %s");
     }
     return IterableUtil.asList(node.getReferences());
   }

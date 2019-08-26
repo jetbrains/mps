@@ -23,8 +23,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ModuleXml_classpathEntry extends MigrationScriptBase {
+  private final String description = "Update build scripts with default classpath entry in deployment module descriptors";
   public String getCaption() {
-    return "Update build scripts with default classpath entry in deployment module descriptors";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -36,11 +37,11 @@ public class ModuleXml_classpathEntry extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_ykj178_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_ykj178_a0d_0 = new EditableFilteringScope(scope_ykj178_a0d);
+      SearchScope scope_ykj178_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_ykj178_a0e_0 = new EditableFilteringScope(scope_ykj178_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_ykj178_a0d_0;
+          return scope_ykj178_a0e_0;
         }
       };
       Sequence.fromIterable(findWithNoEntry(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMpsLayout_ModuleXml$8Q, false))).visitAll(new IVisitor<SNode>() {

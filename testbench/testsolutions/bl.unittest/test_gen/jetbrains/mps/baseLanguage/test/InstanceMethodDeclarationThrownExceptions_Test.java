@@ -69,7 +69,7 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
     public void test_NodeUnnamedErrorCheck143797558343291602() throws Exception {
       SNode nodeToCheck = getRealNodeById("3983029200623367486");
       SNode operation = getRealNodeById("143797558343291602");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3983029200623367486"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4460871289557453850"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4460871289557453850"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck3983029200623373599() throws Exception {
       SNode nodeToCheck = getRealNodeById("3983029200623367447");
@@ -79,7 +79,7 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
     public void test_NodeUnnamedErrorCheck143797558343290023() throws Exception {
       SNode nodeToCheck = getRealNodeById("3983029200623374669");
       SNode operation = getRealNodeById("143797558343290023");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3983029200623374669"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4460871289557453850"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4460871289557453850"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck3983029200623379445() throws Exception {
       SNode nodeToCheck = getRealNodeById("3983029200623374398");
@@ -94,12 +94,12 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
     public void test_NodeOverridenMethodDoesNotCheck143797558343280410() throws Exception {
       SNode nodeToCheck = getRealNodeById("3983029200623470506");
       SNode operation = getRealNodeById("143797558343280410");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3983029200623470506"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035215147192"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035215147192"), myProject.getRepository()).run();
     }
     public void test_NodeOverridenMethodDoesNotCheck143797558343288436() throws Exception {
       SNode nodeToCheck = getRealNodeById("3983029200623475285");
       SNode operation = getRealNodeById("143797558343288436");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3983029200623475285"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035215147192"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035215147192"), myProject.getRepository()).run();
     }
 
   }

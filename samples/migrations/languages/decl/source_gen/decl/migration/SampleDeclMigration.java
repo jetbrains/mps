@@ -30,15 +30,16 @@ import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class SampleDeclMigration extends MigrationScriptBase {
+  private final String description = "migrate the declarations using smodel API";
   public String getCaption() {
-    return "migrate the declarations using smodel API";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -57,11 +58,11 @@ public class SampleDeclMigration extends MigrationScriptBase {
     });
 
     {
-      SearchScope scope_i4ro0d_d0d = CommandUtil.createScope(searchScope);
-      final SearchScope scope_i4ro0d_d0d_0 = new EditableFilteringScope(scope_i4ro0d_d0d);
+      SearchScope scope_i4ro0d_d0e = CommandUtil.createScope(searchScope);
+      final SearchScope scope_i4ro0d_d0e_0 = new EditableFilteringScope(scope_i4ro0d_d0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_d0d_0;
+          return scope_i4ro0d_d0e_0;
         }
       };
 
@@ -92,11 +93,11 @@ public class SampleDeclMigration extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_i4ro0d_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_i4ro0d_a0e_0 = new EditableFilteringScope(scope_i4ro0d_a0e);
+      SearchScope scope_i4ro0d_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_i4ro0d_a0f_0 = new EditableFilteringScope(scope_i4ro0d_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_a0e_0;
+          return scope_i4ro0d_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$sl, false)).select(new ISelector<SNode, NotMigratedNode>() {
@@ -119,19 +120,19 @@ public class SampleDeclMigration extends MigrationScriptBase {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 0x6aff2c1049329d71L, "NewComponent"), null, null, false);
+    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 0x6aff2c1049329d71L, "NewComponent"), null, null).node();
     SNodeAccessUtil.setPropertyValue(quotedNode_3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_2);
     {
       List<SNode> nodes = (List<SNode>) parameter_1;
       for (SNode child : nodes) {
-        quotedNode_3.addChild(LINKS.member$I_O9, SNodeOperations.copyIfNecessary(child));
+        quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049329d71L, 0x6aff2c1049329d74L, "member"), SNodeOperations.copyIfNecessary(child));
       }
     }
     return quotedNode_3;
   }
   private static SNode createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.DeclMigrationData$E1, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.DeclMigrationData$E1, null, null).node();
     n1.setProperty(PROPS.oldId$W$wZ, PROPS.oldId$W$wZ.getType().toString(p0));
     n1.setProperty(PROPS.newId$W$xu, PROPS.newId$W$xu.getType().toString(p1));
     return n1;
@@ -146,7 +147,6 @@ public class SampleDeclMigration extends MigrationScriptBase {
   private static final class LINKS {
     /*package*/ static final SContainmentLink member$b5zN = MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
     /*package*/ static final SContainmentLink dataNode$wNKg = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode");
-    /*package*/ static final SContainmentLink member$I_O9 = MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049329d71L, 0x6aff2c1049329d74L, "member");
   }
 
   private static final class PROPS {

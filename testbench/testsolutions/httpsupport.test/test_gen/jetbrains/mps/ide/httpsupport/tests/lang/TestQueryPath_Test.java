@@ -66,7 +66,7 @@ public class TestQueryPath_Test extends BaseTransformationTest {
     public void test_NodeEmptySegmnetCheck529363524336253171() throws Exception {
       SNode nodeToCheck = getRealNodeById("529363524336253168");
       SNode operation = getRealNodeById("529363524336253171");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("529363524336253168"), MessageStatus.WARNING, new SNodePointer("r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "6040064942662332637"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "6040064942662332637"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck529363524336253166() throws Exception {
       SNode nodeToCheck = getRealNodeById("529363524336253134");

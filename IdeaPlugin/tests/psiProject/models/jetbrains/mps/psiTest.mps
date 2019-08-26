@@ -2,8 +2,8 @@
 <model ref="r:095fd24c-97f7-43d4-af22-67e84256b63f(jetbrains.mps.psiTest)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="0" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
   </languages>
   <imports>
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -28,9 +28,6 @@
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
-      </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -395,6 +392,7 @@
       <node concept="3clFbW" id="4ID9bvD87HF" role="jymVt">
         <node concept="3Tm1VV" id="4ID9bvD87HG" role="1B3o_S" />
         <node concept="3clFbS" id="4ID9bvD87UN" role="3clF47" />
+        <node concept="3cqZAl" id="7SLi_qlKIgZ" role="3clF45" />
       </node>
     </node>
     <node concept="3uibUv" id="6gfUI6QT52p" role="EKbjA">
@@ -540,6 +538,7 @@
           </node>
         </node>
       </node>
+      <node concept="3cqZAl" id="7SLi_qlKIh0" role="3clF45" />
     </node>
     <node concept="3Tm1VV" id="342uQwhBl1H" role="1B3o_S" />
     <node concept="3uibUv" id="342uQwhBn6B" role="1zkMxy">
@@ -556,7 +555,6 @@
   <node concept="3HP615" id="4MtppaH7KSW">
     <property role="TrG5h" value="INode" />
     <node concept="3clFb_" id="6ps8LzB2GVr" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="text" />
       <node concept="3uibUv" id="6ps8LzB2GVJ" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
@@ -566,7 +564,6 @@
     </node>
     <node concept="3Tm1VV" id="4MtppaH7KSX" role="1B3o_S" />
     <node concept="3clFb_" id="4MtppaH7S14" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="getChidlren" />
       <node concept="3uibUv" id="4MtppaH7Thg" role="3clF45">
         <ref role="3uigEE" to="wyt6:~Iterable" resolve="Iterable" />
@@ -692,7 +689,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="7x2XsKdLxGm" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="iterator" />
       <property role="DiZV1" value="false" />

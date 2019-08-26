@@ -55,6 +55,10 @@
       <property role="2V$B1T" value="af65afd8-f0dd-4942-87d9-63a55f2a9db1" />
       <property role="2V$B1Q" value="jetbrains.mps.lang.behavior" />
     </node>
+    <node concept="2V$Bhx" id="AuyzvqpJpv" role="QG$2i">
+      <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+      <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+    </node>
     <node concept="2vPci8" id="264$spPfZhg" role="3F_NFc">
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>

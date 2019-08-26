@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -39,12 +40,13 @@ public final class ClassPathReader {
 
   public ClassPathReader(@NotNull String homePath, @NotNull List<ClassType> types) {
     myAdditionalCPFile = calcFileLocation(homePath);
-    myTypes = types.stream().map(ClassType::getTypeString).collect(Collectors.toList());
+    myTypes = types.stream()
+                   .map(ClassType::getTypeString)
+                   .collect(Collectors.toList());
   }
 
   public ClassPathReader(@NotNull String homePath) {
-    myAdditionalCPFile = calcFileLocation(homePath);
-    myTypes = null;
+    this(homePath, Arrays.asList(ClassType.values()));
   }
 
   private File calcFileLocation(@NotNull String homePath) {
@@ -68,8 +70,8 @@ public final class ClassPathReader {
             result.add(line);
           }
         }
-      } catch (FileNotFoundException ignored) {
-        LOG.error("Problem while parsing class path", ignored);
+      } catch (FileNotFoundException e) {
+        LOG.error("Problem while parsing class path", e);
       }
     } else {
       LOG.debug("The file with additional class path could not be found");

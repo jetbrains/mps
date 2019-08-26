@@ -46,7 +46,7 @@
   </node>
   <node concept="1TIwiD" id="1mFJTG6JRZ">
     <property role="EcuMT" value="24399255755750911" />
-    <property role="TrG5h" value="ProblemKindRoot" />
+    <property role="TrG5h" value="ProblemKind" />
     <property role="19KtqR" value="true" />
     <property role="R5$K2" value="true" />
     <property role="34LRSv" value="Problem Kind" />
@@ -61,6 +61,9 @@
     <node concept="PrWs8" id="1mFJTG6K7$" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="PrWs8" id="Auyzvqp5sJ" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
   </node>
   <node concept="1TIwiD" id="6GnzfDRfssU">
     <property role="EcuMT" value="7716791493892884282" />
@@ -70,7 +73,7 @@
       <property role="IQ2ns" value="7716791493892884283" />
       <property role="20kJfa" value="kind" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="1mFJTG6JRZ" resolve="ProblemKindRoot" />
+      <ref role="20lvS9" node="1mFJTG6JRZ" resolve="ProblemKind" />
     </node>
     <node concept="PrWs8" id="6GnzfDRhs0$" role="PzmwI">
       <ref role="PrY4T" node="5sUTrySMJsG" resolve="Problem" />

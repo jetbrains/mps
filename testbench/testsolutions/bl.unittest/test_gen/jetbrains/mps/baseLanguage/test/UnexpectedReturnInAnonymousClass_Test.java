@@ -58,7 +58,7 @@ public class UnexpectedReturnInAnonymousClass_Test extends BaseTransformationTes
     public void test_NodeReturnExpectedErrorCheck6923385624929494145() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230829");
       SNode operation = getRealNodeById("6923385624929494145");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451230829"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223640343628"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223640343628"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2501421320959199496() throws Exception {
       SNode nodeToCheck = getRealNodeById("1215444400359");

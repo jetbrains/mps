@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,10 @@ import jetbrains.mps.util.containers.ManyToManyMap;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.repository.CommandListener;
@@ -54,6 +57,12 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   private Set<SModule> myModules = new LinkedHashSet<>();
   private Map<SModuleId, SModule> myIdToModuleMap = new ConcurrentHashMap<>();
   private ManyToManyMap<SModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<>();
+
+  /**
+   * Compatibility code, the instance available through SModelRepository.getInstance for legacy code.
+   * As we move forward, shall decide whether we need to keep list of models or can live without it.
+   */
+  private final SModelRepository myModelRepository;
 
   /**
    * Use {@link org.jetbrains.mps.openapi.module.SRepository} from the project whenever it is possible
@@ -93,6 +102,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
       }
     };
     myScopeCache = new CachingReferenceScopeHelper();
+    myModelRepository = new SModelRepository(this);
   }
 
   @Override
@@ -104,14 +114,21 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     ourInstance = this;
     myGlobalModelAccess.addCommandListener(myCommandListener);
     myGlobalModelAccess.addReadActionListener(myScopeCache);
+    myModelRepository.init();
   }
 
   @Override
   public void dispose() {
+    myModelRepository.dispose();
     myGlobalModelAccess.removeReadActionListener(myScopeCache);
     myGlobalModelAccess.removeCommandListener(myCommandListener);
     ourInstance = null;
     super.dispose();
+  }
+
+  // friend-only access, for ModuleRepositoryFacade.
+  /*package*/ SModelRepository getModelRepository() {
+    return myModelRepository;
   }
 
   //-----------------register/unregister-merge-----------
@@ -269,6 +286,15 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     return Collections.unmodifiableSet(myModules);
   }
 
+  @Nullable
+  @Override
+  public SModel getModel(@NotNull SModelId modelId) {
+    if (modelId.isGloballyUnique()) {
+      return myModelRepository.getModelDescriptor(modelId);
+    }
+    return super.getModel(modelId);
+  }
+
   //--------------------------------------------------
 
   public void invalidateCaches() {
@@ -293,7 +319,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
         }
       }
 
-      SModelRepository.getInstance().saveAll();
+      myModelRepository.saveAll();
     } finally {
       LOG.info(String.format("Saving of the repository took %.3f s", (System.nanoTime() - beginTime) / 1e9));
     }

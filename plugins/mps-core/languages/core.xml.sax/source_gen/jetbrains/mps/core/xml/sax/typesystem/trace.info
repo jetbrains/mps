@@ -108,14 +108,13 @@
       <node id="2264311582634140487" at="39,30,40,17" concept="6" />
       <node id="2264311582634140505" at="42,66,43,63" concept="5" />
       <node id="2264311582634140505" at="43,63,44,30" concept="5" />
-      <node id="2264311582634140505" at="44,30,45,252" concept="2" />
-      <node id="2264311582634140505" at="45,252,46,231" concept="2" />
-      <node id="2264311582634140505" at="46,231,47,24" concept="6" />
+      <node id="2264311582634140505" at="44,30,45,224" concept="2" />
+      <node id="2264311582634140505" at="45,224,46,435" concept="2" />
+      <node id="2264311582634140505" at="46,435,47,24" concept="6" />
       <node id="2264311582634140487" at="51,0,52,0" concept="8" trace="XMLSAXChildRule$v" />
       <node id="2264311582634140487" at="52,0,53,0" concept="8" trace="XMLSAXChildHandler_childObject$Z2" />
       <node id="2264311582634140487" at="56,0,57,0" concept="8" trace="rule$Ywc8" />
       <node id="2264311582634140487" at="57,0,58,0" concept="8" trace="type$Y_Mw" />
-      <node id="2264311582634140487" at="58,0,59,0" concept="8" trace="classifier$pQ_R" />
       <node id="2264311582634140487" at="23,0,25,0" concept="1" trace="typeof_XMLSAXChildHandler_childObject_InferenceRule#()V" />
       <node id="2264311582634140487" at="33,0,36,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2264311582634140487" at="36,0,39,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -151,8 +150,8 @@
         <var name="typeCheckingContext" id="2264311582634140487" />
       </scope>
       <unit id="2264311582634140487" at="50,0,54,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXChildHandler_childObject_InferenceRule$CONCEPTS" />
-      <unit id="2264311582634140487" at="55,0,60,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXChildHandler_childObject_InferenceRule$LINKS" />
-      <unit id="2264311582634140487" at="22,0,61,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXChildHandler_childObject_InferenceRule" />
+      <unit id="2264311582634140487" at="55,0,59,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXChildHandler_childObject_InferenceRule$LINKS" />
+      <unit id="2264311582634140487" at="22,0,60,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXChildHandler_childObject_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)/2264311582634140528">
@@ -173,8 +172,8 @@
       <node id="2264311582634140528" at="33,30,34,17" concept="6" />
       <node id="2264311582634140532" at="36,65,37,63" concept="5" />
       <node id="2264311582634140532" at="37,63,38,30" concept="5" />
-      <node id="2264311582634140532" at="38,30,39,248" concept="2" />
-      <node id="2264311582634140532" at="39,248,40,24" concept="6" />
+      <node id="2264311582634140532" at="38,30,39,220" concept="2" />
+      <node id="2264311582634140532" at="39,220,40,24" concept="6" />
       <node id="2264311582634140528" at="44,0,45,0" concept="8" trace="XMLSAXAttributeReference$J3" />
       <node id="2264311582634140528" at="18,0,20,0" concept="1" trace="typeof_XMLSAXAttributeReference_InferenceRule#()V" />
       <node id="2264311582634140528" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -272,54 +271,52 @@
       </scope>
     </file>
     <file name="typeof_XMLSAXLocatorExpression_InferenceRule.java">
-      <node id="2264311582634140553" at="23,5,24,59" concept="5" />
-      <node id="2264311582634140553" at="24,59,25,203" concept="5" />
-      <node id="2264311582634140553" at="25,203,26,284" concept="2" />
-      <node id="2264311582634140551" at="29,50,30,47" concept="6" />
-      <node id="2264311582634140551" at="32,68,33,102" concept="6" />
-      <node id="2264311582634140551" at="35,30,36,17" concept="6" />
-      <node id="2264311582634140555" at="38,65,39,63" concept="5" />
-      <node id="2264311582634140555" at="39,63,40,30" concept="5" />
-      <node id="2264311582634140555" at="40,30,41,252" concept="2" />
-      <node id="2264311582634140555" at="41,252,42,234" concept="2" />
-      <node id="2264311582634140555" at="42,234,43,24" concept="6" />
-      <node id="2264311582634140551" at="47,0,48,0" concept="8" trace="XMLSAXLocatorExpression$v0" />
-      <node id="2264311582634140551" at="51,0,52,0" concept="8" trace="classifier$pQ_R" />
-      <node id="2264311582634140551" at="20,0,22,0" concept="1" trace="typeof_XMLSAXLocatorExpression_InferenceRule#()V" />
-      <node id="2264311582634140551" at="29,0,32,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="2264311582634140551" at="32,0,35,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="2264311582634140551" at="35,0,38,0" concept="4" trace="overrides#()Z" />
-      <node id="2264311582634140553" at="22,130,27,5" concept="0" />
-      <node id="2264311582634140551" at="22,0,29,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <node id="2264311582634140555" at="38,0,45,0" concept="9" trace="_quotation_createNode_kp63mp_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="2264311582634140551" at="20,57,20,57" />
-      <scope id="2264311582634140551" at="29,50,30,47" />
-      <scope id="2264311582634140551" at="32,68,33,102" />
-      <scope id="2264311582634140551" at="35,30,36,17" />
-      <scope id="2264311582634140551" at="20,0,22,0" />
-      <scope id="2264311582634140553" at="23,5,26,284">
+      <node id="2264311582634140553" at="22,5,23,59" concept="5" />
+      <node id="2264311582634140553" at="23,59,24,203" concept="5" />
+      <node id="2264311582634140553" at="24,203,25,284" concept="2" />
+      <node id="2264311582634140551" at="28,50,29,47" concept="6" />
+      <node id="2264311582634140551" at="31,68,32,102" concept="6" />
+      <node id="2264311582634140551" at="34,30,35,17" concept="6" />
+      <node id="2264311582634140555" at="37,65,38,63" concept="5" />
+      <node id="2264311582634140555" at="38,63,39,30" concept="5" />
+      <node id="2264311582634140555" at="39,30,40,224" concept="2" />
+      <node id="2264311582634140555" at="40,224,41,438" concept="2" />
+      <node id="2264311582634140555" at="41,438,42,24" concept="6" />
+      <node id="2264311582634140551" at="46,0,47,0" concept="8" trace="XMLSAXLocatorExpression$v0" />
+      <node id="2264311582634140551" at="19,0,21,0" concept="1" trace="typeof_XMLSAXLocatorExpression_InferenceRule#()V" />
+      <node id="2264311582634140551" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="2264311582634140551" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="2264311582634140551" at="34,0,37,0" concept="4" trace="overrides#()Z" />
+      <node id="2264311582634140553" at="21,130,26,5" concept="0" />
+      <node id="2264311582634140551" at="21,0,28,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="2264311582634140555" at="37,0,44,0" concept="9" trace="_quotation_createNode_kp63mp_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="2264311582634140551" at="19,57,19,57" />
+      <scope id="2264311582634140551" at="28,50,29,47" />
+      <scope id="2264311582634140551" at="31,68,32,102" />
+      <scope id="2264311582634140551" at="34,30,35,17" />
+      <scope id="2264311582634140551" at="19,0,21,0" />
+      <scope id="2264311582634140553" at="22,5,25,284">
         <var name="_info_12389875345" id="2264311582634140553" />
         <var name="_nodeToCheck_1029348928467" id="2264311582634140553" />
       </scope>
-      <scope id="2264311582634140551" at="29,0,32,0" />
-      <scope id="2264311582634140551" at="32,0,35,0">
+      <scope id="2264311582634140551" at="28,0,31,0" />
+      <scope id="2264311582634140551" at="31,0,34,0">
         <var name="argument" id="2264311582634140551" />
       </scope>
-      <scope id="2264311582634140551" at="35,0,38,0" />
-      <scope id="2264311582634140552" at="22,130,27,5" />
-      <scope id="2264311582634140555" at="38,65,43,24">
+      <scope id="2264311582634140551" at="34,0,37,0" />
+      <scope id="2264311582634140552" at="21,130,26,5" />
+      <scope id="2264311582634140555" at="37,65,42,24">
         <var name="facade" id="2264311582634140555" />
         <var name="quotedNode_1" id="2264311582634140555" />
       </scope>
-      <scope id="2264311582634140551" at="22,0,29,0">
+      <scope id="2264311582634140551" at="21,0,28,0">
         <var name="locatorExpression" id="2264311582634140551" />
         <var name="status" id="2264311582634140551" />
         <var name="typeCheckingContext" id="2264311582634140551" />
       </scope>
-      <scope id="2264311582634140555" at="38,0,45,0" />
-      <unit id="2264311582634140551" at="46,0,49,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXLocatorExpression_InferenceRule$CONCEPTS" />
-      <unit id="2264311582634140551" at="50,0,53,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXLocatorExpression_InferenceRule$LINKS" />
-      <unit id="2264311582634140551" at="19,0,54,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXLocatorExpression_InferenceRule" />
+      <scope id="2264311582634140555" at="37,0,44,0" />
+      <unit id="2264311582634140551" at="45,0,48,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXLocatorExpression_InferenceRule$CONCEPTS" />
+      <unit id="2264311582634140551" at="18,0,49,0" name="jetbrains.mps.core.xml.sax.typesystem.typeof_XMLSAXLocatorExpression_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)/2264311582634140561">

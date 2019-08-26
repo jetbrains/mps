@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -322,9 +322,9 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
   }
   private static SNode createBuildStringNotEmpty_aabwkk_a0a4a0a1a(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildStringNotEmpty$FZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.BuildStringNotEmpty$FZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildTextStringPart$xk, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.BuildTextStringPart$xk, null, null).node();
       n2.setProperty(PROPS.text$2p89, PROPS.text$2p89.getType().toString(p0));
       n1.addChild(LINKS.parts$aVY3, n2);
     }
@@ -332,9 +332,9 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
   }
   private static SNode createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildStringNotEmpty$FZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.BuildStringNotEmpty$FZ, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.BuildTextStringPart$xk, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.BuildTextStringPart$xk, null, null).node();
       n2.setProperty(PROPS.text$2p89, PROPS.text$2p89.getType().toString(p0));
       n1.addChild(LINKS.parts$aVY3, n2);
     }

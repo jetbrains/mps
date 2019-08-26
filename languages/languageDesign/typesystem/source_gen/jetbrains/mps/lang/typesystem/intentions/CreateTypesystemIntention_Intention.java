@@ -18,7 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -77,12 +77,12 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
   private static SNode createTypesystemQuickFix_wv8vj7_a0a0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TypesystemQuickFix$ii, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TypesystemQuickFix$ii, null, null).node();
     {
       n1.setProperty(PROPS.name$tAp1, "fix_");
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.QuickFixExecuteBlock$MP, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.QuickFixExecuteBlock$MP, null, null).node();
       {
-        SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.StatementList$TN, null, null, false);
+        SNode n3 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
         n2.addChild(LINKS.body$pTP2, n3);
       }
       n1.addChild(LINKS.executeBlock$kCq9, n2);
@@ -91,7 +91,7 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
   private static SNode createTypesystemIntention_wv8vj7_a0c0a(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TypesystemIntention$aE, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TypesystemIntention$aE, null, null).node();
     n1.setReferenceTarget(LINKS.quickFix$FQGK, node0);
     return n1;
   }

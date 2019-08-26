@@ -56,17 +56,17 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck2908733373809544465() throws Exception {
       SNode nodeToCheck = getRealNodeById("2908733373809543368");
       SNode operation = getRealNodeById("2908733373809544465");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("2908733373809543368"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1628645464085513077() throws Exception {
       SNode nodeToCheck = getRealNodeById("1628645464085512252");
       SNode operation = getRealNodeById("1628645464085513077");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1628645464085512252"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_NodeErrorCheck1628645464087305021() throws Exception {
       SNode nodeToCheck = getRealNodeById("1628645464085515203");
       SNode operation = getRealNodeById("1628645464087305021");
-      new CheckExpectedMessageAction.CheckAnyMessageAction(getRealNodeById("1628645464085515203"), MessageStatus.ERROR, myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckAnyMessageAction(nodeToCheck, MessageStatus.ERROR, myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck2908733373806471082() throws Exception {
       SNode nodeToCheck = getRealNodeById("2908733373806051392");

@@ -109,7 +109,7 @@ public class Utils {
           new NodesMatcher(result, expected).diff(nodeMap);
         }
       });
-      List<NodeDifference> diff = TypecheckingFacade.getFromContext().runIsolated(new Supplier<List<NodeDifference>>() {
+      List<NodeDifference> diff = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<List<NodeDifference>>() {
         public List<NodeDifference> get() {
           return new NodesMatcher(result, expected).diff(nodeMap);
         }

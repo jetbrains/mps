@@ -9,10 +9,9 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.EvaluationModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -28,6 +27,7 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
@@ -39,7 +39,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.sun.jdi.InvalidStackFrameException;
 import org.apache.log4j.Level;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
@@ -51,13 +50,15 @@ import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import java.util.ArrayList;
+import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.smodel.CopyUtil;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.ide.plugins.PluginManager;
 import jetbrains.mps.debug.api.Debuggers;
 import jetbrains.mps.debugger.java.runtime.JavaDebugger;
 import java.io.File;
+import java.util.ArrayList;
 import com.intellij.ide.plugins.IdeaPluginDescriptorImpl;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -73,14 +74,13 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   private final boolean myIsInWatch;
   private boolean myVariablesInitialized = false;
   protected final EvaluationContext myEvaluationContext;
-  public EvaluationWithContextContainer(Project project, DebugSession session, @NotNull SModuleReference containerModule, List<SNodeReference> nodesToImport, boolean isInWatch, _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
-    super(project, session, containerModule, nodesToImport, onNodeSetUp);
+  public EvaluationWithContextContainer(Project project, DebugSession session, @NotNull SModuleReference containerModule, boolean isInWatch) {
+    super(project, session, containerModule);
     myIsInWatch = isInWatch;
     myEvaluationContext = new StackFrameContext(session.getUiState());
   }
 
-  @Override
-  protected void setUpNode(List<SNodeReference> nodesToImport) {
+  public void setUpNode(@Nullable List<SNodeReference> nodesToImport) {
     EvaluationModule containerModule = (EvaluationModule) myContainerModule.resolve(myDebuggerRepository);
     SModel containerModel = myContainerModel.resolve(myDebuggerRepository);
 
@@ -92,11 +92,14 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     myNode = SNodeOperations.getPointer(evaluatorNode);
 
     createVars();
-    tryToImport(evaluatorNode, nodesToImport);
+    if (nodesToImport != null) {
+      tryToImport(evaluatorNode, nodesToImport);
+    }
 
     // XXX updateImportedModels() likely could live with null here, accessory models may be imported directly 
     new ModelDependencyUpdate(containerModel).updateUsedLanguages().updateImportedModels(myDebuggerRepository).updateModuleDependencies(myDebuggerRepository);
   }
+
   private void setUpDependencies(final EvaluationModule containerModule, SModel containerModel) {
     ListSequence.fromList(myEvaluationContext.getClassPath()).union(ListSequence.fromList(getDebuggerStubPath())).visitAll(new IVisitor<String>() {
       public void visit(String it) {
@@ -114,12 +117,14 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     BaseLanguagesImportHelper helper = new MyBaseLanguagesImportHelper(evaluatorNode);
     helper.tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, CONCEPTS.IEvaluatorConcept$wG, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))), nodesToImport);
   }
-  @Override
+
   protected SNode createEvaluatorNode() {
+    // FIXME remove Evaluator concept as it's no longer in use (has been part of EvaluationContainer.createEvaluatorNode(), recently removed) 
     SNode evaluatorConcept = SNodeFactoryOperations.createNewNode(CONCEPTS.EvaluatorConcept$g2, null);
     SPropertyOperations.set(evaluatorConcept, PROPS.isShowContext$IspU, myIsInWatch);
     return evaluatorConcept;
   }
+
   private void createVars() {
     // 2 uses. setUpNode() is invoked within command; updateState runs new command itself 
     fillVariables(SNodeOperations.cast(getNode(), CONCEPTS.EvaluatorConcept$g2));
@@ -244,9 +249,9 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     return !(myVariablesInitialized) || !(myIsInWatch);
   }
   @Override
-  public EvaluationWithContextContainer copy(final boolean isInWatch, _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
+  public EvaluationWithContextContainer copy(final boolean isInWatch, final _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp) {
     final SNodeReference reference = myNode;
-    return new EvaluationWithContextContainer(myProject, myDebugSession, myContainerModule, ListSequence.fromList(new ArrayList<SNodeReference>()), isInWatch, onNodeSetUp) {
+    final EvaluationWithContextContainer rv = new EvaluationWithContextContainer(myProject, myDebugSession, myContainerModule, isInWatch) {
       @Override
       protected SNode createEvaluatorNode() {
         SNode newEvaluator = (SNode) CopyUtil.copyAndPreserveId(reference.resolve(myDebuggerRepository), true);
@@ -254,6 +259,18 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
         return newEvaluator;
       }
     };
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
+      public void run() {
+        myProject.getModelAccess().executeCommand(new Runnable() {
+          public void run() {
+            rv.setUpNode(null);
+          }
+        });
+        onNodeSetUp.invoke(rv);
+      }
+    });
+    // FIXME return value is ignored (callback is employed instead), shall change IEvaluationContainer.copy to reflect this 
+    return rv;
   }
   public static List<String> getDebuggerStubPath() {
     PluginId apiPlugin = PluginManager.getPluginByClassName(Debuggers.class.getName());

@@ -1802,30 +1802,31 @@
       <node id="8195773907766714407" at="18,174,19,22" concept="5" />
       <node id="8195773907766714419" at="19,22,20,24" concept="5" />
       <node id="8195773907766692940" at="24,9,25,67" concept="5" />
-      <node id="8195773907766722571" at="27,42,28,63" concept="5" />
-      <node id="8195773907766722571" at="26,27,29,7" concept="8" />
+      <node id="2178720001756925332" at="26,27,27,23" concept="5" />
+      <node id="8195773907766722571" at="28,42,29,63" concept="5" />
+      <node id="8195773907766722571" at="27,23,30,7" concept="8" />
       <node id="8195773907766714397" at="18,0,22,0" concept="3" trace="CatchingChecker#(Ljetbrains/mps/checkers/IAbstractChecker;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P3_E0;)V" />
-      <node id="8195773907766718030" at="23,117,30,5" concept="19" />
-      <node id="8195773907766692908" at="22,0,32,0" concept="9" trace="check#(nullLorg/jetbrains/mps/openapi/module/SRepository;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
+      <node id="8195773907766718030" at="23,117,31,5" concept="19" />
+      <node id="8195773907766692908" at="22,0,33,0" concept="9" trace="check#(nullLorg/jetbrains/mps/openapi/module/SRepository;Lorg/jetbrains/mps/openapi/util/Consumer;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
       <scope id="8195773907766718032" at="24,9,25,67" />
-      <scope id="8195773907766722571" at="27,42,28,63" />
+      <scope id="8195773907766722571" at="28,42,29,63" />
       <scope id="8195773907766714401" at="18,174,20,24" />
-      <scope id="8195773907766718033" at="26,0,29,7">
-        <var name="e" id="8195773907766718035" />
-      </scope>
-      <scope id="8195773907766718039" at="26,27,29,7" />
       <scope id="8195773907766714397" at="18,0,22,0">
         <var name="message" id="8195773907766714418" />
         <var name="origin" id="8195773907766714406" />
       </scope>
-      <scope id="8195773907766692920" at="23,117,30,5" />
-      <scope id="8195773907766692908" at="22,0,32,0">
+      <scope id="8195773907766718033" at="26,0,30,7">
+        <var name="e" id="8195773907766718035" />
+      </scope>
+      <scope id="8195773907766718039" at="26,27,30,7" />
+      <scope id="8195773907766692920" at="23,117,31,5" />
+      <scope id="8195773907766692908" at="22,0,33,0">
         <var name="errorCollector" id="8195773907766692914" />
         <var name="monitor" id="8195773907766692917" />
         <var name="repository" id="8195773907766692912" />
         <var name="toCheck" id="8195773907766692910" />
       </scope>
-      <unit id="8195773907766692874" at="14,0,33,0" name="jetbrains.mps.checkers.CatchingChecker" />
+      <unit id="8195773907766692874" at="14,0,34,0" name="jetbrains.mps.checkers.CatchingChecker" />
     </file>
   </root>
 </debug-info>

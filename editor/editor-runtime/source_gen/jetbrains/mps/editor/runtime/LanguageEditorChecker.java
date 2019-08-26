@@ -17,7 +17,7 @@ import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.function.Supplier;
@@ -25,7 +25,6 @@ import com.intellij.openapi.project.IndexNotReadyException;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
-import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import org.apache.log4j.Level;
 import java.util.Collections;
@@ -86,7 +85,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
         return UpdateResult.CANCELLED;
       }
 
-      Set<EditorMessage> messages = TypecheckingFacade.getFromContext().runWithSession(typecheckingSession, new Supplier<Set<EditorMessage>>() {
+      Set<EditorMessage> messages = TypecheckingFacade.getFromContext().computeWithSession(typecheckingSession, new Supplier<Set<EditorMessage>>() {
         @Override
         public Set<EditorMessage> get() {
           return doCreateMessages(node, incremental, editorComponent.getEditorContext(), cancellable);
@@ -105,7 +104,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     boolean inspector = editorComponent instanceof InspectorEditorComponent;
 
     // FIXME assuming it's safe to access legacy session 
-    LegacyTypecheckingQueries ltq = editorComponent.getTypecheckingSession().getQueries(LegacyTypecheckingProvider.class);
+    LegacyTypecheckingQueries ltq = editorComponent.getTypecheckingSession().getQueries(LegacyTypecheckingQueries.class);
     TypeCheckingContext typeCheckingContext = ltq.getTypeCheckingContext();
 
     myMessagesChanged = false;

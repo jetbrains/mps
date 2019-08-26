@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="messages.customization.Language">
+    <classNode dependClassName="java.lang.Class" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.feedback.api.FeedbackAspect" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspect" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
+    <classNode dependClassName="messages.customization.constraints.ConstraintsAspectDescriptor" />
+    <classNode dependClassName="messages.customization.constraints.GeneratedFeedbackAspectConstraints" />
+    <classNode dependClassName="messages.customization.constraints.GeneratedRulesConstraintsAspect" />
+    <classNode dependClassName="messages.customization.editor.EditorAspectDescriptorImpl" />
+    <classNode dependClassName="messages.customization.feedback.GeneratedFeedbackAspectFeedback" />
+    <classNode dependClassName="messages.customization.structure.ConceptPresentationAspectImpl" />
+    <classNode dependClassName="messages.customization.structure.StructureAspectDescriptor" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
+    <classNode extendsClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
+  </dependency>
+</dependenciesRoot>
+

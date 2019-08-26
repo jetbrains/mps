@@ -17,8 +17,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class SNodeTypeCastExpression_completelyRemoved extends MigrationScriptBase {
+  private final String description = "SNodeTypeCastExpression_completelyRemoved";
   public String getCaption() {
-    return "SNodeTypeCastExpression_completelyRemoved";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -30,11 +31,11 @@ public class SNodeTypeCastExpression_completelyRemoved extends MigrationScriptBa
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_7r12i8_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_7r12i8_a0d_0 = new EditableFilteringScope(scope_7r12i8_a0d);
+      SearchScope scope_7r12i8_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_7r12i8_a0e_0 = new EditableFilteringScope(scope_7r12i8_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_7r12i8_a0d_0;
+          return scope_7r12i8_a0e_0;
         }
       };
     }
@@ -42,11 +43,11 @@ public class SNodeTypeCastExpression_completelyRemoved extends MigrationScriptBa
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_7r12i8_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_7r12i8_a0e_0 = new EditableFilteringScope(scope_7r12i8_a0e);
+      SearchScope scope_7r12i8_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_7r12i8_a0f_0 = new EditableFilteringScope(scope_7r12i8_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_7r12i8_a0e_0;
+          return scope_7r12i8_a0f_0;
         }
       };
       return Sequence.fromIterable(Collections.<Problem>emptyList());

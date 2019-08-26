@@ -10,17 +10,17 @@
   <root>
     <file name="QueriesGenerated.java">
       <unit at="817,0,820,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$PROPS" />
-      <unit at="851,0,854,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$CONCEPTS" />
+      <unit at="850,0,853,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$CONCEPTS" />
       <unit at="351,0,366,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$RRC" />
       <unit at="380,0,395,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$CRC" />
       <unit at="782,0,803,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$CAQ" />
       <unit at="500,0,525,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$SNsQ" />
       <unit at="740,0,766,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$RTQ" />
-      <unit at="821,0,850,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$LINKS" />
+      <unit at="821,0,849,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$LINKS" />
       <unit at="554,0,600,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$PVQ" />
       <unit at="428,0,481,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$SNQ" />
       <unit at="645,0,722,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated$IfMC" />
-      <unit at="54,0,855,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated" />
+      <unit at="54,0,854,0" name="jetbrains.mps.lang.constraints.generator.baseLanguage.template.main.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959030e(jetbrains.mps.lang.constraints.generator.baseLanguage.template.main@generator)/1147476728864">
@@ -262,13 +262,13 @@
       <node id="3749568622064121440" at="804,63,805,30" concept="3" />
       <node id="3749568622064121440" at="805,30,806,30" concept="3" />
       <node id="3749568622064121440" at="806,30,807,30" concept="3" />
-      <node id="3749568622064121440" at="807,30,808,250" concept="0" />
-      <node id="3749568622064121440" at="808,250,809,252" concept="0" />
-      <node id="3749568622064121440" at="809,252,810,252" concept="0" />
-      <node id="3749568622064121440" at="810,252,811,150" concept="0" />
-      <node id="3749568622064121440" at="811,150,812,63" concept="0" />
-      <node id="3749568622064121440" at="812,63,813,62" concept="0" />
-      <node id="3749568622064121440" at="813,62,814,24" concept="4" />
+      <node id="3749568622064121440" at="807,30,808,222" concept="0" />
+      <node id="3749568622064121440" at="808,222,809,224" concept="0" />
+      <node id="3749568622064121440" at="809,224,810,224" concept="0" />
+      <node id="3749568622064121440" at="810,224,811,150" concept="0" />
+      <node id="3749568622064121440" at="811,150,812,165" concept="0" />
+      <node id="3749568622064121440" at="812,165,813,164" concept="0" />
+      <node id="3749568622064121440" at="813,164,814,24" concept="4" />
       <node id="1213106242798" at="67,0,70,0" concept="6" trace="propertyMacro_GetValue_3_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="3118747687559027073" at="70,0,73,0" concept="6" trace="propertyMacro_GetValue_3_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="3118747687559027086" at="73,0,76,0" concept="6" trace="propertyMacro_GetValue_3_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

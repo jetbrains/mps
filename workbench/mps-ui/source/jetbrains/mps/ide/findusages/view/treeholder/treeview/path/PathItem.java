@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.findusages.view.treeholder.treeview.path;
 
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
+import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,6 +41,18 @@ public final class PathItem<T> {
   @NotNull
   public T getIdObject() {
     return myIdObject;
+  }
+
+  // not null
+  public Object getInternalIdentityForCachedTreeBuild() {
+    // FIXME this is to deal with the fact DataTree caches [parent, PathItem.id] values to avoid duplicates in the tree
+    //       If we use myIdObject, all search result with same id object and different presentation objects get collapsed into single element,
+    //       leading to https://youtrack.jetbrains.com/issue/MPS-30581. Now I try to overcome this with a complex identity (resembles what
+    //       AbstractResultNodeData.createIdObjects did in previous release, prior to elimination of UI element merge code)
+    if (myPresentationObject == null || myIdObject == myPresentationObject) {
+      return myIdObject;
+    }
+    return new Pair<>(myIdObject, myPresentationObject);
   }
 
   /*package*/ PathItemRole getRole() {

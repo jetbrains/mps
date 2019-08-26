@@ -1079,6 +1079,9 @@
             <node concept="37vLTw" id="4mN_90INI5n" role="37wK5m">
               <ref role="3cqZAo" node="J2bOg02GI5" resolve="myCategories" />
             </node>
+            <node concept="37vLTw" id="4dPCrpN6bHf" role="37wK5m">
+              <ref role="3cqZAo" node="J2bOg02GI1" resolve="myPathObject" />
+            </node>
             <node concept="37vLTw" id="4mN_90INLPT" role="37wK5m">
               <ref role="3cqZAo" node="J2bOg02GHX" resolve="myObject" />
             </node>
@@ -1141,19 +1144,18 @@
         </node>
         <node concept="3clFbJ" id="J2bOg02GLq" role="3cqZAp">
           <node concept="3fqX7Q" id="J2bOg02GLr" role="3clFbw">
-            <node concept="2OqwBi" id="J2bOg02GNj" role="3fr31v">
-              <node concept="37vLTw" id="J2bOg02GNi" role="2Oq$k0">
+            <node concept="2YIFZM" id="4dPCrpN65aU" role="3fr31v">
+              <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+              <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+              <node concept="37vLTw" id="4dPCrpN65mu" role="37wK5m">
                 <ref role="3cqZAo" node="J2bOg02GHX" resolve="myObject" />
               </node>
-              <node concept="liA8E" id="J2bOg02GNk" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                <node concept="2OqwBi" id="J2bOg02GNo" role="37wK5m">
-                  <node concept="37vLTw" id="J2bOg02GNn" role="2Oq$k0">
-                    <ref role="3cqZAo" node="J2bOg02GLk" resolve="searchResult" />
-                  </node>
-                  <node concept="2OwXpG" id="J2bOg02GNp" role="2OqNvi">
-                    <ref role="2Oxat5" node="J2bOg02GHX" resolve="myObject" />
-                  </node>
+              <node concept="2OqwBi" id="J2bOg02GNo" role="37wK5m">
+                <node concept="37vLTw" id="J2bOg02GNn" role="2Oq$k0">
+                  <ref role="3cqZAo" node="J2bOg02GLk" resolve="searchResult" />
+                </node>
+                <node concept="2OwXpG" id="J2bOg02GNp" role="2OqNvi">
+                  <ref role="2Oxat5" node="J2bOg02GHX" resolve="myObject" />
                 </node>
               </node>
             </node>
@@ -1161,6 +1163,32 @@
           <node concept="3clFbS" id="J2bOg02GLz" role="3clFbx">
             <node concept="3cpWs6" id="J2bOg02GLx" role="3cqZAp">
               <node concept="3clFbT" id="J2bOg02GLy" role="3cqZAk">
+                <property role="3clFbU" value="false" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4dPCrpN684P" role="3cqZAp">
+          <node concept="3fqX7Q" id="4dPCrpN684Q" role="3clFbw">
+            <node concept="2YIFZM" id="4dPCrpN684R" role="3fr31v">
+              <ref role="37wK5l" to="33ny:~Objects.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
+              <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+              <node concept="37vLTw" id="4dPCrpN69Cu" role="37wK5m">
+                <ref role="3cqZAo" node="J2bOg02GI1" resolve="myPathObject" />
+              </node>
+              <node concept="2OqwBi" id="4dPCrpN684T" role="37wK5m">
+                <node concept="37vLTw" id="4dPCrpN684U" role="2Oq$k0">
+                  <ref role="3cqZAo" node="J2bOg02GLk" resolve="searchResult" />
+                </node>
+                <node concept="2OwXpG" id="4dPCrpN69TD" role="2OqNvi">
+                  <ref role="2Oxat5" node="J2bOg02GI1" resolve="myPathObject" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="4dPCrpN684W" role="3clFbx">
+            <node concept="3cpWs6" id="4dPCrpN684X" role="3cqZAp">
+              <node concept="3clFbT" id="4dPCrpN684Y" role="3cqZAk">
                 <property role="3clFbU" value="false" />
               </node>
             </node>

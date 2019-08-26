@@ -73,7 +73,7 @@ public class SearchResult<T> {
   }
 
   public int hashCode() {
-    return Objects.hash(myCategories, myObject);
+    return Objects.hash(myCategories, myPathObject, myObject);
   }
 
   public boolean equals(Object o) {
@@ -81,7 +81,10 @@ public class SearchResult<T> {
       return false;
     }
     SearchResult searchResult = (SearchResult) o;
-    if (!(myObject.equals(searchResult.myObject))) {
+    if (!(Objects.equals(myObject, searchResult.myObject))) {
+      return false;
+    }
+    if (!(Objects.equals(myPathObject, searchResult.myPathObject))) {
       return false;
     }
     if (!(myCategories.equals(searchResult.myCategories))) {

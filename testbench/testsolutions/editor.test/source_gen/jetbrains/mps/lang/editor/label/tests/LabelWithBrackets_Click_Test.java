@@ -37,7 +37,7 @@ public class LabelWithBrackets_Click_Test extends BaseTransformationTest {
       initEditorComponent("1070136247797346641", "1070136247797346643");
       // TODO: modify press mouse statement in order to support expressions as x,y prameters 
       {
-        int x_l63k4n_b0 = 90;
+        int x_l63k4n_b0 = 100;
         int y_l63k4n_b0 = 10;
         Component eventTargetComponent_l63k4n_b0 = processMouseEvent(x_l63k4n_b0, y_l63k4n_b0, MouseEvent.MOUSE_PRESSED);
         processSecondaryMouseEvent(eventTargetComponent_l63k4n_b0, x_l63k4n_b0, y_l63k4n_b0, MouseEvent.MOUSE_RELEASED);

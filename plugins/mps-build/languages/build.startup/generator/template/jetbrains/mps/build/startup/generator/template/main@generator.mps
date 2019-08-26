@@ -4524,12 +4524,6 @@
     <node concept="2DRAP_" id="7C7qUK4tcD6" role="2DRAPQ">
       <property role="2DPR8u" value="  ${VM_OPTIONS} \" />
     </node>
-    <node concept="2DRAP_" id="4A8SxGHvXEx" role="2DRAPQ">
-      <property role="2DPR8u" value="  -Dawt.useSystemAAFontSettings=lcd \" />
-    </node>
-    <node concept="2DRAP_" id="4A8SxGHvYOW" role="2DRAPQ">
-      <property role="2DPR8u" value="  -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine \" />
-    </node>
     <node concept="2DRAP_" id="7C7qUK4tcX2" role="2DRAPQ">
       <property role="2DPR8u" value="  &quot;-XX:ErrorFile=$HOME/java_error_in_MPS_%p.log&quot; \" />
     </node>

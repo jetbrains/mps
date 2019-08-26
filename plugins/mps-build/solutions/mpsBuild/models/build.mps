@@ -251,9 +251,17 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="d5033cee-f632-44b6-b308-89d4fbde34ff" name="jetbrains.mps.build.startup">
@@ -379,7 +387,6 @@
       <concept id="7753544965996377997" name="jetbrains.mps.build.mps.structure.BuildMps_Branding" flags="ng" index="1zClus">
         <property id="3497141547781541445" name="minor" index="2OjLBK" />
         <property id="3497141547781541444" name="major" index="2OjLBL" />
-        <property id="3497141547781541446" name="eap" index="2OjLBN" />
         <child id="6845119683729424406" name="customXmlElement" index="27hc03" />
         <child id="6845119683729337285" name="progressY" index="27hAJg" />
         <child id="6845119683729294884" name="progressColor" index="27hGoL" />
@@ -1368,6 +1375,25 @@
           <property role="3LZaj6" value="source" />
         </node>
       </node>
+      <node concept="3_5H9E" id="6CdiFo9D8lX" role="398b2p">
+        <node concept="3LXTmp" id="6CdiFo9D8lZ" role="3_5H9R">
+          <node concept="3qWCbU" id="7oRMAfJnpXn" role="3LXTna">
+            <property role="3qWCbO" value="**/*.dic" />
+          </node>
+          <node concept="398BVA" id="6CdiFo9D8oj" role="3LXTmr">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="6CdiFo9D8qo" role="iGT6I">
+              <property role="2Ry0Am" value="workbench" />
+              <node concept="2Ry0Ak" id="6CdiFo9D8qt" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-platform" />
+                <node concept="2Ry0Ak" id="7oRMAfJnpXl" role="2Ry0An">
+                  <property role="2Ry0Am" value="source" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="nCB5N" id="16Vg0jOco4i" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
@@ -1766,7 +1792,7 @@
       <node concept="aVJcg" id="5HVSRHdVf2e" role="aVJcv">
         <node concept="NbPM2" id="5HVSRHdVf2f" role="aVJcq">
           <node concept="3Mxwew" id="5HVSRHdVf2g" role="3MwsjC">
-            <property role="3MwjfP" value="2019.2 EAP" />
+            <property role="3MwjfP" value="2019.2" />
           </node>
         </node>
       </node>
@@ -9139,6 +9165,11 @@
             <ref role="3bR37D" node="3qkjbZn83rB" resolve="jetbrains.mps.lang.context" />
           </node>
         </node>
+        <node concept="1SiIV0" id="6Xgid4BtU$u" role="3bR37C">
+          <node concept="3bR9La" id="6Xgid4BtU$v" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn84FQ" resolve="jetbrains.mps.lang.context.defs" />
+          </node>
+        </node>
         <node concept="1E0d5M" id="3qkjbZn8g1M" role="1E1XAP">
           <ref role="1E0d5P" node="3qkjbZn8eBg" resolve="jetbrains.mps.lang.feedback.problem" />
         </node>
@@ -9208,6 +9239,11 @@
         <node concept="1SiIV0" id="3qkjbZn8ood" role="3bR37C">
           <node concept="1Busua" id="3qkjbZn8ooe" role="1SiIV1">
             <ref role="1Busuk" node="3qkjbZn87KR" resolve="jetbrains.mps.lang.feedback.problem" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6Xgid4BtU$w" role="3bR37C">
+          <node concept="3bR9La" id="6Xgid4BtU$x" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
           </node>
         </node>
       </node>
@@ -9376,6 +9412,11 @@
             <ref role="1Busuk" node="3qkjbZn87KR" resolve="jetbrains.mps.lang.feedback.problem" />
           </node>
         </node>
+        <node concept="1SiIV0" id="6Xgid4BtU$y" role="3bR37C">
+          <node concept="3bR9La" id="6Xgid4BtU$z" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="3qkjbZn8nuy" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -9447,6 +9488,11 @@
         <node concept="1SiIV0" id="3qkjbZn8ooQ" role="3bR37C">
           <node concept="1Busua" id="3qkjbZn8ooR" role="1SiIV1">
             <ref role="1Busuk" node="3qkjbZn87KR" resolve="jetbrains.mps.lang.feedback.problem" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6Xgid4BtU$$" role="3bR37C">
+          <node concept="3bR9La" id="6Xgid4BtU$_" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
           </node>
         </node>
       </node>
@@ -13304,6 +13350,11 @@
           <node concept="1SiIV0" id="tjOLefcCmt" role="3bR37C">
             <node concept="3bR9La" id="tjOLefcCmu" role="1SiIV1">
               <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="325Bjzoo$$w" role="3bR37C">
+            <node concept="3bR9La" id="325Bjzoo$$x" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
             </node>
           </node>
         </node>
@@ -20428,7 +20479,6 @@
       <property role="2OjLBK" value="2" />
       <property role="TrG5h" value="MPS" />
       <property role="2OjLBL" value="2019" />
-      <property role="2OjLBN" value="true" />
       <node concept="NbPM2" id="2FTyjkjSqva" role="2gocG4">
         <node concept="3Mxwew" id="2FTyjkjSqv9" role="3MwsjC">
           <property role="3MwjfP" value="117" />
@@ -20597,7 +20647,7 @@
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
           <node concept="3Mxwew" id="6Iq8148f_YX" role="3MwsjC">
-            <property role="3MwjfP" value="MPS192EAP" />
+            <property role="3MwjfP" value="MPS192" />
           </node>
         </node>
       </node>
@@ -26363,6 +26413,11 @@
             <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
           </node>
         </node>
+        <node concept="1SiIV0" id="3e4XoxFd9F4" role="3bR37C">
+          <node concept="3bR9La" id="3e4XoxFd9F5" role="1SiIV1">
+            <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="5xa9wY2vhaQ" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -26601,11 +26656,6 @@
             <ref role="3bR37D" node="7Kfy9QB6L8Y" resolve="jetbrains.mps.lang.project" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6ESy0uAzG2i" role="3bR37C">
-          <node concept="3bR9La" id="6ESy0uAzG2j" role="1SiIV1">
-            <ref role="3bR37D" node="2eDSGe9d1qo" resolve="jetbrains.mps.execution.api" />
-          </node>
-        </node>
       </node>
       <node concept="1E1JtA" id="5xa9wY2vhbf" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -26746,11 +26796,6 @@
         <node concept="1SiIV0" id="kelsBo18zY" role="3bR37C">
           <node concept="3bR9La" id="kelsBo18zZ" role="1SiIV1">
             <ref role="3bR37D" node="7pdFgzxlDoA" resolve="jetbrains.mps.build" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="kelsBo18$0" role="3bR37C">
-          <node concept="3bR9La" id="kelsBo18$1" role="1SiIV1">
-            <ref role="3bR37D" node="5xa9wY2vhbf" resolve="jetbrains.mps.baseLanguage.unitTest.execution" />
           </node>
         </node>
       </node>
@@ -28094,8 +28139,80 @@
     <property role="3GE5qa" value="ide.data" />
     <property role="26EafI" value="bin" />
     <ref role="1_kbm$" node="6Iq8148fw_a" resolve="JetBrains MPS 2019.2" />
+    <node concept="1X3_iC" id="6KekG3H$kGh" role="lGtFl">
+      <property role="3V$3am" value="vmOptions64" />
+      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/2693344784283221851" />
+      <node concept="26Ea6D" id="6KekG3H$kFM" role="8Wnug">
+        <property role="26Ea6C" value="Common IntelliJ Platform options:" />
+      </node>
+    </node>
+    <node concept="1X3_iC" id="6KekG3H$kK8" role="lGtFl">
+      <property role="3V$3am" value="vmOptions" />
+      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/3885435385580627556" />
+      <node concept="26Ea6D" id="6KekG3H$kJE" role="8Wnug">
+        <property role="26Ea6C" value="Common IntelliJ Platform options:" />
+      </node>
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW$Yp" role="2hID6k">
+      <property role="26Ea6C" value="-Xmx2048m" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvPcJ" role="2hID6k">
+      <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvP8x" role="2hID6k">
+      <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvP94" role="2hID6k">
+      <property role="26Ea6C" value="-XX:SoftRefLRUPolicyMSPerMB=50" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW$Y3" role="2hID6k">
+      <property role="26Ea6C" value="-ea" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HeaJu" role="2hID6k">
+      <property role="26Ea6C" value="-XX:CICompilerCount=2" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvP9F" role="2hID6k">
+      <property role="26Ea6C" value="-Dsun.io.useCanonPrefixCache=false" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvPam" role="2hID6k">
+      <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Heb6B" role="2hID6k">
+      <property role="26Ea6C" value="-Djdk.http.auth.tunneling.disabledSchemes=&quot;&quot;" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW$Z5" role="2hID6k">
+      <property role="26Ea6C" value="-XX:+HeapDumpOnOutOfMemoryError" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvPb5" role="2hID6k">
+      <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Hebfm" role="2hID6k">
+      <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HebgX" role="2hID6k">
+      <property role="26Ea6C" value="-Dawt.useSystemAAFontSettings=lcd" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HebiC" role="2hID6k">
+      <property role="26Ea6C" value="-Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Hebkn" role="2hID6k">
+      <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
+    </node>
+    <node concept="1X3_iC" id="6KekG3H$kId" role="lGtFl">
+      <property role="3V$3am" value="vmOptions64" />
+      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/2693344784283221851" />
+      <node concept="26Ea6D" id="6KekG3H$kHH" role="8Wnug">
+        <property role="26Ea6C" value="Additional MPS options:" />
+      </node>
+    </node>
     <node concept="26Ea6D" id="2lwFGYOW7EY" role="2hID6k">
-      <property role="26Ea6C" value="-client -Xss1024k -ea -Xmx2048m -XX:NewSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xverify:none" />
+      <property role="26Ea6C" value="-client" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW$V3" role="2hID6k">
+      <property role="26Ea6C" value="-Xss1024k" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW$YJ" role="2hID6k">
+      <property role="26Ea6C" value="-XX:NewSize=256m" />
     </node>
     <node concept="26Ea6D" id="41$40Av8yBG" role="2hID6k">
       <property role="26Ea6C" value="-Dfile.encoding=UTF-8" />
@@ -28109,29 +28226,14 @@
     <node concept="26Ea6D" id="41$40Av8yAw" role="2hID6k">
       <property role="26Ea6C" value="-Dintellij.config.imported.in.current.session=true" />
     </node>
-    <node concept="26Ea6D" id="4A8SxGHvP8x" role="2hID6k">
-      <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvP94" role="2hID6k">
-      <property role="26Ea6C" value="-XX:SoftRefLRUPolicyMSPerMB=50" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvP9F" role="2hID6k">
-      <property role="26Ea6C" value="-Dsun.io.useCanonCaches=false" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvPam" role="2hID6k">
-      <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
-    </node>
     <node concept="26Ea6D" id="4z969tcIApt" role="2hID6k">
       <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
     </node>
-    <node concept="26Ea6D" id="4A8SxGHvPb5" role="2hID6k">
-      <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvPcJ" role="2hID6k">
-      <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
-    </node>
     <node concept="26Ea6D" id="2sJHcZ7KMn9" role="2hID6k">
       <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HebLK" role="2hID6k">
+      <property role="26Ea6C" value="-Didea.log.config.file=log.xml" />
     </node>
     <node concept="26Ea6D" id="2lwFGYOW7EZ" role="2hID6k">
       <property role="2eq24a" value="true" />
@@ -28167,8 +28269,66 @@
     <node concept="26EafG" id="BsOHnjrceI" role="26Ea7d">
       <property role="26EafJ" value="lib/jna.jar" />
     </node>
+    <node concept="26Ea6D" id="7TY3xOwW_03" role="26FZ21">
+      <property role="26Ea6C" value="-Xmx950m" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvPdc" role="26FZ21">
+      <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvP8M" role="26FZ21">
+      <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvP9n" role="26FZ21">
+      <property role="26Ea6C" value="-XX:SoftRefLRUPolicyMSPerMB=50" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW_02" role="26FZ21">
+      <property role="26Ea6C" value="-ea" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HeaUR" role="26FZ21">
+      <property role="26Ea6C" value="-XX:CICompilerCount=2" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvPa0" role="26FZ21">
+      <property role="26Ea6C" value="-Dsun.io.useCanonPrefixCache=false" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvPaH" role="26FZ21">
+      <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Heb7o" role="26FZ21">
+      <property role="26Ea6C" value="-Djdk.http.auth.tunneling.disabledSchemes=&quot;&quot;" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW_05" role="26FZ21">
+      <property role="26Ea6C" value="-XX:+HeapDumpOnOutOfMemoryError" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvPbu" role="26FZ21">
+      <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Hebg9" role="26FZ21">
+      <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HebhM" role="26FZ21">
+      <property role="26Ea6C" value="-Dawt.useSystemAAFontSettings=lcd" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Hebjv" role="26FZ21">
+      <property role="26Ea6C" value="-Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Heblg" role="26FZ21">
+      <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
+    </node>
+    <node concept="1X3_iC" id="6KekG3H$kM3" role="lGtFl">
+      <property role="3V$3am" value="vmOptions" />
+      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/3885435385580627556" />
+      <node concept="26Ea6D" id="6KekG3H$kL$" role="8Wnug">
+        <property role="26Ea6C" value="Additional MPS options:" />
+      </node>
+    </node>
     <node concept="26Ea6D" id="BJYGrH08XF" role="26FZ21">
-      <property role="26Ea6C" value="-client -Xss1024k -ea -Xmx950m -XX:NewSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xverify:none" />
+      <property role="26Ea6C" value="-client" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW_01" role="26FZ21">
+      <property role="26Ea6C" value="-Xss1024k" />
+    </node>
+    <node concept="26Ea6D" id="7TY3xOwW_04" role="26FZ21">
+      <property role="26Ea6C" value="-XX:NewSize=256m" />
     </node>
     <node concept="26Ea6D" id="41$40Av8yCc" role="26FZ21">
       <property role="26Ea6C" value="-Dfile.encoding=UTF-8" />
@@ -28182,29 +28342,14 @@
     <node concept="26Ea6D" id="41$40Av8yAF" role="26FZ21">
       <property role="26Ea6C" value="-Dintellij.config.imported.in.current.session=true" />
     </node>
-    <node concept="26Ea6D" id="4A8SxGHvP8M" role="26FZ21">
-      <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvP9n" role="26FZ21">
-      <property role="26Ea6C" value="-XX:SoftRefLRUPolicyMSPerMB=50" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvPa0" role="26FZ21">
-      <property role="26Ea6C" value="-Dsun.io.useCanonCaches=false" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvPaH" role="26FZ21">
-      <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
-    </node>
     <node concept="26Ea6D" id="4z969tcIApT" role="26FZ21">
       <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
     </node>
-    <node concept="26Ea6D" id="4A8SxGHvPbu" role="26FZ21">
-      <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvPdc" role="26FZ21">
-      <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
-    </node>
     <node concept="26Ea6D" id="2sJHcZ7KMnC" role="26FZ21">
       <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HebMF" role="26FZ21">
+      <property role="26Ea6C" value="-Didea.log.config.file=log.xml" />
     </node>
     <node concept="26Ea6D" id="BJYGrH08XG" role="26FZ21">
       <property role="2eq24a" value="true" />
@@ -38349,6 +38494,7 @@
         <ref role="nCB5Y" node="1s0vtrwUXkd" resolve="mps-messaging" />
       </node>
       <node concept="nCB5N" id="7G$QnBJF_O6" role="nCB5Z">
+        <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="5d$B_bnZPNh" resolve="mps-boot-util" />
       </node>
       <node concept="nCB5N" id="SHPhCCYz9W" role="nCB5Z">

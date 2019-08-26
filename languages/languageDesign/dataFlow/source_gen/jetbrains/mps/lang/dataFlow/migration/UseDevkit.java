@@ -16,8 +16,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 
 public class UseDevkit extends MigrationScriptBase {
+  private final String description = "Employ GP and devkit for dataflow aspect models";
   public String getCaption() {
-    return "Employ GP and devkit for dataflow aspect models";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

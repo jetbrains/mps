@@ -24,6 +24,7 @@ public class CatchingChecker<O, I extends ReportItem> implements IAbstractChecke
     try {
       myOrigin.check(toCheck, repository, errorCollector, monitor);
     } catch (Exception e) {
+      monitor.cancel();
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error(myMessage.invoke(toCheck, e, repository), e);
       }

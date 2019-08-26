@@ -33,6 +33,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_INodesTestMethod;
   private ConceptPresentation props_IReferenceAttachable;
   private ConceptPresentation props_IRuleReference;
+  private ConceptPresentation props_ITestAnnotationsContainer;
   private ConceptPresentation props_IgnoreMigrationDataOption;
   private ConceptPresentation props_InfoStatementReference;
   private ConceptPresentation props_InvokeActionStatement;
@@ -223,7 +224,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x11e314b78e4L, "nodeToEdit");
           cpb.deprecateAggregation(0x11e314bf3d3L, "result");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a81b0cd);
+          cpb.icon(IconContainer.RESOURCE_a0a4a0a81b0dd);
           props_EditorTestCase = cpb.create();
         }
         return props_EditorTestCase;
@@ -260,6 +261,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IRuleReference = cpb.create();
         }
         return props_IRuleReference;
+      case LanguageConceptSwitch.ITestAnnotationsContainer:
+        if (props_ITestAnnotationsContainer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ITestAnnotationsContainer = cpb.create();
+        }
+        return props_ITestAnnotationsContainer;
       case LanguageConceptSwitch.IgnoreMigrationDataOption:
         if (props_IgnoreMigrationDataOption == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -335,7 +342,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L);
           cpb.deprecateAssociation(0x4c010b30d9be54a3L, "migration_old");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a43b0cd);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a53b0dd);
           props_MigrationTestCase = cpb.create();
         }
         return props_MigrationTestCase;
@@ -506,7 +513,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NodesTestCase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a85b0cd);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a95b0dd);
           props_NodesTestCase = cpb.create();
         }
         return props_NodesTestCase;

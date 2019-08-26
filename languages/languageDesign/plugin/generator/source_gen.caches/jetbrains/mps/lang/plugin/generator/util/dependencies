@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.lang.plugin.generator.util.KeymapUtil">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SEnumerationLiteral" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.plugin.generator.util.PluginNameUtils">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.generator.template.TemplateQueryContext" />

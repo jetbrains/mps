@@ -32,8 +32,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class PropertyAttributeId extends MigrationScriptBase {
+  private final String description = "add id to property/link attributes";
   public String getCaption() {
-    return "add id to property/link attributes";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -71,11 +72,11 @@ public class PropertyAttributeId extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_iro8gh_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_iro8gh_a0e_0 = new EditableFilteringScope(scope_iro8gh_a0e);
+      SearchScope scope_iro8gh_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_iro8gh_a0f_0 = new EditableFilteringScope(scope_iro8gh_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_iro8gh_a0e_0;
+          return scope_iro8gh_a0f_0;
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());

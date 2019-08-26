@@ -10,20 +10,20 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="1499,0,1509,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$PROPS" />
+      <unit at="1495,0,1505,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$PROPS" />
       <unit at="689,0,704,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$MRRC" />
       <unit at="718,0,733,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$CRC" />
       <unit at="1242,0,1261,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$VVQ" />
       <unit at="1430,0,1449,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$CONCEPTS" />
       <unit at="646,0,675,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$RRC" />
       <unit at="1183,0,1227,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$RTQ" />
+      <unit at="1450,0,1494,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$LINKS" />
       <unit at="926,0,971,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$SNsQ" />
       <unit at="1109,0,1156,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$IfMC" />
-      <unit at="1450,0,1498,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$LINKS" />
       <unit at="1011,0,1079,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$PVQ" />
       <unit at="1309,0,1394,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$CAQ" />
       <unit at="792,0,897,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated$SNQ" />
-      <unit at="78,0,1510,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated" />
+      <unit at="78,0,1506,0" name="jetbrains.mps.lang.migration.generator.template.main.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:1b8e1ff1-9bb5-4fe5-848a-c2f4efdb6402(jetbrains.mps.lang.migration.generator.template.main@generator)/1123359097945101411">
@@ -1561,20 +1561,20 @@
       <node id="5636302460526827917" at="1410,30,1411,30" concept="4" />
       <node id="5636302460526827917" at="1411,30,1412,30" concept="4" />
       <node id="5636302460526827917" at="1412,30,1413,30" concept="4" />
-      <node id="5636302460526827917" at="1413,30,1414,261" concept="1" />
-      <node id="5636302460526827917" at="1414,261,1415,250" concept="1" />
-      <node id="5636302460526827917" at="1415,250,1416,256" concept="1" />
-      <node id="5636302460526827917" at="1416,256,1417,252" concept="1" />
-      <node id="5636302460526827917" at="1417,252,1418,150" concept="1" />
-      <node id="5636302460526827917" at="1418,150,1419,63" concept="1" />
-      <node id="5636302460526827917" at="1419,63,1420,62" concept="1" />
-      <node id="5636302460526827917" at="1420,62,1421,57" concept="1" />
-      <node id="5636302460526827917" at="1421,57,1422,257" concept="1" />
-      <node id="5636302460526827917" at="1422,257,1423,148" concept="1" />
-      <node id="5636302460526827917" at="1423,148,1424,246" concept="1" />
-      <node id="5636302460526827917" at="1424,246,1425,57" concept="1" />
-      <node id="5636302460526827917" at="1425,57,1426,62" concept="1" />
-      <node id="5636302460526827917" at="1426,62,1427,24" concept="5" />
+      <node id="5636302460526827917" at="1413,30,1414,233" concept="1" />
+      <node id="5636302460526827917" at="1414,233,1415,222" concept="1" />
+      <node id="5636302460526827917" at="1415,222,1416,228" concept="1" />
+      <node id="5636302460526827917" at="1416,228,1417,224" concept="1" />
+      <node id="5636302460526827917" at="1417,224,1418,150" concept="1" />
+      <node id="5636302460526827917" at="1418,150,1419,165" concept="1" />
+      <node id="5636302460526827917" at="1419,165,1420,164" concept="1" />
+      <node id="5636302460526827917" at="1420,164,1421,161" concept="1" />
+      <node id="5636302460526827917" at="1421,161,1422,229" concept="1" />
+      <node id="5636302460526827917" at="1422,229,1423,148" concept="1" />
+      <node id="5636302460526827917" at="1423,148,1424,218" concept="1" />
+      <node id="5636302460526827917" at="1424,218,1425,171" concept="1" />
+      <node id="5636302460526827917" at="1425,171,1426,166" concept="1" />
+      <node id="5636302460526827917" at="1426,166,1427,24" concept="5" />
       <node id="3286233802027187824" at="177,0,180,0" concept="7" trace="propertyMacro_GetValue_4_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="1758937410079391649" at="274,0,277,0" concept="7" trace="ifMacro_Condition_4_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
       <node id="3815816958998180922" at="277,0,280,0" concept="7" trace="ifMacro_Condition_4_1#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />

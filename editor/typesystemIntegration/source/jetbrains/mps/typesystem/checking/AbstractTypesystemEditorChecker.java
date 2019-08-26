@@ -39,7 +39,7 @@ import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.WeakSet;
@@ -100,27 +100,27 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
   public UpdateResult update(final EditorComponent editorComponent, final boolean wasCheckedOnce, final boolean applyQuickFixes,
                              final Cancellable cancellable) {
     try {
-      TypecheckingSession session = editorComponent.getTypecheckingSession();
-      if (session == null) return UpdateResult.CANCELLED;
+      if (editorComponent.getTypecheckingSession() == null) return UpdateResult.CANCELLED;
       
-      return TypecheckingFacade.getFromContext()
-                               .runWithSession(session,
-                                               () ->
-                                                   doCreateMessages(session,
-                                                                    wasCheckedOnce,
-                                                                    editorComponent.getEditorContext(),
-                                                                    editorComponent.getEditedNode(),
-                                                                    cancellable,
-                                                                    applyQuickFixes));
+      return TypecheckingFacade
+                 .getFromContext()
+                 .computeWithSession(editorComponent.getTypecheckingSession(),
+                                     (session) ->
+                                         doCreateMessages(session,
+                                                          wasCheckedOnce,
+                                                          editorComponent.getEditorContext(),
+                                                          editorComponent.getEditedNode(),
+                                                          cancellable,
+                                                          applyQuickFixes));
 
     } catch (IndexNotReadyException e) {
 
       final SNode nodeForTypechecking = editorComponent.getNodeForTypechecking();
       if (nodeForTypechecking != null) {
-        TypecheckingSession session = editorComponent.getTypecheckingSession();
-        TypecheckingFacade.getFromContext()
-                          .runWithSession(session,
-                                          () -> TypecheckingFacade.getFromContext().clearCache(nodeForTypechecking));
+        TypecheckingFacade
+            .getFromContext()
+            .runWithSession(editorComponent.getTypecheckingSession(),
+                            (session) -> TypecheckingFacade.getFromContext().clearCache(nodeForTypechecking));
       }
 
       throw e;

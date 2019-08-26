@@ -17,8 +17,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Remove_IBLDeprecatable_IsDeprecated_Property extends MigrationScriptBase {
+  private final String description = "Remove IBLDeprecatable.isDeprecated property ";
   public String getCaption() {
-    return "Remove IBLDeprecatable.isDeprecated property ";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -30,11 +31,11 @@ public class Remove_IBLDeprecatable_IsDeprecated_Property extends MigrationScrip
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_xbu0nj_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_xbu0nj_a0d_0 = new EditableFilteringScope(scope_xbu0nj_a0d);
+      SearchScope scope_xbu0nj_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_xbu0nj_a0e_0 = new EditableFilteringScope(scope_xbu0nj_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_xbu0nj_a0d_0;
+          return scope_xbu0nj_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).visitAll(new IVisitor<SNode>() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.persistence.DataSourceBase;
 import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
 import jetbrains.mps.util.IterableUtil;
@@ -44,7 +43,7 @@ import java.util.stream.Collectors;
 // XXX shall become model-centric view of an SRepository. E.g. would be possible to attach listeners to all models, to keep a snapshot of all models
 // or to track changes (i.e. that would be too much for a search scope, hence need a separate class). The view, perhaps, could be filtered (e.g. by
 // Condition<SModel>). Non thread-safe
-public class SModelRepository implements CoreComponent {
+public class SModelRepository {
   private static final Logger LOG = LogManager.getLogger(SModelRepository.class);
 
   private final Object myModelsLock = new Object();
@@ -69,15 +68,16 @@ public class SModelRepository implements CoreComponent {
   @Deprecated
   @ToRemove(version = 3.3)
   public static SModelRepository getInstance() {
+    LOG.error("SModelRepository.getInstance() has been deprecated since MPS 3.3 (4 years ago!) and will be removed in MPS 2019.3. Please refactor your code!");
     return INSTANCE;
   }
 
-  public SModelRepository(@NotNull MPSModuleRepository moduleRepository) {
+  /*package*/ SModelRepository(@NotNull MPSModuleRepository moduleRepository) {
     myRepository = moduleRepository;
   }
 
-  @Override
-  public void init() {
+  // open to our MPSModuleRepository friend only, to mimic SModelRepository.getInstance behavior for legacy code. MPS SHALL NOT USE SINGLETON ANY MORE!
+  /*package*/ void init() {
     if (INSTANCE != null) {
       throw new IllegalStateException("double initialization");
     }
@@ -86,8 +86,7 @@ public class SModelRepository implements CoreComponent {
     new RepoListenerRegistrar(myRepository, myRepositoriesListener).attach();
   }
 
-  @Override
-  public void dispose() {
+  /*package*/ void dispose() {
     new RepoListenerRegistrar(myRepository, myRepositoriesListener).detach();
     INSTANCE = null;
   }

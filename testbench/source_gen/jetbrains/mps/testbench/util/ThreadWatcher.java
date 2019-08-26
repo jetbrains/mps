@@ -17,9 +17,89 @@ public class ThreadWatcher implements Output {
   private String myDescription = "threads difference";
 
   private static class ThreadState {
-    private static Pattern IGNORED_THREAD = Pattern.compile("(AWT\\-.*)|(Image Fetch.*)|(Progress Cancel Checker)|(Flushing thread)|(Flushing Daemon)|(Alarm Pool)" + "|(Keep\\-Alive.*)|(Finalizer.*)|(MPS interrupting thread)" + "|(caret blinker.*)|(ApplicationImpl.*)|(AnimatorThread)" + "|(MPS EDT Executor Thread.*)|(ChangesManager command queue)|(TimerQueue)" + "|(Change List.*)|(Reference.*)|(Periodic task.*)" + "|(Java2D.*)|(LowMemoryWatcher janitor)|(Timer\\-.*)|(FS Sync.*)" + "|(timed reference disposer)|(Alarm pool\\(own\\))|(Alarm pool\\(shared\\))" + "|(Poller SunPKCS11-Darwin)|(MPS interrupt.*)|(process reaper)" + "|(RefCountingStorage.*)|(Encoding detection thread)" + "|(ProcessWaitFor: .*git(\\.exe)?.*)|(BaseDataReader: error stream of .*git(\\.exe)?.*)" + "|(BaseDataReader: output stream of .*git(\\.exe)?.*)" + "|(Process I/O pool [0-9]+)" + "|(Batik CleanerThread)" + "|(Document Committing Pool)");
+    private static final Pattern IGNORED_THREAD;
     private TLongObjectHashMap<ThreadInfo> myAllThreads = new TLongObjectHashMap<ThreadInfo>();
     private TLongObjectHashMap<ThreadInfo> myRunningThreads = new TLongObjectHashMap<ThreadInfo>();
+
+    static {
+      final StringBuilder builder = new StringBuilder();
+
+      // --------- Java threads ----------- 
+      builder.append("(AWT\\-.*)");
+      builder.append("|(Image Fetch.*)");
+      builder.append("|(Finalizer.*)");
+      builder.append("|(Reference.*)");
+      builder.append("|(Java2D.*)");
+      builder.append("|(TimerQueue)");
+      builder.append("|(Change List.*)");
+
+      // java.util.Timer 
+      builder.append("|(Timer\\-.*)");
+
+      // Java 9+ Cleaner thread 
+      builder.append("|(Common-Cleaner)");
+      // -------------------------------- 
+
+
+      // ---- IntelliJ Platform threads --- 
+
+      // com.intellij.util.Alarm 
+      builder.append("|(Alarm Pool)");
+
+      // com.intellij.openapi.vfs.newvfs.persistent.FlushingDaemon 
+      builder.append("|(Flushing Daemon)");
+
+      // com.intellij.util.concurrency.AppScheduledExecutorService 
+      builder.append("|(ApplicationImpl.*)");
+
+      // com.intellij.util.concurrency.AppDelayQueue 
+      builder.append("|(Periodic task.*)");
+
+      // com.intellij.util.io.BaseDataReader 
+      builder.append("|(BaseDataReader: error stream of .*git(\\.exe)?.*)");
+      builder.append("|(BaseDataReader: output stream of .*git(\\.exe)?.*)");
+
+      // com.intellij.execution.process.ProcessIOExecutorService 
+      builder.append("|(Process I/O pool [0-9]+)");
+
+      // com.intellij.psi.impl.DocumentCommitThread 
+      builder.append("|(Document Committing Pool)");
+      // -------------------------------- 
+
+
+      // ----------- MPS threads ---------- 
+
+      // jetbrains.mps.smodel.TryRunPlatformWriteHelper 
+      builder.append("|(MPS interrupting thread)");
+
+      // jetbrains.mps.smodel.EDTExecutorInternal 
+      builder.append("|(MPS EDT Executor Thread.*)");
+
+      // jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry 
+      builder.append("|(ChangesManager command queue)");
+
+      // com.intellij.util.io.storage.RefCountingStorage 
+      builder.append("|(RefCountingStorage.*)");
+      // -------------------------------- 
+
+
+      // ------ Other & unsorted threads ----- 
+
+      builder.append("|(Keep\\-Alive.*)");
+      builder.append("|(AnimatorThread)");
+
+      // macOS specific thread 
+      builder.append("|(Poller SunPKCS11-Darwin)");
+
+      // Linux specific thread 
+      builder.append("|(process reaper)");
+
+      // org.apache.batik.util.CleanerThread from batik-util library 
+      builder.append("|(Batik CleanerThread)");
+      // -------------------------------- 
+
+      IGNORED_THREAD = Pattern.compile(builder.toString());
+    }
 
     private ThreadState() {
     }

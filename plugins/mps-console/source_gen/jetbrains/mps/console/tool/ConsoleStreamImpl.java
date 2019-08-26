@@ -20,7 +20,7 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -109,18 +109,18 @@ public class ConsoleStreamImpl implements ConsoleStream {
   }
   private static SNode createTextResponseItem_kp3e3v_a0a0b0b0f(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TextResponseItem$3v, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TextResponseItem$3v, null, null).node();
     n1.setProperty(PROPS.text$PmeJ, PROPS.text$PmeJ.getType().toString(p0));
     return n1;
   }
   private static SNode createNewLineResponseItem_kp3e3v_a0a0c0b0f() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NewLineResponseItem$r4, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.NewLineResponseItem$r4, null, null).node();
     return n1;
   }
   private static SNode createNodeResponseItem_kp3e3v_a0a0j(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodeResponseItem$jy, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.NodeResponseItem$jy, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.node$MHJ0, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.BaseConcept$Sz)));
     }

@@ -19,6 +19,7 @@
   <dependency className="jetbrains.mps.debugger.java.runtime.evaluation.model.EvaluationWithContextContainer">
     <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptorImpl" />
     <classNode dependClassName="com.intellij.ide.plugins.PluginManager" />
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
     <classNode dependClassName="com.sun.jdi.InvalidStackFrameException" />
     <classNode dependClassName="java.io.File" />
@@ -137,7 +138,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.project.facets.JavaModuleOperations" />
     <classNode dependClassName="jetbrains.mps.reloading.CommonPaths" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.behaviour.BHReflection" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.BaseLanguageNodeLookup" />

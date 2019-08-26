@@ -4,6 +4,8 @@ package jetbrains.mps.idea.java.fastFind;
 
 import org.jetbrains.mps.openapi.persistence.FindUsagesParticipant;
 import com.intellij.openapi.components.ApplicationComponent;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.ide.MPSCoreComponents;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Set;
@@ -14,7 +16,6 @@ import jetbrains.mps.idea.java.psiStubs.PsiJavaStubModelDescriptor;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +23,12 @@ import org.jetbrains.annotations.NotNull;
  * Suppressing searching in psi and class file stubs
  */
 public class EmptyJavaStubsFindUsages implements FindUsagesParticipant, ApplicationComponent {
+  private PersistenceRegistry myRegistry;
+
+  public EmptyJavaStubsFindUsages(MPSCoreComponents mpsCore) {
+    myRegistry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
+  }
+
   public void findUsages(Collection<SModel> models, Set<SNode> set, Consumer<SReference> consumer, Consumer<SModel> processedConsumer) {
 
     // just skipping java psi stub models from find usages 
@@ -39,10 +46,10 @@ public class EmptyJavaStubsFindUsages implements FindUsagesParticipant, Applicat
     // let's not skip this, it's not going to slow down anything 
   }
   public void initComponent() {
-    PersistenceRegistry.getInstance().addFindUsagesParticipant(this);
+    myRegistry.addFindUsagesParticipant(this);
   }
   public void disposeComponent() {
-    PersistenceRegistry.getInstance().removeFindUsagesParticipant(this);
+    myRegistry.removeFindUsagesParticipant(this);
   }
   @NonNls
   @NotNull

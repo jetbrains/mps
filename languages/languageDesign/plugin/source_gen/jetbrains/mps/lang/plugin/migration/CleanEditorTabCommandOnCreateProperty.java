@@ -18,8 +18,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
+  private final String description = "Clean EditorTab.commandOnCreate Property";
   public String getCaption() {
-    return "Clean EditorTab.commandOnCreate Property";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -31,11 +32,11 @@ public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_khohta_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_khohta_a0d_0 = new EditableFilteringScope(scope_khohta_a0d);
+      SearchScope scope_khohta_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_khohta_a0e_0 = new EditableFilteringScope(scope_khohta_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_khohta_a0d_0;
+          return scope_khohta_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTab$AL, false)).visitAll(new IVisitor<SNode>() {

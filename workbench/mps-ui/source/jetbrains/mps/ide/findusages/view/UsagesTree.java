@@ -404,6 +404,8 @@ public class UsagesTree extends MPSTree {
       @SuppressWarnings("unchecked")
       final INodeRepresentator<Object> pp = (INodeRepresentator<Object>) myPresentationProvider;
       ((AbstractResultNodeData) usageData).updatePresentation(pp);
+      root.setText(usageData.getCaption());
+      root.setAdditionalText(usageData.getAdditionalInfo());
     }
 
     for (UsagesTreeNode tn : root.getChildren()) {

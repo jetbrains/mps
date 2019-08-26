@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,16 @@ package jetbrains.mps.extapi.module;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.RepositoryAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
+
+import java.util.Objects;
+import java.util.stream.StreamSupport;
 
 /**
  * A repository which registers in the SRepositoryRegistry and fires events about itself
@@ -56,6 +61,19 @@ public abstract class SRepositoryBase implements SRepository {
     if (myRepositoryRegistry != null){
       myRepositoryRegistry.removeRepository(this);
     }
+  }
+
+  /**
+   * subclasses are encouraged to override to supply alternative effective implementation
+   */
+  @Nullable
+  @Override
+  public SModel getModel(@NotNull SModelId modelId) {
+    if (!modelId.isGloballyUnique()) {
+      assert false : "attempt to retrieve a model with non-unique identity";
+      return null;
+    }
+    return StreamSupport.stream(getModules().spliterator(), false).map(m -> m.getModel(modelId)).filter(Objects::nonNull).findFirst().orElse(null);
   }
 
   @Override

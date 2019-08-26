@@ -11,7 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,7 +37,7 @@ public class typeof_CommandReferenceExpression_InferenceRule extends AbstractInf
   }
   private static SNode createCommandType_ec8mha_a1a0c0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CommandType$8c, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CommandType$8c, null, null).node();
     n1.setReferenceTarget(LINKS.classifier$LHKW, node0);
     return n1;
   }

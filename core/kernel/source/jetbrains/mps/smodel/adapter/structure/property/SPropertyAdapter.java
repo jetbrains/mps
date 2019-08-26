@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SType;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public abstract class SPropertyAdapter implements SProperty {
   public static final String ID_DELIM = ":";
@@ -75,6 +76,13 @@ public abstract class SPropertyAdapter implements SProperty {
   @Override
   public boolean isValid(String string) {
     return getType().fromString(string) != SType.NOT_A_VALUE;
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getSourceNode() {
+    final PropertyDescriptor pd = getPropertyDescriptor();
+    return pd == null ? null : pd.getSourceNode();
   }
 
   public abstract String serialize();

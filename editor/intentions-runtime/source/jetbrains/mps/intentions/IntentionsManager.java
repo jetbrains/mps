@@ -16,7 +16,6 @@
 package jetbrains.mps.intentions;
 
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
@@ -43,11 +42,9 @@ import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -94,13 +91,12 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
   public synchronized Kind getHighestAvailableBaseIntentionType(final SNode node, final EditorContext editorContext) {
     final GetHighestAvailableIntentionTypeVisitor visitor = new GetHighestAvailableIntentionTypeVisitor();
     // FIXME invoking runWithSession is unnecessary here b/c the only client takes care of that already
-    TypecheckingSession typecheckingSession = ((EditorComponent) editorContext.getEditorComponent()).getTypecheckingSession();
-    if (typecheckingSession == null) return null;
+    if (((EditorComponent) editorContext.getEditorComponent()).getTypecheckingSession() == null) return null;
     
     TypecheckingFacade
         .getFromContext()
-        .runWithSession(typecheckingSession,
-                        () -> {
+        .runWithSession(((EditorComponent) editorContext.getEditorComponent()).getTypecheckingSession(),
+                        (session) -> {
                           Filter filter = new Filter(getDisabledIntentions()) {
 
                             @Override
@@ -218,7 +214,7 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
       jetbrains.mps.openapi.editor.EditorComponent editorComponent = myEditorContext.getEditorComponent();
       return TypecheckingFacade
                  .getFromContext()
-                 .runWithSession(((EditorComponent) editorComponent).getTypecheckingSession(), this::collect0);
+                 .computeWithSession(((EditorComponent) editorComponent).getTypecheckingSession(), (sesssion) -> collect0());
     }
   }
 

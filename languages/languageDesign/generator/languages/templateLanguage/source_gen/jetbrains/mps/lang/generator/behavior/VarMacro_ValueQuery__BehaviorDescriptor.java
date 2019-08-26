@@ -23,7 +23,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -109,7 +109,7 @@ public final class VarMacro_ValueQuery__BehaviorDescriptor extends BaseBHDescrip
   }
   private static SNode createClassifierType_i81kn4_a1a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ClassifierType$IZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
     n1.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
     return n1;
   }

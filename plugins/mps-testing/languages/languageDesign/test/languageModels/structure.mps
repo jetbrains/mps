@@ -436,6 +436,9 @@
     <property role="34LRSv" value="test node" />
     <property role="EcuMT" value="1216989428737" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="143xXLdhW_p" role="PzmwI">
+      <ref role="PrY4T" node="143xXLdhW$X" resolve="ITestAnnotationsContainer" />
+    </node>
     <node concept="PrWs8" id="3612dezJk3x" role="PzmwI">
       <ref role="PrY4T" to="tpck:2WmWrdnSpX2" resolve="ICanSuppressErrors" />
     </node>
@@ -1451,6 +1454,10 @@
       <property role="3tVfz5" value="5219531754069980161" />
       <ref role="2wpffI" node="4xJw7BvdBg1" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="143xXLdhW$X">
+    <property role="EcuMT" value="1225972903834011965" />
+    <property role="TrG5h" value="ITestAnnotationsContainer" />
   </node>
 </model>
 

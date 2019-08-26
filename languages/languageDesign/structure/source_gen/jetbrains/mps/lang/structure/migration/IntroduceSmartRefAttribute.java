@@ -24,15 +24,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.regex.Pattern;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class IntroduceSmartRefAttribute extends MigrationScriptBase {
+  private final String description = "Annotate 'smart reference' concepts";
   public String getCaption() {
-    return "Annotate 'smart reference' concepts";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -44,11 +45,11 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_nopsft_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_nopsft_a0d_0 = new EditableFilteringScope(scope_nopsft_a0d);
+      SearchScope scope_nopsft_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_nopsft_a0e_0 = new EditableFilteringScope(scope_nopsft_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_nopsft_a0d_0;
+          return scope_nopsft_a0e_0;
         }
       };
       Collection<SNode> conceptNodes = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false);
@@ -112,13 +113,13 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
   }
   private static SNode createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SmartReferenceAttribute$Lg, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SmartReferenceAttribute$Lg, null, null).node();
     n1.setReferenceTarget(LINKS.charactersticReference$hNpW, node0);
     return n1;
   }
   private static SNode createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(Object p0, Object p1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.RefPresentationTemplate$57, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.RefPresentationTemplate$57, null, null).node();
     n1.setProperty(PROPS.prefix$CMHd, PROPS.prefix$CMHd.getType().toString(p0));
     n1.setProperty(PROPS.suffix$CMSP, PROPS.suffix$CMSP.getType().toString(p1));
     return n1;

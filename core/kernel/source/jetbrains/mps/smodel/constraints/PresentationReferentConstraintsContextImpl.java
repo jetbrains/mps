@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 package jetbrains.mps.smodel.constraints;
 
+import jetbrains.mps.smodel.runtime.ReferencePresentationContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.runtime.ReferencePresentationContext;
 
 public class PresentationReferentConstraintsContextImpl extends ReferentConstraintsContextImpl implements ReferencePresentationContext {
   private SNode myParameterNode;
@@ -29,9 +29,9 @@ public class PresentationReferentConstraintsContextImpl extends ReferentConstrai
   private boolean myInEditor;
 
   public PresentationReferentConstraintsContextImpl(@NotNull SNode contextNode, @Nullable SContainmentLink containmentLink, int position,
-      @Nullable SNode referenceNode, boolean exists, @NotNull SAbstractConcept targetConcept, SNode parameterNode, boolean visible, boolean smartRef,
+      @Nullable SNode referenceNode, @NotNull SAbstractConcept targetConcept, SNode parameterNode, boolean visible, boolean smartRef,
       boolean inEditor) {
-    super(contextNode, containmentLink, position, referenceNode, exists, targetConcept);
+    super(contextNode, containmentLink, position, referenceNode, targetConcept);
     myParameterNode = parameterNode;
     myVisible = visible;
     mySmartReference = smartRef;

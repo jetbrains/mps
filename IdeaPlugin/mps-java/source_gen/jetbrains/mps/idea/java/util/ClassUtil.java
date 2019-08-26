@@ -5,8 +5,10 @@ package jetbrains.mps.idea.java.util;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ClassUtil {
   public static String getClassFQName(SNode claz) {
@@ -14,20 +16,28 @@ public class ClassUtil {
   }
 
   public static String getClassFQName(SModelReference modelReference, SNode claz) {
-    SNode curr = SNodeOperations.cast(((SNode) claz), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    SNode curr = SNodeOperations.cast(((SNode) claz), CONCEPTS.Classifier$hJ);
     StringBuilder sb = new StringBuilder();
     do {
-      sb.insert(0, SPropertyOperations.getString(curr, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+      sb.insert(0, SPropertyOperations.getString(curr, PROPS.name$tAp1));
       sb.insert(0, ".");
       SNode parent = SNodeOperations.getParent(curr);
-      if (!(SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+      if (!(SNodeOperations.isInstanceOf(parent, CONCEPTS.Classifier$hJ))) {
         break;
       }
-      curr = SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+      curr = SNodeOperations.cast(parent, CONCEPTS.Classifier$hJ);
     } while (curr != null);
 
     String pkgName = modelReference.getName().getLongName();
     sb.insert(0, pkgName);
     return sb.toString();
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -77,8 +77,8 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
     } else {
       l = SLinkOperations.addNewChild(__thisNode__, LINKS.text$BOhB, CONCEPTS.Line$w3);
     }
-    if (words.length > 0) {
-      ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).clear();
+    if (isEmptyString(SPropertyOperations.getString(SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).last(), CONCEPTS.Word$AM), PROPS.value$cK70))) {
+      ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).removeLastElement();
     }
     for (String w : words) {
       SNode word = SNodeFactoryOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
@@ -154,6 +154,9 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
   }
 
   private static final class LINKS {

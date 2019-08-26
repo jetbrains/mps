@@ -64,7 +64,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.GeneratorInternal_ReferenceDescriptor:
         if (props_GeneratorInternal_ReferenceDescriptor == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a47f973eL, "role", "", "");
+          cpb.rawPresentation("GeneratorInternal_ReferenceDescriptor");
           props_GeneratorInternal_ReferenceDescriptor = cpb.create();
         }
         return props_GeneratorInternal_ReferenceDescriptor;

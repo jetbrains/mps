@@ -28,7 +28,6 @@ import jetbrains.mps.smodel.CancellableReadAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
@@ -87,12 +86,11 @@ public class HighlighterUpdateSession {
       if (myHighlighter.isPausedOrStopping()) {
         return;
       }
-      TypecheckingSession typecheckingSession = editorComponent.getTypecheckingSession();
-      if (typecheckingSession != null) {
+      if (editorComponent.getTypecheckingSession() != null) {
         TypecheckingFacade
             .getFromContext()
-            .runWithSession(typecheckingSession,
-                            () -> {
+            .runWithSession(editorComponent.getTypecheckingSession(),
+                            (session) -> {
                               if (updateEditorComponent(editorComponent, false, applyQuickFixes)) {
                                 isUpdated[0] = true;
                               }
@@ -108,7 +106,7 @@ public class HighlighterUpdateSession {
       TypecheckingFacade
           .getFromContext()
           .runWithSession(myInspector.getTypecheckingSession(),
-                          () -> {
+                          (session) -> {
                                   updateEditorComponent(myInspector, isUpdated[0], false);
                                 });
     }

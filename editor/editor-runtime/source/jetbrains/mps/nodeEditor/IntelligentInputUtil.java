@@ -38,7 +38,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -105,28 +104,27 @@ public class IntelligentInputUtil {
       EditorComputable<Boolean> command = new EditorComputable<Boolean>(myEditorContext) {
         @Override
         protected Boolean doCompute() {
-          TypecheckingSession typecheckingSession = ((EditorComponent) myEditorContext.getEditorComponent()).getTypecheckingSession();
           // TODO: no idea what the default value should be here, no docs whatsoever
-          if (typecheckingSession == null) return false;
+          if (((EditorComponent) myEditorContext.getEditorComponent()).getTypecheckingSession() == null) return false;
 
           return TypecheckingFacade
                      .getFromContext()
-                     .runWithSession(typecheckingSession,
-                                     () -> {
-                                             if (myCell instanceof EditorCell_STHint) {
-                                               return processSTHintCell(pattern);
-                                             }
+                     .computeWithSession(((EditorComponent) myEditorContext.getEditorComponent()).getTypecheckingSession(),
+                                         (session) -> {
+                                                 if (myCell instanceof EditorCell_STHint) {
+                                                   return processSTHintCell(pattern);
+                                                 }
 
-                                             if (mySide == CellSide.LEFT) {
-                                               String head = "" + pattern.charAt(0);
-                                               String smallPattern = pattern.substring(1);
-                                               return processCellAtStart(head, smallPattern);
-                                             } else {
-                                               String smallPattern = pattern.substring(0, pattern.length() - 1);
-                                               String tail = pattern.substring(pattern.length() - 1);
-                                               return processCellAtEnd(smallPattern, tail);
-                                             }
-                                           });
+                                                 if (mySide == CellSide.LEFT) {
+                                                   String head = "" + pattern.charAt(0);
+                                                   String smallPattern = pattern.substring(1);
+                                                   return processCellAtStart(head, smallPattern);
+                                                 } else {
+                                                   String smallPattern = pattern.substring(0, pattern.length() - 1);
+                                                   String tail = pattern.substring(pattern.length() - 1);
+                                                   return processCellAtEnd(smallPattern, tail);
+                                                 }
+                                               });
         }
       };
       myEditorContext.getRepository().getModelAccess().executeCommand(command);

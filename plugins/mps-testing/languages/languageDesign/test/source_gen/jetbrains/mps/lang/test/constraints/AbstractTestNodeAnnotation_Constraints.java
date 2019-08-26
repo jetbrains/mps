@@ -16,8 +16,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.test.behavior.ITestAnnotationsContainer__BehaviorDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class AbstractTestNodeAnnotation_Constraints extends BaseConstraintsDescriptor {
   public AbstractTestNodeAnnotation_Constraints() {
@@ -47,12 +49,12 @@ public class AbstractTestNodeAnnotation_Constraints extends BaseConstraintsDescr
     if (model instanceof SModelInternal && ((SModelInternal) model).getLanguageImportVersion(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test")) <= 4) {
       return true;
     }
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.TestNode$kc, false, false) != null);
+    return (boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$pG), parentNode);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)", "3143335925186804910");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractTestNodeAnnotation$5M = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
-    /*package*/ static final SConcept TestNode$kc = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
+    /*package*/ static final SInterfaceConcept ITestAnnotationsContainer$pG = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x110387dc4d47c93dL, "jetbrains.mps.lang.test.structure.ITestAnnotationsContainer");
   }
 }

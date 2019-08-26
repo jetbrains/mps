@@ -189,7 +189,7 @@ public class DataTree implements IExternalizeable, IChangeListener {
     final PathItem pathTail = path.get(path.size() - 1);
 
     for (PathItem currentPathItem : path) {
-      Object currentIdObject = currentPathItem.getIdObject();
+      Object currentIdObject = currentPathItem.getInternalIdentityForCachedTreeBuild();
 
       final Pair<BaseNodeData, Object> key = new Pair<>(parent, currentIdObject);
       BaseNodeData seen = myRebuildCache.get(key);

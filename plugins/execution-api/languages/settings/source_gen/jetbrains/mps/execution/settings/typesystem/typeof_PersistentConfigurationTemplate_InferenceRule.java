@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -36,7 +36,7 @@ public class typeof_PersistentConfigurationTemplate_InferenceRule extends Abstra
   }
   private static SNode createTemplatePersistentConfigurationType_qumkps_a1a0c0a0b(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null).node();
     n1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
     return n1;
   }

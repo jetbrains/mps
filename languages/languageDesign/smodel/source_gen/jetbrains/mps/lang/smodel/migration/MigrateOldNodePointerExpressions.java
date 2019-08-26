@@ -22,7 +22,7 @@ import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedPro
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -30,8 +30,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
+  private final String description = "Migrate old nodePointer/.../ constructions";
   public String getCaption() {
-    return "Migrate old nodePointer/.../ constructions";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -43,11 +44,11 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_5d7h7i_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_5d7h7i_a0d_0 = new EditableFilteringScope(scope_5d7h7i_a0d);
+      SearchScope scope_5d7h7i_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_5d7h7i_a0e_0 = new EditableFilteringScope(scope_5d7h7i_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_5d7h7i_a0d_0;
+          return scope_5d7h7i_a0e_0;
         }
       };
       for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$1$, false))) {
@@ -66,11 +67,11 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_5d7h7i_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_5d7h7i_a0e_0 = new EditableFilteringScope(scope_5d7h7i_a0e);
+      SearchScope scope_5d7h7i_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_5d7h7i_a0f_0 = new EditableFilteringScope(scope_5d7h7i_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_5d7h7i_a0e_0;
+          return scope_5d7h7i_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$1$, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
@@ -86,14 +87,14 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
 
   private static SNode createReviewMigration_old_5d7h7i_a0a0a0a0a0a6() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ReviewMigration_old$E1, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.ReviewMigration_old$E1, null, null).node();
     n1.setProperty(PROPS.readableId$WLXq, "MigrateOldNodePointerExpressions");
     n1.setProperty(PROPS.reasonShort$7yZv, "Couldn't migrate node with attributes");
     return n1;
   }
   private static SNode createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NodePointerExpression$DS, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.NodePointerExpression$DS, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.ref$Xkjz, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
     }
@@ -101,7 +102,7 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   }
   private static SNode createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SemanticDowncastExpression$us, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SemanticDowncastExpression$us, null, null).node();
     if (node0 != null) {
       n1.addChild(LINKS.leftExpression$flIo, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
     }

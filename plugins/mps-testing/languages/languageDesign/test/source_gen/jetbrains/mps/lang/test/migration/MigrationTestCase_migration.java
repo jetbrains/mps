@@ -21,15 +21,16 @@ import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigra
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrationTestCase_migration extends MigrationScriptBase {
+  private final String description = "MigrationTestCase";
   public String getCaption() {
-    return "MigrationTestCase";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -41,11 +42,11 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_y0ige7_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_y0ige7_a0d_0 = new EditableFilteringScope(scope_y0ige7_a0d);
+      SearchScope scope_y0ige7_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_y0ige7_a0e_0 = new EditableFilteringScope(scope_y0ige7_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_y0ige7_a0d_0;
+          return scope_y0ige7_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$Sn, true)).where(new IWhereFilter<SNode>() {
@@ -64,11 +65,11 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_y0ige7_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_y0ige7_a0e_0 = new EditableFilteringScope(scope_y0ige7_a0e);
+      SearchScope scope_y0ige7_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_y0ige7_a0f_0 = new EditableFilteringScope(scope_y0ige7_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_y0ige7_a0e_0;
+          return scope_y0ige7_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$Sn, true)).where(new IWhereFilter<SNode>() {
@@ -89,7 +90,7 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
 
   private static SNode createMigrationReference_y0ige7_a0a0a0a0a0a0d(SNode node0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MigrationReference$BB, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.MigrationReference$BB, null, null).node();
     n1.setReferenceTarget(LINKS.migration$RUsw, node0);
     return n1;
   }

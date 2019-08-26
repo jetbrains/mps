@@ -162,10 +162,25 @@ public final class ModuleLoader {
       // A hack to support multiple generator modules per language (BuildMps_Language limits generator to [0..1]. 
       // An idea here is to utilize BuildMps_Generator as project part, referencing its language mpl file. Though technically MPS hides 
       // module path for BuildMps_Generator, it's possible to edit it using reflective editor. 
-      for (GeneratorDescriptor gd : ((LanguageDescriptor) md).getGenerators()) {
-        if (Objects.equals(SPropertyOperations.getString(module, PROPS.uuid$XKnR), gd.getId().toString())) {
-          md = gd;
-          break;
+      List<GeneratorDescriptor> generators = ((LanguageDescriptor) md).getGenerators();
+      if (isEmptyString(SPropertyOperations.getString(module, PROPS.uuid$XKnR))) {
+        if (generators.isEmpty()) {
+          reportError(String.format("No generator descriptors found in language %s from %s", md.getNamespace(), moduleFilePath), module);
+          return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+        } else {
+          // just pick the first one, use intention later to select another (if any) 
+          md = generators.get(0);
+        }
+      } else {
+        for (GeneratorDescriptor gd : generators) {
+          if (Objects.equals(SPropertyOperations.getString(module, PROPS.uuid$XKnR), gd.getId().toString())) {
+            md = gd;
+            break;
+          }
+        }
+        if (md instanceof LanguageDescriptor) {
+          reportError(String.format("No generator with uuid %s found in language %s from %s", SPropertyOperations.getString(module, PROPS.uuid$XKnR), md.getNamespace(), moduleFilePath), module);
+          return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
         }
       }
     }
@@ -283,6 +298,9 @@ public final class ModuleLoader {
     public boolean isCommandAction() {
       return false;
     }
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
   }
 
   private static final class LINKS {

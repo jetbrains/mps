@@ -22,8 +22,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
+  private final String description = "Migrate concept and link declaration nodes in scope factory parameters";
   public String getCaption() {
-    return "Migrate concept and link declaration nodes in scope factory parameters";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -40,11 +41,11 @@ public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
   public Iterable<Problem> check(SModule m) {
     final List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
     {
-      SearchScope scope_djohgv_b0e = CommandUtil.createScope(m);
-      final SearchScope scope_djohgv_b0e_0 = new EditableFilteringScope(scope_djohgv_b0e);
+      SearchScope scope_djohgv_b0f = CommandUtil.createScope(m);
+      final SearchScope scope_djohgv_b0f_0 = new EditableFilteringScope(scope_djohgv_b0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_djohgv_b0e_0;
+          return scope_djohgv_b0f_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$St, false)).visitAll(new IVisitor<SNode>() {

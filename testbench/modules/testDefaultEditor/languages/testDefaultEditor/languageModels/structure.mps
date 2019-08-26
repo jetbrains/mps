@@ -11,9 +11,6 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
         <reference id="6054523464627965081" name="concept" index="trN6q" />
       </concept>
@@ -146,13 +143,6 @@
       <property role="TrG5h" value="politicWing" />
       <property role="IQ2nx" value="5987562135989635839" />
       <ref role="AX2Wp" to="tpc2:3Ftr4R6BFdY" resolve="AlignEnum" />
-      <node concept="3l_iC" id="3Ftr4R6BHcG" role="lGtFl">
-        <node concept="1TJgyi" id="5co60CafsFZ" role="3l_iP">
-          <property role="TrG5h" value="politicWing" />
-          <property role="IQ2nx" value="5987562135989635839" />
-          <ref role="AX2Wp" to="tpc2:hZ7kHEa" resolve="AlignEnum" />
-        </node>
-      </node>
     </node>
     <node concept="PrWs8" id="O7qdvf4M_d" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />

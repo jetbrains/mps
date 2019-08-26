@@ -8809,6 +8809,16 @@
               </node>
             </node>
             <node concept="3clFbS" id="76Xff8JQqTn" role="TDEfX">
+              <node concept="3clFbF" id="1SWn$LpKCQk" role="3cqZAp">
+                <node concept="2OqwBi" id="1SWn$LpKCYT" role="3clFbG">
+                  <node concept="37vLTw" id="1SWn$LpKCQi" role="2Oq$k0">
+                    <ref role="3cqZAo" node="76Xff8JQkKP" resolve="monitor" />
+                  </node>
+                  <node concept="liA8E" id="1SWn$LpKD9h" role="2OqNvi">
+                    <ref role="37wK5l" to="yyf4:~ProgressMonitor.cancel()" resolve="cancel" />
+                  </node>
+                </node>
+              </node>
               <node concept="RRSsy" id="76Xff8JQs0b" role="3cqZAp">
                 <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="2Sg_IR" id="76Xff8JQs94" role="RRSoy">

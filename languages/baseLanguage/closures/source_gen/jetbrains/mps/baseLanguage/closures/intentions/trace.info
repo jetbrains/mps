@@ -115,19 +115,17 @@
       <node id="1235748173357" at="72,63,73,30" concept="7" />
       <node id="1235748173357" at="73,30,74,30" concept="7" />
       <node id="1235748173357" at="74,30,75,30" concept="7" />
-      <node id="1235748173357" at="75,30,76,278" concept="2" />
+      <node id="1235748173357" at="75,30,76,250" concept="2" />
       <node id="1235748173357" at="77,5,78,52" concept="7" />
-      <node id="1235748173357" at="79,33,80,92" concept="2" />
+      <node id="1235748173357" at="79,33,80,196" concept="2" />
       <node id="1235748173357" at="82,5,83,39" concept="2" />
-      <node id="1235748173357" at="84,31,85,96" concept="2" />
+      <node id="1235748173357" at="84,31,85,200" concept="2" />
       <node id="1235748173357" at="86,5,87,24" concept="8" />
       <node id="1235748072133" at="91,0,92,0" concept="9" trace="DotExpression$6a" />
       <node id="1235748072133" at="92,0,93,0" concept="9" trace="InvokeFunctionOperation$kP" />
       <node id="1235748072133" at="96,0,97,0" concept="9" trace="operation$X4R8" />
       <node id="1235748072133" at="97,0,98,0" concept="9" trace="parameter$YY3N" />
       <node id="1235748072133" at="98,0,99,0" concept="9" trace="operand$Lcrr" />
-      <node id="1235748072133" at="99,0,100,0" concept="9" trace="parameter$GNIj" />
-      <node id="1235748072133" at="100,0,101,0" concept="9" trace="function$vcpr" />
       <node id="1235748072133" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1235748072133" at="27,0,30,0" concept="1" trace="replace_invokeOperation_with_compactInvoke_Intention#()V" />
       <node id="1235748072133" at="35,84,38,5" concept="5" />
@@ -141,7 +139,7 @@
       <node id="1235748072133" at="66,0,70,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
       <node id="1235748072133" at="61,0,66,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1235748072133" at="48,0,54,0" concept="6" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
-      <node id="1235748173357" at="76,278,82,5" concept="0" />
+      <node id="1235748173357" at="76,250,82,5" concept="0" />
       <node id="1235748072133" at="34,0,41,0" concept="6" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
       <node id="1235748173357" at="71,0,89,0" concept="10" trace="_quotation_createNode_7ste6_a0a1a0#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="1235748072133" at="55,38,55,38" />
@@ -153,8 +151,8 @@
       <scope id="1235748072133" at="49,37,50,105" />
       <scope id="1235748072135" at="58,87,59,54" />
       <scope id="1235748072133" at="67,48,68,71" />
-      <scope id="1235748173357" at="79,33,80,92" />
-      <scope id="1235748173357" at="84,31,85,96" />
+      <scope id="1235748173357" at="79,33,80,196" />
+      <scope id="1235748173357" at="84,31,85,200" />
       <scope id="1235748072133" at="55,0,57,0" />
       <scope id="1235748072138" at="62,78,64,307">
         <var name="parent" id="1235748160607" />
@@ -202,9 +200,9 @@
         <var name="parameter_2" id="1235748173357" />
       </scope>
       <unit id="1235748072133" at="90,0,94,0" name="jetbrains.mps.baseLanguage.closures.intentions.replace_invokeOperation_with_compactInvoke_Intention$CONCEPTS" />
-      <unit id="1235748072133" at="95,0,102,0" name="jetbrains.mps.baseLanguage.closures.intentions.replace_invokeOperation_with_compactInvoke_Intention$LINKS" />
+      <unit id="1235748072133" at="95,0,100,0" name="jetbrains.mps.baseLanguage.closures.intentions.replace_invokeOperation_with_compactInvoke_Intention$LINKS" />
       <unit id="1235748072133" at="54,0,71,0" name="jetbrains.mps.baseLanguage.closures.intentions.replace_invokeOperation_with_compactInvoke_Intention$IntentionImplementation" />
-      <unit id="1235748072133" at="25,0,103,0" name="jetbrains.mps.baseLanguage.closures.intentions.replace_invokeOperation_with_compactInvoke_Intention" />
+      <unit id="1235748072133" at="25,0,101,0" name="jetbrains.mps.baseLanguage.closures.intentions.replace_invokeOperation_with_compactInvoke_Intention" />
     </file>
   </root>
   <root nodeRef="r:dda1964e-d5fa-4ee3-9168-3bfd25608c63(jetbrains.mps.baseLanguage.closures.intentions)/890797661671409032">

@@ -209,6 +209,14 @@ __switch__:
 
     }
     Set<SLanguage> allUsedLanguages = new SLanguageHierarchy(myLanguageRegistry, moduleUsedLanguages).getExtended();
+
+    // now that SLanguageHierarchy.getExtended() shall overconfidently ignore used languages that have not been yet deployed, 
+    // we have to add them here manually. MPS-30639 
+    SetSequence.fromSet(allUsedLanguages).addSequence(SetSequence.fromSet(moduleUsedLanguages).where(new IWhereFilter<SLanguage>() {
+      public boolean accept(SLanguage it) {
+        return myLanguageRegistry.getLanguage(it) == null;
+      }
+    }));
     SetSequence.fromSet(rv.usedLanguages).addSequence(SetSequence.fromSet(allUsedLanguages));
 
     // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators... 
@@ -220,7 +228,7 @@ __switch__:
       }
     }).select(new ISelector<SLanguage, Language>() {
       public Language select(SLanguage it) {
-        return as_7qjyo9_a0a0a0a0a0p0o(MapSequence.fromMap(languageModules).get(it).getModule(), Language.class);
+        return as_7qjyo9_a0a0a0a0a0s0o(MapSequence.fromMap(languageModules).get(it).getModule(), Language.class);
       }
     })) {
       //  there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call 
@@ -293,7 +301,7 @@ __switch__:
       return MapSequence.fromMap(myDepsGraph).keySet();
     }
   }
-  private static <T> T as_7qjyo9_a0a0a0a0a0p0o(Object o, Class<T> type) {
+  private static <T> T as_7qjyo9_a0a0a0a0a0s0o(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

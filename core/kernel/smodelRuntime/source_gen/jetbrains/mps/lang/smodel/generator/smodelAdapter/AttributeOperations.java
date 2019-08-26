@@ -205,7 +205,7 @@ public class AttributeOperations {
 
     @Override
     protected void addFirst(SNode node) {
-      ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.smodelAttribute$K8bJ)).addElement(SNodeOperations.cast(node, CONCEPTS.Attribute$RJ));
+      ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.smodelAttribute$K8bJ)).insertElement(0, SNodeOperations.cast(node, CONCEPTS.Attribute$RJ));
       myDescriptor.update(node);
     }
 

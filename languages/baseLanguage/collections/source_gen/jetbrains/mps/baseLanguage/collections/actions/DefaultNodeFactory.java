@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -43,7 +43,7 @@ public class DefaultNodeFactory {
     }
     private static SNode createMultiForEachVariableReference_a0a0a0a0f0a0a0(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.MultiForEachVariableReference$PW, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.MultiForEachVariableReference$PW, null, null).node();
       n1.setReferenceTarget(LINKS.variable$ptyX, node0);
       return n1;
     }
@@ -68,7 +68,7 @@ public class DefaultNodeFactory {
     }
     private static SNode createForEachVariableReference_a0a0a0a0e0a0a1(SNode node0) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ForEachVariableReference$q$, null, null, false);
+      SNode n1 = new SNodeBuilder(CONCEPTS.ForEachVariableReference$q$, null, null).node();
       n1.setReferenceTarget(LINKS.variable$ue0d, node0);
       return n1;
     }

@@ -65,7 +65,7 @@
     <classNode dependClassName="jetbrains.mps.lang.plugin.behavior.PluginDependency__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.plugin.behavior.PreferencePage__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.plugin.behavior.PreferencesComponentDeclaration__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils" />
+    <classNode dependClassName="jetbrains.mps.lang.plugin.generator.util.KeymapUtil" />
     <classNode dependClassName="jetbrains.mps.lang.plugin.typesystem.MnemonicChecker" />
     <classNode dependClassName="jetbrains.mps.lang.resources.behavior.Icon__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations" />
@@ -73,7 +73,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelUtil_new" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.SReference" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />

@@ -11,72 +11,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_CustomDefaultValue">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptorBase" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_CustomIdentifier">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptorBase" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_DeriveFromInternalValue">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptorBase" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_DeriveFromPresentation">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptorBase" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_FirstMemberDefaultValue">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptorBase" />
-  </dependency>
-  <dependency className="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_NoDefaultValue">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptor" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.EnumerationDescriptorBase" />
-  </dependency>
   <dependency className="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_WODefault">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -107,12 +41,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_CustomDefaultValue" />
-    <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_CustomIdentifier" />
-    <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_DeriveFromInternalValue" />
-    <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_DeriveFromPresentation" />
-    <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_FirstMemberDefaultValue" />
-    <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_NoDefaultValue" />
     <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_WODefault" />
     <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.EnumerationDescriptor_TestEnum_WithDefault" />
     <classNode dependClassName="jetbrains.mps.lang.smodelTests.structure.LanguageConceptSwitch" />

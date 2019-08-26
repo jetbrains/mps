@@ -26,8 +26,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ExtensionPoint_name extends MigrationScriptBase {
+  private final String description = "ExtensionPoint_name";
   public String getCaption() {
-    return "ExtensionPoint_name";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -39,11 +40,11 @@ public class ExtensionPoint_name extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_3c5dbg_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_3c5dbg_a0d_0 = new EditableFilteringScope(scope_3c5dbg_a0d);
+      SearchScope scope_3c5dbg_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_3c5dbg_a0e_0 = new EditableFilteringScope(scope_3c5dbg_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_3c5dbg_a0d_0;
+          return scope_3c5dbg_a0e_0;
         }
       };
       Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
@@ -60,11 +61,11 @@ public class ExtensionPoint_name extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_3c5dbg_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_3c5dbg_a0e_0 = new EditableFilteringScope(scope_3c5dbg_a0e);
+      SearchScope scope_3c5dbg_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_3c5dbg_a0f_0 = new EditableFilteringScope(scope_3c5dbg_a0f);
       final QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_3c5dbg_a0e_0;
+          return scope_3c5dbg_a0f_0;
         }
       };
       return Sequence.fromClosure(new ISequenceClosure<Problem>() {

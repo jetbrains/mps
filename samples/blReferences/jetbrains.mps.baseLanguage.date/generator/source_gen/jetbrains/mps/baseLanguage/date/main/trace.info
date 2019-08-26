@@ -39,11 +39,11 @@
       <node id="3825148134790538267" at="130,14,131,177" concept="0" />
       <node id="3825148134790538267" at="151,15,152,66" concept="2" />
       <node id="3825148134790634413" at="158,55,159,63" concept="1" />
-      <node id="3825148134790634413" at="159,63,160,101" concept="1" />
-      <node id="3825148134790634413" at="160,101,161,14" concept="2" />
+      <node id="3825148134790634413" at="159,63,160,73" concept="1" />
+      <node id="3825148134790634413" at="160,73,161,14" concept="2" />
       <node id="3839101718930946995" at="163,55,164,63" concept="1" />
-      <node id="3839101718930946995" at="164,63,165,101" concept="1" />
-      <node id="3839101718930946995" at="165,101,166,14" concept="2" />
+      <node id="3839101718930946995" at="164,63,165,73" concept="1" />
+      <node id="3839101718930946995" at="165,73,166,14" concept="2" />
       <node id="3825148134790619735" at="37,0,40,0" concept="3" trace="rule_Condition_0_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="3839101718930946298" at="40,0,43,0" concept="3" trace="rule_Condition_0_1#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="3825148134790538270" at="43,0,46,0" concept="3" trace="propertyMacro_GetValue_0_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

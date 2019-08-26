@@ -11,7 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,12 +39,12 @@ public class typeof_StartProcessHandlerStatement_InferenceRule extends AbstractI
   }
   private static SNode createJoinType_psezx7_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.JoinType$9o, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.JoinType$9o, null, null).node();
     {
-      SNode n2 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.NamedTupleType$$b, null, null, false);
+      SNode n2 = new SNodeBuilder(CONCEPTS.NamedTupleType$$b, null, null).node();
       n2.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n2, facade.createModelReference("r:5a505993-793e-4b2d-84cf-271f9dde39b3(jetbrains.mps.execution.lib)"), facade.createNodeId("1977878056377381089")));
       n1.addChild(LINKS.argument$xIHX, n2);
-      SNode n3 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.ConsoleType$J4, null, null, false);
+      SNode n3 = new SNodeBuilder(CONCEPTS.ConsoleType$J4, null, null).node();
       n1.addChild(LINKS.argument$xIHX, n3);
     }
     return n1;

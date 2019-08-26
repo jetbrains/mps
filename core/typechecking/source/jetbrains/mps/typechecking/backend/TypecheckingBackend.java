@@ -89,9 +89,9 @@ public class TypecheckingBackend implements CoreComponent {
    */
   @NotNull
   @SuppressWarnings("unchecked")
-  protected <Q extends TypecheckingQueries> TypecheckingProvider<Q> selectProvider(@NotNull Class<? extends TypecheckingProvider<Q>> providerClass) {
+  protected <Q extends TypecheckingQueries> TypecheckingProvider<Q> selectProvider(@NotNull Class<? extends Q> queryClass) {
     for (TypecheckingProvider<? extends TypecheckingQueries> provider : myProviders.values()) {
-      if (providerClass.isAssignableFrom(provider.getClass())) {
+      if (queryClass.isAssignableFrom(provider.getQueriesClass())) {
         return (TypecheckingProvider<Q>) provider;
       }
     }

@@ -4,7 +4,6 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.spellchecker.SpellCheckerManager" />
     <classNode dependClassName="com.intellij.ui.JBColor" />
-    <classNode dependClassName="java.awt.FontMetrics" />
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Character" />
@@ -24,6 +23,7 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.TextLine" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.checking.UpdateResult" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorFontMetrics" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.message.EditorMessageOwner" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.message.SimpleEditorMessage" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />

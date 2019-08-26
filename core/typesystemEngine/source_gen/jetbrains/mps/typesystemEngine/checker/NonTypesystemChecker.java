@@ -7,12 +7,12 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingSession;
+import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
-import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.util.Pair;
@@ -27,37 +27,36 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeReportItem> implements IChecker<SNode, NodeReportItem> {
   public NonTypesystemChecker() {
   }
-  public Set<NodeReportItem> getErrors(SNode root, SRepository repository) {
-    Set<NodeReportItem> errors = SetSequence.fromSet(new HashSet<NodeReportItem>());
+  public Set<NodeReportItem> getErrors(final SNode root, SRepository repository) {
+    return TypecheckingFacade.getFromContext().computeIsolated(TypecheckingSession.Flags.forRoot(root).incremental(), new Function<TypecheckingSession, Set<NodeReportItem>>() {
+      public Set<NodeReportItem> apply(TypecheckingSession session) {
 
-    TypecheckingSession session = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.forRoot(root).incremental());
-    try {
-      // FIXME  assuming it's safe to access the underlying legacy provider 
-      LegacyTypecheckingQueries legacyTypecheckingQueries = session.getQueries(LegacyTypecheckingProvider.class);
-      TypeCheckingContext context = legacyTypecheckingQueries.getTypeCheckingContext();
-      IncrementalTypechecking typesComponent = context.getBaseNodeTypesComponent();
+        Set<NodeReportItem> errors = SetSequence.fromSet(new HashSet<NodeReportItem>());
 
-      // update the types first 
-      context.checkIfNotChecked(root, false);
-      try {
-        context.setIsNonTypesystemComputation();
-        typesComponent.applyNonTypesystemRulesToRoot(context);
-      } finally {
-        context.resetIsNonTypesystemComputation();
-      }
+        // FIXME  assuming it's safe to access the underlying legacy provider 
+        LegacyTypecheckingQueries legacyTypecheckingQueries = session.getQueries(LegacyTypecheckingQueries.class);
+        TypeCheckingContext context = legacyTypecheckingQueries.getTypeCheckingContext();
+        IncrementalTypechecking typesComponent = context.getBaseNodeTypesComponent();
 
-      Set<Pair<SNode, List<IErrorReporter>>> nodesWithErrors = context.getNodesWithErrors(false);
-      for (Pair<SNode, List<IErrorReporter>> p : nodesWithErrors) {
-        for (IErrorReporter ier : p.o2) {
-          SetSequence.fromSet(errors).addElement(new TypesystemReportItemAdapter(ier));
+        // update the types first 
+        context.checkIfNotChecked(root, false);
+        try {
+          context.setIsNonTypesystemComputation();
+          typesComponent.applyNonTypesystemRulesToRoot(context);
+        } finally {
+          context.resetIsNonTypesystemComputation();
         }
+
+        Set<Pair<SNode, List<IErrorReporter>>> nodesWithErrors = context.getNodesWithErrors(false);
+        for (Pair<SNode, List<IErrorReporter>> p : nodesWithErrors) {
+          for (IErrorReporter ier : p.o2) {
+            SetSequence.fromSet(errors).addElement(new TypesystemReportItemAdapter(ier));
+          }
+        }
+
+        return errors;
       }
-
-    } finally {
-      session.release();
-    }
-
-    return errors;
+    });
   }
   @Override
   public void check(SNode root, SRepository repository, final Consumer<? super NodeReportItem> errorCollector, final ProgressMonitor monitor) {

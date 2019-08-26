@@ -39,7 +39,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -163,7 +163,7 @@ public class ProcessType_TransformationMenu extends TransformationMenuBase {
   }
   private static SNode createCommandProcessType_fvqin_a0a0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.CommandProcessType$Cb, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.CommandProcessType$Cb, null, null).node();
     return n1;
   }
 

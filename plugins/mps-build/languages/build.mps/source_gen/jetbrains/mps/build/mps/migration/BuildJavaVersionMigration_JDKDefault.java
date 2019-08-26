@@ -20,8 +20,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BuildJavaVersionMigration_JDKDefault extends MigrationScriptBase {
+  private final String description = "set default java target version to all build scripts";
   public String getCaption() {
-    return "set default java target version to all build scripts";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

@@ -38,7 +38,7 @@ public interface FeedbackAspect extends ILanguageAspect, MultiAspectLanguageAspe
   }
 
   @NotNull default /*final*/ Stream<FeedbackPerConceptDescriptor> getPerConceptDescriptors(@NotNull SAbstractConcept concept) {
-    return getPerConceptDescriptors().filter(it -> it.getConcept() == concept);
+    return getPerConceptDescriptors().filter(it -> it.getConcept().equals(concept));
   }
 
   @NotNull

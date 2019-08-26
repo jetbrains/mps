@@ -134,6 +134,7 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
@@ -206,7 +207,13 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
+      <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
+        <child id="1221737317278" name="statementList" index="1Pe0a2" />
+      </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
@@ -231,6 +238,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -287,79 +302,7 @@
       <node concept="3Tm6S6" id="4_TMdeLkODc" role="1B3o_S" />
       <node concept="Wx3nA" id="4_TMdeLkODd" role="jymVt">
         <property role="TrG5h" value="IGNORED_THREAD" />
-        <property role="3TUv4t" value="false" />
-        <node concept="2YIFZM" id="4_TMdeLkXj0" role="33vP2m">
-          <ref role="1Pybhc" to="ni5j:~Pattern" resolve="Pattern" />
-          <ref role="37wK5l" to="ni5j:~Pattern.compile(java.lang.String)" resolve="compile" />
-          <node concept="3cpWs3" id="7IbCdhYrW1h" role="37wK5m">
-            <node concept="Xl_RD" id="7IbCdhYs06A" role="3uHU7w">
-              <property role="Xl_RC" value="|(Document Committing Pool)" />
-            </node>
-            <node concept="3cpWs3" id="6Z4VR_CI1KG" role="3uHU7B">
-              <node concept="3cpWs3" id="3zSLWWE6Mhj" role="3uHU7B">
-                <node concept="3cpWs3" id="3zSLWWE6LCO" role="3uHU7B">
-                  <node concept="3cpWs3" id="3zSLWWE6LjY" role="3uHU7B">
-                    <node concept="3cpWs3" id="3zSLWWE6L3m" role="3uHU7B">
-                      <node concept="3cpWs3" id="3zSLWWE6Jsc" role="3uHU7B">
-                        <node concept="3cpWs3" id="3zSLWWE6Jc0" role="3uHU7B">
-                          <node concept="3cpWs3" id="3zSLWWE6IW2" role="3uHU7B">
-                            <node concept="3cpWs3" id="3zSLWWE6HvI" role="3uHU7B">
-                              <node concept="3cpWs3" id="3zSLWWE6Hcb" role="3uHU7B">
-                                <node concept="3cpWs3" id="3zSLWWE6GWR" role="3uHU7B">
-                                  <node concept="3cpWs3" id="3zSLWWE6EAD" role="3uHU7B">
-                                    <node concept="Xl_RD" id="4_TMdeLkODh" role="3uHU7B">
-                                      <property role="Xl_RC" value="(AWT\\-.*)|(Image Fetch.*)|(Progress Cancel Checker)|(Flushing thread)|(Flushing Daemon)|(Alarm Pool)" />
-                                    </node>
-                                    <node concept="Xl_RD" id="3zSLWWE6Ggu" role="3uHU7w">
-                                      <property role="Xl_RC" value="|(Keep\\-Alive.*)|(Finalizer.*)|(MPS interrupting thread)" />
-                                    </node>
-                                  </node>
-                                  <node concept="Xl_RD" id="3zSLWWE6GXA" role="3uHU7w">
-                                    <property role="Xl_RC" value="|(caret blinker.*)|(ApplicationImpl.*)|(AnimatorThread)" />
-                                  </node>
-                                </node>
-                                <node concept="Xl_RD" id="3zSLWWE6HcU" role="3uHU7w">
-                                  <property role="Xl_RC" value="|(MPS EDT Executor Thread.*)|(ChangesManager command queue)|(TimerQueue)" />
-                                </node>
-                              </node>
-                              <node concept="Xl_RD" id="3zSLWWE6HF5" role="3uHU7w">
-                                <property role="Xl_RC" value="|(Change List.*)|(Reference.*)|(Periodic task.*)" />
-                              </node>
-                            </node>
-                            <node concept="Xl_RD" id="3zSLWWE6IWL" role="3uHU7w">
-                              <property role="Xl_RC" value="|(Java2D.*)|(LowMemoryWatcher janitor)|(Timer\\-.*)|(FS Sync.*)" />
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="3zSLWWE6JcJ" role="3uHU7w">
-                            <property role="Xl_RC" value="|(timed reference disposer)|(Alarm pool\\(own\\))|(Alarm pool\\(shared\\))" />
-                          </node>
-                        </node>
-                        <node concept="Xl_RD" id="3zSLWWE6JsV" role="3uHU7w">
-                          <property role="Xl_RC" value="|(Poller SunPKCS11-Darwin)|(MPS interrupt.*)|(process reaper)" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="3zSLWWE6L45" role="3uHU7w">
-                        <property role="Xl_RC" value="|(RefCountingStorage.*)|(Encoding detection thread)" />
-                      </node>
-                    </node>
-                    <node concept="Xl_RD" id="3zSLWWE6LkH" role="3uHU7w">
-                      <property role="Xl_RC" value="|(ProcessWaitFor: .*git(\\.exe)?.*)|(BaseDataReader: error stream of .*git(\\.exe)?.*)" />
-                    </node>
-                  </node>
-                  <node concept="Xl_RD" id="3zSLWWE6M1E" role="3uHU7w">
-                    <property role="Xl_RC" value="|(BaseDataReader: output stream of .*git(\\.exe)?.*)" />
-                  </node>
-                </node>
-                <node concept="Xl_RD" id="3zSLWWE6Mi2" role="3uHU7w">
-                  <property role="Xl_RC" value="|(Process I/O pool [0-9]+)" />
-                </node>
-              </node>
-              <node concept="Xl_RD" id="6Z4VR_CI5CU" role="3uHU7w">
-                <property role="Xl_RC" value="|(Batik CleanerThread)" />
-              </node>
-            </node>
-          </node>
-        </node>
+        <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="4_TMdeLkODe" role="1tU5fm">
           <ref role="3uigEE" to="ni5j:~Pattern" resolve="Pattern" />
         </node>
@@ -408,6 +351,650 @@
         <node concept="3Tm6S6" id="4_TMdeLkODw" role="1B3o_S" />
       </node>
       <node concept="2tJIrI" id="d4HXLLoT5G" role="jymVt" />
+      <node concept="1Pe0a1" id="3m4z3Ef4A6V" role="jymVt">
+        <node concept="3clFbS" id="3m4z3Ef4A6X" role="1Pe0a2">
+          <node concept="3cpWs8" id="3m4z3Ef4MhZ" role="3cqZAp">
+            <node concept="3cpWsn" id="3m4z3Ef4MhY" role="3cpWs9">
+              <property role="3TUv4t" value="true" />
+              <property role="TrG5h" value="builder" />
+              <node concept="3uibUv" id="3m4z3Ef4Mi0" role="1tU5fm">
+                <ref role="3uigEE" to="wyt6:~StringBuilder" resolve="StringBuilder" />
+              </node>
+              <node concept="2ShNRf" id="3m4z3Ef5x2P" role="33vP2m">
+                <node concept="1pGfFk" id="3m4z3Ef5x2U" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.&lt;init&gt;()" resolve="StringBuilder" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef6b7s" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef65jN" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef65jO" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef65jQ" role="1PaTwD">
+                <property role="3oM_SC" value="---------" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef6XKM" role="1PaTwD">
+                <property role="3oM_SC" value="Java" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef65Wr" role="1PaTwD">
+                <property role="3oM_SC" value="threads" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef6XKQ" role="1PaTwD">
+                <property role="3oM_SC" value="-----------" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mi2" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5tJI" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5tJH" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5tJJ" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5tJK" role="37wK5m">
+                  <property role="Xl_RC" value="(AWT\\-.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mi5" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5yCU" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5yCT" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5yCV" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5yCW" role="37wK5m">
+                  <property role="Xl_RC" value="|(Image Fetch.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Min" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4Vom" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4Vol" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4Von" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4Voo" role="37wK5m">
+                  <property role="Xl_RC" value="|(Finalizer.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiM" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4U7p" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4U7o" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4U7q" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4U7r" role="37wK5m">
+                  <property role="Xl_RC" value="|(Reference.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiS" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4OnY" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4OnX" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4OnZ" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4Oo0" role="37wK5m">
+                  <property role="Xl_RC" value="|(Java2D.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiG" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5y7G" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5y7F" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5y7H" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5y7I" role="37wK5m">
+                  <property role="Xl_RC" value="|(TimerQueue)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiJ" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5voY" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5voX" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5voZ" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5vp0" role="37wK5m">
+                  <property role="Xl_RC" value="|(Change List.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef7S6Y" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef7Tdd" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef7Tde" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef7Tdh" role="1PaTwD">
+                <property role="3oM_SC" value="java.util.Timer" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiY" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4OTc" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4OTb" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4OTd" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4OTe" role="37wK5m">
+                  <property role="Xl_RC" value="|(Timer\\-.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef6mbs" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef5EWC" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef5EWD" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef5EWG" role="1PaTwD">
+                <property role="3oM_SC" value="Java" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef5F$Y" role="1PaTwD">
+                <property role="3oM_SC" value="9+" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef5F_1" role="1PaTwD">
+                <property role="3oM_SC" value="Cleaner" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef5F_5" role="1PaTwD">
+                <property role="3oM_SC" value="thread" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MjI" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4OcC" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4OcB" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4OcD" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4OcE" role="37wK5m">
+                  <property role="Xl_RC" value="|(Common-Cleaner)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3SKdUt" id="3m4z3Ef77Bp" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef77Bq" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef77Br" role="1PaTwD">
+                <property role="3oM_SC" value="--------------------------------" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef77zP" role="3cqZAp" />
+          <node concept="3clFbH" id="3m4z3Ef6UtE" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef6Itq" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef6Itr" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef78MX" role="1PaTwD">
+                <property role="3oM_SC" value="----" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef78N2" role="1PaTwD">
+                <property role="3oM_SC" value="IntelliJ" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef6J6g" role="1PaTwD">
+                <property role="3oM_SC" value="Platform" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef6J6j" role="1PaTwD">
+                <property role="3oM_SC" value="threads" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef6XKV" role="1PaTwD">
+                <property role="3oM_SC" value="---" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef6ClK" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef6RS8" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef6RS9" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef6RSc" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.util.Alarm" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mih" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4O_t" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4O_s" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4O_u" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4O_v" role="37wK5m">
+                  <property role="Xl_RC" value="|(Alarm Pool)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef6Ljb" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef7bKr" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef7bKs" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef7bKu" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.openapi.vfs.newvfs.persistent.FlushingDaemon" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mie" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4Qw4" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4Qw3" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4Qw5" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4Qw6" role="37wK5m">
+                  <property role="Xl_RC" value="|(Flushing Daemon)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef6lfG" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef7qQG" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef7qQH" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef7qQK" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.util.concurrency.AppScheduledExecutorService" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Miw" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4O5p" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4O5o" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4O5q" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4O5r" role="37wK5m">
+                  <property role="Xl_RC" value="|(ApplicationImpl.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef5Hhn" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef7JlG" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef7JlH" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef7JlK" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.util.concurrency.AppDelayQueue" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiP" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5xoZ" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5xoY" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5xp0" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5xp1" role="37wK5m">
+                  <property role="Xl_RC" value="|(Periodic task.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3PwYUBHEdTt" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHE856" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHE857" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHE85a" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.util.io.BaseDataReader" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mjv" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4UJc" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4UJb" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4UJd" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4UJe" role="37wK5m">
+                  <property role="Xl_RC" value="|(BaseDataReader: error stream of .*git(\\.exe)?.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mjy" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4SUZ" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4SUY" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4SV0" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4SV1" role="37wK5m">
+                  <property role="Xl_RC" value="|(BaseDataReader: output stream of .*git(\\.exe)?.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef7kVb" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHEfWW" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHEfWX" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHEfX0" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.execution.process.ProcessIOExecutorService" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mj_" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5t8Y" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5t8X" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5t8Z" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5t90" role="37wK5m">
+                  <property role="Xl_RC" value="|(Process I/O pool [0-9]+)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef7$m7" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHEpHE" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHEpHF" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHEpHI" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.psi.impl.DocumentCommitThread" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MjF" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4P6F" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4P6E" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4P6G" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4P6H" role="37wK5m">
+                  <property role="Xl_RC" value="|(Document Committing Pool)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3SKdUt" id="3m4z3Ef6VAX" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef6VAY" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef6WpE" role="1PaTwD">
+                <property role="3oM_SC" value="--------------------------------" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef6WpG" role="3cqZAp" />
+          <node concept="3clFbH" id="3m4z3Ef5M7h" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef5Tur" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef5Tus" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef78MQ" role="1PaTwD">
+                <property role="3oM_SC" value="-----------" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef78MT" role="1PaTwD">
+                <property role="3oM_SC" value="MPS" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef5U6Y" role="1PaTwD">
+                <property role="3oM_SC" value="threads" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef78N8" role="1PaTwD">
+                <property role="3oM_SC" value="----------" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef78Nd" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHEvWi" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHEvWj" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHEvWm" role="1PaTwD">
+                <property role="3oM_SC" value="jetbrains.mps.smodel.TryRunPlatformWriteHelper" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Miq" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5wVG" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5wVF" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5wVH" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5wVI" role="37wK5m">
+                  <property role="Xl_RC" value="|(MPS interrupting thread)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3PwYUBHEwqX" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHExk$" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHExk_" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHExkC" role="1PaTwD">
+                <property role="3oM_SC" value="jetbrains.mps.smodel.EDTExecutorInternal" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiA" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4Rqi" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4Rqh" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4Rqj" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4Rqk" role="37wK5m">
+                  <property role="Xl_RC" value="|(MPS EDT Executor Thread.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef7DRV" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef7EY1" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef7EY2" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef7EY5" role="1PaTwD">
+                <property role="3oM_SC" value="jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MiD" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4PdU" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4PdT" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4PdV" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4PdW" role="37wK5m">
+                  <property role="Xl_RC" value="|(ChangesManager command queue)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3PwYUBHE3_m" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHE4A1" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHE4A2" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHE4A5" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.util.io.storage.RefCountingStorage" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mjm" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4Qi_" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4Qi$" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4QiA" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4QiB" role="37wK5m">
+                  <property role="Xl_RC" value="|(RefCountingStorage.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3SKdUt" id="3m4z3Ef7ao6" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef7ao7" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef7ao8" role="1PaTwD">
+                <property role="3oM_SC" value="--------------------------------" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef79_D" role="3cqZAp" />
+          <node concept="3clFbH" id="3m4z3Ef6E3t" role="3cqZAp" />
+          <node concept="3SKdUt" id="3m4z3Ef6EKp" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef6EKq" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef6EKs" role="1PaTwD">
+                <property role="3oM_SC" value="------" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef7aX3" role="1PaTwD">
+                <property role="3oM_SC" value="Other" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHEpHz" role="1PaTwD">
+                <property role="3oM_SC" value="&amp;" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef6FAN" role="1PaTwD">
+                <property role="3oM_SC" value="unsorted" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef6H5R" role="1PaTwD">
+                <property role="3oM_SC" value="threads" />
+              </node>
+              <node concept="3oM_SD" id="3m4z3Ef7aX8" role="1PaTwD">
+                <property role="3oM_SC" value="-----" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef5MXg" role="3cqZAp" />
+          <node concept="3clFbF" id="3m4z3Ef4Mik" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5xAu" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5xAt" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5xAv" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5xAw" role="37wK5m">
+                  <property role="Xl_RC" value="|(Keep\\-Alive.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Miz" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4T5m" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4T5l" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4T5n" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4T5o" role="37wK5m">
+                  <property role="Xl_RC" value="|(AnimatorThread)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3PwYUBHDLVd" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHDMF_" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHDMFA" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHDMFD" role="1PaTwD">
+                <property role="3oM_SC" value="macOS" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHDNbP" role="1PaTwD">
+                <property role="3oM_SC" value="specific" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHDNbS" role="1PaTwD">
+                <property role="3oM_SC" value="thread" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mjd" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5xXl" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5xXk" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5xXm" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5xXn" role="37wK5m">
+                  <property role="Xl_RC" value="|(Poller SunPKCS11-Darwin)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3PwYUBHDYKl" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHDZwf" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHDZwg" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHDZwj" role="1PaTwD">
+                <property role="3oM_SC" value="Linux" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHE00_" role="1PaTwD">
+                <property role="3oM_SC" value="specific" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHE00C" role="1PaTwD">
+                <property role="3oM_SC" value="thread" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4Mjj" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef4RUx" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4RUw" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef4RUy" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef4RUz" role="37wK5m">
+                  <property role="Xl_RC" value="|(process reaper)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3PwYUBHEpf0" role="3cqZAp" />
+          <node concept="3SKdUt" id="3PwYUBHElcJ" role="3cqZAp">
+            <node concept="1PaTwC" id="3PwYUBHElcK" role="3ndbpf">
+              <node concept="3oM_SD" id="3PwYUBHElcN" role="1PaTwD">
+                <property role="3oM_SC" value="org.apache.batik.util.CleanerThread" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHElFi" role="1PaTwD">
+                <property role="3oM_SC" value="from" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHElFl" role="1PaTwD">
+                <property role="3oM_SC" value="batik-util" />
+              </node>
+              <node concept="3oM_SD" id="3PwYUBHElFp" role="1PaTwD">
+                <property role="3oM_SC" value="library" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3m4z3Ef4MjC" role="3cqZAp">
+            <node concept="2OqwBi" id="3m4z3Ef5zci" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef5zch" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="3m4z3Ef5zcj" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="3m4z3Ef5zck" role="37wK5m">
+                  <property role="Xl_RC" value="|(Batik CleanerThread)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3SKdUt" id="3m4z3Ef7$T8" role="3cqZAp">
+            <node concept="1PaTwC" id="3m4z3Ef7$T9" role="3ndbpf">
+              <node concept="3oM_SD" id="3m4z3Ef7$Ta" role="1PaTwD">
+                <property role="3oM_SC" value="--------------------------------" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="3m4z3Ef5Gt7" role="3cqZAp" />
+          <node concept="3clFbF" id="3m4z3Ef4MjL" role="3cqZAp">
+            <node concept="37vLTI" id="3m4z3Ef4MjM" role="3clFbG">
+              <node concept="37vLTw" id="3m4z3Ef4MjN" role="37vLTJ">
+                <ref role="3cqZAo" node="4_TMdeLkODd" resolve="IGNORED_THREAD" />
+              </node>
+              <node concept="2YIFZM" id="3m4z3Ef4UXM" role="37vLTx">
+                <ref role="1Pybhc" to="ni5j:~Pattern" resolve="Pattern" />
+                <ref role="37wK5l" to="ni5j:~Pattern.compile(java.lang.String)" resolve="compile" />
+                <node concept="2OqwBi" id="3m4z3Ef4UXN" role="37wK5m">
+                  <node concept="37vLTw" id="3m4z3Ef4UXO" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+                  </node>
+                  <node concept="liA8E" id="3m4z3Ef4UXP" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2tJIrI" id="3m4z3Ef4w77" role="jymVt" />
       <node concept="3clFbW" id="4_TMdeLkODx" role="jymVt">
         <property role="od$2w" value="false" />
         <property role="DiZV1" value="false" />

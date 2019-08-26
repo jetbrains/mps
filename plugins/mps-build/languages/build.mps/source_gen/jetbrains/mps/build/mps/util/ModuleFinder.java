@@ -14,7 +14,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -59,7 +59,7 @@ public class ModuleFinder {
   }
   private static SNode createGeneratorInternal_String_8pqt49_a0a0a0e0a(Object p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.GeneratorInternal_String$cg, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.GeneratorInternal_String$cg, null, null).node();
     n1.setProperty(PROPS.path$LlSY, PROPS.path$LlSY.getType().toString(p0));
     return n1;
   }

@@ -6,16 +6,16 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="QueriesGenerated.java">
-      <unit at="469,0,472,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$PROPS" />
-      <unit at="462,0,468,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$CONCEPTS" />
-      <unit at="450,0,461,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$LINKS" />
+      <unit at="468,0,471,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$PROPS" />
+      <unit at="461,0,467,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$CONCEPTS" />
+      <unit at="450,0,460,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$LINKS" />
       <unit at="325,0,340,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$IfMC" />
       <unit at="175,0,192,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$RRC" />
       <unit at="356,0,375,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$ISCC" />
       <unit at="287,0,311,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$PVQ" />
       <unit at="397,0,431,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$RTQ" />
       <unit at="222,0,269,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated$SNQ" />
-      <unit at="41,0,473,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated" />
+      <unit at="41,0,472,0" name="jetbrains.mps.baseLanguage.math.generator.template.operations.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:e8891659-6cf7-4c12-aefc-c30d28622ede(jetbrains.mps.baseLanguage.math.generator.template.operations@generator)/1236429487122">
@@ -236,17 +236,17 @@
       <node id="1418611629041290634" at="431,62,432,63" concept="1" />
       <node id="1418611629041290634" at="432,63,433,30" concept="1" />
       <node id="1418611629041290634" at="433,30,434,30" concept="1" />
-      <node id="1418611629041290634" at="434,30,435,258" concept="0" />
-      <node id="1418611629041290634" at="435,258,436,257" concept="0" />
-      <node id="1418611629041290634" at="436,257,437,64" concept="0" />
-      <node id="1418611629041290634" at="437,64,438,24" concept="2" />
+      <node id="1418611629041290634" at="434,30,435,230" concept="0" />
+      <node id="1418611629041290634" at="435,230,436,229" concept="0" />
+      <node id="1418611629041290634" at="436,229,437,178" concept="0" />
+      <node id="1418611629041290634" at="437,178,438,24" concept="2" />
       <node id="1418611629041290706" at="440,62,441,63" concept="1" />
       <node id="1418611629041290706" at="441,63,442,30" concept="1" />
       <node id="1418611629041290706" at="442,30,443,30" concept="1" />
-      <node id="1418611629041290706" at="443,30,444,258" concept="0" />
-      <node id="1418611629041290706" at="444,258,445,257" concept="0" />
-      <node id="1418611629041290706" at="445,257,446,64" concept="0" />
-      <node id="1418611629041290706" at="446,64,447,24" concept="2" />
+      <node id="1418611629041290706" at="443,30,444,230" concept="0" />
+      <node id="1418611629041290706" at="444,230,445,229" concept="0" />
+      <node id="1418611629041290706" at="445,229,446,178" concept="0" />
+      <node id="1418611629041290706" at="446,178,447,24" concept="2" />
       <node id="1418611629041289492" at="55,0,58,0" concept="3" trace="rule_Condition_3_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="1418611629041290683" at="58,0,61,0" concept="3" trace="rule_Condition_3_1#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="1418611629041289482" at="142,0,145,0" concept="3" trace="sourceNodeQuery_3_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />

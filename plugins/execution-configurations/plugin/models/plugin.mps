@@ -109,6 +109,7 @@
     <import index="z0rn" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.xmlb.annotations(MPS.IDEA/)" />
     <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
+    <import index="jtsr" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.project(MPS.OpenAPI/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -1917,6 +1918,14 @@
                 <node concept="yHkDZ" id="29ovBt4WSR3" role="2OqNvi">
                   <ref role="yHkDY" to="go48:6woObKLBCks" resolve="myJavaParameters" />
                 </node>
+              </node>
+            </node>
+            <node concept="2LYoGL" id="3KU19GSxcAD" role="2LYoGw">
+              <ref role="2LYoGK" to="go48:3KU19GSx75n" resolve="project" />
+              <node concept="2YIFZM" id="3KU19GSz63e" role="2LYoGN">
+                <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                <node concept="21ER0p" id="3KU19GSz63f" role="37wK5m" />
               </node>
             </node>
           </node>
@@ -5735,6 +5744,14 @@
                   </node>
                 </node>
               </node>
+              <node concept="2LYoGL" id="3KU19GSwM6$" role="2LYoGw">
+                <ref role="2LYoGK" node="3KU19GSwEj3" resolve="project" />
+                <node concept="2YIFZM" id="3KU19GS$pBp" role="2LYoGN">
+                  <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                  <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                  <node concept="21ER0p" id="3KU19GS$pBq" role="37wK5m" />
+                </node>
+              </node>
             </node>
             <node concept="37vLTw" id="6bBAl1i1HBC" role="37vLTJ">
               <ref role="3cqZAo" node="6bBAl1i1sLo" resolve="process" />
@@ -6321,6 +6338,12 @@
         <property role="2LYoGQ" value="true" />
         <node concept="17QB3L" id="5gyVhZ18bpH" role="1tU5fm" />
       </node>
+      <node concept="2LYoGR" id="3KU19GSwEj3" role="3rFUVC">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="3KU19GSwE_v" role="1tU5fm">
+          <ref role="3uigEE" to="jtsr:~Project" resolve="Project" />
+        </node>
+      </node>
       <node concept="9aQIb" id="5gyVhZ18bpQ" role="3rFUVF">
         <node concept="3clFbS" id="5gyVhZ18bpR" role="9aQI4">
           <node concept="3cpWs8" id="6rKhdYuRx7e" role="3cqZAp">
@@ -6404,6 +6427,12 @@
                     <node concept="2LYoGL" id="6T9rif_XW9C" role="2LYoGw">
                       <ref role="2LYoGK" to="go48:14R2qyOBxc0" resolve="programParameter" />
                       <node concept="10Nm6u" id="6T9rif_XWl8" role="2LYoGN" />
+                    </node>
+                    <node concept="2LYoGL" id="3KU19GSwEaX" role="2LYoGw">
+                      <ref role="2LYoGK" to="go48:3KU19GSwh4P" resolve="project" />
+                      <node concept="2LYoG9" id="3KU19GSwEXa" role="2LYoGN">
+                        <ref role="2LYoGb" node="3KU19GSwEj3" resolve="project" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -10045,6 +10074,12 @@
                       <property role="Xl_RC" value="buildDependents build" />
                     </node>
                   </node>
+                  <node concept="2LYoGL" id="3KU19GSwT_L" role="2LYoGw">
+                    <ref role="2LYoGK" to="ximz:3KU19GSwEj3" resolve="project" />
+                    <node concept="37vLTw" id="3KU19GSwYp$" role="2LYoGN">
+                      <ref role="3cqZAo" node="3YA7anLOaxT" resolve="mpsProject" />
+                    </node>
+                  </node>
                 </node>
                 <node concept="37vLTw" id="3KKoaE5GbLd" role="37vLTJ">
                   <ref role="3cqZAo" node="7xMU3i03Sx7" resolve="process" />
@@ -12174,6 +12209,14 @@
                     <ref role="2LYoGK" to="ximz:j$XAJDK0D$" resolve="targetName" />
                     <node concept="Xl_RD" id="5b26T8O2k4O" role="2LYoGN">
                       <property role="Xl_RC" value="buildDependents assemble" />
+                    </node>
+                  </node>
+                  <node concept="2LYoGL" id="3KU19GSx126" role="2LYoGw">
+                    <ref role="2LYoGK" to="ximz:3KU19GSwEj3" resolve="project" />
+                    <node concept="2YIFZM" id="3KU19GSzNlv" role="2LYoGN">
+                      <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                      <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                      <node concept="21ER0p" id="3KU19GSzNux" role="37wK5m" />
                     </node>
                   </node>
                 </node>

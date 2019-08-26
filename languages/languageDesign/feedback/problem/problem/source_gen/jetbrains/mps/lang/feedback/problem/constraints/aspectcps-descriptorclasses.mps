@@ -242,7 +242,7 @@
             <node concept="3clFbS" id="k" role="1pnPq1">
               <node concept="3cpWs6" id="m" role="3cqZAp">
                 <node concept="1nCR9W" id="n" role="3cqZAk">
-                  <property role="1nD$Q0" value="jetbrains.mps.lang.feedback.problem.constraints.ProblemKindRoot_Constraints" />
+                  <property role="1nD$Q0" value="jetbrains.mps.lang.feedback.problem.constraints.ProblemKind_Constraints" />
                   <node concept="3uibUv" id="o" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
@@ -250,7 +250,7 @@
               </node>
             </node>
             <node concept="3gn64h" id="l" role="1pnPq6">
-              <ref role="3gnhBz" to="sis7:1mFJTG6JRZ" resolve="ProblemKindRoot" />
+              <ref role="3gnhBz" to="sis7:1mFJTG6JRZ" resolve="ProblemKind" />
             </node>
           </node>
           <node concept="3clFbS" id="j" role="1prKM_" />
@@ -280,7 +280,7 @@
     </node>
   </node>
   <node concept="312cEu" id="w">
-    <property role="TrG5h" value="ProblemKindRoot_Constraints" />
+    <property role="TrG5h" value="ProblemKind_Constraints" />
     <node concept="3Tm1VV" id="x" role="1B3o_S">
       <node concept="cd27G" id="C" role="lGtFl">
         <node concept="3u3nmq" id="D" role="cd27D">
@@ -309,7 +309,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="1BaE9c" id="O" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
-            <property role="1BaxDp" value="ProblemKindRoot$14" />
+            <property role="1BaxDp" value="ProblemKind$14" />
             <node concept="2YIFZM" id="Q" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
@@ -338,7 +338,7 @@
                 </node>
               </node>
               <node concept="Xl_RD" id="V" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.lang.feedback.problem.structure.ProblemKindRoot" />
+                <property role="Xl_RC" value="jetbrains.mps.lang.feedback.problem.structure.ProblemKind" />
                 <node concept="cd27G" id="13" role="lGtFl">
                   <node concept="3u3nmq" id="14" role="cd27D">
                     <property role="3u3nmv" value="24399255755752521" />
@@ -872,18 +872,18 @@
                 </node>
                 <node concept="1Xw6AR" id="4i" role="3uHU7w">
                   <node concept="1dCxOl" id="4m" role="1XwpL7">
-                    <property role="1XweGQ" value="r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5" />
+                    <property role="1XweGQ" value="r:9006e6ce-991d-45e3-a20f-0deb45783955" />
                     <node concept="1j_P7g" id="4o" role="1j$8Uc">
-                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.childAndProp.constraints" />
+                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.childAndProp.feedback" />
                       <node concept="cd27G" id="4q" role="lGtFl">
                         <node concept="3u3nmq" id="4r" role="cd27D">
-                          <property role="3u3nmv" value="8018723092205878182" />
+                          <property role="3u3nmv" value="693143365153242351" />
                         </node>
                       </node>
                     </node>
                     <node concept="cd27G" id="4p" role="lGtFl">
                       <node concept="3u3nmq" id="4s" role="cd27D">
-                        <property role="3u3nmv" value="8018723092205878181" />
+                        <property role="3u3nmv" value="693143365153242350" />
                       </node>
                     </node>
                   </node>
@@ -910,18 +910,18 @@
                 </node>
                 <node concept="1Xw6AR" id="4w" role="3uHU7w">
                   <node concept="1dCxOl" id="4$" role="1XwpL7">
-                    <property role="1XweGQ" value="r:44de6cb2-b6eb-47d2-bf88-1577a328d3f6" />
+                    <property role="1XweGQ" value="r:63ce0387-25e9-4762-bec1-dac3eb032399" />
                     <node concept="1j_P7g" id="4A" role="1j$8Uc">
-                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.structural.constraints" />
+                      <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.structural.feedback" />
                       <node concept="cd27G" id="4C" role="lGtFl">
                         <node concept="3u3nmq" id="4D" role="cd27D">
-                          <property role="3u3nmv" value="8018723092205878471" />
+                          <property role="3u3nmv" value="693143365153242784" />
                         </node>
                       </node>
                     </node>
                     <node concept="cd27G" id="4B" role="lGtFl">
                       <node concept="3u3nmq" id="4E" role="cd27D">
-                        <property role="3u3nmv" value="8018723092205878470" />
+                        <property role="3u3nmv" value="693143365153242783" />
                       </node>
                     </node>
                   </node>
@@ -954,18 +954,18 @@
               </node>
               <node concept="1Xw6AR" id="4J" role="3uHU7w">
                 <node concept="1dCxOl" id="4N" role="1XwpL7">
-                  <property role="1XweGQ" value="r:bb0a30e0-9916-4d29-97fa-68ace0b06403" />
+                  <property role="1XweGQ" value="r:b9ce58c5-a751-4b14-8753-25d90bf90204" />
                   <node concept="1j_P7g" id="4P" role="1j$8Uc">
-                    <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.scopes.constraints" />
+                    <property role="1j_P7h" value="jetbrains.mps.lang.feedback.problem.scopes.feedback" />
                     <node concept="cd27G" id="4R" role="lGtFl">
                       <node concept="3u3nmq" id="4S" role="cd27D">
-                        <property role="3u3nmv" value="1592627013225790765" />
+                        <property role="3u3nmv" value="693143365153243157" />
                       </node>
                     </node>
                   </node>
                   <node concept="cd27G" id="4Q" role="lGtFl">
                     <node concept="3u3nmq" id="4T" role="cd27D">
-                      <property role="3u3nmv" value="1592627013225790764" />
+                      <property role="3u3nmv" value="693143365153243156" />
                     </node>
                   </node>
                 </node>

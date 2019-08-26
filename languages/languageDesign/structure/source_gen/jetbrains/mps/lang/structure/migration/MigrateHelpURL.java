@@ -20,15 +20,16 @@ import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedPro
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateHelpURL extends MigrationScriptBase {
+  private final String description = "replace old HelpURLs with new ones in concepts";
   public String getCaption() {
-    return "replace old HelpURLs with new ones in concepts";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -40,11 +41,11 @@ public class MigrateHelpURL extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_glsjld_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_glsjld_a0d_0 = new EditableFilteringScope(scope_glsjld_a0d);
+      SearchScope scope_glsjld_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_glsjld_a0e_0 = new EditableFilteringScope(scope_glsjld_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_glsjld_a0d_0;
+          return scope_glsjld_a0e_0;
         }
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$UN, false)).where(new IWhereFilter<SNode>() {
@@ -62,11 +63,11 @@ public class MigrateHelpURL extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_glsjld_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_glsjld_a0e_0 = new EditableFilteringScope(scope_glsjld_a0e);
+      SearchScope scope_glsjld_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_glsjld_a0f_0 = new EditableFilteringScope(scope_glsjld_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_glsjld_a0e_0;
+          return scope_glsjld_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$UN, false)).where(new IWhereFilter<SNode>() {
@@ -87,7 +88,7 @@ public class MigrateHelpURL extends MigrationScriptBase {
   private static SNode _quotation_createNode_glsjld_a0a0a0a0a0a6(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x47d8f9811b73d397L, "HelpURL"), null, null, false);
+    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x47d8f9811b73d397L, "HelpURL"), null, null).node();
     SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url"), (String) parameter_1);
     return quotedNode_2;
   }

@@ -50,6 +50,7 @@ public class ReferenceConceptUtil {
   @ToRemove(version = 2018.3)
   //we need to provide generated variant of specialized refs before removing this (see MPS-23362)
   public static SNode getCharacteristicReference(final SNode concept) {
+    // uses in mbeddr
     SAbstractConcept sConcept = MetaAdapterByDeclaration.getConcept(concept);
     if (sConcept != null) {
       SReferenceLink characteristicReference = getCharacteristicReference(sConcept);

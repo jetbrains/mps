@@ -90,7 +90,7 @@ public class OverridingRule_Test extends BaseTransformationTest {
     public void test_NodeErrorFromConceptaCheck8837437332635283262() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332634534350");
       SNode operation = getRealNodeById("8837437332635283262");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("8837437332634534350"), MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520235"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520235"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4065852147261983395() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332634534356");
@@ -100,7 +100,7 @@ public class OverridingRule_Test extends BaseTransformationTest {
     public void test_NodeErrorFromConceptbCheck8837437332635283252() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332634534356");
       SNode operation = getRealNodeById("8837437332635283252");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("8837437332634534356"), MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520441"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520441"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4065852147261983386() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332635285048");
@@ -115,7 +115,7 @@ public class OverridingRule_Test extends BaseTransformationTest {
     public void test_NodeErrorFromConceptcCheck8837437332635281731() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332634535107");
       SNode operation = getRealNodeById("8837437332635281731");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("8837437332634535107"), MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520611"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520611"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4065852147261983368() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332635283271");
@@ -130,7 +130,7 @@ public class OverridingRule_Test extends BaseTransformationTest {
     public void test_NodeErrorFromConceptcCheck8837437332635285135() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332635285133");
       SNode operation = getRealNodeById("8837437332635285135");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("8837437332635285133"), MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520611"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520611"), myProject.getRepository()).run();
     }
     public void test_ErrorMessagesCheck4065852147261983349() throws Exception {
       SNode nodeToCheck = getRealNodeById("8837437332635285228");

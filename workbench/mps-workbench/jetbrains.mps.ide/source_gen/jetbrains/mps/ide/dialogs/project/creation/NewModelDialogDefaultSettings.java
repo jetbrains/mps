@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import javax.swing.JPanel;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
-import java.awt.Dimension;
 import com.intellij.uiDesigner.core.GridConstraints;
 import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
@@ -74,7 +73,6 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
   }
 
   private void init(String modelName, String stereotype, boolean isStrictStereotype) {
-    mySettingsPanel.setPreferredSize(new Dimension(200, 50));
 
     GridConstraints constraints = new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null);
 
@@ -212,6 +210,4 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
   private static String storageFormatText() {
     return IdeBundle.message("dialogs.model.new.settings.storageformat");
   }
-
-
 }

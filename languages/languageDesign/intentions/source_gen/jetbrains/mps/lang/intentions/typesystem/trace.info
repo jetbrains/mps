@@ -32,13 +32,12 @@
       <node id="1192798450063" at="38,30,39,16" concept="5" />
       <node id="1197385447675" at="41,83,42,63" concept="4" />
       <node id="1197385447675" at="42,63,43,30" concept="4" />
-      <node id="1197385447675" at="43,30,44,246" concept="2" />
-      <node id="1197385447675" at="44,246,45,94" concept="2" />
-      <node id="1197385447675" at="45,94,46,24" concept="5" />
+      <node id="1197385447675" at="43,30,44,218" concept="2" />
+      <node id="1197385447675" at="44,218,45,196" concept="2" />
+      <node id="1197385447675" at="45,196,46,24" concept="5" />
       <node id="1192798450063" at="50,0,51,0" concept="6" trace="BaseIntentionDeclaration$c4" />
       <node id="1192798450063" at="51,0,52,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
       <node id="1192798450063" at="55,0,56,0" concept="6" trace="forConcept$SvTG" />
-      <node id="1192798450063" at="56,0,57,0" concept="6" trace="concept$HWFQ" />
       <node id="1192798450063" at="22,0,24,0" concept="1" trace="typeof_ConceptFunctionParameter_node_InferenceRule#()V" />
       <node id="1192798450063" at="32,0,35,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1192798450063" at="35,0,38,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -75,9 +74,9 @@
         <var name="status" id="1192798450063" />
         <var name="typeCheckingContext" id="1192798450063" />
       </scope>
+      <unit id="1192798450063" at="54,0,57,0" name="jetbrains.mps.lang.intentions.typesystem.typeof_ConceptFunctionParameter_node_InferenceRule$LINKS" />
       <unit id="1192798450063" at="49,0,53,0" name="jetbrains.mps.lang.intentions.typesystem.typeof_ConceptFunctionParameter_node_InferenceRule$CONCEPTS" />
-      <unit id="1192798450063" at="54,0,58,0" name="jetbrains.mps.lang.intentions.typesystem.typeof_ConceptFunctionParameter_node_InferenceRule$LINKS" />
-      <unit id="1192798450063" at="21,0,59,0" name="jetbrains.mps.lang.intentions.typesystem.typeof_ConceptFunctionParameter_node_InferenceRule" />
+      <unit id="1192798450063" at="21,0,58,0" name="jetbrains.mps.lang.intentions.typesystem.typeof_ConceptFunctionParameter_node_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590351(jetbrains.mps.lang.intentions.typesystem)/1240322703523">
@@ -152,8 +151,8 @@
       <node id="3618415754251192148" at="33,30,34,17" concept="5" />
       <node id="3618415754251192283" at="36,65,37,63" concept="4" />
       <node id="3618415754251192283" at="37,63,38,30" concept="4" />
-      <node id="3618415754251192283" at="38,30,39,246" concept="2" />
-      <node id="3618415754251192283" at="39,246,40,24" concept="5" />
+      <node id="3618415754251192283" at="38,30,39,218" concept="2" />
+      <node id="3618415754251192283" at="39,218,40,24" concept="5" />
       <node id="3618415754251192148" at="44,0,45,0" concept="6" trace="ConceptFunctionParameter_childNode$DO" />
       <node id="3618415754251192148" at="18,0,20,0" concept="1" trace="typeof_ConceptFunctionParameter_childNode_InferenceRule#()V" />
       <node id="3618415754251192148" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

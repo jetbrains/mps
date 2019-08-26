@@ -19,7 +19,7 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ProblemKindRoot_Constraints();
+        return new ProblemKind_Constraints();
       default:
     }
     return new BaseConstraintsDescriptor(concept);

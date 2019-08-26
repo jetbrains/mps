@@ -25,8 +25,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MigrateEnumPropertyUsages extends MigrationScriptBase {
+  private final String description = "Migrate enumeration property usages (merge hints)";
   public String getCaption() {
-    return "Migrate enumeration property usages (merge hints)";
+    return description;
   }
   @Override
   public boolean isRerunnable() {
@@ -38,11 +39,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      SearchScope scope_32rjqx_a0d = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0d_0 = new EditableFilteringScope(scope_32rjqx_a0d);
+      SearchScope scope_32rjqx_a0e = CommandUtil.createScope(m);
+      final SearchScope scope_32rjqx_a0e_0 = new EditableFilteringScope(scope_32rjqx_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0d_0;
+          return scope_32rjqx_a0e_0;
         }
       };
       EnumUsagesMigration migration = new EnumUsagesMigration();
@@ -54,11 +55,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   @Override
   public Iterable<Problem> check(SModule m) {
     {
-      SearchScope scope_32rjqx_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_32rjqx_a0e_0 = new EditableFilteringScope(scope_32rjqx_a0e);
+      SearchScope scope_32rjqx_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_32rjqx_a0f_0 = new EditableFilteringScope(scope_32rjqx_a0f);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0e_0;
+          return scope_32rjqx_a0f_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyVCSDescriptor$S8, false)).where(new IWhereFilter<SNode>() {

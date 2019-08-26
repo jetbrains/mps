@@ -8812,20 +8812,20 @@
       <node id="5123146117298459748" at="366,63,367,63" concept="7" />
       <node id="5123146117298459748" at="367,63,368,30" concept="7" />
       <node id="5123146117298459748" at="368,30,369,30" concept="7" />
-      <node id="5123146117298459748" at="369,30,370,258" concept="2" />
-      <node id="5123146117298459748" at="370,258,371,257" concept="2" />
-      <node id="5123146117298459748" at="371,257,372,64" concept="2" />
-      <node id="5123146117298459748" at="372,64,373,24" concept="8" />
+      <node id="5123146117298459748" at="369,30,370,230" concept="2" />
+      <node id="5123146117298459748" at="370,230,371,229" concept="2" />
+      <node id="5123146117298459748" at="371,229,372,178" concept="2" />
+      <node id="5123146117298459748" at="372,178,373,24" concept="8" />
       <node id="5123146117298459833" at="375,83,376,63" concept="7" />
       <node id="5123146117298459833" at="376,63,377,30" concept="7" />
       <node id="5123146117298459833" at="377,30,378,30" concept="7" />
       <node id="5123146117298459833" at="378,30,379,30" concept="7" />
-      <node id="5123146117298459833" at="379,30,380,256" concept="2" />
-      <node id="5123146117298459833" at="380,256,381,39" concept="2" />
-      <node id="5123146117298459833" at="382,31,383,92" concept="2" />
-      <node id="5123146117298459833" at="384,5,385,247" concept="2" />
-      <node id="5123146117298459833" at="385,247,386,61" concept="2" />
-      <node id="5123146117298459833" at="386,61,387,24" concept="8" />
+      <node id="5123146117298459833" at="379,30,380,228" concept="2" />
+      <node id="5123146117298459833" at="380,228,381,39" concept="2" />
+      <node id="5123146117298459833" at="382,31,383,196" concept="2" />
+      <node id="5123146117298459833" at="384,5,385,219" concept="2" />
+      <node id="5123146117298459833" at="385,219,386,165" concept="2" />
+      <node id="5123146117298459833" at="386,165,387,24" concept="8" />
       <node id="5123146117298459736" at="391,0,392,0" concept="11" trace="columns$rd3m" />
       <node id="5123146117298459736" at="392,0,393,0" concept="11" trace="rows$rd2R" />
       <node id="5123146117298459736" at="396,0,397,0" concept="11" trace="MatrixElementAccessExpression$Dk" />
@@ -8835,8 +8835,6 @@
       <node id="5123146117298459736" at="403,0,404,0" concept="11" trace="expression$jVHU" />
       <node id="5123146117298459736" at="404,0,405,0" concept="11" trace="rowIndex$jVIp" />
       <node id="5123146117298459736" at="405,0,406,0" concept="11" trace="exponent$vAuD" />
-      <node id="5123146117298459736" at="406,0,407,0" concept="11" trace="elementType$Gy$X" />
-      <node id="5123146117298459736" at="407,0,408,0" concept="11" trace="base$uESF" />
       <node id="5123146117298459736" at="54,0,57,0" concept="1" trace="ML_SideTransforms_Expression_Contribution#()V" />
       <node id="5123146117298459772" at="135,0,138,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />
       <node id="5123146117298459772" at="138,0,141,0" concept="6" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -8935,7 +8933,7 @@
       <scope id="5123146117298459916" at="343,74,344,74" />
       <scope id="5123146117298459872" at="349,53,350,41" />
       <scope id="5123146117298459872" at="357,118,358,60" />
-      <scope id="5123146117298459833" at="382,31,383,92" />
+      <scope id="5123146117298459833" at="382,31,383,196" />
       <scope id="5123146117298459772" at="118,0,120,22">
         <var name="t" id="5123146117298459772" />
       </scope>
@@ -9133,8 +9131,8 @@
         <var name="context" id="5123146117298459872" />
       </scope>
       <unit id="5123146117298459736" at="390,0,394,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$PROPS" />
+      <unit id="5123146117298459736" at="402,0,407,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$LINKS" />
       <unit id="5123146117298459736" at="395,0,401,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$CONCEPTS" />
-      <unit id="5123146117298459736" at="402,0,409,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$LINKS" />
       <unit id="5123146117298459872" at="321,0,362,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$TMP_Group_7vmljf_c0$TMP_Param_7vmljf_a2a$TMP_Action_7vmljf_a0c0$Item" />
       <unit id="5123146117298459815" at="200,0,242,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$TMP_Action_7vmljf_b0$Item" />
       <unit id="5123146117298459772" at="132,0,176,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$TMP_Group_7vmljf_a0$TMP_Action_7vmljf_a0a$Item" />
@@ -9144,7 +9142,7 @@
       <unit id="5123146117298459742" at="87,0,179,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$TMP_Group_7vmljf_a0" />
       <unit id="5123146117298459872" at="265,0,365,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$TMP_Group_7vmljf_c0$TMP_Param_7vmljf_a2a" />
       <unit id="5123146117298459853" at="244,0,366,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution$TMP_Group_7vmljf_c0" />
-      <unit id="5123146117298459736" at="53,0,410,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution" />
+      <unit id="5123146117298459736" at="53,0,408,0" name="jetbrains.mps.baseLanguage.math.editor.ML_SideTransforms_Expression_Contribution" />
     </file>
   </root>
   <root nodeRef="r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)/5948968788443470493">

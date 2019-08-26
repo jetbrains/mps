@@ -73,22 +73,22 @@ public class UnusedVariableDeclaration_Test extends BaseTransformationTest {
     public void test_NodeUnusedLocalVariableCheck5924873649943649973() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228026");
       SNode operation = getRealNodeById("5924873649943649973");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451228026"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630"), myProject.getRepository()).run();
     }
     public void test_NodeUnusedVariableWarningCheck5924873649943649975() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228026");
       SNode operation = getRealNodeById("5924873649943649975");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451228026"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
     }
     public void test_NodeUnusedVariableWarningCheck6923385624927360820() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231209");
       SNode operation = getRealNodeById("6923385624927360820");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451231209"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
     }
     public void test_NodeUnusedVariableWarningCheck6923385624929638863() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451221253");
       SNode operation = getRealNodeById("6923385624929638863");
-      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(getRealNodeById("3951985765451221253"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
+      new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424"), myProject.getRepository()).run();
     }
 
   }

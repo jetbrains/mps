@@ -22,7 +22,7 @@ import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.backend.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
@@ -54,18 +54,18 @@ public class TypesEditorChecker extends AbstractTypesystemEditorChecker {
 
   @NotNull
   @Override
-  protected UpdateResult doCreateMessages(final TypecheckingSession session,
+  protected UpdateResult doCreateMessages(final TypecheckingSession typecheckingSession,
                                           final boolean wasCheckedOnce,
                                           final EditorContext editorContext,
                                           final SNode rootNode,
                                           Cancellable cancellable,
                                           final boolean applyQuickFixes)
   {
-    if (!session.flags().isIncremental()) {
+    if (!typecheckingSession.flags().isIncremental()) {
       return UpdateResult.CANCELLED;
     }
 
-    return TypecheckingFacade.getFromContext().runWithSession(session, () -> {
+    return TypecheckingFacade.getFromContext().computeWithSession(typecheckingSession, (session) -> {
       boolean messagesChanged = false;
 
       Collection<Pair<SNodeReference, List<NodeReportItem>>> collected = Collections.emptyList();

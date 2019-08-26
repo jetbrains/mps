@@ -45,19 +45,17 @@
       <node id="8634171685214339052" at="93,63,94,30" concept="3" />
       <node id="8634171685214339052" at="94,30,95,30" concept="3" />
       <node id="8634171685214339052" at="95,30,96,30" concept="3" />
-      <node id="8634171685214339052" at="96,30,97,253" concept="1" />
-      <node id="8634171685214339052" at="97,253,98,148" concept="1" />
-      <node id="8634171685214339052" at="98,148,99,255" concept="1" />
-      <node id="8634171685214339052" at="99,255,100,63" concept="1" />
-      <node id="8634171685214339052" at="100,63,101,248" concept="1" />
-      <node id="8634171685214339052" at="101,248,102,57" concept="1" />
-      <node id="8634171685214339052" at="102,57,103,24" concept="4" />
+      <node id="8634171685214339052" at="96,30,97,225" concept="1" />
+      <node id="8634171685214339052" at="97,225,98,148" concept="1" />
+      <node id="8634171685214339052" at="98,148,99,227" concept="1" />
+      <node id="8634171685214339052" at="99,227,100,167" concept="1" />
+      <node id="8634171685214339052" at="100,167,101,220" concept="1" />
+      <node id="8634171685214339052" at="101,220,102,171" concept="1" />
+      <node id="8634171685214339052" at="102,171,103,24" concept="4" />
       <node id="2304492758936015027" at="107,0,108,0" concept="7" trace="ClassConcept$IY" />
       <node id="2304492758936015027" at="108,0,109,0" concept="7" trace="FieldDeclaration$Ps" />
       <node id="2304492758936015027" at="112,0,113,0" concept="7" trace="name$tAp1" />
       <node id="2304492758936015027" at="116,0,117,0" concept="7" trace="member$oYX5" />
-      <node id="2304492758936015027" at="117,0,118,0" concept="7" trace="visibility$2GiC" />
-      <node id="2304492758936015027" at="118,0,119,0" concept="7" trace="type$pLrO" />
       <node id="5307890348301110208" at="44,0,47,0" concept="2" trace="compute#()Ljetbrains/mps/internal/collections/runtime/IListSequence;" />
       <node id="1891402444881801230" at="52,0,55,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="8634171685214378755" at="63,0,66,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -116,17 +114,17 @@
         <var name="env" id="6452630887098583425" />
       </scope>
       <unit id="2304492758936015027" at="111,0,114,0" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$PROPS" />
+      <unit id="2304492758936015027" at="115,0,118,0" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$LINKS" />
       <unit id="5307890348301110208" at="43,105,47,5" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$1" />
       <unit id="1891402444881801230" at="51,66,55,9" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$2$1" />
       <unit id="8634171685214378755" at="62,108,66,9" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$3$1" />
       <unit id="8634171685214444577" at="78,181,82,13" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$4$1$1" />
       <unit id="2304492758936015027" at="106,0,110,0" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$CONCEPTS" />
-      <unit id="2304492758936015027" at="115,0,120,0" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$LINKS" />
       <unit id="5307890348300953842" at="49,91,57,5" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$2" />
       <unit id="1891402444881821365" at="60,89,68,5" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$3" />
       <unit id="8634171685214220726" at="75,100,84,9" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$4$1" />
       <unit id="1912033194715263585" at="73,41,86,5" name="jetbrains.mps.build.mps.runner.test.test4.MainClass$4" />
-      <unit id="2304492758936015027" at="32,0,121,0" name="jetbrains.mps.build.mps.runner.test.test4.MainClass" />
+      <unit id="2304492758936015027" at="32,0,119,0" name="jetbrains.mps.build.mps.runner.test.test4.MainClass" />
     </file>
   </root>
 </debug-info>

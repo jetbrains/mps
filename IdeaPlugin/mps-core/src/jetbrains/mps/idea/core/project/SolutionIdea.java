@@ -160,9 +160,8 @@ public class SolutionIdea extends Solution {
 
     String versionString = sdk.getVersionString();
     JavaSdkVersion sdkVersion = JavaSdkVersion.fromVersionString(versionString);
-    if (sdkVersion==null || !sdkVersion.isAtLeast(JavaSdkVersion.JDK_11)) {
+    if (sdkVersion == null || !sdkVersion.isAtLeast(JavaSdkVersion.JDK_11)) {
       myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportIncorrectJDK(myModule, versionString);
-      return;
     }
 
     try {

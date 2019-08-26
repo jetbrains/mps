@@ -16,7 +16,7 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -87,17 +87,17 @@ public class typeof_ArithmeticSimpleMathExpression_InferenceRule extends Abstrac
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathNumberType$zZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathNumberType$zZ, null, null).node();
     return n1;
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathNumberType$zZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathNumberType$zZ, null, null).node();
     return n1;
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0c0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = SModelUtil_new.instantiateConceptDeclaration(CONCEPTS.SimpleMathNumberType$zZ, null, null, false);
+    SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathNumberType$zZ, null, null).node();
     return n1;
   }
 
