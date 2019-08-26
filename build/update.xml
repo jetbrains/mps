@@ -274,5 +274,14 @@
         <message>JetBrains MPS 2019.2 EAP5 is now available.</message>
         <button name="Download" url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2019.2+EAP+Download+Page" download="true"/>      </build>
     </channel>
+
+    <channel id="MPS192" name="MPS 2019.2" status="release"
+             url="https://www.jetbrains.com/mps/download"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="2019" minorVersoin="2">
+      <build number="192.2072" version="2019.2">
+        <message>JetBrains MPS 2019.2 is available!</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>      </build>
+    </channel>
   </product>
 </products>
