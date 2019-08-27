@@ -4,7 +4,7 @@
   <description>MPS Migration Support for Idea Plugin</description>
   <version>2019.2</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="191.1" until-build="193.1"/>
+  <idea-version since-build="192.1" until-build="193.1"/>
 
   <xi:include href="pluginBase.xml" xpointer="xpointer(/idea-plugin/*)"/>
 

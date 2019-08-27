@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8ivdi02lmdyvu4oj5nx261ot1u7yxxp">
+<product version="3" modelHash="-9m0tdk0n2lokxjwngkwq6nw1dlvzbvr">
   <files names="AddWatchAction_Action.java:CopyStackTraceToClipboard_Action.java:CopyValueAction_Action.java:EditWatchAction_Action.java:JavaWatchableNodeActions_ActionGroup.java:RemoveWatchAction_Action.java:Runtime_ApplicationPlugin.java:ViewAs_Action.java:ViewAs_Group_ActionGroup.java:WatchesToolbarActions_ActionGroup.java:WatchesTreeActions_ActionGroup.java:plugin.xml" />
 </product>
 
