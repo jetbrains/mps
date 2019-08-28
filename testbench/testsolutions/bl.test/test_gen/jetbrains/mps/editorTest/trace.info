@@ -15781,7 +15781,7 @@
       <node id="6131265013450968278" at="44,72,45,72" concept="2" />
       <node id="6131265013450968280" at="45,72,46,72" concept="2" />
       <node id="6131265013450968282" at="46,72,47,72" concept="2" />
-      <node id="6131265013450968284" at="47,72,48,69" concept="2" />
+      <node id="7647428193427048769" at="47,72,48,72" concept="2" />
       <node id="6131265013450968240" at="15,0,17,0" concept="9" trace="ourParamCache" />
       <node id="6131265013450968240" at="18,0,21,0" concept="1" trace="RemoveSynchronizedOnLastPositionDelete_Test#()V" />
       <node id="6131265013450968240" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -15795,7 +15795,7 @@
         <var name="owner" id="6131265013450968240" />
       </scope>
       <scope id="6131265013450968240" at="22,0,26,0" />
-      <scope id="6131265013450968240" at="34,51,48,69" />
+      <scope id="6131265013450968240" at="34,51,48,72" />
       <scope id="6131265013450968240" at="33,0,50,0" />
       <unit id="6131265013450968240" at="27,0,51,0" name="jetbrains.mps.editorTest.RemoveSynchronizedOnLastPositionDelete_Test$TestBody" />
       <unit id="6131265013450968240" at="13,0,52,0" name="jetbrains.mps.editorTest.RemoveSynchronizedOnLastPositionDelete_Test" />

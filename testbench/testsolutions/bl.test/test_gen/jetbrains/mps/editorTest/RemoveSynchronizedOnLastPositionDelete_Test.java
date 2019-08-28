@@ -45,7 +45,7 @@ public class RemoveSynchronizedOnLastPositionDelete_Test extends BaseTransformat
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-      invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
     }
   }
 }
