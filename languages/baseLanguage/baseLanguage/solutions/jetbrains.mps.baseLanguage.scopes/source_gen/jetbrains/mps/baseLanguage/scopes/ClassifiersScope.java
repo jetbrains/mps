@@ -13,6 +13,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
@@ -53,7 +54,7 @@ public class ClassifiersScope extends FilteringScope {
   }
 
   @Override
-  public SNode resolve(SNode contextNode, String refText) {
+  public SNode resolve(SNode contextNode, @NotNull String refText) {
     SModel contextModel = SNodeOperations.getModel(contextNode);
     if (contextModel == null) {
       // I see no legitimate reason to proceed any further. 

@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.scopes.ClassifiersScope;
 import java.util.List;
 import java.util.ArrayList;
@@ -363,7 +364,10 @@ public final class ResolveUnknownUtil {
 
     return null;
   }
-  public static SNode findClass(SNode from, String className) {
+  public static SNode findClass(SNode from, @Nullable String className) {
+    if ((className == null || className.length() == 0)) {
+      return null;
+    }
     SNode contextClas = SNodeOperations.getNodeAncestor(from, CONCEPTS.Classifier$hJ, true, false);
     ClassifiersScope scope = new ClassifiersScope(SNodeOperations.getModel(from), contextClas, CONCEPTS.Classifier$hJ, true);
 

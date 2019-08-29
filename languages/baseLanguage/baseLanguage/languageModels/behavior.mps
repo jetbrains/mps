@@ -31,7 +31,6 @@
     <import index="m373" ref="r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
@@ -48,7 +47,6 @@
     <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" />
     <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
     <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" />
     <import index="356a" ref="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)" implicit="true" />
     <import index="bzl4" ref="r:9d0684e9-039f-4e88-b824-947b454f70f2(jetbrains.mps.baseLanguage.javadoc.behavior)" implicit="true" />
@@ -63757,6 +63755,19 @@
       <property role="TrG5h" value="findClass" />
       <node concept="3Tm1VV" id="7o4ozN$mxr1" role="1B3o_S" />
       <node concept="3clFbS" id="7o4ozN$mxr2" role="3clF47">
+        <node concept="3clFbJ" id="768fviyf8Cx" role="3cqZAp">
+          <node concept="3clFbS" id="768fviyf8Cz" role="3clFbx">
+            <node concept="3cpWs6" id="768fviyfdHu" role="3cqZAp">
+              <node concept="10Nm6u" id="768fviyfeNN" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="768fviyfcTD" role="3clFbw">
+            <node concept="37vLTw" id="768fviyfamq" role="2Oq$k0">
+              <ref role="3cqZAo" node="7o4ozN$mxrC" resolve="className" />
+            </node>
+            <node concept="17RlXB" id="768fviyfdFs" role="2OqNvi" />
+          </node>
+        </node>
         <node concept="3cpWs8" id="2ROYXbqqdSX" role="3cqZAp">
           <node concept="3cpWsn" id="2ROYXbqqdT0" role="3cpWs9">
             <property role="TrG5h" value="contextClas" />
@@ -63881,6 +63892,9 @@
       <node concept="37vLTG" id="7o4ozN$mxrC" role="3clF46">
         <property role="TrG5h" value="className" />
         <node concept="17QB3L" id="7o4ozN$mxrE" role="1tU5fm" />
+        <node concept="2AHcQZ" id="768fviyePOn" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
       </node>
     </node>
     <node concept="2YIFZL" id="7o4ozN$k5qU" role="jymVt">
