@@ -133,7 +133,7 @@ public class ModuleRenameHandler extends ModuleAdapter {
     //     and I wonder why we don't do the same for module id?
     final MPSFacetType facetType = FacetType.findInstance(MPSFacetType.class);
     final MPSFacetConfiguration cfg = facetType.createDefaultConfiguration();
-    cfg.loadState(null, cfgBean);
+    cfg.loadState(cfgBean);
     final MPSFacet newFacet = facetManager.createFacet(facetType, facetType.getDefaultFacetName(), cfg, null) ;
     mm.addFacet(newFacet);
     mm.commit();

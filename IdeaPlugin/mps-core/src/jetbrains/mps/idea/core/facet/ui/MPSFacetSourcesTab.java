@@ -32,6 +32,7 @@ import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
 import jetbrains.mps.idea.core.ui.SModuleConfigurationTab;
 import jetbrains.mps.persistence.DefaultModelRoot;
+import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry.ModelRootEntryListener;
 
@@ -39,6 +40,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -50,6 +52,7 @@ public class MPSFacetSourcesTab implements SModuleConfigurationTab {
   private Disposable myParentDisposable;
 
   private ModelRootContentEntriesEditor myContentEntriesEditor;
+  private Collection<ModelRootDescriptor> myModelRootsByReference;
 
   public MPSFacetSourcesTab(FacetEditorContext context, Disposable parentDisposable) {
     myContext = context;
@@ -71,8 +74,8 @@ public class MPSFacetSourcesTab implements SModuleConfigurationTab {
       Disposer.dispose(myContentEntriesEditor);
       myContentEntriesEditor = null;
     }
-    // here come the only justified use of cfgBean.getSolutionDescriptor(), there's no other way to access Facet's SD here at the moment
-    myContentEntriesEditor = new ModelRootContentEntriesEditor(data.getSolutionDescriptor(), ProjectHelper.fromIdeaProject(myContext.getProject()));
+    myModelRootsByReference = data.getModelRootDescriptors();
+    myContentEntriesEditor = new ModelRootContentEntriesEditor(myModelRootsByReference, myContext.getModule().getName(), ProjectHelper.fromIdeaProject(myContext.getProject()));
     Disposer.register(myParentDisposable, myContentEntriesEditor);
     VirtualFile defaultFolder = myContext.getModule().getModuleFile() != null
       ? myContext.getModule().getModuleFile().getParent()
@@ -131,6 +134,7 @@ public class MPSFacetSourcesTab implements SModuleConfigurationTab {
 
   public void apply(MPSConfigurationBean data) {
     myContentEntriesEditor.apply();
+    data.setModelRootDescriptors(myModelRootsByReference);
   }
 
   public boolean isModified(MPSConfigurationBean data) {

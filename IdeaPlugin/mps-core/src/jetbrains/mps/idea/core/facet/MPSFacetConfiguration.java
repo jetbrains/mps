@@ -37,7 +37,6 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JComponent;
 import java.util.ArrayList;
@@ -65,13 +64,14 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
    */
   @NotNull
   public MPSConfigurationBean getBean() {
+    // obtain a copy of settings, suited for modification
+    final MPSConfigurationBean cfgBean = myActualState == null ? myMostRecentStateLoaded : myActualState;
     if (myMpsFacet.wasInitialized()) {
-      // FIXME perhaps, shall move this code to #createEditorTabs() as UI is the only client that needs to access SolutionDescriptor though the bean
-      final SolutionDescriptor actualModuleDescriptor = myMpsFacet.getSolution().getModuleDescriptor();
-      return new MPSConfigurationBean(actualModuleDescriptor, myActualState);
+      // copy of facet-specific properties along with actual data from SD
+      final State stateCopy = cfgBean.toState(myMpsFacet.getSolution().getModuleDescriptor());
+      return new MPSConfigurationBean(stateCopy);
     } else {
-      // obtain a copy of settings prior to initialization of a solution: use state that would be used for init
-      final MPSConfigurationBean cfgBean = myActualState == null ? myMostRecentStateLoaded : myActualState;
+      // just a plain copy
       return new MPSConfigurationBean(cfgBean);
     }
   }
@@ -91,14 +91,9 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
     return rv;
   }
 
-  // sort of counterpart to loadState(State), just let the cfg know solution uses new set of values
-  /*package*/ void loadState(@Nullable SolutionDescriptor moduleDescriptor, @NotNull MPSConfigurationBean state) {
-    // FIXME shall deal with null state, perhaps, and reset to defaults?
-    if (moduleDescriptor == null) {
-      myMostRecentStateLoaded = new MPSConfigurationBean(state);
-    } else {
-      myMostRecentStateLoaded = new MPSConfigurationBean(moduleDescriptor, state);
-    }
+  // sort of counterpart to loadState(State) for UI/editing purposes (unlike the one with 'State', which is for IDEA persistence)
+  /*package*/ void loadState(@NotNull MPSConfigurationBean newBean) {
+    myMostRecentStateLoaded = new MPSConfigurationBean(newBean);
   }
 
   @Override
@@ -118,19 +113,19 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
 
   @Override
   public void loadState(@NotNull State state) {
-    myMostRecentStateLoaded = new MPSConfigurationBean();
-    myMostRecentStateLoaded.loadFrom(state);
+    // well, I can keep State instance right away, it's just bit more complicated in getState then, when I'd need to incorporate SD values into State
+    // At the moment, it's MPSConfigurationBean that knows how to do that, that's why I keep Bean instance rather than State here.
+    myMostRecentStateLoaded = new MPSConfigurationBean(state);
   }
 
   @Override
   public void noStateLoaded() {
-    myActualState = new MPSConfigurationBean();
+    myActualState = new MPSConfigurationBean(new State());
   }
 
   @Override
   public FacetEditorTab[] createEditorTabs(FacetEditorContext facetEditorContext, FacetValidatorsManager facetValidatorsManager) {
     MPSConfigurationBean bean = getBean();
-    bean.initSolutionDescriptorIfNone();
     return new FacetEditorTab[]{new MPSFacetCommonTab(facetEditorContext, bean)};
   }
 
@@ -138,7 +133,6 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
     myMpsFacet = mpsFacet;
     if (myMostRecentStateLoaded == null) {
       assert myActualState != null; // noStateLoaded is supposed to init the one
-      // XXX what if
       setConfigurationDefaults();
     }
   }
@@ -222,6 +216,7 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
 
     @Override
     public void reset() {
+      // this method is invoked first, when configuration page is shown
       if (myForm != null) {
         myForm.reset(myConfigurationBean);
       }
@@ -245,7 +240,7 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
       // Beware, it seems that onFacetInitialized() is invoked for any added facet (FacetEditorImpl#onFacetAdded), not
       // necessarily the MPS one.
       MPSFacet mpsFacet = (MPSFacet) facet;
-      myConfigurationBean = mpsFacet.getConfiguration().getBean();
+      mpsFacet.setConfiguration(myConfigurationBean);
     }
 
     @Override

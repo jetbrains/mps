@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.jps.make.testEnvironment;
 
 
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
+import jetbrains.mps.idea.core.facet.MPSConfigurationBean.State;
 import jetbrains.mps.jps.make.tests.MpsJpsBuildTestCase;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -64,7 +65,7 @@ public class JpsTestModelsEnvironment extends JpsTestEnvironmentBase<JpsTestBean
   }
 
   private MPSConfigurationBean initMpsConfiguration(JpsTestBean bean, String generatorOutput) {
-    MPSConfigurationBean configuration = new MPSConfigurationBean();
+    MPSConfigurationBean configuration = new MPSConfigurationBean(new State());
     configuration.setIdByModuleName(bean.moduleName);
     configuration.setGeneratorOutputPath(generatorOutput);
     configuration.setUseModuleSourceFolder(bean.useModuleSourceFolder);

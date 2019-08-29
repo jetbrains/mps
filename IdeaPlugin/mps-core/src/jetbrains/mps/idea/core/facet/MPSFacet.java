@@ -20,7 +20,6 @@ import com.intellij.facet.Facet;
 import com.intellij.facet.FacetType;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
-import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.util.registry.Registry;
@@ -125,20 +124,11 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
   }
 
   public void setConfiguration(final MPSConfigurationBean configurationBean) {
-    // XXX what if ModuleRenameHandler uses this method prior to getSolution, we would have lost configurationBean settings then
-    if (!wasInitialized()) {
-      // SD in cfgBean is provisional and kept here just in case there are settings coming through its SD
-      // e.g. when an MPS facet has been added, we create an SD in cfgBean to facilitate settings editing (see MPSFacetSourcesTab)
-      // and in case it has been changed, we need to propagate SD settings down into MPSFacetConfiguration
-      getConfiguration().loadState(configurationBean.getSolutionDescriptor(), configurationBean);
-      return;
+    getConfiguration().loadState(configurationBean);
+    if (wasInitialized()) {
+      // then refresh SD according to bean status.
+      myMpsProject.getModelAccess().runWriteAction(() -> mySolution.setModuleDescriptor(getConfiguration().createSolutionDescriptor()));
     }
-    // FIXME not clear why not descriptor from the bean, as it's the one being modified from e.g. MPSFacetSourcesTab
-    //       we imply here mySolution.getModuleDescriptor() === configurationBean.getSolutionDescriptor(), otherwise changed done to SD through
-    //       configurationBean.getSolutionDescriptor() would get lost.
-    assert configurationBean.getSolutionDescriptor() == null || configurationBean.getSolutionDescriptor() == mySolution.getModuleDescriptor();
-    getConfiguration().loadState(mySolution.getModuleDescriptor(), configurationBean);
-    myMpsProject.getModelAccess().runWriteAction(() -> mySolution.setModuleDescriptor(getConfiguration().createSolutionDescriptor()));
   }
 
   public Solution getSolution() {

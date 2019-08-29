@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.facet;
 
 import com.intellij.util.xmlb.annotations.AbstractCollection;
@@ -29,7 +28,6 @@ import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapter;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -37,7 +35,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -46,53 +43,24 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * FIXME shall decide whether {@link MPSFacetConfiguration} is stateful and this bean represents its state (then, cfg.getBean() call is justified and
- * FIXME dropDescriptorInstance() is not, as well as facet.setConfiguration(existingConfiguration)) or this class is a detached wrapper for
- * FIXME SolutionDescriptor and few MPSFacet-specific properties, and we can have a bean instance modified and eventually pushed into MPSFacetConfiguration
- * FIXME for consideration (that's what Configurable#apply and MPSFacetCommonTab#onFacetInitialized() suggest. getBean accessor shall cease then,
- * FIXME MPSFacet-specific properties to become exposed in MPSFacetConfiguration, which would manage Bean instance and associated SolutionDescriptor.)
- * evgeny, 10/26/11
+ * This class {@code MPSConfigurationBean} is a editing handle for {@link MPSFacetConfiguration}, exposing information otherwise kept
+ * in {@code SolutionDescriptor} along with few MPSFacet-specific properties that are not in SD. {@code MPSConfigurationBean.State} is IDEA counterpart to
+ * persist data of the bean.
+ *
+ * One can have a bean instance modified and eventually pushed into MPSFacetConfiguration for consideration using {@code MPSFacet#setConfiguration(MPSConfigurationBean)}
+ * We need this detached instance to perform changes in Configurable#apply and commit them eventually in MPSFacetCommonTab#onFacetInitialized().
  */
 public final class MPSConfigurationBean {
 
-  // FIXME this value is solely to overcome present limitation of SModuleConfigurationTab to get MPSConfigurationBean and the need to access SD from it.
-  private SolutionDescriptor myDescriptor;
   private final State myState;
 
-  /*package*/ MPSConfigurationBean(SolutionDescriptor sd, MPSConfigurationBean other) {
-    myDescriptor = sd;
-    // XXX contruct of the constructor is unclear, whether it's settings of other that shall take precedence or that in sd.
-    // loadFrom(other.myState) respects former, while other.toState() is for latter.
-    myState = new State();
-    loadFrom(other.myState);
-  }
-
+  // just a handy alternative to new MPSConfigurationBean(other.toState)
   /*package*/ MPSConfigurationBean(MPSConfigurationBean other) {
-    myDescriptor = null;
     myState = other.toState();
   }
 
-  public MPSConfigurationBean() {
-    myDescriptor = null;
-    myState = new State();
-  }
-
-  // use only if you know what you're doing
-  @Nullable
-  @Deprecated
-  public SolutionDescriptor getSolutionDescriptor() {
-    return myDescriptor;
-  }
-
-  /**
-   * The only scenario for this method is the moment MPS facet is added. MPSFacetConfiguration#getBean()
-   * can not take any existing SD (MPSFacet has not been initialized yet), but MPSFacetSourcesTab we are going to
-   * present to a user need SD to fill in model roots.
-   */
-  /*package*/ void initSolutionDescriptorIfNone() {
-    if (myDescriptor == null) {
-      myDescriptor = newSolutionDescriptor();
-    }
+  public MPSConfigurationBean(State persistedState) {
+    myState = persistedState;
   }
 
   // shall be visible for tests
@@ -176,7 +144,7 @@ public final class MPSConfigurationBean {
     // markBeanAsChangedIfAnyoneCares
   }
 
-  // don't use this unless trully necessary. set of actual roots is available from the solution associated with the facet
+  // don't use this unless truly necessary. set of actual roots is available from the solution associated with the facet
   // use this method for initialization/setup purposes only
   public Collection<ModelRootDescriptor> getModelRootDescriptors() {
     List<ModelRootDescriptor> mrd = new ArrayList<>();
@@ -190,25 +158,8 @@ public final class MPSConfigurationBean {
     // markBeanAsChangedIfAnyoneCares
   }
 
-  public void loadFrom(State state) {
-    // I'd like to keep myState final, and array fields as independent copy, thus don't use myState = state.clone();
-    setId(state.UUID);
-    setGeneratorOutputPath(state.generatorOutputPath);
-    setUseModuleSourceFolder(state.useModuleSourceFolder);
-    setUseTransientOutputFolder(state.useTransientOutputFolder);
-    myState.rootDescriptors = state.rootDescriptors == null ? null : state.rootDescriptors.clone();
-    Map<String, Integer> lv = state.languageVersions;
-    myState.languageVersions = lv == null ? null : new HashMap<String, Integer>(lv);
-    Map<String, Integer> dv = state.dependencyVersions;
-    myState.dependencyVersions = dv == null ? null : new HashMap<String, Integer>(dv);
-    // markBeanAsChangedIfAnyoneCares // just in case
-  }
-
   public State toState() {
-    if (myDescriptor == null) {
-      return myState.clone();
-    }
-    return toState(myDescriptor);
+    return myState.clone();
   }
 
   /*package*/ State toState(SolutionDescriptor actualDescriptor) {
