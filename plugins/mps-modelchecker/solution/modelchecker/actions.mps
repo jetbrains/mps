@@ -525,7 +525,7 @@
     <property role="1qHB85" value="/MPS_16.png" />
     <property role="TrG5h" value="Model Checker" />
     <property role="9BnSO" value="192.1" />
-    <property role="9BnSK" value="2019.2" />
+    <property role="9BnSK" value="2019.2.1" />
   </node>
   <node concept="tC5Ba" id="1gEYwydCrTu">
     <property role="TrG5h" value="CheckProject" />
