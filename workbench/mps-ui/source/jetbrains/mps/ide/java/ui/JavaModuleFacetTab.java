@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.java.ui;
 
+import com.intellij.mock.MockVirtualFile;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
@@ -45,6 +46,7 @@ import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.Language;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
 
@@ -331,7 +333,23 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private static Collection<VirtualFile> convertStringPaths2VirtualFile(Collection<String> paths) {
     final Collection<VirtualFile> result = new ArrayList<>(paths.size());
     for (String path : paths) {
-      result.add(LocalFileSystem.getInstance().findFileByPath(path));
+      final VirtualFile fileByPath = LocalFileSystem.getInstance().findFileByPath(path);
+      if (fileByPath != null) {
+        result.add(fileByPath);
+      } else {
+        result.add(new MockVirtualFile(path) {
+          @Override
+          public boolean exists() {
+            return false;
+          }
+
+          @NotNull
+          @Override
+          public String getPath() {
+            return getName();
+          }
+        });
+      }
     }
     return result;
   }
