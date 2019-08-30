@@ -46,7 +46,7 @@ public class ModuleUpdater {
   private final Set<ReloadableModule> myModulesToReload = new LinkedHashSet<>();
   private final Set<SModuleReference> myModulesToRemove = new LinkedHashSet<>();
   private final Condition<ReloadableModule> myWatchableCondition;
-  private final GraphHolder<SModuleReference> myDepGraph = new GraphHolder<>();
+  private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   private final ReferenceStorage<ReloadableModule> myRefStorage;
   private final SRepository myRepository;
   private final Map<ReloadableModule, List<SearchError>> myModulesWithAbsentDeps = new HashMap<>();
@@ -99,7 +99,7 @@ public class ModuleUpdater {
 
   public Collection<SModuleReference> getModules() {
     synchronized (LOCK) {
-      return myDepGraph.getVertices();
+      return myDepGraphHolder.getVertices();
     }
   }
 
@@ -123,9 +123,9 @@ public class ModuleUpdater {
       try {
         myChangedFlag = false;
         UsedModulesCollector usedModulesCollector = new UsedModulesCollector();
-        myDepGraph.checkGraphsCorrectness();
-        int wasEdges = myDepGraph.getEdgesCount();
-        int wasVertices = myDepGraph.getVerticesCount();
+        myDepGraphHolder.checkGraphsCorrectness();
+        int wasEdges = myDepGraphHolder.getEdgesCount();
+        int wasVertices = myDepGraphHolder.getVerticesCount();
 
         myModulesWithAbsentDeps.clear();
         boolean updated = !myModulesToAdd.isEmpty() || !myModulesToRemove.isEmpty();
@@ -136,8 +136,8 @@ public class ModuleUpdater {
         myModulesToAdd.clear();
         myModulesToReload.clear();
 
-        LOG.debug("Difference in the vertex count after validation " + (myDepGraph.getVerticesCount() - wasVertices));
-        LOG.debug("Difference in the edge count after validation " + (myDepGraph.getEdgesCount() - wasEdges));
+        LOG.debug("Difference in the vertex count after validation " + (myDepGraphHolder.getVerticesCount() - wasVertices));
+        LOG.debug("Difference in the edge count after validation " + (myDepGraphHolder.getEdgesCount() - wasEdges));
         return updated;
       } finally {
         LOG.info(String.format("Classloading refresh took %.3f s", (System.nanoTime() - beginTime) / 1e9));
@@ -151,9 +151,9 @@ public class ModuleUpdater {
 
   private void updateRemoved(Set<? extends SModuleReference> modulesToRemove) {
     for (SModuleReference mRef : modulesToRemove) {
-      if (!myDepGraph.contains(mRef)) continue;
+      if (!myDepGraphHolder.contains(mRef)) continue;
       LOG.debug("Removing module " + mRef);
-      myDepGraph.remove(mRef);
+      myDepGraphHolder.remove(mRef);
     }
   }
 
@@ -179,7 +179,7 @@ public class ModuleUpdater {
       LOG.debug("Adding module " + module);
       assert myWatchableCondition.met(module);
       assert module.getRepository() != null;
-      myDepGraph.add(module.getModuleReference());
+      myDepGraphHolder.add(module.getModuleReference());
     }
   }
 
@@ -191,7 +191,7 @@ public class ModuleUpdater {
    */
   private void updateAllEdges(UsedModulesCollector usedModulesCollector) {
     myRepository.getModelAccess().checkReadAccess();
-    Collection<? extends SModuleReference> allRefs = myDepGraph.getVertices();
+    Collection<? extends SModuleReference> allRefs = myDepGraphHolder.getVertices();
     for (SModuleReference ref : allRefs) {
       ReloadableModule module = myRefStorage.resolveRef(ref);
       assert module != null;
@@ -204,7 +204,7 @@ public class ModuleUpdater {
       }
       for (ReloadableModule dep : deps) {
         if (allRefs.contains(dep.getModuleReference())) {
-          myDepGraph.addEdge(ref, dep.getModuleReference());
+          myDepGraphHolder.addEdge(ref, dep.getModuleReference());
         } else {
 //        valid if somebody calls reloadModule in moduleAdded() listener before us
           LOG.warn("The dependent module " + dep + " of the " + module + " is not registered");
@@ -220,8 +220,8 @@ public class ModuleUpdater {
       assert myWatchableCondition.met(module);
       assert module.getRepository() != null;
       SModuleReference mRef = module.getModuleReference();
-      if (!myDepGraph.contains(mRef)) {
-        myDepGraph.add(mRef);
+      if (!myDepGraphHolder.contains(mRef)) {
+        myDepGraphHolder.add(mRef);
         updated = true;
       }
     }
@@ -234,10 +234,10 @@ public class ModuleUpdater {
   private boolean updateReloadedEdges(Set<? extends ReloadableModule> modulesToReload, UsedModulesCollector usedModulesCollector) {
     boolean updated = false;
     myRepository.getModelAccess().checkReadAccess();
-    Collection<? extends SModuleReference> allRefs = myDepGraph.getVertices();
+    Collection<? extends SModuleReference> allRefs = myDepGraphHolder.getVertices();
     for (ReloadableModule module : modulesToReload) {
       SModuleReference mRef = module.getModuleReference();
-      Collection<? extends SModuleReference> currentDeps = new HashSet<SModuleReference>(myDepGraph.getOutgoingEdges(mRef));
+      Collection<? extends SModuleReference> currentDeps = new HashSet<SModuleReference>(myDepGraphHolder.getOutgoingEdges(mRef));
       DepsWithErrors depsWithErrors = getDepsWithErrors(module, usedModulesCollector);
       if (!depsWithErrors.errors.isEmpty()) {
         assert myModulesWithAbsentDeps.containsKey(module);
@@ -248,7 +248,7 @@ public class ModuleUpdater {
         SModuleReference depRef = moduleDep.getModuleReference();
         if (!currentDeps.contains(depRef)) {
           if (allRefs.contains(depRef)) {
-            myDepGraph.addEdge(mRef, depRef);
+            myDepGraphHolder.addEdge(mRef, depRef);
             updated = true;
           }
         } else {
@@ -256,7 +256,7 @@ public class ModuleUpdater {
         }
       }
       for (SModuleReference curDep : currentDeps) {
-        myDepGraph.removeEdge(mRef, curDep);
+        myDepGraphHolder.removeEdge(mRef, curDep);
         updated = true;
       }
     }
@@ -285,10 +285,20 @@ public class ModuleUpdater {
     return new DepsWithErrors(deps, errors);
   }
 
-  public Collection<SModuleReference> getDeps(Iterable<? extends SModuleReference> mRefs) {
+  public Collection<SModuleReference> getDirectDeps(Iterable<SModuleReference> mRefs) {
     synchronized (LOCK) {
       final Collection<SModuleReference> result = new ArrayList<>();
-      Graph<SModuleReference> depGraph = myDepGraph.getGraph();
+      for (SModuleReference mRef : mRefs) {
+        result.addAll(myDepGraphHolder.getOutgoingEdges(mRef));
+      }
+      return result;
+    }
+  }
+
+  public Collection<SModuleReference> getDeps(Iterable<SModuleReference> mRefs) {
+    synchronized (LOCK) {
+      final Collection<SModuleReference> result = new ArrayList<>();
+      Graph<SModuleReference> depGraph = myDepGraphHolder.getGraph();
       depGraph.dfs(mRefs, result::add);
       return Collections.unmodifiableCollection(result);
     }
@@ -297,7 +307,7 @@ public class ModuleUpdater {
   public Collection<SModuleReference> getBackDeps(Iterable<? extends SModuleReference> mRefs) {
     synchronized (LOCK) {
       final Collection<SModuleReference> result = new LinkedHashSet<>();
-      Graph<SModuleReference> backDepGraph = myDepGraph.getConjugateGraph();
+      Graph<SModuleReference> backDepGraph = myDepGraphHolder.getConjugateGraph();
       backDepGraph.dfs(mRefs, result::add);
       return Collections.unmodifiableCollection(result);
     }
@@ -309,7 +319,7 @@ public class ModuleUpdater {
 
   public boolean contains(SModuleReference mRef) {
     synchronized (LOCK) {
-      return myDepGraph.contains(mRef);
+      return myDepGraphHolder.contains(mRef);
     }
   }
 

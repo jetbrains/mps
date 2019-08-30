@@ -261,15 +261,12 @@ public class ModulesWatcher {
   private void checkStatusMapCorrectness() {
     assert myStatusMap.size() == getAllModules().size() : "Modules number inconsistency";
     for (SModuleReference mRef : getAllModules()) {
-      ClassLoadingStatus status = VALID;
-      for (SModuleReference mRef1 : getDependencies(Collections.singleton(mRef))) {
+      ClassLoadingStatus status = getStatus(mRef);
+      for (SModuleReference mRef1 : getDirectDependencies(Collections.singleton(mRef))) {
         ClassLoadingStatus status1 = getStatus(mRef1);
-        if (!status1.isValid()) {
-          status = status1;
+        if (!status1.isValid() && status.isValid()) {
+          throw new IllegalStateException("Valid module " + mRef + " depends on invalid " + mRef1);
         }
-      }
-      if (status != getStatus(mRef)) {
-        throw new IllegalStateException("Status is wrong for the module " + mRef);
       }
     }
   }
@@ -281,8 +278,12 @@ public class ModulesWatcher {
   /**
    * @return all dependencies of this module (closed set under dependency-relation)
    */
-  public Collection<SModuleReference> getDependencies(Iterable<? extends SModuleReference> mRefs) {
+  public Collection<SModuleReference> getDependencies(Iterable<SModuleReference> mRefs) {
     return myModuleUpdater.getDeps(mRefs);
+  }
+
+  private Collection<SModuleReference> getDirectDependencies(Iterable<SModuleReference> mRefs) {
+    return myModuleUpdater.getDirectDeps(mRefs);
   }
 
   Collection<ReloadableModule> getResolvedDependencies(Iterable<? extends ReloadableModule> modules) {
