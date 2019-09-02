@@ -177,6 +177,8 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
     myState.useTwoStepDeletion = useTwoStepDeletion;
   }
 
+  @Deprecated
+  // todo: merge read-only and editable default editors, remove this flag
   public boolean isReflectiveEditorReadonly() {
     return myState.reflectiveEditorReadonly;
   }
