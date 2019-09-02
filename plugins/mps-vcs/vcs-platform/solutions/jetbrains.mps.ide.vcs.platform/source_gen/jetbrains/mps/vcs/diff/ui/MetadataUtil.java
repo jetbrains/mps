@@ -23,8 +23,8 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -61,10 +61,12 @@ public class MetadataUtil {
       SPropertyOperations.assign(root, PROPS.donotgenerate$pfHD, check_ca1g54_a0a0e0i(((GeneratableSModel) origin)));
     }
     for (SLanguage language : CollectionSequence.fromCollection(modelBase.importedLanguageIds())) {
-      ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$8rUz)).addElement(createLanguageNode(language));
+      int version = ((SModelBase) origin).getLanguageImportVersion(language);
+      ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$8rUz)).addElement(createLanguageNode(language, version));
     }
     for (SLanguage genlanguage : CollectionSequence.fromCollection(modelBase.getLanguagesEngagedOnGeneration())) {
-      ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.languageEngagedOnGeneration$8rVx)).addElement(createLanguageNode(genlanguage));
+      int version = ((SModelBase) origin).getLanguageImportVersion(genlanguage);
+      ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.languageEngagedOnGeneration$8rVx)).addElement(createLanguageNode(genlanguage, version));
     }
     for (SModuleReference devkit : ListSequence.fromList(modelBase.importedDevkits())) {
       ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.devkit$8rWY)).addElement(createModuleRefNode(devkit));
@@ -76,7 +78,7 @@ public class MetadataUtil {
     SModelOperations.addRootNode(myMetadataModel, root);
   }
 
-  private SNode createLanguageNode(SLanguage lang) {
+  private SNode createLanguageNode(SLanguage lang, int version) {
     // Though it's possible to reduce mps.ide.vcs.modelmetadata language to no concepts but Model, 
     // and re-use various *Identity concepts from lang.modelapi/lang.smodel, I leave these custom wrappers for string properties 
     // to keep the language simple and isolated 
@@ -89,6 +91,7 @@ public class MetadataUtil {
     // (although the right way is to extract part of smodel language related to metadata handling, like LanguageIdentity 
     // into separate language and re-use it here). 
     SPropertyOperations.assign(rv, PROPS.value$M$5V, langIdentity);
+    SPropertyOperations.assign(rv, PROPS.version$jslc, version);
     return rv;
   }
 
@@ -135,19 +138,20 @@ public class MetadataUtil {
     }
 
     Set<SLanguage> oldImpLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), modelBase.importedLanguageIds());
-    Set<SLanguage> impLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$8rUz)).select(new ISelector<SNode, SLanguage>() {
-      public SLanguage select(SNode it) {
-        return getLanguage(it);
+    Set<SLanguage> impLang = SetSequence.fromSet(new LinkedHashSet<SLanguage>());
+    for (SNode langNode : ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$8rUz))) {
+      SLanguage lang = getLanguage(langNode);
+      SetSequence.fromSet(impLang).addElement(lang);
+      if (!((SetSequence.fromSet(oldImpLang).contains(lang)))) {
+        modelBase.addLanguage(lang);
       }
-    }));
+      if (modelBase.getLanguageImportVersion(lang) != SPropertyOperations.getInteger(langNode, PROPS.version$jslc)) {
+        modelBase.setLanguageImportVersion(lang, SPropertyOperations.getInteger(langNode, PROPS.version$jslc));
+      }
+    }
     SetSequence.fromSet(oldImpLang).subtract(SetSequence.fromSet(impLang)).visitAll(new IVisitor<SLanguage>() {
       public void visit(SLanguage it) {
         modelBase.deleteLanguageId(it);
-      }
-    });
-    SetSequence.fromSet(impLang).subtract(SetSequence.fromSet(oldImpLang)).visitAll(new IVisitor<SLanguage>() {
-      public void visit(SLanguage it) {
-        modelBase.addLanguage(it);
       }
     });
 
@@ -223,6 +227,7 @@ public class MetadataUtil {
     /*package*/ static final SProperty donotgenerate$pfHD = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, 0x7439be589a4e11f4L, "donotgenerate");
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty value$M$5V = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, 0x660570953ee5dadfL, "value");
+    /*package*/ static final SProperty version$jslc = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, 0x3a0603c78a570dceL, "version");
     /*package*/ static final SProperty stringValue$RDoF = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L, 0x39c8ca3b79aaafe2L, "stringValue");
     /*package*/ static final SProperty stringValue$RDd0 = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafdeL, 0x39c8ca3b79aaafdfL, "stringValue");
   }

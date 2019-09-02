@@ -70,6 +70,10 @@
       </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
+        <child id="1224071154657" name="classifierType" index="0kSFW" />
+        <child id="1224071154656" name="expression" index="0kSFX" />
+      </concept>
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -10337,6 +10341,27 @@
               </node>
             </node>
           </node>
+          <node concept="3cpWs8" id="3C60WuajduI" role="3cqZAp">
+            <node concept="3cpWsn" id="3C60WuajduJ" role="3cpWs9">
+              <property role="TrG5h" value="model" />
+              <node concept="3uibUv" id="3C60Wuajj2j" role="1tU5fm">
+                <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
+              </node>
+              <node concept="0kSF2" id="3C60WuajfcE" role="33vP2m">
+                <node concept="3uibUv" id="3C60WuajgF5" role="0kSFW">
+                  <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
+                </node>
+                <node concept="2OqwBi" id="3C60WuajduK" role="0kSFX">
+                  <node concept="37vLTw" id="3C60WuajduL" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2QnDi8QvcfQ" resolve="event" />
+                  </node>
+                  <node concept="liA8E" id="3C60WuajduM" role="2OqNvi">
+                    <ref role="37wK5l" to="j9co:~SModelEvent.getModel()" resolve="getModel" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="4TP40u00TwR" role="3cqZAp">
             <node concept="3cpWsn" id="4TP40u00TwP" role="3cpWs9">
               <property role="3TUv4t" value="true" />
@@ -10462,6 +10487,23 @@
                   </node>
                   <node concept="3clFbJ" id="4TP40u00zTU" role="3cqZAp">
                     <node concept="3clFbS" id="4TP40u00zTV" role="3clFbx">
+                      <node concept="3cpWs8" id="3C60Wuaecjw" role="3cqZAp">
+                        <node concept="3cpWsn" id="3C60Wuaecjx" role="3cpWs9">
+                          <property role="TrG5h" value="version" />
+                          <node concept="10Oyi0" id="3C60Wuaecjy" role="1tU5fm" />
+                          <node concept="2OqwBi" id="3C60Wuaj9EL" role="33vP2m">
+                            <node concept="37vLTw" id="3C60Wuaj8lP" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3C60WuajduJ" resolve="model" />
+                            </node>
+                            <node concept="liA8E" id="3C60WuajaA$" role="2OqNvi">
+                              <ref role="37wK5l" to="w1kc:~SModelInternal.getLanguageImportVersion(org.jetbrains.mps.openapi.language.SLanguage)" resolve="getLanguageImportVersion" />
+                              <node concept="37vLTw" id="3C60Wuajb46" role="37wK5m">
+                                <ref role="3cqZAo" node="4TP40u00Dz3" resolve="eventLang" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="4TP40u00zTW" role="3cqZAp">
                         <node concept="1rXfSq" id="4TP40u00zTX" role="3clFbG">
                           <ref role="37wK5l" node="5pmMiWv$OQ7" resolve="addChange" />
@@ -10476,11 +10518,24 @@
                                   <ref role="37wK5l" node="2JwSLRbzn5Q" resolve="getChangeSet" />
                                 </node>
                               </node>
-                              <node concept="37vLTw" id="4TP40u00US9" role="37wK5m">
-                                <ref role="3cqZAo" node="4TP40u00TwP" resolve="deleted" />
-                              </node>
                               <node concept="37vLTw" id="4TP40u00Vhz" role="37wK5m">
                                 <ref role="3cqZAo" node="4TP40u00Dz3" resolve="eventLang" />
+                              </node>
+                              <node concept="37vLTw" id="3C60WuairYG" role="37wK5m">
+                                <ref role="3cqZAo" node="3C60Wuaecjx" resolve="version" />
+                              </node>
+                              <node concept="3K4zz7" id="3C60Wuajso7" role="37wK5m">
+                                <node concept="37vLTw" id="3C60Wuajrbf" role="3K4Cdx">
+                                  <ref role="3cqZAo" node="4TP40u00TwP" resolve="deleted" />
+                                </node>
+                                <node concept="Rm8GO" id="3C60Wuai79k" role="3K4E3e">
+                                  <ref role="1Px2BO" to="btf5:7inhnIFBpHM" resolve="ChangeType" />
+                                  <ref role="Rm8GQ" to="btf5:7inhnIFBpHU" resolve="DELETE" />
+                                </node>
+                                <node concept="Rm8GO" id="3C60WuajsPS" role="3K4GZi">
+                                  <ref role="Rm8GQ" to="btf5:7inhnIFBpHO" resolve="ADD" />
+                                  <ref role="1Px2BO" to="btf5:7inhnIFBpHM" resolve="ChangeType" />
+                                </node>
                               </node>
                             </node>
                           </node>

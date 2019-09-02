@@ -42,14 +42,15 @@ import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
 import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import java.util.Collection;
+import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import java.util.HashSet;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
+import java.util.Collection;
 import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.vcs.diff.changes.DoNotGenerateOptionChange;
-import java.util.HashSet;
-import java.util.Set;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 public class ChangeSetBuilder {
@@ -248,15 +249,27 @@ public class ChangeSetBuilder {
   }
 
   private void buildForUsedLanguages() {
-    buildAddedAndDeletedDependencies(new _FunctionTypes._return_P1_E0<Collection<SLanguage>, SModelBase>() {
-      public Collection<SLanguage> invoke(SModelBase m) {
-        return m.importedLanguageIds();
+    SModelBase oldModel = (SModelBase) myOldModel;
+    SModelBase newModel = (SModelBase) myNewModel;
+    Set<SLanguage> oldLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), oldModel.importedLanguageIds());
+    Set<SLanguage> newLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), newModel.importedLanguageIds());
+    // deleted 
+    for (SLanguage lang : SetSequence.fromSet(oldLanguages).subtract(SetSequence.fromSet(newLanguages))) {
+      int oldVersion = oldModel.getLanguageImportVersion(lang);
+      UsedLanguageChange change = new UsedLanguageChange(myChangeSet, lang, oldVersion, ChangeType.DELETE);
+      ListSequence.fromList(myNewChanges).addElement(change);
+    }
+    // added & changed 
+    for (SLanguage lang : SetSequence.fromSet(newLanguages)) {
+      int newVersion = newModel.getLanguageImportVersion(lang);
+      if (!((SetSequence.fromSet(oldLanguages).contains(lang)))) {
+        UsedLanguageChange change = new UsedLanguageChange(myChangeSet, lang, newVersion, ChangeType.ADD);
+        ListSequence.fromList(myNewChanges).addElement(change);
+      } else if (oldModel.getLanguageImportVersion(lang) != newVersion) {
+        UsedLanguageChange change = new UsedLanguageChange(myChangeSet, lang, newVersion, ChangeType.CHANGE);
+        ListSequence.fromList(myNewChanges).addElement(change);
       }
-    }, new _FunctionTypes._return_P2_E0<UsedLanguageChange, SLanguage, Boolean>() {
-      public UsedLanguageChange invoke(SLanguage l, Boolean deleted) {
-        return new UsedLanguageChange(myChangeSet, deleted, l);
-      }
-    });
+    }
   }
 
   private void buildForLanguagesEngagedOnGeneration() {

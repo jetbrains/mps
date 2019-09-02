@@ -81,7 +81,9 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -616,6 +618,7 @@ public class ChangesTracking {
     @Override
     public void visitLanguageEvent(SModelLanguageEvent event) {
       final SLanguage eventLang = event.getEventLanguage();
+      final SModelInternal model = as_5iuzi5_a0a1a21ac(event.getModel(), SModelInternal.class);
       final boolean deleted = !(event.isAdded());
       runUpdateTask(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
@@ -626,7 +629,8 @@ public class ChangesTracking {
               return eventLang.equals(ulc.getLanguage());
             }
           }) == 0) {
-            addChange(new UsedLanguageChange(myDifference.getChangeSet(), deleted, eventLang));
+            int version = model.getLanguageImportVersion(eventLang);
+            addChange(new UsedLanguageChange(myDifference.getChangeSet(), eventLang, version, (deleted ? ChangeType.DELETE : ChangeType.ADD)));
           }
         }
       }, null, event);
@@ -684,6 +688,9 @@ public class ChangesTracking {
       return checkedDotOperand.getNodeId();
     }
     return null;
+  }
+  private static <T> T as_5iuzi5_a0a1a21ac(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {

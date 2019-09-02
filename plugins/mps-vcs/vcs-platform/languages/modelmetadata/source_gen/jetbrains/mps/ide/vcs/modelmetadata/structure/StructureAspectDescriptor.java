@@ -67,6 +67,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:d1664c60-f6de-4b25-a874-54417df516ea(jetbrains.mps.ide.vcs.modelmetadata.structure)/7351405753059890873");
     b.version(2);
     b.property("value", 0x660570953ee5dadfL).type(PrimitiveTypeId.STRING).origin("7351405753059891935").done();
+    b.property("version", 0x3a0603c78a570dceL).type(PrimitiveTypeId.INTEGER).origin("4181033459614420430").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForModel() {

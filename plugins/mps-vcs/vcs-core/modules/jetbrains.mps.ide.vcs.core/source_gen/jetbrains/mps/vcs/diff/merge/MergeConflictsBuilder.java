@@ -37,8 +37,9 @@ import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
+import java.util.ArrayList;
 
 public class MergeConflictsBuilder {
   private SModel myBaseModel;
@@ -218,6 +219,38 @@ public class MergeConflictsBuilder {
       }
     }, ModuleDependencyChange.class);
   }
+  private void collectSymmetricAndConflictedUsedLanguageChanges() {
+    final Map<SLanguage, UsedLanguageChange> mine = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
+    final Map<SLanguage, UsedLanguageChange> repo = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
+    Sequence.fromIterable(myMineChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll(new IVisitor<UsedLanguageChange>() {
+      public void visit(UsedLanguageChange ch) {
+        MapSequence.fromMap(mine).put(ch.getLanguage(), ch);
+      }
+    });
+    Sequence.fromIterable(myRepositoryChangeSet.getModelChanges(UsedLanguageChange.class)).visitAll(new IVisitor<UsedLanguageChange>() {
+      public void visit(UsedLanguageChange ch) {
+        MapSequence.fromMap(repo).put(ch.getLanguage(), ch);
+      }
+    });
+
+    for (SLanguage lang : SetSequence.fromSet(MapSequence.fromMap(mine).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(repo).keySet()))) {
+      UsedLanguageChange mineChange = MapSequence.fromMap(mine).get(lang);
+      UsedLanguageChange repoChange = MapSequence.fromMap(repo).get(lang);
+      if (mineChange.getType() == ChangeType.DELETE && repoChange.getType() == ChangeType.DELETE) {
+        // delete the same language 
+        addSymmetric(mineChange, repoChange);
+      } else if (mineChange.getType() == ChangeType.DELETE || repoChange.getType() == ChangeType.DELETE) {
+        // delete vs update => conflict 
+        addConflict(mineChange, repoChange);
+      } else if (mineChange.getVersion() == repoChange.getVersion()) {
+        // added or updated with the same version 
+        addSymmetric(mineChange, repoChange);
+      } else {
+        // added with different versions or changed version differently 
+        addConflict(mineChange, repoChange);
+      }
+    }
+  }
   private void collectConflicts() {
     Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> mineGroupChanges = arrangeNodeGroupChanges(myMineChangeSet);
     Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> repositoryGroupChanges = arrangeNodeGroupChanges(myRepositoryChangeSet);
@@ -251,11 +284,7 @@ public class MergeConflictsBuilder {
     collectConflictingRootAdds();
 
     collectSymmetricImportedModelChanges();
-    collectSymmetricChanges(new _FunctionTypes._return_P1_E0<SLanguage, UsedLanguageChange>() {
-      public SLanguage invoke(UsedLanguageChange udc) {
-        return udc.getLanguage();
-      }
-    }, UsedLanguageChange.class);
+    collectSymmetricAndConflictedUsedLanguageChanges();
     collectSymmetricModuleDependencyChanges();
   }
   private static Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> arrangeNodeGroupChanges(ChangeSet changeSet) {

@@ -5,27 +5,47 @@ package jetbrains.mps.vcs.diff.changes;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
+import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.extapi.model.SModelBase;
 
-public class UsedLanguageChange extends DependencyChange {
+public class UsedLanguageChange extends MetadataChange {
   private final SLanguage myLanguage;
+  private final int myNewVersion;
+  private final ChangeType myChangeType;
 
-  public UsedLanguageChange(@NotNull ChangeSet changeSet, boolean delete, @NotNull SLanguage language) {
-    super(changeSet, delete);
+  public UsedLanguageChange(@NotNull ChangeSet changeSet, @NotNull SLanguage language, int version, ChangeType changeType) {
+    super(changeSet);
     myLanguage = language;
+    myNewVersion = version;
+    // ChangeType:  ADD - language added, DELETE - language deleted, CHANGE - version changed 
+    myChangeType = changeType;
+  }
+
+  @NotNull
+  @Override
+  public ChangeType getType() {
+    return myChangeType;
   }
 
   @NotNull
   protected ModelChange createOppositeChange() {
-    return new UsedLanguageChange(getChangeSet().getOppositeChangeSet(), !(isDelete()), myLanguage);
+    SModelInternal oldModel = as_72pvsi_a0a0a8(getChangeSet().getOldModel(), SModelInternal.class);
+    int oldVersion = oldModel.getLanguageImportVersion(myLanguage);
+    return new UsedLanguageChange(getChangeSet().getOppositeChangeSet(), myLanguage, oldVersion, (myChangeType == ChangeType.ADD ? ChangeType.DELETE : (myChangeType == ChangeType.DELETE ? ChangeType.ADD : myChangeType)));
   }
 
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
-    if (isDelete()) {
-      ((SModelBase) model).deleteLanguageId(myLanguage);
-    } else {
-      ((SModelBase) model).addLanguage(myLanguage);
+    SModelBase baseModel = (SModelBase) model;
+    switch (myChangeType) {
+      case ADD:
+        baseModel.addLanguage(myLanguage);
+      case CHANGE:
+        baseModel.setLanguageImportVersion(myLanguage, myNewVersion);
+        break;
+      case DELETE:
+        baseModel.deleteLanguageId(myLanguage);
+        break;
     }
   }
 
@@ -33,14 +53,28 @@ public class UsedLanguageChange extends DependencyChange {
     return myLanguage;
   }
 
+  public int getVersion() {
+    return myNewVersion;
+  }
+
   @Override
   public String getDescription() {
-    String fmt = (isDelete() ? "Remove language %s" : "Add language %s");
-    return String.format(fmt, myLanguage.getQualifiedName());
+    switch (myChangeType) {
+      case ADD:
+        return String.format("Add language %s version %d", myLanguage.getQualifiedName(), myNewVersion);
+      case DELETE:
+        return String.format("Remove language %s", myLanguage.getQualifiedName());
+      case CHANGE:
+        return String.format("Change language %s version to %d", myLanguage.getQualifiedName(), myNewVersion);
+    }
+    return String.format("Language %s version %d - unknown change", myLanguage.getQualifiedName(), myNewVersion);
   }
 
   @Override
   public String toString() {
     return myLanguage.toString();
+  }
+  private static <T> T as_72pvsi_a0a0a8(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }
