@@ -320,7 +320,7 @@ public class UsagesTree extends MPSTree {
     int i = 0;
     while (i < childrenQueue.size()) {
       final BaseNodeData child = childrenQueue.get(i);
-      if (nodeCategories.contains(child.getRole()) || data.isPathTail()) {
+      if (nodeCategories.contains(child.getRole()) || child.isPathTail()) {
         // regular, visible child element, just move on to the next one
         i++;
       } else {
