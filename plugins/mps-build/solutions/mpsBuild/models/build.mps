@@ -29417,6 +29417,11 @@
             <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
           </node>
         </node>
+        <node concept="1SiIV0" id="2IxIgNCjW8" role="3bR37C">
+          <node concept="3bR9La" id="2IxIgNCjW9" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="4vCqlNf$m2h" role="3989C9">
