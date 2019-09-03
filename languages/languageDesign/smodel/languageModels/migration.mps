@@ -10445,43 +10445,41 @@
                                   </node>
                                 </node>
                                 <node concept="3clFbF" id="2mG04EKVPTo" role="3cqZAp">
-                                  <node concept="2OqwBi" id="2mG04EKVPTp" role="3clFbG">
-                                    <node concept="1P9Npp" id="2mG04EKVPTq" role="2OqNvi">
-                                      <node concept="2c44tf" id="2mG04EKVPTr" role="1P9ThW">
-                                        <node concept="2OqwBi" id="2mG04EKVPTs" role="2c44tc">
-                                          <node concept="1XH99k" id="2mG04EKVPTt" role="2Oq$k0">
-                                            <node concept="2c44tb" id="2mG04EKVPTu" role="lGtFl">
-                                              <property role="2qtEX8" value="enumDeclaration" />
-                                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/5779574625830813396/5779574625830813397" />
-                                              <node concept="1LFfDK" id="2mG04EKVPTv" role="2c44t1">
-                                                <node concept="3cmrfG" id="2mG04EKVPTw" role="1LF_Uc">
-                                                  <property role="3cmrfH" value="1" />
-                                                </node>
-                                                <node concept="37vLTw" id="2mG04EKVPTx" role="1LFl5Q">
-                                                  <ref role="3cqZAo" node="2mG04EKVPRN" resolve="valueOpMatchedL" />
-                                                </node>
-                                              </node>
-                                            </node>
-                                          </node>
-                                          <node concept="2ViDtV" id="2mG04EKVPTy" role="2OqNvi">
-                                            <node concept="2c44tb" id="2mG04EKVPTz" role="lGtFl">
-                                              <property role="2qtEX8" value="memberDeclaration" />
-                                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1966870290088668512/1966870290088668516" />
-                                              <property role="3hQQBS" value="Enum_MemberLiteral" />
-                                              <node concept="37vLTw" id="2mG04EKVPT$" role="2c44t1">
-                                                <ref role="3cqZAo" node="2mG04EKVPTd" resolve="member" />
-                                              </node>
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="2OqwBi" id="2mG04EKVPT_" role="2Oq$k0">
+                                  <node concept="37vLTI" id="7zN2mmXBiFh" role="3clFbG">
+                                    <node concept="2OqwBi" id="2mG04EKVPT_" role="37vLTJ">
                                       <node concept="37vLTw" id="2mG04EKWoBe" role="2Oq$k0">
                                         <ref role="3cqZAo" node="2mG04EKWog3" resolve="replacement" />
                                       </node>
                                       <node concept="3TrEf2" id="2mG04EKWU4J" role="2OqNvi">
                                         <ref role="3Tt5mk" to="tpee:fJuHU4r" resolve="rightExpression" />
+                                      </node>
+                                    </node>
+                                    <node concept="2c44tf" id="2mG04EKVPTr" role="37vLTx">
+                                      <node concept="2OqwBi" id="2mG04EKVPTs" role="2c44tc">
+                                        <node concept="1XH99k" id="2mG04EKVPTt" role="2Oq$k0">
+                                          <node concept="2c44tb" id="2mG04EKVPTu" role="lGtFl">
+                                            <property role="2qtEX8" value="enumDeclaration" />
+                                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/5779574625830813396/5779574625830813397" />
+                                            <node concept="1LFfDK" id="2mG04EKVPTv" role="2c44t1">
+                                              <node concept="3cmrfG" id="2mG04EKVPTw" role="1LF_Uc">
+                                                <property role="3cmrfH" value="1" />
+                                              </node>
+                                              <node concept="37vLTw" id="2mG04EKVPTx" role="1LFl5Q">
+                                                <ref role="3cqZAo" node="2mG04EKVPRN" resolve="valueOpMatchedL" />
+                                              </node>
+                                            </node>
+                                          </node>
+                                        </node>
+                                        <node concept="2ViDtV" id="2mG04EKVPTy" role="2OqNvi">
+                                          <node concept="2c44tb" id="2mG04EKVPTz" role="lGtFl">
+                                            <property role="2qtEX8" value="memberDeclaration" />
+                                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1966870290088668512/1966870290088668516" />
+                                            <property role="3hQQBS" value="Enum_MemberLiteral" />
+                                            <node concept="37vLTw" id="2mG04EKVPT$" role="2c44t1">
+                                              <ref role="3cqZAo" node="2mG04EKVPTd" resolve="member" />
+                                            </node>
+                                          </node>
+                                        </node>
                                       </node>
                                     </node>
                                   </node>
@@ -10549,43 +10547,41 @@
                                   </node>
                                 </node>
                                 <node concept="3clFbF" id="2mG04EKVPSN" role="3cqZAp">
-                                  <node concept="2OqwBi" id="2mG04EKVPSO" role="3clFbG">
-                                    <node concept="1P9Npp" id="2mG04EKVPSP" role="2OqNvi">
-                                      <node concept="2c44tf" id="2mG04EKVPSQ" role="1P9ThW">
-                                        <node concept="2OqwBi" id="2mG04EKVPSR" role="2c44tc">
-                                          <node concept="1XH99k" id="2mG04EKVPSS" role="2Oq$k0">
-                                            <node concept="2c44tb" id="2mG04EKVPST" role="lGtFl">
-                                              <property role="2qtEX8" value="enumDeclaration" />
-                                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/5779574625830813396/5779574625830813397" />
-                                              <node concept="1LFfDK" id="2mG04EKVPSU" role="2c44t1">
-                                                <node concept="3cmrfG" id="2mG04EKVPSV" role="1LF_Uc">
-                                                  <property role="3cmrfH" value="1" />
-                                                </node>
-                                                <node concept="37vLTw" id="2mG04EKVPSW" role="1LFl5Q">
-                                                  <ref role="3cqZAo" node="2mG04EKVPRE" resolve="valueOpMatchedR" />
-                                                </node>
-                                              </node>
-                                            </node>
-                                          </node>
-                                          <node concept="2ViDtV" id="2mG04EKVPSX" role="2OqNvi">
-                                            <node concept="2c44tb" id="2mG04EKVPSY" role="lGtFl">
-                                              <property role="2qtEX8" value="memberDeclaration" />
-                                              <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1966870290088668512/1966870290088668516" />
-                                              <property role="3hQQBS" value="Enum_MemberLiteral" />
-                                              <node concept="37vLTw" id="2mG04EKVPSZ" role="2c44t1">
-                                                <ref role="3cqZAo" node="2mG04EKVPSw" resolve="member" />
-                                              </node>
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="2OqwBi" id="2mG04EKVPT0" role="2Oq$k0">
+                                  <node concept="37vLTI" id="7zN2mmXBhVH" role="3clFbG">
+                                    <node concept="2OqwBi" id="2mG04EKVPT0" role="37vLTJ">
                                       <node concept="37vLTw" id="2mG04EKWo7M" role="2Oq$k0">
                                         <ref role="3cqZAo" node="2mG04EKWnqQ" resolve="replacement" />
                                       </node>
                                       <node concept="3TrEf2" id="2mG04EKWUkT" role="2OqNvi">
                                         <ref role="3Tt5mk" to="tpee:fJuHU4s" resolve="leftExpression" />
+                                      </node>
+                                    </node>
+                                    <node concept="2c44tf" id="2mG04EKVPSQ" role="37vLTx">
+                                      <node concept="2OqwBi" id="2mG04EKVPSR" role="2c44tc">
+                                        <node concept="1XH99k" id="2mG04EKVPSS" role="2Oq$k0">
+                                          <node concept="2c44tb" id="2mG04EKVPST" role="lGtFl">
+                                            <property role="2qtEX8" value="enumDeclaration" />
+                                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/5779574625830813396/5779574625830813397" />
+                                            <node concept="1LFfDK" id="2mG04EKVPSU" role="2c44t1">
+                                              <node concept="3cmrfG" id="2mG04EKVPSV" role="1LF_Uc">
+                                                <property role="3cmrfH" value="1" />
+                                              </node>
+                                              <node concept="37vLTw" id="2mG04EKVPSW" role="1LFl5Q">
+                                                <ref role="3cqZAo" node="2mG04EKVPRE" resolve="valueOpMatchedR" />
+                                              </node>
+                                            </node>
+                                          </node>
+                                        </node>
+                                        <node concept="2ViDtV" id="2mG04EKVPSX" role="2OqNvi">
+                                          <node concept="2c44tb" id="2mG04EKVPSY" role="lGtFl">
+                                            <property role="2qtEX8" value="memberDeclaration" />
+                                            <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1966870290088668512/1966870290088668516" />
+                                            <property role="3hQQBS" value="Enum_MemberLiteral" />
+                                            <node concept="37vLTw" id="2mG04EKVPSZ" role="2c44t1">
+                                              <ref role="3cqZAo" node="2mG04EKVPSw" resolve="member" />
+                                            </node>
+                                          </node>
+                                        </node>
                                       </node>
                                     </node>
                                   </node>

@@ -156,7 +156,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
               if (member != null) {
                 SNode replacement = getReplacementForEqualsMethodCall(imco);
                 SLinkOperations.setTarget(replacement, LINKS.leftExpression$rxLZ, valueOpMatchedL._0());
-                SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(replacement, LINKS.rightExpression$rxBl), _quotation_createNode_dd9n22_a0a2a1a3a2a3a6a0a01(valueOpMatchedL._1(), member));
+                SLinkOperations.setTarget(replacement, LINKS.rightExpression$rxBl, _quotation_createNode_dd9n22_a0c0b0d0c0d0g0a0k(valueOpMatchedL._1(), member));
                 continue;
               }
             }
@@ -164,7 +164,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
               SNode member = matchConstant(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(imco), valueOpMatchedR._1());
               if (member != null) {
                 SNode replacement = getReplacementForEqualsMethodCall(imco);
-                SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(replacement, LINKS.leftExpression$rxLZ), _quotation_createNode_dd9n22_a0a1a1a4a2a3a6a0a01(valueOpMatchedR._1(), member));
+                SLinkOperations.setTarget(replacement, LINKS.leftExpression$rxLZ, _quotation_createNode_dd9n22_a0b0b0e0c0d0g0a0k(valueOpMatchedR._1(), member));
                 SLinkOperations.setTarget(replacement, LINKS.rightExpression$rxBl, valueOpMatchedR._0());
                 continue;
               }
@@ -650,7 +650,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_dd9n22_a0a2a1a3a2a3a6a0a01(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_dd9n22_a0c0b0d0c0d0g0a0k(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -664,7 +664,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_dd9n22_a0a1a1a4a2a3a6a0a01(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_dd9n22_a0b0b0e0c0d0g0a0k(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
