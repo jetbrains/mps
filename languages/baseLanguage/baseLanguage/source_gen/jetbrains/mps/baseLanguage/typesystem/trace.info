@@ -24006,8 +24006,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/5875805516898175973">
     <file name="ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRule.java">
-      <node id="5875805516898217055" at="32,97,33,99" concept="14" />
-      <node id="4423718002655774834" at="33,99,34,0" concept="15" />
+      <node id="5875805516898217055" at="32,97,33,100" concept="14" />
+      <node id="4423718002655774834" at="33,100,34,0" concept="15" />
       <node id="2938172522555230527" at="35,393,36,53" concept="14" />
       <node id="2938172522557669175" at="36,53,37,53" concept="14" />
       <node id="2938172522555226308" at="37,53,38,19" concept="13" />

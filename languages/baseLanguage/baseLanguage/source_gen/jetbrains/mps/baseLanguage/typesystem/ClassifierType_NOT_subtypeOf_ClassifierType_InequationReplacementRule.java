@@ -30,7 +30,7 @@ public class ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRu
   public ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    // this rule exists to help reduce exhastive search, so it should apply when no other rules do 
+    // this rule exists to help reduce exhaustive search, so it should apply when no other rules do 
 
     if (Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R))) && SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R) != SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R)) {
       // not applicable if it is the same classifier 
