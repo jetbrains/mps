@@ -2,6 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)">
   <persistence version="9" />
   <languages>
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -179,12 +180,8 @@
       <concept id="5497648299878491908" name="jetbrains.mps.baseLanguage.structure.BaseVariableReference" flags="nn" index="1M0zk4">
         <reference id="5497648299878491909" name="baseVariableDeclaration" index="1M0zk5" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -3567,8 +3564,25 @@
               </node>
             </node>
             <node concept="3SKdUt" id="45eRmv01No8" role="3cqZAp">
-              <node concept="3SKdUq" id="45eRmv01Noa" role="3SKWNk">
-                <property role="3SKdUp" value="TODO remove these clauses after 2019.1" />
+              <node concept="1PaTwC" id="24uceTRVFp2" role="3ndbpf">
+                <node concept="3oM_SD" id="24uceTRVFp3" role="1PaTwD">
+                  <property role="3oM_SC" value="TODO" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFp4" role="1PaTwD">
+                  <property role="3oM_SC" value="remove" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFp5" role="1PaTwD">
+                  <property role="3oM_SC" value="these" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFp6" role="1PaTwD">
+                  <property role="3oM_SC" value="clauses" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFp7" role="1PaTwD">
+                  <property role="3oM_SC" value="after" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFp8" role="1PaTwD">
+                  <property role="3oM_SC" value="2019.1" />
+                </node>
               </node>
             </node>
             <node concept="3clFbJ" id="45eRmv01Odj" role="3cqZAp">
@@ -3650,18 +3664,93 @@
           </node>
         </node>
         <node concept="3SKdUt" id="20cGABo$LSs" role="3cqZAp">
-          <node concept="3SKdUq" id="20cGABo$LSu" role="3SKWNk">
-            <property role="3SKdUp" value="===========" />
+          <node concept="1PaTwC" id="24uceTRVFp9" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFpa" role="1PaTwD">
+              <property role="3oM_SC" value="===========" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="20cGABo$Y3n" role="3cqZAp">
-          <node concept="3SKdUq" id="20cGABo$Y3p" role="3SKWNk">
-            <property role="3SKdUp" value="hack to make null check operations works for enums" />
+          <node concept="1PaTwC" id="24uceTRVFpb" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFpc" role="1PaTwD">
+              <property role="3oM_SC" value="hack" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpd" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpe" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpf" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpg" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFph" role="1PaTwD">
+              <property role="3oM_SC" value="operations" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpi" role="1PaTwD">
+              <property role="3oM_SC" value="works" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpj" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpk" role="1PaTwD">
+              <property role="3oM_SC" value="enums" />
+            </node>
           </node>
         </node>
         <node concept="3SKdUt" id="20cGABo$Zwy" role="3cqZAp">
-          <node concept="3SKdUq" id="20cGABo$Zw$" role="3SKWNk">
-            <property role="3SKdUp" value="do not wont to introduce enum related stuff to SNodeOperation concept, since it is already overwhelmed" />
+          <node concept="1PaTwC" id="24uceTRVFpl" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFpm" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpn" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpo" role="1PaTwD">
+              <property role="3oM_SC" value="wont" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpp" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpq" role="1PaTwD">
+              <property role="3oM_SC" value="introduce" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpr" role="1PaTwD">
+              <property role="3oM_SC" value="enum" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFps" role="1PaTwD">
+              <property role="3oM_SC" value="related" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpt" role="1PaTwD">
+              <property role="3oM_SC" value="stuff" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpu" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpv" role="1PaTwD">
+              <property role="3oM_SC" value="SNodeOperation" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpw" role="1PaTwD">
+              <property role="3oM_SC" value="concept," />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpx" role="1PaTwD">
+              <property role="3oM_SC" value="since" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpy" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFpz" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFp$" role="1PaTwD">
+              <property role="3oM_SC" value="already" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFp_" role="1PaTwD">
+              <property role="3oM_SC" value="overwhelmed" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="20cGABo$Nba" role="3cqZAp">

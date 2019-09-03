@@ -446,12 +446,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -7766,8 +7762,46 @@
           </node>
         </node>
         <node concept="3SKdUt" id="Tf5XLcwdma" role="3cqZAp">
-          <node concept="3SKdUq" id="Tf5XLcwdmb" role="3SKWNk">
-            <property role="3SKdUp" value="path came here may be from UI or from sources with system separators" />
+          <node concept="1PaTwC" id="24uceTRVFqT" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFqU" role="1PaTwD">
+              <property role="3oM_SC" value="path" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqV" role="1PaTwD">
+              <property role="3oM_SC" value="came" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqW" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqX" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqY" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqZ" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr0" role="1PaTwD">
+              <property role="3oM_SC" value="UI" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr1" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr2" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr3" role="1PaTwD">
+              <property role="3oM_SC" value="sources" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr4" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr5" role="1PaTwD">
+              <property role="3oM_SC" value="system" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr6" role="1PaTwD">
+              <property role="3oM_SC" value="separators" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="q00jVsP8EN" role="3cqZAp">
@@ -7819,8 +7853,46 @@
           </node>
         </node>
         <node concept="3SKdUt" id="Tf5XLcw5mj" role="3cqZAp">
-          <node concept="3SKdUq" id="Tf5XLcw5ml" role="3SKWNk">
-            <property role="3SKdUp" value="path came here may be from UI or from sources with system separators" />
+          <node concept="1PaTwC" id="24uceTRVFr7" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFr8" role="1PaTwD">
+              <property role="3oM_SC" value="path" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFr9" role="1PaTwD">
+              <property role="3oM_SC" value="came" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFra" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrb" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrc" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrd" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFre" role="1PaTwD">
+              <property role="3oM_SC" value="UI" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrf" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrg" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrh" role="1PaTwD">
+              <property role="3oM_SC" value="sources" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFri" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrj" role="1PaTwD">
+              <property role="3oM_SC" value="system" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFrk" role="1PaTwD">
+              <property role="3oM_SC" value="separators" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="q00jVsP8Fb" role="3cqZAp">

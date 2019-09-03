@@ -8,6 +8,7 @@
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="4" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -545,12 +546,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -6434,8 +6431,25 @@
                       </node>
                     </node>
                     <node concept="3SKdUt" id="45eRmv01$AF" role="3cqZAp">
-                      <node concept="3SKdUq" id="45eRmv01$AH" role="3SKWNk">
-                        <property role="3SKdUp" value="TODO remove this clause after 2019.1" />
+                      <node concept="1PaTwC" id="24uceTRVFoQ" role="3ndbpf">
+                        <node concept="3oM_SD" id="24uceTRVFoR" role="1PaTwD">
+                          <property role="3oM_SC" value="TODO" />
+                        </node>
+                        <node concept="3oM_SD" id="24uceTRVFoS" role="1PaTwD">
+                          <property role="3oM_SC" value="remove" />
+                        </node>
+                        <node concept="3oM_SD" id="24uceTRVFoT" role="1PaTwD">
+                          <property role="3oM_SC" value="this" />
+                        </node>
+                        <node concept="3oM_SD" id="24uceTRVFoU" role="1PaTwD">
+                          <property role="3oM_SC" value="clause" />
+                        </node>
+                        <node concept="3oM_SD" id="24uceTRVFoV" role="1PaTwD">
+                          <property role="3oM_SC" value="after" />
+                        </node>
+                        <node concept="3oM_SD" id="24uceTRVFoW" role="1PaTwD">
+                          <property role="3oM_SC" value="2019.1" />
+                        </node>
                       </node>
                     </node>
                     <node concept="3clFbJ" id="hwTcSnq" role="3cqZAp">
@@ -6773,8 +6787,19 @@
               </node>
             </node>
             <node concept="3SKdUt" id="20cGABo_zv7" role="3cqZAp">
-              <node concept="3SKdUq" id="20cGABo_zv9" role="3SKWNk">
-                <property role="3SKdUp" value="is enum member ?" />
+              <node concept="1PaTwC" id="24uceTRVFoX" role="3ndbpf">
+                <node concept="3oM_SD" id="24uceTRVFoY" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFoZ" role="1PaTwD">
+                  <property role="3oM_SC" value="enum" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFp0" role="1PaTwD">
+                  <property role="3oM_SC" value="member" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFp1" role="1PaTwD">
+                  <property role="3oM_SC" value="?" />
+                </node>
               </node>
             </node>
             <node concept="3clFbJ" id="20cGABo_$EC" role="3cqZAp">

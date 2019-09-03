@@ -287,12 +287,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -7209,8 +7205,31 @@
         </node>
         <node concept="3clFbH" id="4HQ6gVAMJhn" role="3cqZAp" />
         <node concept="3SKdUt" id="4HQ6gVAMMqx" role="3cqZAp">
-          <node concept="3SKdUq" id="4HQ6gVAMMqz" role="3SKWNk">
-            <property role="3SKdUp" value="FIXME assuming it's safe to access legacy session" />
+          <node concept="1PaTwC" id="24uceTRVFqK" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFqL" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqM" role="1PaTwD">
+              <property role="3oM_SC" value="assuming" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqN" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqO" role="1PaTwD">
+              <property role="3oM_SC" value="safe" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqP" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqQ" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqR" role="1PaTwD">
+              <property role="3oM_SC" value="legacy" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqS" role="1PaTwD">
+              <property role="3oM_SC" value="session" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="4HQ6gVAMBSs" role="3cqZAp">
