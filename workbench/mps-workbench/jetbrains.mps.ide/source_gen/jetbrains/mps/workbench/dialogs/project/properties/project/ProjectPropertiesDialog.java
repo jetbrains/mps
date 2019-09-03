@@ -14,7 +14,7 @@ public final class ProjectPropertiesDialog extends DialogWrapper {
   public ProjectPropertiesDialog(final Project project) {
     super(project);
     myPropertiesComponent = new ProjectPropertiesComponent(project, null);
-    setTitle(project.getName() + " Properties");
+    setTitle("Project Modules");
     setOKButtonText("&Apply");
     setCancelButtonText("Ca&ncel");
 

@@ -4898,7 +4898,7 @@
   <node concept="sE7Ow" id="hMRTVTd">
     <property role="TrG5h" value="MPSProjectPaths" />
     <property role="72QZ$" value="true" />
-    <property role="2uzpH1" value="Project Paths" />
+    <property role="2uzpH1" value="Project Modules" />
     <property role="3GE5qa" value="Menu.ProjectPane.Project.Actions" />
     <property role="1teQrl" value="true" />
     <node concept="tnohg" id="hMRTVTe" role="tncku">

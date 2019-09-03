@@ -2932,18 +2932,8 @@
         <node concept="3clFbF" id="53OO3hLEINB" role="3cqZAp">
           <node concept="1rXfSq" id="53OO3hLEINA" role="3clFbG">
             <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
-            <node concept="3cpWs3" id="53OO3hLEITJ" role="37wK5m">
-              <node concept="Xl_RD" id="53OO3hLEITK" role="3uHU7w">
-                <property role="Xl_RC" value=" Properties" />
-              </node>
-              <node concept="2OqwBi" id="53OO3hLEITL" role="3uHU7B">
-                <node concept="liA8E" id="53OO3hLEITM" role="2OqNvi">
-                  <ref role="37wK5l" to="4nm9:~Project.getName()" resolve="getName" />
-                </node>
-                <node concept="37vLTw" id="2BHiRxgmajP" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2LIxlaqyDmC" resolve="project" />
-                </node>
-              </node>
+            <node concept="Xl_RD" id="53OO3hLEITK" role="37wK5m">
+              <property role="Xl_RC" value="Project Modules" />
             </node>
           </node>
         </node>
@@ -2988,15 +2978,15 @@
       <node concept="3uibUv" id="53OO3hLELz4" role="3clF45">
         <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
       </node>
-      <node concept="2AHcQZ" id="53OO3hLELz5" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
       <node concept="3clFbS" id="53OO3hLELz6" role="3clF47">
         <node concept="3cpWs6" id="53OO3hLELWJ" role="3cqZAp">
           <node concept="37vLTw" id="3b6xVKW7TcK" role="3cqZAk">
             <ref role="3cqZAo" node="3b6xVKW6Dop" resolve="myPropertiesComponent" />
           </node>
         </node>
+      </node>
+      <node concept="2AHcQZ" id="53OO3hLELz5" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
       <node concept="2AHcQZ" id="3tYsUK_S5Xw" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
@@ -3007,15 +2997,6 @@
       <property role="TrG5h" value="getDimensionServiceKey" />
       <property role="DiZV1" value="false" />
       <node concept="3Tmbuc" id="3WiRXAP5Bgq" role="1B3o_S" />
-      <node concept="3uibUv" id="3WiRXAP5Bgs" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-      <node concept="2AHcQZ" id="3WiRXAP5Bgt" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="2AHcQZ" id="3WiRXAP5Bgu" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
       <node concept="3clFbS" id="3WiRXAP5Bgv" role="3clF47">
         <node concept="3cpWs6" id="3WiRXAP5DqP" role="3cqZAp">
           <node concept="2OqwBi" id="3WiRXAP5FEr" role="3cqZAk">
@@ -3031,8 +3012,17 @@
           </node>
         </node>
       </node>
+      <node concept="2AHcQZ" id="3WiRXAP5Bgt" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="2AHcQZ" id="3WiRXAP5Bgu" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
+      </node>
       <node concept="2AHcQZ" id="3WiRXAP5Bgw" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="3uibUv" id="3WiRXAP5Bgs" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
     <node concept="3clFb_" id="53OO3hLHsDg" role="jymVt">
